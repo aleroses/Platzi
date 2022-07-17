@@ -24,7 +24,7 @@ Ver otro apuntes: [Link en GitHub](https://github.com/ValenciaJCamilo/Platzi)
 > Conocido como un esquema de página o plano de pantalla, es una guía visual que representa el esqueleto o estructura visual de un sitio web.   
 
 
---
+---
 ## 2. El proceso creativo
 Proceso  | Creativo
 ---------|----------
@@ -88,5 +88,163 @@ Página para revisar el nivel de contraste:
 **5. Repetición:** Usada para generar concepto de marca. Se usan los mismos colores o las iniciales de sus logotipos.
 > ![Repetición](https://i.postimg.cc/4N48hpnS/repetition.jpg)
 
-**6. Espacio:** Como darle uso
+**6. Espacio:** Se refiere al aprovechamiento del espacio, la forma en la que se le da uso.
 > ![Espacio](https://i.postimg.cc/qR62VMb0/espacio.webp)
+
+**Resumen:** 
+> ![Resumen](https://i.postimg.cc/3Rc9ggG6/1-6resumen.webp)
+
+
+---
+## 4. Diseño responsivo (Responsive design)
+
+Es una metodología de diseño que nos permite adaptar nuestros diseños a diferentes tamaños de pantalla.  
+
+Diseños responsivos: versión mobile - desktop:
+[Media Queries](https://mediaqueri.es/)
+
+### Como garantizar que nuestro diseño sea responsive
+1. Empezar nuestro Diseño por dispositivos móviles. Esto garantiza partir desde el contenido basico hasta el contenido mas completo.
+
+2. Separa las capas de contenido y funcionalidad. Esto garantiza que el usuario tendrá acceso a todo el contenido de nuestra página sin tener que ejecutar alguna acción.
+
+3. Usa sistemas de grillas y columnas. Las columnas son una referencia sobre nuestro layout total y sirve para ir mirando el ancho de nuestra página, de esta manera es mucho mas facil adaptar los contenidos.
+
+### Metodologías para hacer responsive design
+**Mejora progresiva (Progressive enhancement):**  
+Consiste en partir de una base sólida a la que se van añadiendo mejoras dependiendo de factores como tamaño de pantalla o sistema
+operativo. Esta es la mejor practica.
+> ![Mejora Progresiva](https://i.postimg.cc/XYfDmjpv/4-mejora-progresiva.png)
+
+**Degradación agraciada (Graceful degradation):**  
+Consiste en partir de una versión completa a la
+que se le van removiendo capas de complejidad
+para garantizar su funcionamiento en todos los
+tamaños de pantalla y sistemas operativos.
+> ![Degradacion-agraciada](https://i.postimg.cc/LXj8cZKW/4-degradaci-n-agraciada.png)
+
+Estas metodologías no solo aplican al diseño sinó tambien al código.  
+**Mejora progresiva aplicada:** Código - Diseño
+> ![Mejora Progresiva aplicada](https://i.postimg.cc/HkSzMVNF/4-mejora-aplicada.jpg)
+
+
+---
+## 5. Accesibilidad y diseño
+> "El poder de la Web está en su universalidad. El acceso de todas las personas independientemente de la
+discapacidad es un aspecto esencial."  |
+**Tim Berners-Lee, W3C Director.**
+
+La accesibilidad es necesaria para permitir que cualquier persona independientemente de sus capacidades pueda acceder a la informacion necesaria sin dificultades.
+
+### Tips básicos de accesibilidad.
+1. **HTML estructurado correctamente**  
+Para que los lectores de pantalla puedan proporcionar un detalle acertado al usuario, la semantica en el HTML es importante, ademas, esto ayuda a la pagina en el SEO. Utiliza los encabezados (h1-h6) de manera ordenada para organizar la estructura del contenido (HTML5 semántico), esto garantiza que las personas que navegan usando el teclado puedan saber que tan importante es un titulo con relación a otro. Permitiendo agrupar diferentes categorias, grupos de información, etc.  
+
+2. **Tamaños de fuente accesibles**  
+Al utilizar tamaños de fuente demasiado pequeños hacemos que personas con problemas de vista no puedan acceder a toda la informacion de manera adecuada.
+
+3. **Contrastes adecuados**  
+Si se utilizan los colores incorrectos puede llevar a que la informacion, texto o imagenes no sean visibles por ciertas personas. Por ende debemos colocar contrastes altos para diferenciar un fondo de un contenido.  
+
+4. **Evitar categorización unicamente por colores**  
+Ya vimos en **proximidad** que podemos agrupar categorias por colores, iconos, etc y esto es algo que funciona y se ve bien, pero no es accesible para todos los publicos. Si vas a hacer agrupaciones por colores debes ofrecer una alternativa ya sea con bordes, iconos o titulos de categoria para que todas las personas puedan acceder a ese tipo de agrupaciones de información. 
+
+5. **Diseña teniendo en cuenta los estados “focus” y “active” (HTML)**  
+Estos bordes o subrayados proporcionan ayuda visual para que el usuario sepa en que parte de la página se encuentra.
+
+6. **Añadir etiquetas y textos descriptivos a los campos de formularios, videos e imagenes**  
+Esto es importante para las personas que estan navegando con el tab, ya que sin esto no van a tener acceso a todos los titulos. Por eso debemos añadir etiquetas descriptivas, algo llamado aria-label. Ademas se debe garantizar a los usuarios que cuando haya un error en un formulario no solo se muestre un borde color verde o rojo, sinó que muestre un mensaje que pueda ser leído por un lector de pantalla.
+    > El atributo [aria-label](https://developer.mozilla.org/es/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_aria-label_attribute) se utiliza para definir una cadena que etiqueta el elemento actual. Úselo en los casos en que no haya una etiqueta de texto visible en pantalla. Si hay texto visible etiquetando el elemento, utilice aria-labelledby en su lugar. ARIA (Accessible Rich Internet Applications)
+
+7. **Escribe contenido descriptivo que pueda reemplazar videos e imágenes**
+Siempre es mejor mantener texto descriptivo por fuera de videos o de las imagenes, de esta manera los usuarios que están navegando por medio de un lector de pantalla puedan escuchar la interpretación de los elementos mostrados ([etiqueta alt](https://blog.hubspot.es/marketing/texto-alternativo) describe una imagen). 
+
+8. **Evitar animaciones que bloqueen contenido**  
+Pasa cuando tenemos páginas en las que debemos hacer clic para ejecutar una animación y esto muestre un texto. Esto quiere decir que el texto está bloqueado por una animación, lo cual no es buena practica. Provocando que aquellos que no tengan acceso a un mouse no obtengan la misma cantidad de informacion que uno que si lo tiene. Además, no es buena practica que los usuarios vean muchos flashes cuando acceden a una página.
+
+- [Tips Accesibilidad](https://web.dev/accessibility/)  
+- [Estándar internacional Pautas de accesibilidad](https://www.w3.org/WAI/standards-guidelines/wcag/)
+
+---
+## 6. Brief y requerimientos técnicos 
+
+> El brief es la hoja de ruta para empezar a diseñar.
+Es el resultado de las conversaciones con el cliente e incluye datos sobre marca, objetivos y requerimientos de un proyecto.
+
+> Este documento tiene la finalidad de ayudar a detectar las necesidades particulares de cada cliente y permitir alinear nuestros servicios de la mejor manera, así podremos ofrecerles un servicio o producto personalizado a sus requerimientos.
+
+### Contenido del brief
+Las secciones más comunes de un brief son:
+- Descripción del cliente o empresa.
+- Objetivos o retos.
+- Target o audiencia.
+- Competencia o referentes.
+- Distribución.
+
+> [Brief para la creación de un sitio web: pasos a seguir](https://www.marketerosagencia.com/blog/diseno-web/brief-creacion-sitio-web/)
+
+### Creación del brief -> Ejemplo:
+> 🔎 Seymour tiene un restaurante de hamburguesas desde hace 10 años pero está perdiendo clientela debido al aumento de la competencia.
+ 
+> 🧬 Seymour se dio cuenta de que su marca estaba desactualizada y ya no estaba llamando la atención de su público objetivo: las personas entre 18 y 35 años.  
+
+> 💡 A seymour se le ocurrió cambiar su marca de ‘hamburguesas al
+vapor’ a ‘steam burger’
+
+> ✔ Después de cambiar su marca y actualizar su logo, Seymour considera crear una página web en donde sus clientes puedan consultar el menú de su restaurante, hacer reservaciones, pedir domicilios y consultar promociones.  
+
+> ⚙ Con su idea de negocio definida. Seymour decide contactarte para hacer su página web.
+
+---
+
+> <img src="https://i.postimg.cc/wjhRfHQ5/6-brief.png" width=50%>
+> <img src="https://i.postimg.cc/0NPMh3VT/6-brieftwo.png" width=50%>
+
+--- 
+> ![Logo](https://i.postimg.cc/XJnhPwBj/6-steam-logo.jpg)  
+
+## Steam Burger.
+
+> Steam Burger es un restaurante tradicional de comidas rápidas con 10 años de antigüedad en el mercado y sin presencia digital. El restaurante tiene productos sólidos y de alta calidad, pero necesita atraer nueva clientela para expandirse y abrir otras sucursales que compitan con otras cadenas de comidas rápidas en la ciudad.
+
+### Objetivos.
+
+- Atraer nueva clientela usando redes sociales y página web.
+- Dar a conocer su menú y promociones por el canal virtual.
+- Ofrecer servicios como domicilios y pagos en línea.
+
+### Público objetivo.
+
+> Steam burger ya tiene una clientela tradicional conformada por los vecinos de sectores aledaños a su restaurante, pero necesita posicionar su marca en redes sociales antes de abrir más sucursales. Para alcanzar este objetivo es necesario crear una estrategia enfocada en usuarios con mayor actividad en redes sociales como instagram y tiktok. Es decir jóvenes entre 18 y 30 años.
+
+### Competencia.
+
+- Sierra nevada hamburguesas. https://sierranevada.co/
+- La hamburgueseria. https://www.lahamburgueseria.com/
+
+### Distribución.
+
+- Página web.
+- Redes sociales (Instagram, TikTok, Facebook).
+
+### Cronograma.
+
+- Definición de objetivos. 1 de Junio de 2020.
+- Contenido y diagramas de navegación. 8 de Junio de 2020.
+- Wireframes. 15 de Junio de 2020.
+- Línea gráfica. 22 de Junio de 2020.
+- Propuestas de diseño. 29 de Junio de 2020.
+- Desarrollo web y pruebas. 17 de Julio de 2020.
+- Demo y entrega final. 20 de Julio de 2020.
+
+
+**Tipos de letra:**  
+- Títulos: Arial Black 18
+- Párrafos: Arial 12
+
+
+
+
+
+Arauco Yajayra  
+José Enrique Pérez Aquino
