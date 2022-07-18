@@ -369,10 +369,10 @@ En busqueda de inspiración:
 La idea es utilizar estos colores y la teoría de la psicología del color para seleccionar los colores de la web o aplicación a crear, dependiendo del problema que soluciones.
 
 ### Color para web.
-- Utiliza color RGB y hexadecimales, nunca cmyk.
+- Utiliza color [RGB y hexadecimales](https://platzi.com/comentario/1398200/), nunca cmyk. 
 - Crea un código de color consistente. Ejemplo: Al colocar botones que pertencen a una misma categoría (comprar), es conveniente usar un mismo color para todos estos.
 - Menos es más. El exceso de color hace que los usuarios no se puedan enfocar en una acción a la vez. Agrupar por categorias y manejar una paleta de colores reducida.
-- Asegurate de que tu elección de color sea accesible. Que funcinen bien con texto y colores de fondo con suficiente contraste.
+- Asegurate de que tu elección de color sea accesible. Que funcionen bien con texto y colores de fondo con suficiente contraste.
 - Define una paleta de color. Una paleta de colores es un grupo de colores que van a ser usados en nuestra aplicación. Esta se debe definir antes de empezar a diseñar, para así restringir las posibilidades que tenemos al usar colores y lograr una app balanceada.
 
 **Crea esquemas de color que funcionan:**  
@@ -383,16 +383,195 @@ La idea es utilizar estos colores y la teoría de la psicología del color para 
 
 
 ---
+## 13. Paletas de color
+
+### Colores primarios, secundarios y terciarios
+**Colores primarios:**
+- 🟡Amarillo 🔵Azul 🔴Rojo  
+
+**Colores secundarios:**
+- Resultan de la combinación de los colores primarios.
+- 🟢Verde 🟣Morado 🟠Naranja
+
+**Colores terciarios:**
+- Resultan de la mezcla entre un color primario + un color secundario adyacente (es decir, su vecino contiguo en el círculo cromático)
+- 🟡Amarillo + 🟠Naranja = amarillo-anaranjado. 
+- 🔴Rojo + 🟠Naranja = rojo-anaranjado.
+- 🔴Rojo + 🟣Morado = rojo-morado.
+- 🔵Azul + 🟣Morado = azul-morado.
+- 🔵Azul + 🟢Verde = azul-verdoso.
+- 🟡Amarillo + 🟢Verde = amarillo-verdoso.  
+
+> <img src="https://i.postimg.cc/VLfWqfvN/13-p-s-t.jpg" width=60%>
+
+### Tipos de paletas
+**Combinación monocromática:**  
+Diferentes tonos de un mismo color. (Un color + diferente opacidad). Por ejemplo, un azul y todos los rangos más claros u oscuros consiguientes.
+> ![monocromatica](https://i.postimg.cc/L43bF4bt/13-paleta-monocromatica.webp)
+
+**Combinación análoga:**  
+Resulta de combinar un color primario con uno secundario y uno terciario que estén seguidos en el circulo cromático (primario + secundario + terciario). Ejemplo, el rojo, naranja y amarillo-anaranjado son análogos.
+> ![analoga](https://i.postimg.cc/5NqgFPV8/13-paleta-analoga.webp)
+
+**Combinación complementaria:**  
+Consiste en combinar un color primario con un color secundario que no estén seguidos en el circulo cromático (Primario + secundario). Estos colores estan opuestos en el circulo.
+> ![complementaria](https://i.postimg.cc/cJppDD5X/13-paleta-complementaria.webp)
+
+**Combinación triádica:**  
+Se trata de combinar tres colores que estén en el circulo cromático de manera que formen un triángulo dentro del circulo y puede ser primario, secundario o terciario. Para usar una triada de forma exitosa, los colores deben estar equilibrados ,y se debería usar uno dominante y los otros dos para acentuar.
+> ![triadica](https://i.postimg.cc/bY5tmWxQ/13-paleta-triada.webp)
+
+**Combinación tétrada:** Combinamos 4 colores elegidos al formar un rectángulo dentro del circulo cromático. Se eligen dos primarios y dos secundarios.
+> ![tetraa](https://i.postimg.cc/zX0KnvdG/13-paleta-tetrada.webp)
+
+> **Nota:**  
+Una vez tengas los colores seleccionados debes definir las variables de color.
+
+
+
+```
+$color-white: #fff;
+$color-black: #000;
+$color-primary: #ffd000;
+$color-secondary: #181d20;
+$color-terciary: #ff5252;
+$color-cuaternary: #181d20;
+```
+
+
+---
+## 14. Tipografía
+
+### Tips para el uso eficiente de tipografías.
+- Mantén el número de fuentes al mínimo (max. dos).
+- Trata de usar fuentes estándar. Usa [Google Fonts.](https://fonts.google.com/)
+- Limita la cantidad de texto. Las webs no son libros, están pensadas para consultarlas lo mas rápido posible.
+- Elige tipografías que sean legibles en diferentes tamaños.
+- Mantén altos de línea espaciados.
+- Asegurate de tener suficiente contraste.
+- Evita usar animaciones intermitentes.
+
+### Reglas de combinación de tipografía:
+### **Serif**
+
+Personalidad | Fuentes | Combina con | Usos
+-------------|---------|-------------|----
+Tradicional. | Droid Serif. | Sans serif. | Logos.
+Sofisticada. | Georgia. | Script. | Textos de párrafo.
+Confiable. | Merriweather. | Display. | Títulos.
+Práctica. | Playfair Display. | | Impresos.
+Formal. | Times. | | 
+
+### **Sans Serif**
+
+Personalidad | Fuentes | Combina con | Usos
+-------------|---------|-------------|----
+Moderna. | Droid Serif. | Serif | Logos.
+Limpia. | Lato. | Script. | Textos de párrafo.
+Humanista. | Open Sans. | Slab Serif. | Títulos.
+Geométrica. | Roboto. | | Textos pequeños.
+Universal. | Verdana. | | 
+
+### **Script**
+
+Personalidad | Fuentes | Combina con | Usos
+-------------|---------|-------------|----
+Elegante. | Courgette. | Serif | Logos.
+Clásica. | Lobster. | Sans serif. | Títulos.
+Formal. | Merienda. | | Invitaciones.
+Sofisticada. | Pacífico. | |
+Estilizada. | Satisfy. | | 
+
+No se recomienda para parrafos largos, solo para textos cortos que deseemos destacar.
+
+### Implementando Style guide
+**¿Qué es un style guide?**
+> La primera función de un style guide es saber las dudas principales que surgen en los equipos de diseño y desarrollo de apps. En pocas palabras, es un documento que describe los principios de una compañía y cómo deben aplicarse, incluyendo:
+
+- Patrones
+- Estilos
+- Componentes
+- Prácticas
+- Colores
+- Tipografías
+- Lo que está permitido
+- Lo que no está permitido
+
+**¿Para qué sirve?**
+> Un style guide de apps sirve para que todos los equipos involucrados en la construcción de la app estén alineados en cuanto al estilo y las reglas que tendrá.
+
+> Con su uso correcto, ahorrará tiempo cuando el equipo de diseño establezca reglas respecto a detalles como tamaño de las fuentes, colores de los botones, etcétera. Así, el equipo de desarrollo se apegará a esas reglas y habrá menos ajustes en el proceso final de cambios.  
+[Mas info sobre Style guide](https://www.domestika.org/es/blog/3533-que-es-y-para-que-sirve-el-style-guide-de-apps)
+
+> ![Style guide](https://i.postimg.cc/FKkv4hDx/14-styleguide.jpg)
+*En la clase mencionan los style guide en el minuto 3:51*
+
+
+- [Curso Tipografia](https://platzi.com/cursos/diseno-tipografia/)
+
+
+---
+## 15. Layout y sistemas de grillas
+
+### ¿Qué es una grilla?
+> Es un sistema de columnas creado por nosotros de acuerdo a las necesidades para ajustar nuestros elementos y componentes.  
+La mejor herramienta de CSS para crear una grilla es **Grid**.
+
+**BreakPoints Configuración estandar (Tipos de pantalla).**  
+- $xs: 360px. Para móviles pequeños.
+- $s: 440px. Para móviles con la pantalla más grande.
+- $m: 768px. Para tablets.
+- $l: 1280px. Para Ordenadores pantalla normal.
+- $xl: 1440px. Monitores de alta calidad.
+
+#### Recomendaciones:
+**Usar Sass**
+> Sass es un pre-procesador de CSS, ayuda a escribir CSS de una manera más rápida y más fácil.  
+Sass permite crear un Mixin, este nos va a permitir modificar los estilos de acuerdo al Breakpoint en el que estemos.
+
+**Configuración de variables dependiendo de los breakpoints.**  
+- columns. Es el número de columnas que vamos a tener.
+    - movil: 4 - tablet: 12 - desktop: 12
+- column-gap: Es el espacio entre las columnas.
+    - movil: 6.67% - tablet: 2.27% - 2.19%
+
+**Definir clase Grid**  
+> Esto sirve para configurar cada uno de los elementos contenedores donde vamos a incluir nuestros componentes.
+
+**Finalmente**  
+Añadimos un display grid, que nos permite que toda esta configuración surta efecto. 
+- grip-column-gap: para la distancia entre columnas.
+- grid-template-column: nos permite tener esta estructura.
+- grid-column: 1/5 define el tamaño de un componente, donde 1 es la columna donde empieza, y 5 es la columna donde termina.
+
+
+[Extensión: CSS Grid Overlay](https://chrome.google.com/webstore/detail/css-grid-overlay/hajfilceeneohkmcakehndmaeonhlack?hl=en)  
+[Curso de Preprocesadores CSS](https://platzi.com/cursos/preprocesadores/)
+
+
+---
+## 16. Sistemas de componentes UI
+ 
 
 
 
 
 
 
-<span style="color:red">some *red* text</span>.  
-<p>Some Markdown text with <span style="color:red">some <em>r   ed</em> text</span>.</p>  
 
 
-jenny katherine arevalo rivera   
-Arauco Yajayra  
-José Enrique Pérez Aquino
+
+
+
+
+
+
+
+
+- alt + 60 <>
+- alt + 62 >
+- alt + 96 ```  
+- <span style="color:red">some *red* text</span>.  
+- <p>Some Markdown text with <span style="color:red">some <em>red</em> text</span>.</p>  
+
+
