@@ -503,7 +503,7 @@ No se recomienda para parrafos largos, solo para textos cortos que deseemos dest
 > Con su uso correcto, ahorrará tiempo cuando el equipo de diseño establezca reglas respecto a detalles como tamaño de las fuentes, colores de los botones, etcétera. Así, el equipo de desarrollo se apegará a esas reglas y habrá menos ajustes en el proceso final de cambios.  
 [Mas info sobre Style guide](https://www.domestika.org/es/blog/3533-que-es-y-para-que-sirve-el-style-guide-de-apps)
 
-> ![Style guide](https://i.postimg.cc/FKkv4hDx/14-styleguide.jpg)
+> ![Style guide](https://i.postimg.cc/FKkv4hDx/14-styleguide.jpg)  
 *En la clase mencionan los style guide en el minuto 3:51*
 
 
@@ -551,10 +551,131 @@ Añadimos un display grid, que nos permite que toda esta configuración surta ef
 
 ---
 ## 16. Sistemas de componentes UI
- 
+
+Una de las metodologías que podemos usar es separar las funcionalidades por componentes.
+
+Nos refermos por sistema de componentes al conjunto de:
+- Botones: Primarios o Secundarios
+- Quote: Cita o frase que caracteriza al producto.
+- Products
+- Reto
+- Contact Box
+- Navigation
+- Hero
+- Cards
+- Banners
+- Títulos
+- Párrafos
+- Menus
+
+> ![button](https://i.postimg.cc/kgZ06Czh/16-button-quote.jpg)
+> ![products](https://i.postimg.cc/zBY47jJC/16-product.jpg)
+> ![reto](https://i.postimg.cc/h4d08dvr/16-reto.jpg)
+> ![contact-box](https://i.postimg.cc/gkMFp8Dp/16-contact-box.jpg)
+> ![navigation](https://i.postimg.cc/Cxzyx5Pq/16-navigation.jpg)
+> ![hero](https://i.postimg.cc/QMTRcPrN/16-hero.jpg)
+
+Este conjunto de componentes son los que vamos a usar para crear nuestra aplicación. Esos componentes funcionan como una librería.
+
+Puedes usar cualquier tecnología que prefieras (**React**). Lo importante es encapsular las funcionalidades en componentes. 
+
+Cada componente tendrá su propio css y funcionalidad dentro de su propia función.
+
+Así podremos importar esas características a cualquier pantalla de nuestra aplicación, reutilizando el código y hacer más eficiente nuestra aplicación.
+
+### Importante
+> Agregar todos los componentes a un **style guide** y mas importante aún es que funcionen por si mismos sin estar amarrados a ninguna página. El tener los componentes en un style guide nos garantiza que en el momento que los queramos incluir en cualquier parte de nuestra aplicación no se va a romper porque ya tiene definidos todos los estilos de una manera encapsulada.
+
+### Separar por componentes
+En la clase de Wireframe creamos bocetos de algunos componentes, que luego dividimos en unidades de funcionalidad.
+
+La idea es crear a partir del wireframe todos los componentes y funcionalidades, y después le añadimos la capa visual.
+
+---
+### Hero
+O mejor dicho una Hero Image, es un término que se emplea en el campo del diseño web para referirse a un banner de gran tamaño que se coloca de manera visible en una página web, a menudo en la página de inicio donde ocupa gran parte del layout.
+
+### Quote
+Hamburguesas de pura carne con el toque secreto.
+
+### Recordatorio de profe ✨[SamantaMartinez](https://platzi.com/comentario/1430643/)
+> El styleguide es una página en donde podemos ver todos nuestros componentes y estilos básicos, los que vamos a reutilizar en nuestra aplicación. 
+
+> El styleguide se conforma de componentes y cada componente tiene su hoja de estilos css. En pocas palabras el styleguide viene siendo como una página de mostrario de todos los componentes que tenemos a nuestra disposicion para usar en nuestra página. 
+
+> La ventaja de tener un styleguide es que cada vez que queramos añadir elementos a nuestra aplicación no vamos a tener que diseñar de cero, sino que podemos partir de elementos que ya existen.
 
 
+- [material.io/design](https://material.io/design)
 
+
+---
+## 17. Themes y customizaciones
+
+### ¿Qué es un theme? 
+> Es una capa de color y estilos que se añade por encima de nuestra aplicación y nos permite tener distintas variaciones sin hacer cambios drásticos en nuestro código. 
+
+> Los themes se manejan en archivos diferentes donde tenemos configurada la presentación visual de toda la aplicación (dark theme - light theme). Teniendo más themes podremos tener más presentaciones visuales. [Ejemplo Android10](https://www.android.com/android-10/)
+
+### Añadir un Theme
+> Podemos hacerlo por medio de variables de css o variables de Sass. Las variables de Sass son más sencillas.
+
+> Para cambiar el theme de nuestra app, debemos crear un archivo de scss por cada theme o paleta de color alternativa, pudiéndose intercambiar una por otra desde un archivo principal (base.scss) donde se configuran todos los archivos importados, sin tener que cambiar toda la programación de la aplicación. Simplemente con cambiar el nombre de un archivo por otro se realiza el cambio de theme.
+
+Así como manejamos los colores, podemos manejar diferentes tipografias, fondos e iconos.
+
+**Recomendación:**
+- Leer sobre CSS Variables, también llamada propiedad personalizada.
+
+
+---
+## 18. Imágenes para web
+
+### Formatos de imágenes para web
+
+JPG: 
+- Indicado para fotografías o imágenes con degradados.
+- Es ligero pero sin tanta calidad
+
+PNG: 
+- Indicado para imágenes decorativas que requieran un fondo transparente.
+
+SVG: 
+- Indicado para iconos y animaciones de baja complejidad. Es vectorial y permite editar sus propiedades con CSS.
+- Usados en iconos y animaciones.
+- Se puede convertir a código.
+
+GIF: 
+- No recomendado para animaciones de larga duración debido a su peso.
+
+
+### Elegir imágenes para mi diseño.
+- Elige imágenes que aporten al contenido.
+- Utiliza imágenes en las que tu público objetivo se vea reflejado.
+- Elige imágenes consistentes con tu paleta de colores.
+- Cuidado con las licencias. 😅
+
+### Rendimiento y accesibilidad.
+- Evita exportar imágenes con texto incrustado.
+- Exporta las imágenes al tamaño del contenedor final.
+- Considera el uso de estrategias como ‘[Lazy loading](https://developer.mozilla.org/en-US/docs/Web/Performance/Lazy_loading)’.
+- Asegurate de añadir ‘alt text’ a las imágenes que tengan un fin comunicativo.
+
+Páginas para buscar imágenes:
+- [Pixabay](https://pixabay.com/es/)
+- [MorgueFile](https://morguefile.com/)
+- [Picjumbo](https://picjumbo.com/)
+- [Pexels](https://www.pexels.com/)
+- [Freepik](https://www.freepik.es/)
+- [Pinterest](https://co.pinterest.com/)
+- [Unsplash](https://unsplash.com/)
+- [Adobe](https://stock.adobe.com/co/)
+- [Shutterstock](https://www.shutterstock.com/es)
+- [Istockphoto](https://www.istockphoto.com/es)
+
+
+---
+## 19. 
 
 
 
@@ -573,5 +694,5 @@ Añadimos un display grid, que nos permite que toda esta configuración surta ef
 - alt + 96 ```  
 - <span style="color:red">some *red* text</span>.  
 - <p>Some Markdown text with <span style="color:red">some <em>red</em> text</span>.</p>  
-
+Carlos José González Juan
 
