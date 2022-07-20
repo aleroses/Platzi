@@ -26,7 +26,6 @@ Proceso  | Creativo
 💡 3.Iluminación. | Idear, Imaginar.
 ✔ 4.Evaluación.  | Criticar, Replantear.
 ⚙ 5.Implementación. | Construir, Trabajar.
---
 
 ### Ejemplo:
 > 🔎 Olga necesita hacer un pastel de
@@ -67,7 +66,7 @@ cheesecake de arándanos.
 Un diseñador debe ser capaz de intuir cuando un diseño no tiene el equilibrio adecuado, para corregirlo.
 
 **2. Contraste:** Es la diferencia de intensidad, tono o color entre dos o más elementos diferentes. Por ejemplo, si tiene un texto dorado brillante sobre un fondo negro, se ha utilizado el contraste para hacer que el mensaje destaque. Ayuda a señalar un concepto marcado por la diferencia entre 2 elementos distintos (claro obscuro, grande pequeño).   
-> ![Contraste](https://i.postimg.cc/XYcSQHHV/contraste.jpg)
+> ![Contraste](https://i.postimg.cc/XYcSQHHV/contraste.jpg)  
 Página para revisar el nivel de contraste:
 [Contrast-ratio link](https://contrast-ratio.com/)   
 
@@ -148,7 +147,7 @@ Estos bordes o subrayados proporcionan ayuda visual para que el usuario sepa en 
 Esto es importante para las personas que estan navegando con el tab, ya que sin esto no van a tener acceso a todos los títulos. Por eso debemos añadir etiquetas descriptivas, algo llamado aria-label. Además se debe garantizar a los usuarios que cuando haya un error en un formulario no solo se muestre un borde color verde o rojo, sinó que muestre un mensaje que pueda ser leído por un lector de pantalla.
     > El atributo [aria-label](https://developer.mozilla.org/es/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_aria-label_attribute) se utiliza para definir una cadena que etiqueta el elemento actual. Úselo en los casos en que no haya una etiqueta de texto visible en pantalla. Si hay texto visible etiquetando el elemento, utilice aria-labelledby en su lugar. ARIA (Accessible Rich Internet Applications)
 
-7. **Escribe contenido descriptivo que pueda reemplazar videos e imágenes**
+7. **Escribe contenido descriptivo que pueda reemplazar videos e imágenes**  
 Siempre es mejor mantener texto descriptivo por fuera de videos o de las imágenes, de esta manera los usuarios que están navegando por medio de un lector de pantalla puedan escuchar la interpretación de los elementos mostrados ([etiqueta alt](https://blog.hubspot.es/marketing/texto-alternativo) describe una imagen). 
 
 8. **Evitar animaciones que bloqueen contenido**  
