@@ -96,11 +96,11 @@ Diseños responsivos: versión mobile - desktop:
 [Media Queries](https://mediaqueri.es/)
 
 ### Como garantizar que nuestro diseño sea responsive
-1. Empezar nuestro Diseño por dispositivos móviles. Esto garantiza partir desde el contenido basico hasta el contenido mas completo.
+1. Empezar nuestro Diseño por dispositivos móviles. Esto garantiza partir desde el contenido básico hasta el contenido mas completo.
 
 2. Separa las capas de contenido y funcionalidad. Esto garantiza que el usuario tendrá acceso a todo el contenido de nuestra página sin tener que ejecutar alguna acción.
 
-3. Usa sistemas de grillas y columnas. Las columnas son una referencia sobre nuestro layout total y sirve para ir mirando el ancho de nuestra página, de esta manera es mucho mas facil adaptar los contenidos.
+3. Usa sistemas de grillas y columnas. Las columnas son una referencia sobre nuestro layout total y sirve para ir mirando el ancho de nuestra página, de esta manera es mucho mas fácil adaptar los contenidos.
 
 ### Metodologías para hacer responsive design
 **Mejora progresiva (Progressive enhancement):**  
@@ -115,7 +115,7 @@ para garantizar su funcionamiento en todos los
 tamaños de pantalla y sistemas operativos.
 > ![Degradacion-agraciada](https://i.postimg.cc/LXj8cZKW/4-degradaci-n-agraciada.png)
 
-Estas metodologías no solo aplican al diseño sinó tambien al código.  
+Estas metodologías no solo aplican al diseño sino también al código.  
 **Mejora progresiva aplicada:** Código - Diseño
 > ![Mejora Progresiva aplicada](https://i.postimg.cc/HkSzMVNF/4-mejora-aplicada.jpg)
 
@@ -126,33 +126,33 @@ Estas metodologías no solo aplican al diseño sinó tambien al código.
 discapacidad es un aspecto esencial."  
 **Tim Berners-Lee, W3C Director.**
 
-La accesibilidad es necesaria para permitir que cualquier persona independientemente de sus capacidades pueda acceder a la informacion necesaria sin dificultades.
+La accesibilidad es necesaria para permitir que cualquier persona independientemente de sus capacidades pueda acceder a la información necesaria sin dificultades.
 
 ### Tips básicos de accesibilidad.
 1. **HTML estructurado correctamente**  
-Para que los lectores de pantalla puedan proporcionar un detalle acertado al usuario, la semantica en el HTML es importante, ademas, esto ayuda a la pagina en el SEO. Utiliza los encabezados (h1-h6) de manera ordenada para organizar la estructura del contenido (HTML5 semántico), esto garantiza que las personas que navegan usando el teclado puedan saber que tan importante es un titulo con relación a otro. Permitiendo agrupar diferentes categorias, grupos de información, etc.  
+Para que los lectores de pantalla puedan proporcionar un detalle acertado al usuario, la semántica en el HTML es importante, además, esto ayuda a la pagina en el SEO. Utiliza los encabezados (h1-h6) de manera ordenada para organizar la estructura del contenido (HTML5 semántico), esto garantiza que las personas que navegan usando el teclado puedan saber que tan importante es un titulo con relación a otro. Permitiendo agrupar diferentes categorías, grupos de información, etc.  
 
 2. **Tamaños de fuente accesibles**  
-Al utilizar tamaños de fuente demasiado pequeños hacemos que personas con problemas de vista no puedan acceder a toda la informacion de manera adecuada.
+Al utilizar tamaños de fuente demasiado pequeños hacemos que personas con problemas de vista no puedan acceder a toda la información de manera adecuada.
 
 3. **Contrastes adecuados**  
-Si se utilizan los colores incorrectos puede llevar a que la informacion, texto o imagenes no sean visibles por ciertas personas. Por ende debemos colocar contrastes altos para diferenciar un fondo de un contenido.  
+Si se utilizan los colores incorrectos puede llevar a que la información, texto o imágenes no sean visibles por ciertas personas. Por ende debemos colocar contrastes altos para diferenciar un fondo de un contenido.  
 
-4. **Evitar categorización unicamente por colores**  
-Ya vimos en **proximidad** que podemos agrupar categorias por colores, iconos, etc y esto es algo que funciona y se ve bien, pero no es accesible para todos los publicos. Si vas a hacer agrupaciones por colores debes ofrecer una alternativa ya sea con bordes, iconos o titulos de categoria para que todas las personas puedan acceder a ese tipo de agrupaciones de información. 
+4. **Evitar categorización únicamente por colores**  
+Ya vimos en **proximidad** que podemos agrupar categorías por colores, iconos, etc y esto es algo que funciona y se ve bien, pero no es accesible para todos los públicos. Si vas a hacer agrupaciones por colores debes ofrecer una alternativa ya sea con bordes, iconos o títulos de categoría para que todas las personas puedan acceder a ese tipo de agrupaciones de información. 
 
 5. **Diseña teniendo en cuenta los estados “focus” y “active” (HTML)**  
 Estos bordes o subrayados proporcionan ayuda visual para que el usuario sepa en que parte de la página se encuentra.
 
-6. **Añadir etiquetas y textos descriptivos a los campos de formularios, videos e imagenes**  
-Esto es importante para las personas que estan navegando con el tab, ya que sin esto no van a tener acceso a todos los titulos. Por eso debemos añadir etiquetas descriptivas, algo llamado aria-label. Ademas se debe garantizar a los usuarios que cuando haya un error en un formulario no solo se muestre un borde color verde o rojo, sinó que muestre un mensaje que pueda ser leído por un lector de pantalla.
+6. **Añadir etiquetas y textos descriptivos a los campos de formularios, videos e imágenes**  
+Esto es importante para las personas que estan navegando con el tab, ya que sin esto no van a tener acceso a todos los títulos. Por eso debemos añadir etiquetas descriptivas, algo llamado aria-label. Además se debe garantizar a los usuarios que cuando haya un error en un formulario no solo se muestre un borde color verde o rojo, sinó que muestre un mensaje que pueda ser leído por un lector de pantalla.
     > El atributo [aria-label](https://developer.mozilla.org/es/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_aria-label_attribute) se utiliza para definir una cadena que etiqueta el elemento actual. Úselo en los casos en que no haya una etiqueta de texto visible en pantalla. Si hay texto visible etiquetando el elemento, utilice aria-labelledby en su lugar. ARIA (Accessible Rich Internet Applications)
 
 7. **Escribe contenido descriptivo que pueda reemplazar videos e imágenes**
-Siempre es mejor mantener texto descriptivo por fuera de videos o de las imagenes, de esta manera los usuarios que están navegando por medio de un lector de pantalla puedan escuchar la interpretación de los elementos mostrados ([etiqueta alt](https://blog.hubspot.es/marketing/texto-alternativo) describe una imagen). 
+Siempre es mejor mantener texto descriptivo por fuera de videos o de las imágenes, de esta manera los usuarios que están navegando por medio de un lector de pantalla puedan escuchar la interpretación de los elementos mostrados ([etiqueta alt](https://blog.hubspot.es/marketing/texto-alternativo) describe una imagen). 
 
 8. **Evitar animaciones que bloqueen contenido**  
-Pasa cuando tenemos páginas en las que debemos hacer clic para ejecutar una animación y esto muestre un texto. Esto quiere decir que el texto está bloqueado por una animación, lo cual no es buena practica. Provocando que aquellos que no tengan acceso a un mouse no obtengan la misma cantidad de informacion que uno que si lo tiene. Además, no es buena practica que los usuarios vean muchos flashes cuando acceden a una página.
+Pasa cuando tenemos páginas en las que debemos hacer clic para ejecutar una animación y esto muestre un texto. Esto quiere decir que el texto está bloqueado por una animación, lo cual no es buena practica. Provocando que aquellos que no tengan acceso a un mouse no obtengan la misma cantidad de información que uno que si lo tiene. Además, no es buena practica que los usuarios vean muchos flashes cuando acceden a una página.
 
 - [Tips Accesibilidad](https://web.dev/accessibility/)  
 - [Estándar internacional Pautas de accesibilidad](https://www.w3.org/WAI/standards-guidelines/wcag/)
@@ -180,7 +180,7 @@ Las secciones más comunes de un brief son:
  
 > 🧬 Seymour se dio cuenta de que su marca estaba desactualizada y ya no estaba llamando la atención de su público objetivo: las personas entre 18 y 35 años.  
 
-> 💡 A seymour se le ocurrió cambiar su marca de ‘hamburguesas al
+> 💡 A Seymour se le ocurrió cambiar su marca de ‘hamburguesas al
 vapor’ a ‘steam burger’
 
 > ✔ Después de cambiar su marca y actualizar su logo, Seymour considera crear una página web en donde sus clientes puedan consultar el menú de su restaurante, hacer reservaciones, pedir domicilios y consultar promociones.  
@@ -207,12 +207,12 @@ vapor’ a ‘steam burger’
 
 ### Público objetivo.
 
-> Steam burger ya tiene una clientela tradicional conformada por los vecinos de sectores aledaños a su restaurante, pero necesita posicionar su marca en redes sociales antes de abrir más sucursales. Para alcanzar este objetivo es necesario crear una estrategia enfocada en usuarios con mayor actividad en redes sociales como instagram y tiktok. Es decir jóvenes entre 18 y 30 años.
+> Steam burger ya tiene una clientela tradicional conformada por los vecinos de sectores aledaños a su restaurante, pero necesita posicionar su marca en redes sociales antes de abrir más sucursales. Para alcanzar este objetivo es necesario crear una estrategia enfocada en usuarios con mayor actividad en redes sociales como Instagram y tiktok. Es decir jóvenes entre 18 y 30 años.
 
 ### Competencia.
 
 - Sierra nevada hamburguesas. https://sierranevada.co/
-- La hamburgueseria. https://www.lahamburgueseria.com/
+- La hamburguesería. https://www.lahamburgueseria.com/
 
 ### Distribución.
 
@@ -292,14 +292,14 @@ Diagrama gráfico que representa todos los pasos que el usuario debe realizar ha
 > ![wireframe de baja calidad / fidelidad](https://i.postimg.cc/wvnfhzFC/9-bosquejo.jpg)  
 
 **Wireframe de alta calidad / fidelidad**
-> ![wireframe movil de alta calidad / fidelidad](https://i.postimg.cc/J0THvNdZ/9-wireframe-alta-fidelidad.jpg)
+> ![wireframe móvil de alta calidad / fidelidad](https://i.postimg.cc/J0THvNdZ/9-wireframe-alta-fidelidad.jpg)
 > ![wireframe web de alta calidad / fidelidad](https://i.postimg.cc/rFTKhhVB/9-wireframe-alta-calidad.jpg)
 
 Tener en cuenta:  
 En UX no tenemos capas de color o estilos de fuente, ya que esto lo ve UI. Solo tenemos espaciados para demarcar las secciones.
 
 Con estos wireframe podemos empezar a hacer pruebas de usuario
-- Grabar a una persona interactuando con las hojas en fisico  
+- Grabar a una persona interactuando con las hojas en físico  
 - [Ver curso Arquitectura de la información](https://platzi.com/cursos/arquitectura-informacion/)  
 - [Ver cursos UX](https://platzi.com/diseno-ux/)
 
@@ -336,9 +336,9 @@ Cuando trabajamos con los dos diseños al mismo tiempo garantizamos que nuestra 
 
 > ![moodboard](https://i.postimg.cc/s2SrXjcQ/11-pinterest-moodboard.jpg)
 
-Estas referencias ayudan a extraer estilos de fuentes, colores de fondo, la manera en la que se toman las fotografias, etc.
+Estas referencias ayudan a extraer estilos de fuentes, colores de fondo, la manera en la que se toman las fotografías, etc.
 
-En busqueda de inspiración:
+En búsqueda de inspiración:
 - [Pinterest](https://www.pinterest.com/)
 - [Dribbble](https://dribbble.com/)
 - [Behance](https://www.behance.net/)
@@ -364,15 +364,15 @@ En busqueda de inspiración:
 - ⚫ Gris: **Neutral**, todas las industrias.
 - ⚫ Negro: **Elegancia**, todas las industrias.
 
-> ![teoria del color](https://i.postimg.cc/1RBTb2mw/12-teoria-color.jpg)
+> ![Teoría del color](https://i.postimg.cc/1RBTb2mw/12-teoria-color.jpg)
 
 La idea es utilizar estos colores y la teoría de la psicología del color para seleccionar los colores de la web o aplicación a crear, dependiendo del problema que soluciones.
 
 ### Color para web.
 - Utiliza color [RGB y hexadecimales](https://platzi.com/comentario/1398200/), nunca cmyk. 
-- Crea un código de color consistente. Ejemplo: Al colocar botones que pertencen a una misma categoría (comprar), es conveniente usar un mismo color para todos estos.
-- Menos es más. El exceso de color hace que los usuarios no se puedan enfocar en una acción a la vez. Agrupar por categorias y manejar una paleta de colores reducida.
-- Asegurate de que tu elección de color sea accesible. Que funcionen bien con texto y colores de fondo con suficiente contraste.
+- Crea un código de color consistente. Ejemplo: Al colocar botones que pertenecen a una misma categoría (comprar), es conveniente usar un mismo color para todos estos.
+- Menos es más. El exceso de color hace que los usuarios no se puedan enfocar en una acción a la vez. Agrupar por categorías y manejar una paleta de colores reducida.
+- Asegúrate de que tu elección de color sea accesible. Que funcionen bien con texto y colores de fondo con suficiente contraste.
 - Define una paleta de color. Una paleta de colores es un grupo de colores que van a ser usados en nuestra aplicación. Esta se debe definir antes de empezar a diseñar, para así restringir las posibilidades que tenemos al usar colores y lograr una app balanceada.
 
 **Crea esquemas de color que funcionan:**  
@@ -414,15 +414,15 @@ Resulta de combinar un color primario con uno secundario y uno terciario que est
 > ![analoga](https://i.postimg.cc/5NqgFPV8/13-paleta-analoga.webp)
 
 **Combinación complementaria:**  
-Consiste en combinar un color primario con un color secundario que no estén seguidos en el circulo cromático (Primario + secundario). Estos colores estan opuestos en el circulo.
+Consiste en combinar un color primario con un color secundario que no estén seguidos en el circulo cromático (Primario + secundario). Estos colores están opuestos en el circulo.
 > ![complementaria](https://i.postimg.cc/cJppDD5X/13-paleta-complementaria.webp)
 
-**Combinación triádica:**  
+**Combinación tríadica:**  
 Se trata de combinar tres colores que estén en el circulo cromático de manera que formen un triángulo dentro del circulo y puede ser primario, secundario o terciario. Para usar una triada de forma exitosa, los colores deben estar equilibrados ,y se debería usar uno dominante y los otros dos para acentuar.
-> ![triadica](https://i.postimg.cc/bY5tmWxQ/13-paleta-triada.webp)
+> ![tríadica](https://i.postimg.cc/bY5tmWxQ/13-paleta-triada.webp)
 
 **Combinación tétrada:** Combinamos 4 colores elegidos al formar un rectángulo dentro del circulo cromático. Se eligen dos primarios y dos secundarios.
-> ![tetraa](https://i.postimg.cc/zX0KnvdG/13-paleta-tetrada.webp)
+> ![tetra](https://i.postimg.cc/zX0KnvdG/13-paleta-tetrada.webp)
 
 > **Nota:**  
 Una vez tengas los colores seleccionados debes definir las variables de color.
@@ -448,7 +448,7 @@ $color-cuaternary: #181d20;
 - Limita la cantidad de texto. Las webs no son libros, están pensadas para consultarlas lo mas rápido posible.
 - Elige tipografías que sean legibles en diferentes tamaños.
 - Mantén altos de línea espaciados.
-- Asegurate de tener suficiente contraste.
+- Asegúrate de tener suficiente contraste.
 - Evita usar animaciones intermitentes.
 
 ### Reglas de combinación de tipografía:
@@ -482,7 +482,7 @@ Formal. | Merienda. | | Invitaciones.
 Sofisticada. | Pacífico. | |
 Estilizada. | Satisfy. | | 
 
-No se recomienda para parrafos largos, solo para textos cortos que deseemos destacar.
+No se recomienda para párrafos largos, solo para textos cortos que deseemos destacar.
 
 ### Implementando Style guide
 **¿Qué es un style guide?**
@@ -507,7 +507,7 @@ No se recomienda para parrafos largos, solo para textos cortos que deseemos dest
 *En la clase mencionan los style guide en el minuto 3:51*
 
 
-- [Curso Tipografia](https://platzi.com/cursos/diseno-tipografia/)
+- [Curso Tipografía](https://platzi.com/cursos/diseno-tipografia/)
 
 
 ---
@@ -517,7 +517,7 @@ No se recomienda para parrafos largos, solo para textos cortos que deseemos dest
 > Es un sistema de columnas creado por nosotros de acuerdo a las necesidades para ajustar nuestros elementos y componentes.  
 La mejor herramienta de CSS para crear una grilla es **Grid**.
 
-**BreakPoints Configuración estandar (Tipos de pantalla).**  
+**BreakPoints Configuración estándar (Tipos de pantalla).**  
 - $xs: 360px. Para móviles pequeños.
 - $s: 440px. Para móviles con la pantalla más grande.
 - $m: 768px. Para tablets.
@@ -531,9 +531,9 @@ Sass permite crear un Mixin, este nos va a permitir modificar los estilos de acu
 
 **Configuración de variables dependiendo de los breakpoints.**  
 - columns. Es el número de columnas que vamos a tener.
-    - movil: 4 - tablet: 12 - desktop: 12
+    - móvil: 4 - tablet: 12 - desktop: 12
 - column-gap: Es el espacio entre las columnas.
-    - movil: 6.67% - tablet: 2.27% - 2.19%
+    - móvil: 6.67% - tablet: 2.27% - 2.19%
 
 **Definir clase Grid**  
 > Esto sirve para configurar cada uno de los elementos contenedores donde vamos a incluir nuestros componentes.
@@ -554,7 +554,7 @@ Añadimos un display grid, que nos permite que toda esta configuración surta ef
 
 Una de las metodologías que podemos usar es separar las funcionalidades por componentes.
 
-Nos refermos por sistema de componentes al conjunto de:
+Nos referimos por sistema de componentes al conjunto de:
 - Botones: Primarios o Secundarios
 - Quote: Cita o frase que caracteriza al producto.
 - Products
@@ -601,7 +601,7 @@ Hamburguesas de pura carne con el toque secreto.
 ### Recordatorio de profe ✨[SamantaMartinez](https://platzi.com/comentario/1430643/)
 > El styleguide es una página en donde podemos ver todos nuestros componentes y estilos básicos, los que vamos a reutilizar en nuestra aplicación. 
 
-> El styleguide se conforma de componentes y cada componente tiene su hoja de estilos css. En pocas palabras el styleguide viene siendo como una página de mostrario de todos los componentes que tenemos a nuestra disposicion para usar en nuestra página. 
+> El styleguide se conforma de componentes y cada componente tiene su hoja de estilos css. En pocas palabras el styleguide viene siendo como una página de muestrario de todos los componentes que tenemos a nuestra disposición para usar en nuestra página. 
 
 > La ventaja de tener un styleguide es que cada vez que queramos añadir elementos a nuestra aplicación no vamos a tener que diseñar de cero, sino que podemos partir de elementos que ya existen.
 
@@ -622,7 +622,7 @@ Hamburguesas de pura carne con el toque secreto.
 
 > Para cambiar el theme de nuestra app, debemos crear un archivo de scss por cada theme o paleta de color alternativa, pudiéndose intercambiar una por otra desde un archivo principal (base.scss) donde se configuran todos los archivos importados, sin tener que cambiar toda la programación de la aplicación. Simplemente con cambiar el nombre de un archivo por otro se realiza el cambio de theme.
 
-Así como manejamos los colores, podemos manejar diferentes tipografias, fondos e iconos.
+Así como manejamos los colores, podemos manejar diferentes tipografías, fondos e iconos.
 
 **Recomendación:**
 - Leer sobre CSS Variables, también llamada propiedad personalizada.
@@ -659,7 +659,7 @@ GIF:
 - Evita exportar imágenes con texto incrustado.
 - Exporta las imágenes al tamaño del contenedor final.
 - Considera el uso de estrategias como ‘[Lazy loading](https://developer.mozilla.org/en-US/docs/Web/Performance/Lazy_loading)’.
-- Asegurate de añadir ‘alt text’ a las imágenes que tengan un fin comunicativo.
+- Asegúrate de añadir ‘alt text’ a las imágenes que tengan un fin comunicativo.
 
 Páginas para buscar imágenes:
 - [Pixabay](https://pixabay.com/es/)
@@ -675,24 +675,128 @@ Páginas para buscar imágenes:
 
 
 ---
-## 19. 
+## 19. Gráficos en movimiento para web
+
+### Formatos de gráficos en movimiento:
+CSS animado:
+- Indicado para animaciones sencillas y transiciones.
+- No es un formato de vídeo.
+- Creado con propiedades de CSS
+    - transition
+    - translate 
+
+SVG animado: 
+- Indicado para animaciones de elementos vectoriales (de baja complejidad).
+- No es un formato de vídeo.
+- Formato vectorial para hacer ilustraciones.
+- Creado con propiedades de CSS o SVG.
+- Permite añadir etiquetas u opciones para animar usando JS con Canva.
+
+JS (Canvas, WebGL): 
+- Indicado para animaciones complejas como animaciones de datos o gráficas 3D. 
+- Existen librerías en JS como D3.
+
+Videos: 
+- Indicado para filmaciones o animaciones de alta complejidad y corta duración. 
+- Siempre preguntarnos: ¿realmente necesito este video o esto podría ser una imagen? ya que, son pesados y ralentizan la carga del sitio.
+
+### Elegir gráficos en movimiento
+- Elegir animaciones que aporten al contenido. No sobrecargar con muchas animaciones.
+- Procurar que no se reproduzcan automáticamente y si lo hacen, que no tengan sonido.
+- Evita que tus animaciones tengan flashes. Los brillos continuos molestan y pueden ser dañinas.
+- Si tus animaciones aportan contenido, añade subtítulos o transcripciones para que las pueda leer un lector de pantallas.
+- Evita que las animaciones bloqueen la lectura básica del contenido. Ten en cuenta que el lector de pantallas no podrá acceder a ese contenido.
+- Recuerda que las animaciones y los videos ralentizan la carga de la página. Se aplica nuevamente el menos es más.
 
 
+✨ Una página que tarda en cargar, constantemente pierde usuarios. La importancia de no sobrecargar contenido.
+
+### Librerías de animaciones para CSS
+
+- Hover
+- CSShake
+- Anijs
+- CSS Wand
+- Animate Components
+- Keyframes
+- AniCollection
+- SpinKit Loader
+- Animejs
+- Animate CSS
 
 
+---
+## 20. Resultado final
+
+### Brief
+> Ver Clase 6. Brief y requerimientos técnicos  
+
+Conformador por:
+- Objetivos
+- Público objetivo
+- Competencias
+- Distribución
+- Cronograma
+
+Esta es nuestra hoja de ruta para empezar a traducir los requerimientos en un producto visual final.
+
+### Site map
+> Ver Clase 8. Diagramas de flujo  
+
+Traducimos el Brief y los objetivos en la estructura de una página:
+- Home
+    - Menú
+        - Categorías
+            - Hamburguesas
+            - Acompañamientos
+            - Bebidas
+            - Postres
+        - Promociones
+    - Pedido
+        - Resumen del pedido
+        - Datos de envío
+        - Confirmación
+    - Contacto
+        - Sucursales
+    - Otras páginas
+        - Instagram
+        - TikTok
+        - Facebook
+        - Plataforma de pagos
+
+### User Flow
+Mapeamos una de las tareas mas comunes de los usuarios que es hacer un pedido en línea. Se pueden crear tantos como sea necesario.
+
+### Wireframe
+> Ver Clase 9. Wireframes y componentes  
+
+- De baja fidelidad a mano para modificarlos rápidamente
+- De alta fidelidad (desktop, mobile, etc.)
+
+### Styleguide
+> Ver Clase 14. Tipografía donde se hace referencia al Styleguide
+
+Probamos diseño con diferentes colores, tipografías etc. (con ayuda de nuestro Style Guide)
+
+### Sistemas de componentes UI
+>  Ver Clase 16. Sistemas de componentes UI
+
+Creamos componentes en módulos separados para facilitar la reutilización y con variables CSS para cambiar la paleta de colores fácilmente.
+
+### Diseño Final de Página
+Es similar al wireframe pero no es exactamente igual. Hubieron cosas que funcionaban y otras que no, por lo que fueron cambiadas.
+
+[Apuntes Resumen](https://static.platzi.com/media/public/uploads/apuntesdisenoprograma_139d88e4-e2d8-4439-82e3-caef7a5777c1.pdf)
 
 
+---
+
+**Ignorar**
+> alt + 60 <>  
+> alt + 62 >  
+> Code Blocks (Indented style) -> alt + 96 ``` 
 
 
-
-
-
-
-
-- alt + 60 <>
-- alt + 62 >
-- alt + 96 ```  
-- <span style="color:red">some *red* text</span>.  
-- <p>Some Markdown text with <span style="color:red">some <em>red</em> text</span>.</p>  
-Carlos José González Juan
+> <span style="color:red">some *red* text</span>.  
+> <p>Some Markdown text with <span style="color:red">some <em>red</em> text</span>.</p>  
 
