@@ -1,5 +1,7 @@
+![write](https://i.postimg.cc/j22xb68R/giphy.gif)
 # Curso de Sistemas de Diseño
 > Rulótico González - Diseñador interactivo (Diseñador y Programador)
+
 
 ## 1. Lo que aprenderás sobre los sistemas de diseño
 En este curso aprenderás a crear sistemas de diseño desde cero así como todas las herramientas que tienes para dialogar y trabajar junto con otros equipos a la hora de crear o iterar productos de software.
@@ -49,6 +51,12 @@ Crea y organiza sistemas de diseño con:
 **Componentes:**  
 -  Partes que forman un todo
 
+**UI Kit**
+
+**Proceso de Iteración**
+
+[Construir un sistema de diseño](https://atlassian.design/)
+
 
 ---
 ## 3. Bonus: Utilizando Notion
@@ -91,7 +99,7 @@ En nuestro caso, añadiremos los principios de:
 - **Forgiveness** (debemos permitir que el usuario pueda cambiar de opinión o volver a empezar algún proceso)
 - **Perceived stability** (aún con plataformas robustas y complejas, el usuario debe percibir los procesos tan simples y familiares como sea posible).
 
-Con esto estamos diseñando reglas, conceptos para luego hacerlos visuales. Dandonos la pauta para crear ciertos elementos y cumplir estos principios. La combinación de estos principios será el resultado visual.
+Con esto estamos diseñando reglas, conceptos para luego hacerlos visuales. Dándonos la pauta para crear ciertos elementos y cumplir estos principios. La combinación de estos principios será el resultado visual.
 
 
 ---
@@ -195,7 +203,7 @@ El usuario realiza una acción.
 **Salida:**  
 Y los elementos deben responder de alguna forma (feedback).
 
-Esta es la forma de comunicarmos con los usuarios, trabajamos haciendo conversaciones para informar que todo esta funcionando correctamente y qué pasos deben seguir a continuación. Este proceso de comunicación lo conocemos como **interacción**.
+Esta es la forma de comunicarnos con los usuarios, trabajamos haciendo conversaciones para informar que todo esta funcionando correctamente y qué pasos deben seguir a continuación. Este proceso de comunicación lo conocemos como **interacción**.
 
 ### Partes de un componente:
 
@@ -232,7 +240,7 @@ Esta es la forma de comunicarmos con los usuarios, trabajamos haciendo conversac
 Los sistemas de diseño son un conjunto de reglas que organizamos con nuestros equipos, y los fundations son las partes más básicas que podemos configurar en nuestro sistema. Vamos a repasar cada una de estas bases mientras escribimos la documentación en Notion:
 
 ### Tipografía
-En esta sección podrás encontrar las diferentes reglas aplicadas a la tipografía ademas de la jerarquía ocupada dentro de nuestro producto. 
+En esta sección podrás encontrar las diferentes reglas aplicadas a la tipografía además de la jerarquía ocupada dentro de nuestro producto. 
 - Ejemplo: Montserrat  
 
 Tamaños | y | características
@@ -281,7 +289,7 @@ Son las formas y espacios fundamentales que utilizamos para ordenar los elemento
     > ![Padding](https://i.postimg.cc/SNcpdRRK/10-padding.png)
 
 ### Iconografía (Icon system)
-Los iconos de nuestro sistema se basan en una estructura de linea bold con finales circulares.
+Los iconos de nuestro sistema se basan en una estructura de línea bold con finales circulares.
 - Grid
     > ![Grid](https://i.postimg.cc/DZDhzYfj/10-grid.jpg)
 - Shape (forma)
@@ -297,7 +305,7 @@ Con qué personalidad o de qué forma debemos hablar con nuestra audiencia.
 - Target
     - Genero: Ambos
     - Edad: 18-50 años
-- Caraterísticas: El tono que utilizaremos para este producto se guiara por las siguientes características:
+- Características: El tono que utilizaremos para este producto se guiara por las siguientes características:
     - Tono neutro: Utilizaremos palabras con interpretación internacional a todos los de habla hispana.
     - Usuario centered: Le hablaremos al usuario en 1 persona, esto significa que las acciones se representarán de la siguiente manera:
         - Terminar
@@ -317,7 +325,7 @@ Referencia de animaciones: [Animate.style](https://daneden.github.io/animate.css
     - Configuraciones de estas animaciones son : left, right, up, down.
 
 ### Hitos
-Estos son elementos importantes para nuestro sistema y tienen caracteristicas particulares dentro de nuestra aplicación pues son una representación de todos los conceptos que queremos comunicar. 
+Estos son elementos importantes para nuestro sistema y tienen características particulares dentro de nuestra aplicación pues son una representación de todos los conceptos que queremos comunicar. 
 
 - Icono
     > ![Icono](https://i.postimg.cc/T313TS6b/10-logo.png)
@@ -345,9 +353,9 @@ Podemos definir que los títulos se trabajen en negrita y con tamaños de fuente
 
 
 ---
-## 12. Bonus: Cómo evitar colores constrastantes
+## 12. Bonus: Cómo evitar colores contrastantes
 
-Cuando utilizamos colores demasiado contrastantes podemos generar efectos visuales algo molestos, problemas en el render o lineas blancas y negras en los bordes de los elementos.
+Cuando utilizamos colores demasiado contrastantes podemos generar efectos visuales algo molestos, problemas en el render o líneas blancas y negras en los bordes de los elementos.
 
 Para solucionar estos problemas visuales debemos elegir nuestros colores con mucho más cuidado, moviendo los colores hacia alguna tonalidad para evitar colores demasiado contrarios.
 
@@ -374,7 +382,7 @@ En realidad no importa, podemos tomar cualquier otro paradigma de fundamentos de
 Para escoger estos colores debemos tener en cuenta los colores de la marca, los colores principales (colores de acción o call to actions), colores secundarios, los grises y los colores de fondo.
 
 **Brand Colors**
-Se toman los colores de la marca para apropiarlos dentro de la plataforma. Este paradigma aveces aplica y otras veces no, depende mucho de la marca. Ejemplo: Logo de platzi: Verde
+Se toman los colores de la marca para apropiarlos dentro de la plataforma. Este paradigma a veces aplica y otras veces no, depende mucho de la marca. Ejemplo: Logo de platzi: Verde
 
 **Gray**  
 Son colores grises en escala, del blanco hasta el negro. Deben tener cierta tonalidad, y bajo esta tonalidad puede funcionar.
@@ -408,3 +416,167 @@ Trabajamos con el borde de los elementos, recuerda que las dimensiones o medidas
 
 ### Layout
 Vamos a definir la forma general en que combinamos las columnas, headers y barras de navegación de nuestras plataformas, gracias a estas reglas podemos garantizar que nos adaptamos a todos los tamaños y dispositivos.
+
+
+---
+## 15. Animación
+
+### Los 12 principios de la animación
+Son un conjunto de reglas creadas por Disney para la animación de personajes. Muchos de estos principios son muy útiles para ciertos aspectos de la animación de elementos de nuestras interfaces:
+
+- Anticipación: Vamos a a preparar a los usuarios para la acción que viene a continuación, por ejemplo, antes de desconectar la señal de un teléfono podemos animar el icono del avión y transmitir que no habrá señal durante algún tiempo.
+
+- Estirar y encoger: Nos ayuda a generar drama sobre algún elemento, por ejemplo, para dramatizar la animación de un botón cuando el usuario ha cometido un error o alguna acción incorrecta.
+
+- Entradas y salidas lentas: Nos permite introducir o remover elementos de la plataforma, tal vez conozcas estas animaciones como Fade In y Fade Out (aparecer progresivamente - desvanecer progresivamente).
+
+- Acciones secundarias: Todas las micro interacciones trabajan con este principio, estas animaciones nos ayudan a transmitir o dar información adicional como respuesta a alguna acción de los usuarios (un clic que hace algo).
+
+- Timing: Mientras más detalles añadimos a las animaciones, más rápidas o lentas se pueden percibir. Podemos utilizar estos efectos visuales para transmitir apuro o tranquilidad mientras la plataforma esta cargando.
+
+- Exageración: Así como las acciones secundarias, podemos exagerar los movimientos de nuestros elementos para transmitir alguna sensación, por ejemplo, cuando el usuario quiere eliminar su cuenta.
+
+También vamos a utilizar Animate.css, una librería para trabajar con todo tipo de animaciones sin mucho trabajo, también nos facilita el proceso de documentación de las reglas de animación de nuestro sistema.
+
+Bibliotecas de animación:  
+[Animate.style](https://daneden.github.io/animate.css/)  
+[Michalsnik](https://michalsnik.github.io/aos/)
+
+
+---
+## 16. Consejos para empezar a animar usando After Effects
+
+Como parte de la clase de animación te quiero contar algunos detalles básicos sobre la animación para que puedas animar tú mismo en cualquier programa.
+
+Para esta sección vamos a ocupar After Effects, puedes bajarlo de Adobe.
+
+Lo primero que tienes que notar en cualquier programa de animación es el timeline (línea de tiempo), este controla el tiempo de animación y te dará la pauta de que es lo que quieres comunicar cuando animas algo en particular.
+
+![timeline](https://i.postimg.cc/zGBt7YZ3/16-after-effects.webp)
+
+### Frames
+
+Una animación es una secuencia de imágenes. Las imágenes pasando a un determinado tiempo son los frames, normalmente cuando ves la televisión la velocidad de los frames es de 29.67 frames por segundo. Eso significa que pasan muchas cosas en un solo segundo, mi recomendación es que en web utilices animaciones dentro de los 15 frames por segundo, si usas más frames la animación tendrá más información que comunicar y podrás ver más fluido cada movimiento.
+
+After Effects es una de las herramientas más completas para poder hacer animaciones, si quieres saber más de estos temas, próximamente puedo desarrollar otro tutorial para crear micro-interacciones. Por ahora me gustaría que notaras como experimentar con herramientas muy sencillas. También puedes utilizar otras herramientas de animación, todas tienen el mismo principio: elementos, frames.
+
+![After effects](https://i.postimg.cc/yYBYkvqL/16-after-effects1.webp)
+
+### Nodos de animación
+
+Cuando tu animas un elemento se crean nodos de animación estos nodos indican el cambio de ese elemento.
+
+![After effects](https://i.postimg.cc/8PHkWMNN/16-after-effects2.webp)
+
+### Curvas de animación
+
+Las curvas de animación nos ayudan a controlar qué tan rápido se mueve de un lado a otro y justo son estas las que nos dejan imprimir personalidad a nuestras animaciones.
+
+![After effects](https://i.postimg.cc/W11N7z1r/16-after-effects3.webp)
+
+Estos son los conceptos más básicos que necesitas para comenzar a usar After Effects. No tengas miedo de esta herramienta, experimenta o prueba otras similares que te permitan expresar tus ideas con movimiento.
+
+
+---
+## 17. Voz y tono
+
+Los textos o copies que acompañan nuestros diseños también hace parte de la forma en que te comunicas con tus usuarios. Al incluir la voz y el tono de nuestros productos en el sistema de diseño conseguimos que todo el equipo tenga una guía sobre la personalidad de la marca, recuerda que toda esta documentación debe contribuir a la consistencia y comunicación con nuestros equipos.
+
+Ejemplo: Let's rock 🔥🤘🎆
+
+Para definir la voz y el tono de nuestros sistemas debemos tener en cuenta los siguientes aspectos:
+
+- Buzzwords: las palabras más usadas o de moda de nuestro producto.
+    - Ejemplo: Ya viste los instrumentos traídos por Dios a la tierra.
+- Phrases: vamos a construir una librería de frases clave de nuestro producto.
+- Objetivo: el objetivo o la misión de nuestro producto en términos de voz y tono ayuda a que el equipo tenga orientación a la hora de crear nuevos textos o frases.
+- Características: definimos la personalidad de la marca, así tendremos mucho más contexto y podremos crear mejores copies para nuestra marca.
+
+
+---
+## 18. Iconografía
+
+Los iconos son muy útiles para comunicar o resaltar características y funcionalidades de nuestros productos, podemos construir nuestras propias librerías de iconos personalizados o utilizar librerías como **[Font Awesome](https://fontawesome.com/)** y completar los iconos que hagan falta si no tenemos un equipo tan grande.
+
+Para definir las reglas y la documentación de una iconografía consistente debemos tener en cuenta los siguientes aspectos:
+
+- Grid: Las medidas y lineamientos que deben seguir todos los iconos.
+- Shapes: Las formas o figuras que podemos utilizar.
+- Size: Qué tamaño deben tener nuestros iconos para estar alineados con la tipografía y el resto de la plataforma.
+- Styles: Cómo deben estar construidos visualmente nuestros iconos, podemos utilizar colores planos o podemos trabajar en iconos mucho más realistas, etc, lo importante es estar alineados con las reglas de nuestro sistema.
+
+
+---
+## 19. Hitos
+
+Los hitos son características muy particulares o incluso personales de nuestros productos, las mejores marcas incluso pueden definirse y marcar su presencia sin necesidad de utilizar logos o nombres, tal es el caso de las animaciones de carga de Google o Slack.
+
+
+---
+## 20. Bonus: UI Kit
+
+Los Kits de Interfaz de Usuario son un archivo en el que se recogen elementos prediseñados como botones, iconos o formularios para facilitar el desarrollo de las interfaces de usuario. Son elementos que se pueden editar y personalizar fácilmente para adaptarlos a cada proyecto.
+
+El UI-Kit es parte del sistema de diseño.
+
+[Muchos UI Kits](https://ui8.net/)
+
+
+---
+## 21. Un sistema basado en personas
+
+Un sistema de diseño se asegura que todo lo que estás diseñando se convierta en software. Por eso nos debemos asegurar de que todos los elementos estén conectados para hacer nuestro trabajo más eficiente.
+
+### Design system - Case
+un Design system es un CASE (Computer-aided software engineering) Ingeniería de software asistida por computadora
+
+Los sistemas de diseño nos ayudan a construir software en equipo, involucrando al equipo de desarrollo, de marketing, de finanzas, etc, todos aquellos que contribuyen a la hora de crear un nuevo software y ayudan a que el trabajo fluya y sea más eficiente.
+
+[Sistema de Diseño:](https://www.notion.so/Sistema-5f579a1fb8224ddba37c2f3dc8b565f5) es la planeación de un flujo para la creación de un producto y la creación de herramientas para que todos puedan crearlo de manera mas rápida y efectiva.
+
+
+---
+## 22. Iteremos
+
+El proceso de creación de software no es tan definitivo como la creación de otros tipos de producto, son productos vivos que siguen mutando y desarrollándose en el tiempo. 
+
+Los sistemas de diseño también pueden prever la forma de iterar, es decir, mejorar todos los días las construcciones y la forma de construir del equipo, lo más importante es que entre todos nos pongamos de acuerdo de manera fácil, rápida y efectiva.
+
+Para organizar el proceso de iteraciones debemos documentar todos los cambios y problemas que nos encontramos para que todo el equipo este actualizado y logremos entender el trabajo de la misma forma. 
+
+Vamos a seguir los siguientes pasos:
+
+- Darle un nombre a la iteración
+- Describir por qué estamos iterando, ¿Qué problema vamos a resolver?
+- ¿Qué solución encontramos a estos problemas?
+- Cambios de estimación de conflictos, la duración y la dificultad estimada para trabajar esta iteración.
+
+Ejemplo de Proceso de iteración
+
+En esta sección guardaremos un historial de los procesos que vamos mejorando y sus conclusiones:
+
+[Template](https://www.notion.so/Template-b7631aaf3c9648dd92d860acbd707255)
+
+- {{Nombre}}
+- Descripción
+    - Desarrollaremos el objetivo de nuestro, desarrollando también el nuevo problema a solucionar. 
+- Solución
+    - Aquí puedes escribir la solución a la que llego el equipo para solucionar el motivo de porque estamos iterando 
+- Cambios y Estimación de conflictos
+    - Describiremos puntualmente las acciones pertinentes para que la solución se lleve acabo, además de darle tiempos a estas acciones y así saber cual es el tiempo de desarrollo.
+
+[Problema en chat](https://www.notion.so/Problema-en-chat-09c95d98e1d4439292f3a501fe29faa8)
+
+- {{Nombre}}
+- Descripción
+    - Desarrollaremos el objetivo de nuestro, desarrollando también el nuevo problema a solucionar. 
+- Solución
+    - Aquí puedes escribir la solución a la que llego el equipo para solucionar el motivo de porque estamos iterando 
+- Cambios y Estimación de conflictos
+    - Describiremos puntualmente las acciones pertinentes para que la solución se lleve acabo, además de darle tiempos a estas acciones y así saber cual es el tiempo de desarrollo.
+
+
+---
+## 23. Cierre
+
+Ya estás listo para crear la estructura de tu sistema de diseño y utilizarlo para coordinar tu trabajo en equipo a la hora de crear productos de software. Recuerda que puedes seguir aprendiendo cómo crear estas herramientas y llevarlas del diseño a producción con el [Curso de Sistemas de Diseño para Desarrolladores](https://platzi.com/cursos/diseno-desarrolladores/).
