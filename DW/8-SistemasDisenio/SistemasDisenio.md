@@ -424,7 +424,7 @@ Vamos a definir la forma general en que combinamos las columnas, headers y barra
 ### Los 12 principios de la animación
 Son un conjunto de reglas creadas por Disney para la animación de personajes. Muchos de estos principios son muy útiles para ciertos aspectos de la animación de elementos de nuestras interfaces:
 
-- Anticipación: Vamos a a preparar a los usuarios para la acción que viene a continuación, por ejemplo, antes de desconectar la señal de un teléfono podemos animar el icono del avión y transmitir que no habrá señal durante algún tiempo.
+- Anticipación: Vamos a preparar a los usuarios para la acción que viene a continuación, por ejemplo, antes de desconectar la señal de un teléfono podemos animar el icono del avión y transmitir que no habrá señal durante algún tiempo.
 
 - Estirar y encoger: Nos ayuda a generar drama sobre algún elemento, por ejemplo, para dramatizar la animación de un botón cuando el usuario ha cometido un error o alguna acción incorrecta.
 
@@ -528,7 +528,7 @@ El UI-Kit es parte del sistema de diseño.
 Un sistema de diseño se asegura que todo lo que estás diseñando se convierta en software. Por eso nos debemos asegurar de que todos los elementos estén conectados para hacer nuestro trabajo más eficiente.
 
 ### Design system - Case
-un Design system es un CASE (Computer-aided software engineering) Ingeniería de software asistida por computadora
+Un Design system es un CASE (Computer-aided software engineering) Ingeniería de software asistida por computadora
 
 Los sistemas de diseño nos ayudan a construir software en equipo, involucrando al equipo de desarrollo, de marketing, de finanzas, etc, todos aquellos que contribuyen a la hora de crear un nuevo software y ayudan a que el trabajo fluya y sea más eficiente.
 
