@@ -1,0 +1,18 @@
+/* --------- RETO 01 ---------- */
+.contenedor {
+    border: 5px solid #e1bee7;
+    background-color: #fff1ff;
+    display: grid;
+    grid-template-columns: 150px 150px;
+    grid-template-rows: 150px 150px 150px;
+    grid-auto-flow: column;
+    gap: 20px;
+}
+
+.item {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    border: 5px solid #00bcd4;
+    font-size: 4rem;
+} 

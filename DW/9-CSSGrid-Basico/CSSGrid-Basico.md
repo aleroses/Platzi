@@ -16,6 +16,7 @@ CSS Grid introdujo un sistema de grilla que es una cuadricula. Lo que hacemos es
 
 
 - [Slides del curso](https://static.platzi.com/media/public/uploads/00_2109_clase1_slides_css_grid_basico_ffba1bad-877f-4a88-bc26-6d9f725fcb2b.pdf)
+- [Documentación CSS Grid](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout)
 
 
 Aportes de compañeros:
@@ -72,38 +73,36 @@ Termino usados en Grid:
 - Gaps
 - Grid-auto
 
-CSS:
-- **display: grid;**  
+**CSS:**  
+`display: grid;`  
 Convierte contenedor en grilla.
 
-- **grid-template-columns: 100px 200px 300px;**  
+`grid-template-columns: 100px 200px 300px;`  
 Crea columnas y les da ancho, en este caso se crean 3 columnas.
 
-- **grid-template-rows: 150px 250px;**  
+`grid-template-rows: 150px 250px;`  
 Cambiar altura de fila, la primera es de 150px y la segunda de 250px. 
 
-- **grid-auto-rows: 150px;**  
+`grid-auto-rows: 150px;`  
 Define altura de todas las filas.
 
-- **grid-auto-columns: 100px;**  
+`grid-auto-columns: 100px;`  
 Crea todas las columnas de 100px.
 
-- **grid-auto-flow: column;**  
+`grid-auto-flow: column;`  
 Modifica el orden de llenado de la grilla. 
 
-- **row-gap: 15px;**  
+`row-gap: 15px;`  
 Brecha entre filas. Este espacio se crea en los espacios internos del contenedor.
 
-- **column-gap: 30px;**  
+`column-gap: 30px;`  
 Brecha entre columnas.
 
-- **gap: 40px;**  
-Da el mismo espacio entre filas y columnas. 
+`gap: 40px;`  
+Da el mismo espacio entre filas y columnas.  
 
 
-
-Código Emmet para generar el contenedor e items:
-
+**Código Emmet para generar el contenedor e items:** 
 > `div.contenedor>(div.item{$}*6)`
 
 
@@ -179,26 +178,26 @@ CSS
 - Align-self
 - Place-self
 
-CSS:
-- **justify-content: center;**  
+**CSS:**  
+`justify-content: center;`  
 Centra todo el contenido de la grilla de manera horizontal.
 
-- **align-content: center;**  
+`align-content: center;`  
 Centra el contenido de la grilla de manera vertical.
 
-- **place-content: center;**  
+`place-content: center;`  
 Centra todo el contenido tanto de manera horizontal como vertical. Es lo mismo que aplicar justify-content: center y align-content: center al mismo tiempo.
 
-- **justify-items: end;**  
+`justify-items: end;`  
 Envia todo al final de cada celda (a la derecha).
 
-- **align-items: start;**  
+`align-items: start;`  
 Envía todo al inicio (parte superior)
 
-- **justify-self: start;**  
+`justify-self: start;`  
 Envía solo un elemento al inicio (izquierda).
 
-- **align-self: end;**  
+`align-self: end;`  
 Envía solo un elemento al final (parte inferior)
 
 ### Reto
@@ -285,14 +284,14 @@ Especifica la posición final de un elemento de la cuadrícula dentro de la fila
 
 `grid-area: 2 / 2 / 4 / 4;`  
 Especifica los bordes de su área de cuadrícula .
-    - 2 fila inicio / 2 columna inicio / 4 final de la grilla / 4 igual
+    - 2 fila inicio / 2 columna inicio / 4 fila final de la grilla / 4 columna final
 
 `grid-template-areas:`   
 > `"header header header"`  
     `"side main main"`  
     `"side main main";`  
 
-Especifica áreas de cuadrícula con nombre , estableciendo las celdas en la cuadrícula y asignándoles nombres. Se llama de la siguiente manera:  
+Especifica áreas de cuadrícula con nombre , estableciendo las celdas en la cuadrícula y asignándoles nombres. Se aplica de la siguiente manera:  
     ```
     .item-1 {
         grid-area: header;
@@ -378,3 +377,20 @@ CSS
 } 
 ```
 > [CodePen Reto03](https://codepen.io/Meowth01/pen/NWYvMZg)
+
+
+---
+## 6. Funciones especiales
+
+- minmax
+- repeat
+
+**CSS:**  
+`grid-template-columns: minmax(30px, 300px) 200px minmax(60px, 250px);`  
+Define un rango de tamaño minimo o maximo.
+
+`grid-template-rows: repeat(3, auto);`  
+Permite escribir una gran cantidad de columnas o filas que exhiben un patrón recurrente en una forma más compacta.
+
+
+    
