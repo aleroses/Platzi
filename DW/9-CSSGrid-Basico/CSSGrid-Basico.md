@@ -119,7 +119,7 @@ Los números de ítems deben coincidir con la imagen.
 
 
 ```
---------- RETO 01 ----------
+------------ RETO 01 -------------
 HTML
 <body>
     <div class="contenedor">
@@ -159,7 +159,7 @@ CSS
 
 
 ---
-## Propiedades de alineación 
+## 4. Propiedades de alineación 
 
 ### Propiedades de alineación de los ítems
 
@@ -208,7 +208,7 @@ Crear un grid de 2x2 donde los ítems se ubiquen en la esquina inferior derecha 
 > ![Challenge Two](https://i.postimg.cc/NfNLhdft/4-challenge-two.jpg)
 
 ```
---------- RETO 02 ----------
+---------------- RETO 02 ----------------
 HTML
 <body>
     <div class="contenedor">
@@ -242,8 +242,7 @@ CSS
     border: 5px solid #00bcd4;
     font-size: 4rem;
     background-color: #00bcd4;
-}t-size: 4rem;
-} 
+}
 ```
 > [CodePen Reto02](https://codepen.io/Meowth01/pen/KKovNQr)
 
@@ -260,3 +259,122 @@ grid-row
 - grid-row-end
 
 grid-area
+
+grid-template-areas
+
+CSS:
+
+`grid-column: 1 / 3;`  
+Especifica el inicio y fin de un elemento de cuadrícula dentro de una columna.
+
+`grid-column-start: 1;`  
+Especifica la posición de inicio de un elemento de la cuadrícula dentro de la columna.
+
+`grid-column-end: 4;`  
+Especifica la posición final de un elemento de la cuadrícula dentro de la columna.
+
+
+`grid-row: 1 / 3;`  
+Especifica el inicio y fin de un elemento de la cuadrícula dentro de la fila.
+
+`grid-row-start: 3;`  
+Especifica la posición inicial de un elemento de la cuadrícula dentro de la fila.
+
+`grid-row-end: 3;`  
+Especifica la posición final de un elemento de la cuadrícula dentro de la fila.
+
+`grid-area: 2 / 2 / 4 / 4;`  
+Especifica los bordes de su área de cuadrícula .
+    - 2 fila inicio / 2 columna inicio / 4 final de la grilla / 4 igual
+
+`grid-template-areas:`   
+> `"header header header"`  
+    `"side main main"`  
+    `"side main main";`  
+
+Especifica áreas de cuadrícula con nombre , estableciendo las celdas en la cuadrícula y asignándoles nombres. Se llama de la siguiente manera:  
+    ```
+    .item-1 {
+        grid-area: header;
+    }
+    ```
+
+
+
+
+### Reto
+
+Arma la grilla de la imagen.
+
+> ![Challenge Three](https://i.postimg.cc/QNm9JB8y/5-challenge-three.jpg)
+
+```
+--------------- RETO 03 ----------------
+HTML
+<body>
+    <div class="contenedor">
+        <div class="item item-1">1</div>
+        <div class="item item-2">2</div>
+        <div class="item item-3">3</div>
+        <div class="item item-4">4</div>
+        <div class="item item-5">5</div>
+        <div class="item item-6">6</div>
+        <div class="item item-7">7</div>
+    </div>
+</body>
+
+----------------------------------------
+CSS
+.contenedor {
+    display: grid;
+    grid-template-columns: 150px 150px 150px;
+    grid-auto-rows: 150px;
+    height: 600px;
+
+    place-content: center;
+
+    border: 5px solid #e1bee7;
+    background-color: #fff1ff;
+}
+
+.item {
+    text-align: center;
+    font-size: 4rem;
+    border: 5px solid #00bcd4;
+    background-color: #00bcd4;
+}
+
+.item-1 {
+    background-color:darkslateblue;
+}
+
+.item-2 {
+    grid-column-start: 2;
+    grid-column-end: 4;
+    background-color: #e1bee7;
+}
+
+.item-3 {
+    grid-column-start: 1;
+    grid-column-end: 3;
+
+    background-color: hotpink;
+}
+
+.item-4 {
+    background-color: darkslateblue;
+}
+
+.item-5 {
+    background-color: darkslateblue;
+}
+
+.item-6 {
+    background-color: #e1bee7;
+}
+
+.item-7 {
+    background-color: hotpink;
+} 
+```
+> [CodePen Reto03](https://codepen.io/Meowth01/pen/NWYvMZg)
