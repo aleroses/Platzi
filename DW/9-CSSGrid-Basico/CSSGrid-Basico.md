@@ -73,29 +73,190 @@ Termino usados en Grid:
 - Grid-auto
 
 CSS:
-- display: grid; Convierte contenedor en grilla.
-- grid-template-columns: 100px 200px 300px; Crea columnas y les da ancho, en este caso se crean 3 columnas.
-- grid-template-rows: 150px 250px; Cambiar altura de fila, la primera es de 150px y la segunda de 250px. 
-- grid-auto-rows: 150px; Define altura de todas las filas.
-- grid-auto-flow: column; Modifica el orden de llenado de la grilla. 
-- grid-template-row: 100px 200px;
-- grid-auto-columns: 100px; Crea todas las columnas de 100px
-- row-gap: 15px; Brecha entre filas. Este espacio se crea en los espacios internos del contenedor.
-- column-gap: 30px; Brecha entre columnas.
-- gap: 40px; Da el mismo espacio entre filas y columnas. 
+- **display: grid;**  
+Convierte contenedor en grilla.
+
+- **grid-template-columns: 100px 200px 300px;**  
+Crea columnas y les da ancho, en este caso se crean 3 columnas.
+
+- **grid-template-rows: 150px 250px;**  
+Cambiar altura de fila, la primera es de 150px y la segunda de 250px. 
+
+- **grid-auto-rows: 150px;**  
+Define altura de todas las filas.
+
+- **grid-auto-columns: 100px;**  
+Crea todas las columnas de 100px.
+
+- **grid-auto-flow: column;**  
+Modifica el orden de llenado de la grilla. 
+
+- **row-gap: 15px;**  
+Brecha entre filas. Este espacio se crea en los espacios internos del contenedor.
+
+- **column-gap: 30px;**  
+Brecha entre columnas.
+
+- **gap: 40px;**  
+Da el mismo espacio entre filas y columnas. 
 
 
 
-Código Emmet para generar el contenedor y items:
+Código Emmet para generar el contenedor e items:
 
 > `div.contenedor>(div.item{$}*6)`
 
 
-[Flexbox Froggy](https://flexboxfroggy.com/#es)
+[Flexbox Froggy](https://flexboxfroggy.com/#es)  
+[Grid Garden](https://cssgridgarden.com/#es)
 
 
 ### Reto
 Crear un grid de 3 filas y 2 columnas con un gap de 20px entre ellas.
 Los números de ítems deben coincidir con la imagen.
 
-> ![Challenge](https://i.postimg.cc/vBTyxdcj/3-challenge.jpg)
+> ![Challenge One](https://i.postimg.cc/vBTyxdcj/3-challenge.jpg)
+
+
+```
+--------- RETO 01 ----------
+HTML
+<body>
+    <div class="contenedor">
+        <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+        <div class="item">4</div>
+        <div class="item">5</div>
+        <div class="item">6</div>
+    </div>
+</body>
+
+--------------------------------
+
+CSS
+.contenedor {
+    display: grid;
+    grid-template-columns: 150px 150px;
+    grid-template-rows: 150px 150px 150px;
+    grid-auto-flow: column;
+    gap: 20px;
+
+    border: 5px solid #e1bee7;
+    background-color: #fff1ff;
+}
+
+.item {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+
+    border: 5px solid #00bcd4;
+    font-size: 4rem;
+} 
+```
+> [CodePen Reto01](https://codepen.io/Meowth01/pen/GRxvqgd)
+
+
+---
+## Propiedades de alineación 
+
+### Propiedades de alineación de los ítems
+
+- Justify-items
+- Align-items
+- Place-items
+
+### Propiedades de alineación del contenedor
+
+- Justify-content
+- Align-content
+- Place-content
+
+### Propiedades de alineación del ítem
+
+- Justify-self
+- Align-self
+- Place-self
+
+CSS:
+- **justify-content: center;**  
+Centra todo el contenido de la grilla de manera horizontal.
+
+- **align-content: center;**  
+Centra el contenido de la grilla de manera vertical.
+
+- **place-content: center;**  
+Centra todo el contenido tanto de manera horizontal como vertical. Es lo mismo que aplicar justify-content: center y align-content: center al mismo tiempo.
+
+- **justify-items: end;**  
+Envia todo al final de cada celda (a la derecha).
+
+- **align-items: start;**  
+Envía todo al inicio (parte superior)
+
+- **justify-self: start;**  
+Envía solo un elemento al inicio (izquierda).
+
+- **align-self: end;**  
+Envía solo un elemento al final (parte inferior)
+
+### Reto
+
+Crear un grid de 2x2 donde los ítems se ubiquen en la esquina inferior derecha del contenedor, el contenedor debe estar centrado.
+
+> ![Challenge Two](https://i.postimg.cc/NfNLhdft/4-challenge-two.jpg)
+
+```
+--------- RETO 02 ----------
+HTML
+<body>
+    <div class="contenedor">
+        <div class="item item-1">1</div>
+        <div class="item item-2">2</div>
+        <div class="item item-3">3</div>
+        <div class="item item-4">4</div>
+    </div>
+</body>
+
+----------------------------------------
+CSS
+.contenedor {
+    display: grid;
+    gap: 15px;
+    grid-template-columns: 150px 150px;
+    grid-auto-rows: 150px;
+    height: 600px;
+
+    place-content: center;
+    place-items: end;
+
+    border: 5px solid #e1bee7;
+    background-color: #fff1ff;
+}
+
+.item {   
+    width: 40px;
+    height: 70px;
+
+    border: 5px solid #00bcd4;
+    font-size: 4rem;
+    background-color: #00bcd4;
+}t-size: 4rem;
+} 
+```
+> [CodePen Reto02](https://codepen.io/Meowth01/pen/KKovNQr)
+
+
+---
+## 5. Propiedades de ubicación
+
+grid-column
+- grid-column-start
+- grid-column-end
+
+grid-row
+- grid-row-start
+- grid-row-end
+
+grid-area
