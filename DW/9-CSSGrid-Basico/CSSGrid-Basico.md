@@ -73,7 +73,7 @@ Termino usados en Grid:
 - Gaps
 - Grid-auto
 
-**CSS:**  
+**Ejemplo:**  
 `display: grid;`  
 Convierte contenedor en grilla.
 
@@ -178,7 +178,7 @@ CSS
 - Align-self
 - Place-self
 
-**CSS:**  
+**Ejemplo:**  
 `justify-content: center;`  
 Centra todo el contenido de la grilla de manera horizontal.
 
@@ -261,8 +261,7 @@ grid-area
 
 grid-template-areas
 
-CSS:
-
+**Ejemplo:**  
 `grid-column: 1 / 3;`  
 Especifica el inicio y fin de un elemento de cuadrícula dentro de una columna.
 
@@ -385,7 +384,7 @@ CSS
 - minmax
 - repeat
 
-**CSS:**  
+**Ejemplo:**  
 `grid-template-columns: minmax(30px, 300px) 200px minmax(60px, 250px);`  
 Define un rango de tamaño minimo o maximo.
 
@@ -393,4 +392,322 @@ Define un rango de tamaño minimo o maximo.
 Permite escribir una gran cantidad de columnas o filas que exhiben un patrón recurrente en una forma más compacta.
 
 
-    
+---
+## 7. Keywords especiales
+
+-  fr
+- min-content
+- max-content
+- auto-fill/auto-fit
+
+**Ejemplo:**  
+`grid-template-columns: repeat(4, 1fr);`  
+`grid-template-columns: 1fr 3fr 1fr 2fr;`  
+Fracción es una nueva unidad de medida especial de css grid para darle ancho o alto a filas y columnas.  
+1fr representa una fracción del total de columnas o filas.
+
+`grid-template-columns: 1fr 3fr min-content 2fr;`  
+Ajusta el ancho de la celda (columna) lo mínimo posible sin romper su contenido.
+
+`grid-template-columns: 1fr 3fr max-content 2fr;`  
+Ajusta el ancho de la celda lo máximo posible para mostrar su contenido.
+
+
+`min-content` hará que nuestro contenido haga salto de linea en cada oportunidad que tenga, siendo tan ancho como la palabra mas larga. `max-content` no tendrá salto de linea, ocupando todo el ancho que pueda, incluso causando overflow.
+
+`grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));`  
+Fill (llenas) agrega columnas “fantasma” que rellenan el espacio sobrante del contenedor.
+
+`grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));`  
+Fit (adaptar) ensancha las columnas para que ocupen todo el espacio del contenedor.
+
+`auto-fill y auto-fit` ayudan a la grilla a ocupar el 100% del espacio disponible.
+> ![Auto fill - Auto fit](https://i.postimg.cc/fRPRMfvx/7-auto-fit-fill.png)
+[Mas info](https://ishadeed.com/article/css-grid-minmax/)
+
+---
+## 8. Proyecto
+
+> ![Proyecto](https://i.postimg.cc/Nfg5xwkF/8-reto.png)
+
+```
+----------- SOLUCIÓN PREVIA ---------------
+HTML
+<body>
+    <header>
+        <section class="header__container">
+            <h1 class="header__title">Check The Best Food</h1>
+            <p class="header__description">Lorem ipsum dolor sit amet adipisicing elit. Cupiditate itaque necessitatibus minima qui temporibus quas.</p>
+            <button><a href="#">See more details</a></button>
+        </section>
+        <section class="header__img">
+            
+        </section>
+    </header>
+    <main class="main__container">
+        <section class="main__title">
+            <h2>OUR SERVICES</h2>
+        </section>
+        <section class="main__img1"></section>
+        <section class="main__img2"></section>
+        <section class="main__img3"></section>
+        <section class="main__img4"></section>
+        <section class="main__img5"></section>
+    </main>
+    <footer class="footer__container">
+        <section class="footer__title">
+            <h2>Home Menu</h2>
+        </section>
+        <section class="footer__img1"></section>
+        <section class="footer__img2"></section>
+        <section class="footer__img3"></section>
+        <section class="footer__img4"></section>
+        <section class="footer__img5"></section>
+    </footer>
+</body>
+</html>
+
+----
+
+CSS
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 62.5%;
+    font-family: 'Roboto', sans-serif;
+}
+
+header {
+    display: grid;
+    grid-template-columns: repeat(2, 160px);
+    grid-template-rows: repeat(1, 160px);
+    place-content: center;
+    place-items: center;
+
+    margin: 20px;
+}
+
+header .header__container .header__title {
+    margin-bottom: 10px;
+    font-size: 2.2rem;
+
+    color: darkslateblue;
+}
+
+header .header__container .header__description {
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+}
+
+header .header__container button {
+    width: 80px;
+    height: 35px;
+
+    background-color: orangered;
+    border-radius: 15px;
+}
+
+.header__container button a {
+    text-decoration: none;
+    color: darkslateblue;
+}
+
+header .header__img {
+    width: 160px;
+    height: 160px;
+    background-image: url('https://i.postimg.cc/QCrLX0Cn/8-hero.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+main {
+    display: grid;
+    grid-template-columns: repeat(4, 80px);
+    grid-template-rows: repeat(3, 80px);
+
+    place-content: center;
+    margin-bottom: 20px;
+
+    gap: 10px;
+}
+
+.main__container .main__title {
+    grid-column-start: 1;
+    grid-column-end: 5;
+    place-self: center;
+
+    height: 20px;
+}
+
+.main__container .main__img1 {
+    grid-area: 2 / 1 / 4 / 3;
+    width: 160px;
+    height: 170px;
+    background-image: url('https://i.postimg.cc/7Pg8B8Qv/8-video.png');
+    background-position: start;
+    background-repeat: no-repeat;
+    background-size: contain;
+
+    justify-content: flex-start;
+}
+
+.main__container .main__img2 {
+    width: 80px;
+    height: 80px;
+    background-image: url('https://i.postimg.cc/Gm3C87QW/8-dish1.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.main__container .main__img3 {
+    width: 80px;
+    height: 80px;
+    background-image: url('https://i.postimg.cc/nhdtv4SC/8-dish2.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.main__container .main__img4 {
+    width: 80px;
+    height: 80px;
+    background-image: url('https://i.postimg.cc/DyTFFyby/8-dish3.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.main__container .main__img5 {
+    width: 80px;
+    height: 80px;
+    background-image: url('https://i.postimg.cc/QxJDMGpg/8-dish4.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+footer {
+    display: grid;
+    grid-template-columns: repeat(5, 64px);
+    grid-template-rows: repeat(2, 53px);
+
+    place-content: center;
+    place-items: center;
+    margin-bottom: 20px;
+}
+
+footer .footer__title {
+    grid-column-start: 1;
+    grid-column-end: 6;
+}
+
+footer .footer__img1 {
+    width: 64px;
+    height: 54px;
+    background-image: url('https://i.postimg.cc/vTRy4Gqh/8-plate1.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+footer .footer__img2 {
+    width: 64px;
+    height: 53px;
+    background-image: url('https://i.postimg.cc/rsSkW77k/8-plate2.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+footer .footer__img3 {
+    width: 64px;
+    height: 53px;
+    background-image: url('https://i.postimg.cc/3rp7PDNc/8-plate3.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+footer .footer__img4 {
+    width: 64px;
+    height: 53px;
+    background-image: url('https://i.postimg.cc/N05vbKZb/8-plate4.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+footer .footer__img5 {
+    width: 64px;
+    height: 53px;
+    background-image: url('https://i.postimg.cc/xdhDZ02Q/8-plate5.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+```
+### Resultado Mobile First
+> ![Resultado](https://i.postimg.cc/T2L0xbZn/8-reto-solucion-previa.jpg)
+
+
+---
+## 9. Hagamos nuestra primera sección
+
+[Extensión ColorZilla](https://chrome.google.com/webstore/detail/colorzilla/bhlhnicpbhignbdhedgjhgdocnmhomnp?hl=es)
+
+```
+------------- Header ---------------
+HTML
+<body>
+    <main>
+        <section class="hero">
+            <div class="info">
+                <h1>Check The<br>Best Food</h1>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                <button>Book a table</button>
+            </div>
+            <img class="hero-image" src="https://i.postimg.cc/QCrLX0Cn/8-hero.png" alt="Imagen Hero de un plato de pasta con salsa y vegetales.">
+        </section>
+    </main>
+</body>
+
+----
+
+CSS
+* {
+    font-family: 'Roboto', sans-serif;
+}
+
+main {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.hero {
+    display: grid;
+    grid-template-columns: 2fr 3fr;
+    grid-auto-rows: 400px;
+}
+
+.hero-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.info {
+    align-self: center;
+}
+
+```
+
+
+---
+## 10. Creando la grilla con área
