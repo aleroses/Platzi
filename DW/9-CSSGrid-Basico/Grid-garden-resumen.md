@@ -1,4 +1,4 @@
-# GRID GARDEN 🌳🌱😸
+# GRID GARDEN🌱😸
 
 [Juega aquí!!! 🔥](https://cssgridgarden.com/#es)
 
@@ -225,9 +225,107 @@ grid-row-start: 3;
 --- | --- | --- | --- | ---|
 --- | --- | --- | --- | ---|
 
-> **Nota:** La primera línea de la tabla que contiene XX no cuenta.
+> **Nota:** La primera línea de la tabla que contiene **xx** no cuenta. 👻
 
 
+---
+## Nivel 13 de 28
+
+```
+.water {
+    grid-row: span 3/6;
+}
+```
+
+ 🐰 |  🐰 |  🐰 |  🐰 | 🐰
+--- | --- | --- | --- | ---|
+--- | --- | --- | --- | --- | 
+--- | --- | --- | --- | ---|
+🔴 | --- | --- | --- | ---|
+🔴 | --- | --- | --- | ---|
+🔴 | --- | --- | --- | ---|
+
+
+---
+## Nivel 14 de 28
+
+```
+.poison {
+    grid-column: 2;
+    grid-row: 5;
+}
+```
+
+ 🦄 |  🦄 |  🦄 |  🦄 | 🦄
+--- | --- | --- | --- | ---|
+--- | --- | --- | --- | --- | 
+--- | --- | --- | --- | ---|
+--- | --- | --- | --- | ---|
+--- | --- | --- | --- | ---|
+--- | 🔴 | --- | --- | ---|
+
+
+
+
+
+
+---
+## Nivel 15 de 28
+
+---
+## Nivel 16 de 28
+
+
+---
+## Nivel 14 de 28
+
+
+
+---
+## Nivel 14 de 28
+
+
+
+---
+## Nivel 14 de 28
+
+
+---
+## Nivel 14 de 28
+
+
+
+---
+## Nivel 14 de 28
+
+
+
+---
+## Nivel 14 de 28
+
+
+
+---
+## Nivel 14 de 28
+
+
+
+---
+## Nivel 14 de 28
+
+
+
+---
+## Nivel 14 de 28
+
+
+```
+.garden {
+    display: grid;
+    grid-template-columns: 20% 20% 20% 20% 20%;
+    grid-template-rows: 20% 20% 20% 20% 20%;
+}
+```
 
 
 [Soluciones](https://github.com/billfienberg/grid-garden)
