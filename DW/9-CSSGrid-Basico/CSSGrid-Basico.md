@@ -39,18 +39,18 @@ Son los elementos que están dentro del contenedor y se convierten en Grid Items
 Pueden ser:
 - Botones
 - Links
-- Imagenes
+- Imágenes
 - Videos
 
 > ![Container - Item](https://i.postimg.cc/Nj7CRmxW/2-container-item.jpg)
 
-### Lineas:
+### Líneas:
 Son los elementos que dividen las filas y columnas de una grilla.
 
-> ![Lineas](https://i.postimg.cc/XvjHLqHX/2-line.jpg)
+> ![Líneas](https://i.postimg.cc/XvjHLqHX/2-line.jpg)
 
 ### Celdas:
-Es la unidad mínima que tenemos en una Grilla, está delimitada por 4 lineas. Ocupa 1 columna y 1 fila.
+Es la unidad mínima que tenemos en una Grilla, está delimitada por 4 líneas. Ocupa 1 columna y 1 fila.
 
 > ![Celdas](https://i.postimg.cc/4xTFKBp6/2-celda.jpg)
 
@@ -189,7 +189,7 @@ Centra el contenido de la grilla de manera vertical.
 Centra todo el contenido tanto de manera horizontal como vertical. Es lo mismo que aplicar justify-content: center y align-content: center al mismo tiempo.
 
 `justify-items: end;`  
-Envia todo al final de cada celda (a la derecha).
+Envía todo al final de cada celda (a la derecha).
 
 `align-items: start;`  
 Envía todo al inicio (parte superior)
@@ -386,7 +386,7 @@ CSS
 
 **Ejemplo:**  
 `grid-template-columns: minmax(30px, 300px) 200px minmax(60px, 250px);`  
-Define un rango de tamaño minimo o maximo.
+Define un rango de tamaño mínimo o máximo.
 
 `grid-template-rows: repeat(3, auto);`  
 Permite escribir una gran cantidad de columnas o filas que exhiben un patrón recurrente en una forma más compacta.
@@ -413,7 +413,7 @@ Ajusta el ancho de la celda (columna) lo mínimo posible sin romper su contenido
 Ajusta el ancho de la celda lo máximo posible para mostrar su contenido.
 
 
-`min-content` hará que nuestro contenido haga salto de linea en cada oportunidad que tenga, siendo tan ancho como la palabra mas larga. `max-content` no tendrá salto de linea, ocupando todo el ancho que pueda, incluso causando overflow.
+`min-content` hará que nuestro contenido haga salto de línea en cada oportunidad que tenga, siendo tan ancho como la palabra mas larga. `max-content` no tendrá salto de línea, ocupando todo el ancho que pueda, incluso causando overflow.
 
 `grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));`  
 Fill (llenas) agrega columnas “fantasma” que rellenan el espacio sobrante del contenedor.
@@ -660,6 +660,8 @@ footer .footer__img5 {
 ---
 ## 9. Hagamos nuestra primera sección
 
+> ![Header](https://i.postimg.cc/dQ2TfB31/9-header.jpg)  
+
 [Extensión ColorZilla](https://chrome.google.com/webstore/detail/colorzilla/bhlhnicpbhignbdhedgjhgdocnmhomnp?hl=es)
 
 ```
@@ -711,3 +713,162 @@ main {
 
 ---
 ## 10. Creando la grilla con área
+
+> ![Main](https://i.postimg.cc/x1CJcVRJ/10-main.jpg)  
+
+```
+------------- MAIN ---------------
+HTML
+<body>
+    <main>
+        <section class="dishes">
+            <h2 class="dishes-title">OUR SERVICE</h2>
+            <div class="dishes-grid">
+            </div>
+        </section>
+        <section class="dishes">
+            <h2 class="dishes-title">OUR SERVICE</h2>
+            <div class="dishes-grid">
+                <img class="dishes-item dishes-item__big" src="https://i.postimg.cc/7Pg8B8Qv/8-video.png" alt="Una mesa con platos de pasta">
+                <img class="dishes-item" src="https://i.postimg.cc/Gm3C87QW/8-dish1.png" alt="Bowl de vegetales">
+                <img class="dishes-item" src="https://i.postimg.cc/nhdtv4SC/8-dish2.png" alt="Bowl de vegetales">
+                <img class="dishes-item" src="https://i.postimg.cc/DyTFFyby/8-dish3.png" alt="Bowl de vegetales">
+                <img class="dishes-item" src="https://i.postimg.cc/QxJDMGpg/8-dish4.png" alt="Bowl de vegetales">
+            </div>
+        </section>
+    </main>
+</body>
+
+----
+
+CSS
+.dishes {
+    margin: 100px 0;
+}
+
+.dishes-title {
+    color: #333;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 50px;
+    font-size: 2rem;
+}
+
+.dishes-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(150px, 200px));
+    grid-auto-rows: 1fr;
+    gap: 25px;
+    justify-content: center;
+}
+
+.dishes-item {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.dishes-item__big {
+    grid-area: 1 / 1 / 3 / 3;
+}
+
+```
+
+
+---
+## 11. Armando el listado
+
+> ![Footer](https://i.postimg.cc/m2TFWH1S/11-footer.jpg)  
+
+```
+------------- FOOTER ---------------
+HTML
+<body>
+    <main>
+        <section class="dishes">
+            <h2 class="dishes-title">OUR SERVICE</h2>
+            <div class="dishes-grid">
+            </div>
+        </section>
+        <section class="dishes">
+            <h2 class="dishes-title">OUR SERVICE</h2>
+            <div class="dishes-grid">
+            </div>
+        </section>
+        <section class="menu">
+            <h2 class="menu-title">Home menu</h2>
+            <div class="menu-grid">
+                <div class="menu-grid-item">                    
+                    <img src="https://i.postimg.cc/vTRy4Gqh/8-plate1.png" alt="Plato de pasta con salsa">
+                </div>
+                <div class="menu-grid-item">
+                    <img src="https://i.postimg.cc/rsSkW77k/8-plate2.png" alt="Plato de pasta con salsa">
+                </div>
+                <div class="menu-grid-item">
+                    <img src="https://i.postimg.cc/3rp7PDNc/8-plate3.png" alt="Plato de pasta con salsa">
+                </div>
+                <div class="menu-grid-item">
+                    <img src="https://i.postimg.cc/N05vbKZb/8-plate4.png" alt="Plato de pasta con salsa">
+                </div>
+
+                <div class="menu-grid-item">
+                    <img src="https://i.postimg.cc/xdhDZ02Q/8-plate5.png" alt="Plato de pasta con salsa">
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+
+----
+
+CSS
+.menu {
+    margin-bottom: 200px;
+}
+
+
+.menu-title {
+    font-size: 2rem;
+    color: #333;
+    font-weight: bolder;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.menu-grid {
+    display: grid;
+    gap: 25px;
+    justify-content: center;
+    grid-template-columns: repeat(5, minmax(100px, 250px));
+}
+
+.menu-grid-item {
+    background-color: #dd5228;
+    padding: 15px;
+    border-radius: 40px 0 0 0;
+}
+
+.menu-grid-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+```
+
+
+---
+## 12. ¿Cómo hacer nuestro proyecto responsivo?
+
+> Nota: En este curso el proyecto fue hecho primero en modalidad Desktop para luego pasarlo a Mobile. Esto no es lo mas optimo, por lo que dejo en mi GitHub el código de las tres modalidades mas comunes (Mobile, Tablet y Desktop).
+
+> ![Responsive Designe](https://i.postimg.cc/sDp2H00H/12-responsive-design.jpg)
+
+
+---
+## 13. Más cursos de CSS Grid
+
+- [Curso Profesional de CSS Grid Layout](https://platzi.com/cursos/css-grid-layout/)
+- [Curso Práctico de Maquetación en CSS](https://platzi.com/cursos/practico-css/)
+- [Curso de Animaciones con CSS](https://platzi.com/cursos/animaciones-css/)
+- [Curso Práctico de Maquetación y Animaciones con CSS](https://platzi.com/cursos/animaciones-css-practico/)
