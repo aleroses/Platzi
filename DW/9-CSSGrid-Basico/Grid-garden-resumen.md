@@ -19,14 +19,14 @@ Por ejemplo, `grid-column-start: 3;` regará el área comenzando por la tercera 
 }
 ```
 
-🐰🐰 | 🐰🐰 | 🐰🐰 | 🐰🐰 | 🐰🐰
----- | ----- | ---- | ----- | ---- |
----- | ---- | 🥕🔵 | ---- | ---- | 
+🐰 | 🐰 | 🥕 | 🐰 | 🐰
+-- | -- | --- | -- | -- |
+-- | -- | 🔵 | -- | -- | 
 
 
-🔵 Water 🔴 Poison 🥕 Carrot
+🔵 Water 💀 Poison 🥕 Carrot 🌿 Herb 🐰 Rabbit
 
-> **Nota:** La primera línea de la tabla que contiene **🐰🐰** no cuenta. 👻
+> **Nota:** La primera línea de la tabla que contiene **🐰🥕🐰** no cuenta. 👻
 
 
 ---
