@@ -1,4 +1,4 @@
-# GRID GARDEN 🌱
+# GRID GARDEN🌱
 
 [Juega aquí!!! 🔥](https://cssgridgarden.com/#es)
 
@@ -7,11 +7,11 @@
 
 ¡Bienvenido a Grid Garden, donde escribirás tu código CSS para cultivar tu jardín de zanahorias! Riega solo las áreas que tienen zanahorias usando la propiedad `grid-column-start`.
 
-Por ejemplo, `grid-column-start: 3;` regará el área comenzando por la tercera línea vertical, que es otra manera de decir el 3er borde vertical contando desde la izquierda de la cuadrícula.
-
 `grid-column-start`  
 Define la posición inicial de un elemento respecto a las columnas de las cuadriculas.
-- integer + span + integer
+- integer + span + integer  
+
+Por ejemplo, `grid-column-start: 3;` regará el área comenzando por la tercera línea vertical, que es otra manera de decir el 3er borde vertical contando desde la izquierda de la cuadrícula.
 
 ```
 .water {
@@ -19,9 +19,12 @@ Define la posición inicial de un elemento respecto a las columnas de las cuadri
 }
 ```
 
-🐰 | 🐰 | 🐰 | 🐰 | 🐰
---- | --- | --- | --- | ---|
---- | --- | 🥕🔵 | --- | --- | 
+🐰🐰 | 🐰🐰 | 🐰🐰 | 🐰🐰 | 🐰🐰
+---- | ----- | ---- | ----- | ---- |
+---- | ---- | 🥕🔵 | ---- | ---- | 
+
+
+🔵 Water 🔴 Poison 🥕 Carrot
 
 > **Nota:** La primera línea de la tabla que contiene **🐰🐰** no cuenta. 👻
 
