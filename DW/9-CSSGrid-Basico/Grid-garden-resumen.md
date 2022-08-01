@@ -1,4 +1,4 @@
-# GRID GARDEN
+# GRID GARDEN 🌳🌱😸
 
 [Juega aquí!!! 🔥](https://cssgridgarden.com/#es)
 
@@ -18,6 +18,8 @@ Define la posición inicial de un elemento respecto a las columnas de las cuadri
 xx | xx | xx | xx | xx
 --- | --- | --- | --- | ---|
 --- | --- | 🔴 | --- | --- | 
+
+> **Nota:** La primera línea de la tabla que contiene **xx** no cuenta. 👻
 
 
 ---
@@ -223,7 +225,7 @@ grid-row-start: 3;
 --- | --- | --- | --- | ---|
 --- | --- | --- | --- | ---|
 
-> **Nota:** La primera línea de la table que contiene XX no cuenta.
+> **Nota:** La primera línea de la tabla que contiene XX no cuenta.
 
 
 
