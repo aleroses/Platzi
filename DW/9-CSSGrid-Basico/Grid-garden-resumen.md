@@ -90,7 +90,7 @@ El siguiente caso va de reversa:
 
 🐰 | 🥕 | 🥕 | 🥕 | 🐰
 -- | --- | -- | -- | -- |
--- | 🔵 | 🔵 | 🔵 | -- | 
+--- | 🔵 | 🔵 | 🔵 | --- | 
 
 
 ---
@@ -109,11 +109,13 @@ Intenta establecer `grid-column-end` a un valor negativo.
 
 🥕 | 🥕 | 🥕 | 🥕 | 🐰
 -- | --- | -- | -- | -- |
-🔵 | 🔵 | 🔵 | 🔵 | -- | 
+🔵 | 🔵 | 🔵 | 🔵 | --- | 
 
 
 ---
 ## Nivel 6 de 28
+
+Ahora intenta establecer `grid-column-start` a un valor negativo.  
 
 Empieza contando desde la derecha.
 
@@ -123,9 +125,9 @@ Empieza contando desde la derecha.
 }
 ```
 
-xx | xx | xx | xx | xx
---- | --- | --- | --- | ---|
---- | --- | --- | 🔴 | ---| 
+🐰 | 🐰 | 🐰 | 🌿 | 🐰
+-- | -- | --- | -- | -- |
+---| ---| ---| 💀 | ---| 
 
 
 ---
@@ -134,7 +136,7 @@ xx | xx | xx | xx | xx
 Ahora!!  
 En lugar de definir un elemento en la cuadrícula basado en la posicion inicial y final, puedes definirlo basado en la **longitud de columnas** deseada usando la palabra clave **span**. Ten presente que span solo funciona con valores positivos.
 
-Por ejemplo:  
+Por ejemplo, riega las zanahorias usando `grid-column-end: span 2;`.   
 Empezamos contando desde la línea 1 de la primera columna y para darle un final usamos span que tomará como referencia a las columnas como bloques tomando como inicio para empezar a contar la línea 2. 
 
 ```
@@ -144,13 +146,15 @@ Empezamos contando desde la línea 1 de la primera columna y para darle un final
 }
 ```
 
- xx |  xx |  xx |  xx | xx
---- | --- | --- | --- | ---|
---- | 🔴 | 🔴  | --- | ---| 
+ 🐰 | 🥕 | 🥕 | 🐰 | 🐰
+--- | --- | -- | -- | -- |
+--- | 🔵 | 🔵 |--- | ---| 
 
 
 ---
 ## Nivel 8 de 28
+
+Intenta usar grid-column-end con la palabra clave `span` de nuevo para regar tus zanahorias.
 
 ```
 .water {
@@ -158,9 +162,9 @@ Empezamos contando desde la línea 1 de la primera columna y para darle un final
     grid-column-end: span 5;
 }
 ```
- xx |  xx |  xx |  xx | xx
---- | --- | --- | --- | ---|
-🔴 | 🔴 | 🔴  | 🔴 | 🔴 | 
+🥕 | 🥕 | 🥕 | 🥕 | 🥕
+-- | --- | -- | --- | -- |
+🔵 | 🔵 | 🔵 | 🔵 | 🔵 | 
 
 
 ---
@@ -175,15 +179,19 @@ También puedes usar la palabra clave `span` con `grid-column-start` para establ
 }
 ```
 
- xx |  xx |  xx |  xx | xx
---- | --- | --- | --- | ---|
---- | --- | 🔴  | 🔴 | 🔴 | 
+ 🐰 | 🐰 | 🥕 | 🥕 | 🥕
+--- | -- | --- | -- | -- |
+--- | ---| 🔵 | 🔵 | 🔵 | 
 
 
 ---
 ## Nivel 10 de 28
 
 Escribir ambos `grid-column-start` y `grid-column-end` cada vez puede resultar cansador. Afortunadamente, `grid-column` es una propiedad abreviada que acepta ambos valores a la vez, separados por una barra oblicua.
+
+`grid-column`  
+Define la posición de un elemento respecto a las columnas de la cuadrícula.
+- <(grid-column-start)> / <(grid-column-end)>
 
 Por ejemplo, `grid-column: 2 / 4;` establecerá el comienzo del elemento de la cuadrícula en la _2ª línea vertical_ de esta, y su final en la _4ª línea vertical_.
 
@@ -193,19 +201,15 @@ Por ejemplo, `grid-column: 2 / 4;` establecerá el comienzo del elemento de la c
 }
 ```
 
- xx |  xx |  xx |  xx | xx
---- | --- | --- | --- | ---|
---- | --- | --- | 🔴 | 🔴 | 
+🐰 | 🐰 | 🐰 | 🥕 | 🥕
+-- | -- | --- | -- | -- |
+---|--- | --- | 🔵 | 🔵| 
 
 
 ---
 ## Nivel 11 de 28
 
-``grid-column``  
-Define la posición de un elemento respecto a las columnas de la cuadrícula.
-- <(grid-column-start)> / <(grid-column-end)>
-
-La palabra clave `span` también funciona con esta propiedad abreviada así que ¡dale una oportunidad!
+Intenta usar `grid-column` para regar las zanahorias. La palabra clave `span` también funciona con esta propiedad abreviada así que ¡dale una oportunidad!
 
 ```
 .water {
@@ -213,9 +217,9 @@ grid-column: span 3 / 5;
 }
 ```
 
- xx |  xx |  xx |  xx | xx
---- | --- | --- | --- | ---|
---- | 🔴 | 🔴 | 🔴 | --- | 
+🐰 | 🥕 | 🥕 | 🥕 | 🐰
+-- | --- | -- | -- | ---|
+---| 🔵 | 🔵 | 🔵 |--- | 
 
 Este ejemplo toma **3 celdas o bloques** y para finalizar la selección **cuenta 5 líneas** de izquierda a derecha. 🤔❓
 
@@ -223,13 +227,13 @@ Este ejemplo toma **3 celdas o bloques** y para finalizar la selección **cuenta
 ---
 ## Nivel 12 de 28
 
-Una de las cosas que diferencia las cuadrículas de CSS de **flexbox** es que puedes posicionar los elementos fácilmente en 2 dimensiones: **columnas y filas**. 
-
-`grid-row-start` funciona de manera semejante a `grid-column-start` pero a lo largo del eje vertical.
+Una de las cosas que diferencia las cuadrículas de CSS de **flexbox** es que puedes posicionar los elementos fácilmente en 2 dimensiones: **columnas y filas**. `grid-row-start` funciona de manera semejante a `grid-column-start` pero a lo largo del eje vertical.
 
 `grid-row-start`  
 Define la posición inicial de un elemento respecto a las filas de la cuadrícula.
 - <(integer)> span <(integer)>
+
+Usa `grid-row-start` para regar las zanahorias.
 
 ```
 .water {
@@ -237,15 +241,13 @@ grid-row-start: 3;
 }
 ```
 
- xx |  xx |  xx |  xx | xx
---- | --- | --- | --- | ---|
---- | --- | --- | --- | --- | 
---- | --- | --- | --- | ---|
-🔴 | --- | --- | --- | ---|
---- | --- | --- | --- | ---|
---- | --- | --- | --- | ---|
-
-> **Nota:** La primera línea de la tabla que contiene **xx** no cuenta. 👻
+🥕 | 🐰 | 🐰 | 🐰 | 🐰
+-- | --- | -- | -- | -- |
+---| --- | ---| ---| --- | 
+---| --- | ---| ---| ---|
+🔵| --- | ---| ---| ---|
+---| ---| ---| ---| ---|
+---| ---| ---| ---| ---|
 
 
 ---
@@ -255,23 +257,27 @@ grid-row-start: 3;
 Define la posición de un elemento respecto a las filas de la cuadrícula.
 - <(grid-row-start)> / <(grid-row-end)>
 
+Ahora dale una oportunidad a la propiedad abreviada `grid-row`.
+
 ```
 .water {
     grid-row: span 3/6;
 }
 ```
 
- 🐰 |  🐰 |  🐰 |  🐰 | 🐰
---- | --- | --- | --- | ---|
---- | --- | --- | --- | --- | 
---- | --- | --- | --- | ---|
-🔴 | --- | --- | --- | ---|
-🔴 | --- | --- | --- | ---|
-🔴 | --- | --- | --- | ---|
+🥕 | 🐰 | 🐰 | 🐰 | 🐰
+-- | --- | -- | -- | -- |
+--- | ---| ---| ---| ---| 
+--- | ---|--- | ---| ---|
+🔵 | --- |--- | ---|---|
+🔵 | --- |--- | ---|---|
+🔵 | --- |--- | ---|---|
 
 
 ---
 ## Nivel 14 de 28
+
+Usa `grid-column` y `grid-row` a la vez para establecer una posición en ambas dimensiones.
 
 ```
 .poison {
@@ -280,13 +286,13 @@ Define la posición de un elemento respecto a las filas de la cuadrícula.
 }
 ```
 
- 🦄 | 🦄 | 🦄 | 🦄 | 🦄
---- | --- | --- | --- | ---|
---- | --- | --- | --- | --- | 
---- | --- | --- | --- | --- |
---- | --- | --- | --- | --- |
---- | --- | --- | --- | --- |
---- | 🔴 | --- | --- | --- |
+🐰 | 🌿 | 🐰 | 🐰 | 🐰
+-- | --- | -- | -- | -- |
+---| --- | ---|--- |--- | 
+---| --- | ---|--- |--- |
+---| --- | ---|--- |--- |
+---| --- | ---|--- |--- |
+---| 💀 | --- |--- |--- |
 
 
 ---
@@ -307,6 +313,12 @@ Define la posición de un elemento respecto a las filas de la cuadrícula.
 --- | 🔴 | 🔴 | 🔴 | 🔴 |
 --- | 🔴 | 🔴 | 🔴 | 🔴 |
 
+
+- 🔵 Water 
+- 💀 Poison 
+- 🥕 Carrot 
+- 🌿 Herb
+- 🐰 Rabbit
 
 ---
 ## Nivel 16 de 28
