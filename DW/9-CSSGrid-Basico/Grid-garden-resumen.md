@@ -23,7 +23,7 @@ Por ejemplo, `grid-column-start: 3;` regará el área comenzando por la tercera 
 -- | -- | --- | -- | -- |
 -- | -- | 🔵 | -- | -- | 
 
-**Elementos Descritivos**
+**Elementos Descriptivos**
 - 🔵 Water 
 - 💀 Poison 
 - 🥕 Carrot 
@@ -134,7 +134,7 @@ Empieza contando desde la derecha.
 ## Nivel 7 de 28
 
 Ahora!!  
-En lugar de definir un elemento en la cuadrícula basado en la posicion inicial y final, puedes definirlo basado en la **longitud de columnas** deseada usando la palabra clave **span**. Ten presente que span solo funciona con valores positivos.
+En lugar de definir un elemento en la cuadrícula basado en la posición inicial y final, puedes definirlo basado en la **longitud de columnas** deseada usando la palabra clave **span**. Ten presente que span solo funciona con valores positivos.
 
 Por ejemplo, riega las zanahorias usando `grid-column-end: span 2;`.   
 Empezamos contando desde la línea 1 de la primera columna y para darle un final usamos span que tomará como referencia a las columnas como bloques tomando como inicio para empezar a contar la línea 2. 
@@ -298,6 +298,8 @@ Usa `grid-column` y `grid-row` a la vez para establecer una posición en ambas d
 ---
 ## Nivel 15 de 28
 
+También puedes usar `grid-column` y `grid-row` juntos para abarcar áreas más extensas en la cuadrícula. ¡Inténtalo!
+
 ```
 .water {
     grid-column: 2/6;
@@ -305,31 +307,30 @@ Usa `grid-column` y `grid-row` a la vez para establecer una posición en ambas d
 }
 ```
 
- xx | xx | xx | xx | xx
---- | --- | --- | --- | --- |
---- | 🔴 | 🔴 | 🔴 | 🔴 | 
---- | 🔴 | 🔴 | 🔴 | 🔴 |
---- | 🔴 | 🔴 | 🔴 | 🔴 |
---- | 🔴 | 🔴 | 🔴 | 🔴 |
---- | 🔴 | 🔴 | 🔴 | 🔴 |
+🐰 | 🥕 | 🥕 | 🥕 | 🥕
+-- | --- | -- | -- | -- |
+---| 🔵 | 🔵 | 🔵 | 🔵| 
+---| 🔵 | 🔵 | 🔵 | 🔵|
+---| 🔵 | 🔵 | 🔵 | 🔵|
+---| 🔵 | 🔵 | 🔵 | 🔵|
+---| 🔵 | 🔵 | 🔵 | 🔵|
 
-
-- 🔵 Water 
-- 💀 Poison 
-- 🥕 Carrot 
-- 🌿 Herb
-- 🐰 Rabbit
 
 ---
 ## Nivel 16 de 28
 
 Si escribir `grid-column` y `grid-row` se te hace demasiado pesado, aquí tienes otra propiedad abreviada. `grid-area` **admite cuatro valores separados por barras oblicuas**: `grid-row-start`, `grid-column-start`, `grid-row-end`, seguido de `grid-column-end`.
 
+`grid-area`  
+Define la posición y el tamaño de un elemento en la cuadrícula.
+
+- grid-row-start / grid-column-start / grid-row-end / grid-column-end
+
 Un ejemplo de esto podría ser `grid-area: 1 / 1 / 3 / 6;`.
 
- RowStart | ColumnStart | RowEnd | ColumnEnd
---------- | ----------- | ------ | -------- |
-    1     |      1      |    3   |     6    |
+RowStart | ColumnStart | RowEnd | ColumnEnd
+-------- | ----------- | ------ | -------- |
+--- 1 ---|  --- 1 ---  | --- 3 --- | --- 6 ---|
 
 ```
 .water {
@@ -337,19 +338,19 @@ Un ejemplo de esto podría ser `grid-area: 1 / 1 / 3 / 6;`.
 }
 ```
 
- xx | xx | xx | xx | xx
---- | --- | --- | --- | --- |
---- | 🔴 | 🔴 | 🔴 | 🔴 | 
---- | 🔴 | 🔴 | 🔴 | 🔴 |
---- | 🔴 | 🔴 | 🔴 | 🔴 |
---- | --- | --- | --- | --- |
---- | --- | --- | --- | --- |
+🐰 | 🥕 | 🥕 | 🥕 | 🥕
+-- | -- | --- | -- | -- |
+---| 🔵 | 🔵 | 🔵 | 🔵 | 
+---| 🔵 | 🔵 | 🔵 | 🔵 |
+---| 🔵 | 🔵 | 🔵 | 🔵 |
+---| --- | ---| --- | ---|
+---| --- | ---| --- | ---|
 
 
 ---
 ## Nivel 17 de 28
 
-¿Y qué me dices de múltiples elementos? Puedes superponerlos sin problema. Usa `grid-area` para definir una segunda área.
+¿Y qué me dices de múltiples elementos? Puedes superponerlos sin problema. Usa `grid-area` para definir una segunda área que cubra todas las zanahorias que están sin regar.
 
 ```
 .water-1 {
@@ -361,13 +362,13 @@ grid-area: 2 / 3 / 5 / 6;
 }
 ```
 
- xx | xx | xx | xx | xx
---- | --- | --- | --- | --- |
---- | --- | --- | 🔴 | --- | 
---- | --- | 🔴 | 🔴 | 🔴 |
---- | --- | 🔴 | 🔴 | 🔴 |
---- | --- | 🔴 | 🔴 | 🔴 |
---- | --- | --- | 🔴 | --- |
+ 🐰 | 🐰 | 🥕 | 🥕 | 🥕
+--- | -- | --- | -- | -- |
+--- | --- | ---| 🔵 | ---| 
+--- | --- | 🔵| 🔵 | 🔵 |
+--- | --- | 🔵| 🔵 | 🔵 |
+--- | --- | 🔵| 🔵 | 🔵 |
+--- | --- | ---| 🔵 | ---|
 
 
 ---
@@ -376,6 +377,12 @@ grid-area: 2 / 3 / 5 / 6;
 Si los elementos de la cuadrícula no se sitúan explícitamente con `grid-area`, `grid-column`, `grid-row`, etc., se sitúan automáticamente de acuerdo al orden en el código fuente. Puedes sobrescribir esto usando la propiedad `order`, que es una de las ventajas de la cuadrícula frente al diseño basado en tablas.
 
 Por defecto, el valor de order de todos los elementos es igual a 0, pero puede ser establecido a cualquier valor positivo o negativo, de manera similar a z-index.
+
+`order`  
+Define el orden del elemento de la cuadrícula.  
+- integer
+
+ Ahora mismo, las zanahorias en la segunda columna están siendo envenenadas y las malas hierbas en la última columna, regadas. !Cambia el valor de order del veneno para solucionar esto!
 
 ```
 .water {
@@ -387,19 +394,19 @@ Por defecto, el valor de order de todos los elementos es igual a 0, pero puede s
 }
 ```
 
- xx | xx | xx | xx | xx
---- | --- | --- | --- | --- |
-🔵 | 🔵 | 🔵 | 🔵 | 🔴 | 
---- | --- | --- | --- | --- |
---- | --- | --- | --- | --- |
---- | --- | --- | --- | --- |
---- | --- | --- | --- | --- |
-
-🔵 Water 🔴 Poison
+ 🥕 | 🥕 | 🥕 | 🥕 | 🌿
+--- | --- | -- | --- | -- |
+🔵 | 🔵 | 🔵 | 🔵 | 💀 |
+--- | --- | ---| --- | ---|
+--- | --- | ---| --- | ---|
+--- | --- | ---| --- | ---|
+--- | --- | ---| --- | ---|
 
 
 ---
 ## Nivel 19 de 28
+
+Ahora el veneno y el agua se alternan, a pesar de que todas las malas hierbas están al comienzo de tu jardín. Cambia el valor de `order` de los venenos para solucionar esto.
 
 ```
 .water {
@@ -411,10 +418,10 @@ Por defecto, el valor de order de todos los elementos es igual a 0, pero puede s
 }
 ```
 
- xx | xx | xx | xx | xx
---- | --- | --- | --- | --- |
-🔴 | 🔴 | 🔴 | 🔴 | 🔴 | 
-🔵 | 🔵 | 🔵 | 🔵 | 🔵 | 
+🥕 | 🥕 | 🥕 | 🥕 | 🥕
+---| --- | --- | -- | -- |
+💀 | 🌿 | 💀 | 🌿 | 💀 | 
+🔵 | 🔵 | 🔵 | 🔵 | 🔵| 
 --- | --- | --- | --- | --- |
 --- | --- | --- | --- | --- |
 --- | --- | --- | --- | --- |
@@ -425,12 +432,20 @@ Por defecto, el valor de order de todos los elementos es igual a 0, pero puede s
 
 Hasta este momento, has tenido un jardín formado por cinco columnas, cada una ocupando el 20% de la anchura total, y cinco filas, cada una ocupando el 20% de la altura total.
 
-Esto ha sido establecido con las propiedades  
-`grid-template-columns: 20% 20% 20% 20% 20%;` y  
-`grid-template-rows: 20% 20% 20% 20% 20%;`.  
+Esto ha sido establecido con las propiedades `grid-template-columns: 20% 20% 20% 20% 20%;` y `grid-template-rows: 20% 20% 20% 20% 20%;`.  
 Cada propiedad tiene cinco valores que crean cinco columnas, cada una establecida al 20% de la anchura total de la cuadricula.
 
-Pero puedes establecer los valores en la cuadrícula como quieras. Da a `grid-template-columns` un nuevo valor. Querrás que la anchura de la primera columna sea del 60%.
+`grid-template-columns`  
+Especifica el tamaño y los nombres de las columnas de la cuadrícula.
+- length 
+- percentage 
+- flex 
+- max-content 
+- min-content 
+- minmax(min, max)
+
+
+Puedes establecer los valores en la cuadrícula como quieras. Da a `grid-template-columns` un nuevo valor. Querrás que la anchura de la primera columna sea del 60%.
 
 ```
 .garden {
@@ -445,7 +460,7 @@ Pero puedes establecer los valores en la cuadrícula como quieras. Da a `grid-te
 }
 ```
 
- xx xx xx | 
+🥕🥕🥕|
 --------- |
 🔵🔵🔵|
 ---------- |
@@ -461,7 +476,7 @@ Especificar un puñado de columnas con la misma anchura puede ser aburrido. Afor
 
 Por ejemplo, previamente hemos definido cinco columnas al 20% de anchura mediante `grid-template-columns: 20% 20% 20% 20% 20%;`. Esto puedes simplificarse como `grid-template-columns: repeat(5, 20%)`;
 
-Usando `grid-template-columns` con la función repeat, crea ocho columnas, cada una con una anchura del 12.5%.
+Usando `grid-template-columns` con la función repeat, crea ocho columnas, cada una con una anchura del 12.5%. De esta manera no inundarás tu jardín.
 
 ```
 .garden {
@@ -476,8 +491,8 @@ Usando `grid-template-columns` con la función repeat, crea ocho columnas, cada 
 }
 ```
 
- xx | xx | xx | xx | xx | xx | xx | xx |
---- | --- | --- | --- | --- | --- | --- | --- |
+🥕 | 🐰 | 🐰 | 🐰 | 🐰 | 🐰 | 🐰 | 🐰 
+-- | -- | -- | -- | -- | -- | -- | -- |
 🔵 | --- | --- | --- | --- | --- | --- | --- |
 --- | --- | --- | --- | --- | --- | --- | --- |
 --- | --- | --- | --- | --- | --- | --- | --- |
@@ -490,7 +505,7 @@ Usando `grid-template-columns` con la función repeat, crea ocho columnas, cada 
 
 `grid-template-columns` no acepta solo valores porcentuales, sino también otras unidades como pixels y ems. Incluso puedes mezclar diferentes unidades a la vez.
 
-Establece tres columnas a 100px, 3em, y 40% respectivamente.
+Establece tres columnas a `100px`, `3em`, y `40%` respectivamente.
 
 ```
 .garden {
@@ -514,17 +529,19 @@ Establece tres columnas a 100px, 3em, y 40% respectivamente.
 
 CSS Grid también introduce una nueva medida, la fracción `fr`. Cada unidad `fr` asigna una porción del espacio disponible. Por ejemplo, si dos elementos están establecidos a `1fr` y `3fr` respectivamente el espacio se divide en 4 porciones iguales; el primer elemento ocupa 1/4 del espacio y el segundo elemento los 3/4 restantes.
 
+Ahora las malas hierbas ocupan 1/6 de tu primera fila y las zanahorias los restantes 5/6. Crea dos columnas con ese ancho empleando fr.
+
 ```
 .garden {
     display: grid;
-    grid-template-columns: 1fr 4fr;
+    grid-template-columns: 1fr 5fr;
     grid-template-rows: 20% 20% 20% 20% 20%;
 }
 ```
 
- 🦄 | 🦄🦄🦄🦄 |
+ 💀 | 🔵🔵🔵🔵🔵 |
  --- | ----------- |
- --- | --------------- |
+ 🌿 | 🥕🥕🥕🥕🥕 |
  --- | --------------- |
  --- | --------------- |
  --- | --------------- |
@@ -536,12 +553,12 @@ CSS Grid también introduce una nueva medida, la fracción `fr`. Cada unidad `fr
 
 Cuando algunas columnas son establecidas en píxeles, porcentajes o ems, cualquier otra columna establecida con fr dividirá el espacio restante.
 
-Aquí tenemos una columna de 50 píxeles a la izquierda, y otra columna de 50 píxeles a la derecha. Mediante `grid-template-columns`, crea esas dos columnas y usa `fr` para crear tres columnas más en el espacio que queda entre ellas.
+Aquí las zanahorias forman una columna de 50 píxeles a la izquierda, y las malas hierbas una  columna de 50 píxeles a la derecha. Mediante `grid-template-columns`, crea esas dos columnas y usa `fr` para crear tres columnas más en el espacio que queda entre ellas.
 
 ```
 .garden {
     display: grid;
-grid-template-columns: 50px repeat(3, 1fr) 50px;
+    grid-template-columns: 50px repeat(3, 1fr) 50px;
     grid-template-rows: 20% 20% 20% 20% 20%;
 }
 
@@ -554,13 +571,13 @@ grid-template-columns: 50px repeat(3, 1fr) 50px;
 }
 ```
 
- xx | xxxxxx | xxxxxx | xxxxxx | xx
---- | ------ | ------ | ------ | --- |
-🔵 | -------- | -------- | -------- | 🔴 | 
-🔵 | -------- | -------- | -------- | 🔴 | 
-🔵 | -------- | -------- | -------- | 🔴 |
-🔵 | -------- | -------- | -------- | 🔴 |
-🔵 | -------- | -------- | -------- | 🔴 |
+🥕 | 🐰🐰🐰🐰 | 🐰🐰🐰🐰 | 🐰🐰🐰🐰 | 🌿
+--- | -------- | --------- | --------- | -- |
+🔵 | -------- | -------- | -------- | 💀 | 
+🔵 | -------- | -------- | -------- | 💀 | 
+🔵 | -------- | -------- | -------- | 💀 |
+🔵 | -------- | -------- | -------- | 💀 |
+🔵 | -------- | -------- | -------- | 💀 |
 
 
 ---
@@ -568,7 +585,7 @@ grid-template-columns: 50px repeat(3, 1fr) 50px;
 
 Ahora hay una columna de malas hierbas de 75 píxeles en el lado izquierdo del jardín. En 3/5 del espacio restante crecen zanahorias, mientras que los 2/5 restantes han sido invadidos por malas hierbas.
 
-Usa grid-template-columns con una combinación de px y fr para crear las columnas necesarias.
+Usa grid-template-columns con una combinación de `px` y `fr` para crear las columnas necesarias.
 
 ```
 .garden {
@@ -578,19 +595,30 @@ Usa grid-template-columns con una combinación de px y fr para crear las columna
 }
 ```
 
- 🐰 | 🐰🐰🐰 | 🐰🐰 |
--------- | -- | ------------- |
+ 💀 | 🔵🔵🔵 | 💀💀 |
+--- | ------- | ---- |
  🌿 | 🥕🥕🥕 | 🌿🌿 |
  🌿 | 🥕🥕🥕 | 🌿🌿 |
  🌿 | 🥕🥕🥕 | 🌿🌿 |
  🌿 | 🥕🥕🥕 | 🌿🌿 |
  🌿 | 🥕🥕🥕 | 🌿🌿 |
+
+> **Nota:** En esta tabla solo hay una fila del 100%, no 5 como se muestra. 
 
 
 ---
 ## Nivel 26 de 28
 
 `grid-template-rows` funciona exactamente igual que `grid-template-columns`.
+
+`grid-template-rows`  
+Define el tamaño y los nombres de las filas de la cuadrícula.
+- length 
+- percentage 
+- flex 
+- max-content 
+- min-content 
+- minmax(min, max)
 
 Usa `grid-template-rows` para regar todo excepto los 50 píxeles de la parte superior de tu jardín. Fíjate que el agua se ha establecido para que llene solo la **5ª fila**, por lo que tendrás que crear 5 filas en total.
 
@@ -607,13 +635,13 @@ Usa `grid-template-rows` para regar todo excepto los 50 píxeles de la parte sup
 }
 ```
 
- xxx | xxx | xxx | xxx | xxx
---- | ---- | ---- | ---- | --- |
---- | -------- | -------- | -------- | --- | 
-🥕🔵 | 🥕🔵 | 🥕🔵 | 🥕🔵 | 🥕🔵 | 
-🥕🔵 | 🥕🔵 | 🥕🔵 | 🥕🔵 | 🥕🔵 |
-🥕🔵 | 🥕🔵 | 🥕🔵 | 🥕🔵 | 🥕🔵 |
-🥕🔵 | 🥕🔵 | 🥕🔵 | 🥕🔵 | 🥕🔵 | 
+ 🥕 | 🥕 | 🥕 | 🥕 | 🥕
+--- | --- | -- | --- | -- |
+--- | --- | ---| --- | ---| 
+🔵 | 🔵 | 🔵 | 🔵 | 🔵 |
+🔵 | 🔵 | 🔵 | 🔵 | 🔵 |
+🔵 | 🔵 | 🔵 | 🔵 | 🔵 |
+🔵 | 🔵 | 🔵 | 🔵 | 🔵 | 
 
 > **Nota:** El cuadro de arriba representa 5 columnas y 2 filas, ya que, a las otras 3 se les dio `0fr`. Con esto logramos que el agua que estaba en la 5ta fila llegue hasta la 2da.
 
@@ -623,9 +651,14 @@ Usa `grid-template-rows` para regar todo excepto los 50 píxeles de la parte sup
 
 `grid-template` es una propiedad abreviada que combina `grid-template-rows` y `grid-template-columns`.
 
+`grid-template`  
+Define el tamaño y nombres de las filas y las columnas de la cuadrícula.
+- grid-template-rows / grid-template-columns
+
+
 Por ejemplo, `grid-template: 50% 50% / 200px;` creará una cuadrícula con dos filas que ocuparán el 50% del alto cada una, y una columna que será 200 píxeles de ancho.
 
-Prueba a usar grid-template para regar un área que incluya el 60% superior y 200 píxeles desde la izquierda en tu jardín.
+Prueba a usar `grid-template` para regar un área que incluya el 60% superior y 200 píxeles desde la izquierda en tu jardín.
 
 ```
 .garden {
@@ -639,9 +672,9 @@ Prueba a usar grid-template para regar un área que incluya el 60% superior y 20
 }
 ```
 
- xxxx |
------ |
-🥕🔵 |
+🥕🥕🥕🥕|
+----------|
+🔵🔵🔵🔵|
 
 > **Nota:** Se creo una fila del 60% y una columna  de 200px. 
 
@@ -660,14 +693,16 @@ Desafortunadamente, el 20% izquierdo de tus zanahorias han sido invadidas por ma
 }
 ```
 
- 🐰 | 🐰 | 🐰 | 🐰 | 🐰
---- | ---- | ---- | ---- | --- |
-🌿 | 🥕🔵 | 🥕🔵 | 🥕🔵 | 🥕🔵 | 
-🌿 | 🥕🔵 | 🥕🔵 | 🥕🔵 | 🥕🔵 |
-🌿 | 🥕🔵 | 🥕🔵 | 🥕🔵 | 🥕🔵 |
-🌿 | 🥕🔵 | 🥕🔵 | 🥕🔵 | 🥕🔵 | 
- . | . | . | . | . |
+💀 | 🔵🔵🔵🔵 |
+-- | ---------- |
+🌿 | 🥕🥕🥕🥕 | 
+🌿 | 🥕🥕🥕🥕 |
+🌿 | 🥕🥕🥕🥕 |
+🌿 | 🥕🥕🥕🥕 | 
+--- | ------------ |
+
+> **Nota:** Se crearon 2 filas de 1fr y 50px, también dos columnas de 20% y 80%.
 
 
 
-[Soluciones](https://github.com/billfienberg/grid-garden)
+[Soluciones en GitHub](https://github.com/billfienberg/grid-garden)
