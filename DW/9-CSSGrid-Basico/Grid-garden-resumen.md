@@ -23,8 +23,12 @@ Por ejemplo, `grid-column-start: 3;` regará el área comenzando por la tercera 
 -- | -- | --- | -- | -- |
 -- | -- | 🔵 | -- | -- | 
 
-
-🔵 Water 💀 Poison 🥕 Carrot 🌿 Herb 🐰 Rabbit
+**Elementos Descritivos**
+- 🔵 Water 
+- 💀 Poison 
+- 🥕 Carrot 
+- 🌿 Herb
+- 🐰 Rabbit
 
 > **Nota:** La primera línea de la tabla que contiene **🐰🥕🐰** no cuenta. 👻
 
@@ -32,15 +36,17 @@ Por ejemplo, `grid-column-start: 3;` regará el área comenzando por la tercera 
 ---
 ## Nivel 2 de 28
 
+Oh oh, parece que hay malas hierbas creciendo en la esquina de tu jardín. Usa `grid-column-start` para envenenarlas. Fíjate en que las malas hierbas comienzan en el quinto borde vertical de la cuadrícula.
+
 ```
 .poison {
     grid-column-start: 5;
 }
 ```
 
-xx | xx | xx | xx | xx
---- | --- | --- | --- | ---|
---- | --- | --- | --- | 🔴 | 
+🐰 | 🐰 | 🐰 | 🐰 | 🌿
+-- | -- | -- | -- | --- |
+-- | -- | -- | -- | 💀 | 
 
 
 ---
