@@ -58,6 +58,8 @@ Cuando `grid-column-start` se usa solo, la expansión por defecto del elemento e
 Define la posición final de un elemento respecto a las columnas de la cuadrícula.
 - <(integer)> span <(integer)>
 
+Usando `grid-column-end`, riega todas las zanahorias evitando que se forme barro. ¡No queremos malgastar agua! Fíjate en que las zanahorias comienzan en el 1er borde vertical y terminan en el 4º.
+
 ```
 .water {
     grid-column-start: 1;
@@ -65,15 +67,18 @@ Define la posición final de un elemento respecto a las columnas de la cuadrícu
 }
 ```
 
-xx | xx | xx | xx | xx
---- | --- | --- | --- | ---|
-🔴 | 🔴 | 🔴 | --- | ---| 
+🥕 | 🥕 | 🥕 | 🐰 | 🐰
+-- | --- | -- | -- | -- |
+🔵 | 🔵 | 🔵 | -- | --| 
 
 
 ---
 ## Nivel 4 de 28
 
-Al emparejar `grid-column-start` y `grid-column-end`, podrías asumir que el valor final tiene que ser mayor que el valor inicial. ¡Pero no es el caso!  
+Al emparejar `grid-column-start` y `grid-column-end`, podrías asumir que el valor final tiene que ser mayor que el valor inicial. ¡Pero no es el caso! 
+
+Intenta establecer `grid-column-end` a un valor inferior a 5 para regar tus zanahorias.
+
 El siguiente caso va de reversa:
 
 ```
@@ -83,15 +88,17 @@ El siguiente caso va de reversa:
 }
 ```
 
-xx | xx | xx | xx | xx
---- | --- | --- | --- | ---|
---- | 🔴 | 🔴 | 🔴 | ---| 
+🐰 | 🥕 | 🥕 | 🥕 | 🐰
+-- | --- | -- | -- | -- |
+-- | 🔵 | 🔵 | 🔵 | -- | 
 
 
 ---
 ## Nivel 5 de 28
 
 Si prefieres contar las líneas de la cuadrícula comenzando por la derecha, puedes dar a `grid-column-start` y `grid-column-end` **valores negativos**. Por ejemplo, puedes establecerlos a _-1 para indicar la primera línea comenzando por la derecha_.
+
+Intenta establecer `grid-column-end` a un valor negativo.
 
 ```
 .water {
@@ -100,9 +107,9 @@ Si prefieres contar las líneas de la cuadrícula comenzando por la derecha, pue
 }
 ```
 
-xx | xx | xx | xx | xx
---- | --- | --- | --- | ---|
-🔴 | 🔴 | 🔴 | 🔴 | ---| 
+🥕 | 🥕 | 🥕 | 🥕 | 🐰
+-- | --- | -- | -- | -- |
+🔵 | 🔵 | 🔵 | 🔵 | -- | 
 
 
 ---
