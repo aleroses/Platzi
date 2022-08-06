@@ -1,0 +1,140 @@
+{
+  "main": {
+    "id": "20174be79c37d85e",
+    "type": "split",
+    "children": [
+      {
+        "id": "4f7ea38d666db9f2",
+        "type": "leaf",
+        "state": {
+          "type": "markdown",
+          "state": {
+            "file": "Obsidian/1.resumen-obsidian.md",
+            "mode": "source",
+            "source": false
+          }
+        }
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "5ca34994c1fffac1",
+    "type": "split",
+    "children": [
+      {
+        "id": "f1eadbf60a590d1d",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "e47fcf1aa6dc13e8",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {}
+            }
+          },
+          {
+            "id": "e4e6c8589efbe7a5",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "5991d2fb28cb7f36",
+            "type": "leaf",
+            "state": {
+              "type": "starred",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "9f3e5746014a5354",
+    "type": "split",
+    "children": [
+      {
+        "id": "6226e8f95bed36d4",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "c2831c2549191ca4",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Obsidian/1.resumen-obsidian.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": false
+              }
+            }
+          },
+          {
+            "id": "472aea367ef13353",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "Obsidian/1.resumen-obsidian.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "4312207770702811",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "ed1419efbe5d0c83",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Obsidian/1.resumen-obsidian.md"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "active": "e47fcf1aa6dc13e8",
+  "lastOpenFiles": [
+    "Apuntes/Obsidian/1.resumen-obsidian.md",
+    "Apuntes/Obsidian/().md",
+    "Apuntes/Obsidian/notaprueba02.md",
+    "Apuntes/Obsidian/notaprueba01.md",
+    "2022-08-05.md",
+    "Apuntes/DW/9-CSSGrid-Basico/CSSGrid-Basico.md"
+  ]
+}
