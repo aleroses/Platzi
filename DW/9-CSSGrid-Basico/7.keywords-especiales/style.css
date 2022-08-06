@@ -1,0 +1,22 @@
+.contenedor {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+
+    border: 5px solid #e1bee7;
+    background-color: white;
+}
+
+.contenedor-2 {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    margin-top: 100px;
+
+    border: 5px solid #e1bee7;
+    background-color: white;
+}
+
+.item {   
+    border: 5px solid #00bcd4;
+    font-size: 2rem;
+}
+
