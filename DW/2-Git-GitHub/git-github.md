@@ -70,7 +70,12 @@ Para solo guardar los cambios y no guardar todo el archivo de nuevo.
 
 📌 Solo admite archivos de _texto.md plano.txt_ o archivos que se puedan abrir en un editor de código. 📋📎👩‍💻
 
-[Flaticon - Iconos - Imgs](https://www.flaticon.com/)
+📌 Iconos/imágenes
+- [Flaticon - Iconos - Imgs](https://www.flaticon.com/)
+- [Iconarchive](http://www.iconarchive.com/)
+- [Undraw](https://undraw.co/illustrations)
+- [Svgporn - Marcas](https://svgporn.com/)
+- [Iconfinder](https://www.iconfinder.com/)
 
 🎲
 
@@ -355,148 +360,75 @@ Cuando trabajamos con Git nuestros archivos pueden vivir y moverse entre **_4 di
 	- `git rm --cached` Mueve los archivos que le indiquemos al estado Untracked.
 	- `git rm --force` Elimina los archivos de Git y del disco duro. Git guarda el registro de la existencia de los archivos, por lo que podremos recuperarlos si es necesario (pero debemos usar comandos más avanzados).
 
-![Ciclo básico](https://i.postimg.cc/N0TXmbsD/10-ciclo-basico-de-trabajo-en-git.png)
+> ![Ciclo básico](https://i.postimg.cc/N0TXmbsD/10-ciclo-basico-de-trabajo-en-git.png)
 
 🎲
 
 ## 11. ¿Qué es un Branch (rama) y cómo funciona un Merge en Git? 
 
-Git es una base de datos muy precisa con todos los cambios y crecimiento que ha tenido nuestro proyecto. Los commits son la única forma de tener un registro de los cambios. Pero las ramas amplifican mucho más el potencial de Git.
+Git es una base de datos muy precisa con todos los cambios y crecimiento de nuestro proyecto. Los `commits` son la única forma de tener un registro de los cambios. Pero las ramas amplifican mucho más el potencial de Git.
 
-Todos los commits se aplican sobre una rama. Por defecto, siempre empezamos en la rama master (pero puedes cambiarle el nombre si no te gusta) y creamos nuevas ramas, a partir de esta, para crear flujos de trabajo independientes.
+Todos los commits se aplican sobre una rama. Por defecto, siempre empezamos en la rama `master` (puedes cambiarle el nombre si no te gusta). Podemos crear nuevas ramas, a partir de esta, para crear flujos de trabajo independientes.
 
-Crear una nueva rama se trata de copiar un commit (de cualquier rama), pasarlo a otro lado (a otra rama) y continuar el trabajo de una parte específica de nuestro proyecto sin afectar el flujo de trabajo principal (que continúa en la rama master o la rama principal).
+Crear una nueva rama se trata de **_copiar un commit_** (de cualquier rama), pasarlo a otro lado (a otra rama) y continuar el trabajo de una parte específica de nuestro proyecto sin afectar el flujo de trabajo principal (que continúa en la rama master o la rama principal).   
+ 
+![Branch|50](https://i.postimg.cc/zBKvStXS/11-branch.png)    
 
-Los equipos de desarrollo tienen un estándar: Todo lo que esté en la rama master va a producción, las nuevas features, características y experimentos van en una rama “development” (para unirse a master cuando estén definitivamente listas) y los issues o errores se solucionan en una rama “hotfix” para unirse a master tan pronto como sea posible.
+**Estándar en equipos de desarrollo**     
+- `Branch master` Todo lo que esté en la rama master va a producción.  
+- `Branch development` Las nuevas features (características) y experimentos van en esta rama, para unirse a master cuando estén definitivamente listas.   
+- `Branch hotfix` Los issues (problemas) o errores se solucionan en esta rama, para unirse a master tan pronto como sea posible.
 
-Crear una nueva rama lo conocemos como Checkout. Unir dos ramas lo conocemos como Merge.
+📌 Crear una nueva rama lo conocemos como `Checkout`. Unir dos ramas lo conocemos como `Merge`.    
 
 Podemos crear todas las ramas y commits que queramos. De hecho, podemos aprovechar el registro de cambios de Git para crear ramas, traer versiones viejas del código, arreglarlas y combinarlas de nuevo para mejorar el proyecto.
 
 Solo ten en cuenta que combinar estas ramas (sí, hacer “merge”) puede generar conflictos. Algunos archivos pueden ser diferentes en ambas ramas. Git es muy inteligente y puede intentar unir estos cambios automáticamente, pero no siempre funciona. En algunos casos, somos nosotros los que debemos resolver estos conflictos “a mano”.
 
+> ![Branch and merge](https://i.postimg.cc/prR3TZGL/11-branch-merge.png)
+
 🎲
 
 ## 12. Volver en el tiempo en nuestro repositorio utilizando reset y checkout
 
-Recuerda que puedes empezar a aprender desarrollo web con el Curso de HTML y CSS.
+El comando `git checkout id-commit` nos permite **_viajar en el tiempo._** Podemos volver a cualquier versión anterior de un archivo específico o incluso del proyecto entero. Esta también es la forma de crear ramas y movernos entre ellas.    
 
-El comando git checkout + ID del commit nos permite viajar en el tiempo. Podemos volver a cualquier versión anterior de un archivo específico o incluso del proyecto entero. Esta también es la forma de crear ramas y movernos entre ellas.
+📌 Para extraer commit debemos usar el comando `git log`
 
-También hay una forma de hacerlo un poco más “ruda”: usando el comando git reset. En este caso, no solo “volvemos en el tiempo”, sino que borramos los cambios que hicimos después de este commit.
+**Git checkout:**    
+Opción 1    
+- `git checkout 83d73c4a2eb79az10a40b1309a algo.txt`
+	- Volvemos a una versión anterior.
+	- Con la **_opción 2_** podemos volver al punto antes de este checkout.
+- `git add .`  
+- `git commit -am "mensaje"`   
+	- Con esto el cambio hecho con checkout se vuelve permanente.
 
-Hay dos formas de usar git reset: con el argumento --hard, borrando toda la información que tengamos en el área de staging (y perdiendo todo para siempre). O, un poco más seguro, con el argumento --soft, que mantiene allí los archivos del área de staging para que podamos aplicar nuestros últimos cambios pero desde un commit anterior.
+Opción 2     
+- `git checkout master algo.txt`    
+	- Habiendo usado `git checkout` **_opción 1_**, la opción 2 nos regresa a la versión más reciente registrada en el repositorio, a la ultima versión antes de haber hecho checkout.
 
+También hay una forma de hacerlo un poco más “ruda”: usando el comando `git reset`. En este caso, no solo “volvemos en el tiempo”, sino que **_borramos los cambios que hicimos después de este commit_**.
 
------
+Hay dos formas de usar `git reset:`
+- Con el argumento `--hard`, borrando toda la información que tengamos en el área de staging (y perdiendo todo para siempre).
+- O, un poco más seguro, con el argumento `--soft`, que mantiene allí los archivos del área de staging para que podamos aplicar nuestros últimos cambios pero desde un commit anterior.
 
-Volver en el tiempo a versiones anteriores: 
+**Git reset:**     
+Opción 1    
+- `git reset 83d73c4a2eb79az03b1b130574e9e706c99a --hard`    
+	- Permite volver a una versión anterior de forma permanente.
 
-git log
-- Copiar commit
+Opción 2
+- `git reset 83d73c4a2eb79az03b1b130574e9e706c99a --soft`    
+	- Volvemos a una versión anterior pero lo que está en staging sigue ahí.
 
-git reset sfsdfasfasksjjasklfja --hard
-- Permite volver a una version anterior 
-git reset sfsjfkljfkals --soft
-	Volvemos al estado anterior pero lo que esta en staging sigue ahí 
-- git reset fsdkfjaskldfj --hard
-	Todo vuelve al estado anterior
+📌 `git log`   
+- Muestra como si lo trabajado anteriormente hubiera desaparecido.
+- Ejecutar con cuidado. 
 
-code historia.txt
-
-git log
-- Muestra como si lo trabajado anteriormente hubiera desaparecido
-- Ejecutar con cuidado
-
--- Creamos un archivo html --
-
-blogpost.html
-<html>
-
-Abrir archivo
-
-git status
-
-ls
-
-ls -al
-
-git add .
-
-git status
-
-
--- Creamos una nueva carpeta CSS--
-
-estilos.css
-
-body
-{
-	color: deeppink;
-	text-align: center;
-	font-family: "Arial";
-}
-
-
-Agregar link en el html
-
-git status
-
-git diff
-	-> Muestra las diferencias entre los cambios que estan en Staging y los que aun no se han añadido.
-
-git add .
-
-git status
-
-git commit -m "Arranco proyecto real con html y css"
-
-git status
-
-git log
-
-
---- Hacer cambios a historia.txt ---
-
-git add .
-
-git commit -m "Cambio de vida"
-
---- Hacer cambios a historia.txt ---
-
-git add .
-
-git commit -m "Cambio de maestría"
-
-git log
-
-git log --stat
-
-cuando los cambios son mas largos de lo que permite ver la pantalla usar las flechas y para salir usar q
-
---- Ver archivo en su primera versión ---
-
-git checkout sfsfdsafsfsfsfsfs historia.txt
-	-> regresa al archivo a la version que le diga según el código del commit. Si le damos git commit enseguida podremos dejar el archivo de manera definitiva en esta version.
-
-git status
-
-git checkout master historia.txt
-	-> Regresa a la ultima version, a la version mas reciente ya que con el checkout lo volvimos a una version anterior
-
---- Para mantener permanente ese cambio ---
-
-git checkout sfsfdsafsfsfsfsfs historia.txt
-
-Hacer cambios en archivo
-
-git add .
-
-git commit  -m "Reemplazo de una version por otra"
-
-git log
-
-git log --stat
+📌 Comando para ver las estadística del trabajo: `git log --stat`
+- Muestra los cambios específicos en los archivos existentes a partir del commit. ↕ para moverse y q para salir.
 
 🎲
 
