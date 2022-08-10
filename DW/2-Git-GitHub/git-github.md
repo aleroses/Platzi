@@ -34,7 +34,7 @@ Para solo guardar los cambios y no guardar todo el archivo de nuevo.
 - Sabe quien los hizo 
 - Volver a ellos en el pasado
 
-**Comandos para iniciar repo y enviar cambios**
+**Comandos para iniciar repo y enviar cambios**    
 `git init`     
 - Arranca el repositorio 📂.git
 - Crea una carpeta / repositorio que es una Base de Datos donde se van a guardar los cambios o versiones de cualquier archivo.
@@ -169,17 +169,17 @@ OSX está basado en un Kernel de UNIX llamado BSD. Estos significa que hay algun
 Son programa que permiten crear y modificar archivos de texto plano.
 
 **Tipos de archivos y sus diferencias:**     
-_**Archivos de Texto (.txt):**_ 📝
+_**Archivos de Texto (.txt):**_ 📝   
 Texto plano normal y sin nada especial. Se ve igual en un bloc de notas o en editores de texto avanzados.
 
-_**Archivos RTF (.rtf):** _ 📚     
+_**Archivos RTF (.rtf):** _ 📚      
 Texto con tamaños diferentes, estilos y colores. Se distorsiona al abrirlos en editores de texto avanzados.
 
-_**Archivos de Word (.docx):**_ 🖼🖍
+_**Archivos de Word (.docx):**_ 🖼🖍    
 Podemos guardar imágenes y texto con diferentes tamaños, estilos y colores. Al ser código binario se distorsiona al abrirlo en un editor de código. 
 
 
-**Habilitar las Extensiones de Archivos: **
+**Habilitar las Extensiones de Archivos:**   
 - Abriendo cualquier carpeta
 - Vista 
 	- Mostrar u ocultar 
@@ -303,7 +303,7 @@ En este punto creas tus archivos y les agregas contenido para luego enviarlos al
 
 ## 9. Analizar cambios en los archivos de tu proyecto con Git
 **Comandos para visualizar y comparar cambios**
-Para probar estos comandos usar un archivo que ya tenga varios cambios (`git add .` y `git commit` ).
+Para probar estos comandos usar un archivo que ya tenga varios cambios (`git add .` y `git commit`).
 
 - `git show algo.txt`
 	- Muestra los cambios que ha sufrido un archivo.
@@ -350,7 +350,7 @@ Cuando trabajamos con Git nuestros archivos pueden vivir y moverse entre **_4 di
 
 - `git status` nos permite ver el estado de todos nuestros archivos y carpetas.
 
-- `git add` nos ayuda a mover archivos del Untracked o Unstaged al estado **_Staged_**. Podemos usar `git nombre-del-archivo-o-carpeta` para añadir archivos y carpetas individuales o `git add .` para mover todos los archivos de nuestro proyecto (tanto Untrackeds como unstageds).
+- `git add` nos ayuda a mover archivos del Untracked o Unstaged al estado **_Staged_**. Podemos usar `git add nombre-del-archivo-o-carpeta` para añadir archivos y carpetas individuales o `git add .` para mover todos los archivos de nuestro proyecto (tanto Untrackeds como unstageds).
 
 - `git reset HEAD` nos ayuda a sacar archivos del estado Staged para devolverlos a su estado anterior. Si los archivos venían de Unstaged, vuelven allí. Y lo mismo se venían de Untracked.
 
