@@ -552,6 +552,8 @@ Tambien podemos movernos en el tiempo a cualquier otro commit de cualquier otra 
 
 📌 Al iniciar todo proyecto solo tenemos una rama llamada master o main, de donde parten las ramas que queramos hacer.  
 
+> ![Branches](https://i.postimg.cc/dt8MBCJ3/15-branches-git.png)
+
 🎲
 
 ## 16. Fusión de ramas con Git merge	
