@@ -434,173 +434,126 @@ Opción 2
 
 ## 13. Git reset vs. Git rm
 
-Git reset y git rm son comandos con utilidades muy diferentes, pero aún así se confunden muy fácilmente.
+`Git reset` y `git rm` son comandos con utilidades muy diferentes, pero aún así se confunden muy fácilmente.
 
-git rm
-Este comando nos ayuda a eliminar archivos de Git sin eliminar su historial del sistema de versiones. Esto quiere decir que si necesitamos recuperar el archivo solo debemos “viajar en el tiempo” y recuperar el último commit antes de borrar el archivo en cuestión.
+🔥 `git rm`      
+Este comando nos ayuda a eliminar archivos de Git sin eliminar su historial del sistema de versiones. Esto quiere decir que si necesitamos recuperar el archivo solo debemos “viajar en el tiempo” y recuperar el último commit antes de borrar el archivo en cuestión.   
 
-Recuerda que git rm no puede usarse así nomás. Debemos usar uno de los flags para indicarle a Git cómo eliminar los archivos que ya no necesitamos en la última versión del proyecto:
+Este comando no puede usarse así nada más. Debemos usar uno de los flags para indicarle a Git cómo eliminar los archivos que ya no necesitamos en la última versión del proyecto:     
 
-git rm --cached: Elimina los archivos del área de Staging y del próximo commit pero los mantiene en nuestro disco duro.
-git rm --force: Elimina los archivos de Git y del disco duro. Git siempre guarda todo, por lo que podemos acceder al registro de la existencia de los archivos, de modo que podremos recuperarlos si es necesario (pero debemos usar comandos más avanzados).
+- `git rm --cached`: Elimina los archivos del área de Staging y del próximo commit pero los mantiene en nuestro disco duro.      
+- `git rm --force`: Elimina los archivos de Git y del disco duro. Git siempre guarda todo, por lo que podemos acceder al registro de la existencia de los archivos, de modo que podremos recuperarlos si es necesario (pero debemos usar comandos más avanzados).    
 
-git reset
-Este comando nos ayuda a volver en el tiempo. Pero no como git checkout que nos deja ir, mirar, pasear y volver. Con git reset volvemos al pasado sin la posibilidad de volver al futuro. Borramos la historia y la debemos sobre escribir. No hay vuelta atrás.
+🔥 `git reset`      
+Este comando nos ayuda a volver en el tiempo. Pero **_no como git checkout_** que nos deja ir, mirar, pasear y volver. Con `git reset` volvemos al pasado sin la posibilidad de volver al futuro. Borramos la historia y la debemos sobre escribir. No hay vuelta atrás.    
 
-Este comando es muy peligroso y debemos usarlo solo en caso de emergencia. Recuerda que debemos usar alguna de estas dos opciones:
+Este comando **_es muy peligroso_** y debemos usarlo solo en caso de emergencia. Recuerda que debemos usar alguna de estas dos opciones:
 
-Hay dos formas de usar git reset: con el argumento --hard, borrando toda la información que tengamos en el área de staging (y perdiendo todo para siempre). O, un poco más seguro, con el argumento --soft, que mantiene allí los archivos del área de staging para que podamos aplicar nuestros últimos cambios pero desde un commit anterior.
+- `git reset --soft`: Borramos todo el historial y los registros de Git pero guardamos los cambios que tengamos en Staging, así podemos aplicar las últimas actualizaciones a un nuevo commit.       
+- `git reset --hard`: Borra toda la información que tengamos en el área de staging (perdiendo todo para siempre). Toda la información de los commits y del área de staging se borra del historial.   
 
-git reset --soft: Borramos todo el historial y los registros de Git pero guardamos los cambios que tengamos en Staging, así podemos aplicar las últimas actualizaciones a un nuevo commit.
-git reset --hard: Borra todo. Todo todito, absolutamente todo. Toda la información de los commits y del área de staging se borra del historial.
-¡Pero todavía falta algo!
+¡Pero todavía falta algo!    
 
-git reset HEAD: Este es el comando para sacar archivos del área de Staging. No para borrarlos ni nada de eso, solo para que los últimos cambios de estos archivos no se envíen al último commit, a menos que cambiemos de opinión y los incluyamos de nuevo en staging con git add, por supuesto.
-¿Por qué esto es importante?
-Imagina el siguiente caso:
+- `git reset HEAD`: Este es el comando para sacar archivos del área de Staging. No para borrarlos ni nada de eso, solo para que los últimos cambios de estos archivos no se envíen al último commit, a menos que cambiemos de opinión y los incluyamos de nuevo en staging con `git add,` por supuesto.        
 
-Hacemos cambios en los archivos de un proyecto para una nueva actualización. Todos los archivos con cambios se mueven al área de staging con el comando git add. Pero te das cuenta de que uno de esos archivos no está listo todavía. Actualizaste el archivo pero ese cambio no debe ir en el próximo commit por ahora.
+¿Por qué esto es importante? 🤔        
 
-¿Qué podemos hacer?
+✨ Imagina el siguiente caso:       
+Hacemos cambios en los archivos de un proyecto para una nueva actualización. Todos los archivos con cambios se mueven al área de staging con el comando git add. Pero te das cuenta de que uno de esos archivos no está listo todavía. Actualizaste el archivo pero ese cambio no debe ir en el próximo commit por ahora.       
+
+¿Qué podemos hacer? 😵        
 
 Bueno, todos los cambios están en el área de Staging, incluido el archivo con los cambios que no están listos. Esto significa que debemos sacar ese archivo de Staging para poder hacer commit de todos los demás.
 
-¡Al usar git rm lo que haremos será eliminar este archivo completamente de git! Todavía tendremos el historial de cambios de este archivo, con la eliminación del archivo como su última actualización. Recuerda que en este caso no buscábamos eliminar un archivo, solo dejarlo como estaba y actualizarlo después, no en este commit.
+💀 ¡Al usar `git rm` lo que haremos será eliminar este archivo completamente de git! Todavía tendremos el historial de cambios de este archivo, con la eliminación del archivo como su última actualización. Recuerda que en este caso no buscábamos eliminar un archivo, solo dejarlo como estaba y actualizarlo después, no en este commit. ☠❌💀
 
-En cambio, si usamos git reset HEAD, lo único que haremos será mover estos cambios de Staging a Unstaged. Seguiremos teniendo los últimos cambios del archivo, el repositorio mantendrá el archivo (no con sus últimos cambios pero sí con los últimos en los que hicimos commit) y no habremos perdido nada.
+😊 En cambio, si usamos `git reset HEAD`, lo único que haremos será mover estos cambios de Staging a Unstaged. Seguiremos teniendo los últimos cambios del archivo, el repositorio mantendrá el archivo (no con sus últimos cambios pero sí con los últimos en los que hicimos commit) y no habremos perdido nada. 😄😊
 
-Conclusión: Lo mejor que puedes hacer para salvar tu puesto y evitar un incendio en tu trabajo es conocer muy bien la diferencia y los riesgos de todos los comandos de Git.
+**Conclusión:** Lo mejor que puedes hacer para salvar tu puesto y evitar un incendio en tu trabajo es conocer muy bien la diferencia y los riesgos de todos los comandos de Git. 🤩
 
 🎲
 
 ## 14. Flujo de trabajo básico con un repositorio remoto
 
-Por ahora, nuestro proyecto vive únicamente en nuestra computadora. Esto significa que no hay forma de que otros miembros del equipo trabajen en él.
+Por ahora, nuestro proyecto vive únicamente en nuestra computadora. Esto significa que no hay forma de que otros miembros del equipo trabajen en él.      
 
 Para solucionar esto están los servidores remotos: un nuevo estado que deben seguir nuestros archivos para conectarse y trabajar con equipos de cualquier parte del mundo.
 
-Estos servidores remotos pueden estar alojados en GitHub, GitLab, BitBucket, entre otros. Lo que van a hacer es guardar el mismo repositorio que tienes en tu computadora y darnos una URL con la que todos podremos acceder a los archivos del proyecto para descargarlos, hacer cambios y volverlos a enviar al servidor remoto para que otras personas vean los cambios, comparen sus versiones y creen nuevas propuestas para el proyecto.
+Pueden estar alojados en:       
+- `GitHub`
+- `GitLab`
+- `BitBucket`
+- Otros    
 
-Esto significa que debes aprender algunos nuevos comandos:
+Estos servidores guardan el mismo repositorio que tienes en tu computadora, además brindan una URL con la que todos podremos acceder a los archivos del proyecto para descargarlos, hacer cambios y volverlos a enviar al servidor remoto para que otras personas vean los cambios, comparen sus versiones y creen nuevas propuestas para el proyecto.             
 
-git clone url_del_servidor_remoto: Nos permite descargar los archivos de la última versión de la rama principal y todo el historial de cambios en la carpeta .git.
+Esto significa que debes aprender algunos nuevos comandos:       
 
-git push: Luego de hacer git add y git commit debemos ejecutar este comando para mandar los cambios al servidor remoto.
+- `git clone url_del_servidor_remoto`: Nos permite descargar los archivos de la última versión de la rama principal y todo el historial de cambios en la carpeta .git.      
 
-git fetch: Lo usamos para traer actualizaciones del servidor remoto y guardarlas en nuestro repositorio local (en caso de que hayan, por supuesto).
+- `git push`: Luego de hacer `git add` y `git commit` debemos ejecutar este comando para mandar los cambios al servidor remoto.   
 
-git merge: También usamos el comando git merge con servidores remotos. Lo necesitamos para combinar los últimos cambios del servidor remoto y nuestro directorio de trabajo.
+- `git fetch`: Lo usamos para traer actualizaciones del servidor remoto y guardarlas en nuestro repositorio local (en caso de que hayan, por supuesto).      
 
-git pull: Básicamente, git fetch y git merge al mismo tiempo.
+- `git merge`: También usamos el comando git merge con servidores remotos. Lo necesitamos para combinar los últimos cambios del servidor remoto y nuestro directorio de trabajo.      
+
+- `git pull`: Básicamente, `git fetch` y `git merge` al mismo tiempo. ✨     
 
 
--- Otros Comando --
+**Otros Comando**        
+Algunos comandos que pueden ayudar cuando colaboren con **_proyectos muy grandes_** de GitHub:  
 
-Algunos comandos que pueden ayudar cuando colaboren con proyectos muy grandes de github:
+- `git log --oneline`: Te muestra el id commit y el título del commit.       
+- `git log --decorate`: Te muestra donde se encuentra el head point en el log.      
+- `git log --stat`: Explica el número de líneas que se cambiaron brevemente.     
+- `git log -p`: Explica el número de líneas que se cambiaron y te muestra que se cambió en el contenido.    
+- `git shortlog`: Indica que commits ha realizado un usuario, mostrando el usuario y el titulo de sus commits.     
+- `git log --graph --oneline --decorate` y       
+- `git log --pretty=format"%cn hizo un commit %h el dia %cd"`: Muestra mensajes personalizados de los commits.      
+- `git log -3`: Limitamos el número de commits.     
+- `git log --after=“2018-1-2”`,      
+- `git log --after=“today`” y   
+- `git log --after=“2018-1-2” --before=“toda y”`: Commits para localizar por fechas.    
+- `git log --author=“Name Author”`: Commits realizados por autor que cumplan exactamente con el nombre.      
+- `git log --grep=“INVIE”` - Busca los commits que cumplan tal cual está escrito entre las comillas.         
+- `git log --grep=“INVIE” –i`: Busca los commits que cumplan sin importar mayúsculas o minúsculas.      
+- `git log – index.html`: Busca los commits en un archivo en específico.     
+- `git log -S “Por contenido”`: Buscar los commits con el contenido dentro del archivo.     
+- `git log > log.txt`: Guarda logs en un archivo txt.  
 
-git log --oneline - Te muestra el id commit y el título del commit.
-git log --decorate- Te muestra donde se encuentra el head point en el log.
-git log --stat - Explica el número de líneas que se cambiaron brevemente.
-git log -p- Explica el número de líneas que se cambiaron y te muestra que se cambió en el contenido.
-git shortlog - Indica que commits ha realizado un usuario, mostrando el usuario y el titulo de sus commits.
-git log --graph --oneline --decorate y
-git log --pretty=format:"%cn hizo un commit %h el dia %cd" - Muestra mensajes personalizados de los commits.
-git log -3 - Limitamos el número de commits.
-git log --after=“2018-1-2” ,
-git log --after=“today” y
-git log --after=“2018-1-2” --before=“today” - Commits para localizar por fechas.
-git log --author=“Name Author” - Commits realizados por autor que cumplan exactamente con el nombre.
-git log --grep=“INVIE” - Busca los commits que cumplan tal cual está escrito entre las comillas.
-git log --grep=“INVIE” –i- Busca los commits que cumplan sin importar mayúsculas o minúsculas.
-git log – index.html- Busca los commits en un archivo en específico.
-git log -S “Por contenido”- Buscar los commits con el contenido dentro del archivo.
-git log > log.txt - guardar los logs en un archivo txt
+> ![Flujo básico repo-remoto](https://i.postimg.cc/90d1P8mm/14-flujo-repo-remoto.png)
 
 🎲
 
 ## 15. Introducción a las ramas o branches de Git
 
-Las ramas son la forma de hacer cambios en nuestro proyecto sin afectar el flujo de trabajo de la rama principal. Esto porque queremos trabajar una parte muy específica de la aplicación o simplemente experimentar.
+Las ramas son la forma de hacer cambios en nuestro proyecto sin afectar el flujo de trabajo de la rama principal (master/main). Esto porque queremos trabajar una parte muy específica de la aplicación o simplemente experimentar.        
 
-La cabecera o HEAD representan la rama y el commit de esa rama donde estamos trabajando. Por defecto, esta cabecera aparecerá en el último commit de nuestra rama principal. Pero podemos cambiarlo al crear una rama (git branch rama, git checkout -b rama) o movernos en el tiempo a cualquier otro commit de cualquier otra rama con los comandos (git reset id-commit, git checkout rama-o-id-commit).
+**HEAD: Cabecera**      
+La cabecera o HEAD representa la rama y el commit de esa rama donde estamos trabajando. Por defecto, esta cabecera aparecerá en el último commit de nuestra rama principal.  
 
----Apuntes---
-En el proyecto al principio tenemos una rama llamada master y hemos hablado mucho de eso.
-Lo veras en la consola dentro del proyecto.
+**Crear ramas:** 🔥     
+- `git branch nameBranch`: Crea una nueva rama desde el lugar que estas ubicado (master/main). Se copia el ultimo commit registrado en el repositorio. Todos los cambios que hagamos en esta rama no los va a ver la rama master/main hasta que la volvamos a fusionar con un `git merge`.    
 
-Las ramas son formas en las que nosotros podemos hacer cambios sin afectar la principal rama.
-Eso es importante porque en ocasiones quieres hacer un cambio especial.
+**Cambia entre ramas:** 🔥      
+- `git checkout nameBranch`      
 
-En nuestro proyecto tenemos un post y vamos a hacer que mientras la rama master o maestra esta cambiando el block post normalmente, hay una rama paralela que va crear una Header una cabecera, y a esa rama la vamos a llamar Cabecera y luego las vamos a fusionar para ver como queda en la rama maestra y así entender el flujo de ramas dentro de git.
+¿Qué pasa al cambiar de rama? ✨       
+Al movernos de una rama a otra los archivos se muestran según el estado de cada rama independiente.
 
-Master es nuestra rama principal y en esa rama tenemos toda nuestra historia de commit, cada vez que hemos hecho0 un cambio a nuestros archivos viven en esos commit.
-El commit mas reciente es el que llamamos HEAD o Cabecera.
+🤘 `git checkout -b nameBranch`: Este comando es una fusión entre `git branch` y `git checkout` y crea una rama llamada `nameBranch` y a la vez hace un checkout de la rama `nameBranch`.
 
-Imaginemos que creamos otra rama llamada cabecera, esto realmente hace una copia del ultimo commit en otro lado y todos los cambios que hagamos en esta rama no los va a ver la rama master hasta que la volvamos a fusionar con un proceso llamado merge.
 
--> Hacemos cambios en blogpost.html
+Tambien podemos movernos en el tiempo a cualquier otro commit de cualquier otra rama con los comandos:   
+- `git reset id-commit` 
+- `git checkout rama-o-id-commit`
+ 
+📌 Cada vez que estés en una rama no olvidar realizar add o commit -am a los cambios realizados en cada rama correspondiente.   
 
->> git status 
->> git commit -am "Mensaje de referencia"
-	Esto automáticamente hace el git add de los cambios pero solo funciona con archivos que se les había hecho un add previamente. Si creo un archivo completamente nuevo esto no va a funcionar.
-
-Si no le doy un mensaje me dispara un entorno (VIM) donde puedo escribir el mensaje.
-
->> Esc + i
-	Insertar texto -> Commit al master del Blogpost en su version mas reciente
-
->> Esc + shif + zz
-	Guardar
-	
->> git log
-
->> git log --stat
-
->> git status 
-
->> git show
-	q para salir
-	
->> git branch cabecera
-	Crea una rama llamada cabecera
-	
->> git show 
-	Dice que tengo un HEAD que le apunta al master y a la cabecera 		
-	
->> git status
-	Sigo en la rama master
-	
->> git checkout cabecera 
-	Cambiamos de rama y ahora veremos el HEAD -> cabecera
-	
->> git status
-
--> Hacemos cambios en blogpost.html
-
->> git status 
-
->> git add blogpost.html 
->> git commit -m "Estructura inicial de la cabecera"
-
->> git status
->> git show
->> git log
-	q para salir 
-	
-
->> git checkout master
-	Nos movemos a la rama master, veremos que nuestro archivo cambio a lo que teníamos antes de agregar la cabecera dentro del html
-	
->> git log 
-	
->> git checkout cabecera
-	volvemos a la rama cabecera y el archivo cambia inmediatamente 
-	
-	
->> Esta es la magia de git, podemos tener multiples archivos cambiando solo se guardan los cambios e....
+📌 Al iniciar todo proyecto solo tenemos una rama llamada master o main, de donde parten las ramas que queramos hacer.  
 
 🎲
-		
+
 ## 16. Fusión de ramas con Git merge	
 	
 El comando git merge nos permite crear un nuevo commit con la combinación de dos ramas (la rama donde nos encontramos cuando ejecutamos el comando y la rama que indiquemos después del comando).
