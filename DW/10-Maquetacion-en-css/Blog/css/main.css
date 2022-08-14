@@ -215,3 +215,101 @@ footer p {
 }
 
 
+
+
+.blogpost-img-container {
+    padding: 0 50px 40px;
+}
+
+.blogpost-img-container img {
+    width: 100%;
+}
+
+.blogpost-main-container {
+    padding: 0 50px 40px;
+}
+
+.blogpost-main-container h3 {
+    border-bottom: 1px solid #cdd2da;
+    padding-bottom: 20px;
+
+}
+
+.blogpost-main-container article h1 {
+    margin: 25px 0;
+    font-size: 35px;
+}
+
+.contact-main-container {
+    width: 100%;
+    min-height: 250px;
+    background-color: #e6e9ed;
+    text-align: center;
+    padding-bottom: 50px;
+}
+
+.contact-main-container div {
+    display: inline-block;
+    width: 49.5%;
+    height: 100%;
+}
+
+.contact-main-container div a {
+    border-bottom: 1px solid black;
+    padding-bottom: 5px;
+}
+
+.contact-main-container .contact-left, .contact-right {
+    text-align: initial;
+    margin-top: 85px;
+}
+
+.contact-left p {
+    margin-top: 10px;
+}
+
+.contact-right p {
+    margin-top: 10px;
+}
+
+.contact-main-container img {
+    width: 100px;
+}
+
+
+
+.profile-main-container {
+    padding: 70px 40px;
+    background-color: #e6e9ed;
+    margin-bottom: 50px;
+}
+
+.profile-main-container img {
+    width: 320px;
+    margin-right: 30px;
+}
+
+
+
+.profile-main-container .profile-container {
+    display: flex;
+}
+
+.profile-main-projects {
+    padding: 0 50px 40px;
+}
+
+.profile-main-projects h3 {
+    border-bottom: 1px solid #cdd2da;
+    padding-bottom: 35px;
+    text-align: center;
+}
+
+.projects-main-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.project-container {
+    padding: 0 5px;
+}
