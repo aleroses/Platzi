@@ -582,7 +582,7 @@ El comando `git merge` nos permite crear un nuevo commit con la **_combinación 
 - `git branch --merged`: Muestra las ramas que han sido fusionadas con la rama activa.        
 - `git branch --no-merged`: Muestra todas las ramas que contienen trabajos sin fusionar.   
 - `git log --oneline --graph --all`: Permite visualizar la estructura gráfica de las ramas.     
-- `git merge -d "nameBranch"`: Permite eliminar ramas.   
+- `git branch -D "nameBranch"`: Permite eliminar ramas.   
 
 📌 Recuerda que al ejecutar el comando `git checkout` para cambiar de rama o commit **_puedes perder el trabajo que no hayas guardado_**. Guarda tus cambios antes de hacer git checkout.❗❗❗	   
 
@@ -729,5 +729,47 @@ Las llaves públicas y privadas nos ayudan a cifrar y descifrar nuestros archivo
 ✨ En la siguiente clase vamos a crear nuestras llaves para compartir archivos con GitHub sin correr el riesgo de que sean interceptados.
 
 ![Private key and Public key](https://i.postimg.cc/qRVW0W28/20-keys.png)
+
+🎲
+
+## 21. Configura tus llaves SSH en local
+
+🔥 **Configuración local de Git**     
+1. Usamos Email de GitHub   
+	- `git config -l`
+	- `git config --global user.email "algo@gmail.com"`
+
+2. Generar llaves SSH: Protege tu llave privada con un passphrase (opcional).   
+	- `ssh-keygen -t rsa -b 4096 -C "algo@gmail.com"`
+> ![Llaves](https://i.postimg.cc/9F2bMYKZ/21-llave.webp)
+
+✨ Ver las llaves creadas       
+- `C:/users/oneuser/.ssh`
+
+🔥 **Configurar S.O Windows - Linux**    
+1. Revisar encender el servidor de llaves SSH de tu computadora
+	- `eval $(ssh-agent -s)`
+
+2.  Agregar llave privada al servidor
+	- `ssh-add ~/.ssh/id_rsa`
+
+📌 ~ alt + 126
+
+🔥 **Configurar S.O MAC**    
+- `cd ~`
+- `ssh-keygen -t rsa -b 4096 -C "algo@gmail.com"`
+- `eval "$(ssh-agent -s)"`
+
+Si dentro de .ssh no existe el archivo config toca crearlo sin extensiones.
+- `vim config` Esc + i    ...    Esc + Shift + zz
+```
+	Host *
+		AddKeysToAgent yes
+		UseKeychain yes
+		IdentityFile ruta-donde-guardaste-tu-llave-privada
+```
+- `ssh-add -K ~/.ssh/id_rsa`
+
+✨ [Tutorial](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent)
 
 🎲
