@@ -734,6 +734,8 @@ Las llaves públicas y privadas nos ayudan a cifrar y descifrar nuestros archivo
 
 ## 21. Configura tus llaves SSH en local
 
+En el entorno local vamos a crear una llave privada y una publica y una vez creada le vamos a enviar la llave publica a GitHub a tu repositorio.    
+
 🔥 **Configuración local de Git**     
 1. Usamos Email de GitHub   
 	- `git config -l`
@@ -749,11 +751,18 @@ Las llaves públicas y privadas nos ayudan a cifrar y descifrar nuestros archivo
 🔥 **Configurar S.O Windows - Linux**    
 1. Revisar encender el servidor de llaves SSH de tu computadora
 	- `eval $(ssh-agent -s)`
+- [x] Evalúa que un comando se dispare
+- [x] Agent: Significa que el servidor SSH está corriendo 
+- [x] PID: Process ID -> identificador del proceso
+- [x] 1243: número que indica que el proceso está corriendo y todo está bien
+
+> Esto básicamente es un programa que revisa que las llaves estén corriendo y que las conecta para hacer la **conexión doble** cuando nos conectemos a un servidor remoto, en este caso a GitHub.
 
 2.  Agregar llave privada al servidor
 	- `ssh-add ~/.ssh/id_rsa`
 
-📌 ~ alt + 126
+📌 ~ alt + 126:   
+Símbolo llamado virgulilla que **en los sistemas operativos UNIX se refiere al valor de la variable $HOME , esto es, el directorio del usuario que está logueado**. Permite de esta forma referenciar ese directorio directamente, sin tener que escribir /home/usuario/ cada vez.
 
 🔥 **Configurar S.O MAC**    
 - `cd ~`
@@ -769,7 +778,32 @@ Si dentro de .ssh no existe el archivo config toca crearlo sin extensiones.
 		IdentityFile ruta-donde-guardaste-tu-llave-privada
 ```
 - `ssh-add -K ~/.ssh/id_rsa`
+- [x] K: key change o algo así xd
+- [x] De llegar a dar error solo quita -K
 
 ✨ [Tutorial](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent)
+
+
+**¿Por qué usar esto?** ❄        
+Cuando te conectas a GitHub e ingresas tu usuario y contraseña, tienes dos problemas:    
+- Que siempre tienes que estar haciéndolo 
+- Siendo una conexión segura HTTPS, el usuario y contraseña se están guardando en el entorno local esto significa que si roban tu laptop o computadora, eres vulnerable a password cracking, a que crackeen la contraseña de tu repositorio y esto es muy problemático, porque si entran a tu código fuente pueden entrar a tu servidor o a tu mega proyecto, etc.       
+
+Para evitar esto debemos agregarle una capa de seguridad mucho mas fuerte con llaves publicas y privadas.      
+
+Esto no solo aumenta la seguridad sino que además ya no tienes que volver a colocar tu usuario y contraseña.     
+
+✨ Las llaves SSH no son por repositorio ni por proyecto si no por persona.
+
+📌 Cifrar disco usando BitLocker 
+
+OJO: Si agregan una contraseña cuando les pide el ‘passphrase’ esto hará que siempre que hagan pull/push les pida esa misma contraseña. ❗❗❗    
+
+Esto es muy tedioso, por lo que recomiendo poner una contraseña fácil o directamente no poner nada ya que con la configuración de la llave SSH es seguro de por sí.
+
+🔥 Pero en el caso que si pusieron y quieren cambiarla o directamente eliminarla les comparto el siguiente comando:
+- `ssh-keygen -f ~/.ssh/id_rsa -p`
+
+Con esto pueden modificar la contraseña o no poner nada directamente.
 
 🎲
