@@ -745,6 +745,9 @@ En el entorno local vamos a crear una llave privada y una publica y una vez crea
 	- `ssh-keygen -t rsa -b 4096 -C "algo@gmail.com"`
 > ![Llaves](https://i.postimg.cc/9F2bMYKZ/21-llave.webp)
 
+📌 Si no pudieron crear su llave seguramente no se los permite por la falta de actualización del algoritmo rsa, actualmente pude crear la mía con esta nueva llamada ED25519.   
+	- `ssh-keygen -t ed25519 -C "your_email@example.com"`
+
 ✨ Ver las llaves creadas       
 - `C:/users/oneuser/.ssh`
 
@@ -866,5 +869,57 @@ Your repositories
 	- blogpost.html
 		- Vemos los cambios
 		- History
+
+🎲
+
+## 23. Tags y versiones en Git y GitHub
+
+Los tags o etiquetas nos permiten asignar versiones a los commits con cambios más importantes o significativos de nuestro proyecto.
+
+**Revisar la historia del proyecto**   
+- `git log`   
+- `git log --all`   
+- `git log --all --graph`  
+- `git log --all --graph --decorate --oneline`  
+
+🔥 **Comandos para trabajar con etiquetas:**     
+- `git tag` o `git show-ref --tags`
+	- Listar los tags de nuestro repositorio local.
+	- Saber a que hast o a que commit está conectado un tag
+	- Nos muestra el tag llamado v0.1 que está asignado a un commit
+- `git tag -a nombre-del-tag id-del-commit`
+	- Crear un nuevo tag y asignarlo a un commit
+	- `git tag -a version0.1 -m "Resultados" 1fc92a796e58f4b9f`
+		- -a: Add agregar
+		- version0.1: Nombre asignado al tag
+		- 1fc92a796e58f4b9f: Hast, commit que obtenemos usando el comando git log, en el punto que queramos que sea el final de la versión.
+- `git tag -d nombre-del-tag`
+	- Borrar un tag en el repositorio local:
+- `git push origin --tags`  
+	- Publicar un tag en el repositorio remoto
+	- Primero hacer git pull antes de enviar algo a GitHub
+- `git tag -d nombre-del-tag` y `git push origin :refs/tags/nombre-del-tag`
+	- Borrar un tag del repositorio remoto
+
+❄ **Revisamos en GitHub** :octocat:     
+Your repositories     
+- Proyecto Hyperblogs
+	- master >> branch >> tag
+
+🔥 **Crear alias**    
+Temporal:    
+- `alias arbolito="git log --all --graph --decorate --oneline"`   
+
+Permanente: Para un proyecto:       
+- `git config alias.arbolito "log --all --graph --decorate --oneline"`
+
+Permanente: Global:     
+- `git config --global alias.arbolito "log --all --graph --decorate --oneline"`
+
+Para correrlo:        
+`arbolito` or `git arbolito` Ahora cada vez que escribamos arbolito ejecutara el comando `git log --all --graph --decorate --oneline` 
+
+📌 Comando que permite guardar alias solo para git. con esto se puede ejecutar cada que se escribe git arbolito
+- `git config --global alias.arbolito "log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all"`
 
 🎲
