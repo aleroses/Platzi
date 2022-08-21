@@ -787,7 +787,9 @@ Si dentro de .ssh no existe el archivo config toca crearlo sin extensiones.
 **¿Por qué usar esto?** ❄        
 Cuando te conectas a GitHub e ingresas tu usuario y contraseña, tienes dos problemas:    
 - Que siempre tienes que estar haciéndolo 
-- Siendo una conexión segura HTTPS, el usuario y contraseña se están guardando en el entorno local esto significa que si roban tu laptop o computadora, eres vulnerable a password cracking, a que crackeen la contraseña de tu repositorio y esto es muy problemático, porque si entran a tu código fuente pueden entrar a tu servidor o a tu mega proyecto, etc.       
+- Siendo una conexión segura HTTPS, el usuario y contraseña se están guardando en el entorno local esto significa que si roban tu laptop o computadora, eres vulnerable a password cracking, a que crackeen la contraseña de tu repositorio y esto es muy problemático, porque si entran a tu código fuente pueden entrar a tu servidor o a tu mega proyecto, etc. 
+
+> ![Keys](https://i.postimg.cc/q7nGffPV/21-SSH-en-local.png)  
 
 Para evitar esto debemos agregarle una capa de seguridad mucho mas fuerte con llaves publicas y privadas.      
 
@@ -805,5 +807,64 @@ Esto es muy tedioso, por lo que recomiendo poner una contraseña fácil o direct
 - `ssh-keygen -f ~/.ssh/id_rsa -p`
 
 Con esto pueden modificar la contraseña o no poner nada directamente.
+
+🎲
+
+## 22. Conexión a GitHub con SSH
+
+Luego de crear nuestras llaves SSH podemos entregarle la llave pública a GitHub para comunicarnos de forma segura y sin necesidad de escribir nuestro usuario y contraseña todo el tiempo.
+
+❄ **Añadir llave pública en GitHub**     
+Para esto necesitas copias la **llave pública** de tu computadora    
+- C:/users/oneuser/.ssh
+
+Luego:
+- Ir al perfil de GitHub :octocat:   
+	- Settings
+	- SSH and GPG Keys
+	- New SSH Key 🟩
+		- Title: Laptop de educación de Platzi
+		- Key: Pegar llave
+		- Add SSH key
+
+❄ **Obtener URL SSH**    
+- En GitHub :octocat:    
+	- Your repositores 
+	- Hyperblog 
+	- Code: 🟩 Clone
+	- SSH -> Copiar
+
+🔥 **Actualizar URL de HTTPS a SSH**    
+Ahora podemos actualizar la URL que guardamos en nuestro repositorio remoto, solo que, en vez de guardar la URL con HTTPS, vamos a usar la URL con SSH:
+- Dentro de nuestro proyecto
+- `git remote -v`
+- `git remote set-url origin url-ssh-repo-de-github`
+	- origin es un estándar de la industria y perfectamente se puede colocar otro nombre.
+
+
+📌 Si es la primera vez que añades una URL utiliza el comando:     
+**Ver tema: 19 y 21**     
+- `git remote add origin url`
+
+
+🔥 **Verificar que funciona**    
+- Hacer cambios en el proyecto
+- Antes de hacer un `commit` debemos traernos la ultima version del servidor GitHub  
+- `git pull origin master`
+	- origin es el nombre del repositorio remoto
+	- Este comando trae los cambios del repositorio remoto y los fusiona con la rama actual master
+- `git status` 
+- `git diff`
+- `git commit -am "Una versión del HiperBlog"`
+- Ahora, antes de enviar los cambios al repositorio remoto debemos hacer un `git pull`. En caso de que alguien haya hecho cambios y así no tener conflictos.
+- `git pull origin master`
+- `git push origin master`
+
+❄ **Verificamos en GitHub** :octocat:     
+Your repositories   
+- hyperblog
+	- blogpost.html
+		- Vemos los cambios
+		- History
 
 🎲
