@@ -1637,3 +1637,32 @@ Por ejemplo: Si tienes código que tiene que ser construido como un JavaScript q
 Travis cuesta dinero a menos que lo estés usando para proyectos open source, pero si tu quieres instalar uno tienes Jenkins.io esto es otro sistema, es poderoso pero es muy complejo y esto lo enseñan en cursos de integración continua. El curso de GitLab te enseña a profundidad estas cosas.       
 
 🎲
+
+## 31. Hazme un pull request
+
+Aviso importante del Team Platzi
+
+¡Muchas gracias por tu participación en este reto! Hasta agosto de 2020 hemos procesado 1.269 pull requests en el repositorio del curso. Ahora hemos decidido cerrar este experimento, por lo que no seguiremos aprobando nuevos PRs. ¡Pero no te desanimes! Aún así te animamos a completar y enviar tu solución a este desafío para poner en práctica todo lo que has aprendido.
+
+Queremos que uses las habilidades ya aprendidas para aplicarlas en esta clase. Haz un fork de el repositorio de GitHub y realiza las tareas que te indicaremos en esta clase. Ojo, debes seguir las reglas e instrucciones que se dieron en el video.
+
+Regla a seguir:
+
+Dentro del ID “post” luego de “suscribete y dale like” agrega otra línea o párrafo con tu nombre o tu nombre de usuario en Platzi.
+¡Suerte! Y #NuncaParesDeAprender
+
+✨ Apuntes de la clase para dar solución al reto       
+
+Desafío Ver clase 29    
+- Ir a hyperblog en freddier/hyperblog
+- Hacer un fork
+- Estrella y un Watch
+- Hacer un pull request
+	- Reglas:
+	- En blogpost
+			- Dentro del Id="post"
+				- Debajo de suscríbete y dale like
+				- Agregar otro párrafo con tu nombre o id de usuario de platzi
+		- Pull request
+
+🎲
