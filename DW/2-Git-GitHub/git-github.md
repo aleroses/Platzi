@@ -1069,6 +1069,8 @@ El jefe del proyecto debe fusionar las ramas en Master
 
 A master solo se envía lo que se esta seguro que está listo para ir a  producción, es una buena practica.
 
+> ![Flujo en ramas](https://i.postimg.cc/y8LjDHWt/26-flujo-ramas.png)
+
 
 📌 Imágenes en GitHub:     
 Las mejores practicas dicen que no se debe agregar imágenes (binarios) a GitHub.
@@ -1141,5 +1143,47 @@ Además
 - Revisar la Configuración de la Protección contra rastreo de Firefox
 - Icono de escudo en la pagina que estoy visitando
 - Deshabilitar para esta sesión 
+
+🎲
+
+## 27. Flujo de trabajo profesional con Pull requests
+
+En un entorno profesional normalmente se bloquea la rama master, y para enviar código a dicha rama pasa por un `code review` y luego de su aprobación se unen códigos con los llamados `merge request`.   
+
+Para realizar pruebas enviamos el código a servidores que normalmente los llamamos `staging develop` (servidores de pruebas) luego de que se realizan las pruebas pertinentes tanto de código como de la aplicación estos pasan a el servidor de producción con el ya antes mencionado merge request.  
+
+> ![Flujo Pull request](https://i.postimg.cc/JnKMgxq9/27-flujo-pull-requests.png)
+
+❄ La forma en la funciona en el mundo real, en el mundo de la programación profesional es la siguiente:  
+
+Imagina que tienes una rama master, la rama principal. Lo mas importante de esta rama es que es desde aquí que se envía todo al servidor remoto, al servidor real de producción, donde se alojara la versión final.   
+
+A veces tenemos que hacer pruebas en entornos que se parezcan al de producción sin que afecte a los usuarios.   
+
+Esos tipos de servidores se llaman servidores de desarrollo o servidores de staging. No confundir con staging, el area intermedia antes de enviar todo al repositorio local con un commit.
+Son distintos una cosa es staging para el desarrollo y otra es staging dentro de git.    
+
+Staging en los servidores de desarrollo son ramas que es lo que está justo antes de master y justo aquí está el servidor de pruebas y se parece tanto como sea posible al servidor real.   
+
+❄ Esto funciona de la siguiente manera:   
+- Creamos una rama especial donde se va a tener lo que sea que se esta desarrollando que es la rama de feature o la rama de característica en nuestro caso creamos una para el header y otra para el footer y se desarrollo en el area local normal de toda la vida y luego envían la ultima version de esa rama a staging para hacerle un merge a la ultima version de staging.
+
+- En teoría staging y master siempre deberían estar actualizados y esto es trabajo del líder de equipo pero asumiendo que están actualizados esto se llamaría normalmente merge pero resulta que el merge no es la forma correcta de hacerlo porque en un entorno profesional hay que revisar el código, entonces esto va a un lugar intermedio que se conoce como pull request, un pull request es básicamente un estado intermedio antes de enviar el merge.
+
+- Lo que el pull request me permite es que otros miembros del equipo puedan ver los cambios que tu hiciste y si les gusta aprobarlos y al aprobarlos se auto ejecuta el merge en staging.
+
+- Igualmente una vez tu pruebas en staging lo que quieres hacer es fusionar los cambios con la rama maestra entonces haces también un pull request.
+
+- El pull request no es una característica de git sino de GitHub.
+
+- El pull request es importante porque le permite a personas que no son colaboradores trabajar y apoyar en una rama.
+
+- La persona que hace todo lo antes descrito son los lideres de equipo o un perfil muy especial llamado DevOps que es un administrador del entorno de desarrollo que hace que toda la vida del programador sea mucho mas fácil y que los equipos de trabajo trabajen de una manera mas efectiva.
+
+✨ **Aportes de compañeros**   
+DevOps
+El término “DevOps” es una combinación de las palabras “development” (desarrollo) y “operations” (operaciones), DevOps incluye sistemas de seguridad, maneras de trabajar en colaboración, análisis de datos, entre otras características.    
+
+DevOps describe los enfoques para agilizar los procesos con los que una idea (como una nueva función de software, una solicitud de mejora o una corrección de errores) pasa del desarrollo a la implementación, en un entorno de producción en que puede generar valor para el usuario.   
 
 🎲
