@@ -1666,3 +1666,48 @@ Desafío Ver clase 29
 		- Pull request
 
 🎲
+
+## 32. Ignorar archivos en el repositorio con .gitignore
+
+No todos los archivos que agregas a un proyecto deberían ir a un repositorio, por ejemplo cuando tienes un archivo donde están tus contraseñas que comúnmente tienen la extensión .env o cuando te estás conectando a una base de datos; son archivos que nadie debe ver.
+
+✨ Git tiene algo llamado git ignore y lo puedes ver en otros proyectos open source de GitHub.    
+
+Una buena practica es evitar que los archivos binarios del contenido sean parte de un repositorio, algunos archivos binarios como el logo de algo puede que pasen pero la gran mayoría no.
+
+Entonces, digamos que quiero agregar una imagen justo en el centro de mi blogposts.
+
+🔥 **Probemos como funciona**     
+🔥 En git:      
+- `code .`
+- Abrimos el blogpost agregamos la imagen
+	- `<p><img src="imágenes/equipo.jpg" width="100%"/></p>`
+	- También:
+	- `<p><img src="https://i.imgur.com/Gdp3Nlr.png" alt="" width="50%"></p>`
+- `git status`
+
+- Crear nuevo archivo para ignorar cosas     
+	- `touch .gitignore`
+		- .gitignore: es una lista de los archivos que vamos a ignorar y la sintaxis es similar a si estuvieras buscando un archivo en algún lugar * significa todo tipo de archivos
+	- Agregamos archivos a ignorar
+		- `*.jpg`: Esto va a ignorar el 100% de los jpg
+
+- git status 
+- git add .gitignore
+- git commit -am "Agregué una imagen al blog"
+- git pull origin master
+- git push origin master
+
+
+❄En GitHub      
+Vemos los cambios
+
+
+✨ Buscar inspiración en otros proyectos         
+- Ver archivo .gitignore
+	- laravel/laravel
+	- Vuejs/vue
+	- TryGhost / Ghost
+	- arduino/Arduino
+
+🎲
