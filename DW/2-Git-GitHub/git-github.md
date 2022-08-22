@@ -1014,3 +1014,132 @@ La diferencia entre este usuario y el resto, es que este usuario que colaborará
 ✨ Ahora debemos dividir el trabajo en ramas y al final hacer un merge a master cuando todo esté listo.   
 
 🎲
+
+## 26. Flujo de trabajo profesional: Haciendo merge de ramas de desarrollo a master
+
+🔥 **Branch Header: Jefe** 🤴🦁      
+- Envío de cambios al repositorio local        
+	- `git checkout header`
+		- Hacemos cambios a los archivos
+	- `git arbolito` 
+	- `git status / git diff`
+	- `git commit -am "Mensaje de referencia"`
+
+- Envío de cambios al repositorio remoto        
+	- `git pull origin header`
+	- `git push origin header`
+
+❄ **Branch Footer: Colaborador** 🧔🐯
+-   Traer de internet rama footer
+    -   `branch master`
+    -   `git pull origin footer`
+    -   `git branch`
+-   Trabajamos sobre la rama footer
+    -   `git checkout footer`
+        -   `ls -al`
+        -   Hacemos cambios a los archivos 
+    -   `git status`
+-   Enviamos cambios al repositorio local
+    -   `git commit -am "Footer terminado"`
+    -   `clear`
+-   Envío de cambios al repositorio remoto
+    -   `git pull origin footer`
+    -   `git push origin footer`
+
+🔥 **Branch Master!!!: Jefe** 🤴🦁
+-   Revisamos cada rama y su estado en la web
+    -   Abrimos los archivos con el navegador
+    -   `git checkout master`
+    -   `git checkout header`
+    -   `git checkout footer`
+        -   Esto está desactualizado
+	    -   `git pull origin footer`
+
+✨ **¿Y después?**      
+El jefe del proyecto debe fusionar las ramas en Master
+-   Fusionar ramas
+    -   `git checkout master`
+    -   `git merge header`
+    -   Esc + i -> Agregamos un comentario relacionado - Nuevo logo, color de fondo y header final
+    -   Esc + shift + zz
+    -   `git merge header`
+-   Enviar cambios a GitHub
+    -   `git pull origin master`
+    -   `git push origin master`
+
+A master solo se envía lo que se esta seguro que está listo para ir a  producción, es una buena practica.
+
+
+📌 Imágenes en GitHub:     
+Las mejores practicas dicen que no se debe agregar imágenes (binarios) a GitHub.
+-   Son mas pesada que el texto y vuelve mas pesado mi repositorio.
+-   GitHub no muestra los cambios en tiempo real, porque en ocasiones no actualiza su versión en cache, aún así todo está ok.
+
+Solución:
+-   Control + shift + r
+
+
+✨ Otros recursos necesarios para preparar todo en Ubuntu   
+
+🔥 **Instalar VS Code en Ubuntu**
+- Como un paquete Snap
+	- Los snaps son paquetes de software autónomos que incluyen el binario de todas las dependencias necesarias para ejecutar la aplicación. Los paquetes Snap son fáciles de actualizar y seguros.
+- Para instalar VS Code abrimos una terminal (Ctrl+Alt+T)
+	- `sudo snap install --classic code`
+
+- Como paquete .deb utilizando apt
+	- Repositorios oficiales de Microsoft
+	- `sudo apt update; sudo apt install software-properties-common apt-transport-https wget`
+	- `wget -q https://packages.microsoft.com/keys/microsoft.asc -O- | sudo apt-key add -`
+	- `sudo add-apt-repository "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main"`
+	- `sudo apt install code`
+	- `sudo apt update; sudo apt upgrade`
+
+
+🔥 **Limpiar cache APT Ubuntu**      
+- `sudo apt clean`
+
+
+🔥 **Virtual box pantalla completa**    
+- Iniciar maquina virtual
+- Dispositivos
+	- Insertar imagen de CD de las "Guest Additions"
+	- Ejecutar (run)
+	- Contraseña
+		- En consola enter 
+- Abrir una terminal
+	- `reboot`
+	
+- Una vez reiniciado ubuntu
+- Clic derecho
+- Configuración de pantalla
+	- Resolución Elegir resolución 
+
+
+🔥 **Resolver error Guest Additions**    
+C:\Program Files\Oracle\VirtualBox\VBoxGuestAdditions.iso
+- Archivo -> cerrar -> apagar la maquina -> aceptar
+- En Interfaz de Virtual Box
+- Ubuntu
+- Almacenamiento 
+	- Unidad óptica
+-  Eliminar disco de la unidad virtual
+- Iniciar nuevamente la maquina ubuntu
+
+
+🔥 **Solución Reproducción de Video Ubuntu**    
+- `sudo apt install vlc`
+
+También:      
+- Settings de Firefox
+- General
+	- Digital Rights management (DRM) Content
+	- Contenido sujeto a administración de derechos de autor(DRM)
+	- Activar
+
+Además
+- Revisar la Configuración de la Protección contra rastreo de Firefox
+- Icono de escudo en la pagina que estoy visitando
+- Deshabilitar para esta sesión 
+
+🎲
