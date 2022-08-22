@@ -959,3 +959,58 @@ En otros casos se hace pull porque las ramas ya están en GitHub y se necesita h
 [Más info](https://www.hostinger.co/tutoriales/renombrar-rama-git)
 
 🎲
+
+## 25. Configurar múltiples colaboradores en un repositorio de GitHub :octocat:
+
+Por defecto, cualquier persona puede clonar o descargar tu proyecto desde GitHub, pero no pueden crear commits, ni ramas, ni nada.    
+
+Existen varias formas de solucionar esto para poder aceptar contribuciones. Una de ellas es añadir a cada persona de nuestro equipo como colaborador de nuestro repositorio.    
+
+Solo debemos entrar a la configuración de colaboradores de nuestro proyecto (Repositorio > Settings > Collaborators) y añadir el email o username de los nuevos colaboradores.    
+
+❄ **Añadir colaboradores** :octocat:       
+Como dueño del proyecto desde tu cuenta debes dar acceso al nuevo colaborador del proyecto en GitHub para que pueda hacer push.    
+- Your repositories 
+	- Hyper blogs (project)
+	- Settings ⚙ (Del proyecto, no de la cuenta)
+	- Collaborators 🧑‍🤝‍🧑
+	- Add people 🟩
+	- Usar correo o user name del colaborador 
+- El colaborador debe revisar su correo y aceptar la invitación. 
+
+📌 Para hacer pruebas necesitas:
+- Otro correo y cuenta en GitHub
+- Crear una maquina virtual 
+- Configurar entorno virtual 
+	- Instalar git (05)
+	- Configurar git bash (08)
+	- Crear repositorio (08)
+	- Configurar llaves SSH (21 - 22)
+- Crear carpeta para pruebas
+	- En el Home o ~
+	- mkdir proyecto-colaborativo
+	- cd proyecto-colaborativo/
+
+❄ **Clonar proyecto** :octocat:     
+Visitar Hyperblog con otro usuario     
+- https://github.com/freddier/hyperblog/
+- Hyperblog
+	- Code > Clone SSH > copiar URL SSH
+
+🔥 **En Git Bash - Consola**      
+- `git clone url-ssh`
+
+🔥 **Enviar cambios a GitHub siendo colaborador**     
+- `vim algo.txt`
+- `git commit -am "Mi primer commit"`
+- `git pull origin master`
+- `git push origin master`
+
+✨ Ahora el dueño del proyecto puede traer los cambios hechos por el colaborador a la rama master   
+- `git pull origin master`
+
+La diferencia entre este usuario y el resto, es que este usuario que colaborará con el proyecto no hará un `git init` porque solo se quiere traer el repositorio.    
+
+✨ Ahora debemos dividir el trabajo en ramas y al final hacer un merge a master cuando todo esté listo.   
+
+🎲
