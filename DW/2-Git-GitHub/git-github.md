@@ -1349,3 +1349,175 @@ https://www.microsoftedgeinsider.com/en-us/
 - archivo -> abrir -> Esperamos -> instalar paquete
 
 🎲
+
+## 29. Creando un Fork, contribuyendo a un repositorio
+
+❄ **GitHub - Dueño** 🤴🦁     
+- Eliminar colaborador
+	-   Your repositories
+	-   hyperblog
+	-   Settings
+	-   Manage access
+	-   Collaborators -> 🚮
+
+📌 Ahora solo puede clonar el repositorio pero no puede hacer push de ningún tipo, no puede crear ramas ni tags. Tambien puede copiar el proyecto y decirnos quiero hacer estos cambios por favor fusiónelo 
+
+❄ **GitHub - Colaborador** 🧔🐯   
+- Seguir y aportar a un proyecto
+	-   https://github.com/freddier/hyperblog
+	-   hyperblog
+	    -   Dueño/hyperblog
+	    -   Watch -> All Activity
+	    -   Star (Unstar)
+
+- Clonar proyecto
+	-   Fork
+	-   Colaborador/hyperblog
+	    -   30 Commits << Back
+	    -   1 release << Back
+	    -   Contributors
+
+- Obtener URL SSH
+	-   Colaborador/hyperblog
+	    -   Code -> Clone
+	    -   Copiar llave SSH
+
+📌 Fork: Tenedor, es cuando se tienen dos caminos y se puede elegir entre cualquiera de esos dos. En este caso hacer un fork es tomar una copia del estado actual del proyecto y clonarlo y lo clono como un proyecto mío. Característica única de GitHub.
+
+🔥 **Git - Colaborador** 🧔🐯   
+- Clonar proyecto
+	-   `cd cursos`
+	    -   `git clone URL SSH`
+	    -   `ls -al`
+	    -   `cd hyperblog/`
+	    -   `ls -al`
+	    -   `git status`
+	    -   Hacer cambios blogpost.html historia.txt
+	    -   `git status` >> `git diff`
+	    -   `git commit -am "Tildes"`
+	    -   `git status`
+	    -   `git push`
+
+
+❄ **GitHub - Colaborador** 🧔🐯  
+- Vemos los cambios
+	-   Colaborador/hyperblog
+
+- Crear pull request y merge
+	-   Pull requests
+	-   new pull request
+	    - base repository: Dueño/hyperblog 
+	    - base: master <--
+	    - head repository: Colaborador/hyperblog
+	    - compare: master
+	    -   Split : Unified
+	    -   Create pull request
+	    -   Write: Mejoras project
+	    -   Create pull request
+
+⏳⏰ Ahora el colaborador debe esperar a que el dueño haga los cambios. 
+
+
+❄ **GitHub - Dueño** 🤴🦁    
+- github.com -> home
+	-   Notificaciones
+	-   Dueño/hyperblog : Alguien le hizo un pull request
+	-   Colaborador quiere fusionar 1 commit a mi rama master desde su rama master
+	-   Commits
+	-   Pull requests
+	    -   Tildes con entidades
+	    -   Files changed
+	    -   Viewed: Check
+	-   Review changes
+	    -   Write: ok
+	    -   Approve
+	    -   Submit review
+	-   Merge pull request
+	-   Confirm merge
+	
+	- Ver cambios
+		-   Dueño/hyperblog
+		-   Commits -> branch master
+
+
+🔥 **Git - Dueño** 🤴🦁     
+- En master
+	-   `git status`
+	-   Hacer cambios en blogpost.html
+	-   `git status`
+	-   `git commit -am "Cambios"`
+	-   `git pull origin master`
+	-   `git arbolito`
+	-   `git push origin master`
+
+- Revisar en GitHub -> Master
+	-   Dueño/hyperblog
+
+
+❄ **GitHub - Colaborador** 🧔🐯  
+- Colaborador/hyperblog
+	-   branch master
+	-   This branch is 3 commits behind freddier:master -> Compare
+
+- Copiar URL SSH
+	-   Dueño/hyperblog
+	    -   Branch Master
+	    -   Code -> Clone
+	    -   Use SSH
+
+- `Pull request` desde la consola
+
+
+🔥 **Git - Colaborador** 🧔🐯   
+- Crear otra fuente para hacer pull
+	-   `cd hyperblog`
+	-   `branch master`
+	-   `git remote -v`
+
+- Crear conexión a otro repo
+	-   `git remote add upstream URL SSH`
+	-   `git remote -v`
+
+- Traer cambios del master del Dueño (remoto)
+	-   `git pull upstream master`
+	-   `git status`
+	-   `git commit -am "Fusion"`
+	-   `git push origin master`
+
+- Revisar Colabordor/hyperblog
+
+✨ ¿Forks/Bifurcaciones?     
+Es una característica única de GitHub en la que se crea una copia exacta del estado actual de un repositorio directamente en GitHub, éste repositorio podrá servir como otro origen y se podrá clonar (como cualquier otro repositorio), en pocas palabras, lo podremos utilizar como un git cualquiera.
+
+✨Trabajando con varios repositorios remotos     
+Cuando trabajas en un proyecto que existe en diferentes repositorios remotos (normalmente a causa de un fork) es muy probable que desees poder trabajar con ambos repositorios, para esto puedes crear una conexión remoto adicional desde consola.     
+-  `git remote add <nombre_del_remoto> <url_del_remoto>`
+-   `git remote upstream https://github.com/freddier/hyperblog`
+
+Al crear un remoto adicional podremos, hacer pull desde el nuevo origen (en caso de tener permisos podremos hacer fetch y push).     
+-   `git pull <remoto> <rama>`
+-   `git pull upstream master`
+
+Éste pull nos traerá los cambios del remoto, por lo que se estará al día en el proyecto, el flujo de trabajo cambia, en adelante se estará trabajando haciendo pull desde el upstream y push al origin para pasar a hacer pull request.       
+-   `git pull upstream master`
+-   `git push origin master`
+
+
+📌 git push:     
+En ocasiones solo se tiene un lugar que es el origin y el master, no necesito colocar git push origin master.
+
+📌 Proyectos Open Source:      
+Cualquier persona que le guste el proyecto...         
+Puede:
+-   Clonar el repositorio
+-   Solicitar un merge al dueño del repositorio
+
+No puede:      
+-   Hacer push de ningún tipo
+-   Crear ramas, ni tags
+
+📌 Compare across forks:       
+Muestra las diferencias entre el master original y mi copia.    
+`Mensaje en GitHub:` Escoge las dos ramas para saber que cambió y empezar un nuevo pull request: `Compare across forks`     
+
+🎲
