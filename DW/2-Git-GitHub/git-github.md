@@ -923,3 +923,39 @@ Para correrlo:
 - `git config --global alias.arbolito "log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all"`
 
 🎲
+
+## 24. Manejo de ramas en GitHub
+
+Puedes trabajar con ramas que nunca envías a GitHub, así como pueden haber ramas importantes en GitHub que nunca usas en el repositorio local. Lo importante es que aprendas a manejarlas para trabajar profesionalmente.
+
+🔥 **Crear una rama en el repositorio local:**
+- `git checkout master`
+	- Nos ubicamos en alguna rama para hacer una copia del ultimo commit en otra rama.
+- `git branch branchNameaCrear` o `git checkout -b branchNameaCrear`
+- `git branch`  
+- `git checkout oldName` y `git branch -m newName`
+	- Cambiarle el nombre a la rama
+
+🔥 **Publicar una rama local al repositorio remoto:**
+- `git checkout branchName`
+- `git push origin branchName`
+	- Agrega la historia de las ramas a GitHub
+- `git push origin --delete branchName`
+	- Borra la rama de GitHub
+
+🔥 **Comandos para manejar ramas**   
+- `git show-branch`
+- `git show-branch --all`
+	- Muestra las ramas existentes
+	- Muestra mas o menos la historia mas reciente de cada rama
+- `gitk`
+	- Software que muestra la historia de manera visual 
+
+📌 Recuerda que podemos ver gráficamente nuestro entorno y flujo de trabajo local con Git usando el comando gitk.
+
+📌 En caso crees nuevas ramas en local, estas aún no existen en GitHub por ende, no se hace un pull para traer los cambios que se le pudieron hacer a estas ramas.        
+En otros casos se hace pull porque las ramas ya están en GitHub y se necesita hacer un pull para traer posibles cambios hechos por otros desarrolladores sobre estas ramas.
+
+[Más info](https://www.hostinger.co/tutoriales/renombrar-rama-git)
+
+🎲
