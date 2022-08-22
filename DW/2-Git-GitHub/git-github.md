@@ -1502,6 +1502,7 @@ Al crear un remoto adicional podremos, hacer pull desde el nuevo origen (en caso
 -   `git pull upstream master`
 -   `git push origin master`
 
+> ![Fork](https://i.postimg.cc/65KRWMH1/29-fork.png)
 
 📌 git push:     
 En ocasiones solo se tiene un lugar que es el origin y el master, no necesito colocar git push origin master.
@@ -1519,5 +1520,120 @@ No puede:
 📌 Compare across forks:       
 Muestra las diferencias entre el master original y mi copia.    
 `Mensaje en GitHub:` Escoge las dos ramas para saber que cambió y empezar un nuevo pull request: `Compare across forks`     
+
+🎲
+
+## 30. Haciendo deployment a un servidor	
+
+En esta clase aprenderemos como hacer deploy de nuestra aplicación utilizando un servidor.     
+
+No te preocupes si no has comprado un servidor, no es necesario, puedes instalar un servidor local en tu computadora para realizar pruebas y testear tu aplicación.
+
+En Platzi tenemos una carrera de servidores que te va a ayudar a automatizar mucho más estas tareas:      
+- Para entender como hacer estos servidores [Curso de Administración de servidores](platzi.com/servidores)
+- Curso de DevOps 
+
+**Deploy** es el proceso que permite enviar al servidor uno o varios archivos. Este servidor puede ser de prueba, desarrollo o producción.   
+
+En el siguiente ejemplo veremos cómo se realiza el deployment de un documento en un servidor web básico.
+
+
+🔥 **Pasos para hacer deployment en un servidor web:**    
+-   Entrar a la capeta de los archivos del servidor.
+-   Copiar link en _clone_, elegir entre HTTPS o SSH del repositorio a contribuir.  
+- En la carpeta deseada se clona el repositorio:
+
+```
+git clone url
+Deploy:
+```
+
+-   Realizar cambios y _commit_ en GitHub.
+-   Traer al Repositorio local las actualización para el servidor en la capeta de los archivos del servidor.
+
+```
+git pull ramaRemota main
+```
+
+📌 Nota: Siempre se debe proteger el archivo .git. Dependiendo del software para el servidor web, existen diferentes maneras. La conexión entre GitHub y el servidor se puede realizar mediante: Travis (pago) o Jenkis (Open source).
+
+Aporte creado por: Brayan Mamani, chedl
+
+
+✨ Apuntes de la clase    
+Freddie menciona que normalmente la rama master es la que se envía al servidor de producción, depende del flujo de trabajo de cada persona.     
+Ejemplo:       
+- Hay grupos de trabajo que lo que hacen es colocar tags a la rama que se envía a producción y eso se envía a producción.
+
+La forma de enviar a producción es similar a como hemos venido trabajando.        
+
+❄ En GitHub:     
+- freddier/hyperblog 
+	- Sabiendo que se tienen varios archivos …
+- En la web:
+	- freddier.com
+	- Ahora lo que vamos a hacer es ingresar a una URL en la web freddier.com Este es un servidor que Freddie compró hace algún tiempo pero tu puedes tener y usar tu propio servidor.    
+
+Aquí asumimos que ya sabes como montar un servidor en Linux y en ese servidor voy a entrar a la carpeta donde tenemos los archivos.   
+
+
+🔥 En Git:   
+- `cd /var/www/freddier.com/html/`
+- `ls -al`
+- Archivos index.html y test.html
+- `cat index.html`: Solo es un test del sistema
+- `cat text.html`: Es una prueba
+	
+En la Web:         
+- Si ingreso a freddier.com/test.html
+	- Texto: Es una prueba
+
+Todo lo anterior es un servidor en nginx que Freddie configuró en un proveedor de cloud que había consumido antes. No se estresen por eso!!!	
+
+
+❄ En GitHub:       
+- Copiar URL para conectar en local
+	- Code -> Clone -> Copiar SSH
+
+
+🔥 En Git:    
+- Traer a local el repositorio de GitHub
+	- `git clone URL SSH`
+	- `ls -al`
+
+En la web
+- www.freddier.com/hyperblog/blogpost.html
+	- Nos muestra la web creada con html y CSS
+
+
+❄ En GitHub:          
+- Hacer cambios en:
+	- blogpost -> edit
+	- `<h1> Aqu&iacute; inicia la historia de un gran proyecto </h1>`
+	- Commit changes
+		- Título: Cambio del título visible para probar un deploy
+	- Commit directly to the master branch
+	- Commit changes
+	- Home hyperblog: Vemos los cambios
+
+
+🔥 En Git:       
+Traemos los cambios hechos en GitHub para poder ver los en el navegador.
+- cd hyperblog/
+- ls -al
+- git status
+	- Your branch is up to date with 'origin/master'
+- git pull origin master
+- Ahora ya vemos los cambios en la web
+- ls -al
+
+📌Esta es una forma sencilla de hacer un Deployment. El problema con esto es que no es una buena practica, porque alguien podría tener acceso al archivo .git y a toda nuestra base de datos de cambios, entonces, tenemos que proteger el .git . Si usas apache hay unas formas, o nginx hay otras. Esto lo aprendes en la carrera de administración de servidores
+
+✨ Formas avanzadas de hacer Deployment      
+Existe una pagina llamada travis-ci.org es como un GitHub que conecta automáticamente tus ramas de GitHub con tus servidores. Solo le das permisos a tu servidor, permisos de GitHub y cuando le haces push a una rama ejemplo llamada deployment, automáticamente detecta esto y lo va a enviar.    
+
+Por ejemplo: Si tienes código que tiene que ser construido como un JavaScript que tiene que tener procesos o un CSS, automáticamente puede disparar esos procesos.           
+
+Travis cuesta dinero a menos que lo estés usando para proyectos open source, pero si tu quieres instalar uno tienes Jenkins.io esto es otro sistema, es poderoso pero es muy complejo y esto lo enseñan en cursos de integración continua. El curso de GitLab te enseña a profundidad estas cosas.       
 
 🎲
