@@ -1711,3 +1711,40 @@ Vemos los cambios
 	- arduino/Arduino
 
 🎲
+
+## 33. Readme.md es una excelente práctica
+
+README.md es una excelente práctica en tus proyectos, md significa Markdown, que es una especie de código que te permite cambiar la manera en que se ve un archivo de texto.
+
+Lo interesante de Markdown es que funciona en muchas páginas, por ejemplo la edición en Wikipedia; es un lenguaje intermedio que no es HTML, no es texto plano, es una manera de crear excelentes texto formateados.
+
+✨ **Editemos nuestro README.md**      
+Abrirlo en VSC o usar un editor online M editor.md
+	-   [M.editor](https://pandao.github.io/editor.md/en.html)
+
+🔥 En Git     
+-   git status
+-   git commit -am "README modificado para explicar bien el proyecto a futuros estudiantes"
+-   git pull origin master
+-   git push origin master
+
+❄ En GitHub        
+Verificamos README.md
+
+
+✨ Apuntes sobre Markdown       
+[Web para practicas Markdown](https://www.markdowntutorial.com/lesson/1/) 
+
+> ![Markdown](https://i.postimg.cc/X7xsztxn/MARKDOWN.png)  
+
+📌La forma de aprender readme.md es inspirarnos en proyectos open source.
+Readme.md existe porque queremos contarle al mundo de que trata un repositorio.      
+
+Ver como está construido un Readme.md     
+- Ingresar en un repositorio
+	- readme.md 
+		- edit -> lapicito 🖊 :v
+		- puedes ver como está construido 
+
+🎲
+
