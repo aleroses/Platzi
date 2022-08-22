@@ -1181,9 +1181,171 @@ Staging en los servidores de desarrollo son ramas que es lo que está justo ante
 - La persona que hace todo lo antes descrito son los lideres de equipo o un perfil muy especial llamado DevOps que es un administrador del entorno de desarrollo que hace que toda la vida del programador sea mucho mas fácil y que los equipos de trabajo trabajen de una manera mas efectiva.
 
 ✨ **Aportes de compañeros**   
-DevOps
-El término “DevOps” es una combinación de las palabras “development” (desarrollo) y “operations” (operaciones), DevOps incluye sistemas de seguridad, maneras de trabajar en colaboración, análisis de datos, entre otras características.    
+🔥 **DevOps**      
+El término “DevOps” es una combinación de las palabras “development” (desarrollo) y “operations” (operaciones), DevOps incluye sistemas de seguridad, maneras de trabajar en colaboración, análisis de datos, entre otras características.      
 
-DevOps describe los enfoques para agilizar los procesos con los que una idea (como una nueva función de software, una solicitud de mejora o una corrección de errores) pasa del desarrollo a la implementación, en un entorno de producción en que puede generar valor para el usuario.   
+DevOps describe los enfoques para agilizar los procesos con los que una idea (como una nueva función de software, una solicitud de mejora o una corrección de errores) pasa del desarrollo a la implementación, en un entorno de producción en que puede generar valor para el usuario.     
+
+🔥 **Pull request**     
+Acción de validar un código que se va a mergear de una rama a otra. En este proceso de validación pueden entrar los factores que queramos: Builds (validaciones automáticas), asignación de código a tareas, validaciones manuales por parte del equipo, despliegues, etc.   
+
+🎲
+
+## 28. Utilizando Pull Requests en GitHub
+
+🔥 **Git - Jefe** 🤴🦁         
+- Branch Master
+	-   `git pull origin master`
+	-   `git branch fix-typo`
+	-   `git branch`
+
+- Branch fix-typo
+	-   `git checkout fix-typo`
+	-   Corregir algo.txt
+	-   `git status`
+	-  `git diff`
+
+- Enviar cambios al repositorio local
+	-   `git commit -am "Correccion hecha -Tildes"`
+
+- Enviar cambios a GitHub
+	-   `git push origin fix-typo`
+
+
+❄ **GitHub - Jefe** 🤴🦁    
+- Fusionar/Comparar Master con fix-typo (Manual)
+	-   Repositorio -> hyperblog
+	    -   New `Pull request`
+	    -   Base: Master <- Compare: Fix-typo
+
+- Comparar Master con Fix-typo (Automático)
+	-   Repositorio -> hyperblog
+	    -   Compare & pull request
+	    -   Write: No debimos pasar este error.
+	    -   Reviewers: Alien11
+	    -   Create pull request
+
+
+❄ **GitHub - Colaborador** 🧔🐯   
+- Repositorio -> hyperblog
+	-   Pull request
+	-   Dismiss
+	-   Corrección hecha -Tildes
+	-   Freddier pide tu revision de este pull request
+	-   Freddy quiere fusionar un commit hacia master de su rama fix-typo
+	-   Commits
+	-   Files changed
+	-   Review changes
+	    -   Write: Mejor usa tildes directas (entidadHTML)
+	    -   Request changes
+	    -   Submit review
+
+
+❄ **GitHub - Jefe** 🤴🦁     
+- Notificación new
+	-   Tildes y tipos arreglados
+	-   Aún no podemos hacer merge, el colaborador está pidiendo cambios
+
+
+🔥 **Git - Jefe** 🤴🦁         
+- Branch fix-typo
+	-   `git pull origin fix-typo`
+	-   Corregir blogpost.html
+	-   `git status`
+	-   `git commit -am "Cambio a entidades HTML"`
+	-   `git push origin fix-typo`
+
+
+❄ **GitHub - Jefe** 🤴🦁     
+- Hyperblog -> Branch fix-typo
+	-   View #1
+	-   files changed
+	-   Conversation
+	-   Write: Cambios hechos, por favor hazme el merge
+	-   Comment
+
+
+❄ **GitHub - Colaborador** 🧔🐯   
+- Hyperblog
+	-   Pull requests
+	-   Tildes y typos arreglados en el post
+	-   Files changed 1
+	-   Review changes
+	    -   Write: Excelente. Eso era!
+	    -   Approve
+	    -   Submit review
+
+- Fusionar la rama fix-typo con master - Ejecutar el merge
+	-   Merge pull request
+	-   Confirm merge
+
+- Borrar branch Fix-typo
+	-   Delete branch: lo elimina de GitHub
+
+- Hyperblog -> master
+	-   Todo bien
+
+
+🔥 **Git - Jefe** 🤴🦁     
+- Branch fix-typo
+	-   `git pull origin fix-typo`
+	    -   No la encuentra porque la rama fue borrada
+	-   `git checkout master`
+	-   `git pull origin master`
+	-   `git log`
+	-   `git arbolito`
+
+
+📌 Compare&pull request   
+Esto se vuelve útil en el proceso de DevOps.
+[¿Qué es DevOps? (platzi.com)](https://platzi.com/blog/que-es-devops/)           
+-   Reviewers: Personas que pueden revisar esto.
+-   Labels: Crear etiquetas.
+-   Projects: Formas de agrupar repositorios dentro de GitHub.
+-   Milestone: Significa que se tenia un objetivo y se logró.
+
+📌 Pull request     
+El pull request no ejecuta el merge de por sí, simplemente describe lo que está pasando.         
+Los pull request de lado de git no existen, solo existen en GitHub.
+
+
+📌 ¿Quién debe ejecutar el merge?      
+Lo puede hacer tanto el colaborador como el jefe del proyecto.  
+
+
+
+✨ **Flujo de un pull request: Resumiendo**
+🔥 En Git:    
+-   Los cambios se trabajan en una rama paralela (`git checkout -b rama`)
+-   Se hace un commit a la rama (`git commit -am "Mensaje"`)
+-   Se suben al remoto los cambios (`git push origin rama`)
+
+❄ En GitHub:   
+-   Se hace el pull request comparando las ramas master y fix-typo.
+-   Uno, o varios colaboradores revisan que el código sea correcto y dan feedback (en el chat del pull request)
+-   El colaborador hace los cambios que desea en la rama y lo vuelve a subir al remoto (automáticamente jala la historia de los cambios que se hagan en la rama, en remoto)
+-   Se aceptan los cambios en GitHub
+-   Se hace merge a master desde GitHub
+
+📌 **Importante:** Al modificar una rama, también se modifica el pull request.
+
+> ![Pull Requests](https://i.postimg.cc/cJjHXhXX/28-github-pr.webp)
+
+📌 Referencias
+https://platzi.com/blog/que-es-devops/
+https://platzi.com/servidores/
+
+
+✨ Otros recursos necesarios para preparar todo en Ubuntu     
+🔥 **Instalar Edge en Ubuntu**   
+Método 1
+1. Instalar Microsoft Edge en el escritorio Ubuntu 20.04 LTS
+https://www.microsoftedgeinsider.com/en-us/
+
+2. Instalar programa para instalar
+- sudo apt install gdebi
+- gdebi
+- gdebi-gtk
+- archivo -> abrir -> Esperamos -> instalar paquete
 
 🎲
