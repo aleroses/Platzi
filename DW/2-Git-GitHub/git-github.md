@@ -1826,3 +1826,112 @@ Ahora hacer lo mismo pero con hyperblog
 					- `oldproject.github.io` Rename
 
 🎲
+
+## 35. Git Rebase: reorganizando el trabajo realizado
+
+Rebase es el proceso de mover o combinar una secuencia de confirmaciones en una nueva confirmación base. La reorganización es muy útil y se visualiza fácilmente en el contexto de un flujo de trabajo de ramas de funciones. 
+
+El comando `rebase` es una mala práctica, nunca se debe usar, pero para efectos del curso te lo vamos a enseñar para que hagas tus propios experimentos. Con rebase puedes recoger todos los cambios confirmados en una rama y ponerlos sobre otra.
+
+En general la historia en los repositorios remotos debería mantenerse intacta, `rebase` es solo para repositorios locales porque este re-escribe la historia del repositorio.
+
+🔥 El proceso general se puede visualizar de la siguiente manera.
+
+Cambiamos a la rama que queremos traer los cambios
+	- `git checkout experiment`
+
+Aplicamos rebase para traer los cambios de la rama que queremos 
+	- `git rebase master`
+
+
+✨ **Ejemplo practico:**
+
+🔥 Git
+- Branch master
+	-   Editamos historia.txt
+	-   `git commit -am "Mast. 1"`
+	-   `git arbolito`
+
+- Crear rama experiment
+	-   `git branch experiment`
+
+- Branch experiment
+	-   `git checkout experiment`
+	-   Editamos historia.txt
+	-   `git commit -am "Exp 1"`
+	-   Sigamos editando hist.txt
+	-   `git commit -am "Exp 2"`
+
+- Pegar Branches
+	- Traer todo de master a la rama experiment
+		-   `git checkout experiment`
+		-   `git rebase master`
+
+- Branch master
+	-   `git checkout master`
+	-   Editemos historia.txt
+	-   `git commit -am "Mast. 2"`
+
+- Branch experiment
+	- Traer todo de master
+		-   `git checkout experiment`
+		-   `git arbolito`
+		-   `git rebase master`
+
+- Branch master
+	- Traer todo de experiment
+	-   `git checkout master`
+	-   `git rebase experiment`
+	-   `git arbolito`
+	-   `git pull origin master`
+	-   `git push origin master`
+
+
+❄ GitHub
+- Revisamos historia.txt
+	-   `history`
+
+🔥 Git
+- Eliminar rama
+	-   `git branch -D experiment`
+	-   `git arbolito`
+
+📌 Primero se le hace rebase a la rama que voy a borrar de la historia y luego se le hacer rebase a la rama principal o sino se entra en un conflicto extraño 
+
+
+🔥 **Otra explicación por si te quedaron dudas con la practica**     
+
+> ![rebase](https://i.postimg.cc/yYrtz4NK/35.rebase.webp)
+
+Para hacer un rebase en la rama feature de la rama master, correrías los siguientes comandos:        
+`git checkout feature`     
+`git rebase master`       
+
+Esto _trasplanta_ la rama feature desde su locación actual hacia la punta de la rama master:      
+
+> ![rebase](https://i.postimg.cc/W1FKNWDk/35.rebase02.webp)   
+
+Ahora, falta fusionar la rama feature con la rama master         
+
+```
+git checkout master
+git rebase feature
+# No reorganices el historial público
+```
+
+Nunca debes reorganizar las confirmaciones una vez que se hayan enviado a un repositorio público. La reorganización sustituiría las confirmaciones antiguas por las nuevas y parecería que esa parte del historial de tu proyecto se hubiera desvanecido de repente.    
+ 
+El comando **_rebase_** es **_una mala práctica, sobre todo en repositorios remotos. Se debe evitar su uso, pero para efectos de práctica te lo vamos a mostrar, para que hagas tus propios experimentos. Con `rebase` puedes recoger todos los cambios confirmados en una rama y ponerlos sobre otra.  
+
+```
+# Cambiamos a la rama que queremos traer los cambios
+git checkout experiment
+# Aplicamos rebase para traer los cambios de la rama que queremos 
+git rebase master
+```
+
+✨ Aporte creado por: Carlos Eduardo Diaz
+
+📌 Esto es un rebase, es la forma de hacer cambios silenciosos en otras ramas y volver a pegar la historia de esa rama a una rama anterior haciéndole un rebase. Pero, no queda historia, no se sabe realmente quien hizo cambios y en ocasiones la rama master avanzo mucho puede crear conflictos 
+
+🎲
