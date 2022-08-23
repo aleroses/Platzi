@@ -2027,3 +2027,100 @@ Git sabe cual es la estructura de tu directorio de trabajo. Si tienes archivos q
 Git Clean elimina archivos sin seguimiento, aquellos que se encuentran en el directorio del repositorio, pero que no se han añadido al índice del repositorio con git add . ni git commit -m ""
 
 🎲
+
+## 38. Git cherry-pick: traer commits viejos al head de un branch
+
+Existe un mundo alternativo en el cual vamos avanzando en una rama pero necesitamos en master uno de esos avances de la rama, para eso utilizamos el comando `git cherry-pick id-commit`.    
+
+**Git Cherry-pick** es un comando que permite tomar uno o varios commits de otra rama sin tener que hacer un merge completo. Así, gracias a cherry-pick, podríamos aplicar los commits relacionados con nuestra funcionalidad en la rama master sin necesidad de hacer un merge.
+
+Para demostrar cómo utilizar git cherry-pick, supongamos que tenemos un repositorio con el siguiente estado de rama:
+
+```
+a -b - c - d   Master
+         \
+           e - f - g Feature
+
+```
+
+El uso de git cherry-pick es sencillo y se puede ejecutar de la siguiente manera:
+
+```
+git checkout master
+```
+
+En este ejemplo, commit Sha es una referencia de confirmación. Puedes encontrar una referencia de confirmación utilizando el comando git log. En este caso, imaginemos que queremos utilizar la confirmación ‘f’ en la rama master. Para ello, primero debemos asegurarnos de que estamos trabajando con esa rama master.
+
+```
+git cherry-pick f
+
+```
+
+Una vez ejecutado, el historial de Git se verá así:
+
+```
+a -b - c - d - f   Master
+         \
+           e - f - g Feature
+```
+
+La confirmación f se ha sido introducido con éxito en la rama de funcionalidad.     
+
+📌 `cherry-pick` es una mala práctica porque significa que estamos reconstruyendo la historia, usa cherry-pick con sabiduría. Si no sabes lo que estás haciendo ten mucho cuidado.      
+
+
+🎲 Aporte creado por: Carlos Eduardo Diaz.
+
+✨ **Ejemplo practico **    
+🔥 Git      
+- Abrimos README.md
+	-   `code README.md`
+	    -   * Creado por el increíble platzi team
+	-   `git stash`
+	-   `git stash branch readme-mejorado`
+
+- Branch readme-mejorado   
+	-   `git commit -am "Créditos al team platzi"`
+	-   `git status`
+	-   `git arbolito`
+	-   `git log --oneline`
+	-   Editamos README.md
+	    -   * Incluye ejemplos en Windows, Linux y Mac
+	-   `git commit -am "Ejemplos en Windows, Linux y Mac"`
+	-   `git log --oneline`
+	-   Editamos README.md
+	    -   * Disponible para todas las edades
+	-   `git commit -am "Diverso y atractivo para todos"`
+	-   `git log --oneline`
+	    -   Copiar commit
+
+- Branch master: Traer de readme-mejorado una sola línea de texto
+	-   `git checkout master`
+	-   `git cherry-pick dca2a24`
+	-   `git status`
+	-   `git commit -am "Una sola línea"`
+	-   `git log --oneline`
+	-   `git pull origin master`
+	-   `git push origin master`
+
+- Fusionar ambas ramas
+	-   Branch master
+	-   `git merge readme-mejorado`
+
+- Corregir conflicto
+	-   Accept both changes (Aceptar ambos cambios)
+	    -   Esto fusiona ambas cosas
+	-   `git status`
+	-   `git commit -am "Readme mejorado"`
+	-   `git pull origin master`
+	-   `git push origin master`
+
+❄ GitHub      
+-   Revisamos README.md
+
+
+✨ ¿git log --oneline?     
+Comando que muestra todos los commits hechos, de donde obtendremos el HASH que usaremos junto con git cherry-pick d2a4f3s.
+
+🎲
+
