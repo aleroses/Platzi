@@ -1820,10 +1820,10 @@ Ahora hacer lo mismo pero con hyperblog
 
 📌 Si no aparece la página en un buen rato intenta agregarle al nombre .github.io:         
 - alevel/oldproject
-		- Settings
-			- General
-				- Repository name:
-					- `oldproject.github.io` Rename
+	- Settings
+		- General
+			- Repository name:
+				- `oldproject.github.io` Rename
 
 🎲
 
@@ -1933,5 +1933,68 @@ git rebase master
 ✨ Aporte creado por: Carlos Eduardo Diaz
 
 📌 Esto es un rebase, es la forma de hacer cambios silenciosos en otras ramas y volver a pegar la historia de esa rama a una rama anterior haciéndole un rebase. Pero, no queda historia, no se sabe realmente quien hizo cambios y en ocasiones la rama master avanzo mucho puede crear conflictos 
+
+🎲
+
+## 36. Git Stash: Guardar cambios en memoria y recuperarlos después
+
+Cuando necesitamos regresar en el tiempo porque borramos alguna línea de código pero no queremos pasarnos a otra rama porque nos daría un error ya que debemos pasar ese “mal cambio” que hicimos a stage, podemos usar git stash para regresar el cambio anterior que hicimos.     
+
+`git stash` es típico cuando estamos cambios que no merecen una rama o no merecen un rebase si no simplemente estamos probando algo y luego quieres volver rápidamente a tu versión anterior la cual es la correcta.        
+
+✨ **Ejemplo practico**    
+🔥 Git       
+-   gitk
+- Branch Master
+	-   Editamos blogpost.html con errores adrede
+	-   `git status`
+	-   `git branch`
+	-   `git stash`
+	    -   Volvió al estado anterior a los errores y los cambios se guardaron en un lugar temporal
+	-   `git stash list`
+	    -   Lista todo los cambios
+	    -   WIP: Work in progress
+
+- Branch footer
+	-   `git checkout footer`
+	-   Podemos cambiar de rama sin que nos pida guardar cambios
+
+- Branch master
+	-   `git checkout master`
+	-   `git stash pop`
+	    -   Vuelve al estado donde habían errores
+	-   Control z
+
+
+
+🔥 Git       
+- Guardar cambios y ponerlos en una nueva rama
+	-   Editar hyperblog.html
+	-   `git stash`
+	-   `git stash list`
+	-   `git stash branch english`
+	    -   Todos los cambios se movieron a otra rama
+
+- Branch english-version
+	-   `git branch`
+	-   `git status`
+	-   `git commit -am "I speak english now"`
+	-   `git status`
+
+- Branch master
+	-   `git checkout master`
+	-   `git stash list`
+
+- Hacer cambios y no guardarlos
+	-   Editar archivos
+	-   `git stash`
+	    -   Todo regresó al ultimo commit
+	-   `git stash list`
+	-   `git stash drop`
+	    -   Eliminar esos cambio
+
+
+✨ ¿Esto es útil?    
+Stash es una forma útil de tener en temporal cambios y poder moverte entre ramas y luego poder recuperarlos.
 
 🎲
