@@ -2028,7 +2028,7 @@ Git Clean elimina archivos sin seguimiento, aquellos que se encuentran en el dir
 
 🎲
 
-## 38. Git cherry-pick: traer commits viejos al head de un branch
+## 38. Git cherry-pick: traer commits viejos al head de un branch 🍒
 
 Existe un mundo alternativo en el cual vamos avanzando en una rama pero necesitamos en master uno de esos avances de la rama, para eso utilizamos el comando `git cherry-pick id-commit`.    
 
@@ -2121,6 +2121,40 @@ La confirmación f se ha sido introducido con éxito en la rama de funcionalidad
 
 ✨ ¿git log --oneline?     
 Comando que muestra todos los commits hechos, de donde obtendremos el HASH que usaremos junto con git cherry-pick d2a4f3s.
+
+🎲
+
+## 39. Reconstruir commits en Git con amend
+A veces hacemos un commit, pero resulta que no queríamos mandarlo porque faltaba algo más. Utilizamos `git commit --amend`, amend en inglés es remendar y lo que hará es que los cambios que hicimos nos los agregará al commit anterior.
+
+✨ **Ejemplo practico**       
+🔥 Git    
+Cambiaremos el color de fondo del footer junto con el titulo de la cabecera.      
+- Abrimos blogpost.html
+	-   `code blogpost.html`
+	    -   Tu blog de confianza</span>
+	-   `git status`
+	-   `git commit -am "Cambio al tagline y color del footer"`
+
+Como nos olvidamos de cambiar el color del footer....      
+
+- Abrimos estilos.css
+	-   `cd css/`
+	-   `code estilos.css`
+	```
+		#footer
+			    {
+			     background: #37488b;
+			    }
+	```
+	- `cd ..`
+	- `git add css/estilos.css`
+	-  `git commit --amend`
+	    - amend: remendar
+	    - Hace que los cambios anteriores se peguen a los cambios recientes y no va a crear un commit nuevo.
+	-  `git status`
+	-  `git arbolito`
+	-  `git log --stat`
 
 🎲
 
