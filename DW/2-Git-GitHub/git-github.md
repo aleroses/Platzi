@@ -1748,3 +1748,81 @@ Ver como está construido un Readme.md
 
 🎲
 
+## 34. Tu sitio web público con GitHub Pages
+
+GitHub tiene un servicio de hosting gratis llamado GitHub Pages, tu puedes tener un repositorio donde el contenido del repositorio se vaya a GitHub y se vea online.       
+- https://pages.github.com/
+
+✨ **Publicar una página: Proyectos nuevos**     
+❄ **En GitHub**        
+- Crear un repositorio nuevo que tenga tu nombre de usuario
+	- Home :octocat:
+	- New repository ➕
+		- Create a new repository
+			- Repository name: `freddier.github.io`
+			- Description: Ejemplo de un GitHub page
+			- Publico
+			- [x] Add a README file
+			- Create repository
+	- Copiar URL SSH del proyecto recién creado
+		- Code
+			- SSH -> copied!
+
+
+🔥 **En Git**   
+- home 
+	- cd ~
+	- git clone URL-SSH
+	- ls -al
+	- cd freddier/
+
+- Crear archivo index.html
+	- `vim index.html`
+		- `<h1>Este es un sitio web con GitHub Pages</h1>`
+	- `git status`
+	- `git add .`
+	- `git commit -am "Mi primer diseño de pagina en GitHub"`
+	- `git remote -v`
+		- Conectado a Freddier/freddier.git
+	- `git push origin master`
+
+❄ **En GitHub**      
+- Configurar repo para que cargue GitHub page
+	- freddier/freddier.github.io
+		- Settings
+			- Pages: 📃 Ver panel izquierdo
+				- Branch
+					- None 🔽 cambiar por -> `master` 
+					- 📂/(root) 🔽 -> también intentar con /docs
+				- Save		
+			- Clic en URl
+	- Revisamos repositorio `freddier.github.io`
+		- Settings
+			- Pages
+				- Your site is live at freddier.github.io/index.html
+
+📌 Debes esperar media hora aproximadamente hasta que tu página sea reconocida por GitHub Page.
+
+> ![About](https://i.postimg.cc/HxgqKFmd/34-page.jpg)
+Tambien puedes agregar el link en la sección About ⚙
+
+
+✨ **Publicar una página: Old projects**     
+Ahora hacer lo mismo pero con hyperblog
+- Settings
+	- Pages: 📃 Ver panel izquierdo
+		- Branch
+			- None 🔽 cambiar por -> `master` 
+			- 📂/(root) 🔽 -> también intentar con /docs
+		- Save	
+		- Esperara un poco
+			- hyperblog/blogpost.html
+
+📌 Si no aparece la página en un buen rato intenta agregarle al nombre .github.io:         
+- alevel/oldproject
+		- Settings
+			- General
+				- Repository name:
+					- `oldproject.github.io` Rename
+
+🎲
