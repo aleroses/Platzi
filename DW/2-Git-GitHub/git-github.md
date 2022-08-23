@@ -1998,3 +1998,32 @@ Cuando necesitamos regresar en el tiempo porque borramos alguna línea de códig
 Stash es una forma útil de tener en temporal cambios y poder moverte entre ramas y luego poder recuperarlos.
 
 🎲
+
+## 37. Git Clean: limpiar tu proyecto de archivos no deseados
+
+A veces creamos archivos cuando estamos realizando nuestro proyecto que realmente no forman parte de nuestro directorio de trabajo, que no se deberían agregar y lo sabemos.
+
+- Para saber qué archivos vamos a borrar tecleamos `git clean --dry-run`
+- Para borrar todos los archivos listados (que no son carpetas) tecleamos `git clean -f`
+
+
+✨ Probamos los comandos       
+- Replicar varios archivos para la prueba (historia y css)
+	- `git status`
+📃📜📑
+
+
+Git sabe cual es la estructura de tu directorio de trabajo. Si tienes archivos que no has agregado al repositorio local y en vez de agregarlos los quieres quitar eliminar debes usar los comandos:    
+-   `git clean --dry-run`
+    -   Saber que archivos se van a borrar
+    -   dry-run: Ejecución en seco
+-   `git clean -f`
+    -   Borra todo menos:
+        -   Carpetas: Deben ser borradas manualmente
+        -   Imágenes: Git las está ignorando.
+
+
+✨ Qué archivos elimina?          
+Git Clean elimina archivos sin seguimiento, aquellos que se encuentran en el directorio del repositorio, pero que no se han añadido al índice del repositorio con git add . ni git commit -m ""
+
+🎲
