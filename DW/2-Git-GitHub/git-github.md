@@ -2158,3 +2158,67 @@ Como nos olvidamos de cambiar el color del footer....
 
 🎲
 
+## 40. Git Reset y Reflog: úsese en caso de emergencia
+
+¿Qué pasa cuando todo se rompe y no sabemos qué está pasando?  
+Con `git reset HashDelHEAD` nos devolveremos al estado en que el proyecto funcionaba.
+
+- `git reset --soft HashDelHEAD` te mantiene lo que tengas en staging ahí.
+- `git reset --hard HashDelHEAD` resetea absolutamente todo incluyendo lo que tengas en staging.
+
+`git reset` es una mala práctica, no deberías usarlo en ningún momento; debe ser nuestro último recurso.
+
+
+✨ **Hagamos la simulación**      
+🔥 Git
+- Branch master
+	-   Borrar blogpost
+	-   `git commit -am "Bladkfsafs amo Platzi"`
+
+- Branch Cabecera
+	-   `git checkout cabecera`
+	-   `git merge master`
+	-   `cd ..`
+	-   Nos vamos a dormir :v y al volver...
+	-   `cd proyecto1/`
+	-   `git log`
+	-   `gitk`
+
+- Branch master
+	-   `git checkout master`
+	-   `git branch -D cabecera`
+	-   `git log --oneline`
+
+- Volver al lugar correcto
+	-   `git reflog`
+	    -   Vemos el HASH y el HEAD
+	    -   Copiamos el último HASH donde todo era correcto
+	-   `git reset --hard c894560`
+	-   `git arbolito`
+	-   `git pull origin master`
+	-   `git push origin master`
+
+❄ Revisar GitHub      
+
+
+📌 Git reflog       
+Muestra las modificaciones a lo largo de la historia.   
+
+✨ Comandos que aceptan parámetros      
+- `git checkout master`
+- `git checkout eff544f`
+	-   Moverte sin realizar ningún cambio al commit exacto de la ref
+- `git reset`
+	- Hará que el último commit sea reemplazado por la ref.
+	- `git reset --hard eff544f`
+		-   Perderá todo lo que se encuentra en staging y en el Working directory
+	- `git reset --soft eff544f`
+		-   Recupera los cambios que tengas en el commit eff544f, los agregará al staging area y moverá el head al commit eff544f
+	- `git merge eff544f`
+		-   Puedes hacer merge de un commit específico, funciona igual que con una branch, pero te hace el merge del estado específico del commit mandado.
+
+✨ `#0a131e`  
+
+🎲
+
+
