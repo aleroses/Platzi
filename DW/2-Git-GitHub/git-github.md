@@ -2329,7 +2329,7 @@ Recuerda resolver los ejercicios, completar el examen, darle 5 estrellas al prof
 - `Altgr + 4 = ~ en ubuntu`
 - `#0a131e`
 
-🤴 🧔  🔥 ❄ ✨  📌  🎲  🤴🦁   🧔🐯
+🔥 ❄ ✨  📌  🎲  🤴🦁   🧔🐯
 
 ![The end](https://media.giphy.com/media/l2JeeOTlKw7UQC58I/giphy.gif)
 
