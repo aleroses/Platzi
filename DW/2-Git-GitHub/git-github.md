@@ -2221,4 +2221,115 @@ Muestra las modificaciones a lo largo de la historia.
 
 🎲
 
+## 41. Buscar en archivos y commits de Git con Grep y log
+
+A medida que nuestro proyecto se hace grande vamos a querer buscar ciertas cosas.      
+Por ejemplo: ¿Cuántas veces en nuestro proyecto utilizamos la palabra color?       
+Para buscar utilizamos el comando git grep color y nos buscará en todo el proyecto los archivos en donde está la palabra color.    
+
+- Con `git grep -n color` nos saldrá un output el cual nos dirá en qué línea está lo que estamos buscando.
+- Con `git grep -c color` nos saldrá un output el cual nos dirá cuántas veces se repite esa palabra y en qué archivo.
+- Si queremos buscar cuántas veces utilizamos un atributo de HTML lo hacemos con `git grep -c "<p>"`
+
+
+🔥 Ejemplo practico     
+Branch master   
+- Grep Buscar en los archivos
+	-   `git grep color`
+	-   `git grep la`
+- Saber la línea donde se usó
+	-   `git grep -n color`
+	-   `git grep -n platzi`
+	-   Contar la cantidad de veces que aparece una palabra
+	-   `git grep -c la`
+	-   `git grep -c Platzi`
+- Buscar cuantas veces se usó la etiqueta p
+	-   `git grep -c "<p>"`
+
+- Log Buscar en los commits
+	- Buscar cuantas veces usé la palabra cabecera
+		-   `git log -S "cabecera"`
+
+
+✨ Comandos    
+- Buscar palabras en los archivos en el branch actual        
+	-   `git grep "palabra a buscar"`
+
+- Mostrar la línea en la cual la pablara aparece en el archivo         
+	-   `git grep -n "palabra a buscar"`
+
+- Mostrar cuantas veces aparece la palabra en cada archivo      
+	-   `git grep -c "palabra a buscar"`
+
+- Buscar los commits en los cuales sale una palabra      
+	-   `git log -S "palabra a buscar"`
+
+🎲
+
+## 42. Comandos y recursos colaborativos en Git y GitHub
+
+Hay una serie de comando que uno repite constantemente y yo te enseñe alias a nivel global pero también hay alias internamente dentro de git.
+
+Te voy a mostrar una serie de comandos que escribió Harry Robert para manejar su equipo de una manera mas colaborativa y como guárdalos no como un comando global de tu consola si no como comando específicos dentro de git
+
+✨ **Comandos de Git**    
+- `git shortlog`
+	-   Diseñado para ver cuantos commits ha hecho cada miembro del equipo
+- `git shortlog -sn --all --no-merges`
+	-   Muestra las personas que hicieron commits.
+	-   `--all` Muestra las personas y el número de commits que se realizaron incluido los borrados.
+	-   `--no-merges` No incluye los merges
+- `git config --global alias.stats "shortlog -sn --all --no-merges"`
+	-   Crear un alias global llamado stats o estadísticas que se llama digitando la palabra stats
+- `git stats`
+	-   Alias creado para llamar a un comando mas extenso y nos muestra las estadísticas de commits sin merges de cada uno de los miembros del repositorio de la rama donde estoy en este momento.
+- `git blame -c blogpost.html`
+	-   Saber quien hizo que cosa (blame - culpa), nos muestra línea por línea quien hizo cada cosa
+	-   `-c` Muestra lo mismo pero con mejor indentación
+- `git comando --help`
+	-   Ver como funciona un comando por dentro, cualquier comando, esto abre el navegador mostrando el manual
+- `git blame css/estilos.css -L35,53 -c`
+	-   Quien modificó que por ultima vez, desde la línea 35 hasta la línea 53. -c agrega un poco mas de formato.
+- `git branch -r`
+	-   Muestra las ramas remotas
+- `git branch -a`
+	-   Muestra todas las ramas. En blanco las locales y en rojo las remotas
+
+
+✨ En GitHub      
+- Panel: Opción `📈 Insights` 
+	- Pulse: Muestra...
+		- Cuantos pull request se hicieron merge
+		- Cuantos pull request se han propuesto
+		- Que issues o problemas se han cerrado
+		- Básicamente reportar bugs
+		- Donde puede que estén y la historia de todas las configuraciones
+		- Muestra quienes son los contribuidores.
+
+- Revisamos un proyecto: TryGhost/Ghost
+	- `📈 Insights` 
+		- Pulse
+		- Contributors
+		- Community
+		- Traffic
+		- Alerts: Es privado y es cuando GitHub se da cuenta que hay un problema que hay que ponerle atención.
+
+🎲
+
+## 43. Tu futuro con Git y GitHub
+
+¡Felicitaciones por terminar el Curso profesional de Git y GitHub!   
+
+Aprendimos cómo usar Git y GitHub, hacer merge request, investigar quién hizo qué a través de la línea de comandos, cómo utilizar GitHub Pages, cómo revertir cambios y mucho más. Ahora queda de tu parte experimentar, fallar, subir, borrar y por último hacer deploy de tu proyecto y compartirlo con la comunidad.   
+
+Recuerda resolver los ejercicios, completar el examen, darle 5 estrellas al profesor y compartir tu proyecto, notas, todas tus dudas y comentarios en la sección de discusiones.   
+
+- [Curso de GitLab](https://platzi.com/gitlab/)
+- `Alt + 164 = ñ`
+- `Altgr + 4 = ~ en ubuntu`
+- `#0a131e`
+
+🤴 🧔  🔥 ❄ ✨  📌  🎲  🤴🦁   🧔🐯
+
+![The end](https://media.giphy.com/media/l2JeeOTlKw7UQC58I/giphy.gif)
 
