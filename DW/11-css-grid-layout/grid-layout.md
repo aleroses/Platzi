@@ -514,33 +514,137 @@ Las propiedades que tenemos que tener en cuenta para el alineamiento son estas 3
 
 📌 ESTOS ELEMENTOS SOLO SON PARA LOS ELEMENTOS PADRES
 
+> ![Flex box](https://i.postimg.cc/0Nq9YW30/12-display-flex.jpg)
+
 **Código ejemplo:**
 -   [Alignment techniques · Flexbox · inital](https://codepen.io/teffcode_/pen/mdrRzJX?editors=1100)
 -   [Alignment techniques · Flexbox · final](https://codepen.io/teffcode_/pen/dypNgoR)
 
+📌 La propiedad en cuestión que combina tanto align-items como justify-content es `place-content: center;`      
+
+✨ Fuente: [https://developer.mozilla.org/en-US/docs/Web/CSS/place-content](https://developer.mozilla.org/en-US/docs/Web/CSS/place-content)     
 
 [Slides Clase-12](https://www.canva.com/design/DAEPwlhbCcE/TI_WagM_hIe6RoURIJOJeA/view?utm_content=DAEPwlhbCcE&utm_campaign=designshare&utm_medium=link&utm_source=sharebutton)  
 
 🎲
 
+## 13. Dibujemos con CSS + Reto
+
+✨ musartedev en GitHub    
+
+Colores:   
+
+```
+:root {
+  --skin: #f6c09c;
+  --background: #ed4042;
+  --red: #ed2860;
+  --dark-red: #680524;
+  --back: #00243a;
+  --white: #fff;
+}```
+```
+
+**Inspiración:**        
+-   [A single div](https://a.singlediv.com/)
+-   [No tengas miedo a dibujar con CSS](https://dev.to/raulmar/no-tengas-miedo-a-dibujar-con-css-1ck)
+-   [dotCSS 2016 - Wenting Zhang - Make CSS your secret super drawing tool](https://www.youtube.com/watch?v=Y0_FMCji3iE&ab_channel=dotconferences)
+
+
+**Código ejemplo:**       
+-   [Ilustración utilizada](https://gigantic.store/gigantic-flat-design-illustration-bundle-2/)
+-   [Dibujemos con CSS · final](https://codepen.io/teffcode_/pen/YzGNJyE)
+
+**Reto:**      
+ -   [Dibujarte CSS · Sitio Web](https://dibujartecss.musarte.dev/)
+-   [Dibujarte CSS · Repo para que puedas hacer PR con tu dibujito](https://github.com/musartedev/dibujarte-css)    
+
+[Slides Clase-13](https://www.canva.com/design/DAEPwqvMuoM/HEntrkxBUyi9yl8ALkuiNQ/view?utm_content=DAEPwqvMuoM&utm_campaign=designshare&utm_medium=link&utm_source=sharebutton)    
+
+🎲
+
+## 14. Grid y las relaciones padre e hijos inmediatos + Quiz
+
+Para poder trabajar en CSS Grid hay que tener claro las relaciones entre padre e hijo. Pero que es Grid?: Son las líneas verticales y horizontales.
+
+Debemos tener en cuenta que vamos a tener un ◼ padre, que son todos los elementos contenedores, todo el grid. Y los elementos ▪ hijos serán todos los que estén ubicados ahi adentro.
+
+Los hijos también pueden ser padres, esto aumenta la complejidad pero solo hay que saber quien es quien.
+
+> ![HTML and Grid](https://i.postimg.cc/qBxCMSYd/14-grid.jpg)
+
+LA ESTRUCTURA DE HTML ES IMPORTANTE PARA SABER QUIENES SON LOS HIJOS Y LOS PADRES.
+
+📌 Todos los padres DEBEN tener la propiedad `display: grid;`
+
+✨ Enlace a los apuntes sobre [[CSSGrid-Basico]] función de Obsidian :3
+
+> ![CSS grid](https://i.postimg.cc/8cSpfC21/14-css-grid.jpg)
+
+-   [A simple visual cheatsheet for CSS Grid Layout](https://grid.malven.co/)
+
+**Código ejemplo:**         
+-   [Solución del quíz](https://codepen.io/teffcode_/pen/BaLWLOJ?editors=1000)
+
+🎲
+
+## 15. Lines, tracks, cell, area, gutters, grid axis, grid row, grid column + Reto
+
+- Línea:  
+- Track: No tiene por que ocupar una fila o columna entera.  
+- Celda:  
+- Área: Conjunto de celdas.  
+- Column: Tenemos que indicar cuanto ocupa en el Grid, por eso delimitamos desde la línea en la que empieza la columna (3), hasta la línea en que acaba (4). (no vertical)
+- Row: Tenemos que indicar cuanto ocupa en el Grid, por eso delimitamos desde la línea en que empieza (2), hasta la línea en la que acaba (3). (no horizontal)
+- Gutters: Son las separaciones que damos entre celdas.
+
+> ![Grid](https://i.postimg.cc/nLFtqHtn/15-grid.png)   
+
+📌 Recuerda usar filas y columnas completas, que se extiendan desde inicio a fin de la página.   
+📌 Debemos separar cada componentes y trabajarlos de manera independientes.    
+
+[Slides Clase-15](https://www.canva.com/design/DAEW0pSs00Q/MnL5x4rrSaC7U5F_-1fWQQ/view#1)    
+
+🎲
+
+## 16. ¡Iniciemos nuestro proyecto! Fase de creatividad e identificación de elementos
+
+✨ Ver [[DisenioDevelopers]]        
+
+**Inspiración: Mood board**      
+-   Pinterest 🔍 
+	- Magazine design inspiration
+	- Asymmetrical Grid design
+-   [Dribbble](https://dribbble.com/)
+
+
+**Hacer una lista de todo lo que se necesita**         
+-   Temática
+    -   Lluvia de ideas: Comida, música, juegos, etc.
+-   Figuras principales
+    -   Lluvia de ideas: Círculos , cuadros, overlap, etc.
+-   Imágenes
+    -   De uso libre
+        -   Pixabay
+        -   Pexels
+        -   Freepick
+-   Tipografía
+    -   Google Fonts
+-   Paleta de colores
+    -   ColorHunt
+    -   Picker
+
+Hacer un bosquejo y plasmar las ideas     
+
+> ![Bosquejo](https://i.postimg.cc/ZqjmLmXF/16-creatividad.jpg)
+
+
+[Slides Clase-16](https://www.canva.com/design/DAEQWdX-R6U/UNyZt4I2GoerlNT43617rA/watch?utm_content=DAEQWdX-R6U&utm_campaign=designshare&utm_medium=link&utm_source=sharebutton)    
+
+🎲
+
+## 16.
+
+
 🔥 ❄ ✨ 📌 🎲 🤴🦁 🧔🐯 🧰 ⏰
 
-Joel Eduardo Sánchez Herrera
-
-Paolo Joaquin Pinto Perez
-
-Liza Fernanda Castrillón Díaz
-
-John Steven Bernal Gonzalez
-
-Fernando Quinteros Gutierrez
-
-Giselly Romero Nuñez
-
-Jose Manuel Montaño Saenz
-
-resumen 
-
-apuntes
-
-notas
