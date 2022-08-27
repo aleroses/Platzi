@@ -1,5 +1,5 @@
 # Curso Profesional de CSS Grid Layout
-> **Estefany Aguilar** - [Desarrolladora Frontend en La Haus](https://platzi.com/profesores/teffcode/)
+> **Estefany Aguilar** - [Desarrolladora Frontend en La Haus](https://platzi.com/profesores/teffcode/)         
 > **@teffcode** en Twitter - GitHub - Instagram
 
 ## 1. Tips para llevar tu conocimiento de CSS a otro nivel + Quices
@@ -609,7 +609,8 @@ LA ESTRUCTURA DE HTML ES IMPORTANTE PARA SABER QUIENES SON LOS HIJOS Y LOS PADRE
 
 ## 16. ¡Iniciemos nuestro proyecto! Fase de creatividad e identificación de elementos
 
-✨ Ver [[DisenioDevelopers]]        
+✨ Ver [[DisenioDevelopers]]      
+![[DisenioDevelopers#2 El proceso creativo]]
 
 **Inspiración: Mood board**      
 -   Pinterest 🔍 
@@ -643,8 +644,355 @@ Hacer un bosquejo y plasmar las ideas
 
 🎲
 
-## 16.
+## 17. Creando nuestro contenedor: ¿display: grid o display: inline-grid?
 
+Al momento de crear nuestro contenedor, debemos de tener presente, si vamos a trabajar con un `display: grid` o con un elemento `display: inline-grid`. 
+
+✨ Casi siempre se utiliza display: grid pero hay que tener en cuenta en que casos se puede utilizar el inline-grid.
+
+
+🔥 Display      
+➡ Desplegar, colocar a la vista, exhibir, lucir, mostrar, presentar.   
+Cuando trabajamos con display, definimos la forma, el tipo de visualización o de colocación que hay en cada elemento padre.   
+Valores: Inner y Outer 
+
+Debemos sabemos que los contenedores de tipo `Block` y `Grid` se comportan de la misma forma.
+
+✨ Ahora los valores block e inline nos definen dos cosas:    
+
+-   Valor Externo de Visualización: Es como se comporta un elemento en relación a los otros.  
+-   Valor Interno de Visualización: Como se comportan los hijos directos de este elemento.
+
+Entonces realmente cuando trabajamos en un Grid, estamos trabajando en un Block-Grid. Se comportara por fuera como un elemento bloque, pero _por dentro como un Grid_. En otras palabras al invocar un `display: grid;` realmente estas invocando un `display: block-grid;` por lo que estás solicitando un contenedor grid a nivel de bloque.
+
+Los elementos en bloque contienen los siguientes atributos:    
+
+-   Margin & Padding
+-   Width & Height
+
+Sin embargo, a los hijos de un contenedor display: grid; se les da un valor interno de grid.
+
+📌 Lo mismo pasa con `display: inline-flex;` inmediatamente debes saber que se comportará como un elemento en línea.  
+
+En resumen, el comportamiento externo de block, grid y flex es en bloque⬇ y del inline, inline-grid e inline-flex es en línea➡ con el texto. 
+
+
+
+Hay que tener en cuenta de que siempre vamos a volver al flujo normal del documento (bloque o línea) ya que, cada una de las etiquetas html tienen por defecto su propio display sin agregarle CSS. Esto es lo que se conoce como **_"flujo normal del documento"._** Por ejemplo
+
+-   **Los elementos INLINE** que se visualizan uno seguido de otro sin hacer salto de línea son:
+
+> `b`, `big`, `i`, `small`, `tt`,  
+`abbr`, `acronym`, `cite`, `code`, `dfn`, `em`, `kbd`, `strong`, `samp`, `time`, `var`,  
+`a`, `bdo`, `br`, **`img`**, `map`, `object`, `q`, `script`, `span`, `sub`, `sup`,  
+`button`, `input`, `label`, `select`, `textarea`.
+
+-   **Los elementos BLOQUE** que se comportan como bloques y que cada vez que se presenta un elemento de este tipo se hace un salto de línea son:
+ 
+>`<address>`, `<article>`, `<aside>`, `<audio>`, `<blockquote>`, `<canvas>`, `<dd>`, `<div>`, `<dl>`, `<fieldset>`, `<figcaption>`, `<figure>`, `<footer>`, `<form>`, `<header>`, `<hgroup>`, `<hr>`, `<li>`, `<main>`, `<nav>`, `<noscript>`, `<ol>`, `<output>`, `<p>`, `<pre>`, `<section>`, `<table>`, `<tfoot>`, `<ul>`, `<video>`, `<h1>`...`<h6>`.
+
+
+📌 Sin embargo, los siguientes elementos pueden ser en línea y de bloque según las circunstancias: button, del, iframe, ins, map, object, script
+
+[Slides Clase-17](https://www.canva.com/design/DAEPfFLZaPQ/KCwKnf-IVl5Rinrh1eGSCA/view?utm_content=DAEPfFLZaPQ)   
+
+🎲
+
+## 18. Creando filas, columnas y espaciado + Reto
+
+📌 Ver notas en Obsidian: [[CSSGrid-Basico]] or ver nota en [GitHub](https://github.com/Alexander-VR/Platzi/blob/master/DW/9-CSSGrid-Basico/CSSGrid-Basico.md) 
+
+En el contenedor padre:      
+-   Para poder crear columnas debemos usar `grid-template-columns`
+-   Para crear filas debemos usar `grid-template-rows`
+-   Para crear una grid debemos escribir en el CSS
+
+> ![Grid](https://i.postimg.cc/Sxgqk86h/18-grid-columns-rows.jpg)
+
+```css
+.container {
+	display: grid;
+	grid-template-columns: 20px 20px 20px;
+	grid-template-rows: 20px 20px 20px;
+}
+```
+
+
+-   Pero si deseamos acortar esta forma podemos usar `repeat`
+
+```css
+.container {
+	display: grid;
+	grid-template-columns: repeat(3, 20px);
+	grid-template-rows: repeat(3, 20px);
+}
+```
+
+-   Además, que grid cuenta con un shorthand
+
+```css
+.container {
+	display: grid;
+	grid-template: repeat(3, 20px) / repeat(3, 20px);
+						  /*filas / columnas*/
+}
+```
+
+-   Si deseamos tener un espacio interno podemos usar la propiedad `gap`
+    
+    -   Existen varias maneras de implementarlo
+        
+        -   Antigua
+        
+        ```css
+        .container {
+        	display: grid;
+        	grid-template: repeat(3, 20px);
+        	grid-column-gap: 5px;
+        	grid-row-gap: 5px;
+        }
+        ```
+        
+        -   Antigua corta
+        
+        ```css
+        .container {
+        	display: grid;
+        	grid-template: repeat(3, 20px);
+        	grid-gap: 5px 5px;
+        }
+        ```
+        
+        -   Standard
+        
+        ```css
+        .container {
+        	display: grid;
+        	grid-template: repeat(3, 20px);
+        	column-gap: 5px;
+        	row-gap: 5px;
+        }
+        ```
+        
+        -   Standard corta
+        
+        ```css
+        .container {
+        	display: grid;
+        	grid-template: repeat(3, 20px);
+        	gap: 5px 5px;
+        }
+        ```
+        
+-   Además, usamos áreas, para poder ubicar elementos de una manera más sencilla
+    
+
+```css
+.container {
+	display: grid;
+	grid-template: repeat(5, 20px) / repeat(5, 20px);
+	grid-template-areas: 
+		"header header header header header"
+		"header header header header header"
+		"main main . sidebar sidebar"
+		"main main . sidebar sidebar"
+		"footer footer footer footer sidebar"
+}
+```
+
+> ![Areas](https://i.postimg.cc/FHrmMGJp/18-grid-areas.jpg)
+ 
+**Código ejemplo:**         
+-   [Creación de filas y columnas](https://codepen.io/teffcode_/pen/mdrJqGg)
+
+**Reto:**     
+1. Ir al diseño de nuestro proyecto
+2. Identificar todos los posibles contenedores
+3. A cada contenedor, identificarle las diferentes filas y columnas.
+
+
+[Slides Clase-18](https://www.canva.com/design/DAEPC3ca3BQ/Dldv9zjYSIE0LBb-BzEQng/view?utm_content=DAEPC3ca3BQ&utm_campaign=designshare&utm_medium=link&utm_source=sharebutton)   
+
+🎲
+
+## 19. Alineamiento en el elemento contenedor + Quiz
+
+📌 Ver notas en Obsidian: [[CSSGrid-Basico]] or ver nota en [GitHub](https://github.com/Alexander-VR/Platzi/blob/master/DW/9-CSSGrid-Basico/CSSGrid-Basico.md) 
+
+↘️ Alineamiento en el elemento contenedor      
+Podemos alinear todos los contenedores a una sola dirección.   
+
+-   Propiedades para ordenar por parte del contenedor
+    -   **Items**
+        -   `justify-items`
+        -   `align-items`
+        -   `place-items`
+    -   **Content**
+        -   `justify-content`
+        -   `align-content`
+        -   `place-content`
+
+-   Propiedades en común:
+    -   **Justify ➡⬅** 
+        -   Inline axis (row axis)
+        -   De izquierda a derecha
+            -   start
+            -   end
+	    - items: Alinear lo que está _dentro_ del grid
+		    - `justify-items: start | end | center | stretch;`
+	    - content: Alinear la grid en su contenedor
+			- `justify-content: start | end | center | stretch;`
+			- `justify-content: space-around | space-between | space-evenly;`
+	
+	-   **Align ⬇⬆** 
+        -   Block axis (column axis)
+        -   De arriba hacia abajo
+            -   start
+            -   end
+		- items: Alinear lo que está _dentro_ del grid
+			- `align-items: start | end | center | stretch;`
+		- content: 
+			- `align-content: start | end | center | stretch;`  
+			- `align-content: space-around | space-between | space-evenly;`  
+
+	-   **Place ➡⬅⬇⬆** Lo mismo que items y align en uno solo
+		- items:
+			- `place-items: <alig-items> / <justify-items>;`
+		- content:
+			- `place-content: <alig-items> / <justify-items>;`
+
+
+**Documentación:**         
+-   [CSS Grid: Justification and Alignment](https://www.digitalocean.com/community/tutorials/css-align-justify)
+
+**Código ejemplo:**     
+-   [Alineamiento](https://codepen.io/teffcode_/pen/RwGaZoe)
+
+
+[Slides Clase-19](https://www.canva.com/design/DAEPfCLFLTM/wthWMlp0-8TWRlSbb_hhlg/watch?utm_content=DAEPfCLFLTM&utm_campaign=designshare&utm_medium=link&utm_source=sharebutton)   
+
+🎲
+
+## 20. Generación automática de tracks + Quiz
+
+Como vimos anteriormente, un track es la union de dos o mas celdas.
+
+Por mas que definamos cierto numero de elementos, no sabemos si por parte del backend, se nos agregarían mas y para poder solucionar esto, necesitamos no establecer la cantidad de filas desde el principio, dejamos que se creen solas. Esto se llama Grid Implícita donde se crean filas o columnas si las necesitamos con anchos sin tamaño.
+
+Para poder acomodar los elementos en ciertas líneas, necesitamos las propiedades:
+
+❄ Ejemplo de manera explicita:     
+```css
+.container {
+	grid-template-columns: 60px;
+	grid-template-rows: 90px 90px;
+}
+.item-a {
+	grid-column: 1 / 2; 
+	/*El elemento estara desde la linea 1 a la 2 de las columnas*/
+	
+	grid-row:1 / 2; 
+	/*Estara en la linea 1 a la 2 de las filas*/
+}
+.item-b {
+	grid-column: 1 / 2; 
+	grid-row: 2 / 3; 
+}
+```
+
+
+🔥 Ejemplo de manera implícita:     
+Existe una propiedad que nos permite crear columnas desde antes que llegue un elemento, aunque no lo hayamos definido desde el principio de una grid, este elemento nos permitirá crear columnas de un tamaño predefinido:
+
+```css
+.container{
+	grid-auto-columns:60px;
+}
+```
+
+Tambien tenemos otra propiedad que nos ayuda a ir agregando mas elementos en cierto orden, si son columnas o filas, con la propiedad:
+
+```css
+.container{
+	grid-auto-flow: row | column | row dense | column dense
+}
+```
+
+```css
+.contanier {
+    display: grid;
+    grid-template: repeat(2, 100px) / repeat(2, 100px);
+    grid-auto-flow: column; 
+    /* Agrega automaticamente columnas */
+    grid-auto-flow: row; 
+    /* Agrega automaticamente Filas */
+    grid-auto-columns: 100px; 
+    /* Define el tamaño de columnasa que se agregaran automaticamente*/
+    grid-auto-rows: 100px; 
+    /* Define el tamaño de las filas que se agregaran automaticamente */
+}
+```
+
+[Slides Clase-20](https://www.canva.com/design/DAEPfzybVv4/CpeBRCEEO0stZ8Ivj1Ovfg/view?utm_content=DAEPfzybVv4&utm_campaign=designshare&utm_medium=link&utm_source=sharebutton)  
+
+🎲
+
+## 21. Funciones: repeat(), minmax() y fit-content()
+
+La función CSS **_repeat()_** representa un fragmento repetido de la lista de la pista, permitiendo un gran número de columnas o renglones que exhiben un patrón recurrente para ser escrito de una forma más compacta.  
+
+`grid-templete-columns: repeat(3, 1fr);`
+
+En función CSS **_minmax()_** el _min_ representa el tamaño mínimo que va a tener cada uno de los elementos de la grid y el _max_ nos indica el valor máximo de los elementos de la grid. Esto nos sirve para que el contenido se vea bien en determinados tamaños.  
+
+`grid-templete-columns: repeat(3, minmax(200pz, 300px));`
+
+Con la función de **_auto-fit()_** ADAPTA las columnas DISPONIBLES ACTUALMENTE en el espacio expandiéndolas para que ocupen cualquier espacio disponible. El navegador hace eso después de LLENAR ese espacio adicional con columnas adicionales (como con el autocompletar) y luego colapsar las vacías.  
+
+`grid-template-columns: repeat(auto-fit, minmax(20px, 1fr));`
+
+Con la función de **_auto-fill()_** LLENA la fila con tantas columnas como pueda caber. Por lo tanto, crea columnas implícitas cada vez que cabe una nueva columna, porque está tratando de LLENAR la fila con tantas columnas como sea posible. Las columnas recién agregadas pueden estar vacías, pero seguirán ocupando un espacio designado en la fila.  
+/************ Estas funciones con perfectas para el responsive design.*********/  
+
+`grid-template-columns: repeat(auto-fill, minmax(20px, 1fr));`
+
+La función **_fit-content()_** organiza un contenido en especifico el cual lo reserva y el resto seria auto.
+
+`grid-template-columns: auto fit-content(800px) auto;`
+
+
+[Slides Clase-21](https://www.canva.com/design/DAEPgUjpekM/vSqGiNbCVGEsz-X1Wu2uxw/view?utm_content=DAEPgUjpekM&utm_campaign=designshare&utm_medium=link&utm_source=sharebutton)  
+
+🎲
+
+## 22. ¡Manos al código! Fase de construcción de la grid principal de nuestro proyecto
+
+![Proyecto](https://i.postimg.cc/CKq3zLdv/22-project-paramore.png)
+
+[Código - Primera parte del proyecto](https://codepen.io/teffcode_/pen/BaLWgEj?editors=1100)
+
+[Color space - Gradient](https://mycolor.space/)
+
+[Slides Clase-22](https://www.canva.com/design/DAEPhfyIeP0/eeIEaOeZkFHP3osqh69P3g/view?utm_content=DAEPhfyIeP0&amp;utm_campaign=designshare&amp;utm_medium=link&amp;utm_source=sharebutton)  
+
+🎲
 
 🔥 ❄ ✨ 📌 🎲 🤴🦁 🧔🐯 🧰 ⏰
 
+
+---
+
+Código ejemplo para usar en GitHub
+18. Creando filas, columnas y espaciado + Reto
+
+**Slides:** [Click aquí](https://www.canva.com/design/DAEPC3ca3BQ/Dldv9zjYSIE0LBb-BzEQng/view?utm_content=DAEPC3ca3BQ&utm_campaign=designshare&utm_medium=link&utm_source=sharebutton)
+
+<details>
+  <summary>Haz click aquí para ver la documentación de esta clase 👀</summary>
+
+  <br/>
+  
+  **Código:**
+  
+  * [Creación de filas y columnas](https://codepen.io/teffcode_/pen/mdrJqGg)
+</details>
