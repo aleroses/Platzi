@@ -2,7 +2,7 @@
 > **Estefany Aguilar** - [Desarrolladora Frontend en La Haus](https://platzi.com/profesores/teffcode/)         
 > **@teffcode** en Twitter - GitHub - Instagram
 
-## 1. Tips para llevar tu conocimiento de CSS a otro nivel + Quices
+## 1. Tips para llevar tu conocimiento de CSS a otro nivel + Quizzes
 
 - [Slides del Curso](https://static.platzi.com/media/public/uploads/sliides-curso-de-css-grid-layout_5d392acf-26ce-4cf6-9fde-262064f0e019.pdf)
 - [Repo con la documentación del Curso](https://github.com/platzi/CSS2020/blob/main/README.md#1-tips-para-que-lleves-tus-conocimientos-de-CSS-a-otro-nivel--quices)
@@ -977,22 +977,200 @@ La función **_fit-content()_** organiza un contenido en especifico el cual lo
 
 🎲
 
-🔥 ❄ ✨ 📌 🎲 🤴🦁 🧔🐯 🧰 ⏰
+## 23. Ubicación + Reto 
+
+Es posible ubicar a los elementos hijos desde el contendor padre... pero todos van a estar alineados en la misma dirección, lo cual, no siempre necesitamos hacer.
+
+✨ Existen diferentes formas de ubicar los elementos de la grilla   
+1.  Grupo 1
+        
+    - `grid-column-start` & `grid-column-end`
+        
+	        ```css
+	        .item{
+	        	grid-column-start: 1;
+	        	grid-column-end: 2;
+	        }
+	        ```
+        
+	- **Shorthand** ⇒ `grid-column`
+        
+	        ```css
+	        .item{
+	        	grid-column: 1 / 2;
+					/*inicio / fin*/
+	        }
+	        ```
+
+2.  Grupo 2
+        
+    - `grid-row-start` & `grid-row-end`
+        
+	        ```css
+	        .item{
+	        	grid-row-start: 1;
+	        	grid-row-end: 3;
+	        }
+	        ```
+        
+    -   **Shorthand** ⇒ `grid-row`
+        
+	        ```css
+	        .item{
+	        	grid-row: 1 / 3;
+	        }
+	        ```
+
+3.  Grupo 3
+        
+    -   `grid-area`   
+        
+	        ```css
+	        .container{
+	        	display: grid;
+	        	grid-template-columns: repeat(2, 1fr);
+	        	grid-template-area:
+	        	"card1 card-2"
+	        	"card1 card-3";
+	        }
+	        
+	        .item{
+	        	grid-area: card-1;
+	        }
+	        ```
+
+✨ Reto:    
+- [Solución personal](https://codepen.io/Meowth01/pen/rNdEyPP)
+- [Solución compañero](https://codepen.io/henry-1227/pen/ZELjGLo)
 
 
+[Slides Clase-23](https://www.canva.com/design/DAEPg4rXU0g/Dsqsl-wmfJYpnJD--BUNsQ/view?utm_content=DAEPg4rXU0g&amp;utm_campaign=designshare&amp;utm_medium=link&amp;utm_source=sharebutton)  
+
+🎲
+
+## 24. Alineamiento en los elementos hijos + Quiz
+
+Si queremos manipular desde los items podemos hacer uso de las propiedades:    
+- `justify-self` ➡ 
+- `align-self` ⬇
+- `place-self` ➡⬇
+
+Estas 3 usan las mismas propiedades.   
+
+✨ Una Pseudo clase que nos ayuda a utilizar un elemento o elementos en especifico y no llenarnos de mas clases diferentes, es:
+
+```css
+.item:nth-child(1){
+	background: hotpink;
+	justify-self: start;
+}
+```
+
+Aquí lo que decimos es que queremos utilizar el primer hijo que contenga la clase item y que se le apliquen los estilos especificados.
+
+✨ Si queremos utilizar todos y solo excluir a uno, podemos a usar:
+
+```css
+.item:not(:nth-child(1)){
+	background: turquoise;
+}
+```
+
+Donde especificamos que usaremos todos los elementos de la clase EXCEPTO el primero.   
+
+📌 Recuerda colocar altura (`height`) para no tener inconvenientes.   
+
+
+Una [extension útil](https://chrome.google.com/webstore/detail/css-grid-overlay/hajfilceeneohkmcakehndmaeonhlack/related)
+
+**Código ejemplo:**
+-   [Ubicación](https://codepen.io/teffcode_/pen/vYXGWNg?editors=1100)
+
+[Slides Clase-24](https://www.canva.com/design/DAEPhN3s25E/dGrYaKR7Sbeyak9YhutA7A/view?utm_content=DAEPhN3s25E&utm_campaign=designshare&utm_medium=link&utm_source=sharebutton)  
+
+🎲
+
+## 25. ¡Manos al código! Fase de ubicación y alineamiento
+
+Pueden utilizar el atributo:    
+
+```
+grid-area: RowStart / ColumnStart / RowEnd / ColumnEnd;
+```
+
+Puede ser confuso al principio pero es una forma mas corta   
+
+**Código ejemplo:**   
+-   [Código](https://codepen.io/teffcode_/pen/poEeXmr)
+
+[Slides Clase-25](https://www.canva.com/design/DAEPhfyIeP0/eeIEaOeZkFHP3osqh69P3g/view?utm_content=DAEPhfyIeP0&utm_campaign=designshare&utm_medium=link&utm_source=sharebutton)  
+
+🎲
+
+## 26. Continuando con la fase de ubicación y alineamiento
+
+**Código ejemplo:**   
+-   [Código para iniciar](https://codepen.io/teffcode_/pen/XWjMLwq?editors=1100)
+-   [Código final](https://codepen.io/teffcode_/pen/yLabgPV?editors=1100)
+
+
+📌 Indagar sobre la propiedad `transform: rotate(90deg);` y `writing-mode: vertical-1r;`    
+ 
+[Slides Clase-26](https://www.canva.com/design/DAEQblSFlg0/fee3yNTklUUEH9TZdYL9aA/watch?utm_content=DAEQblSFlg0&utm_campaign=designshare&utm_medium=link&utm_source=sharebutton)  
+
+🎲
+
+## 27. Diseño responsivo sin media queries + Reto
+
+
+[Slides Clase-27](https://www.canva.com/design/DAEQblSFlg0/fee3yNTklUUEH9TZdYL9aA/watch?utm_content=DAEQblSFlg0&utm_campaign=designshare&utm_medium=link&utm_source=sharebutton)  
+
+🎲
+
+## 28. Responsive y CSS Grid
+
+**Ideas/conceptos claves**  
+
+Las **media queries** (en español “consultas de medios”) son útiles cuando deseas modificar tu página web o aplicación en función del tipo de dispositivo (como una impresora o una pantalla) o de características y parámetros específicos (como la resolución de la pantalla o el ancho del viewport del navegador).
+
+**Apuntes**    
+
+-   Existe una gran variedad de dispositivos con diferentes tamaños de pantalla
+-   Debemos establecer los puntos de inicio y final
+    - Establecer el público, para determinar estos valores
+    - Podemos usar [Google analytics](https://analytics.google.com/analytics/web/provision/#/provision)
+-   Es crucial tener un rango de pixeles para trabajar (min: 360px - max: 414px) iPhone - Android 
+-   Para aplicar los diseños usaremos la media queries
+-   Para usar CSS Grid con reglas responsive es recomendable usar
+    -   Auto fill ⇒ Llena el contenido con todo el contenido posible
+    -   Auto fit ⇒ Encaja las columnas disponibles en un espacio disponible
+
+✨ Con la función de **_auto-fit()_** ADAPTA las columnas DISPONIBLES ACTUALMENTE en el espacio expandiéndolas para que ocupen cualquier espacio disponible. El navegador hace eso después de LLENAR ese espacio adicional con columnas adicionales (como con el autocompletar) y luego colapsar las vacías.
+
+✨ Con la función de **_auto-fill()_** LLENA la fila con tantas columnas como pueda caber. Por lo tanto, crea columnas implícitas cada vez que cabe una nueva columna, porque está tratando de LLENAR la fila con tantas columnas como sea posible. Las columnas recién agregadas pueden estar vacías, pero seguirán ocupando un espacio designado en la fila.
+
+📌 Repasar curso [[CSSGrid-Basico]]
+
+
+[Slides Clase-28](https://www.canva.com/design/DAEQcFeFq8M/r5Y96ODgGbsnDoYPtJ--4Q/view?utm_content=DAEQcFeFq8M&utm_campaign=designshare&utm_medium=link&utm_source=sharebutton)  
+
+
+🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲   
+🔥 ❄ ✨ 📌 🎲 🤴🦁 🧔🐯 🧰   
 ---
-
-Código ejemplo para usar en GitHub
-18. Creando filas, columnas y espaciado + Reto
-
-**Slides:** [Click aquí](https://www.canva.com/design/DAEPC3ca3BQ/Dldv9zjYSIE0LBb-BzEQng/view?utm_content=DAEPC3ca3BQ&utm_campaign=designshare&utm_medium=link&utm_source=sharebutton)
-
+#### Este apartado es en agradecimiento a todos los que hicieron posible estos apuntes. NPDA 💚  
 <details>
-  <summary>Haz click aquí para ver la documentación de esta clase 👀</summary>
+  <summary>Haz click aquí para ver a los contribuidores 👀</summary>
 
   <br/>
   
-  **Código:**
-  
-  * [Creación de filas y columnas](https://codepen.io/teffcode_/pen/mdrJqGg)
+  **🔥 Team:**                
+	- Joel Eduardo Sánchez Herrera            
+	- Paolo Joaquin Pinto Perez            
+	- Liza Fernanda Castrillón Díaz         
+	- John Steven Bernal Gonzalez          
+	- Fernando Quinteros Gutierrez          
+	- Giselly Romero Nuñez       
+	- Jose Manuel Montaño Saenz           
+
 </details>
