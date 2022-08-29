@@ -342,18 +342,20 @@ Modos de Escritura / Propiedades Lógicas
 ## 10. Modos de escritura y ejes de alineamiento + Reto
 
 Nosotros por nuestro modo de escritura que es el sistema Latin, que es de izquierda a derecha, el origen de nuestro navegador es el Top Left. Pero existen otros sistemas de escritura que pueden ser totalmente diferente. Por este tipo de cosas, surge una nueva propiedad llamada: `“Writing Mode”`. Donde tenemos diferentes valores como:    
--   Horizontal TB
--   Vertical LR
--   Vertical RL
--   Sideways LR
--   Sideways RL
+- `writing-mode: horizontal-tb;`
+- `writing-mode: vertical-rl;`
+- `writing-mode: vertical-lr;`
+- `writing-mode: sideways-rl;`
+- `writing-mode: sideways-lr;`
 
-[Documentación de Writing mode](https://developer.mozilla.org/en-US/docs/Web/CSS/writing-mode)
+[Documentación de Writing mode](https://developer.mozilla.org/en-US/docs/Web/CSS/writing-mode)   
 
 📌 LAS ULTIMAS DOS LETRAS, DEFINEN DE QUE DIRECCION A QUE DIRECCION VA ESCRITO.
 
 ESTA PROPIEDAD NO ES APTA PARA TABLAS, NI ROW, NI COLUMN
 
+> ![Writing mode](https://i.postimg.cc/44DPgT7D/10-writing-mode.jpg)
+> ![Writing mode](https://i.postimg.cc/J7Dxvhn3/10-writingmode.png)
 > ![Formas de Escritura](https://i.postimg.cc/T3RRpgJ1/11-modos-escritura.png)
 
 Las cosas que tenemos que tener en cuenta son:     
@@ -1151,6 +1153,7 @@ Las **media queries** (en español “consultas de medios”) son útiles cuan
 
 📌 Repasar curso [[CSSGrid-Basico]]
 
+![Resumen](https://i.postimg.cc/vZHT01Pz/grid-basico-resumen.png)
 
 [Slides Clase-28](https://www.canva.com/design/DAEQcFeFq8M/r5Y96ODgGbsnDoYPtJ--4Q/view?utm_content=DAEQcFeFq8M&utm_campaign=designshare&utm_medium=link&utm_source=sharebutton)  
 
