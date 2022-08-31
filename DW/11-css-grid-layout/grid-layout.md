@@ -1177,3 +1177,106 @@ Las **media queries** (en español “consultas de medios”) son útiles cuan
 	- Jose Manuel Montaño Saenz           
 
 </details>
+
+
+### Examen:
+1. Evaluar el panorama actual con respecto a las herramientas que nos han facilitado el camino a lo largo de los años, nos sirve para:
+	- Ver el impacto que tienen estas herramientas en la forma en la que diseñamos y desarrollamos
+
+CAMBIAR
+
+2. CSS Grid es una idea nueva
+	- Falso
+
+CAMBIAR
+
+3. CSS Grid requiere una forma completamente nueva de pensar sobre el diseño en CSS
+	- Verdadero
+
+CAMBIAR
+
+4. ¿Cuál de las siguientes propiedades no fue utilizada en la técnica de alineamiento con line-height?
+	- table-cell
+
+CAMBIAR
+
+5. Una de las mayores limitantes de trabajar con las técnicas de alineamiento vistas en el curso es:
+	- Propiedades físicas
+
+CAMBIAR
+
+6. En latín, el Block Flow Direction va de:
+	- No es: Derecha a izquierda
+	- Abajo hacia arriba
+	- Es: Arriba hacia abajo 😌
+	- No es: Izquierda a derecha
+
+CAMBIAR
+
+7. La propiedad lógica equivalente a la propiedad física margin-top es:
+	- margin-block-start
+
+CAMBIAR
+
+8. caniuse.com es una página que nos permite:
+	- Revisar la compatibilidad de las propiedades de CSS en los diferentes navegadores
+
+CAMBIAR
+
+9. Los elementos hijos de un contenedor también pueden ser padres
+	- Verdadero
+
+CAMBIAR
+
+10. Uno de los tips dados en el curso para aprender a trabajar con CSS Grid es:
+	- Identificar las relaciones de padre e hijos inmediatos para así saber qué propiedades implementar en cada caso
+
+CAMBIAR
+
+11. ¿Puedo darle width a un elemento inline? (Esto hace parte de una de las tareítas que te dejé)
+	- Falso
+
+CAMBIAR
+
+12. A un elemento padre se le debe poner siempre la propiedad:
+	- display: grid (o inline-grid)
+
+CAMBIAR
+
+13. La palabra "justify" hace alusión al eje:
+	- inline
+
+CAMBIAR
+
+14. La palabra "align" hace alusión al eje:
+	- block
+
+CAMBIAR
+
+15. place-items es una propiedad del elemento:
+	- padre
+
+CAMBIAR
+
+16. justify-content es una propiedad del elemento:
+	- padre
+
+CAMBIAR
+
+17. place-self es una propiedad del elemento:
+	- hijo
+
+CAMBIAR
+
+18. ¿Qué propiedad usarías en el elemento padre, si quisieras alinear sus elementos hijos a la derecha?
+	- justify-items: end;
+
+CAMBIAR
+
+19. Si queremos especificar el tamaño de los tracks de cuadrícula generados automáticamente, lo podemos hacer con la propiedad:
+	- grid-auto-columns
+
+CAMBIAR
+
+20. Una de las cosas recomendadas para comenzar a trabajar con diseño responsivo es:
+	- Establecer breakpoints dependiendo de los dispositivos que queremos/necesitemos abarcar
