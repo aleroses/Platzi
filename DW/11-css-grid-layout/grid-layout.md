@@ -354,8 +354,8 @@ Nosotros por nuestro modo de escritura que es el sistema Latin, que es de izquie
 
 ESTA PROPIEDAD NO ES APTA PARA TABLAS, NI ROW, NI COLUMN
 
-> ![Writing mode](https://i.postimg.cc/44DPgT7D/10-writing-mode.jpg)
-> ![Writing mode](https://i.postimg.cc/J7Dxvhn3/10-writingmode.png)
+> ![Writing mode](https://i.postimg.cc/44DPgT7D/10-writing-mode.jpg)    
+> ![Writing mode](https://i.postimg.cc/J7Dxvhn3/10-writingmode.png)    
 > ![Formas de Escritura](https://i.postimg.cc/T3RRpgJ1/11-modos-escritura.png)
 
 Las cosas que tenemos que tener en cuenta son:     

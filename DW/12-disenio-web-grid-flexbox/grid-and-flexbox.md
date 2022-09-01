@@ -838,6 +838,211 @@ Es una herramienta web con la que básicamente puedes ajustar sombras, redondead
 
 🎲
 
+## 19. Wireframes y comunicación visual simple, intuitiva y atractiva
+
+Antes de hacer cualquier diseño, debemos saber qué es lo que queremos hacer.  
+
+**1. Saber que quiero**          
+✨ _Ejemplo:_    
+Queremos hacer un reproductor de música para un dispositivo mobile y luego si se quiere pasarlo a desktop.
+
+**2. Hacer un boceto (Wireframe)**         
+Podemos hacerlo con lápiz y papel pero también lo podemos hacer con esta herramienta gratuita [Moqups](https://app.moqups.com/#)  
+
+**3. Pensar en la guía de estilos**        
+-   temas de colores
+-   tipografía  
+-   ilustraciones
+-   iconos
+
+_Esto solo después de tener una base de que es lo que queremos conseguir._  
+
+
+
+✨ Pros y contras NEUMORPHISM
+
+-   Problema de accesibilidad
+	Técnicamente, Neumorphism es un juego de aplicar el mismo color a tus elementos y tu fondo, y usar dos sombras diferentes, una clara y otra oscura, para crear la apariencia.
+	
+	Dicho esto, cuando tienes un diseño que se basa esencialmente en luces y sombras, a menudo carece de una buena relación de contraste. Y ese es un gran revés cuando se trata de accesibilidad.
+	
+	Aquí tampoco estamos hablando solo de personas con discapacidad visual, es frustrante mirar botones que se pueden presionar o no, incluso solo para alguien que se ha sentado frente a su pantalla durante un par de horas.
+
+-   Problema de espaciado
+	Dado que cada elemento usa dos sombras, el espacio total que usa cada elemento en Neumorfismo es significativamente mayor de lo normal. Esto dificulta el diseño de interfaces complejas y con muchos elementos.
+
+Dicho esto, el neumorfismo definitivamente irradia una estética minimalista de moda hasta su esencia. Sin embargo, como todas las nuevas tendencias en la etapa inicial, tendrá que desarrollarse y adaptarse para compensar sus limitaciones. Sin embargo, a los diseñadores se les ocurren continuamente nuevas ideas para lograrlo, así que démosle tiempo y veamos si la estética neumorfica nos pasa de largo en un año o dos o si están aquí para quedarse.
+
+
+**Tips:**      
+Ten en cuenta: Menos es mas❗❗❗
+
+1.  Pensemos siempre en una comunicación visual simple intuitiva y atractiva.   
+2.  Juega al papel de usuario siempre, usando tus propios bocetos.
+3.  Se tu propio tester, para tener una mejor calidad en nuestro desarrollo.
+
+
+[Slides Clase-19](https://www.canva.com/design/DAEQnFZTeMo/MK4oKIC18ZQE9_QT5JzVrg/view?utm_content=DAEQnFZTeMo&amp;utm_campaign=designshare&amp;utm_medium=link&amp;utm_source=sharebutton)
+
+🎲
+
+## 20. Figma para devs: Auto Layout y Neumorphism (Parte 1)
+
+🔥 Algunos comandos básicos para ahorrar tiempo en Figma:    
+
+-   Para crear un Frame solo oprime la tecla F.
+-   Para crear un rectángulo solo oprime la tecla R (si deseas un cuadrado perfecto oprime las teclas Shift + Option mientras arrastras el mouse, de esta forma crear un cuadrado en vez de un rectángulo)
+-   Para crear un circulo perfecto oprime la tecla O
+-   Para alinear un elemento en el centro del FRAME (de todo el frame, no del contenedor) oprime Option + H
+-   Para alinear en el centro del Frame de forma vertical oprime Option + V
+-   Si desea cambiar el nombre de varios elementos al tiempo (Si te das cuenta en el panel izquierdo los elementos son nombrados como Rectangle 1, Rectangle 2, o Ellipse 1, Ellipse 2… Ellipse 9, etc y quizás tu los quieras llamar music button o player buttons) solo los seleccionas (puede ser dentro directamente en el Frame de diseño o seleccionas las capas en el panel izquierdo) y oprimes Command + R, de esta forma puedes renombrar muchos elementos al tiempo.
+
+📌 **Aquí:** [**Figma Community**](https://www.uifrommars.com/figma-community-github-disenadores/?utm_source=uiFromMars%27+Astronauts&utm_campaign=c74c84681b-EMAIL_FIGMA-COMMUNITY_2020_10_16&utm_medium=email&utm_term=0_7ac156ca04-c74c84681b-116139761)
+
+[Slides Clase-20](https://www.canva.com/design/DAEQo_o1hv8/1Nb6OZt78mj7Ha7Jm4TgEw/view?utm_content=DAEQo_o1hv8&amp;utm_campaign=designshare&amp;utm_medium=link&amp;utm_source=sharebutton)
+
+🎲
+
+## 21. Figma para devs: Auto Layout y Neumorphism (Parte 2)
+
+
+[Slides Clase-21](https://www.canva.com/design/DAEQo_o1hv8/1Nb6OZt78mj7Ha7Jm4TgEw/view?utm_content=DAEQo_o1hv8&utm_campaign=designshare&utm_medium=link&utm_source=sharebutton)
+
+🎲
+
+## 22. Primeros pasos y estructura inicial   
+
+Ponernos las gafas de un(a) dev, es decir, ver los detalles de alto nivel.
+- Header
+- Cars
+- Secciones principales 
+- Footer 
+
+Basado en eso, hacer nuestro esqueleto HTML
+
+Luego, nos quitamos las gafas para pulir detalles:
+- Iconos 
+- Sombras
+
+
+[Slides Clase-22](https://www.canva.com/design/DAEQppONI-Y/qDjhUSJY7rxBO8mc2uI99A/view?utm_content=DAEQppONI-Y&amp;utm_campaign=designshare&amp;utm_medium=link&amp;utm_source=sharebutton)
+
+🎲
+
+## 23. Ubicación y creación de elementos
+
+**Código ejemplo:**   
+-   [Neumorphism initial](https://codepen.io/teffcode_/pen/OJRgNaE?editors=1100)
+-   [Neumorphism final](https://codepen.io/teffcode_/pen/rNMwePa)
+
+Página recomendada:     
+- [Neumorphism](https://neumorphism.io/#e0e0e0)
+
+✨ Recordar propiedad: `box-shadow`
+
+✨ Recomiendo estas propiedades de css que se vieron en el curso de Responsive Design: mobile first. Con estas propiedades vamos a lograr tener un scroll horizontal con nuestras cards.    
+
+Propiedades para el padre:       
+
+```css
+	overflow-x: scroll;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x proximity;
+```
+
+Propiedad para el hijo:     
+
+```css
+	scroll-snap-align: center;
+```
+
+Pueden colocar un margin a las cards para reflejar un espacio entre ellas. Algo que también me ayudo es establecer un mínimo width y height para que las cards no se contraigan.        
+
+
+[Slides Clase-23](https://www.canva.com/design/DAEQppONI-Y/qDjhUSJY7rxBO8mc2uI99A/view?utm_content=DAEQppONI-Y&amp;utm_campaign=designshare&amp;utm_medium=link&amp;utm_source=sharebutton)
+
+🎲
+
+## 24. Entendiendo las versiones de CSS: ¿existirá CSS4?
+
+¡Hola, bienvenid@ al último módulo de nuestro curso!
+
+Quiero contarte que este tema de CSS4 es uno de los temas que más opiniones genera y en el que también existe mayor desconocimiento, precisamente porque se debe comprender primero cómo funciona actualmente CSS3, qué ha pasado con CSS1, CSS2 y CSS2.1, y a partir de ahí, revisar si efectivamente lo que necesitamos como comunidad es tener o no una nueva versión de CSS (teniendo en cuenta también todo el trabajo que esto conlleva).
+
+Hoy quiero compartirte una lectura bastante interesante para que podamos entender muchísimo más las implicaciones de tener una nueva versión en CSS.
+
+👉 [Lectura:](https://www.smashingmagazine.com/2020/03/css4-pros-cons-discussion/)
+
+Por favor, déjame saber en los comentarios qué piensas al respecto de esta lectura, si estás de acuerdo o si no, si te gustó, si crees que puedan existir otras alternativas diferentes a crear los diferentes niveles o si por el contrario te parece lo mejor… en fin! Me encantaría saber qué piensa la comunidad de Platzi sobre este tema tan apasionante 😄
+
+¡Nos vemos en la siguiente clase!
+
+🎲
+
+## 25. CSS Subgrid
+
+Lo que se hereda no es la “cantidad”, ella dijo “hereda mismo tamaño y número de tracks” (0:30). Al colocar “subgrid” a un hijo QUE ABARCA VARIAS CELDAS, permites que una parte de la grid-padre ( ya sea column, row o ambas) le pase por encima, permitiéndole utilizar la grid que el padre ya creó justo donde el está (en lugar de cancelarla o tener que crear una grid nueva). Creo que esto solo tiene sentido para elementos hijo que abarcan varias celdas.  
+
+En el quiz: ella solo está permitiendo a los ROWS del padre (.container) pasar por encima del hijo (.item), a la vez que crea 5 columnas que no están delineadas o coloreadas, pero si lees el grid-template-columns de .item te darás cuenta que ahora hay 5 columnas donde el padre sólo tenía tres.  
+
+Imagina que cuando dicen “tracks” son las ruedas de un camión de juguete que marca sus huellas en la tierra de arriba hacia abajo y de izquierda a derecha, el camión dejará su huella en el eje del recuadro hijo donde pongas “subgrid”:    
+
+> grid-template-columns: subgrid --> el camión pasará de arriba hacia abajo siguiendo la grid padre (block-axis)
+
+> grid-template-rows: subgrid --> el camión pasará de izquierda a derecha imitando la grid del padre (inline-axis)
+
+
+gracias por venir a mi ted talk espero no haberme equivocado en nada o confundido :’)
+
+✨ Por: Miguel Urbina
+
+
+📌 **Subgrid** en estos momentos esta en fase de experimentación, como podemos ver solo tiene compatibilidad con firefox, lo que no sería ideal que llevemos un tema de subgrid a un tema de producción precisamente por la falta de compatibilidad que tiene ahora, lo ideal es que miremos en la esquina superior derecha el tema de global y ese porcentaje ya nos va indicar si podemos utilizarlo y sino dependiendo de que tan alto esté ese porcentaje.    
+
+[Slides Clase-25](https://www.canva.com/design/DAEQpysfGjs/lRJPDQkNjqkLM7Z3BxXFyQ/view?utm_content=DAEQpysfGjs&utm_campaign=designshare&utm_medium=link&utm_source=sharebutton)
+
+🎲
+
+## 26. Native CSS Masonry Layout
+
+Masonry, en español Mampostería. Se llama mampostería al sistema tradicional de construcción que consiste en erigir muros y paramentos mediante la colocación manual de los elementos o los materiales que los componen (denominados mampuestos), que pueden caracterizarse por estar sin labrar.
+
+-   [Native CSS Masonry Layout In CSS Grid](https://www.smashingmagazine.com/native-css-masonry-layout-css-grid/)
+
+Acá unos ejemplos en Codepen de CSS Masonry Layout:     
+- [css-tricks.com](https://css-tricks.com/piecing-together-approaches-for-a-css-masonry-layout/)
+
+[Slides Clase-26](https://www.canva.com/design/DAEQpysfGjs/lRJPDQkNjqkLM7Z3BxXFyQ/view?utm_content=DAEQpysfGjs&utm_campaign=designshare&utm_medium=link&utm_source=sharebutton#1)
+
+🎲
+
+## 27. CSS feature queries: @supports
+
+Con @supports, puede escribir una pequeña prueba en su CSS para ver si una "característica" en particular (propiedad o valor de CSS) es compatible y aplicar un bloque de código (o no) según la respuesta.
+
+✨ Significado:     
+Consulta de características   
+
+[Slides Clase-27](https://www.canva.com/design/DAEQpysfGjs/lRJPDQkNjqkLM7Z3BxXFyQ/view?utm_content=DAEQpysfGjs&amp;utm_campaign=designshare&amp;utm_medium=link&amp;utm_source=sharebutton)
+
+🎲
+
+## 28. Nosotros y el futuro de la web: tips para seguir aprendiendo y mantenerse al día
+
+Tips:
+- Sigue personas que pertenezcan al css working group
+- Lee mucho:
+	- Smashing magazine
+	- Medium
+	- MDN web docs
+	- A book apart 
+- Ten paciencia
+
+
+[Slides Clase-28](https://www.canva.com/design/DAEQqIapf1s/ROxFyghXOVkKAw8UV69JkA/view?utm_content=DAEQqIapf1s&utm_campaign=designshare&utm_medium=link&utm_source=sharebutton)
+
+📌 Sería cool primero hacer un ejemplo practico y luego definir el tema...
+
 ### Notas y aportes
 
 <details>
@@ -846,14 +1051,128 @@ Es una herramienta web con la que básicamente puedes ajustar sombras, redondead
   <br/>
   
 **🔥 Team:**    
-	- Fernando Quinteros Gutierrez              
-	- John Cardenas            
-	- Nazareno Aznar Altamiranda                        
-	- Gonzalo Ceron Denetro                
+- Fernando Quinteros Gutierrez              
+- John Cardenas            
+- Nazareno Aznar Altamiranda                        
+- Gonzalo Ceron Denetro      
+- Fernando Molano Castrillón
 
 </details>
 
 🔥 ❄ ✨ 📌 🎲 🤴🦁 🧔🐯 🧰 👀 ✔
 
-Sería cool primero hacer un ejemplo practico y luego definir el tema.
-`/*cd /d/1-Software/Platzi/A-Apuntes/*/`
+
+### Examen:     
+
+1. Los elementos en bloque se identifican por:
+	- Extenderse a lo ancho ocupando todo el espacio disponible
+
+CAMBIAR
+
+2. Los elementos en línea se identifican por:
+	- Ser como palabras en una oración: Ir uno al lado del otro y separarse por medio de un espacio en blanco entre ellos
+
+CAMBIAR
+
+3. Al decir display: inline-flex, inmediatamente pensamos que:
+	- 📌 Su comportamiento externo es de un elemento inline y su comportamiento interno es de bloque
+
+CAMBIAR
+
+4. El BFC (Block Formatting Context) se caracteriza por:
+	- 📌 Ser un elemento bloque y seguir el flujo normal del documento
+
+CAMBIAR
+
+5. Todo en CSS son cuadros y podemos controlar el tipo de cuadro usando la propiedad:
+	- 📌 Todas las anteriores
+	- a display
+	- b Todas las anteriores
+	- c position
+	- d z-index
+
+CAMBIAR
+
+6. El contexto de apilamiento, es la conceptualización tridimencional de los elementos HTML a lo largo del eje:
+	- Z
+
+CAMBIAR
+
+7. CSS Grid es un sistema:
+	- bidimensional
+
+CAMBIAR
+
+8. La palabra "justify" hace alusión al eje:
+	- inline
+
+CAMBIAR
+
+9. La palabra "align" hace alusión al eje:
+	- block
+
+CAMBIAR
+
+10. ¿Puedo trabajar con Flexbox y CSS Grid al mismo tiempo?
+	- Sí
+
+CAMBIAR
+
+11. Flexbox es más apropiado para:
+	- Los componentes de una aplicación y diseños de pequeña escala
+
+CAMBIAR
+
+12. El layout Super Centered se puede lograr con la propiedad y valor:
+	- place-items: center
+
+CAMBIAR
+
+13. Un Design System es:
+	- 📌 Una guía de diseño
+
+CAMBIAR
+
+14. Con la expresión "nos debemos poner las gafas de un(a) dev" nos referíamos a que:
+	- Debemos resaltar primero las partes principales de un diseño específico
+
+CAMBIAR
+
+15. Cuál es un principio de diseño:
+	- Todas son correctas
+	- a Equilibrio
+	- b Jerarquía
+	- c Proximidad
+	- d Todas son correctas
+	- e Contraste
+
+CAMBIAR
+
+16. Auto-Layout nos permite:
+	- Todas las anteriores
+	- a Añadir margin y padding a nuestras cajitas
+	- b Todas las anteriores
+	- c Alinear los elementos de forma horizontal
+	- d Alinear los elementos de forma vertical
+
+CAMBIAR
+
+17. CSS Subgrid nos permite:
+	- Heredar el mismo tamaño y número de tracks de una cuadrícula principal
+
+CAMBIAR
+
+18. El Neumorphism es:
+	- Una tendencia de diseño
+
+CAMBIAR
+
+19. CSS Grid es más apropiado para:
+	- Diseños de mayor escala
+
+CAMBIAR
+
+20. La dinámica "No puedo dejar de ver" tenía como objetivo:
+	- Entrenar nuestro ojo como desarrolladores para tener un muy buen nivel de detalle
+
+CAMBIAR
