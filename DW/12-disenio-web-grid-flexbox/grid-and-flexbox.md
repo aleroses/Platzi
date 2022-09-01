@@ -357,12 +357,502 @@ Revisar dinámica de la clase 👀
 
 🎲
 
-### Notas y aportes
-- Fernando Quinteros Gutierrez
-- John Cardenas
-- Nazareno Aznar Altamiranda
-- Gonzalo Ceron Denetro
+## 11. ¿Cuándo usar Flexbox y cuándo usar CSS Grid?
 
-🔥 ❄ ✨ 📌 🎲 🤴🦁 🧔🐯 🧰 👀
+-   Flexbox
+	Flexbox es mas apropiado para los componentes de una aplicación y diseños de pequeña escala
+
+-   Grid
+	CSS Grid esta diseñado para diseños de mayor escala
+
+
+✨ Al momento de implementar, crear tareas para la creación de componentes en este ejemplo serían:     
+	1. Crear la grid principal  
+	2. Crear la grid de los hijos  
+	3. Crear 3 tipos de cards  
+	4. Ubicar cards   
+
+
+✨ Mis 3 mejores amigos son:      
+	1. El Inspector    
+	2. La Practica    
+	3. La Paciencia  
+
+[Slides Clase-11](https://www.canva.com/design/DAEQjFaoxe4/v9SlBO-AWQ0XmbI8AocYPw/view?utm_content=DAEQjFaoxe4&amp;utm_campaign=designshare&amp;utm_medium=link&amp;utm_source=sharebutton)
+
+🎲
+
+## 12. ¿Qué son los Modern CSS Layouts?
+
+🔥 Lo primero que debemos saber es: ¿Qué es Layout?       
+-   **Layout** viene del inglés el cual significa diseño
+-   Ubicar tus cajas en el lugar que elijas con respecto a la ventana principal y el resto de cajas
+
+
+🔥 Lo segundo que debemos hacer es: ¿Qué significa que sea moderno?    
+-   Cuando hablamos de Modern CSS Layouts es un concepto de hace más de 10 años
+-   Características de la web en 2010:
+    -   Progresivamente mejorado
+    -   Adaptable a diversos usuarios
+    -   Modulares y eficientes
+    -   Tipográficamente ricos
+
+Algo a tener en cuenta es que en el 2010 usaban HTML5 y CSS3.   
+
+🔥🔥 Progresivamente mejorado         
+-   Base sólida e ir añadiendo estilos complejos para aquellos navegadores que pudieran soportarlo
+-   En ese momento la compatibilidad entre navegadores era notorio
+	- Sombras detrás del texto
+	- Múltiples columnas de texto
+	- Imágenes de fondo de diferentes colores 
+
+🔥🔥 Adaptable a diversos usuarios    
+-   Al tener una:
+    -   Amplia gama de navegadores
+    -   Dispositivos
+    -   Resoluciones de pantalla
+    -   Tamaños de fuente
+    -   Tecnologías de asistencia
+-   Se pretendía llegar de una manera óptima a todos
+
+Se habla de columnas inteligentes con CSS Y JQuery
+
+🔥🔥 Modulares y eficiente       
+-   Que el CSS se pueda dividir en fragmentos que funcionan de forma independiente para crear componentes de diseño que se pueden reutilizar de forma independiente.
+-   Se hablaba de un framework que permitiera a los desarrolladores escribir código frontend modular rápido, fácil de mantener y basado en estándares.
+- Que sea tipográficamente rico 
+
+
+Muchas de esas cosas son las que deseamos lograr en la actualidad       
+-   CSS nació en 1996 (lanzamiento inicial)
+    -   Basado en un diseño de revista
+
+Así fue como:      
+
+1.  Se idearon un modelo de diseño “basado en marcos” (“frame-based” layout model) en 1996
+2.  Luego, lanzaron el “Advanced Layout Module” en 2005
+3.  Que luego, pasó a ser “Template Layout Module” en 2016
+
+Es decir que siempre se ha deseado lo mismo como tener control en:    
+    -   Columnas
+    -   Filas
+    -   Tipografías
+    -   Contenido organizado (Header, Footer, …)
+
+Básicamente el layout CSS ha cambiado drásticamente, así como la forma en que desarrollamos la interfaz de nuestros sitios
+
+Ahora tenemos una opción real en términos de los métodos de diseño que usamos en CSS para desarrollar nuestros, sitios, lo que significa que a menudo tenemos que elegir qué enfoque tomar.
+
+Como desarrolladores debemos asegurarnos que nuestra comprensión actual del layout esté actualizada.
+
+
+✨ Hoy en día existe una mejor opción a Object Oriented CSS, y se llama Storybook, aquí hay una **[→ guía de como instalarlo y usarlo ←](https://www.youtube.com/playlist?list=PLfWyZ8S-Xzeed53YOiAa1U5WUSA4cRxFQ)** hecha en youtube por un profesor de platzi **[→ Sacha Lifszyc ←](https://platzi.com/profesores/sacha-lifszyc-65/)**
+
+
+[Slides Clase-12](https://www.canva.com/design/DAEP5ILaOpw/r1x0uwDErPaAOHMEVWB-RA/watch?utm_content=DAEP5ILaOpw&amp;utm_campaign=designshare&amp;utm_medium=link&amp;utm_source=sharebutton)
+
+🎲
+
+## 13. Patrones para usar como punto de partida
+
+¡Hola! Para comenzar con este módulo de Modern Layouts con CSS Grid, quiero que revisemos algunos patrones para usar como punto de partida.
+
+El link de la página que te compartiré, contiene una diversa colección de patrones que pueden ser usados tanto para el diseño de una página completa como para el diseño de un componente pequeño (así como lo hablamos en nuestra clase de: ¿Cuándo usar Flexbox y cuándo usar CSS Grid?).
+
+Adicionalmente, en esta página podrás encontrar la explicación, tips, el chequeo de compatibilidad usando Feature Queries (que lo veremos más adelante en el curso), y las técnicas usadas para crear cada patrón.
+
+Link: [Patrones con gridbyexample.com](https://gridbyexample.com/patterns/)
+
+Te veo en la siguiente clase, no sin antes recordarte dos cosas:
+
+-   Me alegra mucho que personas como tú estén leyendo esto. ¡Eso quiere decir que eres una persona que Nunca Para de Aprender y te felicito enormemente por eso!
+-   Cualquier duda, por mínima que sea, ¡escríbela en los comentarios!
+
+Bye ❤️
+
+🎲
+
+## 14. Layouts: Super Centered, The Deconstructed Pancake, Sidebar Says, Pancake Stack, Classic Holy Grail Layout
+
+1. **Super Centered:** `place-items: center`   
+Por mas que movamos la pantalla no se nos va a quitar del centro, tanto vertical como horizontalmente.     
+	```css
+	.parent {
+		display: grid;
+		place-items: center;
+	} 
+	```
+
+
+2. **The Deconstructed Pancake:** `flex: 0 1 <baseWidth>`   
+Reorganiza los contenedores de manera responsive, pasando de un diseño para desktop a uno para mobile. Esto se logra con 👉 `flex: grow shrink base-width`; crecer, encoger y ancho base;     
+	
+- **Flex-grow** ocupa equitativamente en cada elemento el espacio sobrante.
+
+- **Flex-basis** establece un ancho alto de cada item, va a ser alto o ancho dependiendo la dirección en que este.
+
+- **Flex-shrink** especifica el valor de contracción de un elemento, cuánto va a reducir.
+
+	```css
+	.parent {
+		display: flex;
+		flex-wrap: wrap; 
+		justify-content: center;
+	} 
+	```
+	```css
+	.box {
+		flex: 0 1 150px;
+		margin: 5px;
+	} 
+	```
+
+
+3. **Sidebar Says:** `grid-template-columns: minmax(<min>, <max>) ...`     
+	```css
+	.parent {
+		display: grid;
+		grid-template-columns: minmax(150px, 25%) 1fr;
+	} 
+	```
+
+
+4. **Pancake Stack:** `grid-template-rows: auto 1fr auto`   
+	```css
+	.parent {
+		display: grid;
+		grid-template-rows: auto 1fr auto;
+	} 
+	```
+
+
+5. **Classic Holy Grail Layout:** `grid-template: auto 1fr auto / auto 1fr auto`      
+	```css
+	.parent {
+		display: grid;
+		grid-template: auto 1fr auto / auto 1fr auto;
+	} 
+	```
+	```css
+	.header {
+		padding: 2rem;
+		grid-column: 1 / 4;
+	} 
+	```
+	```css
+	.left-side {
+		grid-column: 1 / 2;
+	} 
+	```
+
+También puedes revisar estos ejemplos mas a detalle [aquí](https://1linelayouts.glitch.me/) y [aquí también.](https://web.dev/one-line-layouts/)
+
+[Slides Clase-14](https://www.canva.com/design/DAEQjtR-Zk8/aw3k0--GkkF5lwbNUdNP1A/watch?utm_content=DAEQjtR-Zk8&utm_campaign=designshare&utm_medium=link&utm_source=sharebutton)
+
+🎲
+
+## 15. Layouts: 12-Span Grid, RAM (Repeat, Auto, MinMax), Line Up, Clamping My Style, Respect for Aspect
+
+6. **12-Span Grid:** `grid-template-columns: repeat(12, 1fr)`     
+	```css
+	.ex6 .parent { 
+		display: grid; 
+		grid-template-columns: repeat(12, 1fr); 
+	}
+	```
+	```css
+	.ex6 .span-12 { 
+		grid-column: 1 / span 12; 
+	}
+	```
+	```css
+	.ex6 .span-6 { 
+		grid-column: 1 / span 6; 
+	}
+	```
+	```css
+	.ex6 .span-4 { 
+		grid-column: 1 / span 4; 
+	}
+	```
+	```css
+	.ex6 .span-2 { 
+		grid-column: 3 / span 2; 
+	}
+	```
+		/* centering text */
+	```css 
+	.ex6 .section { 
+		display: grid; 
+		place-items: center; 
+		text-align: center;
+	}
+	```
+
+
+7. **RAM (Repeat, Auto, Minmax):** `grid-template-columns: repeat(auto-fit, minmax(<base>, 1fr))`     
+	```css 
+	.ex7 .parent { 
+		display: grid; 
+		grid-gap: 1rem; 
+		grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+	}
+	```
+
+
+8. **Line Up** `justify-content: space-between`     
+	```css 
+	.ex8 .parent { 
+		height: auto; display: 
+		grid; grid-gap: 1rem; 
+		grid-template-columns: repeat(3, 1fr); 
+	}
+	```
+	```css 
+	.ex8 .visual { 
+		height: 100px; 
+		width: 100%; 
+		}
+	```
+	```css 	
+	.ex8 .card { 
+		display: flex; 
+		flex-direction: column; 
+		padding: 1rem; 
+		justify-content: space-between; 
+	}
+	```
+	```css 
+	 .ex8 .h3 { 
+	 margin: 0; 
+	 }
+	```
+
+
+9. **Clamping My Style** `clamp(<min>, <actual>, <max>)`      
+	```css   
+	.ex9 .parent { 
+		display: grid; 
+		place-items: center; 
+	}
+	```
+	```css
+	.ex9 .card { 
+		width: clamp(23ch, 50%, 46ch); 
+		display: flex; 
+		flex-direction: column; 
+		padding: 1rem; 
+	}
+	```
+	```css 
+	.ex9 .visual { 
+		height: 125px; 
+		width: 100%; 
+	}
+	```
+
+
+10. **Respect for Aspect** `aspect-ratio: <width> / <height>`       
+	```css 
+	.ex10 .parent { 
+		display: grid; 
+		place-items: center; 
+	}
+	```
+	```css
+	.ex10 .visual {
+		aspect-ratio: 16 / 9; 
+	}
+	```
+	```css 
+	.ex10 .card {
+		width: 50%;
+		display: flex; 
+		flex-direction: column; 
+		padding: 1rem; }
+	```
+
+
+También puedes revisar estos ejemplos mas a detalle [aquí](https://1linelayouts.glitch.me/) y [aquí también.](https://web.dev/one-line-layouts/)
+
+
+[Slides Clase-15](https://www.canva.com/design/DAEQjtR-Zk8/aw3k0--GkkF5lwbNUdNP1A/watch?utm_content=DAEQjtR-Zk8&utm_campaign=designshare&utm_medium=link&utm_source=sharebutton)
+
+🎲
+
+## 16. Dinámica: No puedo dejar de ver
+
+🔥 OBJETIVO   
+Entrenar nuestro ojo como desarrolladores para tener un muy buen nivel de detalle.   
+
+CUÁL ES EL DISEÑO CORRECTO?      
+	1.  B✔ por la cámara 📷
+	2.  A✔ por el contraste del 2h ago 📑
+	3.  A✔ por el contraste - color de texto del botón 👀
+	4.  B✔ por los bordes mas redondeados ⚫
+	5.  A✔ por el texto bien alineado 📑
+	6.  B✔ la imagen tiene una correcta dimensión (`object-fit: cover;`) 🖼
+	7.  A✔ por la opacidad de los iconos ◻▪
+	8.  B✔ porque no resalta el SKIP como una acción importante ❗❗
+	9.  B✔ porque se debe mantener el diseño, si un botón es mayúsculas, el otro igual tiene que serlo 🔡🔠
+	10.  B✔ por el tamaño de la lupa, es mas estética 🔍 
+	11.  A✔ por la separación entre el nombre y el 2h ago 📰
+	12.  A✔ por la alineación de los iconos ◻▪
+
+ 
+Por cierto, `object-fit` hace que las imágenes se vean bien al darles un width y un height que las deforma.
+
+
+[Slides Clase-16](https://www.canva.com/design/DAEP495rHJU/htRUusEMyRvBTexxztk6Ow/view?utm_content=DAEP495rHJU&utm_campaign=designshare&utm_medium=link&utm_source=sharebutton)
+
+🎲
+
+## 17. Design System y detalles visuales a tener en cuenta
+
+✨ **Design System**    
+Es una colección de componentes reutilizables guiados por estándares claros. 
+
+Se puede definir como un plan maestro, el cual será la fuente de la verdad.    
+
+Una referencia para asegurarse de que todos los que trabajan en el producto estén siempre en la misma página. A esto se le conoce como **consistencia.**   
+
+Empresas como Airbnb, Uber e IBM han cambiado la forma en que diseñan productos digitales al incorporar sus propios sistemas de diseño únicos.     
+-   Nos permite tener **consistencia**
+-   Cada una de estas empresas ha podido cambiar el ritmo de creación e innovación dentro de sus equipos.     
+
+🔥 ¿Cómo lo logran?   
+	-   Utilizando una colección de componentes repetibles.
+	-   Utilizando un conjunto de estándares que guían el uso de esos componentes.  
+
+🔥 ¿Quiénes crean un Design System?   
+	-   Todo un equipo de producto (programadores, ingenieros, diseñadores, gerentes de producto, equipo C-suite, etc.)
+
+🔥 Proceso          
+	-   Se hace un inventario:
+	    -   Colores, logotipos, encabezados, pies de página, formularios, código, etc.
+	    -   Y se llega a un consenso sobre cómo se deben diseñar, codificar, presentar y hablar de las cosas.
+	-   Podemos tener un boceto donde encontraremos: Ideas, Colores, Etc.
+	-   Los integrantes de un equipo deben tomar decisiones para el producto el cual llegara a afectar al código.
+	- Basado en ese tipo de decisiones las cuales se guían de las necesidades, se puede encontrar herramientas.    
+
+🔥 ¿Por dónde comenzar a revisar estos temas?     
+	- [Design - Shopify Polaris](https://polaris.shopify.com/design/design) guía de recomendaciones de que cosas hacer y que otras no.
+	-   Una, guía de diseño que nos puede ayudar es la de Shopify (grupo de márgenes, contraste de colores, tipografías, íconos y spacing)
+	-   También podemos usar Frameworks CSS como Tailwind CSS que nos ayuda a guiarnos en ciertos aspectos como espaciados, breakpoints, etc.
+
+📌 En una revisión se puede observar:       
+		- Mismo espaciado al lado derecho e izquierdo 
+		- Los elementos inferiores también se deben alinear con los elementos superiores. Esto depende del diseño.
+		- Llevar un estándar en la tipografía del proyecto
+		- Iconos de tamaño adecuado, ni muy pequeños ni muy grandes. 
+
+📌 Leer sobre Design tokens
+	- [Leer en uifrommars.com](https://www.uifrommars.com/design-tokens-que-son-ventajas/)
+	- [Leer en css-tricks.com](https://css-tricks.com/what-are-design-tokens/)
+
+
+[Slides Clase-17](https://www.canva.com/design/DAEQjsUUkws/60UJcBNwhiQDQQ1sW5Vb-w/view?utm_content=DAEQjsUUkws&amp;utm_campaign=designshare&amp;utm_medium=link&amp;utm_source=sharebutton)
+
+🎲
+
+## 18. Tendencias de diseño UI/UX: Fase de inspiración y creatividad
+
+Para todo lo que tenga que ver con diseño, nos debemos poner las gafas de un(a) dev, es decir, ver los detalles de alto nivel (Navbar, Header, Hero, Section, What we are). Con esta estructura principal ya podemos armar nuestro esqueleto de html y basados en esto podemos centrarnos en los pequeños detalles.    
+
+El detalle es importante, pero lo primero que suelo hacer, es dejar de lado los detalles. Es decir, primero resalto las partes principales de un diseño específico y luego comienzo a pensar en ellas.     
+
+Pero, debemos PLANIFICAR antes de diseñar y antes de escribir cualquier línea de código.     
+
+🔥 Principios de diseño para centrarnos en los detalles...    
+	• Jerarquía  
+	• Contraste  
+	• Proximidad  
+	• Balance  
+	• Responsive design  
+	• Ilustraciones animadas  
+	• Garantizar performance  
+	• Micro interaciones  
+	• Realidad aumentada y realidad virtual  
+	• Neo morfismo  
+	• Asymmetrical layouts  
+	• Storytelling
+
+
+- **Jerarquía**, tener unos elementos mas grandes que otros, basados en la relevancia e importancias que le queremos dar a cada uno de ellos.
+
+- **Contraste**, ejemplo el botón de color nos indica que nos están ayudando para poder presionarlo y ya con eso podemos jugar con el tema de contraste y de colores y ayudar también al usuario a leer sin leer prácticamente.
+
+- **Proximidad**, que ver con el tema de consistencia por ejemplo vemos items en nuestras app que tienen mucha semejanza ya sea en colores, iconos y demás, ya sabemos que tiene que ver con una sección o una parte que es del mismo grupo, etc.
+
+- **Balance**, El tema de contraste y de colores, también puede jugar un papel bastante importante cuando queremos hablar de importancia o relevancia de un contenido en especifico.
+
+- **Responsive design**    
+	- _Podemos buscar inspiración para poder realizar nuestros proyectos, uno de ellos es The state of UX in 2021, 100 lecciones bastante útiles a nivel de todo_
+
+- **_Ilustraciones animadas_**, Es muy importante tener en cuenta el tema de rendimiento y de performance. Micro interacciones en iconos.
+
+- **Garantizar performance**, también garantizar a las personas que independientemente que tengan datos o no puedan ver nuestros sitios.
+
+- **Micro interacciones**, normalmente no son animaciones, pero es lo que le indica al usuario que si esta haciendo clic o tag en algún lado, esos pequeños detalles en la web nos indican ciertas cosas y con eso le damos un gran peso a nuestra pagina, los pequeños detalles también son importantes
+
+- **UI**, Es tema mas que todo visual de colores y demás
+
+- **UX**, es la experiencia o emociones que transmite el proyecto (sistema, app, etc.)
+
+- **Realidad Virtual**, normalmente existen app que pueden decirnos como ver ciertos sitios, que si te pones tus gafas vas a ver de esta forma y de esta otra, ejemplo de que si tienes que hacer un tour virtual de de una casa o algún carro, etc.
+
+- **Realidad aumentada**, supongamos que queremos comprar una planta, y esa planta la sumergimos en el lugar donde quisiéramos colocarla ya sea dentro de una casa, inmediatamente vamos la poder ver en el sitio que la necesitemos, todo depende el, juega un papel super interesante
+
+- **_Neo morfismo,_** juega mucho con las sombras y también esta relacionado con otras tendencias como lo es material design y flat design que ya todo depende de la dirección de la luz.
+
+- **_Asymmetrical layouts_**, es poder jugar con layouts asimétricos, en este caso tenemos imágenes que pueden ser muy sutil, que se vean también muy elegantes pero que sean distribuidas en diferentes partes.
+
+- **_Storytelling_**, poder contar historias en tu página web, básicamente que el usuario vaya haciendo scroll y a medida que esto vaya sucediendo te vaya contando algo.
+
+
+🔥 Tendencias UI  
+	-   Animated Illustrations  
+	-   Micro animations
+	-   3D Graphic in web & mobile UI
+	-   virtual reality
+	-   Augmented Reality
+	-   Neumorphism: colores pocos contrastados.
+	-   Asymmetrical Layouts
+	-   Storytelling
+
+
+📌 Estos tips están en estos vídeos:    
+	- [UI Design Trends 2021](https://www.youtube.com/watch?v=5RluSnRPRbI)
+	- [UX Design Trends 2021](https://www.youtube.com/watch?v=tPoRAL7Lm1M)
+
+
+📌 La Charla de TED talks:     
+	- [https://www.ted.com/talks/joe_gebbia_how_airbnb_](https://www.ted.com/talks/joe_gebbia_how_airbnb_designs_for_trust?language=es#t-149642)
+
+
+✨ [Neumorphism](https://neumorphism.io/#e0e0e0) Herramienta para hacer contenedores enfocados al neomorfismo, sobre todo para nosotros los devs que normalmente se nos hace difícil el diseño. 😅 
+
+Es una herramienta web con la que básicamente puedes ajustar sombras, redondeados, intensidad y distancia con unos scrolls y cuando se ajusta uno los demás se autoajusten dependiendo del que estás moviendo para que así siempre sea como diseño de neomorfismo.
+
+[Slides Clase-18](https://www.canva.com/design/DAEQnJdEqpM/51ypRyMSnIjL0hquHoXu4A/view?utm_content=DAEQnJdEqpM&amp;utm_campaign=designshare&amp;utm_medium=link&amp;utm_source=sharebutton)
+
+🎲
+
+### Notas y aportes
+
+<details>
+  <summary>Haz click aquí para ver a los contribuidores 👀</summary>
+
+  <br/>
+  
+**🔥 Team:**    
+	- Fernando Quinteros Gutierrez
+	- John Cardenas
+	- Nazareno Aznar Altamiranda
+	- Gonzalo Ceron Denetro
+
+</details>
+
+🔥 ❄ ✨ 📌 🎲 🤴🦁 🧔🐯 🧰 👀 ✔
 
 Sería cool primero hacer un ejemplo practico y luego definir el tema.
