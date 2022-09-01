@@ -5,19 +5,19 @@
 
 ## 1. Todo sobre el diseño de páginas web acaba de cambiar
 
-✨ En este curso:     
-	- ¿Cuándo usar Flexbox y CSS Grid?         
-	- Todo sobre Layouts          
-	- Uso de Figma          
-	- Tendencias de UI/UX           
-	- Futuro de CSS Grid          
+✨ En este curso:      
+- ¿Cuándo usar Flexbox y CSS Grid?         
+- Todo sobre Layouts          
+- Uso de Figma          
+- Tendencias de UI/UX           
+- Futuro de CSS Grid          
 
 
-El diseño gráfico en la web ha evolucionado significativamente dúrate los últimos 25 años
-    -   Inicialmente se tenía una paleta de 216 colores
-    -   Las tipografías eran limitadas
-Sin embargo, con la llegada y avance de CSS ha mejorado la web
-    -   CSS Grid ⇒ nueva tecnología poderosa para crear layouts
+El diseño gráfico en la web ha evolucionado significativamente dúrate los últimos 25 años              
+-   Inicialmente se tenía una paleta de 216 colores
+-   Las tipografías eran limitadas     
+Sin embargo, con la llegada y avance de CSS ha mejorado la web         
+ -   CSS Grid ⇒ nueva tecnología poderosa para crear layouts
 
 
 🔥 CSS Grid   
@@ -171,17 +171,17 @@ La propiedad mix-blend-mode define cómo debe combinarse el contenido de un elem
 
 🔥🔥 Positions     
 Nos ayudan a manipular la ubicación de un elemento     
-    -   En la parte superior         
-    -   Uno alado de otro       
-    -   Uno encima de otro ⇒ Estaremos hablando de **contexto de apilamiento**    
+-   En la parte superior         
+-   Uno alado de otro       
+-   Uno encima de otro ⇒ Estaremos hablando de **contexto de apilamiento**    
     
 > “El contexto de apilamiento es la conceptualización tridimensional de los elementos HTML a lo largo de un eje-Z imaginario relativo al usuario que se asume está de cara al viewport o página web. Los elementos HTML ocupan este espacio por orden de prioridad basado en sus atributos.”
 
 ✨ Cuando trabajamos con la web debemos trabajar con 3 ejes:     
-     -   Ejes X & Y         
-     -   Eje Z imaginario: Desde la pantalla hasta la vista del usuario    
-		-   Cajas que se van sobreponiendo     
-        -   Ejemplo 👀 Un modal se pone encima de todo nuestro sitio web.      
+ -   Ejes X & Y         
+-   Eje Z imaginario: Desde la pantalla hasta la vista del usuario    
+	-   Cajas que se van sobreponiendo     
+    -   Ejemplo 👀 Un modal se pone encima de todo nuestro sitio web.      
 
 > ![Ejes](https://i.postimg.cc/XYhPXmJ1/5-ejes.jpg)               
 De esta forma, entre más cerca este el elemento al ojo humano, mayor prioridad tendrá.     
@@ -205,8 +205,8 @@ Un contexto de apilamiento es formado, en cualquier lugar del documento, por cua
 
 ✨ Documentación del [Contexto de apilamiento](https://developer.mozilla.org/es/docs/Web/CSS/CSS_Positioning/entendiendo_z_index/El_contexto_de_apilamiento)       
 
-> ![Apilamiento](https://i.postimg.cc/90P39h0Y/5-apilamiento.jpg)
-Ejemplo: El z-index **Mayor** se sobrepone, siempre y cuando pertenezcan al mismo bloque o contenedor. 
+> ![Apilamiento](https://i.postimg.cc/90P39h0Y/5-apilamiento.jpg)         
+**Ejemplo:** El z-index **Mayor** se sobrepone, siempre y cuando pertenezcan al mismo bloque o contenedor. 
 
 -   DIV #4 es renderizado debajo de DIV #1 porque el z-index (5) de DIV #1 es válido dentro del contexto de apilamiento del elemento raíz, mientras que el z-index (6) de DIV #4 es válido dentro del contexto de apilamiento de DIV #3. Así que DIV #4 está debajo de DIV #1, porque DIV #4 pertenece a DIV #3, que tiene un valor z-index menor.
 
@@ -272,7 +272,7 @@ Revisar dinámica de la clase 👀
 
 **RESUMEN:** La principal diferencia entre flexbox y Grid es la capacidad de dimensiones que cuenta cada uno flexbox es unidimensional y CSS Grid es bidimensional.     
 
-✨ Tres guías ( completas):     
+✨ Tres guías (completas):     
 -   [A Complete Guide to Grid](https://css-tricks.com/snippets/css/complete-guide-grid/)
 -   [Learn css grid](https://learncssgrid.com/)
 -   [Los apuntes de Majo en drive](https://drive.google.com/file/d/1WqIw3tPS6gNhEnma7iHl-PEfByKSIYGK/view)
