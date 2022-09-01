@@ -171,36 +171,36 @@ La propiedad mix-blend-mode define cómo debe combinarse el contenido de un elem
 
 🔥🔥 Positions     
 Nos ayudan a manipular la ubicación de un elemento     
-    -   En la parte superior
-    -   Uno alado de otro
-    -   Uno encima de otro ⇒ Estaremos hablando de **contexto de apilamiento**
+    -   En la parte superior         
+    -   Uno alado de otro       
+    -   Uno encima de otro ⇒ Estaremos hablando de **contexto de apilamiento**    
     
 > “El contexto de apilamiento es la conceptualización tridimensional de los elementos HTML a lo largo de un eje-Z imaginario relativo al usuario que se asume está de cara al viewport o página web. Los elementos HTML ocupan este espacio por orden de prioridad basado en sus atributos.”
 
 ✨ Cuando trabajamos con la web debemos trabajar con 3 ejes:     
-     -   Ejes X & Y
-     -   Eje Z imaginario: Desde la pantalla hasta la vista del usuario
-		-   Cajas que se van sobreponiendo
-        -   Ejemplo 👀 Un modal se pone encima de todo nuestro sitio web.
+     -   Ejes X & Y         
+     -   Eje Z imaginario: Desde la pantalla hasta la vista del usuario    
+		-   Cajas que se van sobreponiendo     
+        -   Ejemplo 👀 Un modal se pone encima de todo nuestro sitio web.      
 
-> ![Ejes](https://i.postimg.cc/XYhPXmJ1/5-ejes.jpg)
+> ![Ejes](https://i.postimg.cc/XYhPXmJ1/5-ejes.jpg)               
 De esta forma, entre más cerca este el elemento al ojo humano, mayor prioridad tendrá.     
 
 🔥🔥 El contexto de apilamiento es como una pila que se va ubicando por orden de prioridad. No todos los elementos pueden crearlo.   
 
 Un contexto de apilamiento es formado, en cualquier lugar del documento, por cualquier elemento que:       
-    -   Sea el elemento raíz (HTML)
-    -   Tenga posición (absoluta o relativa) con un valor `z-index` distinto de `auto`
-    -   `Position: fixed`
-    -   Un elemento flex con un valor `z-index` distinto de `auto`, que sera el elemento padre `display: flex/inline-flex`
-    -   Sean elementos con un valor `opacity` menor de 1
-    -   Elementos con un valor `transform` distinto de `none`
-    -   Elementos con un valor `mix-blend-mode` distinto de `normal`
-    -   Elementos con un valor `filter` distinto de `none`
-    -   Elementos con un valor `perspective` distinto de `none`
-    -   Elementos con un valor `isolation` igual a `isolate`
-    -   Especifican cualquier atributo superior en `will-change` incluso si no especificas valores para estos atributos directamente
-    -   Elementos con un valor `-webkit-overflow-scrolling` igual a `touch`
+-   Sea el elemento raíz (HTML)
+-   Tenga posición (absoluta o relativa) con un valor `z-index` distinto de `auto`
+-   `Position: fixed`
+-   Un elemento flex con un valor `z-index` distinto de `auto`, que sera el elemento padre `display: flex/inline-flex`
+-   Sean elementos con un valor `opacity` menor de 1
+-   Elementos con un valor `transform` distinto de `none`
+-   Elementos con un valor `mix-blend-mode` distinto de `normal`
+-   Elementos con un valor `filter` distinto de `none`
+-   Elementos con un valor `perspective` distinto de `none`
+-   Elementos con un valor `isolation` igual a `isolate`
+-   Especifican cualquier atributo superior en `will-change` incluso si no especificas valores para estos atributos directamente
+-   Elementos con un valor `-webkit-overflow-scrolling` igual a `touch`
 
 
 ✨ Documentación del [Contexto de apilamiento](https://developer.mozilla.org/es/docs/Web/CSS/CSS_Positioning/entendiendo_z_index/El_contexto_de_apilamiento)       
@@ -209,9 +209,9 @@ Un contexto de apilamiento es formado, en cualquier lugar del documento, por cua
 Ejemplo: El z-index **Mayor** se sobrepone, siempre y cuando pertenezcan al mismo bloque o contenedor. 
 
 -   DIV #4 es renderizado debajo de DIV #1 porque el z-index (5) de DIV #1 es válido dentro del contexto de apilamiento del elemento raíz, mientras que el z-index (6) de DIV #4 es válido dentro del contexto de apilamiento de DIV #3. Así que DIV #4 está debajo de DIV #1, porque DIV #4 pertenece a DIV #3, que tiene un valor z-index menor.
-    
+
 -   Por la misma razón DIV #2 (z-index 2) es renderizado bajo DIV#5 (z-index 1) porqué DIV #5 pertenece a DIV #3, que tiene un valor z-index mayor.
-    
+
 -   El valor z-index de DIV #3 es 4, pero este valor es independiente del z-index de DIV #4, DIV #5 and DIV #6, porque pertenece a un contexto de apilamiento diferente.
 
 Revisar dinámica de la clase 👀         
@@ -331,7 +331,7 @@ Revisar dinámica de la clase 👀
 
 🎲
 
-## 9. Dinámica: ¿Qué usarías? (Parte 1)
+## 9. Dinámica: ¿Qué usarías? (Parte 1
 
 **Primer caso:**         
 ![Grid or Flexbox](https://i.postimg.cc/g0WqNLzp/9-grid-or-flexbox.jpg)
@@ -367,16 +367,16 @@ Revisar dinámica de la clase 👀
 
 
 ✨ Al momento de implementar, crear tareas para la creación de componentes en este ejemplo serían:     
-	1. Crear la grid principal  
-	2. Crear la grid de los hijos  
-	3. Crear 3 tipos de cards  
-	4. Ubicar cards   
+1. Crear la grid principal  
+2. Crear la grid de los hijos  
+3. Crear 3 tipos de cards  
+4. Ubicar cards   
 
 
 ✨ Mis 3 mejores amigos son:      
-	1. El Inspector    
-	2. La Practica    
-	3. La Paciencia  
+1. El Inspector    
+2. La Practica    
+3. La Paciencia  
 
 [Slides Clase-11](https://www.canva.com/design/DAEQjFaoxe4/v9SlBO-AWQ0XmbI8AocYPw/view?utm_content=DAEQjFaoxe4&amp;utm_campaign=designshare&amp;utm_medium=link&amp;utm_source=sharebutton)
 
@@ -433,11 +433,11 @@ Así fue como:
 2.  Luego, lanzaron el “Advanced Layout Module” en 2005
 3.  Que luego, pasó a ser “Template Layout Module” en 2016
 
-Es decir que siempre se ha deseado lo mismo como tener control en:    
-    -   Columnas
-    -   Filas
-    -   Tipografías
-    -   Contenido organizado (Header, Footer, …)
+Es decir que siempre se ha deseado lo mismo como tener control en:        
+-   Columnas  
+-   Filas  
+-   Tipografías  
+-   Contenido organizado (Header, Footer, …)  
 
 Básicamente el layout CSS ha cambiado drásticamente, así como la forma en que desarrollamos la interfaz de nuestros sitios
 
@@ -685,19 +685,19 @@ También puedes revisar estos ejemplos mas a detalle [aquí](https://1linelayout
 🔥 OBJETIVO   
 Entrenar nuestro ojo como desarrolladores para tener un muy buen nivel de detalle.   
 
-CUÁL ES EL DISEÑO CORRECTO?      
-	1.  B✔ por la cámara 📷               
-	2.  A✔ por el contraste del 2h ago 📑              
-	3.  A✔ por el contraste - color de texto del botón 👀                      
-	4.  B✔ por los bordes mas redondeados ⚫               
-	5.  A✔ por el texto bien alineado 📑                                 
-	6.  B✔ la imagen tiene una correcta dimensión (`object-fit: cover;`) 🖼               
-	7.  A✔ por la opacidad de los iconos ◻▪                
-	8.  B✔ porque no resalta el SKIP como una acción importante ❗❗              
-	9.  B✔ porque se debe mantener el diseño, si un botón es mayúsculas, el otro igual tiene que serlo 🔡🔠                 
-	10.  B✔ por el tamaño de la lupa, es mas estética 🔍                     
-	11.  A✔ por la separación entre el nombre y el 2h ago 📰                     
-	12.  A✔ por la alineación de los iconos ◻▪               
+CUÁL ES EL DISEÑO CORRECTO?        
+1.  B✔ por la cámara 📷               
+2.  A✔ por el contraste del 2h ago 📑              
+3.  A✔ por el contraste - color de texto del botón 👀                      
+4.  B✔ por los bordes mas redondeados ⚫               
+5.  A✔ por el texto bien alineado 📑                                 
+6.  B✔ la imagen tiene una correcta dimensión (`object-fit: cover;`) 🖼               
+7.  A✔ por la opacidad de los iconos ◻▪                
+8.  B✔ porque no resalta el SKIP como una acción importante ❗❗              
+9.  B✔ porque se debe mantener el diseño, si un botón es mayúsculas, el otro igual tiene que serlo 🔡🔠                 
+10.  B✔ por el tamaño de la lupa, es mas estética 🔍                     
+11.  A✔ por la separación entre el nombre y el 2h ago 📰                     
+12.  A✔ por la alineación de los iconos ◻▪               
 
  
 Por cierto, `object-fit` hace que las imágenes se vean bien al darles un width y un height que las deforma.
@@ -721,34 +721,34 @@ Empresas como Airbnb, Uber e IBM han cambiado la forma en que diseñan productos
 -   Cada una de estas empresas ha podido cambiar el ritmo de creación e innovación dentro de sus equipos.     
 
 🔥 ¿Cómo lo logran?   
-	-   Utilizando una colección de componentes repetibles.
-	-   Utilizando un conjunto de estándares que guían el uso de esos componentes.  
+-   Utilizando una colección de componentes repetibles.
+-   Utilizando un conjunto de estándares que guían el uso de esos componentes.  
 
 🔥 ¿Quiénes crean un Design System?   
-	-   Todo un equipo de producto (programadores, ingenieros, diseñadores, gerentes de producto, equipo C-suite, etc.)
+-   Todo un equipo de producto (programadores, ingenieros, diseñadores, gerentes de producto, equipo C-suite, etc.)
 
 🔥 Proceso          
-	-   Se hace un inventario:
-	    -   Colores, logotipos, encabezados, pies de página, formularios, código, etc.
-	    -   Y se llega a un consenso sobre cómo se deben diseñar, codificar, presentar y hablar de las cosas.
-	-   Podemos tener un boceto donde encontraremos: Ideas, Colores, Etc.
-	-   Los integrantes de un equipo deben tomar decisiones para el producto el cual llegara a afectar al código.
-	- Basado en ese tipo de decisiones las cuales se guían de las necesidades, se puede encontrar herramientas.    
+-   Se hace un inventario:
+	 -   Colores, logotipos, encabezados, pies de página, formularios, código, etc.
+	 -   Y se llega a un consenso sobre cómo se deben diseñar, codificar, presentar y hablar de las cosas.
+-   Podemos tener un boceto donde encontraremos: Ideas, Colores, Etc.
+-   Los integrantes de un equipo deben tomar decisiones para el producto el cual llegara a afectar al código.
+- Basado en ese tipo de decisiones las cuales se guían de las necesidades, se puede encontrar herramientas.    
 
 🔥 ¿Por dónde comenzar a revisar estos temas?     
-	- [Design - Shopify Polaris](https://polaris.shopify.com/design/design) guía de recomendaciones de que cosas hacer y que otras no.
-	-   Una, guía de diseño que nos puede ayudar es la de Shopify (grupo de márgenes, contraste de colores, tipografías, íconos y spacing)
-	-   También podemos usar Frameworks CSS como Tailwind CSS que nos ayuda a guiarnos en ciertos aspectos como espaciados, breakpoints, etc.
+- [Design - Shopify Polaris](https://polaris.shopify.com/design/design) guía de recomendaciones de que cosas hacer y que otras no.
+-   Una, guía de diseño que nos puede ayudar es la de Shopify (grupo de márgenes, contraste de colores, tipografías, íconos y spacing)
+-   También podemos usar Frameworks CSS como Tailwind CSS que nos ayuda a guiarnos en ciertos aspectos como espaciados, breakpoints, etc.
 
 📌 En una revisión se puede observar:       
-		- Mismo espaciado al lado derecho e izquierdo 
-		- Los elementos inferiores también se deben alinear con los elementos superiores. Esto depende del diseño.
-		- Llevar un estándar en la tipografía del proyecto
-		- Iconos de tamaño adecuado, ni muy pequeños ni muy grandes. 
+- Mismo espaciado al lado derecho e izquierdo 
+- Los elementos inferiores también se deben alinear con los elementos superiores. Esto depende del diseño.
+- Llevar un estándar en la tipografía del proyecto
+- Iconos de tamaño adecuado, ni muy pequeños ni muy grandes. 
 
 📌 Leer sobre Design tokens
-	- [Leer en uifrommars.com](https://www.uifrommars.com/design-tokens-que-son-ventajas/)
-	- [Leer en css-tricks.com](https://css-tricks.com/what-are-design-tokens/)
+- [Leer en uifrommars.com](https://www.uifrommars.com/design-tokens-que-son-ventajas/)
+- [Leer en css-tricks.com](https://css-tricks.com/what-are-design-tokens/)
 
 
 [Slides Clase-17](https://www.canva.com/design/DAEQjsUUkws/60UJcBNwhiQDQQ1sW5Vb-w/view?utm_content=DAEQjsUUkws&amp;utm_campaign=designshare&amp;utm_medium=link&amp;utm_source=sharebutton)
@@ -810,15 +810,15 @@ Pero, debemos PLANIFICAR antes de diseñar y antes de escribir cualquier líne
 - **_Storytelling_**, poder contar historias en tu página web, básicamente que el usuario vaya haciendo scroll y a medida que esto vaya sucediendo te vaya contando algo.
 
 
-🔥 Tendencias UI  
-	-   Animated Illustrations                
-	-   Micro animations                   
-	-   3D Graphic in web & mobile UI         
-	-   virtual reality             
-	-   Augmented Reality                  
-	-   Neumorphism: colores pocos contrastados.              
-	-   Asymmetrical Layouts              
-	-   Storytelling             
+🔥 Tendencias UI     
+-   Animated Illustrations                
+-   Micro animations                   
+-   3D Graphic in web & mobile UI         
+-   virtual reality             
+-   Augmented Reality                  
+-   Neumorphism: colores pocos contrastados.              
+-   Asymmetrical Layouts              
+-   Storytelling             
 
 
 📌 Estos tips están en estos vídeos:    
@@ -856,3 +856,4 @@ Es una herramienta web con la que básicamente puedes ajustar sombras, redondead
 🔥 ❄ ✨ 📌 🎲 🤴🦁 🧔🐯 🧰 👀 ✔
 
 Sería cool primero hacer un ejemplo practico y luego definir el tema.
+`/*cd /d/1-Software/Platzi/A-Apuntes/*/`
