@@ -6,11 +6,11 @@
 ## 1. Todo sobre el diseño de páginas web acaba de cambiar
 
 ✨ En este curso:     
-- ¿Cuándo usar Flexbox y CSS Grid?
-- Todo sobre Layouts
-- Uso de Figma
-- Tendencias de UI/UX
-- Futuro de CSS Grid
+	- ¿Cuándo usar Flexbox y CSS Grid?         
+	- Todo sobre Layouts          
+	- Uso de Figma          
+	- Tendencias de UI/UX           
+	- Futuro de CSS Grid          
 
 
 El diseño gráfico en la web ha evolucionado significativamente dúrate los últimos 25 años
@@ -25,12 +25,12 @@ Desde que CSS Grid se lanzó en marzo de 2017, tenemos, por fin, una tecnolog
 
 
 **Consejos de @teffcode**   
-1.  Absorbe, prueba y juega con las nuevas características de CSS
-2.  No construir los mismos diseños antiguos con las mismas tecnologías antiguas
-3.  Descubre todo lo que ha cambiado
-4.  No asumas que ya sabemos en qué se convertirá la web. O que ya lo hemos dominado todo.
+	1.  Absorbe, prueba y juega con las nuevas características de CSS    
+	2.  No construir los mismos diseños antiguos con las mismas tecnologías antiguas         
+	3.  Descubre todo lo que ha cambiado                
+	4.  No asumas que ya sabemos en qué se convertirá la web. O que ya lo hemos dominado todo.         
 
-✨ No existe una forma “correcta” de hacer los diseños. Todo sobre el diseño web acaba de cambiar.
+✨ No existe una forma “correcta” de hacer los diseños. Todo sobre el diseño web acaba de cambiar.     
 
 
 [Slides Clase-01](https://www.canva.com/design/DAEQFpuHLco/nb-w5JtFmlNT8jtGGPsVmw/view?utm_content=DAEQFpuHLco&amp;utm_campaign=designshare&amp;utm_medium=link&amp;utm_source=sharebutton)
@@ -686,18 +686,18 @@ También puedes revisar estos ejemplos mas a detalle [aquí](https://1linelayout
 Entrenar nuestro ojo como desarrolladores para tener un muy buen nivel de detalle.   
 
 CUÁL ES EL DISEÑO CORRECTO?      
-	1.  B✔ por la cámara 📷
-	2.  A✔ por el contraste del 2h ago 📑
-	3.  A✔ por el contraste - color de texto del botón 👀
-	4.  B✔ por los bordes mas redondeados ⚫
-	5.  A✔ por el texto bien alineado 📑
-	6.  B✔ la imagen tiene una correcta dimensión (`object-fit: cover;`) 🖼
-	7.  A✔ por la opacidad de los iconos ◻▪
-	8.  B✔ porque no resalta el SKIP como una acción importante ❗❗
-	9.  B✔ porque se debe mantener el diseño, si un botón es mayúsculas, el otro igual tiene que serlo 🔡🔠
-	10.  B✔ por el tamaño de la lupa, es mas estética 🔍 
-	11.  A✔ por la separación entre el nombre y el 2h ago 📰
-	12.  A✔ por la alineación de los iconos ◻▪
+	1.  B✔ por la cámara 📷               
+	2.  A✔ por el contraste del 2h ago 📑              
+	3.  A✔ por el contraste - color de texto del botón 👀                      
+	4.  B✔ por los bordes mas redondeados ⚫               
+	5.  A✔ por el texto bien alineado 📑                                 
+	6.  B✔ la imagen tiene una correcta dimensión (`object-fit: cover;`) 🖼               
+	7.  A✔ por la opacidad de los iconos ◻▪                
+	8.  B✔ porque no resalta el SKIP como una acción importante ❗❗              
+	9.  B✔ porque se debe mantener el diseño, si un botón es mayúsculas, el otro igual tiene que serlo 🔡🔠                 
+	10.  B✔ por el tamaño de la lupa, es mas estética 🔍                     
+	11.  A✔ por la separación entre el nombre y el 2h ago 📰                     
+	12.  A✔ por la alineación de los iconos ◻▪               
 
  
 Por cierto, `object-fit` hace que las imágenes se vean bien al darles un width y un height que las deforma.
@@ -811,14 +811,14 @@ Pero, debemos PLANIFICAR antes de diseñar y antes de escribir cualquier líne
 
 
 🔥 Tendencias UI  
-	-   Animated Illustrations  
-	-   Micro animations
-	-   3D Graphic in web & mobile UI
-	-   virtual reality
-	-   Augmented Reality
-	-   Neumorphism: colores pocos contrastados.
-	-   Asymmetrical Layouts
-	-   Storytelling
+	-   Animated Illustrations                
+	-   Micro animations                   
+	-   3D Graphic in web & mobile UI         
+	-   virtual reality             
+	-   Augmented Reality                  
+	-   Neumorphism: colores pocos contrastados.              
+	-   Asymmetrical Layouts              
+	-   Storytelling             
 
 
 📌 Estos tips están en estos vídeos:    
@@ -846,10 +846,10 @@ Es una herramienta web con la que básicamente puedes ajustar sombras, redondead
   <br/>
   
 **🔥 Team:**    
-	- Fernando Quinteros Gutierrez
-	- John Cardenas
-	- Nazareno Aznar Altamiranda
-	- Gonzalo Ceron Denetro
+	- Fernando Quinteros Gutierrez              
+	- John Cardenas            
+	- Nazareno Aznar Altamiranda                        
+	- Gonzalo Ceron Denetro                
 
 </details>
 
