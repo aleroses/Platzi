@@ -1063,8 +1063,12 @@ Tips:
 
 
 ### Examen:     
+<details>
+  <summary>Haz click aquí para ver los resultados 👀</summary>
 
-1. Los elementos en bloque se identifican por:
+  <br/>
+  
+1. Los elementos en bloque se identifican por:      
 	- Extenderse a lo ancho ocupando todo el espacio disponible
 
 CAMBIAR
@@ -1075,25 +1079,21 @@ CAMBIAR
 CAMBIAR
 
 3. Al decir display: inline-flex, inmediatamente pensamos que:
-	- 📌 Su comportamiento externo es de un elemento inline y su comportamiento interno es de bloque
+	- Su comportamiento externo es de un elemento inline y su comportamiento interno es de caja flexible (Flexbox)
 
 CAMBIAR
 
 4. El BFC (Block Formatting Context) se caracteriza por:
-	- 📌 Ser un elemento bloque y seguir el flujo normal del documento
+	- Contener flotantes 
 
 CAMBIAR
 
 5. Todo en CSS son cuadros y podemos controlar el tipo de cuadro usando la propiedad:
-	- 📌 Todas las anteriores
-	- a display
-	- b Todas las anteriores
-	- c position
-	- d z-index
+	- display
 
 CAMBIAR
 
-6. El contexto de apilamiento, es la conceptualización tridimencional de los elementos HTML a lo largo del eje:
+6. El contexto de apilamiento, es la conceptualización tridimensional de los elementos HTML a lo largo del eje:
 	- Z
 
 CAMBIAR
@@ -1129,7 +1129,7 @@ CAMBIAR
 CAMBIAR
 
 13. Un Design System es:
-	- 📌 Una guía de diseño
+	- Una colección de componentes reutilizables guiados por estándares claros
 
 CAMBIAR
 
@@ -1176,3 +1176,5 @@ CAMBIAR
 	- Entrenar nuestro ojo como desarrolladores para tener un muy buen nivel de detalle
 
 CAMBIAR
+
+</details>
