@@ -422,13 +422,278 @@ Si quieren una referencia de todos los **atajos de teclado**, basta con ir en a 
 
 ## 11. Selección de color
 
+🔥 Seleccionando un color    
+- ➔ Objeto seleccionado 
+- ➔ Panel de propiedades 
+	- ◆ Fill 
+	- ◆ Stroke 
+	- ◆ Effects 
+		- ● Detalle 
+- ➔ Herramienta “Eyedropper” (i)
+
+
+🔥 Modalidades de color      
+- ➔ HEX 
+- ➔ RGB(A) 
+- ➔ CSS 
+- ➔ HSL 
+- ➔ HSB
+
+
+Gradientes   
+🔥 Creando un gradiente    
+- ➔ Objeto seleccionado 
+- ➔ Panel de propiedades 
+	- ◆ Fill (relleno)
+	- ◆ Stroke (borde)
+- ➔ Seleccionar Color 
+	- ● Linear 
+	- ● Radial 
+	- ● Angular 
+	- ● Diamond
+
+
+✨ Ejemplo 1   
+- Crear una Page
+- Crear un Frame
+- Agregar imágenes (para extraer color)
+- Añadir una figura y seleccionar (cuadrado, circulo)
+- Ir a las opciones (Fill - relleno)
+- Seleccionar el 🔲 para cambiar el color 
+- Seleccionar 🖍 para detectar color
+- Damos clic una vez encontrado el color
+	- Nuestro figura cuadrada absorbió ese color 
+- ✔ Esto se puede hacer mas rápido con la tecla i presionada.
+
+
+✨ Ejemplo 2 - Gradient    
+- Con la figura hecha en el ejemplo anterior 
+- Opciones Fill 🔲 color  
+- Cambiar Fill por Linear
+	- El color se divide en dos 🟥 ⬜
+	- Seleccionar uno de los dos para cambiarlo
+- Nos aparecerá una línea que al moverla podemos modificar la dirección del gradient 
+
+✨ Ejemplo 3 - Guardar estilos   
+- Seleccionar objeto con el color deseado 
+- Opción Fill
+- ▫▫▫▫ Style - Color Style ➕
+- Nombrar color
+- Todos los colores guardados aparecen a la derecha 
+
+✨ Ejemplo 4 - usar estilos guardados     
+- Crear objetos a colorear 
+- Seleccionar todos 
+- Opción Fill
+- ▫▫▫▫ Style - Color Style ➕
+- Seleccionar color guardado
+
+✨ Ejemplo 5 - Cambiar estilo por otro 
+- Seleccionar un color guardado 
+- Darle a ⛓ Edit style 
+- Cambiar color 🟥
+- Cambiar nombre
+
+
+Vamos a crear la paleta de color de un nuevo proyecto
+🔥 Debe contener:       
+- ➔ Moodboard de inspiración 
+- ➔ Mínimo 6 colores 
+	- ◆ 2 Colores para texto 
+	- ◆ 2 Colores principales 
+	- ◆ 2 Colores secundarios 
+- ➔ Un ejemplo aplicado sobre interfaz
+
+
+
+📌 Lecturas recomendadas     
+- [Teoría del Color en el diseño de interfaces](https://platzi.com/blog/color-en-interfaces/)
+- [Domina el color de tu producto](https://platzi.com/blog/domina-color/)
+
+🎲
+
+## 12. Vectores: aprende a combinar figuras
+
+✨ Operaciones No-Destructivas: no importa que tanto ampliemos estos vectores la resolución nunca se va a perder.
+
+🔥 Construyendo vectores    
+- ➔ P para usar la herramienta “Pen - Esfero” 
+	- ◆ Click en cualquier lugar para empezar 
+	- ◆ Escape para abandonar 
+- ➔ En Figma, un punto puede alojar una cantidad infinita de trazos que salgan desde ese punto 
+- ➔ Cuando seleccionas y mueves dicho punto, todos los trazos se mueven con él
+
+
+🔥 Editando trazos   
+- ➔ Stroke 
+	- ◆ Center 
+	- ◆ Inside 
+	- ◆ Outside 
+- ➔ Cap 
+	- ◆ Round - Square - Arrows 
+- ➔ Dashes
+
+🔥 Operaciones Booleanas    
+➔ Sumas y Restas 
+	◆ Union 
+	◆ Substract 
+➔ Combinatorias 
+	◆ Intersect 
+	◆ Exclude
+
+
+✨ Ejemplo 1 - Vector
+- Crear Frame
+- Tecla P
+- Dibujar un 🔺 Esc para dejar de editar 
+- Presionar Shift una sola vez
+- Seleccionar dibujo
+- Propiedades Fill 
+	- Style y elegir color de fondo
+- Jugar con las opciones de stroke 
+
+
+✨ Ejemplo 2 - Operaciones Booleanas - Resta   
+- Hacer un circulo pequeño dentro de otro mas grande   
+- Darles color
+-  Seleccionar ambos círculos
+- Ir a las opciones de la parte superior  ⬜◻ Boolean group 
+- Operación de sustracción (Subtract selection)
+
+✨ Ejemplo 3 - Operaciones Booleanas - Suma   
+- Hacer dos cuadrados y girarlos 
+- Colocar uno pegado al otro casi a la mitad 
+- Seleccionar ambos 🔷🔶
+- Ir a las opciones de la parte superior  ⬜◻ Boolean group 
+- Union selection 
+
+✨ Ejemplo 4 - Dibujar pluma   
+
+
+## 13. Integración: importar y exportar elementos
+
+¿Qué se puede importar?       
+🔥 Figma soporta:     
+- ◆ JPEG 
+- ◆ PNG 
+- ◆ SVG 
+- ◆ .sketch
+
+🔥 ¿Cómo importar?    
+- ➔ Drag and drop 
+	- ◆ En archivos 
+	- ◆ En proyectos 
+- ➔ Command + Shift + K 
+- ➔ Home: Importar file
+- ➔ Copy/Paste desde: 
+	- ◆ Sketch 
+	- ◆ Illustrator 
+	- ◆ Otros archivos de Figma
+
+¿Qué se puede exportar?     
+🔥 Figma puede exportar cualquier cosa como:    
+- ◆ JPEG 
+- ◆ PNG 
+- ◆ SVG
+
+
+¿Cómo exportar? 
+🔥 Op1 
+- ◆ Seleccionar elemento 
+- ◆ Agregar propiedad de “Export” 
+- ◆ Definir parámetros 
+	- ● JPEG, SVG 
+	- ● 1X, 2X, 3X
+
+
+🔥 ➔ Op2     
+- ◆ Sin ninguna selección activa 
+- ◆ Command + Shift + E 
+- ◆ Seleccionar elementos a exportar 
+
+- ➔ Fondos transparentes
+
+
+¿Puedo exportar un archivo?       
+Sí, puedes tener una versión offline en .fig     
+◆ ¿Pero para qué?   
+
+
+Compartir un archivo          
+- ➔ Permisos de edición 
+- ➔ Vista de frames 
+	- ◆ Permite crear nuevos parámetros de exportar 
+- ➔ Vista solo de prototipo
+
+
+📌 PNG permite transparencias 
+
+🎲
+
+## 14. Constraints: usa las restricciones a tu favor
+
+Límites y restricciones       
+🔥 Relaciones padre-hijo     
+Todos los elementos contenidos dentro de un frame son objetos “child” del contenedor que los soporta.     
+- ● Así pues, sus restricciones funcionan con base en el comportamiento de su “padre”.
+
+
+🔥 Restricciones       
+Un elemento en Figma puede estar restringido en su espacio horizontal según:     
+- ◆ Left  
+- ◆ Right 
+- ◆ Left & Right 
+- ◆ Centro 
+- ◆ Escala
+
+
+Un elemento en Figma puede estar restringido en su espacio vertical según:      
+- ◆ Top 
+- ◆ Bottom 
+- ◆ Top & Bottom 
+- ◆ Centro 
+- ◆ Escala
+
+
+¿Y para qué sirve esto?            
+🔥Consistencia     
+Cada interfaz existe dentro de un espacio dinámico y es importante mantener una lógica consistente al momento de cambiar el tamaño de diferentes objetos.
+
+
+✨ Ejemplo 1   
+- Creamos un Frame
+- Agregamos un rectángulo
+	- Corner radius 17
+	-  Fill: white 100%
+- Insertamos una imagen sobre el rectángulo  
+- Seleccionamos ambos y usamos Use as mask
+- Repetimos el proceso una vez más 
+	- Mask group
+		- Group 1
+			- name-img
+			- fondo-card (rectángulo)
+		- Group 2
+			- name-img
+			- fondo-card (rectángulo)
+
+📌 Tambien podemos mover los dos grupos fuera de la mask 
+- Seleccionamos un grupo o card 
+- Propiedades constrain
+	- ↕ Top and bottom
+- Seleccionar botón ➕🟣 inferior 
+- Propiedades constrain
+	- ↔ right ↕ bottom
+
+
+📌 Ahora al duplicar el Frame y agrandarlo, su contenido se comporta de mejor manera.
 🎲
 
 
-🎲
 
 
-🔥 ❄ ✨ 📌 🎲 🤴🦁 🧔🐯 🧰 👀 ✔ 💡 ➕ 🔻 🔺 🔅 🔆 🌚 🌗  👉
+🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲
+
+🔥 ❄ ✨ 📌 🎲 🤴🦁 🧔🐯 🧰 👀 ✔ 💡 ➕ 🔻 🔺 🔅 🔆 🌚 🌗  👉 🟥 ⬜ ⬛ ◼ ◻ 🔷 🔶 ↕ ↔ 🔴 🟣
 
 ### Notas / Aportes
 <details>
