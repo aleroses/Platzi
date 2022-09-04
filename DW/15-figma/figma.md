@@ -276,34 +276,159 @@ Vamos a crear una noticia:
 
 ## 8. Creando efectos
 
-Crear varios objetos: 🟪🟪🟪🟪
+Crear varios objetos: 🟪🟪🟪🟪    
 - Si los tenemos todo desordenados y queremos alinear los objetos, debemos seleccionar todo y presionar en la esquina inferior derecha 🔡.
 - Teniendo seleccionado todos los objetos veremos unas líneas rosadas 🖍 entre objeto y objeto, con lo que podremos cambiar el padding, alejar o pegarlos mas. 
 - También, aparecerá un pequeño circulo en el centro de cada objeto, pulsando este circulo podremos mover y organizar cada objeto sin perder la estructura anterior. 
 
 
-Ocultar objetos:
+Ocultar objetos:       
 - Ver panel izquierdo y hacer clic en el ojito 👀 
 - Con el candado no podremos editar ese objeto 🔒
 
-Sombras: Jugar con esta opción
+Sombras: Jugar con esta opción     
 - Ir al panel de effects ➕
 	- Se añadió una sombre automáticamente
 - Revisar effects settings 🌞
 
 🎲
 
-## 9.
+## 9. Retículas y Guías: componer la complejidad
+
+🔥 **Crear una Retícula (Grid):**     
+1.  Selecciona el Frame
+2.  Panel derecho Propiedades
+	- Layout Grid ➕
+		- Elegir icono🔲(3x3) para cambiar a:
+			- Grid🔻 Columns, Rows (Filas)
+			- Acá podremos cambiar:
+				- Cantidad de columnas 
+				- Márgenes
+				- Gutters - Gap (distancia entre columnas)
+
+📌 Para desktop se usan entre 6 y 12 columnas   
+
+📌 Para ocultar columnas:     
+- MacOS: Control + G  
+- Windows: Ctrl + Shift + 4
+- Tambien en el 👁‍🗨 del apartado Layout Grid
+
+🔥 **Crear Guías:**     
+Es similar a crear un grip pero estas se crean a partir de reglas.   
+1. Shift + R  
+	- Para mostrar las reglas
+2. Jalar desde la regla vertical u horizontal
+	- Llevar hasta el punto objetivo dentro del frame 
+
+Esto sirva cuando se crea una Landing page y queremos indicar donde se corta la vista de un landing o desktop normal, es decir, abajo de esa línea no se va a ver tanto el contenido. 
+
+
+
+Ejercicio: Crear una página web responsive:
+Debe contener:
+- Versión:
+	- mobile
+	- tablet
+	- desktop
+		- Usando guías y retícula para c/u
+
+Recomendaciones de medidas:     
+-   **Mobile**
+    -   Count = 6
+    -   Margin = 20
+    -   Gutter = 12
+-   **Tablet**
+    -   Count = 6
+    -   Margin = 30
+    -   Gutter = 20
+-   **Desktop**
+    -   Count = 6
+    -   Margin = 42
+    -   Gutter = 32
+
+![Web responsive](https://i.postimg.cc/Gm2yRkv3/9-web-responsive.jpg)
+
+Tecla Opción 👉 Tecla Alt     
+Sirve para ver la distancia que hay entre objetos 
+
+Shift + Flechas        
+Mueve de a 10px
+
+✨ Esta [herramienta](http://gridcalculator.dk/) te ayuda a calcular la grilla de tus proyectos.   
+
+Si quieren una referencia de todos los **atajos de teclado**, basta con ir en a la esquina inferior derecha y hacer click en el icono negro con signo de interrogación❓, lo que abrirá el menú de ayuda.  Luego seleccionan la opción **“Keyboard Shortcuts”**, lo que abrirá una sección con todos los comandos disponibles.😄
+
+📌 Puedes añadir imágenes presionando la combinación de teclas Control + Shift + K, eso abrirá tu explorador de archivos.
+
+🎲
+
+## 10. Agregando imágenes
+
+🔥 Agregar imágenes   
+- ➔ Drag and drop     
+- ➔ Copy / Paste      
+- ➔ File > Place Image      
+- ➔ Command + Shift + K      
+
+🔥🔥 Editando imágenes     
+- ➔ Modo de Superposición       
+	- ◆ Pass Through       
+- ➔ Dentro de un objeto        
+	- ◆ Fill        
+	- ◆ Fit         
+	- ◆ Crop       
+	- ◆ Tile       
+- ➔ Ajustes de imagen 
+	- ◆ Exposición, contraste, etc...    
+
+
+🔥🔥 Otra manera...       
+- ➔ Crear un frame dentro de otro frame   
+	- ◆ Seleccionar "Clip Content"   
+
+
+✨ Opción 1 - Fill:      
+- Creamos un Frama (tablet pro 11)
+- Agregamos un cuadrado o circulo, lo seleccionamos.       
+- Propiedades de la Derecha: 
+	- Apartado Fill, seleccionamos el color
+		- Cambiamos de solido a image. 
+		- Choose image 
+		- Un poco mas abajo dentro de esta misma opción cambiando de fill a crop podremos recortar la imagen.  
+
+✨ Opción 2 - Mascara:      
+- Creamos un Frame
+- Desde el explorador de archivos arrastramos una imagen dentro del Frame.
+- Creamos un objeto cualquiera como un circulo. 
+- Ir al apartado izquierdo y cambiar la posición del circulo y dejarlo debajo de la imagen. 
+- Seleccionar el circulo y la imagen
+- Barra superior, seleccionar Use as mask 🌚🌗 
+- Hacer la mascara un solo grupo:   
+	- Seleccionar la imagen y el circulo + Control G
+	- Desagrupar: Control + shift + G
+
+✨ Opción 3 - Frame dentro de otro Frame:       
+- Agregamos una imagen 
+- Seleccionamos F y delimitamos la parte de la imagen que va a ir dentro de este frame
+- En las opciones de la izquierda movemos la imagen dentro del frame
+- No olvidar marcar la opción Clip content✅ dentro de las opciones de la derecha (Frame)
+
+**Dato importante:** Siempre intentar que la resolución de las imágenes que utilice esté por encima de los 150 dpi. DPI se refiere al **número de puntos impresos que hay en una pulgada de una imagen impresa con una impresora**.     
+
+[Consigue Imagenes](https://www.pexels.com/search/frio/)
+[Mas imagenes](https://unsplash.com/)
+
+🎲
+
+## 11. Selección de color
+
+🎲
 
 
 🎲
 
 
-
-🎲🎲🎲
-
-
-🔥 ❄ ✨ 📌 🎲 🤴🦁 🧔🐯 🧰 👀 ✔ 💡
+🔥 ❄ ✨ 📌 🎲 🤴🦁 🧔🐯 🧰 👀 ✔ 💡 ➕ 🔻 🔺 🔅 🔆 🌚 🌗  👉
 
 ### Notas / Aportes
 <details>
@@ -318,6 +443,7 @@ Sombras: Jugar con esta opción
 - Juan Osio
 - Dayse Poma
 - María Paz Muñoz Parra
+- SsimorPro
 
 </details>
 
