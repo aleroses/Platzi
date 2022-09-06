@@ -686,14 +686,450 @@ Cada interfaz existe dentro de un espacio dinámico y es importante mantener una
 
 
 📌 Ahora al duplicar el Frame y agrandarlo, su contenido se comporta de mejor manera.
+
+🎲
+
+## 15. Styleguides: creación de estilos
+
+🔥 Los estilos ayudan a definir:       
+- ➔ Propiedades reutilizables a lo largo de todo un proyecto o archivo, tales como:    
+	- ◆ Color   
+		- ● Gradientes    
+		- ● Imágenes   
+	- ◆ Tipografía   
+	- ◆ Efectos   
+	- ◆ Grillas  
+
+
+🔥 Estilos de color    
+- ➔ Se pueden aplicar dentro de: 
+	- ◆ Fills 
+	- ◆ Strokes 
+- ➔ Se pueden hacer “detach” en cualquier momento
+
+
+🔥 Estilos de efectos      
+- ➔ Se pueden aplicar dentro de: 
+	- ◆ Objetos 
+- ➔ Se pueden hacer “detach” en cualquier momento
+
+
+🔥 Estilos de texto         
+- ➔ Sólo aplican para cajas de texto 
+- ➔ Se pueden hacer “detach” en cualquier momento
+
+
+🔥 Estilos de grilla          
+- ➔ Aplican para verse dentro de frames 
+- ➔ Se pueden hacer “detach” en cualquier momento
+
+🔥 Propiedades         
+- ➔ Los estilos pueden publicarse 
+	- ◆ Dentro de bibliotecas compartidas para reutilizar a lo largo de varios proyectos
+		- ● Se actualizan desde un archivo maestro 
+		- ● Se pueden desvincular de los objetos 
+		- ● Se pueden actualizar en todas sus propiedades 
+- ➔ Son globales con respecto al archivo 
+- ➔ No están atados a elementos particulares
+
+
+
+🔥 Creando estilos      
+- ➔ Seleccionar elemento 
+- ➔ Dentro de Fill / Propiedades 
+	- ◆ Seleccionar los 4 puntos 
+	- ◆ Símbolo + 
+	- ◆ Nombrar estilo 
+	- ◆ “Crear Estilo” 
+- ➔ Para editar, vista sin selección
+
+¿Para que nos ayudan los estilos en Figma?     
+- La principal razón de los estilos en Figma, es que nos ayuda a tener de manera organizada nuestro diseño, permitiéndonos identificar colores, fuentes, efectos o frames de una manera mas rápida.
+- Además de esto, los diseños le ayuda al programador a organizar su código, ya que si el diseño esta desorganizado en una interfaz amigable, en los archivos css seria aun peor.
+
+
+✨ Ejemplo 1   
+- Duplicamos el diseño hecho en la clase 14 constraints
+- Seleccionamos el Frame 
+- Layout grid  ➕
+	- Column 6 - Margin 31 - Gutter 17
+- card-1
+	- fondo-card
+	- Effects 🔆
+		- Blur 8
+		- Opacidad 9%
+	
+Convertir Grilla en un estilo estándar reutilizable      
+- Seleccionar Frame   
+- Layout grid seleccionar ◻◻◻◻
+	- ➕ Create style   
+	- Nombrar: Grilla iPhone   
+
+Convertir Efecto es un estilo estándar reutilizable     
+- Seleccionar Fondo card  
+- Effects seleccionar ◻◻◻◻  
+- ➕ Create style  
+- Nombrar: Sombra card
+
+📌 Estos estilos creados los podemos ver en las opciones de la derecha cuando no seleccionemos nada.
+
+
+Usemos los estilos creados     
+- Creamos un Frame al costado de la otra pantalla
+- Seleccionamos Frame  
+- Layout grid ◻◻◻◻  
+	- Grilla iPhone 
+- Creamos un objeto 🟣
+	- Lo seleccionamos 
+	- Fill ◻◻◻◻  
+	- Elegir color  
+- Seleccionamos todo para aplicar efecto de sombra 
+	- Effects ◻◻◻◻  
+	- Sombre card
+
+📌 Al editar un estilo⛓ predefinido todos los objetos donde fueron aplicados cambiaran al nuevo estilo.   
+
+
+🔥🔥 Vamos a crear una guía de estilo nueva      
+La guía de estilo debe tener       
+- ➔ Mínimo 5 estilos de colores 
+- ➔ Mínimo 5 estilos de texto 
+- ➔ Mínimo 3 estilos de grilla
+
+🎲
+
+## 16. Auto-Layout: un amigo para la vida
+
+Hablemos del box-model      
+- Margin 
+- Border
+- Padding 
+- Content
+
+
+¿Cómo creamos esa consistencia?       
+- ➔ Agregando: 
+	- ◆ Paddings 
+	- ◆ Márgenes 
+	- ◆ Comportamientos
+
+
+Propiedades del Auto Layout    
+- ➔ Son frames, no grupos. 
+- ➔ Los frames tienen una alineación vertical u horizontal. 
+	- ◆ Elementos dentro de un frame vertical: left, right, center o stretch. 
+	- ◆ Elementos dentro de un frame horizontal: top, bottom, center o stretch. 
+- ➔ Mantienen patrones de distancia simétricos entre sus elementos hijo.
+
+
+
+Creando Auto Layout 
+- ➔ Seleccionar elementos 
+- ➔ Shift + A 
+- ➔ Definir alineación frame 
+	- ◆ Default depende de los elementos existentes 
+- ➔ Definir alineación elementos 
+- ➔ Justificar los paddings 
+	- ◆ Padding se automatiza con puntos medios 
+- ➔ Justificar distancia entre elementos
+
+
+
+Editando Auto-Layout 
+- ➔ Ocultar / Mostrar elementos 
+	- ◆ Esto los “elimina” de la alineación 
+- ➔ Re-organización con: 
+	- ◆ Drag 
+	- ◆ Flechas 
+	- ◆ Íconos
+
+
+
+¿Y para qué sirve esto?   
+Consistencia     
+- ➔ Los componentes de una interfaz van a existir dentro de un box model, independientemente de la tecnología que se use para codificarlos 
+- ➔ Replicar dicho “box model” sobre una interfaz es un gran lugar para empezar a comunicarse mejor con los programadores
+
+
+✨ Ejemplo 1   
+- Creamos un Frame   
+- Agregamos un texto
+- Seleccionamos y Shift + A
+- Nombramos en auto-layout recién creado
+	- Botón
+- Dar color
+	- Seleccionamos el auto-layout Botón
+	- Fill ◻◻◻◻
+	- Elegimos color 
+	- Cambiamos color del texto
+- Damos bordes 
+- Creamos algunos cuadros y damos estilos
+- Los colocamos en una columna un podo desordenados 
+- Seleccionamos todo incluido el botón y Shift + A
+- Podemos cambiar el padding en la opción Auto-layout
+
+
+Vamos a crear un formulario dinámico      
+El formulario debe tener:      
+- ➔ Mínimo 4 campos de información 
+- ➔ Mínimo 1 botón como call to action 
+- ➔ Todo contenido dentro de un gran frame de Auto Layout
+
+> ![Ejemplo a lograr](https://i.postimg.cc/TwMh8njJ/16-ejemplo.jpg)
+
+🎲
+
+## 17. Shortcuts: atajos para agilizar tu proceso
+
+Diferentes tipos de atajos     
+1. Esenciales 
+2. Herramientas 
+3. Vista 
+4. Zoom 
+5. Texto 
+6. Formas
+7. Selección 
+8. Cursor 
+9. Editar 
+10. Transformar 
+11. Organizar 
+12. Componentes
+
+
+🔥 Los más importantes    
+🔥 Esenciales       
+- ➔ Mostrar / Esconder UI 
+	- ◆ ⌘ + \ 
+- ➔ Escoger color 
+	- ◆ i
+- ➔ Buscar comandos 
+	- ◆ ⌘ + /
+
+🔥 Herramientas      
+- ● Cursor de movimiento ( V ) 
+- ● Crear un frame ( F ) 
+- ● Usar el pen tool ( P )
+- ● Usar el lápiz ( ⇧ P ) 
+- ● Objetos ( R ) ( O ) ( L ) 
+- ● Líneas ( L ) ( ⇧ L )
+
+🔥 Visualización             
+- ● Mostrar reglas ( ⇧ R ) 
+- ● Outlines ( ⌘ Y ) ✨
+- ● Ver grillas ( ^ G )
+
+🔥 Zoom     
+- ● Space + Drag ✨
+- ● Zoom ( + ) ( - ) 
+- ● Zoom a la selección ( ⇧ 2 )
+
+🔥 Texto       
+- ● Bold ( ⌘ B ) 
+- ● Italic ( ⌘ I ) 
+- ● Underline ( ⌘ U ) 
+- ● Crear un link ( ⌘ K ) ✨
+
+🔥 Formas / Objetos     
+- ● Pen Tool ( P ) 
+	- ○ Bend Tool ( ⌘ ) 
+- ● Lápiz ( ⇧ P ) 
+- ● Remove Fill ( ⌘ / ) 
+- ● Separar Stroke ( ⌘ ⇧ O )
+
+
+🔥 Selección 
+- ● Seleccionar todo ( ⌘ A ) 
+- ● Deep select ( ⌘ click ) ✨
+- ● Agrupar ( ⌘ G ) 
+	- ○ Desagrupar ( ⌘ ⇧ G ) 
+- ● Crear un frame ( ⌘ option G )
+
+
+🔥 Edición 
+- ● Cortar, Copiar y Pegar ( ⌘ X, C, V ) 
+- ● Duplicar ( ⌘ D ) 
+- ● Renombrar ( ⌘ R ) ✨
+- ● Exportar ( ⌘ ⇧ E )
+
+🔥 Transformar  
+- ● 1 (Opacidad al 10%) 
+- ● 2 (Opacidad al 20%) 
+- ● 5 (Opacidad al 50%) ✨
+- ● 0 (Opacidad al 100%)
+
+
+🔥 Organizar 
+● Traer hacia adelante ( ⌘ ] ) 
+● Llevar hacia atrás ( ⌘ [ ) 
+● Agregar Auto Layout ( ⇧ A ) 
+● Quitar Auto Layout ( option ⇧ A )
+
+> ![Atajos](https://i.postimg.cc/9Ms50jFd/17-atajos.jpg)        
+> No olvides revisar los atajos aquí.
+
+🎲
+
+## 18. Herramientas de Co-creación: comentarios
+
+¿Para qué sirven?     
+Para incentivar la co-creación de productos con diferentes actores, sin necesidad de que todos editen, pero sí permitiendo sus puntos de vista en hilos.
+
+Agregando comentarios     
+- ➔ ( C ) ✨
+- ➔ Click 
+- ➔ Escribir comentario 
+- ➔ “Post”
+- ➔ ✅ para resolver
+- ➔ Ver comentarios resueltos 
+	- ➔ Costado izquierdo de la config.⛓ sort / filter
+		- ➔ Show resolved comments ✨
+
+Involucrando a tu equipo       
+- ➔ @ + Nombre 
+- ➔ @ + Correo 
+- ➔ Réplicas 
+- ➔ Marcar como resueltos
+
+¿Por qué involucrar al equipo en el proceso?    
+- Tú no tienes todas las respuestas*
+- *Y tu cerebro es bastante limitado
+
+🎲
+
+## 19. Agilidad y consistencia a través de componentes
+
+¿Qué es un componente?     
+Son elementos reutilizables que ayudan a:     
+- ◆ Lograr mayor consistencia 
+- ◆ Optimizar velocidad en los cambios
+
+Creando componentes     
+- ➔ Pueden crearse a partir de: 
+	- ◆ Frames 
+	- ◆ Grupos 
+	- ◆ Capas 
+- ➔ Mac ( ⌘ ⇧ K )
+- ➔ Windows ( Control Alt K ) ✨
+
+Creando Instancias      
+Cómo crear una instancia    
+- ● Option + Arrastrar componente 
+- ● ( ⌘ C ) + ( ⌘ V ) 
+- ● Drag desde vista de “Assets”
+
+Relación Padre-Hijo     
+- ➔ Propiedades del master component se traducen en todas las instancias 
+- ➔ Cambios sobre las instancias se llaman “overrides” y existen para:   
+	- ◆ Texto 
+	- ◆ Fill 
+	- ◆ Stroke 
+	- ◆ Efectos
+
+No se pueden cambiar      
+- ➔ Tamaño 
+- ➔ Posición 
+- ➔ Rotación 
+- ➔ Constraints 
+- ➔ Jerarquía de Capas
+
+
+Pero las instancias pueden rebelarse      
+- ➔ ( ⌘ + Option + B ) para separar una instancia de su maestro 
+- ➔ Click derecho y “Reset Instance” para cancelar todos los overrides que tiene una instancia y revertir al maestro
+
+
+Un componente no se puede convertir en un objeto    
+- ➔ Para “desapegar” los elementos de un componente maestro a un layer normal: 
+	- ◆ Crear una instancia 
+	- ◆ Hacer detach de la instancia 
+	- ◆ Borrar al maestro
+
+
+✨ Ejemplo 1   
+- Creamos un Frame con algunos objetos y textos
+- Seleccionamos cuadro con texto
+- Control Alt K
+
+En las opciones del lado izquierdo:        
+- Assets: vemos los componentes creados   
+- Podemos arrastrar y usar
+
+Para que nuestras instancias componentes ya no dependan del original:      
+- Clic derecho sobre el componente clonado y darle Detach instance 
+
+> ![Componentes](https://i.postimg.cc/NMys0DYH/19-componentes.webp)
+
+📌 [Mas info sobre componentes](https://www.figma.com/blog/components-in-figma/)
+
+🎲
+
+## 20. Organiza tus componentes
+
+Organizar los componentes      
+- ➔ Para menos de 7 componentes, nombres independientes funcionan. 
+- ➔ Para más, es importante crear frames y/o páginas para agrupar en las diferencias. 
+- ➔ También podemos usar “ / “ para crear jerarquías internas. 
+	- ◆ Para usar el swap entre instancias
+
+
+Componentes compuestos     
+🔥 Componentes dentro de otros componentes      
+Las interfaces más complejas utilizan componentes dentro de componentes para replicar la consistencia a lo largo de todo un mismo sistema.
+
+Las instancias permiten darle flexibilidad a los componentes más complejos, por lo que es clave diferenciar sus diferentes estados.
+
+
+
+✨ Recomendación: Nombrar componentes de acuerdo a paradigmas de diseño. Uno de los paradigmas más usado en el mundo del desarrollo es el paradigma BEM (Bloque Elemento Modificador); en donde
+
+-   Bloque: nombra al componente por su utilidad por ejemplo: 
+	- top__navbar  
+- Elemento: nombra al componente por su relación con el bloque por ejemplo: 
+	- top__navbar-item  
+- Modificador: nombra al componente en relación a la modificación del elemento por ejemplo: 
+	- top__navbar-item-login
+
+De esta forma se obtendrá una comunicación más fluida con programación, para sacar productos mucho más eficientemente. 
+
+[Figma Tutorial: Variants](https://www.youtube.com/watch?v=y29Xwt9dET0)
+
+📌Crear componente: Control Alt K
+
+✨ Ejemplo 1   
+- Creamos un Frame llamado campos
+- Creamos un componente con algo de texto
+- Control Alt K
+- Nombramos cada componente: usuario y contraseña
+- Revisando en Assets vemos lo recién creado
+
+Con esto crear un formulario desde 0 es mas rápido:    
+- Solo debemos clonar los componentes dentro del frame donde se va a construir el formulario.
+- Ahora cuando clonemos un botón podremos cambiar entre botones, seleccionándolo y yendo al apartado arriba de Auto layout.
+- También podremos cambiar el texto de nuestro botón  
+
+
+✨ Ejemplo 2: Crear componentes compuestos    
+- Seleccionar todos los componentes que van a ser parte de uno solo 
+- Darle a Control Alt K
+
+
+Vamos a crear una guía de estilo simple       
+Debe cumplir con:        
+- ➔ 1 Header maestro 
+	- ◆ Que se adapte a diferentes tamaños 
+- ➔ 1 botón maestro 
+	- ◆ 3 instancias que representen sus diferentes estados 
+- ➔ 1 campo de formulario maestro 
+	- ◆ 3 instancias para sus diferentes estados
+
+> ![Ejemplo](https://i.postimg.cc/gc8cN7fT/20-organiza-comp.jpg)
+
 🎲
 
 
+🎲🎲🎲🎲
 
-
-🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲
-
-🔥 ❄ ✨ 📌 🎲 🤴🦁 🧔🐯 🧰 👀 ✔ 💡 ➕ 🔻 🔺 🔅 🔆 🌚 🌗  👉 🟥 ⬜ ⬛ ◼ ◻ 🔷 🔶 ↕ ↔ 🔴 🟣
+🔥 ❄ ✨ 📌 🎲 🤴🦁 🧔🐯 🧰 👀 ✔ 💡 ➕ 🔻 🔺 🔅 🔆 🌚 🌗  👉 🟥 ⬜ ⬛ ◼ ◻ 🔷 🔶 ↕ ↔ 🔴 🟣 ⛓ ✅
 
 ### Notas / Aportes
 <details>
@@ -709,6 +1145,7 @@ Cada interfaz existe dentro de un espacio dinámico y es importante mantener una
 - Dayse Poma
 - María Paz Muñoz Parra
 - SsimorPro
+- Christyna Monsalve
 
 </details>
 
@@ -717,5 +1154,20 @@ Cada interfaz existe dentro de un espacio dinámico y es importante mantener una
   <summary>Haz click aquí para ver los resultados 👀</summary>
 
   <br/>
+
+</details>
+
+### Emojis:  
+<details>
+  <summary>Haz click aquí para ver los emojis 👀</summary>
+
+  <br/>
+
+- 🔥 ❄ ✨ 📌 🎲 
+- 🤴🦁 🧔🐯  👀 👉 
+- 🟥 ⬜ ⬛ ◼ ◻ 🔷 🔶 🔻 🔺 🔴 🟣
+- ✔ ➕ ↕ ↔ ✅
+- 🧰 ⛓ 💡
+- 🔅 🔆 🌚 🌗 
 
 </details>
