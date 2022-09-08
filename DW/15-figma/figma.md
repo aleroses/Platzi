@@ -1126,10 +1126,392 @@ Debe cumplir con:
 
 🎲
 
+## 21. Prototipado: dale vida a tu interfaz🚀
 
-🎲🎲🎲🎲
+En Figma un prototipo es un diseño interactivo, es decir prototipar es darle vida a la interfaz diseñada, ya que permite interactuar o darles movimiento para acercarnos mas a como se visualizaría nuestra interfaz en un dispositivo.
 
-🔥 ❄ ✨ 📌 🎲 🤴🦁 🧔🐯 🧰 👀 ✔ 💡 ➕ 🔻 🔺 🔅 🔆 🌚 🌗  👉 🟥 ⬜ ⬛ ◼ ◻ 🔷 🔶 ↕ ↔ 🔴 🟣 ⛓ ✅
+¿Para qué prototipamos?      
+-   Para alcanzar una versión más real de nuestra intención de código.
+-   Para probar conceptos y experimentar ideas nuevas.
+-   Para aprender sobre las decisiones que hemos tomado y poderlas mostrar y así mismo recibir feedback de manera rápida.   
+
+¿Qué necesitamos para prototipar?        
+- Diferentes frames que demuestren una interacción particular entre ellos.         
+	-   Conectamos dichos frames para que exista una transición dinámica entre ellos.
+-   Crear los parámetros de la interacción:
+    -   Cómo se visualiza (En que dispositivo y con que parámetros)
+    -  Cuándo empieza (Que activa el movimiento)
+    -   Cuándo termina
+
+Interacciones de Scroll (desplazamiento)         
+**Necesitamos:**       
+- ➔ **Para un Scroll vertical** necesitamos un frame con contenido más alto que el dispositivo original.  
+- ➔ **Para un Scroll horizontal** necesitamos un frame con contenido más largo que su contenedor.
+
+Posiciones fijas en scroll        
+Se utilizan para delimitar elementos “pegajosos” dentro de una interfaz, como un top bar o un fab button, para ello debemos crear el elemento o componente, luego lo acomodamos donde necesitamos que quede fijo y finalmente vamos a sus **propiedades → Constraints → checkeamos la casilla de fix position when scrolling.**  
+
+✨ Ejemplo 1:          
+- Creamos un Frame
+	- iPhone 8 Plus con Height: 1405 
+	- El height luego lo podemos cambiar al original 
+- Agregamos algunos elementos 🟥🟥🟥  
+- Nos vamos a Prototype
+	- Overflow scrolling: Vertical scrolling  
+- ▶ para reproducir el prototipo  
+- Creamos un componente que va al final de la interfaz 736  
+- Prototype 
+	- Show prototype settings 
+	- Elegimos un dispositivo 
+- Acá podemos cambiar el height al original 736
+	- Mover el componente justo a esta medida 
+- Seleccionamos el objeto/componente que va a ir sobre la interfaz  
+- Design 
+	- Constrain: Fix position when scrolling 
+- Reproducimos ▶
+
+
+📌 Recuerda dejar un espacio al final de la pantalla del mismo Height que el objeto que estará sobre toda la interfaz.  
+
+> ![Muestra](https://i.postimg.cc/jjd0GxXb/21-prototipos.png)
+
+🎲
+
+## 22. Prototipado: conectando frames
+
+🔥 Posición inicial        
+- ➔ Seleccionar modo “Prototype” 
+- ➔ Seleccionar elemento de origen 
+	- ◆ El objeto desde el que va a empezar la interacción 
+		- ● (ej: el botón que se va presionar o el carrusel que se va a desplazar) 
+- ➔ Arrastrar hasta el frame destino
+
+🔥 Parámetros del trigger       
+- ➔ None 
+- ➔ On tap 
+- ➔ While Hovering / Pressing 
+- ➔ Mouse Enter / Leave 
+- ➔ Touch Down / Up
+
+🔥 Parámetros de acciones     
+- ➔ None 
+- ➔ Navigate to 
+- ➔ Open Overlay 
+- ➔ Swap with 
+- ➔ Back 
+- ➔ Close Overlay 
+- ➔ Open link
+
+🔥 Parámetros de animación       
+- ➔ Instant 
+- ➔ Dissolve 
+- ➔ Smart Animate 
+- ➔ Move In / Out 
+- ➔ Push
+- ➔ Slide In / Out
+- ➔ Dirección ←→↓↑ 
+- ➔ Tipo de animación 
+	- ◆ Ease in / out 
+	- ◆ Ease in and out 
+	- ◆ Lineal 
+- ➔ Duración en ms 
+- ➔ Overflow behavior (scrolling)
+
+
+🔥 Configuración del prototipo          
+- ➔ Dispositivo 
+- ➔ Modelo 
+- ➔ Fondo 
+- ➔ Frame inicial
+
+
+> “ If a picture is worth 1000 words, a prototype is worth 1000 meetings ”
+
+
+🔥 Tipos de prototipos más utilizados    
+- Carrusel horizontal
+- Interacciones con Hover
+- Bottom Sheets
+- Confirmaciones
+
+
+✨ Ejemplo 1:      
+- Creamos varios Frames o pantallas para interconectarlas entre si.
+- Seleccionar un botón y nos vamos a Prototype
+	- Aparece una bolita🟣 en el botón 
+- Clic en esa bolita y arrastramos hasta la pantalla a conectar
+- Prototype: 
+	- Interaction - On tap - Navigate to - Frame 2
+	- Animation - Move in - ⬅ - Easy in and out - 400ms
+	- Show Prototype settings: 
+		- Podemos cambiar el dispositivo 
+		- Color de fondo 
+- Reproducimos ▶
+- 📌 Open overlay para desplegar elementos flotantes por encima de la pantalla que ya se está mostrando. 
+
+🎲
+
+## 23. Transiciones más suaves con Smart Animate
+
+**Smart Animate** permite animar un elemento tal como ocurre en la vida real, logrando una mejor experiencia de usuario.
+
+🔥 ¿Cómo se mueve un elemento en la vida real?      
+
+-   Se desplaza desde un punto A hasta un punto B, acelerando al principio y desacelerando al final.
+
+🔥 ¿Qué necesitamos para hacer un smart animate?      
+
+-   Dos frames con la misma cantidad de capas y sus nombres correspondientes
+    -   Uno será el punto A
+    -   El otro será el punto B
+-   Definir una interacción que cause el trigger de la animación
+
+🔥 Parámetros del trigger       
+
+-   None
+-   On Tap / Drag
+-   While Hovering / Pressing
+-   Key / Gamepad
+-   Mouse Enter / Leave
+-   Touch Down / Up  
+    **_¡La clave está en el ritmo!_**
+
+🔥 ¿Cómo quitamos elementos de una interfaz durante la animación?     
+
+-   Un elemento desaparece cuando su opacidad se mueve desde 100% a 0%.
+-   También puede desaparecer con movimiento, sacándolo del frame.
+-   Combinando ambos 
+
+🔥 Recomendaciones
+
+-   Nombra muy bien tus capas
+    -   Esto te ayudará a identificar fácilmente los diferentes objetos que se están moviendo a lo largo de los frames.
+-   El tiempo máximo de respuesta a una acción / trigger debe ser de 400 ms.
+    -   “Doherty Threshold”
+
+
+✨ Ejemplo 1:     
+- Crear Frames como:
+	- Ejemplo: una pantalla con una imagen que al darle click esta se vea en pantalla completa
+- Seleccionamos la pantalla inicial (componente / objeto) y nos vamos a Prototype 
+- Animation 
+	- Smart animate 
+	- Easy in and out 
+
+
+[Recopilación de blogs, canales de YouTube, y más sobre UX - UI](https://gist.github.com/jfelipebc/672d119c13d283d6952afe65b6f63c7c)
+
+📌 ¿Qué es un Gist en GitHub y para qué sirve?      
+Un gist **es una forma que se tiene para poder compartir código usando GitHub**. Cuando tenemos un código que no es lo suficientemente grande para crear un repositorio, entonces creamos un gist. Aunque gist funciona básicamente cómo un repositorio, ya que se le puede hacer un fork o clonarlo.
+
+🎲
+
+## 24. Versionamiento: recupera el pasado
+
+Para un archivo de Figma, el tiempo es una línea recta, por lo tanto va guardando una versión tras otra versión de nuestro proyecto.  
+
+> ![Version](https://i.postimg.cc/dtck2r5x/24-versionamiento.webp)
+
+🔥 En cualquier momento podemos volver a un punto por medio de:      
+-   Autosave que hace figma
+-   Versiones manuales que el usuario puede documentar
+
+🔥 ¿Cómo acceder al versión history?            
+
+> ![Acceso](https://i.postimg.cc/Gh47D0SQ/24-acceso.webp)
+
+🔥 ¿Cómo guardar una versión específica de mi trabajo?     
+-   ( ⌘ + Option + S ) / (CTRL + ALT +S)
+-   Agregar título
+-   Agregar descripción
+-   “Save”
+
+🔥 ¿Cómo restaurar una versión del archivo?      
+-   “Show version history”
+-   Seleccionar versión
+-   “Restore this version”  
+    
+> ![Restaurar](https://i.postimg.cc/t405Vs6q/24-restaurar.jpg)
+
+🔥 ¿Para qué sirve esto?
+
+-   Múltiples miembros de un equipo editando un sólo archivo pueden generar diferentes errores y por lo tanto
+    -   El versionamiento ayuda a mirar dónde se cometieron y revertir el daño
+-   Cambios inesperados en el desarrollo pueden pedir que todo se revierta a una versión anterior
+    -   Es clave que el diseño también pueda revertir a una versión pasada para entender el contexto
+
+🎲
+
+## 25. Librerías de estilos y componentes
+
+🔥 ¿Por qué trabajar con estilos y componentes? 
+- ➔ Estilos: 
+	- ◆ Hacen referencia a parámetros versátiles de una marca. 
+- ➔ Componentes: 
+	- ◆ Hacen referencia a las diferentes partes que componen una interfaz.
+
+
+Ambos conceptos evolucionan y deben trabajar en paralelo.
+
+
+🔥 Repasando: Estilos         
+- ➔ Una librería de estilos contiene: 
+	- ◆ Colores 
+	- ◆ Textos 
+	- ◆ Efectos 
+	- ◆ Grillas
+
+
+🔥 Repasando: Componentes 
+- ➔ Una librería de componentes contiene: 
+	- ◆ Componentes 
+		- ● Átomos 
+		- ● Moléculas 
+		- ● Organismos
+
+
+🔥 ¿Cómo publicar una librería?          
+> ![Publicar](https://i.postimg.cc/PrkJmntj/25-publicar.pngg)
+
+
+🔥 ¿Cómo actualizar una librería?           
+- ➔ Cada vez que hagas cambios en los estilos o componentes maestros, todos los archivos que usen dichas librerías recibirán una actualización.
+
+> ![Actualizar](https://i.postimg.cc/NFb0sLZk/25-actualizar.png)
+
+- ➔ Hacer click en “Review”
+- ➔ Luego en “Update”
+
+🎲
+
+## 26. Plugins: extiende funcionalidades
+
+Extendiendo todas las posibilidades   
+
+🔥 Tipos de plugins     
+- ➔ Eficiencia 
+- ➔ Organización 
+- ➔ Diseño 
+- ➔ Animación
+
+- Autoflow ✨ Conectar frames   
+- Blobs
+- Blush ✨ Img gratis 
+- Content Reel ✨ Nombres, mensajes y contenido   
+- Feather Icons
+- Figma Chat
+- Mapsicle
+- Stark
+
+🔥 Ejemplo: Autoflow    
+- Home
+- Icono de usuario 
+- Plugins
+- Browse plugins in Community 
+- 🔍 Buscamos Autoflow
+- Install
+- Try
+
+
+Lista recomendada:    
+-   Favvy Favion Exporter
+-   Font Scale
+-   Font Awesome Icons
+-   Google Sheets Sync
+-   Material Design Icons
+-   Rename it
+-   Zeplin
+
+
+Otros:   
+- Unsplash 
+- Viewports
+- Datavizer
+- Brands colors
+- Able - Friction free accessibility 
+- Remove BG
+- Component cloner
+- Feather icons
+- Lorem ipsum
+- Iconify 
+- Figmotion 
+- vectary 3D
+- Blush  
+
+
+✨ Como usarlos: 
+- Vamos a nuestros frames 
+- Clic derecho en algún espacio vacío 
+- Plugins 
+- Autoflow 
+- Seleccionamos un objeto o componente de un frame y seleccionamos el frame con el que está conectado 
+- Para usar Content Reel primero seleccionar el texto
+- Luego buscar el plugin, Content Reel y Apply all
+
+
+📌 Iconify es un plugin muy util para insertar iconos
+
+🎲
+
+## 27. Community: colaboración universal
+
+Diseños reutilizables y co-creados por la comunidad    
+
+Tipos de archivos       
+- ➔ Plantillas de Interfaz 
+- ➔ Guías de Estilo 
+- ➔ Mockups de Dispositivos 
+- ➔ Tutoriales 
+- ➔ Recursos para Workshops 
+- ➔ Juegos de Mesa 
+- ➔ ???
+
+- Ant Design System (Community)
+- Base Gallery
+- Contra Wireframe Kit
+- Design Sprint Templates
+- Figma Design Principles
+- Figma for Education
+- Task Lists
+- Marvie
+- Modern Device Mockup Kit
+- Sitemap
+
+
+Ejemplo: Ant Desing System    
+- Home 
+- Community 
+- Ant Design System (Community) 
+- Get and Copy  
+
+
+
+ Lecturas recomendadas:     
+
+- [Ant Design UI Kit](https://www.figma.com/resources/assets/ant-design-ui-kit/)
+- [Figma - ❖ Base Gallery | Uber's Base design system was created to promote a centralized library of reusable UI components ...](https://www.figma.com/community/file/805195278314519508)
+- [Figma - contra wireframe kit | A starter wireframe kit for quick design and prototyping your idea. Its library contains more tha...](https://www.figma.com/community/file/833515051385038928)
+- [Figma - Figma Design Principles | Our guiding principles for product and design work at Figma. We've also shared our design explora...](https://www.figma.com/community/file/817913152610525667)
+- [Figma - Task Lists for Figma Files | I really enjoy using checklists to keep track of things I need to do and I find myself creating m...](https://www.figma.com/community/file/844437632570943875)
+- [Figma - Marvie✨ IOS UI Kit Dark theme | Marvie✨ is your top-notch multipurpose UI kit with bright and friendly colors. Full-featured and ...](https://www.figma.com/community/file/827876058453173134)
+
+🎲
+
+## 28. Proyecto Final: Budgetrip
+
+Terminaste :-)
+
+🎲
+
+## 29. Prototipado en vivo: Figma
+
+Agenda    
+- Hot questions 
+- Comparte en el chat la liga a tu proyecto terminado 
+- Feedback  
+- Get the job
+- ¿Nuevo Reto? 
+
 
 ### Notas / Aportes
 <details>
@@ -1155,6 +1537,125 @@ Debe cumplir con:
 
   <br/>
 
+1. Al cambiar algún estilo de color o texto en una instancia de un componente, el comportamiento esperado es:
+	- 📌La instancia cambia su propiedades sin modificar el componente maestro.
+
+
+2. Figma está revolucionando el mundo de diseño por:
+	- 📌Incursiona en el mundo del diseño open-source creando comunidad.
+
+
+3. Un componente se define como:  
+	- 📌Una estructura reutilizable que permite replicarse en instancias.
+
+
+4. El versionamiento es un opción de Figma que ayuda a tener una documentación y rastreo del trabajo que se hace en un archivo. Esto se logra:
+	- 📌Creando versiones auto salvadas o manuales de todo el archivo de manera lineal.
+
+
+5. ¿Cuál sería la mejor definición para un estilo en Figma?
+	- 📌Son un conjunto de propiedades de un objeto que se puede agrupar y reutilizar en todos tus diseños.
+
+
+6. ¿Qué es una máscara?
+	- 📌Objeto contenedor que limita la visibilidad de los elementos dentro del campo visible del mismo.
+
+
+7. ¿Cuáles son las propiedades de un objeto con autolayout?
+	- 📌Padding, espacio entre elementos, dirección.
+
+
+8. Los comentarios en Figma sirven para:
+	- 📌Incentivar la co-creación de productos con diferentes actores, sin necesidad de que todos editen, pero sí permitiendo sus puntos de vista en hilos.
+
+
+9. Los plugins en Figma permiten expandir las capacidades que tiene la herramienta, y algunos de ellos incluso permiten:
+	- Insertar ilustraciones personalizables.
+	- 📌Todas las opciones.
+	- Traer datos de Google Sheets.
+	- Ninguna de las opciones.
+	- Automatizar contenido como nombres, descripciones y fotos de perfil.
+
+
+10. Una de las siguientes NO es un parámetro de animación:
+	- 📌Pull
+	- Recursive
+	- Dissolve
+
+
+11. Las librerías están compuestas por:
+	- 📌Componentes y estilos.
+
+
+12. Un prototipo sirve para:
+	- 📌Alcanzar una versión más real de nuestra intención de código y experimentar con nuevas ideas.
+
+
+13. ¿Dónde se puede crear un archivo nuevo?
+	- 📌En drafts, recent y dentro de un proyecto.
+
+
+14. Los límites y las restricciones se pueden aplicar en:
+	- 📌Cualquier elemento dentro de un frame.
+
+
+15. Los pilares de Figma son:
+	- 📌Diseño, colaboración, prototipado y sistemas de diseño.
+
+
+16. ¿Cuál es el atajo para crear un autolayout?
+	- 📌Shift + A
+
+
+17. ¿Cuántos tipos de retículas existen en Figma?
+	- 📌3
+
+
+18. Las propiedades de un objeto siempre aparecen:
+	- 📌 A la derecha en el panel de propiedades.
+
+
+19. La diferencia entre un prototipo hecho con dissolve y uno hecho con Smart Animate consiste en que:
+	- 📌Smart animate anima cada transición entre objetos, mientras que el dissolve va a tomar todo el frame y disolver la opacidad hasta llegar al siguiente.
+
+
+20. ¿En dónde se puede usar Figma?
+	- 📌En cualquier computador que tenga un explorador.
+
+
+21. El comando: command + shift + K, se usa para
+	- 📌Importar una imagen.
+
+
+22. Para generar niveles de profundidad en Figma se usaría:
+	- 📌Efectos de sombra en los elementos.
+
+
+23. La base del autolayout es:
+	- No es📌 El flex model de CSS.
+	- El base model del CSS.
+	- El grid model de CSS.
+	- Quizá sea esta📌El box model de CSS.
+
+
+24. ¿Cuál de las siguientes NO es una operación booleana?
+	- Subtract
+	- 📌Addition
+	- Exclude
+	- Union
+
+
+25. ¿Cuál de éstas NO es una modalidad de color?📌
+	- RGB
+	- No es📌HEX
+	- HSA
+	- HSL
+
+
+26. ¿Cuáles son los 3 modos de Figma?
+	- 📌Diseño, prototipado y código.
+
+
 </details>
 
 ### Emojis:  
@@ -1163,11 +1664,12 @@ Debe cumplir con:
 
   <br/>
 
-- 🔥 ❄ ✨ 📌 🎲 
-- 🤴🦁 🧔🐯  👀 👉 
-- 🟥 ⬜ ⬛ ◼ ◻ 🔷 🔶 🔻 🔺 🔴 🟣
-- ✔ ➕ ↕ ↔ ✅
-- 🧰 ⛓ 💡
-- 🔅 🔆 🌚 🌗 
+**🔥 Emojis:**        
+- 🔥 ❄ ✨ 📌 🎲 🔍      
+- 🤴🦁 🧔🐯  👀 👉            
+- 🟥 ⬜ ⬛ ◼ ◻ 🔷 🔶 🔻 🔺 🔴 🟣       
+- ✔ ➕ ↕ ↔ ⬅ ✅ ▶               
+- 🧰 ⛓ 💡             
+- 🔅 🔆 🌚 🌗         
 
 </details>
