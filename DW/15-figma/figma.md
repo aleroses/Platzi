@@ -1647,8 +1647,8 @@ Agenda
 
 25. ¿Cuál de éstas NO es una modalidad de color?📌
 	- RGB
-	- No es📌HEX
-	- HSA
+	- HEX
+	- 📌HSA
 	- HSL
 
 
