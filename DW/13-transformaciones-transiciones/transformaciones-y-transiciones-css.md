@@ -42,7 +42,7 @@ Justamente ese nuestro punto de partida **¿Por qué hacer animaciones?**
 
 [Diapositivas del Curso](https://static.platzi.com/media/public/uploads/transiciones-y-transformaciones-css_8955c7f8-93a1-4b22-b926-2c00936642b2.pdf)
 
-🔥🔥 Lecturas recomendadas    
+❄❄ Lecturas recomendadas    
 
 - [Clases del Curso de Frontend Developer - Platzi](https://platzi.com/clases/frontend-developer/)
 - [Curso de CSS Grid Layout [2021] - Platzi](https://platzi.com/cursos/css-grid-layout/)
@@ -51,7 +51,7 @@ Justamente ese nuestro punto de partida **¿Por qué hacer animaciones?**
 
 🎲
 
-## Propiedades para crear animaciones con CSS y propiedades animables
+## 2. Propiedades para crear animaciones con CSS y propiedades animables
 
 🔥 **Propiedades animables**
 
@@ -63,7 +63,7 @@ Sin embargo, el usuario mira el resultado final de esta transformación. Por eje
 
 - [Transform Cheat Sheet](https://static.platzi.com/media/public/uploads/transformaciones_en_2d_y_3d_d712736c-5368-4c9b-8827-331dc347d536.pdf)
 
-**Transformaciones en 2D y 3 **          
+**Transformaciones en 2D y 3**          
 ✨Cheatsheet by @teffcode & @platzi          
 
 
@@ -98,15 +98,15 @@ Propiedades que veremos en este apartado:
 - Sintaxis con más de 1 valor:     
 `transform: transform-functions transform-functions;`
 
- ⭐⭐ **transform-function**
+ ⭐⭐ **transform-function**          
 
-|Tipo    | Trasladar   | Escalar | Rotar   | Inclinar| Matriz | Perspectiva|
-|--------|-------------|---------|---------|-------- |--------|------------|
-	|Múltiple|translate()  |scale()  |rotate() | skew()  |matrix()|perspective()| 
-|Eje X   |translateX() |scaleX() |rotateX()| skewX() |        |             |
-|Eje Y   |translateY() |scaleY() |rotateY()| skewY() |        |             |
-|Eje Z   |translateZ() |scaleZ() |rotateZ()|         |        |             |
-	|3D      |translate3d()|scale3d()|rotate3d()| matr   |ix3d()  |             |
+|Tipo     | Trasladar   | Escalar | Rotar   | Inclinar| Matriz | Perspectiva|
+|---------|-------------|---------|---------|-------- |--------|------------|
+|Múltiple | translate()  |scale()  |rotate() | skew()  |matrix()|perspective()| 
+|Eje X    | translateX() |scaleX() |rotateX()| skewX() |        |             |
+|Eje Y    | translateY() |scaleY() |rotateY()| skewY() |        |             |
+|Eje Z    | translateZ() |scaleZ() |rotateZ()|         |        |             |
+	|3D       | translate3d()|scale3d()|rotate3d()| matr   |ix3d()  |             |
 
 
 ⭐⭐ Valores que reciben las transform-functions
@@ -138,17 +138,17 @@ Propiedades que veremos en este apartado:
 
 ⭐ Propiedad · transform-origin            
 
-- Sintaxis con 1 valor:   
+- Sintaxis con 1 valor:     
 `transform-origin: x-offset | offset-keyword | initial | inherit; `
 
-- Sintaxis con 2 valores: 
+- Sintaxis con 2 valores:        
 `transform-origin: x-offset y-offset;` 
 `transform-origin: y-offset x-offset-keyword;`
 `transform-origin: x-offset-keyword y-offset;`
 `transform-origin: x-offset-keyword y-offset-keyword;`
 `transform-origin: y-offset-keyword x-offset-keyword;`
 
-- Sintaxis con 3 valores: 
+- Sintaxis con 3 valores:       
 `transform-origin: x-offset y-offset z-offset;`
 `transform-origin: y-offset x-offset-keyword z-offset;`
 `transform-origin: x-offset-keyword y-offset z-offset;`
@@ -171,7 +171,7 @@ Propiedades que veremos en este apartado:
 
 ⭐ Propiedad · transform-style    
 
-- Sintaxis con 1 valor: 
+- Sintaxis con 1 valor:       
 `transform-style: flat | preserve-3d | initial | inherit;`
 
 ⭐⭐ Valores   
@@ -184,7 +184,7 @@ Propiedades que veremos en este apartado:
 
 ⭐ Propiedad · perspective    
 
-- Sintaxis con 1 valor:    
+- Sintaxis con 1 valor:      
 `perspective: length | none;`  
 
 
@@ -198,10 +198,10 @@ Propiedades que veremos en este apartado:
 
 ⭐ Propiedad · perspective-origin    
 
-- Sintaxis con 1 valor: 
+- Sintaxis con 1 valor:    
 `perspective-origin: x-axis | y-axis | initial | inherit; `
 
-- Sintaxis con 2 valores: 
+- Sintaxis con 2 valores:       
 `perspective-origin: x-axis y-axis;`
 
 ⭐⭐ Valores      
@@ -229,7 +229,7 @@ Propiedades que veremos en este apartado:
 🔥🔥 **Transition**      
 Nos permite ir de un lado a otro, no puede haber un cambio en la transición en el medio.
 
-> ![Transition y transform](https://media1.giphy.com/media/gCSOFQybTbM3pome6c/giphy.gif?cid=790b76110cbeb81a6b9b97187ae16e81b578ebfbea7452bf&rid=giphy.gif&ct=g)
+> ![Transition y transform](https://media.giphy.com/media/gCSOFQybTbM3pome6c/giphy.gif)
 
 Cabe recalcar, con `transform` y `transition` solamente podemos manipular la posición inicial y la final, no las posiciones intermedias. Si se requiere crear una animación manipulando las posiciones intermedias, es necesario usar `animation`.
 
@@ -453,10 +453,370 @@ El tiempo puede estar dado en segundos (s) o milisegundos (ms).
 
 🎲
 
-## 3. 
+## 3. Pseudo-clases y pseudo-elementos en las animaciones
+
+**Un _trigger_ es un accionador de animaciones**, es decir, el evento inicial que desencadena una animación. Algunos ejemplos son:
+
+-   Pasar el _mouse_ sobre un elemento.
+-   Dar clic a un elemento.
+-   Al deslizar la pantalla.
+-   Al recargar la página web.
+
+Las pseudo-clases y pseudo-elementos ayudan a activar las animaciones.
+
+🔥 Pseudo-clases
+
+Una pseudo-clase define el estilo de **un estado** especial de un elemento.
+
+-   [Índice de pseudo-clases estándar](https://developer.mozilla.org/es/docs/Web/CSS/Pseudo-classes#indice_de_las_pseudo-clases_est%C3%A1ndar)
+
+🔥🔥 Sintaxis
+
+```css
+selector:pseudo-clase { propiedad: valor; }
+```
+
+⭐ :link
+
+La pseudo-clase `:link` representa el estado de un elemento que **no ha sido visitado**.
+
+```html
+<a href="#">Clickeame</a>
+```
+
+```css
+a {
+  font-size: 3rem;
+}
+
+a:link {
+  color: red;
+}
+```
+
+-   [Ejemplo usando :link](https://codepen.io/Meowth01/pen/dyeMPoy)
+
+⭐ :visited
+
+La pseudo-clase `:visited` representa el estado de un elemento que **ya ha sido visitado**.
+
+```html
+<a href="#">Clickeame</a>
+```
+
+```css
+a {
+  font-size: 3rem;
+}
+
+a:visited {
+  color: red;
+}
+```
+
+-   [Ejemplo usando :visited](https://codepen.io/Meowth01/pen/yLjOyYj)
+
+⭐ :hover
+
+La pseudo-clase `:hover` representa el estado en el cual **el cursor está encima del elemento**.
+
+```html
+<div>Señálame</div>
+```
+
+```css
+div {
+  font-size: 3rem;
+  cursor: pointer;
+}
+
+div:hover {
+  color: red;
+}
+```
+
+-   [Ejemplo usando :hover](https://codepen.io/Meowth01/pen/WNJwbrZ)
+
+⭐ :not()
+
+La pseudo-clase `:not()` representa el estado en el cual **no coinciden los selectores que se indiquen**.
+
+```html
+<div>Azul</div>
+<div>Azul</div>
+<div class="ignorar">Negro</div>
+<div>Azul</div>
+<div>Azul</div>
+```
+
+```css
+div {
+  font-size: 3rem;
+}
+
+div:not(.ignorar) {
+  color: blue;
+}
+```
+
+-   [Ejemplo usando :not()](https://codi.link/PGRpdj5BenVsPC9kaXY+DQo8ZGl2PkF6dWw8L2Rpdj4NCjxkaXYgY2xhc3M9Im5lZ3JvIj5OZWdybzwvZGl2Pg0KPGRpdj5BenVsPC9kaXY+DQo8ZGl2PkF6dWw8L2Rpdj4=%7CZGl2IHsNCiAgZm9udC1zaXplOiAzcmVtOw0KfQ0KDQpkaXY6bm90KC5uZWdybykgew0KICBjb2xvcjogYmx1ZTsNCn0=%7C)
+
+⭐ :nth-child()
+
+La pseudo-clase `:nth-child()` representa el estado en el cual **coinciden los hijos del elemento según el valor indicado**.
+
+**Valores de palabras clave:**
+
+-   **`odd`:** Los elementos hijos en posiciones impares.
+-   **`even`:** Los elementos hijos en posiciones pares.
+
+**Fórmula matemática:** `An+B` donde A y B son números enteros.
+
+```html
+<div>1 Negro</div>
+<div>2 Azul</div>
+<div>3 Negro</div>
+<div>4 Negro</div>
+<div>5 Negro</div>
+```
+
+```css
+div {
+  font-size: 3rem;
+} 
+
+div:nth-child(2) {
+  color: blue;
+}
+```
+
+-   [Ejemplo usando :nth-child()](https://codi.link/PGRpdj4xIE5lZ3JvPC9kaXY+DQo8ZGl2PjIgQXp1bDwvZGl2Pg0KPGRpdj4zIE5lZ3JvPC9kaXY+DQo8ZGl2PjQgTmVncm88L2Rpdj4NCjxkaXY+NSBOZWdybzwvZGl2Pg==%7CZGl2IHsNCiAgZm9udC1zaXplOiAzcmVtOw0KfQ0KDQpkaXY6bnRoLWNoaWxkKDIpIHsNCiAgY29sb3I6IGJsdWU7DQp9%7C)
+
+✨[Ejemplo resumen](https://codepen.io/Meowth01/pen/JjvXjJB)
+
+---
+🔥 Pseudos-elementos
+
+Un pseudo-elemento define el estilo de **una parte específica** de un elemento.
+
+-   [Lista de pseudo-elementos](https://developer.mozilla.org/es/docs/web/css/pseudo-elements#lista_de_pseudoelementos)
+
+🔥🔥 Sintaxis
+
+```css
+selector::pseudo-elemento { propiedad: valor; }
+```
+
+⭐ ::before
+
+La pseudo-elemento `::before` sirve para agregar un contenido **antes del elemento**. El contenido es agregado mediante la propiedad CSS `content`.
+
+```html
+<h1>Título</h1>
+<h2>Subtítulos</h2>
+<h2>Subtítulos</h2>
+<h2>Subtítulos</h2>
+<h2>Subtítulos</h2>
+<h2>Subtítulos</h2>
+```
+
+```css
+h2:before {
+  content: " * ";
+  color: red;
+}
+```
+
+-   [Ejemplo usando ::before](https://codi.link/PGgxPlTDrXR1bG88L2gxPg0KPGgyPlN1YnTDrXR1bG9zPC9oMj4NCjxoMj5TdWJ0w610dWxvczwvaDI+DQo8aDI+U3VidMOtdHVsb3M8L2gyPg0KPGgyPlN1YnTDrXR1bG9zPC9oMj4NCjxoMj5TdWJ0w610dWxvczwvaDI+DQo=%7CaDI6YmVmb3JlIHsNCiAgY29udGVudDogIiAqICI7DQogIGNvbG9yOiByZWQ7DQp9%7C)
+
+⭐ ::after
+
+La pseudo-elemento `::after` sirve para agregar un contenido **después del elemento**. El contenido es agregado mediante la propiedad CSS `content`.
+
+```html
+<nav>
+  <ul>
+    <li>Home</li>
+    <li>Destacados</li>
+    <li>Elementos</li>
+    <li>Clases</li>
+    <li>Más...</li>
+  </ul>
+</nav>
+```
+
+```css
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: space-around;
+  cursor: pointer;
+}
+
+nav ul li::after {
+  content: "|";
+  margin: 1rem;
+  color: red;
+}
+```
+
+-   [Ejemplo usando ::after](https://codi.link/PCEtLSBOYXZiYXIgaW1wcm92aXNhZGEgLS0+DQo8bmF2Pg0KICA8dWw+DQogICAgPGxpPkhvbWU8L2xpPg0KICAgIDxsaT5EZXN0YWNhZG9zPC9saT4NCiAgICA8bGk+RWxlbWVudG9zPC9saT4NCiAgICA8bGk+Q2xhc2VzPC9saT4NCiAgICA8bGk+TcOhcy4uLjwvbGk+DQogIDwvdWw+DQo8L25hdj4NCg==%7CbmF2IHVsIHsNCiAgbGlzdC1zdHlsZTogbm9uZTsNCiAgZGlzcGxheTogZmxleDsNCiAganVzdGlmeS1jb250ZW50OiBzcGFjZS1hcm91bmQ7DQogIGN1cnNvcjogcG9pbnRlcjsNCn0NCg0KbmF2IHVsIGxpOjphZnRlciB7DQogIGNvbnRlbnQ6ICJ8IjsNCiAgbWFyZ2luOiAxcmVtOw0KICBjb2xvcjogcmVkOw0KfQ==%7C)
 
 
-🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲
+📌Al momento de usar pseudo-clases, es necesario tener en cuenta que estas llevan un order, de acuerdo a `LVHA-order`  
+
+Entonces, para que funcionen correctamente, necesitan ir en el siguiente orden (en caso de que se ocupen todas las mencionadas)
+
+-   :link
+-   :visited
+-   :hover
+-   :active
+
+
+❄❄ Lecturas recomendadas
+
+- [HTML Color Codes](https://htmlcolorcodes.com/)[
+- [:hover - CSS: Cascading Style Sheets | MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/:hover)[
+- [:focus - CSS: Cascading Style Sheets | MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/:focus)[
+- [:active - CSS: Cascading Style Sheets | MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/:active)[
+- [:disabled - CSS: Cascading Style Sheets | MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/:disabled)
+
+🎲
+
+## 4. Timing functions, planos y ejes
+
+Una _timing function_ es la **representación de la progresión en función del tiempo de cada ciclo de la animación**. Representa la aceleración del elemento desde un punto A hasta un punto B.
+
+En [esta página web](https://easings.net/) podrás observar varias “timing functions” y cómo es su animación haciendo hover en cada bloque. No es necesario aprendértelas de memoria, solo conocerlas.
+
+🔥 Cubic-bezier
+
+_Cubic-bezier_ es una función de CSS para representar una timing function mediante **cuatro puntos a lo largo de la curva**, de los cuales únicamente ingresamos los dos puntos intermedios.
+
+-   [Página web para crear una función Cubic-bezier](https://cubic-bezier.com/#.17,.67,.83,.67)
+
+🔥 Planos y ejes
+
+El navegador está constituido de tres planos y ejes: **el ancho o X; el alto o Y; y el de profundidad o Z**.
+
+El eje X positivo está hacia la derecha; el eje Y positivo está hacia abajo; y el eje Z positivo está hacia el usuario.
+
+![Planos y ejes de un navegador web](https://i.postimg.cc/XYhPXmJ1/5-ejes.jpg)
+
+Estos son muy importantes para mover los elementos del HTML desde un punto inicial hacia un punto final.
+
+🔥 Contexto de apilamiento
+
+El contexto de apilamiento consiste en la **superposición de capas o elementos a lo largo del eje Z**. Esto es importante para evitar que un elemento esté ocultando a otro o colocar una imagen de fondo a la página web.
+
+![Animación sobre el contexto de apilamiento](https://media.giphy.com/media/1IvbqeWg7gLlRi2TAC/giphy.gif)
+
+
+❄ Lecturas recomendadas
+
+- [cubic-bezier.com](https://cubic-bezier.com/)
+- [Easing Functions Cheat Sheet](https://easings.net/)
+- [easing-function - CSS: Cascading Style Sheets | MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/easing-function)[
+- [El contexto de apilamiento - CSS | MDN](https://developer.mozilla.org/es/docs/Web/CSS/CSS_Positioning/Understanding_z_index/The_stacking_context)
+
+🎲
+
+## 5. Transform translate
+
+_Transform_ es una propiedad CSS que sirve para **transformar un elemento HTML mediante funciones**. Estas funciones permitirán trasladar, escalar, rotar o torcer a lo largo, ancho y profundidad del elemento.
+
+Primero, revisaremos las propiedades para transformaciones 2D, es decir en un solo plano. Después, con algunas otras propiedades CSS aplicaremos transformaciones 3D.
+
+🔥 Translate para transformaciones
+
+_Translate_ es una función de la propiedad “transform” que te permite **trasladar un elemento HTML a través de los ejes del navegador**. El valor que recibe puede ser una **longitud** (px, rem, etc.) o un **porcentaje**.
+
+```css
+selector {
+    transform: translate(10px, -10px);
+    transform: translate(20%, -20%);
+}
+```
+
+![Representación de la función translate](https://i.postimg.cc/GmBD9QW2/5-translate.png)
+
+Dependiendo del eje en el que traslades el elemento, existe una función.
+
+|**Tipo**  |**Valor con los argumentos que recibe**|
+|----------|-------------------|
+|Eje X y Y | translate(x,y)    |
+|Eje X     | translateX(x)     |
+|Eje Y     | translateY(y)     |
+|Eje Z     | translateZ(z)     |
+|Múltiple  | translate3d(x,y,z)|
+
+✨ Translate(x, y)
+
+```html
+<div class="shadow">
+	<div class="circle"></div>
+</div>
+```
+
+```css
+.shadow {
+    width: 100px;
+    height: 100px;
+
+    border-radius: 50%;
+    background-color: black;
+}
+
+.circle {
+    width: 100px;
+    height: 100px; 
+
+    border-radius: 50%;
+    background-color: aqua;
+}
+
+.circle:hover {
+    transform: translate(20px, -20px);
+}
+
+```
+
+Otra forma:     
+```css
+.circle:hover {
+    transform: translateX(-20px);
+}
+```
+
+-   [Ejemplo usando translate(x,y)](https://codepen.io/Meowth01/pen/oNdxgOz).
+    
+-   [Ejemplo usando translateX(x) y translateY(y)](https://codepen.io/Meowth01/pen/eYrZmoq).
+
+
+✨ Emuladores para que se distraigan haciendo sus diseños      
+
+- [Angry Tools](https://angrytools.com/css-generator/transform/)  
+- [Gradient Animator](https://www.gradient-animator.com/)  
+- [Transform](https://html-css-js.com/css/generator/transform/)  
+- [Marking](https://makingcss.com/transform)
+
+
+
+❄ Lecturas recomendadas
+
+- [Gradient Backgrounds – 🌈 The Best Gradient Sites All in One Place](https://cssgradient.io/gradient-backgrounds/)
+- ["transform" | Can I use... Support tables for HTML5, CSS3, etc](https://caniuse.com/?search=transform)
+
+🎲
+
+## 6. 
+
+🎲
+
+
+🎲
+
+🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲
 - 🔥 ❄ ✨ 📌 🎲 🔍 🎉 ⭐   
 - 🤴🦁 🧔🐯  👀 👉 😊            
 - 🟥 ⬜ ⬛ ◼ ◻ 🔷 🔶 🔻 🔺 🔴 🟣       
@@ -472,6 +832,7 @@ El tiempo puede estar dado en segundos (s) o milisegundos (ms).
 - Patrick Jeremy Rodriguez Sandoval
 - Cecilia Riveros
 - Fernando Quinteros Gutierrez
+- Andrés Guano
 
 </details>
 
