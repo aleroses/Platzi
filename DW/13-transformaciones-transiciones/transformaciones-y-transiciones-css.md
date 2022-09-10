@@ -8,7 +8,7 @@
 
 En este curso implementaremos algo muy divertido para aprender al hablar de una película muy famosa, donde la protagonista se pregunta el por qué de varias cosas.
 
-Justamente ese nuestro punto de partida **¿Por qué hacer animaciones?**
+Justamente ese es nuestro punto de partida **¿Por qué hacer animaciones?**
 
 -   Tienen beneficios para el cerebro
 -   Comunican
@@ -16,24 +16,24 @@ Justamente ese nuestro punto de partida **¿Por qué hacer animaciones?**
 -   Generan una coreografía de UI
 -   Llaman la atención
 
-1. Las animaciones tienen beneficios para el cerebro
+1. Las animaciones tienen beneficios para el cerebro    
 	Las animaciones **permiten reducir el esfuerzo que hace el usuario** al entrar a una página web con varios elementos, por consiguiente, **elevamos la atención en lo más importante**.
 
 
- 2. Las animaciones comunican
+ 2. Las animaciones comunican    
 	Las animaciones sirven para **elaborar un hilo conductor** que esté asociado a la vida real, caso contrario, puede generar confusión o frustración.
 
-3. Las animaciones conectan los contextos
+3. Las animaciones conectan los contextos    
 	Las animaciones **relacionan las características únicas de cualquier aplicación, independiente de la plataforma** en la que se usa o el lenguaje que fue construido.
 
 	En conjunto con las imágenes y la tipografía, las animaciones son relevantes para que el usuario tenga la **sensación de que está en el mismo lugar**.
 
 	Por ejemplo, Platzi, independiente de la versión en Android, Apple o en la web, sus animaciones son las mismas haciendo que el usuario reconozca la aplicación.
 
-4. Coreografía de UI
+4. Coreografía de UI    
 	Las animaciones deben tener **coherencia en el movimiento y la duración**. Una pelota rebotando suavemente no transmite lo mismo que una pelota rebotando rápidamente.
 
-5. Las animaciones llaman la atención
+5. Las animaciones llaman la atención    
 	Esta es la intercepción de las razones anteriores, las animaciones reducen la carga cognitiva para comunicar y expresar varias situaciones de la vida real de manera ordenada, **pensando en el futuro de aquello que estamos creando**.
 
 
@@ -86,27 +86,28 @@ Sin embargo, el usuario mira el resultado final de esta transformación. Por eje
 Propiedades que veremos en este apartado:     
 - transform 
 - transform-origin 
-- transform-style perspective 
+- transform-style 
+- perspective 
 - perspective-origin 
 - backface-visibility
 
 
 ⭐ Propiedad · transform  
 - Sintaxis con 1 valor:     
-`transform: none | transform-functions | initial | inherit;`
+	- `transform: none | transform-functions | initial | inherit;`
 
 - Sintaxis con más de 1 valor:     
-`transform: transform-functions transform-functions;`
+	- `transform: transform-functions transform-functions;`
 
  ⭐⭐ **transform-function**          
 
-|Tipo     | Trasladar   | Escalar | Rotar   | Inclinar| Matriz | Perspectiva|
-|---------|-------------|---------|---------|-------- |--------|------------|
-|Múltiple | translate()  |scale()  |rotate() | skew()  |matrix()|perspective()| 
-|Eje X    | translateX() |scaleX() |rotateX()| skewX() |        |             |
-|Eje Y    | translateY() |scaleY() |rotateY()| skewY() |        |             |
-|Eje Z    | translateZ() |scaleZ() |rotateZ()|         |        |             |
-	|3D       | translate3d()|scale3d()|rotate3d()| matr   |ix3d()  |             |
+|Tipo     | Trasladar    | Escalar | Rotar    | Inclinar| Matriz   | Perspectiva |
+|---------|--------------|---------|----------|-------- |----------|-------------|
+|Múltiple | translate()  |scale()  |rotate()  | skew()  |matrix()  |perspective()| 
+|Eje X    | translateX() |scaleX() |rotateX() | skewX() |          |             |
+|Eje Y    | translateY() |scaleY() |rotateY() | skewY() |          |             |
+|Eje Z    | translateZ() |scaleZ() |rotateZ() |         |          |             |
+|3D       | translate3d()|scale3d()|rotate3d()|         |matrix3d()|             |
 
 
 ⭐⭐ Valores que reciben las transform-functions
@@ -139,21 +140,21 @@ Propiedades que veremos en este apartado:
 ⭐ Propiedad · transform-origin            
 
 - Sintaxis con 1 valor:     
-`transform-origin: x-offset | offset-keyword | initial | inherit; `
+	- `transform-origin: x-offset | offset-keyword | initial | inherit; `
 
 - Sintaxis con 2 valores:        
-`transform-origin: x-offset y-offset;` 
-`transform-origin: y-offset x-offset-keyword;`
-`transform-origin: x-offset-keyword y-offset;`
-`transform-origin: x-offset-keyword y-offset-keyword;`
-`transform-origin: y-offset-keyword x-offset-keyword;`
+	- `transform-origin: x-offset y-offset;` 
+	- `transform-origin: y-offset x-offset-keyword;`
+	- `transform-origin: x-offset-keyword y-offset;`
+	- `transform-origin: x-offset-keyword y-offset-keyword;`
+	- `transform-origin: y-offset-keyword x-offset-keyword;`
 
 - Sintaxis con 3 valores:       
-`transform-origin: x-offset y-offset z-offset;`
-`transform-origin: y-offset x-offset-keyword z-offset;`
-`transform-origin: x-offset-keyword y-offset z-offset;`
-`transform-origin: x-offset-keyword y-offset-keyword z-offset;` 
-`transform-origin: y-offset-keyword x-offset-keyword z-offset;`
+	- `transform-origin: x-offset y-offset z-offset;`
+	- `transform-origin: y-offset x-offset-keyword z-offset;`
+	- `transform-origin: x-offset-keyword y-offset z-offset;`
+	- `transform-origin: x-offset-keyword y-offset-keyword z-offset;` 
+	- `transform-origin: y-offset-keyword x-offset-keyword z-offset;`
 
 
  ⭐⭐ Valores   
@@ -172,7 +173,7 @@ Propiedades que veremos en este apartado:
 ⭐ Propiedad · transform-style    
 
 - Sintaxis con 1 valor:       
-`transform-style: flat | preserve-3d | initial | inherit;`
+	- `transform-style: flat | preserve-3d | initial | inherit;`
 
 ⭐⭐ Valores   
 
@@ -185,7 +186,7 @@ Propiedades que veremos en este apartado:
 ⭐ Propiedad · perspective    
 
 - Sintaxis con 1 valor:      
-`perspective: length | none;`  
+	- `perspective: length | none;`  
 
 
 ⭐⭐ Valores      
@@ -199,10 +200,10 @@ Propiedades que veremos en este apartado:
 ⭐ Propiedad · perspective-origin    
 
 - Sintaxis con 1 valor:    
-`perspective-origin: x-axis | y-axis | initial | inherit; `
+	- `perspective-origin: x-axis | y-axis | initial | inherit; `
 
 - Sintaxis con 2 valores:       
-`perspective-origin: x-axis y-axis;`
+	- `perspective-origin: x-axis y-axis;`
 
 ⭐⭐ Valores      
 
@@ -215,7 +216,7 @@ Propiedades que veremos en este apartado:
 ⭐Propiedad · backface-visibility     
 
 - Sintaxis con 1 valor:     
-`backface-visibility: visible | hidden | initial | inherit;`
+	- `backface-visibility: visible | hidden | initial | inherit;`
 
 ⭐⭐ Valores   
 
@@ -266,16 +267,16 @@ Propiedades que veremos en este apartado:
 ⭐ Propiedad · transition
 
 - Sintaxis con 1 valor:     
-`transition: initial | inherit;`
+	- `transition: initial | inherit;`
 
 - Sintaxis con más de 1 valor:     
-`transition: [property] [duration] [timing-function] [delay];`
+	- `transition: [property] [duration] [timing-function] [delay];`
 
  
 ⭐ Propiedad · transition-property 
 
 - Sintaxis con 1 valor:     
-`transition-property: none | all | | initial | inherit;`
+	- `transition-property: none | all | | initial | inherit;`
 
 Al final te comparto la lista de propiedades de CSS que son transicionables.
 
@@ -284,7 +285,7 @@ Al final te comparto la lista de propiedades de CSS que son transicionables.
 ⭐ Propiedad · transition-duration  
 
 - Sintaxis con 1 valor:     
-`transition-duration: | initial | inherit;`
+	- `transition-duration: | initial | inherit;`
 
 El tiempo puede estar dado en segundos (s) o milisegundos (ms).
 
@@ -292,7 +293,7 @@ El tiempo puede estar dado en segundos (s) o milisegundos (ms).
 ⭐ Propiedad · transition-timing-function
 
 - Sintaxis con 1 valor:     
-`transition-timing-function: linear | ease | ease-in | ease-out | ease-in-out | step-start | step-end | steps(int, start | end) | cubicbezier(n, n, n, n) | initial | inherit;`
+	- `transition-timing-function: linear | ease | ease-in | ease-out | ease-in-out | step-start | step-end | steps(int, start | end) | cubicbezier(n, n, n, n) | initial | inherit;`
 
 
 ⭐⭐ Valores
@@ -313,7 +314,7 @@ El tiempo puede estar dado en segundos (s) o milisegundos (ms).
 
 ⭐ Propiedad · transition-delay   
 - Sintaxis con 1 valor:     
-`transition-delay: time | initial | inherit;`
+	- `transition-delay: time | initial | inherit;`
 
 
 El tiempo puede estar dado en segundos (s) o milisegundos (ms).  
@@ -371,28 +372,28 @@ Propiedades que veremos en este apartado:
 ⭐ Propiedad · animation
 
 - Sintaxis con 1 valor:     
-`animation: initial | inherit;`
+	- `animation: initial | inherit;`
 
 - Sintaxis con más de 1 valor:     
-`animation: [name] [duration] [timing-function] [delay] [iterationcount] [direction] [fill-mode] [play-state];`  
+	- `animation: [name] [duration] [timing-function] [delay] [iterationcount] [direction] [fill-mode] [play-state];`  
 
 
 ⭐ Propiedad · animation-name 
 
 - Sintaxis con 1 valor:     
-`animation-name: keyframename | none | initial | inherit;`
+	- `animation-name: keyframename | none | initial | inherit;`
 
 
 ⭐ Propiedad · animation-duration
 
 - Sintaxis con 1 valor:     
-`animation-duration: time | initial | inherit;`
+	- `animation-duration: time | initial | inherit;`
 
 
 ⭐ Propiedad · animation-timing-function
 
 - Sintaxis con 1 valor:     
-`animation-timing-function: linear | ease | ease-in | ease-out | ease-in-out | step-start | step-end | steps(int, start | end) | cubicbezier(n, n, n, n) | initial | inherit;`
+	- `animation-timing-function: linear | ease | ease-in | ease-out | ease-in-out | step-start | step-end | steps(int, start | end) | cubicbezier(n, n, n, n) | initial | inherit;`
 
 ⭐⭐ Valores   
 
@@ -413,7 +414,7 @@ Propiedades que veremos en este apartado:
 ⭐ Propiedad · animation-delay
 
 - Sintaxis con 1 valor:     
-`animation-delay: | initial | inherit;`
+	- `animation-delay: | initial | inherit;`
 
 El tiempo puede estar dado en segundos (s) o milisegundos (ms).
 
@@ -421,24 +422,24 @@ El tiempo puede estar dado en segundos (s) o milisegundos (ms).
 ⭐ Propiedad · animation-iteration-count   
 
 - Sintaxis con 1 valor:     
-`animation-iteration-count: | infinite | initial | inherit;`
+	- `animation-iteration-count: | infinite | initial | inherit;`
 
 
 ⭐ Propiedad · animation-direction  
 
 - Sintaxis con 1 valor:     
-`animation-direction: normal | reverse | alternate | alternatereverse | initial | inherit;`
+	- `animation-direction: normal | reverse | alternate | alternatereverse | initial | inherit;`
 
 
 ⭐ Propiedad · animation-fill-mode
 
 - Sintaxis con 1 valor:     
-`animation-fill-mode: none | forwards | backwards | both | initial | inherit;`
+	- `animation-fill-mode: none | forwards | backwards | both | initial | inherit;`
 
 ⭐ Propiedad · animation-play-state
 
 - Sintaxis con 1 valor:     
-`animation-play-state: paused | running | initial | inherit;`
+	- `animation-play-state: paused | running | initial | inherit;`
 
 ---
 
