@@ -42,7 +42,7 @@ Justamente ese es nuestro punto de partida **¿Por qué hacer animaciones?**
 
 [Diapositivas del Curso](https://static.platzi.com/media/public/uploads/transiciones-y-transformaciones-css_8955c7f8-93a1-4b22-b926-2c00936642b2.pdf)
 
-❄❄ Lecturas recomendadas    
+❄ Lecturas recomendadas    
 
 - [Clases del Curso de Frontend Developer - Platzi](https://platzi.com/clases/frontend-developer/)
 - [Curso de CSS Grid Layout [2021] - Platzi](https://platzi.com/cursos/css-grid-layout/)
@@ -474,7 +474,9 @@ Una pseudo-clase define el estilo de **un estado** especial de un elemento.
 🔥🔥 Sintaxis
 
 ```css
-selector:pseudo-clase { propiedad: valor; }
+selector:pseudo-clase { 
+	propiedad: valor; 
+}
 ```
 
 ⭐ :link
@@ -605,7 +607,9 @@ Un pseudo-elemento define el estilo de **una parte específica** de un element
 🔥🔥 Sintaxis
 
 ```css
-selector::pseudo-elemento { propiedad: valor; }
+selector::pseudo-elemento { 
+	propiedad: valor; 
+}
 ```
 
 ⭐ ::before
@@ -622,7 +626,7 @@ La pseudo-elemento `::before` sirve para agregar un contenido **antes del ele
 ```
 
 ```css
-h2:before {
+h2::before {
   content: " * ";
   color: red;
 }
@@ -674,7 +678,7 @@ Entonces, para que funcionen correctamente, necesitan ir en el siguiente orden (
 -   :active
 
 
-❄❄ Lecturas recomendadas
+❄ Lecturas recomendadas
 
 - [HTML Color Codes](https://htmlcolorcodes.com/)[
 - [:hover - CSS: Cascading Style Sheets | MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/:hover)[
@@ -810,16 +814,559 @@ Otra forma:
 
 🎲
 
-## 6. 
+## 6. Transform rotate, scale, skew y matrix
+
+Además de `translate`, existen otras funciones que permiten transformar el elemento HTML para iniciar una animación.
+
+![Funciones de transformación](https://media.giphy.com/media/KRRSOKFINjskbRNENr/giphy.gif)
+
+🔥 Rotate para transformaciones
+
+_Rotate_ es una función de la propiedad `transform` que te permite **rotar un elemento HTML a través de los ejes del navegador**. El valor que recibe es un **ángulo**, por ejemplo, “45deg” (45 grados) o “2rad” (2 radianes). Los ángulos positivos están en sentido horario, y los negativos en sentido antihorario.
+
+```css
+selector {
+    transform: rotate(45deg);
+}
+```
+
+![Representación de la función rotate](https://i.postimg.cc/rFKVCMQq/6-rotate.png)
+
+Dependiendo del eje en el que rotes el elemento, existe una función.
+
+|**Tipo**   |**Valor con los argumentos que recibe**|
+|-----------|---------------------------------------|
+|Eje X y Y  | rotate(angle)                  |
+|Eje X      | rotateX(angle)                 |
+|Eje Y      | rotateY(angle)                 |
+|Eje Z      | rotateZ(angle)                 |
+|Múltiple   | rotate3d(x,y,z,angle)          |
+
+
+```html
+<div></div>
+```
+
+```css
+div {
+    width: 150px;
+    height: 100px;
+    background-color: aqua;
+}
+
+div:hover {
+    transform: rotate(20deg);
+}
+```
+
+Otras formas:      
+```css
+div:hover {
+    transform: rotateY(20deg);
+}
+```
+
+
+-   [Ejemplo usando rotate](https://codepen.io/Meowth01/pen/oNdLXVG)
+
+🔥 Scale para transformaciones
+
+_Scale_ es una función de la propiedad `transform` que te permite **escalar un elemento HTML a través de sus ejes**. El valor que recibe es un **número multiplicador al elemento original**.
+
+Si el elemento es igual a 1 entonces sigue como el original; mayor a 1 aumenta de tamaño; y, menor a 1 disminuye de tamaño.
+
+```css
+selector {
+    transform: scale(0.8);
+}
+```
+
+![Representación de la función scale](https://i.postimg.cc/QxLcK8QW/6-escale.png)
+
+Dependiendo del eje en el que escales el elemento, existe una función.
+
+|**Tipo**   |**Valor con los argumentos que recibe**|
+|-----------|---------------------------------------|
+|Eje X y Y  | scale(x)                 |
+|Eje X      | scaleX(x)                |
+|Eje Y      | scaleY(y)                |
+|Eje Z      | scaleZ(z)                |
+|Múltiple   | scale3d(x,y,z)           |
+
+
+```html
+<div class="circle">
+</div>
+```
+
+```css
+.circle {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: aqua;
+}
+
+.circle:hover {
+    transform: scale(1.2);
+}
+```
+
+Otras formas:      
+```css
+.circle:hover {
+    transform: scale(0.8, 1.2);
+}
+```
+
+```css
+.circle:hover {
+    transform: scaleX(1.2);
+}
+```
+
+-   [Ejemplo usando scale](https://codepen.io/Meowth01/pen/bGMedyJ)
+
+🔥 Skew para transformaciones
+
+_Skew_ es una función de la propiedad `transform` que te permite **torcer un elemento HTML a través de sus ejes en dos dimensiones**. El valor que recibe es un **ángulo** para cada eje en el que el elemento se distorsionará.
+
+```css
+selector {
+    transform: skew(45deg, 45deg);
+}
+```
+
+![Representación de la función skew](https://i.postimg.cc/kgbZFXz3/6-skew.png)
+
+Dependiendo del eje en el que tuerzas el elemento, existe una función.
+
+|**Tipo**   |**Valor con los argumentos que recibe**|
+|-----------|---------------------------------------|
+|Eje X y Y  | skew(angleX, angleY)          |
+|Eje X      | skewX(angle)                  |
+|Eje Y      | skewY(angle)                  |
+
+
+```html
+<div></div>
+```
+
+```css
+div {
+    width: 100px;
+	height: 100px;
+	border-radius: 20%;
+	background-color: aqua;
+}
+
+div:hover {
+    transform: skew(20deg);
+}
+```
+
+Otras formas:      
+```css
+div:hover {
+    transform: skewX(20deg);
+}
+```
+
+```css
+div:hover {
+    transform: skewY(20deg);
+}
+```
+
+
+-   [Ejemplo usando skew](https://codepen.io/Meowth01/pen/abGZOeW)
+
+🔥 Matrix para transformaciones
+
+_Matrix_ es una función de la propiedad `transform` que te permite realizar varios efectos en uno solo.
+
+-   [Documentación de matrix](https://developer.mozilla.org/en-US/docs/Web/CSS/transform-function/matrix)
+
+✨ Orden en el código para transformaciones   
+
+Solamente puede existir una **sola propiedad `transform`** en el código de CSS, por lo que si escribimos otra regla CSS con otra transformación, esta se sobrescribirá y solo ejecutará la última. Por ende, utiliza varias funciones en la misma propiedad `transform` para realizar varias transformaciones.
+
+```css
+/*Mal (solo rotará el elemento)*/
+
+selector {
+    transform: translate(100px,  100px);
+    transform: rotate(45deg);
+ }
+```
+
+```css
+/*Bien (realizará ambas transformaciones)*/
+
+selector {
+    transform: translate(100px, 100px) rotate(45deg);
+}
+```
+
+
+📌 [Pagina Open Source](https://tympanus.net/codrops/) para que aprendas nuevas formas de implementar lo aprendido.
+
+📌 [Slicebox:](https://tympanus.net/Development/Slicebox/index.html) un nuevo control deslizante de imágenes en 3D con un elegante respaldo. 
+
+- [Otro resumen](https://sasohdz.github.io/TransformacionesTransicionesCSS/)
+
+❄ Lecturas recomendadas   
+
+- [transform - CSS: Cascading Style Sheets | MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/transform)
+
+- [Gradient Backgrounds – 🌈 The Best Gradient Sites All in One Place](https://cssgradient.io/gradient-backgrounds/)
 
 🎲
 
+## 7. Transform origin
+
+El origen es el punto en el cual la transformación se ejecutará. La propiedad **`transform-origin`** permite cambiar el origen de las transformaciones, que por defecto está en el centro del elemento.
+
+![Representación de la propiedad transform-origin](https://i.postimg.cc/3NRBnYrH/7-origin.png)
+
+Revisa la [Cheat Sheet](https://static.platzi.com/media/public/uploads/transformaciones_en_2d_y_3d_d712736c-5368-4c9b-8827-331dc347d536.pdf) para conocer la sintaxis y los valores que recibe o **_revisa la clase 2_** ☝.
+
+
+```html
+<div></div>
+```
+
+```css
+div {
+    width: 150px;
+    height: 100px;
+    transform-origin: left top;👈👀
+    background-color: aqua;
+} 
+
+div:hover {
+    transform: rotate(30deg);
+}
+```
+
+📌 OJO esta propiedad debe estar puesta en el objeto; no en la la pseudoclase 😃
+
+-   [Ejemplo usando transform-origin con diferentes transformaciones](https://codepen.io/Meowth01/pen/poVbjVN)
+
+- [Ejemplo resumen aplicado de las propiedades 2D de transformación](https://codepen.io/AMillanir/pen/qBmWWoO)
+
+
+❄ Lecturas recomendadas
+
+- [transform - CSS: Cascading Style Sheets | MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/transform)
 
 🎲
 
-🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲
-- 🔥 ❄ ✨ 📌 🎲 🔍 🎉 ⭐   
-- 🤴🦁 🧔🐯  👀 👉 😊            
+## 8. Transform style y perspective
+
+Ya revisaste las propiedades para realizar transformaciones en 2D, si te fijaste bien, habrás notado que cuando se realiza una transformación en un solo eje (por ejemplo `rotateX`) el elemento permanece en un **solo plano**.
+
+Con las transformaciones 3D observaremos el elemento transformarse en diferentes planos.
+
+Por lo tanto, es momento para aplicar **transformaciones en 3D**. Las propiedades CSS para esto serán: `transform-style` y `perspective`.
+
+🔥 Transform style para transformaciones en 3D
+
+La propiedad **`transform-style`** de CSS establece si un **elemento hijo** está en el plano 2D (`flat`) o 3D (`preserve-3d`). Por defecto, el elemento está con valor `flat`.
+
+```css
+selector {
+    transform-style: preserve-3d;
+}
+```
+
+🔥 Perspective para transformaciones en 3D
+
+La propiedad **`perspective`** se utiliza para proveer de profundidad a un elemento con respecto al usuario y dar la sensación de 3D.
+
+El valor que recibe la propiedad es una longitud (px, rem, etc.) que representa la profundidad del plano para construir la perspectiva.
+
+![Animación de la propiedad perspective](https://media.giphy.com/media/xQRWVJPqdj32zdQKGr/giphy.gif)
+
+Por defecto, el origen para las transformaciones 3D está en el centro, pero se puede modificar con la propiedad **`perpective-origin`**.
+
+```html
+<div class="container">
+	<div class="item"></div>
+</div>
+```
+
+```css
+.container {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    border: 5px solid aqua;
+    
+    perspective: 100px;👀
+}
+
+.item {
+    position: absolute;
+    width: 95px;
+    height: 95px;
+
+    transform-style: preserve-3d;👀
+    opacity: 0.5;
+
+    border: 3px solid black;
+    background-color: darkslateblue;
+} 
+
+.item:hover {
+    transform: rotateX(20deg);👀
+}
+```
+
+-   [Ejemplo empleando transformaciones 3D.](https://codepen.io/Meowth01/pen/ZEoObwX)
+
+🔥 Cambiar el origen de la perspectiva.
+
+La propiedad **`perspective-origin`** es la encargada de cambiar el origen de la perspectiva, por lo que el usuario percibirá de diferente forma el elemento.
+
+![Perspectiva](https://i.postimg.cc/PrRjbQzC/8-perspective.png)
+
+- [Ejemplo cambiando la perspectiva.](https://codepen.io/Meowth01/pen/abGZvMK)
+
+
+❄ Lecturas recomendadas
+
+- [transform - CSS: Cascading Style Sheets | MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/transform)
+
+🎲
+
+## 9. Backface visibility
+
+La propiedad **`backface-visibility`** de CSS permite **mostrar la cara posterior de un elemento**. Esta propiedad recibe dos valores: `visible` (visible) y `hidden` (oculto); por defecto, su valor es `visible`.
+
+```css
+selector {
+    backface-visibility: visible;
+    backface-visibility: hidden;
+}
+```
+
+La cara posterior de un elemento siempre tiene un fondo transparente, por lo que al ser visible y realizar una transformación en **un solo eje**, mostrará un **efecto de imagen espejo**. Mira la siguiente imagen y observa cómo Alicia cambia de lugar.
+
+![Representación de la propiedad backfase-visibility](https://i.postimg.cc/9FnV2HM8/9-visible.png)
+
+En cambio, si el valor es `hidden` no mostrará contenido. Con esto podemos realizar que un elemento se muestre al ocultarse otro, como un **efecto de voltear una carta**.
+
+🔥 Crea el efecto de voltear una carta con _backface-visibility_
+
+Como punto inicial, necesitarás un elemento padre con dos elementos hijos, los cuales representarán la cara frontal y posterior de la carta. Te dejo este código para que empieces, aunque no es obligatorio, ya que se hablará de manera general en la explicación.
+
+-   [Punto de partida](https://codepen.io/Meowth01/pen/VwxjevJ)
+
+Ahora sigamos los siguientes pasos:
+
+1.  **Al elemento padre agrega una posición relativa; y a los hijos, una posición absoluta**. Esto provocará que los elementos hijos estén uno sobre el otro con respecto al eje Z dentro del elemento padre.
+
+```css
+.padre {
+    position: relative;
+}
+
+.hijos{
+    position: absolute;
+}
+```
+
+2.  Al elemento padre agrega la propiedad para que la transformación sea en 3D.
+
+```css
+.padre {
+    transform-style: preserve-3d;
+}
+```
+
+3.  Al elemento que deba estar en la vista posterior, **rótalo 180 grados sobre el eje X o Y** dependiendo de lo que esperes. Observarás el efecto espejo, pero aún no está listo.
+
+```css
+.cara-posterior  {
+    transform: rotateY(180deg);
+}
+```
+
+4.  A los elementos hijos, agrega la propiedad **`backface-visibility` con el valor `hidden`**. Observarás que el contenido frontal y posterior se han situado como una tarjeta. Solo faltaría añadir un accionador para la animación.
+
+```css
+.hijos {
+    backface-visibility: hidden;
+}
+```
+
+5.  Al elemento padre, agrega un accionador para la animación que consista en **rotar todo el contenido** para mostrar la vista posterior al usuario.
+
+```css
+.padre:hover {
+  transform: rotateY(180deg);
+}
+```
+
+Y listo, tienes el efecto de voltear una tarjeta mediante la propiedad `backface-visibility`.
+
+```html
+<div class="card">
+	<div class="face front"></div>
+	<div class="face back"></div>
+</div>
+```
+
+```css
+.card {
+    position: relative;👀
+    width: 200px;
+    height: 200px;
+
+    transform-style: preserve-3d;👀
+}
+
+.card:hover {
+    transform: rotateY(180deg);👀
+}
+
+.face {
+    position: absolute;👀
+    width: 100%;
+    height: 100%;  
+
+	border-radius: 20px;
+    backface-visibility: hidden;👀
+}
+
+.face.front {👈👀❓
+    background-color: aqua;
+} 
+
+.face.back {👈👀❓
+    transform: rotateX(180deg);👀
+    background-color: darkslateblue;
+}
+```
+
+-   [Ejercicio completo del efecto de voltear una tarjeta.](https://codepen.io/Meowth01/pen/xxjOZZm)
+
+
+📌 Explicación de uso: Clases `.face .front`:   
+
+Al estar escritos de esa manera `.face .front`, CSS **esta buscando un elemento con clase** `.front` **dentro de un elemento con clase** `.face`. Ese espacio entre un selector y otro es lo que ocasiona este comportamiento. Es como si hiciéramos lo siguiente:
+
+```html
+<div class="padre">
+	<div class="hijo"></div>
+</div>
+```
+
+```css
+.padre .hijo {
+	background-color: red;
+}
+```
+
+En el CSS anterior, gracias a ese espacio entre selectores es que podemos acceder al elemento con clase `.hijo` **dentro** del elemento con clase `.padre`  
+
+PERO ese no es el HTML que tenemos en el ejemplo de arriba. Lo que tenemos es lo siguiente:   
+
+```html
+<div class="card">
+	<div class="face front"></div>👈👀
+	<div class="face back"></div>👈👀
+</div>
+```
+
+Entonces, ¿cómo seleccionamos esos div en CSS? **Quitándole el espacio entre selectores.**
+
+```css
+.face.front {😌😍
+	background-color: red;
+}
+```
+
+De esta manera, al escribir los selectores sin espacios (todo junto), le estamos diciendo a CSS que queremos aplicar esos estilos al elemento que tenga **las dos clases, tanto** `.face` **como** `.front`.
+
+
+❄ Lecturas recomendadas
+
+- [transform - CSS: Cascading Style Sheets | MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/transform)[
+- [backface-visibility - CSS | MDN](https://developer.mozilla.org/es/docs/Web/CSS/backface-visibility)
+
+🎲
+
+## 10. Efecto parallax: estructura HTML
+
+El **efecto de paralaje o parallax** es una técnica en la que el fondo se mueve a una **velocidad distinta que la del contenido**. El resultado es un ligero **efecto de profundidad**, dejando ver partes que antes no podías visualizar. Te ayuda a sumergirte totalmente en el contenido, similar al efecto 3D.
+
+-   [30 Webs con efecto Parallax](https://www.awwwards.com/30-webs-con-efecto-parallax.html)
+
+🔥 Estructura HTML para el efecto parallax
+
+Crea un contenedor con elementos hijos, estos serán las capas del contenedor para crear el efecto. En este caso, agrega tres elementos que representen la capa del fondo (_background_), del medio (_middle_) y de primer plano (_foreground_). Cada elemento debe tener una clase general y una que las diferencie.
+
+```html
+<div class="parallax-container">
+  <div class="image image_background"></div>
+  <div class="image image_middle"></div>
+  <div class="image image_foreground"></div>
+</div>
+```
+
+En la capa del medio, crea tres elementos hijos que representen tres cartas.
+
+```html
+<div class="image image_middle">
+    <div class="card one"></div>
+    <div class="card two"></div>
+    <div class="card three"></div>
+</div>
+```
+
+Para las demás capas, agrega una imagen de fondo y una en primer plano de Alicia. Te dejo los enlaces de las imágenes, utiliza una etiqueta de imagen con su respectivo atributo `alt`.
+
+* [Alicia](https://i.ibb.co/vJdbRkj/Alice.png)
+* [Imagen de fondo](https://i.ibb.co/jbLKgvX/Background.png)
+
+```html
+<div class="parallax-container">
+	<div class="image__background">
+		<img src="https://i.postimg.cc/QN6Dc4wr/10-background.png" alt="Background">
+	</div>
+    <div class="image__middle">
+		<div>
+			<div class="card one"></div>
+			<div class="card two"></div>
+			<div class="card three"></div>
+		</div>
+    </div>
+    <div class="image__foreground">
+		<img src="https://i.postimg.cc/j2krK2Pj/10-alice.png" alt="Alice">
+    </div>
+</div>
+```
+
+Y listo, ya tienes la estructura del efecto parallax, no importa si las imágenes están sobredimensionadas. Ahora utilizaremos CSS para dar estilos a las capas.
+
+- [Estructura HTML preliminar](https://codepen.io/Meowth01/pen/dyeXMXO)
+
+
+✨ **HISTORIA**  
+el Parallax es en realidad un truco con mucha historia, inventado por [**Disney**](https://www.youtube.com/watch?v=86zPz3J4MdM) para dotar a sus películas de dibujos animados de una ligera tridimensionalidad, intentando lograr con ello un mayor realismo. El invento se bautizó como **«cámara multiplano»**
+
+🎲
+
+## 11. 
+
+🎲
+
+🎲🎲🎲🎲🎲🎲🎲🎲🎲
+- 🔥 ❄ ✨ 📌 🎲 🔍 🎉 ⭐ ❓   
+- 🤴🦁 🧔🐯 👀 👉 👈 ☝
+- 😊 👈👀 😌 😍           
 - 🟥 ⬜ ⬛ ◼ ◻ 🔷 🔶 🔻 🔺 🔴 🟣       
 - ✔ ➕ ↕ ↔ ⬅ ✅ ▶               
 - 🧰 ⛓ 💡             
@@ -834,6 +1381,7 @@ Otra forma:
 - Cecilia Riveros
 - Fernando Quinteros Gutierrez
 - Andrés Guano
+- Carlos Mazzaroli.
 
 </details>
 
