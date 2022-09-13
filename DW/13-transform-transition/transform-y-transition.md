@@ -598,7 +598,7 @@ div:nth-child(2) {
 ✨[Ejemplo resumen](https://codepen.io/Meowth01/pen/JjvXjJB)
 
 ---
-🔥 Pseudos-elementos
+🔥 Pseudo-elementos
 
 Un pseudo-elemento define el estilo de **una parte específica** de un elemento.
 
@@ -1049,7 +1049,25 @@ div:hover {
 }
 ```
 
-📌 OJO esta propiedad debe estar puesta en el objeto; no en la la pseudoclase 😃
+Otras formas:
+
+```css
+div {
+    transform-origin: center;👈👀
+}
+```
+
+```css
+div {
+    transform-origin: 50px 50px;👈👀
+}
+```
+
+Esta ultima mueve el punto de origen de rotación en X 50px y en Y 50px
+
+![Transform-origin](https://i.postimg.cc/SNJPrnK7/11-transform-origin.png)
+
+📌 OJO esta propiedad debe estar puesta en el objeto; no en la pseudoclase 😃
 
 -   [Ejemplo usando transform-origin con diferentes transformaciones](https://codepen.io/Meowth01/pen/poVbjVN)
 
@@ -1059,7 +1077,7 @@ div:hover {
 ❄ Lecturas recomendadas
 
 - [transform - CSS: Cascading Style Sheets | MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/transform)
-
+- [transform-origin](https://developer.mozilla.org/en-US/docs/Web/CSS/transform-origin)
 🎲
 
 ## 8. Transform style y perspective
@@ -1131,18 +1149,58 @@ La propiedad **`perspective-origin`** es la encargada de cambiar el origen de 
 
 ![Perspectiva](https://i.postimg.cc/PrRjbQzC/8-perspective.png)
 
+Código ejemplo:   
+
+```html
+<div class="shadow">
+	<div class="transform">Señálame</div>
+</div>
+```
+
+```css
+.shadow{
+	width: 100px;
+	height: 100px;
+	/* Perspectiva */
+	perspective: 100px;
+	perspective-origin: left top;👈👀
+
+	border: 1px solid transparent;
+	background-color: grey;
+}
+
+.transform{
+	width: 100px;
+	height: 100px;
+	/* Transform */
+	transform-style: preserve-3d;👈👀
+
+	font-size: 1.5rem;
+	border: 1px solid black;
+	background-color: skyblue;
+	cursor: pointer;
+}
+
+/* Transformaciones */
+.transform:hover {
+	transform: rotateY(15deg);
+}
+```
+
+
 - [Ejemplo cambiando la perspectiva.](https://codepen.io/Meowth01/pen/abGZvMK)
 
 
 ❄ Lecturas recomendadas
 
 - [transform - CSS: Cascading Style Sheets | MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/transform)
+- [Perspective-origin](https://developer.mozilla.org/en-US/docs/Web/CSS/perspective-origin)
 
 🎲
 
 ## 9. Backface visibility
 
-La propiedad **`backface-visibility`** de CSS permite **mostrar la cara posterior de un elemento**. Esta propiedad recibe dos valores: `visible` (visible) y `hidden` (oculto); por defecto, su valor es `visible`.
+La propiedad **`backface-visibility`** de CSS permite **mostrar la cara trasera de un elemento**. Esta propiedad recibe dos valores: `visible` (visible) y `hidden` (oculto); por defecto, su valor es `visible`.
 
 ```css
 selector {
@@ -1151,7 +1209,7 @@ selector {
 }
 ```
 
-La cara posterior de un elemento siempre tiene un fondo transparente, por lo que al ser visible y realizar una transformación en **un solo eje**, mostrará un **efecto de imagen espejo**. Mira la siguiente imagen y observa cómo Alicia cambia de lugar.
+La cara trasera de un elemento siempre tiene un fondo transparente, por lo que al ser visible y realizar una transformación en **un solo eje**, mostrará un **efecto de imagen espejo**. Mira la siguiente imagen y observa cómo Alicia cambia de lugar.
 
 ![Representación de la propiedad backfase-visibility](https://i.postimg.cc/9FnV2HM8/9-visible.png)
 
@@ -1159,7 +1217,7 @@ En cambio, si el valor es `hidden` no mostrará contenido. Con esto podemos re
 
 🔥 Crea el efecto de voltear una carta con _backface-visibility_
 
-Como punto inicial, necesitarás un elemento padre con dos elementos hijos, los cuales representarán la cara frontal y posterior de la carta. Te dejo este código para que empieces, aunque no es obligatorio, ya que se hablará de manera general en la explicación.
+Como punto inicial, necesitarás un elemento padre con dos elementos hijos, los cuales representarán la cara del frente y trasera de la carta. Te dejo este código para que empieces, aunque no es obligatorio, ya que se hablará de manera general en la explicación.
 
 -   [Punto de partida](https://codepen.io/Meowth01/pen/VwxjevJ)
 
@@ -1185,7 +1243,7 @@ Ahora sigamos los siguientes pasos:
 }
 ```
 
-3.  Al elemento que deba estar en la vista posterior, **rótalo 180 grados sobre el eje X o Y** dependiendo de lo que esperes. Observarás el efecto espejo, pero aún no está listo.
+3.  Al elemento que deba estar en la vista trasera, **rótalo 180 grados sobre el eje X o Y** dependiendo de lo que esperes. Observarás el efecto espejo, pero aún no está listo.
 
 ```css
 .cara-posterior  {
@@ -1210,6 +1268,8 @@ Ahora sigamos los siguientes pasos:
 ```
 
 Y listo, tienes el efecto de voltear una tarjeta mediante la propiedad `backface-visibility`.
+
+Código ejemplo:          
 
 ```html
 <div class="card">
@@ -1359,9 +1419,271 @@ el Parallax es en realidad un truco con mucha historia, inventado por [**Disney
 
 🎲
 
-## 11. 
+## 11. Efecto parallax: estilos CSS
+
+Ahora que ya está la estructura HTML para el efecto parallax, es momento de agregar los estilos CSS.
+
+🔥 Estilos CSS para el efecto parallax
+
+Quita el margin que está por defecto establecido por el navegador.
+
+```css
+body {
+  margin: 0;
+}
+```
+
+Dimensiona las imágenes para que ocupen el espacio del contenedor.
+
+```css
+img{
+  max-width: 100%;
+  height: auto;
+}
+```
+
+En el elemento contenedor (parallax-container) agrega: 
+
+-   Posición relativa para que las capas puedan posicionarse con respecto al contenedor del efecto.
+-   Medidas para que ocupe el ancho y alto de la pantalla.
+-   Perspectiva de 8 píxeles (recuerda este valor).📌
+-   En este caso, el exceso de contenido deberá estar oculto para el eje X y desplazable para el eje Y, pero lo puedes cambiar a tu gusto.
+
+```css
+.parallax-container {
+	position: relative;
+	width: 100%;
+	height: 100vh;
+	perspective: 8px;
+	overflow-x: hidden;
+	overflow-y: scroll;
+}
+```
+
+Agrega la posición absoluta a todos los elementos hijos o capas del efecto.
+
+```css
+.image{
+	position: absolute;
+} 
+```
+
+Para cada capa del efecto vamos a realizar lo siguiente:
+
+-   Medidas según sean necesarias.
+-   Trasladar la capa en eje Z, desde 0 hasta el valor de la perspectiva (8px).
+-   Escalar el elemento según su profundidad. Para calcular este valor utiliza la siguiente fórmula: `(perspective - translateZ) / perspective`, por ejemplo para la capa del medio, `(8-5)/8 = 0.375`.
+-   Modificar el origen según sea necesario.
+
+Algunos valores no son necesarios colocar, pero es recomendable tener un control del código y de las propiedades CSS.
+
+```css
+.image_background{
+	width: 100%;
+	height: auto;
+	transform: translateZ(0px) scale(1);
+	transform-origin: 0 50%;
+}
+
+.image_middle{
+	width: 100%;
+	height: 100%;
+	transform: translateZ(5px) scale(0.375);
+	transform-origin: 50%;
+}
+
+.image_foreground{
+	width: 100%;
+	height: auto;
+	transform: translateZ(2px) scale(0.75);
+	transform-origin: top;
+}
+```
+
+Para las cartas de la segunda capa agrega dos estilos importantes: las medidas y la posición absoluta.
+
+```css
+.card {
+	position: absolute;
+	width: 80px;
+	height: 100px;
+	/* Estilos propios de la carta */
+	background: white;
+	border-radius: 8px;
+	transform: rotate(-20deg);
+}
+```
+
+La posición sirve para posicionar cada carta como deseemos.
+
+```css
+/* Valores al azar, modificálos a tu gusto. */
+.one{
+	left: 30%;
+	top: 90;
+}
+
+.two{
+	right: 20%;
+	top: 200px;
+
+}
+
+.three{
+	right: 20%;
+	bottom: -700px;
+}
+```
+
+¡Y listo! Ya está construido el efecto parallax.
+
+
+El código estaría quedando así:     
+
+```html
+<div class="parallax-container">
+	<div class="image image_background">
+	    <img src="https://i.ibb.co/jbLKgvX/Background.png" alt="background">
+	</div>
+	<div class="image image_middle">
+		<div class="card one"></div>
+		<div class="card two"></div>
+		<div class="card three"></div>
+	</div>
+	<div class="image image_foreground">
+		<img src="https://i.ibb.co/vJdbRkj/Alice.png" alt="Alice">
+	</div>
+</div>
+```
+
+```css
+body {
+	margin: 0;
+}
+
+.parallax-container {
+	position: relative;
+	width: 100%;
+	height: 100vh;
+	/* Profundidad */
+	perspective: 8px;
+	/*Vista desde arriba igual que Center*/
+	perspective-origin: 50%; 
+	/* Scroll oculto */
+	overflow-x: hidden;
+	overflow-y: scroll;
+}
+
+/* Con la propiedad overflow la imagen se corta así que aplicamos estilos a las imagenes*/
+
+div img {
+	width: 100%;
+	height: 100%;
+}
+
+.image {
+	/* Una imagen sobre otra */
+	position: absolute; /* una imagen sobre otra */
+	margin: 0 auto;
+	/* transform: 0 50%; Error no se está aplicando:
+	Translate - Rotate - Scale???? */
+}  
+
+.image__background {
+    width: 100%;
+    height: auto;
+    /* Añade capas en el eje Z */
+    transform: translateZ(0px) scale(1);
+    /* En X 0 y en Y 50% - Punto Origin está centrado a la izquierda */
+	transform-origin: 0 50%;
+}
+
+.image__middle {
+	width: 100%;
+	height: 100%;
+	/* Scale =
+	(perspective - translateZ) / perspective */
+	transform: translateZ(5px) scale(0.375);
+	/* Igual que aplicar un center */
+	transform-origin: 50%; 
+}
+
+.card {
+	position: absolute;
+	width: 80px;
+	height: 100px;
+	background-color: white;
+	border-radius: 8px;
+	/* Siempre en Grados:deg */
+	transform: rotate(-20deg);
+}
+
+/* Agrega tus propios valores */
+.one {
+	left: 20px;
+	top: 90px;
+}
+
+.two {
+	right: 10%;
+	top: 200px;
+}
+
+.three {
+	right: 20%;
+	bottom: -150px;
+	background-color: aqua;
+}
+
+.image__foreground {
+	/* Scale = (8-2)/8 = 0.75 */
+	transform: translateZ(2px) scale(0.75);
+	/* Img Alice en posición Top*/
+	transform-origin: top;
+}
+```
+
+✨ Copia el código y pruébalo ☝.      
+
+-   [Efecto Parrallax.](https://codepen.io/Meowth01/pen/MWGjKjE)
+
+📌 Explicación de `transform: translateZ(2px) scale(0.75);`           
+
+A nuestra capa contenedora parallax-container le aplicamos perspective: 8px… es como decirle, tu tendrás una profundidad en el eje Z de 8 pixeles.
+
+Luego a la capa image__background le decimos, translateZ(0px), esto es como decirle, tu te quedaras en el fondo, en el pixel 0.
+
+Después, a la capa foreground le decimos translateZ(2), esto quiere decir que en nuestra perspectiva de 8 pixeles de profundidad, esta la ubicamos en el 2, esto hace que sea mas grande y por lo tanto ajustamos su tamaño con scale.
+
+
+Para calcularlo es simple:       
+p= perspective del container           
+z= translate del elemento en el eje z        
+
+p - z / p = scale correcto          
+
+(aunque el scale es subjetivo, todo depende del diseño que desees)
+
+
+✨[Ejemplo Rocket-parallax](https://github.com/RetaxMaster/rocket-parallax)
+
+![Rocket parallax](https://media.giphy.com/media/fhst7TZlW8Y9SWiU3B/giphy.gif)
+
+
+
+Videos para aclarar dudas sobre parallax.      
+- [¿Qué es el efecto parallax css? ¿Cómo funciona? Tutorial con 3 ejemplos 🛠️](https://www.youtube.com/watch?v=QeRg4t3I2zc)  
+- [This Simple Trick Makes Your Website 83% Better Looking](https://www.youtube.com/watch?v=mxHoPYFsTuk)
+
+
+✨ Para no tener que escribir siempre width o height vs nos deja auto completar con solo escribir:  
+- h100px  
+- w100px  
+- bxb = box-sizing: border-box
 
 🎲
+
+## 12. 
 
 🎲🎲🎲🎲🎲🎲🎲🎲🎲
 - 🔥 ❄ ✨ 📌 🎲 🔍 🎉 ⭐ ❓   
@@ -1396,7 +1718,8 @@ el Parallax es en realidad un truco con mucha historia, inventado por [**Disney
 
 **🔥 Emojis:**        
 - 🔥 ❄ ✨ 📌 🎲 🔍 🎉     
-- 🤴🦁 🧔🐯  👀 👉 😊            
+- 🤴🦁 🧔🐯  👀 👉 👈 ☝    
+- 😊 👈👀 😌 😍      
 - 🟥 ⬜ ⬛ ◼ ◻ 🔷 🔶 🔻 🔺 🔴 🟣       
 - ✔ ➕ ↕ ↔ ⬅ ✅ ▶               
 - 🧰 ⛓ 💡             
