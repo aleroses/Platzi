@@ -1683,9 +1683,364 @@ Videos para aclarar dudas sobre parallax.
 
 🎲
 
-## 12. 
+## 12. Transition property y duration
 
-🎲🎲🎲🎲🎲🎲🎲🎲🎲
+Recapitulando, las transformaciones ocurren instantáneamente, sin embargo, estos cambios son no permiten crear una animación. La propiedad `transition` de CSS sirve para **agregar un intervalo de tiempo a un elemento HTML** para visualizar los cambios de una transformación.
+
+```css
+transition: [property] [duration] [timing-function] [delay];
+```
+
+-   `transition-property` (obligatoria)
+-   `transition-duration` (obligatoria)
+-   `transition-timing-function` (opcional)
+-   `transition-delay` (opcional)
+
+🔥 Propiedades obligatorias para una transición   
+
+- **`transition-property`**: esta propiedad sirve para especificar el elemento HTML de la transición. Si la transición es para todos los elementos, su valor es `all`.
+- **`transition-duration`**: esta propiedad sirve para agregar un intervalo de tiempo en segundos o milisegundos (1s = 1000ms).
+
+```css
+selector {
+    transition: transform 100ms;
+    transition: all 2s;
+}
+```
+
+
+Código ejemplo:    
+
+```html
+<div class="container">
+	<div class="box box1"></div>
+	<div class="box box2"></div>
+	<div class="box box3"></div>
+    </div>
+```
+
+```css
+.container {
+	margin: 30px;
+	width: 400px;
+	height: 100px;
+	display: flex;
+	justify-content: space-between;
+
+	background-color: aqua;
+}
+
+.container:hover .box {
+	transform: scale(1.2);
+}
+
+.box {
+	width: 100px;
+	height: 100px;
+} 
+
+.box1 {
+	transition: transform 500ms;
+
+	background-color: darkslategrey;
+}
+
+.box2 {
+	transition: transform 1s;
+  
+	background-color: hotpink;
+}
+
+.box3 {
+	transition: transform 1.5s;
+
+	background-color: springgreen;
+}
+```
+
+
+- [Ejemplo sin transiciones.](https://codepen.io/Meowth01/pen/eYrgjPm)
+
+- [Ejemplos](https://cricadev.github.io/Desktop/curso-transform-transition/transition-property/index.html)
+- [Otros ejemplos](https://codepen.io/Janet11/pen/yLXojEa?editors=1100)
+- [Otros ejemplos](https://bl4ky113.github.io/Platzi_CSS_Transforms_Transitions/transform_examples.html)
+
+❄ Lecturas recomendadas
+
+- [HTML Color Codes](http://htmlcolorcodes.com/)[
+- [transition - CSS: Cascading Style Sheets | MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/transition)
+
+🎲
+
+## 13. Transition timing function y delay
+
+Recapitulando, una _timing function_ es la **representación de la progresión en función del tiempo de cada ciclo de una animación**. Representa la aceleración del elemento desde un punto A hasta un punto B.
+
+-   **`linear`**: El elemento se mueve a una aceleración constante.
+-   **`ease`**: Es el valor predeterminado si no se especifica. El elemento acelera inicialmente, pero presenta mucha desaceleración.
+-   **`ease-in`**: El elemento empieza lento pero termina rápido.
+-   **`ease-out`**: El elemento empieza rápido pero termina lento.
+-   **`ease-in-out`**: Es la combinación de `ease-in` y `ease-out`. El elemento empieza lento, a medida que avanza va acelerándose, pero termina lento.
+-   **`cubic-bezier`**: Se necesitan cuatro números, que representan dos puntos de control para formar la curva de aceleración deseada.
+
+🔥 Propiedades opcionales para una transición
+
+-   **`transition-timing-function`**: propiedad que establece una _timing function_ para especificar una forma de aceleración de la transición.
+
+-   **`transition-delay`**: propiedad que establece un intervalo de tiempo desde la acción que desencadena la animación hasta su inicio.
+
+
+Código ejemplo:    
+
+```html
+<div class="container">
+	<div class="circle one"></div>
+	<div class="circle two"></div>
+	<div class="circle three"></div>
+	<div class="circle four"></div>
+	<div class="circle five"></div>
+	<div class="circle six"></div>
+</div>
+```
+
+```css
+.container:hover .circle {
+	transform: translateX(200px);
+}
+
+.circle {
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+}
+
+.one {
+	transition: transform 1s linear;
+	transition-delay: 0.5s;
+	background: darkslateblue;
+}
+
+.two {
+	transition: transform 1s ease;
+	transition-delay: 1s;
+	background: aqua;
+}
+
+.three {
+	transition: transform 1.5s ease-in;
+	transition-delay: 1.5s;
+	background: darkslateblue;
+}
+
+.four {
+	transition: transform 2s ease-out;
+	transition-delay: 2s;
+	background: aqua;
+}
+
+.five {
+	transition: transform 1s ease-in-out;
+	transition-delay: 2.5s;
+	background: darkslateblue;
+}
+
+.six {
+	transition: transform 1s cubic-bezier(51,.72,.91,.26);
+	transition-delay: 3s;
+	background: aqua;
+}
+```
+
+
+- [Ejemplo usando transition-timing-fuction.](https://codepen.io/Meowth01/pen/LYmxJzd)
+
+- [Ejemplo usando transition-delay](https://codepen.io/Meowth01/pen/poVROdy).
+
+- [Otro ejemplo](https://codepen.io/camilo315853/pen/KKWQyye?editors=1010)
+
+- [Otro ejemplo](https://codepen.io/osoriodev/pen/poepaqa)
+
+
+❄ Lecturas recomendadas
+
+- [transition - CSS: Cascading Style Sheets | MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/transition)
+
+🎲
+
+## 14. Movimiento impulsado por la acción
+
+Los tips de **UX** son recomendaciones para que tus animaciones sean mejores para la experiencia de usuario. Estudiaremos tres, los cuales son:
+
+-   Movimiento impulsado por la acción.
+-   Tiempos de espera.
+-   Problemas de parpadeo.
+
+🔥 Movimiento impulsado por la acción
+
+Al momento de crear una transición, el tiempo del punto A al punto B es el mismo. El movimiento impulsado por la acción consiste en **modificar los tiempos de la transición**, para que el tiempo de regreso (de B a A) sea mayor, para que la animación repose y no exista un movimiento abrupto.
+
+Esto se consigue añadiendo la transición en el accionador de la animación y en el elemento, pero con diferentes tiempos. Ten en cuenta que la animación primero sucede con el evento.
+
+```css
+/* De A a B */
+selector:hover {
+    transition: transform 1s;
+}
+
+/* De B a A */
+selector {
+    transition: transform 1.5s;
+}
+```
+
+Código ejemplo:      
+
+```html
+<div></div>
+```
+
+```css
+div {
+	width: 100px;
+	height: 100px;
+	transition: transform 1.8s linear;
+	border-radius: 50%;
+	background-color: darkslateblue;
+}
+
+div:hover {
+	transform: translateX(200px);
+	transition: transform 1s linear;
+}
+```
+
+
+-   [Ejemplo empleando el movimiento impulsado por la acción](https://codepen.io/Meowth01/pen/bGMgmzo)
+
+
+❄ Lecturas recomendadas
+
+- [transition - CSS: Cascading Style Sheets | MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/transition)
+
+🎲
+
+## 15. Tiempos de espera
+
+En algunos menús desplegables, intentas seleccionar una opción pero se cierra el menú y debes hacer el mismo hasta seleccionar lo que deseas.
+
+Los tiempos de espera solucionan este problema, se refiere a **usar una duración entre que el usuario deje de seleccionar el elemento y se cierre el menú**. Usar tiempos de espera ayuda al usuario a no frustrarse con los menús.
+
+Utiliza la propiedad `transition-delay` para que los elementos esperen un tiempo determinado entre que el usuario deje de seleccionar el menú hasta que se cierre completamente.
+
+Código ejemplo:    
+
+```html
+<ul class="nav">
+	<li>
+	    <a href="/">Woman</a>
+	    <ul>
+	        <li>
+		        <a href="/">T-shirts</a>
+		    </li>
+	        <li>
+		        <a href="/">Pants</a>
+		    </li>
+	        <li>
+	            <a href="/">Shorts</a>
+				<ul>
+	                <li>
+		                <a href="/">Size S</a>
+		            </li>
+	                <li>
+		                <a href="/">Size M</a>
+		            </li>
+	                <li>
+		                <a href="/">Size L</a>
+		            </li>
+	            </ul>
+	        </li>
+	    </ul>
+	</li>
+	<li>
+		<a href="">Man</a>
+	</li>
+	<li>
+		<a href="">Child</a>
+	</li>
+</ul>
+```
+
+```css
+body {
+	box-sizing: border-box;
+	margin: 0;
+} 
+
+ul {
+	list-style: none;
+}
+
+a {
+	font-weight: 800;
+	text-decoration: none;
+	color: darkslateblue;
+}
+
+.nav {
+	margin: 0 auto;
+	padding: 20px 0;
+	display: flex;
+	justify-content: space-between;
+	width: 80vw;
+}
+
+.nav li {
+	padding-top: 5px;
+	width: 25vw;
+	height: 25px;
+	text-align: center;
+	border: 1px solid darkslateblue;
+	border-radius: 15px;
+	background-color: black;
+}
+
+.nav li ul {
+	position: absolute;
+	margin-top: 10px;
+	display: block;
+	opacity: 0;
+	transition: opacity 400ms;
+	transition-delay: 300ms;
+}
+
+.nav li:hover > ul {
+	opacity: 1;
+	transition: opacity 400ms;
+	transition-delay: 300ms;
+}
+
+.nav li ul li {
+	position: relative;
+	right: -30px;
+}
+```
+
+- [Ejemplo usando tiempos de espera en menús desplegables](https://codepen.io/Meowth01/pen/BaxpGrV)
+
+El ejemplo no es perfecto, usa tus conocimientos de CSS para crear tu propio menú desplegable con tiempos de espera. ¡Comparte tu trabajo en la sección de aportes!
+
+_**Contribución creada por** Andrés Guano._
+
+- [Otro ejemplo](https://codepen.io/joalbert-milano/pen/qBjmqxb)
+- [Otro ejemplo](https://codepen.io/gonzocd/pen/RwVqRNe?editors=1100)
+
+🎲
+
+## 16. 
+
+
+
+🎲🎲🎲🎲🎲
 - 🔥 ❄ ✨ 📌 🎲 🔍 🎉 ⭐ ❓   
 - 🤴🦁 🧔🐯 👀 👉 👈 ☝
 - 😊 👈👀 😌 😍           
