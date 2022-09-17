@@ -1685,7 +1685,7 @@ Videos para aclarar dudas sobre parallax.
 
 ## 12. Transition property y duration
 
-Recapitulando, las transformaciones ocurren instantáneamente, sin embargo, estos cambios son no permiten crear una animación. La propiedad `transition` de CSS sirve para **agregar un intervalo de tiempo a un elemento HTML** para visualizar los cambios de una transformación.
+Recapitulando, las transformaciones ocurren instantáneamente, sin embargo, estos cambios no permiten crear una animación. La propiedad `transition` de CSS sirve para **agregar un intervalo de tiempo a un elemento HTML** para visualizar los cambios de una transformación.
 
 ```css
 transition: [property] [duration] [timing-function] [delay];
@@ -2036,19 +2036,378 @@ _**Contribución creada por** Andrés Guano._
 
 🎲
 
-## 16. 
+## 16. Problemas de parpadeo
+
+El problema del parpadeo sucede cuando un **accionador no se encuentra en el lugar donde debería por la transformación**. Por ejemplo, al realizar una animación pasa lo siguiente:
+
+-   Al mover el cursor sobre un elemento se traslada hacia la izquierda.
+-   Al trasladarse, deja de estar el cursor sobre el elemento, por lo que vuelve a su posición inicial.
+-   Al estar en su posición inicial, el cursor está sobre el elemento, entonces accionará nuevamente la transformación.
+
+La animación entró en un **ciclo** que se observará como un parpadeo, porque las transiciones entre _hover_ y no _hover_ son rápidas.
+
+```css
+/* Mal */
+div {
+  width: 100px;
+  height: 100px;
+  background-color: purple;
+}
+
+div:hover {
+  transform: translateX(45px);
+}
+```
+
+-   [Ejemplo de parpadeo.](https://codepen.io/Meowth01/pen/LYmWNEg)
+
+🔥 ¿Cómo solucionar este problema?
+
+Para solucionar el problema de parpadeo, coloca el elemento que se transformará **dentro de un contenedor**. Después, utiliza el **elemento contenedor como el accionador** de la transformación del elemento. De esta manera, siempre se estará haciendo _hover_ en el sitio adecuado sin importar que el elemento cambie.
+
+```css
+/* Bien */
+/* Elemento contenedor */
+.container {
+  width: 100px;
+  height: 100px;
+}
+
+/* Elemento a transformar */
+.item {
+  width: 100px;
+  height: 100px;
+
+  border-radius: 50%;
+  background-color: purple;
+}
+
+/* Trigger */ 
+.container:hover .item {
+  transform: translateX(45px);
+}
+```
+
+-   [Ejemplo para solucionar el problema del parpadeo.](https://codepen.io/Meowth01/pen/oNdZxXQ)
+
+🎲
+
+## 17. Propiedades recomendadas y no recomendadas para animar
+
+Al hacer animaciones debemos fijarnos que no sean demasiado costosas computacionalmente para que no parezcan inestables y poco fluidas.
+
+Para ello, debemos comprender un concepto clave llamado: **el proceso de renderizado.**
+
+Resulta que, como el navegador no entiende el código que hacemos, debe hacer una transformación de ese código para que finalmente pueda ser entendido y visualizado en la pantalla.
+
+Esa transformación se hace en una serie de pasos como los que puedes ver a continuación:
+
+![browser-rendering](https://i.postimg.cc/4yQ2wY7s/17-browser-renderin.webp)
+
+Sin embargo, los pasos que nos interesan en este momento son los últimos 3: **Layout**, **Paint** y **Composite**. Cada uno cumple un papel muy importante, pero no todas las propiedades pasan por estos 3 procesos.
+
+Si una propiedad debe pasar por el paso de Layout, obligatoriamente debe pasar por Paint y Composite también. Si una propiedad debe pasar por el paso de Paint, obligatoriamente debe pasar por Composite también. Pero, si una propiedad debe pasar por el paso de Composite, no debe pasar por ningún otro paso.
+
+Con lo anterior, podemos darnos cuenta de que hay propiedades que requieren un costo mayor que otras al tener que pasar por más pasos. Puedes revisar el proceso de renderizado que realiza cada propiedad en esta página: [csstriggers](https://csstriggers.com/). Revisemos algunas de ellas:
+
+-   **Propiedad height:** En cada uno de los motores de renderizado, podemos darnos cuenta por la imagen de abajo que requiere de los pasos de Layout, Paint y Composite, lo cual es bastante costoso.
+
+![Height](https://i.postimg.cc/cHm5BK8Z/17-height.webp)
+
+-   **Propiedad background-color:** Es una propiedad que no afecta el diseño (Layout) pero requiere una nueva capa de pintura (Paint), lo cual la hace una propiedad también costosa.
+
+![background-color](https://i.postimg.cc/LXC3sj1q/17-background-color.webp)
+
+-   **Propiedades transform y opacity:** Estas dos propiedades sólo requieren del paso de Composite, lo cual las hace muy baratas de animar. Si necesitas modificar propiedades como width y left (propiedades costosas), puedes reemplazarlas usando la propiedad transform para tratar de lograr el mismo efecto.
+
+![transform](https://i.postimg.cc/TYrQV58s/17-transform.webp)
+
+![opacity](https://i.postimg.cc/h4m0nQGG/17-opacity.webp)
+
+Finalmente, si sabemos por cuáles pasos de renderizado pasa cada una de las propiedades, sabremos con exactitud cuáles propiedades son más costosas y menos recomendadas para animar (como `height`, `width` y `background-color`), como también, cuáles propiedades son menos costosas y más recomendadas para animar (como `transform` y `opacity`).
+
+Te comparto esta lectura por si quieres conocer más a profundidad cómo trabaja el motor de cada navegador con cada uno de los pasos que describimos anteriormente: [Hacks.mozilla](https://hacks.mozilla.org/2017/08/inside-a-super-fast-css-engine-quantum-css-aka-stylo/)
+
+
+📌 Extension para vscode de csstriggers que sirve mucho para estos casos.
+- css-triggers
+
+Mover algo cambiando left/top/etc es una mala practica, por eso es muy útil utilizar el translate. Es solo un ejemplo de que propiedades animar/transicionar
+
+✨ Otra buena propiedad que se puede utilizar y con la cual se pueden obtener muy buenos efectos es **clip-path**  
+Les comparto su [documentación](https://developer.mozilla.org/en-US/docs/Web/CSS/clip-path)
+
+🎲
+
+## 18. Aceleración de hardware y la propiedad will-change
+
+La aceleración por hardware permite usar **componentes específicos de tu ordenador para quitar trabajo al procesador de tu dispositivo**. Uno de estos componentes puede ser una tarjeta gráfica, que puede usarse para renderizar o mostrar el contenido del navegador en tu pantalla.
+
+🔥 Propiedades al animar
+
+En la [clase anterior](https://platzi.com/clases/2336-transformaciones-transiciones-css/38126-propiedades-recomendadas-y-no-recomendadas-para-an/), aprendiste que existen propiedades que se deben animar y otras que no, esto se debe a un **proceso de renderizado**, este proceso consta de varios pasos: JavaScript, Style, Layout y Composite. Los tres últimos determinan si son adecuados para una animación, con respecto al rendimiento. Las propiedades recomendables son `opacity` y `transform`, porque estas solo necesitan del último paso.
+
+🔥 Problemas de la aceleración por hardware
+
+-   Las imágenes no cargan correctamente.
+-   En los vídeos, la imagen o el sonido no se reproduce correctamente.
+-   Algunas partes del navegador aparecen mal diseñadas.
+
+🔥 Propiedad _will-change_
+
+La propiedad `will-change` de CSS sirve para **anticipar y preparar los cambios de una transformación**. Este tipo de optimizaciones puede aumentar la capacidad de respuesta de una página al realizar un trabajo potencialmente costoso en rendimiento.
+
+En el siguiente ejemplo, observa la transición con una propiedad no recomendable y luego agregando la propiedad `will-change`. ¿Notaste que la transición no es fluida? ¿Qué tanto tiembla el elemento?
+
+Código ejemplo:  
+
+```html
+<div class="container">
+	<button class="better"></button>
+	<button class="worst"></button>
+</div>
+```
+
+```css
+button {
+	width: 100px;
+	height: 30px;
+
+	background-color: aqua;
+}
+
+.better { /* Mejor */
+	will-change: transform;
+	transition: transform 500ms;
+}
+
+.better:hover {
+	transform: translateY(5px);
+}
+
+.worst { /* Peor */
+	will-change: margin-top;
+	transition: margin-top 500ms;
+}
+
+.worst:hover {
+	margin-top: 5px;
+}
+```
+
+-   [Ejemplo comparativo para usar “will-change”.](https://codepen.io/Meowth01/pen/WNJpxRJ)
+
+El elemento con la propiedad no recomendable tiembla un poco porque la animación no es fluido y requiere de más recursos, impactando en el rendimiento de la animación.
+
+🔥🔥 Documentación de _will-change_
+
+-   [Documentación de will change - MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/will-change)
+-   [will-change Propiedad css para anticipar y preparar los cambios](https://escss.blogspot.com/2014/05/will-change-propiedad-css.html)
+
+_**Contribución creada por** Andrés Guano, **con aportes de** Carlos Mazzaroli._
+
+
+✨ Conclusiones de la clase
+
+Hay algunas propiedades que no son buenas de _animar o transicionar_, pero esto porque pasa?, no todas las propiedades son lo mismo?  
+
+La principal diferencia es que algunas propiedades tienen que lidiar con sus posiciones en la pantalla, lo que significa que el navegador tiene que modificar al DOM y mover algunos pixeles para que algunas propiedades funcionen, esto se debe a que el CSS `engine` funciona en 5 pasos:
+
+-   **Parse**: Aquí solo identifica todas las etiquetas del `archivo.html`
+-   **Style**: Aquí el `engine` agrega las etiquetas que vienen en el `documento.css`
+-   **Layout**: Aquí el `engine` identifica donde debería aparecer un nodo en la pantalla (aquí es donde se lidia con pixeles, tamaño de monitor, etc.)
+-   **Paint**: Aquí también se lidia con pixeles, ya que si un elemento tiene el background rojo, todos los pixeles dentro de ese elemento cambian.
+-   **Composite & render**: Esto es la parte final, aquí ya solo se renderiza y se muestran todos los pixeles en la pantalla.
+
+
+Sabiendo esto, si nuestros elementos a _transicionar_ lidian con pixeles y cambian de cierta forma el DOM, van a causar un mayor esfuerzo a nuestra computadora. Lo que se hace es trabajar con elementos que no dañen al DOM, como lo son `opacity` y `transform.`  
+
+Por ultimo, porque nosotros somo buena onda y el navegador nos cae bien, le podemos decir que se ponga trucha y que empiece a prepararse para optimizar ciertas transformaciones que nosotros sabemos se van a tener que hacer, eso lo hacemos con la propiedad `will-change`
+
+
+📌 Para que lo tengan en cuenta:
+
+```css
+transition: transform 500ms ease;
+```
+
+es lo mismo que decir:
+
+```css
+transition-property: transform;
+transition-duration: 500ms;
+transition-timing-function: ease;
+```
+
+🎲
+
+## 19. Preferencias de movimiento reducido
+
+Las preferencias de movimiento reducido consisten en que el usuario notifica al sistema que **prefiere eliminar o reemplazar las animaciones de la página web**.
+
+Si tenemos animaciones que muestran un contenido específico después de un accionador de eventos (voltear la carta, mostrar algo, menús desplegables, etc.), esto provoca que el usuario no pueda verlo.
+
+🔥 Media query “prefers-reduced-motion”
+
+La _media query_ **`prefers-reduced-motion`** si el usuario tiene alguna opción para eliminar o reemplazar animaciones. Los dos posibles valores que recibe son:
+
+-   **`no-preference`:** indica que el usuario no tiene preferencias para reducir las animaciones.
+-   **`reduce`:** indica que el usuario tiene preferencias para reducir las animaciones.
+
+```css
+@media (prefers-reduced-motion: no-preference) {
+    /* Código de animaciones */
+}
+
+/* Código sin animaciones */
+```
+
+En esta _media query_ nos permitirá colocar el código que tiene animaciones, y dejar afuera el código sin animaciones como forma de accesibilidad. De esta manera, la página web será **más accesible** a todo el mundo.
+
+🔥🔥 Ejemplo de voltear la tarjeta de manera accesible
+
+-   [Con animaciones.](https://codepen.io/Meowth01/pen/GRdWjRd)
+
+-   [Sin animaciones, usando opacity.](https://codepen.io/Meowth01/pen/oNdZzge)
+
+Código ejemplo:   
+
+```html
+<div class="container">
+	<div class="front">Señálame</div>
+	<div class="back">🤯</div>
+</div>
+```
+
+```css
+html, body{
+	padding: 0;
+	margin: 0;
+	height: 100vh;
+	display: grid;
+	place-content: center;
+	font-size: 1.5rem;
+}
+
+.container{
+	width: 200px;
+	height: 200px;
+	cursor: pointer;
+	position: relative;
+}
+
+.container div{
+	width: 100%;
+	height: 100%;
+	display: grid;
+	place-content: center;
+	position: absolute;
+}
+
+.front{
+	background-color: aqua;
+}
+
+.back{
+	background-color: grey;
+	opacity: 0;
+}
+
+.container:hover .back{
+	/* Propieadad agregada */
+    opacity: 1;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+.container{
+	transform-style: preserve-3d;
+	transition: transform 1s;
+}
+
+.container div{
+	backface-visibility: hidden;
+}
+
+.back{
+	transform: rotateY(180deg);
+	opacity: 1;
+}
+
+.container:hover{
+	transform: rotateY(180deg);
+}
+
+}
+```
+
+-   [Ejemplo usando la media query “prefers-reduced-motion”](https://codepen.io/Meowth01/pen/JjvWRdW).
+
+
+_**Contribución creada por** Andrés Guano._
+
+
+✨ Un muy buen modo de hacer que un usuario que tenga preferencias de movimiento reducido tenga una buena experiencia de usuario es usar este pequeña pieza de CSS que permite hacer que todas las animaciones se reduzcan:
+
+```css
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+```
+
+Si, se que el !important parece raro pero es un excelente modo de anular cualquier animación en caso de que el usuario prefiera las animaciones reducidas sin tener que preocuparse por cada animación en específico que tenemos en nuestro sitio.  
+
+Esto hace parte de un reset stylesheet que suelo usar bastante por si quieren verlo [A modern css reset/](https://piccalil.li/blog/a-modern-css-reset/)
+
+
+✨ Windows 10 animaciones
+
+Para activar o desactivar las animaciones en Windows 10 presionamos “Win+U” y buscamos “Mostrar animaciones en Windows”.
+
+Esto para poder probar lo que estamos viendo en esta clase, cumple la misma función de “Reduce motion” que tenemos en MAC.
+
+🎲
+
+## 20. Continúa en el Curso de Animaciones con CSS
+
+🎉 ¡Lo has logrado! 🙌 **Completaste todas las clases** del curso de **Transformaciones y Transiciones en CSS**.
+
+❔ Si aún no queda claro algún tema, vuelve a revisar la clase o deja tu pregunta en la sección de preguntas.
+
+🧾 **Realiza la prueba del curso** para recibir tu certificado y no olvides dejar tus 🌟 y tu comentario.
+
+✅ Comparte tu certificado en [Twitter](https://twitter.com/teffcode), estaremos gustosos de ver tus resultados.
+
+📚📕 Te recomiendo el libro [Val Head - Designer & Interface Animation Consultant](https://valhead.com/), es de pago, así que si puedes permitírtelo será una buena inversión.
+
+👉 Las transformaciones y transiciones son una parte de las animaciones de CSS, así que continúa con el [Curso de Animaciones en CSS](https://platzi.com/cursos/animaciones-css/).
+
+Y por sobre todo, **¡Nunca pares de aprender!** 💚
+
+_Contribuciones del [curso](https://platzi.com/cursos/transformaciones-transiciones-css/) creadas por Andrés Guano_
+
+❄ Lecturas recomendadas
+
+- [Curso de Animaciones con CSS - Platzi](https://platzi.com/cursos/animaciones-css-practico/)[
+- [Curso de Animaciones con CSS - Platzi](https://platzi.com/cursos/animaciones-css/)[
+- [Val Head - Designer & Interface Animation Consultant](http://valhead.com/)
+
+- Recomiendo el [E-book CSS Animations 101](https://cssanimation.rocks/css-animation-101/) es gratis.  
 
 
 
-🎲🎲🎲🎲🎲
-- 🔥 ❄ ✨ 📌 🎲 🔍 🎉 ⭐ ❓   
-- 🤴🦁 🧔🐯 👀 👉 👈 ☝
-- 😊 👈👀 😌 😍           
-- 🟥 ⬜ ⬛ ◼ ◻ 🔷 🔶 🔻 🔺 🔴 🟣       
-- ✔ ➕ ↕ ↔ ⬅ ✅ ▶               
-- 🧰 ⛓ 💡             
-- 🔅 🔆 🌚 🌗 
-### Notas / Aportes
+ ✨ [Video](https://www.youtube.com/watch?v=vCAT-yH08GQ) sobre cómo usar transiciones para crear un formulario animado. Es básicamente un formulario que inicia siendo un circulito y se abre dando una vuelta al hacerle click a un botón, por si a alguien le interesa aquí se los dejo 👀
+
+🎲
+
+## Notas / Aportes
 <details>
 	<summary>Haz clic para ver a los contribuidores 👀</summary>
 	<br/>
@@ -2058,14 +2417,85 @@ _**Contribución creada por** Andrés Guano._
 - Cecilia Riveros
 - Fernando Quinteros Gutierrez
 - Andrés Guano
-- Carlos Mazzaroli.
+- Carlos Mazzaroli
 
 </details>
 
+🎲
+
+## Examen:     
+<details>
+  <summary>Haz click aquí para ver los resultados 👀</summary>
+
+  <br/>
+
+1. Cuál de los siguientes valores no hacen parte de las funciones de aceleración:
+	- ease-in
+	- ease
+	- ease-in-out
+	- ✅ lineal
+
+
+2. El potencial de la animación para comunicarse, conectarse, llamar la atención y reducir cosas como la carga cognitiva, sienta las bases de lo que la animación puede ofrecer al diseño de interfaces
+	- ✅ Verdadero
+
+
+3. Al hacer el efecto Parallax, el fondo parece moverse a una velocidad distinta que el contenido. Esto se logra colocando:
+	- ✅ Elementos uno encima del otro en el eje Z. También conocido como el contexto de apilamiento.
+
+
+4. transform: translate(20px, -20px) hace que:
+	- ✅ Un elemento se mueva 20px hacia la derecha y 20px hacia arriba
+
+
+5. Las propiedades indispensables para hacer una transición son:
+	- 🟣 transition-property y transition-duration
+
+
+6. ¿Qué hace una transformación?
+	- 🟣 Mueve o cambia la apariencia de un elemento
+
+
+7. Un valor X positivo mueve el elemento hacia:
+	- ✅ La derecha
+
+
+8. ¿Qué hace una transición?
+	- 🟣 Hace que el elemento cambie de forma suave y gradual de un estado a otro
+
+
+9. transition-delay es:
+	- ✅ El tiempo que tarda en comenzar la transición
+
+
+10. Un valor Y positivo mueve el elemento hacia:
+	- ✅ Abajo
+
+
+11. Las pseudo-clases en las animaciones nos permiten:
+	- ✅ Accionar/Detonar la transformación o transición deseada
+
+
+12. ¿Con qué propiedad podemos especificar las funciones de aceleración que están disponibles para nosotros en CSS?
+	- 🟣 transition-timing-function
+
+
+13. Las propiedades transform y opacity son:
+	- ✅ Recomendadas para animar
+
+
+14. cubic-bezier(n, n, n, n) necesita 4 números que representan:
+	- 🟣 2 puntos de control para formar la curva de aceleración deseada
+
+
+15. La propiedad will-change nos permite:
+	- ✅ Optimizar las animaciones al permitir que el navegador sepa qué propiedades y elementos están a punto de ser animados.
 
 </details>
 
-### Emojis:  
+🎲
+
+## Emojis:  
 <details>
   <summary>Haz click aquí para ver los emojis 👀</summary>
 
@@ -2076,7 +2506,7 @@ _**Contribución creada por** Andrés Guano._
 - 🤴🦁 🧔🐯  👀 👉 👈 ☝    
 - 😊 👈👀 😌 😍      
 - 🟥 ⬜ ⬛ ◼ ◻ 🔷 🔶 🔻 🔺 🔴 🟣       
-- ✔ ➕ ↕ ↔ ⬅ ✅ ▶               
+- ✔ ➕ ↕ ↔ ⬅ ✅ ▶ ❌              
 - 🧰 ⛓ 💡             
 - 🔅 🔆 🌚 🌗         
 

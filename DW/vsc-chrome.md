@@ -23,6 +23,7 @@
 - [PHP IntelliSense](https://marketplace.visualstudio.com/items?itemName=zobo.php-intellisense)
 - [PHP Server](https://marketplace.visualstudio.com/items?itemName=brapifra.phpserver)
 - [Prettier - Code formatter](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
+- [css-triggers](https://marketplace.visualstudio.com/items?itemName=kisstkondoros.csstriggers)
 - [Pylance](https://marketplace.visualstudio.com/items?itemName=ms-python.vscode-pylance)
 - [Python](https://marketplace.visualstudio.com/items?itemName=ms-python.python)
 - [Remote - WSL](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-wsl)
