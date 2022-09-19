@@ -4,7 +4,7 @@
 
 [Link curso](https://platzi.com/cursos/terminal/)
 
-# 1. ¿Qué es la terminal?
+## 1. ¿Qué es la terminal?
 
 Si algunas vez viste una película de hackers, seguro has visto la ventana negra que abren en sus computadores, dónde escriben muchas letras sin sentido. Esto se conoce como terminal, pero, te lo explicaremos más a detalle.
 
@@ -13,7 +13,7 @@ Beneficios:
 - Velocidad
 - No siempre cuentas con una interfaz gráfica
 
-## La terminal 
+### La terminal 
 La terminal es un programa que ejecuta líneas de comandos, que a su vez estas líneas de comando ejecutan acciones y aquí tienes que aprender dos conceptos: **terminal** y **shell**.
 
 - Terminal:    
@@ -27,7 +27,7 @@ La terminal es un programa que ejecuta líneas de comandos, que a su vez estas l
 Si lo pensamos de otra forma, la **shell** nos proporciona una forma de comunicarnos con el procesador y la RAM sin tener que pasar por la interfaz gráfica.
 
 
-## ¿Por qué usar la shell y no la interfaz gráfica?
+### ¿Por qué usar la shell y no la interfaz gráfica?
 
 Al final del día, la interfaz gráfica, como lo es el sistema de ventanas, es un programa más y como programa que es ocupa espacio en la memoria. De hecho, si estás en Windows 10 y abres el administrador de tareas en la pestaña Procesos, en el grupo Procesos de Windows, encontrarás uno llamado Explorador de Windows.
 
@@ -169,7 +169,6 @@ Todo esto parece un mensaje encriptado, pero es más sencillo de lo que parece, 
 -   Por último, **$** significa que somos un usuario normal y no un root o un supe usuario. Más adelante hablaremos más acerca de esto.
 
 
-
 ### Algunos comandos:
 - `ls`: Lista archivos
 	- Las carpetas y archivos son de diferente color
@@ -278,70 +277,141 @@ Operadores de rutas relativas: `. y ..`
 
 ## 6. ¿Qué es un comando?
 
-Un comando puede ser 4 cosas
-1. Un programa ejecutable.	
-2. un comando de utilidad de la shell.
-3. Una función de shell.
-4. Un alias.
+Un **comando** es un mensaje enviado al ordenador que provoca una respuesta en este sistema y se comporta como una orden, pues informa al dispositivo informático que debe ejecutar una acción según la indicación que pueda enviarse.
 
-type cd
-type mkdir
-type ls
-alias l="ls -lh"
-l : los alias son temporales
-help cd : muestra lo que puedes hacer
-ls --help
-man cd: manual de usuario de un comando
-	q para salir
-info cd : ver descripción de un comando
-whatis cd : descripción corta
-whatis alias : no funciona con todos
-whatis ls	
+Cada sistema operativo incorpora un determinado número de comandos básicos, que permiten ejecutar las tareas más simples con órdenes directas. A continuación conocerás todo lo relacionado con sistemas operativos basados en UNIX y sus comandos básicos en la terminal.
+
+Un comando puede ser 4 cosas         
+1. Un programa ejecutable. Se encuentran en `/usr/bin/`	
+2. Un comando de utilidad de la shell. Este es un programa en sí, que puede tener funciones. Ejemplo `cd`
+3. Una función de shell. Son funciones de shell externas al comando de utilidad. Ejemplo `mkdir`
+4. Un alias. Un ejemplo es `ls`
 
 
-### Emojis:  
-<details>
-  <summary>Haz click aquí para ver los emojis 👀</summary>
 
-  <br/>
+- `type`: Muestra qué tipo de comando es
+	- `type cd`
+	- `type mkdir`
+	- `type ls`
+- 🔥`alias`: Nos permite crear comandos. Son temporales, se borran al cerrar la terminal
+	- `alias l="ls -lh"`. l es el nuevo nombre (alias) asignado para ls -lh
+	- `l`
+- `help`: Permite consultar un poco de documentación de un comando
+	- `help cd` : Muestra lo que puedes hacer con cd
+	- `ls --help`: Funciona igual
+- `man`: Muestra el manual de usuario de un comando 
+	- `man cd` 
+	- q para salir
+- `info`: Ver la descripción de un comando
+	- `info cd` 
+- `whatis`: Muestra una descripción corta pero no funciona con todos
+	- `whatis cd`  
+	- `whatis alias` 
+	- `whatis ls`	
 
-**🔥 Emojis:**        
-- 🔥 ❄ ✨ 📌 🎲 🔍 🎉     
-- 🤴🦁 🧔🐯  👀 👉 👈 ☝ 👇   
-- 😊 👈👀 😌 😍      
-- 🟥 ⬜ ⬛ ◼ ◻ 🔷 🔶 🔻 🔺 🔴 🟣       
-- ✔ ➕ ↕ ↔ ⬅ ✅ ▶ ❌ ❗ ⬆ ⬇ ❓          
-- 🧰 ⛓ 💡             
-- 🔅 🔆 🌚 🌗      
+Para verificar que shell están utilizando, lo pueden hacer con:   
 
-</details>
+```bash
+echo $0
+```
 
-🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲
+Tengan en cuenta que no se puede utilizar espacios en el alias ya que tomaría la separación como parámetros
+
+Forma incorrecta:
+
+```bash
+$ alias lista_larga = "ls -lSh"
+```
+
+Forma correcta:
+
+```bash
+$ alias lista_larga="ls -lSh"
+```
+
+El comando `unalias`, es una herramienta disponible en sistemas operativos del tipo Unix, como lo es GNU/Linux, e integrada en la mayoría de las Shells desarrolladas para ellos. Este comando **nos permite eliminar un alias que hayamos establecido, pero de forma temporal**.
+
+Si por accidente te loggeaste con otro usuario en Linux o simplemente se te olvido como tu nombre de usuario, puedes usar el comando:
+
+```bash
+$ whoami
+daniel
+```
+
+📌 Dos -- se usa en palabras completas
+📌 Un - es para letras
+
+💡 En este artículo están los comandos que más usarás en programación 🙊
+
+-   [41 comandos de la terminal que debes conocer](https://platzi.com/blog/41-comandos-terminal/)
+
+🎁 Y con un regalo al final del blog:
+
+
+
+❄ Lecturas recomendadas    
+
+- [Curso de Programación en Bash Shell](https://platzi.com/clases/bash-shell/)
+- [41 comandos de la terminal que debes conocer](https://platzi.com/blog/41-comandos-terminal/)
+
+🎲
 
 ## 7. Wildcards
 
-Serie de caracteres especiales que nos permiten encontrar patrones o realizar busquedas mucho mas avanzadas usando ls.
+Las wildcards o comodines son una serie de caracteres especiales que nos permiten encontrar patrones o realizar búsquedas más avanzadas. Es aplicable para archivos y directorios.
 
-touch file.txt doc.txt doc2.txt index.html datos1 datos123 ABC
-ls
-ls *.txt
-ls datos*
-ls datos?
-ls datos???
-ls *.html
-ls [[:upper:]]* : busca en dos capaz 
-ls -d [[:upper:]]* : d busca solo en el directorio actual
-ls -d [[:lower:]]* : que inician minúscula
-ls -d [[:lower:]]*/ : busca solo directorios
-ls [ad]* : busca coincidencias que tengan a o d
-ls [ai]*
+Las wildcards te sirven para realizar seccionamiento de archivos o directorios, además de `ls` los wildcards también pueden usarse con cualquier comando que realice la manipulación de archivos como `mv`, `cp` y `rm`.
 
 
-Saber que shell estamos usando:
-echo $0
 
-estamos usando bash
+### Tipos de wildcards
 
+#### Buscar todo (*)
+El asterisco te ayuda a buscar toda la información dentro de una carpeta, pero puedes limitar su uso. Si por ejemplo quieres buscar los archivos que tengan una extensión “.png”, escribes:
+
+🔥 Creamos algunos archivos para el ejemplo: 
+- `touch file.txt doc.txt doc2.txt index.html datos1 datos123 ABC`
+
+🔥 Método 1
+- `ls *.txt`
+- `ls *.html`
+- `ls datos*`
+
+🔥 Método 2
+- `ls datos?`: Busca todos los archivos que tengan este nombre pero un solo caracter al final "datos❓"
+- `ls datos???` Busca archivos con tres caracteres al final
+
+🔥 Método 3
+- `ls [[:upper:]]*` : Superior o mayúsculas busca en dos capaz 
+- `ls -d [[:upper:]]*` : d busca solo directorios con mayúsculas
+- `ls -d [[:lower:]]*`: Busca carpetas y archivos con minúsculas
+- `ls -d [[:lower:]]*/`: Busca solo directorios
+- `ls [ad]*` : busca coincidencias que tengan a o d
+- `ls [ai]*`
+
+Para buscar por números podemos usar
+
+```
+[:alnum:]
+[:digit:]
+```
+
+Para encontrar **_archivos_** o directorios con **_números_** también se puede usar:
+
+```shell
+ ls *[0-9]*
+```
+
+💡 Documento que muestra todas las posibles **combinaciones cuando usamos el doble corchete** (como el `[[:lower:]]`): [Character Classes and Bracket Expressions](https://www.gnu.org/software/grep/manual/html_node/Character-Classes-and-Bracket-Expressions.html)
+
+
+✨ Saber que shell estamos usando:    
+`echo $0`
+
+
+- [Lista de comandos](https://static.platzi.com/media/public/uploads/command-line-cheat-sheet_f2552bde-3bb0-4b1c-a1a7-dbd40095fa4f.pdf)
+
+🎲
 
 ## 8. Redirecciones: cómo funciona la shell
 
@@ -377,6 +447,24 @@ less output.txt
 $ cat < peanuts.txt > banana.txt
 
 
+### Emojis:  
+<details>
+  <summary>Haz click aquí para ver los emojis 👀</summary>
+
+  <br/>
+
+**🔥 Emojis:**        
+- 🔥 ❄ ✨ 📌 🎲 🔍 🎉     
+- 🤴🦁 🧔🐯  👀 👉 👈 ☝ 👇   
+- 😊 👈👀 😌 😍      
+- 🟥 ⬜ ⬛ ◼ ◻ 🔷 🔶 🔻 🔺 🔴 🟣       
+- ✔ ➕ ↕ ↔ ⬅ ✅ ▶ ❌ ❗ ⬆ ⬇ ❓          
+- 🧰 ⛓ 💡             
+- 🔅 🔆 🌚 🌗      
+
+</details>
+
+🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲
 
 ## 9. Redirecciones: pipe operator
 
