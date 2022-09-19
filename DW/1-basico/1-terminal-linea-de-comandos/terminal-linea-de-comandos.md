@@ -348,7 +348,6 @@ daniel
 🎁 Y con un regalo al final del blog:
 
 
-
 ❄ Lecturas recomendadas    
 
 - [Curso de Programación en Bash Shell](https://platzi.com/clases/bash-shell/)
@@ -361,7 +360,6 @@ daniel
 Las wildcards o comodines son una serie de caracteres especiales que nos permiten encontrar patrones o realizar búsquedas más avanzadas. Es aplicable para archivos y directorios.
 
 Las wildcards te sirven para realizar seccionamiento de archivos o directorios, además de `ls` los wildcards también pueden usarse con cualquier comando que realice la manipulación de archivos como `mv`, `cp` y `rm`.
-
 
 
 ### Tipos de wildcards
@@ -398,8 +396,8 @@ Para buscar por números podemos usar
 
 Para encontrar **_archivos_** o directorios con **_números_** también se puede usar:
 
-```shell
- ls *[0-9]*
+```
+ls *[0-9]*
 ```
 
 💡 Documento que muestra todas las posibles **combinaciones cuando usamos el doble corchete** (como el `[[:lower:]]`): [Character Classes and Bracket Expressions](https://www.gnu.org/software/grep/manual/html_node/Character-Classes-and-Bracket-Expressions.html)
@@ -415,37 +413,171 @@ Para encontrar **_archivos_** o directorios con **_números_** también se p
 
 ## 8. Redirecciones: cómo funciona la shell
 
-		shell				     1
-						-> stdout
-teclado ->	stdin -> comando ->			->  PC
-		  0				-> stderr
-							2
+Para entender qué son las redirecciones vamos a aprender cómo manejar entradas y salidas a través de operadores especiales.
 
--> stdout(Salida estándar)
-ls Pictures/
-ls Pictures/ > misArchivos.txt 
-	: guarda el nombre de todos los archivos
-	: Se crea automáticamente sino existe
-less misArchivos.txt
-ls Downloads/ > misArchivos.txt
-	: al hacer esto va a sobre Escribir el archivo anterior
-less misArchivos.txt
-ls Pictures/ >> misArchivos.txt
-	: esta es la manera correcta de concatenar
-ls sdfasf 2> error.txt
-	: redirigir este error al archivo creado
-head error.txt
-ls asdad > output.txt 2>&1 
-	: Trae un error
-	: Se usa cuando no sabemos si el resultado será bueno o malo
-head output.txt
-ls Documents/ > output.txt 2>&1
-less output.txt
+### Qué son las entradas y salidas de la terminal
+
+En la consola nosotros generamos una entrada cuando escribimos y una salida casi siempre que ejecutamos un comando.
+
+A las entradas típicamente se les suele llamar **Standard Input** y a las salidas **Standard Output**, además se les suele abreviar como **stdin** y **stdout** respectivamente.
+
+#### Qué son file descriptors
+
+Los file descriptors son números que identifican un recurso. Funciona asociando un número con una acción, archivo o programa, en el caso de la shell tenemos 3 file descriptors:
+
+![File descriptors](https://i.postimg.cc/tTqWzkWP/8-file-descriptors.png)   
+El 1 es **Standard Output** y El 2 es **Standard Error**.
+
+Lo que sucede aquí es que le diste un **Standard Input** 0 (el comando) y obtuviste un **Standard Output** 1 pero también puedes obtener un **Standard Error** 2 cuando el comando está mal escrito o no existe.
+
+### Cómo usar el operador de redirección (>)
+
+A veces queremos guardar la información de una salida porque nos puede interesar almacenar lo que esa salida contiene. Veamos el siguiente ejemplo, si utilizas el comando:
+
+Si quieres que el **Standard Output** o  **Standard Error** no vaya a la consola sino hacia un archivo, entonces puedes usar el operador **>** seguido del nombre del archivo en el que quieres guardar la salida.
+
+```bash 
+ls -l > output.txt
+```
+
+🔥 Revisamos una carpeta cualquiera  
+- `ls Pictures/`
+	- Puedes revisar estando fuera de esta carpeta
+- `ls Pictures > misArchivos.txt `
+	- Debes ejecutar estando fuera de Pictures 📌
+	- Si misArchivos.txt no existe se crea automáticamente para
+	- guardar el nombre de todos los archivos
+	- `less misArchivos.txt`: Revisamos el contenido
+- `ls Downloads/ > misArchivos.txt`
+	- Al hacer esto va a sobre escribir el contenido anterior
+	- `less misArchivos.txt`
 
 
--> stdin(Estándar en)
-$ cat < peanuts.txt > banana.txt
+### Cómo concatenar (>>)
+Suponiendo que ya creaste el archivo misArchivos.txt y ahora también quieres guardar la información de otra carpeta, entonces lo que necesitas hacer es concatenar el contenido del documento con el de la nueva salida, para eso ejecutas:
 
+```shell
+ls -l >> output.txt
+```
+
+- `ls Pictures/ >> misArchivos.txt` 📌
+	- Esta es la manera correcta de concatenar
+	- `less misArchivos.txt` Ahora tenemos ambos contenidos (Downloads y Pictures)
+
+
+### Redirección de errores (2>|2>&1)
+
+El operador de redirección por defecto solo redirecciona el file descriptor 1 (es decir, el **Standard Output**). Pero, ¿qué tal si queremos redirigir un error? Pues tenemos que especificar que queremos el **Standard Error**, que tiene el file descriptor 2.
+
+Vamos a generar un error ejecutando un comando que saldrá mal para redirigirlo a un archivo llamado “error.txt”.
+
+- `ls sdfasf 2> error.txt` 👀 2 Standard Error
+	- Redirigir este error al archivo creado
+	- `head error.txt`: Veremos el contenido del error
+
+También podemos especificar que no importa lo que pase si me da un **Standard Output** o un **Standard Error**, igual tiene que guardar la salida en un archivo. Esto lo hacemos así:
+
+- `ls asdad > output.txt 2>&1`
+	- Trae un error
+	- Se usa cuando no sabemos si el resultado será bueno o malo
+	- `head output.txt`
+- `ls Documents/ > output.txt 2>&1`
+	- Traer contenido correcto
+	- `less output.txt`
+
+En la primera ejecución del comando, se ejecuta correctamente y guarda el **Standard Output**, pero en la segunda ejecución, el comando falla y guarda el **Standard Error**.
+
+✨ La orden `2>&1` significa que debe redirigir el file descriptor 2 y el file descriptor 1.
+
+
+📌 El standard input es la forma en la que capturamos información de un comando, ya sea por medio de pipes, redirección, teclado, etc. Se identifica con el descriptor de archivo “0”. Ejemplo. vemos lo que hay dentro del archivo animals.txt
+
+![Standard input](https://i.postimg.cc/wMkVkXXP/8-standard-input.png)
+
+Lo que sucedió fue que tomamos toda la información que se encuentra en el archivo “animals” en este caso los nombres de animales escritos de forma aleatoria y al redireccionar el archivo al comando sort, este ordena la lista alfabéticamente.
+
+
+🔥 La siguiente tabla detalla todas las posibles formas de direccionamiento y los símbolos que se utilizan para lograrlo.
+
+| Símbolo       | Descripción         |
+|---------------|------------------------------------------------------------------------------------------|
+|**_>_**        | Redirecciona **stdout** hacía un archivo. Lo crea si no existe, si existe lo sobrescribe.|
+| **_>_**       | `ls -l > lista.txt` (La salida del comando se envía a un archivo en vez de la terminal.)  |
+| **_>>_**      | Redirecciona **stdout** hacía un archivo. Lo crea si no existe, si existe concatena la salida al final de este.|
+| **_>>_**      | `ps -ef >> procesos.txt` (Concatena al archivo procesos.txt la salida del comando.)        |
+| **_<_**       | Redirecciona **stdin** desde un archivo. El contenido de un archivo es la entrada o input del comando.         |
+| **_<_**       | `mail user < texto.txt` (El cuerpo del correo a enviar proviene desde un archivo, en vez del teclado).           |
+| **_2>  2>>_** | Redirecciona **stderr** hacía un archivo. Crea (>) o concatena (>>) la salida de errores a un archivo. (ver ejemplos)|
+| **_1>&2_**    | Redirecciona **stdout** hacía donde **stderr** apunte. (ver ejemplos)                     |
+| **_2>&1_**    | Redirecciona **stderr** hacía donde **stdout** apunte. (ver ejemplos)                     |
+| **OTROS REDIRECCIONAMIENTOS QUE NO UTILIZAN FDs**| |
+| **_<<_**      | Conocido como **HERE-DOCUMENT** o **HereDoc** (ver ejemplos)                              |
+| **_<<<_**     | Conocido como **HERE-STRING** (ver ejemplos)                                              |
+| **❕**         | El símbolo `❕` (pipe) es un tipo de redireccionamiento ya que la salida (**stdout**) de un comando es la entrada (**stdin**) de otro.|
+| **❕**         | `ls /etc ❕ grep services` (La salida del comando a la izquierda de _❕_ se convierte en la entrada del comando a la derecha.)|
+| **_tee_**     | El comando `tee` redirecciona la salida (**stdout**) a ambos, un archivo y a la terminal. |
+| **_tee_**     | `ps -ef ❕ tee procesos.txt` (La salida de `ps` se muestra en la terminal y al mismo tiempo se redirecciona al archivo _procesos.txt_. Con la opción _-a_ (`tee -a`) concatena al archivo.)|
+
+- [Revisar cuadro](https://www.linuxtotal.com.mx/index.php?cont=redireccionamiento-en-linux)
+
+📌 el ❕ en realidad es un | solo que la tabla en markdown me daba error así que lo cambie por un emoji😅
+
+
+- [Ejercicios, ejemplos y tests para practicar el STANDAR INPUT, STANDAR OUTPUT y STANDAR ERROR:  ](https://linuxjourney.com/lesson/stdout-standard-out-redirect)
+
+🎲
+
+## 9. Redirecciones: pipe operator
+
+**_Pipe operator_** es un operador que permite tomar la salida de un comando y pasarla como entrada de otro comando. 
+
+🔥 Aprendamos algunos comandos extras:    
+- `echo "Hola Platzi"` : Imprime hola Platzi
+	- Genera un standard output de cualquier cosa que le escribamos
+- `less error.txt` 
+- `less output.txt`
+- `cat error.txt output.txt`: 
+	- Concatena la salida de ambos archivos solo de manera visual en la terminal
+
+🔥 Redirigir standard input
+- `cat < error.txt` : No se usa mucho
+	- Me muestra el contenido
+	- Este comando es lo mismo que `cat error.txt`
+	
+### Pipe operator     
+Permite que el standard output se convierta en el standard input de otro comando     
+
+- `ls -lh | less`
+	- Redirige al comando `less` permitiendo hacer búsquedas rápidas `/buscarAlgo`
+- `ls -lh | tee output.txt | less`
+	- Lista el contenido
+	- Crea un archivo y para después verlo con less
+	- Tee hace lo mismo que > permite guardar algo en un archivo
+	- `cat output.txt`
+		- Muestra el archivo creado
+- `ls -lh Pictures | sort | tee pictures.txt | less`
+	- Lista todo el contenido de Pictures
+	- Sort lo va a ordenar
+	- Tee mete todo en pictures.txt
+	- Less me muestra todo en pantalla para hacer búsquedas con `/`
+	- `cat pictures.txt`
+
+🔥 Instalar Cowsay y Lolcat
+- `sudo apt install cowsay`
+- `sudo apt install lolcat`
+
+Jugar usando Cowsay (Vaquera)
+- `cowsay "Hola"`
+	- 	: muestra una vaquita diciendo hola
+- `echo "Hola Platzi" | lolcat`
+	- 	: muestra el texto en colores cada vez que se ejecute el comando
+- `cowsay "Hola amigos" | lolcat`
+- `cowsay "Hola amigos" | lolcat | tee vaca.txt`
+- `cowsay -f dragon-and-cow "Gracias totales" | lolcat`
+
+
+
+📌 `cat rocket | lolcat`
 
 ### Emojis:  
 <details>
@@ -456,62 +588,17 @@ $ cat < peanuts.txt > banana.txt
 **🔥 Emojis:**        
 - 🔥 ❄ ✨ 📌 🎲 🔍 🎉     
 - 🤴🦁 🧔🐯  👀 👉 👈 ☝ 👇   
-- 😊 👈👀 😌 😍      
+- 😊 👈👀 😌 😍  😅     
 - 🟥 ⬜ ⬛ ◼ ◻ 🔷 🔶 🔻 🔺 🔴 🟣       
 - ✔ ➕ ↕ ↔ ⬅ ✅ ▶ ❌ ❗ ⬆ ⬇ ❓          
 - 🧰 ⛓ 💡             
 - 🔅 🔆 🌚 🌗      
 
 </details>
+🎲🎲🎲🎲🎲🎲🎲🎲🎲
 
-🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲
-
-## 9. Redirecciones: pipe operator
-
-echo "Hola Platzi" : imprime hola platzi
-less error.txt : 
-less output.txt :
-cat error.txt output.txt: 
-	: concatena la salida de ambos archivos
-
-Redirigir standar input
-cat < error.txt :
-	: Me muestra el contenido
-	
-Pipe operator: 
-	Permite que el standar output se convierta en el standar input de otro comando
-ls -lh | less
-	Redirigio al comando less y poder hacer busquedas rapidas /buscarAlgo
-ls -lh | less | tee output.txt 
-	: Crear un archivo despues de verlo con less
-	: tee hace lo mismo que > pero permmite guardarlo en un archivo
-cat output.txt :
-	: Me muestra lo mismo :3
-ls -lh | tee output.txt | less
-	: Generar el archivo primero y luego verlo con less
-cat output.txt
-	. me muestra el archivo
-ls -lh Pictures | sort | tee pictures.txt | less
-	: pasarlo por un filtro
-	: sort lo va a ordenar
-cat pictures.txt
-
-sudo apt install cowsay
-
-sudo apt install lolcat
-
-cowsay "Hola"
-	: muestra una vaquita diciendo hola
-echo "Hola Platzi" | lolcat
-	: muestra el texto en colores cada vez que se ejecute el comando
-cowsay "Hola amigos" | lolcat
-
-cowsay "Hola amigos" | lolcat | tee vaca.txt
-	
-cowsay -f dragon-and-cow "Gracias totales" | lolcat
-
-
-9. Encadenando comandos: operadores de control
+🎲
+## 10. Encadenando comandos: operadores de control
 
 Ejecución de manera Síncrona
 ls; mkdir holi; cal : calendario
