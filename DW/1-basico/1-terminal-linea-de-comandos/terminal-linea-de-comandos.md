@@ -579,6 +579,282 @@ Jugar usando Cowsay (Vaquera)
 
 📌 `cat rocket | lolcat`
 
+🎲
+
+## 10. Encadenando comandos: operadores de control
+
+Los operadores de control son símbolos reservados por la terminal que nos permiten encadenar comandos.
+
+Si usas constantemente la tecla enter para ejecutar varios comandos, puedes evitarlo si usas el operador **;** que separa los comandos que estamos ejecutando.
+
+
+### Comandos en la misma línea ( ; & y || )
+🔥 Ejecución de manera Síncrona    
+Esto hace referencia al acceso inmediato, en tiempo real a la información.   
+
+- `ls; mkdir holi; cal`: calendario
+	- Muestra el contenido de la carpeta
+	- Crea una carpeta llamada holi
+	- Finalmente ejecuta el comando cal (Calendario)
+	- El comando ls no muestra la carpeta holi porque primero se ejecuta ls, una vez mostró todo crea la carpeta y después muestra el calendario 
+
+
+🔥 Ejecución de manera Asíncrona     
+Se refiere a que no se da de manera simultanea   
+
+- `ls & date & cal`   
+	- Usa diferentes hilos para cumplir con esta tarea 
+
+
+🔥 Ejecución de comandos de manera **Condicional** 
+
+En Home:    
+- `mkdir test && cd text`
+	- Crea el directorio test, solo si se crea correctamente que me dirija al interior de esa carpeta
+	- `pwd`
+- `cd aaaa && touch archivo.txt && echo "Archivo creado"`
+	- No se hizo ningún proceso porque desde la primera función no pasó nada.
+
+Ahora:   
+- `cd aaaa || touch archivo.txt || echo "Archivo creado"`
+	- Con or o || se crea solamente el archivo.txt porque se interpreta así: 
+		- Cambia de directorio o crear el archivo, entonces solo crea el archivo y luego dice crear archivo o enviar mensaje y como ya se creo el archivo ya no crea el otro.
+- `cd aaa || echo "Cambio de directorio"`
+	- Solo ejecuta el ultimo comando
+
+Combinando operadores de control (condicionales)
+- `cd aaaa || touch archivo.txt && echo "Archivo creado"`
+	- No puede entrar en la carpeta pero si crea el archivo e imprime el mensaje
+
+📌 `&&` = haz esto **y** esto
+📌 `||` = haz esto **o** esto
+
+
+El comando `date` imprime por consola la fecha actual.
+
+
+❄ Si esto último se te es un poco complicado te invito a que tomes el [Curso de Pensamiento Lógico.](https://platzi.com/cursos/pensamiento-logico/)
+
+🎲
+
+## 11. Cómo se manejan los permisos
+
+Los permisos son las capacidades que tiene cada usuario dentro del sistema operativo, no todos los usuarios pueden hacer todas las acciones sobre ciertos archivos y carpetas.
+
+Cuando listamos archivos utilizando el comando `ls -l` la primera columna que nos aparece es la de permisos.
+
+🔥 Tipos de archivos
+
+| Atributos |	Tipo de archivo |
+|-----------|-------------------|
+| -         | Un archivo normal.|
+| d		    | Un directorio.    |
+| l		    | Un link simbólico.|
+| b		    | Un archivo de bloque especial. Son archivos que manejan la información de los bloques de datos como una USB.|
+
+
+🔥 Tipos de modo
+
+| Dueño	  | Grupo	| World  |
+|---------|---------|--------|
+| rwx	  | r-x     | r-x    |
+| 1 1 1	  | 1 0 1   | 1 0 1  |
+
+✨ rwx: read - write - Execution
+
+
+🔥 Permisos de usuario
+
+Los siguientes caracteres se leen de 3 en 3, por cada uno de los tipos de usuario.
+
+- Owner / Dueño
+	El dueño del archivo, si no se ha cambiado, es quien lo creo y tiene mayor jerarquía sobre los otros 3. Le corresponden los primeros 3 caracteres de los permisos.
+
+- Group
+	Se puede crear grupos de usuarios para darle a todos o varios los mismos permisos. A estos usuarios le corresponden el cuarto, quinto y sexto caracter de los permisos de usuarios y tienen mayor jerarquía que el último.
+
+- World
+	También llamado “otros”, es cualquier otro usuario que no pertenezca a un grupo de usuario y tampoco sea el dueño, este tiene la menor jerarquía.
+
+![Permisos](https://i.postimg.cc/5yy15TNT/11-permisos.png)
+
+![Permisos](https://i.postimg.cc/fWjsLkd3/11-owner-group-world.webp)
+
+🔥 Modo octal
+
+| Dueño	| Grupo  | World |
+|-------|--------|-------|
+| rwx	| r-x    | r-x   |
+| 1 1 1	| 1 0 1	 | 1 0 1 |
+| 4+2+1 | 4+0+1  | 4+0+1 |
+| 7		| 5		 | 5     |
+
+Representamos con un cero si el usuario no tiene el permiso y con un uno si el usuario si lo tiene, pongamos de ejemplo el permiso r-x:
+
+
+| Octal | Binario | Permisos |
+|-------|---------|----------|
+| 0		| 000	  | ---      |
+| 1		| 001	  | --x      |
+| 2 	| 010     |	-w-      |
+| 3		| 011	  | -wx      |
+| 4		| 100	  | r--      |
+| 5		| 101	  | r-x      |
+| 6		| 110	  | rw-      |
+| 7		| 111	  | rwx      |
+
+
+🔥 Modo simbólico
+
+| Símbolo | Significado                  |
+|---------|------------------------------|
+| u       | Solo para el usuario         |
+| g       | Solo para el grupo           |
+| o       | Solo para otros (es el world)|
+| a       | Aplica para todos.           |
+
+
+🔥 Diferencia de permisos entre archivos y directorios 
+
+| Permiso | Archivo | Directorio | 
+|---------|---------|------------|
+| r       |Permite abrir y leer un archivo.| Permite listar el contenido de un directorio solo si el permiso de ejecución (x) también está activo. |
+| w       |Permite escribir en un archivo; sin embargo, este atributo no permite cambiar el nombre de los archivos o eliminarlos. La capacidad de eliminar o cambiar el nombre de los archivos está determinado por los atributos del directorio.| Permite que los archivos dentro de un directorio sean creados, eliminados y renombrados si también se establece el atributo de ejecución.|
+| x       |Permite que un archivo sea tratado como un programa y pueda ser ejecutado.| Permite entrar al directorio.|
+
+
+[Diferencias de permisos](https://static.platzi.com/media/public/uploads/diferencia-de-permisos-entre-archivos-y-directorios_2f436ae8-2c28-408d-a7cf-c22e9426b5a2.pdf)
+
+✨ Acceder a los discos C y D con wsl : Windows Subsysten for Linux:
+- `/mnt/c/Users/usuario/`
+- `/mnt/d/`
+
+
+❄ Comandos para cambiar permisos:     
+- `sudo chmod u+x index.html`
+	- Dar permisos con +
+	- u agrega permisos al usuario
+	- `sudo chmod o+x index.html`
+- `sudo chmod a-x index.html`
+	- Quitar permisos a todos con -
+- `chmod 777 index.html`
+	- Un numero por cada grupo 
+	- Puede variar depende los permisos que le demos
+
+
+🟣 `chown`: Cambia quien es el propietario del archivo.     
+🟣 `chgrp`: Cambia quien es el grupo de usuarios que pueda acceder al archivo.    
+🟣 `sudo`: Super usuario - root: Este usuario puede leer y escribir cualquier archivo del sistema, y ejecutar algunos archivos. y también hay otras operaciones que están reservadas para el.
+
+
+
+### Aporte - Generador de permisos de linux.
+
+Inspirado en la tabla que se muestra en el curso, decidí hacer una pequeña aplicación que nos permite generar los permisos del sistema de Linux en formato “Octal”.
+
+- [El link de la aplicación:](https://josenoriegaa.github.io/linux-file-system-permission-generator/index.html)  
+- [El link del repositorio:](https://github.com/JoseNoriegaa/linux-file-system-permission-generator)
+
+❄ Recomendaciones:      
+- [Explicación: Binario, Decimal y Hexadecimal](https://www.youtube.com/watch?v=g9-MRBBcvdg)
+- [Pasar de decimal a binario y viceversa](https://www.youtube.com/watch?v=bScw3CNb_fM)
+
+🎲
+
+## 12. Modificando permisos en la terminal
+
+Con el comando `chmod` podemos cambiar los permisos de los archivos de dos formas, una es usando los símbolos (rwx) y otra es con el sistema octal.
+
+### Cambiar los permisos de un archivo (chmod)
+
+Es bastante sencillo cambiar los permisos de forma simbólica. Para esto, hay que escribir después del comando `chmod` el símbolo del usuario, luego el operador y por último el permiso que quieres agregar o quitar.
+
+- `mkdir sandbox`: Carpeta de pruebas
+- `cd sandbox/`
+- `> mitexto.txt`: Otra forma de crear un archivo
+- `cat > mitexto.txt`: Permite escribir
+	- Hola amigos 
+	- Desde Platzi
+	- `Control d`: para dejar de escribir
+- `cat mitexto.txt`
+- `ls -l`
+	- Muestra los permisos
+	- Usuario Grupos Otros
+	- `-rw-r--r-- 1 ubuntu 25 Sep 20 01:57 mitexto.md`
+
+🔥 Método 1: Ampliar permisos        
+- `chmod 755 mitexto.txt`: Change mode
+	- Usuario: rwx = 7
+	- Grupo: r-x = 5
+	- Otros: r-x = 5
+- `ls -l`
+	- Se modificó a ⬇
+	- `-rwxr-xr-x 1 ubuntu 25 Sep 20 01:57 mitexto.md`
+
+🔥 Método 2: Quitar permisos        
+- `chmod u-r mitexto.txt`
+	- `u-r`: Al usuario se le quita permisos de lectura (read)
+- `ls -l`
+	- `--wxr-xr-x 1 ubuntu 25 Sep 20 01:57 mitexto.md`
+- `cat mitexto.txt`
+	- No nos permite ver (leer) el contenido 
+
+🔥 Método 3: Dar permisos     
+- `chmod u+r mitexto.txt`
+- `ls -l`
+- `cat mitexto.txt`
+
+🔥 Método 4: Quitar y Dar permisos     
+- `chmod u-x,go+w mitexto.txt`
+	- Usuario: quitar ejecución 
+	- Grupo y otros: Añadir escritura
+	- Los permisos deben estar escritos sin espacios📌
+- `ls -l`
+
+### Cambiar de usuario
+- `whoami` : Ver quien soy yo
+	- ubuntu
+- `id`: Otorga el id del usuario (1000 or 500)
+
+🔥 Cambiar al usuario Root
+- `su root`: switch user - cambiar de usuario 
+	- contraseña
+- `whoami`
+	- root
+- `pwd`
+- `cd`
+	- Lleva al home del root
+- `cd home/ubuntu/sandbox`
+- `touch rootfile`
+- `su ubuntu`: Regresamos al usuario ubuntu
+- `pwd`
+- `ls -l`
+- `rm rootfile`
+	- No se puede borrar porque no soy el dueño de ese archivo
+	- En realidad en WSL si me dejo borrar :v
+- `sudo rm rootfile`
+	- Esto solo funciona para root, solo me da permisos para hacer cambios en el nombre del root
+	- Contraseña
+
+✨ Cambiar contraseña de cualquier usuario
+- `passwd` :
+	- Contraseña old
+	- New password	
+
+
+✨ Por defecto Usuario Root no tiene contraseña así que:
+- `sudo su root`
+	contraseña de usuario actual
+- `sudo psswd`
+	new password
+	retype new password
+
+
+
+-rw-r--r-- 1 ubuntu ubuntu 58 Jul 15 18:17 mitexto.txt
+
+
+
 ### Emojis:  
 <details>
   <summary>Haz click aquí para ver los emojis 👀</summary>
@@ -595,179 +871,12 @@ Jugar usando Cowsay (Vaquera)
 - 🔅 🔆 🌚 🌗      
 
 </details>
-🎲🎲🎲🎲🎲🎲🎲🎲🎲
+
+🎲🎲🎲🎲🎲🎲
 
 🎲
-## 10. Encadenando comandos: operadores de control
 
-Ejecución de manera Síncrona
-ls; mkdir holi; cal : calendario
-	: No se muestra la carpeta holi porque primero se ejecuta ls, una vez mostró todo crea la carpeta y después muestra el calendario 
-
-
-Ejecución de manera Asíncrona 
-ls & date & cal
-
-Ejecución de comandos de manera Condicional 
-En Home:
-mkdir test && cd text
-	: Quiero que se cree el directorio test, si se crea correctamente que me dirija al interior de esa carpeta
-
-cd aaaa && touch archivo.txt && echo "Archivo creado"
-	: No se hizo ningún proceso porque desde la primera función no pasó nada.
-	Ahora
-cd aaaa || touch archivo.txt || echo "Archivo creado"
-	: Con or o || se crea solamente el archivo porque se interpreta: cambia de directorio o crear el archivo, entonces solo crea el archivo y luego dice crear archivo o enviar mensaje y como ya se creo el archivo ya no crea el otro.
-	
-cd aaaa || touch archivo.txt && echo "Archivo creado"
-	: En este caso si hace el echo porque debe crear el archivo y además imprimir el mensaje.
-
-
-10. Cómo se manejan los permisos
-
-Tipos de archivos
-
-Atributos 	Tipo de archivo
--		Un archivo normal.
-d		Un directorio.
-l		Un link simbólico.
-b		Un archivo de bloque especial. Son archivos que manejan la información de los bloques de datos como una USB.
-
-
-Tipos de modo
-
-Dueño		Grupo		World
- rwx		 r-x		 r-x
-1 1 1		1 0 1		1 0 1
-
-rwx: read write Execution
-
-
-
-Modo octal
-
-Dueño		Grupo		World
- rwx		 r-x		 r-x
-1 1 1		1 0 1		1 0 1
-  ?		  ?		  ?
-  7		  5		  5
-
-Modo octal
-Octal		Binario	Permisos
-0		000		---
-1		001		--x
-2 		010		-w-
-3		011		-wx
-4		100		r--
-5		101		r-x
-6		110		rw-
-7		111		rwx
-
-Modo simbólico
-
-Simbolo 	Significado
-u		Solo para el usuario
-g		Solo para el gurpo
-o		Solo para otros (es el worls)
-a		Aplica para todos.
-
-
-Acceder a varias carpetas del disco C:
-/mnt/c/Users/usuario/
-
-
-wsl : Windows Subsysten for Linux
-
-
-sudo chmod u+x index.html
-	: para darle permisos
-	: u agrega permisos al usuario
-sudo chmod o+x index.html
-
-sudo chmod a-x index.html
-	: quitarle permisos a todos
-
-chmod 777 index.html
-	: un numero por cada grupo 
-	: puede variar depende los permisos que le demos
-
-
-11. Modificando permisos en la terminal
-
-mkdir sandbox
-cd sandbox/
-> mitexto.txt
-cat > mitexto.txt
-	: Escribir Hola amigos 
-		Desde Platzi
-control d
-
-clear
-cat mitexto.txt
-ls -l
--> muestra los permisos
--> Usuario Grupos Otros
-chmod 755 mitexto.txt: change mode
-ls -l
-chmod u-r mitexto.txt
-	: el - significa que va a quitar ese permiso
-	: le quita read al usuario
-ls -l
-cat mitexto.txt
-chmod u+r mitexto.txt
-ls -l
-cat mitexto.txt
-
-ls -l
-chmod u-x,go+w mitexto.txt
-	: al usuario - ejecutar y al grupo y a otro write
-ls -l
-
-Cambiar de usuario
-whoami : Quien soy yo
-: ubuntu
-id : otorga el id del usuario (1000)
-
-Cambiarme a usuario Root
-su root: swit user cambiarnos de usuario 
-	: contraseña
-whoami
-	: root
-pwd
-cd
-	: me lleva al home del root
-	
-cd home/ubuntu/sandbox
-touch rootfile
-su ubuntu
-pwd
-ls -l
-rm rootfile
-	: y no se puede borrar porque no soy el dueño de ese archivo
-sudo rm rootfile
-	: esto solo funciona para root
-	: contraseña
-
-cambiar contraseña
-passwd :
-	: contraseña
-	: new password	
-
-
--> Por defecto Usuario Root no tiene contraseña así que:
-. sudo su root
-	contraseña de usuario actual
-. sudo psswd
-	new password
-	retype new password
-
-Contraseña root: ubunturoot
-
-
--rw-r--r-- 1 ubuntu ubuntu 58 Jul 15 18:17 mitexto.txt
-
-
-12. Variables de entorno
+## 13. Variables de entorno
 
 link simbolico:
 . ln -s Documents/Dev Desarrollo
