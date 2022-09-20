@@ -653,6 +653,9 @@ Cuando listamos archivos utilizando el comando `ls -l` la primera columna que 
 | b		    | Un archivo de bloque especial. Son archivos que manejan la información de los bloques de datos como una USB.|
 
 
+**Enlace simbólico**: En informática, un enlace simbólico, en sistemas Unix o GNU/Linux, indica un acceso a un directorio o fichero que se encuentra en un lugar distinto dentro de la estructura de directorios.   
+
+
 🔥 Tipos de modo
 
 | Dueño	  | Grupo	| World  |
@@ -662,6 +665,8 @@ Cuando listamos archivos utilizando el comando `ls -l` la primera columna que 
 
 ✨ rwx: read - write - Execution
 
+
+![Permisos](https://i.postimg.cc/fWjsLkd3/11-owner-group-world.webp)
 
 🔥 Permisos de usuario
 
@@ -678,8 +683,6 @@ Los siguientes caracteres se leen de 3 en 3, por cada uno de los tipos de usuari
 
 ![Permisos](https://i.postimg.cc/5yy15TNT/11-permisos.png)
 
----
-![Permisosxd](https://i.postimg.cc/fWjsLkd3/11-owner-group-world.webp)
 
 🔥 Modo octal
 
@@ -852,10 +855,160 @@ Es bastante sencillo cambiar los permisos de forma simbólica. Para esto, hay qu
 
 
 
--rw-r--r-- 1 ubuntu ubuntu 58 Jul 15 18:17 mitexto.txt
+❄ **¡Cambiemos al propietario!**  ❄     
+(Chown - Change Owner)    
+
+📌 `-rw-r--r-- 1 **usuario**👀 **grupo**👀 0 Feb 20 17:45 sandbox.txt` 👀
+
+❄ Chown para **archivos**      
+- Cambiar de usuario
+	- `chown user filename(s)`
+	- `chown ubuntu algo.txt`
+- Cambiar de grupo  
+	- `chown user:group filename(s)`
+	- `chown ubuntu:otrogrupo algo.txt`    
+	También es igual a:      
+	- `chown :otrogrupo algo.txt`
+
+❄ Chown para **carpetas/directorios**     
+- Cambiar de usuario
+	- `chown user /folder`
+	- `chown ubuntu /sandbox`
+- Cambiar de grupo   
+	- `chown :otrogrupo /sandbox`
+- Cambiar el propietario y el grupo
+	- `chown usuario:grupo /sandbox`
+
+❄ Chown para **multiples archivos**   
+- `chown user:group /tmp/TestUnix/chownSample.txt /tmp/TestUnix`
+
+❄ Chown **recursivo**        
+El comando Chown se puede usar sobre directorios; sin embargo, podríamos tener una estructura de directorio recursiva y podríamos querer cambiar la propiedad de todos los archivos y directorios.
+
+El uso recursivo del comando chown garantiza que todos los directorios y subdirectorios puedan tener un cambio de propiedad o grupo.
+
+- `chown -R USER:GROUP Directory`
+- `chown -R root /sandbox`
 
 
+📌 Encuentra el manual ejecutando **man chown**
 
+
+[Info sobre Chown](https://www.hostinger.es/tutoriales/comando-chown-linux#:~:text=Un%20comando%20chown%20de%20Linux,y%20c%C3%B3mo%20comenzar%20a%20usarlo.&text=Con%20las%20opciones%20chown%2C%20se,los%20archivos%2C%20directorios%20y%20enlaces.)
+
+
+📌 Si están en ubuntu el comando su root no funciona por que está desactivado y con ninguna contraseña se puede acceder a él, pero existe una alternativa que al final de cuentas es la misma, el comando `sudo su`
+
+🎲
+
+## 13. Variables de entorno
+
+Las variables de entorno son útiles cuando necesitamos que cierta información prevalezca para poder trabajar más rápido o necesitamos guardar información para no tener que recordarla constantemente.
+
+En Linux hay varias variables de entorno que ya están preestablecidas, para verlas desde la consola es tan simple como usar el comando seguido de la variable de entorno.
+
+Por cierto, todas las variables de entorno se mandan a llamar con un signo de peso por delante, de lo contrario se interpretará como un comando.
+
+🔥 Crear un link simbólico:     
+- `ln -s Documents/Dev Desarrollo`: ejemplo
+	- s simbólico 
+	- Desarrollo es el nombre asignado a este link s.
+	- Es como un acceso directo a una carpeta
+	- Los permisos que se le asignan no tienen valor (dummy - ficticio)
+- `ls -l `
+	- Vemos: `Desarrollo -> Documents/Dev`
+- `cd Desarrollo`
+	- Llega a la carpeta Documents/Dev
+- `rm Desarrollo`
+	- Eliminar 
+
+
+🔥 Variables de entorno:     
+- `printenv`   
+	- Muestra variables de entorno configuradas 
+- `echo $HOME`
+	- Imprimir una variable de entorno
+	- Imprime la ruta de ubicación 
+- `cd Documents/Dev/`
+	- Nos movemos a otra ruta para probar ⬇
+- `cd $HOME`
+	- Nos regresa a la ruta asignada en $HOME
+	- Es útil para configurar rutas especificas 
+- `echo $PATH`
+	- Muestra todas las rutas de la ubicación de los binarios que ejecuta el sistema 
+
+🔥 Modificar variables de entorno     
+- Desde `~`
+- `ls -la`
+- Buscamos el archivo `.bashrc`
+	- Archivo donde se mantienen las configuraciones del bash
+	- Lo mismo con .Zshrc
+- `code .bashrc`
+	- Esto abre el archivo en VSC
+	- Encontramos el alias de ls 📌
+- Creamos un alias 
+	- `alias l='ls -lh'`
+- Creamos una variable de entorno
+	- `PLATZI_MESSAGE="Hola amigos"`
+- Regresamos a la terminal y recargamos bash
+	- `bash`
+- Probamos la variable creada
+	- `echo $PLATZI_MESSAGE`
+- Revisamos la ubicación de los binarios  
+	- `echo $PATH`
+- `mkdir bin`
+- `pwd`: revisamos la ruta de la nueva carpeta bin
+- Regresamos a VSC para modificar el archivo
+	- `PATH=$PATH:/home/ubuntu/bin`
+- En la terminal
+	- `bash`
+	- `echo $PATH`
+
+
+✨ Si esto no funciona hacerlo desde la terminal de VSC
+
+
+❄ Ejemplo de uso de las variables de entorno:     
+Puedes crear una variable de entorno que te de la ruta de alguna carpeta en Windows sin que tenga que escribir toda la ruta.
+
+![Crear](https://i.postimg.cc/mrXWfXtT/13-crear-variable-entorno.png)
+
+Ahora guardo el archivo, reinicio la terminal y ejecuto:
+
+![Ejecutar](https://i.postimg.cc/FzQY3HmW/13-ejecutar-variable.png)
+
+Esto se puede poner mejor porque también puedo crear un alias que no se borre cuando cierre la terminal.
+
+![Alias permanente](https://i.postimg.cc/RCkYJ381/13-crear-alias-permanente.png)
+
+Ahora solo tengo que ejecutar `cc` para ir a mi carpeta en Windows sin necesidad de escribir la variable de entorno.
+
+![Ejecutar alias](https://i.postimg.cc/Wp04kZzT/13-ejecutar-alias.png)
+
+
+Ahora crea las variables o alias que necesites para ser más eficiente tu trabajo, por ejemplo, podrías crear un alias que ejecute VS Code y lo abra en la carpeta que requieres.
+
+_Contribución creada por: Miguel Gonzalez._
+
+🎲
+
+## 14. Comandos de Búsqueda
+
+. which cd 
+	: ayuda a encontrar la ruta de los binarios
+. which code
+. which obs
+	: obs programa para grabar pantalla
+
+. find ./ -name file
+	: busca todos los archivos que se llamen file
+. find ./ -name *.txt | less
+. find ./ -type d -name Docuemnts
+	: f que busque files y d busca directorios
+. find ./ -type f -name *.log
+. find ./ -size 20M
+	: encuentra archivos por tamaño
+ 
 ### Emojis:  
 <details>
   <summary>Haz click aquí para ver los emojis 👀</summary>
@@ -873,52 +1026,10 @@ Es bastante sencillo cambiar los permisos de forma simbólica. Para esto, hay qu
 
 </details>
 
-🎲🎲🎲🎲🎲🎲
-
-🎲
-
-## 13. Variables de entorno
-
-link simbolico:
-. ln -s Documents/Dev Desarrollo
-	:  es como un acceso directo
-. ls -l 
-. cd Desarrollo
-. rm Desarrollo
+🎲🎲🎲🎲🎲
 
 
-Variables de entorno:
-. printenv
-. echo $HOME	
-. cd Documents/Dev/
-. cd $HOME
-. echo $PATH
-
-. ls -la
-. code .bashrc
-
-Si esto no funciona hacerlo desde la terminal de VSC
-
-
-13. Comandos de Búsqueda
-
-. which cd 
-	: ayuda a encontrar la ruta de los binarios
-. which code
-. which obs
-	: obs programa para grabar pantalla
-
-. find ./ -name file
-	: busca todos los archivos que se llamen file
-. find ./ -name *.txt | less
-. find ./ -type d -name Docuemnts
-	: f que busque files y d busca directorios
-. find ./ -type f -name *.log
-. find ./ -size 20M
-	: encuentra archivos por tamaño
- 
-
-14. Su majestad: grep
+## 15. Su majestad: grep
 
 . ls
 	movies.csv
