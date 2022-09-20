@@ -678,7 +678,8 @@ Los siguientes caracteres se leen de 3 en 3, por cada uno de los tipos de usuari
 
 ![Permisos](https://i.postimg.cc/5yy15TNT/11-permisos.png)
 
-![Permisos](https://i.postimg.cc/fWjsLkd3/11-owner-group-world.webp)
+---
+![Permisosxd](https://i.postimg.cc/fWjsLkd3/11-owner-group-world.webp)
 
 🔥 Modo octal
 
