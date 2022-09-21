@@ -1211,6 +1211,8 @@ touch platzi.html && curl https://platzi.com/ > platzi.html && explorer.exe plat
 
 Puedes aprender a crear archivos comprimidos .zip o .tar que vemos en nuestro sistema operativo. Estos encapsulan muchos archivos e incluso carpetas.
 
+Comprimir y descomprimir archivos usando los comandos tar, gzip, bzip, zip, unzip y rar desde la consola.
+
 🔥 Antes de comprimir    
 - `mkdir ToCompress`
 - `cd ToCompress/`
@@ -1220,9 +1222,9 @@ Puedes aprender a crear archivos comprimidos .zip o .tar que vemos en nuestro si
 
 ### Comprimiendo archivos .tar
 - `tar -cvf ToCompress.tar ToCompress `
-	- c comprimir 
-	- v muestra todo lo que estuvo comprimiendo 
-	- f file
+	- c Crear un nuevo archivo 
+	- v Mostrar el proceso de compresión
+	- f File Nombre del archivo
 	- 1ero va el nombre del comprimido y luego el nombre de la carpeta a comprimir
 - `ls`
 - `tar -cvzf ToCompress.tar.gz ToCompress `
@@ -1234,7 +1236,7 @@ Puedes aprender a crear archivos comprimidos .zip o .tar que vemos en nuestro si
 - `rm -r ToCompress`
 	- r recursiva
 - `tar -xzvf ToCompress.tar.gz`
-	- xz descomprimir
+	- xz Extrae el contenido del archivo comprimido
 - `ls`
 
 ### Comprimiendo archivos .zip
@@ -1242,18 +1244,24 @@ Puedes aprender a crear archivos comprimidos .zip o .tar que vemos en nuestro si
 	- r recursiva
 - `ls`
 
-🔥 Descomprimir   
+🔥 Descomprimir    
 - `rm -r ToCompress`
 - `unzip ToCompressInZip.zip`
 	- A: Para todo
 
-📌 De no estar instalado zip o rar puedes instalar:     
-- apt en ubuntu
-- pacman en arch Linux
-- sudo apt install rar 
-- sudo apt install unrar
+### Comprimiendo archivos .gzip
+```sh
+gzip -9 nameArchivo-noDirectorio
+```
+- -9: Es el nivel de compresión se puede usar desde -1 hasta -9. Donde -9 es compresión óptima y es más lento.
 
-### Comprimiendo archivos **rar** :
+🔥 Descomprimir       
+```sh
+gzip -d nameArchivo-comprimido.gz
+```
+- d: Descomprimir   
+
+### Comprimiendo archivos .rar :
 
 ```shell
 rar a -r ToCompressInRar.rar ToCompress
@@ -1271,56 +1279,94 @@ unrar x -r ToCompressInRar.rar ToCompres
 tar tvf archivo.tar
 ```
 
+📌 De no estar instalado zip o rar puedes instalar:     
+- apt en ubuntu
+- pacman en arch Linux
+- sudo apt install rar 
+- sudo apt install unrar
+
+
+**¿Y los directorios de destino para descomprimir?**  
+
+🤔 Justificación: No siempre se necesitan descomprimir los archivos en el directorio en el que estoy trabajando, además especificar directorios de salida **SIEMPRE** es una **buena práctica**.
+
+Se deben tener en cuenta 2 cosas:
+
+-   El directorio de salida debe haberse creado antes de descomprimir. (`mkdir ~/destino`)
+-   La opción que especifica el directorio de salida siempre debe ir después del nombre del archivo a extraer, seguida de la ruta completa de la carpeta (ya existente) para extracción
+
+🔥 Extraer archivos .tar a un directorio específico
+
+```sh
+tar -xvf ToCompress.tar --directory ~/destino
+```
+
+🔥 Extraer archivos .tar.gz a un directorio específico.
+
+```sh
+tar -xzvf ToCompress.tar.gz --directory ~/destino
+```
+
+🔥 Extraer archivos .zip a un directorio específico.
+
+```sh
+unzip ToCompressInZip.zip -d ~/destino
+```
+
+Otra cosa a tener en cuenta es que zip comprime mejor que .tar tanto archivos binarios como de texto, no tanto como lo hace gzip, pero si es muy cercano. Su desventaja es que requiere la instalación adicional de un paquete
+
+
+[# Comprimir y descomprimir archivos](https://blog.desdelinux.net/con-el-terminal-comprimir-descomprimir-archivos/)
+
 🎲
 
 ## 18. Manejo de procesos
 
-. ps
-	: muestra los procesos que están corriendo en la terminal
-. cat & ls
-. ps
-. cat & ls
-. ps
-	: copiar id
-. kill 20425
-. ps ax 
-	: Si el proceso está en segundo plano y se requiere detener o es un proceso que está colgado y se debe detener
-. kill -9 20425
-. ps
-. top 
-	: muestra procesos que están usando mas recursos
-	: tecla h : filtrar
-	: salir con q
-	: u para filtar : ubuntu
-	: q para salir de esa vista
-. kill 20167 
-	: matar procesos si se quedan atascados 
-	
-	
-usar htop
-sudo apt install htop
+Puedes manejar los procesos como visualizar, eliminar o filtrar desde la terminal de un modo diferente a usar ctrl + alt +suprimir. Te explicamos cómo lograrlo.
+
+### Ver los procesos activos en la terminal (ps)
+- `ps`
+	- Muestra los procesos que están corriendo en la terminal
+	- PID Process ID 
+- `cat & ls`
+- `ps`
+- `cat & ls`
+- `ps`
+	- bash, cat y ps está activo
+
+🔥 Matar un proceso   
+- `ps`
+	- Copiar id
+- `kill 20425`
+- `ps ax` 
+	- Si el proceso está en segundo plano y se requiere detener o es un proceso que está colgado y se debe detener
+- `kill -9 20425`
+- `ps`
+- `top`
+	- Muestra procesos que están usando mas recursos
+	- tecla h : filtrar
+	- q para Salir
+	- u para filtrar : ubuntu
+	- q para salir de esa vista
+	- Copiar un PID
+- `kill 20167 `
+	- Matar procesos si se quedan atascados 
 
 
-### Emojis:  
-<details>
-  <summary>Haz click aquí para ver los emojis 👀</summary>
+✨ Usar `htop`     
+- `sudo apt install htop`
 
-  <br/>
 
-**🔥 Emojis:**        
-- 🔥 ❄ ✨ 📌 🎲 🔍 🎉     
-- 🤴🦁 🧔🐯  👀 👉 👈 ☝ 👇   
-- 😊 👈👀 😌 😍  😅     
-- 🟥 ⬜ ⬛ ◼ ◻ 🔷 🔶 🔻 🔺 🔴 🟣       
-- ✔ ➕ ↕ ↔ ⬅ ✅ ▶ ❌ ❗ ⬆ ⬇ ❓          
-- 🧰 ⛓ 💡             
-- 🔅 🔆 🌚 🌗      
+❄ Nivel de poder de algunos (para mi) programas para gestionar procesos:   
+- **4to: `ps`** (Dios griego: Hephaestus)  
+- **3ro: `top`** (Dios griego: Apollo)  
+- **2do: `htop`** (Dios griego: Poseidon)  
+- **1ro: `glanses`** (Dios griego: Zeus) lo malo de este es que consume bastante CPU, pero se ve genial y te dice que problemas ocurren XD.
 
-</details>
+
+- `bpytop` lo clasificaría en el nivel de Zeus xD, su interfaz me parece muy cool
 
 🎲
-
-🎲🎲
 
 ## 19. Procesos en foreground y background
 
@@ -1330,69 +1376,129 @@ Cuando un proceso está en ejecución sin que sea mostrado en la terminal se dic
 
 ¿Te acuerdas del truco que aprendimos para tener un editor de texto supe sencillo en la terminal? Lo usaremos en esta ocasión. Imagina que queremos una nota desde la terminal y para eso usamos:
 
-
+```bash
 cat > mi_nota.txt
+```
 
 
-En nuestra terminal se verá el prompt esperando a que ingresemos texto.
+Nuestra terminal se verá de la siguiente manera, con el prompt esperando a que ingresemos texto.
+
+![Proceso](https://i.postimg.cc/v86mfFr4/18-procesos-foreground-background.webp)
 
 Podemos escribir algo y después terminar el input del texto con CTRL+D, pero en esta ocasión no haremos eso. Lo que queremos hacer será suspender el proceso, esto lo podemos hacer con CTRL+Z. El resultado que nos mostrará la terminal deberá ser uno donde nos indique la suspensión del comando cat.
 
-Ahora hemos movido nuestro comando exitosamente al background de la terminal. Para consultar todos los procesos que tenemos en background podemos hacerlo con el comando jobs.
+![Suspender](https://i.postimg.cc/wMx0KccP/19-suspender-proceso.webp)
+
+Ahora hemos movido nuestro comando exitosamente al background de la terminal. Para consultar todos los procesos que tenemos en background podemos hacerlo con el comando `jobs`.
+
+![Jobs](https://i.postimg.cc/QCP56p6c/19-jobs.webp)
 
 A la izquierda aparece el número del trabajo ( ⚠ ️.cuidado que no es lo mismo que el process ID). Si queremos traer la ejecución de nuevo a la terminal, es decir, al foreground; debemos usar el comando fg y especificar qué número de trabajo queremos continuar. Para nuestro caso será el 1.
 
 
+```bash
 fg 1
+```
 
 
 En caso de que estés usando ZSH como shell el formato para llamar el trabajo sería con un porcentaje. ZSH tiende a interpretar algunas cosas incluyendo las wildcards de manera diferente.
 
-
+```bash
 fg %1
-
+```
 
 Una vez enviado al foreground veremos como se activa la ejecución del comando en la terminal y podremos seguir escribiendo nuestra nota. Recuerda que una vez terminemos de escribir presionamos CTRL+D para terminar el input y guardar.
 
+![fg 1](https://i.postimg.cc/Pq2C3WJN/19-fg-1.webp)
+
 Cuando se guarda nuestra nota nos daremos cuenta de que el proceso por fin termina y si usamos jobs no nos mostrará ningún trabajo en background.
 
- -- Otras formas de enviar al background --
+### Otras formas de enviar al background
 
 Existen otras formas de enviar comandos al background. La primera es usando el operador de control & al final de un comando. Este operador nos permite enviar de manera directa un proceso al background una vez ejecutado. Por ejemplo:
 
 
+```bash
 cat > mi_nota.txt &
+```
 
+![Algo xd](https://i.postimg.cc/s2Q2ctkH/19.webp)
 
 La segunda forma es con el comando bg. Este sirve de manera similar que fg solo que en vez de traerlo al foreground este lleva un trabajo al background. Por ejemplo:
 
-
+```bash
 bg 1
-
+```
 
 Bien, la pregunta ahora es ¿Cómo usamos bg? Imagina que abrimos algún programa de interfaz gráfica desde la terminal. En mi caso abriré el navegador Google Chrome. Para hacerlo desde la terminal solo ejecuta:
 
-
+```bash
 google-chrome-stable
-
+```
 
 Y verás como se ejecuta pero no nos deja hacer ninguna otra tarea ya que la ventana del navegador está abierta:
 
+![Google](https://i.postimg.cc/FHqr7TYy/19-google.webp)
+
+
 Para suspender el proceso como ya sabes lo hacemos con CTRL+Z y si revisamos con jobs veremos como el proceso se encuentra en pausa. En este caso la ventana del navegador que se abrió no nos dejará interactuar ni escribir en ella.
+
+![Interactuar](https://i.postimg.cc/fLvQjCRg/19-interactuar.webp)
+
 
 Como se ve en la imagen el navegador tiene el número de trabajo 1. Para dejar nuestro navegador corriendo y al mismo tiempo seguir trabajando en la terminal tenemos que reactivar este proceso y a la vez mandarlo al background. Para ello ejecutamos:
 
-
+```bash
 bg 1
-
+```
 
 Con esto podremos ver como nuestro proceso de Google Chrome sigue corriendo en el background dejando la terminal disponible para nosotros.
 
 ¡Genial! Con esto ya sabes cómo mover procesos dentro de la terminal del foreground al background. Esto es muy útil cuando solo tenemos una terminal y necesitamos ejecutar varios comandos en paralelo. ¡Te espero en la siguiente clase!
 
 
+### ¿Cómo manejar procesos?  
+🔥 Diferencia entre `Ctrl + C` y `Ctrl + Z`  
+- `Ctrl + C` 
+	Lo que hace es que finaliza o mata un proceso.  
+- `Ctrl + Z` 
+	Lo que hace es que pausa o suspende un proceso con lo que después lo podremos volver a llamar con el comando fg foreground (primer plano) o con el comando bg background (segundo plano)  
+
+Y un ejemplo muy sencillo que les servirá para controlar procesos es el siguiente:  
+
+Crear un listado recursivo (Que liste todos los archivos y directorios)  
+
+Para eso seguimos los siguientes pasos:  
+
+1. Primero hacemos el comando `cd /` para dirigirnos a la raíz de nuestro sistema.  
+2. Después ejecutamos el comando `ls -R` y comenzará a listar TODO lo que existe dentro de nuestro S.O.  
+3. Ahora lo que hacermos será confirmar lo aprendido, utilizamos `Ctrl + C` y veremos que se cancela el proceso, pero lo interesante viene cuando hacemos lo siguiente 😄  
+4. Ahora ejecutamos el mismo comando para listar TODO, `ls -R` y lo detenemos con `Ctrl + Z` a lo que nos saldrá lo siguiente: `[Número del proceso] + Id del proceso + En donde se detuvo el proceso`  
+
+Y se verá algo como esto: `[1] + 40751 suspended (signal) ls --color=tty -R`  
+
+Y repetiremos el paso 4 otras 3 veces (Ustedes confíen 😄)  
+
+Ahora si ejecutamos el comando jobs nos mostrará todos los procesos suspendidos y si tenemos ejecutando alguno en segundo plano.  
+
+Imgur  
+
+Para volver a activar algún proceso podemos hacerlo con el comando `fg %Número del proceso`  
+
+Por ejemplo en bash con `fg %1` y en zsh con `fg %1` para volver a correr el primer proceso que suspendimos, y ahora le damos Crl + C para ahora sí matarlo, ahora el proceso 1 ya no existirá al ejecutar jobs pero el 2, 3 y 4 ahí seguirán 😄  
+
+Esto es muy importante para cuando queremos manejar diferentes procesos, por ejemplo con el comando `sleep 10000 &` podrá un proceso en segundo plano, entonces no lo podremos ver, pero nos marca el Número del proceso entre los `[]` también lo podemos ver con `jobs` junto con su número de proceso, si lo queremos traer a primer plano lo podemos hacer con el comando `fg %1` por ejemplo y de ahí ya cancelarlo o suspenderlo, o una manera más rápida, solo ejecutar el comando `kill %Número del proceso` por ejemplo: con el mismo ejemplo de `sleep 10000 &` si nos da el `[1]` lo podremos terminar con `kill 1` o `kill %1` y nos saldrá algo como `[1] + 41723 terminated sleep 10000` y ahora ya saber como manejar y exterminar todos los procesos como terminator 🤖  
+
+
+🔥 Diferencia entre `Ctrl + L` y `clear`      
+- `Ctrl + L` Lo que hace es que manda para arriba lo que está impreso en la terminal, dejándola a simple vista limpia, pero en realidad lo puedes regresar a eso que esta impreso ahí.  
+- `clear` Lo que hace es que limpia la terminal, y todo lo que estaba impreso en la terminal.
+
+🎲
 
 ## 20. Editores de texto en la terminal
+
+Una de las utilidades más importantes de la terminal es el editor de texto. Hay diferentes opciones, pero Vim es uno de los más sencillos y populares. También está Emacs y Nano 🤔. Veamos con más detalle el uso de Vim.
 
 . vim 
 	: vi moderno
@@ -1431,6 +1537,25 @@ Guardar y salir
 . :wp! : fuerza la salida
 . cat ejemplo.py
 
+
+### Emojis:  
+<details>
+  <summary>Haz click aquí para ver los emojis 👀</summary>
+
+  <br/>
+
+**🔥 Emojis:**        
+- 🔥 ❄ ✨ 📌 🎲 🔍 🎉     
+- 🤴🦁 🧔🐯  👀 👉 👈 ☝ 👇   
+- 😊 👈👀 😌 😍  😅     
+- 🟥 ⬜ ⬛ ◼ ◻ 🔷 🔶 🔻 🔺 🔴 🟣       
+- ✔ ➕ ↕ ↔ ⬅ ✅ ▶ ❌ ❗ ⬆ ⬇ ❓          
+- 🧰 ⛓ 💡             
+- 🔅 🔆 🌚 🌗      
+
+</details>
+
+🎲
 
 
 ## 21. Personalizar la terminal de comandos
