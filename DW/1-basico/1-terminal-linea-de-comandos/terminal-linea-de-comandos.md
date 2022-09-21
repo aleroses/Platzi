@@ -924,8 +924,9 @@ Por cierto, todas las variables de entorno se mandan a llamar con un signo de pe
 
 
 🔥 Variables de entorno:     
-- `printenv`   
+- `printenv`: Print environment entorno de impresión   
 	- Muestra variables de entorno configuradas 
+	- Tambien funciona `env`
 - `echo $HOME`
 	- Imprimir una variable de entorno
 	- Imprime la ruta de ubicación 
@@ -936,6 +937,15 @@ Por cierto, todas las variables de entorno se mandan a llamar con un signo de pe
 	- Es útil para configurar rutas especificas 
 - `echo $PATH`
 	- Muestra todas las rutas de la ubicación de los binarios que ejecuta el sistema 
+	- `echo $PATH | tr : \\n`: Mas ordenado Alt + ?
+	- `echo $PATH | tr : \\n | less`
+		- Para ver todo el $PATH y poder buscar rutas
+
+- `which ls`
+	- Muestra la ubicación del alias
+	- Si copias la ruta que muestra este comando, debería funcionar igual que al hacer un `ls`
+	- `cd /usr/bin`: Aquí debemos encontrar el alias ls
+		- `ls`
 
 🔥 Modificar variables de entorno     
 - Desde `~`
@@ -990,133 +1000,280 @@ Ahora crea las variables o alias que necesites para ser más eficiente tu trabaj
 
 _Contribución creada por: Miguel Gonzalez._
 
+❄ Aportes:      
+- [Tutorial de Variables de entorno](https://www.youtube.com/watch?v=ocdlXH9jAjA)
+- [30 prácticos alias para tu Bash](https://programmerclick.com/article/24911433653/)
+
 🎲
 
 ## 14. Comandos de Búsqueda
 
-. which cd 
-	: ayuda a encontrar la ruta de los binarios
-. which code
-. which obs
-	: obs programa para grabar pantalla
+A veces necesitas localizar varios archivos del mismo tipo que ocupan espacio innecesario en tu disco duro.
 
-. find ./ -name file
-	: busca todos los archivos que se llamen file
-. find ./ -name *.txt | less
-. find ./ -type d -name Docuemnts
-	: f que busque files y d busca directorios
-. find ./ -type f -name *.log
-. find ./ -size 20M
-	: encuentra archivos por tamaño
- 
-### Emojis:  
-<details>
-  <summary>Haz click aquí para ver los emojis 👀</summary>
+Por ejemplo, algunos programas que funcionan desde la consola, como npm, guardan sus errores en archivos de extensión “.log” y si no estás pendiente de eliminarlos se van acumulando en tu disco duro.
 
-  <br/>
+- `which cd` cd es un comando de la shell
+	- Ayuda a encontrar la ruta de los binarios
+	- `type cd`
+- `which code`
+- `which obs`
+	- Obs programa para grabar pantalla
+- `whereis`
 
-**🔥 Emojis:**        
-- 🔥 ❄ ✨ 📌 🎲 🔍 🎉     
-- 🤴🦁 🧔🐯  👀 👉 👈 ☝ 👇   
-- 😊 👈👀 😌 😍  😅     
-- 🟥 ⬜ ⬛ ◼ ◻ 🔷 🔶 🔻 🔺 🔴 🟣       
-- ✔ ➕ ↕ ↔ ⬅ ✅ ▶ ❌ ❗ ⬆ ⬇ ❓          
-- 🧰 ⛓ 💡             
-- 🔅 🔆 🌚 🌗      
+🔥 Encontrar archivos    
+- `find ./ -name file`: Ubicados en el Home ~
+	- Busca todos los archivos que se llamen file
+- `find ./ -name *.txt | less`
+- `find ./ -type d -name Docuemnts`
+	- `d` busca directorios
+- `find ./ -type f -name *.log`
+	- `f` busca files
+- `find ./ -type f,d -name "D*"`
+- `find ./ -size 20M`
+	- Encontrar archivos por tamaño o peso
+- `find ./ -size 4k`
+	- Buscará los archivos que pesen exactamente 4kb
+- `find ./ -size +4k`
+	- Busca los archivos que pesen 4kb o más.
+- `find ./ -size -4k`
+	- Busca los archivos que pesen 4kb o menos.
+- `find ./ -type d -empty`
+	- Busca archivos vacíos empty
 
-</details>
 
-🎲🎲🎲🎲🎲
+🔥 Limitar la búsqueda (-maxdepth -mindepth)    
+Puede que no queramos buscar en absolutamente todas las carpetas del sistema, sino que queremos únicamente un pedacito. Para eso limitamos la profundidad de carpetas a la que el comando debe buscar, esto se hace con la opción `-maxdepth` seguido de la profundidad.    
+- `find ./ -type d -maxdepth 2`
 
+ A veces ya conocemos más o menos la estructura de nuestras carpetas, así que nos queremos saltar niveles, por lo que le asignamos una profundidad mínima al comando.     
+- `find ./ -type d -mindepth 2`
+
+✨ Reto:    
+- `find ~ -type f -name *.txt > ./sandbox/misarchivosdetexto.txt && cowsay "Archivos guardados exitosamente" | lolcat` 
+- `cat sandbox/misarchivosdetexto | lolcat`
+
+Para los que usan **zsh** deben ingresar el **wildcard** entre comillas:
+
+```shell
+'*.txt'
+```
+
+
+📌 Buscar en carpetas mediante una interfaz grafica desde la terminal:
+- Instalar **Ncdu,** a mi me facilito mucho la administración de archivos:  
+- [Ncdu](https://dev.yorhel.nl/ncdu/man)
+
+
+❄ Lecturas recomendadas
+
+- [Bash VS Zsh: Differences and Comparison – Linux Hint](https://linuxhint.com/differences_between_bash_zsh/)
+
+🎲
 
 ## 15. Su majestad: grep
 
-. ls
-	movies.csv
-. grep Towers movies.csv
-	: encontrar todas las películas con la palabra Towers dentro de el archivo movies.csv
-. grep the movies.csv
-. grep -i the movies.csv
-	: ignore case sensitive para que también tome en cuenta las mayúsculas 
-. grep -i the movies.csv | less
-. grep -c the movies.csv
-	. cuenta las veces/filas en las que aparece la palabra the
-. grep -ci the movies.csv
-	: también cuenta las mayúsculas
-. grep -vi towers movies.csv
-	: encontrar las películas que no coincidan 
-. grep -vi towers movies.csv > sintowers.txt
-. ls
-. cat sintowers.txt
-. wc movies.csv
-	: work count sirve para contar cuantas palabras hay
-	: 1 cuantas líneas tiene | cuantas letras | nro bits
-. wc -l movies.csv
-	: cuenta las lineas
-. wc -w movies.csv
-	: cuenta las palabras
-.wc -c movies.csv
-	: cuenta los bits
+Buscar texto dentro de un archivo con el comando `grep`.
+
+### ¿Qué significa grep?
+“Grep”:  **G**lobal **R**egular **E**xpression **P**rint.
+
+El comando grep utiliza regex (**Re**gular **Ex**pression) para realizar su búsqueda, si no sabes como armar un regex aquí tienes el [Curso de Expresiones Regulares](https://platzi.com/cursos/expresiones-regulares/)
+
+✨ Descargar archivo [movies.csv](https://drive.google.com/file/d/1d8Z5VyS34oAuofbFMRl7_GatYAbSRAHG/view)       
+- `ls`
+	- movies.csv
+- `grep Towers movies.csv`
+	- Encontrar todas las películas con la palabra Towers dentro del archivo movies.csv
+- `grep the movies.csv`
+- `grep -i the movies.csv`
+	- Ignore case sensitive para que también tome en cuenta las mayúsculas 
+- `grep -i the movies.csv | less`
+- `grep -c the movies.csv`
+	- Cuenta las veces/filas en las que aparece la palabra the
+- `grep -ci the movies.csv`
+	- También cuenta las mayúsculas y minúsculas 
+- `grep -vi towers movies.csv`
+	- Encontrar las películas que no coincidan con towers 
+- `grep -vi towers movies.csv > sintowers.txt`
+	- Guardar en un archivo txt
+- `ls`
+- `cat sintowers.txt`
+- `grep -m 10 Fan movies.csv`
+	- Limita la búsqueda 
+	- Busca las primeras 10 líneas que concuerden con la palabra “Fan”
+- `wc movies.csv`
+	- Work count sirve para contar cuantas palabras hay
+	- Cuantas líneas tiene | cuantas letras | Nro. bits
+- `wc -l movies.csv`
+	- Cuenta las líneas
+- `wc -w movies.csv`
+	- Cuenta las palabras
+- `wc -c movies.csv`
+	- Cuenta los bits
+
+Por si acaso quieren descargar el archivo directamente a la consola:
+
+```sh
+wget --no-check-certificate 'https://docs.google.com/uc?export=download&id=1d8Z5VyS34oAuofbFMRl7_GatYAbSRAHG' -O movies.csv
+```
+
+Se debe definir el id del documento, que esta dentro del enlace compartido en Recursos.
 
 
-15. Utilidades de red
-
-. ifconfig
-. ping www.google.com
-	: control c parar
-. curl www.google.com
-	: trae un archivo en formato texto a través de la red
-. curl www.google.com > index.html
-. less index.html
-. rm index.html
-. wget www.google.com
-	: trae desde internet
-	: descarga el archivo directamente en la pc
-cat index.html
-. rm index.html
-. traceroute www.google.com
-	: muestra todas la computadoras que intervienen en el camino para llegar hasta google
-. netstat -i
-	: muestra los dispositivos de red
-
-
-16. Comprimiendo archivos
-
-. mkdir ToCompress
-. cd ToCompress/
-. touch file1 file2 file3
-. cd ..
-. tree ToCompress/
-
--> Comprimir
-. tar -cvf ToCompress.tar ToCompress 
-	: c comprimir v muestra todo lo que estuvo comprimiendo f file
-	: 1ero va el nombre del comprimido y luego el nombre de la carpeta a comprimir
-. ls
-. tar -cvzf ToCompress.tar.gz ToCompress 
-	: z gi zip comprime en ese formato 
-. ls
-
--> Descomprimir
-. rm -r ToCompress
-	: r recursiva
-. tar -xzvf ToCompress.tar.gz
-	: xz descomprimir
-. ls
-
--> Comprimir
-. zip -r ToCompressInZip.zip ToCompress
-	: r recursiva
-. ls
-
--> Descomprimir
-rm -r ToCompress
-. unzip ToCompressInZip.zip
-	: A
+❄ **Otros casos de uso**      
+1.  Buscar algún paquete en específico que tengas instalado:
+	- `dpkg --get-selections | grep nombreDelPaquete`
+	- dpkg --get-selections te dirá todos tus paquetes instalados
+	- grep filtrará esa lista con el paquete que te interesa
+2.  Filtrar algún archivo en específico después de un `ls`:
+	- `ls -al | grep myFile.txt` 
+	- ls te dará la lista de todos tus archivos
+	- grep filtrará todos y te mostrará únicamente el que deseas
+3. Buscar algún contenido en específico dentro de algún archivo:
+	- `cat unArchivoLargo.txt | grep "La línea que busco"` 
+	- cat te listará todo el contenido de ese archivo 
+	- grep te filtrará únicamente lo que quieres ver
+4. Buscar una línea en específico en diferentes archivos por medio de un patrón:
+	- `grep "string" archivo_*`
+	- grep buscará la palabra "string" en todos los archivos que comiencen por "archivo_" y te los mostrará.
+5. Buscar usando expresiones regulares (te recomiendo aprender expresiones regulares, son MUY poderosas 👀):
+	> Imagina que tienes un archivo llamado test.txt y adentro contiene la siguiente frase:
+	> ◼**Imagina que quieres buscar algo**
 	
-	
-	
-17. Manejo de procesos
+	Entonces, podemos usar grep así:         
+	- `grep "Imagina .* algo" test.txt`
+	- grep buscará alguna coincidencia, la expresión .* indica que ahí dentro puede haber una o más letras, cualquier que sea, así que podrías leerla como: Imagina (cualquier cosa) algo.
+
+Hay muchos más casos de uso para `grep`, te dejo este blog que habla de algunos cuantos casos de uso más 👀👇:
+
+- [15 Practical Grep Command Examples In Linux / UNIX](https://www.thegeekstuff.com/2009/03/15-practical-unix-grep-command-examples/)
+
+
+📌 Revisar Escuela de Linux
+
+🎲
+
+## 16. Utilidades de red
+
+El manejo de redes es bastante amplio, de hecho, es toda una rama de la informática. Aquí aprenderás comandos básicos de utilidades de la red para que puedas obtener la información que necesites.
+
+### Configuración de tus dispositivos (ifconfig)
+
+Ve a tu consola, escribe el comando `ifconfig` y miremos el resultado.
+
+- `ifconfig`
+	- Muestra información de nuestra red
+- `ping www.google.com`
+	- Dice si una página está activa
+	- Control c para detener
+	- `ping -c 4 www.google.com` 
+		- Limita la cantidad de paquetes que enviamos
+	- `ping -s 20 www.google.com` 
+		- Especificar el tamaño de los paquetes (-s), el tamaño debe ser en bytes
+- `curl www.google.com`
+	- Trae un archivo en formato texto a través de la red
+	- En formato html
+	- `curl www.google.com > index.html`
+	- `less index.html`
+	- `rm index.html`
+- `wget www.google.com`: World Wide Web y la palabra get
+	- Trae desde internet
+	- Admite descargas a través de FTP, SFTP, HTTP y HTTPS
+	- Descarga el archivo directamente en la pc en index.html
+	- `cat index.html`
+	- `rm index.html`
+	- `wget www.google.com www.platzi.com`
+		- Podemos especificar varias direcciones para descargar varias páginas al mismo tiempo.
+- `traceroute www.google.com`
+	- Muestra todas la computadoras que intervienen en el camino para llegar hasta google
+- `netstat -i`
+	- Muestra los dispositivos de red
+
+
+✨ En algunas distribuciones de Linux no viene preinstalado `ifconfig` o `netstat`, para ello debemos instalar el paquete con `sudo apt install net-tools`. Otra alternativa para ver la dirección IP es usar el comando `ip address` o su abreviatura `ip a`
+
+✨ En algunas distribuciones de Linux no viene instalado el traceroute, lo pueden instalar con:  
+
+```sh
+sudo apt install inetutils-traceroute
+```
+
+
+❄ Con una simple línea de comandos podemos tener la landing de Platzi en nuestras manos.
+
+```bash
+touch platzi.html && curl https://platzi.com/ > platzi.html && explorer.exe platzi.html
+```
+
+🎲
+
+## 17. Comprimiendo archivos
+
+Puedes aprender a crear archivos comprimidos .zip o .tar que vemos en nuestro sistema operativo. Estos encapsulan muchos archivos e incluso carpetas.
+
+🔥 Antes de comprimir    
+- `mkdir ToCompress`
+- `cd ToCompress/`
+- `touch file1 file2 file3`
+- `cd ..`
+- `tree ToCompress/`
+
+### Comprimiendo archivos .tar
+- `tar -cvf ToCompress.tar ToCompress `
+	- c comprimir 
+	- v muestra todo lo que estuvo comprimiendo 
+	- f file
+	- 1ero va el nombre del comprimido y luego el nombre de la carpeta a comprimir
+- `ls`
+- `tar -cvzf ToCompress.tar.gz ToCompress `
+	- z: Comprime en formato .gzip
+	- Formato de compresión recomendado📌
+- `ls`
+
+🔥 Descomprimir      
+- `rm -r ToCompress`
+	- r recursiva
+- `tar -xzvf ToCompress.tar.gz`
+	- xz descomprimir
+- `ls`
+
+### Comprimiendo archivos .zip
+- `zip -r ToCompressInZip.zip ToCompress`
+	- r recursiva
+- `ls`
+
+🔥 Descomprimir   
+- `rm -r ToCompress`
+- `unzip ToCompressInZip.zip`
+	- A: Para todo
+
+📌 De no estar instalado zip o rar puedes instalar:     
+- apt en ubuntu
+- pacman en arch Linux
+- sudo apt install rar 
+- sudo apt install unrar
+
+### Comprimiendo archivos **rar** :
+
+```shell
+rar a -r ToCompressInRar.rar ToCompress
+```
+
+🔥 Descomprimir   
+```shell
+unrar x -r ToCompressInRar.rar ToCompres
+```
+
+
+❄ Si quieren ver el contenido de un archivo tar sin necesidad de descomprimirlo, puedes ejecutar:
+
+```bash
+tar tvf archivo.tar
+```
+
+🎲
+
+## 18. Manejo de procesos
 
 . ps
 	: muestra los procesos que están corriendo en la terminal
@@ -1144,8 +1301,28 @@ usar htop
 sudo apt install htop
 
 
+### Emojis:  
+<details>
+  <summary>Haz click aquí para ver los emojis 👀</summary>
 
-18. Procesos en foreground y background
+  <br/>
+
+**🔥 Emojis:**        
+- 🔥 ❄ ✨ 📌 🎲 🔍 🎉     
+- 🤴🦁 🧔🐯  👀 👉 👈 ☝ 👇   
+- 😊 👈👀 😌 😍  😅     
+- 🟥 ⬜ ⬛ ◼ ◻ 🔷 🔶 🔻 🔺 🔴 🟣       
+- ✔ ➕ ↕ ↔ ⬅ ✅ ▶ ❌ ❗ ⬆ ⬇ ❓          
+- 🧰 ⛓ 💡             
+- 🔅 🔆 🌚 🌗      
+
+</details>
+
+🎲
+
+🎲🎲
+
+## 19. Procesos en foreground y background
 
 Como viste en la clase de procesos podemos correr de manera asíncrona comandos, y si estos no se completan quedarán activos dentro de los procesos de la terminal.
 
@@ -1215,7 +1392,7 @@ Con esto podremos ver como nuestro proceso de Google Chrome sigue corriendo en e
 
 
 
-19. Editores de texto en la terminal
+## 20. Editores de texto en la terminal
 
 . vim 
 	: vi moderno
@@ -1256,7 +1433,7 @@ Guardar y salir
 
 
 
-20. Personalizar la terminal de comandos
+## 21. Personalizar la terminal de comandos
 
 -> https://www.edevars.com/blog/personalizar-terminal
 
@@ -1338,7 +1515,7 @@ Para acceder a la configuracion inicial por si no te gusta algo o bien quieres c
 . USER :~$ p10k configure
 
 
-21. Nunca pares de hackear
+## 22. Nunca pares de hackear
 
 Libros recomendados
 . Linux Basics for Hackers
@@ -1361,6 +1538,8 @@ Para Linux
 **🔥 Team:**    
 - Gabriel Missael Barco
 - Emmanuel Rodríguez Ramírez
+- Miguel Gonzalez
+
 
 </details>
 
