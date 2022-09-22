@@ -14,7 +14,7 @@ Descargar F-Droid: Darle todos los permisos y luego al terminar la descarga volv
 Luego.    
 📌 Volvemos a la página donde nos dice... Termux application can be obtained from F-Droid form [here](https://f-droid.org/en/packages/com.termux/). Darle a here.
 Darle a instalar. Otorgar todos los permisos y luego al finalizar quitarle los permisos. 👀
- 
+
 
 🔥😌 Configuración: Habilitar un repositorio  
 - pkg install root-repo

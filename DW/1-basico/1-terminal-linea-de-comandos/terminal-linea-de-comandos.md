@@ -1,6 +1,6 @@
 # Curso de Introducción a la Terminal y Línea de Comandos
 > **Enrique Devars** - [Frontend Developer en Platzi](https://platzi.com/profesores/codevars/)    
-> **@codevars**
+> **@codevars** en Twitter - **edevars** en GitHub
 
 [Link curso](https://platzi.com/cursos/terminal/)
 
@@ -1500,159 +1500,211 @@ Esto es muy importante para cuando queremos manejar diferentes procesos, por eje
 
 Una de las utilidades más importantes de la terminal es el editor de texto. Hay diferentes opciones, pero Vim es uno de los más sencillos y populares. También está Emacs y Nano 🤔. Veamos con más detalle el uso de Vim.
 
-. vim 
-	: vi moderno
-	: :q salir
-. vim index.html
-	: tecla i
-	: insert
-<div> Hola alumnos </div>
-Escribir un titulo
-	: tecla esc
-	: normal
-/titulo ENTER
-	: para salir mueve el cursor y
-	: tecla esc
-
-Para eliminar una línea
-. modo normal
-. ir al inicio de la línea o en cualquier lado
-. presionar tecla dd 
-
-Guardar archivo:
-. modo inserción 
-	: asddfasfsa
-. modo normal
-. :w
-
-Guardar y salir
-. :wq
-
-. cat index.html
-. vim ejemplo.py
-. i
-. print("Hola mundo")
-. tecla esc
-. :wq
-. :wp! : fuerza la salida
-. cat ejemplo.py
+### Cómo usar Vim en la terminal
+- `vim` 
+	- Vim: Vi modern
+	- Escribir `:q` para salir
+	- Tambien para salir: `Esc + shift + zz`
+	- Existe `vi` que es un editor antiguo 
 
 
-### Emojis:  
-<details>
-  <summary>Haz click aquí para ver los emojis 👀</summary>
+🔥 Crear y editar archivos    
+- `vim index.html`
+	- Ingresar texto 📌
+		- Escribir: `i` 
+		- En la parte inferior cambia a `insert`
+		- <div> Hola alumnos </div>
+	- Dejar de ingresar texto 📌
+		- Presionar tecla `Esc` 
+		- Con las flechas puedes moverte por el contenido 
+		- En la parte inferior cambia a `normal`
+	- Hacer búsquedas rápidas con `/` 📌
+		- Escribe `/titulo` y luego ENTER
+		- De encontrar coincidencias el cursor se moverá hasta esa palabra  
+	- Salir del modo búsqueda 📌
+		- Mueve el cursor de escritura |
+		- Presiona la tecla `Esc`
+	- Eliminar líneas de texto 📌
+		- Pasar al modo normal con `Esc`
+		- Ir al inicio de la línea o en cualquier lado
+		- Presionar tecla `d` dos veces
+	- Guardar archivo: 📌
+		- Modo inserción tecla `i`
+			- Escribir algo de texto...
+		- Modo normal con `Esc`
+		- Guardar cambios con `:w`
+		- Guardar y salir con `:wq`
+- `cat index.html`
+- `vim ejemplo.py`
+	- Resalta sintaxis del lenguaje 
+	- `i`
+		- `print("Hola mundo")`
+	- Tecla `Esc`
+	- `:wq`
+	- `:wq!`: Fuerza la salida
+- `cat ejemplo.py`
 
-  <br/>
+✨ Otra forma de salir de este editor es con:
+- `:q!`
 
-**🔥 Emojis:**        
-- 🔥 ❄ ✨ 📌 🎲 🔍 🎉     
-- 🤴🦁 🧔🐯  👀 👉 👈 ☝ 👇   
-- 😊 👈👀 😌 😍  😅     
-- 🟥 ⬜ ⬛ ◼ ◻ 🔷 🔶 🔻 🔺 🔴 🟣       
-- ✔ ➕ ↕ ↔ ⬅ ✅ ▶ ❌ ❗ ⬆ ⬇ ❓          
-- 🧰 ⛓ 💡             
-- 🔅 🔆 🌚 🌗      
+✨ `:w` de wardar, ¡entendido!
 
-</details>
+🔥 Otras utilidades:    
+-   **Teclas dd**: ( dos d seguidas) sobre la línea actual la borra, si nos ponemos al principio del fichero y vamos pulsando dd borraremos todo el fichero
+-   **Tecla u**: Deshace todo lo que hemos echo ya sea escrito o borrado.
+-   **Tecla o**: Inserta una linea en la posición del cursor.
+-   **Teclas :w**: Graba el flechero en el disco
+-   **Teclas :q**: Sale del editor, si hay texto editado no te deja salir sin grabar.
+-   **Teclas :q!**: Sale del editor sin grabar
+-   **Teclas :wq**: Graba el texto en disco y sale del editor
+-   **Teclas :set**: number Pone el numero de fila en el editor
+-   **Teclas Shift+G**: Vas al final del fichero
+-   **Teclas gg**: Vas al principio del fichero
+-   **Teclas /**: Sirve para buscar, después de la tecla / ponemos lo que queremos buscar y pulsamos intro. Para ir al siguiente resultado de la búsqueda pulsamos n y N para ir al anterior.
+
+
+❄ Recomendaciones:     
+
+- Si quieres mayor control en Vim e instalar plugins te recomiendo: [Vim Plug](https://github.com/junegunn/vim-plug)
+
+- Si quieres practicar VIM en tu misma Terminal, ejecuta el siguiente programa que ya viene incorporado.
+
+```bash
+vimtutor
+```
+
+- **[Videojuego](https://vim-adventures.com/)** didáctico para aprender a usar VIM
+
+- [Curso de vim: Hola Mundo ](https://www.udemy.com/course/vim-aumenta-tu-velocidad-de-desarrollo/)
+
+-  [SpaceVim](https://spacevim.org/), es un manejador de temas y plugins muy amigable para vim y neoVIm, para trabajar directamente sin tardar tanto tiempo en configurar Vim.
+
+
+
+❄ Lecturas recomendadas
+
+- [GNU nano](https://www.nano-editor.org/)
+- [Vim documentation : vim online](https://www.vim.org/docs.php)
+- [GNU Emacs documentation - GNU Project](https://www.gnu.org/software/emacs/documentation.html)
+- [Vim Syntax Highlighting – Linux Hint](https://linuxhint.com/vim_syntax_highlighting/)
 
 🎲
 
-
 ## 21. Personalizar la terminal de comandos
+
+Podemos personalizar la terminal para que quedé bonita, profesional y sea muy cómoda.
+
+### Cómo personalizar la terminal de comandos
+
+Para esto, podemos usar un emulador llamado [Tilix](https://gnunn1.github.io/tilix-web/). En Tilix podemos tener varias terminales activas.
 
 -> https://www.edevars.com/blog/personalizar-terminal
 
-. Instalar emulador
-	: sudo apt install tilix
+🔥 Instalar emulador          
+- `sudo apt install tilix`
 
-. Instalar zsh para Ubuntu / Debian
-	: sudo apt install zsh
+🔥 Instalar zsh para Ubuntu / Debian    
+- `sudo apt install zsh`
 
-. Verificar la version 
-	: zsh --version
+🔥 Verificar la version       
+- `zsh --version`
 	
-. Volverla nuestra shell por defecto
-	: chsh -s $(which zsh) 
+🔥 Volverla nuestra shell por defecto        
+- `chsh -s $(which zsh)`
 
-. Abrir Tilix: reiniciar pc
-	: 0
+🔥 Abrir Tilix: reiniciar pc      
+- Presionar cero: 0
 	
-. Personalizar : https://ohmyz.sh/
-	: sh -c "$(wget https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
+🔥 Personalizar con [ohmyzsh](https://ohmyz.sh/)
+- `sh -c "$(wget https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"`
 
 
--> Pagina official de tema a instalar: 
+
+
+### Oh My Zsh
+❄ Pagina official de tema a instalar: 
 https://github.com/romkatv/powerlevel10k#oh-my-zsh
 
--> Oh My Zsh
+🔥 Instalar tema Powerlevel10k      
+- `git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k`
 
-. Instalar tema Powerlevel10k
-	: git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+🔥 Configurar tema         
+- `vim .zshrc`
+- `i` insertar
+- Comentar tema anterior:
+	- `#ZSH_THEME="robbysussell"	`
+- Agregar el nuevo tema:
+	- `ZSH_THEME="powerlevel10k/powerlevel10k"`
+- `Esc + wq!`
 
-. Configuración
-	: vim .zshrc
-	: i insertar
-	: comentar tema: #ZSH_THEME="robbysussell"	
-	: colocar: ZSH_THEME="powerlevel10k/powerlevel10k"
-	: esc + wq!
-
-. Fuentes : Descargar
-	: MesloLGS NF Regular.ttf
-	: guardar las 4 fuentes
-	: buscar las descargar
-	: abrir con fuentes
-	: instalar
+🔥 Fuentes : Descargar     
+- Buscar en la misma página anterior
+- Wownload these four ttf files:
+	- MesloLGS NF Regular.ttf
+	- guardar las 4 fuentes
+- Buscar las descargar en el Explorador de archivos
+- Abrir con fuentes
+- Instalar todas
 	
-: Modificar en Tilix
-	: Entrar a tilix
-	: profiles
-	: edit profiles
-	: default: cambiar fuente : mesloLgs
+🔥 Modificar en Tilix      
+- Entrar a tilix
+- Profiles
+- Edit profiles
+- Default: 
+	- Cambiar fuente : `mesloLgs`
 
-: Recargar:
-	: zsh
-	: luce como diamante : y
-	: Raimbow (3)
-	: UNICODE
-	: reloj no
-
-
-
-
-Datos para instalar Git:
-. sudo apt-get update
-	: Actualizaciones del SO
-. sudo apt-get upgrade
-. sudo apt-get install git
-	: instalar git
-. git --version
-	: verificar la instalación 
+🔥 Recargar:     
+- zsh
+- Luce como diamante : y
+- Rainbow (3)
+- UNICODE
+- Reloj: no
 
 
+❄ Datos para instalar Git:
+- `sudo apt-get update`
+	- Actualizaciones del SO
+- `sudo apt-get upgrade`
+- `sudo apt-get install git`
+	- instalar git
+- `git --version`
+	- Verificar la instalación 
 
-Cambiar la shell de bash a zsh y viceversa:
-. chsh -s /bin/bash
-. chsh -s /bin/zsh
+
+❄ Cambiar la shell de bash a zsh y viceversa:
+- `chsh -s /bin/bash`
+- `chsh -s /bin/zsh`
 
 
 
-Para acceder a la configuracion inicial por si no te gusta algo o bien quieres cambiar el aspecto del prompt solo basta con ejecutar en la terminal
-. USER :~$ p10k configure
+Para acceder a la configuración inicial por si no te gusta algo o bien quieres cambiar el aspecto del prompt solo basta con ejecutar en la terminal:    
+- `USER :~$ p10k configure`
 
+
+❄ Lecturas recomendadas
+
+- [Terminal mas bonita que nunca](https://platzi.com/blog/terminal-en-big-sur-mas-bonita-que-nunca/)
+- [Tilix&colon A tiling terminal emulator](https://gnunn1.github.io/tilix-web/)
+- [iTerm2 - macOS Terminal Replacement](https://iterm2.com/)
+- [Oh My Zsh - a delightful & open source framework for Zsh](https://ohmyz.sh/)
+- [GitHub - romkatv/powerlevel10k: A Zsh theme](https://github.com/romkatv/powerlevel10k)[
+- [🔥 Personaliza tu terminal de cero a cien con Oh My ZSH y Powerlevel10k | codevars](https://www.edevars.com/blog/personalizar-terminal)
+
+🎲
 
 ## 22. Nunca pares de hackear
 
-Libros recomendados
-. Linux Basics for Hackers
-. The Linux command line
+🔥 Libros recomendados       
+- Linux Basics for Hackers
+- The Linux command line
 
-Para búsqueda
-. Grep
-. Regular Expression
+🔥 Para búsquedas      
+- Grep
+- Regular Expression
 
-Para Linux
-. Linux
-. Vi and Vim Editors
+🔥 Para Linux       
+- Linux
+- Vi and Vim Editors
 
 
 ## Notas / Aportes
@@ -1668,21 +1720,45 @@ Para Linux
 
 </details>
 
+🎲
+
+## Examen:     
+<details>
+  <summary>Haz click aquí para ver los resultados 👀</summary>
+
+  <br/>
 
 
-
-4.
-¿Con cuál comando copiamos un directorio y su contenido? (Esto hace parte de uno de los retos que te dejé)
-cp mi_directorio ruta_destino
+4. ¿Con cuál comando copiamos un directorio y su contenido? (Esto hace parte de uno de los retos que te dejé)
+	- cp mi_directorio ruta_destino
 
 
 Si queremos correr una serie de comandos de manera asíncrona lo hacemos con el operador:
 
 
-17.
-Para buscar todas las imágenes png dentro de nuestra computadora podemos ejecutar:
+17. Para buscar todas las imágenes png dentro de nuestra computadora podemos ejecutar:
 
 
-19.
-¿Qué comando nos ayuda consultar la disponibilidad de un equipo en una red?
-traceroute
+19. ¿Qué comando nos ayuda consultar la disponibilidad de un equipo en una red?   
+	- traceroute
+
+</details>
+
+🎲
+
+## Emojis:  
+<details>
+  <summary>Haz click aquí para ver los emojis 👀</summary>
+
+  <br/>
+
+**🔥 Emojis:**        
+- 🔥 ❄ ✨ 📌 🎲 🔍 🎉     
+- 🤴🦁 🧔🐯  👀 👉 👈 ☝ 👇   
+- 😊 👈👀 😌 😍  😅     
+- 🟥 ⬜ ⬛ ◼ ◻ 🔷 🔶 🔻 🔺 🔴 🟣       
+- ✔ ➕ ↕ ↔ ⬅ ✅ ▶ ❌ ❗ ⬆ ⬇ ❓          
+- 🧰 ⛓ 💡             
+- 🔅 🔆 🌚 🌗      
+
+</details>
