@@ -423,8 +423,144 @@ Es importante tener en cuenta que las Functions solo admiten hasta 255 argumento
 - Para poder saltar de línea en la consola del navegador presionan **_shift + enter_** 
 - Con la tecla **_tab _** pueden desplazar el código a la derecha dentro de la función, algo nuevo para mi.
 
+🎲
 
-🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲
+## 6. ¿Qué es una función declarativa y una expresiva?
+
+Cuando hablamos de funciones en JavaScript, tenemos dos tipos de funciones: Funciones Declarativas (function declaration / function statement) y Expresiones de función (function expression / funciones anónimas).
+
+### Funciones Declarativas:
+
+En las funciones declarativas, utilizamos la palabra reservada function al inicio para poder declarar la función:
+
+```js
+function saludar(nombre) {
+	console.log(`Hola ${nombre}`);
+}
+
+saludar('Diego');
+```
+
+#### Expresión de función:
+
+En la expresión de función, la declaración se inicia con la palabra reservada var, donde se generará una variable que guardará una función anónima.
+
+```js
+var nombre = function(nombre){
+    console.log(`Hola ${nombre}`)
+}
+
+nombre(‘Diego’);
+```
+
+En la expresión de función, la función podría o no llevar nombre, aunque es más común que se hagan anónimas.
+
+### Diferencias:
+
+A las funciones declarativas se les aplica hoisting, y a la expresión de función, no. Ya que el hoisting solo se aplica en las palabras reservadas var y function.
+
+Lo que quiere decir que con las **funciones declarativas**, podemos mandar llamar la función antes de que ésta sea declarada, y con la expresión de función, no, tendríamos que declararla primero, y después mandarla llamar.
+
+🔥 Hoisting       
+Significa que podemos llamar a una función y definirla más abajo. 
+
+```js
+//Llamado arriba y declarado abajo
+nombre("Diego"); 
+
+function saludar(nombre) {
+	console.log(`Hola ${nombre}`);
+}
+```
+
+✨ El profesor Sacha Lifzyc, del Curso de Fundamentos de JavaScript tiene un video en YouTube explicando que es el _Hoisting_. [Un recurso imperdible:](https://www.youtube.com/watch?v=uI6o97A4IrI)
+
+🎲
+
+## Quiz
+1. Es la palabra clave que necesita una función para devolver una salida:
+	- ✔ return
+
+2. Además de la sintaxis ¿cuál es la principal diferencia entre una función declarativa y una expresión de función?
+	- ✔ Podemos llamar una función declarativa antes de ser declarada.
+
+3. En JavaScript es posible declarar e inicializar una variable en la misma línea:
+	- ✔ Verdadero.
+
+4. Son los tipos de datos primitivos que maneja JavaScript:
+	- ✔ String, Number, Boolean, Null y Undefined
+
+5. ¿En qué tipo de proyectos podemos utilizar JavaScript?
+	- ✔ Frontend, backend, aplicaciones móviles, aplicaciones de escritorio y IoT.
+
+6. ¿Por qué nace JavaScript?
+	- ✔ Para darle interacción y dinamismo a los sitios web.
+
+🎲
+
+## 7. Scope
+
+El que tengas acceso a una variable o no depende mucho de donde la declares e inicialices. A esto se le conoce como Scope y hay dos tipos, uno GLOBAL y otro LOCAL.
+
+### Global 
+Universo entero.    
+Se puede acceder al scope global desde cualquier parte del código pero el scope global no puede acceder a lo que esta dentro del scope local. 
+
+     
+```js
+//Variable global: 
+var nombre = "Diego"; 👈👀 //global  
+
+//Función global:     
+function fun(){ 👈👀 //global 
+	var apellido = "De Granda"; 
+👉	return nombre + " " + apellido
+}   //global ☝
+```
+
+Lo que está dentro de la función podrá tener acceso a la variable global.
+
+### Local 
+Cada Planeta.    
+Las variables creadas dentro de una función solo son accesibles dentro de su propio mundo (función), no es visible para los demás mundos. El scope LOCAL si puede acceder a lo que esta en GLOBAL.
+
+Función global con var local:     
+```js
+function fun(){
+	var apellido = "De Granda"; 👈👀 //local
+👉	return nombre + " " + apellido;
+} // global ☝
+```
+
+Lo que está dentro de la función va a tener acceso a la variable local y a las variables globales.
+
+✨ Resumen: Lo que está en local puede acceder a lo que está en global pero lo que está en global no puede acceder a lo que está en local.
+
+Código ejemplo:      
+```js
+//Scope global 
+var miNombre = "Diego"; 
+
+//Scope global 
+function nombre(){ 
+	//Scope local
+	var miApellido = "De Granda"; 
+	console.log(miNombre + " " + miApellido); 
+} 
+
+//Retorna "Diego De Granda"
+nombre();
+
+//Desde local se tiene alcance a la variable miNombre pero global no tiene acceso a miApellido.
+```
+
+📌 Scope: Alcance
+
+🎲
+
+## 8. 
+
+🎲🎲🎲🎲🎲🎲
 
 ## Notas / Aportes
 <details>
