@@ -558,9 +558,164 @@ nombre();
 
 🎲
 
-## 8. 
+## 8. Hoisting
 
-🎲🎲🎲🎲🎲🎲
+El **Hoisting** es un proceso del compilador de JavaScript, que consiste en que la _declaración de las variables_ y las _funciones_ son llevadas al inicio del código, sin importar su posición, para su procesamiento, sin embargo, la inicialización de las variables no es llevada al inicio del código para su compilación, sino solo su declaración, lo cual suele dar espacio a errores cuando se declara una variable sin inicializarla y se procesa en el código antes de haber llegado a su inicialización, lo cual nos suele dar una variable con valor **_undefined_**, ya que la variable sí fue almacenada en memoria, pero no se le asigno un valor hasta después de su ejecución.
+
+```js
+var miNombre;  // Declaración
+miNombre = "Diego"; // Inicialización
+```
+
+🔥 Código ejemplo: Variables   
+
+```js
+console.log(miNombre);
+
+var miNombre = "Diego";
+```
+
+La salida de este código seria el siguiente:
+
+```js
+undefined
+```
+
+Y la explicación es la siguiente:   
+El navegador al tener que imprimir algo en pantalla y darse cuenta que esa variable no está declarada ni inicializada, genera en la parte superior la declaración e inicialización de dicha variable de la siguiente manera:
+
+```js
+var miNombre = undefined;
+
+console.log(miNombre);
+```
+
+Por tal razón nos da undefined como resultado.
+
+🔥 Código ejemplo:  Variables     
+
+Error de hoisting que siempre se comete   
+```js
+var miNombre = undefined;
+
+console.log(miNombre + " Soy ese hoisting");
+
+miNombre = "Diego";
+```
+
+Resultado:     
+`undefined Soy ese Hoisting`    
+y luego...    
+`Diego`
+
+🔥 Código ejemplo: Funciones     
+
+```js
+saludo();
+
+function saludo() {
+    console.log("Hola " + nombre);
+}
+
+var nombre = "Diego";
+```
+
+El output de este código seria el siguiente:
+
+```js
+Hola undefined
+```
+
+Debido a que como lo hemos dicho, la variable a pesar de no estar declarada ni inicializada previamente, se tomo en cuenta y se asigno en memoria, sin embargo, el compilador no la inicializo y se le dio el valor de _undefined_, y con ese valor se ingreso a la función. Finalmente después de correr la función e imprimir el valor asignado automáticamente (`undefined`) se le asigno el valor real definido por nosotros.
+
+Este comportamiento se puede entender fácilmente si se comprenden estos dos puntos esenciales:
+
+-   Las funciones siempre se mueven arriba del scope. Por lo tanto, podemos elegir donde declararlas y usarlas.
+-   La declaración de las variables se mueven arriba del scope, pero no la asignación. Antes de usar una variable, habrá que crearla y asignarla.
+
+En base al segundo punto, se cometió el error de usar la variable antes de inicializarla, aún así el compilador la asigna en memoria al declararla, pero no puede inicializarla por lo que el valor real es asignado hasta después.
+
+Básicamente por pasos, lo que hizo el compilador fue esto:
+
+Tenemos el código así:
+
+```js
+saludo();
+
+function saludo() {
+    console.log("Hola " + nombre);
+}
+
+var nombre = "Diego";
+```
+
+1.  El compilador toma las funciones y variables y las “sube” en el código, sin inicializar variables:
+
+```js
+var nombre;
+
+function saludo() {
+    console.log("Hola " + nombre);
+}
+
+saludo();
+
+var nombre = "Diego";
+```
+
+2.  Le asigna memoria a la variable y le da el valor de _undefined_ al suceder la asignación de memoria
+
+```js
+var nombre = undefined;
+
+function saludo() {
+    console.log("Hola " + nombre);
+}
+
+saludo();
+
+nombre = "Diego";
+```
+
+Y como hemos visto, la variable se asigna como _undefined_ y posteriormente se utiliza al llegar a la línea:
+
+```js
+saludos()
+```
+
+Pues ahí lo que hace es ejecutar la función que ya fue procesada, pero con un valor de la variable que aun no se le asigno, quedando como _undefined_.
+
+3.  Después de correr la función, le asigna el valor correcto a la variable ya declarada:
+
+```js
+var nombre = "Diego";
+
+function saludo() {
+    console.log("Hola " + nombre);
+}
+
+saludo();
+```
+
+Pero ya es demasiado tarde, pues la función ya fue ejecutada.
+
+✨ **_Es por eso que se tiene como buena practica declarar e inicializar tanto variables como funciones al inicio de nuestro programa, sin importar donde sean utilizadas, pues de esta manera se evita usarlas antes de ser inicializadas._**
+
+Debemos saber que el hoisting solo sucede con las palabras claves **var** y **function**, por lo tanto esto nos dice que solo se da en las versiones de ECMAScript 5 o Inferiores, ya que en la version 6 y superiores se permite la declaración de variables con **let** y **const**, que son dos nuevas variables que no activan hoisting.
+
+- [🔥🕺🏼 JavaScript Visualized: Hoisting](https://dev.to/lydiahallie/javascript-visualized-hoisting-478h)
+- [¿Qué es el hoisting?](https://anamartinezaguilar.medium.com/qu%C3%A9-es-el-hoisting-327870f67b36)
+- [Explicación Hoisting](https://www.youtube.com/watch?v=uI6o97A4IrI)
+
+🎲
+
+## 9. Coerción
+
+
+
+🎲
+
+🎲🎲🎲🎲
 
 ## Notas / Aportes
 <details>
