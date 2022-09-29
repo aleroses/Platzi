@@ -711,11 +711,733 @@ Debemos saber que el hoisting solo sucede con las palabras claves **var** y *
 
 ## 9. Coerción
 
+Coerción es la forma en la que podemos cambiar un tipo de valor a otro, existen dos tipos de coerción:  
 
+```js
+4 + "7" = "47"
+4 * "7" = 28
+2 + true = 3
+false - 3 = -3
+```
+
+- Coerción implícita   
+	Es cuando el lenguaje nos ayuda a cambiar el tipo de valor.  
+
+```js
+//Concatenación
+var a = 4 + "7" 
+
+typeof a
+//Salida: "string"
+```
+
+```js
+//Js supone que el "7" es un número
+var b = 4 * "7";
+
+typeof b
+//Salida: "number"
+```
+
+- Coerción explicita   
+	Es cuando obligamos a que cambie el tipo de valor.
+
+```js
+var c = 20;
+var d = c + "";
+
+typeof(d);
+//Salida: "string"
+```
+
+```js
+var e = 20;
+var f = String(e);
+
+typeof(f);
+//Salida: "string"
+```
+
+```js
+var g = String(20);
+var h = Number(g);
+
+typeof(h);
+//Salida: "number"
+```
+
+🔥 ParseInt vs Number
+
+- ParseInt: 
+	Analiza la cadena desde el primer dígito, hasta que encuentre algo que no sea dígito y devuelve lo que haya analizado.     
+	Ejemplo:  
+	
+	```js
+	parseInt(“123hui”) 
+	
+	//Salida: 123
+	```  
+
+- Number: 
+	Busca convertir toda la cadena en un número, por lo que al encontrarse con un elemento que no sea digito nos dará como resultado NAN.    
+	Ejemplo:     
+	
+	```js
+	Number(“123hui”) 
+	
+	//Salida:NaN
+	```
+
+
+✨ `parseInt` en este caso puede parsear “123” porque están empezando en el string, porque de otra manera si “123” está después de “hui” el resultado sería NaN= Not-A-Number.  
+
+Ej:     
+`parseInt(“123hui”) = 123`    
+`parseInt(“hui123”) = NaN`    
+
+❄ Además de realizar las conversiones mencionadas, también convierte los números que se encuentran en otros sistemas de numeración como los binarios(base 2), octal(base 8), hexadecimal(base 16) a base 10 que el sistema de numeración normal utilizando la sintaxis  
+numeroEnBase10 = parseInt(numero,base)
+
+```js
+valor = parseInt(“7b”,16) = 123
+```
+
+
+❄ Como dato extra, en JavaScript tenemos 8 tipos de datos únicamente en 2020:
+
+- Boolean
+- Null
+- Undefined
+- Number
+- BigInt
+- String
+- Symbol
 
 🎲
 
-🎲🎲🎲🎲
+## 10. Valores: Truthy y Falsy
+
+Usamos la función de JS que es **_`Boolean()`_** dentro del paréntesis colocamos el valor y nos dice si el mismo el False o True.
+
+🔥 _**Falsy**_
+
+-   Boolean() 
+	sin ningún valor es false
+-   Boolean(0) 
+	false
+-   Boolean(null) 
+	false
+-   Boolean(NaN) 
+	false // NaN es Not and Number
+-   Boolean(Undefined)
+	false
+-   Boolean(false) 
+	false
+-   Boolean("") 
+	false
+
+🔥 _**Truthy**_
+
+-   Boolean(1) 
+	true //cualquier numero que no sea igual a cero es true
+-   Boolean(“a”) 
+	true
+-   Boolean(" ") 
+	true // siendo un espacio el valor es true
+-   Boolean([])
+	true // un array nos da un true
+-   Boolean({}) 
+	true // un objeto nos da el valor de true
+-   Boolean(function() {}) 
+	true //una función también es true
+-   Boolean(true) 
+	true
+
+Todo esto lo vamos a usar en condiciones para validar si es verdadero o falso para ejecutar cierta acción.
+
+_**Enlaces a documentación en Mozilla de Truthy y Falsy:**_  
+- [Glossary Falsy](https://developer.mozilla.org/es/docs/Glossary/Falsy)  
+- [Glossary Truthy](https://developer.mozilla.org/es/docs/Glossary/Truthy)
+
+
+✨ En este punto me gustaría dejar la definición de varios tipos de datos raros que tiene JS por si aún no se han entendido bien:   
+
+1.  **NaN**: En JS significa **Not a Number** y quiere decir que esa operación necesita de dos números o más para poder operarse.
+2.  **Undefined**: Undefined es un valor especial de JavaScript que existe cuando no se le asigna un valor a una variable. Es decir, la variable si existe o ha sido creada pero no se le ha asignado ningún valor. (Su valor es indefinido).
+3.  **Null**: null es cuando algo no existe. (De plano no existe para nada y ya esta). 😄
+
+🎲
+
+## 11. Operadores: Asignación, Comparación y Aritméticos.
+
+### Operador de asignación
+
+|Símbolo |Descripción|
+|--------|-----------|
+|=       |operador de asignación|
+
+```js
+var a = 1;
+```
+
+### Operadores aritméticos
+
+|Símbolo        |Descripción|
+|---------------|-------------------------|
+|+              |operador suma este se utiliza para concatenar dos cadenas de texto.|
+|-              |operador resta             |
+|*              |operador de multiplicación |
+|/              |operador de division       |
+|%              |operador de modulo         |
+|**             |operador de potenciación   |
+
+También se les conoce como operadores binarios. por que toman dos valores y generan un resultado.
+
+```js
+3 + 2 //5
+50 - 10 //40
+10 * 20 //200
+20 / 2 // 10
+"Diego " + "De Granda" // Diego De Granda
+var edad = 40; 
+	edad++ //Incrementa en 1
+	edad += 2 //Incrementa en 2
+```
+
+### Operadores lógicos
+
+|Símbolo        |Descripción        |
+|---------------|-------------------|
+|!              |NOT niega un valor |
+|&&             |AND                |
+|❕❕             |OR                 |
+
+Los dos ❕❕ en realidad significan esto, `||`. Markdown entra en conflicto al hacer la tabla así que le coloque esos emojis.😊
+
+```js
+!false //No es falso: true
+a && b //Debe cumplirse a "y" b
+a || b //Debe cumplirse a "o" b
+```
+
+### Operadores de comparación
+
+|Símbolo        |Descripción|
+|---------------|-------------------------|
+|==             |igual que                |
+|===            |estrictamente igual que  |
+|> or >= or >== |mayor o mayor igual que  |
+|< or <= or <== |menor o menor igual que  |
+|!= or !==      |diferente que            |
+
+Por especificar el concepto de “estrictamente igual”, añadiría la aclaración de que **== compara valor** incluso entre tipos diferentes y **=== compara tipo y valor**
+
+```js
+3 == "3"; //true
+3 === "3"; //false📌
+5 < 3; //false
+5 > 3; //true
+5 <= 6; //true
+5 >= 6 //false
+```
+
+
+#### ❄Lecturas recomendadas
+
+- [Expressions and operators - JavaScript | MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Expressions_and_Operators)
+- [GitHub - degranda/jsBasico-: Ejemplos del curso de JS básico](https://github.com/degranda/jsBasico-)
+
+🎲
+
+## Quiz
+
+1. ¿Qué diferencia hay entre comparar con "'==" y "==="?
+	- ✅ "==" compara valores. "===" compara valores y tipo de dato.
+
+2. Cuál es la naturaleza de los valores booleanos?
+	- ✅ true y false.
+
+3. ¿En qué consiste la coerción explícita?
+	- ✅ En obligar cambiar el tipo de una variable a otra.
+
+4. ¿Qué valor se asigna por defecto a las variables cuando caen en hoisting?
+	- ✅ undefined.
+
+5. En el scope local de una función puedo usar variables:
+	- ✅ Variables del scope global y locales de esa función.
+
+🎲
+
+## 12. Condicionales: If, Else, else if
+
+Son un conjunto de reglas para validar si algo es verdadero o falso y podamos generar ciertas acciones de acuerdo al resultado de la condición.
+
+### Tipo de Condicionales:
+
+#### Condicional “if”:  
+La estructura sería:
+
+```js
+if() { 
+    
+}
+```
+
+-   Dentro de los paréntesis () se evaluaría si algo es verdadero o falso.
+-   Dentro de las llaves {} se encuentra la tarea a generar si la condición es verdadera.
+-   Si lo que se está evaluando resulta falso, lo que está dentro de las llaves no se ejecuta, lo ignora.
+
+_Ejemplo:_
+
+```js
+var saludo = true;
+
+//Valida que la condición es true para procesar el código interno
+if(saludo) {  
+    console.log('Hola');
+}
+
+//Imprime: Hola
+```
+
+```js
+if(false) {  
+    console.log('Hola');
+}
+
+//Imprime: undefined
+```
+
+#### Condicional “if … else”:  
+La estructura sería:
+
+```js
+if() { 
+    
+} else {
+
+}
+```
+
+-   Dentro de los paréntesis () se evaluaría si algo es verdadero o falso.
+-   Dentro de las primeras llaves {} se encuentra la tarea a generar si la condición es verdadera.
+-   Si lo que se está evaluando resulta falso, lo que está dentro de las primeras llaves no se ejecuta, lo ignora, pero se ejecuta lo que está dentro de las llaves de **_else_**, sería el _default_ del _if_.
+
+ _Ejemplo:_
+
+```js
+var saludo = false; 
+
+//Si la condición resultó verdadera
+if(saludo) {
+    console.log('Hola');  
+} else { //Si la condición resultó falsa
+    console.log('Soy falso');
+}
+
+//Imprime: Soy falso
+```
+
+#### Condicional “else if”:  
+La estructura sería:
+
+```js
+if() { 
+    
+} else if (){
+
+} else {
+
+}
+```
+
+-   Dentro de los primeros paréntesis () se evaluaría si algo es verdadero o falso.
+-   Dentro de las primeras llaves {} se encuentra la tarea a generar si la primera condición es verdadera.
+-   Si lo que se está evaluando resulta falso en la primera condición **_if_**, lo que está dentro de las primeras llaves no se ejecuta, queda ignorado, pero se evalúa la segunda condición **_else if_**.
+-   Si dentro de los paréntesis del **_else if_** resulta verdadero, se ejecuta lo que está dentro de las llaves {}, de ser falso sería el _default_ y se ejecutaría la tarea del último **_else_**.
+
+_Ejemplo:_
+
+```js
+//Cambia el valor de la edad para ver los distintos resultados
+var edad = 18; 
+var accion;  
+
+if(edad === 18) {
+    accion = 'Puede votar, será su 1ra votación'
+    //Esta condición es verdadera, se ejecuta.
+} else if(edad > 18) { 
+    accion = 'Puede votar'   
+    //Esta condición no es verdadera, no se ejecuta.
+} else {
+    accion = 'Aun no puede votar'
+    //En caso ninguna de las anteriores sea verdadera
+    //por defecto, se ejecutara está condición. 
+}
+
+console.log(accion);
+//Imprime: Puede votar, será su 1ra votación
+```
+
+
+📌 Recuerda: Puedes anidar muchos else if
+
+#### Operador ternario:  
+La estructura sería:
+
+```js
+condition ? true : false; 
+```
+
+-   Inicialmente se encuentra **_condition_**, ahí se coloca la condición a evaluar.
+-   Después del signo de cierre de interrogación **_?_** se encuentra la tarea a ejecutar si resulta verdadera la condición evaluada.
+-   Después del signo de dos puntos **_:_** se encuentra la tarea a ejecutar de resultar falsa la condición evaluada.
+
+ _Ejemplo:_
+
+```js
+var numero = 1; 
+var resultado = numero === 1 ? 'Soy un 1' : 'No soy un 1';
+
+console.log(resultado);  
+//Dado que numero es igual a 1, imprime: "Soy un 1"
+```
+
+```js
+var numero = 2; 
+var resultado = numero === 1 ? 'Soy un 1' : 'No soy un 1';
+
+console.log(resultado);  
+//Dado que numero no es igual a 1, imprime: "No soy un 1"
+```
+
+#### ⚡ **RETO DEL JUEGO PIEDRA, PAPEL O TIJERA** ⚡ 🪨📄✂️
+
+##### Solución de marigabirc
+```js
+// 2022, 8 de Mayo
+// autora: marigabirc
+// Juego Piedra - Papel - Tijera
+
+let papel = 1;
+let tijera = 2;
+let piedra = 3;
+
+function juego(movimiento_jugador) {
+    let movimiento_computadora = Math.ceil(Math.random()*3);
+ 
+    let resultado = movimiento_jugador == 1 && movimiento_computadora == 3 || movimiento_jugador == 3 && movimiento_computadora == 1 ? movimiento_jugador < movimiento_computadora ?  "Ganaste :D" : "Perdiste :(" : movimiento_jugador == movimiento_computadora ? "Empate :)" :movimiento_jugador > movimiento_computadora ?  "Ganaste :D" : "Perdiste :(";
+ 
+    movimiento_jugador = movimiento_jugador == 1 ? "papel" : movimiento_jugador == 2 ? "tijera" : "piedra"; 
+    
+    movimiento_computadora = movimiento_computadora == 1 ? "papel" : movimiento_computadora == 2 ? "tijera" : "piedra"; 
+    
+     console.log(`Tú: ${movimiento_jugador}, Computadora: ${movimiento_computadora}, ${resultado}`);  
+}
+
+juego (piedra);
+```
+
+-   Usé condicionales con el **_operador ternario_**.
+-   Para generar la jugada de la computadora, usé el método **_Math.random()_** que arroja un número aleatorio entre 0 a 1, pero como quiero que sean solo los números 1, 2 o 3 al multiplicarlo por 3 y aplicar el método **_Math.ceil()_** aleatoriamente cada vez que juegue con la computadora se puede obtener:
+
+```js
+let papel = 1
+let tijera = 2
+let piedra = 3
+```
+
+_**TIP:**_ además de la opción de **_inspeccionar_** se puede correr el código en el siguiente enlace: [OnlineJavaScriptCompiler](https://www.programiz.com/javascript/online-compiler/)
+
+La siguiente imagen muestra al lado izquierdo el código y al darle al _botón_ **Run** al lado derecho aparece la salida del código ejecutado:  
+
+![ide_online.png](https://static.platzi.com/media/user_upload/ide_online-87738e32-6756-40f2-ba16-f522692d4648.jpg)
+
+##### Solución personal (Básico)🦄
+```js
+var piedra = "piedra";
+var papel = "papel";
+var tijeras = "tijeras";  
+
+function jugada(player, machine) {
+	console.log(`🔥Jugada: Player = ${player} / Machine = ${machine}\n`);
+
+    if (player === machine) {
+        console.log(`✨Player = ${player} vs ✨Machine = ${machine} : Empate`);
+    }else if (player === piedra && machine === papel){
+        console.log(`✨Player = ${player} vs ✨Machine = ${machine} : Gana Machine`);
+    }else if (player === piedra && machine === tijeras){
+        console.log(`✨Player = ${player} vs ✨Machine = ${machine} : Gana Player`);
+    }else if (player === papel && machine === piedra){
+        console.log(`✨Player = ${player} vs ✨Machine = ${machine} : Gana Player`);
+    }else if (player === papel && machine === tijeras){
+        console.log(`✨Player = ${player} vs ✨Machine = ${machine} : Gana Machine`);
+    }else if (player === tijeras && machine === piedra){
+        console.log(`✨Player = ${player} vs ✨Machine = ${machine} : Gana Machine`);
+    }else if (player === tijeras && machine === papel){
+        console.log(`✨Player = ${player} vs ✨Machine = ${machine} : Gana Player`);
+    }
+}
+
+
+//Cambia el orden para ver diferentes resultados
+jugada(piedra, tijeras);
+
+
+/*
+Respuestas:
+1.- piedra y piedra = empate
+1.2.- piedra y papel = gana papel - rep2.2📌
+1.3.- piedra y tijeras = gana piedra - rep3.1🔥
+
+  
+2.- papel y papel = empate
+2.2.- papel y piedra = gana papel - rep1.2📌
+2.3.- papel y tijeras = gana tijeras - rep3.2🟣
+
+  
+3.- tijeras y tijeras = empate
+3.1.- tijeras y piedra = gana piedra - rep1.3🔥
+3.2.- tijeras y papel = gana tijeras - rep2.3🟣
+
+Tenemos:
+Empates = 3
+Gana piedra = 2
+Gana papel = 2
+Gana tijeras = 2
+*/
+```
+
+#### 🦄 Math   
+Este reto se pudo haber hecho con la función `Math`, la cual nos permite generar números aleatorios.   
+
+🔥 Math.random()     
+Genera números aleatorios entre 0 (incluido) y 1 (no incluido).   
+
+Ejemplo:   
+
+```js
+function generar(){
+	let num = Math.random();
+	console.log(num);
+}
+
+generar()
+```
+
+Para generar números mas grandes, multiplicar por 10, 100 o 1000.
+
+```js
+function generar(){
+	let num = Math.random()*10;
+	console.log(num);
+}
+
+generar()
+```
+
+🔥 Math.floor / parseInt    
+Si quiero generar números aleatorios enteros, utilizo el método `floor` o la función `parseInt`
+
+```js
+function generar(){
+	let num = Math.floor(Math.random()*10); //3
+	console.log(num);
+}
+
+generar()
+```
+
+```js
+function generar(){
+	let num = parseInt(Math.random()*10);
+	console.log(num);
+}
+
+generar()
+```
+
+🔥 Math.round    
+Este método redondea un numero a su valor entero mas cercano.
+
+Ejemplos: 5.8 = 6    |   5.2 = 5
+
+```js
+function generar(){
+	let num = Math.round(Math.random()*10);
+	console.log(num);
+}
+
+generar()
+```
+
+🔥 setInterval
+Esta sentencia genera números aleatorios de manera automática en bucle infinito 
+
+```js
+function generar(){
+	let num = Math.floor(Math.random()*10);
+	console.log(num);
+}
+
+setInterval(generar, 100);
+```
+
+🔥 Maximo y Mínimo 
+Generar números aleatorios entre un valor MÁXIMO y MÍNIMO
+
+```js
+function generar(min, max){
+	return Math.random() * (max - min) + min;
+}
+
+// Números entre 4 y 7
+console.log(generar(4, 7)); 
+```
+
+Para incluir al 4 y 7 en los números que se generan...
+
+```js
+return Math.random() * (1 + max - min) + min;
+```
+
+🔥 Math.ceil 
+En este caso para redondear, en vez de usar `Math.round`, deberíamos usar los métodos `ceil` y `floor` 
+
+```js
+function generar(min, max){
+	min = Math.ceil(min);
+	max = Math.floor(max);
+	
+	return Math.floor(Math.random() * (1 + max - min) + min);
+}
+
+// Números entre 4 y 7
+console.log(generar(4, 7)); 
+```
+
+Para comprobar que los datos que arroja Math son entre 4 y 7 usamos un for
+
+```js
+function generar(min, max){
+	min = Math.ceil(min);
+	max = Math.floor(max);
+	
+	return Math.floor(Math.random() * (1 + max - min) + min);
+}
+
+for(i = 0; i < 500; i++){
+	console.log(generar(4, 7))
+}
+```
+
+❄ Bonus  
+Generar un Array con números aleatorios    
+
+```js
+var array = [];
+user_in = prompt(parseInt("Enter number: "));
+
+while(array.length < user_in){
+	array.push(Math.floor(1000*Math.random()));
+	console.log(array);
+}
+```
+
+[Explicación sobre Math](https://www.youtube.com/watch?v=pLNK1Y9CcoQ)
+
+🎲
+
+## 13. Switch  
+
+Básicamente un switch es como un if pero con **diferente sintaxis** y usos, pero fuera de algunas ocasiones son muy parecidos.
+
+¿Como usar switch?  
+- La sintaxis de **switch** es:
+
+```js
+switch(valor a validar) {
+	case opción 1:
+		acción a realizar();
+		break;
+	default: 
+		console.log(":)")
+}
+```
+
+El uso de **break** es importante, ya que si no lo pones accionara todas las opciones dentro del switch, digamos que es como un puente, si no lo pones vas a tener que caminar por un lugar donde cada ‘case’ es una autopista más, mientras que break es un puente directo hacia la siguiente acera.
+
+Un ejemplo seria:
+
+```js
+let dia = "Martes";
+
+switch(dia) {
+	case "Lunes":
+		console.log("Hoy es Lunes");
+		break;
+	case "Martes":
+		console.log("Hoy es Martes");👈👀
+		break;
+	case "Miercoles":
+		console.log("Hoy es Miercoles");
+		break;
+	case "Jueves":
+		console.log("Hoy es Jueves");
+		break;
+	case "Viernes":
+		console.log("Hoy es Viernes");
+		break;
+	case "Sabado":
+		console.log("Hoy es Sabado");
+		break;
+	case "Domingo":
+		console.log("Hoy es Domingo");
+		break;
+	default:
+		console.log("Es el fin de los dias");
+}
+```
+
+En el caso de que ninguna de las opciones dentro del switch sea la correcta tenemos 2 opciones:
+
+1.  Dejar el código seguir sin hacer nada.
+2.  Utilizar **default** que es como si utilizáramos un else pero para switch.
+
+Otro ejemplo: 
+
+```js
+//Para probar cambiar a 10, 100, 2 etc 
+var numero = 1;
+
+switch (numero) {
+	case 1:
+		console.log("Soy uno!");
+		break;
+	case 10:
+		console.log("Soy un 10!");
+		break;
+	case 100:
+		console.log("Soy un 100!");
+		break;
+	default: 
+		console.log("No soy nada :/")
+}
+```
+
+El break sirve para detener/romper las validaciones justo donde encuentra la coincidencia. 
+
+
+#### ⚡ **RETO DEL JUEGO PIEDRA, PAPEL O TIJERA** ⚡ 🪨📄✂️
+
+##### Solución de 
+
+🎲
+
+🎲🎲🎲🎲🎲
+
+```
+```
 
 ## Notas / Aportes
 <details>
@@ -728,6 +1450,9 @@ Debemos saber que el hoisting solo sucede con las palabras claves **var** y *
 - Deborah Beatriz Rivera Olate
 - MGuedez
 - Nicolas Moreno
+- Obed Paz
+- Maria Gabriela Rodriguez Cuevas
+- Saul Eduardo Acosta
 
 
 
