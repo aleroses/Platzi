@@ -1430,9 +1430,98 @@ El break sirve para detener/romper las validaciones justo donde encuentra la coi
 
 #### ⚡ **RETO DEL JUEGO PIEDRA, PAPEL O TIJERA** ⚡ 🪨📄✂️
 
-##### Solución de 
+Respuestas:
+
+|User     | Machine  | Ganador|
+|---------|----------|--------|
+|piedra   | piedra   | empate                  |
+|piedra   | papel    | gana papel (Machine)📌  |
+|piedra   | tijeras  | gana piedra (User) 🔥   |
+|papel    | papel    | empate                  |
+|papel    | piedra   | gana papel (User)📌     |
+|papel    | tijeras  | gana tijeras (Machine)🟣|
+|tijeras  | tijeras  | empate                  |
+|tijeras  | piedra   | gana piedra (Machine)🔥 |
+|tijeras  | papel    | gana tijeras (User)🟣   |
+
+##### Solución personal (Básico)🦄 
+
+```js
+let piedra = "piedra";
+let papel = "papel";
+let tijeras = "tijeras";
+
+function jugar(player, machine){
+    switch(true){
+        //Empates
+        case player === machine:
+            console.log(`Player: ${player} vs Machine: ${machine} = Empate`);
+            break;
+        //Comparamos Piedra
+        case player === piedra && machine === papel:
+            console.log(`Player: ${player} vs Machine: ${machine} = Gana Machine`);
+            break;
+        case player === piedra && machine === tijeras:
+            console.log(`Player: ${player} vs Machine: ${machine} = Gana Player`);
+            break;
+        //Comparamos Papel
+        case player === papel && machine === piedra:
+            console.log(`Player: ${player} vs Machine: ${machine} = Gana Player`);
+            break;
+        case player === papel && machine === tijeras:
+            console.log(`Player: ${player} vs Machine: ${machine} = Gana Machine`);
+            break;
+        //Comparamos Tijeras
+        case player === tijeras && machine === piedra:
+            console.log(`Player: ${player} vs Machine: ${machine} = Gana Machine`);
+            break;
+        case player === tijeras && machine === papel:
+            console.log(`Player: ${player} vs Machine: ${machine} = Gana Player`);
+            break;
+        default:
+            console.log("Mas despacio cerebrito!!")
+    }
+}
+
+//Cambia el orden para ver diferentes resultados
+jugar(piedra, piedra);
+```
+
+
+##### Solución Giovannivolta
+Viendo el cuadro anterior podemos decir que el usuario tiene 3 posibilidades de ganar, así que solo condicionaremos las veces en las que el usuario gana y el resto de posibilidades las condicionaremos para que nos diga que perdió.
+
+```js
+var question = prompt("Ingresa tu opción: piedra, papel o tijeras");
+var user = question.toLowerCase();
+let  options = ["rock", "paper", "scissors"];
+let machine = options[Math.floor(Math.random() * 3)];
+
+
+//Con true accede al switch
+switch(true){
+    case (user === machine):
+        console.log("Empate!!!");
+        break;
+    case (machine === 'piedra' && user === 'papel'):
+        console.log("Gana user");
+        break;
+    case (machine === 'papel' && user === 'tijera'):
+        console.log("Gana user");
+        break;
+    case (machine == 'tijera' && user == 'piedra'):
+        console.log("Gana user");
+        break;
+    default:
+        console.log("Pierde User, Gana Machine!!!");
+}
+```
+
+📌 Probar en consola.
 
 🎲
+
+## 
 
 🎲🎲🎲🎲🎲
 
