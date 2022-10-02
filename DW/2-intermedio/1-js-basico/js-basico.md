@@ -1521,11 +1521,181 @@ switch(true){
 
 🎲
 
-## 
+## Quiz
+1. ¿Qué pasa si no coloco la sentencia `break` en un `switch`?
+	- ✅ Se validan todos los casos como verdaderos y se realizan las acciones asignadas a cada uno.
 
-🎲🎲🎲🎲🎲
+2. ¿Qué retorna el siguiente código? `if (false === !true) { console.log(false == true) } else { console.log(true === !false) }`
+	- ✅ false
 
+3. ¿En qué casos es conveniente utilizar `switch`?
+	- ✅ Cuando tenemos múltiples casos a evaluar y evitar el uso de múltiples “if else”.
+
+4. ¿Para qué nos sirve el operador ternario "?" ?
+	- ✅ Para definir una condición, el resultado cuando se cumple y cuando no se cumple, en una sola línea.
+
+🎲
+
+## 14. Arrays
+
+Los Array son estructuras de datos o también llamados **Listas** el cual almacena varios datos en un mismo lugar, los cuales pueden ser de cualquier tipo ya sea string, numero, objetos, etc. Los arrays son de tipo objeto. 
+
+### Index de Arrays  
+El index es el indicador de donde se encuentra ubicado un elemento dentro de un Array, inicia a partir del 0.
+
+```js
+//El recorrido de un array inicia en la posición "0"
+var frutas = ["Manzana", "Plátano", "Cereza", "Fresa"]; 
+
+//En este caso de 0 a 3
+console.log(frutas[0]);
+
+//Obtenemos: Manzana
 ```
+
+### Métodos de los Arrays   
+Los métodos nos ayudan a manipular los elementos dentro de los Arrays.
+
+🔥 Algunos de los métodos en los arrays son lo siguientes:   
+
+- `.length` -  Propiedad que devuelve el número de elementos en una matriz o array.   
+
+	```js
+	console.log(frutas.length);
+	```
+
+-   `.push()` - Este método agrega uno o más elementos al final de una matriz y devuelve la nueva longitud de la matriz.
+
+	```js
+	var frutas = ["Manzana", "Plátano", "Cereza", "Fresa"]; 
+	var masFrutas = frutas.push("Uvas");
+
+	console.log(frutas);
+	console.log(masFrutas);
+	```
+
+-   `.pop` - Este método elimina el **último** elemento de un array/matriz y devuelve ese elemento. Este método cambia la longitud de la matriz..
+
+	```js
+	var frutas = ['Manzana', 'Plátano', 'Cereza', 'Fresa', 'Uvas'];
+	var eliminaUltimo = frutas.pop();
+
+	console.log(frutas);
+	console.log(eliminaUltimo);
+	```
+
+-   `.unshift` - Este método agrega uno o más elementos al inicio de un array/matriz y devuelve la nueva longitud de la matriz.
+
+	```js
+	var frutas = ['Manzana', 'Plátano', 'Cereza', 'Fresa'];
+	var nuevaFruta = frutas.unshift("Uvas");
+
+	console.log(frutas);
+	console.log(nuevaFruta);
+	```
+
+-   `.shift` - Este método elimina el **primer** elemento de una matriz y devuelve ese elemento eliminado. Este método cambia la longitud de la matriz.
+
+	```js
+	var frutas = ['Uvas', 'Manzana', 'Plátano', 'Cereza', 'Fresa'];
+	var borrarFruta = frutas.shift();
+
+	console.log(frutas);
+	console.log(borrarFruta);
+	```
+
+-   `.indexOf` - Este método devuelve el primer índice en el que se puede encontrar un elemento dado en la matriz, o -1 si no está presente.
+
+	```js
+	var frutas = ['Manzana', 'Plátano', 'Cereza', 'Fresa'];
+	var posicion = frutas.indexOf("Cereza");
+	
+	console.log(frutas.indexOf("Cereza"));
+	console.log(posicion);
+	```
+
+
+🔥 Mas elementos de arrays
+
+```js
+var colores = ["rojo", "azul", "verde", "amarillo"];
+```
+
+- `reverse`, método que invierte una matriz y devuelve la referencia a la misma matriz. El primer elemento de la matriz ahora se convierte en el último y el último elemento de la matriz se convierte en el primero. En otras palabras, el orden de los elementos en el arreglo estará girado hacia la dirección opuesta a la establecida anteriormente.
+
+	```js
+	colores.reverse();
+	
+	//Obtenemos: 
+	["amarillo", "verde", "azul", "rojo", "anaranjado"]
+	```
+
+-  `sort`, método para ordenar alfabéticamente los array con datos de tipo String.
+
+	```js
+	colores.sort();
+	
+	//Obtenemos: 
+	["amarillo", "anaranjado", "azul", "rojo", "verde"]
+	```
+
+	- Sin importar su tipo de dato:
+	```js
+	var array = ["azul", 1, 3, ["manzana", "mango"], 5, "verde"];
+
+	array.sort();
+	//Obtenemos
+	[ 1, 3, 5, "azul",  ["manzana", "mango"], "verde" ]
+	```
+
+-  `slice`, método que puede contener uno o dos argumentos, que indiquen el inicio y parada de posiciones, pues devuelve los elementos contenidos en el array, de acuerdo a los argumentos indicados, por ejemplo si a colores, le agregamos `colores.slice(1,3);` obtendremos los que se encuentran en la posición 1, 2
+
+	```js
+	colores =  ["amarillo", "anaranjado", "azul", "rojo", "verde"];
+	
+	colores.slice(3);
+	colores.slice(1,3);
+	
+	//Obtenemos: 
+	['rojo', 'verde']
+	["anaranjado", "azul"]
+	```
+
+	Si solo se indica un argumento se tomará como inicio ese argumento y como final la última posición, entonces si usamos:
+
+	```js
+	colores.slice(2);
+	
+	//Obtenemos: 
+	["azul", "rojo", "verde"]
+	```
+
+[Keys, array u objeto?? - Lee la documentación 😊](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/keys)
+
+
+✨ Para el caso de `arrays` y `objetos`, un `console.table()` luce mejor que un clásico `console.log()` _([chequen](https://dev.to/leirasanchez/like-console-log-but-better-nhm?utm_source=Newsletter+Subscribers&utm_campaign=1f3aa837d6-EMAIL_CAMPAIGN_2020_03_02_05_11&utm_medium=email&utm_term=0_d8f11d5d1e-1f3aa837d6-155532545) qué otros métodos se pueden utilizar, está genial!)_
+
+🎲
+
+## Quiz
+
+1. Son los elementos principales de un array:
+	- ✅ Índice y elemento.
+
+2. Un array se mantiene inmutable, es decir, no puede aumentar o disminuir su tamaño. Esta afirmación es:
+	- ✅ Falsa.
+
+3. Los arrays pueden contener más arrays, esto es:
+	- ✅ Verdadero.
+
+🎲
+
+## 15. Loops: For y For...of
+
+
+🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲
+
+```js
 ```
 
 ## Notas / Aportes
