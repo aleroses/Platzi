@@ -1692,8 +1692,223 @@ var colores = ["rojo", "azul", "verde", "amarillo"];
 
 ## 15. Loops: For y For...of
 
+Los bucles pueden ejecutar un bloque de código varias veces. JavaScript admite diferentes tipos de bucles:
 
-🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲
+-   `for` - recorre un bloque de código varias veces
+
+```js
+var listaFrutas = ["Manzana", "Pera", "Naranja", "Platano", "Uva"];
+
+function saludarFruta(fruit){
+	console.log(`Hola, ${fruit}`);
+}
+
+for (var i = 0; i < listaFrutas.length; i++){
+	saludarFruta(listaFrutas[i]);
+}
+
+//Obtenemos:
+Hola, Manzana
+Hola, Pera
+Hola, Naranja
+Hola, Platano
+Hola, Uva
+```
+
+-   `for...in` - recorre las propiedades de un objeto
+
+```js
+const object = { a: 1, b: 2, c: 3 };
+
+for (const property in object) {
+  console.log(`${property}: ${object[property]}`);
+}
+
+//Obtenemos:
+a: 1
+b: 2
+c: 3
+```
+
+-   `for...of` - recorre los valores de un objeto iterable
+
+```js
+var listaFrutas = ["Manzana", "Pera", "Naranja", "Platano", "Uva"];
+
+function saludarFruta(fruit){
+	console.log(`Hola, ${fruit}`);
+}
+
+for (var fruta of listaFrutas){
+	saludarFruta(fruta);
+}
+```
+
+
+🔥 Otros loops:   
+-   `while` - recorre un bloque de código mientras se cumple una condición específica
+
+-   `do/while` - también recorre un bloque de código mientras se cumple una condición específica
+
+[Comentario cool](https://platzi.com/tutoriales/1814-basico-javascript/14061-deja-de-mirar-comentarios-y-hagamos-ejercicios-de-loops-for-while/)
+
+❄ Documentación:   
+- [for](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for)
+- [for...in](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...in)
+- [for...of](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...of)
+
+🎲
+
+## 16. Loops: While
+
+El bucle while recorre un bloque de código siempre que una condición especificada sea verdadera.  
+**Sintaxis**
+
+```js
+while (condition) {
+  // code block to be executed
+}
+```
+
+📌La traducción de while en español es mientras. Por lo tanto, la sentencia while se puede entender como "mientras se cumpla la condición, ejecuta el siguiente bloque de código entre llaves.
+
+Ejemplo:
+
+```js
+var frutas = ["Manzana", "Pera", "Mango"];
+
+function saludarFruta(fruits){
+	console.log(`Hola, ${fruits}`);
+}
+
+while(frutas.length > 0){
+	var fruit = frutas.shift();
+
+	saludarFruta(fruit);
+}
+```
+
+
+CUANDO EL PROFESOR UTILIZA LAS COMILLAS INVERTIDAS LUEGO EL SIGNO $ Y { } LLAVES… ESO SE LLAMA INTERPOLAR VARIABLES!!! QUE RARO QUE SE LE HAYA PASADO AL PROFESOR
+
+🎲
+
+## 17. Objects
+
+JavaScript está diseñado en un paradigma simple basado en objetos. Un objeto es una colección de propiedades, y una propiedad es una asociación entre un nombre (o _clave_) y un valor. El valor de una propiedad puede ser una función, en cuyo caso la propiedad es conocida como un método. Además de los objetos que están predefinidos en el navegador, puedes definir tus propios objetos.
+
+### Visión general sobre Objetos
+Los objetos en JavaScript, como en tantos otros lenguajes de programación, se pueden comparar con objetos de la vida real. El concepto de Objetos en JavaScript se puede entender con objetos tangibles de la vida real.
+
+En JavaScript, un objeto es un entidad independiente con propiedades y tipos. Compáralo con una taza, por ejemplo. Una taza es un objeto con propiedades. Una taza tiene un color, un diseño, un peso, un material del que está hecha, etc. Del mismo modo, los objetos de JavaScript pueden tener propiedades que definan sus características.
+
+
+### Objetos y propiedades
+Un objeto de JavaScript tiene propiedades asociadas a él. Una propiedad de un objeto se puede explicar como una variable adjunta al objeto. Las propiedades de un objeto básicamente son lo mismo que las variables comunes de JavaScript, excepto por el nexo con el objeto. Las propiedades de un objeto definen las características del objeto. Accedes a las propiedades de un objeto con una simple notación de puntos:
+
+```js
+objectName.propertyName
+```
+
+Como todas las `variables` de JavaScript, tanto el nombre del objeto (que puede ser una variable normal) como el nombre de la propiedad son sensibles a mayúsculas y minúsculas. Puedes definir propiedades asignándoles un valor. Por ejemplo, vamos a crear un objeto llamado `myCar` y le vamos a asignar propiedades denominadas `make`, `model`, y `year` de la siguiente manera:
+
+```js
+var myCar = new Object();
+
+myCar.make = 'Ford';
+myCar.model = 'Mustang';
+myCar.year = 1969;
+```
+
+El ejemplo anterior también se podría escribir usando un **iniciador de objeto**, que es una lista delimitada por comas de cero o más pares de nombres de propiedad y valores asociados de un objeto, encerrados entre llaves (`{}`):
+
+```js
+var myCar = {
+    make: 'Ford',
+    model: 'Mustang',
+    year: 1969
+};
+```
+
+Las propiedades no asignadas de un objeto son `undefined` y no `null`.
+
+```js
+myCar.color; // undefined
+```
+
+También puedes **acceder** o **establecer** las propiedades de los objetos en JavaScript mediante la notación de corchetes [ ] (Para más detalle ve [Accesores de propiedades](https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Operators/Property_Accessors)). Los objetos, a veces son llamados _arreglos asociativos_, debido a que cada propiedad está asociada con un valor de cadena que se puede utilizar para acceder a ella. Por lo tanto, por ejemplo, puedes acceder a las propiedades del objeto `myCar` de la siguiente manera:
+
+```js
+// Establecer propiedades 
+myCar['make']  = 'Ford';
+myCar['model'] = 'Mustang';
+myCar['year']  = 1969;
+
+// Acceder a las prop.
+myCar.model
+```
+
+El nombre de la propiedad de un objeto puede ser cualquier cadena válida de JavaScript, o cualquier cosa que se pueda convertir en una cadena, incluyendo una cadena vacía. Sin embargo, cualquier nombre de propiedad que no sea un identificador válido de JavaScript (por ejemplo, el nombre de alguna propiedad que tenga un espacio o un guion, o comience con un número) solo se puede acceder utilizando la notación de corchetes. Esta notación es muy útil también cuando los nombres de propiedades son determinados dinámicamente (cuando el nombre de la propiedad no se determina hasta el tiempo de ejecución). Ejemplos de esto se muestran a continuación:
+
+```js
+// Se crean y asignan cuatro variables de una sola vez,
+// separadas por comas
+var myObj = new Object(),
+    str = 'myString',
+    rand = Math.random(),
+    obj = new Object();
+
+myObj.type                 = 'Sintaxis de puntos';
+myObj['fecha de creación'] = 'Cadena con espacios';
+myObj[str]                 = 'Valor de cadena';
+myObj[rand]                = 'Número aleatorio';
+myObj[obj]                 = 'Object';
+myObj['']                  = 'Incluso una cadena vacía';
+
+console.log(myObj);
+```
+
+También puedes acceder a las propiedades mediante el uso de un valor de cadena que se almacena en una variable:
+
+```js
+var propertyName = 'make';
+myCar[propertyName] = 'Ford';
+
+propertyName = 'model';
+myCar[propertyName] = 'Mustang';
+```
+
+Podemos agregar funciones como propiedades, a esto se le llama métodos de objetos.
+
+```js
+var myCar = {
+	marca: "Toyota",
+	modelo: "Corolla",
+	year: 2020, 
+	detallesDelAuto: function () {
+		console.log(`Auto ${this.modelo} ${this.year}`);
+	}
+}
+
+miAuto.detallesDelAuto();
+//Auto Corolla 2020
+```
+
+¿Quién es this?  
+Es una variable que hace referencia al objeto. En este caso: this = myCar.
+
+
+[Documentación](https://developer.mozilla.org/es/docs/Web/JavaScript/Guide/Working_with_Objects)
+
+🎲
+
+## 18. 
+
+
+
+
+Continuara... 
+🎲🎲🎲🎲🎲🎲🎲🎲🎲
 
 ```js
 ```
