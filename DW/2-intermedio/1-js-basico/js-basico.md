@@ -1936,6 +1936,18 @@ console.log(car["1994"]);
 
 ## 18. Objects: Función constructora
 
+Una función constructora es una función normal y corriente de JavaScript que se utiliza para definir una especie de plantilla para nuestros objetos personalizados.
+
+```js
+function auto(marca, modelo, year){
+	this.marca = marca;
+	this.modelo = modelo;
+	this.year = year;
+}
+```
+
+Como podemos observar, se trata de una típica función de JavaScript que admite una serie de parámetros de entrada aunque **estos no son obligatorios en absoluto**. La única particularidad de esta función es que se utiliza la palabra reservada **this** de JavaScript para definir una serie de propiedades (también podrán ser métodos) que formarán parte de nuestros objetos personalizados.
+
 ```js
 function auto(marca, modelo, year){
 	this.marca = marca;
@@ -1948,8 +1960,13 @@ var autoNuevo2 = new auto("Tesla", "Modelo X", 2018);
 var autoNuevo3 = new auto("Toyota", "Corolla", 2020);
 ```
 
-### Reto:
-Ingresando detalles de autos 
+En el ejemplo de arriba ☝ vemos cómo podemos utilizar esta **función constructora** para **crear instancias de nuestros objetos personalizados**.
+
+El operador `new` utilizado junto a una función de JavaScript es lo que nos permite obtener un objeto constructor o función constructora. Lo que sucede por debajo es que `new` primeramente crea un objeto sin propiedades y posteriormente llama a la función pasándole el nuevo objeto como valor de la palabra reservada `this`**.** Finalmente, la función nos devuelve un nuevo objeto con las propiedades y métodos definidos dentro de la constructora.
+
+[Más información aquí](https://www.variablenotfound.com/2011/12/funciones-constructoras-en-javascript.html#:~:text=El%20operador%20new%20utilizado%20junto,de%20la%20palabra%20reservada%20this%20.)
+
+### Reto: Ingresando detalles de autos 
 
 ```js
 //Solución personal one 😺 ------------
@@ -2080,10 +2097,139 @@ for (var i = 0; i < autos.length; i++) {
 
 🎲
 
-🎲🎲🎲🎲🎲🎲🎲🎲
+## 19. Métodos de recorridos de Arrays
+array con objetos dentro
+```js
+var articulos = [
+	{nombre: "Bici", costo: 3000},
+	{nombre: "Tv", costo: 2500},
+	{nombre: "Libro", costo: 320},
+	{nobre: "Celular", costo: 10000}, 
+	{nombre: "Laptop", costo: 20000},
+	{nombre: "Teclado", costo: 500},
+	{nombre: "Audifonos", costo: 1700},
+];
+```
+
+**.filter**: nos permite filtrar solo los elementos que deseamos (según ciertos criterios) y devolverlos en un nuevo array.   
+Ejemplo:  
+
+```js
+var articulos = [
+	{nombre: "Bici", costo: 3000},
+	{nombre: "Tv", costo: 2500},
+	{nombre: "Libro", costo: 320},
+	{nobre: "Celular", costo: 10000}, 
+	{nombre: "Laptop", costo: 20000},
+	{nombre: "Teclado", costo: 500},
+	{nombre: "Audifonos", costo: 1700},
+];
+
+var articulosFiltrados = articulos.filter(function(articulo){
+	return articulo.costo <= 500;
+});
+
+articulosFiltrados 
+```
+
+**.map**: crea un nuevo array con los resultados de la llamada a la función indicada aplicados a cada uno de sus elementos.   
+Ejemplo:   
+
+```js
+var articulos = [
+	{nombre: "Bici", costo: 3000},
+	{nombre: "Tv", costo: 2500},
+	{nombre: "Libro", costo: 320},
+	{nobre: "Celular", costo: 10000}, 
+	{nombre: "Laptop", costo: 20000},
+	{nombre: "Teclado", costo: 500},
+	{nombre: "Audifonos", costo: 1700},
+];
+
+var nombreArticulos = articulos.map(function(articulo){
+	return articulo.nombre;
+});
+
+nombreArticulos
+```
+
+✨ Esta es una forma de hacerlo con arrow function y notación corta:
+
+```js
+var arcticle = [
+	{nombre: "Bici", costo: 3000},
+	{nombre: "Tv", costo: 2500},
+	{nombre: "Libro", costo: 320},
+	{nobre: "Celular", costo: 10000}, 
+	{nombre: "Laptop", costo: 20000},
+	{nombre: "Teclado", costo: 500},
+	{nombre: "Audifonos", costo: 1700},
+];
+
+var nameArcticles = article.filter((filtrado) => filtrado.costo <= 500)
+
+console.log(nameArticle);
+```
+
+- [Mas información aquí](https://es.javascript.info/array-methods)   
+- [Más info](https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Array)
+
+### Otro ejemplo:  
+Recibimos una lista de 30 carros diferentes y se nos solicita que:   
+- Se almacene esta información
+- Separar todas las marcas, modelos y años respectivamente en distintos arrays
+- Juntemos todo en un solo array usando una función constructiva
+
+```js  
+var marca = ["Audi", "Subaru", "Lexus", "Porsche", "BMW", "Mazda", "Buick", "Toyota", "Kia", "Honda", "Hyundai", "Volvo", "Mini", "Mercedes-Benz", "Volkswagen", "Ford", "Lincoln", "Scion", "Acura", "Chevrolet", "Nissan", "Infiniti", "GMC", "Cadillac", "Dodge", "Land", "Rover", "Mitsubishi", "Jeep", "Fiat"];
+
+var modelo = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30];
+
+var annio = [2020,2019,2018,2020,2020,2020,2018,2018,2020,2020,2020,2018,2018,2020,2020,2019,2020,2020,2019,2019,2020,2020,2019,2019,2019,2020,2019,2019,2018,2020];
+
+// Juntamos todo en un solo array usando una función constructiva
+var listaAutos = [];
+
+function autoN(marca, modelo, annio){
+	this.marca = marca;
+	this.modelo = modelo;
+	this.annio = annio;
+}
+
+for (var i = 0; i<30; i++){ //También: i < modelo.length; 
+	var autoNuevo = new autoN(marca[i],modelo[i],annio[i]);
+	
+	listaAutos.push(autoNuevo);
+} 
+
+// Filtramos
+var autosFiltrados = listaAutos.filter(function(auto){ //👈👀 Fijate en auto
+    return auto.annio === 2020; //👈👀 Parece que ese parametro se llama aquí
+});
+
+console.log(autosFiltrados);
+
+// Mapeamos
+var marcasRecientes = listaAutos.map(function(auto){
+    return auto.marca;
+});
+
+console.log(marcasRecientes);
+```
+
+🎲
+
+## 20. Recorriendo Arrays con .find(), .forEach() y .some()
+
+
+🎲
+
+🎲🎲🎲🎲🎲🎲
+
 Continuara... 
 
 ```js
+
 ```
 
 ## Notas / Aportes
@@ -2100,6 +2246,7 @@ Continuara...
 - Obed Paz
 - Maria Gabriela Rodriguez Cuevas
 - Saul Eduardo Acosta
+- Edmundo Salamanca Villa
 
 
 
