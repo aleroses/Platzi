@@ -1878,7 +1878,7 @@ propertyName = 'model';
 myCar[propertyName] = 'Mustang';
 ```
 
-Podemos agregar funciones como propiedades, a esto se le llama métodos de objetos.
+❄ Podemos agregar funciones como propiedades, a esto se le llama métodos de objetos.
 
 ```js
 var myCar = {
@@ -1897,18 +1897,191 @@ miAuto.detallesDelAuto();
 ¿Quién es this?  
 Es una variable que hace referencia al objeto. En este caso: this = myCar.
 
+❄ Cosas que no se mencionan en esta clase: 
+
+-   Los **key values** se representan como string para JS esto quiere decir que si colocan una propiedad por ejemplo **marca** : **“toyota”** es lo mismo decir **“marca”** : **“toyota”**
+
+-   Debido a que los **key values** JS los interpreta como strings significa que también pueden acceder a una propiedad usando llaves y dentro especificando el **key value**
+
+```js
+var car = {
+	marca: "totoya",
+	1994: "año"
+}
+
+console.log(car.marca);
+//Totoya
+
+console.log(car["marca"]);
+//Totoya
+```
+
+-   Lo que menciono anteriormente lo digo por que por ejemplo si colocan un **key value** tipo numero, no van a poder acceder a esta propiedad de la forma tradicional.
+
+```js
+var car = {
+	1994: "año"
+}
+
+console.log(car.1994);
+//Error!!!
+
+console.log(car["1994"]);
+//año
+```
 
 [Documentación](https://developer.mozilla.org/es/docs/Web/JavaScript/Guide/Working_with_Objects)
 
 🎲
 
-## 18. 
+## 18. Objects: Función constructora
 
+```js
+function auto(marca, modelo, year){
+	this.marca = marca;
+	this.modelo = modelo;
+	this.year = year;
+}
 
+var autoNuevo = new auto("Tesla", "Model 3", 2020);
+var autoNuevo2 = new auto("Tesla", "Modelo X", 2018);
+var autoNuevo3 = new auto("Toyota", "Corolla", 2020);
+```
 
+### Reto:
+Ingresando detalles de autos 
 
+```js
+//Solución personal one 😺 ------------
+//Esto no almacena los datos ingresados
+
+function auto(marca, modelo, year){
+	this.marca = marca;
+	this.modelo = modelo;
+	this.year = year;
+}
+
+for (var i = 3; i > 0; i--){
+	var userMarca = prompt("Ingresa: Marca").toLowerCase();
+	var userModelo = prompt("Ingresa: Modelo").toLowerCase();
+	var userYear = prompt("Ingresa: Año").toLowerCase();
+  
+	var datosAuto = new auto(userMarca, userModelo, userYear);
+	console.log(datosAuto);
+}
+```
+
+```js
+//Solución personal two 😺 ----------------------
+//Pedir al usuario la cantidad de autos a ingresar
+//Almacena los datos
+
+var carsNumber = prompt("Enter: Number of cars to register");
+var data = [];
+
+function cars(brand, model, year){
+	this.brand = brand;
+	this.model = model;
+	this.year = year;
+}
+
+for (i = 0; i < carsNumber; i++){
+	var brand = prompt("Enter: Brand").toLowerCase();
+	var model = prompt("Enter: Model").toLowerCase();
+	var year = prompt("Enter: Year").toLowerCase();
+
+	data.push(new cars(brand, model, year));
+	console.log(data[i]);
+}
+
+console.log(data);
+```
+
+```js
+//Solución externa one 👻 ----------
+//Almacena la información ingresada  
+
+function auto (MARCA, MODELO, ANNIO){
+	this.marca = MARCA;
+	this.modelo = MODELO;
+	this.annio = ANNIO;
+}
+
+var autos = [];
+
+for(let i = 0 ; i < 2 ; i++){
+	var marca = prompt("Ingresa la marca del auto");
+	var modelo = prompt("Ingresa el modelo del auto");
+	var annio = prompt("Ingresa el año del auto");
+	autos.push(new auto (marca, modelo, annio));
+}
+
+//Mostramos todo el contenido
+console.log(autos);
+
+//Recorremos todo el contenido
+
+for(let i = 0 ; i < autos.length ; i++){
+    console.log(autos[i]);
+}
+```
+
+```js
+//Solución externa two 👻 ----------------
+//Permite al usuario finalizar el programa
+
+function auto(MARCA, MODELO, ANNIO) {
+	this.marca = MARCA;
+	this.modelo = MODELO;
+	this.annio = ANNIO;
+}
+
+var autos = [];
+
+for (let i = 0; i < 30; i++) {
+	var finalizar = prompt("Continuar: 0 | Finalizar: 1");
+
+    if (finalizar == 0) {
+		var marca = prompt("Ingresa la marca del auto");
+		var modelo = prompt("Ingresa el modelo del auto");
+		var annio = prompt("Ingresa el año del auto");
+		
+		autos.push(new auto(marca, modelo, annio));
+    }else {
+        i=31;
+    }
+}
+
+for (let i = 0; i < autos.length; i++) {
+    console.log(autos[i]);
+}
+```
+
+```js
+//Solución externa three 👻 ----------------
+//Mas simplificada
+
+function crearAuto (marca, modelo, annio) {  
+	this.marca = prompt(`Marca: `);  
+	this.modelo = prompt(`Modelo: `);
+	this.annio = prompt(`Año: `);
+}
+
+var autos = [];
+
+for (var i = 0; i < 3; i++) {
+	autos.push(new crearAuto(this.marca, this.modelo, this.annio))
+}
+
+for (var i = 0; i < autos.length; i++) {
+    console.log(autos[i]);
+}
+```
+
+🎲
+
+🎲🎲🎲🎲🎲🎲🎲🎲
 Continuara... 
-🎲🎲🎲🎲🎲🎲🎲🎲🎲
 
 ```js
 ```
