@@ -441,9 +441,9 @@ function saludar(nombre) {
 saludar('Diego');
 ```
 
-#### Expresión de función:
+### Expresión de función:
 
-En la expresión de función, la declaración se inicia con la palabra reservada var, donde se generará una variable que guardará una función anónima.
+En la función expresiva , la declaración se inicia con la palabra reservada var, donde se generará una variable que guardará una función anónima.
 
 ```js
 var nombre = function(nombre){
@@ -2510,16 +2510,125 @@ Continuara...
 	<summary>Haz clic para ver los resultados 👀</summary>
 	<br/>
 
-1. 
-	- 📌
+1. ¿Qué es un array?
+	- 📌 Es una estructura de datos de tipo objeto.
 
-2. 
-	- 📌
+CAMBIAR
+
+2. ¿Qué resultado podría esperar de ésta validación?
+	```js
+	4 == “4”
+	```
+	- 📌 TRUE
+
+CAMBIAR
+
+3. ¿Es correcta la siguiente sentencia ?
+	```js
+	switch (false) { 
+		case false: console.log("Soy falso :( ") 
+		case true: console.log("Soy verdadero!") 
+	}
+	```
+	- 📌 No
+
+CAMBIAR
+
+4. ¿Cuáles son los tipos de scope tenemos?
+	- 📌 Scope global y Scope local.
+
+CAMBIAR
+
+5. ¿Qué resultado podría esperar de ésta validación?
+	```js
+	1 = “1”
+	```
+	- 📌 Syntax Error
+
+CAMBIAR
+
+6. ¿Qué es una variable?
+	- 📌 Es la representación de un espacio en memoria.
+
+CAMBIAR
+
+7. ¿Qué podemos esperar al llamar al método .pop(); ?
+	- 📌 Borrar el último elemento de mi array.
+
+CAMBIAR
+
+8. ¿Qué resultado podría esperar de ésta validación?
+	```js
+	6 === “6”
+	```
+	- 📌 FALSE
+
+CAMBIAR
+
+9. ¿Qué método llamaríamos para saber el index de un elemento de mi array?
+	- 📌 `indexOf()`
+
+CAMBIAR
+
+10. ¿Cómo se le conoce a la siguiente sentencia?
+	```js
+	var nombre;
+	```
+	- 📌 Declarar una variable.
+
+CAMBIAR
+
+11. ¿Por qué decimos que JavaScript es un lenguaje dinámico?
+	- 📌 Porque es un lenguaje que corre en tiempo de ejecución.
+
+CAMBIAR
+
+12. ¿Cómo se le llama al siguiente ejemplo de funciones?
+	```js
+	function myfunction() { 
+		...
+	}
+	```
+	- 📌 Función declarativa.
+
+CAMBIAR
+
+13. ¿Cómo podemos crear notas o comentarios en nuestro JavaScript?
+	- 📌 // …
+
+CAMBIAR
+
+1. ¿Cómo se llama al siguiente ejemplo de funciones?
+	```js
+	var myFunction = function() { 
+		...
+	}
+	```
+	- 📌 Función expresiva.
+
+CAMBIAR
+
+15. ¿Cómo se le conoce a la siguiente sentencia?
+	```js
+	nombre = “Diego”
+	```
+	- 📌 Inicializar una variable.
+
+CAMBIAR
+
+16. ¿Qué significa Coerción en JS?
+	- 📌 Es el proceso de convertir el valor de un tipo a otro.
+
+CAMBIAR
+
+17. ¿Qué es el hoisting en JavaScript?
+	- 📌 Es cuando las declaraciones de variables y funciones se procesan antes de ejecutar cualquier código.
+
+CAMBIAR
 
 </details>
 
 🎲
-
 
 ## Emojis:  
 <details>
