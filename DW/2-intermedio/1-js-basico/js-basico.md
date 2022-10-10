@@ -2098,77 +2098,68 @@ for (var i = 0; i < autos.length; i++) {
 🎲
 
 ## 19. Métodos de recorridos de Arrays
-array con objetos dentro
+Array con objetos dentro
 ```js
 var articulos = [
 	{nombre: "Bici", costo: 3000},
 	{nombre: "Tv", costo: 2500},
 	{nombre: "Libro", costo: 320},
-	{nobre: "Celular", costo: 10000}, 
+	{nombre: "Celular", costo: 10000}, 
 	{nombre: "Laptop", costo: 20000},
 	{nombre: "Teclado", costo: 500},
 	{nombre: "Audifonos", costo: 1700},
 ];
 ```
 
-**.filter**: nos permite filtrar solo los elementos que deseamos (según ciertos criterios) y devolverlos en un nuevo array.   
-Ejemplo:  
+- **.filter**: 
+Este método crea un nuevo array con todos los elementos que cumplan la condición implementada por la función dada.  
 
 ```js
-var articulos = [
-	{nombre: "Bici", costo: 3000},
-	{nombre: "Tv", costo: 2500},
-	{nombre: "Libro", costo: 320},
-	{nobre: "Celular", costo: 10000}, 
-	{nombre: "Laptop", costo: 20000},
-	{nombre: "Teclado", costo: 500},
-	{nombre: "Audifonos", costo: 1700},
-];
-
 var articulosFiltrados = articulos.filter(function(articulo){
 	return articulo.costo <= 500;
 });
 
-articulosFiltrados 
+console.log(articulosFiltrados); 
+
+//Obtenemos:
+0: {nombre: 'Libro', costo: 320}
+1: {nombre: 'Teclado', costo: 500}
 ```
 
-**.map**: crea un nuevo array con los resultados de la llamada a la función indicada aplicados a cada uno de sus elementos.   
-Ejemplo:   
+- **.map**: 
+Crea un nuevo array con los resultados de la llamada a la función indicada aplicados a cada uno de sus elementos.   
 
 ```js
-var articulos = [
-	{nombre: "Bici", costo: 3000},
-	{nombre: "Tv", costo: 2500},
-	{nombre: "Libro", costo: 320},
-	{nobre: "Celular", costo: 10000}, 
-	{nombre: "Laptop", costo: 20000},
-	{nombre: "Teclado", costo: 500},
-	{nombre: "Audifonos", costo: 1700},
-];
-
 var nombreArticulos = articulos.map(function(articulo){
 	return articulo.nombre;
 });
 
-nombreArticulos
+console.log(nombreArticulos);
+
+//Obtenemos
+(7) ['Bici', 'Tv', 'Libro', 'Celular', 'Laptop', 'Teclado', 'Audifonos']
 ```
 
 ✨ Esta es una forma de hacerlo con arrow function y notación corta:
 
 ```js
-var arcticle = [
+var article = [
 	{nombre: "Bici", costo: 3000},
 	{nombre: "Tv", costo: 2500},
 	{nombre: "Libro", costo: 320},
-	{nobre: "Celular", costo: 10000}, 
+	{nombre: "Celular", costo: 10000}, 
 	{nombre: "Laptop", costo: 20000},
 	{nombre: "Teclado", costo: 500},
 	{nombre: "Audifonos", costo: 1700},
 ];
 
-var nameArcticles = article.filter((filtrado) => filtrado.costo <= 500)
+var nameArticles = article.filter((filtrado) => filtrado.costo <= 500)
 
-console.log(nameArticle);
+console.log(nameArticles);
+
+//Obtenemos:
+0: {nombre: 'Libro', costo: 320}
+1: {nombre: 'Teclado', costo: 500}
 ```
 
 - [Mas información aquí](https://es.javascript.info/array-methods)   
@@ -2221,16 +2212,277 @@ console.log(marcasRecientes);
 
 ## 20. Recorriendo Arrays con .find(), .forEach() y .some()
 
+Array con objetos dentro
+```js
+var articulos = [
+	{nombre: "Bici", costo: 3000},
+	{nombre: "Tv", costo: 2500},
+	{nombre: "Libro", costo: 320},
+	{nombre: "Celular", costo: 10000}, 
+	{nombre: "Laptop", costo: 20000},
+	{nombre: "Teclado", costo: 500},
+	{nombre: "Audifonos", costo: 1700},
+];
+```
+
+- **.find**: 
+Este método devuelve el **valor** del **primer elemento**👈👀 del array que cumple la función de prueba proporcionada.
+
+```js
+var encuentraArticulo = articulos.find(function(articulo){
+	return articulo.nombre === "Laptop";
+	return articulo.costo <= 2500;
+});
+
+console.log(encuentraArticulo);
+//Obtenemos: 
+{nombre: 'Laptop', costo: 20000}
+```
+
+```js
+var encuentraArticulo = articulos.find(function(articulo){
+	return articulo.costo <= 2500;
+});
+
+console.log(encuentraArticulo);
+
+//Obtenemos: 
+{nombre: 'Tv', costo: 2500}
+```
+
+- **.forEach**: 
+Este método ejecuta la función indicada una vez por cada elemento del array.
+
+```js
+articulos.forEach(function(articulo){
+	console.log(articulo.nombre);
+});
+
+//Obtenemos
+Bici
+Tv
+Libro
+Celular
+Laptop
+Teclado
+Audifonos
+```
+
+- **.some()**:  
+Este método comprueba si al menos un elemento del array cumple con la condición implementada por la función proporcionada.
+
+```js
+var articulosBaratos = articulos.some(function(articulo){
+	return articulo.costo <= 700;
+});
+
+console.log(articulosBaratos);
+
+//Obtenemos
+true
+```
+
+**Nota:** Este método devuelve `false` para cualquier condición puesta en un array vacío.
+
+[Documentación Métodos de instancia](https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Array#m%C3%A9todos_de_instancia "Permalink to Métodos de instancia")
+
+### Otro ejemplo:  
+```js
+var cars = [];
+var year = 2010;
+
+function addCar(marca, modelo, anio){
+    this.marca = marca;
+    this.modelo = modelo;
+    this.anio = anio;
+}
+
+for (let index = 0; index < 10; index++) {
+    var carName = "auto"+ index; //nombre unico modelo de carro
+    cars[index] = new addCar(carName, "model", year);
+    year++; //incremento de cada año
+    console.log(cars[index]);
+}
+
+//Metodo 1
+//Me ayuda a filtrar todos los autos con un año menor o igual a 2014
+var filtroAutos = cars.filter(function(carro){return carro.anio <= 2014});
+
+//Metodo 2
+//me ayuda a mapear los autos, esto me retorna todos las marcas de los autos
+var nombreAutos = cars.map(function(carro){return carro.marca});
+
+//Metodo 3
+//Me ayuda a buscar todos los autos que se llamen auto4
+var filtroAutos = cars.find(function(carro){return carro.marca === "auto4"});
+
+//metodo 4
+//me ayuda a filrar sin necesidad de crear una nueva variable
+cars.forEach(function(car){console.log(car.marca);});
+
+//metodo 5
+//me ayuda a validar si una funcion es verdadera solo retorna true o false… Solo me ayuda a saber si algo es verdad (ejemplo si hay autos viejos en mi array de objetos)
+var autosViejos = cars.some(function(car){return car.anio < 2014;});
+```
 
 🎲
 
-🎲🎲🎲🎲🎲🎲
+## 21. Eliminando elementos de un Array
 
-Continuara... 
+El método `.push()` nos permite agregar uno o más elementos al final de un array. A continuación veremos un ejemplo aplicado con un array que contiene números:
 
 ```js
+//Array inicial
+let numArray = [1,2,3,4,5]
 
+//Función
+function newNum(){
+	//Agrego elementos
+	numArray.push(6,7)
+
+	//Reviso el arra que ahora tiene los números agregados
+	console.log(numArray)
+}
+
+//Ejecuto la función
+newNum()
+
+//Obtenemos
+(7) [1, 2, 3, 4, 5, 6, 7]
 ```
+
+Como podemos ver, al momento de ejecutar la función se agregan los números 6 y 7 al array. Ahora revisemos un ejemplo con strings:
+
+```js
+//Ejemplo con strings
+//Array inicial
+let txtArray = ["Ana", "Juan", "Diego", "Lautaro"]
+
+//Función
+function addCharacters(){
+	//Agrego elementos
+	txtArray.push("Chris", "Maria")
+
+	//Reviso el array que ahora tiene los números agregados
+	console.log(txtArray);
+}
+
+addCharacters()
+
+//Obtenemos
+(6) ['Ana', 'Juan', 'Diego', 'Lautaro', 'Chris', 'Maria']
+```
+
+Como podemos ver, agregamos dos cadenas de strings al ejecutar la función donde tenemos `txtArray.push()`. Es decir, indico el array al que voy agregar elementos, uso el método .push(), y dentro de .push() indico los elementos que quiero agregar al string. Finalmente, el `console.log()` lo uso para revisar en la consola si esto sucedió o no.
+
+### .shift()
+
+Ahora pasemos a la otra cara de la moneda donde necesitamos eliminar un elemento del array. `.shift()` eliminar el primer elemento de un array, es decir, elimina el elemento que esté en el índice 0.
+
+```js
+//Creamos el array
+let array = [1,2,3,4,5]
+console.log(array)
+
+//Aplicamos .shift()
+let shiftArray = array.shift()
+
+//Revisamos. El output debe ser [2,3,4,5]
+console.log(array)
+
+//Obtenemos
+(5) [1, 2, 3, 4, 5]
+(4) [2, 3, 4, 5]
+```
+
+Como vemos, luego de aplicar `.shift()` se eliminó exitosamente el primer elemento del array. ¿Y si quisiéramos eliminar el último elemento? Pasemos al bonus track de esta clase 🙌🏼.
+
+### Bonus Track
+
+Si ya entendiste cómo funciona `.shift()` aplicar `.pop()` te será pan comido 🍞. El método `.pop()` eliminará el último elemento de un array. En este sentido, si tenemos un array de 5 elementos, `pop()` eliminará el elemento en el índice 4. Utilicemos el mismo ejemplo pero usando este método.
+
+```js
+let array = [1,2,3,4,5]
+console.log(array)
+
+//Aplicamos .pop()
+let shiftArray = array.pop()
+
+//Revisamos. El output debe ser [1,2,3,4]
+console.log(array)
+
+//Obtenemos
+(5) [1, 2, 3, 4, 5]
+(4) [1, 2, 3, 4]
+```
+
+¡Y listo! Ahora que ya conoces todos estos métodos te recomiendo comenzar a experimentar 💪🏼
+
+👉🏾 Link al repositorio de esta clase: [https://github.com/aaronpaulgz/push-shift](https://github.com/aaronpaulgz/push-shift)
+
+
+🔥 Otro método que sirve para eliminar un arreglo según su índice es **`splice`**
+
+### splice() 
+El método **`splice()`** cambia el contenido de un array eliminando elementos existentes y/o agregando nuevos elementos.
+
+```js
+var articulos = ['carro', 'celular', 'moto', 'tv', 'libro']; //eliminar moto
+
+articulos.splice(2, 1); 
+//el primer parámetro especifica el índice del elemento que quiero eliminar, en este caso es moto
+//y el segundo parámetro especifica cuantos elementos del arreglo quiero eliminar, en este caso solo uno que es moto
+
+//Queda
+articulos = ['carro', 'celular', 'tv', 'libro']
+```
+
+También con este método se pueden modificar elementos de un arreglo según su índice
+
+```js
+var articulos = ['carro', 'celular', 'moto', 'tv', 'libro']; //modificar moto
+
+articulos.splice(2, 1, 'laptop'); 
+//se aplican los mismo parámetros, pero esta vez se le agrega el valor al que queremos modificar. 
+
+//Queda
+['carro', 'celular', 'laptop', 'tv', 'libro']
+```
+
+🎲
+
+## Quiz
+1. ¿Qué método debo utilizar para eliminar el último elemento de un array?
+	- ✅ .pop()
+
+2. ¿Qué hace el método `some()`?
+	- ✅ Retorna "true" o “false” si hay elementos en un array que cumplan con la condición indicada.
+
+3. ¿Qué hace el método `forEach()`?
+	- ✅ Ejecuta la función indicada una vez por cada elemento del array.
+
+4. ¿Qué hace el método `find()`?
+	- ✅ Retorna el primer elemento de un array que cumple con una condición definida en un nuevo array.
+
+5. ¿Qué hace el método `map()`?
+	- ✅ Crea un nuevo array con los resultados de la llamada a la función indicada aplicados a cada uno de sus elementos.
+
+6. ¿Qué hace el método `filter()`?
+	- ✅ Crea un nuevo array con los elementos del array que se pasó como parámetro y que cumplan con la condición definida.
+
+🎲
+
+## 22. Continúa con el Curso Práctico de JavaScript
+
+❄ Lecturas recomendadas
+
+- [Curso de JavaScript Engine (V8) y el Navegador](https://platzi.com/clases/javascript-navegador)
+- [Curso de ECMAScript 6+](https://platzi.com/clases/ecmascript-6/)
+- [Curso Práctico de JavaScript | Platzi](https://platzi.com/clases/javascript-practico)
+
+🎲🎲🎲🎲
+
+Continuara... 
 
 ## Notas / Aportes
 <details>
@@ -2247,12 +2499,27 @@ Continuara...
 - Maria Gabriela Rodriguez Cuevas
 - Saul Eduardo Acosta
 - Edmundo Salamanca Villa
-
-
+- Muchos otros...
 
 </details>
 
 🎲
+
+## Examen 
+<details>
+	<summary>Haz clic para ver los resultados 👀</summary>
+	<br/>
+
+1. 
+	- 📌
+
+2. 
+	- 📌
+
+</details>
+
+🎲
+
 
 ## Emojis:  
 <details>
