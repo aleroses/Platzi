@@ -2111,7 +2111,7 @@ var articulos = [
 ];
 ```
 
-- **.filter**: 
+- **.filter**:    
 Este método crea un nuevo array con todos los elementos que cumplan la condición implementada por la función dada.  
 
 ```js
@@ -2126,7 +2126,7 @@ console.log(articulosFiltrados);
 1: {nombre: 'Teclado', costo: 500}
 ```
 
-- **.map**: 
+- **.map**:    
 Crea un nuevo array con los resultados de la llamada a la función indicada aplicados a cada uno de sus elementos.   
 
 ```js
@@ -2225,7 +2225,7 @@ var articulos = [
 ];
 ```
 
-- **.find**: 
+- **.find**:    
 Este método devuelve el **valor** del **primer elemento**👈👀 del array que cumple la función de prueba proporcionada.
 
 ```js
@@ -2250,7 +2250,7 @@ console.log(encuentraArticulo);
 {nombre: 'Tv', costo: 2500}
 ```
 
-- **.forEach**: 
+- **.forEach**:   
 Este método ejecuta la función indicada una vez por cada elemento del array.
 
 ```js
@@ -2268,7 +2268,7 @@ Teclado
 Audifonos
 ```
 
-- **.some()**:  
+- **.some()**:    
 Este método comprueba si al menos un elemento del array cumple con la condición implementada por la función proporcionada.
 
 ```js
