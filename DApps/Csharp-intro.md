@@ -632,7 +632,7 @@ Console.WriteLine(description);
 - **Length** para contar el numero de caracteres de un string.  
 - **ToUpper() y ToLower()** para convertir todo el string en mayuscula o minuscula.  
 
-El uso del \ es muy importante, ya que nos permite insertar en el string objetos como /, " y '.  
+El uso del \ es muy importante, ya que nos permite insertar en el string objetos como /, " y '.   
 Ejemplos:
 
 ```cs
@@ -649,7 +649,147 @@ Console.WriteLine("El \\Liverpool\\"); //El \Liverpool\
 
 🎲
 
-🎲🎲🎲🎲🎲
+## 10. Trabajando con números y operadores aritméticos   
+Creamos nuevo proyecto ➡ Console App (.NET Core)
+Project name: **squareArea** ➡ .NET Core 3.1
+
+```cs
+using System;
+
+namespace squareArea
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            //Rectangle area calc.
+
+            //Rectangle values
+            float sideA = 10.2f; //f👈👀
+            int sideB = 1;
+            sideB++;
+            sideB++;
+            sideB--;
+
+            //Rectangle area formula is a*b
+            float area = sideA * sideB;
+			//float = float * int 👈👀
+            
+            Console.WriteLine("The rectangle area is: " + area);
+        }
+    }
+}
+```
+
+- Para comentar código en una sola línea se escribe dos barras diagonales `//`.  
+-   El doble slash sirve para comentar **UNA** línea pero no si queremos hacer saltos de línea. En este último caso lo haremos con `/* */`
+
+Para la variables tipo flotante en C#, hay que agregarle una **“f”** al final de cada valor. Ejm:   
+`float valor = 10.0f`
+
+- Operador de Suma: `+`  
+- Operador de Resta: `-`  
+- Operador de División: `/`  
+- Operador de Multiplicación: `*` 
+- Operador para sacar Módulo: `%`  
+- Operador para incrementar: `++`  
+- Operador para decrementar: `–-`
+
+✨ Si escriben `cw` y dos veces tab les crea todo el `Console.WriteLine();`  
+Y así evitan cansar sus manitas jajajaja 😊
+
+🎲
+
+## 11. Operadores lógicos
+
+Creamos nuevo proyecto ➡ Console App (.NET Core)
+Project name: **LogicalOperatorsExample** ➡ .NET 6.0
+
+Acá no hay mucha variedad. Los operadores lógicos dan como resultado _True_ o _False_ y se pueden dar mediante tres operaciones:
+
+-   && -> AND : “**ESTO Y AQUELLO** se tienen que cumplir o morimos todos”
+    
+-   || -> OR : “Si **ESTO** o **AQUELLO** pasa, morimos todos”
+    
+-   ! -> NOT : “Esto **NO ES ASÍ**, es todo lo contrario”
+    
+
+_"No entiendo, Maginer"_  
+Ahí vamos, Timmy. Vamos con un ejemplo en código:
+
+```cs
+// See https://aka.ms/new-console-template for more information
+Console.WriteLine("Hello, World!");
+
+bool value1 = true;
+bool value2 = true;
+bool value3 = false;
+
+// &&, ||, !
+
+bool result = value1 && value2 && value3;
+Console.WriteLine("The result of the logical AND is: " + result);
+//Obtenemos: False
+
+bool result2 = value1 || value2 || value3;
+Console.WriteLine("The result of the logical OR is: " + result2);
+//Obtenemos: True
+
+bool result3 = !value1;
+Console.WriteLine("The result of the logical ! is: " + result3);
+//Obtenemos: False
+```
+
+Otro ejemplo:    
+```cs
+bool value1 = true; 
+bool value2 = false; 
+bool value3 = false; 
+bool value4 = true; 
+
+bool result1 = value1 && value2; 
+Console.WriteLine(result1); 
+// False 
+
+bool result2 = value1 && value4; 
+Console.WriteLine(result2); 
+// True 
+
+bool result3 = value1 || value4; 
+Console.WriteLine(result2); 
+// True 
+
+bool result3 = !value2; 
+Console.WriteLine(result3); 
+// True
+```
+
+Según la terminal _result1_ dará _False_. Por qué? Porque el operador _&&_ **EXIGE** que **AMBOS** resultados sean verdaderos, que **TODAS** las condiciones se cumplan (o morimos todos), mientras que _||_ es más permisivo y le basta con que **UNA CONDICIÓN SE CUMPLA** (_result3_ = _True_). Por su lado el operador _NOT_, el _!_, simplemente da el resultado opuesto (_value2_ es _False_, así que **NOT** lo señala como _True_, algo así como “Puede ser que _value2_ **NO SEA VERDADERO?**” y no, no es verdadero, así que _True_).  
+Un ejemplo práctico?
+
+-   Si Timmy puso un mail válido (_True_) **YYYY** un nick disponible (_True_) podrá registrarse en Platzi (_True_)
+    
+-   Timmy se registró (_True_) pero **NO** confirmó su mail (_False_), lo que es obligatorio (&&), así que no podrá usar Platzi (_False_)
+    
+-   Si a Timmy le regalan el plan Expert **OOO** lo adquiere él, podrá ver todos los cursos de Platzi. Timmy no lo pagó (_False_) pero se lo regalaron (_True_), asi que puede usar Platzi al completo (_True_)
+    
+-   Timmy **NO ES** una referencia a los Simpsons? _False_. Entonces sí es una referencia a los Simpsons (_True_)
+
+
+✨ Pueden definir multiples variables en la misma línea así:
+
+```cs
+var (a, b, c) = (false, true, false);
+```
+
+![Operadores lógicos](https://i.postimg.cc/yNFmKXgb/11-logicos-relacionales.jpg)
+
+Ver todos los operadores 👉[[js-basico#11 Operadores Asignación Comparación y Aritméticos]] 🟣 Estos enlaces solo funcionan en obsidian. 
+
+🎲
+
+## 12. Operadores relacionales
+🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲
 ```cs
 ```
 
@@ -678,9 +818,6 @@ Console.WriteLine("El \\Liverpool\\"); //El \Liverpool\
 
 2. o por:
 	- 📌
-
-
-
 
 
 </details>
