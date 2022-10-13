@@ -457,14 +457,14 @@ Console.WriteLine("The result is: " + result);
 ### Nombrar Clases y Variables  
 Comúnmente podemos encontrar formas distintas para escribir los nombres de nuestros programas, clases y variables. Estas son:
 
--   🐍**snake_case:** Sólo usa mayúsculas y separa las palabras con guión bajo ( _ ). Por consenso se usa en Python
+-   🐍**snake_case:** Sólo usa minúsculas y separa las palabras con guion bajo ( _ ). Por consenso se usa en Python
 
 -   👴**PascalCase:** Cada inicial con mayúscula y sin ningún tipo de separación entre palabras. El consenso indica que es la forma que usaremos para escribir los nombres de nuestros archivos, namespace (el nombre del programa y el namespace deben ser iguales también por mero consenso) y clases
 
 -   🐫**camelCase**: Primera inicial en minúscula y el resto en mayúscula, sin separación entre palabras. Esto lo usaremos para las variables (sí, nuevamente se trata de puro consenso).
 
 
-De la mano con los puntos anteriores y por comodidad, sobre todo a la hora de trabajar en equipo, se recomienda que cada elemento (métodos, variables, funciones, etc) de nuestro programa use **nombres representativos**, es decir, que nombremos cada cosa de forma que se pueda entender sin dificultad qué debería representar o hacer, y siempre acompañando con el tipo de dato que va a poseer la variable (en caso de tratarse de una)
+De la mano con los puntos anteriores y por comodidad, sobre todo a la hora de trabajar en equipo, se recomienda que cada elemento (métodos, variables, funciones, etc.) de nuestro programa use **nombres representativos**, es decir, que nombremos cada cosa de forma que se pueda entender sin dificultad qué debería representar o hacer, y siempre acompañando con el tipo de dato que va a poseer la variable (en caso de tratarse de una)
 
 ```cs
 int number1;
@@ -517,7 +517,7 @@ byte b = 1;
 int i = b;
 ```
 
-En este ejemplo estamos convirtiendo un tipo de dato **byte** que ocupa un solo byte en memoria a un un tipo de dato **int** que ocupa 4 bytes en memoria. Lo que ocurre internamente en memoria es:
+En este ejemplo estamos convirtiendo un tipo de dato **byte** que ocupa un solo byte en memoria a un tipo de dato **int** que ocupa 4 bytes en memoria. Lo que ocurre internamente en memoria es:
 
 ```cs
 b = 00000001
@@ -789,7 +789,583 @@ Ver todos los operadores 👉[[js-basico#11 Operadores Asignación Comparación 
 🎲
 
 ## 12. Operadores relacionales
-🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲
+
+```cs
+/*
+ == Igual a
+ != No igual a 
+ >  Mayor que
+ <  Menor que 
+ >= Mayor o igual que
+ <= Menor o igual que
+*/
+
+int value1 = 3;
+int value2 = 18;
+int value3 = -18;
+
+bool result0 = value1 == value2;
+Console.WriteLine("The result of value1 == value2 is: " + result0);
+
+bool result1 = value1 != value2;
+Console.WriteLine("The result of value1 != value2 is: " + result1);
+
+bool result2 = value1 > value2;
+Console.WriteLine("The result of value1 > value2 is: " + result2);
+
+bool result3 = value1 < value2;
+Console.WriteLine("The result of value1 < value2 is: " + result3);
+
+bool result4 = value1 >= value2;
+Console.WriteLine("The result of value1 >= value2 is: " + result4);
+
+bool result5 = value1 <= value2;
+Console.WriteLine("The result of value1 <= value2 is: " + result5);
+```
+
+![Documentación](https://learn.microsoft.com/es-es/dotnet/csharp/language-reference/operators/comparison-operators)
+
+🎲
+
+## 13. Cómo leer datos de un usuario en C#
+```cs
+using System;
+
+namespace squareArea
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            //Rectangle area calc.
+
+            //Rectangle values
+            Console.WriteLine("Please enter the side A of the rectangle, you can use decimals");
+            float sideA = float.Parse(Console.ReadLine());
+
+            Console.WriteLine("Please enter the side B of the rectangle, you can use decimals");
+            float sideB = float.Parse(Console.ReadLine());
+
+            //Rectangle area formula is a*b
+            float area = sideA * sideB;
+
+            Console.WriteLine("The rectangle area is: " + area);
+        }
+    }
+}
+```
+
+Durante la clase vimos dos tipos de conversión, pero 🤔, ¿Cuál es la diferencia entre ambas?  
+
+🥊 **Convert VS. Parse** 🥊
+
+-   Ambas se pueden usar para convertir datos de un tipo a otro.
+-   Convert puede manejar valores NULL retornando un 0.
+-   Parse no puede manejar valores NULL y muestra un error (ArgumentNullException).  
+
+✅ Ejemplo:  
+
+> En la variable number2 convertiremos un valor NULL en FLOAT, como sabemos nos retornara 0, por ende, el resultado de la operación es igual a 0.  
+> 😉 Puedes comprobar lo que retorna Convert imprimiéndolo por pantalla.
+
+```cs
+float number1 = 10.555f;
+float number2 = Convert.ToSingle(null);
+float result = number1 * number2;
+
+Console.WriteLine($"El resultado es igual a {result}"); 
+```
+
+Dato: Para usar Convert para un tipo de dato FLOAT puede realizarse atreves del método `.ToSingle()`  
+
+> Trataremos de realizar la misma conversión, pero ahora usando Parse. Cuando ejecutemos nos mostrara un error 🥲.
+
+
+![](https://i.postimg.cc/JzzhLjDx/error.png)
+
+🎲
+
+## 14. Arreglos en C#
+Creamos nuevo proyecto ➡ Console App (.NET Core)
+Project name: **ArrayDemoProject** ➡ .NET 6.0
+
+```cs
+// See https://aka.ms/new-console-template for more information
+Console.WriteLine("Hello, World!");
+
+string[] coffeTypes;
+float[] coffePrices;
+
+coffeTypes = new string[] { "Expreso", "Largo", "Filtrado", "Latte" };
+coffePrices = new float[] { 1.2f, 1.5f, 5.0f, 5.5f };
+
+coffeTypes[1] = "Lungo";
+
+for (int i = 0; i < coffeTypes.Length; i++)
+{
+    Console.WriteLine(coffeTypes[i] + " Coffe $ " + coffePrices[i]);
+}
+```
+
+🔥 Formas de definir un Array o Matrices
+
+- Sin especificar número de espacios.   
+	`int[] array1;`
+
+- Declarando numero de espacios, se inicializa el array con el numero de espacios mediante new.   
+	`int[] array2 = new int[5];`
+
+- Numero de espacios y valores, establecemos el numero de espacios y el valor de cada uno en la misma declaración.
+	`int[] array3 = new int[3] { 3, 5, 10};`
+
+- Sin especificar numero de espacios, el numero de espacios del array de define mediante el numero de valores en la declaración.
+	`int[] array4 = { 4, 9, 5, 1 };`
+
+Siendo este ultimo el que se muestra en la clase
+
+🔥 Importante recordar, los arreglos tienen un length, que es el tamaño real de tu arreglo, por ejemplo:
+
+```cs
+string[] coffeTypes = new string[4];
+```
+
+En este caso tenemos un arreglo de tamaño 4, lo que significa que el último dato en este arreglo será el índice 3.¿Por qué?  
+Porque los arreglos comienzan desde índice 0, hasta el length - 1. en este caso, 3.
+
+Por lo tanto si yo hago un ciclo cualquiera, como un for, debo hacerlo hasta el tamaño del arreglo < 1, es decir, el término del ciclo debe ser cuando tengo un valor igual al length o mayor.
+
+Por ejemplo:
+
+```cs
+for(int i = 0 ; i < 4 ; i++){}
+```
+
+También importante recordar que los arreglos tienen integrados de manera implícita el length que tienen, por esto es que también funciona lo siguiente:
+
+```cs
+for(int i = 0 ; i < coffeTypes.Length ; i++){}
+```
+
+[Documentación](https://learn.microsoft.com/es-es/dotnet/csharp/programming-guide/arrays/)
+
+🎲
+
+## 15. Listas
+Creamos nuevo proyecto ➡ Console App (.NET Core)
+Project name: **ListExampleProject** ➡ .NET 6.0
+
+```cs
+// See https://aka.ms/new-console-template for more information
+Console.WriteLine("Hello, World!");
+
+List<string> tacoShoppingList = new List<string>();
+
+tacoShoppingList.Add("Five Tacos de suadero");
+tacoShoppingList.Add("Four Tacos de Tripa");
+tacoShoppingList.Add("Five Tacos de pastor");
+tacoShoppingList.Add("Four Coca-Colas\n");
+
+for (int i = 0; i < tacoShoppingList.Count; i++)
+{
+    Console.WriteLine(tacoShoppingList[i]);
+}
+
+tacoShoppingList.RemoveAt(0);
+//tacoShoppingList.Remove("Five Tacos de suadero");
+
+for (int i = 0; i < tacoShoppingList.Count; i++)
+{
+    Console.WriteLine(tacoShoppingList[i]);
+}
+```
+
+🎲
+
+## 16. Métodos o methods
+Un método es un bloque de código que contiene una serie de instrucciones. Un programa hace que se ejecuten las instrucciones al llamar al método y especificando los argumentos de método necesarios. En C#, todas las instrucciones ejecutadas se realizan en el contexto de un método. El método `Main` es el punto de entrada para cada aplicación de C# y se llama mediante Common Language Runtime (CLR) cuando se inicia el programa.
+
+
+```cs
+using System;
+
+namespace methods
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            float[] pricesArray;
+
+            pricesArray = new float[10];
+            pricesArray[0] = 1.5f;
+            pricesArray[1] = 2.5f;
+            pricesArray[3] = 3f;
+            pricesArray[4] = 5f;
+            
+            Random rnd = new Random();
+            Console.WriteLine("Hello World, of random numbers!");
+            Console.WriteLine($"{rnd.Next(1, 10)}");
+        }
+    }
+}
+```
+
+[Documentación sobre Random Class](https://learn.microsoft.com/en-us/dotnet/api/system.random?view=net-6.0)
+
+🔥 Una pequeña aclaración de conceptos que les evitará confusiones en un futuro.
+
+```cs
+Random rnd = new Random();
+
+Console.WriteLine($"Una valor random: {rnd.Next(1,10)}");
+```
+
+-   `rnd` es una instancia de la clase `Random()`, esta instancia tendrá todos los métodos y propiedades de la clase.
+-   `Next()` es un método de la clase `Random()`, como `rnd` es una instancia de la clase `Random()`, puede hacer uso de todos sus métodos y propiedades “publicas”.
+
+[Documentación sobre los metodos](https://learn.microsoft.com/es-es/dotnet/csharp/methods)
+
+Métodos y argumentos: ¿Cuáles son los métodos mas utilizados en C#?
+
+🎲
+
+## 17. Métodos de strings
+Bienvenida o bienvenido a esta clase donde profundizaremos en los métodos de C#, específicamente en los métodos de strings.
+
+### Los métodos en C#
+
+Un **método** es un bloque de código que contiene varias instrucciones que podemos ejecutar las veces que necesitemos. Son de gran ayuda cuando tienes que hacer lo mismo varias veces en un mismo programa para no repetir el mismo código una y otra vez.
+
+En la clase anterior conocimos cómo invocar un método y utilizarlo cuantas veces necesitemos para realizar acciones específicas en nuestro programa. Ahora veamos algunos de estos métodos para el manejo de strings.
+
+### Métodos de strings
+
+```cs
+using System;
+					
+public class Program
+{
+	public static void Main()
+	{
+		string ClassTopic = "Métodos de strings";
+		string School = "Platzi";
+		Console.WriteLine("Estoy aprendiendo de "+ ClassTopic + " en " + School + ".");
+	}
+}
+```
+
+En la pieza de código anterior puedes ver un pequeño programa con dos variables tipo string y su impresión. Para este tipo de variables podemos usar una gran cantidad de métodos predefinidos dentro de la biblioteca estándar de C#.
+
+Utilicemos estas dos variables strings para conocer algunos de ellos.
+
+#### Clone()
+
+```cs
+	string SchoolClone = School.Clone().ToString();
+	Console.WriteLine(SchoolClone);
+```
+
+El método `Clone()` crea un clon exacto de un string en una variable de tipo objeto. Por ello es necesario convertirlo a string utilizando `ToString()`.
+
+#### CompareTo()
+
+```cs
+Console.WriteLine(ClassTopic.CompareTo(School));
+Console.WriteLine(School.CompareTo(SchoolClone));
+```
+
+Sirve para comparar el contenido de dos strings. Si son iguales devuelve 0 para true y si son diferentes retorna 1 para false. En este caso como `School` y `SchoolClone` son strings idénticos devolverá un 0. ¿Qué crees que se imprima en la primera línea?
+
+#### Contains()
+
+```cs
+Console.WriteLine(School.Contains("Pla"));
+```
+
+Retorna `True` si el string contiene los caracteres que se pongan en los argumentos del método.
+
+#### EndsWith()
+
+```cs
+Console.WriteLine(School.EndsWith("zi"));
+```
+
+Similar a `Contains()`, pero para comparar si los caracteres están al final del string.
+
+#### StartsWith()
+
+```cs
+Console.WriteLine(School.StartsWith("Pl"));
+```
+
+Funciona de la misma manera que `EndsWith()`, pero en este caso comprueba si empieza con una serie de caracteres indicados.
+
+#### Equals()
+
+```cs
+Console.WriteLine(School.Equals(SchoolClone));
+```
+
+Funciona de forma parecida a `CompareTo()`, pero para indicar si el contenido de ambos strings retorna `True` o `False`.
+
+#### IndexOf()
+
+```cs
+Console.WriteLine(School.IndexOf("a"));
+```
+
+Regresa la posición dentro del string del carácter indicado en el argumento.
+
+#### ToLower() y ToUpper()
+
+```cs
+Console.WriteLine(ClassTopic.ToLower());
+Console.WriteLine(ClassTopic.ToUpper());
+```
+
+Convierten el string en todas letras minúsculas o mayúsculas.
+
+#### Insert()
+
+```cs
+Console.WriteLine(School.Insert(6, " es educación online efectiva"));	
+```
+
+Inserta un nuevo string dentro de otro en la posición indicada dentro de los argumentos. En este caso es en 6 que es la posición después de la última letra de “Platzi”.
+
+#### LastIndexOf()
+
+```cs
+Console.WriteLine(ClassTopic.LastIndexOf("s"));
+```
+
+Regresa la posición de la última vez que aparece el carácter. En este caso la letra “s” aparece varias veces en el string y así podemos notar cómo devuelve la última posición en la que aparece.
+
+#### Remove()
+
+```cs
+Console.WriteLine(ClassTopic.Remove(6));
+```
+
+Elimina los caracteres del string a partir de la posición que le indiquemos hasta el final.
+
+#### Replace()
+
+```cs
+Console.WriteLine(ClassTopic.Replace("s", "z"));
+```
+
+Reemplaza todos los caracteres por otro indicado. En este caso todas las “s” serán cambiadas por “z”.
+
+#### Split()
+
+```cs
+string[] split = ClassTopic.Split(new char[] { 's' });		
+		
+        Console.WriteLine(split[0]);
+        Console.WriteLine(split[1]);
+        Console.WriteLine(split[2]);
+```
+
+Este es un caso especial donde creamos un nuevo string donde guardamos el string separado en trozos por la letra indicada en los argumentos del método. Para este caso se separa por la letra “s” en 3 trozos que son los que imprimimos.
+
+#### Substring()
+
+```cs
+Console.WriteLine(ClassTopic.Substring(2,10));
+```
+
+Devuelve un substring o trozo de string de acuerdo a las posiciones indicadas en los argumentos.
+
+#### ToCharArray()
+
+```cs
+School.ToCharArray();
+```
+
+Convierte el string en un arreglo de caracteres.
+
+#### Trim()
+
+```cs
+string TextWithSpaces = "  hola, había espacios al principio y al final ";
+Console.WriteLine(TextWithSpaces.Trim());
+
+```
+
+Elimina espacios al principio y al final de un string.
+
+### Tu reto
+
+Ya conoces varios de los métodos que puedes utilizar con strings. Estos son los más comunes, pero existen unos más.
+
+Como reto de esta clase crea un programa donde emplees por lo menos 5 de estos métodos de strings o de algún otro que investigues. Pon a volar tu creatividad y comparte en los comentarios el programa que creaste.
+
+---
+
+Te veo en la próxima donde obtendrás el superpoder de crear tus propios métodos y utilizarlos cuando los necesites.
+
+🎲
+
+## 18. Cómo crear tus propios métodos
+Ha llegado el momento de aprender a crear tus propios métodos para tus programas en C#. Una vez que domines esta habilidad no querrás dejarla por lo poderosa que puede ser.
+
+### Creando nuestro método
+
+Lo primero que debemos hacer es iniciar un nuevo proyecto con nuestra clase base tal cual lo hemos hecho hasta ahora. Nombra tu proyecto `MyMethods` y tendrás un código como este:
+
+```cs
+using System;
+					
+public class MyMethods
+{
+	public static void Main()
+	{
+		Console.WriteLine("Hello World");
+	}
+}
+```
+
+Arriba del método `Main()` crea tu primer método siguiendo una estructura similar de la siguiente manera:
+
+```cs
+	public void IntegerAddition(int a, int b)
+	{
+		int Addition = a + b;
+		Console.WriteLine("El resultado es " + Addition);
+	}
+```
+
+Este método tiene el objetivo de sumar dos números enteros. Para ello dentro de los paréntesis se incluyeron dos parámetros que son los dos números a sumar.
+
+Dentro del cuerpo o bloque del método hay dos instrucciones. La primera `int Addition = a + b;` es donde se realiza la operación de suma, asignándose a una variable del mismo tipo, y en la siguiente imprimimos ese resultado.
+
+### Accediendo al método
+
+Para utilizar nuestro método debemos llamarlo y lo haremos desde nuestro método `Main()`.
+
+```cs
+	public static void Main()
+	{
+		// Aquí llamaremos al método
+	}
+
+```
+
+Es necesario generar una referencia creando una instancia de nuestra clase donde se ejecuta el programa. Para ello escribe:
+
+```cs
+MyMethods MyProgram = new MyMethods();
+```
+
+Donde `MyMethods` es la clase del programa y `MyProgram` el nombre que se le da a la instancia que se crea y que se usará como referencia para ejecutar el método las veces que sea necesario como se ve a continuación:
+
+```cs
+MyProgram.IntegerAddition(3,6);
+```
+
+Esta línea probablemente te parece más parecida a lo que has visto con los métodos que hemos utilizado antes. Lo que hace es llamar a la instancia `MyProgram` y a su método `IntegerAddition()` que es el que creamos. Dentro de sus paréntesis se ponen los argumentos que necesitan los parámetros `int a` e `int b` que se le asignaron.
+
+```cs
+	public static void Main()
+	{
+		MyMethods MyProgram = new MyMethods();
+		MyProgram.IntegerAddition(3,6);
+	}
+
+```
+
+### Métodos que retornan un valor
+
+Algo que quizá no notaste es que el método anterior tenía una palabra clave “void”, lo que significa que no retorna algún valor. Es por ello que dentro del mismo método se imprimió el resultado.
+
+Para generar métodos de los que podamos obtener valores conocerás la palabra clave `return` y al momento de crear un método se le pondrá el tipo de dato que retornará en lugar de `void`:
+
+```cs
+	public int IntegerMultiplication(int a, int b)
+	{
+		int Multiplication = a * b;
+		return Multiplication;
+	}
+
+```
+
+Este es un método muy similar al anterior con la diferencia de que tiene un valor `int` a ser retornado.
+
+Al final de todo el contenido del método se encuentra la instrucción `return Multiplication;` que indica, con la palabra clave `return` que regresará el valor que hay dentro de esa variable al punto donde se llame el método desde `Main()`.
+
+```cs
+public static void Main()
+	{
+		int result = MyProgram.IntegerMultiplication(12,2);	
+		Console.WriteLine("El resultado de la multiplicación es " + result);
+	}
+```
+
+En este caso, como el método regresa un valor, es necesario almacenarlo en una variable. Al imprimir ese resultado se verá cómo el método funciona correctamente ejecutando la multiplicación.
+
+```cs
+using System;
+					
+public class MyMethods
+{
+
+	public void IntegerAddition(int a, int b)
+	{
+		int Addition = a + b;
+		Console.WriteLine("El resultado es " + Addition);
+	}
+	
+	public int IntegerMultiplication(int a, int b)
+	{
+		int Multiplication = a * b;
+		return Multiplication;
+	}
+	
+	public static void Main()
+	{
+		MyMethods MyProgram = new MyMethods();
+		MyProgram.IntegerAddition(3,6);
+		
+		int result = MyProgram.IntegerMultiplication(12,2);	
+		Console.WriteLine("El resultado de la multiplicación es " + result);		
+	}
+}
+```
+
+---
+
+Ahora conoces cómo crear y utilizar tus propios métodos. Como reto de esta clase crea un método que ejecute la división de dos números. Como tip toma en cuenta que la mayoría de las divisiones no dan resultados enteros, por lo que necesitarás definir tu método y variables con otro tipo de dato.
+
+Comparte tu resultado en el sistema de comentarios. ¡Nos vemos en la próxima clase!
+
+#### ❄ Ejemplo: 
+```cs
+using System; 
+namespace Mis_metodos 
+{ 
+	class MisMetodos 
+	{ 
+		public float division(float a,float b) 
+		{ 
+			float operacion = a / b; 
+			return operacion; 
+		} 
+		public static void Main() 
+		{ 
+			MisMetodos metodo = new MisMetodos(); 
+			float imprimir= metodo.division(10, 2);
+			Console.WriteLine(imprimir); 
+		} 
+	} 
+}
+```
+
+🎲
+
+
+🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲
+
 ```cs
 ```
 
@@ -801,6 +1377,7 @@ Ver todos los operadores 👉[[js-basico#11 Operadores Asignación Comparación 
 **🔥 Team:**    
 - Renato Reyes Fuentes
 	- Javier Guardia
+	- Gustavo Emilio Aguilera López
 
 </details>
 
