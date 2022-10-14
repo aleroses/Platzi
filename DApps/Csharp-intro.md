@@ -1212,11 +1212,11 @@ Ha llegado el momento de aprender a crear tus propios métodos para tus programa
 
 ### Creando nuestro método
 
-Lo primero que debemos hacer es iniciar un nuevo proyecto con nuestra clase base tal cual lo hemos hecho hasta ahora. Nombra tu proyecto `MyMethods` y tendrás un código como este:
+Lo primero que debemos hacer es iniciar un nuevo proyecto con nuestra clase base, tal cual, lo hemos hecho hasta ahora. Nombra tu proyecto `MyMethods` y tendrás un código como este:
 
 ```cs
 using System;
-					
+
 public class MyMethods
 {
 	public static void Main()
@@ -1306,16 +1306,17 @@ En este caso, como el método regresa un valor, es necesario almacenarlo en una 
 
 ```cs
 using System;
-					
-public class MyMethods
-{
 
+public class MyMethods //👈👀 Program
+{
+	//Method 1
 	public void IntegerAddition(int a, int b)
 	{
 		int Addition = a + b;
 		Console.WriteLine("El resultado es " + Addition);
 	}
-	
+
+	//Method 2
 	public int IntegerMultiplication(int a, int b)
 	{
 		int Multiplication = a * b;
@@ -1324,9 +1325,13 @@ public class MyMethods
 	
 	public static void Main()
 	{
+		//Access reference
 		MyMethods MyProgram = new MyMethods();
-		MyProgram.IntegerAddition(3,6);
 		
+		//Call method 1
+		MyProgram.IntegerAddition(3,6);
+
+		//Call method 2
 		int result = MyProgram.IntegerMultiplication(12,2);	
 		Console.WriteLine("El resultado de la multiplicación es " + result);		
 	}
@@ -1363,8 +1368,342 @@ namespace Mis_metodos
 
 🎲
 
+## 19. La sentencia if
+Creamos nuevo proyecto ➡ Console App (.NET Core)
+Project name: **ifStatement** ➡ .NET Core 3.1
 
-🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲
+```cs
+using System;
+
+namespace ifStatement
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int anyValue = 14;
+            string message = "";
+
+            if (anyValue == 7)
+            {
+                message = "OMG, it's a miracle any Value is 7\n";
+            }
+            else if (anyValue == 14)
+            {
+                message = "OMG, it's a double miracle the value is 14\n";
+            }
+            else
+            {
+                message = "Puff, the value wasn't 7";
+            }
+
+            Console.WriteLine($"The answer is: {message}");
+        }
+    }
+}
+```
+
+### Otro ejemplo: 
+```cs
+using System;
+using System.Collections.Generic;
+
+namespace ifFood
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            string name;
+            string message = "";
+            int food;
+
+            Console.WriteLine("Escriba su nombre: ");
+            name = Console.ReadLine();
+            Console.WriteLine("\nHola " + name + ", tenemos estos deliciosos platillos:\n");
+
+            List<string> PeruvianFood = new List<string>();
+            PeruvianFood.Add("1. Lomo saltado");
+            PeruvianFood.Add("2. Arroz con pollo");
+            PeruvianFood.Add("3. Ceviche");
+            PeruvianFood.Add("4. Caviar");
+
+            for (int i = 0; i < PeruvianFood.Count; i++)
+            {
+                Console.WriteLine(PeruvianFood[i]); 
+            }
+
+            Console.WriteLine("\nEscribe el número de su comida preferida: ");
+            food = Convert.ToInt32(Console.ReadLine());
+
+            if (food >= 1 && food <= 4)
+            {
+                message = $"\nSu platillo {PeruvianFood[food-1]} está listo para ser enviado";
+            }else
+            {
+                message = "No existe la comida que pidio";
+            }
+            Console.WriteLine(message);
+        }
+    }
+}
+```
+
+[Documentación Operadores de comparación](https://learn.microsoft.com/es-es/dotnet/csharp/language-reference/operators/comparison-operators)
+
+🎲
+
+## 20. La sentencia switch
+Hola, quiero felicitarte por haber llegado hasta aquí. Estamos casi por llegar al final de este curso y en este momento conocerás la sentencia Switch.
+
+### ¿Para qué sirve Switch?
+
+Piensa en ella como una alternativa a `if-else`, pero en este caso se evaluará que una sola expresión coincida con una cantidad limitada de valores o condiciones.
+
+Imagina que tienes una lista limitada de refrescos y quieres imprimir en un ticket cuál escogió el cliente y su precio. Para este caso podemos utilizar un Switch case de esta forma:
+
+```cs
+using System;
+					
+public class switchExample
+{
+	public static void Main()
+	{
+		Console.WriteLine("Enter the selected soda: ");
+		string caseSwitch = Console.ReadLine();
+
+		switch (caseSwitch)
+		{
+          case "cola":
+              Console.WriteLine("Cola soda - $2 USD");
+              break;
+          case "lime":
+              Console.WriteLine("Lime soda - $1 USD");
+              break;
+          case "orange":
+              Console.WriteLine("Orange soda - $1.5 USD");
+              break;
+		  case "apple":
+			  Console.WriteLine("Apple soda - $1 USD");
+              break;
+          default:
+              Console.WriteLine("ERROR: You did not select a soda or you entered an incorrect value.");
+              break;
+		}
+	}
+}
+```
+
+### Cómo funciona
+
+Para este ejemplo tenemos cuatro casos que el usuario puede elegir y una variable es la que es evaluada para que el Switch decida qué bloque de código ejecutar dependiendo de cada caso.
+
+En el ejemplo esta variable es `caseSwitch` y es en `switch(caseSwitch)` donde se le indica a la sentencia Switch qué variable debe comparar para su decisión.
+
+Así es que si la variable es igual a `“cola”`, por ejemplo, el case hará match y ejecutará:
+
+```cs
+Console.WriteLine("Cola soda - $2 USD");
+break;
+```
+
+Si te fijas hay algo muy importante al final de cada bloque dentro de los casos y es la palabra reservada `break`.
+
+Esta palabra le indica al programa que es el punto donde terminan todas las instrucciones de ese `case`termina toda instrucción de ese caso para regresar al punto de ejecución siguiente fuera del switch para continuar con el programa.
+
+### ¿Y qué hay de default?
+
+Al final de toda la estructura de Switch es muy recomendable poner un caso default. Piensa en él como un `else` que incluye algo que el programa debe ejecutar en caso de que no haya match con ninguno de los casos.
+
+```cs
+default:
+    Console.WriteLine("ERROR: You did not select a soda or you entered an incorrect value.");
+    break;
+```
+
+Para este ejemplo se imprime que al no haber ingresado alguno de los valores de los casos se está cayendo en un error. Un caso de uso bastante utilizado para los defaults.
+
+---
+
+En esta clase aprendiste otra sentencia del mundo de C# que ya puedes empezar a poner en práctica en tus programas. ¡Te veo en la próxima clase porque es momento de conocer sobre los ciclos!
+
+🎲
+
+## 21. Ciclo for
+Creamos nuevo proyecto ➡ Console App (.NET Core)
+Project name: **forCicle** ➡ .NET Core 3.1
+
+```cs
+using System;
+//Los ciclos FOR ejecutan una instrucción 
+//o varias, cada vez que ejecuta un ciclso
+namespace forCicle
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            for (int i = 0; i <= 50; i+=10)
+            {
+                Console.WriteLine("Hello World! #{0}", i);
+            }
+        }
+    }
+}
+```
+
+
+Un ciclo for puede tener una o mas variables de control
+
+```cs
+for (int i = 0, j = 0; i < 10 && j > -10; i++, j--)
+    {
+        Console.WriteLine("i: "+i+" j: "+j);
+    }
+```
+
+🎲
+
+## 22. Ciclo while
+Creamos nuevo proyecto ➡ Console App (.NET Core)
+Project name: **whileDoWhile** ➡ .NET Core 3.1
+
+### While
+```cs
+using System;
+using System.Runtime.CompilerServices;
+
+namespace whileDoWhile
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            bool continueSoftwareExecution = true;
+
+            while(continueSoftwareExecution == true)
+            {
+                Console.WriteLine("Do you wish to keep the software running? write 1 if yes, 0 if no");
+
+                int keepGoing = Convert.ToInt16(Console.ReadLine());
+                if (keepGoing == 1)
+                {
+                    Console.WriteLine("Hello World! The software will keep running");
+                    continueSoftwareExecution = true;
+                }else if (keepGoing == 0)
+                {
+                    Console.WriteLine("This is the last time the software is running");
+                    continueSoftwareExecution = false;
+                }
+                else
+                {
+                    Console.WriteLine("Invalid input, Try Again");
+                }  
+            }
+        }
+    }
+}
+```
+
+### Do While  
+```cs
+using System;
+using System.Runtime.CompilerServices;
+
+namespace whileDoWhile
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            bool continueSoftwareExecution = false;
+
+            do
+            {
+                Console.WriteLine("Do you wish to keep the software running? write 1 if yes, 0 if no");
+
+                int keepGoing = Convert.ToInt16(Console.ReadLine());
+                
+                if (keepGoing == 1)
+                {
+                    Console.WriteLine("Hello World! The software will keep running");
+                    continueSoftwareExecution = true;
+                }
+                else if (keepGoing == 0)
+                {
+                    Console.WriteLine("This is the last time the software is running");
+                    continueSoftwareExecution = false;
+                }
+                else
+                {
+                    Console.WriteLine("Invalid input, Try Again");
+                }
+            } while (continueSoftwareExecution == true);
+        }
+    }
+}
+```
+
+#### for, while, do-while
+🔥 Grosso modo  
+
+- **for**    
+	Se utilizará cuando se conozca la cantidad de veces que se va a repetir nuestro bloque de código.
+
+- **while**    
+	Es conveniente utilizarlo cuando la cantidad de veces a repetir el ciclo dependa de un factor difícil de controlar o que llegará en un momento inesperado.
+
+- **do-while**   
+	Lo emplearemos para asegurar que nuestro ciclo se ejecute al menos una vez y que además las condiciones del problema sean similares a las de los problemas en las que se emplea **while**
+
+🎲
+
+## 23. Introducción del proyecto: sistema de registros de usuarios
+Creamos nuevo proyecto ➡ Console App (.NET Core)
+Project name: **restaurant10TablesReservationSystem** ➡ .NET Core 3.1
+
+### Primera parte: 
+```cs
+using System;
+
+/*
+ * 1. Validar si es usuario existente o si se debe registrar y generar un sistema de registros o login
+ * 2. El programa debe ser capaz de darle la bienvenida a un usuario existente
+ * 3. El programa debe repetirse hasta que se registren los 10 comensales 
+ */
+
+namespace restaurant10TablesReservationSystem
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            string[] userNames = new string[10] { "migue", "", "", "", "", "", "", "", "", "" };
+            int arrayCurrentIndex = 1;
+            bool userType;
+
+            Console.WriteLine("Welcome to the best restaurant in the world!");
+
+            while (true)
+            {
+                Console.WriteLine("Are you registered user? Write true; or write false to register");
+                userType = Convert.ToBoolean(Console.ReadLine());
+
+                if (userType == true)
+                {
+                    Console.WriteLine("Hello, you are a registered user, please enter your user name");
+                    string userToSearch = Console.ReadLine();
+                    Console.WriteLine("The user you searched is {0}", userToSearch);
+                }
+            }
+        }
+    }
+}
+```
+
+🎲
+
+🎲🎲🎲🎲🎲🎲🎲🎲🎲
 
 ```cs
 ```
