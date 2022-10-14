@@ -1703,10 +1703,172 @@ namespace restaurant10TablesReservationSystem
 
 🎲
 
-🎲🎲🎲🎲🎲🎲🎲🎲🎲
+## 24. Creando la búsqueda y el registro de usuarios
+
+```cs
+using System;
+
+/*
+ * 1. Validar si es usuario existente o si se debe registrar y generar un sistema de registros o login
+ * 2. El programa debe ser capaz de darle la bienvenida a un usuario existente
+ * 3. El programa debe repetirse hasta que se registren los 10 comensales 
+ */
+
+namespace restaurant10TablesReservationSystem
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            string[] userNames = new string[10] { "migue", "", "", "", "", "", "", "", "", "" };
+            int arrayCurrentIndex = 1;
+            bool userType;
+
+            Console.WriteLine("Welcome to the best restaurant in the world!");
+
+            while (true)
+            {
+                if (arrayCurrentIndex == 10)
+                {
+                    Console.WriteLine("The restaurant is full, try again next year");
+                    //Termina el programa
+                    Environment.Exit(0); //👈👀   
+                }
+                Console.WriteLine("\nAre you registered user? Write true or write false to register");
+                userType = Convert.ToBoolean(Console.ReadLine());
+
+                if (userType == true)
+                {
+                    Console.WriteLine("Hello, you are a registered user, please enter your user name");
+                    string userToSearch = Console.ReadLine();
+                    Console.WriteLine("The user you searched is {0}", userToSearch);
+
+                    //IndexOF(parameters):👈👀
+                    //userNames: Lista en la que va a buscar 
+                    //UserToSearch: Es lo que va a buscar
+                    int index = Array.IndexOf(userNames, userToSearch);
+
+                    if (index == -1) //No lo encontró y arroja -1
+                    {
+                        Console.WriteLine("User not found, try again or register");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Welcome {0}, it's a pleasure to give you food", userNames[index]);
+                    }
+                }else if (userType == false)
+                {
+                    Console.WriteLine("Please write and remember your User Name");
+                    userNames[arrayCurrentIndex] = Console.ReadLine();
+                    Console.WriteLine("Your User has been saved successfully\n" +
+                        "Your User Name is {0}", userNames[arrayCurrentIndex]);
+                    arrayCurrentIndex++;
+                }
+            }
+        }
+    }
+}
+```
+
+### IndexOF
+Informa el índice de base cero de la primera aparición de un carácter o cadena Unicode especificado dentro de esta instancia. El método devuelve -1 si el carácter o la cadena no se encuentra en esta instancia.
+
+[Documentación](https://learn.microsoft.com/en-us/dotnet/api/system.string.indexof?view=net-6.0)
+
+### Environment.Exit(0)
+Finaliza este proceso y devuelve un código de salida al sistema operativo. Use 0 (cero) para indicar que el proceso se completó con éxito.
+
+[Documentación](https://learn.microsoft.com/en-us/dotnet/api/system.environment.exit?view=net-6.0)
+
+🎲
+
+## 25. Finalizado del proyecto: mostrando la lista de usuarios registrados
+
+```cs
+using System;
+
+/*
+ * 1. Validar si es usuario existente o si se debe registrar y generar un sistema de registros o login
+ * 2. El programa debe ser capaz de darle la bienvenida a un usuario existente
+ * 3. El programa debe repetirse hasta que se registren los 10 comensales 
+ */
+
+namespace restaurant10TablesReservationSystem
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            string[] userNames = new string[10] { "Pedro", "Robert", "Selena", "Mike", "Dani", "Platz", "i", "Celis", "Joan", "" };
+            int arrayCurrentIndex = 9; //Nos va a indicar la posición
+            bool userType;
+
+            Console.WriteLine("Welcome to the best restaurant in the world!");
+
+            while (arrayCurrentIndex < 10)
+            {
+                Console.WriteLine("\nAre you registered user? Write true or write false to register");
+                userType = Convert.ToBoolean(Console.ReadLine());
+                
+                if (userType == true)
+                {
+                    Console.WriteLine("Hello, you are a registered user, please enter your user name");
+                    string userToSearch = Console.ReadLine();
+                    Console.WriteLine("The user you searched is {0}", userToSearch);
+
+                    //IndexOF: 
+                    //userNames: Lista en la que va a buscar 
+                    //UserToSearch: Es lo que vamos a buscar
+                    int index = Array.IndexOf(userNames, userToSearch);
+
+                    if (index == -1) //No lo encontró y arroja -1
+                    {
+                        Console.WriteLine("User not found, try again or register");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Welcome {0}, it's a pleasure to give you food", userNames[index]);
+                    }
+                }else if (userType == false)
+                {
+                    Console.WriteLine("Please write and remember your User Name");
+                    userNames[arrayCurrentIndex] = Console.ReadLine();
+                    Console.WriteLine("Your User has been saved successfully\n" +
+                        "Your User Name is {0}", userNames[arrayCurrentIndex]);
+                    arrayCurrentIndex++;
+                }
+            }
+
+            Console.WriteLine("The restaurant is full, try again next year\n These are the guests to the dinner: ");
+
+            int auxIndex = 0;
+
+            foreach (string element in userNames)
+            {
+                Console.WriteLine("User number {0} and user name: {1}", auxIndex+1, userNames[auxIndex]);
+                auxIndex++;
+            }
+
+            //Finaliza el programa
+            Environment.Exit(0); //👈👀  
+        }
+    }
+}
+```
+
+🔥 Control + K + C para comentar código    
+🔥 Control + K + U para descomentar
+
+[Curso de Pensamiento Lógico: Algoritmos y Diagramas de Flujo](https://platzi.com/cursos/pensamiento-logico/)
+
+🎲
+
+## 26. POO: tu siguiente paso con C#
 
 ```cs
 ```
+
+🎲🎲🎲🎲🎲🎲🎲
 
 ## Notas / Aportes
 <details>
@@ -1735,7 +1897,107 @@ namespace restaurant10TablesReservationSystem
 2. o por:
 	- 📌
 
+1. Es una sentencia de control de flujo que permite recorrer arreglos de manera simple y que no es necesario que definamos cuándo terminará.
+	- 📌foreach
 
+2. Para crear nuevas instancias una clase se utiliza la palabra clave
+	- 📌new
+
+3. Un método en C# puede devolver: nada, un objeto, múltiples objetos. Esta afirmación es...
+	- 📌Verdadera
+
+4. La compañía Reversed Cross te ha pedido contabilizar el número de personas que ingresan a la oficina los días domingo en la noche. Para tal fin debes modificar un segmento de código que se activa cada vez que un sensor de movimiento envía una señal. Este sensor envía una señal por cada persona que ingresa. La forma más conveniente de llevar este conteo puede ser cualquiera de las siguientes, ¿cuál consideras que es la más idónea?
+	- 📌persona++;
+
+5. El reconocido youtuber Nicolás Jaula, requiere algo de ayuda para su página web. Él tiene un pequeño código C# que la plataforma le permite usar como plugin. Todos los cálculos los hace convirtiendo tipos string a tipo entero utilizando el tipo de dato Int, sin embargo tiene un lío, ya que su audiencia le ha pedido que los deje ingresar datos en decimales ya que los números decimales están de moda. ¿Qué tipo de dato le sugerirías usar a Nicolás para las variables?
+	- Una variable float
+	No es
+	- Dos variables int, una para los enteros, la otra para los decimales
+
+REPASAR CLASE
+
+6. Para crear comentarios en C# **NO** es válido utilizar
+	- 📌 `
+
+7. ¿Qué son los Workloads de Visual Studio?
+	- 📌 Son los paquetes de herramientas que podemos instalar en nuestro IDE para trabajar día a día con ellas.
+
+8. ¿Cuál es la instrucción en C# que nos permite escribir una línea en nuestro programa?
+	- console.WriteLine();
+	No es
+	- Console.writeLine();
+
+REPASAR CLASE
+
+9. ¿Qué tipo de proyecto debería crear si quiero crear una aplicación con interfaz gráfica?
+	- 📌 WPF App (Windows Presentation Foundation)
+
+10. ¿Cuál de las siguientes afirmaciones describe mejor a los Namespaces?
+	- 📌 Un Namespace debe ser único en todo mi programa y debe representar algo significativo. Dentro de él pueden vivir varias clases y dentro de cada clase pueden vivir varios métodos.
+
+11.¿Cuáles son los dos valores que un tipo de dato booleano puede guardar en C#?
+	- 📌 true y false
+
+12. ¿Cuál es la diferencia entre un tipo de dato "int" y uno "uint"?
+	- 📌 El tipo de dato int puede almacenar cualquier número, sea positivo o negativo, siempre y cuando sean números enteros, mientras que el uint únicamente puede almacenar números enteros positivos.
+
+13. ¿Cómo declararías una variable que guarde la cantidad de dinero que tienes ahorrado?
+	- 📌 float dineroAhorrado = 536.5f;
+
+14. ¿Cuál es la funcionalidad de la palabra reservada "var" en C#?
+	- 📌 Permite declarar una variable y el lenguaje por su cuenta intuye qué tipo de dato es, sin embargo, no es una buena práctica usarlo.
+
+15. ¿Cuál es la función de C# que nos ayuda a transformar los números que leemos del usuario a un tipo de dato int?
+	- 📌 Convert.ToInt32(numeroLeido);
+
+16. ¿Cuáles son los operadores lógicos que encontramos en C# y cómo se escriben?
+	- 📌 `&&, ||, !`
+
+17. ¿Cuál sería el resultado de la operación lógica true && false?
+	- 📌 FALSE
+
+18. ¿Para qué nos sirven los operadores relacionales?
+	- 📌 Para establecer una relación entre dos o más valores (si son mayores, menores, iguales, etc.).
+
+19. ¿Cuál operador podemos usar para unir dos o más cadenas de texto en C#?
+	- 📌 `+`
+
+20. ¿Cuál de las siguientes es la forma correcta de declarar una variable de tipo float en C#?
+	- 📌 float miVariable = 10.5f;
+
+21. ¿Cuáles son algunos de los operadores aritméticos que soporta C#?
+	- 📌 `+, -, *, /`
+
+22. ¿Cuál de las siguientes instrucciones de C# me permiten leer datos de mi usuario?
+	- 📌 Console.ReadLine();
+
+23. ¿Cuál es una de las principales ventajas de un arreglo en C#?
+	- 📌 Nos permite guardar múltiples valores en una sola variable, lo cual nos ayuda a tener nuestro código más ordenado.
+
+24. ¿Cuál es la sentencia que nos permite tomar decisiones dentro de nuestro programa?
+	- 📌 if
+
+25. ¿Cuál es la sentencia que nos permite listar varias posibles opciones y el programa elegirá la opción según el valor de alguna variable?
+	- 📌 switch
+
+26. ¿Cuál es la sentencia que nos permite repetir cierto bloque de código mientras que una condición sea cierta?
+	- 📌 while
+
+27. ¿Cuál es la sentencia que nos permite repetir cierto bloque de código hasta un número determinado de veces que nosotros le indiquemos?
+	- 📌 for
+
+28. ¿Qué nos permiten las listas dentro de C#?
+	Como su nombre lo indica, nos permite guardar una lista de elementos a los cuales podemos acceder y manipularlos siempre que queramos.  
+	
+	No es
+	- Son similares a los arreglos, nos permiten guardar elementos dentro y también podemos accederlos mediante paréntesis indicando el índice del elemento que necesitamos.
+
+REPASAR CLASE
+
+29. ¿Cuál es una de las principales ramas en donde se usa C#?
+	- 📌 En el desarrollo de videojuegos
+
+   
 </details>
 
 🎲
