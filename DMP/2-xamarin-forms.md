@@ -23,7 +23,7 @@ Este patrón separa todo lo que está en el backend y lo pasa a una nueva  vista
 ## Instalación de Visual Studio 2022
 
 Este link funciona en Obsidian y te lleva directo a las notas donde tengo la instalación de VS 2022 🔥🐯
-[[Csharp-intro#2. Instalación de Visual Studio Community]]
+[[1-Csharp-intro#2. Instalación de Visual Studio Community]]
 
 Para mayor detalle en la instalación ver la [Documentación](https://learn.microsoft.com/en-us/xamarin/get-started/installation/?pivots=windows-vs2022)
 
