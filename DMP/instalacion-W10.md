@@ -3,52 +3,52 @@
 -> USB vacío: Conectar a laptop
 
 1. Buscar en cualquier navegador:
-	-> www.microsoft.com
-	-> Windows 10 download
-	-> Descargar ahora la herramienta
+	- www.microsoft.com
+	- Windows 10 download
+	- Descargar ahora la herramienta
 
 2. Buscar la descarga:
-	-> Instalar
-	-> Crear medios USB
-	-> Siguiente
-	-> Elegir flash USB
-	-> Esperar
-	-> Finalizar
-	-> Retirar USB
-	-> Conectar en otra PC
+	- Instalar
+	- Crear medios USB
+	- Siguiente
+	- Elegir flash USB
+	- Esperar
+	- Finalizar
+	- Retirar USB
+	- Conectar en otra PC
 
 3. Entrar a la BIOS:
-	-> Encender laptop
-	-> Inmediatamente...
-	-> Pulsar repetidamente
-	-> F10 - ESC - F12
+	- Encender laptop
+	- Inmediatamente...
+	- Pulsar repetidamente
+	- F10 - ESC - F12
 
-	-> Configuración del Sistema
-	-> Cambiar idioma
-	-> Opciones de Arranque: Enter
-	-> Retardo de tecla -> Enter -> 5
-	-> Compatibilidad Heredada: Activada
-	-> Orden de Arranque: 
-		-> Mover Unidad USB primero (F5 - F6)
-	-> Orden de Arranque ----
-		-> Mover Unidad USB primero		
-	-> Oprimir F10 - Guardar Cambios
-	-> Rápidamente oprimir
-	-> F9 varias veces
+	- Configuración del Sistema
+	- Cambiar idioma
+	- Opciones de Arranque: Enter
+	- Retardo de tecla -> Enter -> 5
+	- Compatibilidad Heredada: Activada
+	- Orden de Arranque: 
+		- Mover Unidad USB primero (F5 - F6)
+	- Orden de Arranque ----
+		- Mover Unidad USB primero		
+	- Oprimir F10 - Guardar Cambios
+	- Rápidamente oprimir
+	- F9 varias veces
 
 3. Administrador de Arranque:
-	-> Seleccionar tu USB(UEFI)
-	-> Enter
+	- Seleccionar tu USB(UEFI)
+	- Enter
 
 4. Configurar Instalación de W10:
 
 5. Particiones de Disco Duro:
-	-> Formatear cada unidad
-	-> Eliminar particiones
-	-> Seleccionar unidad total
-	-> Nuevo -> colocar cantidad
-	-> Seleccionar partición con menos capacidad
-	-> Disco C - D
+	- Formatear cada unidad
+	- Eliminar particiones
+	- Seleccionar unidad total
+	- Nuevo -> colocar cantidad
+	- Seleccionar partición con menos capacidad
+	- Disco C - D
 	
 
 
@@ -66,9 +66,9 @@
 - F10 	
 
 
-Tutoriales:
-- Instalar W10
+Tutoriales:      
+- Instalar W10       
 https://www.youtube.com/watch?v=G_iK3O1a2yg
 
-- Bios
+- Bios      
 https://www.youtube.com/watch?v=aGBBMK3wcKs
