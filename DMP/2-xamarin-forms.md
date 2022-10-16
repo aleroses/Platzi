@@ -104,17 +104,19 @@ Todos los lenguajes ➡ Todas las plataformas ➡ Móvil
 		- ✅ iOS
 
 
-
-
-
-
-
-
-▶ Google G011A (Android 7.1 - API 25)🔽
-
+▶ Google G011A (Android 7.1 - API 25)🔽   
 Tener abierto previamente MEMU Play
 
+[Compilación de la primera aplicación](https://learn.microsoft.com/es-es/xamarin/get-started/first-app/?pivots=windows-vs2022)
 
+## Configurar dispositivo Android
+
+Para depurar con un dispositivo Android, puede configurar su dispositivo Android para conectarse a Visual Studio o usar un emulador. Elija el escenario que sea más aplicable a usted.
+
+[Pasos detallados](https://dotnet.microsoft.com/en-us/learn/xamarin/hello-world-tutorial/devicesetup)
+
+
+🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲
 
 
 ## Emojis:  
