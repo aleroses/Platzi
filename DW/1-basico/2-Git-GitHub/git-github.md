@@ -87,6 +87,7 @@ Para solo guardar los cambios y no guardar todo el archivo de nuevo.
 **Instalación**   
 - Ejecutar como administrador
 - Next (dos veces) ✔✔
+<<<<<<< HEAD
 - [x] Git Bash Here
 - [x] Use a TrueType font in all console windows
 - [x] Check daily for Git for Windows updates
@@ -96,25 +97,51 @@ Para solo guardar los cambios y no guardar todo el archivo de nuevo.
 - Next ✔
 - [x] Use bundled OpenSSH
 - [x] Use the Open SSL library
+=======
+- Marcar 
+	- [x] Git Bash Here
+	- [x] Use a TrueType font in all console windows
+	- [x] Check daily for Git for Windows updates
+- Next (tres veces) ✔✔✔
+- Marcar
+	- [x] Git from the command line and also from 3rd-party software
+- Next ✔
+- Use the Open SSL library
+>>>>>>> e606fb11d5dd522f64be91ce58161384cdd10535
 - Next ✔
 - Checkout Windows-style, commit Unix-style line endings
 - Next ✔
 - Use MinTTY(the default terminal of MSYS2)
+<<<<<<< HEAD
 - Default (fast-forward or merge)
 - Git Credential Manager 
 - Next ✔
 - [x] Enable file system caching 
 - [x] Enable symbolic links
 - Install
+=======
+- Next ✔
+- Marcar
+	- [x] Todo
+	- [x] Enable symbolic links
+- Install
+- Marcar
+	- [x] Launch Git Bash
+- Finish
+- Abrir Git Bash
+>>>>>>> e606fb11d5dd522f64be91ce58161384cdd10535
 
 Una vez culminada la instalación, verificamos que git esta instalado:
 - Abrimos Git Bash
 - Ejecutamos el comando: `git --version`   
+<<<<<<< HEAD
 - Versión 17/10/2022: Git for Windows 2.38.0.windows.1 (64-bit)
 
 
 Actualizar Git en Windows     
 - `git update-git-for-windows`
+=======
+>>>>>>> e606fb11d5dd522f64be91ce58161384cdd10535
 
 📌 Windows: Por defecto no trae una configuración para Git, por eso los pasos llegan a ser mas extensos.
 📌 La configuración hecha en la instalación es la mas recomendada para no tener inconvenientes, pero si se desea se pueden cambiar algunas cosas según el usuario. 

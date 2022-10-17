@@ -53,6 +53,10 @@ Ejecutar instalador
 - Reiniciar pc
 - Abrir Ejecutar MEmu
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> e606fb11d5dd522f64be91ce58161384cdd10535
 ### Configurar MEMU Play
 - Buscar las 3 ➖
 - Configuraciones 
@@ -80,11 +84,14 @@ Hacemos esto para no tener problemas con VS
 ### Play store 
 Iniciar sesión con la cuenta de Google: No se puede :v
 
+<<<<<<< HEAD
 ## Configurar dispositivo Android
 
 Para depurar con un dispositivo Android, puede configurar su dispositivo Android para conectarse a Visual Studio o usar un emulador. Elija el escenario que sea más aplicable a usted.
 
 [Pasos detallados](https://dotnet.microsoft.com/en-us/learn/xamarin/hello-world-tutorial/devicesetup)
+=======
+>>>>>>> e606fb11d5dd522f64be91ce58161384cdd10535
 
 ## Crear un proyecto
 
@@ -113,6 +120,7 @@ Tener abierto previamente MEMU Play
 
 [Compilación de la primera aplicación](https://learn.microsoft.com/es-es/xamarin/get-started/first-app/?pivots=windows-vs2022)
 
+<<<<<<< HEAD
 ## Distribución del proyecto 
 
 - ▶ `C#` Conversor:      
@@ -141,6 +149,17 @@ Tener abierto previamente MEMU Play
 🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲
 ```cs
 ```
+=======
+## Configurar dispositivo Android
+
+Para depurar con un dispositivo Android, puede configurar su dispositivo Android para conectarse a Visual Studio o usar un emulador. Elija el escenario que sea más aplicable a usted.
+
+[Pasos detallados](https://dotnet.microsoft.com/en-us/learn/xamarin/hello-world-tutorial/devicesetup)
+
+
+🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲
+
+>>>>>>> e606fb11d5dd522f64be91ce58161384cdd10535
 
 ## Emojis:  
 <details>
@@ -151,7 +170,11 @@ Tener abierto previamente MEMU Play
 **🔥 Emojis:**        
 - 🔥 ❄ ✨ 📌 🎲 🔍 🎉     
 - 🤴🦁 🧔🐯  👀 👉 👈 ☝ 👇   
+<<<<<<< HEAD
 - 😊 👈👀 😌 😍 🧛‍♂️ 📂 📁   🗂 📑
+=======
+- 😊 👈👀 😌 😍 🧛‍♂️ 📂 📁   🗂 
+>>>>>>> e606fb11d5dd522f64be91ce58161384cdd10535
 - 🟥 ⬜ ⬛ ◼ ◻ 🔷 🔶 🔻 🔺 🔴 🟣 🔵 🔘     
 - ✔ ➕ ↕ ↔ ➡ ⬇ ⬅ ✅ ▶ ❌ ❗            
 - 🧰 ⛓ 💡 🌐 🖥    🛡 ⚙ 🔽    

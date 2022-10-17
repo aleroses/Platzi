@@ -9,11 +9,17 @@
 
 2. Buscar la descarga:
 	- Instalar
+<<<<<<< HEAD
 	- Aceptar los términos
 	- Crear medios USB (unidad flash USB) para otro equipo
 	- Siguiente
 	- Idioma por defecto
 	- Elegir: Unidad flash USB
+=======
+	- Crear medios USB
+	- Siguiente
+	- Elegir flash USB
+>>>>>>> e606fb11d5dd522f64be91ce58161384cdd10535
 	- Esperar
 	- Finalizar
 	- Retirar USB
