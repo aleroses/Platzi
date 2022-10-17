@@ -1,0 +1,12 @@
+{
+  "livePreview": false,
+  "newFileLocation": "folder",
+  "showUnsupportedFiles": true,
+  "strictLineBreaks": true,
+  "spellcheck": true,
+  "spellcheckLanguages": [
+    "es",
+    "en-US"
+  ],
+  "alwaysUpdateLinks": true
+}

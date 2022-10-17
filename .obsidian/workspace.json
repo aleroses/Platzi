@@ -1,0 +1,152 @@
+{
+  "main": {
+    "id": "af042e5d12b120da",
+    "type": "split",
+    "children": [
+      {
+        "id": "b977f7799e1a9a25",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "e58e7733b19d7af1",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "DMP/2-xamarin-forms.md",
+                "mode": "preview",
+                "source": true
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "e1639d664c1dc5e0",
+    "type": "split",
+    "children": [
+      {
+        "id": "97b4489cf1326e5e",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "c2e39a47a4fd72d7",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "6cb7a914fa52a4c6",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "9b646ecfb102978a",
+            "type": "leaf",
+            "state": {
+              "type": "starred",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "right": {
+    "id": "5348d8f257997006",
+    "type": "split",
+    "children": [
+      {
+        "id": "fa425d9abfabfa03",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "cab3209654089f83",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "DMP/2-xamarin-forms.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "424fc059ebcd3080",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "DMP/2-xamarin-forms.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "1d9ceb5587ef9c4f",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "246c699ac5bcd4b8",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "DMP/2-xamarin-forms.md"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "ribbon": {
+    "mostRecentAction": ""
+  },
+  "active": "e58e7733b19d7af1",
+  "lastOpenFiles": [
+    "DW/1-basico/2-Git-GitHub/git-github.md",
+    "DMP/2-xamarin-forms.md",
+    "DMP/1-Csharp-intro.md",
+    "DMP/activar-w10.md",
+    "DMP/instalacion-W10.md",
+    "DMP/0-virtual-box.md"
+  ]
+}
