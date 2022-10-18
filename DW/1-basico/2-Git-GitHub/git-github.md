@@ -693,7 +693,7 @@ Si queremos conectar el repositorio de GitHub con nuestro repositorio local, el 
 
 **Git**    
 1. Guardar URL del repositorio de GitHub con el nombre de `origin` 
-	- `git remote add origin "url"`
+	- `git remote add origin url`
 2. Verificar que la URL se haya guardado correctamente
 	- `git remote`   
 	- `git remote -v`

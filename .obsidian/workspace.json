@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "DMP/2-xamarin-forms.md",
+                "file": "DW/1-basico/2-Git-GitHub/git-github.md",
                 "mode": "source",
                 "source": true
               }
@@ -86,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "DMP/2-xamarin-forms.md",
+                "file": "DW/1-basico/2-Git-GitHub/git-github.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +103,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "DMP/2-xamarin-forms.md",
+                "file": "DW/1-basico/2-Git-GitHub/git-github.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -126,7 +126,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "DMP/2-xamarin-forms.md"
+                "file": "DW/1-basico/2-Git-GitHub/git-github.md"
               }
             }
           }
@@ -142,11 +142,11 @@
   },
   "active": "e58e7733b19d7af1",
   "lastOpenFiles": [
-    "DW/1-basico/2-Git-GitHub/git-github.md",
-    "DMP/2-xamarin-forms.md",
-    "DMP/1-Csharp-intro.md",
-    "DMP/activar-w10.md",
     "DMP/instalacion-W10.md",
+    "DMP/activar-w10.md",
+    "DMP/2-xamarin-forms.md",
+    "DW/1-basico/2-Git-GitHub/git-github.md",
+    "DMP/1-Csharp-intro.md",
     "DMP/0-virtual-box.md"
   ]
 }

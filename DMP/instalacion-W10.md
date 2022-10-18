@@ -74,3 +74,19 @@ https://www.youtube.com/watch?v=G_iK3O1a2yg
 
 - Bios      
 https://www.youtube.com/watch?v=aGBBMK3wcKs
+
+
+## Cambiar Nombre de usuario en la terminal
+
+ghost@ghost
+
+Buscar en Windows:   
+- NETPLWIZ
+
+Seleccionar correo:  
+- ale-xyz@outlookcom
+- Propiedades 
+- Nombre de usuario: Cambiar 
+- Aceptar
+
+[Tutorial](https://www.youtube.com/watch?v=hy2J1fZ9a4s&t=94s)
