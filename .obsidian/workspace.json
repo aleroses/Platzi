@@ -4,16 +4,16 @@
     "type": "split",
     "children": [
       {
-        "id": "b977f7799e1a9a25",
+        "id": "c8493d837cd4cdeb",
         "type": "tabs",
         "children": [
           {
-            "id": "e58e7733b19d7af1",
+            "id": "15576e07f4e44a18",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "DW/1-basico/2-Git-GitHub/git-github.md",
+                "file": "DW/2-intermedio/2-js-practico/js-practico.md",
                 "mode": "source",
                 "source": true
               }
@@ -86,11 +86,11 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "DW/1-basico/2-Git-GitHub/git-github.md",
-                "collapseAll": false,
-                "extraContext": false,
+                "file": "DW/2-intermedio/2-js-practico/js-practico.md",
+                "collapseAll": true,
+                "extraContext": true,
                 "sortOrder": "alphabetical",
-                "showSearch": false,
+                "showSearch": true,
                 "searchQuery": "",
                 "backlinkCollapsed": false,
                 "unlinkedCollapsed": true
@@ -103,7 +103,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "DW/1-basico/2-Git-GitHub/git-github.md",
+                "file": "DW/2-intermedio/2-js-practico/js-practico.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -126,11 +126,12 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "DW/1-basico/2-Git-GitHub/git-github.md"
+                "file": "DW/2-intermedio/2-js-practico/js-practico.md"
               }
             }
           }
-        ]
+        ],
+        "currentTab": 3
       }
     ],
     "direction": "horizontal",
@@ -140,12 +141,15 @@
   "ribbon": {
     "mostRecentAction": ""
   },
-  "active": "e58e7733b19d7af1",
+  "active": "15576e07f4e44a18",
   "lastOpenFiles": [
+    "DW/2-intermedio/1-js-basico/js-basico.md",
+    "DW/2-intermedio/2-js-practico/js-practico.md",
+    "DW/vsc-chrome.md",
+    "DW/1-basico/2-Git-GitHub/git-github.md",
     "DMP/instalacion-W10.md",
     "DMP/activar-w10.md",
     "DMP/2-xamarin-forms.md",
-    "DW/1-basico/2-Git-GitHub/git-github.md",
     "DMP/1-Csharp-intro.md",
     "DMP/0-virtual-box.md"
   ]
