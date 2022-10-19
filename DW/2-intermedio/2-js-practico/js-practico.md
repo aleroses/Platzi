@@ -221,10 +221,26 @@ if (tipoDeSuscripcion == "ExpertPlus") {
 
 > 💡 Bonus: si ya eres una experta o experto en el lenguaje, te desafío a comentar cómo replicar este comportamiento con arrays u objetos y un solo condicional. 😏
 
+🔥 Respuestas:    
+```js
+var suscripcion = [
+    {cuenta: "Free", beneficio: "Solo puedes tomar los cursos gratis"},
+    {cuenta: "Basic", beneficio: "Puedes tomar casi todos los cursos de Platzi durante un mes"},
+    {cuenta: "Expert", beneficio: "Puedes tomar casi todos los cursos de Platzi durante un año"},
+    {cuenta: "ExpertPlus", beneficio: "Tú y alguien más pueden tomar TODOS los cursos de Platzi durante un año"}
+]; 
 
+var suscFilter = suscripcion.filter(function(filtrados){
+    return filtrados.cuenta === "Basic";
+});  
 
+console.log(suscFilter);
 
+//Obtenemos:
 
+0: {cuenta: 'Basic', beneficio: 'Puedes tomar casi todos los cursos de Platzi durante un mes'}
+length: 1
+```
 
 ### Ciclos
 
@@ -234,6 +250,19 @@ if (tipoDeSuscripcion == "ExpertPlus") {
 -   ¿Qué tipos de ciclos existen en JavaScript?
 -   ¿Qué es un ciclo infinito y por qué es un problema?
 -   ¿Puedo mezclar ciclos y condicionales?
+
+🔥 Respuestas:      
+-   ¿Qué es un ciclo?      
+	Ciclo, bucle o loop es como se le conoce a la repetición, iteración controlada de alguna acción dentro de nuestro código. 
+
+-   ¿Qué tipos de ciclos existen en JavaScript?     
+	For, For...in, For...of ForEach, While, DoWhile
+
+-   ¿Qué es un ciclo infinito y por qué es un problema?    
+	Esto pasa cuando colocamos una variable de control equivocada, cuando no agregamos un tope final para que el programa al llegar ahí se detenga. Lo que causa que el bucle nunca termine y tengamos que forzar manualmente su finalización. 
+
+-   ¿Puedo mezclar ciclos y condicionales?   
+	Es completamente normal mezclar diferentes funcionalidades del lenguaje, según lo que necesitemos hacer. 
 
 #### 2️⃣ Replica el comportamiento de los siguientes ciclos for utilizando ciclos while:
 
@@ -247,9 +276,38 @@ for (let i = 10; i >= 2; i--) {
 }
 ```
 
+🔥 Respuestas:      
+```js
+var i = 0;
+
+while (i >= 0 && i < 5){
+    console.log("El valor de i es: " + i);
+    i++
+}   
+
+
+var i = 10;
+
+while (i <= 10 && i >= 2){
+    console.log("El valor de i es: " + i);
+    i--
+}
+```
+
 #### 3️⃣ Escribe un código en JavaScript que le pregunte a los usuarios cuánto es `2 + 2`. Si responden bien, mostramos un mensaje de felicitaciones, pero si responden mal, volvemos a empezar.
 
 > 💡 Pista: puedes usar la función prompt de JavaScript.
+
+🔥 Respuestas:     
+```js
+var user = prompt("Cúanto es 2 + 2?? ");
+
+while (user != "4"){
+    user = prompt("Cúanto es 2 + 2?? ");
+}
+
+console.log("\nExcelente, es ", user);
+```
 
 ### Listas
 
@@ -260,11 +318,54 @@ for (let i = 10; i >= 2; i--) {
 -   ¿Cuándo es mejor usar objetos o arrays?
 -   ¿Puedo mezclar arrays con objetos o incluso objetos con arrays?
 
+🔥 Respuestas:      
+-   ¿Qué es un array?     
+	Los array son porciones de código que permiten almacenar varios datos y no solo uno como las variables. Leer [[js-basico#14. Arrays]]
+
+-   ¿Qué es un objeto?      
+	Un objeto se puede entender como algo que ya existe, ejemplo, un carro y todas sus propiedades las cuales podemos usar como molde para hacer objetos totalmente nuevos. 
+
+-   ¿Cuándo es mejor usar objetos o arrays?     
+	Los **arrays** se utilizan cuando almacenamos múltiples valores de una sola variable, mientras que un **objeto** puede contener múltiples variables con sus valores. un **array** también se puede considerar como un **objeto** y tiene la mayoría de las funcionalidades del **objeto**.
+
+-   ¿Puedo mezclar arrays con objetos o incluso objetos con arrays?
+	
+
 #### 2️⃣ Crea una función que pueda recibir cualquier array como parámetro e imprima su primer elemento.
+
+🔥 Respuestas:      
+```js
+var frutas = ["Manzana", "Pera", "Uva"]
+
+function algo(lista){
+    console.log(lista[0]);
+}
+
+algo(frutas);
+```
 
 #### 3️⃣ Crea una función que pueda recibir cualquier array como parámetro e imprima todos sus elementos uno por uno (no se vale imprimir el array completo).
 
+🔥 Respuestas:      
+```js
+var frutas = ["Manzana", "Pera", "Uva"]
+
+for (i = 0; i < frutas.length; i++){
+
+    function algo(lista){
+        console.log(lista[i]);
+    }
+
+    algo(frutas);
+
+}
+```
+
 #### 4️⃣ Crea una función que pueda recibir cualquier objeto como parámetro e imprima todos sus elementos uno por uno (no se vale imprimir el objeto completo).
+
+🔥 Respuestas:   
+
+
 
 ### ¿Cómo te fue? 🏆
 
