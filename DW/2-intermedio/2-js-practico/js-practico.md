@@ -364,7 +364,23 @@ for (i = 0; i < frutas.length; i++){
 #### 4️⃣ Crea una función que pueda recibir cualquier objeto como parámetro e imprima todos sus elementos uno por uno (no se vale imprimir el objeto completo).
 
 🔥 Respuestas:   
+```js
+/* CÓDIGO DE COMPAÑERO */
 
+let myCar = {
+	brand: 'Ford',
+	model: 'Mustang',
+	year: 1969
+};
+
+function readObject(object){
+    for (let key in object) {
+        console.log(key, ":", object[key]);
+    }
+}
+
+readObject(myCar);
+```
 
 
 ### ¿Cómo te fue? 🏆
