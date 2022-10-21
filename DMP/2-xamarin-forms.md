@@ -3,6 +3,8 @@
 
 Fundado en 2011 como proyecto independiente que permitía trabajar bajo una sola base de código apps para android y iOS.
 
+![Xamarin forms](https://i.postimg.cc/P5qZ9CP2/1-xamarin-forms.png)
+
 En el 2016 Microsoft compra Xamarin y lo convierte en Xamarin forms.
 
 |Frontend |Backend |
@@ -19,6 +21,8 @@ XAML también soporta CSS.
 ## Patrón de software MVVM
 
 Este patrón separa todo lo que está en el backend y lo pasa a una nueva  vista llamada Modelo. Luego al unirlos para darle funcionalidad al Frontend se utilizan Binding (Vinculante). 
+
+![MVVM](https://i.postimg.cc/PqwGVZPs/1-mvvm.png)
 
 ## Instalación de Visual Studio 2022
 
@@ -172,11 +176,10 @@ using Conversor.Vistas;
 	        }
 ```
 
-En caso de algún error, trabajar con los archivos anteriores y eliminar la carpeta creada. 
+En caso de algún algún error, reiniciar el proyecto o la máquina. En caso de persistir algún error trabajar con los archivos anteriores y eliminar la carpeta creada.    
 - `MainPage.xaml`
 	- `C# MainPage.xaml.cs`
 
-Como me da errores seguiré trabajando con esos dos archivos   
 
 🔥 `MainPage.xaml` or `Menuprincipal.xaml`
 ```xml
@@ -343,9 +346,11 @@ En este caso la página inicial será `Menuprincipal.xaml`
     CornerRadius="10"
     FontSize="Medium"
     FontAttributes="Bold" 
-    x:Name="btniniciar"
     
+    👀👇
+    x:Name="btniniciar"👈👀   
     Clicked="btniniciar_Clicked"/>👈👀
+    👀☝
 ```
 
 - Antes de colocarle nombre al `Clicked`, hacer esto 
@@ -362,10 +367,11 @@ public partial class Menuprincipal : ContentPage
         {
             InitializeComponent();
         }
-
+		
+		👀👇
         private void btniniciar_Clicked(object sender, EventArgs e)
-        {👀☝
-
+        {
+		
         }
     }
 ```
@@ -427,9 +433,11 @@ Ahora agregamos un botón para volver.
     FontAttributes="Bold"
     HorizontalOptions="Center"
     CornerRadius="10"
-    x:Name="btnvolver"
-    
+	
+	👀👇
+    x:Name="btnvolver" 👈👀
     Clicked="btnvolver_Clicked"/> 👈👀
+    👀☝
 ```
 
 Esto genera en el archivo `Convertir.xaml.cs` un evento.      
@@ -440,8 +448,9 @@ public Convertir()
             InitializeComponent();
         }
 		
+		👀👇
         private void btnvolver_Clicked(object sender, EventArgs e)
-        {👀☝
+        {
 		
         }
 ```
@@ -602,7 +611,9 @@ namespace Conversor.Vistas
             m = cm / 100;
             lblresultado.Text = m.ToString() + " m";
         }
-
+		
+		
+		//Detectar valores vacios 
         private void Validar()
         {
             if (!string.IsNullOrEmpty(txtcm.Text))
@@ -629,33 +640,31 @@ namespace Conversor.Vistas
 ```
 
 
-
-
-Corremos el programa 
+Corremos el programa...    
 
 ## Agregar imágenes en local 
-- Conversor.Android
-- Resources 
-- drawable
-	- Arrastrar o Copiamos la imagen 
-- drawable: Clic derecho y pegar 
+
+Explorador de soluciones:     
+- 📱 Conversor.Android
+- 📁 Resources 
+	- 📁 drawable: Clic derecho y pegar
+		- Arrastrar o Copiamos la imagen 
 
 📌 De no poderse, reiniciar el proyecto.
 
-Dentro `Menuprincipal.xaml`     
+🔥 Dentro de `Menuprincipal.xaml`     
 
 Cambiamos:     
 ```xml
 <Image Source="https://i.postimg.cc/DwH6gJMq/cinta-metrica.png" />
 ```
 
-Por:   
-
+Por:     
 ```xml
 <Image Source="cinta.png" />
 ```
 
-Dentro `Convertir.xaml`   
+🔥 Dentro  de `Convertir.xaml`   
 
 Cambiamos:     
 ```xml
@@ -663,7 +672,6 @@ Cambiamos:
 ```
 
 Por:   
-
 ```xml
 <Image Source="world.png" />
 ```
@@ -673,22 +681,23 @@ Por:
 
 Detener proyecto    
 
-- Explorador de soluciones 
-- Clic derecho 
+Explorador de soluciones: 
+- Solución "Conversor" : Clic derecho 
 - Administrar paquetes NuGet para la solución 
-- Examinar: Buscar `Xamarin.Forms.Visual.Material`
-- [x] Conversor.Android\Conversor
-- [x] Conversor.iOS\Conversor  
+- Examinar: 
+	- Buscar: `Xamarin.Forms.Visual.Material`
+	- [x] Conversor.Android\Conversor
+	- [x] Conversor.iOS\Conversor  
 - Instalar y aceptamos 
 
-Si encontramos en Dependencias algo llamado Net Frameworks eso quiere decir que va a afectar a todo el proyecto y puedo marcar todos los [ x ] 
+Si encontramos en Dependencias algo llamado **Net Frameworks** eso quiere decir que va a afectar a todo el proyecto y puedo marcar todos los [ x ] 
 
 
 Ahora debemos afectar al proyecto android   
 
-- Conversor.Android
-- MainActivity.cs: Ingresamos doble clic 
+🔥 `Conversor.Android` -> `MainActivity.cs`: Ingresamos doble clic 
 
+Agregamos la referencia al nuevo paquete instalado:      
 ```cs
 protected override void OnCreate(Bundle savedInstanceState)
 {
@@ -707,7 +716,7 @@ protected override void OnCreate(Bundle savedInstanceState)
 
 Para finalizar veamos como afectaría a la vista en Xaml   
 
-`Convertir.xaml`     
+🔥 `Convertir.xaml`     
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
