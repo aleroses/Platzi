@@ -403,7 +403,7 @@ Enlazar el back-end con el front-end
 📂 **Vistas**   
 Agregar nuevo elemento -> Xamarin.Forms -> Página de contenido -> `Pagina1.xaml`
 
-
+Cada vez que creemos una página, esta debe tener su propio controlador, su propio View Model (cada página).
 
 
 
