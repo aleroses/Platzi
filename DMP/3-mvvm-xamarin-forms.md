@@ -348,10 +348,73 @@ namespace MvvmGuia.VistaModelo
         #endregion
 		
         #region COMANDOS
+        //Llamar al Proceso Asincrona: await es para tareas asincronas
+        public ICommand ProcesoAsyncommand => new Command(async () => await ProcesoAsyncrono());
+        //Llamar al Proceso Simple o no Asincrono
+        public ICommand ProcesoSimpcommand => new Command(ProcesoSimple);
         #endregion
     }
 }
 ```
+
+
+## 4. Constructor
+
+Si revisamos dentro de `MainPage.xaml.cs` encontraremos un constructor que arrancará el proceso `InitializeComponent();` lo que va a renderizar la interfaz.  Anteriormente se estaba trabajando de esta manera:     
+
+```Cs
+namespace MvvmGuia
+{
+    public partial class MainPage : ContentPage
+    {
+        public MainPage()👈👀
+        {
+            InitializeComponent();👈👀
+        }
+
+        private void btnguardar_Clicked(object sender, EventArgs e)
+        {
+            DisplayAlert("Ok", "Esta es una alerta", "Ok");
+        }
+    }
+}
+```
+
+Pero con View Model esto se trabaja de otra forma en comparación a lo trabajado en el curso anterior.
+
+🔥 `VMpatron.cs`    
+
+```cs
+#region CONSTRUCTOR
+public VMpatron(INavigation navigation)
+{
+    Navigation = navigation;
+}
+#endregion
+```
+
+Con esto le estamos diciendo que nuestro constructor de esta página se va a comportar como una página de navegación que puede ir hacia adelante o hacia atrás.  
+
+
+## 5. Binding
+
+Enlazar el back-end con el front-end 
+
+📂 **Vistas**   
+Agregar nuevo elemento -> Xamarin.Forms -> Página de contenido -> `Pagina1.xaml`
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 --- 
