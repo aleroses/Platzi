@@ -405,17 +405,155 @@ Agregar nuevo elemento -> Xamarin.Forms -> Página de contenido -> `Pagina1.xaml
 
 Cada vez que creemos una página, esta debe tener su propio controlador, su propio View Model (cada página).
 
+📂 **VistaModelo**     
+Agregar clase -> `VMpagina1.cs`      
 
+En este archivo, todo lo que tenga botones, entrys, controladores va a accionar cualquier acción que se haga en la carpeta **Vistas** -> `Pagina1.xaml` con tan solo un clic.  
 
+Al tener un patron (`VMpatron.cs`) podemos replicar rápidamente las variables, constructores, etc dentro de nuestro archivo `VMpagina1.cs`
 
+🔥 `VMpagina1.cs`    
+Cambiamos el nombre de la clase y heredamos de BaseViewModel, también hacemos cambios dentro de las regiones PROCESOS y COMANDOS.  
 
+```cs
+using System;
+using System.Collections.Generic;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Input;
+using Xamarin.Forms;
 
+namespace MvvmGuia.VistaModelo
+{
+	//Cambiamos el nombre de la clase y heredamos de BaseViewModel
+    public class VMpagina1:BaseViewModel 👈👀
+    {
+        #region VARIABLES
+        string _Texto;
+        #endregion
 
+        #region CONSTRUCTOR
+        public VMpagina1(INavigation navigation)
+        {
+            Navigation = navigation;
+        }
+        #endregion
 
+        #region OBJETOS
+        public string Texto
+        {
+            get { return _Texto; }
+            set { SetValue(ref _Texto, value); }
+        }
+        #endregion
 
+        #region PROCESOS 👈👀
+        public async Task Alerta()
+        {
+            await DisplayAlert("Titulo", "Mensaje", "OK");
+        }
+        //Cuando no son procesos Asíncronos se
+        //remplaza el async Task por void 
+        public void ProcesoSimple()
+        {
+            
+        }
+        #endregion
 
+        #region COMANDOS 👈👀
+        //Llamar al Proceso Asincrona: await es para tareas asincronas
+        public ICommand Alertacommand => new Command(async () => await Alerta());
+        //Llamar al Proceso Simple o no Asincrono
+        public ICommand ProcesoSimpcommand => new Command(ProcesoSimple);
+        #endregion
+    }
+}
+```
 
+🔥 `Pagina1.xaml`
 
+```xml
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MvvmGuia.Vistas.Pagina1">
+    <StackLayout>
+        <Button Text="Guardar"
+                VerticalOptions="Center"
+                HorizontalOptions="Center"
+                Command="{Binding Alertacommand}"/>
+    </StackLayout>
+</ContentPage>
+```
+
+🔥 `Pagina1.xaml.cs`   
+Conectar usando **BindingContext** que es un Vinculante y Context es un contexto general, es decir, toda esta página, todo el contexto, todo lo que engloba esta página va a enlazarse con el ViewModel.    
+
+```cs
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
+using MvvmGuia.VistaModelo;
+
+namespace MvvmGuia.Vistas
+{
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class Pagina1 : ContentPage
+    {
+        public Pagina1()
+        {
+            InitializeComponent();
+            //Esto ya está enlazado al ViewModel 
+            BindingContext = new VMpagina1(Navigation);
+        }
+    }
+}
+```
+
+🔥 `App.xaml.cs`    
+Eliminar `MainPage.xaml` que viene por defecto 
+
+```cs
+using MvvmGuia.Vistas;
+using System;
+using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
+
+namespace MvvmGuia
+{
+    public partial class App : Application
+    {
+        public App()
+        {
+            InitializeComponent();
+
+            MainPage = new Pagina1(); 👈👀
+        }
+
+        protected override void OnStart()
+        {
+        }
+
+        protected override void OnSleep()
+        {
+        }
+
+        protected override void OnResume()
+        {
+        }
+    }
+}
+
+```
+
+🦄 Corremos el programa...
+
+**Nota:** Recordar que cuando queramos vincular una página primero debemos enlazarlo en la parte de C# a través de un BindingContext haciendo referencia al ViewModel que se esté consumiendo y luego en la parte de Xaml para poder consumir algún comando o string, se usa un Binding. 
 
 --- 
 --- 
