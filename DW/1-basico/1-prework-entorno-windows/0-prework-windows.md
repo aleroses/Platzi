@@ -17,6 +17,8 @@ Edge y sus DevTools
 
 Navegador Firefox Developer Edition
 
+Ver extensiones para Google Chrome [[vsc-chrome#Extensiones Chrome]]
+
 
 ## 2. Instalando nuestro editor de texto
 
@@ -31,6 +33,8 @@ Navegador Firefox Developer Edition
 - Path intellisense
 - Auto rename tag
 - Material Icon theme
+
+Ver mas extensiones [[vsc-chrome#Extensiones vsc]]
 
 
 ## 4. Cómo usar Live Server en proyectos reales de HTML y CSS
@@ -154,6 +158,8 @@ Windows hosts
 ## 10. Instalando Ubuntu en una máquina virtual
 
 [Descargar Ubuntu](https://releases.ubuntu.com/)
+
+Ver nota de Obsidian [[1-virtual-box#Instalación]]
 
 
 ## 11. Comandos básicos de la terminal e instalación de Node.js
