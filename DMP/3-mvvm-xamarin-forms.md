@@ -555,6 +555,121 @@ namespace MvvmGuia
 
 **Nota:** Recordar que cuando queramos vincular una página primero debemos enlazarlo en la parte de C# a través de un BindingContext haciendo referencia al ViewModel que se esté consumiendo y luego en la parte de Xaml para poder consumir algún comando o string, se usa un Binding. 
 
+
+## 6. Entry binding
+
+Veremos como controlar un Entry a través de MVVM 
+
+🔥 `Pagina1.xaml`     
+
+```xml
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MvvmGuia.Vistas.Pagina1">
+    <Grid BackgroundColor="#467FBC">
+        <StackLayout VerticalOptions="Center">
+            <StackLayout Orientation="Horizontal"
+                         HorizontalOptions="Center">
+                <Label Text="Mensaje:"
+                       TextColor="White"
+                       FontAttributes="Bold"
+                       VerticalOptions="Center"/>
+                <Entry PlaceholderColor="White"
+                       Placeholder="Escriba su mensaje"
+                       HorizontalOptions="StartAndExpand"
+                       TextColor="White"
+                       Text="{Binding Mensaje}"/> 👈👀
+            </StackLayout>
+            <Button Text="Ejecutar"
+                    VerticalOptions="Center"
+                    HorizontalOptions="Center"
+                    Command="{Binding Alertacommand}" 
+                    TextTransform="None"/>
+        </StackLayout>
+    </Grid>
+</ContentPage>
+```
+
+🔥 `VMpagina1.cs`     
+Cambios en las regiones VARIABLES, OBJETOS y PROCESOS.   
+
+```cs
+using System;
+using System.Collections.Generic;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Input;
+using Xamarin.Forms;
+
+namespace MvvmGuia.VistaModelo
+{
+    public class VMpagina1:BaseViewModel
+    {
+        #region VARIABLES
+        string _Mensaje; 👈👀
+        #endregion
+
+        #region CONSTRUCTOR
+        public VMpagina1(INavigation navigation)
+        {
+            Navigation = navigation;
+        }
+        #endregion
+
+        #region OBJETOS 
+        public string Mensaje 👈👀
+        {
+            get { return _Mensaje; }
+            set { SetValue(ref _Mensaje, value); }
+        }
+        #endregion
+
+        #region PROCESOS
+        public async Task Alerta() 👈👀
+        {
+            await DisplayAlert("Titulo", Mensaje, "OK");
+        }
+        //Cuando no son procesos Asíncronos se
+        //remplaza el async Task por void 
+        public void ProcesoSimple()
+        {
+            
+        }
+        #endregion
+
+        #region COMANDOS
+        //Llamar al Proceso Asincrona: await es para tareas asincronas
+        public ICommand Alertacommand => new Command(async () => await Alerta());
+        //Llamar al Proceso Simple o no Asincrono
+        public ICommand ProcesoSimpcommand => new Command(ProcesoSimple);
+        #endregion
+    }
+}
+```
+
+
+## 7. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 --- 
 --- 
 ```xml

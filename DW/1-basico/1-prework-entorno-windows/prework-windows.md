@@ -153,7 +153,7 @@ Windows hosts
 
 ## 10. Instalando Ubuntu en una máquina virtual
 
-[Descargar Ubuntu](https://ubuntu.com/download/desktop/thank-you?version=20.04.2.0&architecture=amd64)
+[Descargar Ubuntu](https://releases.ubuntu.com/)
 
 
 ## 11. Comandos básicos de la terminal e instalación de Node.js

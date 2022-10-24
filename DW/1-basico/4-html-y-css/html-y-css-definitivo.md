@@ -226,7 +226,7 @@ De contenido.- Son las etiquetas que llevan el texto, las imágenes y todo que s
 Contenedoras.- Llevan más etiquetas adentro y nos ayudan a llevar la estructura del proyecto.
 Tenemos que utilizar un HTML semántico
 
-```
+```html
 <!--Todo lo que viene es HTML, en DOCTYPE la etiqueta se cierra automáticamente-->
 
 <!DOCTYPE html>
