@@ -57,6 +57,8 @@ Ejecutar instalador
 - Reiniciar pc
 - Abrir Ejecutar MEmu
 
+Otra alternativa es: [NoxPlayer](https://es.bignox.com/)
+
 ### Configurar MEMU Play
 - Buscar las 3 ➖
 - Configuraciones 

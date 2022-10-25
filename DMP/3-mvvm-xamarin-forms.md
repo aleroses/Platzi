@@ -1074,6 +1074,430 @@ namespace MvvmGuia.Vistas
 
 ## 9. Asignar command a cualquier componente  
 
+En la clase anterior teníamos un problema en el archivo `Pagina2.xaml` ya que la etiqueta Image no tiene la función de command eso quiere decir que no podemos ejecutar un comando. Esto también ocurre con los Label, Grid, StackLayout.
+
+Para que la imagen pueda tener la acción de comando hacemos lo siguiente: 
+
+🔥 `Pagina2.xaml`   
+
+```xml
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MvvmGuia.Vistas.Pagina2"
+             NavigationPage.HasNavigationBar="False">
+    <Grid>
+        <Image Source="flechavolver.png"
+               VerticalOptions="Start"
+               HeightRequest="35"
+               HorizontalOptions="Start"
+               Margin="10">
+            <Image.GestureRecognizers> 👈👀
+                <TapGestureRecognizer Command="{Binding Volvercommand}"/>
+            </Image.GestureRecognizers>
+        </Image> 👈👀
+    </Grid>
+</ContentPage>
+```
+
+
+## 10. Picker con MVVM sin datos web  
+
+Picker que es algo como un Combo Box pero sin enlazar con datos web.
+
+🔥 `Pagina1.xaml`    
+
+```xml
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MvvmGuia.Vistas.Pagina1"
+             NavigationPage.HasNavigationBar="False">
+    <Grid BackgroundColor="#467FBC">
+        <StackLayout VerticalOptions="Center">
+            <StackLayout Orientation="Horizontal"
+                         HorizontalOptions="Center">
+                <Label Text="Numero1:"
+                       TextColor="White"
+                       FontAttributes="Bold"
+                       VerticalOptions="Center"/>
+                <Entry PlaceholderColor="White"
+                       Placeholder="Escriba un numero"
+                       HorizontalOptions="StartAndExpand"
+                       TextColor="White"
+                       Text="{Binding N1}"
+                       Keyboard="Numeric"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal"
+                         HorizontalOptions="Center">
+                <Label Text="Numero2:"
+                       TextColor="White"
+                       FontAttributes="Bold"
+                       VerticalOptions="Center" />
+                <Entry PlaceholderColor="White"
+                       Placeholder="Escriba un numero"
+                       HorizontalOptions="StartAndExpand"
+                       TextColor="White"
+                       Text="{Binding N2}"
+                       Keyboard="Numeric" />
+            </StackLayout>
+            <Button Text="Sumar"
+                    VerticalOptions="Center"
+                    HorizontalOptions="Center"
+                    Command="{Binding Sumarcommand}" 
+                    TextTransform="None"
+                    BackgroundColor="White"
+                    FontAttributes="Bold"
+                    CornerRadius="5"/>
+            <Label Text="{Binding R}"
+                   TextColor="White"
+                   HorizontalOptions="Center"
+                   FontAttributes="Bold"
+                   FontSize="40"/>
+            <Button Text="Ir pagina 2"
+                    HorizontalOptions="Center"
+                    CornerRadius="5"
+                    BackgroundColor="White"
+                    FontAttributes="Bold"
+                    Command="{Binding Navegarpagina2command}"/>
+            <StackLayout HorizontalOptions="Center"
+                         Orientation="Horizontal">
+                <Label TextColor="White"
+                       FontAttributes="Bold"
+                       Text="Picker:"
+                       VerticalOptions="Center"/>
+                <Picker TextColor="White" 👈👀
+                        HorizontalOptions="FillAndExpand"
+                        Title="Seleccione una opcion"
+                        TitleColor="White"
+                        SelectedItem="{Binding SeleccionarTipouser}">
+                    <Picker.ItemsSource> 👈👀
+                        <x:Array Type="{x:Type x:String}">
+                            <x:String>Administrador</x:String>
+                            <x:String>Empleado</x:String>
+                        </x:Array>
+                    </Picker.ItemsSource>
+                </Picker>
+            </StackLayout>
+        </StackLayout>
+    </Grid>
+</ContentPage>
+```
+
+🔥 `VMpagina1.cs`    
+
+```cs
+using MvvmGuia.Vistas;
+using System;
+using System.Collections.Generic;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Input;
+using Xamarin.Forms;
+
+namespace MvvmGuia.VistaModelo
+{
+    public class VMpagina1:BaseViewModel
+    {
+        #region VARIABLES
+        string _N1;
+        string _N2;
+        string _R; //Respuesta
+        string _Tipousuario;
+        #endregion
+
+        #region CONSTRUCTOR
+        public VMpagina1(INavigation navigation)
+        {
+            Navigation = navigation;
+        }
+        #endregion
+
+        #region OBJETOS
+        public string N1
+        {
+            get { return _N1; }
+            set { SetValue(ref _N1, value); }
+        }
+
+        public string Tipousuario 👈👀
+        {
+            get { return _Tipousuario; }
+            set { SetValue(ref _Tipousuario, value); }
+        }
+
+        public string SeleccionarTipouser 👈👀
+        {
+            get { return _Tipousuario; }
+            set { SetProperty(ref _Tipousuario, value); 
+                Tipousuario = _Tipousuario; }
+        }
+
+        public string N2
+        {
+            get { return _N2; }
+            set { SetValue(ref _N2, value); }
+        }
+
+        public string R
+        {
+            get { return _R; }
+            set { SetValue(ref _R, value); }
+        }
+        #endregion
+
+        #region PROCESOS
+        public async Task Navegarpagina2()
+        {
+            await Navigation.PushAsync(new Pagina2());
+        }
+        //Cuando no son procesos Asíncronos se
+        //remplaza el async Task por void 
+        public void Sumar()
+        {
+            double n1 = 0;
+            double n2 = 0;
+            double respuesta = 0;
+
+            n1 = Convert.ToDouble(N1);
+            n2 = Convert.ToDouble(N2);
+
+            respuesta = n1 + n2;
+
+            R = respuesta.ToString();
+        }
+        #endregion
+
+        #region COMANDOS
+        //Llamar al Proceso Asincrona: await es para tareas asincronas
+        public ICommand Navegarpagina2command => new Command(async () => await Navegarpagina2());
+        //Llamar al Proceso Simple o no Asincrono
+        public ICommand Sumarcommand => new Command(Sumar);
+        #endregion
+    }
+}
+```
+
+🔴 **Punto de interrupción**     
+Del lado izquierdo detrás de la numeración de líneas de código podemos hacer clic 🔴 y seleccionar un punto donde se detenga el programa lo que nos dirá si esa parte de código arroja un resultado o no. Al ejecutar el programa y hacer alguna acción el editor nos mostrará una flecha naranja 🔶. Si pasamos el cursor sobre la línea de código del punto de interrupción veremos que nos muestra el dato seleccionado (Administrador o Empleado).
+
+📌 En ocasiones al salir algún error pida reiniciar:    
+🔥🔽Usar el botón 🔄 Reiniciar aplicación 
+
+Correr programa...
+
+
+## 11. DatePicket con MVVM
+
+Veamos como seleccionar una fecha desde un DatePicket 
+
+🔥  `Pagina1.xaml`    
+
+```xml
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MvvmGuia.Vistas.Pagina1"
+             NavigationPage.HasNavigationBar="False">
+    <Grid BackgroundColor="#467FBC">
+        <StackLayout VerticalOptions="Center">
+            <StackLayout Orientation="Horizontal"
+                         HorizontalOptions="Center">
+                <Label Text="Numero1:"
+                       TextColor="White"
+                       FontAttributes="Bold"
+                       VerticalOptions="Center"/>
+                <Entry PlaceholderColor="White"
+                       Placeholder="Escriba un numero"
+                       HorizontalOptions="StartAndExpand"
+                       TextColor="White"
+                       Text="{Binding N1}"
+                       Keyboard="Numeric"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal"
+                         HorizontalOptions="Center">
+                <Label Text="Numero2:"
+                       TextColor="White"
+                       FontAttributes="Bold"
+                       VerticalOptions="Center" />
+                <Entry PlaceholderColor="White"
+                       Placeholder="Escriba un numero"
+                       HorizontalOptions="StartAndExpand"
+                       TextColor="White"
+                       Text="{Binding N2}"
+                       Keyboard="Numeric" />
+            </StackLayout>
+            <Button Text="Sumar"
+                    VerticalOptions="Center"
+                    HorizontalOptions="Center"
+                    Command="{Binding Sumarcommand}" 
+                    TextTransform="None"
+                    BackgroundColor="White"
+                    FontAttributes="Bold"
+                    CornerRadius="5"/>
+            <Label Text="{Binding R}"
+                   TextColor="White"
+                   HorizontalOptions="Center"
+                   FontAttributes="Bold"
+                   FontSize="40"/>
+            <Button Text="Ir pagina 2"
+                    HorizontalOptions="Center"
+                    CornerRadius="5"
+                    BackgroundColor="White"
+                    FontAttributes="Bold"
+                    Command="{Binding Navegarpagina2command}"/>
+            <StackLayout HorizontalOptions="Center"
+                         Orientation="Horizontal">
+                <Label TextColor="White"
+                       FontAttributes="Bold"
+                       Text="Picker:"
+                       VerticalOptions="Center"/>
+                <Picker TextColor="White"
+                        HorizontalOptions="FillAndExpand"
+                        Title="Seleccione una opcion"
+                        TitleColor="White"
+                        SelectedItem="{Binding SeleccionarTipouser}">
+                    <Picker.ItemsSource>
+                        <x:Array Type="{x:Type x:String}">
+                            <x:String>Administrador</x:String>
+                            <x:String>Empleado</x:String>
+                        </x:Array>
+                    </Picker.ItemsSource>
+                </Picker>
+            </StackLayout>
+            <StackLayout HorizontalOptions="Center">
+                <DatePicker TextColor="White"
+                            Date="{Binding Fecha, Mode=TwoWay}">
+                    <DatePicker.Format>dd/MM/yyyy</DatePicker.Format>
+                </DatePicker>
+                <Label Text="{Binding Resultadofecha}"
+                       TextColor="White"
+                       FontAttributes="Bold"
+                       FontSize="20"/>
+            </StackLayout>
+        </StackLayout>
+    </Grid>
+</ContentPage>
+```
+
+🔥  `VMPagina1.cs`     
+
+```cs
+using MvvmGuia.Vistas;
+using System;
+using System.Collections.Generic;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Input;
+using Xamarin.Forms;
+
+namespace MvvmGuia.VistaModelo
+{
+    public class VMpagina1:BaseViewModel
+    {
+        #region VARIABLES
+        string _N1;
+        string _N2;
+        string _R; //Respuesta
+        string _Tipousuario;
+        DateTime _Fecha;
+        string _Resultadofecha;
+        #endregion
+
+        #region CONSTRUCTOR
+        public VMpagina1(INavigation navigation)
+        {
+            Navigation = navigation;
+            Fecha = DateTime.Now;
+        }
+        #endregion
+
+        #region OBJETOS
+        public string N1
+        {
+            get { return _N1; }
+            set { SetValue(ref _N1, value); }
+        }
+
+        public string Resultadofecha
+        {
+            get { return _Resultadofecha; }
+            set { SetValue(ref _Resultadofecha, value); }
+        }
+
+        public DateTime Fecha
+        {
+            get { return _Fecha; }
+            set
+            {
+                SetValue(ref _Fecha, value);
+                Resultadofecha = _Fecha.ToString("dd/MM/yyyy");
+            }
+        }
+
+        public string Tipousuario
+        {
+            get { return _Tipousuario; }
+            set { SetValue(ref _Tipousuario, value); }
+        }
+
+        public string SeleccionarTipouser
+        {
+            get { return _Tipousuario; }
+            set { SetProperty(ref _Tipousuario, value); 
+                Tipousuario = _Tipousuario; }
+        }
+
+        public string N2
+        {
+            get { return _N2; }
+            set { SetValue(ref _N2, value); }
+        }
+
+        public string R
+        {
+            get { return _R; }
+            set { SetValue(ref _R, value); }
+        }        
+        #endregion
+
+        #region PROCESOS
+        public async Task Navegarpagina2()
+        {
+            await Navigation.PushAsync(new Pagina2());
+        }
+        //Cuando no son procesos Asíncronos se
+        //remplaza el async Task por void 
+        public void Sumar()
+        {
+            double n1 = 0;
+            double n2 = 0;
+            double respuesta = 0;
+
+            n1 = Convert.ToDouble(N1);
+            n2 = Convert.ToDouble(N2);
+
+            respuesta = n1 + n2;
+
+            R = respuesta.ToString();
+        }
+        #endregion
+
+        #region COMANDOS
+        //Llamar al Proceso Asincrona: await es para tareas asincronas
+        public ICommand Navegarpagina2command => new Command(async () => await Navegarpagina2());
+        //Llamar al Proceso Simple o no Asincrono
+        public ICommand Sumarcommand => new Command(Sumar);
+        #endregion
+    }
+}
+```
+
+Correr programa...  
+
+
+## 12. CollectionView MVVM
+
 
 
 
