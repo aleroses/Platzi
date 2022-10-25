@@ -649,29 +649,438 @@ namespace MvvmGuia.VistaModelo
 ```
 
 
-## 7. 
+## 7. Label binding
+
+Veremos como mostrar texto en un Label usando MVVM con una operación de suma.    
+
+🔥 `Pagina1.xaml`    
+
+```xml
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MvvmGuia.Vistas.Pagina1">
+    <Grid BackgroundColor="#467FBC">
+        <StackLayout VerticalOptions="Center">
+            <StackLayout Orientation="Horizontal"
+                         HorizontalOptions="Center">
+                <Label Text="Numero1:"
+                       TextColor="White"
+                       FontAttributes="Bold"
+                       VerticalOptions="Center"/>
+                <Entry PlaceholderColor="White"
+                       Placeholder="Escriba un numero"
+                       HorizontalOptions="StartAndExpand"
+                       TextColor="White"
+                       Text="{Binding N1}"
+                       Keyboard="Numeric"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal"
+                         HorizontalOptions="Center">
+                <Label Text="Numero2:"
+                       TextColor="White"
+                       FontAttributes="Bold"
+                       VerticalOptions="Center" />
+                <Entry PlaceholderColor="White"
+                       Placeholder="Escriba un numero"
+                       HorizontalOptions="StartAndExpand"
+                       TextColor="White"
+                       Text="{Binding N2}"
+                       Keyboard="Numeric" />
+            </StackLayout>
+            <Button Text="Sumar"
+                    VerticalOptions="Center"
+                    HorizontalOptions="Center"
+                    Command="{Binding Sumarcommand}" 
+                    TextTransform="None"
+                    BackgroundColor="White"
+                    FontAttributes="Bold"
+                    CornerRadius="5"/>
+            <Label Text="{Binding R}"
+                   TextColor="White"
+                   HorizontalOptions="Center"
+                   FontAttributes="Bold"
+                   FontSize="40"/>
+        </StackLayout>
+    </Grid>
+</ContentPage>
+```
+
+🔥 `VMpagina1.cs`  
+
+```cs
+using System;
+using System.Collections.Generic;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Input;
+using Xamarin.Forms;
+
+namespace MvvmGuia.VistaModelo
+{
+    public class VMpagina1:BaseViewModel
+    {
+        #region VARIABLES
+        string _N1;
+        string _N2;
+        string _R; //Respuesta
+        #endregion
+
+        #region CONSTRUCTOR
+        public VMpagina1(INavigation navigation)
+        {
+            Navigation = navigation;
+        }
+        #endregion
+
+        #region OBJETOS
+        public string N1
+        {
+            get { return _N1; }
+            set { SetValue(ref _N1, value); }
+        }
+
+        public string N2
+        {
+            get { return _N2; }
+            set { SetValue(ref _N2, value); }
+        }
+
+        public string R
+        {
+            get { return _R; }
+            set { SetValue(ref _R, value); }
+        }
+        #endregion
+
+        #region PROCESOS
+        public async Task Procesoasync()
+        {
+            
+        }
+        //Cuando no son procesos Asíncronos se
+        //remplaza el async Task por void 
+        public void Sumar()
+        {
+            double n1 = 0;
+            double n2 = 0;
+            double respuesta = 0;
+
+            n1 = Convert.ToDouble(N1);
+            n2 = Convert.ToDouble(N2);
+
+            respuesta = n1 + n2;
+
+            R = respuesta.ToString();
+        }
+        #endregion
+
+        #region COMANDOS
+        //Llamar al Proceso Asincrona: await es para tareas asincronas
+        public ICommand Procesoasyncommand => new Command(async () => await Procesoasync());
+        //Llamar al Proceso Simple o no Asincrono
+        public ICommand Sumarcommand => new Command(Sumar);
+        #endregion
+    }
+}
+```
 
 
+## 8. Navegación entre páginas con MVVM  
+
+📂 **Vistas**   
+Agregar nuevo elemento -> Xamarin.Forms -> Página de contenido -> `Pagina2.xaml`
 
 
+🔥 `VMpagina1.cs`    
+
+```cs
+using MvvmGuia.Vistas;
+using System;
+using System.Collections.Generic;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Input;
+using Xamarin.Forms;
+
+namespace MvvmGuia.VistaModelo
+{
+    public class VMpagina1:BaseViewModel
+    {
+        #region VARIABLES
+        string _N1;
+        string _N2;
+        string _R; //Respuesta
+        #endregion
+
+        #region CONSTRUCTOR
+        public VMpagina1(INavigation navigation)
+        {
+            Navigation = navigation;
+        }
+        #endregion
+
+        #region OBJETOS
+        public string N1
+        {
+            get { return _N1; }
+            set { SetValue(ref _N1, value); }
+        }
+
+        public string N2
+        {
+            get { return _N2; }
+            set { SetValue(ref _N2, value); }
+        }
+
+        public string R
+        {
+            get { return _R; }
+            set { SetValue(ref _R, value); }
+        }
+        #endregion
+
+        #region PROCESOS
+        public async Task Navegarpagina2()
+        {
+            await Navigation.PushAsync(new Pagina2());
+        }
+        //Cuando no son procesos Asíncronos se
+        //remplaza el async Task por void 
+        public void Sumar()
+        {
+            double n1 = 0;
+            double n2 = 0;
+            double respuesta = 0;
+
+            n1 = Convert.ToDouble(N1);
+            n2 = Convert.ToDouble(N2);
+
+            respuesta = n1 + n2;
+
+            R = respuesta.ToString();
+        }
+        #endregion
+
+        #region COMANDOS
+        //Llamar al Proceso Asincrona: await es para tareas asincronas
+        public ICommand Navegarpagina2command => new Command(async () => await Navegarpagina2());
+        //Llamar al Proceso Simple o no Asincrono
+        public ICommand Sumarcommand => new Command(Sumar);
+        #endregion
+    }
+}
+```
+
+🔥 `Pagina1.xaml`
+
+```xml
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MvvmGuia.Vistas.Pagina1"
+             NavigationPage.HasNavigationBar="False">
+    <Grid BackgroundColor="#467FBC">
+        <StackLayout VerticalOptions="Center">
+            <StackLayout Orientation="Horizontal"
+                         HorizontalOptions="Center">
+                <Label Text="Numero1:"
+                       TextColor="White"
+                       FontAttributes="Bold"
+                       VerticalOptions="Center"/>
+                <Entry PlaceholderColor="White"
+                       Placeholder="Escriba un numero"
+                       HorizontalOptions="StartAndExpand"
+                       TextColor="White"
+                       Text="{Binding N1}"
+                       Keyboard="Numeric"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal"
+                         HorizontalOptions="Center">
+                <Label Text="Numero2:"
+                       TextColor="White"
+                       FontAttributes="Bold"
+                       VerticalOptions="Center" />
+                <Entry PlaceholderColor="White"
+                       Placeholder="Escriba un numero"
+                       HorizontalOptions="StartAndExpand"
+                       TextColor="White"
+                       Text="{Binding N2}"
+                       Keyboard="Numeric" />
+            </StackLayout>
+            <Button Text="Sumar"
+                    VerticalOptions="Center"
+                    HorizontalOptions="Center"
+                    Command="{Binding Sumarcommand}" 
+                    TextTransform="None"
+                    BackgroundColor="White"
+                    FontAttributes="Bold"
+                    CornerRadius="5"/>
+            <Label Text="{Binding R}"
+                   TextColor="White"
+                   HorizontalOptions="Center"
+                   FontAttributes="Bold"
+                   FontSize="40"/>
+            <Button Text="Ir pagina 2"
+                    HorizontalOptions="Center"
+                    CornerRadius="5"
+                    BackgroundColor="White"
+                    FontAttributes="Bold"
+                    Command="{Binding Navegarpagina2command}"/>
+        </StackLayout>
+    </Grid>
+</ContentPage>
+```
+
+🔥 `Pagina2.xaml`
+
+```xml
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MvvmGuia.Vistas.Pagina2"
+             NavigationPage.HasNavigationBar="False">
+    <Grid>
+        <Image Source="flechavolver.png"
+               VerticalOptions="Start"
+               HeightRequest="35"
+               HorizontalOptions="Start"
+               Margin="10"/>
+    </Grid>
+</ContentPage>
+```
+
+🔥 `App.xaml.cs`   
+
+```cs
+using MvvmGuia.Vistas;
+using System;
+using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
+
+namespace MvvmGuia
+{
+    public partial class App : Application
+    {
+        public App()
+        {
+            InitializeComponent();
+
+            MainPage = new NavigationPage(new Pagina1());
+        }
+
+        protected override void OnStart()
+        {
+        }
+
+        protected override void OnSleep()
+        {
+        }
+
+        protected override void OnResume()
+        {
+        }
+    }
+}
+```
+
+📂 **VistaModelo**    
+Agregar clase -> `VMpagina2.cs`
+
+🔥 `VMpagina2.cs`    
+Copiamos regiones del archivo `VMpatron.cs`   
+
+```cs
+using System;
+using System.Collections.Generic;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Input;
+using Xamarin.Forms;
+
+namespace MvvmGuia.VistaModelo
+{
+    public class VMpagina2:BaseViewModel
+    {
+        #region VARIABLES
+        string _Texto;
+        #endregion
+
+        #region CONSTRUCTOR
+        public VMpagina2(INavigation navigation)
+        {
+            Navigation = navigation;
+        }
+        #endregion
+
+        #region OBJETOS
+        public string Texto
+        {
+            get { return _Texto; }
+            set { SetValue(ref _Texto, value); }
+        }
+        #endregion
+
+        #region PROCESOS
+        public async Task Volver()
+        {
+            await Navigation.PopAsync();
+        }
+        //Cuando no son procesos Asíncronos se
+        //remplaza el async Task por void 
+        public void ProcesoSimple()
+        {
+
+        }
+        #endregion
+
+        #region COMANDOS
+        //Llamar al Proceso Asincrona: await es para tareas asincronas
+        public ICommand Volvercommand => new Command(async () => await Volver());
+        //Llamar al Proceso Simple o no Asincrono
+        public ICommand ProcesoSimpcommand => new Command(ProcesoSimple);
+        #endregion
+    }
+}
+```
+
+🔥 `Pagina2.xaml.cs`  
+
+```cs
+using MvvmGuia.VistaModelo;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
+
+namespace MvvmGuia.Vistas
+{
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class Pagina2 : ContentPage
+    {
+        public Pagina2()
+        {
+            InitializeComponent();
+            BindingContext = new VMpagina2(Navigation);
+        }
+    }
+}
+```
 
 
-
-
-
-
-
-
-
-
-
-
+## 9. Asignar command a cualquier componente  
 
 
 
 
 --- 
 --- 
+
+
 ```xml
 ```
 
