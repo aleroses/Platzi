@@ -1498,6 +1498,266 @@ Correr programa...
 
 ## 12. CollectionView MVVM
 
+📂 **Modelo**   
+Agregar clase -> `Musuario.cs`  
+
+🔥 `Musuario.cs`  
+
+```cs
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace MvvmGuia.Modelo
+{
+    public class Musuario
+    {
+        public string Nombre { get; set; }
+        public string Imagen { get; set; }
+    }
+}
+```
+
+🔥 `Pagina2.xaml`   
+
+```xml
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MvvmGuia.Vistas.Pagina2"
+             NavigationPage.HasNavigationBar="False">
+    <Grid>
+        <Image Source="flechavolver.png"
+               VerticalOptions="Start"
+               HeightRequest="35"
+               HorizontalOptions="Start"
+               Margin="10">
+            <Image.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding Volvercommand}"/>
+            </Image.GestureRecognizers>
+        </Image>
+        <CollectionView>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
+</ContentPage>
+```
+
+🔥 `VMPagina2.cs`   
+
+```cs
+using System;
+using System.Collections.Generic;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Input;
+using Xamarin.Forms;
+using MvvmGuia.Modelo;
+
+namespace MvvmGuia.VistaModelo
+{
+    public class VMpagina2:BaseViewModel
+    {
+        #region VARIABLES
+        string _Texto;
+        public List<Musuario> listausuarios { get; set; }
+        #endregion
+
+        #region CONSTRUCTOR
+        public VMpagina2(INavigation navigation)
+        {
+            Navigation = navigation;
+            Mostrarusuarios();
+        }
+        #endregion
+
+        #region OBJETOS
+        public string Texto
+        {
+            get { return _Texto; }
+            set { SetValue(ref _Texto, value); }
+        }
+        #endregion
+
+        #region PROCESOS
+        public async Task Volver()
+        {
+            await Navigation.PopAsync();
+        }
+        //Cuando no son procesos Asíncronos se
+        //remplaza el async Task por void 
+        public void Mostrarusuarios()
+        {
+            listausuarios = new List<Musuario>
+            {
+                new Musuario
+                {
+                    Nombre = "Frank",
+                    Imagen = "https://i.postimg.cc/fLF1H03f/angry.png"
+                },
+                new Musuario
+                {
+                    Nombre = "Juan",
+                    Imagen = "https://i.postimg.cc/KY06MWxV/annoyed.png"
+                },
+                new Musuario
+                {
+                    Nombre = "Carlos",
+                    Imagen = "https://i.postimg.cc/wv3SckBB/excited.png"
+                }
+            };
+        }
+        #endregion
+
+        #region COMANDOS
+        //Llamar al Proceso Asincrona: await es para tareas asincronas
+        public ICommand Volvercommand => new Command(async () => await Volver());
+        //Llamar al Proceso Simple o no Asincrono
+        //public ICommand ProcesoSimpcommand => new Command(ProcesoSimple);
+        #endregion
+    }
+}
+```
+
+
+## 13. Llenar datos locales   
+Continuamos desde el punto 12.
+
+🔥 `Pagina2.xaml`   
+
+```xml
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MvvmGuia.Vistas.Pagina2"
+             NavigationPage.HasNavigationBar="False">
+    <Grid>
+        <Image Source="flechavolver.png"
+               VerticalOptions="Start"
+               HeightRequest="35"
+               HorizontalOptions="Start"
+               Margin="10">
+            <Image.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding Volvercommand}"/>
+            </Image.GestureRecognizers>
+        </Image>
+        <CollectionView ItemsSource="{Binding listausuarios}"
+                        VerticalOptions="CenterAndExpand"
+                        Margin="20,80,20,0">
+            <CollectionView.ItemsLayout>
+                <GridItemsLayout Orientation="Vertical"
+                                 Span="1"
+                                 VerticalItemSpacing="20"/>
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame CornerRadius="15"
+                           BackgroundColor="#00DE87">
+                        <StackLayout Orientation="Horizontal">
+                            <Image Source="{Binding Imagen}"
+                                   HeightRequest="150" />
+                            <Label Text="{Binding Nombre}"
+                                   VerticalOptions="Center"
+                                   FontSize="20"
+                                   FontAttributes="Bold" />
+                        </StackLayout>
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding Alertacommand}"/>
+                        </Frame.GestureRecognizers>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
+</ContentPage>
+```
+
+🔥 `VMpagina2.cs`   
+
+```cs
+using System;
+using System.Collections.Generic;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Input;
+using Xamarin.Forms;
+using MvvmGuia.Modelo;
+
+namespace MvvmGuia.VistaModelo
+{
+    public class VMpagina2:BaseViewModel
+    {
+        #region VARIABLES
+        string _Texto;
+        public List<Musuario> listausuarios { get; set; }
+        #endregion
+
+        #region CONSTRUCTOR
+        public VMpagina2(INavigation navigation)
+        {
+            Navigation = navigation;
+            Mostrarusuarios();
+        }
+        #endregion
+
+        #region OBJETOS
+        public string Texto
+        {
+            get { return _Texto; }
+            set { SetValue(ref _Texto, value); }
+        }
+        #endregion
+
+        #region PROCESOS
+        public async Task Volver()
+        {
+            await Navigation.PopAsync();
+        }
+        //Cuando no son procesos Asíncronos se
+        //remplaza el async Task por void 
+        public void Mostrarusuarios()
+        {
+            listausuarios = new List<Musuario>
+            {
+                new Musuario
+                {
+                    Nombre = "Frank",
+                    Imagen = "https://i.postimg.cc/fLF1H03f/angry.png"
+                },
+                new Musuario
+                {
+                    Nombre = "Juan",
+                    Imagen = "https://i.postimg.cc/KY06MWxV/annoyed.png"
+                },
+                new Musuario
+                {
+                    Nombre = "Carlos",
+                    Imagen = "https://i.postimg.cc/wv3SckBB/excited.png"
+                }
+            };
+        }
+        public async Task Alerta()
+        {
+            await DisplayAlert("Titulo", "Mensaje", "Ok");
+        }
+        #endregion
+
+        #region COMANDOS
+        //Llamar al Proceso Asincrona: await es para tareas asincronas
+        public ICommand Volvercommand => new Command(async () => await Volver());
+        //Llamar al Proceso Simple o no Asincrono
+        //public ICommand ProcesoSimpcommand => new Command(ProcesoSimple);
+        public ICommand Alertacommand => new Command(async () => await Alerta());
+        #endregion
+    }
+}
+```
 
 
 
