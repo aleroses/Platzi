@@ -579,7 +579,7 @@ LA ESTRUCTURA DE HTML ES IMPORTANTE PARA SABER QUIENES SON LOS HIJOS Y LOS PADRE
 
 📌 Todos los padres DEBEN tener la propiedad `display: grid;`
 
-✨ Enlace a los apuntes sobre [[CSSGrid-Basico]] función de Obsidian :3
+✨ Enlace a los apuntes sobre [[css-grid-basico]] función de Obsidian :3
 
 > ![CSS grid](https://i.postimg.cc/8cSpfC21/14-css-grid.jpg)
 
@@ -611,8 +611,8 @@ LA ESTRUCTURA DE HTML ES IMPORTANTE PARA SABER QUIENES SON LOS HIJOS Y LOS PADRE
 
 ## 16. ¡Iniciemos nuestro proyecto! Fase de creatividad e identificación de elementos
 
-✨ Ver [[DisenioDevelopers]]      
-![[DisenioDevelopers#2 El proceso creativo]]
+✨ Ver [[disenio-developers]]      
+![[disenio-developers#2 El proceso creativo]]
 
 **Inspiración: Mood board**      
 -   Pinterest 🔍 
@@ -702,7 +702,7 @@ Hay que tener en cuenta de que siempre vamos a volver al flujo normal del docume
 
 ## 18. Creando filas, columnas y espaciado + Reto
 
-📌 Ver notas en Obsidian: [[CSSGrid-Basico]] or ver nota en [GitHub](https://github.com/Alexander-VR/Platzi/blob/master/DW/9-CSSGrid-Basico/CSSGrid-Basico.md) 
+📌 Ver notas en Obsidian: [[css-grid-basico]] or ver nota en [GitHub](https://github.com/Alexander-VR/Platzi/blob/master/DW/9-CSSGrid-Basico/CSSGrid-Basico.md) 
 
 En el contenedor padre:      
 -   Para poder crear columnas debemos usar `grid-template-columns`
@@ -819,7 +819,7 @@ En el contenedor padre:
 
 ## 19. Alineamiento en el elemento contenedor + Quiz
 
-📌 Ver notas en Obsidian: [[CSSGrid-Basico]] or ver nota en [GitHub](https://github.com/Alexander-VR/Platzi/blob/master/DW/9-CSSGrid-Basico/CSSGrid-Basico.md) 
+📌 Ver notas en Obsidian: [[css-grid-basico]] or ver nota en [GitHub](https://github.com/Alexander-VR/Platzi/blob/master/DW/9-CSSGrid-Basico/CSSGrid-Basico.md) 
 
 ↘️ Alineamiento en el elemento contenedor      
 Podemos alinear todos los contenedores a una sola dirección.   
@@ -1151,7 +1151,7 @@ Las **media queries** (en español “consultas de medios”) son útiles cuan
 
 ✨ Con la función de **_auto-fill()_** LLENA la fila con tantas columnas como pueda caber. Por lo tanto, crea columnas implícitas cada vez que cabe una nueva columna, porque está tratando de LLENAR la fila con tantas columnas como sea posible. Las columnas recién agregadas pueden estar vacías, pero seguirán ocupando un espacio designado en la fila.
 
-📌 Repasar curso [[CSSGrid-Basico]]
+📌 Repasar curso [[css-grid-basico]]
 
 ![Resumen](https://i.postimg.cc/vZHT01Pz/grid-basico-resumen.png)
 
