@@ -1760,6 +1760,633 @@ namespace MvvmGuia.VistaModelo
 ```
 
 
+## 14. Seleccionar item en Collectionview  
+
+🔥 `Pagina2.xaml`   
+
+```xml
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MvvmGuia.Vistas.Pagina2"
+             NavigationPage.HasNavigationBar="False">
+    <Grid>
+        <Image Source="flechavolver.png"
+               VerticalOptions="Start"
+               HeightRequest="35"
+               HorizontalOptions="Start"
+               Margin="10">
+            <Image.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding Volvercommand}"/>
+            </Image.GestureRecognizers>
+        </Image>
+        <CollectionView ItemsSource="{Binding listausuarios}"
+                        VerticalOptions="CenterAndExpand"
+                        Margin="20,80,20,0"
+                        x:Name="listauser">
+            <CollectionView.ItemsLayout>
+                <GridItemsLayout Orientation="Vertical"
+                                 Span="1"
+                                 VerticalItemSpacing="20"/>
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame CornerRadius="15"
+                           BackgroundColor="#00DE87">
+                        <StackLayout Orientation="Horizontal">
+                            <Image Source="{Binding Imagen}"
+                                   HeightRequest="150" />
+                            <Label Text="{Binding Nombre}"
+                                   VerticalOptions="Center"
+                                   FontSize="20"
+                                   FontAttributes="Bold" />
+                        </StackLayout>
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding Path=BindingContext.Alertacommand, Source={x:Reference listauser}}"
+                                                  CommandParameter="{Binding .}"/>
+                        </Frame.GestureRecognizers>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
+</ContentPage>
+```
+
+🔥 `VMpagina2.cs`   
+
+```cs
+using System;
+using System.Collections.Generic;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Input;
+using Xamarin.Forms;
+using MvvmGuia.Modelo;
+
+namespace MvvmGuia.VistaModelo
+{
+    public class VMpagina2:BaseViewModel
+    {
+        #region VARIABLES
+        string _Texto;
+        public List<Musuario> listausuarios { get; set; }
+        #endregion
+
+        #region CONSTRUCTOR
+        public VMpagina2(INavigation navigation)
+        {
+            Navigation = navigation;
+            Mostrarusuarios();
+        }
+        #endregion
+
+        #region OBJETOS
+        public string Texto
+        {
+            get { return _Texto; }
+            set { SetValue(ref _Texto, value); }
+        }
+        #endregion
+
+        #region PROCESOS
+        public async Task Volver()
+        {
+            await Navigation.PopAsync();
+        }
+        //Cuando no son procesos Asíncronos se
+        //remplaza el async Task por void 
+        public void Mostrarusuarios()
+        {
+            listausuarios = new List<Musuario>
+            {
+                new Musuario
+                {
+                    Nombre = "Frank",
+                    Imagen = "https://i.postimg.cc/fLF1H03f/angry.png"
+                },
+                new Musuario
+                {
+                    Nombre = "Juan",
+                    Imagen = "https://i.postimg.cc/KY06MWxV/annoyed.png"
+                },
+                new Musuario
+                {
+                    Nombre = "Carlos",
+                    Imagen = "https://i.postimg.cc/wv3SckBB/excited.png"
+                }
+            };
+        }
+        public async Task Alerta(Musuario parametros)
+        {
+            await DisplayAlert("Titulo", parametros.Nombre, "Ok");
+        }
+        #endregion
+
+        #region COMANDOS
+        //Llamar al Proceso Asincrona: await es para tareas asincronas
+        public ICommand Volvercommand => new Command(async () => await Volver());
+        //Llamar al Proceso Simple o no Asincrono
+        //public ICommand ProcesoSimpcommand => new Command(ProcesoSimple);
+        public ICommand Alertacommand => new Command<Musuario>(async (p) => await Alerta(p));
+        #endregion
+    }
+}
+```
+
+
+## 15. Menu principal
+
+📂 **Vistas**   
+Agregar nuevo elemento -> Xamarin.Forms -> Página de contenido -> `Menuprincipal.xaml`   
+
+```xml
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MvvmGuia.Vistas.Menuprincipal">
+    <Grid>
+        <CollectionView ItemsSource="{Binding listapaginas}"
+                        VerticalOptions="CenterAndExpand"
+                        Margin="20,80,20,0"
+                        x:Name="listapages">
+            <CollectionView.ItemsLayout>
+                <GridItemsLayout Orientation="Vertical"
+                                 Span="1"
+                                 VerticalItemSpacing="20" />
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame CornerRadius="15"
+                           BackgroundColor="#00DE87">
+                        <StackLayout Orientation="Horizontal">
+                            <Image Source="{Binding Icono}"
+                                   HeightRequest="150" />
+                            <Label Text="{Binding Pagina}"
+                                   VerticalOptions="Center"
+                                   FontSize="20"
+                                   FontAttributes="Bold" />
+                        </StackLayout>
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding Path=BindingContext.Navegarcommand, Source={x:Reference listapages}}"
+                                                  CommandParameter="{Binding .}" />
+                        </Frame.GestureRecognizers>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
+</ContentPage>
+```
+
+Agregar nuevo elemento -> Xamarin.Forms -> Página de contenido -> `Crudpokemon.xaml`  
+
+📂 **VistaModelo**  
+Agregar clase -> `VMmenuprincipal.cs`     
+Copiamos código de VMpagina2.cs  
+
+```cs
+using MvvmGuia.Modelo;
+using MvvmGuia.Vistas;
+using System;
+using System.Collections.Generic;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Input;
+using Xamarin.Forms;
+
+namespace MvvmGuia.VistaModelo
+{
+    public class VMmenuprincipal : BaseViewModel
+    {
+        #region VARIABLES
+        string _Texto;
+        public List<Mmenuprincipal> listapaginas { get; set; }
+        #endregion
+
+        #region CONSTRUCTOR
+        public VMmenuprincipal(INavigation navigation)
+        {
+            Navigation = navigation;
+            MostrarPaginas();
+        }
+        #endregion
+
+        #region OBJETOS
+        public string Texto
+        {
+            get { return _Texto; }
+            set { SetValue(ref _Texto, value); }
+        }
+        #endregion
+
+        #region PROCESOS
+        public async Task Volver()
+        {
+            await Navigation.PopAsync();
+        }
+        //Cuando no son procesos Asíncronos se
+        //remplaza el async Task por void 
+        public void MostrarPaginas()
+        {
+            listapaginas = new List<Mmenuprincipal>
+            {
+                new Mmenuprincipal
+                {
+                    Pagina = "Entry, datepicker, picker, label, navegación",
+                    Icono = "https://i.postimg.cc/fLF1H03f/angry.png"
+                },
+                new Mmenuprincipal
+                {
+                    Pagina = "CollectionView sin enlace a Base de datos",
+                    Icono = "https://i.postimg.cc/KY06MWxV/annoyed.png"
+                },
+                new Mmenuprincipal
+                {
+                    Pagina = "Crud pokemon",
+                    Icono = "https://i.postimg.cc/FF0dHQRx/pokeball.png"
+                }
+            };
+        }
+        public async Task Navegar(Mmenuprincipal parametros)
+        {
+            string pagina;
+            pagina = parametros.Pagina;
+
+            if(pagina.Contains("Entry, datepicker"))
+            {
+                await Navigation.PushAsync(new Pagina1());
+            }
+            if (pagina.Contains("CollectionView sin enlace"))
+            {
+                await Navigation.PushAsync(new Pagina2());
+            }
+            if (pagina.Contains("Crud pokemon"))
+            {
+                await Navigation.PushAsync(new Crudpokemon());
+            }
+        }
+        #endregion
+
+        #region COMANDOS
+        //Llamar al Proceso Asincrona: await es para tareas asincronas
+        //public ICommand Volvercommand => new Command(async () => await Volver());
+        //Llamar al Proceso Simple o no Asincrono
+        //public ICommand ProcesoSimpcommand => new Command(ProcesoSimple);
+        public ICommand Navegarcommand => new Command<Mmenuprincipal>(async (p) => await Navegar(p));
+        #endregion
+    }
+}
+```
+
+📂 **Modelo**   
+Agregar clase -> `Mmenuprincipal.cs`   
+
+```cs
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace MvvmGuia.Modelo
+{
+    public class Mmenuprincipal
+    {
+        public string Pagina { get; set; }
+        public string Icono { get; set; }
+    }
+}
+```
+
+🔥 `App.xaml.cs`    
+
+```cs
+using MvvmGuia.Vistas;
+using System;
+using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
+
+namespace MvvmGuia
+{
+    public partial class App : Application
+    {
+        public App()
+        {
+            InitializeComponent();
+
+            MainPage = new NavigationPage(new Menuprincipal());
+        }
+
+        protected override void OnStart()
+        {
+        }
+
+        protected override void OnSleep()
+        {
+        }
+
+        protected override void OnResume()
+        {
+        }
+    }
+}
+```
+
+
+## 16. Botón volver
+
+🔥 `Menuprincipal.xaml.cs`   
+
+```cs
+using MvvmGuia.VistaModelo;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
+
+namespace MvvmGuia.Vistas
+{
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class Menuprincipal : ContentPage
+    {
+        public Menuprincipal()
+        {
+            InitializeComponent();
+            BindingContext = new VMmenuprincipal(Navigation);
+        }
+    }
+}
+```
+
+🔥 `Menuprincipal.xaml`   
+
+```xml
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MvvmGuia.Vistas.Menuprincipal"
+             NavigationPage.HasNavigationBar="False">
+    <Grid>
+        <CollectionView ItemsSource="{Binding listapaginas}"
+                        VerticalOptions="CenterAndExpand"
+                        Margin="20,80,20,0"
+                        x:Name="listapages">
+            <CollectionView.Header>
+                <StackLayout>
+                    <Label Text="Paginas"
+                           FontAttributes="Bold"
+                           FontSize="30"/>
+                </StackLayout>
+            </CollectionView.Header>
+            <CollectionView.ItemsLayout>
+                <GridItemsLayout Orientation="Vertical"
+                                 Span="1"
+                                 VerticalItemSpacing="20" />
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame CornerRadius="15"
+                           BackgroundColor="#00DE87">
+                        <StackLayout Orientation="Horizontal">
+                            <Image Source="{Binding Icono}"
+                                   HeightRequest="150" />
+                            <Label Text="{Binding Pagina}"
+                                   VerticalOptions="Center"
+                                   FontSize="20"
+                                   FontAttributes="Bold" />
+                        </StackLayout>
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding Path=BindingContext.Navegarcommand, Source={x:Reference listapages}}"
+                                                  CommandParameter="{Binding .}" />
+                        </Frame.GestureRecognizers>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
+</ContentPage>
+```
+
+🔥 `Pagina1.xaml`
+
+```xml
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MvvmGuia.Vistas.Pagina1"
+             NavigationPage.HasNavigationBar="False">
+    <Grid BackgroundColor="#464FBC">
+        <Image Source="flechavolver.png"
+               VerticalOptions="Start"
+               HeightRequest="35"
+               HorizontalOptions="Start"
+               Margin="10">
+            <Image.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding Volvercommand}" />
+            </Image.GestureRecognizers>
+        </Image>
+        <StackLayout VerticalOptions="Center">
+            <StackLayout Orientation="Horizontal"
+                         HorizontalOptions="Center">
+                <Label Text="Numero1:"
+                       TextColor="White"
+                       FontAttributes="Bold"
+                       VerticalOptions="Center"/>
+                <Entry PlaceholderColor="White"
+                       Placeholder="Escriba un numero"
+                       HorizontalOptions="StartAndExpand"
+                       TextColor="White"
+                       Text="{Binding N1}"
+                       Keyboard="Numeric"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal"
+                         HorizontalOptions="Center">
+                <Label Text="Numero2:"
+                       TextColor="White"
+                       FontAttributes="Bold"
+                       VerticalOptions="Center" />
+                <Entry PlaceholderColor="White"
+                       Placeholder="Escriba un numero"
+                       HorizontalOptions="StartAndExpand"
+                       TextColor="White"
+                       Text="{Binding N2}"
+                       Keyboard="Numeric" />
+            </StackLayout>
+            <Button Text="Sumar"
+                    VerticalOptions="Center"
+                    HorizontalOptions="Center"
+                    Command="{Binding Sumarcommand}" 
+                    TextTransform="None"
+                    BackgroundColor="White"
+                    FontAttributes="Bold"
+                    CornerRadius="5"/>
+            <Label Text="{Binding R}"
+                   TextColor="White"
+                   HorizontalOptions="Center"
+                   FontAttributes="Bold"
+                   FontSize="40"/>
+            <Button Text="Ir pagina 2"
+                    HorizontalOptions="Center"
+                    CornerRadius="5"
+                    BackgroundColor="White"
+                    FontAttributes="Bold"
+                    Command="{Binding Navegarpagina2command}"/>
+            <StackLayout HorizontalOptions="Center"
+                         Orientation="Horizontal">
+                <Label TextColor="White"
+                       FontAttributes="Bold"
+                       Text="Picker:"
+                       VerticalOptions="Center"/>
+                <Picker TextColor="White"
+                        HorizontalOptions="FillAndExpand"
+                        Title="Seleccione una opcion"
+                        TitleColor="White"
+                        SelectedItem="{Binding SeleccionarTipouser}">
+                    <Picker.ItemsSource>
+                        <x:Array Type="{x:Type x:String}">
+                            <x:String>Administrador</x:String>
+                            <x:String>Empleado</x:String>
+                        </x:Array>
+                    </Picker.ItemsSource>
+                </Picker>
+            </StackLayout>
+            <StackLayout HorizontalOptions="Center">
+                <DatePicker TextColor="White"
+                            Date="{Binding Fecha, Mode=TwoWay}">
+                    <DatePicker.Format>dd/MM/yyyy</DatePicker.Format>
+                </DatePicker>
+                <Label Text="{Binding Resultadofecha}"
+                       TextColor="White"
+                       FontAttributes="Bold"
+                       FontSize="20"/>
+            </StackLayout>
+            
+        </StackLayout>
+    </Grid>
+</ContentPage>
+```
+
+🔥 `VMpagina1.cs`   
+
+```cs
+using MvvmGuia.Vistas;
+using System;
+using System.Collections.Generic;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Input;
+using Xamarin.Forms;
+
+namespace MvvmGuia.VistaModelo
+{
+    public class VMpagina1:BaseViewModel
+    {
+        #region VARIABLES
+        string _N1;
+        string _N2;
+        string _R; //Respuesta
+        string _Tipousuario;
+        DateTime _Fecha;
+        string _Resultadofecha;
+        #endregion
+
+        #region CONSTRUCTOR
+        public VMpagina1(INavigation navigation)
+        {
+            Navigation = navigation;
+            Fecha = DateTime.Now;
+        }
+        #endregion
+
+        #region OBJETOS
+        public string N1
+        {
+            get { return _N1; }
+            set { SetValue(ref _N1, value); }
+        }
+
+        public string Resultadofecha
+        {
+            get { return _Resultadofecha; }
+            set { SetValue(ref _Resultadofecha, value); }
+        }
+
+        public DateTime Fecha
+        {
+            get { return _Fecha; }
+            set
+            {
+                SetValue(ref _Fecha, value);
+                Resultadofecha = _Fecha.ToString("dd/MM/yyyy");
+            }
+        }
+
+        public string Tipousuario
+        {
+            get { return _Tipousuario; }
+            set { SetValue(ref _Tipousuario, value); }
+        }
+
+        public string SeleccionarTipouser
+        {
+            get { return _Tipousuario; }
+            set { SetProperty(ref _Tipousuario, value); 
+                Tipousuario = _Tipousuario; }
+        }
+
+        public string N2
+        {
+            get { return _N2; }
+            set { SetValue(ref _N2, value); }
+        }
+
+        public string R
+        {
+            get { return _R; }
+            set { SetValue(ref _R, value); }
+        }        
+        #endregion
+
+        #region PROCESOS
+        public async Task Volver()
+        {
+            await Navigation.PopAsync();
+        }
+
+        public async Task Navegarpagina2()
+        {
+            await Navigation.PushAsync(new Pagina2());
+        }
+        //Cuando no son procesos Asíncronos se
+        //remplaza el async Task por void 
+        public void Sumar()
+        {
+            double n1 = 0;
+            double n2 = 0;
+            double respuesta = 0;
+
+            n1 = Convert.ToDouble(N1);
+            n2 = Convert.ToDouble(N2);
+
+            respuesta = n1 + n2;
+
+            R = respuesta.ToString();
+        }
+        #endregion
+
+        #region COMANDOS
+        //Llamar al Proceso Asincrona: await es para tareas asincronas
+        public ICommand Navegarpagina2command => new Command(async () => await Navegarpagina2());
+        //Llamar al Proceso Simple o no Asincrono
+        public ICommand Sumarcommand => new Command(Sumar);
+        public ICommand Volvercommand => new Command(async() => await Volver());
+        #endregion
+    }
+}
+```
 
 --- 
 --- 
