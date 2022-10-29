@@ -2391,18 +2391,22 @@ namespace MvvmGuia.VistaModelo
 --- 
 --- 
 
+### Cupón de descuento
+
+[Xamarin intermedio: Diseños profesionales](https://www.udemy.com/course/mvvm-para-xamarin-forms-la-guia-definitiva/?couponCode=FAFEFAB938630D95E506) 
+-> 24,90
+
+[Eccobank- app ecológica bancaria en Xamarin forms y Firebase](https://www.udemy.com/course/app-movil-para-banco-ecologico-en-xamarin-forms-y-firebase/)
 
 ```xml
-```
-
-```cs
-```
-
 ❄
 🔥 
 📂
 ->
+```
 
+```cs
 👈👀
 👀👇
 👀☝
+```
