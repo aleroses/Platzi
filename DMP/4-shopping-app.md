@@ -248,11 +248,556 @@ namespace Appcompras.Datos
 ```
 
 
+## 3. Creando las paginas
+
+📂 Vistas    
+-> Agregar -> Nuevo elemento   
+-> Xamarin.Forms -> Pagina de contenidos 
+-> `Compras.xaml`     
+-> `Agregarcompra.xaml`     
+
+📂 VistaModelo      
+Agregamos archivos: `BaseViewModel.cs` y `VMpatron.cs`
+
+📌 Estos archivos los usamos en el curso [[3-mvvm-xamarin-forms#2. BaseViewModel]] aquí encontraremos los enlaces directos a la descarga (revisar enlace directo a GitHub). 
+
+🔥 `BaseViewModel.cs`   
+
+```cs
+using System;
+using System.Collections.Generic;
+using System.Text;
+using System.Threading.Tasks;
+using Xamarin.Forms;
+using System.Runtime.CompilerServices;
+using System.ComponentModel;
+namespace Appcompras.VistaModelo 👈👀 //Cambiamos
+{
+    public class BaseViewModel : INotifyPropertyChanged
+    {
+        public INavigation Navigation;
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        public void OnpropertyChanged([CallerMemberName] string nombre = "")
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nombre));
+        }
+        private ImageSource foto;
+        public ImageSource Foto
+        {
+            get { return foto; }
+            set
+            {
+                foto = value;
+                OnpropertyChanged();
+            }
+        }
+
+        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        public async Task DisplayAlert(string title, string message, string cancel)
+        {
+            await Application.Current.MainPage.DisplayAlert(title, message, cancel);
+        }
+
+        public async Task<bool> DisplayAlert(string title, string message, string accept, string cancel)
+        {
+            return await Application.Current.MainPage.DisplayAlert(title, message, accept, cancel);
+        }
+
+        protected bool SetProperty<T>(ref T field, T value, [CallerMemberName] string propertyName = null)
+        {
+            if (EqualityComparer<T>.Default.Equals(field, value))
+            {
+                return false;
+            }
+
+            field = value;
+            OnPropertyChanged(propertyName);
+
+            return true;
+        }
+
+        private string _title;
+        public string Title
+        {
+            get { return _title; }
+            set
+            {
+                SetProperty(ref _title, value);
+            }
+        }
+
+        private bool _isBusy;
+        public bool IsBusy
+        {
+            get { return _isBusy; }
+            set
+            {
+                SetProperty(ref _isBusy, value);
+            }
+        }
+        protected void SetValue<T>(ref T backingFieled, T value, [CallerMemberName] string propertyName = null)
+        {
+            if (EqualityComparer<T>.Default.Equals(backingFieled, value))
+
+            {
+
+                return;
+
+            }
+
+            backingFieled = value;
+
+            OnPropertyChanged(propertyName);
+        }
+    }
+}
+```
+
+
+🔥 `VMpatron.cs`    
+
+```cs
+using System;
+using System.Collections.Generic;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Input;
+using Xamarin.Forms;
+
+namespace Appcompras.VistaModelo 👈👀 //Cambiamos
+{
+    //:BaseViewModel 
+    //Todos los comportamientos de botones, entrys 
+    //lo va a heredar de BaseViewModel
+    public class VMpatron:BaseViewModel
+    {
+        #region VARIABLES
+        string _Texto;
+        #endregion
+
+        #region CONSTRUCTOR
+        public VMpatron(INavigation navigation)
+        {
+            Navigation = navigation;
+        }
+        #endregion
+
+        #region OBJETOS
+        public string Texto
+        {
+            get { return _Texto; }
+            set { SetValue(ref _Texto, value); }
+        }
+        #endregion
+
+        #region PROCESOS
+        public async Task ProcesoAsyncrono()
+        {
+
+        }
+        //Cuando no son procesos Asíncronos se
+        //remplaza el async Task por void 
+        public void ProcesoSimple()
+        {
+
+        }
+        #endregion
+
+        #region COMANDOS
+        //Llamar al Proceso Asincrona: await es para tareas asincronas
+        public ICommand ProcesoAsyncommand => new Command(async () => await ProcesoAsyncrono());
+        //Llamar al Proceso Simple o no Asincrono
+        public ICommand ProcesoSimpcommand => new Command(ProcesoSimple);
+        #endregion
+    }
+}
+```
+
+📂 VistaModelo   
+Agregar -> Clase -> `VMcompras.cs`   
+
+```cs
+using System;
+using System.Collections.Generic;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Input;
+using Xamarin.Forms;
+
+namespace Appcompras.VistaModelo
+{
+    public class VMcompras:BaseViewModel
+    {
+        #region VARIABLES
+        string _Texto;
+        #endregion
+
+        #region CONSTRUCTOR
+        public VMcompras(INavigation navigation)
+        {
+            Navigation = navigation;
+        }
+        #endregion
+
+        #region OBJETOS
+        public string Texto
+        {
+            get { return _Texto; }
+            set { SetValue(ref _Texto, value); }
+        }
+        #endregion
+
+        #region PROCESOS
+        public async Task ProcesoAsyncrono()
+        {
+
+        }
+        //Cuando no son procesos Asíncronos se
+        //remplaza el async Task por void 
+        public void ProcesoSimple()
+        {
+
+        }
+        #endregion
+
+        #region COMANDOS
+        //Llamar al Proceso Asincrona: await es para tareas asincronas
+        public ICommand ProcesoAsyncommand => new Command(async () => await ProcesoAsyncrono());
+        //Llamar al Proceso Simple o no Asincrono
+        public ICommand ProcesoSimpcommand => new Command(ProcesoSimple);
+        #endregion
+    }
+}
+```
+
+📌 Borramos archivo `MainPage.xaml`
+
+🔥 `App.xaml.cs`  
+
+```cs
+using System;
+using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
+using Appcompras.Vistas;
+
+namespace Appcompras
+{
+    public partial class App : Application
+    {
+        public App()
+        {
+            InitializeComponent();
+
+            MainPage = new NavigationPage(new Compras());
+        }
+
+        protected override void OnStart()
+        {
+        }
+
+        protected override void OnSleep()
+        {
+        }
+
+        protected override void OnResume()
+        {
+        }
+    }
+}
+```
+
+
+## 4. PancakeView
+
+### Instalar paquete PancakeView
+
+Importamos paquete...        
+🖥 Solución "Appcompras" (3 de 3 proyectos)   
+-> Administrar paquetes NuGet para la solución...     
+
+- Examinar: `Xamarin.Forms.PancakeView`  
+	- ☑ Proyecto
+	- ☑ Appcompras
+	- ☑ Appcompras.Android/Appc
+	- ☑ Appcompras.iOS/Appcomp  
+- Instalar 
+
+
+📂 Vistas     
+🔥 `Compras.xaml`  
+
+Buscamos imágenes de una flecha (<) y un ecualizador en Flaticon
+```xml
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Appcompras.Vistas.Compras"
+             NavigationPage.HasNavigationBar="False"
+             xmlns:pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView">
+    <StackLayout>
+        <Grid>
+            <pancake:PancakeView
+                CornerRadius="0,0,40,40"
+                BackgroundColor="Black">
+                
+                <StackLayout Orientation="Horizontal">
+                    <Image Source="https://i.postimg.cc/nL90fCcX/leftarrow.png"
+                           HeightRequest="20" />
+                    <Label Text="Frutas y vegetales"
+                           VerticalOptions="Center"
+                           FontSize="18"
+                           TextColor="#3d3d3d"
+                           Margin="30,0,0,0" />
+                    <Image Source="https://i.postimg.cc/prNP2hHy/controls.png"
+                           HeightRequest="30"
+                           HorizontalOptions="EndAndExpand" />
+                </StackLayout>
+            </pancake:PancakeView>
+        </Grid>
+    </StackLayout>
+</ContentPage>
+```
+
+Probamos el programa...
+
+
+## 5. Contenedor manual    
+
+📂 Vistas     
+🔥 `Compras.xaml`  
+
+```xml
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Appcompras.Vistas.Compras"
+             NavigationPage.HasNavigationBar="False"
+             xmlns:pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView">
+    <StackLayout BackgroundColor="#050506">
+        <Grid RowDefinitions="*, 100"
+              VerticalOptions="FillAndExpand"
+              >
+            <pancake:PancakeView
+                CornerRadius="0,0,40,40"
+                BackgroundColor="#efefec">
+                <Grid ColumnDefinitions="*,*">
+                    <StackLayout Orientation="Horizontal"
+                                 Grid.ColumnSpan="2">
+                        <Image Source="https://i.postimg.cc/nL90fCcX/leftarrow.png"
+                               HeightRequest="20" />
+                        <Label Text="Frutas y vegetales"
+                               VerticalOptions="Center"
+                               FontSize="18"
+                               TextColor="#3d3d3d"
+                               Margin="30,0,0,0" />
+                        <Image Source="https://i.postimg.cc/prNP2hHy/controls.png"
+                               HeightRequest="30"
+                               HorizontalOptions="EndAndExpand" />
+                    </StackLayout>
+                    <StackLayout x:Name="Izquierda" Grid.Column="0">
+                            
+                    </StackLayout>
+                    <StackLayout x:Name="Derecha" Grid.Column="1">
+                        
+                    </StackLayout>
+                </Grid>
+            </pancake:PancakeView>
+            <StackLayout Grid.Row="1" BackgroundColor="#050506">
+                
+            </StackLayout>
+        </Grid>
+    </StackLayout>
+</ContentPage>
+```
+
+
+### 6. Creando el plano
+
+📂 Vistas     
+🔥 `Compras.xaml`    
+
+```xml
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Appcompras.Vistas.Compras"
+             NavigationPage.HasNavigationBar="False"
+             xmlns:pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView">
+    <StackLayout BackgroundColor="#050506">
+        <Grid RowDefinitions="*, 100"
+              VerticalOptions="FillAndExpand"
+              >
+            <pancake:PancakeView
+                CornerRadius="0,0,40,40"
+                BackgroundColor="#efefec">
+                <ScrollView HeightRequest="600">
+                    <Grid ColumnDefinitions="*,*"
+                          Margin="8,0,8,0"
+                          RowDefinitions="80,*">
+                        <StackLayout Orientation="Horizontal"
+                                     Grid.ColumnSpan="2">
+                            <Image Source="https://i.postimg.cc/nL90fCcX/leftarrow.png"
+                                   HeightRequest="20" 
+                                   Margin="10,0,0,0"/>
+                            <Label Text="Frutas y vegetales"
+                                   VerticalOptions="Center"
+                                   FontSize="18"
+                                   TextColor="#3d3d3d"
+                                   Margin="30,0,0,0" />
+                            <Image Source="https://i.postimg.cc/prNP2hHy/controls.png"
+                                   HeightRequest="30"
+                                   HorizontalOptions="EndAndExpand" 
+                                   Margin="0,0,10,0"/>
+                        </StackLayout>
+                        <StackLayout x:Name="Izquierda"
+                                     Grid.Column="0"
+                                     Grid.Row="1"
+                                     BackgroundColor="Red">
+                            <Frame HeightRequest="300"
+                                   CornerRadius="10"
+                                   Margin="8"
+                                   HasShadow="False"
+                                   BackgroundColor="White"
+                                   Padding="0">
+                                <StackLayout>
+                                    <Image Source="https://i.postimg.cc/28HvPm5n/mango.png"/>
+                                </StackLayout>
+                                
+                            </Frame>
+                        </StackLayout>
+                        <StackLayout x:Name="Derecha"
+                                     Grid.Column="1"
+                                     Grid.Row="1"
+                                     BackgroundColor="Green">
+                            
+                        </StackLayout>
+                    </Grid>
+                </ScrollView>
+            </pancake:PancakeView>
+            <StackLayout Grid.Row="1" BackgroundColor="#050506">
+                
+            </StackLayout>
+        </Grid>
+    </StackLayout>
+</ContentPage>
+```
+
+
+## 7. Finalizando el plano  
+
+📂 Vistas      
+🔥 `Compras.xaml`     
+
+```xml
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Appcompras.Vistas.Compras"
+             NavigationPage.HasNavigationBar="False"
+             xmlns:pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView">
+    <StackLayout BackgroundColor="#050506">
+        <Grid RowDefinitions="*, 100"
+              VerticalOptions="FillAndExpand"
+              >
+            <pancake:PancakeView
+                CornerRadius="0,0,40,40"
+                BackgroundColor="#efefec">
+                <ScrollView HeightRequest="600">
+                    <Grid ColumnDefinitions="*,*"
+                          Margin="8,0,8,0"
+                          RowDefinitions="80,*">
+                        <StackLayout Orientation="Horizontal"
+                                     Grid.ColumnSpan="2">
+                            <Image Source="https://i.postimg.cc/nL90fCcX/leftarrow.png"
+                                   HeightRequest="20" 
+                                   Margin="10,0,0,0"/>
+                            <Label Text="Frutas y vegetales"
+                                   VerticalOptions="Center"
+                                   FontSize="18"
+                                   TextColor="#3d3d3d"
+                                   Margin="30,0,0,0" />
+                            <Image Source="https://i.postimg.cc/prNP2hHy/controls.png"
+                                   HeightRequest="30"
+                                   HorizontalOptions="EndAndExpand" 
+                                   Margin="0,0,10,0"/>
+                        </StackLayout>
+                        <StackLayout x:Name="Izquierda"
+                                     Grid.Column="0"
+                                     Grid.Row="1"
+                                     BackgroundColor="Red">
+                            <Frame HeightRequest="300"
+                                   CornerRadius="10"
+                                   Margin="8"
+                                   HasShadow="False"
+                                   BackgroundColor="White"
+                                   Padding="22">
+                                <StackLayout>
+                                    <Image Source="https://i.postimg.cc/28HvPm5n/mango.png"
+                                           HeightRequest="150"
+                                           HorizontalOptions="Center"
+                                           Margin="0,10"/>
+                                    <Label Text="$8.30"
+                                           FontAttributes="Bold"
+                                           FontSize="22"
+                                           Margin="0,10"
+                                           TextColor="#333333"/>
+                                    <Label Text="Manzana"
+                                           FontSize="16"
+                                           TextColor="Black"
+                                           CharacterSpacing="1"/>
+                                    <Label Text="500g"
+                                           FontSize="13"
+                                           TextColor="#cccccc"
+                                           CharacterSpacing="1"/>
+                                </StackLayout>
+                                
+                            </Frame>
+                        </StackLayout>
+                        <StackLayout x:Name="Derecha"
+                                     Grid.Column="1"
+                                     Grid.Row="1"
+                                     BackgroundColor="Green">
+                            
+                        </StackLayout>
+                    </Grid>
+                </ScrollView>
+            </pancake:PancakeView>
+            <StackLayout Grid.Row="1" BackgroundColor="#050506">
+                
+            </StackLayout>
+        </Grid>
+    </StackLayout>
+</ContentPage>
+```
+
+
+## 8. Pasar de xaml a csharp
 
 
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+---
+
+```xml
+```
 
 ```cs
 ```
@@ -271,3 +816,4 @@ namespace Appcompras.Datos
 👀👇   
 👀☝   
 👈👀   
+📌
