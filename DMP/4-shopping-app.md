@@ -1295,12 +1295,88 @@ namespace Appcompras.Vistas
 🔥 `App.xaml.cs`    
 
 ```cs
+using System;
+using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
+using Appcompras.Vistas;
+
+namespace Appcompras
+{
+    public partial class App : Application
+    {
+        public App()
+        {
+            InitializeComponent();
+
+            MainPage = new NavigationPage(new Agregarcompra());
+        }
+
+        protected override void OnStart()
+        {
+        }
+
+        protected override void OnSleep()
+        {
+        }
+
+        protected override void OnResume()
+        {
+        }
+    }
+}
 ```
 
 📂 Vistas       
 🔥 `Agregarcompra.xaml`     
 
 ```xml
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Appcompras.Vistas.Agregarcompra"
+             NavigationPage.HasNavigationBar="False">
+    <StackLayout Padding="36,15"
+                 Spacing="20">
+        <Image Source="https://i.postimg.cc/nL90fCcX/leftarrow.png"
+               HeightRequest="20"
+               Margin="20"
+               HorizontalOptions="Start"/>
+        <StackLayout>
+            <Image Source="https://i.postimg.cc/T1d0J9kx/apple.png"
+                   Margin="0,0,0,30"
+                   HeightRequest="220"/>
+            <Label Text="Manzana"
+                   FontAttributes="Bold"
+                   FontSize="36"
+                   TextColor="Black"
+                   />
+            <Label Text="500g"
+                   CharacterSpacing="1"
+                   TextColor="Gray"
+                   Margin="0,-8,0,4"
+                   FontSize="14"/>
+            <StackLayout Orientation="Horizontal">
+                <Grid HorizontalOptions="StartAndExpand"
+                      VerticalOptions="Center">
+                    <Frame Padding="0"
+                           BackgroundColor="White"
+                           CornerRadius="20"
+                           HasShadow="False"
+                           HeightRequest="40"
+                           VerticalOptions="Center"
+                           WidthRequest="100">
+                        
+                    </Frame>
+                    <Label Text="-"
+                           FontSize="36"
+                           HorizontalOptions="Start"
+                           TextColor="Black"
+                           Margin="16,-2,0,6"/>
+                </Grid>
+            </StackLayout>
+        </StackLayout>
+    </StackLayout>
+</ContentPage>
 ```
 
 
