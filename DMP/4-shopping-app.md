@@ -59,7 +59,7 @@ Esto permite conectarnos a un BD sin problemas
 ❄❄ Datos    
 Creamos 2 tablas 
 
-🔥 `Primera tabla` 
+🔥 `Primera tabla`    
 https://appcompras-518fb-default-rtdb.firebaseio.com/ :null delete ➕🗑
 - Le das al  ➕
 
@@ -81,7 +81,7 @@ https://appcompras-518fb-default-rtdb.firebaseio.com/ :null delete ➕🗑
 - Clave: **Preciocompra** -> Valor: **-**   
 - Agregar  
 
-🔥 `Segunda tabla`  
+🔥 `Segunda tabla`   
 https://appcompras-518fb-default-rtdb.firebaseio.com/  ➕🗑
 - Le das al  ➕
 
@@ -2193,28 +2193,288 @@ namespace Appcompras.VistaModelo
 Acá puedes agregar un punto de interrupción para ver todos los datos que pasan por el constructor VMagregarcompra, Parametrosrecibe. 
 
 
-##
+## 15. Insertar detallecompra
+
+📂 Modelo -> Agregar -> Clase -> Mdetallecompras.cs          
+🔥 `Mdetallecompras.cs`     
+
+```cs
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace Appcompras.Modelo
+{
+    public class Mdetallecompras
+    {
+        public string Cantidad { get; set; }
+        public string Preciocompra { get; set; }
+        public string Idproducto { get; set; }
+        public string Total { get; set; }
+        public string Iddetallecompra { get; set; }
+    }
+}
+```
+
+📂 Datos -> Agregar -> Clase -> Ddetallecompras.cs          
+🔥 `Ddetallecompras.cs`     
+
+```cs
+using System;
+using System.Collections.Generic;
+using System.Text;
+using Firebase.Database.Query;
+using System.Linq;
+using Firebase.Database;
+using System.Threading.Tasks;
+using Appcompras.Modelo;
+using Appcompras.Conexiones;
+
+namespace Appcompras.Datos
+{
+    public class Ddetallecompras
+    {
+        public async Task InsertarDc(Mdetallecompras parametros)
+        {
+            await Cconexion.firebase
+                .Child("Detallecompra")
+                .PostAsync(new Mdetallecompras()
+                {
+                    Cantidad = parametros.Cantidad,
+                    Idproducto = parametros.Idproducto,
+                    Preciocompra = parametros.Preciocompra,
+                    Total = parametros.Total
+                });
+        }
+    }
+}
+```
+
+📂 VistaModelo  
+🔥 `VMagregarcompra.cs`     
+
+```cs
+using Appcompras.Datos;
+using Appcompras.Modelo;
+using System;
+using System.Collections.Generic;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Input;
+using Xamarin.Forms;
+
+namespace Appcompras.VistaModelo
+{
+    public class VMagregarcompra:BaseViewModel
+    {
+        #region VARIABLES
+        int _Cantidad;
+        String _Preciotexto;
+
+        public Mproductos Parametrosrecibe { get; set; }
+        #endregion
+
+        #region CONSTRUCTOR
+        public VMagregarcompra(INavigation navigation, Mproductos parametrosTrae)
+        {
+            Navigation = navigation;
+            Parametrosrecibe = parametrosTrae;
+            Preciotexto = "$" + Parametrosrecibe.Precio;
+        }
+        #endregion
+
+        #region OBJETOS
+        public string Preciotexto
+        {
+            get { return _Preciotexto; }
+            set { SetValue(ref _Preciotexto, value); }
+        }
+
+        public int Cantidad
+        {
+            get { return _Cantidad; }
+            set { SetValue(ref _Cantidad, value); }
+        }
+        #endregion
+
+        #region PROCESOS
+        public async Task InsertarDc()
+        {
+            if (Cantidad == 0)
+            {
+                Cantidad = 1;
+            }
+            var funcion = new Ddetallecompras();
+            var parametros = new Mdetallecompras();
+            parametros.Cantidad = Cantidad.ToString();
+            parametros.Idproducto = Parametrosrecibe.Idproducto;
+            parametros.Preciocompra = Parametrosrecibe.Precio;
+            double total = 0;
+            double preciocompra = Convert.ToDouble(Parametrosrecibe.Precio);
+            double cantidad = Convert.ToDouble(Cantidad);
+            total = cantidad * preciocompra;
+            parametros.Total = total.ToString();
+
+            await funcion.InsertarDc(parametros);
+            await Volver();
+        }
+
+        public async Task Volver()
+        {
+            await Navigation.PopAsync();
+        }
+
+        //Cuando no son procesos Asíncronos se
+        //remplaza el async Task por void 
+        public void Aumentar()
+        {
+                Cantidad++;
+        }
+
+        public void Disminuir()
+        {
+            if (Cantidad > 0)
+            {
+                Cantidad--;
+            }
+        }
+        #endregion
+
+        #region COMANDOS
+        //Llamar al Proceso Asincrona: await es para tareas asincronas
+        public ICommand Volvercommand => new Command(async () => await Volver());
+        //Llamar al Proceso Simple o no Asincrono
+        public ICommand Aumentarcommand => new Command(Aumentar);
+        public ICommand Disminuircommand => new Command(Disminuir);
+        public ICommand Insertarcommand => new Command(async () => await InsertarDc());
+        #endregion
+    }
+}
+```
+
+📂 Vistas  
+🔥 `Agregarcompra.xaml`     
+
+```xml
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Appcompras.Vistas.Agregarcompra"
+             NavigationPage.HasNavigationBar="False">
+    <StackLayout BackgroundColor="White"
+                 Padding="36,15"
+                 Spacing="20">
+        <Image Source="https://i.postimg.cc/nL90fCcX/leftarrow.png"
+               HeightRequest="20"
+               Margin="-20, 20"
+               HorizontalOptions="Start">
+            <Image.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding Volvercommand}"/>
+            </Image.GestureRecognizers>
+        </Image>
+        <StackLayout>
+            <Image Source="{Binding Parametrosrecibe.Icono}"
+                   Margin="0,0,0,30"
+                   HeightRequest="220"/>
+            <Label Text="{Binding Parametrosrecibe.Descripcion}"
+                   FontAttributes="Bold"
+                   FontSize="36"
+                   TextColor="Black"
+                   />
+            <Label Text="{Binding Parametrosrecibe.Peso}"
+                   CharacterSpacing="1"
+                   TextColor="Gray"
+                   Margin="0,-8,0,4"
+                   FontSize="14"/>
+            <StackLayout Orientation="Horizontal">
+                <Grid HorizontalOptions="StartAndExpand"
+                      VerticalOptions="Center">
+                    <Frame Padding="0"
+                           BackgroundColor="#EEEEFF"
+                           CornerRadius="20"
+                           HasShadow="False"
+                           HeightRequest="40"
+                           VerticalOptions="Center"
+                           WidthRequest="100">
+                        
+                    </Frame>
+                    <Label Text="-"
+                           FontSize="36"
+                           HorizontalOptions="Start"
+                           TextColor="Black"
+                           Margin="16,-2,0,6">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding Disminuircommand}"/>
+                        </Label.GestureRecognizers>
+                    </Label>
+                    <Label Text="{Binding Cantidad}"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"
+                           FontSize="18"
+                           FontAttributes="Bold"
+                           TextColor="Black"/>
+                    <Label Text="+"
+                           FontSize="21"
+                           HorizontalOptions="End"
+                           TextColor="Black"
+                           Margin="0,-4,16,0"
+                           VerticalOptions="Center">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding Aumentarcommand}" />
+                        </Label.GestureRecognizers>
+                    </Label>
+                </Grid>
+                <Label Text="{Binding Preciotexto}"
+                       FontAttributes="Bold"
+                       FontSize="36"
+                       TextColor="Black"
+                       />
+            </StackLayout>
+            <Label Text="Descripcion del producto"
+                   FontAttributes="Bold"
+                   FontSize="18"
+                   TextColor="Black"
+                   Margin="0,14,0,0"/>
+            <Label Text="Información general del producto"
+                   TextColor="Gray"
+                   FontSize="15"/>
+        </StackLayout>
+        <StackLayout Orientation="Horizontal"
+                     
+                     HorizontalOptions="FillAndExpand"
+                     VerticalOptions="EndAndExpand"
+                     Margin="0,0,0,20">
+            <Grid HorizontalOptions="Start">
+                <Frame Padding="0"
+                       BackgroundColor="#EEEEFF"
+                       HasShadow="False"
+                       HeightRequest="40"
+                       CornerRadius="30"
+                       WidthRequest="40"
+                       VerticalOptions="Center"
+                       HorizontalOptions="Start">
+                    
+                </Frame>
+                <Image Source="https://i.postimg.cc/qqLbqj1m/heart.png"
+                       HeightRequest="20"
+                       VerticalOptions="Center"
+                       Margin="10,0"/>
+            </Grid>
+            <Button Text="Agregar al carrito"
+                    BackgroundColor="#FEBB44"
+                    CornerRadius="40"
+                    TextTransform="None"
+                    HeightRequest="54"
+                    WidthRequest="230"
+                    Margin="50,20,0,10"
+                    Command="{Binding Insertarcommand}"/>
+        </StackLayout>
+    </StackLayout>
+</ContentPage>
+```
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+## 
 
 
 
