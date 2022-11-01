@@ -2614,7 +2614,350 @@ namespace Appcompras.Modelo
 ```
 
 
-## 17. 
+## 17. Cart
+
+📂 Datos   
+🔥 `Ddetallecompras.cs`     
+
+```cs
+using System;
+using System.Collections.Generic;
+using System.Text;
+using Firebase.Database.Query;
+using System.Linq;
+using Firebase.Database;
+using System.Threading.Tasks;
+using Appcompras.Modelo;
+using Appcompras.Conexiones;
+
+namespace Appcompras.Datos
+{
+    public class Ddetallecompras
+    {
+        public async Task InsertarDc(Mdetallecompras parametros)
+        {
+            await Cconexion.firebase
+                .Child("Detallecompra")
+                .PostAsync(new Mdetallecompras()
+                {
+                    Cantidad = parametros.Cantidad,
+                    Idproducto = parametros.Idproducto,
+                    Preciocompra = parametros.Preciocompra,
+                    Total = parametros.Total
+                });
+        }
+
+        public async Task<List<Mdetallecompras>> MostrarVistapreviaDc()
+        {
+            var ListaDc = new List<Mdetallecompras>();
+            var parametrosProductos = new Mproductos();
+            var funcionproductos = new Dproductos();
+
+            var data = await Cconexion.firebase
+                .Child("Detallecompra")
+                .OnceAsync<Mdetallecompras>();
+
+            data.Where(a => a.Key != "Modelo");
+
+            foreach(var hobit in data)
+            {
+                var parametros = new Mdetallecompras();
+                parametros.Idproducto = hobit.Object.Idproducto;
+                parametrosProductos.Idproducto = hobit.Object.Idproducto;
+                var listaproductos = await funcionproductos.MostrarproductosXid(parametrosProductos);
+
+                parametros.Imagen = listaproductos[0].Icono;
+                ListaDc.Add(parametros);
+            }
+
+            return ListaDc;
+        }
+    }
+}
+```
+
+📂 VistaModelo   
+🔥 `VMcompras.cs`     
+
+```cs
+using Appcompras.Datos;
+using Appcompras.Modelo;
+using Appcompras.Vistas;
+using System;
+using System.Collections.Generic;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Input;
+using Xamarin.Forms;
+
+namespace Appcompras.VistaModelo
+{
+    public class VMcompras : BaseViewModel
+    {
+        #region VARIABLES
+        string _Texto;
+        int _index;
+
+        List<Mproductos> _listaproductos;
+        List<Mdetallecompras> _listaVistapreviaDc;
+        #endregion
+
+        #region CONSTRUCTOR
+        public VMcompras(INavigation navigation, StackLayout Carrilderecha, StackLayout Carrilizquierda)
+        {
+            Navigation = navigation;
+            Mostrarproductos(Carrilderecha, Carrilizquierda);
+        }
+        #endregion
+
+        #region OBJETOS
+        public List<Mdetallecompras> ListaVistapreviaDc
+        {
+            get { return _listaVistapreviaDc; }
+            set { SetValue(ref _listaVistapreviaDc, value); }
+        }
+
+        public List<Mproductos> Listaproductos
+        {
+            get { return _listaproductos; }
+            set { SetValue(ref _listaproductos, value); }
+        }
+        #endregion
+
+        #region PROCESOS
+        public async Task Mostrarproductos(StackLayout Carrilderecha, StackLayout Carrilizquierda)
+        {
+            var funcion = new Dproductos();
+            Listaproductos = await funcion.Mostrarproductos();
+
+            var box = new BoxView
+            {
+                HeightRequest = 60
+            };
+
+            Carrilderecha.Children.Clear();
+            Carrilizquierda.Children.Clear();
+
+            Carrilderecha.Children.Add(box);
+            
+            foreach(var item in Listaproductos)
+            {
+                Dibujarproductos(item, _index, Carrilderecha, Carrilizquierda);
+                _index++;
+            }
+        }
+
+        public void Dibujarproductos(Mproductos item, int index, StackLayout Carrilderecha, StackLayout Carrilizquierda)
+        {
+            var _ubicacion = Convert.ToBoolean(index % 2);
+            var carril = _ubicacion ? Carrilderecha : Carrilizquierda;
+
+            var frame = new Frame
+            {
+                HeightRequest = 300,
+                CornerRadius = 10,
+                Margin = 8,
+                HasShadow = false,
+                BackgroundColor = Color.White,
+                Padding = 22,
+            };
+
+            var stack = new StackLayout
+            {
+
+            };
+
+            var image = new Image
+            {
+                Source = item.Icono,
+                HeightRequest = 150,
+                HorizontalOptions = LayoutOptions.Center,
+                Margin = new Thickness(0, 10),
+            };
+
+            var labelprecio = new Label
+            {
+                Text = "$" + item.Precio,
+                FontAttributes = FontAttributes.Bold,
+                FontSize = 22,
+                Margin = new Thickness(0, 10),
+                TextColor = Color.FromHex("#333333")
+            };
+
+            var labeldescripcion = new Label
+            {
+                Text = item.Descripcion,
+                FontSize = 16,
+                TextColor = Color.Black,
+                CharacterSpacing = 1
+            };
+
+            var labelpeso = new Label
+            {
+                Text = item.Peso,
+                FontSize = 13,
+                TextColor = Color.FromHex("#cccccc"),
+                CharacterSpacing = 1
+            };
+
+            stack.Children.Add(image);
+            stack.Children.Add(labelprecio);
+            stack.Children.Add(labeldescripcion);
+            stack.Children.Add(labelpeso);
+
+            frame.Content = stack;
+
+            var tap = new TapGestureRecognizer();
+            tap.Tapped += async (object sender, EventArgs e) =>
+            {
+                await Navigation.PushAsync(new Agregarcompra(item));
+            };
+
+            carril.Children.Add(frame);
+            stack.GestureRecognizers.Add(tap);
+        }
+
+        public async Task ProcesoAsyncrono()
+        {
+
+        }
+        //Cuando no son procesos Asíncronos se
+        //remplaza el async Task por void 
+        public void ProcesoSimple()
+        {
+
+        }
+
+        public async Task MostrarVistapreviaDc()
+        {
+            var funcion = new Ddetallecompras();
+            ListaVistapreviaDc = await funcion.MostrarVistapreviaDc();
+        }
+        #endregion
+
+        #region COMANDOS
+        //Llamar al Proceso Asincrona: await es para tareas asincronas
+        public ICommand ProcesoAsyncommand => new Command(async () => await ProcesoAsyncrono());
+        //Llamar al Proceso Simple o no Asincrono
+        public ICommand ProcesoSimpcommand => new Command(ProcesoSimple);
+        #endregion
+    }
+}
+```
+
+📂 Vistas      
+🔥 `Compras.xaml`       
+
+```xml
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Appcompras.Vistas.Compras"
+             NavigationPage.HasNavigationBar="False"
+             xmlns:pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView">
+    <StackLayout BackgroundColor="#050506">
+        <Grid RowDefinitions="*, 100"
+              VerticalOptions="FillAndExpand"
+              >
+            <pancake:PancakeView
+                CornerRadius="0,0,40,40"
+                BackgroundColor="#efefec">
+                <ScrollView>
+                    <Grid ColumnDefinitions="*,*"
+                          Margin="8,0,8,0"
+                          RowDefinitions="80,*">
+                        <StackLayout Orientation="Horizontal"
+                                     Grid.ColumnSpan="2">
+                            <Image Source="https://i.postimg.cc/nL90fCcX/leftarrow.png"
+                                   HeightRequest="20" 
+                                   Margin="10,0,0,0"/>
+                            <Label Text="Frutas y vegetales"
+                                   VerticalOptions="Center"
+                                   FontSize="18"
+                                   TextColor="#3d3d3d"
+                                   Margin="30,0,0,0" />
+                            <Image Source="https://i.postimg.cc/prNP2hHy/controls.png"
+                                   HeightRequest="30"
+                                   HorizontalOptions="EndAndExpand" 
+                                   Margin="0,0,10,0"/>
+                        </StackLayout>
+                        <StackLayout 
+                                     Grid.Column="0"
+                                     Grid.Row="1"                                     
+                                     x:Name="Carrilizquierda">
+                            <Frame HeightRequest="300"
+                                   CornerRadius="10"
+                                   Margin="8"
+                                   HasShadow="False"
+                                   BackgroundColor="White"
+                                   Padding="22">
+                                <StackLayout>
+                                    <Image Source="https://i.postimg.cc/T1d0J9kx/apple.png"
+                                           HeightRequest="150"
+                                           HorizontalOptions="Center"
+                                           Margin="0,10"/>
+                                    <Label Text="$8.30"
+                                           FontAttributes="Bold"
+                                           FontSize="22"
+                                           Margin="0,10"
+                                           TextColor="#333333"/>
+                                    <Label Text="Manzana"
+                                           FontSize="16"
+                                           TextColor="Black"
+                                           CharacterSpacing="1"/>
+                                    <Label Text="500g"
+                                           FontSize="13"
+                                           TextColor="#cccccc"
+                                           CharacterSpacing="1"/>
+                                </StackLayout>
+                                
+                            </Frame>
+                        </StackLayout>
+                        <StackLayout 
+                                     Grid.Column="1"
+                                     Grid.Row="1"                                     
+                                     x:Name="Carrilderecha">
+                            
+                        </StackLayout>
+                    </Grid>
+                </ScrollView>
+            </pancake:PancakeView>
+            <StackLayout Grid.Row="1"
+                         Orientation="Horizontal"
+                         Margin="20,0,10,0">
+                <Label Text="Cart"
+                       FontSize="30"
+                       FontAttributes="Bold"
+                       VerticalOptions="Center"
+                       TextColor="White"/>
+                <CollectionView HorizontalOptions="CenterAndExpand"
+                                VerticalOptions="Center">
+                    
+                </CollectionView>
+                <Frame HeightRequest="40"
+                       WidthRequest="60"
+                       VerticalOptions="Center"
+                       CornerRadius="30"
+                       Padding="5"
+                       BackgroundColor="#FABC4B">
+                    <Label Text="1"
+                           VerticalOptions="Center"
+                           FontSize="15"
+                           FontAttributes="Bold"/>
+                </Frame>
+            </StackLayout>
+            <Grid.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding command}" />
+            </Grid.GestureRecognizers>
+        </Grid>
+    </StackLayout>
+</ContentPage>
+```
+
+
+## 
+
+
 
 ---
 
