@@ -1,4 +1,6 @@
-# DESCARGA E INSTALACIÓN DE WINDOWS 10
+# INSTALACIÓN DE WINDOWS 10
+
+## DESCARGAR W10  
 -> Notebook HP
 -> USB vacío: Conectar a laptop
 
@@ -49,10 +51,15 @@
 	- Eliminar particiones
 	- Seleccionar unidad total
 	- Nuevo -> colocar cantidad
+		- C: 250 000: Aplicar 
+	- Nuevo -> Aplicar  
+		- D: 
 	- Seleccionar partición con menos capacidad
 	- Disco C - D
-	
 
+Tutoriales:      
+- [Instalar W10](https://www.youtube.com/watch?v=G_iK3O1a2yg)     
+- [Particiones](https://www.youtube.com/watch?v=QRdBJwg13kI)    
 
 
 ## OTRA FORMA DE ENTRAR A LA BIOS
@@ -67,13 +74,8 @@
 - Reiniciar
 - F10 	
 
-
 Tutoriales:      
-- Instalar W10       
-https://www.youtube.com/watch?v=G_iK3O1a2yg
-
-- Bios      
-https://www.youtube.com/watch?v=aGBBMK3wcKs
+- [Bios](https://www.youtube.com/watch?v=aGBBMK3wcKs)      
 
 
 ## Cambiar Nombre de usuario en la terminal
@@ -89,4 +91,5 @@ Seleccionar correo:
 - Nombre de usuario: Cambiar 
 - Aceptar
 
-[Tutorial](https://www.youtube.com/watch?v=hy2J1fZ9a4s&t=94s)
+Tutoriales:      
+[Nombre usuario](https://www.youtube.com/watch?v=hy2J1fZ9a4s&t=94s)
