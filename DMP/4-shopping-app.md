@@ -4011,11 +4011,13 @@ namespace Appcompras.VistaModelo
 > En nuevo **StackLayout** se contrae, se subraya, clic derecho, rodear con, region. Lo mismo con el **StackLayout** del Cart.
 
 
-## 
+## 22. Diseño de total
 
+📂 Vistas    
+🔥 `Compras.xaml`    
 
-
-
+```xml
+```
 
 
 
