@@ -5257,7 +5257,445 @@ namespace Appcompras.Datos
 ```
 
 
+## 26. Enlazar detalle compras
 
+📂 Datos          
+🔥 `Ddetallecompras.cs`  
+Dentro del foreach var parametros = `Mdetallecompras();` Clic derecho, ir a definición. 
+
+```cs
+using System;
+using System.Collections.Generic;
+using System.Text;
+using Firebase.Database.Query;
+using System.Linq;
+using Firebase.Database;
+using System.Threading.Tasks;
+using Appcompras.Modelo;
+using Appcompras.Conexiones;
+
+namespace Appcompras.Datos
+{
+    public class Ddetallecompras
+    {
+        public async Task InsertarDc(Mdetallecompras parametros)
+        {
+            await Cconexion.firebase
+                .Child("Detallecompra")
+                .PostAsync(new Mdetallecompras()
+                {
+                    Cantidad = parametros.Cantidad,
+                    Idproducto = parametros.Idproducto,
+                    Preciocompra = parametros.Preciocompra,
+                    Total = parametros.Total
+                });
+        }
+
+        public async Task<List<Mdetallecompras>> MostrarVistapreviaDc()
+        {
+            var ListaDc = new List<Mdetallecompras>();
+            var parametrosProductos = new Mproductos();
+            var funcionproductos = new Dproductos();
+
+            var data = (await Cconexion.firebase
+                .Child("Detallecompra")
+                .OnceAsync<Mdetallecompras>())
+                .Where(a => a.Key != "Modelo")
+                .Select(item=> new Mdetallecompras
+                {
+                    Idproducto = item.Object.Idproducto,
+                    Iddetallecompra = item.Key
+                })
+                ;
+
+            foreach(var hobit in data)
+            {
+                var parametros = new Mdetallecompras();
+                parametros.Idproducto = hobit.Idproducto;
+                parametrosProductos.Idproducto = hobit.Idproducto;
+                var listaproductos = await funcionproductos.MostrarproductosXid(parametrosProductos);
+
+                parametros.Imagen = listaproductos[0].Icono;
+                ListaDc.Add(parametros);
+            }
+
+            return ListaDc;
+        }
+
+        public async Task<List<Mdetallecompras>> MostrarDc()
+        {
+            var ListaDc = new List<Mdetallecompras>();
+            var parametrosProductos = new Mproductos();
+            var funcionproductos = new Dproductos();
+
+            var data = (await Cconexion.firebase
+                .Child("Detallecompra")
+                .OnceAsync<Mdetallecompras>())
+                .Where(a => a.Key != "Modelo")
+                .Select(item => new Mdetallecompras
+                {
+                    Idproducto = item.Object.Idproducto,
+                    Iddetallecompra = item.Key,
+                    Cantidad = item.Object.Cantidad,
+                    Total = item.Object.Total
+                })
+                ;
+
+            foreach (var hobit in data)
+            {
+                var parametros = new Mdetallecompras();
+                parametros.Idproducto = hobit.Idproducto;
+                parametrosProductos.Idproducto = hobit.Idproducto;
+                var listaproductos = await funcionproductos.MostrarproductosXid(parametrosProductos);
+
+                parametros.Descripcion = listaproductos[0].Descripcion;
+                parametros.Imagen = listaproductos[0].Icono;
+                parametros.Cantidad = hobit.Cantidad;
+                parametros.Total = hobit.Total;
+                ListaDc.Add(parametros);
+            }
+
+            return ListaDc;
+        }
+    }
+}
+```
+
+📂 Modelo              
+🔥 `Mdetallecompras.cs`  
+
+```cs
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace Appcompras.Modelo
+{
+    public class Mdetallecompras
+    {
+        public string Cantidad { get; set; }
+        public string Preciocompra { get; set; }
+        public string Idproducto { get; set; }
+        public string Total { get; set; }
+        public string Iddetallecompra { get; set; }
+
+        //
+        public string Imagen { get; set; }
+        public string Descripcion { get; set; }
+    }
+}
+```
+
+📂 Vistas     
+🔥 `Compras.xaml`     
+
+```xml
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Appcompras.Vistas.Compras"
+             NavigationPage.HasNavigationBar="False"
+             xmlns:pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             xmlns:transicion ="clr-namespace:Plugin.SharedTransitions;assembly=Plugin.SharedTransitions">
+    <StackLayout BackgroundColor="#050506">
+        <Grid RowDefinitions="*, 100"
+              VerticalOptions="FillAndExpand"
+              x:Name="gridproductos">
+            <pancake:PancakeView
+                CornerRadius="0,0,40,40"
+                BackgroundColor="#efefec">
+                <ScrollView>
+                    <Grid ColumnDefinitions="*,*"
+                          Margin="8,0,8,0"
+                          RowDefinitions="80,*">
+                        <StackLayout Orientation="Horizontal"
+                                     Grid.ColumnSpan="2">
+                            <Image Source="https://i.postimg.cc/nL90fCcX/leftarrow.png"
+                                   HeightRequest="20" 
+                                   Margin="10,0,0,0"/>
+                            <Label Text="Frutas y vegetales"
+                                   VerticalOptions="Center"
+                                   FontSize="18"
+                                   TextColor="#3d3d3d"
+                                   Margin="30,0,0,0" />
+                            <Image Source="https://i.postimg.cc/prNP2hHy/controls.png"
+                                   HeightRequest="30"
+                                   HorizontalOptions="EndAndExpand" 
+                                   Margin="0,0,10,0"/>
+                        </StackLayout>
+                        <StackLayout 
+                                     Grid.Column="0"
+                                     Grid.Row="1"                                     
+                                     x:Name="Carrilizquierda">
+                            <Frame HeightRequest="300"
+                                   CornerRadius="10"
+                                   Margin="8"
+                                   HasShadow="False"
+                                   BackgroundColor="White"
+                                   Padding="22">
+                                <StackLayout>
+                                    <Image Source="https://i.postimg.cc/T1d0J9kx/apple.png"
+                                           HeightRequest="150"
+                                           HorizontalOptions="Center"
+                                           Margin="0,10"/>
+                                    <Label Text="$8.30"
+                                           FontAttributes="Bold"
+                                           FontSize="22"
+                                           Margin="0,10"
+                                           TextColor="#333333"/>
+                                    <Label Text="Manzana"
+                                           FontSize="16"
+                                           TextColor="Black"
+                                           CharacterSpacing="1"/>
+                                    <Label Text="500g"
+                                           FontSize="13"
+                                           TextColor="#cccccc"
+                                           CharacterSpacing="1"/>
+                                </StackLayout>
+                                
+                            </Frame>
+                        </StackLayout>
+                        <StackLayout 
+                                     Grid.Column="1"
+                                     Grid.Row="1"                                     
+                                     x:Name="Carrilderecha">
+                            
+                        </StackLayout>
+                    </Grid>
+                </ScrollView>
+            </pancake:PancakeView>
+            <!--#region Panelcontador -->
+            <StackLayout Grid.Row="1"
+                         Orientation="Horizontal"
+                         Margin="20,0,10,0"
+                         x:Name="Panelcontador">
+                <StackLayout.GestureRecognizers>
+                    <SwipeGestureRecognizer Direction="Up"
+                                            Swiped="DeslizarPanelcontador"/>
+                </StackLayout.GestureRecognizers>
+                <Label Text="Cart"
+                       FontSize="30"
+                       WidthRequest="100"
+                       FontAttributes="Bold"
+                       VerticalOptions="Center"
+                       TextColor="White" />
+                <CollectionView HorizontalOptions="CenterAndExpand"
+                                VerticalOptions="Center"
+                                ItemsSource="{Binding ListaVistapreviaDc}">
+                    <CollectionView.ItemsLayout>
+                        <GridItemsLayout Orientation="Horizontal"
+                                         Span="1"
+                                         HorizontalItemSpacing="10" />
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Margin="4,0"
+                                  WidthRequest="30">
+                                <Frame CornerRadius="24"
+                                       HorizontalOptions="Center"
+                                       VerticalOptions="Center"></Frame>
+                                <Image Source="{Binding Imagen}"
+                                       Margin="0,6"
+                                       WidthRequest="30"
+                                       HorizontalOptions="Center"
+                                       transicion:Transition.Group="{Binding Idproducto}"
+                                       transicion:Transition.Name="producto" />
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+                <Frame HeightRequest="40"
+                       WidthRequest="60"
+                       VerticalOptions="Center"
+                       CornerRadius="30"
+                       Padding="5"
+                       BackgroundColor="#FABC4B">
+                    <Label Text="1"
+                           VerticalOptions="Center"
+                           FontSize="15"
+                           FontAttributes="Bold" />
+                </Frame>
+            </StackLayout>
+            <!--#endregion-->
+            <Grid.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding command}" />
+            </Grid.GestureRecognizers>
+        </Grid>
+        <!--#region Paneldetallecompra -->
+        <StackLayout x:Name="Paneldetallecompra"
+                     VerticalOptions="FillAndExpand"                     
+                     IsVisible="{Binding IsvisiblePanelDc}">
+            <StackLayout.GestureRecognizers>
+                <SwipeGestureRecognizer Direction="Down"
+                                        Swiped="DeslizarPaneldetallecompra"/>
+            </StackLayout.GestureRecognizers>
+            <Label Text="Cart"
+                   TextColor="White"
+                   FontSize="32"
+                   FontAttributes="Bold"
+                   Padding="40,28,40,40"
+                   HeightRequest="120"
+                   WidthRequest="100"/>
+            <CollectionView HeightRequest="300"
+                            VerticalOptions="Center"
+                            ItemsSource="{Binding ListaDc}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout Margin="0, 12"
+                                     Orientation="Horizontal"
+                                     Spacing="10">
+                            <Grid WidthRequest="62"
+                                  Margin="10,0">
+                                <Frame BackgroundColor="White"
+                                       CornerRadius="24"
+                                       HorizontalOptions="Center"
+                                       VerticalOptions="Center">
+                                    
+                                </Frame>
+                                <Image Source="{Binding Imagen}"
+                                       WidthRequest="20"
+                                       Margin="0,10"
+                                       HorizontalOptions="Center"/>
+                            </Grid>
+                            <Label Text="{Binding Cantidad}"
+                                   TextColor="White"
+                                   VerticalOptions="Center"/>
+                            <Label Text="x"
+                                   TextColor="White"
+                                   VerticalOptions="Center" />
+                            <Label Text="{Binding Descripcion}"
+                                   TextColor="White"
+                                   VerticalOptions="Center" />
+                            <Label Text="{Binding Total}"
+                                   TextColor="White"
+                                   VerticalOptions="Center" 
+                                   HorizontalOptions="EndAndExpand"
+                                   Margin="10,0"/>
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+            <StackLayout Orientation="Horizontal"
+                         Margin="36,0,32,0">
+                <Grid WidthRequest="80">
+                    <Frame CornerRadius="24"
+                           BackgroundColor="#555555"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center">
+                        
+                    </Frame>
+                    <Image Source="https://i.postimg.cc/1Xk4m0Yy/delivery.png"
+                           WidthRequest="26"
+                           HorizontalOptions="Center"/>
+                </Grid>
+                <StackLayout Margin="20,0,100,0">
+                    <Label Text="Delivery"
+                           TextColor="White"
+                           />
+                    <Label Text="All orders of $40 or more qualify for FREE delivery."
+                           TextColor="Gray" />
+                </StackLayout>
+                <Label Text="$10"
+                       TextColor="White"
+                       FontAttributes="Bold"
+                       WidthRequest="100"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal"
+                         Margin="40,50,40,0">
+                <Label Text="Total:"
+                       TextColor="White"
+                       FontSize="30"
+                       FontAttributes="Bold"/>
+                <Label Text="$37.85"
+                       TextColor="White"
+                       FontSize="30"
+                       FontAttributes="Bold" 
+                       HorizontalOptions="EndAndExpand"/>
+            </StackLayout>
+            <Button Text="Next"
+                    BackgroundColor="#DEBB44"
+                    CornerRadius="30"
+                    Margin="15,0,15,20"
+                    VerticalOptions="EndAndExpand"
+                    HeightRequest="60"/>
+        </StackLayout>
+        <!--#endregion-->
+    </StackLayout>
+</ContentPage>
+```
+
+🔥 `Compras.xaml.cs`    
+
+```cs
+using Appcompras.VistaModelo;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
+
+namespace Appcompras.Vistas
+{
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class Compras : ContentPage
+    {
+        VMcompras vm;
+
+        public Compras()
+        {
+            InitializeComponent();
+            vm = new VMcompras(Navigation, Carrilderecha, Carrilizquierda);
+            BindingContext = vm;
+
+            this.Appearing += Compras_Appearing; //+=Tabulador
+        }
+
+        private async void Compras_Appearing(object sender, EventArgs e)
+        {
+            await vm.MostrarVistapreviaDc();
+            await vm.MostrarDetalleC();
+        }
+
+        private async void DeslizarPanelcontador(object sender, SwipedEventArgs e)
+        {
+            await vm.MostrarpanelDC(gridproductos, Paneldetallecompra, Panelcontador);
+        }
+
+        private async void DeslizarPaneldetallecompra(object sender, SwipedEventArgs e)
+        {
+            await vm.MostrargridProductos(gridproductos, Paneldetallecompra, Panelcontador);
+        }
+    }
+}
+```
+
+
+## 
+
+
+
+
+
+
+
+
+
+
+
+
+
+--- 
+No cuentan 
+📂 Vistas     
+🔥 `Compras.xaml`    
+
+
+
+📂 VistaModelo     
+🔥 `VMcompras.cs`     
 
 
 
