@@ -6672,14 +6672,16 @@ namespace Appcompras.Vistas
 
 - [Código fuente](https://drive.google.com/file/d/1HOrmqJdyFonNvwdnWBDsaF6OV5XYRE4_/view)
 - [Código en GitHub]()
+
 --- 
 ---
 
 ### Recursos adicionales
+
 <details>
 	<summary>Haz clic para ver a los recursos usados 👀</summary>
 	<br/>
-	
+
 📂 Vistas     
 🔥 `Compras.xaml`    
 
