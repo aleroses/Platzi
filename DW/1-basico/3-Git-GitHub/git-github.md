@@ -1737,7 +1737,7 @@ Verificamos README.md
 
 
 ✨ Apuntes sobre Markdown       
-[Web para practicas Markdown](https://www.markdowntutorial.com/lesson/1/) 
+[Web para practicar Markdown](https://www.markdowntutorial.com/lesson/1/) 
 
 > ![Markdown](https://i.postimg.cc/X7xsztxn/MARKDOWN.png)  
 
@@ -1807,7 +1807,7 @@ GitHub tiene un servicio de hosting gratis llamado GitHub Pages, tu puedes tener
 
 📌 Debes esperar media hora aproximadamente hasta que tu página sea reconocida por GitHub Page.
 
-> ![About](https://i.postimg.cc/HxgqKFmd/34-page.jpg)
+> ![About](https://i.postimg.cc/HxgqKFmd/34-page.jpg)    
 Tambien puedes agregar el link en la sección About ⚙
 
 
