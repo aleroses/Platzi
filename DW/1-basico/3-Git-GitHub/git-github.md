@@ -301,7 +301,8 @@ En este punto creas tus archivos y les agregas contenido para luego enviarlos al
 - `ls -al`
 - `git config --list`
 
-Si quieres configurar un repositorio como local y agregar otro correo, debes [Leer esto](https://www.atlassian.com/es/git/tutorials/setting-up-a-repository#:~:text=Para%20crear%20un%20nuevo%20repositorio,tu%20directorio%20de%20trabajo%20actual.)
+Si quieres configurar un repositorio como local y agregar otro correo, debes [Leer esto](https://www.atlassian.com/es/git/tutorials/setting-up-a-repository#:~:text=Para%20crear%20un%20nuevo%20repositorio,tu%20directorio%20de%20trabajo%20actual.)      
+- `git config --local user.email "email"`    
 
 🎲
 
