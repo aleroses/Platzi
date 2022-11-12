@@ -3,37 +3,37 @@
 
 ## 1. Qué aprenderás sobre HTML y CSS
 
-○ HTML (HyperText Markup Language): es el lenguaje utilizado para darle estructura a la información que va a ver el usuario en el proyecto final.
+- **HTML (HyperText Markup Language)**: es el lenguaje utilizado para darle estructura a la información que va a ver el usuario en el proyecto final.
 
-○ CSS (Cascading Style Sheets): Hojas de estilo en cascada, tiene que ver con todo lo estético, diseño, color, fuente, tamaño de letra, etc.
+- **CSS (Cascading Style Sheets)**: Hojas de estilo en cascada, tiene que ver con todo lo estético, diseño, color, fuente, tamaño de letra, etc.
 
-○ JavaScript (JS): Es el encargado de hacer que los dos conceptos anteriores se ejecuten, su función puede ir desde hacer que funcione un simple botón, hasta llenado de formularios automáticos, es un lenguaje que funciona de manera nativa dentro de los navegadores.
+- **JavaScript (JS)**: Es el encargado de hacer que los dos conceptos anteriores se ejecuten, su función puede ir desde hacer que funcione un simple botón, hasta llenado de formularios automáticos, es un lenguaje que funciona de manera nativa dentro de los navegadores.
 
 
 ## 2. ¿Qué es el Frontend?
 
-El Frontend es el desarrollador que va a manejar las cosas del lado del cliente.
+El Frontend es el desarrollador que va a manejar las cosas del lado del cliente (navegadores).
 
-Las tecnologías que trabajan son:
+🔥 Las tecnologías que trabajan son:  
 - HTML https://devdocs.io/html/
 - CSS https://devdocs.io/css/
 - JS https://devdocs.io/javascript/
 
-Los frameworks de CSS que suelen manejar son:
+🔥 Los frameworks de CSS que suelen manejar son:  
 - Bootstrap https://getbootstrap.com/
 - Foundation CSS https://get.foundation/
 - Materialize CSS https://materializecss.com/
 
-Los frameworks de JS:
+🔥 Los frameworks de JS:  
 - React JS https://es.reactjs.org/
 - Angular JS https://angular.io/
 - Vue JS https://vuejs.org/
 
-Preprocesadores de CSS:
+🔥 Preprocesadores de CSS:  
 - stylus https://stylus-lang.com/
 - SASS https://sass-lang.com/
 
-Compiladores / empaquetadores de JS:
+🔥 Compiladores / empaquetadores de JS:  
 - BABEL https://babeljs.io/
 - Webpack https://webpack.js.org/
 
