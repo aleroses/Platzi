@@ -9,6 +9,7 @@
 
 - **JavaScript (JS)**: Es el encargado de hacer que los dos conceptos anteriores se ejecuten, su función puede ir desde hacer que funcione un simple botón, hasta llenado de formularios automáticos, es un lenguaje que funciona de manera nativa dentro de los navegadores.
 
+[Slides del curso](https://static.platzi.com/media/public/uploads/slidescss_1a0d5eaf-b5f6-4563-b80c-a073604d9628.pdf)
 
 ## 2. ¿Qué es el Frontend?
 
@@ -40,94 +41,100 @@ El Frontend es el desarrollador que va a manejar las cosas del lado del cliente 
 
 ## 3. ¿Qué es Backend?
 
-El backend es lo opuesto a lo que hace el Frontend, trabaja del lado del servidor.
+El Back-end es lo opuesto a lo que hace el Front-end, trabaja del lado del servidor.
 No tiene un estándar.
 
-Lenguajes de programación:
+🔥 Lenguajes de programación:
 - NodeJS
 - Python
 - PHP
 - Go
 - Java
 
-Frameworks:
+🔥 Frameworks:
 - Django 	-> para Python
 - Laravel 	-> para PHP
 - Rails 	-> para Ruby 
 - Express 	-> para JavaScript o NodeJS
 - Spring 	-> para Java
 
-Infraestructura: Dentro de esto uno se puede especializar como DevOps:
+🔥 Infraestructura: Dentro de esto uno se puede especializar como DevOps:
 - Google Cloud
 - Digital Ocean
 - AWS
 - Heroku.
 
-Bases de Datos:
-- MongoDB 		-> No relacional 
+🔥 Bases de Datos:
+- MongoDB 	-> No relacional 
 - MySQL 		-> Relacional
 - PostgreSQL	-> Relacional 
 
 
 ## 4. ¿Qué es FullStack?
 
-Un Full Stack es la fusión de un frontend y todas las cosas que hace un backend en una sola persona.
+Un Full Stack es la fusión de un Front-end y todas las cosas que hace un Back-end en una sola persona.
 
 Un full stack no maneja por completo todas las tecnologías de ambas partes, de hecho no es recomendado y no es sano. El desarrollo web evoluciona muy rápido y cada dos o tres meses tenemos algo nuevo.
 
 Lo bueno de alguien full Stack es que entiende muy bien cómo funciona un producto web de principio a fin, desde su diseño en mockup y deploy a producción.
 
 
-
-Pequeño resumen de la clase:
-.
-Un Full Stack es una combinación de un Frontend y un Backend, no maneja al 100% todas las tecnologías pero es un desarrollador que entiende bien como funciona un producto web de inicio a fin
+🦄 Pequeño resumen de la clase:    
+Un Full Stack es una combinación de un Front-end y un Back-end, no maneja al 100% todas las tecnologías pero es un desarrollador que entiende bien como funciona un producto web de inicio a fin
 
 
 ## 5. Páginas Estáticas vs. Dinámicas
 
-Página estática:
+🔥 Sitos Web Estáticos:    
+La información que contiene, se mantiene constante y estática. No se actualiza con la interacción del usuario.
+Conveniente para landing pages (Páginas informativas) o Blogs.
+Serán siempre iguales para todos los usuarios.
+
 - Estáticas: es aquella que es más sobre lectura.
 - Una vez que se publica no va a cambiar.
 - Se puede conocer como landing pages.
 - No están conectadas a una base de datos, porque todo se desarrolla desde el servidor.
 
-Página dinámicas:
+Ejemplo de páginas estáticas:
+
+-   Menú de un restaurante
+-   Blog de viajes
+-   Página informativa de un negocio
+
+🔥 Sitios Web Dinámicos (Aplicaciones Web):    
+Actualizan su información con respecto a la interacción del usuario. Dependen de una base de datos, de donde extrae e ingresa información.
+Serán diferentes, dependiendo del usuario que la use.
+
 - Son aplicaciones web.
 - Si existe una interacción.
 - Necesita conexión a un servidor.
 - Puede haber un inició de sesión.
 
+Ejemplo páginas dinámicas:
 
-Sitos Web Estáticos: 
-La información que contiene, se mantiene constante y estática. No se actualiza con la interacción del usuario.
-Conveniente para landing pages (Páginas informativas) o Blogs.
-Serán siempre iguales para todos los usuarios.
+-   Sistema de reporte de ventas
+-   LinkedIn
+-   Banca en línea
 
-Sitios Web Dinámicos (Aplicaciones Web): 
-Actualizan su información con respecto a la interacción del usuario. Dependen de una base de datos, de donde extrae e ingresa información.
-Serán diferentes, dependiendo del usuario que la use.
+![Static and Dynamic](https://i.postimg.cc/0NrB87MX/5-static-dynamic.png)
 
 
-Repaso:
+## Quiz 
 
-1.
-¿Qué hace un desarrollador Fullstack?
-Maneja tecnologías específicas tanto Backend como Frontend, pero se especializa en un lado en particular.
-2.
-¿Qué tecnologías maneja principalmente un desarrollador Backend?
-Lenguajes de programación/frameworks que corran del lado del servidor, infraestructura en la nube y bases de datos.
-3.
-¿Qué tecnologías maneja principalmente un desarrollador Frontend?
-Estándares web: HTML, CSS y JavaScript.
+1. ¿Qué hace un desarrollador Full stack?    
+	Maneja tecnologías específicas tanto Back-end como Front-end, pero se especializa en un lado en particular.
 
-4.
-HTML da la estructura a la información que ven los usuarios y CSS el estilo a esta información ¿Qué analogía los representa mejor?
-HTML es el esqueleto de una persona y CSS su apariencia al exterior.
+2. ¿Qué tecnologías maneja principalmente un desarrollador Back-end?    
+	Lenguajes de programación/frameworks que corran del lado del servidor, infraestructura en la nube y bases de datos.
+
+3. ¿Qué tecnologías maneja principalmente un desarrollador Front-end?   
+	Estándares web: HTML, CSS y JavaScript.
+
+4. HTML da la estructura a la información que ven los usuarios y CSS el estilo a esta información ¿Qué analogía los representa mejor?   
+	HTML es el esqueleto de una persona y CSS su apariencia al exterior.
 
 
-
-6. HTML: anatomía de una página web
+## 6. HTML: anatomía de una página web
 
 HTML (HyperText Markup Language) es un lenguaje de marcado de texto.
 
