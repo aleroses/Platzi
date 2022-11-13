@@ -136,7 +136,7 @@ Ejemplo páginas dinámicas:
 
 ## 6. HTML: anatomía de una página web
 
-HTML (HyperText Markup Language) es un lenguaje de marcado de texto.
+HTML (HyperText Markup Language) es un lenguaje de marcado de texto. Se utiliza para darle una estructura al sitio web que estás visitando.
 
 Anatomía de una página Web:
 - Container.- Contenedor principal
@@ -145,93 +145,98 @@ Anatomía de una página Web:
 - Sidebar.- Contenido secundario de una página. (Derecho)
 - Footer.- Pie de página.
 
-Hay etiquetas en HTML que nos ayuda a diferenciar en donde estamos.
+![Layout](https://i.postimg.cc/nrcMVpvG/6-anatomia-html.png)
 
+Las etiquetas en HTML nos ayudan a diferenciar en qué parte del contenido nos encontramos.
 
+La web se conforma de tres conceptos:
 
-			CONTAINER
--------------------------------------------
-		-		  HEADER
-   LOGO	-  _____________________________
-		-		NAVIGATION
--------------------------------------------
-				-
-				-
-    MAIN CONTENT		-	  SIDEBAR
-				-
-				-
---------------------	  -------------------
-			
-			FOOTER
+-   URL: Uniform Resource Locator. El identificador único del sitio en el navegador (por ejemplo: [https://platzi.com](https://platzi.com/)).
+-   HTTP: Protocolo de transferencia de hipertexto. Es el estándar que se utiliza para enviar datos a través de paquetes entre el cliente y el servidor.
+-   HTML: es el código que se emplea para estructurar el contenido de tu web, y darle sentido y propósito.
 
-------------------------------------------
+HTML son siglas que corresponden a Hyper Text Markup Language (Lenguaje de Marcado de Hipertexto).
+
+-   Hyper Text significa que el texto tiene interactividad, conexión con otros documentos.
+-   Markup significa que le pone etiquetas a los elementos. Por eso también se le conoce como un lenguaje de etiquetas.  
+    HTML es un lenguaje interpretado. Además, HTML es un estándar, así que no importa desde qué navegador o dispositivo se ejecute, el código sigue siendo el mismo en cualquier sitio.
+
 
 
 ## 7. Index y su estructura básica: head
 
-https://devdocs.io/html/
+🔥 Index y su estructura básica:  
 
-https://lenguajehtml.com/html/introduccion/tabla-periodica-html5/
+```html
+<!-- Indica que es HTML 5 -->
+<!DOCTYPE html>
+<!-- Contenedor padre + Lenguaje del proyecto -->
+<html lang="en"> 👈👀
+<!-- Importante para el navegador y no es visual para el usuario -->
+<head>
+	<!-- UTF-8 para que el navegador entienda caracteres especiales -->
+	<meta charset="UTF-8">
+	<!-- Ayuda en la parte de SEO y define descripción de la página web -->
+	<meta name="description" content="Esta página muestra gatitos">
+	<!-- Posicionamiento de webs en busquedas (Mayor visibilidad en la web) -->
+	<meta name="robots" content="index,follow">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<!-- Webs responsive -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- Titulo de la pestaña en el navegador -->
+	<title>Document</title>
+	<!-- Vinvular otros archivos -->
+	<link rel="stylesheet" href="./style.css">
+</head>
+<!-- Esto si es visible para el usuario -->
+<body>
 
-https://allthetags.com/
-
-https://i.emezeta.com/weblog/html5-cheatsheet/html5-cheatsheet-2019.pdf
-
-Index y su estructura básica
-
-- editor de texto: VS Code
-- index.html, siempre es la primera página, es la que el servidor busca al abrir un proyecto
-- `<!Doctype html>: indica que es HTML 5`
-- `<html lang=“es”>`. Contenedor padre o principal con la indicación del idioma
-- `<head>`: van las cosas importantes para el navegador que el usuario no ve, dependencias, librerias externas, fuentes y ligar css.
-- `<meta>`: información para el navegador, se cierra sola
-- `<meta charset UTF-8>`: entender caracteres especiales
-- `<meta name="description" content="">`: El navegador ayuda a encontrar cierta información, ayuda en SEO
-- `<meta name=“robots” content="index, follow">` autorizando
-- `<meta name="viewport" content="width=device-width, inictial-scale=1.0">` Hacer pagina responsive
-- `<link rel="stylesheet" href="./css/style.css">
-- `<title>
-- `<body>` : lo visible para el usuario
-- tabulador: indica que etiquetas son principales
-- algunas etiquetas se auto cierran
-
----
-
-Define el juego de caracteres utilizado:
-`<meta charser="UTF-8">`
-
-Define palabras clave para motores de búsqueda:
-`<meta name="keywords" content="HTML, CSS, JavaScript">`
-
-Define una descripción de su página web:
-`<meta name="description" content="Web de tutos gratis">`
-
-Define el autor de una página:
-`<meta name="author" content="John Doe">`
-
-Actualiza el documento cada 30 segundos:
-`<meta http-equiv="refresh" content="30">`
-
-Configuración de la ventana gráfica para que su sitio web se veaq bien en todos los dispositivos (Este es importante):
-`<meta name="viewport" content="width=device-width, initial-scale=1.0">`
+</body>
+</html> 👈👀
+```
 
 
-Intentar extensión:
-indent-rainbow
+- **index.html**    
+	Siempre es la primera página, es la que el servidor busca al abrir un proyecto
+- `<head>`    
+	Van las cosas importantes para el navegador que el usuario no ve, dependencias, librerías externas, fuentes y ligas CSS.
+- `<meta>`     
+	Información para el navegador, se cierra sola.  
+- Algunas etiquetas se auto cierran  
+- `<meta name="keywords" content="HTML, CSS, JavaScript">`    
+	Define palabras clave para motores de búsqueda:
+- `<meta name="author" content="John Doe">`   
+	Define el autor de una página:
+- `<meta http-equiv="refresh" content="30">`
+	Actualiza el documento cada 30 segundos
+- `<meta name="viewport" content="width=device-width, initial-scale=1.0">`   
+	Configuración de la ventana gráfica para que su sitio web se vea bien en todos los dispositivos (Este es importante):
 
 
-Alt + shift + A
-Con esa combinación de teclas pueden hace comentarios en Visual Studio Code.
+Documentación:   
+- https://devdocs.io/html/
+
+Etiquetas de HTML5:     
+- https://lenguajehtml.com/html/introduccion/tabla-periodica-html5/
+- https://allthetags.com/
+- https://i.emezeta.com/weblog/html5-cheatsheet/html5-cheatsheet-2019.pdf
+
+
+❄ Intentar extensión:    
+	Indent-rainbow
+
+
+🦄 Alt + shift + A:    
+	Comentarios en Visual Studio Code.
 
 
 ## 8. Index y su estructura básica: body
 
-https://developer.mozilla.org/en-US/docs/Web/HTML/Element
+Hay 2 tipos de etiquetas:    
+- De contenido.- Son las etiquetas que llevan el texto, las imágenes y todo que se pueda renderizar en el proyecto.
+- Contenedoras.- Llevan más etiquetas adentro y nos ayudan a llevar la estructura del proyecto.
 
-Hay 2 tipos de etiquetas:
-De contenido.- Son las etiquetas que llevan el texto, las imágenes y todo que se pueda renderizar en el proyecto.
-Contenedoras.- Llevan más etiquetas adentro y nos ayudan a llevar la estructura del proyecto.
-Tenemos que utilizar un HTML semántico
+Tenemos que utilizar un HTML semántico.   
 
 ```html
 <!--Todo lo que viene es HTML, en DOCTYPE la etiqueta se cierra automáticamente-->
@@ -296,67 +301,55 @@ Tenemos que utilizar un HTML semántico
 </html>
 ```
 
+https://developer.mozilla.org/en-US/docs/Web/HTML/Element
+
+
 ## 9. Reto: crea tu lista de compras del supermercado
 
-Desafío: https://emojipedia.org/search/?q=+Strawberry
+Emojis: https://emojipedia.org/search/?q=+Strawberry
+
+🔥 Desafío en html:    
 
 Soy la lista del super!
 
-. Frutas
+- Frutas
 	1. Manzanas
 	2. Plátano
-. Carnes
+- Carnes
 	1. Pollo
 	2. Carne molida
-. Verduras
+- Verduras
 	1. Limón
-	2. Zanahoria (Link receta)
-	
-creado con amor
+	2. Zanahoria (Link receta)   
+💚 Creado con amor
 
 
 ## 10. Anatomía de una etiqueta de HTML
 
-	  Opening Tag
-----------------------------
-|					 |
-Attribute	  Attribute
-  Name	    Value
-------- --------------------
-|     | |				|
-<a href="http://dabrook.org">Vist DaBrook</a>
-|					|
-----------------------------
-	    Attribute
-|								  |
-----------------------------------------------
-				Element
-
+![Anatomía etiqueta](https://i.postimg.cc/j260MNfv/10-anatomia-etiqueta.png)
 
 a: ancla
 
 
+## Quiz   
 
-Repaso: 
-1.
-¿Qué significa utilizar HTML semántico?
-Que debo utilizar las etiquetas correspondientes para la parte del sitio que corresponde. Por ejemplo, crear un footer con la etiqueta `<footer>`.
+1. ¿Qué significa utilizar HTML semántico?     
+	Que debo utilizar las etiquetas correspondientes para la parte del sitio que corresponde. Por ejemplo, crear un footer con la etiqueta `<footer>`.
 
-2.
-Son etiquetas básicas que van dentro de `body`:
-header, nav, main, section, article, div, a y footer.
-3.
-Son las partes de una etiqueta HTML:
-Etiqueta de apertura, atributo, nombre de atributo, valor de atributo y etiqueta de cierre (si la tiene).
-4.
-Todas las etiquetas de HTML tienen una etiqueta de apertura y cierre.
-Falso.
-5.
-La anatomía de una página web generalmente tiene estas partes:
-Header, Main content, Sidebar y Footer.
-6.
-¿Qué significa HTML?
-Hyper Text Markup Language.
+2. Son etiquetas básicas que van dentro de `body`:      
+	header, nav, main, section, article, div, a y footer.
+
+3. Son las partes de una etiqueta HTML:     
+	Etiqueta de apertura, atributo, nombre de atributo, valor de atributo y etiqueta de cierre (si la tiene).
+
+4. Todas las etiquetas de HTML tienen una etiqueta de apertura y cierre.    
+	Falso.
+
+5. La anatomía de una página web generalmente tiene estas partes:     
+	Header, Main content, Sidebar y Footer.
+
+6. ¿Qué significa HTML?    
+	Hyper Text Markup Language.
 
 
 
