@@ -352,49 +352,41 @@ a: ancla
 	Hyper Text Markup Language.
 
 
-
 ## 11. Tipos de imágenes
 
 Lossy y Lossless (con pérdida / sin pérdida). Esto depende del formato de imagen.
 
-- Lossless.- Son formatos sin pérdida, la calidad de imagen no se cambia, las imágenes suelen ser pesadas.
+### Lossless (sin pérdida)
+Son formatos sin pérdida, la calidad de imagen no se cambia, las imágenes suelen ser pesadas.
 
-- Lossy.- Perder la calidad, pero se mejora el tamaño y la carga en el navegador.
-Las imágenes que pierden calidad llegan a ser más pequeñas pero se cargan más rápido.
+-   Capturan todos los datos del archivo original.
+-   No se pierde nada del archivo original.
+-   Puede comprimirse, pero podrá reconstruir su imagen al estado original
 
+### Lossy (con pérdida)
+Pierde calidad, pero se mejora el tamaño y la carga en el navegador. Las imágenes que pierden calidad llegan a ser más pequeñas pero se cargan más rápido.
 
-Formatos:
-- GIF (Graphics Interchange Format): Formato de imagen sin pérdida, no se puede comprimir
+-   Se aproximan a su imagen original.
+-   Podría reducir la cantidad de colores en su imagen o analizar la imagen en busca de datos innecesarios.
+-   Por consiguiente puede reducir su tamaño, lo que mejora el tiempo de carga de la página, pero pierde su calidad.
+-   Los archivos tipo lossy son mucho más livianos que los archivos tipo lossless, por lo que son ideales para usar en sitios en donde el tamaño del archivo y la velocidad de descarga son importantes.
 
-- PNG 8 (Portable Network Graphics): Formato de imagen sin pérdida, uso de colores de 256, se utiliza para logotipos e iconos para la página.
+🔥 Formatos:   
+- **GIF (Graphics Interchange Format)**: Formato de imagen sin pérdida, no se puede comprimir
+- **PNG 8 (Portable Network Graphics)**: Formato de imagen sin pérdida, uso de colores de 256, se utiliza para logotipos e iconos para la página (tienen transparencia).
+- **PNG 24 (Portable Network Graphics)**: Formato de imagen sin pérdida, uso de colores ilimitados, alta calidad, si intentamos comprimir no ayudará demasiado por la gran cantidad de colores (tienen transparencia).
+- **JPG / JPEG (Photographic Experts Group)**: Formato de imagen con pérdida, perdemos calidad a la hora de comprimirlas, pero llegan a ser óptimas para la carga en la página web.
+- **SVG - Vector (Scalable Vector Graphics)**: Formato de imagen muy ligero sin pérdida, con svg no perdemos calidad ya que esta compuesta por vectores.
 
-- PNG 24 (Portable Network Graphics): Formato de imagen sin pérdida, uso de colores ilimitados, alta calidad, si intentamos comprimir no ayudará demasiado por la gran cantidad de colores.
+🔥 TABLA DE DIFERENCIAS
 
-- JPG / JPEG (Photographic Experts Group): Formato de imagen con pérdida, perdemos calidad a la hora de comprimirlas, pero llegan a ser óptimas para la carga en la página web.
-
-- SVG - Vector (Scalable Vector Graphics): Formato de imagen muy ligero sin pérdida, con svg no perdemos calidad ya que esta compuesta por vectores.
-
-TABLA DE DIFERENCIAS
-
-		Categoría		Paleta			 Uso
-
-GIF		Lossless	Máximo 256 colores	- Animaciones simples
-								- Gráficos con colores planos
-
-PNG-8		Lossless	Máximo 256 colores	- Uso de transparencias
-								- Sin animación 
-								- Ideal para íconos 
-								
-PNG-24	Lossless	Colores ilimitados	- Similar a PNG-8
-								- Maneja imágenes fijas de más
-								  colores y transparencia
-
-JPG		Lossy		Millones de colores	- Imágenes fijas
-								- Fotografía
-								
-SVG		Vector/	colores ilimitados	- Gráficos / logotipos para web
-		Lossless					- Retina / pantalla de alta
-								- Resolución 
+| -----  | Categoría | Paleta | Uso |
+| -      |  -        | -      | - |
+| GIF    | Lossless  | Máximo 256 colores  | Animaciones simples - Gráficos con colores planos |
+| PNG-8  | Lossless  | Máximo 256 colores  | Uso de transparencias - Sin animación - Ideal para íconos |
+| PNG-24 | Lossless  | Colores ilimitados  | Similar a PNG-8 - Maneja imágenes fijas de más colores y transparencia |
+| JPG    | Lossy     | Millones de colores | Imágenes fijas - Fotografía |
+| SVG    | Vector/Lossless | Colores ilimitados| Gráficos / logotipos para web - Retina / pantalla de alta- Resolución |
 
 
 ## 12. Optimización de imágenes
