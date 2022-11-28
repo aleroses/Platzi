@@ -94,6 +94,16 @@ Done
 Done
 
 
+📌 Error:     
+- Paso 01: https://answers.microsoft.com/en-us/insider/forum/all/how-to-enable-the-windows-subsystem-for-linux/16e8f2e8-4a6a-4325-a89a-fd28c7841775  
+	- **Habilitar el modo de desarrollador en Windows 10** 
+	- Características de windows 
+	- Reiniciar 
+- Paso 02: https://www.youtube.com/watch?v=7P039GotVyY
+	- `0x80370102` The virtual machine could not be started because a required feature is not installed.
+	- https://made4geek.com/error-0x80370102-the-virtual-machine-could-not-be-started-because-a-required-feature-is-not-installed-wsl-2-code-example/
+
+
 ## 8. Configuración de Ubuntu en WSL
 
 - pwd: muestra posición actual con posiciones anteriores
