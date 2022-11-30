@@ -391,56 +391,60 @@ Pierde calidad, pero se mejora el tamaño y la carga en el navegador. Las imáge
 
 ## 12. Optimización de imágenes
 
-https://tinypng.com/
-
-https://www.verexif.com/
-
 No es optimo cargar imágenes de 3 megas en nuestros proyectos, va a tardar mucho tiempo en renderizar.
 
-Tamaño optimo: En promedio una imagen debe pesar al rededor de 70 kb.
+Tamaño optimo:    
+	- En promedio una imagen debe pesar al rededor de 70 kb.
 
 Optimización de imágenes: 
-Opciones para trabajar las imágenes:
 - Mejora el tamaño de tus imágenes
-	- Tiny PNG
+	- [Tiny PNG](https://tinypng.com/)
 - Retira metadatos de tus imágenes
-	- Verexif 
+	- [Verexif ](https://www.verexif.com/)
 
 
 ## 13. Etiqueta img
 
-- Descargar Imágenes:
-https://www.pexels.com/es-es/
+- Descargar Imágenes:   
+	- https://www.pexels.com/es-es/
+	- https://unsplash.com/
+	- https://www.pexels.com/es-es/
 
 - Reducir tamaño de las imágenes:
-https://tinypng.com/
+	https://tinypng.com/
 
-https://unsplash.com/
+```html
+<body>
+	<main>
+		<section>
+	       <figure>
+                <img src="./pics/cafe-expres.gif" alt="Descripción de un cafe-expres">
+            </figure>
+            <figcaption>
+            </figcaption>
+        </section>
+    </main>
+</body>
+```
 
-https://www.pexels.com/es-es/
-
-https://devdocs.io/html/element/img
-
-
-`<img src="./pics/carrot.jpg" alt="Descripción de la imagen">`
+Documentación:    
+- https://devdocs.io/html/element/img
 
 
+❄ Resumen:   
 
-Resumen: 
-
-La etiqueta `<img>` va dentro de `<body>` + `<main>` + `<section>` y la etiqueta va así:
-
-`<img src=“” alt=“”>`
+La etiqueta `<img>` va dentro de `<body>` + `<main>` + `<section>` y la etiqueta va así:   
+> `<img src=“” alt=“”>`
 
 La etiqueta img cuenta con dos atributos, el atributo “src” y el segundo atributo es “alt” ambos son importantes.
 
-El atributo de “src” es para decirle en donde se encuentra la imagen que queremos enseñar, las imágenes se pueden sacar de alguna carpeta o alguna url que tengamos en internet.
+El atributo de “src” es para decirle en donde se encuentra la imagen que queremos mostrar, las imágenes se pueden sacar de alguna carpeta o alguna URL que tengamos en internet.
 
-Poniendo src=“./ solito VSCode te dará el nombre en donde esta ubicada tu imagen, solo das click y listo.
+Usando src=“./  VSCode te dará el nombre en donde esta ubicada tu imagen, solo das click y listo.
 
 NOTA: En caso de que el nombre de tu imagen lleve algún espacio deberás sustituir ese espacio con un guion o guion medio.
 
-`<alt>` sirve para poner la descripción de nuestra imagen y también nos ayuda con temas de accesibilidad. Es importante poner alt.
+`<alt>` sirve para poner la descripción de nuestra imagen y también nos ayuda con temas de accesibilidad. 
 
 
 ## 14. Etiqueta figure
