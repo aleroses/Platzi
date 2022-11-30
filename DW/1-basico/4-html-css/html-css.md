@@ -417,11 +417,11 @@ Optimización de imágenes:
 <body>
 	<main>
 		<section>
-	       <figure>
-                <img src="./pics/cafe-expres.gif" alt="Descripción de un cafe-expres">
-            </figure>
-        </section>
-    </main>
+			<figure>
+				<img src="./pics/cafe-expres.gif" alt="Descripción de un cafe-expres">
+			</figure>
+		</section>
+	</main>
 </body>
 ```
 
@@ -457,12 +457,12 @@ Queda de la siguiente forma:
 <body>
 	<main>
 		<section>
-	       <figure>
-                <img src="./pics/cafe-expres.gif" alt="Descripción de un cafe-expres">
-                <figcaption>Es una imagen de un cafe express</figcaption>
-            </figure>
-        </section>
-    </main>
+			<figure>
+				<img src="./pics/cafe-expres.gif" alt="Descripción de un cafe-expres">
+				<figcaption>Es una imagen de un cafe express</figcaption>
+			</figure>
+		</section>
+	</main>
 </body>
 ```
 
@@ -520,61 +520,82 @@ Queda de la siguiente forma:
 
 ## 16. Etiqueta form e input
 
-Es importante utilizar la etiqueta <form></form> para indicar que utilizaremos un formulario, además de la semántica y buenas practicas.
-Dentro de estas etiquetas indicaremos los elementos del Formulario como lo son…
-<label></label> que sera como nuestro “Contenedor” en esta ocasión. dentro de el pondremos la etiqueta <span></span> (No es necesario) para colocar un texto haciendo alusión al contenido esperado (nombre, contraseña, fecha etc…) y viene una de las etiquetas importantes la cual es <input> aqui es importante aclarar que hay muchos tipos de Input, los que verán en este ejemplo son text, password, date, time pero hay muchos mas…
-Tambien esta el atributo placeholder para colocar un texto como guía dentro de la caja (Input) y este al hacer click sobre el se eliminara.
-y Creo que es lo mas rescatable! 😄
+Es importante utilizar la etiqueta `<form></form>` para indicar que utilizaremos un formulario, además de la semántica y buenas practicas.   
 
+Dentro de estas etiquetas indicaremos los elementos del Formulario como lo son…    
+`<label></label>` que será como nuestro “Contenedor” en esta ocasión. dentro de el pondremos la etiqueta `<span></span>` (No es necesario) para colocar un texto haciendo alusión al contenido esperado (nombre, contraseña, fecha etc…) y viene una de las etiquetas importantes la cual es `<input>` aquí es importante aclarar que hay muchos tipos de Input, los que verán en este ejemplo son text, password, date, time pero hay muchos mas…
+También esta el atributo placeholder para colocar un texto como guía dentro de la caja (Input) y este al hacer click sobre el se eliminara.😄
 
-<section>
+Queda de la siguiente forma:   
+
+```html
+<body>
 	<form action="">
-           <label for="nombre">
-			<span>Cuál es tu nombre?</span>
-                <input type="text" name="" id="nombre" placeholder="Your name">
+		<label for="name">
+			<span>What's your name?</span>
+			<input type="text" id="name" placeholder="Your name">
 		</label>
-	     <label for="inicio-platzi">
-			<span>Qué día comenzaste en Platzi?</span>
-			<input type="date" name="" id="inicio-platzi">
+		<label for="start-platzi">
+			<span>What date do you start in Platzi</span>
+			<input type="date" id="start-platzi">
 		</label>
-		<label for="horario">
-			<span>En que horario estudias?</span>
-			<input type="time" name="" id="horario">
+		<label for="schedule">
+			<span>What's your study schedule?</span>
+			<input type="time" id="schedule">
 		</label>
 	</form>
-</section>
+</body>
+```
+
+Documentación:    
+https://www.w3schools.com/html/html_form_input_types.asp
 
 
 ## 17. Calendar
 
+Se usa para recibir datos de hora, día, mes, año.   
+El input tipo “submit” genera un botón para enviar los datos.  
+
+Queda de la siguiente forma:    
+
+```html
+<body>
+	<form action="">
+		<label for="time">
+			<span>Time</span>
+			<input type="time" id="time" name="time">
+		</label>
+		<label for="day">
+			<span>Day</span>
+			<input type="date" id="day" name="day">
+		</label>
+		<label for="week">
+			<span>week</span>
+			<input type="week" id="week" name="week">
+		</label>
+		<label for="month">
+			<span>Month</span>
+			<input type="month" id="month" name="month">
+		</label>
+		<input type="submit">
+	</form>
+</body>
+```
+
+El atributo `name=""` sirve al momento de enviar esos datos, le otorga un identificador.
+
+Documentación:    
 https://developer.mozilla.org/es/docs/Web/HTML/Element/input
 
-Convertir el código en comentarios: 
-CTRL+K … CTRL+C
+Convertir el código en comentarios:   
+- Alt + Shift + A
 
-Tambien:
-CTRL + /
-
-Seleccionar varias palabras iguales y modificarlas al mismo tiempo:
-Control + D
-
-
-RESUMEN.
-
-Se usa para recibir datos de hora, día, mes, año.
-El input tipo “submit” genera un botón para enviar los datos.
-<form action="">
-	<label for="calendar">
-		<span>Calendario</span>
-		<input type="datetime-local" id="calendar" name="calendar">
-	</label>
-	<input type="submit">
-
-</form>
+Seleccionar varias palabras iguales y modificarlas al mismo tiempo:   
+- Control + D
  
 
-Clic derecho:
-Open with live server
+Clic derecho:   
+- Open with live server
 
 
 ## 18. Autocomplete y require
