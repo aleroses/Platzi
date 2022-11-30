@@ -582,7 +582,50 @@ Queda de la siguiente forma:
 </body>
 ```
 
-El atributo `name=""` sirve al momento de enviar esos datos, le otorga un identificador.
+Otra forma:   
+```html
+<form action="">
+	<label for="calendario">
+		<span>Calendario</span>
+		<input type="datetime-local" id="calendario" name="calendario">
+	</label>
+	<input type="submit">
+</form>
+```
+
+- `name=""` Se usa en las peticiones HTTP enviadas desde el navegador al servidor, estas asocian los names y sus valores, es por eso que el URL se actualiza cuando pulsabamos el submit.  
+	> `http://8080.1.0.0:11/clase-calendario/index.html?time=15%3A55&day=2022-11-01&week=2022-W46&month=2022-06`
+
+- `id=""` Este atributo se usa para identificar este valor del input en cuestión para luego ser tratado por JavaScript o CSS.
+
+  
+Mas tipos de input:   
+
+```html
+<input type=“button”>  
+<input type=“checkbox”>  
+<input type=“color”>  
+<input type=“date”>  
+<input type=“datetime-local”>  
+<input type=“email”>  
+<input type=“file”>  
+<input type=“hidden”>  
+<input type=“image”>  
+<input type=“month”>  
+<input type=“number”>  
+<input type=“password”>  
+<input type=“radio”>  
+<input type=“range”>  
+<input type=“reset”>  
+<input type=“search”>  
+<input type=“submit”>  
+<input type=“tel”>  
+<input type=“text”>  
+<input type=“time”>  
+<input type=“url”>  
+<input type=“week”>
+```
+
 
 Documentación:    
 https://developer.mozilla.org/es/docs/Web/HTML/Element/input
@@ -600,103 +643,104 @@ Clic derecho:
 
 ## 18. Autocomplete y require
 
-Autocomplete
+`Autocomplete:`  
 Te ayudara a completar datos dentro de un formulario que ya hayas llenado anteriormente como nombre, código postal, correo, etc.
 
-Require
+`Require:`   
 Funciona para solicitarle al usuario un dato que no lleno de forma correcta o que hace falta para que la información pueda ser enviada.
 
 
-<main>
-	<form action="">
-		<label for="nombre">
-			<span>¿Cuál es tu nombre?</span>
-			<input type="text" name="nombre" id="nombre" autocomplete="name" required />
-		</label>
-		<label for="correo">
-			<span>¿Cuál es tu correo?</span>
-			<input type="email" name="correo" id="correo" autocomplete="email" required />
-		</label>
-		<label for="pais">
-			<span>¿En qué país vives?</span>
-			<input type="text" name="pais" id="pais" autocomplete="country" required />
-		</label>
-		<label for="cp">
-			<span>¿Cuál es tu código postal?</span>
-			<input type="text" name="cp" id="cp" autocomplete="postal-code" required />
-		</label>
-	</form>
-</main>
- 
+```html
+<body>
+	<main>
+		<form action="">
+			<label for="name">
+				<span>What's your name?</span>
+				<input type="text" id="name" name="name" autocomplete="name" required>
+			</label>
+			<label for="mail">
+				<span>What's your email</span>
+				<input type="email" id="mail" name="mail" autocomplete="email" required>
+			</label>
+			<label for="country">
+				<span>Where are your from?</span>
+				<input type="text" id="country" name="country" autocomplete="country" required>
+			</label>
+			<label for="pc">
+				<span>What's your Postal Code?</span>
+				<input type="text" id="pc" name="pc" autocomplete="postal-code" required>
+			</label>
+			<input type="submit">
+		</form>
+	</main>
+</body>
+```
+
+Documentación:    
+[HTML attribute: autocomplete](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete)
+
 
 ## 19. Select
 
-Select nos permite elegir una opción entre una lista de elementos posibles, pero por buen uso no debería usarse con muchos elementos de lo contrario nos crearía un scroll muy grande, o en si no usarse debido a que tenemos la etiqueta Input con un atributo “list =” " que se comporta igual, pero le brinda una mejora experiencia al usuario ayudándolo a encontrar esa opción solo con escribir las primeras letras.
+`select` nos permite elegir una opción entre una lista de elementos posibles, pero por buenas practicas no debería usarse con muchos elementos de lo contrario nos crearía un scroll muy grande, o en si no usarse debido a que tenemos la etiqueta `input` con un atributo `“list =” "` que se comporta igual, pero le brinda una mejora experiencia al usuario ayudándolo a encontrar esa opción solo con escribir las primeras letras.
 
-<select name="cursos" id="">
+Opción no tan buena:   
+```html
+<select name="courses" id="">
 	<option value="HTML5">HTML5</option>
-	<option value="Java Script">Java Script</option>
+	<option value="JavaScript">JavaScript</option>
 	<option value="CSS3">CSS3</option>
 	<option value="Python">Python</option>
 </select>
+```
 
-
-<!--La manera correcta--!>
-<input list="cursos">
-	<datalist id="cursos">
-		<option value="HTML5"></option>
-		<option value="Java Script"></option>
-		<option value="CSS3"></option>
-		<option value="Python"></option>
-	</datalist>
+La manera correcta:    
+```html
+<input list="courses">
+<datalist id="courses">
+	<option value="HTML5"></option>
+	<option value="Java Script"></option>
+	<option value="CSS3"></option>
+	<option value="Python"></option>
+</datalist>
+```
 
 
 ## 20. Input type submit vs. Button tag
 
-Input type submit:
-Se usa únicamente para formularios.
+🔥 Input type submit:    
+> `<input type="submit" value="Nombre" />`     
+> Se usa únicamente para formularios   
+> // Con el atributo value podremos cambiar el texto que se vera en el
 
-<input type="submit" value="Nombre" /> 
-// Con el atributo value podremos cambiar el texto que se vera en el
-
-
-
-Button:
-Lo vamos a usar para cualquier otro tipo de botón en nuestro proyecto.
-
-<button type="submit">Qué color te gusta?</button> 
-// Para usar button en formularios debes agregar el type="submit"
+🔥 Button:   
+> `<button type="submit">Qué color te gusta?</button>`    
+> Para cualquier otro tipo de botón en nuestro proyecto    
+> // Para usar button en formularios debes agregar el type="submit"   
 
 
+## Quiz:   
+
+1. ¿Cuál es la mejor práctica para generar listas de opciones en HTML?    
+	- Con `<select>` cuando hay pocas opciones y con `<datalist>` en caso de que sean muchas.
+
+2. ¿De qué formas podemos crear campos de calendario con HTML?
+	- Creando distintos inputs para campos específicos o con un solo `<input>` que incluya fecha y hora.
+
+3. ¿Cuál es la forma correcta de crear formularios con HTML?
+	- Con las etiquetas `<form>`, `<label>` e `<input>`.
+
+4. ¿En qué tipo de interacciones es mejor utilizar la etiqueta `<button>` ?
+	- En acciones de cualquier tipo como compartir, like, etc. que no correspondan a "enviar" en un formulario.
+
+5. Los valores del atributo `autocomplete` se fijan automáticamente en nuestros campos de formulario.
+	- Falso.
+
+6. ¿Por qué se dice que el mejor formulario es el que no existe?
+	- Porque un formulario mal diseñado se vuelve una molestia para el usuario.
 
 
-
-Repaso:
-
-1.
-¿Cuál es la mejor práctica para generar listas de opciones en HTML?
-Con <select> cuando hay pocas opciones y con <datalist> en caso de que sean muchas.
-
-2.
-¿De qué formas podemos crear campos de calendario con HTML?
-Creando distintos inputs para campos específicos o con un solo <input> que incluya fecha y hora.
-
-3.
-¿Cuál es la forma correcta de crear formularios con HTML?
-Con las etiquetas <form>, <label> e <input>.
-
-4.
-¿En qué tipo de interacciones es mejor utilizar la etiqueta <button> ?
-En acciones de cualquier tipo como compartir, like, etc. que no correspondan a "enviar" en un formulario.
-5.
-Los valores del atributo `autocomplete` se fijan automáticamente en nuestros campos de formulario.
-Falso.
-6.
-¿Por qué se dice que el mejor formulario es el que no existe?
-Porque un formulario mal diseñado se vuelve una molestia para el usuario.
-
-
-21. ¿Qué es CSS?
+## 21. ¿Qué es CSS?
 
 Cascading Style Sheets
 Complemento que aplica estilos en forma de cascada (de arriba a abajo). Cascading también es el nombre del algoritmo que aplica el navegador al implementar todos los estilos. Este es el estándar que usaremos para estilizar nuestro proyecto.
@@ -708,7 +752,7 @@ La analogía de la carta es perfecta!
 HTML para escribirla y CSS para darle estilos, pegar imágenes, fotos, crear objetos circulares y mucho mas!
 
 
-22. ¿Cómo utilizamos CSS?: por etiqueta, selector, class y por ID
+## 22. ¿Cómo utilizamos CSS?: por etiqueta, selector, class y por ID
 
 Tres métodos de hacer css:
 1. En otro archivo .css
