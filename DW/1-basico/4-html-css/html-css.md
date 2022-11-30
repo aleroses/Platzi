@@ -410,8 +410,8 @@ Optimización de imágenes:
 	- https://unsplash.com/
 	- https://www.pexels.com/es-es/
 
-- Reducir tamaño de las imágenes:
-	https://tinypng.com/
+- Reducir tamaño de las imágenes:    
+	- https://tinypng.com/
 
 ```html
 <body>
@@ -420,8 +420,6 @@ Optimización de imágenes:
 	       <figure>
                 <img src="./pics/cafe-expres.gif" alt="Descripción de un cafe-expres">
             </figure>
-            <figcaption>
-            </figcaption>
         </section>
     </main>
 </body>
@@ -451,79 +449,73 @@ NOTA: En caso de que el nombre de tu imagen lleve algún espacio deberás sustit
 
 `<figure>` es una etiqueta contenedora en la cual va la etiqueta `<img>`, pueden ser una o varias imágenes y semánticamente es lo correcto para el navegador.
 
-```css
-<figure>
-	<img src=“./pics/shalala/small.jpg” alt=“Es una imagen de perrito”/>
-</figure>
-```
+La etiqueta `<figcaption>` `</figcaption>` nos ayudar a dar una explicación visual de la imagen, por ejemplo que abajo de la imagen de un perrito diga “Es una imagen de perrito” puede ser una descripción, el nombre del autor de la imagen o algo referente a la imagen.
 
-La etiqueta <figcaption> </figcaption> nos ayudar a dar una explicación visual de la imagen, por ejemplo que abajo de la imagen de un perrito diga “Es una imagen de perrito” puede ser una descripción, el nombre del autor de la imagen o algo referente a la imagen.
+Queda de la siguiente forma:   
 
-Queda de la siguiente forma:
-```css
-<section>
-	<figure>
-		<img src="./pics/strawberry.jpg" alt="Descripción en caso la imagen no cargue">
-           <figcaption>Es una descripción de la imagen de arriba</figcaption>
-	</figure>            
-</section>
+```html
+<body>
+	<main>
+		<section>
+	       <figure>
+                <img src="./pics/cafe-expres.gif" alt="Descripción de un cafe-expres">
+                <figcaption>Es una imagen de un cafe express</figcaption>
+            </figure>
+        </section>
+    </main>
+</body>
 ```
-figcaption: titulo de la figura
 
 
 ## 15. Etiqueta video
 
-La etiqueta `<video>`, tiene algunos atributos como:
-- controls: agrega al video los controles necesarios para reproducir, pausar y adelantar.
-- preload = auto: hace que el navegador descargue el video, en el momento en el que se acceda a la página.
+La etiqueta `<video>`, tiene algunos atributos como:   
+- ` controls:` agrega al video los controles necesarios para reproducir, pausar y adelantar.
+- `preload = auto:` hace que el navegador cargue el video, en el momento en el que se acceda a la página.
+
+Otros atributos:   
+- `preload="metadata":` Carga previa de los metadatos
+- `preload="none":` No existe carga de vídeo previa
 
 La etiqueta `<source>`, se puede colocar dentro de una etiqueta `<video>` varias veces, para especificar diferentes rutas. Esto para asegurar que cualquier navegador pueda mostrar el video.
 
-src=./algoMejor.mp4#t=6,11  -> #t=6,11 hace referencia al segundo que quiero que empiece y finalice la reproducción de un video
+`src=./algo-mejor.mp4#t=6,11`  -> `#t=6,11` hace referencia al segundo que quiero que empiece y finalice la reproducción de un video
 
-preload="auto"
-Carga video 
-preload="metadata"
-Carga previa de los metadatos
-preload="none"
-No existe carga de vídeo previa
+Queda de la siguiente forma:   
 
-```css
-<section>
-	<video controls preload="auto">
-      	<source src="./algoMejor.mp4#t=6,11"/>
-           <source src="./algoMejor.m4v#t=6,11"/>
-	</video>
-</section>
+```html
+<body>
+    <main>
+        <section>
+            <video controls preload="auto">
+                <!-- Diferentes formatos de video -->
+                <source src="./algo-mejor.mp4#t=10,15"/>
+                <source src="./algo-mejor.mp4#t=10,15"/>
+                <source src="./algo-mejor.mp4#t=10,15"/>
+                <source src="./algo-mejor.mp4#t=10,15"/>
+            </video>
+        </section>
+    </main>
+</body>
 ```
 
 
+## Quiz
 
+1. ¿Cuál es la diferencia entre la etiqueta `<img>` y `<figure>`?    
+	`<img>` nos permite solo colocar una imagen y `<figure>` permite colocar varias `<img>` con una descripción opcional.
 
-Practica
+2. Son formas de optimizar el peso de las imágenes:   
+	Comprimir el tamaño y retirar los metadatos de las imágenes.
 
-1.
-¿Cuál es la diferencia entre la etiqueta <img> y <figure>?
+3. ¿De dónde nos permite traer imágenes el atributo src de la etiqueta `<img>`?   
+	De una URL de internet o desde un directorio.
 
-<img> nos permite solo colocar una imágen y <figure> permite colocar varias <img> con una descripción opcional.
+4. Configurar la etiqueta `<video>` para que reproduzca automáticamente videos es:   
+	Una mala práctica, esto es penalizado en múltiples navegadores y el usuario debe decidir reproducirlo.
 
-2.
-Son formas de optimizar el peso de las imágenes:
-
-Comprimir el tamaño y retirar los metadatos de las imágenes.
-3.
-¿De dónde nos permite traer imágenes el atributo src de la etiqueta <img>?
-
-De una url de internet o desde un directorio.
-
-4.
-Configurar la etiqueta <video> para que reproduzca automáticamente videos es:
-
-Una mala práctica, esto es penalizado en múltiples navegadores y el usuario debe decidir reproducirlo.
-
-5.
-Son los dos tipos de imágenes con los que trabajarás:
-Lossy (con pérdida) y Lossless (sin pérdida).
+5. Son los dos tipos de imágenes con los que trabajarás:   
+	Lossy (con pérdida) y Lossless (sin pérdida).
 
 
 ## 16. Etiqueta form e input
