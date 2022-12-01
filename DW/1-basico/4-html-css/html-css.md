@@ -414,10 +414,6 @@ Optimización de imágenes:
 	- https://tinypng.com/
 
 ```html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-</head>
 <body>
 	<main>
 		<section>
