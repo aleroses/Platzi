@@ -5,7 +5,7 @@
 [Link al curso](https://platzi.com/cursos/javascript-practico/)
 
 
-## 1. # ¿Ya tomaste el Curso Básico de JavaScript?
+## 1. ¿Ya tomaste el Curso Básico de JavaScript?
 
 [Slides del curso](https://static.platzi.com/media/public/uploads/curso-practico-javascript-slides_cf4425ef-df8f-426d-b38f-c27df1fb4319.pdf)
 
@@ -13,6 +13,8 @@
 - Test de JavaScript
 - Manipulación del DOM
 - Flujo de Trabajo Profesional 
+
+[Editor Online para correr código JS](https://runjs.co/)
 
 🎲
 
@@ -50,6 +52,8 @@ Recuerda que **el éxito no se mide por cuánto tiempo te toma aprender**, esa 
 	**Declarar:** Cuando declaramos una variable solo debemos darle nombre a esta, pero no estamos obligados a darle un valor a almacenar. `var number;`    
 	**Inicializar:** Ya existiendo una variable inicializamos dándole un valor a almacenar.  `number = 10;`.      
 
+> **Una variable se declara para indicarle al programa a partir de qué lugar empieza a existir, qué nombre tendrá y qué tipo de datos almacenará**. La asignación de un valor inicial se llama inicialización.
+
 -   ¿Cuál es la diferencia entre sumar números y concatenar strings?    
 	Lo común sería sumar números de esta manera `2 + 2` pero también podemos usar el `+` para concatenar (juntar) textos de esta manera `Hi` + ` ` + `Cyborg` lo que nos da como resultado: Hi Cyborg
 
@@ -68,26 +72,26 @@ Recuerda que **el éxito no se mide por cuánto tiempo te toma aprender**, esa 
 -   Deudas
 
 🔥 Respuestas:      
--   `var name = "ale"`
--   `var lastName = "vel"`
--   `var userNamePlatzi = "@ghost"`
--   `var age = 22`
--   `var email = "ghost@code.com"`
--   `var adult = true`
--   `var savedMoney = 10.2`
--   `var debts = 2`
+-   `let name = "ale"` string
+-   `let lastName = "vel"` string
+-   `let userNamePlatzi = "@ghost"` string
+-   `let age = 22` number
+-   `let email = "ghost@code.com"` string
+-   `let adult = true` boolean
+-   `let savedMoney = 10.2` number
+-   `let debts = 2` number
 
 #### 3️⃣ Traduce a código JavaScript las variables del ejemplo anterior y deja tu código en los comentarios.
 
 ```js
-var name = "ale";
-var lastName = "vel";
-var userNamePlatzi = "@ghost";
-var age = 22;
-var email = "ghost@code.com";
-var adult = true;
-var savedMoney = 10.2;
-var debts = 2;
+let name = "ale";
+let lastName = "vel";
+let userNamePlatzi = "@ghost";
+let age = 22;
+let email = "ghost@code.com";
+let adult = true;
+let savedMoney = 10.2;
+let debts = 2;
 ```
 
 #### 4️⃣ Calcula e imprime las siguientes variables a partir de las variables del ejemplo anterior:
@@ -153,12 +157,13 @@ hola("ale", "vel", "ghost");
 	Son palabras reservadas de JavaScript como `if - else if - else`que nos permiten ejecutar determinado código si se cumple determinada situación, basándose en true o false.   
 
 -   ¿Qué tipos de condicionales existen en JavaScript y cuáles son sus diferencias?     
-	`if` Conocido como SI, si esto es verdad ejecuta este código.     
-	`else if` En caso el primer if sea falso, evalúa en segunda instancia si este else if es verdadero y ejecuta este código.     
-	`else` De no entrar a ninguna de las anteriores condiciones ejecutará esto como alternativa final sin evaluarlo.      
+	- `if` Conocido como SI, si esto es verdad ejecuta este código.     
+	- `else if` En caso el primer if sea falso, evalúa en segunda instancia si este else if es verdadero y ejecuta este código.     
+	- `else` De no entrar a ninguna de las anteriores condiciones ejecutará esto como alternativa final sin evaluarlo.      
+	- `Switch` En esta condicional todos los cases se comparan con una sola variable 
 
 -   ¿Puedo combinar funciones y condicionales?  
-	Claro que sí, combinando esto podemos crear algún pequeño proyecto que requiera de combinar estas dos funcionalidades de JavaScript.
+	Claro que sí, las funciones pueden encapsular cualquier bloque de código, incluyendo condicionales. 
 
 #### 2️⃣ Replica el comportamiento del siguiente código que usa la sentencia switch utilizando if, else y else if:
 
@@ -253,7 +258,7 @@ length: 1
 
 🔥 Respuestas:      
 -   ¿Qué es un ciclo?      
-	Ciclo, bucle o loop es como se le conoce a la repetición, iteración controlada de alguna acción dentro de nuestro código. 
+	Ciclo, bucle o loop es como se le conoce a la repetición, iteración controlada de alguna acción dentro de nuestro código. Esto se ejecutará hasta que se cumpla alguna condición. 
 
 -   ¿Qué tipos de ciclos existen en JavaScript?     
 	For, For...in, For...of ForEach, While, DoWhile
@@ -282,7 +287,7 @@ var i = 0;
 
 while (i >= 0 && i < 5){
     console.log("El valor de i es: " + i);
-    i++
+    i++;
 }   
 
 
@@ -290,7 +295,7 @@ var i = 10;
 
 while (i <= 10 && i >= 2){
     console.log("El valor de i es: " + i);
-    i--
+    i--;
 }
 ```
 
@@ -320,16 +325,21 @@ console.log("\nExcelente, es ", user);
 
 🔥 Respuestas:      
 -   ¿Qué es un array?     
-	Los array son porciones de código que permiten almacenar varios datos y no solo uno como las variables. Leer [[js-basico#14. Arrays]]
+	Los array (lista de elementos) son porciones de código que permiten almacenar varios datos y no solo uno como las variables. Leer [[js-basico#14. Arrays]]
+
+> `const array = [1, 'jaja', true, false, {nombre: 'ale', edad: 3}];`
 
 -   ¿Qué es un objeto?      
-	Un objeto se puede entender como algo que ya existe, ejemplo, un carro y todas sus propiedades las cuales podemos usar como molde para hacer objetos totalmente nuevos. 
+	Un objeto se puede entender como algo que ya existe, ejemplo, un carro y todas sus propiedades las cuales podemos usar como molde para hacer objetos totalmente nuevos. Es una lista de elementos PERO cada elemento tiene un nombre clave (key:valor).
+
+> `const obj = {nombre: 'ale', edad: 3, comidas: ['fruta', 'verduras']};`
 
 -   ¿Cuándo es mejor usar objetos o arrays?     
-	Los **arrays** se utilizan cuando almacenamos múltiples valores de una sola variable, mientras que un **objeto** puede contener múltiples variables con sus valores. un **array** también se puede considerar como un **objeto** y tiene la mayoría de las funcionalidades del **objeto**.
+	Los **arrays** se utilizan cuando almacenamos múltiples valores de una sola variable, mientras que un **objeto** puede contener múltiples variables con sus valores. un **array** también se puede considerar como un **objeto** y tiene la mayoría de las funcionalidades del **objeto**.    
+	Array cuando lo que haremos en un elemento es lo mismo que en todos los demás (la regla se puede incumplir). Mientras que usaremos un objeto cuando los nombres de cada elemento son importantes para nuestro algoritmo. 
 
 -   ¿Puedo mezclar arrays con objetos o incluso objetos con arrays?
-	
+	Sí, los arrays pueden guardar objetos y los objetos pueden guardar arrays entre sus propiedades . 
 
 #### 2️⃣ Crea una función que pueda recibir cualquier array como parámetro e imprima su primer elemento.
 
@@ -357,7 +367,6 @@ for (i = 0; i < frutas.length; i++){
     }
 
     algo(frutas);
-
 }
 ```
 
@@ -382,6 +391,28 @@ function readObject(object){
 readObject(myCar);
 ```
 
+🔥 Otra solución: Convertir objeto a un array  
+```js
+const car = {
+    brand: "Totoya",
+    model: "Corolla",
+    year: 2020,
+}
+
+// Object.values(car)
+// const array = Object.values(car)
+
+function imprimirElementos(objeto){
+    const array = Object.values(objeto);
+
+    for (let i = 0; i < array.length; i++){
+        console.log(array[i]);
+    }
+}
+
+imprimirElementos(car);
+```
+
 
 ### ¿Cómo te fue? 🏆
 
@@ -391,8 +422,45 @@ Ahora sí, continúa a la siguiente clase, pero recuerda que **ya no puedes aba
 
 ¡Te espero en la siguiente clase para comenzar!
 
+🎲
 
-🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲
+## 3. Variables
+
+🎲
+
+## 4. Funciones
+
+🎲
+
+## 5. Condicionales 
+
+🎲
+
+## 6. Ciclos 
+
+🎲
+
+## 7. Arrays y objetos 
+
+🎲
+
+## 8. Bonus: reducción de condicionales 
+
+🎲
+
+## Quiz prueba de JavaScript 
+
+🎲
+
+🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲
+
+
+
+
+
+
+
+
 
 
 ## Emojis:  
