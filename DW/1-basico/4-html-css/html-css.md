@@ -742,11 +742,12 @@ La manera correcta:
 
 ## 21. ¿Qué es CSS?
 
-Cascading Style Sheets
-Complemento que aplica estilos en forma de cascada (de arriba a abajo). Cascading también es el nombre del algoritmo que aplica el navegador al implementar todos los estilos. Este es el estándar que usaremos para estilizar nuestro proyecto.
+### 🔥 Cascading Style Sheets
+Complemento que aplica estilos en forma de cascada (de arriba a abajo). Cascading también es el nombre del algoritmo que aplica el navegador al implementar todos los estilos. Este es el estándar que usaremos para estilizar nuestro proyecto.    
+
 Su extensión es “.css”
 
-HTML sería el lápiz, CSS los colores, adornos, tijeras, etc.
+> HTML sería el lápiz, CSS los colores, adornos, tijeras, etc.
 
 La analogía de la carta es perfecta!
 HTML para escribirla y CSS para darle estilos, pegar imágenes, fotos, crear objetos circulares y mucho mas!
@@ -754,205 +755,345 @@ HTML para escribirla y CSS para darle estilos, pegar imágenes, fotos, crear obj
 
 ## 22. ¿Cómo utilizamos CSS?: por etiqueta, selector, class y por ID
 
-Tres métodos de hacer css:
-1. En otro archivo .css
-2. Usando la etiqueta style dentro del mismo html y dentro del head
-3. Usando el atributo style="color:aqua" dentro de las etiquetas
+Tres métodos de hacer css:   
+1. En otro archivo .css usando una etiqueta `link` en el html 
+2. Usando la etiqueta `style` dentro del mismo html y dentro del head
+3. Usando el atributo `style="color:aqua"` dentro de las etiquetas (embeber / inyectar)
 
-Usando el método 1:
-1. Mandar llamar etiquetas para agregarle los estilos
+Usando el método 1: Mandar llamar por elementos, clases o IDs desde el nuevo archivo .css para agregarle los estilos    
+
 - Selector por el elemento
-css
+```css
 p {
     color: blue;
     font-size: 30px;
 }
+```
 
 - Selector por clases
-html
+```html
 <p class="nombre">Soy un texto</p>
-css
+```
+
+```css
 .nombre {
     color: aqua;
 }
+```
 
 - Selector por ID
-html
+```html
 <p id="nombre">Otro pequeño texto</p>
-css
+```
+
+```css
 #nombre {
     color: yellow;
     font-size: 24px;
 }
+```
 
 
-/*Comentario en css*/
+Nota: comentarios en css `/*comentario*/`
 
 
+[Cheatsheet - Hoja de trucos](https://i.emezeta.com/weblog/css3-cheatsheet/css3-cheatsheet-2017-emezeta.pdf)
 
-https://i.emezeta.com/weblog/css3-cheatsheet/css3-cheatsheet-2017-emezeta.pdf
-
-Páginas web para practicar Flexbox y Css Grid
-Flexbox: https://flexboxfroggy.com/#es
-Css Grid: https://cssgridgarden.com/#es
-https://mastery.games/flexboxzombies/
+Páginas web para practicar Flexbox y Css Grid:   
+- Flexbox: https://flexboxfroggy.com/#es
+- Css Grid: https://cssgridgarden.com/#es
+- Otra: https://mastery.games/flexboxzombies/
 
 
-23. Pseudo clases y pseudo elementos
+## 23. Pseudo clases y pseudo elementos
 
-El nombre de archivo de estilos lo definimos nosotros pero casi siempre es main o estilos o styles. Cuando se trabaja con proyectos más grandes normalmente hay un archivo de CSS por pantalla y lleva el nombre de la pantalla.
+El nombre de archivo de estilos lo definimos nosotros pero casi siempre es main o estilos o **styles**. Cuando se trabaja con proyectos más grandes normalmente hay un archivo de CSS por pantalla y lleva el nombre de la pantalla.
 
-¿Cómo podemos nombrar nuestras clases?
+## ¿Cómo podemos nombrar nuestras clases?
 
-Tienen que ser acorde con lo que estamos trabajando. Vamos a usar la metodología BEM que nos va a ayudar a entender como nombrar las clases.
+Tienen que ser acorde con lo que estamos trabajando. Vamos a usar la **Metodología BEM** que nos va a ayudar a entender como nombrar las clases.
 
-Ejemplo de nombres class: contenedor y contenido 
-<ul class="main-nav">
-	<li class="main-nav__item"><a href=""=Home</a></li>
+### Metodología **BEM** 🐰
+Tutorial: https://www.youtube.com/watch?v=YaAkV--25fg
 
-- margin-top: Margen arriba.
-- list-style: Le quita los puntos a las listas desordenadas.
-- padding: Espacio interno (relleno) de un contenedor/elemento(ul). Un espacio dentro de la caja.
-- background-color: Le da color de fondo.
-- display: inline-block: Coloca todo en lineal (fila) y no en bloque uno sobre otro (columna).
+1. Qué es BEM?    
+`BEM (Block, Element, Modifier)`      
+Es una metodología de CSS, que nos ayuda a crear componentes reutilizables, código claro y mantener la especificidad al mínimo.     
+Esto gracias a su nomenclatura. 
+
+- Mantener la especificidad al mínimo.
+- Código modular.
+- Código limpio.
+- Nomenclatura (Bloque, Elemento, Modificador)
+
+2. Qué es un Block?    
+Un bloque en BEM, es una entidad independiente, no necesita de nadie más para existir. (Header, Nav, Formulario, Footer, Contenedor)
+
+3. Cómo nombramos a los bloques?    
+Se les nombra con la funcionalidad del bloque.
+
+```html
+<nav class="nav"></nav>
+
+<header class="header"></header>
+
+<section class="container"></section>
+```
+
+4. Que es un Element?     
+Un elemento en BEM, depende directamente de un Bloque, por lo que este debe estar dentro de un bloque. (Es dependiente a un bloque y está ligado a él.)
+
+5. Cómo nombramos a los elementos?     
+Se les nombra con el nombre de su bloque contenedor, dos guiones bajos y la descripción (funcionalidad) del elemento.
+
+```html
+<form class="form">
+	<input type="text" class="form__input">
+	<input type="submit> class="form__send">
+</form>
+
+<nav class="nav">
+	<a href="#" class="nav__item">Inicio</a>
+	<a href="#" class="nav__item">Inicio</a>
+</nav>
+```
+
+6. Qué es un Modifier?     
+Un modificador en BEM, puede ser un bloque o un elemento, estos indican una modificación a dicho elemento o bloque.
+
+7. Cómo nombrar a los modificadores?    
+Se les nombra, con el nombre que tenían anteriormente (bloque o elemento) se le agrega dos guiones medios y la descripción de la modificación. 
+
+```html
+<nav class="nav">
+	<a href="#" class="nav__link"></a>
+	<a href="#" class="nav__link nav__link--disabled"></a>
+</nav>
+
+<header class="header header--blue></header>
+
+<input type="text" class="form__input form__input--color-gray"/>
+```
+
+
+8. Curiosidades BEM     
+8.1 Qué pasa si tengo un hijo dentro de un elemento?    
+Se nombran como un elemento
+
+```html   
+<header class="block">
+	<section class="block__elem1">
+		<div class="block__elem2">
+		</div>
+	</section>
+	<div class="block__elem3">
+	</div>
+</header>
+```
+
+
+8.2 Una etiqueta puede tener 2 clases de un bloque?
+Se le llama mix en BEM y si se puede.
+
+```html
+<div class="block1 block2">
+</div>
+```
+
+8.3 Podemos usar modificadores globales?    
+No se recomienda porque puede generar especificidad extra.   
+
+```html
+<button class="button disabled"></button>
+```
+
+Documentación:
+http://getbem.com/naming
+
+Ejemplo de nombres de clases: contenedor y contenido 
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BEM</title>
+    <link rel="stylesheet" href="./estilos.css">
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <div class="nav__logo">
+                <img src="./logo-spotify.png" class="nav__img">
+            </div>
+            <div class="nav__links">
+                <a href="#" class="nav__link nav__link--color">Inicio</a>
+                <a href="#" class="nav__link">Acerca de</a>
+                <a href="#" class="nav__link">Contacto</a>
+            </div>
+        </nav>
+    </header>
+    <nav class="nav">
+        <div class="nav__logo">
+            <img src="./logo-spotify.png" class="nav__img">
+        </div>
+        <div class="nav__links">
+            <a href="#" class="nav__link nav__link--color">Inicio</a>
+            <a href="#" class="nav__link">Acerca de</a>
+            <a href="#" class="nav__link">Contacto</a>
+        </div>
+    </nav>
+</body>
+</html>
+```
+
+```css
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: Arial, Helvetica, sans-serif;    
+}
+.nav{
+    background: slateblue;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.nav__logo {
+    height: 100%;
+    background: #fff;
+}
+
+.nav__img {
+    height: 100%;
+}   
+
+.nav__link{
+    color: #fff;
+}
+
+.nav__link--color{
+    color: #000;
+}
+
+```
+
+
+### Ejemplo de clase:  
+
+```html
+<header>
+	<nav>
+		<ul class="main-nav">
+			<li class="main-nav__item"><a href="">Home</a></li>
+			<li class="main-nav__item"><a href="">Courses</a></li>
+			<li class="main-nav__item"><a href="">Instructors</a></li>
+			<li class="main-nav__item"><a href="">Blog</a></li>
+		</ul>
+	</nav>
+</header>
+```
+
+🔥 Algunos estilos:   
+- `margin-top:` Margen arriba.
+- `list-style:` Le quita los puntos a las listas desordenadas.
+- `padding:` Espacio interno (relleno) de un contenedor/elemento(ul). Un espacio dentro de la caja.
+- `background-color:` Le da color de fondo.
+- `display: inline-block:` Coloca todo en lineal (fila) y no en bloque uno sobre otro (columna).
 
 Nota: El navegador por si solo agrega algunos estilos a los elementos.
 
-Posibilidades:
+🔥 Estilos agregados:  
+
+```css
 .main-nav {
-    margin-top: 10px;
-    list-style: none;
-    padding-left: 0;
-    background-color: #13a4a4;
+margin-top: 10px;
+padding-left: 0;
+list-style: none;
+background-color: #13A4A4;
 }
+
 .main-nav__item {
-    display: inline-block;
+	display: inline-block;
 }
+
 .main-nav__item a {
-    color: white;
+	color: white;
+	padding: 5px;
+	border-radius: 2px;
+	text-decoration: none;
+	background-color: aqua;
 }
+```
 
 
-Ser especifico en CSS:
+Ser especifico en CSS:     
 Aplicar estilos solo a las etiquetas “a” usando Pseudo clases.
 
-Pseudo Clases------
-Define el estilo de un estado especial de un elemento.
+#### Pseudo Clases
+Define el estilo de un estado especial de un elemento.    
 Agregar al final de la clase :nombreAccion
 
+```css
 .main-nav__item a:hover {
-    color: darkblue;
+    color: blue;
 }
 .main-nav__item a:active {
-    color: darkcyan;
+    color: red;
 }
+```
 
+- `a:hover` Genera efecto al posicionar el cursor del mouse arriba del elemento. Es un efecto, un estado.
 
-a:hover
-Genera efecto al posicionar el cursor del mouse arriba del elemento. Es un efecto, un estado.
+- `a:active` Efecto al dar Click
 
-a:active
-Efecto al dar Click
+#### Pseudo Elementos
+Mandamos llamar a un elemento con “::”   
+Define el estilo de una parte específica de un elemento.   
+Agregar al final de la clase ::nombreAccion    
 
-Pseudo Elementos----
-Mandamos llamar a un elemento con “::”
-Define el estilo de una parte específica de un elemento.
-Agregar al final de la clase ::nombreAccion
-
+```css
 .main-nav__item a::after {
     content: " | "; /* despues del elemento, agrega esto */
 }
+```
 
 
-a::after
-Agrega contenido después de la etiqueta señalada.
+- `a::after` Agrega contenido después de la etiqueta señalada.
 
-Diferencias
+🔥 Diferencias: 
 
-Pseudo Classes: (:class)
-Define el estilo de un estado especial de un elemento
+**Pseudo Classes: (:class)**    
+Define el estilo de `un estado` especial de un elemento
 https://developer.mozilla.org/es/docs/Web/CSS/Pseudo-classes
 
 
-Pseudo Elementos: (::element)
-Define el estilo de una parte específica de un elemento.
+**Pseudo Elementos: (::element)**     
+Define el estilo de `una parte` específica de un elemento.
 https://developer.mozilla.org/es/docs/Web/CSS/Pseudo-elements
 
 
-Metodología BEM 
+**Metodología BEM**       
 https://en.bem.info/methodology/faq/#why-bem
 https://blog.interactius.com/metodolog%C3%ADa-css-block-element-modifier-bem-f26e69d1de3
---> Página oficial
-http://getbem.com/
-http://getbem.com/naming
 
--------------------------------------------------
+**Página oficial**    
+- http://getbem.com/
+- http://getbem.com/naming
 
-
-Cómo nombrar las clases:
-Metodología **BEM😗* cómo nombrar correctamente las clases.
--> https://www.youtube.com/watch?v=wDUwGo98JTA
-
-Solo usa clases. Las nombra siguiendo el siguiente patrón: BLOQUE__ELEMENTO—MODIFICADOR (son 2 guiones, se usa 1 guion para separar palabras).
-
-Bloque: sección que puede funcionar por sí sola, son reutilizables e independientes del resto.
-	.cabecera
-	.mi-bloque-compuesto
-	-> Botones
-	-> Menu de navegación 
-	
-Elemento: forma una de las partes del bloque o las distintas partes de un bloque.
-Modificador: variaciones de un mismo bloque/elemento.
-	.bloque__elemento
-	.menu__logo {}
-	.menu__button {}
-	-> Partes de un menú de navegación 
-	
-Errores:
-1. Confundir bloque con elemento
-- Ante la duda pregúntate, este trozo de mi página web se podría usar por si mismo? si es así se trata de un bloque o si ese trozo depende de otro o no tiene sentido por si mismo probablemente sea un elemento. 
-
-2. Anidar cuando no es necesario
-- En BEN no existe el concepto de sub elementos es decir un bloque puede contener elementos pero un elemento no puede contener bloques o sub partes 
-
-Modificadores: aliña tus bloques y elementos. Son clases que puedes añadir para cambiar la apariencia o el comportamiento de los bloques o elementos. Se usan normalmente para diferenciar las distintas variantes de un bloque o de un elemento. 
-
-Para modificar un bloque usaremos clases con la estructura: .bloque--modificador 	
-
-para modificar un elemento:
-.bloque__elemento--modificador
-
-	.button {}
-	.button--primary {}
-	.button--secondary {}
-	
-	.title {}
-	.title--size-regular {}
-	.title--size-big {}
-	
-Nota: Nunca uses solo modificadores, siempre deben acompañar a una clase bloque o a una clase elemento.
-	
-	
-<!-- BLOQUE -->
-<main class="Padre">
-	<!-- BLOQUE__ELEMENTO --> 
-	<section class="Padre__Hijo">
-		<!-- BLOQUE__ELEMENTO--MODIFICADOR -->
-		<article class="Padre__Hijastro--Mayor"></article>
-		<article class="Padre__Hijastro--Menor"></article>
-	</section>
-</main>
-
-Crear estilos a etiquetas dentro de clases:
-Si tienes etiquetas dentro de la etiqueta a la que le estás aplicando estilos y le pones una clase, puedes aplicar estilos únicamente a las etiquetas dentro de esa clase de la siguiente manera: .clase etiqueta {}
-
-
+**Clase:**   
 https://platzi.com/clases/2336-transformaciones-transiciones-css/38112-pseudo-clases-y-pseudo-elementos-en-las-animacione/
 
----------------
 
-
-24. Anatomía de una regla de CSS
+## 24. Anatomía de una regla de CSS
 
 
 
