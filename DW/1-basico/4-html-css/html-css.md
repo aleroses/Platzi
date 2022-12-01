@@ -1095,123 +1095,113 @@ https://platzi.com/clases/2336-transformaciones-transiciones-css/38112-pseudo-cl
 
 ## 24. Anatomía de una regla de CSS
 
+![Anatomía de una regla de CSS](https://i.postimg.cc/rmfW6Mz0/24-anatomia-regla-css.png)
+
+- p {} Selector
+- color: Property
+- red; Property value
+- color: red; Declaración 
 
 
-p {
-	color: red;
-}
-
-p {} Selector
-color: Property
-red; Property value
-color: red; Declaración 
-
-
-Selector {
+```css
+Selector { /*Define que pieza será afectada */
 	Property: Property value;  <- Declaration 
 }
+```
 
 
+## 25. Modelo de caja
 
+Los elementos se renderizan como cajas (contenedores) a las que se les pueden agregar ciertos estilos “Modelo de caja”.
 
-selector: define que pieza será afectada 
-propiedad
-valor
-declaración 
+![Modelo de caja](https://i.postimg.cc/d3VCJB1V/25-modelo-de-caja.jpg)
 
-selector propiedad valor declaración
+- `Margin:` puede ser un espacio externo, de la caja hacía afuera.
+- `Border:` es la línea que define a cada uno de los elementos, puede estar o no estar. Por default viene transparente pero le podemos poner color y ancho.
+- `Padding (relleno):` es un espacio interno, de la caja hacia dentro y nos ayuda a posicionar un poco el contenido de la caja.
+- `Content:` puede ser cualquier elemento, texto, imagen, video, etc.
+- `Width:` largo o ancho, el tamaño del contenido.
+- `Height:` el alto que queremos que tenga.
 
+Dependiendo de la posición del contenido podemos jugar con:   
 
-25. Modelo de caja
+![Posiciones](https://i.postimg.cc/L85VNSFh/25-top-right-bottom-left.webp)
 
-https://developer.mozilla.org/es/docs/Web/CSS/box-sizing
+Otros casos:   
+- `h1 {margin: 5px 10px 5px;}`: top - right & left - bottom
+	- 5px de arriba, 10px de derecha a izquierda y 5px hacia abajo.
+- `h1 {margin: 5px 10px}`: top & bottom - right & left 
+	- 5px de arriba hacia abajo y 10px de derecha a izquierda.
 
-Los elementos que se renderizan se renderizan como cajas (contenedores) a las que se les pueden agregar ciertos estilos hence “Modelo de caja”.
-
-- Margin: puede ser un espacio externo, de la caja hacía afuera.
-- Border: es la línea que define a cada uno de los elementos, puede estar o no estar. Por default viene transparente pero le podemos poner color y ancho.
-- Padding (relleno): es un espacio interno, de la caja hacia dentro y nos ayuda a posicionar un poco el contenido de la caja.
-- Content: puede ser cualquier elemento, texto, imagen, video, etc.
-- Width: largo o ancho, el tamaño del contenido.
-- Height: el alto que queremos que tenga.
-
-Dependiendo de la posición del contenido podemos jugar con:
-	   - Top
-- Left		- Right
-	   - Bottom
-	   
-Hay que tener cuidado con las dimensiones extra, siempre hay que tomarlas en cuenta
-
-* {
-	selector universal
-}
-
-box-sizing: border-box; -> width - (padding + border)
-Toma el 100% del width que tengamos libre. Suma el padding con el width del elemento y hace un calculo automático donde al width se le resta el padding y el border para que no se salga del navegador y tener la dimensión justa. 
-Nota: box-sizing no recalcula el Margin por ende aún con esto sigue generando un excedente, solo recalcula el padding y el border.
-
-https://www.youtube.com/watch?v=TeQgd0NS_lQ
-
-Tener en cuenta:----
-padding: 20px 35px;
-20px de arriba hacia abajo y 35px de derecha a izquierda.
 Nota: Si solo colocamos 20px el navegador entiendo que debe colocar los 20px arriba abajo y a los costados.
 
 
-TIP: Hay una forma de hacer que CSS calcule el tamaño de un elemento (width o height, por ejemplo), restándole cierta cantidad.
+### box-sizing: border-box; -> width - (padding + border)
+Toma el 100% del width que tengamos libre. Suma el padding con el width del elemento y hace un calculo automático donde al width se le resta el padding y el border para que no se salga del navegador y tener la dimensión justa. 
+Nota: box-sizing no recalcula el Margin por ende aún con esto sigue generando un excedente, solo recalcula el padding y el border.
 
-Por ejemplo:
+![Box-sizing](https://i.postimg.cc/Sx2bHjBM/25-box-sizing.jpg)
+
+Hay que tener cuidado con las dimensiones extra, siempre hay que tomarlas en cuenta
+
+```css
+* {/*selector universal*/
+	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+}
+```
+
+🔥 TIP: Hay una forma de hacer que CSS calcule el tamaño de un elemento (width o height, por ejemplo), restándole cierta cantidad.
+
+Por ejemplo:     
 Imagina que quieres colocar 2 cajas dentro de una caja padre y quieres que cada una tome el 50% de ancho, pero que cada una tenga un margen a la izquierda de 10px. Si colocas width de 50% a cada caja y además le colocas margen, esto hará que las cajas queden una arriba de la otra, porque al agregarle 20px de espacio en márgenes, vas a hacer que ya no ajuste el 50% a cada caja.
 
 Para hacer que ambas cajas sigan tomando el 50% contando los márgenes, puedes hacer lo siguiente:
 
+```css
 .caja-hijo
 {
 	width: calc(50% - 20px);
 }
-Esto hará que el ancho se calcule, tomando en cuenta el 50% y los 20px que mantegan de margen.
+```
 
+Esto hará que el ancho se calcule, tomando en cuenta el 50% y los 20px que mantengan de margen.
 
-----otro caso----
-width: calc(100% - 72px);
+----otro caso----      
+width: calc(100% - 72px);       
 Chau Scroll 😃
 
+Documentación sobre Box-sizing:   
+https://developer.mozilla.org/es/docs/Web/CSS/box-sizing
 
 Normalize
 https://necolas.github.io/normalize.css/
 
+[Consejo para Principiantes: Evita hacer esto en tus Proyectos de CSS.](https://www.youtube.com/watch?v=TeQgd0NS_lQ)
 
-26. Herencia
+
+## 26. Herencia
 
 La herencia en CSS es algo muy útil cuando quieres “reciclar” los estilos del padre, pero recuerda que todos lo que cambies en el padre también afectará a los hijos que estén heredando estilos de el.
 
 La herencia se realiza mediante el valor inherit (heredar), que hereda el valor de la etiqueta o selector mayor más cercana que tenga la propiedad a heredar.
 
-CSS nos permite tener un mayor control de esta herencia y nos ofrece 3 opciones para manejarla.
-- Inherit que le indica a la propiedad del elemento hijo que tome la propiedad del elemento padre más cercano
-- Initial es el valor que fuerza a que tome el valor por defecto que el navegador tiene definido.
-- Unset es una mezcla entre la etiqueta inherit y initial, le dice a la propiedad del elemento que tome el valor del elemento padre más cercano y si no lo encuentra, a diferencia de lo que haría inherit qué es pasarse al próximo elemento padre y así hasta encontrar un valor en un elemento padre que tenga establecida esa propiedad, unset se va directo a tomar el valor por default del navegador.
+CSS nos permite tener un mayor control de esta herencia y nos ofrece 3 opciones para manejarla.  
+- `Inherit` que le indica a la propiedad del elemento hijo que tome la propiedad del elemento padre más cercano
+- `Initial` es el valor que fuerza a que tome el valor por defecto que el navegador tiene definido.
+- `Unset` es una mezcla entre la etiqueta inherit y initial, le dice a la propiedad del elemento que tome el valor del elemento padre más cercano y si no lo encuentra, a diferencia de lo que haría inherit qué es pasarse al próximo elemento padre y así hasta encontrar un valor en un elemento padre que tenga establecida esa propiedad, unset se va directo a tomar el valor por default del navegador.
 
-Herencia
+Ejemplo:   
 
-Herencia es el código CSS que se le va a pasar de un padre a un hijo.
-
-INHERIT: Especifica que el valor que usemos herede el valor del elemento padre.
-
-INITIAL: Este valor da el valor inicial y predefinido por el navegador en uso.
-
-UNSET: Este es la combinación de inherit e initial, este valor se usa cuando una propiedad quiere heredar el valor de su elemento padre si este es disponible, en caso de no ser disponible este valor pondrá el valor de la propiedad en su valor inicial como si usaramos inherit e initial juntos.
-
-
----Código HTML:---
-
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>Herencia</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="style.css">
+	<title>Herencia</title>
 </head>
 <body>
     <main>
@@ -1220,19 +1210,27 @@ UNSET: Este es la combinación de inherit e initial, este valor se usa cuando un
     </main>
 </body>
 </html>
+```
 
----Código CSS:---
 
+```css
 html{
     font-size: 75%;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
+
 h1{
     font-size: inherit;
 }
+```
+
+![Explicación Inherit](https://i.postimg.cc/XYr4rPBM/26-herencia-inherit.png)
+
+-   h1 recibe por el navegador un tamaño especifico
+-   h1 está dentro del html pero no está tomando el 75% de tamaño de fuente que le indicamos a todo nuestro html solo está tomando el tipo de fuente, así que usamos inherit en h1 para que herede esa propiedad
 
 
-27. Especificidad en selectores
+## 27. Especificidad en selectores
 
 ¿Cómo se controla el orden al declarar CSS?
 
@@ -1303,7 +1301,7 @@ Visual Studio también te ayuda en esto.
 Solo tienes que poner el mouse por encima del selector y te dará la especificad
 
 
-28. Demo de especificidad y orden en selectores
+## 28. Demo de especificidad y orden en selectores
 
 Se pueden usar varias clases mientras no se exceda en la cantidad de clases y por cada etiqueta no se puede tener más de un ID. El id es único y específico, solo puede existir ese id en la página. Funciona para CSS y JS.
 
