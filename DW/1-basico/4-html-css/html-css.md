@@ -1281,7 +1281,8 @@ El inspector de elementos regresa los estilos del mas importantes al menos impor
 
 NOTA Las clases son genéricas y los id son únicos y específicos, no podemos tener el mismo id en dos elementos al contrario que las clases.
 
-
+Ejemplo:    
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -1307,27 +1308,30 @@ NOTA Las clases son genéricas y los id son únicos y específicos, no podemos t
     </header>
 </body>
 </html>
+```
 
-
-----------------------
-
+```css
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
+
 h1 {
     color: purple;
     font-family: serif;
     margin-bottom: 10px;
 }
+
 #page-title {
     font-family: Arial, Helvetica, sans-serif;
 }
+
 .title {
     font-size: 18px;
     font-family: monospace;
 }
+
 #main-nav {
     margin-top: 10px;
     list-style-type: none;
@@ -1349,11 +1353,10 @@ h1 {
 #main-nav .blog {
     background-color: red;
 }
+```
 
 
-29. Más sobre selectores
-
-https://stuffandnonsense.co.uk/archives/css_specificity_wars.html
+## 29. Más sobre selectores
 
 Utilizar id’s # para estilar no son buenas practicas sobre todo porque son muy importantes para el estilo y son específicos.
 
@@ -1361,78 +1364,88 @@ No es buena practica utilizar !important, estilos embebidos y utilizar id’s pa
 
 Todo lo podemos trabajar en CSS con clases, etiquetas y pseudo elementos.
 
+Debemos:    
+1. Evitar usar !important
+2. Evitar usar estilos embebidos (Estilos en la etiqueta html).
+3. Evitar usar ID para dar estilos en CSS por que tienen mas peso y dan conflictos.
 
-Los 30 selectores CSS que debes memorizar
-https://code.tutsplus.com/es/tutorials/the-30-css-selectors-you-must-memorize--net-16048
-
--------
-1- Evitar usar !important
-2- Evitar usar estilos embebidos (Estilos en la etiqueta html).
-3- Evitar usar ID para dar estilos en CSS por que tienen mas peso y dan conflictos.
-
-Si usan Visual Studio Code pueden ver que peso tiene el o los selectores que están usando.
-Solo pongan el mouse sobre los selectores y podrán verlo de la siguiente manera (ID, Class, Elemento HTML)
+📌 Nota: Si usan Visual Studio Code pueden ver que peso tiene el o los selectores que están usando. Solo coloca el puntero del mouse sobre los selectores y podrán verlo de la siguiente manera (ID, Class, Elemento HTML)
 
 ----------
-Malas Prácticas dichas en Clase Hasta Ahora
+**Malas Prácticas dichas en Clase Hasta Ahora**    
 - Utilizar tanto id en CSS
 - Utilizar el !important
-- Utilizar la etiqueta <style> dentro del archivo html
+- Utilizar la etiqueta `<style>` dentro del archivo html
 - Utilizar el atributo style dentro de las etiquetas html
 - Utilizar div para contener todo ignorando los header, nav, section, article, etc.
-- No utilizar la etiqueta <form> para hacer formularios
-- Utilizar las etiquetas <select> y <option> para hacer selectores o menús desplegables.
+- No utilizar la etiqueta `<form>` para hacer formularios
+- Utilizar las etiquetas `<select>` y `<option>` para hacer selectores o menús desplegables.
 - No nombrar el primer archivo html del proyecto como index.html
 - No tener archivos .css para cada pantalla de un proyecto.
 - Tener todo el css junto en un solo archivo.
 - No ponerle el atributo alt a una imagen
-- Poner imágenes dentro de <div> en vez de <figure>
+- Poner imágenes dentro de `<div>` en vez de `<figure>`
 - Utilizar textos solo en mayúscula en HTML, en vez de utilizar el atributo de CSS, text-transform, con el valor uppercase. Ya que al hacer esto pareciera que estuvieras gritando.
 - Poner videos que se reproduzcan solos.
 - No optimizar las imágenes.
 - No tener cuidado de cual es el formato ideal para las imágenes y su respectivo peso.
 - No tener cuidado con la respectiva semántica de HTML, y con la sintaxis adecuada para CSS.
-- No cerrar las etiquetas que se cierran en sí mismas como <br/>
+- No cerrar las etiquetas que se cierran en sí mismas como `<br/>`
 - No comentar partes esenciales de tu código.
-- No poner la etiqueta <meta name=”robots” content=”index,follow”> en tu proyecto para que los navegadores los puedan ubicar mejor.
-- No usar la etiqueta <meta name=”viewpor” content=”width=device-width, initial-scale=1.0”> para hacer tu proyecto responsive.
+- No poner la etiqueta `<meta name=”robots” content=”index,follow”>` en tu proyecto para que los navegadores los puedan ubicar mejor.
+- No usar la etiqueta `<meta name=”viewpor” content=”width=device-width, initial-scale=1.0”>` para hacer tu proyecto responsive.
 - No poner el atributo autocomplete=”valor” en los campos de tu formulario para hacerle la vida más fácil al usuario
 - No usar el atributo required en los campos obligatorios de tu formulario como una primera capa de seguridad
 
+[Los 30 selectores CSS que debes memorizar](https://code.tutsplus.com/es/tutorials/the-30-css-selectors-you-must-memorize--net-16048)    
 
-30. Combinadores: Adjacent Siblings (combinators)
+https://stuffandnonsense.co.uk/archives/css_specificity_wars.html
+
+
+## 30. Combinadores: Adjacent Siblings (combinators)
 
 https://flukeout.github.io/
 
-Los combinadores (Combinators)
+Los combinadores (Combinators)     
 Nos permiten combinar múltiples selectores y crear una mayor especificidad.
 
-Hermano adyacente o cercano (Adjacent sibling)
+**Hermano adyacente o cercano (Adjacent sibling)**   
+```css
 div + p {
 	...
 }
+```
 
-Hermano general (General sibling)
+**Hermano general (General sibling)**  
+```css
 div ~ p {
-	...			#Alt + 126 = ~
+	...	 /*Alt + 126 = ~*/
 }
+```
 
-Hijo (Child)
+**Hijo (Child)**   
+```css
 div > p {
 	...
 }
+```
 
-Descendiente (Descendant)
+**Descendiente (Descendant)**    
+```css
 div p {
 	...
 }
+```
 
 
 Esto nos permite dejar a un lado a los ID que como ya vimos nos pueden generar errores conforme avance el proyecto por el peso que tienen en CSS.
+
 ----
-Hermano Adyacente o Cercano que se representa por: +
-Ejemplo:
-HTML
+### Hermano Adyacente o Cercano 
+Se representa por: `+`  
+
+Ejemplo:     
+```html
 <body>
     <div>
         <h2>Soy un h2</h2>
@@ -1443,12 +1456,13 @@ HTML
         <h2>Soy un h2</h2>
         <p>Soy un p 3</p>        
     </div>
-</body>
-
-CSS
+</body>```
+ 
+```css
 h2 + p {
   color: red;
 }
+```
 
 Aplica estilo a todas las etiquetas párrafo que estén cerca y debajo de un etiqueta h2.
 Solo afecta a los p que están cerca (Abajo del elemento) h2
@@ -1458,7 +1472,7 @@ Combinadores en CSS
 https://medium.com/sngular-devs/combinadores-en-css-bf117a8c91f5
 
 
-31. Combinadores: General Sibling
+## 31. Combinadores: General Sibling
 
 Estructura:
 Hermano general (General sibling)
@@ -1493,7 +1507,7 @@ Virgulilla alt + 126 = ~
 https://codigos-ascii.com/equivalencia-tilde-virgulilla/
 
 
-32. Combinadores: Hijo y Descendiente (Child and Descendant)
+## 32. Combinadores: Hijo y Descendiente (Child and Descendant)
 
 https://flukeout.github.io/
 https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Selectors/Combinators
