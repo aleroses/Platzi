@@ -1187,7 +1187,7 @@ La herencia en CSS es algo muy útil cuando quieres “reciclar” los estilos d
 
 La herencia se realiza mediante el valor inherit (heredar), que hereda el valor de la etiqueta o selector mayor más cercana que tenga la propiedad a heredar.
 
-CSS nos permite tener un mayor control de esta herencia y nos ofrece 3 opciones para manejarla.  
+CSS nos permite tener un mayor control de esta herencia y nos ofrece 3 opciones para manejarla.   
 - `Inherit` que le indica a la propiedad del elemento hijo que tome la propiedad del elemento padre más cercano
 - `Initial` es el valor que fuerza a que tome el valor por defecto que el navegador tiene definido.
 - `Unset` es una mezcla entre la etiqueta inherit y initial, le dice a la propiedad del elemento que tome el valor del elemento padre más cercano y si no lo encuentra, a diferencia de lo que haría inherit qué es pasarse al próximo elemento padre y así hasta encontrar un valor en un elemento padre que tenga establecida esa propiedad, unset se va directo a tomar el valor por default del navegador.
@@ -1232,73 +1232,45 @@ h1{
 
 ## 27. Especificidad en selectores
 
-¿Cómo se controla el orden al declarar CSS?
+**¿Cómo se controla el orden al declarar CSS?**    
 
-1. Importancia: 
-Si dos declaraciones tienen la misma importancia entonces la especificidad nos va a decir que regla se aplicará, pero si dos reglas tienen la misma especificidad es el orden el que va a decidir cual es el resultado final.
-	1.1 El navegador va a cargar los estilos de forma distinta (primero aplica sus estilos).
-	1.2 Después cumple las declaraciones de las normas que vienen en nuestros estilos(todos nuestros CSS).
-	1.3 Por último, aplica los estilos que vienen con un “!important” al final en nuestra hoja de estilos. NO PONERLO PORQUE SI. Hay que evitarlo porque no son buenas prácticas.
+1. Importancia:    
+	Si dos declaraciones tienen la misma importancia entonces la especificidad nos va a decir que regla se aplicará, pero si dos reglas tienen la misma especificidad es el orden el que va a decidir cual es el resultado final.    
+	
+	- El navegador va a cargar los estilos de forma distinta (primero aplica sus estilos).    
+	- Después cumple las declaraciones de las normas que vienen en nuestros estilos (todo nuestros CSS).
+	- Por último, aplica los estilos que vienen con un `“!important”` al final en nuestra hoja de estilos. NO PONERLO PORQUE SI. Hay que evitarlo porque no son buenas prácticas.
 
 2. Especificidad: 
-De derecha a izquierda(menos importante a más importantes para el navegador). 
+	De derecha a izquierda(menos importante a más importantes para el navegador). 
 
-Selectores		Especificidad
-!important		  1.0.0.0.0	Mala practica
-Inline styles	  0.1.0.0.0	Estilos en tag html
-#id			  0.0.1.0.0
-.class		  0.0.0.1.0
-tag etiqueta	  0.0.0.0.1	Etiquetas o selectores
+| Selectores  |		Especificidad                 |
+|-------------|---------------------------------  |
+|!important   |	1.0.0.0.0	Mala practica         |
+|Inline styles| 0.1.0.0.0	Estilos en tag html   |
+|#id          | 0.0.1.0.0                         |
+|.class       | 0.0.0.1.0                         |
+|tag etiqueta | 0.0.0.0.1	Etiquetas o selectores|
 
 
-Qué pasa si tenemos un conflicto?
+**Qué pasa si tenemos un conflicto?**      
 Por ejemplo: agregamos varios estilos y ahora tenemos un conflicto que romperá otros estilos, para esto tenemos una etiqueta de html con una clase que juntas su especificidad es 0,0,0,1,1 que es más importante que solo la clase; lo mismo con un id con clase 0.0.1.1.0
 
-https://www.codecaptain.io/tools/css-specificity-calculator
-
-Colocar código CSS para monitorear su especificidad
-nota: tocar la pantalla para refrescar.
-https://jonassebastianohlsson.com/specificity-graph/
-
-Reglas de cascada
-
-Conflicto					
-  en la					
-declaración		
-	|
-	|
- Diferente				Utiliza la declaración
- origen o		---Sí--->	con el origen de mayor
-!important				prioridad
-	|	
-	No
-	|
-¿Tiene algún			Utiliza las
-Inline style?	---Sí--->	Inline declaration
-	|	
-	No
-	|
-¿Los selectores			Utiliza las declaraciones
-  tienen una	---Sí--->	con mayor especificidad 
-especificidad
- diferente?
- Clase o Id
-	|	
-	No
-	|
-Utiliza las declaraciones
-que vienen en su fuente
-	original
+- [CSS Specificity calculator.](https://www.codecaptain.io/tools/css-specificity-calculator)
+- [CSS Specificity Graph Generator - Monitorear su especificidad](https://jonassebastianohlsson.com/specificity-graph/)
+	- Colocar código CSS para monitorear su especificidad
+	- Nota: tocar la pantalla para refrescar.
 
 
+**Reglas de cascada**     
+![Reglas](https://i.postimg.cc/SNp5CH2J/27-reglas-de-cascada.png)
 
-3. Orden en las fuentes (como mandas llamar los estilos o donde colocas el estilo):
-En los estilos, las declaraciones al final del documento anularán a las que sucedan antes en caso de conflicto. Es decir, como CSS es como una cascada, los estilos que siempre se van a aplicar son los que estén hasta abajo reescribiendo los de arriba. También aplica en los .css que mandemos llamar.
+3. Orden en las fuentes (como mandas llamar los estilos o donde colocas el estilo):    
+	En los estilos, las declaraciones al final del documento anularán a las que sucedan antes en caso de conflicto. Es decir, como CSS es como una cascada, los estilos que siempre se van a aplicar son los que estén hasta abajo reescribiendo los de arriba. También aplica en los .css que mandemos llamar.
 
 
-Nota:
-Visual Studio también te ayuda en esto.
-Solo tienes que poner el mouse por encima del selector y te dará la especificad
+📌 Nota: Visual Studio Code también te ayuda en esto.    
+Solo tienes que pasar el mouse por encima del selector y te dará la especificad
 
 
 ## 28. Demo de especificidad y orden en selectores

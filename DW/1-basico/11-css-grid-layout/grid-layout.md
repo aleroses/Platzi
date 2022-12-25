@@ -536,7 +536,7 @@ Las propiedades que tenemos que tener en cuenta para el alineamiento son estas 3
 
 Colores:   
 
-```
+```css
 :root {
   --skin: #f6c09c;
   --background: #ed4042;
@@ -544,7 +544,7 @@ Colores:
   --dark-red: #680524;
   --back: #00243a;
   --white: #fff;
-}```
+}
 ```
 
 **Inspiración:**        
