@@ -370,6 +370,20 @@ for (i = 0; i < frutas.length; i++){
 }
 ```
 
+```js
+/* Otra solución */
+var frutas = ["Manzana", "Pera", "Uva"]
+
+function algo(lista){
+    for(i=0; i < frutas.length; i++){
+        console.log(lista[i]);
+    }
+} 
+
+algo(frutas);
+```
+
+
 #### 4️⃣ Crea una función que pueda recibir cualquier objeto como parámetro e imprima todos sus elementos uno por uno (no se vale imprimir el objeto completo).
 
 🔥 Respuestas:   
@@ -446,9 +460,107 @@ Ahora sí, continúa a la siguiente clase, pero recuerda que **ya no puedes aba
 
 ## 8. Bonus: reducción de condicionales 
 
+🔥 Respuesta ejercicio anterior:      
+```js
+const tipoDeSuscripcion = "Basic";
+
+if (tipoDeSuscripcion === "Free"){
+    console.log("Solo puedes tomar los cursos gratis");
+}else if (tipoDeSuscripcion === "Basic"){
+    console.log("Puedes tomar casi todos los cursos de Platzi durante un mes");
+}else if (tipoDeSuscripcion == "Expert"){
+    console.log("Puedes tomar casi todos los cursos de Platzi durante un año");
+}else {
+    console.log("Tú y alguien más pueden tomar TODOS los cursos de Platzi durante un año");
+}
+```
+
+Solución 01:    
+```js
+function algo(parametro){
+    if (parametro === "Free"){
+        console.log("Solo puedes tomar los cursos gratis");
+        return
+    }
+    if (parametro === "Basic"){
+        console.log("Puedes tomar casi todos los cursos de Platzi durante un mes");
+        return
+
+    }
+    if (parametro == "Expert"){
+        console.log("Puedes tomar casi todos los cursos de Platzi durante un año");
+        return
+    }
+    if (parametro == "ExpertDuo") {
+        console.log("Tú y alguien más pueden tomar TODOS los cursos de Platzi durante un año");
+        return
+    }
+
+    console.warn("Esta suscripción no existe")
+}
+
+algo("ExpertDuo");
+```
+
+Solución 02:      
+```js
+let sub = prompt("Ingrese subscripción: ");
+
+const objeto = {
+    Free: "Solo puedes tomar los cursos gratis",
+    Basic: "Puedes tomar casi todos los cursos de Platzi durante un mes",
+    Expert: "Puedes tomar casi todos los cursos de Platzi durante un año",
+    ExpertDuo: "Tú y alguien más pueden tomar TODOS los cursos de Platzi durante un año",
+}
+
+//objeto.Free
+//objeto['Free']
+//objeto[variable]
+
+function algo(parametro){
+    for (key in parametro){
+        if (key === sub){
+            console.log(parametro[sub])
+            return
+        }
+    }
+    console.warn('Subscripcion erronea...')
+}
+
+algo(objeto)
+```
+
+Solución 03:      
+```js
+let sub = prompt("Ingrese subscripción: ");
+
+const objeto = {
+    Free: "Solo puedes tomar los cursos gratis",
+    Basic: "Puedes tomar casi todos los cursos de Platzi durante un mes",
+    Expert: "Puedes tomar casi todos los cursos de Platzi durante un año",
+    ExpertDuo: "Tú y alguien más pueden tomar TODOS los cursos de Platzi durante un año",
+}
+
+function algo(parametro){
+    if (objeto[parametro]){
+        console.log(objeto[parametro])
+        return
+    }
+    console.warn('error')
+}
+
+algo(sub)
+```
+
+
 🎲
 
 ## Quiz prueba de JavaScript 
+
+
+
+
+
 
 🎲
 
