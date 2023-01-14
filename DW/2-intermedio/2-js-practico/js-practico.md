@@ -2,8 +2,8 @@
 > **Juan David Castro Gallego** / [Course Director, Facultad de Computer Science en Platzi](https://platzi.com/profes/juandc/)        
 **@fjuandc** en Twitter 
 
-[Link al curso](https://platzi.com/cursos/javascript-practico/)
-
+[Link al curso](https://platzi.com/cursos/javascript-practico/)    
+[Apuntes compañeros](https://whip-soil-3b5.notion.site/Nuevo-Curso-Pr-ctico-de-JavaScript-bb1d517f38c64cb4b1c9f64830d4b695)
 
 ## 1. ¿Ya tomaste el Curso Básico de JavaScript?
 
@@ -613,6 +613,12 @@ console.log('Hello world!');
 
 ## 10. Leyendo HTML desde JavaScript  
 
+La forma profesional de leer Código HTML desde JavaScript es crear variables que representen a los selectores de cada uno de los elementos presentes en html a los cuales se desea acceder. Una forma de acceder al código html desde JS es por medio de la función `document.querySelector()`, en el cual dentro de un string le indicamos cual es el selector al cual queremos acceder desde JS.
+
+Con esta función `document.querySelector()` podemos acceder al html desde su etiqueta, clase o id.
+
+Un Ejemplo de esto seria lo siguiente:
+
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -657,6 +663,9 @@ console.log({
 //Ingresar un valor en el input y Copiar en consola
 console.log(input.value);
 ```
+
+✨ Es muy importante no olvidar que `<querySelector>` solo seleccionara al primer elemento que cumpla con lo requerido.  
+Mientras que `<querySelectorAll>` seleccionara a todos los elementos que cumplan con lo requerido.
 
 
 🔥 **Emmet para HTML:**    
