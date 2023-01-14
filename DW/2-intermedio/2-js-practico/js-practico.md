@@ -557,14 +557,167 @@ algo(sub)
 
 ## Quiz prueba de JavaScript 
 
+1. Los ciclos while primero ejecutan y después validan su condicional. Mientras que los ciclos do while primero validan su condición y luego sí ejecutan su bloque de código.
+	- Falso
+
+2. Tienes un condicional `if` dentro de una función. Si tu condicional se cumple, el resto de tu función NO se debe ejecutar. ¿Cómo lo harías?
+	- Agregando un `return;` antes de que termine mi condicional.
+
+3. Tienes el siguiente bloque de código: `console.log("Juanita")`. ¿Qué es `"Juanita"` para la función `console.log`?
+	- Un argumento.
+
+4. ¿Qué palabra reservada usarías para crear una variable que nunca pueda cambiar su valor?
+	- const
+
+🎲
+
+## 9. Cómo conectar JavaScript con HTML
+
+**DOM** (Document Object Model)
+
+El DOM es una representación del documento HTML como un grupo de nodos y objetos. Determinando así la forma en la cual se puede acceder y modificar la estructura, contenido y estilo de un documento HTML. En palabras mas sencillas el DOM le dice a un programa como JavaScript que nodo o parte del HTML esta leyendo (como puede ser un párrafo o un titulo o una sección, etc.) y es el mismo DOM el que modela como un objeto (con sus propiedades y métodos) esa parte del documento. Con JS se accede a esas propiedades y se invoca esos métodos para modificar, eliminar, crear, etc. elementos en una pagina web.
+
+Pueden encontrar una definición formal y mejor estructurada en:  
+[https://developer.mozilla.org/es/docs/Web/API/Document_Object_Model/Introduction](https://developer.mozilla.org/es/docs/Web/API/Document_Object_Model/Introduction)
 
 
+✨ Interfaz de programación en el cual podemos hacer modificaciones, tanto de su estructura, como de su estilo y contenido a algún documento HTML o XML. 
+
+
+Tenemos 2 maneras:      
+ - **Insertar** código JS en HTML usando la etiqueta `<script>` y agregando el código dentro. 
+```html
+<!-- Insertar -->
+<body>
+	<script>
+		console.log('Hello world!');
+	</script>
+</body>
+```
+
+-  **Referenciar** un archivo JS.   
+```html
+<!-- Referenciar -->
+<body>
+	<script src="./script.js"></script>
+</body>
+```
+
+Nombre del archivo: `script.js`   
+```js
+<!-- Contenido -->
+console.log('Hello world!');
+```
+
+🎲
+
+## 10. Leyendo HTML desde JavaScript  
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manipulación de DOM básico</title>
+</head>
+<body>
+    <h1>Manipulación del DOM Básico</h1>
+    <p>Esto es un párrafo</p>
+    <p class="parrafito">Parrafo con Clase</p>
+    <p id="pid">Parrafo con Id</p>
+    <input placeholder="Escribe algo">
+
+    <script src="./9-script.js"></script>
+</body>
+</html>
+```
+
+
+```js
+// h1 { color: red }
+// .parrafito { ... }
+// #pid { ... }
+
+const h1 = document.querySelector('h1');
+const p = document.querySelector('p');
+const parrafito = document.getElementsByClassName('.parrafito'); 👈👀 //.
+const pid = document.getElementById('#pid'); 👈👀 //#
+const input = document.querySelector('input');
+
+console.log({
+    h1,
+    p,
+    parrafito,
+    pid,
+    input,
+});
+
+//Ingresar un valor en el input y Copiar en consola
+console.log(input.value);
+```
+
+
+🔥 **Emmet para HTML:**    
+Si escribes una etiqueta y pegado un `.` (punto) das enter o tab; se vuelve clase.     
+Ejemplo:     
+```html
+<!-- p.parrafo (se convierte en)-->
+<p class="parrafo"></p>
+```
+
+Escribe una etiqueta y pegado un `#` das enter o tab; se vuelve id.    
+Ejemplo:      
+```html
+<!-- p#parrafo (se convierte en)-->
+<p id="parrafo"></p>
+```
+
+Escribe una etiqueta y pegado agregas un `>` más otro etiqueta, podrás tener un etiqueta dentro del mismo:     
+Ejemplo:     
+```html
+<!-- p>p (se convierte en)-->
+<p>
+    <p></p>
+</p>
+```
+
+Escribe una etiqueta y pegado agregas un `+` más otro elemento, podrás tener otro del mismo:      
+Ejemplo:       
+```html
+<!-- p+p  -->
+<p></p>
+<p></p>
+
+<!-- p+h+div (se convierte en)-->
+<p></p>
+<h></h>
+<div></div>
+```
+
+Escribe una etiqueta y pegado agregas un `*` más una cantidad determinada, podrás multiplicar el elemento:  
+Ejemplo:      
+```html
+<!-- div*3  -->
+<div></div>
+<div></div>
+<div></div>
+```
+
+Qué puedo hacer si quiero un div con un id de “plazti”, que dentro tenga 3 div con clase de “platzitos”, con dos h1 y que cada h1 tengan un 5 **p** con clase “párrafo” y que por último cada p tenga un a. ¿Cómo le hago?
+
+**Respuesta:**    
+
+`div#platzi>div.platzitos*3>h1*2>p.parrafo*5>a`
 
 
 
 🎲
 
-🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲
+
+
+🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲
 
 
 
