@@ -1474,15 +1474,18 @@ https://medium.com/sngular-devs/combinadores-en-css-bf117a8c91f5
 
 ## 31. Combinadores: General Sibling
 
-Estructura:
-Hermano general (General sibling)
+### Hermano general (General sibling)
+Se representa por: `~`     
+```css
 div ~ p {
 	...
 }
+```
 
 Este tipo de combinador nos ayuda a seleccionar a los hermanos generales, es decir a los que comparten un mismo padre. Se representa mediante el siguiente símbolo virgulilla: ~ 
 
 Ejemplo:
+```html
 <body>
     <div>
         <h2>Soy un h2</h2>
@@ -1494,16 +1497,19 @@ Ejemplo:
         <p>Soy un p 3</p>        
     </div>
 </body>
+```
+
 En este caso div es el padre y h2 p y h3 son los hermanos generales 
 
-CSS
+```css
 h2 ~ p {
 	color: red;
 }
+```
 
 En este caso va a modificar todas las etiquetas p porque tienen como hermano general un h2
 
-Virgulilla alt + 126 = ~
+Virgulilla alt + 126 = ~     
 https://codigos-ascii.com/equivalencia-tilde-virgulilla/
 
 
