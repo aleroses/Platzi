@@ -1484,7 +1484,7 @@ div ~ p {
 
 Este tipo de combinador nos ayuda a seleccionar a los hermanos generales, es decir a los que comparten un mismo padre. Se representa mediante el siguiente símbolo virgulilla: ~ 
 
-Ejemplo:
+Ejemplo:   
 ```html
 <body>
     <div>
@@ -1507,7 +1507,7 @@ h2 ~ p {
 }
 ```
 
-En este caso va a modificar todas las etiquetas p porque tienen como hermano general un h2
+En este caso va a **modificar todas las etiquetas p** porque tienen como hermano general un h2
 
 Virgulilla alt + 126 = ~     
 https://codigos-ascii.com/equivalencia-tilde-virgulilla/
@@ -1518,15 +1518,18 @@ https://codigos-ascii.com/equivalencia-tilde-virgulilla/
 https://flukeout.github.io/
 https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Selectors/Combinators
 
-Estructura:
-
-Hijo (Child)
+### Hijo (Child)   
+Se representa por: `>`      
+```css
 div > p {
 	...
 }
+```
+
 El padre div que sea mayor a una etiqueta hijo párrafo. Párrafo debe ser "hijo directo" de la etiqueta div.
 
-Ejemplo:
+Ejemplo:    
+```html
 <body>
     <div>
         <article>
@@ -1537,35 +1540,43 @@ Ejemplo:
         </article>
         <section>
             <div>
-                <p>Soy un texto</p> ----> Aquí
+                <p>Soy un texto</p> --> Aquí👈👀
             </div>
         </section>
-        <p>Soy un texto</p> ----> Aquí
+        <p>Soy un texto</p> --> Aquí👈👀
     </div>
 </body>
+```
+
 En este caso tenemos al primer div que es padre directo de un etiqueta p y otro div mas interno que tiene como hijo a otra etiqueta p, a estas etiquetas p se les aplica el estilo requerido.
 
 CSS
+```css
 div > p {
     color: red;
 }
+```
 
 ----------------------
 
-Descendiente (Descendant)
+### Descendiente (Descendant)
+```css
 div p {
 	...
 }
+```
 
 Todas las etiquetas que estén dentro de un contenedor o clase, Usando el html anterior vemos que pinta todos los párrafos.
 
+```css
 div p {
     color: red;
 }
+```
 
 Juego: https://flukeout.github.io/
 
-33. Medidas
+## 33. Medidas
 
 Diapositivas del curso
 https://static.platzi.com/media/public/uploads/slidescss_1a0d5eaf-b5f6-4563-b80c-a073604d9628.pdf
