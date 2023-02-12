@@ -1679,10 +1679,11 @@ En este caso le estamos diciendo que main tenga un tamaño de fuente de 1.5 em =
 
 ## 35. Medidas REM
 
-La más recomendada. Rem SIEMPRE va a tener de referencia a la etiqueta root, en este caso siempre será el html, por lo tanto siempre será igual a 16px.
+La más recomendada. Rem SIEMPRE va a tener de referencia a la etiqueta root, en este caso siempre será el html, por lo tanto siempre será igual a 16px.    
 
 Un truco para usar rem como si fueran pixeles es:
 
+```css
 html{
     font-size: 62.5%;
 }
@@ -1690,76 +1691,83 @@ html{
 p{
     font-size: 1.6rem;
 }
-¿Qué estamos haciendo aquí?
+```
 
-Estamos seteando una dimensión de fuente de 62.5, quiere decir que 1rem va a ser igual SIEMPRE a 10 pixeles. Si quiero 16 pixeles pongo 1.6, si quiero 20 pixeles pongo 2 rem y así sucesivamente.
+¿Qué estamos haciendo aquí?   
 
-Como buenas prácticas debemos usar pixeles para tamaños de fuente y para ciertos tamaños relativos en contendores, por eso usamos rem.
+Estamos seteando una dimensión de fuente de 62.5, quiere decir que 1rem va a ser igual SIEMPRE a 10 pixeles. Si quiero 16 pixeles pongo 1.6, si quiero 20 pixeles pongo 2 rem y así sucesivamente.   
 
-Nota: ¿Cómo se llega al 62.5%?
-Solución: Es una regla de tres simple
-Si para 16px corresponde 100%, para 10px será:
-10px * 100% / 16px = 62.5%
+Como buenas prácticas debemos usar pixeles para tamaños de fuente y para ciertos tamaños relativos en contendores, por eso usamos rem.   
+
+✨ ¿Cómo se llega al 62.5%?   
+Es una regla de tres simple, si para 16px corresponde 100%, para 10px será:    
+`10px * 100% / 16px = 62.5%`
 
 
-Adicional:
+📌 Adicional:   
 En visual studio code hay una extension para convertir pixel a rem. Se llama PX to REM, y lo que tengas en px con el comando ALT GR + Z te coloca en rem las medidas (Yo instalé la de Marco N)
 
 
-36. Max/Min width
+## 36. Max/Min width
 
-/*Para la totalidad de la pantalla*/
+### Viewport width + Viewport height
+
+Para cubrir la totalidad de la pantalla de manera responsive, según el dispositivo usado:  
+
+```css
 main {
-    width: 100vw; --> viewport width (50vw)
-    height: 100vh; --> viewport height (50vh)
+    width: 100vw; --> /*viewport width (50vw)*/
+    height: 100vh; --> /*viewport height (50vh)*/
     background-color: purple;
 }
+```
 
 Esto lo que hace es que el contenedor de main ocupe el 100% del viewport(ventana gráfica) en el width y en el height sin importar el tamaño de la pantalla. Esto nos ayuda a poder darle ciertas dimensiones a contenedores padre como main o sections.
 
 NOTA: 50vw o una medida menor al total de la pantalla ayuda a poder darle ciertas dimensiones a contenedores padre como main o section.
 
-¿Qué es lo que hace el margin 0 auto?
+✨ ¿Qué es lo que hace el margin 0 auto?
 
-De arriba a abajo no le agrega ningún margin pero de izquierda a derecha haz que se ajuste de manera automática, por eso lo centra.
+De arriba a abajo no le agrega ningún margin pero de izquierda a derecha hace que se ajuste de manera automática, por eso lo centra.
 
-Cuando vayamos a utilizar el min y el max en el width necesitamos tener un width base (que casi siempre va a ser en porcentaje).
+### Max/Min width
+
+Cuando vayamos a utilizar el min y el max en el width necesitamos tener un width base (que casi siempre va a ser en porcentaje).   
 
 Básicamente es delimitar su crecimiento colocándole un mínimo y un máximo de expansión en pantallas de  dispositivos diversos.
 
 El height funciona de manera similar solo que sin un porcentaje inicial.
 
-Cuando el texto empieza a salir del section se le llama overflow (Desbordamiento), es decir, tenemos más contenido que el mismo espacio del contenedor padre. Esto se soluciona usando min-height que le dice, la altura mínima que vas a tener es de N px pero si llegas a tener contenido que exceda los Npx crece con el contenido hasta que este deje de crecer.
+Ejemplo:    
 
-section {
-    width: 80%; -> Base
-    min-width: 320px; -> Pone limite al minimizar la pantalla
-    max-width: 500px; -> Limitar el crecimiento a un max de...
-    height: 500px; -> Esto no escala pero el siguiente sí ...
-    min-height: 500px; -> Mínimo de y luego crece si lo necesitas
-    margin: 0 auto; -> Centra el section
-    background-color: red;
-}
-
-Usar esta técnica en el padre del contenido 
-
--------------------
-html
-
+```html
 <body>
     <main>
         <section>
-            <p>
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quas exercitationem iste quae unde dolorum quasi, nihil quod tempore debitis porro? Sequi fugiat vero optio atque nihil, tenetur rerum possimus molestiae?
-            </p>            
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quas exercitationem iste quae unde dolorum quasi, nihil quod tempore debitis porro? Sequi fugiat vero optio atque nihil, tenetur rerum possimus molestiae?
+            Commodi unde vel praesentium, minima aut sequi enim obcaecati aspernatur illo, vitae totam maiores accusantium doloribus natus blanditiis iste deserunt? Reiciendis, ab iusto. Cumque rerum consequuntur, neque corrupti possimus velit.
+            Error ipsa minus at, inventore laudantium exercitationem consequuntur vitae nihil aperiam enim. Adipisci, corporis rem consectetur facilis nulla dolores error libero consequuntur provident neque, optio veniam totam illum, obcaecati iste.
+            Corporis eius deserunt quo laboriosam, harum sequi optio cumque impedit doloremque, illum, veritatis minima similique. Suscipit inventore amet sit sint iusto. Doloribus consequatur fugit, earum itaque quo pariatur cumque esse?
+            Harum, vitae eum minima non tempore vel laudantium, odio iste qui eveniet ipsa, fugiat impedit maiores incidunt tempora corporis soluta quae! Aliquid corrupti est quaerat temporibus fugiat accusantium ducimus assumenda.
+            Voluptatem consequatur assumenda ipsa velit consectetur molestiae vero adipisci aliquid doloremque repudiandae beatae sed repellendus corrupti, molestias rerum pariatur expedita ratione inventore eius dolorem harum quisquam tempore vitae a! Accusantium.
+            Sed aliquam officia perspiciatis corrupti at dignissimos natus illo, minus possimus hic similique quae adipisci? Consectetur eos tempora quidem sint deleniti maiores? Quas labore blanditiis optio enim dolor quaerat doloribus.
+            Consequatur laboriosam molestias illo, velit, assumenda, cum impedit non temporibus expedita sequi perferendis accusamus natus labore quibusdam aut error dolore dolores qui eius sed. Alias asperiores nobis atque minus necessitatibus!</p>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eos recusandae consequatur harum illum, obcaecati nemo? Doloremque minima pariatur quaerat porro facere, saepe, tenetur ratione maxime sint, dolore reprehenderit ut hic.
+            Distinctio ipsum sequi inventore quisquam, quasi ad repellat, ipsam quaerat, officiis magni vitae sunt similique asperiores! Praesentium rem repellat ratione. Quis, repellat omnis repellendus nam laudantium voluptate! Dolorum, doloribus provident?
+            Enim sint quaerat expedita asperiores aspernatur doloremque esse sapiente explicabo alias? Maxime rem laborum at, odit a quisquam eveniet delectus dolores quas assumenda aliquam veniam eligendi. Quae quidem corporis quas.
+            Recusandae explicabo necessitatibus ullam? Enim sit expedita voluptates, deleniti deserunt dolore? Recusandae aperiam accusamus dicta nemo facere necessitatibus autem culpa soluta ab illo voluptate quaerat, ipsam pariatur et ratione. Assumenda!
+            Fuga totam sapiente ea laudantium dolorum libero magni corrupti ratione quis consequuntur nemo maxime voluptates officia, id sint, maiores ab laboriosam quae sunt voluptatem tempora est repellat fugiat. Rem, facere?
+            Debitis vitae natus ad, itaque ex totam molestiae non repellat esse nihil repudiandae nam est deserunt velit labore iusto. Accusamus illum ratione quibusdam iste fuga facilis id incidunt nobis rem.
+            Iusto asperiores ex similique rem beatae commodi atque recusandae, necessitatibus cupiditate, itaque dicta aut! Ex eius aspernatur ut eos ab consequatur minus esse architecto, nostrum illo quos porro tempora ad.
+            Quae optio numquam atque officiis obcaecati nisi nulla quaerat dolorum! A iusto non quidem, praesentium aperiam ea esse obcaecati perspiciatis harum soluta totam blanditiis distinctio, placeat ullam error quaerat earum!</p>
         </section>
     </main>
 </body>
+```
 
+Cuando el texto empieza a salir del section se le llama overflow (Desbordamiento), es decir, tenemos más contenido que el mismo espacio del contenedor padre. Esto se soluciona usando min-height que le dice, la altura mínima que vas a tener es de N px pero si llegas a tener contenido que exceda los Npx crece con el contenido hasta que este deje de crecer.
 
------
-css
-
+```css
 * {
     box-sizing: border-box;
     margin: 0;
@@ -1767,23 +1775,26 @@ css
 }
 
 main {
-    width: 100vw; -> 50vw
-    height: 100vh; -> 50vh
+    width: 100vw;
+    height: 100vh;
     background-color: purple;
 }
 
 section {
-    width: 80%;
-    min-width: 320px;
-    max-width: 500px;
-    min-height: 600px; /*Para evitar el overflow*/
-    height: 500px; /*No va*/
-    margin: 0 auto;
+    width: 80%; -> /*Base*/
+    min-width: 320px; -> /*Pone limite al minimizar la pantalla*/
+    max-width: 500px; -> /*Limitar el crecimiento a un max de...*/
+    /*height: 500px; -> Esto no escala pero el siguiente sí ...*/
+    min-height: 500px; -> /*Mínimo de y luego crece si lo necesitas*/
+    margin: 0 auto; -> /*Centra el section*/
     background-color: red;
 }
+```
+
+Usar esta técnica en el padre del contenido 
 
 
-37. Position
+## 37. Position
 
 https://css-tricks.com/snippets/css/a-guide-to-flexbox/
 https://flexboxfroggy.com/#es
