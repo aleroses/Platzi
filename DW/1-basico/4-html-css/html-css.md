@@ -1703,6 +1703,7 @@ Como buenas prácticas debemos usar pixeles para tamaños de fuente y para ciert
 Es una regla de tres simple, si para 16px corresponde 100%, para 10px será:    
 `10px * 100% / 16px = 62.5%`
 
+![em vs rem](https://i.postimg.cc/rpMhJvjP/35-medidas-rem.png)
 
 📌 Adicional:   
 En visual studio code hay una extension para convertir pixel a rem. Se llama PX to REM, y lo que tengas en px con el comando ALT GR + Z te coloca en rem las medidas (Yo instalé la de Marco N)
@@ -1796,32 +1797,24 @@ Usar esta técnica en el padre del contenido
 
 ## 37. Position
 
-https://css-tricks.com/snippets/css/a-guide-to-flexbox/
-https://flexboxfroggy.com/#es
+Es la forma en la que podemos posicionar los contenedores, las cajas, las etiquetas, etc.
 
-Forma en la que podemos posicionar los contenedores, las cajas, las etiquetas.
+### Valores de position
 
-Valores de position
-- Static: 
-Posición por defecto de los elementos, conservan la posición y espacio de donde son colocados (estáticos). No se puede usar top, right, bottom y left en esta posición.
+- **Static:** Posición por defecto de los elementos, conservan la posición y espacio de donde son colocados (estáticos). No se puede usar top, right, bottom y left en esta posición.
 
-- Absolute: 
-Permanecen en la posición de donde fueron colocados pero pierden su espacio físico (se sobreponen a los elementos que ocupan dicho espacio), se los puede posicionar mediante las propiedades top, right, bottom y left.
+- **Absolute:** Permanecen en la posición de donde fueron colocados pero pierden su espacio físico (se sobreponen a los elementos que ocupan dicho espacio), se los puede posicionar mediante las propiedades top, right, bottom y left.
 
-- Importante: 
-Al aplicar las propiedades top, right, bottom y left se tomará de referencia al contenedor más cercano con posición relativa.
+- **Importante:** Al aplicar las propiedades top, right, bottom y left se tomará de referencia al contenedor más cercano con posición relativa.
 
-- Relative: -> Es Usable
-Conservan su posición original y espacio físico pero se los puede posicionar mediante las propiedades top, right, bottom y left sin perder dicho espacio físico.
+- **Relative:** Es Usable.✨ Conservan su posición original y espacio físico pero se los puede posicionar mediante las propiedades top, right, bottom y left sin perder dicho espacio físico.
 
-- Fixed: 
-Pierden su espacio físico y permanecen de forma fija (siguen el scroll, se colocan al lado izquierdo del viewport), se los puede posicionar mediante las propiedades de top, right, bottom y left.
+- **Fixed:** Pierden su espacio físico y permanecen de forma fija (siguen el scroll, se colocan al lado izquierdo del viewport), se los puede posicionar mediante las propiedades de top, right, bottom y left.
 
-- Sticky: 
-Conservan su espacio físico pero cuando el scroll los alcanza lo siguen (sin perder dicho espacio físico), es muy usado para barras de navegación y se lo puede posicionar con las propiedades top, right, bottom y left.
-
+- **Sticky:** Conservan su espacio físico pero cuando el scroll los alcanza lo siguen (sin perder dicho espacio físico), es muy usado para barras de navegación y se lo puede posicionar con las propiedades top, right, bottom y left.
 
 Ejemplo position static:
+```html
 <body>
     <div class="parent">
         <div class="box" id="one">1</div>
@@ -1830,8 +1823,10 @@ Ejemplo position static:
         <div class="box" id="four">4</div>
     </div>
 </body>
+```
 
 CSS
+```css
 * {
     box-sizing: border-box;
     margin: 0;
@@ -1839,146 +1834,165 @@ CSS
 }
 .parent {
     border: 2px aqua dotted;
-    display: inline-block;
+    display: inline-block; /*se posiciona en fila*/
 }
 .box {
-    display: inline-block;
+    display: inline-block; /*se posiciona en fila*/
     background-color: red;
     width: 100px;
     height: 100px;
 }
 #two {
     background-color: orange;
+    position: relative;
+    bottom: 15px;
+}
+```
+
+Guía sobre Position: https://www.youtube.com/watch?v=BVIdzytAtkg
+
+📌 Nota: La propiedad top permite desplazar un elemento respecto a su posición original tomando como referencia el borde superior del elemento. Por su propia definición, esta propiedad sólo afecta a los elementos cuya propiedad position tenga un valor de relative , absolute o fixed .
+
+Mas sobre Top: https://uniwebsidad.com/libros/referencia-css2/top#:~:text=La%20propiedad%20top%20permite%20desplazar,de%20relative%20%2C%20absolute%20o%20fixed%20.
+
+Guía completa de Flexbox: https://css-tricks.com/snippets/css/a-guide-to-flexbox/
+Juego: https://flexboxfroggy.com/#es
+
+## 38. Display
+
+**display: block;** Por default la etiqueta p (párrafo) y el div vienen con display: block, esto quiere decir que va a usar el 100% del espacio que tenga a su costado sin importar si el contenido tiene o no espacio (Se va apilando bloque sobre bloque o etiqueta sobre etiqueta). Así sea solo una letra.
+
+**display: inline;** Hay etiquetas como span (que puede ser comodín de p) que no tienen display: block, si no que por defecto se juntan en una sola línea (una al costado del otro). 
+
+📌 NOTA: A los elementos inline no se les puede agregar margin ni padding en la parte de arriba y en la de abajo pero si a los costados, y tampoco se puede manipular el width y el height de los elementos.
+
+**display: inline-block;** La etiqueta ul por defecto también es block pero la podemos modificar usando inline-block: que es como una fusión de lo mejor de los dos anteriores, a diferencia de inline, este si puede modificar los valores que el otro no podía. Hacen que ocupe el 100% del tamaño del contenido y si hay espacio permite que otros hermanos se coloquen al costado y si no hay espacio se bajan (inline), permite agregar margin y padding arriba y abajo, además de permitir manipular el height y el width (block).
+
+**display: list-item;** Las etiquetas li trae por default list-item que quiere decir que son elementos de una lista y que tienen que mostrarse de forma vertical de arriba hacia abajo. Aún así las etiquetas li se comportan como un elemento block
+
+Ejemplo:   
+```html
+<body>
+    <!--Block-->
+    <div class="block-element">Etiqueta Div</div>
+    <p class="block-element">Etiqueta parrafo</p>
+    <div class="block-element">
+        <p class="parrafo">Texto</p>
+        <p class="parrafo">Texto</p>
+        <p class="parrafo">Texto</p>
+    </div>
+
+    <!--Inline-->
+    <span>Soy una etiqueta span</span>
+    <span>Soy una etiqueta span</span>
+
+    <!--Inline-block-->
+    <ul class="nav">
+        
+        <li>Home</li>
+        <li>Cursos</li>
+        <li>Instructores</li>
+        <li>Blog</li>
+    </ul>
+</body>
+```
+
+```css
+.block-element {
+    background-color: green;
+    margin: 10px;
+    padding: 20px;
 }
 
+.nav {
+    background-color: peachpuff;
+    padding: 20px;
+    list-style: none;
+    text-align: center;
+}
+.nav li {
+    display: inline-block;
+    font-size: 20px;
+    margin: 10px 0;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+```
 
-Guía 
-https://www.youtube.com/watch?v=BVIdzytAtkg
+🎉Resumen:🎊   
+**inline:** El elemento no comienza en una nueva línea y solo ocupa el ancho que requiere. No puede establecer el ancho o el alto.   
 
+**inline-block** Tiene el mismo formato que el elemento en línea, donde no comienza en una nueva línea. PERO, puede establecer valores de ancho y alto.   
 
-Nota: 
-La propiedad top permite desplazar un elemento respecto a su posición original tomando como referencia el borde superior del elemento. Por su propia definición, esta propiedad sólo afecta a los elementos cuya propiedad position tenga un valor de relative , absolute o fixed .
+**block:** El elemento comenzará en una nueva línea y ocupará todo el ancho disponible. Y puede establecer valores de ancho y alto.   
 
-https://uniwebsidad.com/libros/referencia-css2/top#:~:text=La%20propiedad%20top%20permite%20desplazar,de%20relative%20%2C%20absolute%20o%20fixed%20.
-
-
-38. Display
-
-display: block;
-Por default la etiqueta p (párrafo) y el div vienen con display: block, esto quiere decir que va a usar el 100% del espacio que tenga a su costado sin importar si el contenido tiene o no espacio (Se va apilando bloque sobre bloque o etiqueta sobre etiqueta). Así sea solo una letra.
-
-display: inline;
-Hay etiquetas como span (que puede ser comodín de p) que no tienen display: block, si no que por defecto se juntan en una sola línea (una al costado del otro). 
-
-NOTA: A los elementos inline no se les puede agregar ni margin ni padding en la parte de arriba y en la de abajo pero si a los costados, y tampoco se puede manipular el width y el height de los elementos.
-
-display: inline-block;
-La etiqueta ul por defecto también es block pero la podemos modificar usando inline-block: que es como una fusión de lo mejor de los dos anteriores, a diferencia de inline, este si puede modificar los valores que el otro no podía.
-Hacen que ocupe el 100% del tamaño del contenido y si hay espacio permite que otros hermanos se coloquen al costado y si no hay espacio se bajan (inline), permite agregar margin y padding arriba y abajo, además de permitir manipular el height y el width (block).
-
-display: list-item;
-Las etiquetas li trae por default list-item que quiere decir que son elementos de una lista y que tienen que mostrarse de forma vertical de arriba hacia abajo. Aún así las etiquetas li se comportan como un elemento block
+![Display](https://i.postimg.cc/gchhDdkc/38-Display1.png)
 
 
-Resumen:
-inline:
-El elemento no comienza en una nueva línea y solo ocupa el ancho que requiere. No puede establecer el ancho o el alto.
-
-inline-block
-Tiene el mismo formato que el elemento en línea, donde no comienza en una nueva línea. PERO, puede establecer valores de ancho y alto.
-
-block
-El elemento comenzará en una nueva línea y ocupará todo el ancho disponible. Y puede establecer valores de ancho y alto
+## 39. Desafío: layout
 
 
-39. Desafío: layout
+## 40. Display Flex
 
+Ayuda a posicionar y manipular contenedores de forma responsive (más flexible). SIEMPRE debemos tener un container principal para usar flex.
 
-40. Display Flex
+**Display: flex;** Al aplicarlo en el contenedor principal muestra a cada uno de sus hijos al costado del otro (en fila-row).   
 
-Ayuda a posicionar y manipular contenedores de forma responsive (más flexible). 
-SIEMPRE debemos tener un container principal para usar flex.
+A pesar de haberle aplicado Display: flex; al padre contenedor sus hijos siguen siendo block.   
 
-Display: flex;
-Al aplicarlo  en el contenedor principal muestra a cada uno de sus hijos al costado del otro (en fila-row).
-
-A pesar de haberle aplicado Display: flex; al padre contenedor sus hijos siguen siendo block.
-
-Por defecto al aplicar flex los hijos se acomodan en row (fila) pero esto se puede modificar:
+Por defecto al aplicar flex los hijos se acomodan en row (fila) pero esto se puede modificar:   
 - flex-direction: column;
 - flex-direction: column-reverse;
 - flex-direction: row-reverse;
 
-Siempre debemos tener un contenedor principal para utilizar flex y ese contenedor principal va a tener display flex que ayuda a cambiar las cosas.
+Siempre debemos tener un contenedor principal para utilizar flex y ese contenedor principal va a tener display flex que ayuda a cambiar las cosas.   
 
-flex-wrap: wrap;
-Hace que al hacer la pantalla mas pequeña y al no tener espacio, los bloques se van acomodando de manera automática. Al usar wrap no debemos preocuparnos por la altura o ancho del contenedor, ya que se van generando según se necesiten.
+**flex-wrap: wrap;** Hace que al hacer la pantalla mas pequeña y al no tener espacio, los bloques se van acomodando de manera automática. Al usar wrap no debemos preocuparnos por la altura o ancho del contenedor, ya que se van generando según se necesiten.   
 
-flex-wrap: wrap-reverse;
-Lo mismo pero ésta vez se mueve al revés. 
+**flex-wrap: wrap-reverse;** Lo mismo pero ésta vez se mueve al revés.   
 
-Justify-content: center;
-Nos ayuda a alinear el contenido de forma horizontal (centrado).
-Esto lo podemos combinar con flex-wrap: wrap;
+**Justify-content: center;** Nos ayuda a alinear el contenido de forma horizontal (centrado). Esto lo podemos combinar con **flex-wrap: wrap;**  
 
-Otros:
-Justify-content: flex-end; 
-Alineado a la derecha 
+📑 Otros:   
+- **Justify-content: flex-end;** Alineado a la derecha 
+- **justify-content: flex-start;** Viene por defecto alineado hacia la izquierda
+- **justify-content: space-around;** Al aplicar flex-start y de quedar espacio vacío a la derecha, space-around divide este espacio vacío entre cada uno de los contenedores generando una separación automática. Pero no es perfecto así que aplicamos:
+- **justify-content: space-evenly;** Y así nos aseguramos que el espacio entre cada bloque sea el mismo de inicio a fin.
 
-justify-content: flex-start;
-Viene por defecto alineado hacia la izquierda
+### Mini guía de flexbox: [[display-flex]]
 
-justify-content: space-around; 
-Al aplicar flex-start y de quedar espacio vacio a la derecha, space-around divide este espacio vacio entre cada uno de los contenedores generando una separación automática. Pero no es perfecto así que aplicamos:
+Propiedades en contenedores padre:    
+**display: flex;**   
+`flex-direction: row | column | row-reverse | column-reverse`   
+`flex-wrap: row wrap | wrap | wrap-reverse`   
 
-justify-content: space-evenly; 
-Y así nos aseguramos que el espacio entre cada bloque sea el mismo de inicio a fin.
+Esta siguiente propiedad es un atajo para escribir el flex-direction y el flex-wrap en una sola línea de código:   
+`flex-flow: Primero escribes dirección | Luego escribes flex-wrap`  
 
+Posicionar horizontal:    
+`justify-content: flex-star | flex-end | center | space-around | space-between`
 
+Posicionar manera vertical:   
+`align-items: flex-star | flex-end | center | stretch | baseline`   
 
+`align-content: flex-star | flex-end | center | stretch | space-around | space-between` “Align-content solo se utiliza varias filas de elementos, pero si es una sola línea usamos align-items”
 
+Propiedades en elemento hijo:   
+`order: ;` Esto se utiliza para cambiar el orden de nuestros elementos sin cambiar el orden real semántico y correcto de html. Sencillamente colocando números.    
 
+`align-self: align-items: flex-star | flex-end | center | stretch | baseline` “Muy importante, si en el padre del elemento tiene declarado flex-direction: row; esta propiedad lo acomodara verticalmente. Y si es flex-direction: column lo ordenara horizontalmente”
 
+![justify-content](https://i.postimg.cc/50VKbnRz/40-Display-Flex-justify-content.gif)
 
-Mini guía de flexbox:
-
-Propiedades en contenedores padre:
-display: flex;
-flex-direction: row | column | row-reverse | column-reverse
-flex-wrap: row wrap | wrap | wrap-reverse
-
-Esta siguiente propiedad es un atajo para escribir el flex-direction y el flex-wrap en una sola línea de código
-flex-flow: Primero escribes dirección | Luego escribes flex-wrap
-
-Posicionar horizontal
-justify-content: flex-star | flex-end | center | space-around | space-between
-
-Posicionar manera vertical
-align-items: flex-star | flex-end | center | stretch | baseline
-
-align-content: flex-star | flex-end | center | stretch | space-around | space-between “Align-content solo se utiliza varias filas de elementos, pero si es una sola línea usamos align-items”
-
-Propiedades en elemento hijo
-order: ; Esto se utiliza para cambiar el orden de nuestros elementos sin cambiar el orden real semántico y correcto de html. Sencillamente colocando números.
-
-align-self: align-items: flex-star | flex-end | center | stretch | baseline “Muy importante, si en el padre del elemento tiene declarado flex-direction: row; esta propiedad lo acomodara verticalmente. Y si es flex-direction: column lo ordenara horizontalmente”
-
-
-41. Flexbox layouts
-
-Juego:
-https://flexboxfroggy.com/#es
-https://codepen.io/yair-lira/pen/LYZVJdd
-
+## 41. Flexbox layouts
 
 Flex es un tipo de display que permite que el contenedor padre sea flexible a los cambios que puedan tener los elementos hijos en su alineación.
 
 Una vez tengamos el elemento padre con display: flex tenemos otras propiedades que podremos usar para nuestro beneficio.
 
-- Flex-direction: Te permite elegir la alineación de los elementos hijos sea en vertical (column) u horizontal (row), esta alineación viene por defecto.
+- **Flex-direction:** Te permite elegir la alineación de los elementos hijos sea en vertical (column) u horizontal (row), esta alineación viene por defecto.
 
-- Justify-content: Esta propiedad nos permite alinear el contenido de forma horizontal
-Valores:
+- **Justify-content:** Esta propiedad nos permite alinear el contenido de forma horizontal. Valores:   
 	- Flex-start: Alinear items del flex desde el comienzo.
 	- Flex-end: Alinear items desde el final.
 	- Center: Alinear items en el centro del contenedor.
@@ -1986,53 +2000,57 @@ Valores:
 	- Space-around: Distribuir items uniformemente, estos tienen el mismo espacio a su alrededor.
 	- Space-evenly: Distribuye uniformemente el espacio entre los items y su alrededor.
 
-- Align-items: Sirve para alinear los elementos hijos de forma vertical.
-Valores:
+- **Align-items:** Sirve para alinear los elementos hijos de forma vertical. Valores:   
 	- Flex-start: Se alinean desde arriba.
 	- Flex-end: Se alinean desde abajo.
 	- Center: Alinea los item al centro del eje y del contenedor.
 	- Stretch: Estira el alto de los elementos hijos al 100% del alto del elemento padre.
 	- Baseline: Escala el alto del elemento al tamaño de su contenido.
 
-- Flex-wrap: Permite que un elemento cuyo tamaño sea mayor al de la página haga un salto de línea sin salirse del contenedor, pues este se agranda.
+- **Flex-wrap:** Permite que un elemento cuyo tamaño sea mayor al de la página haga un salto de línea sin salirse del contenedor, pues este se agranda.
 
-- Order: Especifica el orden utilizado para disponer los elementos en su contenedor flexible. Los elementos estarán dispuestos en orden ascendente según el valor de order.
+- **Order:** Especifica el orden utilizado para disponer los elementos en su contenedor flexible. Los elementos estarán dispuestos en orden ascendente según el valor de order.
 
-- Flex-grow: Especifica qué cantidad del espacio restante dentro del contenedor flexible, debería ocupar el ítem en cuestión según su dirección principal, esta última determinada por flex-direction.
+- **Flex-grow:** Especifica qué cantidad del espacio restante dentro del contenedor flexible, debería ocupar el ítem en cuestión según su dirección principal, esta última determinada por flex-direction.
 
-- Flex-basis: Especifica el tamaño inicial de un elemento flexible.
+- **Flex-basis:** Especifica el tamaño inicial de un elemento flexible.
 
+Juego para aprender Flexbox: https://flexboxfroggy.com/#es   
+Ejemplos: https://codepen.io/yair-lira/pen/LYZVJdd   
 
-42. Variables
+## 42. Variables
 
-Es posible usar variables en CSS en donde podemos guardar un valor que podemos reutilizar en nuestros estilos, así evitamos escribir código repetido.
+Es posible usar variables en CSS en donde podemos guardar un valor que podemos reutilizar en nuestros estilos, así evitamos escribir código repetido.   
 
-Lo hacemos mediante:
+Lo hacemos mediante:   
+`:root{}` → Que siempre hace referencia a nuestro html. Aquí es donde se declararán variables.
 
-:root{} → Que siempre hace referencia a nuestro html. Aquí es donde se declararán variables.
-
-Declaración de variables:
+Declaración de variables:    
+```css
 :root {
     --primary-color: #003476;
     --secundary-color: #b4d2f7;
     --header-size: 4rem;
     --font: 1.8rem;
 }
+```
 
-Llamado de variables:
+Llamado de variables:    
+```css
 header {
     width: 100vw;
     height: 15vh;
     background-color: var(--primary-color);
 }
+```
 
-https://fonts.google.com/icons?selected=Material+Icons
+Iconos: https://fonts.google.com/icons?selected=Material+Icons
 
-https://fontawesome.com/
+Mas Iconos: https://fontawesome.com/
 
-https://fonts.google.com/
+Fuentes: https://fonts.google.com/
 
-https://developer.mozilla.org/en-US/docs/Web/CSS/font-family
+Familias tipográficas: https://developer.mozilla.org/en-US/docs/Web/CSS/font-family
 
 
 43. Web fonts
