@@ -1574,56 +1574,60 @@ div p {
 }
 ```
 
-Juego: https://flukeout.github.io/
+Juego Type Selector: https://flukeout.github.io/     
+Resumen: [[type-selector]]     
+
 
 ## 33. Medidas
 
-Diapositivas del curso
-https://static.platzi.com/media/public/uploads/slidescss_1a0d5eaf-b5f6-4563-b80c-a073604d9628.pdf
-
-Tenemos 2 tipos de medidas las Absolutas y las Relativas.
+Tenemos 2 tipos de medidas las **Absolutas** y las **Relativas**.
 
 Las absolutas son aquellas que se especifican en px y estas siempre tendrán ese valor, se vean en la pantalla que se vean.
 En medida de lo posible es mejor trabajar con medidas relativas, además de que al hacer Responsive Design nos sera mas flexible el sitio para modificar a nuestro gusto.
 
----
-Absolutas vs Relativas
-
-Medidas Absolutas: 
+### Medidas Absolutas: 
 No cambian sin importar el tamaño de la pantalla dónde estemos viendo el proyecto.
 
-mm=milimetros.
-cm=centimetros.
-in=pulgada.
-pc=picas.
-px=pixel.
+- mm=milímetros.
+- cm=centímetros.
+- in=pulgada.
+- pc=picas.
+- px=pixel.
 
-Medidas Relativas: 
+### Medidas Relativas: 
 Estás si cambian dependiendo de la pantalla del dispositivo.
 
-% = Porcentaje 
-em = elemento.
-rem = root em (elemento).
-width y height (min y max): también son relativas porque varían dependiendo del tamaño de la pantalla en relación con la posición en la que se encuentra en ese momento.
-vw y vh = viewport width y viewport height.
+- % = Porcentaje 
+- em = elemento.
+- rem = root em (elemento).
+- width y height (min y max): también son relativas porque varían dependiendo del tamaño de la pantalla en relación con la posición en la que se encuentra en ese momento.
+- vw y vh = viewport width y viewport height.
 
 Cuando se genera un scroll se le llama overflow que como pudiste adivinar NO ES BUENA PRACTICA. Es importante hacerlo flexible.
 
+```html
+<body>
+    <main>
+        <p>Hola soy un texto ejemplo para la clase</p>
+    </main>
+</body>
+```
+
+```css
 main {
     background-color: red;
     width: 600px;
     height: 50%;
 }
+```
 
 
-34. Medidas EM
+## 34. Medidas EM
 
-em es un acrónimo de elemento y lo que hace es tomar el tamaño de fuente que tenga el "padre directo". Es decir, 1em= 16 pixeles que vienen por defecto en HTML, pero si cambio el tamaño de main (padre) se modifica el valor de em (en el hijo), que ahora valdrá el valor asignado al main. 
+**em** es un acrónimo de elemento y lo que hace es tomar el tamaño de fuente que tenga el "padre directo". Es decir, 1em= 16 pixeles que vienen por defecto en HTML, pero si cambio el tamaño de main (padre) se modifica el valor de em (en el hijo), que ahora valdrá el valor asignado al main. 
 
-Ejemplo1:
-font-size: 20px (en el padre) hará que ahora 1em sea = a 20px (en el hijo) porque toma el tamaño del "padre directo".
-
-Ejemplo2:
+Ejemplo1:   
+```html
 <body>
     <main class="text-container">
         <p>Soy texto ejemplo</p>
@@ -1632,32 +1636,48 @@ Ejemplo2:
         </div>
     </main>
 </body>
+```
 
-CSS:
+```css
+body {
+  font-size: 20px;
+}
+.text-container {
+  font-size: 1em;
+}
+``` 
+
+Si antes el body tomaba el tamaño del html = 16px, con este cambio  el tamaño de 1em será = 20px (en el hijo) porque toma el tamaño del "padre directo". En el inspector de elementos veremos las medidas iguales en padre e hijo. Así que si le coloco a main un valor de 20px y luego al párrafo le digo que sea 1em, el valor que tome serán los 20px heredados del main padre.
+
+Ejemplo2:
+```html
+<body>
+    <main class="text-container">
+        <p>Soy texto ejemplo</p>
+        <div>
+            <p>Soy otro texto ejemplo</p>
+        </div>
+    </main>
+</body>
+```
+
+```css
 .text-container { 
     font-size: 1.5em;
-}----> main que hace que el párrafo en el navegador valga lo mismo porque le heredó su valor al ser hijo directo.
+}
+```
 
 En este caso le estamos diciendo que main tenga un tamaño de fuente de 1.5 em = 24 pixeles (regla de 3) este valor se hereda a las etiquetas hijos.
 
-Si le coloco a main un valor de 20px y luego al párrafo le digo que sea 1em, el valor que tome serán los 20px heredados del main padre.
-
-Ejemplo3:
-body {
-    font-size: 20px;
-}
-
-.text-container {
-    font-size: 1em;
-}
-
-En el inspector de elementos veremos las medidas iguales en padre e hijo
+|16px|1em  |
+|----|-----|
+|`24px`|1.5em|
 
 
-Hay que tener cuidado donde utilizamos em por lo que no es de las mejores medidas, ya que se puede comportar como una bola de nieve.
+📌 Debemos tener cuidado donde utilizamos em por lo que no es de las mejores medidas, ya que se puede comportar como una bola de nieve.
 
 
-35. Medidas REM
+## 35. Medidas REM
 
 La más recomendada. Rem SIEMPRE va a tener de referencia a la etiqueta root, en este caso siempre será el html, por lo tanto siempre será igual a 16px.
 

@@ -1,5 +1,7 @@
 # CSS Dinner 
 
+[Juega aquí]([https://flukeout.github.io/](https://flukeout.github.io/))
+
 ## 1. Select the plates
 
 ```css
@@ -103,15 +105,79 @@ Answer: `apple.small`
 
 Answer: `orange.small`
 
+## 8. Select the small oranges in the bentos
 
+```css
+<div class="table">
+  <bento>
+    <orange />
+  </bento>
+  <orange class="small" />
+  <bento>
+    <orange class="small" />
+  </bento>
+  <bento>
+    <apple class="small" />
+  </bento>
+  <bento>
+    <orange class="small" />
+  </bento>
+</div>
+``` 
+
+Answer: `bento orange.small`
 
 ```css
 ``` 
-6 
-7 
-8 bento orange.small  
-9 plate, bento  
-10 *  
+
+## 9. Select all the plates and bentos
+
+```css
+<div class="table">
+  <pickle class="small" />
+  <pickle />
+  <plate>
+    <pickle />
+  </plate>
+  <bento>
+    <pickle />
+  </bento>
+  <plate>
+    <pickle />
+  </plate>
+  <pickle />
+  <pickle class="small" />
+</div>
+``` 
+
+Answer: `plate, bento`
+
+## 10. Select all the things!
+
+```css
+<div class="table">
+  <apple />
+  <plate>
+    <orange class="small" />
+  </plate>
+  <bento />
+  <bento>
+    <orange />
+  </bento>
+  <plate id="fancy" />
+</div>
+``` 
+
+Answer: `*`
+
+
+---
+```css
+``` 
+
+Answer: `xx`
+
+
 11 plate *  
 12 plate +apple  
 13 bento ~ pickle  
