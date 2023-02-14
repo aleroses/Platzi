@@ -704,6 +704,8 @@ Si queremos conectar el repositorio de GitHub con nuestro repositorio local, el 
 1. Traer la versión del repositorio remoto y hacer merge para crear un commit con los archivos de ambas partes. Podemos usar `git fetch` y `git merge` o solo:   
 	- `git pull origin master --allow-unrelated-histories`
 		-  Control + shift + zz
+		- Alt + shift + zz
+		- Esc + shift + zz
 1. Por ultimo, hacer `git push` para enviar y guardar los cambios de nuestro repositorio local en GitHub:   
 	- `git push origin master`  
 

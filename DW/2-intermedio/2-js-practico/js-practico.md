@@ -660,6 +660,8 @@ console.log({
     input,
 });
 
+console.log(h1);
+console.log(h1.value);
 //Ingresar un valor en el input y Copiar en consola
 console.log(input.value);
 ```
@@ -720,10 +722,143 @@ Qué puedo hacer si quiero un div con un id de “plazti”, que dentro tenga 3 
 
 `div#platzi>div.platzitos*3>h1*2>p.parrafo*5>a`
 
-
-
 🎲
 
+## 11. Escribiendo HTML desde JavaScript
+
+La interfaz Document representa cualquier página web cargada en el navegador y sirve como punto de entrada al contenido de la página web, que es el árbol DOM. El árbol DOM incluye elementos como `<body>` y `<table>`, entre muchos otros. Proporciona funcionalidad globalmente al documento, como obtener la URL de la página y crear nuevos elementos en el documento.
+
+Existen varios métodos de Document que servirán para acceder a los elementos del DOM:
+
+1. `querySelector:` Es un método de Document que regresa el primer elemento dentro del documento que coincide con el selector o grupo de selectores especificado. Si no se encuentran coincidencias, regresa null.
+2. `getElementsByClassName:` regresa un objeto similar a una matriz con todos los elementos secundarios que tienen todos los nombres de clase dados.
+3. `getElementById:` Devuelve una referencia al elemento por su id.
+4. `document.createElement:` crea el elemento HTML especificado por la etiqueta, o un HTMLUnknownElement si no se reconoce la etiqueta.
+
+Y algunos métodos de la interfaz Element:
+
+1.  `elemento.innerHTML:` La propiedad Element.innerHTML devuelve o establece la sintaxis HTML describiendo los descendientes del elemento. Al establecerse se reemplaza la sintaxis HTML del elemento por la nueva. (Permite modificar el contenido html del elemento, lo que puede ser peligroso, porque literalmente, se está modificando el HTML)
+
+Inserta código HTML en tu HTML
+
+```js
+//Sintaxis:
+elemento.innerHTML = 'Nuevo texto';
+```
+
+2.  `elemento.innerText:` representa el contenido de texto renderizado de un nodo y sus descendientes. Como getter, se aproxima al texto que el usuario obtendría si resaltara el contenido del elemento con el cursor y luego lo copiara en el portapapeles. Como setter, esto reemplazará a los hijos del elemento con el valor dado, convirtiendo cualquier salto de línea en elementos `<br>`.
+3.  `elemento.getAttribute:` devuelve el valor del atributo especificado en el elemento. Si el atributo especificado no existe, el valor retornado puede ser tanto null como “”
+4.  `elemento.setAttribute:` Establece el valor de un atributo en el elemento indicado. Si el atributo ya existe, el valor es actualizado, en caso contrario, el nuevo atributo es añadido con el nombre y valor indicado.
+5.  `elemento.rreplaceChldren:` remplaza los elementos secundarios existentes de un nodo con un nuevo conjunto específico de elementos secundarios. Estos pueden ser objetos de cadena o de nodo.
+6.  `elemento.append:` inserta un conjunto de objetos de nodo u objetos de cadena después del último elemento secundario del elemento. Los objetos de cadena se insertan como nodos de texto equivalentes.
+
+Son los métodos de las interfaces mencionadas hasta el momento. Dale corazón para que este aporte suba y les ayude a más personas.
+
+
+## Escribir HTML desde Javascript
+
+### 1. innerHTML
+
+#### 
+
+### 2. innerText
+
+#### Inserta Texto plano en tu HTML
+
+```js
+//Sintaxi:
+elemento.innerText = 'Nuevo texto';
+```
+
+### 3. getAttribute()
+
+#### Lee el valor de un atributo que tiene un elemento cuando indicamos su propiedad en parentesis
+
+```js
+//Sintaxi:
+elemento.getAttribute('class');
+```
+
+### 4. setAttribute()
+
+#### Cambia el valor de un atributo que tiene un elemento cuando le indicamos su nuevo valor en parentesis
+
+```js
+//Sintaxi:
+elemento.setAttribute('class', 'nuevo-valor');
+```
+
+### 5. classList.add()
+
+#### Para agregar un valor a una clase existente en un elemento
+
+```js
+//Sintaxi:
+elemento.classList.add('nuevo-valor1');
+```
+
+### 6. classList.remove()
+
+#### Para eliminar el valor descrito en parentesis a la clase de un elemento
+
+```js
+//Sintaxi:
+elemento.classList.remove('nueva-valor1');
+```
+
+### 7. classList.toggle(‘titulo’)
+
+#### Si tiene un valor descrito entre parentesis se lo quita, o si no lo tiene se lo coloca:
+
+```js
+//Sintaxi:
+elemento.classList.add('valor');
+```
+
+### 8. classList.contains(‘titulo’)
+
+#### Devuelve true o false Si una propiedad tiene un valor descrito entre parentesis
+
+```js
+//Sintaxi:
+elemento.classList.contains('valor');
+```
+
+### 9. .value = ‘valor’
+
+#### Colocarle un valor a un elemento, usualmente colocado en inputs
+
+```js
+//Sintaxi:
+elemento.value = '12345';
+```
+
+### 10. .createElement()
+
+#### Crea un elemento HTML _( < img >, < section >, < header >, < div >, etc )_
+
+```js
+//Sintaxi:
+document.createElement(img);
+```
+
+### 11. .append()
+
+#### Puede agregar al documento uno o varios elementos creado previamente al agregarlo entre parentesis
+
+```js
+//Sintaxi:
+elemento.append(img, img2);
+```
+
+### 12. .appendChild()
+
+#### Puede agregar al documento solo un elemento creado previamente al agregarlo entre parentesis
+
+```js
+//Sintaxi:
+elemento.append(img);
+```
 
 
 🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲
