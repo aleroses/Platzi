@@ -13,6 +13,7 @@ console.log(h1);
 console.log(input.value);
 input.value = 'Otro valor ingresado desde js';
 console.log(input.value);
+
 console.log({
     h1,
     p,

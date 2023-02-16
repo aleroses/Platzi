@@ -17,7 +17,7 @@ Edge y sus DevTools
 
 Navegador Firefox Developer Edition
 
-Ver extensiones para Google Chrome [[vsc-chrome#Extensiones Chrome]]
+Ver extensiones para Google Chrome [[ext-vsc-chrome#Extensiones Chrome]]
 
 
 ## 2. Instalando nuestro editor de texto
@@ -34,7 +34,7 @@ Ver extensiones para Google Chrome [[vsc-chrome#Extensiones Chrome]]
 - Auto rename tag
 - Material Icon theme
 
-Ver mas extensiones [[vsc-chrome#Extensiones vsc]]
+Ver mas extensiones [[ext-vsc-chrome#Extensiones vsc]]
 
 
 ## 4. Cómo usar Live Server en proyectos reales de HTML y CSS
