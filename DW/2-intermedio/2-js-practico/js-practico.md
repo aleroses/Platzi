@@ -736,110 +736,244 @@ La interfaz Document representa cualquier página web cargada en el navegador y 
 Existen varios métodos de Document que servirán para acceder a los elementos del DOM:
 
 1. `querySelector:` Es un método de Document que regresa el primer elemento dentro del documento que coincide con el selector o grupo de selectores especificado. Si no se encuentran coincidencias, regresa null.
-2. `getElementsByClassName:` Regresa un objeto similar a una matriz con todos los elementos secundarios que tienen todos los nombres de clase dados.
+2. `getElementsByClassName:` Regresa un objeto similar a una matriz con todos los elementos secundarios que tienen todos los nombres de clase dados. Da algunos problemas al llamar a su variable con algún método.
 3. `getElementById:` Devuelve una referencia al elemento por su id.
-4. `document.createElement:` crea el elemento HTML especificado por la etiqueta, o un HTMLUnknownElement si no se reconoce la etiqueta.
+4. `document.createElement:` Crea el elemento HTML especificado por la etiqueta, o un HTMLUnknownElement si no se reconoce la etiqueta.
 
-Y algunos métodos de la interfaz Element:
-
-1.  `elemento.innerHTML:` La propiedad Element.innerHTML devuelve o establece la sintaxis HTML describiendo los descendientes del elemento. Al establecerse se reemplaza la sintaxis HTML del elemento por la nueva. (Permite modificar el contenido html del elemento, lo que puede ser peligroso, porque literalmente, se está modificando el HTML)
-
+Ejemplo:    
 ```js
-//Sintaxis:
-elemento.innerHTML = 'Nuevo texto';
+let h1 = document.querySelector("h1");
+let p = document.querySelector("p");
+let p02 = document.getElementsByClassName("p02");
+let p03 = document.getElementById("p03");
+let input = document.querySelector("input");
+
+// Otra forma de manipular Clases y Ids
+let p002 = document.querySelector(".p02");
+let p003 = document.querySelector("#p03");
+
+console.log(h1);
+console.log(input.value);
+input.value = "Texto de prueba 02";
+console.log(input.value);
+
+console.log({
+    h1,
+    p,
+    p02,
+    p03,
+    input,
+    p002,
+    p003
+});
 ```
 
-2.  `elemento.innerText:` representa el contenido de texto renderizado de un nodo y sus descendientes. Como getter, se aproxima al texto que el usuario obtendría si resaltara el contenido del elemento con el cursor y luego lo copiara en el portapapeles. Como setter, esto reemplazará a los hijos del elemento con el valor dado, convirtiendo cualquier salto de línea en elementos `<br>`. Inserta Texto plano en tu HTML.
-
 ```js
-//Sintaxis:
-elemento.innerText = 'Nuevo texto';
+// Creamos Elemento HTML
+console.log(document.createElement("img"));
+
+// Almacenamos dato en una variable
+let img = document.createElement("img");
+img.setAttribute("src", "https://i.postimg.cc/ryQ9TLj7/10-logo-js.png");
+
+console.log(img);
+
+// Metemos Imagen en una variable para mostrarla en pantalla 
+p002.append(img);
 ```
 
-3.  `elemento.getAttribute:` devuelve el valor del atributo especificado en el elemento. Si el atributo especificado no existe, el valor retornado puede ser tanto null como “”. Lee el valor de un atributo que tiene un elemento cuando indicamos su propiedad en paréntesis.
+Algunos métodos de la interfaz Element:  
+
+1.  `elemento.innerHTML:` La propiedad Element.innerHTML devuelve o establece la sintaxis HTML describiendo los descendientes del elemento. Al establecerse se reemplaza la sintaxis HTML del elemento por la nueva. (Permite modificar el contenido html del elemento, lo que puede ser peligroso, porque literalmente, se está modificando el HTML).  
 
 ```js
-//Sintaxis:
-elemento.getAttribute('class');
+// Cambiar el contenido de las etiquetas
+h1.innerHTML = "Titulo <br> innerHTML";
+p.innerHTML = "Parrafo 01";
+p002.innerHTML = "Parrafo 02";
+```
+
+> 📌Para **insertar el código HTML** en el documento en lugar de cambiar el contenido de un elemento, use el método [insertAdjacentHTML().](https://developer.mozilla.org/es/docs/Web/API/Element/insertAdjacentHTML)
+
+2.  `elemento.innerText:` Representa el contenido de texto renderizado de un nodo y sus descendientes. Como getter, se aproxima al texto que el usuario obtendría si resaltara el contenido del elemento con el cursor y luego lo copiara en el portapapeles. Como setter, esto reemplazará a los hijos del elemento con el valor dado, convirtiendo cualquier salto de línea en elementos `<br>`. Inserta Texto plano en tu HTML.
+
+```js
+// Cambiamos el contenido a texto plano
+h1.innerText = "Titulo <br> innerHTML";
+```
+
+3.  `elemento.getAttribute:` Devuelve el valor del atributo especificado en el elemento. Si el atributo especificado no existe, el valor retornado puede ser tanto null como “”. Lee el valor de un atributo que tiene un elemento cuando indicamos su propiedad en paréntesis.
+
+```js
+// Ver la clase usada
+console.log(p002.getAttribute("class"));
 ```
 
 4.  `elemento.setAttribute:` Establece el valor de un atributo en el elemento indicado. Si el atributo ya existe, el valor es actualizado, en caso contrario, el nuevo atributo es añadido con el nombre y valor indicado.
 
 ```js
-//Sintaxi:
-elemento.setAttribute('class', 'nuevo-valor');
+// Cambiar nombre a la clase
+p002.setAttribute("class", "clasemodificada");
 ```
 
-5.  `elemento.replaceChldren:` remplaza los elementos secundarios existentes de un nodo con un nuevo conjunto específico de elementos secundarios. Estos pueden ser objetos de cadena o de nodo.
-6.  `elemento.append:` inserta un conjunto de objetos de nodo u objetos de cadena después del último elemento secundario del elemento. Los objetos de cadena se insertan como nodos de texto equivalentes. Puede agregar al documento uno o varios elementos creado previamente al agregarlo entre paréntesis.
+5.  `elemento.replaceChldren:` Remplaza los elementos secundarios existentes de un nodo con un nuevo conjunto específico de elementos secundarios. Estos pueden ser objetos de cadena o de nodo.
+6.  `elemento.append:` Inserta un conjunto de objetos de nodo u objetos de cadena después del último elemento secundario del elemento. Los objetos de cadena se insertan como nodos de texto equivalentes. Puede agregar al documento uno o varios elementos creado previamente al agregarlo entre paréntesis.
 
 ```js
-//Sintaxi:
-elemento.append(img, img2);
+p002.append(img, img2);
 ```
 
 7. `elemento.classList.add()` Para agregar un valor a una clase existente en un elemento
 
 ```js
-//Sintaxis:
-elemento.classList.add('nuevo-valor1');
+// Añadir otra clase
+p002.classList.add("clasedos");
+p002.classList.add("clasetres");
 ```
 
 8. `elemento.classList.remove()`Para eliminar el valor descrito en paréntesis a la clase de un elemento
 
 ```js
-//Sintaxis:
-elemento.classList.remove('nueva-valor1');
+// Eliminar clases
+p002.classList.remove("clasedos");
 ```
 
 9. `elemento.classList.toggle(‘titulo’)` Si tiene un valor descrito entre paréntesis se lo quita, o si no lo tiene se lo coloca:
 
 ```js
-//Sintaxis:
-elemento.classList.add('valor');
+// Verificar si una clase existe para eliminarla: False, o de no exisitir añadirla: True
+console.log(p002.classList.toggle("clasetres"));
+console.log(p002.classList.toggle("clasecuatro"));
 ```
 
 10. `elemento.classList.contains(‘titulo’)` Devuelve true o false Si una propiedad tiene un valor descrito entre paréntesis
 
 ```js
-//Sintaxi:
-elemento.classList.contains('valor');
+// Verificar si existe una clase: True / False
+console.log(p002.classList.contains("clasetres"));
 ```
 
 11. `elemento.value = ‘valor’` Colocarle un valor a un elemento, usualmente colocado en inputs
 
 ```js
-//Sintaxi:
-elemento.value = '12345';
+console.log(input.value);
+input.value = "Texto de prueba 02";
+console.log(input.value);
 ```
 
 12. `elemento.createElement()` Crea un elemento HTML _( < img >, < section >, < header >, < div >, etc )_
 
 ```js
-//Sintaxi:
-document.createElement(img);
+// Creamos Elemento HTML
+console.log(document.createElement("img"));
+
+// Almacenamos dato en una variable
+let img = document.createElement("img");
+img.setAttribute("src", "https://i.postimg.cc/ryQ9TLj7/10-logo-js.png");
+
+console.log(img);
+
+// Metemos Imagen en una variable para mostrarla en pantalla 
+p002.append(img);
 ```
 
-13. `elemento.appendChild()` Puede agregar al documento solo un elemento creado previamente al agregarlo entre paréntesis
+13. `elemento.appendChild()` Inserta un nuevo nodo dentro de la estructura DOM de un documento. Puede agregar al documento solo un elemento creado previamente al agregarlo entre paréntesis
 
 ```js
-//Sintaxi:
-elemento.append(img);
+// Crea un nuevo elemento párrafo, y lo agrega al final del cuerpo del documento
+var p = document.createElement("p");
+document.body.appendChild(p);
 ```
 
 
-Ejemplo de uso: 
+Ejemplo de lo visto:    
+```html
+<body>
+    <h1>Titulo principal</h1>
+    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Iusto, nesciunt! Quos, molestias veniam blanditiis amet deleniti officiis itaque illum culpa, corporis ipsam beatae, mollitia facere vitae libero totam! Optio, eveniet?</p>
+    <p class="p02">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Inventore voluptas provident cumque accusamus harum corporis nostrum, cupiditate nam ducimus ullam iste hic? Ipsa, voluptates cum. Delectus nostrum accusamus id nulla!</p>
+    <p id="p03">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Inventore voluptas provident cumque accusamus harum corporis nostrum, cupiditate nam ducimus ullam iste hic? Ipsa, voluptates cum. Delectus nostrum accusamus id nulla!</p>
+    <input placeholder="Ingresa algo" value="Texto prueba">
 
+    <script src="./9-script.js"></script>
+</body>
+```
+
+```js
+let h1 = document.querySelector("h1");
+let p = document.querySelector("p");
+let p02 = document.getElementsByClassName("p02");
+let p03 = document.getElementById("p03");
+let input = document.querySelector("input");
+
+// Otra forma de manipular Clases y Ids
+let p002 = document.querySelector(".p02");
+let p003 = document.querySelector("#p03");
+
+console.log(h1);
+console.log(input.value);
+input.value = "Texto de prueba 02";
+console.log(input.value);
+
+console.log({
+    h1,
+    p,
+    p02,
+    p03,
+    input,
+    p002,
+    p003
+});
+
+// Cambiar el contenido de las etiquetas
+h1.innerHTML = "Titulo <br> innerHTML";
+p.innerHTML = "Parrafo 01";
+p002.innerHTML = "Parrafo 02";
+
+// Cambiamos el contenido a texto plano
+h1.innerText = "Titulo <br> innerHTML";
+
+// Ver la clase usada 
+console.log(p002.getAttribute("class"));
+// Cambiar nombre a la clase
+p002.setAttribute("class", "clasemodificada");
+// Añadir otra clase
+p002.classList.add("clasedos");
+p002.classList.add("clasetres");
+// Eliminar clases
+p002.classList.remove("clasedos");
+// Verificar si una clase existe para eliminarla: False, o de no exisitir añadirla: True
+// console.log(p002.classList.toggle("clasetres"));
+// console.log(p002.classList.toggle("clasecuatro"));
+// Verificar si existe una clase: True / False
+console.log(p002.classList.contains("clasetres"));
+
+// Crear una etiqueta
+console.log(document.createElement("img"));
+// Meter dato en una variable
+let img = document.createElement("img");
+img.setAttribute("src", "https://i.postimg.cc/ryQ9TLj7/10-logo-js.png");
+
+console.log(img);
+p002.append(img);
+```
 
 Extensión para diferenciar proyectos: [Peacock](https://marketplace.visualstudio.com/items?itemName=johnpapa.vscode-peacock)
 
-🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲
+🎲
+
+## 12. Eventos en JavaScript: interactuando con usuarios
+
+🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲
 
 
 
 
 
+Apuntes. 
+https://whip-soil-3b5.notion.site/Nuevo-Curso-Pr-ctico-de-JavaScript-bb1d517f38c64cb4b1c9f64830d4b695   
 
+https://nasal-zoo-be9.notion.site/Leyendo-HTML-desde-JavaScript-2c106b97980e419f8547a1eee8a67480
 
 
 
