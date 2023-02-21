@@ -964,7 +964,83 @@ Extensión para diferenciar proyectos: [Peacock](https://marketplace.visualstudi
 
 ## 12. Eventos en JavaScript: interactuando con usuarios
 
-🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲
+En la clase pasado manipulamos el HTML desde JavaScript pero podríamos hacerlo desde el mismo HTML.    
+Lo realmente interesante es que manipulemos el HTML cuando el usuario realize una acción, por eso en esta clase veremos eventos en JavaScript.
+
+> Un evento es una acción del usuario ante la cual puede realizarse algún proceso (por ejemplo, el cambio del valor de un formulario, o la pulsación de un enlace).
+
+### Escuchando un input
+Podemos utilizar el atributo `onchange` en el input y pasarle una función que haga referencia a la función definida en tu script.
+
+```html
+<input id="numero" onchange="showNumber()" />
+```
+
+```jsx
+const numero = document.querySelector("#numero");
+
+function showNumber() {
+	console.log(numero)
+}
+```
+
+Esto hará que cada vez que hagamos un cambio en el input y le quitemos el focus mostrará en consola lo que se escribió.
+
+### Escuchando un botón
+Para escuchar un botón podemos hacer uso de el atributo `onclick` y pasarle una función como vimos anteriormente.
+
+```html
+<button id="btn" onclick="btnOnclick()">Haga click</button>
+```
+
+```jsx
+const btn = document.getElementById("btn");
+
+function btnOnclick() {
+	console.log("Hizo click");
+}
+```
+
+Entonces cada vez que haga click en el botón se mostrará ese texto en consola.
+
+Ejemplo:    
+```html
+<body>
+    <h1>Titulo DOM</h1>
+    <input id="number1" placeholder="Ingresa algo">
+    <input id="number2" placeholder="Ingresa algo" onchange="console.log('Cambió')">
+    <button id="btnCalcular" onclick="btnOnClick()">Calcular</button>
+    <p id="result"></p>
+
+    <script src="./12.script.js"></script>
+</body>
+```
+
+```js
+const h1 = document.querySelector('h1');
+const input1 = document.querySelector('#number1')
+const input2 = document.querySelector('#number2');
+let suma;
+const btncalcular = document.querySelector('#btnCalcular');
+const result = document.querySelector('#result');
+
+function btnOnClick(){
+    suma = Number(input1.value) + parseInt(input2.value);
+    result.innerText = "Result: " + suma;
+    console.log('Click en el Bóton Calcular XD');
+}
+```
+
+Diferencias entre [Number y parseInt](https://thisthat.dev/number-constructor-vs-parse-int/)
+
+
+
+
+
+🎲
+
+
+🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲
 
 
 
