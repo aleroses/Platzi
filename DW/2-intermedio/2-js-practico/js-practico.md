@@ -1167,13 +1167,14 @@ function btnClick(event) {
 }
 ```
 
--   Otra forma de solucionar esto es especificarle explícitamente que nuestro botón no es un submit.
+Otra forma de solucionar esto es especificarle explícitamente que nuestro botón no es un submit.
 
 Ejemplo:   
 ```html
 <body>
-    <form id="form" action="">
-        <h1>Titulo del Documento</h1>
+	<h1>Titulo del Documento</h1>
+	<!--Para el segundo método se le agrega un ID al form-->
+    <form id="form">
         <input id="number1" placeholder="Ingresa un número">
         <input id="number2" placeholder="Ingresa un número" onchange="console.log('Cambio en el input')">
         <button id="btnCalcular">Calcular</button>
@@ -1187,6 +1188,7 @@ Ejemplo:
 
 ```js
 const h1 = document.querySelector("h1");
+// Para el segundo método agregamos la variable del form
 const form = document.querySelector('#form');
 const input1 = document.querySelector('#number1');
 const input2 = document.querySelector('#number2');
@@ -1194,9 +1196,9 @@ let suma;
 const btnCalcular = document.querySelector('#btnCalcular');
 const result = document.querySelector('#result');
 
-form.addEventListener('submit', sumarInputValues);
+form.addEventListener('submit', btnSubmit); //👈👀
 
-function sumarInputValues(event){
+function btnSubmit(event){
     console.log({event});
     //Para que la página no se recargue
     event.preventDefault();
@@ -1205,23 +1207,22 @@ function sumarInputValues(event){
 }
 ```
 
-
 Otra forma con button de tipo button, no submit que se asigna por defecto:   
 
 ```html
 <body>
+	<h1>Titulo del Documento</h1>
     <form id="form" action="">
-        <h1>Titulo del Documento</h1>
         <input id="number1" placeholder="Ingresa un número">
         <input id="number2" placeholder="Ingresa un número" onchange="console.log('Cambio en el input')">
+        <!--Para el tercer método cambiar a tipo button-->
         <button id="btnCalcular" type="button">Calcular</button>
         
         <p id="result"></p>
     </form>
-
+	
     <script src="./13.script.js"></script>
 </body>
-
 ```
 
 ```js
