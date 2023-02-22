@@ -9,3 +9,5 @@ function btnOnClick(){
     suma = Number(input1.value) + parseInt(input2.value);
     result.innerText = "Resultado: " + suma;
 }
+
+// 📌 Para pasar los strings a números utilizar el atributo “+” antes del string para cambiar su valor.

@@ -1034,13 +1034,208 @@ function btnOnClick(){
 Diferencias entre [Number y parseInt](https://thisthat.dev/number-constructor-vs-parse-int/)
 
 
+📌 Para pasar los strings a números utilizar el atributo “+” antes del string para cambiar su valor.
 
+```js
+const h1 = document.querySelector("h1"); 
+const input1 = document.querySelector("#calculo1"); 
+const input2 = document.querySelector("#calculo2"); 
+const btn = document.querySelector("#btnCalcular"); 
 
+function btnOnClick() { console.log(+input1.value + +input2.value); }
+```
+
+Documentación sobre el tema: [Unary plus (+)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Unary_plus)   
+
+Ideas para proyectos e interfaces: [https://www.frontendmentor.io/](https://www.frontendmentor.io/)
 
 🎲
 
+## 13. addEventListener
 
-🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲
+Este método sirve para escuchar cualquier tipo de evento que ocurra dentro de un objeto, estos objetos pueden ser un elemento HTML, una ventana, el mismo documento, un XMLhttpRequest.
+
+Los eventos pueden ser:   
+-   **blur:** Cuando el elemento pierde el foco.
+-   **click:** El usuario hace clic sobre el elemento.
+-   **dblclick:** El usuario hace doble clic sobre el elemento.
+-   **focus:** El elemento gana el foco.
+-   **keydown:** El usuario presiona una tecla.
+-   **keypress:** El usuario presiona una tecla y la mantiene pulsada.
+-   **keyup:** El usuario libera la tecla.
+-   **load:** El documento termina su carga.
+-   **mousedown:** El usuario presiona el botón del ratón en un elemento.
+-   **mousemove:** El usuario mueve el puntero del ratón sobre un elemento.
+-   **mouseout:** El usuario mueve el puntero fuera de un elemento.
+-   **mouseover:** El usuario mantiene el puntero sobre un elemento.
+-   **mouseup:** El usuario libera el botón pulsado del ratón sobre un elemento.
+-   **unload:** El documento se descarga, bien porque se cierra la ventana, bien porque se navega a otra página.
+
+#### Syntax    
+
+```js
+element.addEventListener(evento, funcion);
+```
+
+```js
+//A QUIÉN - QUÉ ACCIÓN - CUAL FUNCION 
+btn.addEventListener('click',btnOnClick);
+```
+
+### Escuchar evento desde html
+Para lograr esto podemos definir una propiedad al elemento que normalmente es el nombre del evento con el prefijo “on” y como valor le pasamos la función que ejecutará.  
+
+```html
+<button id="btnCalculo" onclick="console.log("Hice click!")">Calcular</button>
+```
+
+También podríamos definir la función en un archivo script.  
+```html
+<button id="btnCalculo" onclick="btnOnclick()")>Calcular</button>
+<script src="script.js" ></script>
+```
+
+```js
+function btnOnclick() {
+	console.log("Hice click");
+}
+```
+
+### Escuchar un evento desde JavaScript
+Escuchar un elemento desde JavaScript evita que nuestro html se vea desordenado y además es la forma que vas a encontrar mayormente en cualquier proyecto.
+
+```html
+<button id="btn">Enviar</button>
+```
+
+```jsx
+const btn = document.getElementById("btn");
+
+btn.addEventListener("click", btnClick);
+
+function btnClick() {
+	console.log("Hice click!");
+}
+```
+
+Ejemplo:   
+```html
+<h1>Titulo del Documento</h1>
+<input id="number1" placeholder="Ingresa un número">
+<input id="number2" placeholder="Ingresa un número" onchange="console.log('Cambio en el input')">
+<button id="btnCalcular">Calcular</button>
+   
+<p id="result"></p>
+
+<script src="./13.script.js"></script>
+```
+
+```js
+const h1 = document.querySelector("h1");
+const input1 = document.querySelector('#number1');
+const input2 = document.querySelector('#number2');
+let suma;
+const btnCalcular = document.querySelector('#btnCalcular');
+const result = document.querySelector('#result');
+
+btnCalcular.addEventListener('click', btnOnClick);
+
+function btnOnClick(){
+    suma = Number(input1.value) + parseInt(input2.value);
+    result.innerText = "Resultado: " + suma;
+}
+```
+
+
+### Escuchando evento desde un formulario
+Cuando utilizamos un botón en un formulario por defecto este lo define de tipo submit y esto ocasiona que al realizar la acción la página se recarge. Para evitar esto y poder ver los cambios al escuchar el evento de `click` utilizaremos `event.preventDefault()`.
+
+```html
+<form id="form">
+	<button>Enviar</button>
+</form>
+```
+
+```jsx
+const form = document.getElementById("form");
+
+form.addEventListener("submit", btnClick);
+
+function btnClick(event) {
+	event.preventDefault();
+	console.log("Hice click!");
+}
+```
+
+-   Otra forma de solucionar esto es especificarle explícitamente que nuestro botón no es un submit.
+
+Ejemplo:   
+```html
+<body>
+    <form id="form" action="">
+        <h1>Titulo del Documento</h1>
+        <input id="number1" placeholder="Ingresa un número">
+        <input id="number2" placeholder="Ingresa un número" onchange="console.log('Cambio en el input')">
+        <button id="btnCalcular">Calcular</button>
+        
+        <p id="result"></p>
+    </form>
+
+    <script src="./13.script.js"></script>
+</body>
+```
+
+```js
+const h1 = document.querySelector("h1");
+const form = document.querySelector('#form');
+const input1 = document.querySelector('#number1');
+const input2 = document.querySelector('#number2');
+let suma;
+const btnCalcular = document.querySelector('#btnCalcular');
+const result = document.querySelector('#result');
+
+form.addEventListener('submit', sumarInputValues);
+
+function sumarInputValues(event){
+    console.log({event});
+    //Para que la página no se recargue
+    event.preventDefault();
+    suma = Number(input1.value) + parseInt(input2.value);
+    result.innerText = "Resultado: " + suma;
+}
+```
+
+
+Otra forma con button de tipo button, no submit que se asigna por defecto:   
+
+```html
+<body>
+    <form id="form" action="">
+        <h1>Titulo del Documento</h1>
+        <input id="number1" placeholder="Ingresa un número">
+        <input id="number2" placeholder="Ingresa un número" onchange="console.log('Cambio en el input')">
+        <button id="btnCalcular" type="button">Calcular</button>
+        
+        <p id="result"></p>
+    </form>
+
+    <script src="./13.script.js"></script>
+</body>
+
+```
+
+```js
+btnCalcular.addEventListener('click', btnOnClick);
+
+function btnOnClick(event){
+    suma = Number(input1.value) + parseInt(input2.value);
+    result.innerText = "Resultado: " + suma;
+}
+```
+
+🎲
+
+🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲
 
 
 
