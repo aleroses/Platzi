@@ -1236,9 +1236,51 @@ function btnOnClick(event){
 
 🎲
 
-🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲
+## Quiz Manipulación del DOM
 
+1. La extensión de los archivos de JavaScript es `.js`.
+	- Verdadero
+2. ¿Qué herramienta te permite escuchar eventos de los usuarios sin mezclar código HTML con código JavaScript?
+	- addEventListener
+3. ¿Cuál de los siguientes bloques de código te permite imprimir un mensaje cada vez que los usuarios presionen un botón?
+	- `<button onclick="console.log('mensaje')">Botoncito</button>`
+4. Ya tienes en JavaScript una variable que selecciona un elemento HTML. ¿Cuál de las siguientes herramientas te permite editar su contenido?
+	- innerText
+	- append
+	- innerHTML
+	- appendChild
+	- Todas las respuestas son correctas.
+6. ¿Cómo seleccionas desde JavaScript a un elemento HTML con el id perry?
+	- document.querySelector('#perry')
 
+🎲
+
+## 14. Conectando GitHub a proyectos de JavaScript
+
+🔥 Página: [gitignore](https://www.toptal.com/developers/gitignore/)   
+- mac OS
+- Windows 
+- Linux
+- Visual Studio Code
+- Node 
+
+Resumen de como conectarnos a GitHub: [[git-github#19. Uso de GitHub]]
+
+🎲
+
+## 15. Proyectos con JavaScript y GitHub desde cero
+
+Nuevo repositorio: 
+- curso-practico-js
+- .gitignore template: Node
+- License: MIT License 
+
+Terminal:   
+- code ./ -r : Abre la carpeta actual y que se abra en la misma ventana abierta
+
+🎲
+
+🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲
 
 
 
