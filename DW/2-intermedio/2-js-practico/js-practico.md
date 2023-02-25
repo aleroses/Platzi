@@ -1276,11 +1276,34 @@ Nuevo repositorio:
 - License: MIT License 
 
 Terminal:   
-- code ./ -r : Abre la carpeta actual y que se abra en la misma ventana abierta
+- `code ./ -r`: Abre la carpeta actual y que se abra en la misma ventana abierta
+
+📌 “code ./ -r” puede ser reemplazado por arrastrar la carpeta donde trabajaremos dentro de VSCode.    
+
+
+Resumen de como crear un proyecto: [[git-github#19. Uso de GitHub]]
 
 🎲
 
-🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲
+## 16. Fork a proyectos en GitHub
+
+Resumen de como hacer un fork: [[git-github#29. Creando un Fork, contribuyendo a un repositorio]]   
+
+[Proyecto a Clonar](https://github.com/platzi/curso-frontend-developer-practico)
+
+🎲
+
+## 17. Analizando código de proyectos open-source
+
+Crear un index.html, un style.css y un main.js dentro del proyecto clonado 
+
+🎲
+
+## 18. Fusión del menú en desktop
+
+Primeros cambios [Repositorio](https://github.com/aleroses/curso-frontend-developer-js)
+
+🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲
 
 
 
