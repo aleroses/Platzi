@@ -1303,6 +1303,15 @@ Crear un index.html, un style.css y un main.js dentro del proyecto clonado
 
 Primeros cambios [Repositorio](https://github.com/aleroses/curso-frontend-developer-js)
 
+📌 Si se dan cuenta, al momento de darle muchos clicks al toggle, o al botón email, se selecciona nuestro texto. para evitar que esto pase y se comporte como un buen botón se le aplica esta propiedad:
+
+```css
+#emailLink{
+    cursor: pointer;
+    user-select: none;
+}
+```
+
 🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲
 
 
