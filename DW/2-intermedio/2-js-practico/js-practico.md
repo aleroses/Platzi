@@ -1312,7 +1312,15 @@ Primeros cambios [Repositorio](https://github.com/aleroses/curso-frontend-develo
 }
 ```
 
-🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲
+🎲
+
+## 19. Fusión del menú en mobile
+
+🎲
+
+## 20. Carrito de compras
+
+🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲
 
 
 
