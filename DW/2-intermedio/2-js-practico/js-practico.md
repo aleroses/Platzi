@@ -1320,7 +1320,53 @@ Primeros cambios [Repositorio](https://github.com/aleroses/curso-frontend-develo
 
 ## 20. Carrito de compras
 
-🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲
+🎲
+
+## 21. Lista de productos: HTML a partir de arrays
+
+📌 Comentar: // Ctrl + K (VSC queda a la espera), después pulsa Ctrl + C   
+📌 Descomentar: Ctr + U
+
+🎲
+
+## 22. Detalles de un producto
+
+🎲
+
+## 23. Interacción entre todos los componentes 
+
+🎲
+
+## 24. Pull Requests: aportando código a proyectos en GitHub
+
+🎲
+
+## Quiz Contribución a proyectos
+
+1. El primer paso para hacer contribuciones a proyectos open-source es:
+	- Entender su código, estructura y arquitectura.
+2. Siempre que hagamos contribuciones a proyectos open-source debemos imponer nuestras buenas prácticas y forma de trabajar.
+	- Falso
+3. ¿Cómo podemos hacer contribuciones a proyectos open-source?
+	- Haciendo fork del proyecto y luego pull requests.
+
+🎲
+
+## 25. Deploy con GitHub Pages
+
+Resumen: [[git-github#34. Tu sitio web público con GitHub Pages]]
+
+🎲
+
+## Quiz Despliegue
+
+1. Todas las aplicaciones web desplegadas en internet necesitan backend.
+	- Verdadero
+
+🎲
+
+
+🎲🎲🎲
 
 
 
@@ -1346,5 +1392,73 @@ https://nasal-zoo-be9.notion.site/Leyendo-HTML-desde-JavaScript-2c106b97980e419f
 - ✔ ➕ ↕ ↔ ⬅ ✅ ▶ ❌ ❗            
 - 🧰 ⛓ 💡             
 - 🔅 🔆 🌚 🌗         
+
+</details>
+
+## Examen 
+<details>
+	<summary>Haz clic para ver los resultados 👀</summary>
+	<br/>
+
+1. ¿Cuál de las siguientes formas NO FUNCIONA para ejecutar código JavaScript AUTOMÁTICAMENTE cada vez que abrimos un documento HTML?
+	- 📌 Copiando y pegando manualmente el código en la consola del navegador cada vez que abrimos o recargamos una página.
+	- Escribiendo la ruta de nuestro archivo JavaScript en el atributo `src` de una etiqueta `script` en el documento HTML.
+	- Escribiendo el código JavaScript en una etiqueta `script` dentro del documento HTML.
+
+2. ¿Cuál es la diferencia principal entre arrays y objetos?
+	- 📌 En los arrays cada elemento se puede diferenciar por su índice o posición. En los objetos cada elemento tiene su propio nombre clave.
+
+3. Ya tienes en JavaScript una variable `input1` que selecciona un input de tu HTML. ¿Cómo puedes leer el valor que escriban los usuarios en ese input?
+	- Ambas respuestas son correctas.
+	- 📌 Mal Ambas respuestas son INCORRECTAS.
+	- input1.getAttribute('value')
+	- input1.value
+
+4. ¿Qué herramienta de JavaScript nos permite editar elementos de HTML?
+	- append
+	- innerHTML
+	- innerText
+	- appendChild
+	- 📌 Todas las respuestas son correctas.
+
+4. ¿Cuál es la diferencia entre parámetro y argumento?
+	- 📌 Las funciones reciben parámetros cuando las creamos. Y les enviamos argumentos cuando las ejecutamos.
+
+5. ¿Cuál será el resultado de la siguiente operación: `123 + "456"`?
+	- 📌 123456
+
+6. ¿Cuál será el resultado de la siguiente operación: `"Juan David" + "Castro Gallego"`?
+
+	- 📌 Juan DavidCastro Gallego
+
+7. ¿Cuál es la diferencia entre declarar e inicializar?
+	- 📌 Declarar es indicarle a JavaScript que crearemos una variable con cierto nombre. Inicializar (o reinicializar) es asignarle un valor a esa variable.
+
+8. ¿Cuál método o propiedad de los arrays nos permite leer la cantidad de elementos de un array en JavaScript?
+	- 📌 .length
+
+9. ¿Qué palabra reservada usarías para crear una variable que pueda cambiar su valor en el futuro?
+	- 📌 let
+
+10. ¿Cómo podemos convertir un objeto en un array?
+	- 📌 Object.values(nombreObjeto) u Object.keys(nombreObjeto)
+
+11. ¿Qué herramienta de JavaScript nos permite crear un elemento HTML de tipo img?
+	- 📌document.createElement('img')
+
+12. ¿Para qué sirve el `event.preventDefault`?
+	- 📌 Para evitar que los eventos ejecuten su acción por defecto (por ejemplo, recargar la página al completar un formulario).
+
+13. ¿Cuál es la diferencia entre declarar e inicializar?
+	- 📌 Declarar es indicarle a JavaScript que crearemos una variable con cierto nombre. Inicializar (o reinicializar) es asignarle un valor a esa variable.
+
+14. ¿Es posible crear variables a partir de otras variables?
+	- 📌 Verdadero
+
+15. ¿Qué herramienta de JavaScript nos permite seleccionar elementos de HTML?
+	- document.querySelector
+	- 📌 Todas las respuestas son correctas.
+	- document.getElementsByClassName
+	- document.getElementById
 
 </details>
