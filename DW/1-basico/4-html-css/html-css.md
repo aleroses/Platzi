@@ -418,13 +418,13 @@ Optimización de imágenes:
 
 ```html
 <body>
-	<main>
-		<section>
-			<figure>
-				<img src="./pics/cafe-expres.gif" alt="Descripción de un cafe-expres">
-			</figure>
-		</section>
-	</main>
+    <main>
+        <section>
+            <figure>
+                <img src="./pics/cafe-expres.gif" alt="Descripción de un cafe-expres">
+            </figure>
+        </section>
+    </main>
 </body>
 ```
 

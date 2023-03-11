@@ -137,9 +137,9 @@ _Contribución creada por Porfirio González y Guadalupe Monge Barale._
 
 [Yard Sale | Zeplin Scene](https://scene.zeplin.io/project/60afeeed20af1378ed046538)
 
-[Figma](https://www.figma.com/proto/bcEVujIzJj5PNIWwF9pP2w/Platzi_YardSale?node-id=0%3A684&amp;scaling=scale-down&amp;page-id=0%3A1&amp;starting-point-node-id=0%3A719)
+[Figma Diseño Mobile](https://www.figma.com/proto/bcEVujIzJj5PNIWwF9pP2w/Platzi_YardSale?node-id=0%3A684&amp;scaling=scale-down&amp;page-id=0%3A1&amp;starting-point-node-id=0%3A719)
 
-[Figma](https://www.figma.com/proto/bcEVujIzJj5PNIWwF9pP2w/Platzi_YardSale?node-id=3%3A2112&amp;scaling=scale-down&amp;page-id=0%3A998&amp;starting-point-node-id=5%3A2808)
+[Figma Diseño Desktop](https://www.figma.com/proto/bcEVujIzJj5PNIWwF9pP2w/Platzi_YardSale?node-id=3%3A2112&amp;scaling=scale-down&amp;page-id=0%3A998&amp;starting-point-node-id=5%3A2808)
 
 
 ### 4. Sistema de diseño, assets y variables de CSS
@@ -321,11 +321,11 @@ Como aporte adicional, también debemos realizar lo mismo con los inputs de las 
 	- 📌 grid-template-columns
 
 2. text-decoration: none; la usamos para: 
-	- 📌 Remover la línea de la parte inferior de la etiqueta <a>
+	- 📌 Remover la línea de la parte inferior de la etiqueta `<a>`
 	- Remover los estilos de los textos.
-	- Remover los puntos que se crean por defecto en las listas.
+	- Remover los puntos que se crean por defecto en las listas.   
 
-3. font-weight es la propiedad que nos da el:
+3. `font-weight` es la propiedad que nos da el:
 	- 📌 Grosor del texto
 	- Color del texto
 	- Interlineado del texto
@@ -343,71 +343,40 @@ Como aporte adicional, también debemos realizar lo mismo con los inputs de las 
 	- Centrar los elementos hijos horizontalmente.
 	- Mal 📌 Centrar el contenedor tanto vertical como horizontalmente en el espacio disponible.
 	- Centrar los elementos hijos verticalmente.
-	- Centrar los elementos hijos tanto vertical como horizontalmente.
+	- 📌 Centrar los elementos hijos tanto vertical como horizontalmente.
 
 7. La propiedad flex-direction es por defecto:
 	- Column
 	- 📌 Row
 
 8. `margin: 24px 0 0;` es lo mismo que decir:
-
-a
-
-```css
-margin-top: 24px;
-margin-right: 24px;
-margin-bottom: 0;
-margin-left: 0;
-```
-b 📌
-
-```css 📌
-margin-top: 24px;
-margin-right: 0;
-margin-bottom: 0;
-margin-left: 0;
-```
-c
-
-```css
-margin-top: 24px;
-margin-right: 0;
-margin-bottom: 0; 
-margin-left: 24px;
-```
-
-d
-
-```css
-margin-top: 24px;
-margin-right: 0;
-margin-bottom: 24px;
-margin-left: 0;
-```
-
-9. justify-content es una propiedad de los elementos:
+	```css 📌
+	margin-top: 24px;
+	margin-right: 0;
+	margin-bottom: 0;
+	margin-left: 0;
+	```
+1. `justify-content` es una propiedad de los elementos:
 	- Hijos
 	-  📌 Contenedores
 
-10. `@media (max-width: 640px)` nos indica que el código dentro de él será para:
+2. `@media (max-width: 640px)` nos indica que el código dentro de él será para:
 	- 📌 Pantallas desde 0px hasta 640px
 	- Pantallas desde 640px en adelante
 
-11. :root nos permite definir variables y usarlas mediante la función var():
+3. `:root` nos permite definir variables y usarlas mediante la función var():
 	- Falso
 	- 📌 Verdadero
 
-12. email-image img, selecciona:
+4. `email-image img`, selecciona:
 	- 📌 Todas las imágenes que estén dentro de .email-image
 	- Todas las imágenes que tengan como clase .email-image
 	- La primera imagen que esté dentro de .email-image
 
-13. .product-info div p:nth-child(1) se lee como:
-	- Mal 📌 El primer hijo de tipo p que está dentro del div que tiene como clase .product-info
-	- El primer hijo de tipo p que está dentro del div que está dentro de .product-info
-	- El elemento de clase .product-info que está dentro de div que está dentro del primer elemento p
+5. `.product-info div p:nth-child(1)` se lee como:   
+	- 📌 El primer hijo de tipo p que está dentro del div que está dentro de .product-info
 
-14. La etiqueta `<link>` se debe colocar dentro de la etiqueta:
+6. La etiqueta `<link>` se debe colocar dentro de la etiqueta:
 	- `<style>`
 	- `<body>`
 	- 📌` <head>`
