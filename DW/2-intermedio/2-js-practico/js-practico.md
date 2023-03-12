@@ -1295,13 +1295,83 @@ Resumen de como hacer un fork: [[git-github#29. Creando un Fork, contribuyendo a
 
 ## 17. Analizando código de proyectos open-source
 
-Crear un index.html, un style.css y un main.js dentro del proyecto clonado 
+Crear un archivo index.html, un style.css y un main.js dentro del proyecto clonado. Dentro de index y del style copiamos todo lo relacionado a la pantalla que vayamos a trabajar, así solo nos quedaría por corregir algunos estilos y crear las funcionalidades en JavaScript.  
 
 🎲
 
 ## 18. Fusión del menú en desktop
 
-Primeros cambios [Repositorio](https://github.com/aleroses/curso-frontend-developer-js)
+Copiamos el código html y css para crear el header y el nav del proyecto:    
+![Header](https://i.postimg.cc/wxPWmF25/header.png)
+
+🔥 Header principal:   
+```html
+<nav>
+    <img src="./icons/icon_menu.svg" alt="menu" class="menu">
+
+    <div class="navbar-left">
+      <img src="./logos/logo_yard_sale.svg" alt="logo" class="logo">
+
+      <ul>
+        <li>
+          <a href="/">All</a>
+        </li>
+        <li>
+          <a href="/">Clothes</a>
+        </li>
+        <li>
+          <a href="/">Electronics</a>
+        </li>
+        <li>
+          <a href="/">Furnitures</a>
+        </li>
+        <li>
+          <a href="/">Toys</a>
+        </li>
+        <li>
+          <a href="/">Others</a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="navbar-right">
+      <ul>
+        <li class="navbar-email">platzi@example.com</li>
+        <li class="navbar-shopping-cart">
+          <img src="./icons/icon_shopping_cart.svg" alt="shopping cart">
+          <div>2</div>
+        </li>
+      </ul>
+    </div>
+    <div class="desktop-menu inactive">
+        <ul>
+          <li>
+            <a href="/" class="title">My orders</a>
+          </li>
+    
+          <li>
+            <a href="/">My account</a>
+          </li>
+    
+          <li>
+            <a href="/">Sign out</a>
+          </li>
+        </ul>
+    </div>
+</nav>
+```
+
+```js
+const menuEmail = document.querySelector(".navbar-email");
+const desktopMenu = document.querySelector(".desktop-menu");
+
+menuEmail.addEventListener('click', toggleDesktopMenu);
+
+function toggleDesktopMenu(){
+    desktopMenu.classList.toggle("inactive");
+}
+```
+
 
 📌 Si se dan cuenta, al momento de darle muchos clicks al toggle, o al botón email, se selecciona nuestro texto. para evitar que esto pase y se comporte como un buen botón se le aplica esta propiedad:
 
@@ -1311,6 +1381,8 @@ Primeros cambios [Repositorio](https://github.com/aleroses/curso-frontend-develo
     user-select: none;
 }
 ```
+
+Primeros cambios [Repositorio](https://github.com/aleroses/curso-frontend-developer-js)   
 
 🎲
 
