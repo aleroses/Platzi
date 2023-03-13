@@ -1333,17 +1333,17 @@ Copiamos el código html y css para crear el header y el nav del proyecto:
         </li>
       </ul>
     </div>
-
+        <!-- 01 Modificación con JS -->
     <div class="navbar-right">
       <ul>
-        <li class="navbar-email">platzi@example.com</li>
+        <li class="navbar-email">platzi@example.com</li> 👈👀
         <li class="navbar-shopping-cart">
           <img src="./icons/icon_shopping_cart.svg" alt="shopping cart">
           <div>2</div>
         </li>
       </ul>
     </div>
-    <div class="desktop-menu inactive">
+    <div class="desktop-menu inactive"> 👈👀
         <ul>
           <li>
             <a href="/" class="title">My orders</a>
@@ -1361,6 +1361,7 @@ Copiamos el código html y css para crear el header y el nav del proyecto:
 </nav>
 ```
 
+🔥 Código JS del menú en desktop   
 ```js
 const menuEmail = document.querySelector(".navbar-email");
 const desktopMenu = document.querySelector(".desktop-menu");
@@ -1388,9 +1389,332 @@ Primeros cambios [Repositorio](https://github.com/aleroses/curso-frontend-develo
 
 ## 19. Fusión del menú en mobile
 
+Según vimos en la clase pasada debemos volver a copiamos el código html y css para crear el menú del proyecto pero esta vez del diseño mobile:
+
+![Carrito de compras](https://i.postimg.cc/8P0RzMb5/carrito.png)
+
+```html
+<nav>
+	<!-- 02 Modificación con JS -->
+    <img src="./icons/icon_menu.svg" alt="menu" class="menu"> 👈👀
+
+    <div class="navbar-left">
+      <img src="./logos/logo_yard_sale.svg" alt="logo" class="logo">
+
+      <ul>
+        <li>
+          <a href="/">All</a>
+        </li>
+        <li>
+          <a href="/">Clothes</a>
+        </li>
+        <li>
+          <a href="/">Electronics</a>
+        </li>
+        <li>
+          <a href="/">Furnitures</a>
+        </li>
+        <li>
+          <a href="/">Toys</a>
+        </li>
+        <li>
+          <a href="/">Others</a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="navbar-right">
+      <ul>
+        <li class="navbar-email">platzi@example.com</li>
+        <li class="navbar-shopping-cart">
+          <img src="./icons/icon_shopping_cart.svg" alt="shopping cart">
+          <div>2</div>
+        </li>
+      </ul>
+    </div>
+    <div class="desktop-menu inactive">
+        <ul>
+          <li>
+            <a href="/" class="title">My orders</a>
+          </li>
+    
+          <li>
+            <a href="/">My account</a>
+          </li>
+    
+          <li>
+            <a href="/">Sign out</a>
+          </li>
+        </ul>
+    </div>
+		<!-- 02 Modificación con JS -->
+    <div class="mobile-menu inactive"> 👈👀
+      <ul>
+        <li>
+          <a href="/">CATEGORIES</a>
+        </li>
+        <li>
+          <a href="/">All</a>
+        </li>
+        <li>
+          <a href="/">Clothes</a>
+        </li>
+        <li>
+          <a href="/">Electronics</a>
+        </li>
+        <li>
+          <a href="/">Furnitures</a>
+        </li>
+        <li>
+          <a href="/">Toys</a>
+        </li>
+        <li>
+          <a href="/">Other</a>
+        </li>
+      </ul>
+  
+      <ul>
+        <li>
+          <a href="/">My orders</a>
+        </li>
+        <li>
+          <a href="/">My account</a>
+        </li>
+      </ul>
+  
+      <ul>
+        <li>
+          <a href="/" class="email">platzi@example.com</a>
+        </li>
+        <li>
+          <a href="/" class="sign-out">Sign out</a>
+        </li>
+      </ul>
+    </div>
+</nav>
+```
+
+🔥 Código JS del menú en mobile     
+```js
+/* 01 Modificación */
+const menuEmail = document.querySelector(".navbar-email");
+const desktopMenu = document.querySelector(".desktop-menu");
+/* 02 Modificación */
+const menuHamIcon = document.querySelector('.menu');
+const mobileMenu = document.querySelector('.mobile-menu');
+
+/* 01 Modificación */
+menuEmail.addEventListener('click', toggleDesktopMenu); 
+/* 02 Modificación */
+menuHamIcon.addEventListener('click', toggleMobileMenu);
+
+/* 01 Modificación */
+function toggleDesktopMenu(){
+    desktopMenu.classList.toggle("inactive");
+}
+/* 02 Modificación */
+function toggleMobileMenu(){
+    mobileMenu.classList.toggle('inactive')
+}
+```
+
 🎲
 
 ## 20. Carrito de compras
+
+```html
+<nav>
+    <!-- 02 Modificación con JS -->
+    <img src="./icons/icon_menu.svg" alt="menu" class="menu">
+
+    <div class="navbar-left">
+      <img src="./logos/logo_yard_sale.svg" alt="logo" class="logo">
+
+      <ul>
+        <li>
+          <a href="/">All</a>
+        </li>
+        <li>
+          <a href="/">Clothes</a>
+        </li>
+        <li>
+          <a href="/">Electronics</a>
+        </li>
+        <li>
+          <a href="/">Furnitures</a>
+        </li>
+        <li>
+          <a href="/">Toys</a>
+        </li>
+        <li>
+          <a href="/">Others</a>
+        </li>
+      </ul>
+    </div>
+
+        <!-- 01 Modificación con JS -->
+    <div class="navbar-right">
+      <ul>
+        <li class="navbar-email">platzi@example.com</li>
+        <li class="navbar-shopping-cart">
+        <!-- 03 Modificación con JS -->
+          <img src="./icons/icon_shopping_cart.svg" alt="shopping cart"> 👈👀
+          <div>2</div>
+        </li>
+      </ul>
+    </div>
+    
+
+    <div class="desktop-menu inactive">
+        <ul>
+          <li>
+            <a href="/" class="title">My orders</a>
+          </li>
+    
+          <li>
+            <a href="/">My account</a>
+          </li>
+    
+          <li>
+            <a href="/">Sign out</a>
+          </li>
+        </ul>
+    </div>
+<!-- 02 Modificación con JS -->
+    <div class="mobile-menu inactive">
+      <ul>
+        <li>
+          <a href="/">CATEGORIES</a>
+        </li>
+        <li>
+          <a href="/">All</a>
+        </li>
+        <li>
+          <a href="/">Clothes</a>
+        </li>
+        <li>
+          <a href="/">Electronics</a>
+        </li>
+        <li>
+          <a href="/">Furnitures</a>
+        </li>
+        <li>
+          <a href="/">Toys</a>
+        </li>
+        <li>
+          <a href="/">Other</a>
+        </li>
+      </ul>
+  
+      <ul>
+        <li>
+          <a href="/">My orders</a>
+        </li>
+        <li>
+          <a href="/">My account</a>
+        </li>
+      </ul>
+  
+      <ul>
+        <li>
+          <a href="/" class="email">platzi@example.com</a>
+        </li>
+        <li>
+          <a href="/" class="sign-out">Sign out</a>
+        </li>
+      </ul>
+    </div>
+</nav>
+<!-- 03 Modificación con JS -->
+<aside id="shoppingCartContainer" class=" inactive"> 👈👀
+  <div class="title-container">
+    <img src="./icons/flechita.svg" alt="arrow">
+    <p class="title">My order</p>
+  </div>
+
+  <div class="my-order-content">
+    <div class="shopping-cart">
+      <figure>
+        <img src="https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="bike">
+      </figure>
+      <p>Bike</p>
+      <p>$30,00</p>
+      <img src="./icons/icon_close.png" alt="close">
+    </div>
+
+    <div class="shopping-cart">
+      <figure>
+        <img src="https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="bike">
+      </figure>
+      <p>Bike</p>
+      <p>$30,00</p>
+      <img src="./icons/icon_close.png" alt="close">
+    </div>
+
+    <div class="shopping-cart">
+      <figure>
+        <img src="https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="bike">
+      </figure>
+      <p>Bike</p>
+      <p>$30,00</p>
+      <img src="./icons/icon_close.png" alt="close">
+    </div>
+
+    <div class="order">
+      <p>
+        <span>Total</span>
+      </p>
+      <p>$560.00</p>
+    </div>
+
+    <button class="primary-button">
+      Checkout
+    </button>
+  </div>
+</aside>
+```
+
+🔥 Código JS del menú My Order     
+```js
+// VARIABLES  ----------------
+/* 01 Modificación */
+const menuEmail = document.querySelector(".navbar-email");
+const desktopMenu = document.querySelector(".desktop-menu");
+/* 02 Modificación */
+const menuHamIcon = document.querySelector('.menu');
+const mobileMenu = document.querySelector('.mobile-menu');
+/* 03 Modificación */
+const menuCarritoIcon = document.querySelector('.navbar-shopping-cart');
+const shoppingCartContainer = document.querySelector('#shoppingCartContainer')
+
+// ADDEVENTLISTENER ----------------
+/* 01 Modificación */
+menuEmail.addEventListener('click', toggleDesktopMenu); 
+/* 02 Modificación */
+menuHamIcon.addEventListener('click', toggleMobileMenu);
+/* 03 Modificación */
+menuCarritoIcon.addEventListener('click', toggleCarritoAside);
+
+// FUNCIONES  ----------------
+/* 01 Modificación */
+function toggleDesktopMenu(){
+    // Cada vez que entre a esta función cerrar la ventana My order, luego abrir la ventana del Email
+    shoppingCartContainer.classList.add('inactive');
+    desktopMenu.classList.toggle("inactive");
+}
+/* 02 Modificación */
+function toggleMobileMenu(){
+    // Al entrar a esta función cerrar ventana My Order y abrir menú del icono hamburguesa 
+    shoppingCartContainer.classList.add('inactive');
+    mobileMenu.classList.toggle('inactive')
+}
+/* 03 Modificación */
+function toggleCarritoAside(){
+    // Al entrar a esta función cerrar ventana del icono hamburguesa y abrir menú My Order
+    mobileMenu.classList.add('inactive');
+    shoppingCartContainer.classList.toggle('inactive');
+}
+```
 
 🎲
 
