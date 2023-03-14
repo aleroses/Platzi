@@ -1910,7 +1910,6 @@ const menuCarritoIcon = document.querySelector('.navbar-shopping-cart');
 const shoppingCartContainer = document.querySelector('#shoppingCartContainer')
 /* 04 Modificación */
 const cardsContainer = document.querySelector('.cards-container')
-/* const productDetailContainer = document.querySelector("#productDetail"); */
 
 // ADDEVENTLISTENER ----------------
 /* 01 Modificación */
@@ -1919,8 +1918,6 @@ menuEmail.addEventListener('click', toggleDesktopMenu);
 menuHamIcon.addEventListener('click', toggleMobileMenu);
 /* 03 Modificación */
 menuCarritoIcon.addEventListener('click', toggleCarritoAside);
-/* xx Modificación */
-/* productDetailCloseIcon.addEventListener('click', closeProductDetailAside); */
 
 // FUNCIONES  ----------------
 /* 01 Modificación */
@@ -2018,12 +2015,207 @@ renderProducts(productList);
 ```
 
 
-📌 Comentar: // Ctrl + K (VSC queda a la espera), después pulsa Ctrl + C   
-📌 Descomentar: Ctr + U
+📌 Para comentar con `//` usar Ctrl + K (VSC queda a la espera), luego pulsa Ctrl + C y después para descomentar Ctr + U
 
 🎲
 
 ## 22. Detalles de un producto
+
+```html
+<nav>
+    <!-- 02 Modificación con JS -->
+    <img src="./icons/icon_menu.svg" alt="menu" class="menu">
+
+    <div class="navbar-left">
+      <img src="./logos/logo_yard_sale.svg" alt="logo" class="logo">
+
+      <ul>
+        <li>
+          <a href="/">All</a>
+        </li>
+        <li>
+          <a href="/">Clothes</a>
+        </li>
+        <li>
+          <a href="/">Electronics</a>
+        </li>
+        <li>
+          <a href="/">Furnitures</a>
+        </li>
+        <li>
+          <a href="/">Toys</a>
+        </li>
+        <li>
+          <a href="/">Others</a>
+        </li>
+      </ul>
+    </div>
+
+        <!-- 01 Modificación con JS -->
+    <div class="navbar-right">
+      <ul>
+        <li class="navbar-email">platzi@example.com</li>
+        <li class="navbar-shopping-cart">
+          <!-- 03 Modificación con JS -->
+          <img src="./icons/icon_shopping_cart.svg" alt="shopping cart">
+          <div>2</div>
+        </li>
+      </ul>
+    </div>
+    
+
+    <div class="desktop-menu inactive">
+        <ul>
+          <li>
+            <a href="/" class="title">My orders</a>
+          </li>
+    
+          <li>
+            <a href="/">My account</a>
+          </li>
+    
+          <li>
+            <a href="/">Sign out</a>
+          </li>
+        </ul>
+    </div>
+<!-- 02 Modificación con JS -->
+    <div class="mobile-menu inactive">
+      <ul>
+        <li>
+          <a href="/">CATEGORIES</a>
+        </li>
+        <li>
+          <a href="/">All</a>
+        </li>
+        <li>
+          <a href="/">Clothes</a>
+        </li>
+        <li>
+          <a href="/">Electronics</a>
+        </li>
+        <li>
+          <a href="/">Furnitures</a>
+        </li>
+        <li>
+          <a href="/">Toys</a>
+        </li>
+        <li>
+          <a href="/">Other</a>
+        </li>
+      </ul>
+  
+      <ul>
+        <li>
+          <a href="/">My orders</a>
+        </li>
+        <li>
+          <a href="/">My account</a>
+        </li>
+      </ul>
+  
+      <ul>
+        <li>
+          <a href="/" class="email">platzi@example.com</a>
+        </li>
+        <li>
+          <a href="/" class="sign-out">Sign out</a>
+        </li>
+      </ul>
+    </div>
+</nav>
+<!-- 03 Modificación con JS -->
+<aside id="shoppingCartContainer" class="inactive">
+  <div class="title-container">
+    <img src="./icons/flechita.svg" alt="arrow">
+    <p class="title">My order</p>
+  </div>
+
+  <div class="my-order-content">
+    <div class="shopping-cart">
+      <figure>
+        <img src="https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="bike">
+      </figure>
+      <p>Bike</p>
+      <p>$30,00</p>
+      <img src="./icons/icon_close.png" alt="close">
+    </div>
+
+    <div class="shopping-cart">
+      <figure>
+        <img src="https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="bike">
+      </figure>
+      <p>Bike</p>
+      <p>$30,00</p>
+      <img src="./icons/icon_close.png" alt="close">
+    </div>
+
+    <div class="shopping-cart">
+      <figure>
+        <img src="https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="bike">
+      </figure>
+      <p>Bike</p>
+      <p>$30,00</p>
+      <img src="./icons/icon_close.png" alt="close">
+    </div>
+
+    <div class="order">
+      <p>
+        <span>Total</span>
+      </p>
+      <p>$560.00</p>
+    </div>
+
+    <button class="primary-button">
+      Checkout
+    </button>
+  </div>
+</aside>
+<!-- 05 Modificación con JS -->
+<aside id="productDetail" class="inactive"> 👀👈
+  <div class="product-detail-close">
+    <img src="./icons/icon_close.png" alt="close">
+  </div>
+  <img src="https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="bike">
+  <div class="product-info">
+    <p>$35,00</p>
+    <p>Bike</p>
+    <p>With its practical position, this bike also fulfills a decorative function, add your hall or workspace.</p>
+    <button class="primary-button add-to-cart-button">
+      <img src="./icons/bt_add_to_cart.svg" alt="add to cart">
+      Add to cart
+    </button>
+  </div>
+</aside>
+<!-- 04 Modificación con JS -->
+<section class="main-container">
+  <div class="cards-container">
+
+    <!-- <div class="product-card">
+      <img src="https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="">
+      <div class="product-info">
+        <div>
+          <p>$120,00</p>
+          <p>Bike</p>
+        </div>
+        <figure>
+          <img src="./icons/bt_add_to_cart.svg" alt="">
+        </figure>
+      </div>
+    </div> -->
+  </div>
+</section>
+```
+
+🔥 **Tip de Visual Studio Code:** Replace all para reemplazar el nombre de cada clase:   
+
+1.  Presionas control + f en el primer apartado buscas el nombre (inactive)
+2.  despliegas la flecha y en el siguiente colocas el nuevo nombre que vas a reemplazar,
+3.  en la parte derecha le das a replace all y ya reemplazas cada línea de forma más automatizada!
+    
+
+![](https://raw.githubusercontent.com/castegraf/castegrafProjects/master/Captura%20de%20pantalla%202022-07-27%20215057.png)
+
 
 🎲
 
