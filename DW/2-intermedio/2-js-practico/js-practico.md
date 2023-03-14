@@ -1297,11 +1297,9 @@ Resumen de como hacer un fork: [[git-github#29. Creando un Fork, contribuyendo a
 
 Crear un archivo index.html, un style.css y un main.js dentro del proyecto clonado. Dentro de index y del style copiamos todo lo relacionado a la pantalla que vayamos a trabajar, así solo nos quedaría por corregir algunos estilos y crear las funcionalidades en JavaScript.  
 
-<details>
-	<summary>Haz clic para ver el Código CSS totalmente funcional 👀</summary>
-	<br/>
-	<style>
-	/* General */
+🔥 Código CSS totalmente funcional:   
+```css
+/* General */
 :root {
     --white: #FFFFFF;
     --black: #000000;
@@ -1607,7 +1605,6 @@ aside {
 }
 
 /* Product List */
-
 .cards-container {
   display: grid;
   grid-template-columns: repeat(auto-fill, 240px);
@@ -1651,7 +1648,6 @@ aside {
 }
 
 
-
   @media (max-width: 640px) {
     .menu {
       display: block;
@@ -1686,8 +1682,7 @@ aside {
       display: none;
     }
   }
-	</style>
-</details>
+```
 
 🎲
 
@@ -2613,6 +2608,7 @@ renderProducts(productList);
 
 ## 23. Interacción entre todos los componentes 
 
+🔥 Código JS completo:   
 ```js
 // VARIABLES  ----------------
 /* 01 Modificación */
