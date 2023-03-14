@@ -1522,6 +1522,8 @@ function toggleMobileMenu(){
 
 ## 20. Carrito de compras
 
+![Carrito](https://i.postimg.cc/gcR67Y12/car.png)
+
 ```html
 <nav>
     <!-- 02 Modificación con JS -->
@@ -1719,6 +1721,300 @@ function toggleCarritoAside(){
 🎲
 
 ## 21. Lista de productos: HTML a partir de arrays
+
+Creamos estructura html desde JavaScript.  
+
+```html
+<nav>
+    <!-- 02 Modificación con JS -->
+    <img src="./icons/icon_menu.svg" alt="menu" class="menu">
+
+    <div class="navbar-left">
+      <img src="./logos/logo_yard_sale.svg" alt="logo" class="logo">
+
+      <ul>
+        <li>
+          <a href="/">All</a>
+        </li>
+        <li>
+          <a href="/">Clothes</a>
+        </li>
+        <li>
+          <a href="/">Electronics</a>
+        </li>
+        <li>
+          <a href="/">Furnitures</a>
+        </li>
+        <li>
+          <a href="/">Toys</a>
+        </li>
+        <li>
+          <a href="/">Others</a>
+        </li>
+      </ul>
+    </div>
+
+        <!-- 01 Modificación con JS -->
+    <div class="navbar-right">
+      <ul>
+        <li class="navbar-email">platzi@example.com</li>
+        <li class="navbar-shopping-cart">
+          <!-- 03 Modificación con JS -->
+          <img src="./icons/icon_shopping_cart.svg" alt="shopping cart">
+          <div>2</div>
+        </li>
+      </ul>
+    </div>
+    
+
+    <div class="desktop-menu inactive">
+        <ul>
+          <li>
+            <a href="/" class="title">My orders</a>
+          </li>
+    
+          <li>
+            <a href="/">My account</a>
+          </li>
+    
+          <li>
+            <a href="/">Sign out</a>
+          </li>
+        </ul>
+    </div>
+<!-- 02 Modificación con JS -->
+    <div class="mobile-menu inactive">
+      <ul>
+        <li>
+          <a href="/">CATEGORIES</a>
+        </li>
+        <li>
+          <a href="/">All</a>
+        </li>
+        <li>
+          <a href="/">Clothes</a>
+        </li>
+        <li>
+          <a href="/">Electronics</a>
+        </li>
+        <li>
+          <a href="/">Furnitures</a>
+        </li>
+        <li>
+          <a href="/">Toys</a>
+        </li>
+        <li>
+          <a href="/">Other</a>
+        </li>
+      </ul>
+  
+      <ul>
+        <li>
+          <a href="/">My orders</a>
+        </li>
+        <li>
+          <a href="/">My account</a>
+        </li>
+      </ul>
+  
+      <ul>
+        <li>
+          <a href="/" class="email">platzi@example.com</a>
+        </li>
+        <li>
+          <a href="/" class="sign-out">Sign out</a>
+        </li>
+      </ul>
+    </div>
+</nav>
+<!-- 03 Modificación con JS -->
+<aside id="shoppingCartContainer" class="inactive">
+  <div class="title-container">
+    <img src="./icons/flechita.svg" alt="arrow">
+    <p class="title">My order</p>
+  </div>
+
+  <div class="my-order-content">
+    <div class="shopping-cart">
+      <figure>
+        <img src="https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="bike">
+      </figure>
+      <p>Bike</p>
+      <p>$30,00</p>
+      <img src="./icons/icon_close.png" alt="close">
+    </div>
+
+    <div class="shopping-cart">
+      <figure>
+        <img src="https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="bike">
+      </figure>
+      <p>Bike</p>
+      <p>$30,00</p>
+      <img src="./icons/icon_close.png" alt="close">
+    </div>
+
+    <div class="shopping-cart">
+      <figure>
+        <img src="https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="bike">
+      </figure>
+      <p>Bike</p>
+      <p>$30,00</p>
+      <img src="./icons/icon_close.png" alt="close">
+    </div>
+
+    <div class="order">
+      <p>
+        <span>Total</span>
+      </p>
+      <p>$560.00</p>
+    </div>
+
+    <button class="primary-button">
+      Checkout
+    </button>
+  </div>
+</aside>
+
+<!-- 04 Modificación con JS -->
+<section class="main-container">
+  <div class="cards-container"> 👀👈
+
+    <!-- <div class="product-card">
+      <img src="https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="">
+      <div class="product-info">
+        <div>
+          <p>$120,00</p>
+          <p>Bike</p>
+        </div>
+        <figure>
+          <img src="./icons/bt_add_to_cart.svg" alt="">
+        </figure>
+      </div>
+    </div> -->
+  </div>
+</section>
+```
+
+```js
+// VARIABLES  ----------------
+/* 01 Modificación */
+const menuEmail = document.querySelector(".navbar-email");
+const desktopMenu = document.querySelector(".desktop-menu");
+/* 02 Modificación */
+const menuHamIcon = document.querySelector('.menu');
+const mobileMenu = document.querySelector('.mobile-menu');
+/* 03 Modificación */
+const menuCarritoIcon = document.querySelector('.navbar-shopping-cart');
+const shoppingCartContainer = document.querySelector('#shoppingCartContainer')
+/* 04 Modificación */
+const cardsContainer = document.querySelector('.cards-container')
+/* const productDetailContainer = document.querySelector("#productDetail"); */
+
+// ADDEVENTLISTENER ----------------
+/* 01 Modificación */
+menuEmail.addEventListener('click', toggleDesktopMenu); 
+/* 02 Modificación */
+menuHamIcon.addEventListener('click', toggleMobileMenu);
+/* 03 Modificación */
+menuCarritoIcon.addEventListener('click', toggleCarritoAside);
+/* xx Modificación */
+/* productDetailCloseIcon.addEventListener('click', closeProductDetailAside); */
+
+// FUNCIONES  ----------------
+/* 01 Modificación */
+function toggleDesktopMenu(){
+    // Cada vez que entre a esta función cerrar la ventana My order, luego abrir la ventana del Email
+    shoppingCartContainer.classList.add('inactive');
+    desktopMenu.classList.toggle("inactive");
+}
+/* 02 Modificación */
+function toggleMobileMenu(){
+    // Al entrar a esta función cerrar ventana My Order y abrir menú del icono hamburguesa 
+    shoppingCartContainer.classList.add('inactive');
+    mobileMenu.classList.toggle('inactive')
+}
+/* 03 Modificación */
+function toggleCarritoAside(){
+    // Al entrar a esta función cerrar ventana del icono hamburguesa y abrir menú My Order
+    mobileMenu.classList.add('inactive');
+    shoppingCartContainer.classList.toggle('inactive');
+}
+
+// ARRAYS + FUNCION + CICLO FOR  ----------------
+/* 04 Modificación */
+const productList = [];
+productList.push({
+    name: 'Bike',
+    price: 120,
+    image: 'https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
+});
+
+productList.push({
+    name: 'Bike',
+    price:120,
+    image:'https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
+});
+
+productList.push({
+    name: 'car',
+    price:12000,
+    image:'https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
+});
+
+productList.push({
+    name: 'Plane',
+    price:120000,
+    image:'https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
+});
+
+function renderProducts(array){
+    for (product of array){
+        /* Creamos elementos y su clase 
+        -- div>img+div>(div>p+p)+figure>img */
+        const productCard = document.createElement('div');
+        productCard.classList.add('product-card');
+
+        /* img+div> */
+        const productImg = document.createElement('img')
+        productImg.setAttribute('src', product.image);
+
+        /* +div>(div>p+p)+figure>img */
+        const productInfo = document.createElement('div');
+        productInfo.classList.add('product-info');
+        
+        /* >(div>p+p) */
+        const productInfoDiv = document.createElement('div');
+
+        const productPrice = document.createElement('p');
+        productPrice.innerText = '$ ' + product.price;
+
+        const productName = document.createElement('p');
+        productName.innerText = product.name;
+
+        productInfoDiv.appendChild(productPrice);
+        productInfoDiv.appendChild(productName);
+
+        /* +figure>img */
+        const productInfoFigure = document.createElement('figure');
+
+        const productImgCart = document.createElement('img');
+        productImgCart.setAttribute('src', './icons/bt_add_to_cart.svg');
+
+        productInfoFigure.appendChild(productImgCart);
+
+        productInfo.appendChild(productInfoDiv);
+        productInfo.appendChild(productInfoFigure);
+
+        productCard.appendChild(productImg);
+        productCard.appendChild(productInfo);
+
+        /* Metemos todo en la variable principal */
+        cardsContainer.appendChild(productCard);
+    }
+}
+renderProducts(productList);
+```
+
 
 📌 Comentar: // Ctrl + K (VSC queda a la espera), después pulsa Ctrl + C   
 📌 Descomentar: Ctr + U
