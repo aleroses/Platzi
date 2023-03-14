@@ -1722,7 +1722,8 @@ function toggleCarritoAside(){
 
 ## 21. Lista de productos: HTML a partir de arrays
 
-Creamos estructura html desde JavaScript.  
+Creamos estructura html desde JavaScript.    
+![Productos](https://i.postimg.cc/Wz26s4dg/products.png)
 
 ```html
 <nav>
@@ -1895,6 +1896,7 @@ Creamos estructura html desde JavaScript.
 </section>
 ```
 
+🔥 Código JS de la vista de productos:       
 ```js
 // VARIABLES  ----------------
 /* 01 Modificación */
