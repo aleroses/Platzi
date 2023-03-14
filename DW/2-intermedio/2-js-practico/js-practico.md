@@ -2209,13 +2209,11 @@ renderProducts(productList);
 
 🔥 **Tip de Visual Studio Code:** Replace all para reemplazar el nombre de cada clase:   
 
-1.  Presionas control + f en el primer apartado buscas el nombre (inactive)
-2.  despliegas la flecha y en el siguiente colocas el nuevo nombre que vas a reemplazar,
-3.  en la parte derecha le das a replace all y ya reemplazas cada línea de forma más automatizada!
-    
-
-![](https://raw.githubusercontent.com/castegraf/castegrafProjects/master/Captura%20de%20pantalla%202022-07-27%20215057.png)
-
+1.  Presionar `control + f` en el primer apartado buscas el nombre (inactive)   
+	![Tip vsc](https://i.postimg.cc/bvJt7VK0/tip-vsc-01.png)
+2.  Desplegar la flecha y en el siguiente colocas el nuevo nombre que vas a reemplazar,
+3.  En la parte derecha le das a **replace all** y listo, reemplaza cada línea de forma automatizada!   
+	![Tip vsc 02](https://i.postimg.cc/NM7vDkB3/tip-vsc-02.png)
 
 🎲
 
