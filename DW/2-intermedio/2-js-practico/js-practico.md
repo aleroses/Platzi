@@ -1258,11 +1258,12 @@ function btnOnClick(event){
 ## 14. Conectando GitHub a proyectos de JavaScript
 
 🔥 Página: [gitignore](https://www.toptal.com/developers/gitignore/)   
-- mac OS
+- macOS
 - Windows 
 - Linux
 - Visual Studio Code
 - Node 
+- git
 
 Resumen de como conectarnos a GitHub: [[git-github#19. Uso de GitHub]]
 
