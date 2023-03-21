@@ -657,6 +657,195 @@ console.log(username, age, country, user.age);
 [Documentación](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment)
 
 
+## 8. ES6: spread operator
+
+El **operador de propagación** _(spread operator)_, como su nombre lo dice, consiste en **propagar los elementos de un iterable**, ya sea un _array_ o _string_ utilizando tres puntos (`...`) dentro de un array.
+
+```js
+// Para strings
+const array = [ ..."Hola"]    // [ 'H', 'o', 'l', 'a' ]
+
+// En arrays
+const otherArray = [ ...array]   //[ 'H', 'o', 'l', 'a' ]
+```
+
+También se utiliza para **objetos**, pero esta característica fue añadida en versiones posteriores de ECMAScript y es denominada _[propiedades de propagación](https://platzi.com/clases/3504-ecmascript-nuevo/51771-expresiones-regulares/)_.
+
+### Cómo copiar arrays utilizando el operador de propagación
+
+Para realizar una copia de un _array_, deberás tener cuidado de la **referencia en memoria**. Los _arrays_ se guardan en una referencia en la memoria del computador, al crear una copia, este tendrá la misma referencia que el original. Debido a esto, **si cambias algo en la copia, también lo harás en el original.**
+
+```js
+const originalArray = [1,2,3,4,5]
+const copyArray = originalArray
+copyArray[0] = 0
+
+console.log(originalArray);
+console.log(copyArray);
+
+originalArray // [0,2,3,4,5]
+originalArray === copyArray  // true
+```
+
+Para evitar esto, utiliza el operador de propagación para crear una copia del _array_ que utilice una **referencia en memoria diferente al original**.
+
+```js
+const originalArray = [1,2,3,4,5]
+const copyArray = [...originalArray]
+copyArray[0] = 0
+
+console.log(originalArray);
+console.log(copyArray);
+
+originalArray // [1,2,3,4,5]
+copyArray // [0,2,3,4,5]
+originalArray === copyArray  // false
+```
+
+### Cómo unir arrays y añadir elementos con el operador de propagación
+
+Para unir dos arrays con el operador de propagación, simplemente debes separarlos por comas en un _array_.
+
+```js
+const array1 = [1,2,3]
+const number = 4
+const array2 = [5,6,7]
+
+const otherArray = [ ...array1, number, ...array2 ]
+
+otherArray // [1,2,3,4,5,6,7]
+```
+
+#### Cuidado con la copia en diferentes niveles de profundidad
+
+El operador de propagación sirve para producir una copia en **un solo nivel de profundidad**, esto quiere decir que si existen objetos o _arrays_ dentro del _array_ a copiar. Entonces los sub-elementos en cada nivel, tendrán la **misma referencia de memoria en la copia y en el original**.
+
+```js
+const originalArray = [1, [2,3] ,4,5]
+const copyArray = [...originalArray]
+
+originalArray[1] === copyArray[1] // true
+```
+
+La manera de solucionar es más compleja, tendrías que emplear el operador de propagación para cada elemento en cada nivel de profundidad.
+
+Sin embargo, recientemente salió una forma de producir una copia profunda con [StructuredClone](https://developer.mozilla.org/en-US/docs/Web/API/structuredClone), aunque es una característica muy reciente, así que revisa que navegadores tienen soporte.
+
+```js
+const originalArray = [1, [2,3] ,4,5]
+const copyArray = structuredClone(originalArray)
+
+originalArray === copyArray  // false
+originalArray[1] === copyArray[1] // false
+```
+
+Este comportamiento también sucede para objetos dentro de otros objetos, u objetos dentro de arrays.
+
+### Parámetro _rest_
+
+El parámetro _rest_ consiste en **agrupar el residuo de elementos** mediante la sintaxis de tres puntos (`...`) seguido de una variable que contendrá los elementos en un _array_.
+
+Esta característica sirve para crear funciones que acepten cualquier número de argumentos para agruparlos en un _array_.
+
+```js
+function hola (primero, segundo, ...resto) {
+  console.log(primero, segundo)  // 1 2
+  console.log(resto) // [3,4,5,6]
+}
+
+hola(1,2,3,4,5)
+```
+
+También sirve para obtener los elementos restantes de un _array_ u objeto usando [desestructuración](https://platzi.com/clases/3504-ecmascript-nuevo/51756-asignacion-de-destructuracion/).
+
+```js
+const objeto = {
+  nombre: "Andres",
+  age: 23,
+  plataforma: "Platzi"
+}
+
+const {plataforma, ...usuario} = objeto
+// usuario: { nombre: 'Andres', age: 23 }
+// plataforma: Platzi
+console.log(objeto);
+console.log(plataforma);
+console.log(usuario);
+
+const array = [0,1,2,3,4,5]
+const [cero, ...positivos] = array
+// cero: 0
+// positivos: [ 1, 2, 3, 4, 5 ]
+console.log(cero);
+console.log(positivos);
+```
+
+#### Posición del parámetro _rest_
+
+El parámetro _rest_ **siempre deberá estar en la última posición** de los parámetros de la función, caso contrario existirá un error de sintaxis.
+
+```js
+// ❌ Mal
+function hola (primero, ...rest, ultimo) { ... }
+// SyntaxError: Rest element must be last element. 
+```
+
+#### Diferencias entre el parámetro _rest_ y el operador de propagación
+
+Aunque el parámetro _rest_ y el operador de propagación utilicen la misma sintaxis, son diferentes.
+
+El parámetro _rest_ agrupa el **residuo de elementos** y siempre debe estar en la última posición, mientras que el operador de propagación **expande los elementos de un iterable en un _array_** y no importa en que lugar esté situado.
+
+```js
+const array = [1,2,3,4,5]
+
+function hola (primero, segundo, ...resto) { // <- Parámetro Rest
+  console.log(primero, segundo)  // 1 2
+  console.log(resto) // [3,4,5, "final"]
+}
+
+hola(...array, "final") //<- Operador de propagación
+//Lo mismo que hacer -> hola(1,2,3,4,5, "final")
+```
+
+_**Contribución creada por** Andrés Guano (Platzi Contributor)._
+
+#### Ejemplo hecho en clase:   
+
+```js
+// spread operator 
+let person = { name: 'oscar', age: 28 };
+let country = 'MX';
+
+let data = { ...person, country, id: 2};
+console.log(data);
+
+// rest 
+function sum(num, ...values) {
+    console.log(values);
+    console.log(num + values[0]);
+    return num + values[0];
+}
+
+sum(1, 1, 2, 3);
+```
+
+Ejemplo loco:   
+```js
+let kissEmoji = [..."👩‍❤️‍💋‍👩"]
+console.log(kissEmoji)
+
+let familyEmoji = [..."👨‍👩‍👦‍👦"]
+console.log(familyEmoji)
+```
+
+- [Documentación](https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Operators/Spread_syntax)    
+- [Cómo clonar un Array en JavaScript de forma correcta y sin problemas](https://midu.dev/como-clonar-un-array-en-javascript/)
+
+
+## 9. 
+
+
 
 [Resumen 01](https://luis-ariza.notion.site/ECMAScript-Versiones-de-JavasCript-be6daa0ae0eb406f990238a07d677a5a)   
 [Resumen 02](https://pogolo.notion.site/Nuevo-Curso-de-ECMAScript-Historia-y-Versiones-de-JavaScript-eecb774125e7434f98eed2473a1be389)
