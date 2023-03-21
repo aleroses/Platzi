@@ -652,5 +652,11 @@ let { username, age, country } = user;
 console.log(username, age, country, user.age);
 ```
 
+![Ejemplo](https://i.postimg.cc/Ls11dG0g/7-desestructuracion.webp)
+
+[Documentación](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment)
+
+
+
 [Resumen 01](https://luis-ariza.notion.site/ECMAScript-Versiones-de-JavasCript-be6daa0ae0eb406f990238a07d677a5a)   
 [Resumen 02](https://pogolo.notion.site/Nuevo-Curso-de-ECMAScript-Historia-y-Versiones-de-JavaScript-eecb774125e7434f98eed2473a1be389)
