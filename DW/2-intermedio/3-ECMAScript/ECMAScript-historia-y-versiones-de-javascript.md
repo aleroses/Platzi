@@ -843,9 +843,89 @@ console.log(familyEmoji)
 - [Cómo clonar un Array en JavaScript de forma correcta y sin problemas](https://midu.dev/como-clonar-un-array-en-javascript/)
 
 
-## 9. 
+## 9. Combina objetos JSON con el Spread Operator
 
+En este desafío recibirás dos objetos JSON por parámetros.
 
+Usando el spread operator, deberás combinar ambos objetos en uno solo. Es posible que no se te envíe alguno de los dos objetos o ninguno, por lo que deberás usar estos por defecto, en su respectivo orden:
+
+**JSON 1:**
+
+```json
+{
+    name: "Mr. Michi",
+    food: "Pescado"
+}
+```
+
+**JSON 2:**
+
+```json
+{
+    age: 12,
+    color: "Blanco"
+}
+```
+
+La solución deberá tener un input y output como la siguiente, recuerda que se te pueden o no enviar los parámetros.
+
+Input:
+
+```js
+solution({
+    name: "Bigotes",
+    food: "Pollito"
+}),
+```
+
+Output:
+
+```json
+{
+    name: "Bigotes",
+    food: "Pollito",
+    age: 12,
+    color: "Blanco"
+}
+```
+
+### 🔥 Mi solución: No tan bien...   
+
+```js
+function solution(json1, json2) {
+    var json1 = json1 || {name: 'Mr. Michi', food: 'Pescado'}
+    var json2 = json2 || {age: 12, color: 'Blanco'}
+    var data = {...json1, ...json2}
+
+    console.log(data);
+}
+
+solution({name: 'Mr. Bigotes', food: 'Pollito'}, { age: 12, color: 'Blanco'});
+```
+
+### ✨ Solución ofrecida: bien...   
+
+```js
+export function solution(
+    json1 = {
+        name: "Mr. Michi",
+        food: "Pescado",
+    },
+    json2 = {
+        age: 12,
+        color: "Blanco",
+    }
+) {
+/* return {...json1, ...json2}; */
+console.log({...json1, ...json2});
+}
+
+solution({
+    name: "Bigotes",
+    food: "Pollito"
+})
+
+```
 
 [Resumen 01](https://luis-ariza.notion.site/ECMAScript-Versiones-de-JavasCript-be6daa0ae0eb406f990238a07d677a5a)   
 [Resumen 02](https://pogolo.notion.site/Nuevo-Curso-de-ECMAScript-Historia-y-Versiones-de-JavaScript-eecb774125e7434f98eed2473a1be389)
