@@ -1149,6 +1149,16 @@ Además, si iniciaste un proyecto con NPM _(Node Package Manager)_ con Node.js
 }
 ```
 
+✨ Puedes evitar la configuración del JSON usando la extensión `.mjs`, esta le indica a JavaScript que es un módulo:    
+![hello.PNG](https://i.postimg.cc/65CqP7Yq/13-module.webp)
+
+En caso de que estés trabajando en un proyecto muy básico sin dependencias y no tienes un archivo JSON, puedes agregar el atributo type=“module” al script en tu html.
+
+```html
+<script src="./index.js" type="module"></script>
+```
+
+
 #### Qué son las exportaciones de código
 
 Las exportaciones de código consisten en **crear funciones o variables para utilizarlas en otros archivos** mediante la palabra reservada `export`.
@@ -1232,7 +1242,7 @@ const add  = (x,y) => {
     return x + y;
 }
 
-export default add
+export default add;
 ```
 
 #### Importaciones por defecto
@@ -1265,7 +1275,243 @@ import myFunction, { myExport } from "/module.js"
 
 _**Contribución creada por** Andrés Guano (Platzi Contributor)._
 
+#### Ejemplo hecho en clase:     
 
+```js
+// module.js
+const saludo = () => {
+    console.log('Hello!');
+}
+
+export default saludo;
+```
+
+```js
+// 08-module.js
+import saludo from "./module.js";
+
+saludo();
+```
+
+- [Documentación](https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Statements/import)
+- [Documentación](https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Statements/export)
+- [Documentación](https://es.javascript.info/import-export)
+
+## 14. Obtén una lista de películas
+
+En este desafío tendrás un archivo llamado `api.js` que estará al mismo nivel que tu archivo `exercise.js`.
+
+Este archivo tendrá una función asíncrona `getData()` que te retornará una lista de resultados misteriosa.
+
+Tu función `solution()` deberá retornar la misma lista de resultados que te brinda la función `getData()`.
+
+```js
+// api.js
+export async function getData() {
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            resolve([{
+                movie: "El despertar de los michis",
+                year: 2021,
+                protagonist: "Mr. Michi"
+            }, {
+                movie: "101 Michis",
+                year: 2019,
+                protagonist: "Tommy Michiguire"
+            }]);
+        }, 1000);
+    });
+}
+```
+
+```js
+// exercise.js
+export function solution() {
+  // Tu código aquí 👈
+}
+```
+
+**Input:**
+
+```js
+solution();
+```
+
+**Output:**
+
+```json
+[{
+    movie: "El despertar de los michis",
+    year: 2021,
+    protagonist: "Mr. Michi"
+}, {
+    movie: "101 Michis",
+    year: 2019,
+    protagonist: "Tommy Michiguire"
+}]
+```
+
+### 🔥 Mi solución: No tan bien...   
+
+```js
+import { getData } from "./api.js";
+
+/* export */ function solution() {
+    // Tu código aquí 👈
+    return getData()
+        .then(respuesta => console.log(respuesta))
+        .catch(error => console.log(error));
+}
+
+solution();
+```
+
+### ✨ Solución ofrecida: bien...   
+
+```js
+import { getData } from "./api";
+
+export function solution() {
+	return getData().then(movies => movies);
+}
+
+solution();
+```
+
+
+## 15. ES6: generator 
+
+Los **generadores** son funciones especiales que pueden pausar su ejecución, luego volver al punto donde se quedaron, recordando su _scope_ y seguir retornando valores.
+
+Estos se utilizan para guardar la **totalidad de datos infinitos**, a través de una función matemática a valores futuros. De esta manera ocupan poca memoria, con respecto a si creamos un _array_ u objeto.
+
+## Cómo utilizar generadores
+
+La sintaxis de los generadores comprende lo siguiente:
+
+-   La palabra reservada `function*` (con el asterisco al final).
+-   La palabra reservada `yield` que hace referencia al valor retornado cada vez que se invoque, recordando el valor anterior.
+-   Crear una variable a partir de la función generadora.
+-   El método `next` devuelve un objeto que contiene una propiedad `value` con cada valor de `yield`; y otra propiedad `done` con el valor `true` o `false` si el generador ha terminado.
+
+Si el generador se lo invoca y ha retornado todos sus valores de `yield`, entonces devolverá el objeto con las propiedades `value` con `undefined` y un `done` con `true`.
+
+```js
+// Declaración
+function* nombre(parámetros){
+    yield (primer valor retornado)
+    yield (segundo valor retornado)
+    ...
+    yield (último valor retornado)
+
+}
+
+//Crear el generador
+const generador = nombre(argumentos)
+
+// Invocacioens
+generador.next().value //primer valor retornado
+generador.next().value //segundo valor retornado
+...
+generador.next().value //último valor retornado
+```
+
+## Ejemplo de un generador
+
+Por ejemplo, creemos un generador para retornar tres valores.
+
+```js
+function* generator(){
+    yield 1
+    yield 2
+    yield 3
+}
+
+const generador = generator()
+
+generador.next().value //1
+generador.next().value //2
+generador.next().value //3
+generador.next() // {value: undefined, done: true}
+```
+
+-   [Documentación de generadores](https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Generator)
+
+## Cómo utilizar _for of_ y _for in_
+
+Existen dos nuevas formas de utilizar ciclos repetitivos. El bucle `for valor of iterable` **recorre iterables**, como arrays, `Map`, `Set` e incluso un generador.
+
+El valor de cada elemento del iterable puede tener cualquier nombre, por eso se inicia con `let nombre`.
+
+```js
+const array = [5, 4, 3, 2, 1]
+
+for (let numero of array) {
+  console.log(numero) // 5 4 3 2 1
+}
+```
+
+Sin embargo, debes tener en cuenta que solo podrás acceder a sus **valores**, y no a sus referencias, por lo que si quieres cambiar los elementos del array, necesitarás un índice `array[indice]`.
+
+```js
+for (let numero of array) {
+  valor *= 2 // numero
+  console.log(numero) // 10 8 6 4 2
+}
+ 
+console.log(array) // [ 5, 4, 3, 2, 1 ]
+```
+
+Si intentas recorrer un objeto de esta forma `for elemento of objeto`, te ocurrirá un error, porque **un objeto no es un iterable**. En su lugar puedes utilizar `for elemento in objeto`, que recorrerá las propiedades del objeto.
+
+```js
+const objeto = { a: 1, b: 2, c: 3 }
+
+for (let elemento in objeto) {
+  console.log(elemento) // 'a' 'b' 'c'
+}
+```
+
+Sin embargo, si utilizas `for elemento in array`, no dará un error, pero el resultado no será el esperado, ya que los arrays son un tipo de objeto donde cada propiedad es el índice del valor del array o del iterable. Por lo que debes tener cuidado.
+
+```js
+const array = [5, 4, 3, 2, 1]
+
+for (let elemento in array) {
+  console.log(elemento) // '0' '1' '2' '3' '4'
+}
+
+/* const array = {
+	'0': 5,
+  '1': 4,
+  '2': 3,
+  '3': 2,
+  '4': 1
+}*/
+```
+
+_**Contribución creada por** Andrés Guano (Platzi Contributor)._
+
+#### Ejemplo hecho en clase:     
+
+```js
+function* iterate(array){
+    for(let value of array){
+        yield value;
+    }
+}
+
+const it = iterate(['Oscar', 'David', 'Ana', 'Ulises', 'Jennifer']);
+
+console.log(it.next().value); // Oscar
+console.log(it.next().value); // David
+console.log(it.next().value); // Ana
+console.log(it.next().value); // Ulises
+console.log(it.next().value); // Jennifer
+console.log(it.next().value); // undefined
+console.log(it.next().value); // undefined
+console.log(it.next().value); // undefined
+```
 
 [Resumen 01](https://luis-ariza.notion.site/ECMAScript-Versiones-de-JavasCript-be6daa0ae0eb406f990238a07d677a5a)   
 [Resumen 02](https://pogolo.notion.site/Nuevo-Curso-de-ECMAScript-Historia-y-Versiones-de-JavaScript-eecb774125e7434f98eed2473a1be389)
