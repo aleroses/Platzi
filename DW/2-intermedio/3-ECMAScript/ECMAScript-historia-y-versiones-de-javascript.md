@@ -927,5 +927,213 @@ solution({
 
 ```
 
+
+## 10. ES6: object literals
+
+Los **objetos literales** consiste en crear objetos a partir de variables **sin repetir el nombre**. Antes de ES6, para crear un objeto a partir de variables consistía en la siguiente manera:
+
+```js
+const nombre = "Andres"
+const edad = 23
+
+const objeto = {
+    nombre: nombre, 
+    edad: edad
+}
+
+objeto // { nombre: 'Andres', edad: 23 }
+console.log(objeto);
+```
+
+### Cómo utilizar objetos literales
+
+Con los parámetros de objeto puedes **obviar la repetición de nombres**, JavaScript creará la propiedad a partir del nombre de la variable con su respectivo valor.
+
+```js
+const nombre = "Andres"
+const edad = 23
+
+const objeto = {nombre, edad}
+
+objeto // { nombre: 'Andres', edad: 23 }
+```
+
+El resultado es el mismo, pero sin la necesidad de repetir palabras. Puedes combinarlo con variables que su propiedad tiene un nombre diferente.
+
+```js
+const nombre = "Andres"
+const edad = 23
+const esteEsUnID = 1
+
+const objeto = {
+    nombre, 
+    edad,
+    id: esteEsUnID
+}
+
+objeto // { nombre: 'Andres', edad: 23, id: 1 }
+```
+
+_**Contribución creada por** Andrés Guano (Platzi Contributor)._
+
+#### Ejemplo hecho en clase:    
+
+Forma anterior:   
+```js
+function newUser(user, age, country, uId) {
+    return {
+        user: user,
+        age: age,
+        country: country,
+        id: uId
+    }
+}
+
+console.log(newUser('ghost', 16, 'PE', 1));
+```
+
+Nueva forma:   
+```js
+function newUser(user, age, country, uId) {
+    return {
+        user,
+        age,
+        country,
+        uId
+    }
+}
+
+console.log(newUser('ghost', 16, 'PE', 1));
+```
+
+
+## 11. ES6: promesas
+
+Una **promesa** es una forma de manejar el asincronismo en JavaScript y se representa como un objeto que puede generar un valor único a futuro, que tiene dos estados, o está resuelta o incluye una razón por la cual no ha sido resuelta la solicitud.
+
+### Cómo utilizar las promesas
+
+Solamente ten presente que la clase `Promise` y sus métodos `then` y `catch` fueron añadidos en ES6. Esto resuelve un problema del manejo del asincronismo con _callbacks_, llamado _[Callback Hell](https://miro.medium.com/max/721/0*iiecmuTLPBqbxd5V.jpeg)_.
+
+El argumento de la clase `Promise` es una función que recibe dos parámetros:
+
+-   `resolve`: cuando la promesa es **resuelta**.
+-   `reject`: cuando la promesa es **rechazada**.
+
+Puedes utilizar cualquier nombre, siempre y cuando sepas su funcionamiento.
+
+```js
+const promesa = () => {
+  return new Promise((resolve, reject) => {
+    if (something) {
+      //true o false
+      resolve("Se ha resuelto la promesa")
+    } else {
+      reject("Se ha rechazado la promesa")
+    }
+  })
+}
+
+promesa()
+  .then(respuesta => console.log(respuesta)) //En caso que se ejecute resolve
+  .catch(error => console.log(error)) //En caso que se ejecute reject
+```
+
+### Cursos para entender el asincronismo en JavaScript
+
+Si aún no sabes en qué consiste el asincronismo, no te preocupes, existen cursos completos de este tema.
+
+-   [Curso de JavaScript Engine (V8) y el Navegador](https://platzi.com/cursos/javascript-navegador/)
+-   [Curso de Asincronismo con JavaScript](https://platzi.com/cursos/asincronismo-js-2019/)
+
+_**Contribución creada por** Andrés Guano (Platzi Contributor)._
+
+- Este [video](https://youtu.be/rKK1q7nFt7M?t=36) ayuda a entender más claramente las promesas.
+- Les dejo un video para entender un poco mejor este tema de las promesas  [Curso JavaScript: 47. Promesas - #jonmircha](https://www.youtube.com/watch?v=ppzrpTjwEC8)
+
+
+## 12. ES6: clases
+
+### Bases teóricas sobre la _Programación Orientada a Objetos_
+
+Comencemos por el aspecto **teórico**:  
+
+-   **Clases:** Es una plantilla. Una definición genérica de algo que tiene atributos (datos/variables) y métodos (acciones/funciones) y desde la cual se pueden crear objetos.
+-   **Objetos:** Un elemento real que fue creada con base en una clase (plantilla) y que hereda (contiene) sus atributos y métodos.  
+
+¿Lo vemos con un ejemplo?:   
+Tenemos una clase _Animal_ que tiene como atributos: _especie_, _edad_, _patas_ y tiene como métodos: _dormir_, _comer_, _caminar_. A partir de esa clase genérica podemos instanciar objetos de ese tipo, como los siguientes:  
+
+-   **Objeto _perro_:** especie: canino, edad: 3, patas: 4. Puede dormir, comer y caminar.
+-   **Objeto _paloma_:** especie: ave, edad: 1, patas: 2. Puede dormir, comer y caminar.
+-   **Objeto _gato_:** especie: felino, edad: 2, patas: 4. Puede dormir, comer y caminar.  
+    ㅤ  
+    _Estos tres objetos fueron creados con base en la clase Animal (a esto se le llama instanciar un objeto a partir de una clase), y por ende, cada uno es un objeto de tipo Animal y cada uno tiene los atributos y métodos definidos en la clase._
+
+Ahora, a nivel más **técnico**, utilizamos los siguientes conceptos:  
+
+-   **Constructor:** Es un método que contiene una serie de instrucciones que se encargan de inicializar un objeto cuando es instanciado a partir de esa clase. Básicamente, asigna los valores de los atributos que le enviemos a ese objeto nuevo. Es una función que se ejecuta automáticamente.
+-   **Getter y Setter:** Son funciones sencillas de entender: obtener el valor de un atributo o establecerlo. Se crean de esta manera por un concepto de la POO denominado _encapsulamiento_, que consiste, entre otras cosas, en limitar el acceso a las clases para tener mayor control sobre ellas.
+-   **This:** Con este objeto de contexto hacemos referencia al propio objeto que se está instanciando y no a la clase.  
+    ㅤ  
+    Llevemos entonces el ejemplo de los animales a JavaScript para poder aterrizar todos estos conceptos teóricos de las clases:
+
+```js
+// Declaración de la clase Animal
+class Animal {
+
+	// Constructor: le enviamos a la clase los valores para los atributos del nuevo objeto (como argumentos) y el constructor se encarga de asignarlos:
+	// (Recordar: this hace referencia al objeto).
+	constructor(especie, edad, patas) {
+		this.especie = especie; // Asignar atributo especie al objeto
+		this.edad = edad; // Asignar atributo edad al objeto
+		this.patas = patas; // Asignar atributo patas al objeto
+	}
+
+	// Métodos de la clase: pueden contener cualquier lógica.
+	dormir() {
+		return 'Zzzz';
+	}
+
+	comer() {
+		return 'Yummy!';
+	}
+
+	caminar() {
+		return '¡Caminando!, la la la';
+	}
+
+	// Getter y Setter (solo para edad para no alargar)
+	// (Recordar: this hace referencia al objeto)
+	get getEdad() {
+		return this.edad;
+	}
+
+	set setEdad(newEdad) {
+		this.edad= newEdad;
+	}
+}
+
+// Ahora instanciemos los objetos: tendremos perro, paloma y gato como objetos de tipo Animal. Al enviar el valor de los atributos como argumentos, el constructor automáticamente los asigna al nuevo objeto.
+const perro = new Animal('canino', 3, 4);
+const paloma = new Animal('ave', 1, 2);
+const gato = new Animal('felino', 2, 4);
+
+// Podemos acceder a los métodos desde cada objeto:
+perro.dormir();	// Retorna 'Zzzz'
+paloma.comer(); // Retorna 'Yummy!'
+gato.caminar(); // Retorna '¡Caminando!, la la la'
+
+// Usamos los getter para obtener los valores de los atributos y los setters para reasignarlos.
+perro.getEdad; // Retorna 3 👈👀
+gato.setEdad = 3; // Cambia su atributo edad a 3 👈👀
+```
+ㅤ  
+`Algo interesante que noté` - NO se requieren los paréntesis para ejecutar los métodos getters & setters de una clase. 
+
+
+
+
+
 [Resumen 01](https://luis-ariza.notion.site/ECMAScript-Versiones-de-JavasCript-be6daa0ae0eb406f990238a07d677a5a)   
 [Resumen 02](https://pogolo.notion.site/Nuevo-Curso-de-ECMAScript-Historia-y-Versiones-de-JavaScript-eecb774125e7434f98eed2473a1be389)
