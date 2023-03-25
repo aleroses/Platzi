@@ -1714,5 +1714,330 @@ Para entender mejor ver:
 -   [Sets](https://platzi.com/clases/2397-python-profesional/39535-sets/) (Pero en Python 😛)
 
 
+## 18. ES7: exponentiation operator y array includes
+
+La siguiente versión de **ECMAScript** fue publicada en 2016. Las siguientes características de ES7 o ES2016 que aprenderás son: el método `includes` de _arrays_ y el operador de potenciación.
+
+### Operador de potenciación
+
+El operador de potenciación _(exponential operator)_ consiste en **elevar una base a un exponente** utilizando el doble asterisco (`**`).
+
+`base ** exponente`
+
+Por ejemplo, el cubo de 2 es igual a 8, matemáticamente expresado sería: $2^3=8$.
+
+```js
+const potencia = 2**3
+
+console.log(potencia) // 8
+```
+
+### Método includes
+
+El método `includes` determina si un _array_ o _string_ incluye un determinado elemento. Devuelve `true` o `false`, si existe o no respectivamente.
+
+Este método recibe dos argumentos:
+
+-   El **elemento** a comparar.
+-   El **índice inicial** desde donde comparar hasta el último elemento.
+
+#### Índices positivos y negativos
+
+Los índices positivos comienzan desde 0 hasta la longitud total menos uno, de **izquierda a derecha** del _array_.
+
+```js
+[0,1,2,3, ...., lenght-1]
+```
+
+Los índices negativos comienzan desde -1 hasta el negativo de la longitud total del _array_, de **derecha a izquierda**.
+
+```js
+[-lenght, ...,  -3, -2, -1]
+```
+
+#### Ejemplos utilizando el método _includes_
+
+El método `includes` se utiliza para _arrays_ y _strings_. El método es sensible a mayúsculas, minúsculas y espacios.
+
+```js
+//Utilizando strings
+const saludo = "Hola mundo"
+
+saludo.includes("Hola") // true
+saludo.includes("Mundo") // false
+saludo.includes(" ") // true
+saludo.includes("Hola", 1) // false
+saludo.includes("mundo", -5) // true
+```
+
+```js
+// Utilizando arrays
+const frutas = ["manzana", "pera", "piña", "uva"]
+
+frutas.includes("manzana") // true
+frutas.includes("Pera") // false
+frutas.includes("sandía") // false
+frutas.includes("manzana", 1) // false
+frutas.includes("piña", -1) // false
+frutas[0].includes("man") // true
+```
+
+_**Contribución creada por** Andrés Guano (Platzi Contributor)._
+
+#### Lecturas recomendadas
+
+[Curso de Manipulación de Arrays en JavaScript - Platzi](https://platzi.com/cursos/arrays)
+
+### Includes, pero en objetos
+
+En objetos también existen formas para saber si existe una propiedad. Estos son:
+
+-   La palabra reservada `in`
+-   El método de objetos `hasOwnProperty`
+-   El método `Object.hasOwn`, que recibe el objeto y la propiedad a evaluar.
+
+```js
+const letras = { a: 1, b: 2, c: 3 }
+
+"a" in letras // true
+letras.hasOwnProperty("a") // true
+Object.hasOwn(letras, "a") // true
+```
+
+Se diferencian en que `in` evalúa todas las propiedades del objeto y del prototipo.  
+
+El método `hasOwnProperty` evalúa solamente las propiedades del objeto. Sin embargo puede que colisione con alguna otra propiedad en el prototipo, por lo que la última versión de ECMAScript lanzó `Object.hasOwn` y se recomienda utilizar este si el navegador en el que trabajas lo soporta: [Can I use?](https://caniuse.com/?search=hasOwn).
+
+```js
+const letras = { a: 1, b: 2, c: 3 }
+
+"toString" in letras // true
+letras.hasOwnProperty("toString") // false
+Object.hasOwn(letras, "toString") // false
+```
+
+
+## 19. ES8: object entries y object values   
+
+
+Los métodos de **transformación de objetos a _arrays_** sirven para obtener la información de las propiedades, sus valores o ambas.
+
+### Obtener los pares de valor de un objeto en un _array_
+
+`Object.entries()` devuelve un _array_ con las _entries_ en forma `[propiedad, valor]` del objeto enviado como argumento.
+
+```js
+const usuario = {
+    name: "Andres",
+    email: "andres@correo.com",
+    age: 23
+};
+
+console.log(Object.entries(usuario));
+/* 
+[
+  [ 'name', 'Andres' ],
+  [ 'email', 'andres@correo.com' ],
+  [ 'age', 23 ]
+]  
+*/
+```
+
+### Obtener las propiedades de un objeto en un _array_
+
+`Object.keys()` devuelve un _array_ con las propiedades _(keys)_ del objeto enviado como argumento.
+
+```js
+const usuario = {
+    name: "Andres",
+    email: "andres@correo.com",
+    age: 23
+}
+
+Object.keys(usuario) 
+// [ 'name', 'email', 'age' ]
+```
+
+### Obtener los valores de un objeto en un _array_
+
+`Object.values()` devuelve un _array_ con los valores de cada propiedad del objeto enviado como argumento.
+
+```js
+const usuario = {
+    name: 'Andres',
+    email: "andres@correo.com",
+    age: 23
+};
+
+console.log(Object.values(usuario));
+// [ 'Andres', 'andres@correo.com', 23 ]
+```
+
+_**Contribución creada por** Andrés Guano (Platzi Contributor)._
+
+![Entries Values](https://i.postimg.cc/zf6sZ8rY/19-entries-values.jpg)
+
+📌 Con “Object.entries” solo te transforma los objetos en array que estén en el primer nivel,
+
+Pero si tienes un objeto que tiene otro objeto dentro, el objeto que esta mas adentro, permanecerá igual.
+
+#### Lecturas recomendadas
+
+- [Object.entries() - JavaScript | MDN](https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Object/entries)[
+- [Object.values() - JavaScript | MDN](https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Object/values)[
+- [Curso de Manipulación de Arrays en JavaScript - Platzi](https://platzi.com/cursos/arrays/)
+
+
+## 20. ES8: string padding y trailing commas
+
+Las siguientes características de ES8 o ES2017 que aprenderás son: rellenar un _string_ y _trailing commas_.
+
+### Rellenar un _string_ o _padding_
+
+El _padding_ consiste en rellenar un `string` por el principio o por el final, con el carácter especificado, repetido hasta que complete la longitud máxima.
+
+Este método recibe dos argumentos:
+
+-   La longitud máxima a rellenar, incluyendo el `string` inicial.
+-   El `string` para rellenar, por defecto, es un espacio.
+
+Si la longitud a rellenar es menor que la longitud del `string` actual, entonces no agregará nada.
+
+#### Método _padStart_
+
+El método `padStart` completa un `string` con otro `string` **en el inicio** hasta tener un total de caracteres especificado.
+
+```js
+'abc'.padStart(10) // "       abc"
+'abc'.padStart(10, "foo") // "foofoofabc"
+'abc'.padStart(6,"123465") // "123abc"
+'abc'.padStart(8, "0") // "00000abc"
+'abc'.padStart(1) // "abc"
+
+// Other example:  
+const string = 'Hello';  
+
+console.log(string.padStart(7, '_')); // __Hello
+```
+
+#### Método _padEnd_
+
+El método `padEnd` completa un `string` con otro `string` **en el final** hasta tener un total de caracteres especificado.
+
+```js
+'abc'.padEnd(10) // "abc       "
+'abc'.padEnd(10, "foo") // "abcfoofoof"
+'abc'.padEnd(6, "123456") // "abc123"
+'abc'.padEnd(1) // "abc"
+
+// Other example:  
+const string = 'Hello';  
+
+console.log(string.padEnd(7, '_')); // Hello__
+```
+
+### _Trailing commas_
+
+Las _trailing commas_ consisten en comas al final de objetos o _arrays_ que faciliten añadir nuevos elementos y evitar errores de sintaxis.
+
+```js
+const usuario = {
+    name: 'Andres',
+    email: "andres@correo.com",
+    age: 23, //<-- Trailing comma
+}
+
+const nombres = [
+    "Andres",
+    "Valeria",
+    "Jhesly", //<-- Trailing comma
+ ]
+
+// Other example:  
+const ages = [24, 34, 25, 24, , , , , 45];
+
+console.log(ages);
+console.log(ages.length);
+// [ 24, 34, 25, 24, <4 empty items>, 45 ]
+// 9
+```
+
+_**Contribución creada por** Andrés Guano (Platzi Contributor)._
+
+![padStar](https://i.postimg.cc/X7cXjNQW/20-pad-Star.webp)  
+
+#### Lecturas recomendadas
+
+[String.prototype.padStart() - JavaScript | MDN](https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/String/padStart)
+
+
+## 21. ES8: funciones asíncronas
+
+En ECMAScript 2017 o ES8 fue añadida una **nueva forma de manejar el asincronismo** en JavaScript mediante funciones asíncronas.
+
+### Cómo utilizar funciones asíncronas
+
+La función asíncrona se crea mediante la palabra reservada `async` y retorna una promesa.
+
+```js
+async function asyncFunction () {...}
+
+const asyncFunction = async () => { ... } 
+```
+
+La palabra reservada `await` significa que **espera hasta que una promesa sea resuelta** y solo funciona dentro de una función asíncrona. Los bloques `try / catch` sirven para manejar si la promesa ha sido resuelta o rechazada.
+
+```js
+async function asyncFunction () {
+  try {
+    const response = await promesa()
+    return response
+  } catch (error) {
+    return error
+  }
+}
+```
+
+¿Cuál es la mejor forma de manejar promesas, `then` o `async / await`? Ambas son muy útiles, manejar ambas te hará un mejor desarrollador.
+
+-   [Curso de Asincronismo con JavaScript](https://platzi.com/cursos/asincronismo-js/)
+
+_**Contribución creada por** Andrés Guano (Platzi Contributor)._
+
+#### Ejemplo hecho en clase:   
+
+```js
+const fnAsync = () => {
+    return new Promise((resolve, reject) => {
+        (true)
+            ? setTimeout(() => resolve('AsynC!!'), 2000)
+            : reject(new Error('Error!'));
+    });
+}
+
+const anotherFn = async () => {
+    const something = await fnAsync();
+    console.log(something);
+    console.log('Hello!');
+}
+
+console.log('Before');
+anotherFn();
+console.log('After');
+// Before
+// After
+// AsynC!!
+// Hello!
+```
+
+
+#### Lecturas recomendadas
+
+[Curso de Asincronismo con JavaScript - Platzi](https://platzi.com/cursos/asincronismo-js/)
+
+
+
+
+
 [Resumen 01](https://luis-ariza.notion.site/ECMAScript-Versiones-de-JavasCript-be6daa0ae0eb406f990238a07d677a5a)   
 [Resumen 02](https://pogolo.notion.site/Nuevo-Curso-de-ECMAScript-Historia-y-Versiones-de-JavaScript-eecb774125e7434f98eed2473a1be389)
