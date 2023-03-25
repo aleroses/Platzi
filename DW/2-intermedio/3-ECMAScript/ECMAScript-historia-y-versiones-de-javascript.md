@@ -1385,7 +1385,7 @@ Los **generadores** son funciones especiales que pueden pausar su ejecución, 
 
 Estos se utilizan para guardar la **totalidad de datos infinitos**, a través de una función matemática a valores futuros. De esta manera ocupan poca memoria, con respecto a si creamos un _array_ u objeto.
 
-## Cómo utilizar generadores
+### Cómo utilizar generadores
 
 La sintaxis de los generadores comprende lo siguiente:
 
@@ -1416,7 +1416,7 @@ generador.next().value //segundo valor retornado
 generador.next().value //último valor retornado
 ```
 
-## Ejemplo de un generador
+### Ejemplo de un generador
 
 Por ejemplo, creemos un generador para retornar tres valores.
 
@@ -1437,7 +1437,7 @@ generador.next() // {value: undefined, done: true}
 
 -   [Documentación de generadores](https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Generator)
 
-## Cómo utilizar _for of_ y _for in_
+### Cómo utilizar _for of_ y _for in_
 
 Existen dos nuevas formas de utilizar ciclos repetitivos. El bucle `for valor of iterable` **recorre iterables**, como arrays, `Map`, `Set` e incluso un generador.
 
@@ -1490,6 +1490,8 @@ for (let elemento in array) {
 }*/
 ```
 
+-   [Documentación de Iteradores y generadores](https://developer.mozilla.org/es/docs/Web/JavaScript/Guide/Iterators_and_Generators)
+
 _**Contribución creada por** Andrés Guano (Platzi Contributor)._
 
 #### Ejemplo hecho en clase:     
@@ -1512,6 +1514,175 @@ console.log(it.next().value); // undefined
 console.log(it.next().value); // undefined
 console.log(it.next().value); // undefined
 ```
+
+[Video sobre Generadores](https://www.youtube.com/watch?v=tEkWs8RCkQQ)  
+
+
+## 16. Generador de identificadores para michis
+
+En la guardería de Michis "Michilango", están registrando nuevos michis, pero necesitan una forma de identificarlos.
+
+Tu tarea será proveer de una función `getId()` que se encargue de generar dichos identificadores y, a través de un método `.next()` se pueda pasar al siguiente identificador, y a través de la propiedad `.value` se pueda obtener el valor del nuevo identificador.
+
+Cada vez que llame a la función de la siguiente forma debería retornarme un identificador nuevo y completamente diferente:
+
+```js
+const id = getId();
+id.next().value
+```
+
+El identificador puede ser de cualquier tipo (números o cadenas de texto), la única condición es que cada nuevo identificador que se retorne debe ser completamente diferente a los retornados anteriormente.
+
+Debes usar generadores de JavaScript para resolver este ejercicio. La solución debería tener un input y output como los siguientes:
+
+**Ejemplo 1:**
+
+**Input:**
+
+```js
+const id = getId()
+id.next().value
+id.next().value
+id.next().value
+```
+
+**Output:**
+
+```js
+1
+2
+3
+```
+
+**Ejemplo 2:**
+
+**Input:**
+
+```js
+const id = getId()
+id.next().value
+id.next().value
+id.next().value
+```
+
+**Output:**
+
+```js
+AX6SF5S
+G7QNW01
+KH3BR02
+```
+
+### 🔥 Mi solución: No tan bien...  
+
+```js
+function* getId(){
+    const cats = ["one", "two", "three", "four"];
+    let counter = 1;
+
+    for (let id of cats){
+        yield `${counter++} ${id}`;
+    }
+}
+
+const id = getId();
+console.log(id.next().value);
+console.log(id.next().value);
+console.log(id.next().value);
+console.log(id.next().value);
+console.log(id.next().value);
+console.log(id.next().value);
+console.log(id.next().value);
+console.log(id.next().value);
+console.log(id.next().value);
+```
+
+### ✨ Solución Platzi: bien...   
+```js
+function* getId() {
+    let lastId = 1;
+    while (true) {
+        yield lastId++;
+    }
+}
+
+const id = getId()
+console.log(id.next().value);
+console.log(id.next().value);
+console.log(id.next().value);
+console.log(id.next().value);
+console.log(id.next().value);
+console.log(id.next().value);
+```
+
+### 🤯 Soluciones de Compañeros:  
+```js
+export function* getId() {
+    while (true) {
+        yield Math.random().toString(36).substring(5).toUpperCase();
+    }
+}
+
+const id = getId()
+console.log(id.next().value); // 7DXUTKNB
+console.log(id.next().value); // AUB3ZQ3
+console.log(id.next().value); // DWFIDM7V
+console.log(id.next().value); // 8R6180RO
+console.log(id.next().value); // 4QPFE7A
+console.log(id.next().value); // PUE2PM0D
+```
+
+```js
+export function* getId() {
+    const arr = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
+    for (let i = 1; i > 0; i++){
+        for (const letter in arr) {
+        yield i + arr[letter];
+        }
+    }
+}
+
+const id = getId()
+console.log(id.next().value);
+console.log(id.next().value);
+```
+
+## 17. ES6: set-add  
+
+`Set` es una nueva estructura de datos para almacenar **elementos únicos**, es decir, sin elementos repetidos.
+
+### Cómo utilizar los Sets
+
+Para iniciar un `Set`, se debe crear una instancia de su clase a partir de un iterable. Generalmente, un iterable es un _array_.
+
+```js
+const set = new Set(iterable)
+```
+
+### Cómo manipular los Sets
+
+Para manipular estas estructuras de datos, existen los siguientes métodos:
+
+-   `add(value)`: añade un nuevo valor.
+-   `delete(value)`: elimina un elemento que contiene el `Set`, retorna un booleano si existía o no el valor.
+-   `has(value)`: retorna un booleano si existe o no el valor dentro del `Set`.
+-   `clear(value)`: elimina todos los valores del `Set`.
+-   `size`: retorna la cantidad de elementos del `Set`.
+
+_**Contribución creada por** Andrés Guano (Platzi Contributor)._
+
+#### Ejemplo hecho en clase:   
+
+```js
+const list = new Set();
+
+list.add('item 01');
+list.add('item 02').add('item 03');
+
+console.log(list);
+```
+
+
 
 [Resumen 01](https://luis-ariza.notion.site/ECMAScript-Versiones-de-JavasCript-be6daa0ae0eb406f990238a07d677a5a)   
 [Resumen 02](https://pogolo.notion.site/Nuevo-Curso-de-ECMAScript-Historia-y-Versiones-de-JavaScript-eecb774125e7434f98eed2473a1be389)
