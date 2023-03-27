@@ -2009,7 +2009,7 @@ _**Contribución creada por** Andrés Guano (Platzi Contributor)._
 ```js
 const fnAsync = () => {
     return new Promise((resolve, reject) => {
-        (true)
+        (true) // Concepto ternario: if ternario
             ? setTimeout(() => resolve('AsynC!!'), 2000)
             : reject(new Error('Error!'));
     });
@@ -2029,6 +2029,95 @@ console.log('After');
 // AsynC!!
 // Hello!
 ```
+
+### Ejemplo de setTimeout
+
+```html
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>The Window Object</h1>
+<h2>The setTimeout() and clearTimeout() Methods</h2>
+
+<p>Click "Stop" to prevent myGreeting() to execute. (You have 5 seconds)</p>
+
+<button onclick="myStopFunction()">Stop!</button>
+
+<h2 id="demo"></h2>
+
+<script>
+const myTimeout = setTimeout(myGreeting, 5000);
+
+function myGreeting() {
+  document.getElementById("demo").innerHTML = "Happy Birthday!"
+}
+
+function myStopFunction() {
+  clearTimeout(myTimeout);
+}
+</script>
+
+</body>
+</html>
+```
+
+- [Documentación setTimeout](https://www.w3schools.com/jsref/met_win_settimeout.asp)  
+- [Ejemplo](https://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_win_settimeout_cleartimeout)
+
+### Operador condicional (ternario)
+
+El **operador condicional** (**ternario**) es el único operador en JavaScript que tiene tres operandos. Este operador se usa con frecuencia como atajo para la instrucción if.
+
+#### Sintaxis
+
+```js
+condición ? expr1 : expr2
+```
+
+##### Parámetros
+
+`condición`
+
+Una expresión que se evalúa como true o false.
+
+`expr1`, `expr2`
+
+Expresión con valores de algún tipo.
+
+#### Descripción
+
+Si la `condición` es `true`, el operador retorna el valor de la `expr1`; de lo contrario, devuelve el valor de `expr2`. Por ejemplo, para mostrar un mensaje diferente en función del valor de la variable _`isMember,`_ se puede usar esta declaración:
+
+```js
+"La Cuota es de:  " + (isMember ? "$2.00" : "$10.00")
+```
+
+También puedes asignar variables dependiendo del resultado de la condición ternaria:
+
+```js
+var elvisLives = Math.PI > 4 ? "Sip" : "Nop";
+```
+
+También es posible realizar evaluaciones ternarias múltiples (Nota: El operador condicional es asociativo):
+
+```js
+var firstCheck = false,
+    secondCheck = false,
+    access = firstCheck ? "Acceso Denegado" : secondCheck ? "Acceso Denegado" : "Acceso Permitido";
+
+console.log( access ); // muestra "Acceso Permitido"
+```
+
+También puede usar operaciones ternarias en espacio vacío con el propósito de realizar diferentes operaciones:
+
+```js
+var stop = false, age = 16;
+
+age > 18 ? location.assign("continue.html") : stop = true;
+```
+
+[Documentación Operador condicional ternario](https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Operators/Conditional_Operator#sintaxis)  
 
 
 #### Lecturas recomendadas
