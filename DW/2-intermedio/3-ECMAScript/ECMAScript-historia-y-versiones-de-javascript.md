@@ -2277,8 +2277,96 @@ Si aún no sabes en qué consiste el asincronismo, no te preocupes, existen curs
 _**Contribución creada por** Andrés Guano (Platzi Contributor)._
 
 
-## 24. 
+## 24. ES10: flat-map y trimStart-trimEnd
+
+La siguiente versión de ECMAScript fue publicada en 2019. A continuación aprenderás sobre aplanamiento de _arrays_ y eliminar espacios en blanco de un _string_.
+
+### Qué es el aplanamiento de _arrays_
+
+**El aplanamiento consiste en transformar un _array_ de _arrays_ a una sola dimensión**. Los métodos `flat` y `flatMap` permitirán realizar el aplanamiento.
+
+#### Método _flat_
+
+El método `flat` devuelve un _array_ donde los sub-arrays han sido propagados hasta una profundidad especificada.
+
+Este método es **inmutable**, es decir, retorna un nuevo _array_ con los cambios y no cambia el array original.
+
+Este método recibe un argumento:
+
+-   La **profundidad** del aplanamiento, por defecto, tiene un valor de 1.
+
+Si se desea aplanar todos los sub-arrays en una sola dimensión, utiliza el valor de `Infinity`.
+
+```js
+const array = [1,2,[3,4],5,6]
+const result = array.flat() //👈👀
+result// [1,2,3,4,5,6]
+
+const array2 = [1, 2, [3, 4, [5, 6]]];
+const result2 = array2.flat() 
+result2// [1, 2, 3, 4, [5, 6]]
+
+const array3 = [1, 2, [3, 4, [5, 6]]]
+const result3 = array3.flat(2) //2👈👀
+result3// [1, 2, 3, 4, 5, 6]
+
+const array4 = [1, 2, [3, 4, [5, 6, [7, 8, [9, 10]]]]]
+const result4 = array4.flat(Infinity) //👈👀
+result4// [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+```
+
+#### Método _flatMap_
+
+**El método `flatMap` es una combinación de los métodos `map` y `flat`**. Primero realiza la iteración de los elementos del `array` (como si fuera `map`), y después los aplana en una sola profundidad (como si fuera `flat`).
+
+Este método es **inmutable**, es decir, retorna un nuevo _array_ con los cambios y no cambia el array original.
+
+Este método recibe los mismos argumentos que el [_método map_](https://platzi.com/clases/2461-arrays/40873-map/).
+
+```js
+const strings = ["Nunca pares", "de Aprender"]
+strings.map(string => string.split(" ")) 
+// [ [ 'Nunca', 'pares' ], [ 'de', 'Aprender' ] ]
+strings.flatMap(string => string.split(" ")) 
+// [ 'Nunca', 'pares', 'de', 'Aprender' ]
+
+const numbers = [1,2, 3, 4]
+numbers.map(number => [number * 2]) 
+// [[2], [4], [6], [8]]
+numbers.flatMap(number => [number *2]) 
+// [2, 4, 6, 8]
+
+// Cuidado, primero hace el map y luego el flat
+const numbers2 = [1,[2,3], 4, 5]
+numbers2.flatMap(number => [number *2]) 
+// [ 2, NaN, 8, 10 ]
+// * Recuerda: NaN = No a Number
+```
+
+### Eliminar espacios en blanco de un _string_
+
+Existen tres métodos para **eliminar, recortar espacios en blanco** de un _string_:
+
+-   El método `trim` elimina los espacios en blanco al **inicio y al final**.
+-   El método `trimStart` o `trimLeft` elimina los espacios al **inicio**.
+-   El método `trimEnd` o `trimRight` elimina los espacios al **final**.
+
+```js
+const saludo = "      hola      "
+const result1 = saludo.trim()
+const result2 = saludo.trimStart()
+const result3 = saludo.trimEnd()
+
+result1 // 'hola'
+result2 // 'hola      '
+result3 // '      hola'
+```
+
+_**Contribución creada por** Andrés Guano (Platzi Contributor)._
+
+Les recomiendo [You]https://you.com/code). Es como google pero dedicado a developers. Allí pueden buscar todo lo relacionado a la programación.
 
 
+## 25. ES10: try catch y fromEntries
 [Resumen 01](https://luis-ariza.notion.site/ECMAScript-Versiones-de-JavasCript-be6daa0ae0eb406f990238a07d677a5a)   
 [Resumen 02](https://pogolo.notion.site/Nuevo-Curso-de-ECMAScript-Historia-y-Versiones-de-JavaScript-eecb774125e7434f98eed2473a1be389)
