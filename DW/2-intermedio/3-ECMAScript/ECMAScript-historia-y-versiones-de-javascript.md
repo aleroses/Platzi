@@ -2367,6 +2367,284 @@ _**Contribución creada por** Andrés Guano (Platzi Contributor)._
 Les recomiendo [You]https://you.com/code). Es como google pero dedicado a developers. Allí pueden buscar todo lo relacionado a la programación.
 
 
-## 25. ES10: try catch y fromEntries
+## 25. ES10: try catch y fromEntries   
+
+Las siguientes características de ES10 o ES2019 que aprenderás son: parámetro opcional de _catch_ y un método para transformar _arrays_ a objetos.
+
+### Parámetro opcional de catch
+
+El parámetro opcional de `catch` permite omitir el error si es necesario.
+
+```js
+try {
+  // Manejar el código
+  hello();
+} catch (err) {
+  // Se utiliza el parámetro `err`
+  console.log(err);
+}
+
+// Nueva forma 
+try {
+  // Manejar el código
+  anotherFn();
+} catch {
+  // Manejar el error sin el parámetro.
+  console.log('Esto es un error');
+}
+```
+
+Aunque siempre es recomendable manejar el error como parámetro, ya que tiene más información del problema.
+
+### Cómo transformar un _array_ de _arrays_ en un objeto
+
+El método `Object.fromEntries` devuelve un objeto a partir de un _array_ donde sus elementos son las _entries_ en forma `[propiedad, valor]`.
+
+Se considera la operación inversa de [Object.entries()](https://platzi.com/clases/3504-ecmascript-nuevo/51768-object-entries-y-object-values/).
+
+```js
+const arrayEntries = [
+  [ 'name', 'Andres' ],
+  [ 'email', 'andres@correo.com' ],
+  [ 'age', 23 ]
+] 
+
+const usuario = Object.fromEntries(arrayEntries) 
+
+console.log(usuario)
+/* {
+  name: 'Andres',
+  email: 'andres@correo.com',
+  age: 23
+}
+*/
+```
+
+_**Contribución creada por** Andrés Guano (Platzi Contributor)._
+
+#### Ejemplo hecho en clase:   
+
+```js
+const entries = new Map([["name", "oscar"], ["age", 34]]);
+console.log(entries);
+console.log(Object.fromEntries(entries));
+// Map(2) { 'name' => 'oscar', 'age' => 34 }
+// { name: 'oscar', age: 34 }
+```
+
+Como hacer lo opuesto, de Object a Array… usando entries() seria:  
+
+```js
+const object = {
+    name: "ale",
+    age: 21
+};
+
+const array = Object.entries(object);
+console.table(array);
+// [ [ 'name', 'ale' ], [ 'age', 21 ] ]
+```
+
+
+## 26. ES11: optional chaining
+
+Cuando intentas acceder a propiedades de un objeto que no existen, JavaScript te retornará `undefined`.
+
+```js
+const usuario = {}
+console.log(usuario.redes) // undefined
+```
+
+Al acceder a una propiedad más profunda de un objeto, que previamente fue evaluada como `undefined`, el **programa se detendrá y mostrará un error de tipo**.
+
+```js
+const usuario = {}
+console.log(usuario.redes.facebook) 
+// TypeError: Cannot read properties of undefined (reading 'facebook')
+```
+
+Es como intentar ejecutar `undefined.facebook`, lo cual es un error de tipo, **debido a que `undefined` es un primitivo, no es un objeto**.
+
+### Cómo utilizar el encadenamiento opcional
+
+El encadenamiento opcional u _optional chaining_ (`?.`) **detiene la evaluación del objeto cuando el valor es `undefined` o `null` antes del (`?.`)**, retornando `undefined` sin detener el programa por un error.
+
+```js
+const usuario = {}
+console.log(usuario.redes?.facebook) 
+// undefined
+```
+
+Pero, ¿por qué usaría propiedades de un objeto vacío? Cuando realizas **peticiones**, el objeto no contiene la información solicitada en seguida, por ende, necesitas que el **programa no colapse** hasta que lleguen los datos y puedas utilizarlos.
+
+### No abuses del encadenamiento opcional
+
+**El encadenamiento opcional se debe utilizar únicamente cuando probablemente un valor no exista**.
+
+Por ejemplo, en un objeto `usuario` que siempre existe, pero la propiedad `redes` es opcional, entonces se debería escribir `usuario.redes?.facebook` y no `usuario?.redes?.facebook`.
+
+Si abusas del encadenamiento opcional y existe un error en un objeto, el programa podría “ocultarlo” por un `undefined`, provocando que el _debugging_ sea más complicado.
+
+_**Contribución creada por** Andrés Guano (Platzi Contributor)._
+
+#### Ejemplo hecho en clase:   
+
+```js
+const users = {
+    gndx: {
+        country: "MX"
+    },
+    anna: {
+        country: "CO"
+    }
+};
+
+console.log(users.gndx.country); // MX
+// No existe
+console.log(users.anna.age); // undefined
+// Esto devuelve algo mas amigable
+console.log(users?.ale?.country); // undefined
+```
+
+
+## 27. ES11: BigInt y Nullish
+
+Las siguientes características de ES2020 o ES11 que aprenderás son: nuevo tipo de dato `bigint` y operador _Nullish Coalescing_ (`??`).
+
+### Big Int, enteros muy grandes
+
+El nuevo dato primitivo `bigint` permite **manejar números enteros muy grandes**. Existen dos formas de crear un `bigint`: el número entero seguido de `n` o mediante la función `BigInt`
+
+```js
+const number1 = 45n;
+const number2 = BigInt(45);
+
+typeof 45n; // 'bigint'
+```
+
+JavaScript tiene límites numéricos, un máximo `Number.MAX_SAFE_INTEGER` y un mínimo `Number.MIN_SAFE_INTEGER`.
+
+```js
+const max = Number.MAX_SAFE_INTEGER
+const min = Number.MIN_SAFE_INTEGER
+
+console.log(max)  // 9007199254740991
+console.log(min) // -9007199254740991
+```
+
+**Después de los límites, los cálculos muestran resultados erróneos**. Los `bigint` ayudan a manejar operaciones de enteros fuera de los límites mencionados.
+
+```js
+const increment = 2
+const number = Number.MAX_SAFE_INTEGER + increment
+const bigInt = BigInt(Number.MAX_SAFE_INTEGER) + BigInt(increment)
+
+console.log(number) // 9007199254740992
+console.log(bigInt) // 9007199254740993n
+```
+
+Se añade la misma cantidad a ambos tipos de datos, sin embargo, el tipo numérico da un resultado diferente al esperado.
+
+### Operador Nullish Coalescing
+
+El operador _nullish coalescing_ (`??`) **consiste en evaluar una variable si es `undefined` o `null`** para asignarle un valor.
+
+El siguiente ejemplo se lee como: ¿`usuario.name` es `undefined` o `null`? Si es así, asígnale un valor por defecto `"Andres"`, caso contrario asigna el valor de `usuario.name`.
+
+```js
+const usuario1 = {}
+const nombre1 = usuario1.name ?? "Andres"
+
+const usuario2 = {name: "Juan"}
+const nombre2 = usuario2.name ?? "Andres"
+
+console.log(nombre1) // 'Andres' 
+console.log(nombre2) // 'Juan'
+```
+
+#### Diferencia entre el operador OR y el Nullish coalescing
+
+El operador _OR_ (`||`) **evalúa un valor _falsey_**. Un valor _falsy_ es aquel que es falso en un contexto booleano, estos son: `0`, `""` (string vacío), `false`, `NaN`, `undefined` o `null`.
+
+Puede que recibas una variable con un valor _falsy_ que necesites asignarle a otra variable, que no sea `null` o `undefined`. Si evalúas con el operador OR, este lo cambiará, provocando un resultado erróneo.
+
+```js
+const id = 0 // 2
+
+const orId = id || "Sin id"
+const nullishId = id ?? "Sin id"
+
+console.log( orId ) //  'Sin id' // 2
+console.log( nullishId ) // 0 // 2
+```
+
+_**Contribución creada por** Andrés Guano (Platzi Contributor)._
+
+
+## 28. ES11: Promise.allSettled
+
+En alguna situación necesitarás manejar varias [promesas](https://platzi.com/clases/3504-ecmascript-6/51759-promise/) y obtener sus resultados. ¿Cómo? Utilizando los métodos `Promise.all` y `Promise.allSettled`.
+
+### Promise.all
+
+El método `Promise.all` sirve para manejar varias promesas al mismo tiempo. Recibe como argumento un _array_ de promesas.
+
+```js
+Promise.all([promesa1, promesa2, promesa3])
+    .then(respuesta => console.log(respuesta))
+    .catch(error => console.log(error))
+```
+
+El problema es que `Promise.all()` se resolverá, si y solo si **todas las promesas fueron resueltas**. Si al menos una promesa es rechazada, `Promise.all` será rechazada.
+
+### Promise.allSettled
+
+`Promise.allSettled()` permite manejar varias promesas, que devolverá un _array_ de objetos con el **estado y el valor de cada promesa, haya sido resuelta o rechazada**.
+
+```js
+const promesa1 = Promise.reject("Ups promesa 1 falló")
+const promesa2 = Promise.resolve("Promesa 2")
+const promesa3 = Promise.reject("Ups promesa 3 falló")
+
+Promise.allSettled([promesa1, promesa2, promesa3])
+    .then(respuesta => console.log(respuesta))
+
+/* [
+  {
+    status: 'rejected',
+    reason: 'Ups promesa 1 falló'
+  },
+  { status: 'fulfilled', value: 'Promesa 2' },
+  {
+    status: 'rejected',
+    reason: 'Ups promesa 3 falló'
+  }
+] */
+```
+
+¿Debería usar `Promise.allSettled` en lugar de `Promise.all`? **No**, porque ambas son muy útiles dependiendo cómo quieras **manejar tus promesas**.
+
+
+#### Ejemplo hecho en clase:   
+
+```js
+const promise1 = new Promise((resolve, reject) => reject("Reject"));
+const promise2 = new Promise((resolve, reject) => resolve("Resolve"));
+const promise3 = new Promise((resolve, reject) => resolve("Resolve 02"));
+
+Promise.allSettled([promise1, promise2, promise3])
+    .then(response => console.log(response));
+
+/*
+[
+  { status: 'rejected', reason: 'Reject' },
+  { status: 'fulfilled', value: 'Resolve' },
+  { status: 'fulfilled', value: 'Resolve 02' }
+]
+*/
+```
+
+
+
 [Resumen 01](https://luis-ariza.notion.site/ECMAScript-Versiones-de-JavasCript-be6daa0ae0eb406f990238a07d677a5a)   
 [Resumen 02](https://pogolo.notion.site/Nuevo-Curso-de-ECMAScript-Historia-y-Versiones-de-JavaScript-eecb774125e7434f98eed2473a1be389)

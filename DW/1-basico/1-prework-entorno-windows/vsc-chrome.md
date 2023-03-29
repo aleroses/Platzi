@@ -34,6 +34,12 @@
 - [Bootstrap 4, Font awesome 4, Font Awesome 5 Free & P](https://marketplace.visualstudio.com/items?itemName=thekalinga.bootstrap4-vscode)
 - Bracket Pair Colorizer: configurar settings 
 
+Mas extensiones:  
+-   code runner ✨
+-   error lens ✨
+-   guides ✨
+-   javascript (es6) code snippets
+-   **_Better Comments_**: [Resumen de la clase](https://pogolo.notion.site/3-Configurando-nuestras-herramientas-cd23420b450a46c992294285d439d82e)
 
 ## Atajos vsc
 
