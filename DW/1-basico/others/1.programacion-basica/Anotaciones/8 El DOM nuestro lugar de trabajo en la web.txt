@@ -1,0 +1,11 @@
+DOM:
+En aplicaciones web tenemos un concepto llamado DOM (Document Object Model) es la forma en que internamente el navegador organiza todo el HTML dentro de una estructura de árbol
+
+NAVIGATOR
+
+WINDOW
+
+DOCUMENT
+
+Método: Función que hace parte de un objeto
+console.log: Revisar o depurar errores

@@ -1,0 +1,15 @@
+style: Debe ir en el head para que los cambios se vean primero, dentro de esta etiqueta van las etiquetas que se desean cambiar 
+body
+{
+ background-color: #pagina; 
+ color: #texto;
+ Font-family: fuente;
+}
+
+body: almacena el texto y el script
+script: document.write("texto" + x); escribe en pantalla
+strong: negrita
+alert("Mensajes emergentes al iniciar la pagina")
+prompt("Pedir datos al usuario");
+parseInt(convierte a entero)
+var texto = "algo";

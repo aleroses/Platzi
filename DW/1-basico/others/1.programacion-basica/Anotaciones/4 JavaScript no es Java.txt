@@ -1,0 +1,6 @@
+JavaScript  != 	Java
+Web			Oracle
+Servidor		Server
+NodeJS		Bancos
+Robots		Android
+
