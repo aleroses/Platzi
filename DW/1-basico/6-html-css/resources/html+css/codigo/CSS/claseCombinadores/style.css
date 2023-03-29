@@ -1,0 +1,26 @@
+/*
+Hermano Adyacente o Cercano (Adjacent sibling)
+*/
+h2 + p {
+    color: red;
+}
+
+/*
+Hermano general (General sibling)
+*/
+h2 ~ p {
+    color: aqua
+}
+/*
+Hijo (Child)
+*/
+div > p {
+    color: red;
+}
+
+/*
+Descendiente (Descendant)
+*/
+div p {
+    color: red;
+}

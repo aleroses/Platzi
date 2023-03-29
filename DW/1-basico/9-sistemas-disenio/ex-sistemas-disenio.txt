@@ -1,0 +1,93 @@
+Curso de Sistemas de Diseño
+Resumen
+
+Estas son tus respuestas
+Puedes revisar y cambiar las respuestas. Al terminar presiona “Calificar respuestas” para enviar las preguntas y conocer tu puntuación.
+1.
+¿Qué problemas trata de resolver un sistema de diseño?
+
+Crear un producto de manera mas efectiva y rápido
+
+CAMBIAR
+2.
+¿Cuáles de estos principios podrían aplicar para un sistema de diseño?
+
+Restrictivo
+
+CAMBIAR
+3.
+¿Cuál de estos equipos NO pertenece a un sistema de diseño?
+
+Todos pertenecen al sistema
+
+CAMBIAR
+4.
+El diseño atómico es un sistema de diseño. Lo anterior es:
+
+Falso
+
+CAMBIAR
+5.
+¿Cómo se define un componente?
+
+En un sistema de diseño, un componente forma parte de un todo. Tiene una entrada y una salida. La entrada sería el punto donde el usuario empieza a utilizar el componente y la salida seria el feedback que da el componente en base a la acción del usuario.
+
+CAMBIAR
+6.
+¿Podríamos considerar el audio como parte de los fundations?
+
+Verdadero
+
+CAMBIAR
+7.
+¿Cuáles de estas alternativas serían buenas opciones de tipografía para nuestro sistema?
+
+Google Fonts
+
+CAMBIAR
+8.
+¿Cuál es la cantidad de clasificaciones que debemos tomar en cuenta al crear la paleta de colores?
+
+5
+
+CAMBIAR
+9.
+Tú puedes crear tu propio sistema de espaciado. Lo anterior es:
+
+Verdadero
+
+CAMBIAR
+10.
+¿Cuál principio de animación es la mejor opción para un modal en un lightbox?
+
+Entradas y salidas lentas
+
+CAMBIAR
+11.
+Si tuvieras que usar un texto que comunique un error, ¿Cuál de estos te parece el indicado?
+
+Inténtalo de nuevo
+
+CAMBIAR
+12.
+¿Es buena opción crear una librería de iconos para todos los proyectos que hagas?
+
+Falso
+
+CAMBIAR
+13.
+¿Por qué es diferente un hito a los demás elementos?
+
+Porque es un elemento representativo del producto
+
+CAMBIAR
+14.
+¿El equipo de recursos humanos es parte del sistema de diseño?
+
+Verdadero
+
+CAMBIAR
+15.
+¿Cuál es el objetivo de iterar?
+
+No es: Solucionar problemas de implementación.

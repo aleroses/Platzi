@@ -1,0 +1,15 @@
+p {
+    color: blue;
+    font-size: 30px;
+}
+
+/* class */
+.parrafo {
+    color: aqua;
+}
+
+/* ID alt + shift + a */
+#texto {
+    color: yellow;
+    font-size: 24px;
+}

@@ -1,0 +1,92 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+html {
+    font-size: 62.5%;
+}
+body {
+    font-size: 1.6rem;
+}
+header {
+    display: flex;
+    justify-content: space-between;
+    width: 100vw;
+    height: 10vh;
+    min-width: 320px;    
+    background-color: black;
+    margin: 0 auto;
+}
+img {
+    width: 20rem;
+    margin: 0.5rem;
+}
+.nav {    
+    background-color:aqua;
+    width: 40rem;
+}
+ul {
+    list-style: none;
+    display: flex;
+    justify-content: space-evenly;
+    background-color:crimson;
+    margin: 1rem;
+}
+li {
+    display: flex;
+    
+    padding: 1rem;
+}
+
+/*Segunda parte*/
+main {
+    display: flex;
+    background-color: black;
+    width: 100vw;
+    min-width: 32rem;
+    height: 110vh;
+    
+}
+aside {
+    display: flex;
+    background-color:yellow;
+    flex-direction: column;
+}
+h2 {
+    text-align: center;
+}
+.integrante {
+    xd
+}
+.lisa {
+    width: 20rem;
+    border-radius: 1rem;
+    
+}
+.jisoo {
+    width: 20rem;
+    border-radius: 1rem;
+}
+.jennie {
+    width: 20rem;
+    border-radius: 1rem;
+}
+.rose {
+    width: 20rem;
+    border-radius: 1rem;
+}
+.texto {
+    margin: auto;    
+}
+p {
+    background-color: crimson;
+    width: 40vw;
+    text-align: center;
+    border-radius: 2rem;
+}
+footer {
+    background-color: aqua;
+    display: flex;
+    justify-content: space-evenly;
+}

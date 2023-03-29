@@ -1,0 +1,80 @@
+Curso de Diseño para Developers
+Resumen
+
+Estas son tus respuestas
+Puedes revisar y cambiar las respuestas. Al terminar presiona “Calificar respuestas” para enviar las preguntas y conocer tu puntuación.
+1.
+¿Cuáles son los conceptos básicos del diseño?
+Balance, contraste, alineación, proximidad, repetición y espacio.
+CAMBIAR
+2.
+¿Cuáles son las etapas del proceso creativo?
+Preparación, incubación, iluminación, evaluación e implementación.
+CAMBIAR
+3.
+¿Qué es mejora progresiva o progressive enhancement?
+Es una metodología de diseño que consiste en partir de una base sólida a la que se le añaden mejoras de forma progresiva.
+CAMBIAR
+4.
+De los siguientes enunciados, ¿cuál describe una buena práctica de accesibilidad?
+Para que una aplicación sea accesible, debemos asegurarnos de que los colores tengan un contraste adecuado.
+CAMBIAR
+5.
+¿Para qué sirve un brief?
+Para definir el alcance, objetivos y requerimientos de un proyecto.
+CAMBIAR
+6.
+¿Qué es el diseño UX?
+Es el área del diseño que se encarga de crear diseños centrados en las necesidades de los usuarios.
+CAMBIAR
+7.
+¿Qué es un diagrama de flujo?
+Es un diagrama que representa un flujo de trabajo o un proceso.
+CAMBIAR
+8.
+¿Qué es un wireframe?
+Es un esquema que representa el esqueleto de componentes de una aplicación.
+CAMBIAR
+9.
+¿Qué es el diseño UI?
+Es el área del diseño que se encarga de crear la capa de diseño visual de una aplicación.
+CAMBIAR
+10.
+¿Qué es un moodboard?
+Es una colección de referencias visuales que se usa como fuente de inspiración para crear un diseño.
+CAMBIAR
+11.
+¿Qué es la psicología del color?
+Es un campo de estudio que está dirigido a analizar cómo percibimos y nos comportamos ante distintos colores
+CAMBIAR
+12.
+De las siguientes opciones, ¿cuáles corresponden a tipos de paleta de color?
+Análoga, complementaria, triádica y tétrada.
+CAMBIAR
+13.
+De las siguientes opciones, ¿cuáles corresponden a clases de tipografía?
+Serif, Sans Serif, Script.
+CAMBIAR
+14.
+De las siguientes afirmaciones sobre layouts, ¿cuál es falsa?
+Para que una página sea responsive debemos mantener el mismo layout en todos los dispositivos y tamaños de pantalla.
+CAMBIAR
+15.
+¿Qué es un componente web?
+Es un segmento reusable y escalable de una aplicación.
+CAMBIAR
+16.
+¿Para qué sirve un theme?
+Para modificar los estilos visuales de un set de componentes sin afectar la funcionalidad ni la estructura de los mismos.
+CAMBIAR
+17.
+¿Cuál es el formato recomendado para manejar íconos en la web?
+SVG o fuentes de íconos.
+CAMBIAR
+18.
+De las siguientes afirmaciones sobre gráficos en movimiento para web, ¿cuál es falsa?
+
+CAMBIAR
+19.
+¿Cuál es el proceso básico para construir una aplicación web?
+Definir contenido, crear wireframes, definir estilos visuales, programar, probar.

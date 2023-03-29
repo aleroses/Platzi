@@ -1,0 +1,14 @@
+html {
+    font-size: 75%;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+h1 {
+    font-size: inherit;
+}
+
+/*h1 recibe por el navegador un tamaño especifico*/
+/*h1 está dentro del html pero no está tomando el 75% 
+  de tamaño de fuente que le indicamos a todo nuestro 
+  html solo está tomando el tipo de fuente, así que 
+  usamos inherit en h1 para que herede esa propiedad*/

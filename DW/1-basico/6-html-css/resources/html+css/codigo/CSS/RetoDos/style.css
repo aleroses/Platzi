@@ -1,0 +1,62 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+.contenido {
+    background-color: black;
+}
+
+/*Navegación principal*/
+.main-nav {
+    background-color:midnightblue;
+    list-style: none;
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+.main-nav_ul li {
+    background-color: crimson;
+    display: inline-block;
+    position: relative;    
+}
+.main-nav_ul .li-logo {    
+    background-color: aqua;    
+    position: relative;
+    display: inline-block;
+    margin-right: 70%;
+}
+
+/*Sección principal*/
+.main-section {
+    background-color: grey;
+    height: 460px;
+}
+.section-personajes {
+    background-color: hotpink;
+    width: 250px;
+    padding: 10px; 
+}
+.section-personajes div {
+    background-color: black;
+    margin-bottom: 10px;
+    height: 100px;
+    border-radius: 4px;
+    position: relative;
+}
+.section-texto {
+    background-color: lightseagreen;
+    display: inline-block;
+    position: relative;
+    left: 250px;
+    bottom: 460px;
+    width: 976px;
+    height: 460px;
+}
+
+/*Sección footer*/
+.section-footer {
+    background-color: linen;
+    position: relative;
+    bottom: 460px;
+}

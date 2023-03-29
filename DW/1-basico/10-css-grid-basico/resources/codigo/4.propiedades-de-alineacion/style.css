@@ -1,0 +1,26 @@
+.contenedor {
+    display: grid;
+    gap: 40px;
+    grid-template-columns: 150px 150px 150px;
+    grid-auto-rows: 150px;
+    /* justify-content: center;
+    align-content: center; */
+    place-content: end; /* center */
+    justify-items: end;
+    align-items: start;
+    height: 600px;
+    
+
+    border: 5px solid #e1bee7;
+    background-color: #fff1ff;
+}
+
+.item {
+    border: 5px solid #00bcd4;
+    font-size: 4rem;
+}
+
+.item-2 {
+    justify-self: start;
+    align-self: flex-end;
+}
