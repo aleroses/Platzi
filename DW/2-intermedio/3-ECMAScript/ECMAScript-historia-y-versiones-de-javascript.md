@@ -2644,7 +2644,525 @@ Promise.allSettled([promise1, promise2, promise3])
 */
 ```
 
+## 29. ES11: globalThis y matchAll
+
+> ⚠️ En el código de la clase se escribe `selft` para acceder al ámbito global de un _webworker_, y debería ser `self`.
+
+Las siguientes características de ES2020 que aprenderás son: el objeto global para cualquier plataforma y el método `matchAll` para expresiones regulares.
+
+### Objeto global para cualquier plataforma
+
+El motor de JavaScript, aquel que compila tu archivo y lo convierte en código que entiende el computador, **al iniciar la compilación crea un objeto global**.
+
+**El objeto global proporciona funciones y variables propias e integradas en el lenguaje o el entorno.** Dependiendo la plataforma, este objeto global tendrá un nombre diferente.
+
+En el navegador el objeto global es `window`, para Node.js es `global`, y así para cada entorno. Sin embargo, en Node.js no podrás acceder a `window`, ni en el navegador podrás acceder a `global`.
+
+Para estandarizar el objeto global se creó `globalThis`, un objeto compatible para cualquier plataforma.
+
+```js
+// Ejecuta el siguiente código y observa que muestra
+console.log(window)
+console.log(globalThis)
+
+// En el navegador
+window === globalThis // true
+
+// En Node.js
+global === globalThis // true
+```
+
+```js
+console.log(window); // navegador
+console.log(global); // node
+console.log(self); // webworker
+console.log(globalThis);
+```
+
+### Método `matchAll` para expresiones regulares
+
+El método `matchAll` de los _strings_ **devuelve un iterable** con todas las coincidencias del string específico a partir de una expresión regular, colocada como argumento.
+
+`string.matchAll(regex)`
+
+En el iterable, existe una propiedad denominada `index` con el índice del _string_ donde la búsqueda coincide.
+
+```js
+const regex = /\b(Apple)+\b/g
+
+const fruit = "Apple, Banana, Kiwi, Apple, Orange, etc. etc. etc."
+
+// Tranformación del iterable retornado a array
+const array = [...fruit.matchAll(regex)]
+console.log(array)
+/*
+[
+  [
+    'Apple',
+    'Apple',
+    index: 0,
+    input: 'Apple, Banana, Kiwi, Apple, Orange, etc. etc. etc.',
+    groups: undefined
+  ],
+  [
+    'Apple',
+    'Apple',
+    index: 21,
+    input: 'Apple, Banana, Kiwi, Apple, Orange, etc. etc. etc.',
+    groups: undefined
+  ]
+]
+*/
+```
+
+_**Contribución creada por** Andrés Guano (Platzi Contributor)._
+
+#### Ejemplo hecho en clase:   
+
+```js
+const regex = /\b(Apple)+\b/g;
+const fruit = 'Apple, Banana, Kiwi, Apple, Orange, etc., etc., etc';
+
+for (const match of fruit.matchAll(regex)){
+    console.log(match);
+};
+```
+
+#### Lecturas recomendadas
+
+[Curso de Expresiones Regulares - Platzi](https://platzi.com/cursos/expresiones-regulares/)
+
+about:blank
 
 
-[Resumen 01](https://luis-ariza.notion.site/ECMAScript-Versiones-de-JavasCript-be6daa0ae0eb406f990238a07d677a5a)   
-[Resumen 02](https://pogolo.notion.site/Nuevo-Curso-de-ECMAScript-Historia-y-Versiones-de-JavaScript-eecb774125e7434f98eed2473a1be389)
+## 30. ES11: dynamic Import
+
+La expresión `import()` **permite manejar módulos dinámicamente**, ya que la sintaxis de ECMAScript `import ... from ...` no lo permite.
+
+### Cómo utilizar importación dinámica
+
+La **importación dinámica** consiste en cargar los módulos cuando el usuario los vaya a utilizar, y no al iniciar la aplicación. Esto permite que la página web sea más rápida, porque descarga menos recursos.
+
+La expresión `import()` recibe un argumento de tipo `string` con la ruta del módulo a importar y devuelve una promesa.
+
+```js
+const ruta = "./modulo.js"
+
+// Utilizando promesas
+import(ruta)
+    .then( modulo => {
+        modulo.funcion1()
+        modulo.funcion2()
+    })
+    .catch(error => console.log(error))
+    
+// Utilizando async/await
+async function importarModulo(rutaDelModulo) {
+    const modulo = await import(rutaDelModulo)
+    modulo.funcion1()
+    modulo.funcion2()
+}
+
+importarModulo(ruta)
+```
+
+#### Ejemplo utilizando importación dinámica
+
+De esta manera puedes utilizar una importación dinámica en tu aplicación para desencadenar una descarga de un módulo cuando el usuario lo vaya a utilizar. Por ejemplo, al realizar clic en un botón.
+
+```js
+const boton = document.getElementById("boton")
+
+boton.addEventListener("click", async function () {
+    const modulo = await import('./modulo.js')
+    modulo.funcion()
+})
+```
+
+Puedes usar las herramientas de desarrollador para visualizar la descarga de archivos al realizar clic en el botón.
+
+_**Contribución creada por** Andrés Guano (Platzi Contributor)._
+
+#### Ejemplo hecho en clase:   
+
+```html
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Import</title>
+</head>
+<body>
+    <button id="btn">Click</button>
+    <script type="module" src="./06-dynamic-import.js"></script>
+</body>
+</html>
+```
+
+```js
+// module.js
+export function hello() {
+	console.log('Hola mundo!');
+}
+```
+
+```js
+const button = document.getElementById('btn');
+
+button.addEventListener('click', async function(){
+    const module = await import('./module.js');
+    console.log(module);
+    module.hello();
+});
+```
+
+#### Lecturas recomendadas
+
+- [Live Server - Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer)[
+- [Curso de Debugging con Chrome DevTools - Platzi](https://platzi.com/cursos/devtools/)
+
+
+## 31. ES12: numeric-separators y replaceAll
+
+La siguiente versión de ECMAScript fue publicada en 2021. Las siguientes características de ES12 o ES2021 que aprenderás son: separadores numéricos y método `replaceAll` para strings.
+
+### Separadores numéricos
+
+Los separadores numéricos ayudan a la legibilidad de cantidades con varias cifras. Se utiliza el carácter guion bajo ( `_` ) para **separar las cifras**, y no afecta a la ejecución del programa.
+
+Lo ideal es separar cada 3 cifras, para visualizar los miles, millones, billones, etc.
+
+```js
+// 🔽 Baja legibilidad
+const numero1 = 3501548945
+console.log( numero1 ) // 3501548945
+
+// ✅ Alta legibilidad
+const numero2 = 3_501_548_945
+console.log( numero1 ) // 3501548945
+```
+
+De esta manera puedes identificar el número rápidamente.
+
+### Método replaceAll
+
+El método `replaceAll` retorna un nuevo _string_, reemplazando **todos los elementos por otro**.
+
+Este método recibe dos argumentos:
+
+-   El **patrón a reemplazar**, puede ser un _string_ o una expresión regular.
+-   El **nuevo elemento** que sustituye al reemplazado.
+
+Este procedimiento fue creado para solucionar el problema que tenía el método `replace`, que realizaba la misma función de reemplazar elementos, pero solamente **una sola vez** por invocación.
+
+```js
+const mensaje = "JavaScript es maravilloso, con JavaScript puedo crear el futuro de la web."
+
+mensaje.replace("JavaScript", "Python")
+// 'Python es maravilloso, con JavaScript puedo crear el futuro de la web.'
+
+mensaje.replaceAll("JavaScript", "Python")
+// 'Python es maravilloso, con Python puedo crear el futuro de la web.'
+
+mensaje.replaceAll(/a/g, "*")
+// 'J*v*Script es m*r*villoso, con J*v*Script puedo cre*r el futuro de l* web.'
+```
+
+_**Contribución creada por** Andrés Guano (Platzi Contributor)._
+
+
+## 32. ES12: promise-any y métodos privados
+
+Las siguientes características de ES12 o ES2021 que aprenderás son: métodos privados en clases y `Promise.any`.
+
+### Métodos privados de clases
+
+Los métodos privados consiste en **limitar el acceso a propiedades y métodos** agregando el carácter numeral ( `#`). Por defecto, las propiedades y métodos de una clase en JavaScript son públicas, es decir, se puede acceder a ellos fuera de la clase.
+
+```js
+class Clase {
+  #private(valor){ //👈👀
+    console.log(valor)
+  }
+  
+  public(valor){
+    console.log(valor)
+  }
+}
+
+const clase = new Clase()
+clase.public("Hola")  // 'Hola'
+clase.private("Hola") // TypeError: clase.private is not a function
+```
+
+### Promise.any
+
+`Promise.any()` es otra forma de manejar varias promesas, que **retornará la primera promesa que sea resuelta** y rebotará si todas las promesas son rechazadas.
+
+```js
+const promesa1 = Promise.reject("Ups promesa 1 falló")
+const promesa2 = Promise.reject("Ups promesa 2 falló")
+const promesa3 = Promise.resolve("Promesa 3")
+
+
+Promise.any([promesa1, promesa2, promesa3])
+    .then(respuesta => console.log(respuesta)) // Promise 3
+    .catch(error => console.log(error))
+```
+
+_**Contribución creada por** Andrés Guano (Platzi Contributor)._
+
+#### Ejemplo hecho en clase:   
+
+```js
+const promise1 = new Promise((resolve, reject) => reject("Reject"));
+const promise2 = new Promise((resolve, reject) => resolve("Resolve"));
+const promise3 = new Promise((resolve, reject) => resolve("Resolve 02"));
+
+Promise.any([promise1, promise2, promise3])
+    .then(response => console.log(response));
+```
+
+
+## 33. ES13: at
+
+El método `at` de _arrays_ sirve para **acceder a los elementos a partir del índice**.
+
+`array.at(índice)`
+
+### Índices positivos y negativos en _arrays_
+
+Los índices positivos comienzan desde `0` hasta la longitud total menos uno, de **izquierda a derecha** del _array_. El índice `0` es la primera posición.
+
+```js
+[0,1,2,3, ...., lenght-1]
+```
+
+Los índices negativos comienzan desde `-1` hasta el negativo de la longitud total del _array_, de **derecha a izquierda**. El índice `-1` es la última posición.
+
+```js
+[-lenght, ...,  -3, -2, -1]
+```
+
+### Cómo utilizar el método `at`
+
+La utilidad más importante de este método es para manejar **índices negativos**. Algo que no se puede con la notación de corchetes.
+
+```js
+const nombres = ["Andres", "Valeria", "Ana", "Ramiro", "Richard"]
+
+nombres.at(-1) // "Richard"
+nombres[-1] // undefined
+nombres.at(-3) // "Ana"
+nombres[nombres.length -1] // "Richard"
+```
+
+Puedes utilizar la notación de corchetes, pero necesitas obtener la longitud del _array_ y restarle una unidad, generando mucho código que puede volverse difícil de leer.
+
+```js
+nombres[nombres.length -1] // "Richard"
+```
+
+_**Contribución creada por** Andrés Guano (Platzi Contributor)._
+
+#### Lecturas recomendadas
+
+[Curso de Manipulación de Arrays en JavaScript - Platzi](https://platzi.com/cursos/arrays/)
+
+
+## 34. ES13: top level await en el consumo de una API
+
+_Top level await_ permite utilizar la palabra reservada `await`, sin estar dentro de una [función asíncrona](https://platzi.com/clases/3504-ecmascript-nuevo/51770-funciones-asincronas/) con `async`. Sin embargo, **únicamente se puede utilizar `await` en la parte superior del archivo de un módulo**.
+
+### Cómo utilizar top level await
+
+Anterior a ECMAScript 13, cuando se introdujo funciones asíncronas, si utilizabas `await` fuera de `async`, existirá un error de sintaxis.
+
+```js
+// Error
+await fetch(URL)
+// SyntaxError: await is only valid in async function
+```
+
+Ahora, con _top level await_ esto es posible, sin ningún error. Esto puede servir para [importaciones de manera dinámica](https://platzi.com/clases/3504-ecmascript-nuevo/51779-dynamic-import/) o iniciar la conexión de tus bases de datos. Siempre y cuando respetes que debe estar en la parte encima del archivo de tipo módulo.
+
+_**Contribución creada por** Andrés Guano (Platzi Contributor)._
+
+#### Lecturas recomendadas
+
+- [Platzi Fake Store API](https://fakeapi.platzi.com/)
+- [Curso de Gestión de Dependencias y Paquetes con NPM - Platzi](https://platzi.com/cursos/npm/)
+
+#### Ejemplo hecho en clase:   
+
+Previamente dentro del proyecto en la terminal:  `npm install node-fetch`  
+
+```js
+//products.js
+import fetch from "node-fetch";
+
+const response = await fetch('https://api.escuelajs.co/api/v1/products');
+const products = await response.json();
+
+export { products };
+```
+
+```js
+//top-level-await.js
+import { products  } from "./products.js";
+
+console.log(products);
+console.log('Hey!!');
+```
+
+Extensión para Json en Chrome: [JSON-handle](https://chrome.google.com/webstore/detail/json-handle/iahnhfdhidomcpggpaimmmahffihkfnj?hl=es)
+
+## 35. Performance
+
+🎉¡Lo has logrado! 🙌
+
+Completaste **todas las clases** del **[Curso de ECMAScript: Historia y Versiones de JavaScript](https://platzi.com/cursos/ecmascript-nuevo/)**.
+
+🛠 Te dejo la especificación [ECMA-262](https://www.ecma-international.org/publications-and-standards/standards/ecma-262/) para que puedas observar todas las funcionalidades que existen y existirán para el lenguaje.
+
+✅  Si aún no queda claro algún tema, revisa las clases o deja tus dudas en la sección de preguntas.
+
+🧾 **Realiza la prueba del curso** para recibir tu certificado y no olvides dejar tus 🌟 y tu comentario.
+
+👨‍💻 Te presentamos [JavaScript Hero](https://jshero.platzi.com/), donde podrás practicar los conceptos de JavaScript en un desafío diario, en el que podrás demostrar tus conocimientos sobre lo aprendido durante el curso y mucho más.
+
+Y, sobre todo, **¡nunca pares de aprender!** 💚
+
+_**Contribuciones del curso creadas por** [Andrés Guano](https://platzi.com/p/andresguanov/) (Platzi Contributor)._
+
+#### Lecturas recomendadas
+
+- [ECMA-262 - Ecma International](https://www.ecma-international.org/publications-and-standards/standards/ecma-262/)
+- [GitHub - tc39/ecma262: Status, process, and documents for ECMA-262](https://github.com/tc39/ecma262#ecmascript)
+- [JavaScript | MDN](https://developer.mozilla.org/es/docs/Web/JavaScript)
+
+
+[Resumen 01](https://luis-ariza.notion.site/ECMAScript-Versiones-de-JavasCript-be6daa0ae0eb406f990238a07d677a5a)    
+[Resumen 02](https://pogolo.notion.site/Nuevo-Curso-de-ECMAScript-Historia-y-Versiones-de-JavaScript-eecb774125e7434f98eed2473a1be389)    
+[Resumen 03](https://flash-salt-635.notion.site/ECMAScript-Historia-y-Versiones-de-JavaScript-a1635caac10047888a89ee7273a3bf5d)
+
+## Examen  📌
+<details>
+	<summary>Haz clic para ver los resultados 👀</summary>
+	<br/>
+
+1. ¿En qué versión de ECMAScript se implementaron las "Trailing commas"?
+	- ECMAScript 10
+	- ES9
+	- ECMAScript 5
+	- 📌 ES8
+	- ES7
+
+2. Las Arrows Functions fueron incorporadas en:
+	- ES7
+	- ES8
+	-  📌ES6
+	- ECMAScript 11
+	- ECMAScript
+
+3. Default Params se implementó en:
+	- ES8
+	-  📌ES6
+	- ECMAScript 3
+	- ES7
+	- ECMAScript 7
+
+4. En un generator, utilizamos “next” para:
+	- Ejecutar una función.
+	- Llamar una función.
+	-  📌Retornar el siguiente valor.
+	- Retornar un valor.
+
+5. ¿Cuál es la forma correcta de exportar un módulo en ES6?
+	- 📌 `export default function Name;`
+	- `functionName = export.default()`
+	-  📌📌📌📌 No es `export module = functionName;`
+	- `module.default = { functionName }`
+
+6. ¿Cuál es la forma propuesta en ES6 para hacer multilínea?
+	-  📌let lorem2 = `Qui consequatur. so si irure but. `;
+	- let lorem = 'Qui consequatur.' 'so si irure bu.'
+	- let lorem = 'Qui consequatur. \n' + 'so si irure bu.'
+	- let lorem = 'Qui consequatur.' + 'so si irure bu.'
+
+7. Cual de las siguientes NO es una característica sobre las nuevas funcionalidades de ECMAScript en 2021:
+	- `promise.any` - captura la primera respuesta que resuelve satisfactoriamente
+	- `??=` asignación de anulación lógica
+	-  📌`#` metodos privados - permite acceder a él fuera de la clase.
+	- `WeakRef` - permite una referencia débil a otro elemento
+	- `replaceAll` - nos ayuda a hacer filtros de palabras
+
+8. ¿En que versión de ECMAScript se implementó "trimStart"?
+	-  📌ES10
+	- ES6
+	- ES9
+	- ECMAScript 9
+	- ES7
+
+9. ¿Cuál es el comando para inicializar nuestro proyecto con Node.js?
+	- git init
+	- npm start
+	-  📌npm init
+	- node start
+
+10. `string.includes(value`) fue implementado en:
+	- 📌 ES7
+	- ES6
+	- ECMAScript 6
+	- ES2015
+	- ES8
+
+11. ¿Cuál es la forma correcta de trabajar con números mayores que 2^53 gracias a la característica de BigInt que trajo ECMAScript 11?
+	- 📌Usando el objeto BigInt pasando el número como parámetro
+	- Agregando una "n" al final del número
+	- Creando una variable de tipo BigInt
+
+12. ¿Cuál es la forma en que ECMAScript 11 en 2020 permitió realizar la importación dinámica?
+	- 📌Usando async y await para realizar la importación dentro de la llamada al evento
+	- Importando al principio del código con la palabra reservada import
+
+13. ¿Cuál es la forma correcta de reasignar una variable?
+	- 📌Ninguna de las anteriores.
+	- let b = 'a'; let b = 'b';
+	- const a = 'a'; const a = 'b';
+	- const c = c'; const c = 'd';
+
+14. ¿Qué representa el siguiente código? `let result = base ** exponent;`
+	- Operador de asignación.
+	- Operador de suma.
+	- Ninguna de las anteriores.
+	- Operador de petencial.
+	- 📌Operador de Exponenciación.
+
+15. Identifica el código que implementa "Optional Catch Binding":
+	- 📌 `try { // some code } catch { // error handling code }`
+	- `try { // some code } catch () => { // error handling code }`
+	- 📌📌📌📌 No es `try { // some code } catch (err) { // error handling code }`
+	- `try { // some code } catch (err) => { // error handling code }`
+
+16. Identifica la "Promesa" entre los siguientes bloques de código:
+	- `const helloPromise = () => { return new Promise(() => { if (true) { resolve('Hey!'); } else { reject('Whooops!'); } }); };`
+	- `const helloPromise = () => { Promise((resolve, reject) => { if (true) { resolve('Hey!'); } else { reject('Whooops!'); } }); };`
+	- `const helloPromise = () => { return Promise((resolve, reject) => { if (true) { resolve('Hey!'); } else { reject('Whooops!'); } }); };`
+	-  📌`const helloPromise = () => { return new Promise((resolve, reject) => { if (true) { resolve('Hey!'); } else { reject('Whooops!'); } }); };`
+
+17. ¿En qué versión de ECMAScript fueron implementadas las Async functions?
+	- ECMAScript 9
+	- ES6
+	- ECMAScript
+	- 📌ES8
+	- ES7
+
+18. ¿Una variable asignada con "let" solo está disponible dentro del scope donde es definida?
+	- FALSE
+	-  📌TRUE
+
+</details>
