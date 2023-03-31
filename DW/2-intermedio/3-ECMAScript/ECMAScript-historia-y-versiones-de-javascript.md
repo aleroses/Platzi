@@ -3084,11 +3084,11 @@ _**Contribuciones del curso creadas por** [Andrés Guano](https://platzi.com/p/
 5. ¿Cuál es la forma correcta de exportar un módulo en ES6?
 	- 📌 `export default function Name;`
 	- `functionName = export.default()`
-	-  📌📌📌📌 No es `export module = functionName;`
+	-  `export module = functionName;`
 	- `module.default = { functionName }`
 
 6. ¿Cuál es la forma propuesta en ES6 para hacer multilínea?
-	-  📌let lorem2 = `Qui consequatur. so si irure but. `;
+	-  📌let lorem2 = `Qui consequatur. so si irure but.` ;
 	- let lorem = 'Qui consequatur.' 'so si irure bu.'
 	- let lorem = 'Qui consequatur. \n' + 'so si irure bu.'
 	- let lorem = 'Qui consequatur.' + 'so si irure bu.'
@@ -3145,7 +3145,7 @@ _**Contribuciones del curso creadas por** [Andrés Guano](https://platzi.com/p/
 15. Identifica el código que implementa "Optional Catch Binding":
 	- 📌 `try { // some code } catch { // error handling code }`
 	- `try { // some code } catch () => { // error handling code }`
-	- 📌📌📌📌 No es `try { // some code } catch (err) { // error handling code }`
+	- `try { // some code } catch (err) { // error handling code }`
 	- `try { // some code } catch (err) => { // error handling code }`
 
 16. Identifica la "Promesa" entre los siguientes bloques de código:
