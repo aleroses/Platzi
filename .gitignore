@@ -5,6 +5,8 @@
 *.mp3
 *.gif
 *.pdf
+*.docx
+*.xlsx
 *.webp
 *.rar
 *.zip
