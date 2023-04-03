@@ -300,3 +300,203 @@ x = (85% `*` $120) / 100%
 
 **También:**   
 x = 120 `*` 0.85
+
+
+## 7. Calculando descuentos con JavaScript 
+
+Solución personal:   
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Percentages</title>
+</head>
+<body>
+    <h1>Calculadora de Porcentajes</h1>
+    
+    <label for="number-total">Ingresa un número</label>
+    <input id="number-total" class="number-total" type="number"><br>
+    
+    <label for="porcentaje">Ingresa el Porcentaje %</label>
+    <input id="porcentaje"  class="porcentaje" type="number"><br>
+
+    <button class="enviar">Enviar</button>
+
+    <h2>Resultados</h2> 
+    <p class="result"></p>
+
+
+    <script src="./main.js"></script>
+</body>
+</html>
+```
+
+```js
+const number_total = document.querySelector('.number-total');
+const porcentaje = document.querySelector('.porcentaje');
+const enviar = document.querySelector('.enviar')
+let calculo;
+const result = document.querySelector('.result');
+
+enviar.addEventListener('click', calculoPorcentaje);
+
+function calculoPorcentaje(){
+    if(porcentaje.value < 100 && number_total.value > 0){
+        calculo = (Number(number_total.value) * parseInt(porcentaje.value)) / 100;
+        result.innerText = `El ${porcentaje.value}% de ${number_total.value} es: ` + calculo;
+    
+    
+        console.log('click XDXDXD' + result);
+    } else{
+        result.innerText = "Hey!! algo no anda bien...";
+    }
+};
+```
+
+
+## 8. Cupones de descuento
+
+Solución personal:    
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coupon</title>
+</head>
+<body>
+    <h1>Get a discount with your coupon 🔥😃</h1>
+
+    <p>This item is $12, 345.00 🎃</p>
+
+    <label for="coupon">Enter your coupon!! 👇</label><br>
+    <input type="text" class="coupon" id="coupon"><br>
+    <button class="buy">Buy now!</button>
+
+    <p class="pay"></p>
+
+    <script src="./main.js"></script>
+</body>
+</html>
+```
+
+```js
+const coupon = document.querySelector('.coupon');
+const buy = document.querySelector('.buy');
+const pay = document.querySelector('.pay');
+
+const coupon_list = {
+    coupon_one: 'white',
+    coupon_two: 'purple',
+    coupon_three: 'black'
+};
+
+buy.addEventListener('click', discount);
+
+function discount(){
+    for(let item in coupon_list){
+        if(coupon.value === coupon_list[item]){
+            pay.innerText = coupon.value + coupon_list[item];
+            if(coupon.value === 'white'){   
+                pay.innerText = `Congratulation 😎 You have a 50% of Discount: $${12345 * 0.5}`;
+            } else if (coupon.value === 'purple'){
+                pay.innerText = `Congratulation 😎 You have a 25% of Discount: $${12345 * 0.75}`;
+            }else {
+                pay.innerText = `Congratulations 😎 You have a 12% Discount: $${12345 * 0.88}`;
+            }
+        }else if (coupon.value != "white" && coupon.value != "purple" && coupon.value != "black") {
+            pay.innerText = `Try again 🤠`;
+        }
+        console.log(item, ":", coupon_list[item]);
+    }
+}
+
+
+// Otra forma sin objeto y sin for in
+/* function discount(){
+    if (coupon.value != "white" && coupon.value != "purple" && coupon.value != "black"){
+        pay.innerText = `Try again 🤠`;
+    }else {
+        if(coupon.value === 'white'){   
+            pay.innerText = `Congratulation 😎 You have a 50% of Discount: $${12345 * 0.5}`;
+        } else if (coupon.value === 'purple'){
+            pay.innerText = `Congratulation 😎 You have a 25% of Discount: $${12345 * 0.75}`;
+        }else {
+            pay.innerText = `Congratulations 😎 You have a 12% Discount: $${12345 * 0.88}`;
+        }
+    }
+} */
+```
+
+
+## 9. Método find vs. método filter
+
+### Método 01: 
+```html
+<body>
+    <h1>Get a discount with your coupon 🔥😃</h1>
+
+    <label for="price">This item is ... 🎃</label><br>
+    <input type="number" class="price" id="price"><br>
+
+    <label for="coupon">Enter your coupon!! 👇</label><br>
+    <input type="text" class="coupon" id="coupon"><br>
+    <button class="buy">Buy now!</button>
+
+    <p class="pay"></p>
+
+    <script src="./main.js"></script>
+</body>
+```
+
+```js
+let input_price = document.querySelector('.price');
+let input_coupon = document.querySelector('.coupon');
+let btn_buy = document.querySelector('.buy');
+let pay = document.querySelector('.pay');
+
+let coupon_list = {
+    'ale': 50,
+    'ivo': 25,
+    'levi': 12,
+};
+
+btn_buy.addEventListener('click', calculate_discount);
+
+function calculate_discount(){  
+    let price = Number(input_price.value);
+    let coupon = input_coupon.value;
+
+    if(!price || !coupon){ // Or
+        pay.innerText = 'Check the price and coupon of the item!!!';
+        return;
+    }
+
+    let descount;
+    if(coupon_list[coupon]){
+        descount = coupon_list[coupon];
+    }else {
+        pay.innerText = "This coupon isn't value...";
+        return;
+    };
+
+    pay.innerHTML = `The price is: $${price * (100 - descount) / 100}.00 🤠`;
+    return;
+}
+```
+
+### Método 02: 
+```
+```
+
+```
+```
+
+```
+```
