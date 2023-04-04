@@ -492,11 +492,80 @@ function calculate_discount(){
 ```
 
 ### Método 02: 
-```
+```js
+let input_price = document.querySelector(".price");
+let input_coupon = document.querySelector(".coupon");
+let btn_buy = document.querySelector(".buy");
+let pay = document.querySelector(".pay");
+
+let coupon_list = [];
+coupon_list.push({
+    name: 'ale',
+    discount: 50,
+});
+
+coupon_list.push({
+    name: 'ivo',
+    discount: 25,
+});
+
+coupon_list.push({
+    name: 'levi',
+    discount: 12,
+});
+
+btn_buy.addEventListener('click', calculate_discount);
+
+function calculate_discount(){
+    let price = Number(input_price.value);
+    let coupon = input_coupon.value;
+
+    if(!price || !coupon){
+        pay.innerText = 'Check the price and coupon of the item!!!';
+        return
+    }
+
+    let discount_data;
+
+    function find_coupon(item){ // ale or x
+        console.log(item, item.name, item.name == coupon);//👈👀
+        return item.name == coupon;
+    }
+
+    let successful_coupon = coupon_list.find(find_coupon);
+
+	// if(successful_coupon.length > 0)
+    if(successful_coupon){
+        discount_data = successful_coupon.discount;
+        // discount_data = successful_coupon[0].discount;
+    }else{
+        pay.innerText = "This coupon isn't valid"
+        return
+    }
+
+    pay.innerText = `The price is: $${price * (100 - discount_data) / 100}.00 🤠`;
+}
+
+console.log(coupon_list);
+
+// console.log(item, item.name, item.name == coupon);👈👀
+// Si encuentra algo arroja:  
+//{name: 'ale', discount: 50} 'ale' true
+
+// Si no encuentra nada arroja:  
+// {name: 'ale', discount: 50} 'ale' false
+// {name: 'ivo', discount: 25} 'ivo' false
+// {name: 'levi', discount: 12} 'levi' false
 ```
 
-```
-```
+Cabe mencionar dos puntos importantes aquí:  
+
+1.  El método `filter` itera por **todos** los elementos de un arreglo, mientras que `find` regresa el primer elemento que cumpla con la condición. Por lo tanto, si sólo se está buscando un elemento, el método más óptimo es `find`, ya que, apenas encuentre al elemento, dejará de iterar por los demás.
+2.  Aprender [manipulación de arreglos](https://platzi.com/cursos/arrays/) ayuda mucho a mejorar como desarrollador. Te hace más profesional y con conocimientos sobre el tema. Les recomiendo mucho que tomen el [curso de Manipulación de Arrays en JavaScript](https://platzi.com/cursos/arrays/) y comprendan y practiquen cada método.
+
+- [Documentación Array.prototype.find()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/find)
+- [Documentación Array.prototype.filter()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter)
+
 
 ```
 ```
