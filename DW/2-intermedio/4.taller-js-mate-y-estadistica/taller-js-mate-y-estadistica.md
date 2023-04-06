@@ -528,13 +528,14 @@ function calculate_discount(){
     let discount_data;
 
     function find_coupon(item){ // ale or x
-        console.log(item, item.name, item.name == coupon);//👈👀
+        console.log(item, item.name, item.name == coupon); //👈👀
         return item.name == coupon;
     }
 
+	// let successful_coupon = coupon_list.filter(find_coupon);👈👀
     let successful_coupon = coupon_list.find(find_coupon);
 
-	// if(successful_coupon.length > 0)
+	// if(successful_coupon.length > 0) //👈👀
     if(successful_coupon){
         discount_data = successful_coupon.discount;
         // discount_data = successful_coupon[0].discount;
@@ -556,6 +557,91 @@ console.log(coupon_list);
 // {name: 'ale', discount: 50} 'ale' false
 // {name: 'ivo', discount: 25} 'ivo' false
 // {name: 'levi', discount: 12} 'levi' false
+```
+
+### Explicación con otros ejemplos: 
+
+Encontrar datos con Objetos: Comparamos el key y de encontrar coincidencias devolvemos el valor.    
+```js
+let coupon = "ale";
+
+let coupon_list = {
+    'ale': 50,
+    'ivo': 25,
+    'levi': 12,
+};
+
+console.log(coupon_list[coupon]);
+// 50
+```
+
+Encontrar datos con Array de Objetos: método .find   
+```js
+let coupon = "levi";
+
+let coupon_list = [];
+coupon_list.push({
+    name: 'ale',
+    discount: 50,
+});
+
+coupon_list.push({
+    name: 'ivo',
+    discount: 25,
+});
+
+coupon_list.push({
+    name: 'levi',
+    discount: 12,
+});
+
+function find_coupon(item){ // Parametro item 
+    console.log(item.name == coupon);
+    return item.name == coupon;
+} 
+
+// Argumento coupon_list
+successful_coupon = coupon_list.find(find_coupon);
+console.log(successful_coupon);
+// false
+// false
+// true
+// { name: 'levi', discount: 12 }
+```
+
+Encontrar datos con Array de Objetos: filter   
+```js
+let coupon = "levi";
+
+let coupon_list = [];
+coupon_list.push({
+    name: 'ale',
+    discount: 50,
+});
+
+coupon_list.push({
+    name: 'ivo',
+    discount: 25,
+});
+
+coupon_list.push({
+    name: 'levi',
+    discount: 12,
+});
+
+
+function find_coupon(item){ // Parametro item 
+    console.log(item.name == coupon);
+    return item.name == coupon;
+} 
+
+// Argumento coupon_list
+successful_coupon = coupon_list.filter(find_coupon);
+console.log(successful_coupon);
+// false
+// false
+// true
+// [ { name: 'levi', discount: 12 } ]
 ```
 
 Cabe mencionar dos puntos importantes aquí:  
