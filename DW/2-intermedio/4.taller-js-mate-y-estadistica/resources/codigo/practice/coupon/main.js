@@ -19,15 +19,14 @@ coupon_list.push({
     discount: 12,
 });
 
-
 btn.addEventListener('click', calculate_discount);
 
 function calculate_discount(){
     let price = Number(input_price.value);
     let coupon = input_coupon.value;
 
-    if(!price || !coupon){
-        pay.innerText = "Check the price and coupon of the item!!!"
+    if(!price || !coupon){ //True or False
+        pay.innerText = 'Enter the price and coupon of the item!!!';
         return
     }
 
@@ -37,13 +36,13 @@ function calculate_discount(){
     }
 
     successful_coupon = coupon_list.find(find_coupon);
+
     if(successful_coupon){
         discount_data = successful_coupon.discount;
     }else {
-        pay.innerText = "This coupon isn't valid...";
+        pay.innerText = "The coupon isn't valid :c";
         return
     }
 
-    pay.innerText = `The price is: ${price * (100 - discount_data) / 100}`;
-    return;
-};
+    pay.innerText = `The price is: $${price * (100 - discount_data) / 100}.00`
+}

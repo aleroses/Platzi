@@ -653,5 +653,285 @@ Cabe mencionar dos puntos importantes aquí:
 - [Documentación Array.prototype.filter()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter)
 
 
+## 10. Encuentra el ID
+
+En este desafío vas a recibir un array de objetos. Cada objeto representa a un usuario. Debes encontrar al usuario con cierto ID y retornar su nombre. En caso de no existir, debes retornar false.
+
+Input
+
+```js
+const users = [];
+users.push({ id: 123, name: 'Juanito Alcachofa' });
+users.push({ id: 456, name: 'Juanita Alcaparra' });
+
+solution(users, 456);
+solution(users, 999);
 ```
+
+Output
+
+```js
+Juanita Alcaparra
+false
+```
+
+
+Solución personal: No tan bien...  
+```js
+const users = [];
+users.push({ 
+    id: 123, 
+    name: 'Juanito Alcachofa' 
+});
+
+users.push({ 
+    id: 456, 
+    name: 'Juanita Alcaparra' 
+});
+
+
+function solution(user) {
+    if (user.name == 'Juanita Alcaparra') {
+        console.log(user.name);
+        return
+    }
+    console.log(user.name == 'Juanita Alcaparra');
+    return
+}
+
+users.find(solution); 
+// false
+// Juanita Alcaparra
+```
+
+Solución de la Comunidad:      
+```js
+function solution(users, id) {
+    const user = users.find(userx => userx.id == id)
+    return console.log(user?.name || false);
+}
+
+solution(users, 456); // Juanita Alcaparra
+solution(users, 999); // false
+```
+
+Solución de Platzi:      
+```js
+export function solution(users, id) {
+  const userWithID = users.find(user => user.id == id);
+
+  if (userWithID) {
+    return userWithID.name;
+  } else {
+    return false;
+  }
+}
+
+solution(users, 456); // Juanita Alcaparra
+solution(users, 999); // false
+```
+
+Ejemplo de Callback: 
+```js
+const numbers = [2, 5, 7, 1, 9, 8, 4];
+
+const filteredNumbers = numbers.filter(function(number){
+    return number >= 5;
+});
+
+console.log(numbers, filteredNumbers);
+// [ 5, 7, 9, 8 ]
+```
+
+
+## 11. Qué es promedio, moda y mediana 
+
+### Promedio
+
+El nombre técnico es **media aritmética** y se calcula sumando todos los valores y luego dividiendo esa suma por la cantidad de valores.
+
+(500 + 300 + 600) / 3 = 466.67
+
+#### Ejemplo
+
+```js
+const ventasPrimerTrimestre =  [ 10, 20, 30 ];
+
+function getMedia(array){
+	const initialValue = 0;
+	const sumWithInitial = array.reduce(
+        (previousValue, currentValue) => previousValue + currentValue, initialValue
+);
+
+	return sumWithInitial  / array.length;
+};
+
+getMedia(ventasPrimerTrimestre);
+```
+
+El método reduce usa dos parámetros que son acumulativos: suma y el elemento que esté en un array.
+- 1ra iteración: ((sum 0; + elemento 1;) y un 0 + 1) que sale de sum + elemento, este se va a retornar al final de las iteraciones. 
+- 2da iteración: ((sum 1 + elemento que pasa a ser 2) y un 3) que sale de la suma. 
+- 3ra iteración: ((sum 3 + elemento 3) y un 6)) de la suma. 
+- 4ta iteración: ((suma 6 + elemento 4) y un 10. 
+```js
+// Otro ejemplo con reduce 
+const numbers = [1, 2, 3, 4];
+
+const rta = numbers.reduce((sum, element) => sum + element, 0);
+
+console.log(rta);
+```
+
+> Si quieres saber más sobre el método reduce de arrays en JavaScript, puedes ver esta [clase](https://platzi.com/clases/2461-arrays/40876-reduce/) del curso de manipulación de Array dado por el buen Nico y/o ver este video de la Cocina del Código del el tío [Sacha en youtube](https://www.youtube.com/watch?v=tP8JiVUiyDo)
+
+### La mediana
+
+Es el valor que se ubica en la mitad de la lista de valores, cuando la lista es impar.   
+
+450, `500`, 600
+
+Cuando la lista es par, entonces se toman los dos valores centrales, se suman y se divide entre dos.
+
+sueldo1, `sueldo2, sueldo3`/`2`, sueldo4
+
+### La moda
+
+Consiste en encontrar el valor que se repite mayor cantidad de veces en una lista de valores.
+
+1, **10**, `14`, 3, 24, `14`, **10**, 35, 13, `14`      
+10 = 2 veces     
+14 = 3 veces   
+
+> La moda no solo se puede trabajar con números, sino que aplica también para cualquier tipo de dato.
+
+
+## 12. Calculando el promedio  
+
+### Solución con for: 
+```js
+const numbers = [1, 2, 3, 4];
+let contador = 0;
+
+for(let i=0; i < numbers.length; i++){
+    console.log(contador)
+    contador = numbers[i] + contador;
+
+}
+console.log('Promedio con for:', contador / numbers.length);
+```
+
+### Solución con el método reduce: 
+```js
+const numbers = [1, 2, 3, 4];
+let suma_acumulada = 0;
+
+let add = numbers.reduce((suma, item) => suma + item, suma_acumulada);
+
+console.log('Promedio con reduce:', add / numbers.length);
+```
+
+
+## 13. Método reduce  
+
+Ejemplo de Platzi:    
+```js
+function calcularPromedio(lista){
+    function sumarElementos(valorAcumulado, nuevoValor){
+        return valorAcumulado + nuevoValor;
+    }
+
+    const sumaLista = lista.reduce(sumarElementos);
+
+    const promedio = sumaLista / lista.length;
+    console.log(promedio);
+    return promedio;
+}
+
+calcularPromedio([1, 2, 3, 4]);
+```
+
+
+### Lecturas recomendadas
+
+- [Array.prototype.reduce() - JavaScript | MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce)
+- [Arrow function expressions - JavaScript | MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions)
+
+#### Clases relacionadas
+
+[Métodos - Curso de TypeScript: Programación Orientada a Objetos y Asincronismo](https://platzi.com/clases/2880-typescript-poo/47254-metodos/)
+
+
+## 14. Calculando la mediana en una lista impar
+
+Encontrar si un número es par o impar:   
+```js
+let esPar = (lista) => (lista.length % 2) == 0 ? true : false;
+console.log(esPar([1, 2, 3, 4])); // True
+```
+
+También podría quedar así: 
+```js
+let esPar = lista => lista.length % 2 === 0;
+console.log(esPar([1,2,3,4]));
+```
+
+### Math.round()
+
+Obtiene el siguiente numero mas cercano( si es >.5 redondea hacia arriba, si es <.5 redonda hacia abajo)
+
+```js
+Math.round(2.5) // output: 3
+Math.round(2.49) // output: 2
+```
+
+### Math.floor()
+
+Obtiene el numero entero anterior mas cercano (redondear hacia abajo).
+
+```js
+Math.floor(2.99) // output: 2
+Math.floor(2.5) // output: 2
+Math.floor(2.49) // output: 2
+```
+
+### Math.ceil()
+
+Obtiene el numero entero siguiente mas cercano (redondear hacia arriba).
+
+```js
+Math.ceil(2.5) // output: 3
+Math.ceil(2.49) // output: 3
+Math.ceil(2.1) // output: 3
+```
+
+### Primera parte 
+
+Calcular la mediana impar
+
+```js
+function esPar(lista){
+    return !(lista.length % 2);
+}
+
+function calcularMediana(lista){
+    const listaEsPar = esPar(lista); // true or false
+    console.log(listaEsPar, "xd");
+
+    if(listaEsPar){
+        
+    }else{
+        const indexMitadListaImpar = Math.floor(lista.length / 2);
+        const medianaListaImpar = lista[indexMitadListaImpar];
+        console.log(indexMitadListaImpar);
+        console.log(medianaListaImpar);
+        return medianaListaImpar;
+    };
+}
+
+calcularMediana([10,20,30]);
+```
+
+```js
+
 ```
