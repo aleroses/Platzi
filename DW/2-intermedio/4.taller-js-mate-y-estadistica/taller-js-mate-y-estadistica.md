@@ -911,7 +911,7 @@ Calcular la mediana impar
 
 ```js
 function esPar(lista){
-    return !(lista.length % 2);
+    return !(lista.length % 2); // 0 = false
 }
 
 function calcularMediana(lista){
@@ -932,6 +932,188 @@ function calcularMediana(lista){
 calcularMediana([10,20,30]);
 ```
 
+
+## 15. Calculando la mediana en una lista par
+
+### Segunda parte: 
+```js
+function esPar(lista){
+    return !(lista.length % 2);
+}
+
+/* function esImpar(lista){
+    return lista.length % 2;
+} */
+
+function calcularMediana(lista){
+    const listaEsPar = esPar(lista);
+
+    if(listaEsPar){
+        const mitad01ListaPar = lista[(lista.length / 2) - 1];
+        const mitad02ListaPar = lista[lista.length / 2];
+        
+        const listaMitades = [mitad01ListaPar, mitad02ListaPar];
+
+        const medianaListaPar = calcularPromedio(listaMitades);
+        return medianaListaPar;
+    }else{
+        const indexMitadListaImpar = Math.floor(lista.length / 2);
+        const medianaListaImpar = lista[indexMitadListaImpar];
+        console.log(indexMitadListaImpar);
+        console.log(medianaListaImpar);
+        return medianaListaImpar;
+    };
+}
+
+calcularMediana([10,20,30,40,50,60]);
+
+function calcularPromedio(lista){
+    function sumarElementos(valorAcumulado, nuevoValor){
+        return valorAcumulado + nuevoValor;
+    }
+
+    const sumaLista = lista.reduce(sumarElementos);
+
+    const promedio = sumaLista / lista.length;
+    console.log(promedio);
+    return promedio;
+}
+```
+
+
+Solución personal:  
+```js
+const arr = [5,2,1,4,3,6];
+
+/* function esPar(array){
+    // true: par  false: impar
+    return array.length % 2 == 0 ? true : false; 
+}
+esPar(arr); */
+
+function median(){
+    // true: par  false: impar
+    if(arr.length % 2 == 0){
+        let left_index = arr[(arr.length / 2) - 1];
+        let right_index = arr[arr.length / 2];
+        let index_list = [left_index, right_index];
+
+        let average = index_list.reduce((suma, indice) => suma + indice);
+
+        let median_is = average / index_list.length; //2
+        
+        console.log(`Pair list ${arr} The Median is: ${median_is}`, average);
+        return
+    }else{
+        let index = Math.floor(arr.length / 2);
+        let median_is = arr[index];
+        console.log(`Odd list ${arr} The Median is: ${median_is}`);
+        return
+    }
+}
+
+median(arr.sort())
+```
+
+
+## 16. Método sort
+
+Algoritmos de ordenamiento: 
+- Quicksort + Insertion sort.
+- Bubble sort, Merge sort, Binary tree sort...
+
+Sort funciona de la siguiente manera: 
+```js
+function ordenarLista(listaDesordenada){
+    function ordenarListaSort(valorAcumulad, nuevoValr){
+        if(valorAcumulad > nuevoValr){
+            return 1;
+        }else if(valorAcumulad == nuevoValr){
+            return 0;
+        }else if(valorAcumulad < nuevoValr){
+            return -1;
+        }
+    }
+
+    const lista = listaDesordenada.sort(ordenarListaSort)
+    console.log(lista);
+    return lista;
+}
+
+ordenarLista([5,3,4,8,9,4,2,1,7]);
+```
+
+Calculamos la mediana de una lista desordenada. 
+```js
+function esPar(lista){
+    return !(lista.length % 2);
+}
+/* function esImpar(lista){
+    return lista.length % 2;
+} */
+function calcularMediana(listaDesordenada){
+    const lista = ordenarLista(listaDesordenada);
+    const listaEsPar = esPar(lista);
+
+    if(listaEsPar){
+        const mitad01ListaPar = lista[(lista.length / 2) - 1];
+        const mitad02ListaPar = lista[lista.length / 2];
+        
+        const listaMitades = [mitad01ListaPar, mitad02ListaPar];
+
+        const medianaListaPar = calcularPromedio(listaMitades);
+        return medianaListaPar;
+    }else{
+        const indexMitadListaImpar = Math.floor(lista.length / 2);
+        const medianaListaImpar = lista[indexMitadListaImpar];
+        console.log(indexMitadListaImpar);
+        console.log(medianaListaImpar);
+        return medianaListaImpar;
+    };
+}
+calcularMediana([10,20,30,40,50,60]);
+
+function calcularPromedio(lista){
+    function sumarElementos(valorAcumulado, nuevoValor){
+        return valorAcumulado + nuevoValor;
+    }
+
+    const sumaLista = lista.reduce(sumarElementos);
+
+    const promedio = sumaLista / lista.length;
+    console.log(promedio);
+    return promedio;
+}
+
+// Metodo sort: ordenar listas 
+function ordenarLista(listaDesordenada){
+    function ordenarListaSort(valorAcumulad, nuevoValr){
+        return valorAcumulad - nuevoValr;
+        // return 5 - 10 = -5 No lo mueve
+        // return 5 - 5 = 0 No lo mueve 
+        // return 10 - 5 = 5 Lo mueve de posición  
+    }
+
+    const lista = listaDesordenada.sort(ordenarListaSort)
+    return lista;
+}
+
+// Otra forma: arrow function 
+/* const lista = listaDesordenada.sort((a, b) => a -b); */
+```
+
+[Documentación sort](https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Array/sort)
+
+#### Lecturas recomendadas: Algoritmos con JS:  
+- [Curso de Estructuras de Datos con JavaScript - Platzi](https://platzi.com/cursos/estructuras-datos/)
+- [Curso de Introducción a los Algoritmos de Ordenamiento - Platzi](https://platzi.com/cursos/ordenamiento/)
+- [Curso de Complejidad Algorítmica con JavaScript - Platzi](https://platzi.com/cursos/complejidad-js/)
+
 ```js
 
 ```
+
+```js
+
+```
+
