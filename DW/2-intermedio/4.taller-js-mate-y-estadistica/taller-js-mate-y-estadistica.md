@@ -1109,6 +1109,135 @@ function ordenarLista(listaDesordenada){
 - [Curso de Introducción a los Algoritmos de Ordenamiento - Platzi](https://platzi.com/cursos/ordenamiento/)
 - [Curso de Complejidad Algorítmica con JavaScript - Platzi](https://platzi.com/cursos/complejidad-js/)
 
+
+## 17. Calculando la moda: objetos a partir de arrays  
+
+Solución personal previa:  
+```js
+let number = 14;
+let number_list = [1, 10, 14, 3, 24, 14, 10, 35, 13, 14];
+
+function find_number(item){
+    return item == number;
+}
+
+successful_number = number_list.filter(find_number);
+console.log(`Encontramos ${successful_number.length} coincidencias`, successful_number);
+// Encontramos 3 coincidencias [ 14, 14, 14 ]
+```
+
+Solución Platzi:  Guardar la cantidad de veces que aparece un número
+
+```js
+function calcularModa(lista){
+    const listaCount = {};
+
+    for(let i = 0; i<lista.length; i++){
+        const elemento = lista[i];
+        console.log(elemento);
+
+        if(listaCount[elemento]){ // si está + 1
+            listaCount[elemento] += 1;
+        }else{ // si no está = 1
+            listaCount[elemento] = 1;
+        }
+        console.log(listaCount);
+    }
+    console.log(listaCount);
+}
+
+calcularModa([8,2,3,4,8,1,'a','abc',8,13,'abc','abc'])
+// 8
+// { '8': 1 }
+// 2
+// { '2': 1, '8': 1 }
+// 3
+// { '2': 1, '3': 1, '8': 1 }
+// 4
+// { '2': 1, '3': 1, '4': 1, '8': 1 }
+// 8
+// { '2': 1, '3': 1, '4': 1, '8': 2 }
+// 1
+// { '1': 1, '2': 1, '3': 1, '4': 1, '8': 2 }
+// a
+// { '1': 1, '2': 1, '3': 1, '4': 1, '8': 2, a: 1 }
+// abc
+// { '1': 1, '2': 1, '3': 1, '4': 1, '8': 2, a: 1, abc: 1 }
+// 8
+// { '1': 1, '2': 1, '3': 1, '4': 1, '8': 3, a: 1, abc: 1 }
+// 13
+// { '1': 1, '2': 1, '3': 1, '4': 1, '8': 3, '13': 1, a: 1, abc: 1 }
+// abc
+// { '1': 1, '2': 1, '3': 1, '4': 1, '8': 3, '13': 1, a: 1, abc: 2 }
+// abc
+// { '1': 1, '2': 1, '3': 1, '4': 1, '8': 3, '13': 1, a: 1, abc: 3 }
+// { '1': 1, '2': 1, '3': 1, '4': 1, '8': 3, '13': 1, a: 1, abc: 3 }
+```
+
+Solución de la comunidad: 
+```js
+const arr2 = [1, 2, 6, 6, 3, 4, 5, 4, 5, 1, 2, 4, 4];
+
+const histogram = array => {
+    const obj = new Object();
+    array.forEach(element => !obj[element] ? obj[element] = 1 : obj[element]++);
+    return obj;
+};
+console.log(histogram(arr2));
+// { '1': 2, '2': 2, '3': 1, '4': 4, '5': 2, '6': 2 }
+```
+
+
+## 18. Calculando la moda: arrays a partir de objetos
+
+
+```js
+const obj = {a:1,b:2,c:3}
+Object.keys(obj)
+// ['a', 'b', 'c']
+Object.values(obj)
+// [1, 2, 3]
+Object.entries(obj)
+//
+```
+
+```js
+function calcularModa(lista){
+    const listaCount = {};
+
+    for(let i = 0; i<lista.length; i++){
+        const elemento = lista[i];
+
+        if(listaCount[elemento]){ // si está + 1
+            listaCount[elemento] += 1;
+        }else{ // si no está = 1
+            listaCount[elemento] = 1;
+        }
+    }
+    
+    const listaArray = Object.entries(listaCount);
+    const listaOrdenada = ordenarListaBidimensional(listaArray, 1);
+    const listaMaxNumber = listaOrdenada[listaOrdenada.length -1];
+    const moda = listaMaxNumber[0];
+    
+
+    /* console.log(listaCount, listaArray, listaOrdenada, listaMaxNumber); */
+    console.log('La moda es:', listaMaxNumber[0]);
+    return moda;
+}
+
+calcularModa([8,2,3,8,8,8,8,1,4,8,1,'a',1,'abc',8,1,13,'abc','abc'])
+
+function ordenarListaBidimensional(listaDesordenada, i){
+    function ordenarListaSort(valorAcumulad, nuevoValr){
+        return valorAcumulad[1] - nuevoValr[1];
+    }
+
+    const lista = listaDesordenada.sort(ordenarListaSort)
+    return lista;
+}
+```
+
 ```js
 
 ```
