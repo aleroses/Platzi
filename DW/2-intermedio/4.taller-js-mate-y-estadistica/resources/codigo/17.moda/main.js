@@ -62,20 +62,18 @@ function calcularModa(lista){
     const moda = listaMaxNumber[0];
     
 
-    /* console.log(listaCount, listaArray, listaOrdenada, listaMaxNumber); */
-    console.log('La moda es:', listaMaxNumber[0]);
+    console.log(/* listaCount, */ listaArray, /* listaOrdenada, */ /* listaMaxNumber */);
+    /* console.log('La moda es:', listaMaxNumber[0], 'because se repite', listaMaxNumber[1]); */
     return moda;
 
 }
 
-calcularModa([8,2,3,8,8,8,8,1,4,8,1,'a',1,'abc',8,1,13,'abc','abc'])
+calcularModa([5,6,7,5,5,7,4/* 1,4,8,1,'a',1,'abc','abc','abc' */])
 
 function ordenarListaBidimensional(listaDesordenada, i){
     function ordenarListaSort(valorAcumulad, nuevoValr){
-        return valorAcumulad[1] - nuevoValr[1];
-        // return 5 - 10 = -5 No lo mueve
-        // return 5 - 5 = 0 No lo mueve 
-        // return 10 - 5 = 5 Lo mueve de posición  
+        console.log(valorAcumulad[0], valorAcumulad[1], ':',nuevoValr[0], nuevoValr[1], ':', valorAcumulad[1] - nuevoValr[1]);
+        return valorAcumulad[i] - nuevoValr[i];
     }
 
     const lista = listaDesordenada.sort(ordenarListaSort)
