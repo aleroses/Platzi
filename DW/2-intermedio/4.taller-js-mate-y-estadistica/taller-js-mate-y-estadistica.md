@@ -1279,7 +1279,154 @@ function sort_two_dimensional_list(unordered_list, i){
 }
 ```
 
+
+## 19. Transforma objetos en arrays
+
+En este desafío debes convertir las llaves y valores de un objeto en propiedades (`id` y `name`) de un objeto dentro de un array.
+
+Input
+
+```js
+const obj = {
+  123: 'Juanito Alcachofa',
+  456: 'Juanita Alcaparra',
+};
+
+solution(obj);
+```
+
+Output
+
+```js
+[
+  {
+    id: "123",
+    name: 'Juanito Alcachofa',
+  },
+  {
+    id: "456",
+    name: 'Juanita Alcaparra',
+  },
+]
+```
+
+Solution comunidad 01:  
+```js
+const obj = {
+    123: 'Juanito Alcachofa',
+    456: 'Juanita Alcaparra',
+};
+
+function solution(obj) {
+    const array = [];
+    const objEntries = Object.entries(obj);
+    for (let i = 0; i < objEntries.length; i++) {
+        array.push({
+            id: objEntries[i][0],
+            name: objEntries[i][1],
+    });
+    }
+    return console.log(array);;
+}
+
+solution(obj);
+// 
+// [
+//    { id: '123', name: 'Juanito Alcachofa' },
+//    { id: '456', name: 'Juanita Alcaparra' }
+// ]
+```
+
+Solution comunidad 02:  
+```js
+const obj = {
+    123: 'Juanito Alcachofa',
+    456: 'Juanita Alcaparra',
+};
+
+function solution(obj) {
+    return Object.entries(obj).map(value => {
+        return { id: value[0], name: value[1]}})
+}
+
+solution(obj); 
+```
+
+Ejemplo hecho por ChatGPT     
+Usando JavaScript transforma un objeto con varias claves y valores en un array de varios objetos.
+
+¡Claro! Puedes usar el método Object.entries() para convertir un objeto en una matriz de pares clave-valor, y luego usar el método Array.map() para transformar cada par clave-valor en un objeto. Aquí te dejo un ejemplo:
+
+```js
+const objeto = {
+  clave1: "valor1",
+  clave2: "valor2",
+  clave3: "valor3"
+};
+
+const arrayDeObjetos = Object.entries(objeto).map(([clave, valor]) => ({ clave, valor }));
+
+console.log(arrayDeObjetos);
+// Output: [
+//   { clave: "clave1", valor: "valor1" },
+//   { clave: "clave2", valor: "valor2" },
+//   { clave: "clave3", valor: "valor3" }
+// ]
+```
+
+En el ejemplo anterior, Object.entries(objeto) devuelve una matriz de pares clave-valor, que se mapea en un array de objetos usando la función de devolución de llamada proporcionada en Array.map(). La función de devolución de llamada toma cada par clave-valor como un argumento y devuelve un objeto con las claves "clave" y "valor".
+
+Solución hecha por ChatGPT    
+
+```js
+function solution(obj) {
+  return Object.entries(obj).map(([id, name]) => ({ id, name }));
+}
+
+const obj = {
+  123: 'Juanito Alcachofa',
+  456: 'Juanita Alcaparra',
+};
+
+const result = solution(obj);
+
+console.log(result);
+// Output:
+// [
+//   {
+//     id: "123",
+//     name: 'Juanito Alcachofa',
+//   },
+//   {
+//     id: "456",
+//     name: 'Juanita Alcaparra',
+//   },
+// ]
+```
+
+En el ejemplo anterior, la función solution toma un objeto como argumento, usa Object.entries() para convertirlo en una matriz de pares clave-valor, y luego usa Array.map() para transformar cada par clave-valor en un objeto con propiedades id y name. El resultado es un array de objetos con el formato solicitado en el output.
+
+Mas explicación:    
+En el código que te proporcioné, se utiliza una función llamada `solution` que toma como argumento un objeto `obj`. A continuación, se usa la función `Object.entries()` para convertir el objeto `obj` en una matriz de pares clave-valor.
+
+La función `Object.entries()` devuelve una matriz en la que cada elemento es otro array de dos elementos: el primer elemento es la clave (en este caso, un número representado como una cadena) y el segundo elemento es el valor correspondiente (en este caso, un nombre representado como una cadena).
+
+A continuación, se usa la función `Array.map()` para transformar cada elemento de la matriz resultante en un objeto con dos propiedades: `id` y `name`. La función de devolución de llamada proporcionada a `Array.map()` toma como argumento cada elemento de la matriz, que es también un array de dos elementos, y utiliza la sintaxis de desestructuración para asignar el primer elemento del array (la clave) a la propiedad `id` del objeto resultante, y el segundo elemento del array (el valor) a la propiedad `name` del objeto resultante.
+
+Finalmente, la función `solution` devuelve un nuevo array de objetos que tiene el formato requerido, con cada objeto que representa un par clave-valor del objeto original.
+
 ```js
 
 ```
 
+```js
+
+```
+
+```js
+
+```
+
+```js
+
+```
