@@ -1352,7 +1352,7 @@ function solution(obj) {
 solution(obj); 
 ```
 
-Ejemplo hecho por ChatGPT     
+### Ejemplo hecho por ChatGPT     
 Usando JavaScript transforma un objeto con varias claves y valores en un array de varios objetos.
 
 ¡Claro! Puedes usar el método Object.entries() para convertir un objeto en una matriz de pares clave-valor, y luego usar el método Array.map() para transformar cada par clave-valor en un objeto. Aquí te dejo un ejemplo:
@@ -1379,14 +1379,14 @@ En el ejemplo anterior, Object.entries(objeto) devuelve una matriz de pares clav
 Solución hecha por ChatGPT    
 
 ```js
-function solution(obj) {
-  return Object.entries(obj).map(([id, name]) => ({ id, name }));
-}
-
 const obj = {
   123: 'Juanito Alcachofa',
   456: 'Juanita Alcaparra',
 };
+
+function solution(obj) {
+  return Object.entries(obj).map(([id, name]) => ({ id, name }));
+}
 
 const result = solution(obj);
 
@@ -1415,9 +1415,269 @@ A continuación, se usa la función `Array.map()` para transformar cada elemen
 
 Finalmente, la función `solution` devuelve un nuevo array de objetos que tiene el formato requerido, con cada objeto que representa un par clave-valor del objeto original.
 
-```js
 
+## 20. Reto: calcula otros tipos de promedio
+
+En las clases prácticas de este taller aprendimos a calcular el promedio (media aritmética), la mediana y la moda con JavaScript. En este reto debes encontrar la fórmula de algún otro tipo de promedio, trabajar con alguno de sus casos de uso útiles y traducirlo a código JavaScript.
+
+Responde las siguientes preguntas en los comentarios:
+
+-   ¿Cuál tipo de promedio elegiste para trabajar?
+-   ¿Qué casos de uso tiene tu tipo de promedio?
+-   ¿Cómo traduces su fórmula a código JavaScript?
+
+Espero tu solución en la sección de aportes.
+
+### Solución al promedio ponderado
+
+Elegí trabajar con la media aritmética ponderada. Este es un promedio muy similar a la media aritmética, pero nos permite definir también el peso, importancia o relevancia de cada elemento en nuestro conjunto de números.
+
+Un caso de uso de la media ponderada es el cálculo de notas académicas cuando cada materia o asignatura otorga diferentes “créditos”.
+
+Esta es su fórmula:
+
+> `[(N1*C1) + (N2*C2) + (N3*C3)] / (C1 + C2 + C3)`
+
+`N` = Note   
+`C` = Credit 
+
+En español: multiplicar cada número del conjunto por su respectivo crédito, sumar todos los resultados y dividirlo entre la suma de todos los créditos.
+
+> Recuerda que no tienen que ser únicamente 3 números, pueden ser lo que desees, esto solo fue un ejemplo.
+
+Ahora sí, vamos paso a paso implementando el promedio ponderado en JavaScript:
+
+-   **Definir el conjunto de números junto al peso de cada elemento**
+
+Para esto vamos a crear un array de objetos llamado `notes`. Cada objeto tendrá tres valores: `course` con el nombre de la materia (aunque en realidad no lo utilizaremos 😅), `note` con la nota de la materia y `credit` con los créditos de la materia.
+
+```js
+const notes = [
+    {
+        course: "Educación Física",
+        note: 10,
+        credit: 2,
+    },
+    {
+        course: "Programación",
+        note: 8,
+        credit: 5,
+    },
+    {
+        course: "Finanzas personales",
+        note: 7,
+        credit: 5,
+    },
+];
 ```
+
+Ahora vamos paso a paso construyendo nuestra máquina para sacar promedios ponderados.
+
+-   **Multiplicar cada número de la lista por su peso**
+
+Vamos a usar de nuevo el método `map` de los arrays. Crearemos un nuevo arreglo de solo números a partir de multiplicar cada nota con sus créditos.
+
+```js
+const notesWithCredit = notes.map(function (noteObject) {
+    return noteObject.note * noteObject.credit;
+});
+```
+
+-   **Sumar todos los elementos del arreglo de elementos multiplicados por su peso**
+
+Vamos a usar de nuevo el método `reduce` de los arrays.
+
+Crearemos una nueva variable `sumOfNotesWithCredit` que tenga como resultado la suma de todos los elementos del arreglo `notesWithCredit`. Recuerda que la función `reduce` recibe una función con dos parámetros: el valor acumulado (que para evitar errores debemos inicializar con 0) y el nuevo elemento de los arrays.
+
+```js
+const sumOfNotesWithCredit = notesWithCredit.reduce(
+    function (sum = 0, newVal) {
+        return sum + newVal;
+    }
+);
+```
+
+-   **Sumar todos los pesos (créditos)**
+
+Sí, otra vez `map` y `reduce`. Vamos a crear un nuevo arreglo `credits` únicamente con los créditos de cada materia y otra nueva variable `sumOfCredits` que recorra el arreglo `credits` y sume sus elementos.
+
+```js
+const credits = notes.map(function (noteObject) {
+    return noteObject.credit;
+});
+
+const sumOfCredits = credits.reduce(
+    function (sum = 0, newVal) {
+        return sum + newVal;
+    }
+);
+```
+
+-   **Hacer la división entre ambas “sumas”**
+
+Lo último que nos falta es dividir nuestra variable `sumOfNotesWithCredit` sobre la variable `sumOfCredits`.
+
+```js
+const promedioPonderadoNotasConCreditos = sumOfNotesWithCredit / sumOfCredits;
+```
+
+En este caso, el promedio ponderado de una nota de 10 con créditos de 2, otra nota de 8 con un crédito de 5 y una última nota de 7 con créditos de 5 nos da como resultado `7.916`.
+
+La media aritmética sin tener en cuenta el peso de cada nota habría sido `8.333`.
+
+```js
+// Media aritmética ponderada  
+
+const notes = [
+    {
+        course: "Educación Física",
+        note: 10,
+        credit: 2,
+    },
+    {
+        course: "Programación",
+        note: 8,
+        credit: 5,
+    },
+    {
+        course: "Finanzas personales",
+        note: 7,
+        credit: 5,
+    },
+];
+
+const notesWithCredit = notes.map(function (noteObject) {
+    return noteObject.note * noteObject.credit;
+});
+
+console.log(notesWithCredit);
+// [ 20, 40, 35 ]
+
+// El método reduce() ejecuta una función reductora sobre cada elemento de un array, devolviendo como resultado un único valor.
+const sumOfNotesWithCredit = notesWithCredit.reduce(
+    function (sum = 0, newVal) {
+        return sum + newVal;
+    }
+);
+
+console.log(sumOfNotesWithCredit);
+// 95
+
+
+const credits = notes.map(function (noteObject) {
+    return noteObject.credit;
+});
+
+console.log(credits);
+// [ 2, 5, 5 ]
+
+const sumOfCredits = credits.reduce(
+    function (sum = 0, newVal) {
+        return sum + newVal;
+    }
+);
+
+console.log(sumOfCredits)
+// 12
+
+const promedioPonderadoNotasConCreditos = sumOfNotesWithCredit / sumOfCredits;
+
+console.log(promedioPonderadoNotasConCreditos);
+// 7.916666666666667
+```
+
+---
+
+Espero que este último ejercicio te haya ayudado a interiorizar un poco más el uso de los métodos de los arrays para obtener diferentes resultados con ellos.  
+Te espero en la siguiente clase.  
+**¡Nunca pares de aprender!** 💚
+
+### Una explicación que me gusta mas hecha por ChatGPT: 
+
+Supongamos que un estudiante ha obtenido las siguientes calificaciones en un curso:
+
+|Elemento|	Calificación|
+|--------|--------------|
+|Examen 1|	8/10        |
+|Examen 2|	7/10        |
+|Examen 3|	9/10        |
+|Trabajo en equipo|	19/20|
+
+Cada uno de estos elementos tiene un peso diferente en la calificación final del curso. Supongamos que el peso de cada elemento es el siguiente:
+
+|Elemento| Peso|
+|--------|------|
+|Examen 1|	20%|
+|Examen 2|	20%|
+|Examen 3|	30%|
+|Trabajo en equipo|	30%|
+
+Para calcular la calificación promedio ponderada del curso, se deben seguir los siguientes pasos:
+
+1. Convertir las calificaciones en porcentajes. Para ello, se divide cada calificación por el total posible de puntos y se multiplica por 100. Por ejemplo, la calificación del Examen 1 se convierte en (8/10) x 100 = 80%.
+
+2. Multiplicar cada calificación por su peso. Por ejemplo, el Examen 1 tiene un peso del 20%, por lo que se multiplica la calificación (80%) por el peso (20%) para obtener 16%.
+
+3. Sumar los productos de cada calificación y su peso. En este caso, la suma de los productos sería:
+
+|Elemento         |	Calificación |	Total de Puntos | Peso | Calificación en %	|Peso en %|	Producto de calificación y peso|
+|-----------------|--------------|------------------|------|--------------------|---------|--------------------------------|
+|Examen 1         |	8/10         |	10              | 20%  | 80.00%             | 20.00%  |	16.00%|
+|Examen 2         |	7/10         |	10              | 20%  | 70.00%             | 20.00%  |	14.00%|
+|Examen 3         |	9/10         |	10              | 30%  | 90.00%             | 30.00%  |	27.00%|
+|Trabajo en equipo|	19/20        |	20	            | 30%  | 95.00%             | 30.00%  |	28.50%|
+|Total	          |-             |	-               | 100% |-                   |-        |	85.50%|
+
+4. Dividir la suma de los productos por el total de pesos. En este caso, la calificación promedio ponderada del curso se calcula de la siguiente manera:
+Calificación promedio ponderada = (Suma de los productos de calificación y peso) / (Total de pesos) = 85.50% / 100% = 0.8550
+
+Convertir el resultado a una escala de 0 a 100. Para ello, se multiplica el resultado por 100. En este caso, la calificación promedio ponderada del curso es de 85.50 x 100 = 8550/100 = 85.50.
+Entonces, la calificación promedio ponderada del curso es de 85.50 en una escala de 0 a 100, lo que se corresponde con una calificación de "B+" según la escala de calificaciones típica en los Estados Unidos.
+
+```js
+// Definir las calificaciones y los pesos
+const calificaciones = {
+  "Examen 1": 8,
+  "Examen 2": 7,
+  "Examen 3": 9,
+  "Trabajo en equipo": 19
+};
+
+const pesos = {
+  "Examen 1": 0.2,
+  "Examen 2": 0.2,
+  "Examen 3": 0.3,
+  "Trabajo en equipo": 0.3
+};
+
+// Calcular el producto de cada calificación y su peso
+const productos = {};
+for (const elemento in calificaciones) {
+  const calificacionEnPorcentaje = calificaciones[elemento] / 10 * 100;
+  const producto = calificacionEnPorcentaje * pesos[elemento];
+  productos[elemento] = producto;
+}
+
+// Calcular la suma de los productos
+let suma = 0;
+for (const elemento in productos) {
+  suma += productos[elemento];
+}
+
+// Calcular la calificación promedio ponderada del curso
+const totalDePesos = Object.values(pesos).reduce((acc, curr) => acc + curr);
+const calificacionPromedioPonderada = suma / totalDePesos;
+
+// Mostrar la calificación promedio ponderada del curso
+console.log("La calificación promedio ponderada del curso es:", calificacionPromedioPonderada);
+```
+
+En este código, primero se definen las calificaciones y los pesos en forma de objetos `calificaciones` y `pesos`. Luego, se calcula el producto de cada calificación y su peso y se almacena en un objeto `productos`. A continuación, se calcula la suma de los productos y se divide por el total de pesos para obtener la calificación promedio ponderada del curso.
+
+Finalmente, se muestra la calificación promedio ponderada del curso en la consola utilizando `console.log()`.
+
+Este código también se puede ejecutar en un navegador web o en Node.js, y producirá el mismo resultado que la tabla y la explicación anteriores.
+
 
 ```js
 
