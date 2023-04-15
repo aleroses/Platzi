@@ -864,7 +864,7 @@ calcularPromedio([1, 2, 3, 4]);
 
 ## 14. Calculando la mediana en una lista impar
 
-Encontrar si un número es par o impar:   
+Encontrar si una lista de números es par o impar:   
 ```js
 let esPar = (lista) => (lista.length % 2) == 0 ? true : false;
 console.log(esPar([1, 2, 3, 4])); // True
@@ -975,7 +975,7 @@ function calcularPromedio(lista){
     const sumaLista = lista.reduce(sumarElementos);
 
     const promedio = sumaLista / lista.length;
-    console.log(promedio);
+    console.log(promedio); // 35
     return promedio;
 }
 ```
@@ -1546,44 +1546,38 @@ const notes = [
     },
 ];
 
-const notesWithCredit = notes.map(function (noteObject) {
-    return noteObject.note * noteObject.credit;
-});
-
+let notesWithCredit = notes.map(a => a.note * a.credit);
 console.log(notesWithCredit);
 // [ 20, 40, 35 ]
 
 // El método reduce() ejecuta una función reductora sobre cada elemento de un array, devolviendo como resultado un único valor.
-const sumOfNotesWithCredit = notesWithCredit.reduce(
-    function (sum = 0, newVal) {
-        return sum + newVal;
-    }
-);
-
+let sumOfNotesWithCredit = notesWithCredit.reduce((a, b) => a + b);
 console.log(sumOfNotesWithCredit);
 // 95
 
 
-const credits = notes.map(function (noteObject) {
-    return noteObject.credit;
-});
-
+let credits = notes.map(a => a.credit);
 console.log(credits);
 // [ 2, 5, 5 ]
 
-const sumOfCredits = credits.reduce(
-    function (sum = 0, newVal) {
-        return sum + newVal;
-    }
-);
-
-console.log(sumOfCredits)
+let sumOfCredits = credits.reduce((a, b) => a + b);
+console.log(sumOfCredits);
 // 12
 
-const promedioPonderadoNotasConCreditos = sumOfNotesWithCredit / sumOfCredits;
-
-console.log(promedioPonderadoNotasConCreditos);
+let promedioPonderado = sumOfNotesWithCredit/ sumOfCredits;
+console.log(promedioPonderado); 
 // 7.916666666666667
+
+
+// TAMBIÉN: 
+let dividend = notes.map(a => a.note * a.credit).reduce((a, b) => a + b);
+console.log(dividend);
+
+let divisor = notes.map((a) => a.credit).reduce((a, b) => a + b);
+console.log(divisor);
+
+let quotient = (dividend / divisor).toFixed(2);
+console.log(quotient);
 ```
 
 ---
@@ -1635,58 +1629,504 @@ Convertir el resultado a una escala de 0 a 100. Para ello, se multiplica el resu
 Entonces, la calificación promedio ponderada del curso es de 85.50 en una escala de 0 a 100, lo que se corresponde con una calificación de "B+" según la escala de calificaciones típica en los Estados Unidos.
 
 ```js
-// Definir las calificaciones y los pesos
-const calificaciones = {
-  "Examen 1": 8,
-  "Examen 2": 7,
-  "Examen 3": 9,
-  "Trabajo en equipo": 19
-};
+let data = [
+    {
+        test: 1,
+        goal: 10,
+        note: 8,
+        weight: 0.2,
+    },
+    {
+        test: 2,
+        goal: 10,
+        note: 7,
+        weight: 0.2,
+    },
+    {
+        test: 3,
+        goal: 10,
+        note: 9,
+        weight: 0.3,
+    },
+    {
+        teamwork: 1,
+        goal: 20,
+        note: 19,
+        weight: 0.3,
+    }
+]
 
-const pesos = {
-  "Examen 1": 0.2,
-  "Examen 2": 0.2,
-  "Examen 3": 0.3,
-  "Trabajo en equipo": 0.3
-};
+// Calculate dividend
+let step_one = data.map(a => ((a.note * 100) / a.goal) * a.weight / 100);
+console.log(step_one);
+// [ 0.16, 0.14, 0.27, 0.285 ]
 
-// Calcular el producto de cada calificación y su peso
-const productos = {};
-for (const elemento in calificaciones) {
-  const calificacionEnPorcentaje = calificaciones[elemento] / 10 * 100;
-  const producto = calificacionEnPorcentaje * pesos[elemento];
-  productos[elemento] = producto;
+let step_two = step_one.reduce((a, b) => a + b);
+console.log(step_two);
+// 0.855
+
+// Calculate divisor
+let step_three = data.map(a => a.weight).reduce((a, b) => a + b);
+console.log(step_three);
+// 1
+
+// Calculate quotient (cociente)
+let quotient = step_two / step_three;
+console.log(quotient);
+// 0.855
+```
+
+
+## 21. PlatziMath: clases y métodos estáticos
+
+index.html 
+```js
+<body>
+    <h1>Calculate Salaries</h1>
+    <p>Open the console: Control + Shift + I</p>
+
+    <script src="platziMath.js"></script>
+    <script src="salarios.js"></script>
+</body>
+```
+
+platziMath.js
+```js
+const PlatziMath = {}; 👈👀
+
+PlatziMath.esPar = function esPar(lista){
+    return !(lista.length % 2);
 }
 
-// Calcular la suma de los productos
-let suma = 0;
-for (const elemento in productos) {
-  suma += productos[elemento];
+PlatziMath.esImpar = function esImpar(lista){
+    return lista.length % 2;
 }
 
-// Calcular la calificación promedio ponderada del curso
-const totalDePesos = Object.values(pesos).reduce((acc, curr) => acc + curr);
-const calificacionPromedioPonderada = suma / totalDePesos;
+PlatziMath.calcularMediana = function calcularMediana(lista){
+    const listaEsPar = esPar(lista);
 
-// Mostrar la calificación promedio ponderada del curso
-console.log("La calificación promedio ponderada del curso es:", calificacionPromedioPonderada);
+    if(listaEsPar){
+        const mitad01ListaPar = lista[(lista.length / 2) - 1];
+        const mitad02ListaPar = lista[lista.length / 2];
+        
+        const listaMitades = [mitad01ListaPar, mitad02ListaPar];
+
+        const medianaListaPar = calcularPromedio(listaMitades);
+        return medianaListaPar;
+    }else{
+        const indexMitadListaImpar = Math.floor(lista.length / 2);
+        const medianaListaImpar = lista[indexMitadListaImpar];
+        console.log(indexMitadListaImpar);
+        console.log(medianaListaImpar);
+        return medianaListaImpar;
+    };
+}
+
+/* calcularMediana([10,20,30,40,50,60]); */
+
+
+PlatziMath.calcularPromedio = function calcularPromedio(lista){
+    function sumarElementos(valorAcumulado, nuevoValor){
+        return valorAcumulado + nuevoValor;
+    }
+
+    const sumaLista = lista.reduce(sumarElementos);
+
+    const promedio = sumaLista / lista.length;
+    console.log(promedio);
+    return promedio;
+}
+
+/* console.log(PlatziMath); */
 ```
 
-En este código, primero se definen las calificaciones y los pesos en forma de objetos `calificaciones` y `pesos`. Luego, se calcula el producto de cada calificación y su peso y se almacena en un objeto `productos`. A continuación, se calcula la suma de los productos y se divide por el total de pesos para obtener la calificación promedio ponderada del curso.
-
-Finalmente, se muestra la calificación promedio ponderada del curso en la consola utilizando `console.log()`.
-
-Este código también se puede ejecutar en un navegador web o en Node.js, y producirá el mismo resultado que la tabla y la explicación anteriores.
-
-
+salarios.js
 ```js
-
+console.log(PlatziMath);
 ```
 
+Abrimos index.html y revisamos la consola: 
 ```js
-
+{esPar: ƒ, esImpar: ƒ, calcularMediana: ƒ, calcularPromedio: ƒ}
+calcularMediana: ƒ calcularMediana(lista)
+calcularPromedio: ƒ calcularPromedio(lista)
+esImpar: ƒ esImpar(lista)
+esPar: ƒ esPar(lista)
+[[Prototype]]: Object
 ```
 
+
+## 22. Cómo estructurar información en proyectos de software
+
+### ¿Qué es un análisis salarial?
+
+💡 Son las encuestas que recopilan información sobre la remuneración de los empleados, incluidos los salarios y las prestaciones. Estas se llevan a cabo para determinar los niveles salariales para categorías específicas de puestos de trabajo, y generalmente se llevan a cabo por región, sector o clasificación de puestos de empleo con fines de comparación.
+
+### Análisis salarial
+
+Estudio y revisión del salario de una persona o de un grupo de personas. Con este estudio se pueden hacer comparaciones en el tiempo, proyecciones a futuro, etc. Se puede hacer a nivel individual, empresarial de un país, etc.  
+.
+
+#### Puntos a tener en cuenta para la organización de la información en objetos y/o arrays:
+
+-   Definir cómo organizaremos la información: qué va a ser un objeto y qué va a ser un array para ordenar cada dato que tengamos.
+-   Determinar si es una persona, una empresa o un país.
+-   Podemos crear un arreglo de objetos con los distintos salarios que ha tenido la persona. Esto lo lograríamos creando objetos por cada año con el salario que tuvo y la empresa en la que estuvo.
+-   Podemos crear un arreglo de personas por país.
+-   En algún momento tendremos que filtrar nuestro arreglo de personas por país para identificar el lugar en donde trabajaron, y así poder hacer nuestros, análisis, proyecciones, etc.
+
+
+## 23. Análisis salarial con JavaScript
+
+index.html
+```html
+<body>
+    <h1>Calculate Salaries</h1>
+    <p>Open the console: Control + Shift + I</p>
+
+    <script src="platziMath.js"></script>
+    <script src="salarios.js"></script>
+    <script src="./analisis.js"></script>
+</body>
+```
+
+platziMath.js  
+```js
+const PlatziMath = {};
+
+PlatziMath.esPar = function esPar(lista){
+    return !(lista.length % 2);
+}
+
+PlatziMath.esImpar = function esImpar(lista){
+    return lista.length % 2;
+}
+
+PlatziMath.calcularMediana = function calcularMediana(listaDesordenada){
+    const lista = PlatziMath.ordenarLista(listaDesordenada);
+    const listaEsPar = PlatziMath.esPar(lista);
+
+    if(listaEsPar){
+        const mitad01ListaPar = lista[(lista.length / 2) - 1];
+        const mitad02ListaPar = lista[lista.length / 2];
+        
+        const listaMitades = [mitad01ListaPar, mitad02ListaPar];
+
+        const medianaListaPar = PlatziMath.calcularPromedio(listaMitades);
+        return medianaListaPar;
+    }else{
+        const indexMitadListaImpar = Math.floor(lista.length / 2);
+        const medianaListaImpar = lista[indexMitadListaImpar];
+        console.log(indexMitadListaImpar);
+        console.log(medianaListaImpar);
+        return medianaListaImpar;
+    };
+}
+
+/* calcularMediana([10,20,30,40,50,60]); */
+
+
+PlatziMath.calcularPromedio = function calcularPromedio(lista){
+    function sumarElementos(valorAcumulado, nuevoValor){
+        return valorAcumulado + nuevoValor;
+    }
+
+    const sumaLista = lista.reduce(sumarElementos);
+
+    const promedio = sumaLista / lista.length;
+    /* console.log(promedio); */
+    return promedio;
+}
+
+PlatziMath.ordenarLista = function ordenarLista(listaDesordenada) {
+    function ordenarListaSort(valorAcumulado, nuevoValor) {
+        return valorAcumulado - nuevoValor;
+    }
+    
+    // const lista = listaDesordenada.sort((a,b) => a-b);
+    const lista = listaDesordenada.sort(ordenarListaSort);
+    
+    return lista;
+}
+
+PlatziMath.ordenarListaBidimensional = function ordenarListaBidimensional(listaDesordenada, i) {
+    function ordenarListaSort(valorAcumulado, nuevoValor) {
+        return valorAcumulado[i] - nuevoValor[i];
+    }
+    
+    const lista = listaDesordenada.sort(ordenarListaSort);
+    return lista;
+}
+
+/* console.log(PlatziMath); */
+```
+
+salarios.js
+```js
+const salarios = [];
+salarios.push({
+  name: 'Juanita',
+  trabajos: [
+    { year: 2018, empresa: 'Freelance', salario: 250, },
+    { year: 2019, empresa: 'Freelance', salario: 250, },
+    { year: 2020, empresa: 'Industrias Mokepon', salario: 850, },
+    { year: 2021, empresa: 'Industrias Mokepon', salario: 1050, },
+    { year: 2022, empresa: 'Industrias Mokepon', salario: 1250, },
+    { year: 2023, empresa: 'Industrias Mokepon', salario: 1250, },
+    
+    // { year: 2024, salario: 1250, },
+  ],
+});
+salarios.push({
+  name: 'Alex',
+  trabajos: [
+    { year: 2018, empresa: 'Freelance', salario: 450, },
+    { year: 2019, empresa: 'Freelance', salario: 550, },
+    { year: 2020, empresa: 'Freelance', salario: 400, },
+    { year: 2021, empresa: 'Industrias Mokepon', salario: 1050, },
+    { year: 2022, empresa: 'Industrias Mokepon', salario: 1250, },
+    { year: 2023, empresa: 'Industrias Mokepon', salario: 1250, },
+  ],
+});
+salarios.push({
+  name: 'Nath',
+  trabajos: [
+    { year: 2018, empresa: 'Freelance', salario: 600, },
+    { year: 2019, empresa: 'Freelance', salario: 625, },
+    { year: 2020, empresa: 'Freelance', salario: 575, },
+    { year: 2021, empresa: 'MarketerosCOL', salario: 1000, },
+    { year: 2022, empresa: 'MarketerosCOL', salario: 1000, },
+    { year: 2023, empresa: 'MarketerosCOL', salario: 1100, },
+  ],
+});
+salarios.push({
+  name: 'Julia',
+  trabajos: [
+    { year: 2018, empresa: 'MarketerosCOL', salario: 1000, },
+    { year: 2019, empresa: 'MarketerosCOL', salario: 2000, },
+    { year: 2020, empresa: 'MarketerosCOL', salario: 2000, },
+    { year: 2021, empresa: 'MarketerosCOL', salario: 2000, },
+    { year: 2022, empresa: 'MarketerosCOL', salario: 2000, },
+    { year: 2023, empresa: 'MarketerosCOL', salario: 2000, },
+  ],
+});
+salarios.push({
+  name: 'Jonatan',
+  trabajos: [
+    { year: 2019, empresa: 'MarketerosCOL', salario: 1000, },
+    { year: 2020, empresa: 'MarketerosCOL', salario: 1000, },
+    { year: 2021, empresa: 'MarketerosCOL', salario: 800, },
+    { year: 2022, empresa: 'MarketerosCOL', salario: 900, },
+    { year: 2023, empresa: 'MarketerosCOL', salario: 1000, },
+  ],
+});
+salarios.push({
+  name: 'Armando',
+  trabajos: [
+    { year: 2018, empresa: 'Freelance', salario: 750, },
+    { year: 2019, empresa: 'Freelance', salario: 750, },
+    { year: 2020, empresa: 'Freelance', salario: 750, },
+    { year: 2021, empresa: 'Freelance', salario: 850, },
+    { year: 2022, empresa: 'Freelance', salario: 850, },
+    { year: 2023, empresa: 'Freelance', salario: 850, },
+  ],
+});
+salarios.push({
+  name: 'Dilan',
+  trabajos: [
+    { year: 2018, empresa: 'Freelance', salario: 500, },
+    { year: 2019, empresa: 'Freelance', salario: 500, },
+    { year: 2020, empresa: 'Freelance', salario: 600, },
+    { year: 2021, empresa: 'Mokepon', salario: 1100, },
+    { year: 2022, empresa: 'Mokepon', salario: 1100, },
+    { year: 2023, empresa: 'Mokepon', salario: 1100, },
+  ],
+});
+salarios.push({
+  name: 'Zamir',
+  trabajos: [
+    { year: 2018, empresa: 'Freelance', salario: 400, },
+    { year: 2019, empresa: 'Freelance', salario: 500, },
+    { year: 2020, empresa: 'Freelance', salario: 500, },
+    { year: 2021, empresa: 'Mokepon', salario: 1100, },
+    { year: 2022, empresa: 'Mokepon', salario: 1100, },
+    { year: 2023, empresa: 'Mokepon', salario: 1200, },
+  ],
+});
+salarios.push({
+  name: 'Daniela',
+  trabajos: [
+    { year: 2018, empresa: 'Freelance', salario: 500, },
+    { year: 2019, empresa: 'Freelance', salario: 500, },
+    { year: 2020, empresa: 'Freelance', salario: 500, },
+    { year: 2021, empresa: 'Freelance', salario: 550, },
+    { year: 2022, empresa: 'Freelance', salario: 550, },
+    { year: 2023, empresa: 'MarketerosCOL', salario: 850, },
+  ],
+});
+salarios.push({
+  name: 'Daniel',
+  trabajos: [
+    { year: 2020, empresa: 'Freelance', salario: 150, },
+    { year: 2021, empresa: 'Freelance', salario: 450, },
+    { year: 2022, empresa: 'Freelance', salario: 550, },
+    { year: 2023, empresa: 'Freelance', salario: 650, },
+  ],
+});
+salarios.push({
+  name: 'Rigoberto',
+  trabajos: [
+    { year: 2018, empresa: 'MarketerosCOL', salario: 700, },
+    { year: 2019, empresa: 'MarketerosCOL', salario: 700, },
+    { year: 2020, empresa: 'MarketerosCOL', salario: 700, },
+    { year: 2021, empresa: 'MarketerosCOL', salario: 750, },
+    { year: 2022, empresa: 'MarketerosCOL', salario: 750, },
+    { year: 2023, empresa: 'MarketerosCOL', salario: 750, },
+  ],
+});
+salarios.push({
+  name: 'Alicia',
+  trabajos: [
+    { year: 2018, empresa: 'Inversionify', salario: 300, },
+    { year: 2019, empresa: 'Inversionify', salario: 1700, },
+    { year: 2020, empresa: 'Inversionify', salario: 2700, },
+    { year: 2021, empresa: 'Inversionify', salario: 3750, },
+    { year: 2022, empresa: 'Freelance', salario: 1550, },
+    { year: 2023, empresa: 'Freelance', salario: 350, },
+  ],
+});
+salarios.push({
+  name: 'Teodoro',
+  trabajos: [
+    { year: 2018, empresa: 'Freelance', salario: 600, },
+    { year: 2019, empresa: 'Freelance', salario: 700, },
+    { year: 2020, empresa: 'Inversionify', salario: 1700, },
+    { year: 2021, empresa: 'Inversionify', salario: 1750, },
+    { year: 2022, empresa: 'Freelance', salario: 800, },
+    { year: 2023, empresa: 'Freelance', salario: 850, },
+  ],
+});
+salarios.push({
+  name: 'Bruce',
+  trabajos: [
+    { year: 2018, empresa: 'Wayne Enterprises', salario: 4600, },
+    { year: 2019, empresa: 'Wayne Enterprises', salario: 4700, },
+    { year: 2020, empresa: 'Wayne Enterprises', salario: 3700, },
+    { year: 2021, empresa: 'Wayne Enterprises', salario: 4150, },
+    { year: 2022, empresa: 'Wayne Enterprises', salario: 4400, },
+    { year: 2023, empresa: 'Wayne Enterprises', salario: 3850, },
+  ],
+});
+salarios.push({
+  name: 'Alfred',
+  trabajos: [
+    { year: 2018, empresa: 'Wayne Enterprises', salario: 2000, },
+    { year: 2019, empresa: 'Wayne Enterprises', salario: 2000, },
+    { year: 2020, empresa: 'Wayne Enterprises', salario: 1500, },
+    { year: 2021, empresa: 'Wayne Enterprises', salario: 1500, },
+    { year: 2022, empresa: 'Wayne Enterprises', salario: 2000, },
+    { year: 2023, empresa: 'Wayne Enterprises', salario: 1500, },
+  ],
+});
+salarios.push({
+  name: 'Clark Kent',
+  trabajos: [
+    { year: 2018, empresa: 'Daily Planet', salario: 1000, },
+    { year: 2019, empresa: 'Daily Planet', salario: 1500, },
+    { year: 2020, empresa: 'Daily Planet', salario: 1000, },
+    { year: 2021, empresa: 'Daily Planet', salario: 1500, },
+    { year: 2022, empresa: 'Daily Planet', salario: 2000, },
+    { year: 2023, empresa: 'Daily Planet', salario: 1500, },
+  ],
+});
+salarios.push({
+  name: 'Lois Lane',
+  trabajos: [
+    { year: 2018, empresa: 'Daily Planet', salario: 2000, },
+    { year: 2019, empresa: 'Daily Planet', salario: 2500, },
+    { year: 2020, empresa: 'Daily Planet', salario: 2000, },
+    { year: 2021, empresa: 'Daily Planet', salario: 2500, },
+    { year: 2022, empresa: 'Daily Planet', salario: 2500, },
+    { year: 2023, empresa: 'Daily Planet', salario: 2500, },
+  ],
+});
+salarios.push({
+  name: 'Jimmy Olsen',
+  trabajos: [
+    { year: 2018, empresa: 'Daily Planet', salario: 1500, },
+    { year: 2019, empresa: 'Daily Planet', salario: 2000, },
+    { year: 2020, empresa: 'Daily Planet', salario: 2000, },
+    { year: 2021, empresa: 'Daily Planet', salario: 2500, },
+    { year: 2022, empresa: 'Daily Planet', salario: 2500, },
+    { year: 2023, empresa: 'Daily Planet', salario: 1500, },
+  ],
+});
+salarios.push({
+  name: 'Perry White',
+  trabajos: [
+    { year: 2018, empresa: 'Daily Planet', salario: 3500, },
+    { year: 2019, empresa: 'Daily Planet', salario: 3700, },
+    { year: 2020, empresa: 'Daily Planet', salario: 3800, },
+    { year: 2021, empresa: 'Daily Planet', salario: 4000, },
+    { year: 2022, empresa: 'Daily Planet', salario: 4050, },
+    { year: 2023, empresa: 'Daily Planet', salario: 4050, },
+  ],
+});
+salarios.push({
+  name: 'Lex Luthor',
+  trabajos: [
+    { year: 2018, empresa: 'LexCorp', salario: 5000, },
+    { year: 2019, empresa: 'LexCorp', salario: 5300, },
+    { year: 2020, empresa: 'LexCorp', salario: 4000, },
+    { year: 2021, empresa: 'LexCorp', salario: 3000, },
+    { year: 2022, empresa: 'LexCorp', salario: 3500, },
+    { year: 2023, empresa: 'LexCorp', salario: 3050, },
+  ],
+});
+```
+
+analisis.js  
+```js
+console.log(salarios);
+
+// Análisis personal para Juanita
+function encontrarPersona(personaEnBusqueda){
+    return salarios.find(persona => persona.name == personaEnBusqueda); 
+    // {name: 'Juanita', trabajos: Array(6)}
+}
+
+function medianaPorPersona(nombrePersona){
+    const trabajos = encontrarPersona(nombrePersona).trabajos;
+    console.log(trabajos);
+    // 0: {year: 2018, empresa: 'Freelance', salario: 250}
+    // 1: {year: 2019, empresa: 'Freelance', salario: 250}
+    // 2: {year: 2020, empresa: 'Industrias Mokepon', salario: 850}
+    // 3: {year: 2021, empresa: 'Industrias Mokepon', salario: 1050}
+    // 4: {year: 2022, empresa: 'Industrias Mokepon', salario: 1250}
+    // 5: {year: 2023, empresa: 'Industrias Mokepon', salario: 1250}
+    
+    const salarios = trabajos.map(elemento => elemento.salario);
+    console.log(salarios);
+    // [250, 250, 850, 1050, 1250, 1250]
+
+    const medianaSalarios = PlatziMath.calcularMediana(salarios);
+    console.log(medianaSalarios);
+    // 850 + 1050 / 2 = 950
+
+    return medianaSalarios;
+}
+
+medianaPorPersona('Juanita');
+```
+
+Aportes:  
+- [Código](https://github.com/NekoShooter/matJs/tree/master/graficoSalarial)
+- [Web](https://nekoshooter.github.io/matJs/graficoSalarial/analisisSalarial.html)
+
+![Math](https://i.postimg.cc/tCXY6hYg/23-mates.gif)
+
+
+## 24. 
 ```js
 
 ```
