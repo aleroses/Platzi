@@ -28,6 +28,74 @@ function medianaPorPersona(nombrePersona){
     return medianaSalarios;
 }
 
-medianaPorPersona('Juanita');
+/* medianaPorPersona('Juanita'); */
 
+function proyeccionPorPersona(nombrePersona){
+    const trabajos = encontrarPersona(nombrePersona).trabajos;
 
+    let porcentajesCrecimiento = [];
+
+    for (let i = 1; i < trabajos.length; i++) {
+        const salarioActual = trabajos[i].salario;
+        const salarioPasado = trabajos[i - 1].salario;
+        const crecimiento = salarioActual - salarioPasado;
+        const porcentajeCrecimiento = crecimiento / salarioPasado;
+        porcentajesCrecimiento.push(porcentajeCrecimiento)
+    }
+
+    const medianaPorcentajesCrecimiento = PlatziMath.calcularMediana(porcentajesCrecimiento);
+
+    /* console.log({porcentajesCrecimiento, medianaPorcentajesCrecimiento}); */
+
+    const ultimoSalario = trabajos[trabajos.length - 1].salario;
+    const aumento = ultimoSalario * medianaPorcentajesCrecimiento;
+    const nuevoSalario = ultimoSalario + aumento;
+
+    return nuevoSalario;
+}
+
+/* proyeccionPorPersona('Juanita') */
+
+// ANÁLISIS EMPRESARIAL  
+const empresas = {};
+
+for (persona of salarios){
+    for(trabajo of persona.trabajos){
+        if(!empresas[trabajo.empresa]){
+            empresas[trabajo.empresa] = {};
+        }
+        if(!empresas[trabajo.empresa][trabajo.year]){
+            empresas[trabajo.empresa][trabajo.year] = [];
+        }
+
+        empresas[trabajo.empresa][trabajo.year].push(trabajo.salario);
+    }
+}
+
+console.log(empresas);
+
+/* const empresas = {};
+
+for(persona of salarios){
+    for(trabajo of persona.trabajos){
+        if(!empresas[trabajo.empresa]){
+            empresas[trabajo.empresa] = {};
+        }
+        
+        if(!empresas[trabajo.empresa][trabajo.year]){
+            empresas[trabajo.empresa][trabajo.year] = [];
+        }        
+
+        empresas[trabajo.empresa][trabajo.year].push(trabajo.salario);
+    }
+}
+
+console.log({empresas}); */
+/* Daily Planet: 
+    2018: (4) [1000, 2000, 1500, 3500]
+    2019: (4) [1500, 2500, 2000, 3700]
+    2020: (4) [1000, 2000, 2000, 3800]
+    2021: (4) [1500, 2500, 2500, 4000]
+    2022: (4) [2000, 2500, 2500, 4050]
+    2023: (4) [1500, 2500, 1500, 4050] 
+*/
