@@ -59,23 +59,6 @@ function proyeccionPorPersona(nombrePersona){
 // ANÁLISIS EMPRESARIAL  
 const empresas = {};
 
-for (persona of salarios){
-    for(trabajo of persona.trabajos){
-        if(!empresas[trabajo.empresa]){
-            empresas[trabajo.empresa] = {};
-        }
-        if(!empresas[trabajo.empresa][trabajo.year]){
-            empresas[trabajo.empresa][trabajo.year] = [];
-        }
-
-        empresas[trabajo.empresa][trabajo.year].push(trabajo.salario);
-    }
-}
-
-console.log(empresas);
-
-/* const empresas = {};
-
 for(persona of salarios){
     for(trabajo of persona.trabajos){
         if(!empresas[trabajo.empresa]){
@@ -90,7 +73,7 @@ for(persona of salarios){
     }
 }
 
-console.log({empresas}); */
+console.log({empresas});
 /* Daily Planet: 
     2018: (4) [1000, 2000, 1500, 3500]
     2019: (4) [1500, 2500, 2000, 3700]
