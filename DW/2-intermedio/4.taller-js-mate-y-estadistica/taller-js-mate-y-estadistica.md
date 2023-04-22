@@ -2361,9 +2361,174 @@ medianaEmpresaYear('MarketerosCOL', 2022);
 ## 28. Top 10% de salarios
 
 ```js
+// Nota: Esto continua después del código clase 27
+// Análisis general  
+function medianaGeneral(){
+    const listaMedianas = salarios.map(persona => medianaPorPersona(persona.name));
+    /* const medianaPorCadaNombre = nombres.map(nombre => medianaPorPersona); */
+    
+    const mediana = PlatziMath.calcularMediana(listaMedianas);
 
+    return mediana;
+}
+
+/* medianaGeneral(); */
+
+function medianaTop10(){
+    const listaMedianas = salarios.map(persona => medianaPorPersona(persona.name));
+
+    const medianasOrdenadas = PlatziMath.ordenarLista(listaMedianas);
+
+    const cantidad = listaMedianas.length / 10;
+    const limite = listaMedianas.length - cantidad;
+
+    // slice - splice
+    const top10 = medianasOrdenadas.slice(limite, medianasOrdenadas.length)
+
+    /* console.log(top10);
+    console.log({medianasOrdenadas}); */
+    const medianaTop10 = PlatziMath.calcularMediana(top10);
+    return medianaTop10;
+};
+
+/* medianaTop10() */
+/* medianaGeneral() */
 ```
 
+
+## 29. Reto: extiende tu análisis salarial
+
+En este módulo pusimos en práctica todo lo que aprendimos en las clases pasadas para calcular la mediana de salarios de tu país (aunque por ahora son solo datos ficticios).
+
+Para completar este reto debes dejar volar tu imaginación y usar todas las herramientas que aprendiste para **expandir tu análisis salarial**.
+
+### ¿Cómo? Como quieras
+
+Puedes calcular la mediana de ingresos no fijos, capacidad de ahorro, capacidad de endeudamiento, recolección de impuestos, diferencia salarial, relación entre formalidad/informalidad y pobreza/riqueza…
+
+El reto es de tema libre. Escoge la pregunta que prefieras, incluso mejor si has vivido una situación parecida alguna vez, resuélvela y muéstranos tu solución en los comentarios.
+
+Para lograrlo solo debes seguir los siguientes pasos:
+
+-   Plantea muy detalladamente el problema/análisis/cálculo/hipótesis que quieres resolver.
+-   Encuentra las fórmulas necesarias para resolver el dilema que seleccionaste.
+-   Define las variables y funciones para resolver tus fórmulas.
+-   Presenta los resultados de tu informe en una página web dinámica usando HTML, CSS y JavaScript.
+-   Organiza y documenta tu código para que sea más fácil de leer y entender.
+-   Publícalo en tu repositorio de GitHub y muéstranos el link en la sección de comentarios.
+
+Te recomiendo que inicies con una pregunta sencilla. Pon un tiempo límite generoso, desarrolla tu proyecto hasta el final y publica tus resultados en la sección de comentarios.
+
+Luego vuelve a empezar con una pregunta más compleja. Y así sucesivamente hasta que tu estudio de salarios sea el proyecto del que más orgullosa te puedas sentir.
+
+Estoy seguro de que los siguientes Platzi Lives serán una gran fuente de inspiración:
+
+-   [Qué está pasando en Colombia y por qué hay protestas](https://www.youtube.com/watch?v=1oiTB_4tcx0)
+-   [Qué está pasando en Colombia en el 2021](https://www.youtube.com/watch?v=8LjOG7FSL_Q)
+-   [Por qué hay protestas en Chile](https://www.youtube.com/watch?v=8LjOG7FSL_Q)
+-   [Qué es la Economía Naranja (y qué no)](https://www.youtube.com/watch?v=fs31Woz8f80)
+-   [La economía de un programador](https://www.youtube.com/watch?v=8LjOG7FSL_Q)
+-   [Cuánto ganarán los programadores en el 2020 y 2021](https://www.youtube.com/watch?v=sauDgFSUmsM)
+-   [Los próximos 4 años de la industria Tech en Latinoamérica](https://www.youtube.com/watch?v=UKNv_z5OvCY)
+-   [¿Eres de izquierda o de derecha?](https://www.youtube.com/watch?v=NE0di4Aqa_Q)
+-   [Qué es la Bolsa de Valores](https://www.youtube.com/watch?v=WQFXlJTU1To)
+-   [Cómo prepararte para una recesión económica](https://www.youtube.com/watch?v=JCMYjez93pk)
+-   [Por qué hay crisis económica y en qué invertir](https://www.youtube.com/watch?v=ZrYD4aLqo7w)
+
+### Complementos
+
+Si sigues adelante con la [Escuela de Desarrollo Web](https://platzi.com/web), vas a aprender muchas más herramientas de JavaScript para consultar datos desde el backend y manipular el DOM aún más intensamente.
+
+También puedes complementar tu ruta de aprendizaje con la [Escuela de Data Science e Inteligencia Artificial](https://platzi.com/datos). Ahí aprenderás a muchísima, muchísima más profundidad cómo limpiar, consultar y presentar informes a partir de un análisis de datos.
+
+Además, en la [Escuela de Finanzas e Inversiones](https://platzi.com/escuela/escuela-finanzas/) puedes iniciar tu educación, planeación y evaluación financiera para todo tipo de proyectos, ya sea con fines personales, emprendedores o incluso inversionistas.
+
+---
+
+Espero ver tus retos en la sección de comentarios.
+
+**¡Nunca pares de aprender!** 💚
+
+
+## 30. Toma el Taller Práctico de JavaScript: Videojuegos
+
+
+## Examen 📌
+<details>
+	<summary>Haz clic para ver los resultados 👀</summary>
+	<br/>
+
+1. Necesitas analizar la riqueza / pobreza general de tu país. Debes evitar que el aumento excesivo de sueldo de una sola persona altere los resultados de tu análisis. ¿Qué herramienta estadística usarías?
+	- Promedio
+	- Media Aritmética
+	- Moda
+	- 📌Mediana
+
+2. ¿Cuál método o propiedad de los arrays en JavaScript es el correcto para extraer los elementos 1, 2 y 3 del siguiente array: [“Natalia”, “Juanita”, “Luisa”, “Tatiana”]?
+	- .forEach
+	- 📌.splice
+	- .reduce
+	- .push
+	- .map
+
+3. ¿Para qué nos sirve el método .splice de los arrays?
+	- Para crear un nuevo array a partir de iterar por cada elemento del array inicial.
+	- 📌Para cortar alguna cantidad de elementos dentro de un array.
+	- Para iterar por cada elemento de un array y dar como resultado algún valor.
+
+4. Necesitas encontrar al primer elemento de un array que cumpla X condición. ¿Qué método usarías?
+	- 📌.find
+	- .map
+	- .slice
+	- .sort
+	- .reduce
+
+5. ¿Cuál es la diferencia entre el método .map y .forEach de los arrays?
+	- 📌El método .map crea un nuevo arreglo a partir de las iteraciones a otra lista. El método .forEach solo recorre cada posición de un arreglo, pero no crea uno nuevo a partir del original.
+	- El método .forEach crea un nuevo arreglo a partir de las iteraciones a otra lista. El método .map solo recorre cada posición de un arreglo, pero no crea uno nuevo a partir del original.
+	- Ambos métodos son exactamente iguales.
+	- El método .map nos permite trabajar en arrays bidimensionales. El método .forEach solo en arrays "normales".
+
+6. Necesitas duplicar el valor de cada elemento de tu array. ¿Qué método usarías?
+	- .sort
+	- .filter
+	- .reduce
+	- .slice
+	- 📌.map
+
+7. ¿Qué métodos de JavaScript nos permite agrupar y colapsar mensajes en la consola?
+	- 📌Mal console.logGroup() y console.logGroupEnd()
+	- console.group('Tema') y console.groupEnd('Tema')
+	- console.group('Tema') y console.endGroup('Tema')
+	- console.table('Tema')
+
+8. ¿Cuál es la diferencia entre el método .find y .filter de los arrays?
+	- El método .filter devuelve el primer elemento que cumpla con nuestra validación. El método .find devuelve un nuevo array con todos los elementos que cumplan la validación.
+	- 📌El método .find devuelve el primer elemento que cumpla con nuestra validación. El método .filter devuelve un nuevo array con todos los elementos que cumplan la validación.
+
+9. Tienes una lista de números. Quieres obtener la suma de todos ellos. ¿Cuál método de los arrays está especialmente diseñado para esto?
+	- .forEach
+	- .map
+	- .filter
+	- 📌.reduce
+
+10. ¿Cómo funciona el método .sort de los arrays?
+	- Ejecuta una función por cada elemento del array. En cada iteración recibimos 2 parámetros (e.j. a y b). El primero representa al valor acumulado y el segundo a cada elemento del array. En el return de la función debemos devolver un número positivo (si `b` es mayor que `a`), negativo (si `b` es menor que `a`) o 0 (si son iguales).
+	- 📌Ejecuta una función por cada elemento del array. En cada iteración recibimos 2 parámetros (e.j. a y b). Ambos representan a diferentes elementos del array. En el return de la función debemos devolver un número positivo (para mover a `a` después de `b`), negativo (para mover a `a` antes que a `b`) o 0 (dejar todo igual).
+	- Ejecuta una función por cada elemento del array. En cada iteración recibimos 2 parámetros (e.j. a y b). El primero representa al primer valor del array y el segundo al array completo. En el return de la función debemos indicar si `a` es mayor a `b.length` para saber si reubicamos ese elemento a la primera o última posición del array. 
+
+11. ¿Cuál de las siguientes herramientas estadísticas soporta emojis (no solo números, sino cualquier elemento o cosa)?
+	- 📌Mal Mediana
+	- Media Aritmética
+	- Promedio
+	- Moda
+
+12. ¿Cuál de las siguientes herramientas estadísticas se calcula ligeramente diferente dependiendo de si la lista es par o impar?
+	- Promedio
+	- Moda
+	- 📌Mediana
+	- Media Aritmética
+</details>
 
 ```js
 

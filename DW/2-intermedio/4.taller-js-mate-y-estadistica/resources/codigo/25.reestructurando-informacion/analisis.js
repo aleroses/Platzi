@@ -9,7 +9,7 @@ function encontrarPersona(personaEnBusqueda){
 
 function medianaPorPersona(nombrePersona){
     const trabajos = encontrarPersona(nombrePersona).trabajos;
-    console.log(trabajos);
+    /* console.log(trabajos); */
     // 0: {year: 2018, empresa: 'Freelance', salario: 250}
     // 1: {year: 2019, empresa: 'Freelance', salario: 250}
     // 2: {year: 2020, empresa: 'Industrias Mokepon', salario: 850}
@@ -18,11 +18,11 @@ function medianaPorPersona(nombrePersona){
     // 5: {year: 2023, empresa: 'Industrias Mokepon', salario: 1250}
     
     const salarios = trabajos.map(elemento => elemento.salario);
-    console.log(salarios);
+    /* console.log(salarios); */
     // [250, 250, 850, 1050, 1250, 1250]
 
     const medianaSalarios = PlatziMath.calcularMediana(salarios);
-    console.log(medianaSalarios);
+    /* console.log(medianaSalarios); */
     // 850 + 1050 / 2 = 950
 
     return medianaSalarios;
@@ -120,11 +120,11 @@ function proyeccionPorEmpresa(nombre){
         console.warn('La empresa no existe!');
     } else{
         const empresaYears = Object.keys(empresas[nombre]);
-        console.log('Test 01: ', empresaYears);
+        /* console.log('Test 01: ', empresaYears); */
         // ['2018', '2019', '2020', '2021', '2022', '2023']
 
         const listaMedianaYears = empresaYears.map(year => medianaEmpresaYear(nombre, year));
-        console.log('Test 02', listaMedianaYears);
+        /* console.log('Test 02', listaMedianaYears); */
         // [500, 525, 500, 550, 800, 750]
 
         let porcentajesCrecimiento = [];
@@ -158,3 +158,36 @@ empresas['MarketerosCOL'];
 medianaEmpresaYear('MarketerosCOL', 2021);
 medianaEmpresaYear('MarketerosCOL', 2022);
 */
+
+// 28. Top 10% de salarios
+// Análisis general  
+function medianaGeneral(){
+    const listaMedianas = salarios.map(persona => medianaPorPersona(persona.name));
+    /* const medianaPorCadaNombre = nombres.map(nombre => medianaPorPersona); */
+    
+    const mediana = PlatziMath.calcularMediana(listaMedianas);
+
+    return mediana;
+}
+
+/* medianaGeneral(); */
+
+function medianaTop10(){
+    const listaMedianas = salarios.map(persona => medianaPorPersona(persona.name));
+
+    const medianasOrdenadas = PlatziMath.ordenarLista(listaMedianas);
+
+    const cantidad = listaMedianas.length / 10;
+    const limite = listaMedianas.length - cantidad;
+
+    // slice - splice
+    const top10 = medianasOrdenadas.slice(limite, medianasOrdenadas.length)
+
+    /* console.log(top10);
+    console.log({medianasOrdenadas}); */
+    const medianaTop10 = PlatziMath.calcularMediana(top10);
+    return medianaTop10;
+};
+
+/* medianaTop10() */
+/* medianaGeneral() */
