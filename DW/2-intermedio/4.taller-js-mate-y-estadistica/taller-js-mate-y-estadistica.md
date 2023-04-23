@@ -20,7 +20,7 @@
 - Área del cuadrado: 
 	- Lado * Lado
 - Perímetro del triángulo: 
-	- L * L * L
+	- L x L x L
 - Área del triángulo:  
 	- (Base * Altura) / 2
 
@@ -55,7 +55,7 @@ console.group('Triangulo');
 const ladoTriangulo1 = 6;
 const ladoTriangulo2 = 6;
 const ladoTrianguloBase = 4;
-const alturaTriangulo = 5.5;
+const alturaTriangulo = 5.65;
 
 const perimetroTriangulo = ladoTriangulo1 + ladoTriangulo2 + ladoTrianguloBase;
 
@@ -80,6 +80,104 @@ function calcularTriangulo(lado1, lado2, base, altura){
 
 console.groupEnd('Triangulo'); 
 ```
+
+### Practice:  
+
+Este código lo encuentras resources/codigo/practice.  
+```html
+<body>
+    <header>
+        <h1>Calculator</h1>
+    </header>
+    <main class="square">
+        <h2>Square</h2>
+        <section>
+            <label for="side">Enter a side</label><br>
+            <input type="number" id="side" class="side"><br>
+            <button class="send-one">Send</button>
+        </section>
+        <section>
+            <h3>Perimeter of the square</h3>
+            <p class="result-one"></p>  
+        </section>
+        <section>
+            <h3>Area of the square</h3>
+            <p class="result-two"></p>
+        </section>
+    </main>
+
+    <main class="isosceles">
+        <h2>Triangle: Isosceles</h2>
+        <section>
+            <label for="side-triangle">Enter the sides (a, b) and the base</label>
+            <input type="number" placeholder="side a, b" id="side-triangle" class="sides">
+            <input type="number" placeholder="base" id="side-triangle" class="base"><br>
+            <button class="send-three">Send</button>
+        </section>
+        <section>
+            <h3>Perimeter of the triangle</h3>
+            <p class="result-tri-one"></p>
+        </section>
+        <section>
+            <h3>Area of the triangle</h3>
+            <p class="result-tri-two"></p>
+        </section>
+    </main>
+
+    <script src="./square_triangle.js"></script>
+</body>
+```
+
+```js
+// SQUARE
+// Perimeter of the square
+const side = document.querySelector('.side');
+const send = document.querySelector('.send-one');
+const result_one = document.querySelector('.result-one')
+
+send.addEventListener('click', calculate_perimeter);
+
+function calculate_perimeter(){
+    result_one.innerText = 'The Perimeter of the square is: '+ Number(side.value) * 4;
+}
+
+// Area of the square
+const result_two = document.querySelector('.result-two');
+
+send.addEventListener('click', calculate_area);
+
+function calculate_area(){
+    result_two.innerText = 'The Area of the square is: '+ Math.pow(Number(side.value), 2);
+}
+
+// TRIANGLE: ISOSCELES 
+// Perimeter of the triangle 
+const sides = document.querySelector('.sides')
+const base = document.querySelector('.base')
+const send_tri = document.querySelector('.send-three');
+const result_three = document.querySelector('.result-tri-one');
+
+send_tri.addEventListener('click', calculate_perimeter_triangle);
+
+function calculate_perimeter_triangle(){
+    result_three.innerText = 'The Perimeter of the triangle isosceles is: ' + (Number(sides.value) + Number(sides.value) + Number(base.value));
+}
+
+// Area of the triangle 
+const result_four = document.querySelector('.result-tri-two');
+
+send_tri.addEventListener('click', calculate_area_triangle);
+
+function calculate_area_triangle(){
+    // h=sqrt(pow(ab, 2)-pow(base/2, 2))
+    const height = Math.sqrt(Math.pow(Number(sides.value), 2) - ((Math.pow(Number(base.value), 2) / 4))).toFixed(2);
+
+    result_four.innerText = `The Area of the triangle isosceles is: ${(Number(base.value) * height) / 2}`;
+}
+```
+
+- [Formula Altura de un triángulo Isósceles](https://www.neurochispas.com/wiki/altura-del-triangulo-isosceles/#:~:text=La%20altura%20de%20un%20tri%C3%A1ngulo,uno%20de%20los%20lados%20congruentes.)
+- [Calculadora de Triángulos Isósceles](https://es.numberempire.com/isosceles_triangle_calculator.php)
 
 ## 3. Math en JavaScript
 
@@ -2498,7 +2596,7 @@ Espero ver tus retos en la sección de comentarios.
 
 7. ¿Qué métodos de JavaScript nos permite agrupar y colapsar mensajes en la consola?
 	- 📌Mal console.logGroup() y console.logGroupEnd()
-	- console.group('Tema') y console.groupEnd('Tema')
+	- Bien console.group('Tema') y console.groupEnd('Tema')
 	- console.group('Tema') y console.endGroup('Tema')
 	- console.table('Tema')
 
