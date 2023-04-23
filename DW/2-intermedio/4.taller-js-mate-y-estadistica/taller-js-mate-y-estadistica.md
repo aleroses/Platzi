@@ -83,8 +83,9 @@ console.groupEnd('Triangulo');
 
 ### Practice:  
 
-Este código lo encuentras resources/codigo/practice.  
+Este código lo encuentras en resources/codigo/practice/2.mate.  
 ```html
+<!-- index.html -->
 <body>
     <header>
         <h1>Calculator</h1>
@@ -186,6 +187,8 @@ function calculate_area_triangle(){
 - Área del círculo 
 	- Radio al 2do * PI 
 
+![Circle|250](https://i.postimg.cc/nr2XpGbh/3-circle.png)
+
 ### Ejemplo:  
 
 ```js
@@ -219,6 +222,73 @@ function calcularCirculo(radio){
 console.groupEnd('Circle'); 
 ```
 
+### Practice:  
+
+Este código lo encuentras en resources/codigo/practice/3.circle
+
+```html
+<body>
+    <header>
+        <h1>Calculator</h1>
+    </header>
+    <main>
+        <h2>Circle</h2>
+        <section>
+            <label for="radius">Enter the radius</label><br>
+            <input type="number" id="radius" class="radius"><br>
+            <button class="send">Send</button>
+        </section>
+        <section>
+            <h3>Circumference of the circle</h3>
+            <p class="result"></p>
+        </section>
+        <section>
+            <h3>Area of the circle</h3>
+            <p class="result-area"></p>
+        </section>
+        <section>
+            <h3>Circle Diameter</h3>
+            <p class="result-diameter"></p>
+        </section>
+    </main>
+
+    <script src="./circle.js"></script>
+</body>
+```
+
+```js
+// Circle
+const radius = document.querySelector('.radius');
+const btn = document.querySelector('.send')
+const result = document.querySelector('.result');
+
+// Circumference: 2.pi.r
+btn.addEventListener('click', calculate_perimeter);
+
+function calculate_perimeter(){
+    result.innerText = `The result is: ${(2 * Math.PI * Number(radius.value)).toFixed(3)}`;
+}
+
+// Area: pi.r2
+const result_area = document.querySelector('.result-area');
+
+btn.addEventListener('click', calculate_area);
+
+function calculate_area(){
+    result_area.innerText = `The result is: ${(Math.PI * Math.pow(Number(radius.value), 2)).toFixed(3)}`
+}
+
+// Diameter: 
+const result_diameter = document.querySelector('.result-diameter');
+
+btn.addEventListener('click', calculate_diameter);
+
+function calculate_diameter(){
+    result_diameter.innerText = `The result is: ${2 * Number(radius.value)}`;
+}
+```
+
+- [Calculadora de Circles + formulas](https://www.mathepower.com/es/circulo.php)
 
 ## 4. Reto: altura de un triángulo
 
