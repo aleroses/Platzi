@@ -2595,8 +2595,8 @@ Espero ver tus retos en la sección de comentarios.
 	- 📌.map
 
 7. ¿Qué métodos de JavaScript nos permite agrupar y colapsar mensajes en la consola?
-	- 📌Mal console.logGroup() y console.logGroupEnd()
-	- Bien console.group('Tema') y console.groupEnd('Tema')
+	- console.logGroup() y console.logGroupEnd()
+	- 📌 console.group('Tema') y console.groupEnd('Tema')
 	- console.group('Tema') y console.endGroup('Tema')
 	- console.table('Tema')
 
@@ -2618,7 +2618,7 @@ Espero ver tus retos en la sección de comentarios.
 11. ¿Cuál de las siguientes herramientas estadísticas soporta emojis (no solo números, sino cualquier elemento o cosa)?
 	- 📌Mal Mediana
 	- Media Aritmética
-	- Promedio
+	- 📌Mal Promedio
 	- Moda
 
 12. ¿Cuál de las siguientes herramientas estadísticas se calcula ligeramente diferente dependiendo de si la lista es par o impar?
@@ -2626,6 +2626,17 @@ Espero ver tus retos en la sección de comentarios.
 	- Moda
 	- 📌Mediana
 	- Media Aritmética
+
+13. ¿Cómo calculamos la mitad de la cantidad de elementos de una lista impar?
+	-  📌lista.length / 2
+	- lista[lista.length * 50%]
+	- Number(lista) / 2
+	- lista[lista / 2]
+
+14. ¿Para qué sirve el método .reduce de los arrays?
+	-  📌Para reducir nuestro array a 1 solo valor ejecutando un cálculo por cada elemento.
+	- Para ejecutar un cálculo por cada elemento de nuestro array.
+	- Para reducir la cantidad de elementos de nuestro array ejecutando un cálculo por cada iteración.
 </details>
 
 ```js
