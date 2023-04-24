@@ -16,7 +16,5 @@ function calculoPorcentaje(){
     } else{
         result.innerText = "Hey!! algo no anda bien...";
     }
-
-
 };
 

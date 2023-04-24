@@ -392,6 +392,49 @@ function calcularTrianguloEscaleno(base, ladob, ladoc){ // 6, 10, 8
 console.groupEnd('Triangulo Escaleno'); 
 ```
 
+### Practice:  
+
+Este código lo encuentras en resources/codigo/practice/4.escaleno
+
+```html
+<body>
+    <header>
+        <h1>Scalene Triangle</h1>
+    </header>
+    <main>
+        <section>
+            <h2>Enter data:</h2>
+            <input type="text" placeholder="side a" class="side-a"><br>
+            <input type="text" placeholder="side b" class="side-b"><br>
+            <input type="text" placeholder="base" class="base"><br>
+            <button class="send">Send</button>
+        </section>
+        <section>
+            <h3>Height</h3>
+            <p class="result"></p>
+        </section>
+    </main>
+    
+    <script src="./height.js"></script>
+</body>
+```
+
+```js
+const side_a = document.querySelector('.side-a');
+const side_b = document.querySelector('.side-b');
+const base = document.querySelector('.base');
+const btn = document.querySelector('.send');
+const result = document.querySelector('.result');
+
+btn.addEventListener('click', calculate_height);
+
+function calculate_height(){
+    const semi_perimeter = (Number(base.value) + Number(side_a.value) + Number(side_b.value)) / 2;
+    console.log(semi_perimeter);
+
+    result.innerText = `The result is: ${(2 / Number(base.value)) * Math.sqrt(semi_perimeter*(semi_perimeter - Number(base.value)) * (semi_perimeter - Number(side_a.value)) * (semi_perimeter - Number(side_b.value)))}`;
+}
+```
 
 [Documentación Math](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math)   
 [Teoría: Altura de un triangulo escaleno](https://www.neurochispas.com/wiki/altura-de-un-triangulo-escaleno/)
@@ -821,6 +864,62 @@ Cabe mencionar dos puntos importantes aquí:
 - [Documentación Array.prototype.filter()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter)
 
 
+### Practice:  
+
+Este código lo encuentras en resources/codigo/practice/8.coupon/practice-two
+
+```html
+<body>
+    <h1>Discount calculation</h1>
+    <p>The price of the product is: $250.00</p>
+    <input type="text" placeholder="Enter the coupon" class="coupon"><br>
+    <button class="send">Send</button>
+    <p class="result"></p>
+
+    <script src="main.js"></script>
+</body>
+```
+
+```js
+const price = 250;
+const coupon = document.querySelector('.coupon');
+const btn = document.querySelector('.send');
+const result = document.querySelector('.result');
+
+const coupon_list = [];
+coupon_list.push({
+    name: 'one',
+    discount: 50,
+});
+coupon_list.push({
+    name: 'two',
+    discount: 25,
+});
+coupon_list.push({
+    name: 'three',
+    discount: 12,
+});
+
+btn.addEventListener('click', calculate_discount);
+
+function calculate_discount(){
+    if(!coupon.value){
+        result.innerText = 'Enter the coupon!!!';
+        return
+    }
+
+    const find_coupon = coupon_list.find(item => item.name == coupon.value);
+
+    if(!find_coupon){
+        result.innerText = `The coupon isn't valid!!!`;
+        return
+    }
+    
+    result.innerText = `The price is: $${(100 - find_coupon.discount) * price / 100}.00`
+}
+```
+
+
 ## 10. Encuentra el ID
 
 En este desafío vas a recibir un array de objetos. Cada objeto representa a un usuario. Debes encontrar al usuario con cierto ID y retornar su nombre. En caso de no existir, debes retornar false.
@@ -1181,6 +1280,34 @@ function median(){
 }
 
 median(arr.sort())
+```
+
+
+### Practice:  
+
+Este código lo encuentras en resources/codigo/practice/14.mediana/practice-two.  
+
+```js
+/* 
+- promedio or mediana aritmética +++ / lenght
+    - 1, 2, 3 rpt: 6/3
+- mediana 
+	- 450, 500, 600 rpt: 500
+	- 100, 200, 300, 400 rpt: 200+300/2
+- moda: valor que se repite mas veces (cualquier dato)
+*/
+
+const array = [5,2,1,4,3];
+const what_is_it = array.length % 2 == 0;
+// true is par (even) and false is impar (odd)
+
+const sorted_array = array.sort();
+
+const mediana = what_is_it 
+    ? (sorted_array[((sorted_array.length / 2) - 1)] + sorted_array[(sorted_array.length / 2)]) / 2 
+    : sorted_array[Math.floor(sorted_array.length / 2)];
+
+console.log(sorted_array, 'is', mediana);
 ```
 
 
@@ -2686,10 +2813,10 @@ Espero ver tus retos en la sección de comentarios.
 	- Ejecuta una función por cada elemento del array. En cada iteración recibimos 2 parámetros (e.j. a y b). El primero representa al primer valor del array y el segundo al array completo. En el return de la función debemos indicar si `a` es mayor a `b.length` para saber si reubicamos ese elemento a la primera o última posición del array. 
 
 11. ¿Cuál de las siguientes herramientas estadísticas soporta emojis (no solo números, sino cualquier elemento o cosa)?
-	- 📌Mal Mediana
+	- Mediana
 	- Media Aritmética
-	- 📌Mal Promedio
-	- Moda
+	- Promedio
+	- 📌 Moda
 
 12. ¿Cuál de las siguientes herramientas estadísticas se calcula ligeramente diferente dependiendo de si la lista es par o impar?
 	- Promedio

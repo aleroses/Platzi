@@ -41,6 +41,7 @@ send_tri.addEventListener('click', calculate_area_triangle);
 function calculate_area_triangle(){
     // h=sqrt(pow(ab, 2)-pow(base/2, 2))
     const height = Math.sqrt(Math.pow(Number(sides.value), 2) - ((Math.pow(Number(base.value), 2) / 4))).toFixed(2);
-
+    console.log('Height: ', height);
+    
     result_four.innerText = `The Area of the triangle isosceles is: ${(Number(base.value) * height) / 2}`;
 }
