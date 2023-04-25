@@ -1485,7 +1485,6 @@ console.log(histogram(arr2));
 
 ## 18. Calculando la moda: arrays a partir de objetos
 
-
 ```js
 const obj = {a:1,b:2,c:3}
 Object.keys(obj)
@@ -1493,7 +1492,7 @@ Object.keys(obj)
 Object.values(obj)
 // [1, 2, 3]
 Object.entries(obj)
-//
+// [['a', 1], ['b', 2], ['c', 3]]
 ```
 
 Solución Platzi:  
@@ -1573,6 +1572,68 @@ function sort_two_dimensional_list(unordered_list, i){
     return sorted_list;
 }
 ```
+
+### Practice:  
+
+Este código lo encuentras en resources/codigo/practice/17.moda/practice-two   
+
+#### Pasos: 
+1. Crear un objeto para contabilizar los números y la cantidad de veces que se repiten.  
+2. Convertir objeto en un array de arrays. 
+3. Ordenar array de arrays usando su valor (índice 1)
+
+```js
+// moda: valor que se repite mas veces (cualquier dato)
+const array = [1, 10, 14, 3, 24, 14, 10, 35, 13, 14];
+const number_counter = {};
+let array_list;
+let values;
+
+function moda(array){
+    for (let i=0; i<array.length; i++) {
+        const item = array[i];
+    
+        number_counter[item] ? number_counter[item] += 1 : number_counter[item] = 1;
+    
+        array_list = Object.entries(number_counter);
+        values = array_list.sort((a, b) => a[1] - b[1]);
+    }
+}
+
+moda(array);
+
+console.log(number_counter);
+// { '1': 1, '3': 1, '10': 2, '13': 1, '14': 3, '24': 1, '35': 1 }
+console.log(array_list);
+/* [
+    [ '1', 1 ],
+    [ '3', 1 ],
+    [ '10', 2 ],
+    [ '13', 1 ],
+    [ '14', 3 ],
+    [ '24', 1 ],
+    [ '35', 1 ]
+] */
+console.log(values);
+/* 
+[
+    [ '1', 1 ],
+    [ '3', 1 ],
+    [ '13', 1 ],
+    [ '24', 1 ],
+    [ '35', 1 ],
+    [ '10', 2 ],
+    [ '14', 3 ]
+]
+*/
+
+// Cambiar el número para ver los valores anteriores (1, 2, 3) 
+console.log(values[values.length - 1]);
+// [ '14', 3 ]
+console.log(sorted_array[sorted_array.length - 1][0]);
+// 14
+```
+
 
 
 ## 19. Transforma objetos en arrays
