@@ -1711,6 +1711,7 @@ solution(obj);
 ### Ejemplo hecho por ChatGPT     
 Usando JavaScript transforma un objeto con varias claves y valores en un array de varios objetos.
 
+#### Solución 01
 ¡Claro! Puedes usar el método Object.entries() para convertir un objeto en una matriz de pares clave-valor, y luego usar el método Array.map() para transformar cada par clave-valor en un objeto. Aquí te dejo un ejemplo:
 
 ```js
@@ -1732,7 +1733,7 @@ console.log(arrayDeObjetos);
 
 En el ejemplo anterior, Object.entries(objeto) devuelve una matriz de pares clave-valor, que se mapea en un array de objetos usando la función de devolución de llamada proporcionada en Array.map(). La función de devolución de llamada toma cada par clave-valor como un argumento y devuelve un objeto con las claves "clave" y "valor".
 
-Solución hecha por ChatGPT    
+#### Solución 02
 
 ```js
 const obj = {
@@ -1770,6 +1771,23 @@ La función `Object.entries()` devuelve una matriz en la que cada elemento es 
 A continuación, se usa la función `Array.map()` para transformar cada elemento de la matriz resultante en un objeto con dos propiedades: `id` y `name`. La función de devolución de llamada proporcionada a `Array.map()` toma como argumento cada elemento de la matriz, que es también un array de dos elementos, y utiliza la sintaxis de desestructuración para asignar el primer elemento del array (la clave) a la propiedad `id` del objeto resultante, y el segundo elemento del array (el valor) a la propiedad `name` del objeto resultante.
 
 Finalmente, la función `solution` devuelve un nuevo array de objetos que tiene el formato requerido, con cada objeto que representa un par clave-valor del objeto original.
+
+### Practice:  
+
+Este código lo encuentras en resources/codigo/practice/19.objetos-to-arrays   
+```js
+const objeto = {
+    1: '🥑',
+    2: '🍉',
+    3: '🍇',
+};
+
+function solution(o){
+    console.log(Object.entries(o).map(([id, name]) => ({id, name})));
+}
+
+solution(objeto);
+```
 
 
 ## 20. Reto: calcula otros tipos de promedio
