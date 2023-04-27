@@ -11,14 +11,10 @@ const objeto = {
 };
 
 function solution(o){
-    console.log(Object.entries(o).map(([id, name]) => ({id, name})));
+    return Object.entries(o).map(([id, name]) => ({id, name}));
 }
 
 solution(objeto);
-
-
-
-
 
 
 
