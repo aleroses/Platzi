@@ -1,3 +1,68 @@
+// console.log(salarios);
+
+function find_person(person_in_search){
+    return salarios.find(person => person.name == person_in_search);
+}
+
+
+function median_per_person(name){
+    const works = find_person(name).trabajos;
+    const wages = works.map(item => item.salario);
+    const median = PlatziMath.median(wages);
+    
+    console.log(wages, median);
+}
+
+
+find_person("Juanita"); 
+median_per_person('Juanita');
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Ctrl + K Ctrl + C - Añadir línea comentario.
+// Ctrl + K Ctrl + U - Eliminar línea comentario.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* 
 console.log(salarios);
 
 // Análisis personal para Juanita
@@ -28,7 +93,7 @@ function medianaPorPersona(nombrePersona){
     return medianaSalarios;
 }
 
-/* medianaPorPersona('Juanita'); */
+// medianaPorPersona('Juanita');
 
 function proyeccionPorPersona(nombrePersona){
     const trabajos = encontrarPersona(nombrePersona).trabajos;
@@ -45,7 +110,7 @@ function proyeccionPorPersona(nombrePersona){
 
     const medianaPorcentajesCrecimiento = PlatziMath.calcularMediana(porcentajesCrecimiento);
 
-    /* console.log({porcentajesCrecimiento, medianaPorcentajesCrecimiento}); */
+    // console.log({porcentajesCrecimiento, medianaPorcentajesCrecimiento});
 
     const ultimoSalario = trabajos[trabajos.length - 1].salario;
     const aumento = ultimoSalario * medianaPorcentajesCrecimiento;
@@ -54,7 +119,7 @@ function proyeccionPorPersona(nombrePersona){
     return nuevoSalario;
 }
 
-/* proyeccionPorPersona('Juanita') */
+// proyeccionPorPersona('Juanita')
 
 // ANÁLISIS EMPRESARIAL  
 const empresas = {};
@@ -74,11 +139,11 @@ for(persona of salarios){
 }
 
 console.log({empresas});
-/* Daily Planet: 
-    2018: (4) [1000, 2000, 1500, 3500]
-    2019: (4) [1500, 2500, 2000, 3700]
-    2020: (4) [1000, 2000, 2000, 3800]
-    2021: (4) [1500, 2500, 2500, 4000]
-    2022: (4) [2000, 2500, 2500, 4050]
-    2023: (4) [1500, 2500, 1500, 4050] 
-*/
+//Daily Planet: 
+// 2018: (4) [1000, 2000, 1500, 3500]
+// 2019: (4) [1500, 2500, 2000, 3700]
+// 2020: (4) [1000, 2000, 2000, 3800]
+// 2021: (4) [1500, 2500, 2500, 4000]
+// 2022: (4) [2000, 2500, 2500, 4050]
+// 2023: (4) [1500, 2500, 1500, 4050] 
+ */
