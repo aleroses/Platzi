@@ -2544,6 +2544,7 @@ function proyeccionPorPersona(nombrePersona){
         const salarioActual = trabajos[i].salario;
         const salarioPasado = trabajos[i - 1].salario;
         const crecimiento = salarioActual - salarioPasado;
+		// 850 - 250 = 600; 600 * 1 / 250 = 2.4;
         const porcentajeCrecimiento = crecimiento / salarioPasado;
         porcentajesCrecimiento.push(porcentajeCrecimiento)
     }
@@ -2562,6 +2563,51 @@ function proyeccionPorPersona(nombrePersona){
 /* proyeccionPorPersona('Juanita') */
 ```
 
+### Practice:  
+
+Este código lo encuentras en resources/codigo/practice/21.salario
+
+salarios.js 
+```js
+// 1. Saber si un trabajador está en la lista
+// 2. Calcular la media de sus salaries
+//  2.1 Sacar lista de trabajos
+//  2.2 Sacar lista de salaries
+//  2.2 Sacar mediana
+// 3. Calcular la proyección del siguiente sueldo
+//  3.1 Crear array con la lista de % de incremento
+//  3.2 Calcular mediana de % de incrementos
+//  3.3 Multiplicar ultimo salario * la mediana
+//  3.4 Sumar ultimo salario al resultado anterior
+
+function find_person(x){
+    return salarios.find(person => person.name == x);
+}
+
+function mean_of_salaries(name){
+    return PlatziMath.median((find_person(name).trabajos).map(x => x.salario));
+    // 950
+}
+
+function projection_of_the_next_salary(name){
+    const salaries = (find_person(name).trabajos).map(x => x.salario);
+    const growth_percentages = [];
+
+    for (let i = 1; i < salaries.length; i++) {
+        const growth = salaries[i] - salaries[i - 1];
+        growth_percentages.push(growth * 1 / salaries[i - 1]);
+    }
+    
+    const median = PlatziMath.median(growth_percentages);
+    const next_salary = (median * salaries[salaries.length - 1]) + salaries[salaries.length - 1];
+    
+    console.log(next_salary); // 1544. 11
+}
+
+find_person('Juanita');
+mean_of_salaries('Juanita')
+projection_of_the_next_salary('Juanita')
+```
 
 ## 25. Reestructurando información sobre la marcha
 
@@ -2653,6 +2699,33 @@ Daily Planet:
 */
 ```
 
+### Practice:  
+
+Este código lo encuentras en resources/codigo/practice/21.salario
+
+```js
+// ANÁLISIS EMPRESARIAL 
+// 4. Crea un Object de empresas con los sueldos de cada año
+//  4.1 Objeto de empresas
+//  4.2 Objeto de años por cada empresa
+//  4.3 Array de sueldos de cada año
+// companies worked work
+
+const companies = {};
+
+for (worked of salarios){
+    for (work of worked.trabajos){
+        if(!companies[work.empresa]){
+            companies[work.empresa] = {}
+        }
+        if(!companies[work.empresa][work.year]){
+            companies[work.empresa][work.year] = []
+        }
+        companies[work.empresa][work.year].push(work.salario)
+    }
+}
+console.log(companies);
+```
 
 ## 26. Salarios empresariales 
 

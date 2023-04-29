@@ -1,21 +1,125 @@
+/* 
+- promedio or mediana aritmética +++ / lenght
+    - 1, 2, 3 rpt: 6/3
+- mediana 
+	- 450, 500, 600 rpt: 500
+	- 100, 200, 300, 400 rpt: 200+300/2
+- moda: valor que se repite mas veces (cualquier dato)
+- promedio ponderado or media aritmética ponderada  
+    - define el peso de cada elemento en nuestro conjunto de números: 
+        - n = número; 
+        - p = peso;
+    - [(n1*p1) + (n2*p2) + (n3*p3)] / (p1 + p2 + p3)
+*/
+
+
 // console.log(salarios);
 
-function find_person(person_in_search){
-    return salarios.find(person => person.name == person_in_search);
+// 1. Saber si un trabajador está en la lista
+// 2. Calcular la media de sus salaries
+//  2.1 Sacar lista de trabajos
+//  2.2 Sacar lista de salaries
+//  2.2 Sacar mediana
+// 3. Calcular la proyección del siguiente sueldo
+//  3.1 Crear array con la lista de % de incremento
+//  3.2 Calcular mediana de % de incrementos
+//  3.3 Multiplicar ultimo salario * la mediana
+//  3.4 Sumar ultimo salario al resultado anterior
+// 4. Crea un Object de empresas con los sueldos de cada año
+//  4.1 Objeto de empresas
+//  4.2 Objeto de años por cada empresa
+//  4.3 Array de sueldos de cada año
+
+function find_person(x){
+    return salarios.find(person => person.name == x);
 }
 
+function mean_of_salaries(name){
+    return PlatziMath.median((find_person(name).trabajos).map(x => x.salario));
+    // 950
+}
 
-function median_per_person(name){
-    const works = find_person(name).trabajos;
-    const wages = works.map(item => item.salario);
-    const median = PlatziMath.median(wages);
+function projection_of_the_next_salary(name){
+    const salaries = (find_person(name).trabajos).map(x => x.salario);
+    const growth_percentages = [];
+
+    for (let i = 1; i < salaries.length; i++) {
+        const growth = salaries[i] - salaries[i - 1];
+        growth_percentages.push(growth * 1 / salaries[i - 1]);
+    }
     
-    console.log(wages, median);
+    const median = PlatziMath.median(growth_percentages);
+    const next_salary = (median * salaries[salaries.length - 1]) + salaries[salaries.length - 1];
+    
+    return next_salary; // 1544. 11
+}
+
+find_person('Juanita');
+mean_of_salaries('Juanita')
+projection_of_the_next_salary('Juanita')
+
+
+// ANÁLISIS EMPRESARIAL 
+// companies worked work year salaries
+
+const companies = {};
+
+for (worked of salarios){
+    for (work of worked.trabajos){
+        if(!companies[work.empresa]){
+            companies[work.empresa] = {}
+        }
+        if(!companies[work.empresa][work.year]){
+            companies[work.empresa][work.year] = []
+        }
+        companies[work.empresa][work.year].push(work.salario)
+    }
 }
 
 
-find_person("Juanita"); 
-median_per_person('Juanita');
+console.log(companies);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -72,8 +176,8 @@ function encontrarPersona(personaEnBusqueda){
     // {name: 'Juanita', trabajos: Array(6)}
 }
 
-function medianaPorPersona(nombrePersona){
-    const trabajos = encontrarPersona(nombrePersona).trabajos;
+function medianaPorPersona(name){
+    const trabajos = encontrarPersona(name).trabajos;
     console.log(trabajos);
     // 0: {year: 2018, empresa: 'Freelance', salario: 250}
     // 1: {year: 2019, empresa: 'Freelance', salario: 250}
@@ -95,16 +199,16 @@ function medianaPorPersona(nombrePersona){
 
 // medianaPorPersona('Juanita');
 
-function proyeccionPorPersona(nombrePersona){
-    const trabajos = encontrarPersona(nombrePersona).trabajos;
+function Projection of the next salary(name){
+    const trabajos = encontrarPersona(name).trabajos;
 
     let porcentajesCrecimiento = [];
 
     for (let i = 1; i < trabajos.length; i++) {
-        const salarioActual = trabajos[i].salario;
-        const salarioPasado = trabajos[i - 1].salario;
-        const crecimiento = salarioActual - salarioPasado;
-        const porcentajeCrecimiento = crecimiento / salarioPasado;
+        const actual_salary = trabajos[i].salario;
+        const past salary = trabajos[i - 1].salario;
+        const crecimiento = actual_salary - past salary;
+        const porcentajeCrecimiento = crecimiento / past salary;
         porcentajesCrecimiento.push(porcentajeCrecimiento)
     }
 
@@ -119,7 +223,7 @@ function proyeccionPorPersona(nombrePersona){
     return nuevoSalario;
 }
 
-// proyeccionPorPersona('Juanita')
+// Projection of the next salary('Juanita')
 
 // ANÁLISIS EMPRESARIAL  
 const empresas = {};
