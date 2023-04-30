@@ -28,7 +28,7 @@ function medianaPorPersona(nombrePersona){
     return medianaSalarios;
 }
 
-/* medianaPorPersona('Juanita'); */
+medianaPorPersona('Juanita');
 
 function proyeccionPorPersona(nombrePersona){
     const trabajos = encontrarPersona(nombrePersona).trabajos;
@@ -45,7 +45,7 @@ function proyeccionPorPersona(nombrePersona){
 
     const medianaPorcentajesCrecimiento = PlatziMath.calcularMediana(porcentajesCrecimiento);
 
-    /* console.log({porcentajesCrecimiento, medianaPorcentajesCrecimiento}); */
+    console.log('%', porcentajesCrecimiento);
 
     const ultimoSalario = trabajos[trabajos.length - 1].salario;
     const aumento = ultimoSalario * medianaPorcentajesCrecimiento;
@@ -54,7 +54,7 @@ function proyeccionPorPersona(nombrePersona){
     return nuevoSalario;
 }
 
-/* proyeccionPorPersona('Juanita') */
+proyeccionPorPersona('Juanita') // 1488.09
 
 // ANÁLISIS EMPRESARIAL  
 /* 
@@ -110,7 +110,7 @@ medianaEmpresaYear('Industrias Mokepon', 2020);
 medianaEmpresaYear('Industrias Mokepon', 2021);
 medianaEmpresaYear('Industrias Mokepon', 2022);
 medianaEmpresaYear('NASA', 2021);
-medianaEmpresaYear('Daily Planet', 2021);
+medianaEmpresaYear('Daily Planet', 2021); // 2500
 */
 
 // 27. Proyección de salarios por empresas 

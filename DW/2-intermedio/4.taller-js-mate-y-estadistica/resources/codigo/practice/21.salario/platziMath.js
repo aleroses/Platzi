@@ -31,12 +31,13 @@ PlatziMath.average = function(array){
 // 450, 500, 600 rpt: 500
 // 100, 200, 300, 400 rpt: 200+300/2
 PlatziMath.median = function(array){
-    if(PlatziMath.even_and_odd(array)){
-        let left_number = array[(array.length / 2) -1 ];
-        let right_number = array[array.length / 2];
+    const sorted_array = PlatziMath.sort_list(array);
+    if(PlatziMath.even_and_odd(sorted_array)){
+        let left_number = sorted_array[(sorted_array.length / 2) -1 ];
+        let right_number = sorted_array[sorted_array.length / 2];
         return (left_number + right_number) / 2;
     }else{
-        return array[Math.floor(array.length / 2)];
+        return sorted_array[Math.floor(sorted_array.length / 2)];
     }
 }
 
