@@ -174,20 +174,17 @@ function medianaGeneral(){
 
 function medianaTop10(){
     const listaMedianas = salarios.map(persona => medianaPorPersona(persona.name));
-
     const medianasOrdenadas = PlatziMath.ordenarLista(listaMedianas);
-
     const cantidad = listaMedianas.length / 10;
     const limite = listaMedianas.length - cantidad;
 
     // slice - splice
     const top10 = medianasOrdenadas.slice(limite, medianasOrdenadas.length)
 
-    /* console.log(top10);
-    console.log({medianasOrdenadas}); */
+    console.log(cantidad, limite, top10); // 2 18 (2) [3900, 4275]
     const medianaTop10 = PlatziMath.calcularMediana(top10);
     return medianaTop10;
 };
 
-/* medianaTop10() */
+medianaTop10()
 /* medianaGeneral() */

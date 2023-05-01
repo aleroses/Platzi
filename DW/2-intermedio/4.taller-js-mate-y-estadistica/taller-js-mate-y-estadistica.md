@@ -2878,6 +2878,21 @@ salary_projection_by_company('Industrias Mokepon') // 1488.09
 
 ## 28. Top 10% de salarios
 
+El método `slice()` en JavaScript se utiliza para extraer una parte de una matriz (array) existente y devolver una nueva matriz con los elementos seleccionados. El método toma dos argumentos: el índice de inicio y el índice de finalización (opcional). 
+
+El índice de inicio especifica el punto de partida de la extracción, mientras que el índice de finalización (opcional) especifica el punto final de la extracción (el índice en la nueva matriz donde la extracción debe detenerse, sin incluir el elemento con ese índice). Si no se proporciona el segundo argumento, se extraerán todos los elementos desde el índice de inicio hasta el final de la matriz.
+
+El método slice() no modifica la matriz original, sino que devuelve una nueva matriz con los elementos seleccionados. Aquí hay un ejemplo de cómo se puede utilizar el método slice() en JavaScript:
+
+```js
+const originalArray = [1, 2, 3, 4, 5];
+const slicedArray = originalArray.slice(1, 4);
+console.log(slicedArray); // Output: [2, 3, 4]
+```
+
+En este ejemplo, la matriz original contiene los números del 1 al 5. Usando el método slice(), se crea una nueva matriz que contiene los elementos desde el índice 1 hasta el índice 4 (sin incluir el elemento con el índice 4). La nueva matriz se almacena en la variable slicedArray y se imprime en la consola el resultado.
+
+
 ```js
 // Nota: Esto continua después del código clase 27
 // Análisis general  
@@ -2913,6 +2928,41 @@ function medianaTop10(){
 /* medianaGeneral() */
 ```
 
+### Practice:  
+Este código lo encuentras en resources/codigo/practice/21.salario  
+
+```js
+// Top 10% de salarios: length is 100%, 10% is x
+// 7.1 Sacar la media de los sueldos de cada persona 
+// 7.2 Sacar la mediana de las medianas de los sueldos d/c persona
+// 8.1 Obtener la cantidad de personas dentro del top 10
+// 8.2 Obtener el resto 
+// 8.3 Ordenamos la lista de medianas 
+// 8.4 Extraemos los montos dentro del top 
+// 8.5 Sacamos mediana 
+
+function overall_median(){ // mediana general
+    const medians_list = salarios.map(person => mean_of_salaries(person.name));
+    const median = PlatziMath.median(medians_list);
+
+    return median;
+}
+
+function top_ten_salaries(){
+    const median_list = salarios.map(person => mean_of_salaries(person.name));
+    const top_ten = 10 * median_list.length / 100; // length / 10
+    const the_rest = median_list.length - top_ten;
+    
+    const sorted_median = PlatziMath.sort_list(median_list);
+    const top = median_list.slice(the_rest, sorted_median.length);
+    const median = PlatziMath.median(top);
+
+    return median; // [3900, 4275]
+}
+
+overall_median();
+top_ten_salaries();
+```
 
 ## 29. Reto: extiende tu análisis salarial
 

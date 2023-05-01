@@ -136,124 +136,40 @@ salary_projection_by_company('Industrias Mokepon') // 1488.09
 
 
 
+// Top 10% de salarios: length is 100%, 10% is x
+// 7.1 Sacar la media de los sueldos de cada persona 
+// 7.2 Sacar la mediana de las medianas de los sueldos d/c persona
+// 8.1 Obtener la cantidad de personas dentro del top 10
+// 8.2 Obtener el resto 
+// 8.3 Ordenamos la lista de medianas 
+// 8.4 Extraemos los montos dentro del top 
+// 8.5 Sacamos mediana 
+
+function overall_median(){ // mediana general
+    const medians_list = salarios.map(person => mean_of_salaries(person.name));
+    const median = PlatziMath.median(medians_list);
+
+    return median;
+}
+
+function top_ten_salaries(){
+    const median_list = salarios.map(person => mean_of_salaries(person.name));
+    const top_ten = 10 * median_list.length / 100; // length / 10
+    const the_rest = median_list.length - top_ten;
+    
+    const sorted_median = PlatziMath.sort_list(median_list);
+    const top = median_list.slice(the_rest, sorted_median.length);
+    const median = PlatziMath.median(top);
+
+    return median; // [3900, 4275]
+}
+
+overall_median();
+top_ten_salaries();
+
+
 
 
 
 // Ctrl + K Ctrl + C - Añadir línea comentario.
 // Ctrl + K Ctrl + U - Eliminar línea comentario.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* 
-console.log(salarios);
-
-// Análisis personal para Juanita
-
-function encontrarPersona(personaEnBusqueda){
-    return salarios.find(persona => persona.name == personaEnBusqueda); 
-    // {name: 'Juanita', trabajos: Array(6)}
-}
-
-function medianaPorPersona(name){
-    const trabajos = encontrarPersona(name).trabajos;
-    console.log(trabajos);
-    // 0: {year: 2018, empresa: 'Freelance', salario: 250}
-    // 1: {year: 2019, empresa: 'Freelance', salario: 250}
-    // 2: {year: 2020, empresa: 'Industrias Mokepon', salario: 850}
-    // 3: {year: 2021, empresa: 'Industrias Mokepon', salario: 1050}
-    // 4: {year: 2022, empresa: 'Industrias Mokepon', salario: 1250}
-    // 5: {year: 2023, empresa: 'Industrias Mokepon', salario: 1250}
-    
-    const salarios = trabajos.map(elemento => elemento.salario);
-    console.log(salarios);
-    // [250, 250, 850, 1050, 1250, 1250]
-
-    const medianaSalarios = PlatziMath.calcularMediana(salarios);
-    console.log(medianaSalarios);
-    // 850 + 1050 / 2 = 950
-
-    return medianaSalarios;
-}
-
-// medianaPorPersona('Juanita');
-
-function Projection of the next salary(name){
-    const trabajos = encontrarPersona(name).trabajos;
-
-    let porcentajesCrecimiento = [];
-
-    for (let i = 1; i < trabajos.length; i++) {
-        const actual_salary = trabajos[i].salario;
-        const past salary = trabajos[i - 1].salario;
-        const crecimiento = actual_salary - past salary;
-        const porcentajeCrecimiento = crecimiento / past salary;
-        porcentajesCrecimiento.push(porcentajeCrecimiento)
-    }
-
-    const medianaPorcentajesCrecimiento = PlatziMath.calcularMediana(porcentajesCrecimiento);
-
-    // console.log({porcentajesCrecimiento, medianaPorcentajesCrecimiento});
-
-    const ultimoSalario = trabajos[trabajos.length - 1].salario;
-    const aumento = ultimoSalario * medianaPorcentajesCrecimiento;
-    const nuevoSalario = ultimoSalario + aumento;
-
-    return nuevoSalario;
-}
-
-// Projection of the next salary('Juanita')
-
-// ANÁLISIS EMPRESARIAL  
-const empresas = {};
-
-for(persona of salarios){
-    for(trabajo of persona.trabajos){
-        if(!empresas[trabajo.empresa]){
-            empresas[trabajo.empresa] = {};
-        }
-        
-        if(!empresas[trabajo.empresa][trabajo.year]){
-            empresas[trabajo.empresa][trabajo.year] = [];
-        }        
-
-        empresas[trabajo.empresa][trabajo.year].push(trabajo.salario);
-    }
-}
-
-console.log({empresas});
-//Daily Planet: 
-// 2018: (4) [1000, 2000, 1500, 3500]
-// 2019: (4) [1500, 2500, 2000, 3700]
-// 2020: (4) [1000, 2000, 2000, 3800]
-// 2021: (4) [1500, 2500, 2500, 4000]
-// 2022: (4) [2000, 2500, 2500, 4050]
-// 2023: (4) [1500, 2500, 1500, 4050] 
- */
