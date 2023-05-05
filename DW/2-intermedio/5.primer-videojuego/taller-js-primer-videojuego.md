@@ -43,7 +43,7 @@ game.clearRect(0,0,50,50);
 `fillText()` Este nos permite insertar texto, cuando usemos esta propiedad es necesario que no solo le pasemos el texto sino también las propiedades para poderlo alinear.
 
 ```jsx
-game.fillText('setso', 100,100);
+game.fillText('Platzi', 100,100);
 ```
 
 `game.textAlign` Nos permite alinear el texto, teniendo como referencia a los ejes X e Y.
@@ -114,3 +114,65 @@ function startGame(){
 ### Enlaces  
 - [Canva apuntes](https://north-legal-02b.notion.site/Canvas-78616c26a864480d8bf3385076dad547)
 - [Documentación](https://developer.mozilla.org/es/docs/Web/API/Canvas_API/Tutorial/Drawing_shapes)  
+
+
+## 3. Tamaño del canvas y sus elementos
+
+`window.innerHeight` y `window.innerWidth` son propiedades de JavaScript que devuelven la altura y ancho de la ventana del navegador, excluyendo las barras de herramientas y otras barras de desplazamiento del navegador. Son útiles para ajustar el diseño de la página web en función del tamaño de la ventana del navegador.
+
+`elemento.setAttribute:` Establece el valor de un atributo en el elemento indicado. Si el atributo ya existe, el valor es actualizado, en caso contrario, el nuevo atributo es añadido con el nombre y valor indicado.
+
+```js
+// Dar un ancho y un alto al canvas
+canvas.setAttribute('width', canvasSize);
+canvas.setAttribute('height', canvasSize);
+
+// Cambiar nombre a la clase
+x.setAttribute("class", "clasemodificada");
+```
+
+### Código de la clase 
+
+```js
+/**
+ * @type {HTMLCanvasElement}
+**/
+
+const canvas = document.querySelector('#game');
+const game = canvas.getContext('2d');
+
+window.addEventListener('load', startGame);
+
+function startGame(){
+    // Medidas del canvas
+    let canvasSize;
+
+    if(window.innerHeight > window.innerWidth){
+        canvasSize = window.innerWidth * 0.8;
+    }else{
+        canvasSize = window.innerHeight * 0.8;
+    }
+
+    canvas.setAttribute('width', canvasSize);
+    canvas.setAttribute('height', canvasSize);
+
+    // Renderizar Bomba
+    const elementsSize = (canvasSize / 10) - 1; //10%
+    console.log({ canvasSize, elementsSize});
+
+    game.font = elementsSize + 'px Verdana';
+    game.textAlign = "";
+
+    for (let i = 0; i < 10; i++) {
+        game.fillText(emojis['X'], elementsSize * i, elementsSize);
+    }
+}
+```
+
+
+
+```js
+```
+
+```js
+```
