@@ -1,6 +1,7 @@
 # Taller Práctico de JavaScript: ¡Crea tu Primer Videojuego!  
 
-## 1. Programemos un juego con JavaScript
+## Introducción
+### 1. Programemos un juego con JavaScript
 
 - Crear repositorio en GitHub: Videogame 
 	- Template: node
@@ -13,10 +14,10 @@
 	- maps.js: Igualmente 
 	- game.js
 
-
 [Repo del juego](https://github.com/platzi/taller-practico-javascript-videogames)
 
-## 2. ¿Qué es canvas en JavaScript?
+## Canvas
+### 2. ¿Qué es canvas en JavaScript?
 
 Lo primero que necesitamos es el elemento de HTML donde vamos a renderizar el canvas, canvas nos sirve para renderizar gráficos 2D.
 
@@ -75,7 +76,7 @@ game.font = '25px verdana';
 game.fillStyle = 'purple';
 ```
 
-### Dato
+#### Dato
 Para los que no les sale el auto completado de los métodos del canvas, les comparto un consejo para no cometer errores de tipados con frecuencia.
 
 ```js
@@ -87,7 +88,7 @@ const canvas = document.querySelector("#game");
 
 Lo que hace es decir que nuestra constante “canvas” es de tipo HTMLCanvasElement, lo que nos mostrara los métodos en VSCode.
 
-### Código de la clase 
+#### Código de la clase 
 
 ```js
 /**
@@ -111,12 +112,12 @@ function startGame(){
 }
 ```
 
-### Enlaces  
+#### Enlaces  
 - [Canva apuntes](https://north-legal-02b.notion.site/Canvas-78616c26a864480d8bf3385076dad547)
 - [Documentación](https://developer.mozilla.org/es/docs/Web/API/Canvas_API/Tutorial/Drawing_shapes)  
 
 
-## 3. Tamaño del canvas y sus elementos
+### 3. Tamaño del canvas y sus elementos
 
 `window.innerHeight` y `window.innerWidth` son propiedades de JavaScript que devuelven la altura y ancho de la ventana del navegador, excluyendo las barras de herramientas y otras barras de desplazamiento del navegador. Son útiles para ajustar el diseño de la página web en función del tamaño de la ventana del navegador.
 
@@ -131,7 +132,7 @@ canvas.setAttribute('height', canvasSize);
 x.setAttribute("class", "clasemodificada");
 ```
 
-### Código de la clase 
+#### Código de la clase 
 
 ```js
 /**
@@ -170,6 +171,61 @@ function startGame(){
 ```
 
 
+### 4. Canvas responsive
+
+#### Código de la clase 
+```js
+/**
+ * @type {HTMLCanvasElement}
+**/
+
+const canvas = document.querySelector('#game');
+const game = canvas.getContext('2d');
+let canvasSize;
+let elementsSize; //10%
+
+window.addEventListener('load', setCanvasSize);
+window.addEventListener('resize', setCanvasSize);
+
+function setCanvasSize(){
+    // Medidas del canvas
+    if(window.innerHeight > window.innerWidth){
+        canvasSize = window.innerWidth * 0.8;
+    }else{
+        canvasSize = window.innerHeight * 0.8;
+    }
+
+    canvas.setAttribute('width', canvasSize);
+    canvas.setAttribute('height', canvasSize);
+
+    // Renderizar Bomba
+    elementsSize = canvasSize * 0.1;
+
+    startGame();
+}
+
+function startGame(){
+    game.font = `${elementsSize}px Verdana`;
+    game.textAlign = "";
+
+    for (let i = 0; i < 10; i++) {
+        game.fillText(emojis['X'], elementsSize * i, elementsSize);
+    }
+}
+```
+
+
+## Mapa del juego
+
+### 5. 
+```js
+```
+
+```js
+```
+
+```js
+```
 
 ```js
 ```
