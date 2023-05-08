@@ -633,6 +633,235 @@ map_row_cols: Array(10)
 9: (10) ['X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X']
 ```
 
+#### Dato
+Para transformar el string de los mapas en un arreglo bidimensional, también puedes usar expresiones regulares y un match
+
+```js
+const map = maps[0]
+.match(/[IXO\-]+]/g)
+.map(a=>a.split(""))
+
+```
+
+Explicación en
+
+```js
+.match(/[IXO\-]+]/g)
+```
+
+estamos diciendo:  
+Búscame las palabras que cumplan con estas características
+
+```js
+/[IXO\-]+/g
+```
+
+desglose  
+`[IXO-]+` significa  
+búscame todo lo que empiece por I,X,O o -, pero como el - es una palabra reservada usamos el slash invertido -   
+decimos que si o si hay 1 o más caracteres iguales, después del primero g le decimos que haga esa búsqueda en todo el string  
+
+Resumen  
+Le decimos búscame todo lo que empiece por I,X,O o -, y que todos los caracteres de ese tipo que le siguen  
+
+Entonces como, cada fila esta separada por una espacio o salto de línea, solo devolverá esas palabras
+
+```js
+//(10)
+ ['IXXXXXXXXX',
+ '-XXXXXXXXX',
+ '-XXXXXXXXX', 
+'-XXXXXXXXX', 
+'-XXXXXXXXX', 
+'-XXXXXXXXX', 
+'-XXXXXXXXX',
+ '-XXXXXXXXX', 
+'-XXXXXXXXX',
+ 'OXXXXXXXXX']
+```
+
+Luego ya es fácil. le pasamos un map y le decimos que por cada array recibido, vamos a revolverlo, pero ahora separado los elementos
+
+```js
+.map(a=>a.split(""))
+```
+
+
+### 7. Refactor del mapa de juego
+
+El método `forEach()` es una función de orden superior que se utiliza en JavaScript para recorrer y operar sobre cada elemento de un array, uno por uno, sin necesidad de utilizar un bucle `for` o `while`.
+
+La sintaxis básica del método `forEach()` es la siguiente:
+
+```js
+array.forEach(function(valorActual, índice, array) {
+  // Cuerpo de la función
+});
+```
+
+Donde `valorActual` es el valor actual del elemento que se está procesando, `índice` es la posición del elemento en el array, y `array` es el propio array que se está recorriendo.
+
+La función que se pasa como argumento a `forEach()` se ejecuta una vez por cada elemento del array. En cada iteración, esta función toma tres argumentos opcionales: el valor del elemento actual, su índice, y el array completo. Dentro del cuerpo de la función, se puede realizar cualquier operación que sea necesaria con el elemento actual.
+
+Por ejemplo, el siguiente código muestra cómo utilizar `forEach()` para recorrer un array y mostrar cada elemento en la consola:
+
+```js
+var miArray = [1, 2, 3, 4, 5];
+miArray.forEach(function(valorActual, índice, array) {
+  console.log("El valor actual es " + valorActual + " en la posición " + índice);
+});
+```
+
+En este ejemplo, `forEach()` recorre cada elemento en el array `miArray` y muestra su valor y su posición en la consola. La salida esperada sería:
+
+```js
+El valor actual es 1 en la posición 0
+El valor actual es 2 en la posición 1
+El valor actual es 3 en la posición 2
+El valor actual es 4 en la posición 3
+El valor actual es 5 en la posición 4
+```
+
+El método `forEach()` es una alternativa más legible y expresiva a los bucles `for` o `while` tradicionales, y además se beneficia de la optimización interna del motor JavaScript que lo hace más rápido que los bucles convencionales.
+
+#### Código de la clase 
+
+```js
+/**
+ * @type {HTMLCanvasElement}
+**/
+
+
+const canvas = document.querySelector('#game');
+const game = canvas.getContext('2d');
+let canvasSize;
+let elementsSize; //10%
+
+window.addEventListener('load', setCanvasSize);
+window.addEventListener('resize', setCanvasSize);
+
+function setCanvasSize(){
+    // Medidas del canvas
+    if(window.innerHeight > window.innerWidth){
+        canvasSize = window.innerWidth * 0.8;
+    }else{
+        canvasSize = window.innerHeight * 0.8;
+    }
+
+    canvas.setAttribute('width', canvasSize);
+    canvas.setAttribute('height', canvasSize);
+
+    startGame();
+}
+
+function startGame(){
+    // Renderizar Mapa
+    elementsSize = (canvasSize * 0.1);
+    game.font = `${elementsSize}px Verdana`;
+    game.textAlign = "end";
+
+    const map = maps[0];
+    const mapRows = map.trim().split('\n');
+    const mapRowCols = mapRows.map(row => row.trim().split(''));
+    console.log({map, mapRows, mapRowCols});
+
+    mapRowCols.forEach((row, rowI) => {
+        row.forEach((col, colI) => {
+            const emoji = emojis[col];
+            const posX = elementsSize * (colI + 1);
+            const posY = elementsSize * (rowI + 1);
+            
+            game.fillText(emoji, posX, posY)
+        })
+    });
+
+    /* for (let x=1; x<=10; x++) {
+        for (let y=1; y<=10; y++) {
+            game.fillText(emojis[mapRowCols[x - 1][y - 1]], elementsSize * y, elementsSize * x);
+        }
+    } */
+} 
+```
+
+#### Practice: 
+
+```js
+/**
+ * @type {HTMLCanvasElement}
+**/
+
+const canvas = document.querySelector('#game');
+const game = canvas.getContext('2d')
+let canvas_size;
+let elements_size;
+
+window.addEventListener('load', calculate_canvas_size);
+window.addEventListener('resize', calculate_canvas_size)
+
+function calculate_canvas_size(){
+    window.innerHeight > window.innerWidth
+    ? canvas_size = window.innerWidth * 0.8
+    : canvas_size = window.innerHeight * 0.8
+
+    canvas.setAttribute('width', canvas_size);
+    canvas.setAttribute('height', canvas_size);
+
+    calculate_elements_size()
+}
+
+function calculate_elements_size(){
+    const map = maps[0];
+    const map_rows = map.trim().split('\n');
+    const map_rows_cols = map_rows.map(row => row.trim().split(''));
+
+    elements_size = (canvas_size * 0.1) - 1;
+    game.font = `${elements_size}px Verdana`;
+
+    map_rows_cols.forEach((row, ri) => { // element, indice
+        // ['I', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X']
+        row.forEach((col, ci) => {
+            // I
+            const emoji = emojis[col];
+            const x = elements_size * ci;
+            const y = elements_size * (ri+1);
+            game.fillText(emoji, x, y);
+        })
+    });
+
+    /* for (let x = 0; x < 10; x++) {
+        for (let y = 0; y < 10; y++) {
+            game.fillText(emojis[map_rows_cols[x][y]], elements_size * x, elements_size * (y+1));
+        }
+    } */
+}
+
+// registro de la consola: console log
+```
+
+```js
+```
+
+```js
+```
+
+```js
+```
+
+```js
+```
+
+```js
+```
+
+```js
+```
+
+```js
+```
+
+```js
+```
+
 ```js
 ```
 
