@@ -731,7 +731,6 @@ El método `forEach()` es una alternativa más legible y expresiva a los bucles 
  * @type {HTMLCanvasElement}
 **/
 
-
 const canvas = document.querySelector('#game');
 const game = canvas.getContext('2d');
 let canvasSize;
@@ -838,7 +837,90 @@ function calculate_elements_size(){
 // registro de la consola: console log
 ```
 
+#### Dato
+Para evitar complicarnos con el índice +1 al momento de renderizar los elementos, podemos utilizar los métodos del canvas: `game.textBaseLine` define la posición vertical del texto en el canvas, recibe varios atributos que puedes revisar en la [documentación](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/textBaseline). El valor `'top'` hace que nuestro tome como superior la ubicación que le damos, de esta forma, si la coordenada y tiene el valor de 0, el texto no se pondrá por encima sino por debajo del 0, así es como quedan alineados de tal forma que se vean completamente en el canvas.
+
+### 8. Eventos y botones
+
 ```js
+/**
+ * @type {HTMLCanvasElement}
+**/
+
+const canvas = document.querySelector('#game');
+const game = canvas.getContext('2d');
+let canvasSize;
+let elementsSize; //10%
+const btnUp = document.querySelector('#up');
+const btnLeft = document.querySelector('#left');
+const btnRight = document.querySelector('#right');
+const btnDown = document.querySelector('#down');
+
+window.addEventListener('load', setCanvasSize);
+window.addEventListener('resize', setCanvasSize);
+
+function setCanvasSize(){
+    // Medidas del canvas
+    if(window.innerHeight > window.innerWidth){
+        canvasSize = window.innerWidth * 0.8;
+    }else{
+        canvasSize = window.innerHeight * 0.8;
+    }
+
+    canvas.setAttribute('width', canvasSize);
+    canvas.setAttribute('height', canvasSize);
+
+    startGame();
+}
+
+function startGame(){
+    // Renderizar Mapa
+    elementsSize = (canvasSize * 0.1);
+    game.font = `${elementsSize}px Verdana`;
+    game.textAlign = "end";
+
+    const map = maps[0];
+    const mapRows = map.trim().split('\n');
+    const mapRowCols = mapRows.map(row => row.trim().split(''));
+    console.log({map, mapRows, mapRowCols});
+
+    mapRowCols.forEach((row, rowI) => {
+        row.forEach((col, colI) => {
+            const emoji = emojis[col];
+            const posX = elementsSize * (colI + 1);
+            const posY = elementsSize * (rowI + 1);
+            
+            game.fillText(emoji, posX, posY)
+        })
+    });
+} 
+
+window.addEventListener('keydown', moveBykeys); //keyup 
+btnUp.addEventListener('click', moveUp);
+btnLeft.addEventListener('click', moveLeft);
+btnRight.addEventListener('click', moveRight);
+btnDown.addEventListener('click', moveDown);
+
+function moveBykeys(event){
+    if (event.key == 'ArrowUp') moveUp();
+    else if(event.key == 'ArrowLeft') moveLeft();
+    else if (event.key == 'ArrowRight') moveRight();
+    else if(event.key == 'ArrowDown') moveDown();
+    console.log(event); // revisar code or key: "ArrowUp"
+}
+
+function moveUp(){
+    console.log('arriba');
+}
+function moveLeft(){
+    console.log('izquierda');
+}
+function moveRight(){
+    console.log('derecha');
+}
+function moveDown(){
+    console.log('abajo');
+}
 ```
 
 ```js
