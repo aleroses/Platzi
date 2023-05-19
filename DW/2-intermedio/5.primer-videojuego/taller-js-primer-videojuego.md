@@ -2954,6 +2954,59 @@ function move_down(){
 
 ## Bonus: adictividad
 ### 16. Sistema de vidas y corazones
+En JavaScript, la función constructora `Array()` se utiliza para crear un nuevo `array` con una longitud específica o con elementos específicos. Esta función acepta una cantidad variable de argumentos, los cuales se utilizan para inicializar los elementos del `array`. Los argumentos se pueden proporcionar en una lista separada por comas, o como un solo argumento que sea un `array`.
+
+Al crear un `array` utilizando la función constructora `Array()`, podemos especificar la longitud del `array` de la siguiente manera:
+
+```js
+let miArray = new Array(longitud);
+```
+
+Donde `longitud` es un número entero que especifica la cantidad de elementos que tendrá el `array`. Por ejemplo:
+
+```js
+let miArray = new Array(5);
+console.log(miArray); // muestra [undefined, undefined, undefined, undefined, undefined]
+```
+
+También podemos inicializar los elementos del `array` especificando los valores como argumentos separados por comas:
+
+```js
+let miArray = new Array('uno', 'dos', 'tres');
+console.log(miArray); // muestra ['uno', 'dos', 'tres']
+```
+
+O podemos proporcionar un solo argumento que sea un `array`:
+
+```js
+let miArray = new Array(['uno', 'dos','tres']);
+console.log(miArray); // muestra [['uno', 'dos', 'tres']]
+```
+
+En este caso, el `array` interno se convierte en el primer elemento del `array` creado por la función constructora `Array()`.
+
+Es importante tener en cuenta que, aunque la función constructora `Array()` es una forma válida de crear un `array` en JavaScript, no es la forma más común de hacerlo. En su lugar, se utiliza más comúnmente la sintaxis de `array` literal, que es más corta y fácil de leer. Por ejemplo, en lugar de utilizar la función constructora `Array()` para crear un `array` vacío, podemos simplemente hacer lo siguiente:
+
+```js
+let miArray = [];
+```
+
+Y para inicializar un `array` con elementos, podemos hacer lo siguiente:
+
+```js
+let miArray = ['uno', 'dos', 'tres'];
+```
+
+Un ejemplo de cómo utilizar el método `fill()` con la función constructora `Array()` en JavaScript para crear un `array` con valores iniciales repetidos:
+
+```js
+let miArray = new Array(5).fill(0);
+console.log(miArray); // muestra [0, 0, 0, 0, 0]
+```
+
+En este ejemplo, creamos un nuevo `array` utilizando la función constructora `Array()` y especificamos una longitud de `5`. Luego, llamamos al método `fill()` en el `array` recién creado y le pasamos un argumento de `0`. Este argumento indica que queremos inicializar todos los elementos del `array` con el valor `0`.
+
+Como resultado, el `array` `miArray` tendrá una longitud de `5` y todos sus elementos tendrán un valor de `0`.
 
 #### Código de la clase
 ```js
@@ -3162,6 +3215,7 @@ function showLives() {
   spanLives.innerHTML = emojis["HEART"].repeat(lives)
 }
 ```
+
 #### Practice:
 ```js
 // 1. Definir el tamaño del canvas
@@ -3341,7 +3395,524 @@ function move_down(){
 // registro de la consola
 ```
 
-### 17. 
+### 17. Sistema de tiempo y puntajes
+`setTimeout`, `setInterval` y `clearInterval`, `Date.now`
+
+#### setTimeout(): Establecer el tiempo de espera
+`setTimeout()` es una función que se utiliza para retrasar la ejecución de una función determinada durante un período de tiempo específico. La función `setTimeout()` toma dos argumentos: la función que se quiere ejecutar y el tiempo en milisegundos que se quiere retrasar la ejecución de dicha función.
+
+La sintaxis básica de `setTimeout()` es la siguiente:
+
+```js
+setTimeout(función, tiempo);
+```
+
+Por ejemplo, si queremos ejecutar una función llamada `saludo()` después de un retraso de 2 segundos, podemos utilizar `setTimeout()` de la siguiente manera:
+
+```js
+function saludo() {
+  console.log('Hola, ¿cómo estás?');
+}
+
+setTimeout(saludo, 2000);
+```
+
+En este ejemplo, la función `saludo()` se ejecutará después de un retraso de 2 segundos (2000 milisegundos) utilizando `setTimeout()`.
+
+También es posible pasar argumentos adicionales a la función que se va a ejecutar utilizando `setTimeout()`. Por ejemplo:
+
+```js
+function saludar(nombre) {
+  console.log('Hola, ' + nombre + '. ¿Cómo estás?');
+}
+
+setTimeout(saludar, 2000, 'Juan');
+```
+
+En este ejemplo, la función `saludar()` se ejecutará después de un retraso de 2 segundos (2000 milisegundos) y recibirá un argumento adicional de `nombre`, que se establece en `"Juan"`. Al ejecutarse, la función mostrará el mensaje `"Hola, Juan. ¿Cómo estás?"` en la consola.
+
+Es importante tener en cuenta que `setTimeout()` es una función asíncrona, lo que significa que la ejecución del programa continuará mientras la función que se ha pasado a `setTimeout()` espera para ser ejecutada. En otras palabras, el código que sigue inmediatamente después de `setTimeout()` seguirá ejecutándose mientras se espera a que pase el tiempo especificado antes de que se ejecute la función.
+
+También es posible cancelar la ejecución de una función que se ha programado con `setTimeout()` utilizando la función `clearTimeout()`. Esta función toma como argumento el identificador de tiempo devuelto por `setTimeout()`, y cancela la ejecución de la función correspondiente si aún no se ha ejecutado. Por ejemplo:
+
+```js
+let tiempo = setTimeout(saludar, 2000, 'Juan');
+clearTimeout(tiempo);
+```
+
+En este ejemplo, la variable `tiempo` contiene el identificador de tiempo devuelto por `setTimeout()`. Luego, llamamos a `clearTimeout(tiempo)` para cancelar la ejecución de la función `saludar()` si aún no se ha ejecutado.
+
+#### setInterval(): establecer intervalo
+`setInterval()` es una función que se utiliza para repetir la ejecución de una función en intervalos de tiempo regulares. Esta función toma dos argumentos: la función que se quiere ejecutar y el tiempo en milisegundos que se quiere esperar entre cada ejecución de la función. 
+
+Por ejemplo, si queremos ejecutar una función llamada `actualizarTiempo()` cada segundo, podemos utilizar la función `setInterval()` de la siguiente manera:
+
+```js
+setInterval(actualizarTiempo, 1000);
+```
+
+En este ejemplo, la función `actualizarTiempo()` se ejecutará cada segundo (1000 milisegundos) utilizando `setInterval()`.
+
+Es importante tener en cuenta que, si no se cancela un intervalo de tiempo creado con `setInterval()`, la función programada se seguirá ejecutando a intervalos regulares hasta que se cierre la ventana del navegador o se refresque la página.
+
+Para cancelar la ejecución del intervalo de tiempo, podemos utilizar la función `clearInterval()`, que toma como argumento el identificador del intervalo de tiempo devuelto por `setInterval()`.
+
+#### Date.now() 
+`Date.now()` es un método estático que no requiere argumentos y devuelve el número de milisegundos transcurridos desde el 1 de enero de 1970 00:00:00 UTC hasta la fecha y hora actuales, lo que se conoce como el "Epoch Unix".
+
+La sintaxis básica de `Date.now()` es la siguiente:
+
+```js
+Date.now();
+```
+
+Por ejemplo, si queremos medir el tiempo transcurrido entre dos eventos en una aplicación web, podemos utilizar `Date.now()` de la siguiente manera:
+
+```js
+let tiempoInicial = Date.now();
+
+// aquí se realiza el primer evento
+
+let tiempoFinal = Date.now();
+let tiempoTranscurrido = tiempoFinal - tiempoInicial;
+
+console.log('El tiempo transcurrido es:', tiempoTranscurrido, 'milisegundos.');
+```
+
+En este ejemplo, utilizamos `Date.now()` para obtener el tiempo actual en milisegundos antes y después de la realización del evento. Luego, resta el tiempo inicial del tiempo final para obtener el tiempo transcurrido entre los dos eventos.
+
+#### Código de la clase
+```js
+/**
+ * @type {HTMLCanvasElement}
+**/
+
+const canvas = document.querySelector('#game');
+const game = canvas.getContext('2d');
+const btnUp = document.querySelector('#up');
+const btnLeft = document.querySelector('#left');
+const btnRight = document.querySelector('#right');
+const btnDown = document.querySelector('#down');
+const spanLives = document.querySelector('#lives');
+const spanTime = document.querySelector('#time');
+
+let canvasSize;
+let elementsSize; //10%
+let level = 0;
+let lives = 3;
+let timeStart;
+let timePlayer;
+let timeInterval;
+
+const playerPosition = {
+    x: undefined,
+    y: undefined,
+};
+const giftPosition = {
+    x: undefined,
+    y: undefined,
+};
+let enemyPositions = [];
+
+window.addEventListener('load', setCanvasSize);
+window.addEventListener('resize', setCanvasSize);
+
+function setCanvasSize(){
+    // Medidas del canvas
+    if(window.innerHeight > window.innerWidth){
+        canvasSize = window.innerWidth * 0.8;
+    }else{
+        canvasSize = window.innerHeight * 0.8;
+    }
+
+    canvas.setAttribute('width', canvasSize);
+    canvas.setAttribute('height', canvasSize);
+
+    startGame();
+}
+
+function startGame(){
+    // Renderizar Mapa
+    elementsSize = (canvasSize * 0.1);
+    game.font = `${elementsSize}px Verdana`;
+    game.textAlign = "end";
+
+    const map = maps[level];
+
+    if(!map){
+        console.log();
+        gameWin();
+        return;
+    }
+    if(!timeStart){
+        timeStart = Date.now();
+        timeInterval = setInterval(showTime, 100);
+    }
+
+    const mapRows = map.trim().split('\n');
+    const mapRowCols = mapRows.map(row => row.trim().split(''));
+    // console.log({map, mapRows, mapRowCols});
+
+    showLives();
+    enemyPositions = [];
+    game.clearRect(0,0, canvasSize, canvasSize);
+    mapRowCols.forEach((row, rowI) => {
+        row.forEach((col, colI) => {
+            const emoji = emojis[col];
+            const posX = elementsSize * (colI + 1);
+            const posY = elementsSize * (rowI + 1);
+
+            if(col == 'O'){
+                if(!playerPosition.x && !playerPosition.y){
+                    playerPosition.x = posX;
+                    playerPosition.y = posY;
+                    // console.log({playerPosition});
+                }
+            } else if (col == 'I'){
+                giftPosition.x = posX;
+                giftPosition.y = posY;
+            } else if(col == 'X'){
+                enemyPositions.push({
+                    x: posX,
+                    y: posY,
+                });
+            }
+
+            game.fillText(emoji, posX, posY)
+        })
+    });
+
+    movePlayer();
+}
+
+function movePlayer(){
+    const giftCollisionX = playerPosition.x.toFixed(3) == giftPosition.x.toFixed(3);
+    const giftCollisionY = playerPosition.y.toFixed(3) == giftPosition.y.toFixed(3);
+    const giftCollision = giftCollisionX && giftCollisionY;
+
+    if(giftCollision){
+        levelWin();
+    }
+
+    const enemyCollision = enemyPositions.find(enemy => {
+        const enemyCollisionX = enemy.x.toFixed(3) == playerPosition.x.toFixed(3);
+        const enemyCollisionY = enemy.y.toFixed(3) == playerPosition.y.toFixed(3);
+        return enemyCollisionX && enemyCollisionY;
+    });
+    
+    if(enemyCollision){
+        levelFail();
+    }
+
+    game.fillText(emojis['PLAYER'], playerPosition.x, playerPosition.y)
+}
+
+function levelWin(){
+    console.log('Win');;
+    level++;
+    startGame();
+}
+
+function levelFail(){
+    lives--;
+
+    if(lives <= 0){
+        level = 0;
+        lives = 3;
+        timeStart = undefined;
+    }
+
+    playerPosition.x = undefined;
+    playerPosition.y = undefined;
+    startGame();
+}
+
+function gameWin(){
+    console.log('Terminaste el juego');
+    clearInterval(timeInterval);
+}
+
+function showLives(){   
+    // Array de 3 espacios que llenamos con 3 corazones
+    const heartsArray = Array(lives).fill(emojis['HEART']) // [1,2,3]
+    
+    spanLives.innerHTML = ''; // limpiamos corazones
+    heartsArray.forEach(heart => spanLives.append(heart)); // adjuntar
+}
+
+function showTime(){
+    spanTime.innerText = Date.now() - timeStart;
+}
+
+window.addEventListener('keydown', moveBykeys); //keyup
+btnUp.addEventListener('click', moveUp);
+btnLeft.addEventListener('click', moveLeft);
+btnRight.addEventListener('click', moveRight);
+btnDown.addEventListener('click', moveDown);
+
+function moveBykeys(event){
+    if (event.key == 'ArrowUp') moveUp();
+    else if(event.key == 'ArrowLeft') moveLeft();
+    else if (event.key == 'ArrowRight') moveRight();
+    else if(event.key == 'ArrowDown') moveDown();
+    // console.log(event); // revisar code or key: "ArrowUp"
+}
+
+function moveUp(){
+    // console.log('arriba');
+    if(playerPosition.y - elementsSize < elementsSize){
+        console.log('OUT');
+    }else{
+        playerPosition.y -= elementsSize;
+        startGame();
+    }
+}
+function moveLeft(){
+    // console.log('izquierda');
+    if(playerPosition.x - elementsSize < elementsSize){
+        console.log('OUT');
+    }else{
+        playerPosition.x -= elementsSize;
+        startGame();
+    }
+}
+function moveRight(){
+    // console.log('derecha');
+    if(playerPosition.x + elementsSize > canvasSize){
+        console.log('OUT');
+    }else{
+        playerPosition.x += elementsSize;
+        startGame();
+    }
+}
+function moveDown(){
+    // console.log('abajo');
+    if(playerPosition.y + elementsSize > canvasSize){
+        console.log('OUT');
+    }else{
+        playerPosition.y += elementsSize;
+        startGame();
+    }
+}
+```
+
+#### Practice:
+```js
+// 1. Definir el tamaño del canvas
+// 2. Renderizar el mapa
+//  2.1 Definir el tamaño de cada emoji
+// 3. Renderizar emoji del player
+// 4. Mover emoji del player
+//  4.1 Hacer funcionar los botones de pantalla
+//  4.2 Hacer funcionar los keyboard
+// 5. Detectar colisión: player vs gift
+// 6. Detectar colisión: player vs enemy bomb
+// 7. Renderizar el siguiente mapa
+// 8. Quitar vidas 
+// 9. Mostrar vidas en pantalla
+// 10. Agregar un temporizador 
+
+// errores
+// si gano y sigo moviendo los keys el tiempo incrementa 
+// si pierdo las 3 vidas el cronometro arranca sin que se empiece a jugar
+const canvas = document.querySelector('#game');
+const game = canvas.getContext('2d');
+const btn_up = document.querySelector('#up');
+const btn_left = document.querySelector('#left');
+const btn_right = document.querySelector('#right');
+const btn_down = document.querySelector('#down');
+const span_lives = document.querySelector('#lives')
+const span_time = document.querySelector('#time')
+
+const player_position = {
+    x: undefined,
+    y: undefined,
+}
+const gift_position = {
+    x: undefined,
+    y: undefined,
+}
+
+let canvas_size;
+let elements_size;
+let level = 0;
+let lives = 3;
+let time_start;
+let time_player;
+let time_interval;
+let bomb_position = [];
+
+window.addEventListener('load', calculate_canvas_size);
+window.addEventListener('resize', calculate_canvas_size);
+window.addEventListener('keydown', move_by_keys);
+
+btn_up.addEventListener('click', move_up);
+btn_left.addEventListener('click', move_left);
+btn_right.addEventListener('click', move_right);
+btn_down.addEventListener('click', move_down);
+
+function calculate_canvas_size(){
+    window.innerHeight > window.innerWidth
+    ? canvas_size = Math.ceil(window.innerWidth * 0.8)
+    : canvas_size = Math.ceil(window.innerHeight * 0.8)
+
+    canvas.setAttribute('width', canvas_size);
+    canvas.setAttribute('height', canvas_size);
+
+    calculate_elements_size();
+}
+
+function calculate_elements_size(){
+    elements_size = Math.floor((canvas_size * 0.1)-0.5);
+    game.font = `${elements_size}px Verdana`
+    
+    const map_number = maps[level];
+    
+    if (!map_number) {
+        game_win();
+        return
+    }
+    /* if(!time_start){
+        time_start = Date.now();
+        time_interval = setInterval(show_time, 100);
+    } */
+    
+    const map = (map_number.trim().split('\n')).map(x => x.trim().split(''));
+    bomb_position = [];
+    map.forEach((row, ri) => { // element, index
+        row.forEach((col, ci) => {
+            const emoji = emojis[col];
+            const x = elements_size * ci;
+            const y = elements_size * (ri+1);
+            
+            if(col == 'O' && (!player_position.x && !player_position.y)){
+                player_position.x = x / elements_size;
+                player_position.y = y / elements_size;
+            }else if (col == 'I'){
+                gift_position.x = x / elements_size;
+                gift_position.y = y / elements_size;
+            }else if(col == 'X'){
+                bomb_position.push({
+                    x: x / elements_size,
+                    y: y / elements_size,
+                });
+            }
+
+            game.fillText(emoji, x, y);
+        });
+    });
+    move_player();
+    show_lives();
+}
+
+function move_player(){
+    const gift_collision_x = player_position.x == gift_position.x;
+    const gift_collision_y = player_position.y == gift_position.y;
+    const gift_collision = gift_collision_x && gift_collision_y
+
+    const bomb_collision = bomb_position.find(bomb => {
+        const bomb_collision_x = bomb.x == player_position.x;
+        const bomb_collision_y = bomb.y == player_position.y;
+        return bomb_collision_x && bomb_collision_y;
+    });
+
+    if(gift_collision){
+        level_win();
+    }
+    if(bomb_collision){
+        level_fail();
+    }
+
+    game.fillText(emojis['PLAYER'], player_position.x*elements_size, player_position.y*elements_size);
+}
+function level_win(){
+    level++;
+    calculate_canvas_size();
+    console.log('You win!!');
+}
+function level_fail(){
+    lives--;
+    if (lives == 0){
+        level = 0;
+        lives = 3;
+
+        time_start = undefined;
+    }
+
+    player_position.x = undefined;
+    player_position.y = undefined;
+
+    calculate_canvas_size();
+    console.log('You collided with a bomb...');
+}
+function game_win(){
+    console.log('You finished the game :)');
+    clearInterval(time_interval);
+}
+function show_lives(){
+    span_lives.innerText = emojis['HEART'].repeat(lives);
+    // const hearts_array = Array(lives).fill(emojis['HEART'])
+    
+    // span_lives.innerText = '';
+    // hearts_array.forEach(heart => span_lives.append(heart));
+}
+function calculate_time(){
+    if(!time_start){
+        time_start = Date.now();
+        time_interval = setInterval(show_time, 100)
+    }
+}
+function show_time(){
+    // tiempo transcurrido     
+    span_time.innerText = Date.now() - time_start;
+}
+
+
+function move_by_keys(event){
+    // console.log(event.key);
+    if(event.key == 'ArrowUp') move_up();
+    else if(event.key == 'ArrowLeft') move_left();
+    else if(event.key == 'ArrowRight') move_right();
+    else if(event.key == 'ArrowDown') move_down();
+}
+function move_up(){
+    if(player_position.y > 1){
+        player_position.y -= 1;
+    }
+    calculate_canvas_size();
+    calculate_time();
+    show_time();
+
+}
+function move_left(){
+    if(player_position.x > 0){
+        player_position.x -= 1;
+    }
+    calculate_canvas_size();
+    calculate_time();
+    show_time();
+
+}
+function move_right(){
+    if(player_position.x < 9){
+        player_position.x += 1;
+    }
+    calculate_canvas_size();
+    calculate_time();
+    show_time();
+}
+function move_down() {
+    if(player_position.y < 10){
+        player_position.y += 1;
+    }
+    calculate_canvas_size();
+    calculate_time();
+    show_time();
+}
+// registro de la consola
+```
+
+### 18. 
 
 #### Código de la clase
 ```js
@@ -3350,8 +3921,6 @@ function move_down(){
 #### Practice:
 ```js
 ```
-
-
 ```js
 ```
 
