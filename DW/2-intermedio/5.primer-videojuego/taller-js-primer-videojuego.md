@@ -634,7 +634,7 @@ map_row_cols: Array(10)
 ```
 
 #### Dato
-Para transformar el string de los mapas en un arreglo bidimensional, también puedes usar expresiones regulares y un match
+Para transformar el string de los mapas en un arreglo bidimensional, también puedes usar expresiones regulares y un match. 
 
 ```js
 const map = maps[0]
@@ -686,6 +686,7 @@ Luego ya es fácil. le pasamos un map y le decimos que por cada array recibido, 
 .map(a=>a.split(""))
 ```
 
+[Regular Expressions Cheat Sheet](https://cheatography.com/davechild/cheat-sheets/regular-expressions/)
 
 ### 7. Refactor del mapa de juego
 
@@ -4215,9 +4216,255 @@ function moveDown(){
 
 #### Practice:
 ```js
+// 1. Definir el tamaño del canvas
+// 2. Renderizar el mapa
+//  2.1 Definir el tamaño de cada emoji
+// 3. Renderizar emoji del player
+// 4. Mover emoji del player
+//  4.1 Hacer funcionar los botones de pantalla
+//  4.2 Hacer funcionar los keyboard
+// 5. Detectar colisión: player vs gift
+// 6. Detectar colisión: player vs enemy bomb
+// 7. Renderizar el siguiente mapa
+// 8. Quitar vidas 
+// 9. Mostrar vidas en pantalla
+// 10. Agregar un temporizador 
+// 11. Guardar record en el navegador
+//  11.1 game_win
+
+const canvas = document.querySelector('#game');
+const game = canvas.getContext('2d');
+const btn_up = document.querySelector('#up');
+const btn_left = document.querySelector('#left');
+const btn_right = document.querySelector('#right');
+const btn_down = document.querySelector('#down');
+const span_lives = document.querySelector('#lives')
+const span_time = document.querySelector('#time');
+const span_record = document.querySelector('#record');
+const p_result = document.querySelector('#result')
+
+let canvas_size;
+let elements_size;
+let level = 0;
+let lives = 3;
+let start_time;
+let time_interval; // intervals
+
+const player_position = {
+    x: undefined,
+    y: undefined,
+};
+const gift_position = {
+    x: undefined,
+    y: undefined,
+}
+
+let bomb_position = [];
+
+window.addEventListener('load', calculate_canvas_size);
+window.addEventListener('resize', calculate_canvas_size);
+window.addEventListener('keydown', move_by_keys);
+
+btn_up.addEventListener('click', move_up);
+btn_left.addEventListener('click', move_left);
+btn_right.addEventListener('click', move_right);
+btn_down.addEventListener('click', move_down);
+
+function calculate_canvas_size(){
+    window.innerHeight > window.innerWidth 
+    ? canvas_size = Math.ceil(window.innerWidth * 0.8)
+    : canvas_size = Math.ceil(window.innerHeight * 0.8)
+
+    canvas.setAttribute('width', canvas_size);
+    canvas.setAttribute('height', canvas_size);
+
+    render_map();
+}
+
+function render_map(){
+    // Calculate elements size
+    elements_size = Math.ceil((canvas_size * 0.1)-1);
+    game.font = `${elements_size}px Verdana`;
+
+    const map_number = maps[level];
+    if(!map_number){
+        game_win();
+        return
+    }
+
+    const map = (map_number.trim().split('\n')).map(x => x.trim().split(''));
+
+    bomb_position = [];
+    map.forEach((row, ri) => { // element, index
+        row.forEach((col, ci) => {
+            const emoji = emojis[col];
+            const x = elements_size * ci;
+            const y = elements_size * (ri+1);
+
+            if(col == 'O' && (!player_position.x && !player_position.y)){
+                player_position.x = x / elements_size;
+                player_position.y = y / elements_size;
+            }else if(col == 'I'){
+                gift_position.x = x / elements_size;
+                gift_position.y = y / elements_size;
+            }else if(col == 'X'){
+                bomb_position.push({
+                    x: x / elements_size,
+                    y: y / elements_size,
+                });
+            }
+
+            game.fillText(emoji, x, y);
+        });
+    });
+    render_player();
+    show_lives();
+}
+
+function render_player(){
+    const gift_collision_x = gift_position.x == player_position.x;
+    const gift_collision_y = gift_position.y == player_position.y;
+    const gift_collision = gift_collision_x && gift_collision_y;
+
+    const bomb_collision = bomb_position.find(bomb => {
+        const bomb_collision_x = bomb.x == player_position.x;
+        const bomb_collision_y = bomb.y == player_position.y;
+        return bomb_collision_x && bomb_collision_y;
+    });
+
+    if(gift_collision){
+        level_win();
+    }
+    if(bomb_collision){
+        life_counter();
+        console.log('You collided with a bomb...');
+
+    }
+
+    game.fillText(emojis['PLAYER'], player_position.x*elements_size, player_position.y*elements_size);
+}
+function level_win(){
+    level++;
+    calculate_canvas_size();
+}
+function life_counter(){
+    lives--;
+    
+    if(lives == 0){
+        level = 0;
+        lives = 3;
+
+        start_time = undefined;
+    }
+
+    player_position.x = undefined;
+    player_position.y = undefined;
+    calculate_canvas_size();
+}
+function game_win(){
+    player_position.x = undefined;
+    player_position.y = undefined;
+    game.fillText('You Win', canvas_size*0.3, canvas_size*0.5)
+    clearInterval(time_interval);
+
+    const record_time = localStorage.getItem('new_record_time');
+    const player_time = Date.now() - start_time;
+
+    if(record_time){
+        if(record_time > player_time){
+            localStorage.setItem('new_record_time', player_time);
+            p_result.innerText = 'You beat the record' //rompiste el record
+        }else{
+            p_result.innerText = "Sorry, you don't beat the record" //rompiste el record
+        }
+    }else{
+        localStorage.setItem('new_record_time', player_time);
+        p_result.innerText = "New to the game, huh! Try to beat your time..."
+    }
+}
+function show_lives(){
+    span_lives.innerText = emojis['HEART'].repeat(lives);
+    // const hearts_array = Array(lives).fill(emojis['HEART']);
+
+    // span_lives.innerText = '';
+    // hearts_array.forEach(heart => span_lives.append(heart));
+}
+function calculate_time(){
+    if(!start_time){
+        start_time = Date.now();
+        time_interval = setInterval(show_time, 100);
+
+        // Va funcion show_record();
+        show_record();
+    }
+}
+function show_time(){
+    span_time.innerText = Date.now() - start_time;
+}
+function show_record(){
+    span_record.innerText = localStorage.getItem('new_record_time');
+}
+
+function move_by_keys(event){
+    // console.log(event.key);
+    if(event.key == 'ArrowUp') move_up();
+    else if(event.key == 'ArrowLeft') move_left();
+    else if(event.key == 'ArrowRight') move_right();
+    else if(event.key == 'ArrowDown') move_down();
+}
+function move_up(){
+    if(player_position.y > 1){
+        player_position.y -= 1;
+    }
+    calculate_canvas_size();
+
+    if(level < maps.length){
+        calculate_time();
+        show_time();
+    }
+}
+function move_left(){
+    if(player_position.x > 0){
+        player_position.x -= 1;
+    }
+    calculate_canvas_size();
+
+    if(level < maps.length){
+        calculate_time();
+        show_time();
+    }
+}
+function move_right(){
+    if(player_position.x < 9){
+        player_position.x += 1;
+    }
+    calculate_canvas_size();
+    
+    if(level < maps.length){
+        calculate_time();
+        show_time();
+    }
+}
+function move_down(){
+    if(player_position.y < 10){
+        player_position.y += 1;
+    }
+    calculate_canvas_size();
+    
+    if(level < maps.length){
+        calculate_time();
+        show_time();
+    }
+}
+// registro de la consola
 ```
 
-### 20. 
+```js
+localStorage.clear()
+```
+
+## Deploy 
+### 20. Depurando errores del juego
 
 #### Código de la clase
 ```js
@@ -4225,12 +4472,378 @@ function moveDown(){
 
 #### Practice:
 ```js
+// 1. Definir el tamaño del canvas
+// 2. Renderizar el mapa
+//  2.1 Definir el tamaño de cada emoji
+// 3. Renderizar emoji del player
+// 4. Mover emoji del player
+//  4.1 Hacer funcionar los botones de pantalla
+//  4.2 Hacer funcionar los keyboard
+// 5. Detectar colisión: player vs gift
+// 6. Detectar colisión: player vs enemy bomb
+// 7. Renderizar el siguiente mapa
+// 8. Quitar vidas 
+// 9. Mostrar vidas en pantalla
+// 10. Agregar un temporizador 
+// 11. Guardar record en el navegador
+//  11.1 game_win
+
+const canvas = document.querySelector('#game');
+const game = canvas.getContext('2d');
+const btn_up = document.querySelector('#up');
+const btn_left = document.querySelector('#left');
+const btn_right = document.querySelector('#right');
+const btn_down = document.querySelector('#down');
+const span_lives = document.querySelector('#lives');
+const span_time = document.querySelector('#time');
+const span_record = document.querySelector('#record');
+const p_result = document.querySelector('#result');
+
+let canvas_size;
+let elements_size;
+let level = 0;
+let lives = 3;
+let start_time;
+let interval_time;
+
+const player_position = {
+    x: undefined,
+    y: undefined,
+};
+const gift_position = {
+    x: undefined,
+    y: undefined,
+}
+
+let bomb_position = [];
+
+window.addEventListener('load', calculate_canvas_size);
+window.addEventListener('resize', calculate_canvas_size);
+window.addEventListener('keydown', move_by_keys);
+
+btn_up.addEventListener('click', move_up);
+btn_left.addEventListener('click', move_left);
+btn_right.addEventListener('click', move_right);
+btn_down.addEventListener('click', move_down);
+
+function calculate_canvas_size(){
+    window.innerHeight > window.innerWidth
+    ? canvas_size = Math.ceil(window.innerWidth * 0.8)
+    : canvas_size = Math.ceil(window.innerHeight * 0.8)
+
+    canvas.setAttribute('width', canvas_size);
+    canvas.setAttribute('height', canvas_size);
+
+    render_mapa();
+}
+
+function render_mapa(){
+    elements_size = Math.ceil((canvas_size * 0.1)-1);
+    game.font = `${elements_size}px Verdana`
+
+    const map_number = maps[level];
+    if(!map_number){
+        game_win();
+        return;
+    }
+
+    const map = (map_number.trim().split('\n')).map(x => x.trim().split(''));
+
+    bomb_position = [];
+    map.forEach((row, ri) => { // element, index
+        row.forEach((col, ci) => {
+            const emoji = emojis[col];
+            const x = elements_size * ci;
+            const y = elements_size * (ri+1);
+            
+            if(col == 'O' && (!player_position.x && !player_position.y)){
+                player_position.x = x / elements_size;
+                player_position.y = y / elements_size;
+            }else if(col == 'I'){
+                gift_position.x = x / elements_size;
+                gift_position.y = y / elements_size;
+            }else if(col == 'X'){
+                bomb_position.push({
+                    x: x / elements_size,
+                    y: y / elements_size,
+                })
+            }
+
+
+            game.fillText(emoji, x, y);
+        });
+    });
+    render_player();
+    show_lives();
+    show_record();
+}
+
+function render_player(){
+    const gift_collision_x = gift_position.x == player_position.x;
+    const gift_collision_y = gift_position.y == player_position.y; 
+    const gift_collision = gift_collision_x && gift_collision_y;
+
+    const bomb_collision = bomb_position.find(bomb => {
+        const bomb_collision_x = bomb.x == player_position.x;
+        const bomb_collision_y = bomb.y == player_position.y;
+        return bomb_collision_x && bomb_collision_y;
+    })
+
+    if(gift_collision){
+        level_win();
+        console.log('Your passed to the next level');
+    }
+    if(bomb_collision){
+        level_fail();
+        console.log('You collided with a bomb!!');
+    }
+
+    game.fillText(emojis['PLAYER'], player_position.x*elements_size, player_position.y*elements_size);
+}
+function level_win(){
+    level++;
+    calculate_canvas_size();
+}
+function level_fail(){
+    lives--;
+    if(lives == 0){
+        level = 0;
+        lives = 3;
+    }
+
+    player_position.x = undefined;
+    player_position.y = undefined;
+    calculate_canvas_size();
+}
+function game_win(){
+    clearInterval(interval_time);
+
+    player_position.x = undefined;
+    player_position.y = undefined;
+    game.fillText('You Win 🏆', canvas_size*0.25, canvas_size*0.5);
+
+    // Tiempo anterior vs el nuevo tiempo del jugador
+    const last_record = localStorage.getItem('record_time');
+    const new_player_time = Date.now() - start_time;
+
+    if(last_record){
+        // Si el record anterior es mas alto, reemplazalo por el nuevo
+        if(last_record > new_player_time){
+            localStorage.setItem('record_time', new_player_time);
+            // Rompiste el record
+            p_result.innerText = "You beat the record 😌";
+        }else{
+            p_result.innerText = "Sorry, you don't beat the record"
+        }
+    }else{
+        localStorage.setItem('record_time', new_player_time);
+        p_result.innerText = "New to the game, huh! Try to beat your time..."
+    }
+}
+function show_lives(){
+    span_lives.innerText = emojis['HEART'].repeat(lives);
+    // Otra forma de mostrar los hearts: 
+    // const hearts_array = Array(lives).fill(emojis['HEART']);
+
+    // span_lives.innerText = '';
+    // hearts_array.forEach(heart => span_lives.append(heart));
+}
+function calculate_time(){
+    if(!start_time){
+        start_time = Date.now();
+        interval_time = setInterval(show_time, 100);
+    }
+}
+function show_time(){
+    span_time.innerText = Date.now() - start_time;
+}
+function show_record(){
+    span_record.innerText = localStorage.getItem('record_time');
+}
+
+
+function move_by_keys(event){
+    // console.log(event.key);
+    if(event.key == 'ArrowUp') move_up();
+    else if(event.key == 'ArrowLeft') move_left();
+    else if(event.key == 'ArrowRight') move_right();
+    else if(event.key == 'ArrowDown') move_down();
+}
+function move_up(){
+    if(player_position.y > 1){
+        player_position.y -= 1;
+    }
+    calculate_canvas_size();
+
+    if(level < maps.length){
+        calculate_time();
+        show_time();
+    }
+}
+function move_left(){
+    if(player_position.x > 0){
+        player_position.x -= 1;
+    }
+    calculate_canvas_size();
+}
+function move_right(){
+    if(player_position.x < 9){
+        player_position.x += 1;
+    }
+    calculate_canvas_size();
+}
+function move_down(){
+    if(player_position.y < 10){
+        player_position.y += 1;
+    }
+    calculate_canvas_size();
+}
+// registro de la consola
 ```
+
+#### Otros repos
+- [Tommy Toala Cox](https://estrelladlm.github.io/game-with-js/)
+- [Paula Inés Cudicio](https://paulaxam.github.io/taller-practico-js-videojuego/)
+- [Johan Arena](https://johandev115.github.io/KittyRun/)
+- [Alessandro Vido](https://vidoalessandro.github.io/10-Learning-NASA-vs-UFOS-Game/)
+
+### 21. Desplegando el juego a GitHub Pages
+
+[Mi repo](https://aleroses.github.io/videogame/) 
+
+### 22. Reto: reinicio del juego 
+
+`location.reload()`
+
+Botón para reiniciar el juego:
+
+```html
+<p><button id="reset_button">Reiniciar Juego</button></p>
+```
+
+JAVASCRIPT:  
+Accedo al botón y le añado que en el evento de clic ejecute una función resetGame()
+
 ```js
+const reset_button = document.querySelector('#reset_button');
+
+reset_button.addEventListener('click', resetGame);
 ```
+
+Escribo la función que reinicia el juego
+
+```js
+function resetGame() {
+    location.reload();
+}
+```
+
+### 23. Reto: timeouts de victoria o derrota
 
 ```js
 ```
 
-```js
-```
+## Examen 📌
+
+<details>
+	<summary>Haz clic para ver los resultados 👀</summary>
+	<br/>
+
+1. Tienes el siguiente bloque de código:    
+	`game.fillText('Examen', 25, 25)	`
+
+	Necesitas darle un tamaño de fuente de 40px, asignarle la fuente Helvética y darle color azul. ¿Cómo lo harías?    
+	-  📌`game.font = "40px Helvetica"; game.fillStyle = "blue"; game.fillText('Examen', 25, 25);`
+
+2. ¿Qué método de los arrays podemos usar para separar un string por cada vez que nos encontremos un salto de línea?
+
+	- 📌`string.split("\n")`
+
+3. ¿Cómo podemos leer el ancho de nuestro HTML (sin contar el inspector de elementos ni el tamaño total de la ventana del navegador, SOLO el HTML)?
+
+	- 📌 window.innerWidth
+
+4. Los ciclos anidados nos ayudan a recorrer arrays multidimensionales.
+
+	- 📌Verdadero
+
+5. ¿Qué son los arrays multidimensionales?
+
+	- 📌Arrays que por dentro tienen arrays (y estos a su vez por dentro puede que tengan más arrays… y así por cada nivel).
+
+6. Tienes una función que define el ancho y alto que necesita nuestro canvas para ser un cuadrado perfecto y tener un tamaño saludable con respecto al tamaño de nuestro HTML. Pero al hacer resize (e.j. al abrir el inspector de elementos o rotar nuestro teléfono) ese tamaño deja de funcionar.
+
+	¿Cómo podemos hacer el cálculo del tamaño de nuestro canvas, cada vez que cambie el tamaño de nuestro navegador?
+	
+	- 📌 Escuchando el evento resize de window.
+
+7. Analiza los siguientes requerimientos:
+	-   Tienes una variable size con el tamaño que deben tener los elementos del canvas.
+	-   Quieres renderizar 10 elementos.
+	-   Todos deben estar uno al lado del otro (es decir, alineados de forma horizontal) y en la parte superior del canvas.
+	¿Cuál bloque de código elegirías para cumplir estos requerimientos?  
+	
+	```js
+	game.textAlign = “end”;
+	for (let i = 1; i menor 11; i++) {
+	game.fillText(‘X’, size * i, size);
+	}
+	```   
+
+8. ¿Qué método de los strings nos permite limpiar los espacios vacíos al inicio y final de un texto?
+
+	- 📌string.trim()
+
+9. Todo el contenido de nuestro canvas se borra cuando cambiamos sus propiedades width o height.
+
+	- 📌Verdadero
+
+10. Tienes el siguiente bloque de código:    
+	`game.fillText('Examen', 50, 50) `    
+	De esta forma tu texto se está acomodando 50px a la izquierda y 50px hacia abajo.
+
+	Pero necesitas que tu texto **termine** en esas coordenadas.  
+	¿Cómo lo harías?
+
+	- 📌`game.textAlign = "end"; game.fillText('Examen', 50, 50);`
+	- Mal 📌game.textAlign(“right”); game.fillText(‘Examen’, 50, 50);
+	- `game.fillText('Examen', 50, 50); game.textAlign = "end";`
+	- `game.fillText('Examen', 50, 50); game.textAlign("right");`
+	- `game.fillText('Examen', 50 - canvas.width, 50 - canvas.height);`
+
+11. Quieres dibujar un cuadrado de 100px ubicado a 200px de la esquina superior y a 50px de la esquina de la izquierda. ¿Cómo lo harías?
+
+	- Mal📌`game.fillRect(200, 50, 100, 100)`
+	- `game.fillRect(100, 100, 200, 50)`
+	- 📌 `game.fillRect(50, 200, 100, 100)`
+	- `game.fillRect(100, 100, 50, 200)`
+  
+12. Tienes 2 archivos: maps.js y game.js. Desde game.js necesitas acceder a variables creadas desde maps.js. ¿Cómo lo harías?
+
+	- 📌Creando 2 scripts desde mi HTML y asegurándose de que maps.js se ubique ANTES que game.js.
+
+13. Necesitas un canvas cuadrado (que el ancho y alto sean exactamente iguales) y responsive (que no tenga medidas fijas, sino medidas relativas).
+
+	¿Esto es posible con estilos de CSS?
+
+	-Sí es posible. Podemos usar las propiedades width y height usando la función calc().
+	- 📌 No es posible.
+	- Mal 📌Sí es posible. Podemos usar porcentajes (o cualquier otra medida relativa) en las propiedades width y height, pero asignando un valor fijo en las propiedades min-width, max-width, min-height y max-height. De esta forma siempre será un cuadrado responsive.
+
+14. Ya creaste tu selector desde JavaScript para la etiqueta canvas, pero todavía no funcionan métodos como fillText y fillRect para dibujar.
+
+	```js
+	const canvas = document.querySelector('canvas') 
+	canvas.fillRect(0,50,100,100)
+	```
+
+	¿Qué nos hace falta?
+
+	- 📌Hace falta crear el contexto 2D. Para eso creamos una variable (e.j. game) llamando al método getContext con el argumento 2d. Y desde esa variable ahora sí podemos ejecutar los métodos para dibujar sobre canvas.
+
+15. Cuando trabajamos con contextos 2D en canvas tenemos un eje X y otro eje Y. ¿Cuál de estos ejes nos permite movernos verticalmente?
+
+	- 📌Eje Y
+
+</details>
+
