@@ -116,10 +116,8 @@ Los números de ítems deben coincidir con la imagen.
 
 > ![Challenge One](https://i.postimg.cc/vBTyxdcj/3-challenge.jpg)
 
-
-```
 ------------ RETO 01 -------------
-HTML
+```html
 <body>
     <div class="contenedor">
         <div class="item">1</div>
@@ -130,10 +128,9 @@ HTML
         <div class="item">6</div>
     </div>
 </body>
+```
 
---------------------------------
-
-CSS
+```css
 .contenedor {
     display: grid;
     grid-template-columns: 150px 150px;
@@ -154,6 +151,7 @@ CSS
     font-size: 4rem;
 } 
 ```
+
 > [CodePen Reto01](https://codepen.io/Meowth01/pen/GRxvqgd)
 
 
@@ -206,9 +204,8 @@ Crear un grid de 2x2 donde los ítems se ubiquen en la esquina inferior derecha 
 
 > ![Challenge Two](https://i.postimg.cc/NfNLhdft/4-challenge-two.jpg)
 
-```
----------------- RETO 02 ----------------
-HTML
+------------ RETO 02 -------------
+```html
 <body>
     <div class="contenedor">
         <div class="item item-1">1</div>
@@ -217,9 +214,9 @@ HTML
         <div class="item item-4">4</div>
     </div>
 </body>
+```
 
-----------------------------------------
-CSS
+```css
 .contenedor {
     display: grid;
     gap: 15px;
@@ -306,9 +303,8 @@ Arma la grilla de la imagen.
 
 > ![Challenge Three](https://i.postimg.cc/QNm9JB8y/5-challenge-three.jpg)
 
-```
---------------- RETO 03 ----------------
-HTML
+------------ RETO 03 -------------
+```html
 <body>
     <div class="contenedor">
         <div class="item item-1">1</div>
@@ -321,8 +317,9 @@ HTML
     </div>
 </body>
 
-----------------------------------------
-CSS
+```
+
+```css
 .contenedor {
     display: grid;
     grid-template-columns: 150px 150px 150px;
@@ -430,9 +427,8 @@ Fit (adaptar) ensancha las columnas para que ocupen todo el espacio del contened
 
 > ![Proyecto](https://i.postimg.cc/Nfg5xwkF/8-reto.png)
 
-```
 ----------- SOLUCIÓN PREVIA ---------------
-HTML
+```html
 <body>
     <header>
         <section class="header__container">
@@ -466,10 +462,9 @@ HTML
     </footer>
 </body>
 </html>
+```
 
-----
-
-CSS
+```css
 * {
     box-sizing: border-box;
     margin: 0;
@@ -664,9 +659,8 @@ footer .footer__img5 {
 
 [Extensión ColorZilla](https://chrome.google.com/webstore/detail/colorzilla/bhlhnicpbhignbdhedgjhgdocnmhomnp?hl=es)
 
-```
 ------------- Header ---------------
-HTML
+```html
 <body>
     <main>
         <section class="hero">
@@ -680,9 +674,9 @@ HTML
     </main>
 </body>
 
-----
+```
 
-CSS
+```css
 * {
     font-family: 'Roboto', sans-serif;
 }
@@ -707,7 +701,6 @@ main {
 .info {
     align-self: center;
 }
-
 ```
 
 
@@ -716,9 +709,8 @@ main {
 
 > ![Main](https://i.postimg.cc/x1CJcVRJ/10-main.jpg)  
 
-```
 ------------- MAIN ---------------
-HTML
+```html
 <body>
     <main>
         <section class="dishes">
@@ -738,10 +730,9 @@ HTML
         </section>
     </main>
 </body>
+```
 
-----
-
-CSS
+```css
 .dishes {
     margin: 100px 0;
 }
@@ -771,7 +762,6 @@ CSS
 .dishes-item__big {
     grid-area: 1 / 1 / 3 / 3;
 }
-
 ```
 
 
@@ -780,9 +770,8 @@ CSS
 
 > ![Footer](https://i.postimg.cc/m2TFWH1S/11-footer.jpg)  
 
-```
 ------------- FOOTER ---------------
-HTML
+```html
 <body>
     <main>
         <section class="dishes">
@@ -819,9 +808,9 @@ HTML
     </main>
 </body>
 
-----
+```
 
-CSS
+```css
 .menu {
     margin-bottom: 200px;
 }
