@@ -435,7 +435,217 @@ En este caso, creamos otra instancia de la clase "Persona" con los valores "Mar�
 En resumen, una instancia en JavaScript es un objeto creado a partir de una función constructora o utilizando la sintaxis de clase. Cada instancia es un objeto único y específico con sus propios valores para los atributos y puede tener su propio comportamiento mediante la definición de sus propios métodos.
 
 
+### 5. Objetos literales y prototipos en JavaScript
 
+#### Código de la clase  
 
-Fernando Quinteros Gutierrez
-Anfernee Valera
+```js
+// Objeto literal
+const natalia = {
+    name: "Natalia",
+    age: 20,
+    approved_courses: [
+        "Course 01",
+        "Course 02",
+    ],
+
+    // Metodo función
+    approved_course(new_course){ //approved_course: function()
+        this.approved_courses.push(new_course);
+    },
+};
+
+// Modificar objeto literal 
+natalia.name = "Mariana";
+natalia.age += 1;
+
+// Hacer que Natalia apruebe otro curso
+// Metodo 01: Ver en consola
+natalia.approved_courses.push("Course 03");
+natalia
+
+// Metodo 02: Ver en consola 
+natalia.approved_course
+natalia.approved_course('Course 04');
+natalia
+```
+
+```js
+// Prototipo
+function  Student(name, age, approved_courses){
+    this.name = name;
+    this.age = age;
+    this.approved_courses = approved_courses;
+    // No es buena practica
+    // this.approved_course = function(new_course){
+    //     this.approved_courses.push(new_course);
+    // }
+}
+
+// Crear método 
+Student.prototype.approved_course = function(new_course){
+    this.approved_courses.push(new_course);
+}
+
+const michael = new Student(
+    "Michael Connor",
+    15,
+    [
+        'Course 01',
+        'Course 02',
+    ],
+);
+
+// En la consola 
+michael
+// Si revisamos __proto__ vemos el método que creamos (approved_course)
+michael.approved_course('Course 03')
+```
+
+#### 🎉👨‍👩‍👧‍👧 JavaScript visualizado: herencia prototípica
+
+¿Alguna vez se preguntó por qué podemos usar métodos integrados como `.length`, `.split()`, `.join()`en nuestras cadenas, arreglos u objetos? Nunca los especificamos explícitamente, ¿de dónde vienen? Ahora no digas "Es JavaScript jajaja nadie lo sabe, es mágico 🧚🏻‍♂️", en realidad se debe a algo llamado _herencia prototípica_ . ¡Es bastante impresionante, y lo usas más a menudo de lo que crees!
+
+A menudo tenemos que crear muchos objetos del mismo tipo. ¡Digamos que tenemos un sitio web donde la gente puede buscar perros!
+
+¡Para cada perro, necesitamos un objeto que represente a ese perro! 🐕 En lugar de escribir un nuevo objeto cada vez, usaré una función constructora (sé lo que estás pensando, ¡cubriré las clases de ES6 más adelante!) a partir de la cual podemos crear instancias de Dog usando la palabra clave ( **esta** publicación `new`es Sin embargo, no se trata realmente de explicar las funciones del constructor, así que no hablaré demasiado sobre eso).
+
+¡Cada perro tiene un nombre, una raza, un color y una función para ladrar!
+
+```js
+function Dog(name, breed, color){
+    this.name = name;
+    this.breed = breed;
+    this.color = color;
+    this.bark = function(){
+        return 'Woof!'
+    };
+};
+```
+
+Cuando creamos la `Dog`función constructora, no fue el único objeto que creamos. ¡Automáticamente, también creamos otro objeto, llamado _prototipo_ ! De forma predeterminada, este objeto contiene una propiedad _constructora_`Dog` , que en este caso es simplemente una referencia a la función constructora original.
+
+![](https://i.postimg.cc/B6Mz6NS6/05-1-herencia.gif)
+
+La `prototype`propiedad en la función constructora Dog no es enumerable, lo que significa que no aparece cuando intentamos acceder a las propiedades de los objetos. ¡Pero todavía está allí!
+
+Bien, entonces... ¿Por qué tenemos este objeto _de propiedad ?_ Primero, creemos algunos perros que queremos mostrar. Para mantenerlo simple, los llamaré `dog1`y `dog2`. `dog1`es Daisy, una linda labrador negra! `dog2`es Jack, el intrépido Jack Russell blanco 😎
+
+```js
+const dog1 = new Dog(
+    "Daisy",
+    "Labrador",
+    "Black",
+);
+
+const dog2 = new Dog(
+    "Jack",
+    "Jack Russell",
+    "White",
+);
+```
+
+¡Iniciemos sesión `dog1`en la consola y expandamos sus propiedades!
+
+![](https://i.postimg.cc/PrtRDgpq/05-2-herencia.gif)
+
+Vemos las propiedades que agregamos, como `name`, `breed`, `color`y `bark`.. pero ¡qué `__proto__`propiedad! No es enumerable, lo que significa que normalmente no aparece cuando tratamos de obtener las propiedades del objeto. ¡Vamos a expandirlo! 😃
+
+![](https://i.postimg.cc/QN5F7PLv/05-3-herencia.gif)
+
+Woah se ve exactamente como el `Dog.prototype`objeto! Bueno, adivina qué, `__proto__`es una referencia al `Dog.prototype`objeto. De esto se trata **la herencia de prototipos** : ¡cada instancia del constructor tiene acceso al prototipo del constructor! 🤯
+
+![](https://i.postimg.cc/BvgdRJ1R/05-4-herencia.gif)
+
+Entonces, ¿por qué es genial? A veces tenemos propiedades que comparten todas las instancias. Por ejemplo, la `bark`función en este caso: es exactamente la misma para cada instancia, ¿por qué crear una nueva función cada vez que creamos un nuevo perro, consumiendo memoria cada vez? ¡En cambio, podemos agregarlo al `Dog.prototype`objeto! 🥳
+
+![](https://i.postimg.cc/Gmc2Dmr5/05-5-herencia.gif)
+
+Cada vez que intentamos acceder a una propiedad en la instancia, el motor primero busca localmente para ver si la propiedad está definida en el objeto mismo. Sin embargo, si no puede encontrar la propiedad a la que estamos tratando de acceder, ¡el motor **recorre la cadena de prototipos** a través de la `__proto__`propiedad!
+
+![](https://i.postimg.cc/8zKv40pD/05-6-herencia.gif)
+
+¡Este es solo un paso, pero puede contener varios pasos! Si siguió adelante, es posible que haya notado que no incluí una propiedad cuando expandí el `__proto__`objeto que muestra `Dog.prototype`. `Dog.prototype`en sí mismo es un objeto, lo que significa que en realidad es una instancia del `Object`constructor. Eso significa que `Dog.prototype`también contiene una `__proto__`propiedad, que es una referencia a `Object.prototype`!
+
+![](https://i.postimg.cc/gkKtzmDD/05-7-herencia.gif)
+
+Finalmente, tenemos una respuesta sobre el origen de todos los métodos incorporados: ¡están en la cadena de prototipos! 😃
+
+Por ejemplo el `.toString()`método. ¿Está definido localmente en el `dog1`objeto? Hmm no ... ¿Está definido en el objeto `dog1.__proto__`al que se hace referencia, a saber `Dog.prototype`? ¡También no! ¿Está definido en el objeto `Dog.prototype.__proto__`al que hace referencia, a saber `Object.prototype`? ¡Sí! 🙌🏼
+
+![](https://i.postimg.cc/FK3633vy/05-8-herencia.gif)
+
+Ahora, acabamos de usar funciones constructoras ( `function Dog() { ... }`), que aún es JavaScript válido. Sin embargo, ES6 en realidad introdujo una sintaxis más sencilla para las funciones de construcción y para trabajar con prototipos: ¡clases!
+
+> Las clases son solo **azúcar sintáctica** para funciones constructoras. ¡Todo sigue funcionando de la misma manera!
+
+Escribimos clases con la `class`palabra clave. ¡Una clase tiene una `constructor`función, que es básicamente la función constructora que escribimos en la sintaxis de ES5! Las propiedades que queremos añadir al prototipo, se definen en el propio cuerpo de la clase.
+
+![](https://i.postimg.cc/zXL1td15/05-9-herencia.gif)
+
+Otra gran cosa acerca de las clases es que podemos **extender** fácilmente otras clases.
+
+¡Diga que queremos mostrar varios perros de la misma raza, a saber, chihuahuas! Un chihuahua es (de alguna manera... 😐) todavía un perro. Para simplificar este ejemplo, solo pasaré la `name`propiedad a la clase Perro por ahora en lugar de `name`, `breed`y `color`. Pero estos chihuahuas también pueden hacer algo especial, tienen un pequeño ladrido. En vez de decir `Woof!`, un chihuahua también puede decir `Small woof!`🐕
+
+En una clase extendida, podemos acceder al constructor de la clase principal usando la `super`palabra clave. Los argumentos que espera el constructor de la clase padre, tenemos que pasarlos a `super`: `name`en este caso.
+
+```js
+class Dog {
+    constructor(name){
+        this.name = name
+    }
+
+    bark(){
+        return 'Woof!'
+    }
+}
+
+class Chihuahua extends Dog {
+    constructor(name){
+        super(name)
+    }
+
+    smallBark(){
+        return 'Small woof!'
+    }
+}
+
+const myPet = new Chihuahua('Max');
+```
+
+`myPet`tiene acceso tanto a `Chihuahua.prototype`and `Dog.prototype`(y automáticamente `Object.prototype`, ya que `Dog.prototype`es un objeto).
+
+![](https://i.postimg.cc/SQW7p47x/05-10-herencia.gif)
+
+Como `Chihuahua.prototype`tiene la `smallBark`función, y `Dog.prototype`tiene la `bark`función, podemos acceder a ambos `smallBark`y `bark`en `myPet`!
+
+Ahora, como puede imaginar, la cadena de prototipos no continúa para siempre. Eventualmente hay un objeto cuyo prototipo es igual a `null`: ¡el `Object.prototype`objeto en este caso! Si intentamos acceder a una propiedad que no se encuentra localmente o en la cadena de prototipos, `undefined`se devuelve.
+
+![](https://i.postimg.cc/yd76g055/05-11-herencia.gif)
+
+---
+
+Aunque aquí expliqué todo con funciones y clases de constructor, otra forma de agregar prototipos a objetos es con el `Object.create`método. Con este método, creamos un nuevo objeto y podemos especificar exactamente cuál debería ser el prototipo de ese objeto. 💪🏼
+
+Hacemos esto, pasando un _objeto existente_ como argumento al `Object.create`método. ¡Ese objeto es el prototipo del objeto que creamos!
+
+```js
+const person = {
+    name: 'Lydia',
+    age: 21
+}
+
+const me = Object.create(person);
+```
+
+Vamos a registrar el `me`objeto que acabamos de crear.
+
+![](https://i.postimg.cc/TP1MZQzT/05-12-herencia.gif)
+
+No agregamos ninguna propiedad al objeto, ¡simplemente solo contiene la propiedad `me`no enumerable ! `__proto__`La `__proto__`propiedad contiene una referencia al objeto que definimos como prototipo: el `person`objeto, que tiene una `name`y una `age`propiedad. Dado que el `person`objeto es un objeto, el valor de la `__proto__`propiedad en el `person`objeto es `Object.prototype`(pero para que sea un poco más fácil de leer, ¡no expandí esa propiedad en el gif!)
+
+---
+
+Con suerte, ahora comprende por qué la herencia de prototipos es una característica tan importante en el maravilloso mundo de JavaScript. Si tiene preguntas, ¡no dude en comunicarse conmigo! 😊
+
+[Ver articulo](https://dev.to/lydiahallie/javascript-visualized-prototypal-inheritance-47co)
