@@ -4806,17 +4806,10 @@ function resetGame() {
 	¿Cómo lo harías?
 
 	- 📌`game.textAlign = "end"; game.fillText('Examen', 50, 50);`
-	- Mal 📌game.textAlign(“right”); game.fillText(‘Examen’, 50, 50);
-	- `game.fillText('Examen', 50, 50); game.textAlign = "end";`
-	- `game.fillText('Examen', 50, 50); game.textAlign("right");`
-	- `game.fillText('Examen', 50 - canvas.width, 50 - canvas.height);`
 
 11. Quieres dibujar un cuadrado de 100px ubicado a 200px de la esquina superior y a 50px de la esquina de la izquierda. ¿Cómo lo harías?
 
-	- Mal📌`game.fillRect(200, 50, 100, 100)`
-	- `game.fillRect(100, 100, 200, 50)`
 	- 📌 `game.fillRect(50, 200, 100, 100)`
-	- `game.fillRect(100, 100, 50, 200)`
   
 12. Tienes 2 archivos: maps.js y game.js. Desde game.js necesitas acceder a variables creadas desde maps.js. ¿Cómo lo harías?
 
@@ -4824,11 +4817,9 @@ function resetGame() {
 
 13. Necesitas un canvas cuadrado (que el ancho y alto sean exactamente iguales) y responsive (que no tenga medidas fijas, sino medidas relativas).
 
-	¿Esto es posible con estilos de CSS?
+	¿Esto es posible con estilos de CSS?    
 
-	-Sí es posible. Podemos usar las propiedades width y height usando la función calc().
 	- 📌 No es posible.
-	- Mal 📌Sí es posible. Podemos usar porcentajes (o cualquier otra medida relativa) en las propiedades width y height, pero asignando un valor fijo en las propiedades min-width, max-width, min-height y max-height. De esta forma siempre será un cuadrado responsive.
 
 14. Ya creaste tu selector desde JavaScript para la etiqueta canvas, pero todavía no funcionan métodos como fillText y fillRect para dibujar.
 
