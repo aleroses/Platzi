@@ -649,3 +649,132 @@ No agregamos ninguna propiedad al objeto, ¡simplemente solo contiene la propie
 Con suerte, ahora comprende por qué la herencia de prototipos es una característica tan importante en el maravilloso mundo de JavaScript. Si tiene preguntas, ¡no dude en comunicarse conmigo! 😊
 
 [Ver articulo](https://dev.to/lydiahallie/javascript-visualized-prototypal-inheritance-47co)
+
+### 6. Clases en JavaScript 
+
+Una clase en JavaScript no es más que una sintaxis en algunos casos más cómoda para crear prototipos. Está basada en otros lenguajes los cuales tienen programación orientada a objetos mediante clases.
+
+```js
+// Prototipos con la sintaxis de clases  
+class Student_two{
+    constructor(name, age, approved_courses){
+        this.name = name;
+        this.age = age;
+        this.approved_courses = approved_courses;
+    }
+
+    approved_course(new_course){
+        this.approved_courses.push(new_course);
+    }
+}
+
+const george = new Student_two(
+    'George Reece',
+    28,
+    [
+        "Course 01",
+        "Course 02",
+    ],
+);
+
+// En la consola 
+Student 
+Student_two
+george
+george.approved_course('Course 03');
+george.approved_courses
+```
+
+```js
+// Prototipos con la sintaxis de clases con { }
+class Student_three{
+    constructor({
+        name,
+        age,
+        approved_courses = [],
+        email,
+        social_media,
+    }){
+        this.name = name;
+        this.age = age;
+        this.approved_courses = approved_courses;
+    }
+
+    approved_course(new_course){
+        this.approved_courses.push(new_course);
+    }
+}
+
+const alexander = new Student_three({
+    name: 'Alexander',
+    age: 28,
+    /* approved_courses: [
+        'Course 01',
+        'Course 02'
+    ] */
+});
+
+// En la consola 
+alexander
+```
+
+Usando { } el orden de los argumentos ingresados no importa, incluso pueden estar vacíos. 
+
+#### Tips 
+`[[Prototype]]` en lugar de `__proto__`   
+La capacidad de visualizar `[[Prototype]]` en lugar de `__proto__` en la consola del navegador depende de la implementación específica del motor JavaScript utilizado por el navegador y puede variar entre las diferentes versiones que este use.
+
+Atajos de VSC    
+- **Mover una línea hacia arriba y abajo**  
+	- alt + flecha hacia arriba (o flecha hacia abajo)
+- **Copiar una línea hacia arriba o abajo**  
+	- alt + shift + flecha hacia arriba (o flecha hacia abajo)
+- **Selección multiple**  
+	- alt + ctrl + flecha (arriba o abajo)
+- **Borrar una línea completa a la vez**  
+	- shift + supr
+
+
+### 7. Ventajas de la programación orientada a objetos
+
+Trabajar con objetos literales no es practico cuando se tiene mucha información. Imagina el siguiente ejemplo pero para miles de usuarios, nadie quiere perder tanto tiempo haciendo esto. 
+
+```js
+// Esto no es escalable 
+const juan_one = {
+    name: 'Juan Despues de Cristo',
+    username: 'JuanDC',
+    points: 100,
+    social_media: {
+        twitter: 'juan_dc',
+        instagram: 'juan_dc',
+        facebook: undefined,
+    },
+    approved_courses: [
+        'Courso 01',
+        'Course 02',
+    ],
+    learning_pat: [
+        {
+            name: 'School 01',
+            courses: [
+                'Course 01',
+                'Course 02',
+                'Course 03',
+            ],
+        },
+        {
+            name: 'School 02',
+
+        },
+    ]
+};
+```
+
+Para esto llega la POO. 
+
+
+
+
+
+// si dentro de un objeto la clave valor tienen el mismo nombre, solo basta con escribirlo una vez.
