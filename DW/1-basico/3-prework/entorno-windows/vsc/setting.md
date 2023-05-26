@@ -10,7 +10,7 @@
 ```json
 {
     "workbench.colorTheme": "🏴 blackbird → midnight",
-    "terminal.integrated.defaultProfile.windows": "Git Bash", 👈👀
+    "terminal.integrated.defaultProfile.windows": "Git Bash", //👈👀
 }
 ```
 
@@ -22,8 +22,8 @@
 ```json
 {
     "workbench.colorTheme": "🏴 blackbird → midnight",
-    "terminal.integrated.defaultProfile.windows": "Git Bash", 👈👀
-    "editor.minimap.enabled": false, 👈👀
+    "terminal.integrated.defaultProfile.windows": "Git Bash",
+    "editor.minimap.enabled": false, //👈👀
 }
 ```
 
@@ -34,12 +34,25 @@
     "workbench.colorTheme": "🏴 blackbird → midnight",
     "terminal.integrated.defaultProfile.windows": "Git Bash", 
     "editor.minimap.enabled": false, 
-    "editor.scrollbar.vertical": "auto", 👈👀
-    "editor.overviewRulerBorder": false, 👈👀
-    "editor.hideCursorInOverviewRuler": true, 👈👀
+    "editor.scrollbar.vertical": "auto", //👈👀
+    "editor.overviewRulerBorder": false, //👈👀
+    "editor.hideCursorInOverviewRuler": true, //👈👀
 }
 ```
 
+## Ocultar Debugging 🔴
+
+```js
+{
+    "workbench.colorTheme": "🏴 blackbird → midnight",
+    "terminal.integrated.defaultProfile.windows": "Git Bash", 
+    "editor.minimap.enabled": false,
+    "editor.scrollbar.vertical": "auto",
+    "editor.overviewRulerBorder": false,
+    "editor.hideCursorInOverviewRuler": true,
+    "editor.glyphMargin": false, //👈👀
+}
+```
 
 ## Ocultar barra de actividades 
 
@@ -51,7 +64,8 @@
     "editor.scrollbar.vertical": "auto", 
     "editor.overviewRulerBorder": false, 
     "editor.hideCursorInOverviewRuler": true, 
-    "workbench.activityBar.visible": false, 👈👀
+    "editor.glyphMargin": false,
+    "workbench.activityBar.visible": false, //👈👀
 }
 ```
 

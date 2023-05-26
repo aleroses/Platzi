@@ -891,6 +891,147 @@ alissa.approved_course('Course 02');
 alissa.approved_course('Course 05');
 ```
 
+Si dentro de un objeto la clave valor tienen el mismo nombre, solo basta con escribirlo una vez.
 
+### 8. Playgrounds: Manejo de clases
 
-// si dentro de un objeto la clave valor tienen el mismo nombre, solo basta con escribirlo una vez.
+Dadas la siguientes clases:
+
+Clase Banda con las propiedades:
+
+- nombre - string
+- géneros - Array
+- integrantes - Array
+
+Crea una clase llamada "Integrante" con las propiedades:
+
+- nombre - string
+- instrumento - string
+
+Escribe la lógica para agregar integrantes a la clase Banda en la función agregar Integrante. En esta función no debe dejar agregar más de un baterista, es decir hay que validar que solo se pueda agregar un integrante con instrumento "Batería".
+
+La solución debería tener un input y output como los siguientes:
+
+Input
+
+```js
+  const data = {
+    nombre: "Los Jacks",
+    generos: ["rock", "pop", "post-punk"],
+    integrantes: [],
+  }
+  const banda = new Banda(data)
+  banda.agregarIntegrante(new Integrante({ nombre: "Erik", instrumento: "Guitarra" }))
+  banda.agregarIntegrante(new Integrante({ nombre: "Paul", instrumento: "Bateria" }))
+```
+
+Output
+
+```js
+{
+  "nombre":"Los Jacks",
+  "generos":["rock","pop","post-punk"],
+  "integrantes":[
+    {"nombre":"Erik","instrumento":"Guitarra"},
+    {"nombre":"Paul","instrumento":"Bateria"}
+  ]}
+```
+
+### Solución 01: Hecho para Platzi 
+
+```js
+class Banda {
+    constructor({
+        nombre,
+        generos = [],
+    }) {
+        this.nombre = nombre;
+        this.generos = generos;
+        this.integrantes = [];
+    }
+    agregarIntegrante(integranteNuevo) {
+        const drums_found = this.integrantes.find(x => x.instrumento == 'Bateria');
+
+        if (integranteNuevo.instrumento == 'Bateria' && drums_found) {
+        console.log('Ya existe baterista');
+        } else {
+        this.integrantes.push(integranteNuevo);
+        }
+    }
+}
+
+//Crear clase Integrante
+class Integrante {
+    constructor({ nombre, instrumento }) {
+        this.nombre = nombre;
+        this.instrumento = instrumento;
+    }
+}
+
+const data = {
+    nombre: "Los Jacks",
+    generos: ["rock", "pop", "post-punk"],
+    integrantes: [],
+}
+const banda = new Banda(data)
+banda.agregarIntegrante(new Integrante({ nombre: "Erik", instrumento: "Guitarra" }))
+banda.agregarIntegrante(new Integrante({ nombre: "Paul", instrumento: "Bateria" }))
+
+export {
+    Banda,
+    Integrante,
+}
+```
+
+### Solución 02 
+
+```js
+class Band{
+    constructor({
+        name,
+        genres = [],
+        /* members = [], */
+    }){
+        this.name = name;
+        this.genres = genres;
+        this.members = [];
+    }
+
+    new_member(member){
+        const drums_found = this.members.find(x => x.instrument == 'drums')
+
+        if(member.instrument == 'drums' &&  drums_found){
+            console.log("There is already a band member who plays the drums.")
+        }else{
+            this.members.push(member);
+        }
+    }
+}
+
+class Members{
+    constructor({name, instrument}){
+        this.name = name;
+        this.instrument = instrument;
+    }
+}
+
+const band_one = new Band({
+    name: 'Band One',
+    genres: [
+        'Indie Rock',
+        'Pop Rock',
+    ],
+});
+
+const band_two = new Band({
+    name: 'Band Two',
+    genres: [
+        'Electronics',
+        'Trance',
+    ],
+});
+
+band_one.new_member(new Members({name: 'Ale', instrument: 'piano'}));
+band_one.new_member(new Members({name: 'Iva', instrument: 'drums'}));
+band_one.new_member(new Members({name: 'Ully', instrument: 'drums'})); 
+```
