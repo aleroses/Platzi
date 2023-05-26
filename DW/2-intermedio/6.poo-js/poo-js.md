@@ -1035,3 +1035,55 @@ band_one.new_member(new Members({name: 'Ale', instrument: 'piano'}));
 band_one.new_member(new Members({name: 'Iva', instrument: 'drums'}));
 band_one.new_member(new Members({name: 'Ully', instrument: 'drums'})); 
 ```
+
+#### Método Every()
+
+El método `every()` en JavaScript se utiliza en arrays para comprobar si todos los elementos del array cumplen con una condición específica. La sintaxis del método `every()` es la siguiente:
+
+```javascript
+array.every(function(currentValue, index, arr), thisValue)
+```
+
+Donde:
+
+- `array` es el array en el que se desea comprobar si todos los elementos cumplen con la condición.
+- `currentValue` es el valor del elemento actual que se está evaluando en el array.
+- `index` es el índice del elemento actual que se está evaluando en el array.
+- `arr` es el array en el que se está comprobando si todos los elementos cumplen con la condición.
+- `thisValue` es un valor opcional que se utiliza como `this` dentro de la función que se ejecuta en cada elemento del array.
+
+La función que se pasa como argumento al método `every()` se ejecuta en cada elemento del array y debe devolver un valor booleano. Si la función devuelve `true` para todos los elementos del array, el método `every()` devuelve `true`. Si la función devuelve `false` para al menos un elemento del array, el método `every()` devuelve `false`.
+
+Aquí hay un ejemplo de cómo usar el método `every()` para comprobar si todos los elementos de un array de números son mayores que 0:
+
+```javascript
+constnumeros = [2, 4, 6, 8];
+
+const todosMayoresQueCero = numeros.every(function(numero) {
+  return numero > 0;
+});
+
+console.log(todosMayoresQueCero); // true
+```
+
+En este ejemplo, el método `every()` comprueba si todos los elementos del array `numeros` son mayores que 0. La función que se pasa como argumento al método `every()` recibe cada elemento del array como un parámetro (`numero` en este caso) y devuelve `true` si el número es mayor que 0. Como todos los elementos del array son mayores que 0, el método `every()` devuelve `true`.
+
+Otro ejemplo podría ser comprobar si todos los elementos de un array de objetos tienen una propiedad específica con un valor determinado:
+
+```javascript
+const personas = [
+  { nombre: 'Juan', edad: 25 },
+  { nombre: 'María', edad: 30 },
+  { nombre: 'Pedro', edad: 20 }
+];
+
+const todosMayoresDeEdad = personas.every(function(persona) {
+  return persona.edad >= 18;
+});
+
+console.log(todosMayoresDeEdad); // true
+```
+
+En este ejemplo, el método `every()` comprueba si todos los elementos del array `personas` tienen una propiedad `edad` con un valor mayor o igual a 18. La función que sepasa como argumento al método `every()` recibe cada elemento del array como un parámetro (`persona` en este caso) y devuelve `true` si la edad de la persona es mayor o igual a 18. Como todos los elementos del array cumplen con esta condición, el método `every()` devuelve `true`.
+
+En resumen, el método `every()` se utiliza en JavaScript para comprobar si todos los elementos de un array cumplen con una condición específica. Si la función que se pasa como argumento al método `every()` devuelve `true` para todos los elementos del array, el método `every()` devuelve `true`. Si la función devuelve `false` para al menos un elemento del array, el método `every()` devuelve `false`.
