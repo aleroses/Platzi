@@ -17,6 +17,16 @@
 - Ver View
 - Terminal 
 
+## Mover a la derecha barra de actividades
+
+```js
+{
+    "workbench.colorTheme": "🏴 blackbird → midnight",
+    "terminal.integrated.defaultProfile.windows": "Git Bash", 
+    "workbench.sideBar.location": "right", //👈👀
+}
+```
+
 ## Eliminar Mini map 
 
 ```json

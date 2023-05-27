@@ -1,8 +1,72 @@
-class Band{
+class Band {
+    constructor({
+        name,
+        genre = [],
+    }){
+        this.name = name;
+        this.genre = genre;
+        this.members = [];
+    }
+
+    new_member(member){
+        const drums_found = this.members.find(x => x.instrument == 'Drums');
+
+        if(member.instrument == 'Drums' && drums_found){
+            console.log(`There is already a band member who plays the drums. It's ${drums_found.name}`);
+        }else{
+            this.members.push(member);
+        }
+    }
+}
+
+class Member{
+    constructor({name, instrument}){
+        this.name = name;
+        this.instrument = instrument;
+    }
+}
+
+const band_one = new Band({
+    name: 'Band One',
+    genre: [
+        'Pop Rock',
+        'Punk Rock'
+    ]
+})
+
+band_one.new_member(new Member({ name: 'Simone Simons', instrument: 'Piano' }));
+band_one.new_member(new Member({ name: 'Alissa White', instrument: 'Drums'}));
+band_one.new_member(new Member({ name: 'Ale Ghost', instrument: 'Drums' }));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* class Band{
     constructor({
         name,
         genres = [],
-        /* members = [], */
+        // members = [],
     }){
         this.name = name;
         this.genres = genres;
@@ -46,7 +110,7 @@ const band_two = new Band({
 
 band_one.new_member(new Members({name: 'Ale', instrument: 'piano'}));
 band_one.new_member(new Members({name: 'Iva', instrument: 'drums'}));
-band_one.new_member(new Members({name: 'Ully', instrument: 'drums'})); 
+band_one.new_member(new Members({name: 'Ully', instrument: 'drums'}));  */
 
 
 

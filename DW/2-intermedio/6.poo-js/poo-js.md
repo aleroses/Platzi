@@ -1001,7 +1001,7 @@ class Band{
         const drums_found = this.members.find(x => x.instrument == 'drums')
 
         if(member.instrument == 'drums' &&  drums_found){
-            console.log("There is already a band member who plays the drums.")
+            console.log(`There is already a band member who plays the drums. It's ${drums_found.name}`);
         }else{
             this.members.push(member);
         }
@@ -1087,3 +1087,260 @@ console.log(todosMayoresDeEdad); // true
 En este ejemplo, el método `every()` comprueba si todos los elementos del array `personas` tienen una propiedad `edad` con un valor mayor o igual a 18. La función que sepasa como argumento al método `every()` recibe cada elemento del array como un parámetro (`persona` en este caso) y devuelve `true` si la edad de la persona es mayor o igual a 18. Como todos los elementos del array cumplen con esta condición, el método `every()` devuelve `true`.
 
 En resumen, el método `every()` se utiliza en JavaScript para comprobar si todos los elementos de un array cumplen con una condición específica. Si la función que se pasa como argumento al método `every()` devuelve `true` para todos los elementos del array, el método `every()` devuelve `true`. Si la función devuelve `false` para al menos un elemento del array, el método `every()` devuelve `false`.
+
+
+## Pilares de la POO: abstracción y polimorfismo
+
+### 9. Qué es abstracción 
+
+La abstracción es un concepto que se refiere a la capacidad de representar objetos del mundo real en términos de sus características y comportamientos esenciales, y ocultar los detalles complejos de su implementación. La abstracción permite crear clases y objetos que encapsulan datos y comportamientos relacionados, y proporcionan una interfaz clara y simplificada para interactuar con ellos.
+
+Ejemplos de abstracción:
+
+1. Un objeto "Coche" que tiene propiedades como "marca", "modelo", "color", "velocidad", "aceleración", "frenado", etc. 
+
+2. Una clase "Persona" que tiene propiedades como "nombre", "edad", "género", "ocupación", etc.
+
+En lugar de exponer todos los detalles internos de cómo se implementa la velocidad, aceleración, frenado, etc., se puede exponer una interfaz pública que permita al usuario interactuar con el coche de manera intuitiva y simplificada por ejemplo, acelerar(), frenar(), cambiarVelocidad(). Lo mismo con la clase Persona por ejemplo, obtenerNombre(), obtenerEdad(), etc.
+
+La ventaja principal de la abstracción en JS POO es que permite escribir código más modular y mantenible, ya que reduce la complejidad del software al ocultar detalles innecesarios y exponer solo lo que es relevante para su uso. Además, la abstracción facilita la reutilización del código, ya que los objetos abstractos pueden ser utilizados en diferentes contextos sin necesidad de conocer su implementación interna. También permite a los desarrolladores trabajar en equipo de manera más eficiente, ya que pueden diseñar y desarrollar componentes independientes que interactúan a través de interfaces claramente definidas y documentadas. En resumen, la abstracción en JS POO es una herramienta poderosa para simplificar la complejidad y mejorar la calidad del software.
+
+### 10. Abstracción en JavaScript
+
+```js
+// Prototipo para Schools
+// 1. Crear una clase para escuelas (Learnin_path()) 
+// 2. Crear una instancia para cada escuela (escuela_dw) Pupil
+// 3. Revisar que no se repitan coursos dentro de las escuelas
+
+class Classes{
+    constructor({topic}){
+        this.topic = topic;
+    }
+}
+
+class Course{
+    constructor({
+        name,
+        classes = [],
+    }){
+        this.name = name;
+        this.classes = classes;
+    }
+}
+
+class School{
+    constructor({ path, courses = []}){
+        this.path = path;
+        this.courses = courses;
+    }
+
+    launch_of_new_course(new_release){
+        this.courses.push(new_release);
+    }
+}
+
+class Pupil{
+    constructor({
+        name,
+        email,
+        username,
+        twitter,
+        instagram,
+        facebook,
+        approved_courses = [],
+        learning_paths = [],
+    }){
+        this.name = name;
+        this.email = email;
+        this.username = username;
+        this.social_media = {
+            twitter,
+            instagram,
+            facebook,
+        };
+        this.approved_courses = approved_courses;
+        this.learning_paths = learning_paths;
+    }
+
+    approved_course(new_course){
+        this.approved_courses.push(new_course);
+    }
+}
+
+const class_one = new Classes({topic: 'Class One'});
+const class_two = new Classes({topic: 'Class Two'});
+const class_three = new Classes({topic: 'Class Three'});
+const class_four= new Classes({topic: 'Class Four'});
+const class_five = new Classes({topic: 'Class Five'});
+const class_six = new Classes({topic: 'Class Six'});
+
+const course_one = new Course({
+    name: 'Course 01',
+    classes: [
+        class_one,
+        class_two,
+        class_three,
+        class_six,
+    ]
+});
+
+const course_two = new Course({
+    name: 'Course 02',
+    classes: [
+        class_one,
+        class_three,
+        class_four,
+    ]
+});
+
+const course_three = new Course({
+    name: 'Course 03',
+    classes: [
+        class_one,
+        class_two,
+        class_three,
+        class_four,
+        class_five,
+    ]
+});
+
+const school_01 = new School({
+    path: 'Web development',
+    courses: [
+        course_one,
+        course_two,
+        course_three,
+    ]
+});
+
+const school_02 = new School({
+    path: 'Video games development',
+    courses: [
+        course_one,
+        course_two,
+        course_three,
+    ]
+});
+
+const school_03 = new School({
+    path: 'Artificial intelligence',
+    courses: [
+        course_one,
+        course_two,
+        course_three,
+    ]
+});
+
+const simone = new Pupil({
+    name: 'Simone Simons',
+    email: 'simons@mail.com',
+    username: 'simone_simons',
+    twitter: 's_simons',
+    learning_paths: [
+        school_01,
+        school_02,
+    ],
+});
+
+const alissa = new Pupil({
+    name: 'Alissa White_Gluz',
+    username: 'alissa_wg',
+    email:'alisa_wg@mail.com',
+    instagram: 'alisa_wg',
+    learning_paths: [
+        school_01,
+        school_03,
+    ]
+});
+
+school_01.launch_of_new_course(new Course({
+    name: 'Course 04',
+    classes: [
+        class_one,
+        class_two,
+        class_three,
+        class_six,
+    ]
+}));
+school_01.launch_of_new_course(new Course({
+    name: 'Course 05',
+    classes: [
+        class_one,
+        class_two,
+        class_three,
+        class_six,
+    ]
+}));
+school_01.launch_of_new_course(new Course({
+    name: 'Course 06',
+    classes: [
+        class_one,
+        class_two,
+        class_three,
+        class_six,
+    ]
+}));
+
+school_02.launch_of_new_course(new Course({
+    name: 'Course 04',
+    classes: [
+        class_one,
+        class_two,
+        class_three,
+        class_six,
+    ]
+}));
+school_02.launch_of_new_course(new Course({
+    name: 'Course 05',
+    classes: [
+        class_one,
+        class_two,
+        class_three,
+        class_six,
+    ]
+}));
+school_02.launch_of_new_course(new Course({
+    name: 'Course 06',
+    classes: [
+        class_one,
+        class_two,
+        class_three,
+        class_six,
+    ]
+}));
+
+school_03.launch_of_new_course(new Course({
+    name: 'Course 04',
+    classes: [
+        class_one,
+        class_two,
+        class_three,
+        class_six,
+    ]
+}));
+school_03.launch_of_new_course(new Course({
+    name: 'Course 05',
+    classes: [
+        class_one,
+        class_two,
+        class_three,
+        class_six,
+    ]
+}));
+school_03.launch_of_new_course(new Course({
+    name: 'Course 06',
+    classes: [
+        class_one,
+        class_two,
+        class_three,
+        class_six,
+    ]
+}));
+
+simone.approved_course(course_one);
+simone.approved_course(course_three);
+
+alissa.approved_course(course_one);
+alissa.approved_course(course_two);
+```

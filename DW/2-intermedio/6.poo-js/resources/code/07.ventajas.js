@@ -117,7 +117,7 @@ alissa.approved_course('Course 05'); */
 
 
 
-// Prototipo para Schools
+/* // Prototipo para Schools
 // Crear una clase para escuelas (Learnin_path()) y una instancia para cada escuela (escuela_dw) Pupil
 
 class School{
@@ -231,4 +231,4 @@ simone.approved_course('Course 01');
 simone.approved_course('Course 03');
 
 alissa.approved_course('Course 01');
-alissa.approved_course('Course 02');
+alissa.approved_course('Course 02'); */
