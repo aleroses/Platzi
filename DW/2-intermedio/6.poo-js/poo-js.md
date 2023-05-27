@@ -1344,3 +1344,19 @@ simone.approved_course(course_three);
 alissa.approved_course(course_one);
 alissa.approved_course(course_two);
 ```
+
+### 11. Qué es encapsulamiento
+
+El encapsulamiento en JavaScript (JS) usando Programación Orientada a Objetos (POO) es un concepto que se refiere a la capacidad de ocultar la complejidad interna de los objetos, protegiendo sus propiedades y métodos para que no sean accesibles desde fuera de la clase. El encapsulamiento permite que los objetos mantengan su estado interno y comportamiento, y solo expongan una interfaz pública que permita interactuar con ellos de manera controlada.
+
+El encapsulamiento se logra en JS POO a través del uso de propiedades y métodos privados y públicos. Las propiedades y métodos privados solo pueden ser accedidos desde dentro de la clase, mientras que las propiedades y métodos públicos pueden ser accedidos desde fuera de la clase.
+
+Aquí tienes algunos ejemplos de encapsulamiento en JS POO:
+
+1. Una clase "Cuenta Bancaria" que tiene propiedades privadas como "saldo" y "número de cuenta", y métodos públicos como "depositar()", "retirar()" y "obtenerSaldo()". El saldo y el número de cuenta solo son accesibles desde dentro de la clase, mientras que los métodos públicos permiten interactuar con la cuenta bancaria de manera controlada.
+
+2. Una clase "Empleado" que tiene propiedades privadas como "nombre", "edad", "salario" y métodos públicos como "obtenerNombre()", "obtenerEdad()", "obtenerSalario()", "aumentarSalario()" y "disminuirSalario()". El nombre, la edad y el salario solo son accesibles desde dentro de la clase, mientras que los métodos públicos permiten interactuar con el empleado de manera controlada.
+
+3. Una clase "Coche" que tiene propiedades privadas como "velocidad", "aceleración" y "frenado", y métodos públicos como "acelerar()", "frenar()", "cambiarVelocidad()", etc. La velocidad, aceleración y frenado solo son accesibles desde dentro de la clase, mientras que los métodos públicos permiten interactuar con el coche de manera controlada.
+
+En todos estos ejemplos, el encapsulamiento permite proteger las propiedades y métodos privados de la clase, evitando que sean modificados o accedidos desde fuera de la misma. Esto permite mejorar la seguridad y la estabilidad del código, ya que se evitan errores y comportamientos inesperados que podrían surgir si se modifican las propiedades privadas de manera no controlada. Además, el encapsulamiento permite a los desarrolladores cambiar la implementación interna de la clase sin afectar a su interfaz pública, lo que facilita la evolución del softwarea medida que se requieren cambios o mejoras en la funcionalidad.
