@@ -1360,3 +1360,28 @@ Aquí tienes algunos ejemplos de encapsulamiento en JS POO:
 3. Una clase "Coche" que tiene propiedades privadas como "velocidad", "aceleración" y "frenado", y métodos públicos como "acelerar()", "frenar()", "cambiarVelocidad()", etc. La velocidad, aceleración y frenado solo son accesibles desde dentro de la clase, mientras que los métodos públicos permiten interactuar con el coche de manera controlada.
 
 En todos estos ejemplos, el encapsulamiento permite proteger las propiedades y métodos privados de la clase, evitando que sean modificados o accedidos desde fuera de la misma. Esto permite mejorar la seguridad y la estabilidad del código, ya que se evitan errores y comportamientos inesperados que podrían surgir si se modifican las propiedades privadas de manera no controlada. Además, el encapsulamiento permite a los desarrolladores cambiar la implementación interna de la clase sin afectar a su interfaz pública, lo que facilita la evolución del softwarea medida que se requieren cambios o mejoras en la funcionalidad.
+
+
+#### ¿Qué es encapsulamiento?  
+Es guardar, proteger, guardar o limitar el acceso de cierto atributos y/o propiedades en nuestros prototipos y objetos.
+
+Cuando hablamos de **encapsulamiento **hablamos de:
+
+- Esconder métodos y atributos 👻
+    
+- No permitir la alteración de métodos y atributos ❌
+    
+
+**Encapsulamiento en JavaScript**
+
+- No permitir la alteración de métodos y atributos ❌
+
+_Formas de aplicar encapsulamiento en JavaScript_
+
+- Getters y setters 🖐
+    
+- Namespaces 🙂
+    
+- Object.defineProperties 🎈
+    
+- Módulo de ES6 🤝
