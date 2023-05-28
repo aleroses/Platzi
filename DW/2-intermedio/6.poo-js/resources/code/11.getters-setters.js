@@ -1,9 +1,4 @@
-// Prototipo para Schools
-// 1. Crear una clase para escuelas (Learnin_path()) 
-// 2. Crear una instancia para cada escuela (escuela_dw) Pupil
-// 3. Revisar que no se repitan coursos dentro de las escuelas
-
-/* class Classes{
+class Classes{
     constructor({topic}){
         this.topic = topic;
     }
@@ -14,8 +9,24 @@ class Course{
         name,
         classes = [],
     }){
-        this.name = name;
+        this._name = name;
         this.classes = classes;
+    }
+
+    get name(){
+        return this._name;
+    }
+
+    // change_name(new_name){
+    //     this._name = new_name;
+    // }
+
+    set name(new_name){
+        if(new_name === 'Bad Coding Course'){
+            console.error('Web...no');
+        }else {
+            this._name = new_name;
+        }
     }
 }
 
@@ -94,6 +105,15 @@ const course_three = new Course({
         class_five,
     ]
 });
+
+// Haciendo uso de get and set en Course (pruebas en consola)
+course_one
+course_one.name
+// course_one.name = "Another way to change the name"
+// course_one.change_name('A new course name')
+course_one.name = 'This is the new course name';
+course_one.name = 'Bad Coding Course' //mensaje error
+
 
 const school_01 = new School({
     path: 'Web development',
@@ -232,4 +252,4 @@ simone.approved_course(course_one);
 simone.approved_course(course_three);
 
 alissa.approved_course(course_one);
-alissa.approved_course(course_two); */
+alissa.approved_course(course_two);

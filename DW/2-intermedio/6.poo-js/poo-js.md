@@ -1379,9 +1379,155 @@ Cuando hablamos de **encapsulamiento **hablamos de:
 _Formas de aplicar encapsulamiento en JavaScript_
 
 - Getters y setters 🖐
-    
 - Namespaces 🙂
-    
 - Object.defineProperties 🎈
-    
 - Módulo de ES6 🤝
+
+
+### 12. Getters y setters en JavaScript
+
+```js
+class Course{
+    constructor({
+        name,
+        classes = [],
+    }){
+        this._name = name;
+        this.classes = classes;
+    }
+
+    get name(){
+        return this._name;
+    }
+
+    // change_name(new_name){
+    //     this._name = new_name;
+    // }
+
+    set name(new_name){
+        if(new_name === 'Bad Coding Course'){
+            console.error('Web...no');
+        }else {
+            this._name = new_name;
+        }
+    }
+}
+
+const course_one = new Course({
+    name: 'Course 01',
+    classes: [
+        class_one,
+        class_two,
+        class_three,
+        class_six,
+    ]
+});
+
+// Haciendo uso de get and set en Course (pruebas en consola)
+course_one
+course_one.name
+// course_one.name = "Another way to change the name"
+// course_one.change_name('A new course name')
+course_one.name = 'This is the new course name';
+course_one.name = 'Bad Coding Course' //mensaje error
+```
+
+#### Dato 
+Pasa algo extraño:   
+Si escribes `cursoProgBasica.name = “Cualquier nombre”` el SET comprueba que cumpla lo que le pedí. PEEEEROOO si pongo por consola:  
+`cursoProgBasica._name = “cualquier cosa”` SE SALTA la barrera del SET y me toma como correcto lo que ponga! 
+
+![](https://i.postimg.cc/63jZD9FY/12-get-set-error.jpg)
+
+#### Mas info y ejemplos 
+
+En JavaScript, los métodos `get` y `set` se utilizan para acceder a propiedades de objetos y establecer valores para esas propiedades. Estos métodos son útiles en la programación orientada a objetos (POO) en JavaScript para definir propiedades de objetos que no se pueden acceder directamente.
+
+Aquí hay un ejemplo de cómo usar `get` y `set` en JavaScript:
+
+```javascript
+class Persona {
+  constructor(nombre, edad) {
+    this._nombre = nombre;
+    this._edad = edad;
+  }
+
+  // Definir un getter para la propiedad "nombre"
+  get nombre() {
+    return this._nombre;
+  }
+
+  // Definir un setter para la propiedad "nombre"
+  set nombre(nuevoNombre) {
+    this._nombre = nuevoNombre;
+  }
+
+  // Definir un getter para la propiedad "edad"
+  get edad() {
+    return this._edad;
+  }
+
+  // Definir un setter para la propiedad "edad"
+  set edad(nuevaEdad) {
+    if (nuevaEdad > 0) {
+      this._edad = nuevaEdad;
+    } else {
+      console.log("La edad debe ser un número mayor que cero.");
+    }
+  }
+}
+
+// Crear un objeto "persona"
+let persona = new Persona("Juan", 25);
+
+// Acceder a la propiedad "nombre" a través del getter
+console.log(persona.nombre); // "Juan"
+
+// Establecer un nuevo valor para la propiedad "nombre" a través del setter
+persona.nombre = "Pedro";
+console.log(persona.nombre); // "Pedro"
+
+// Acceder a la propiedad "edad" a través del getter
+console.log(persona.edad); // 25
+
+// Establecer un nuevo valor para la propiedad "edad" a través del setter
+persona.edad = 0;
+// La edad debe ser un número mayor que cero.
+
+console.log(persona.edad); // 25
+```
+
+En cuanto a si se recomienda más usar `#` o `_` para definir propiedades privadas en JavaScript, es importante tener en cuenta que `#` es una nueva característica introducida en la versión ES2020 de JavaScript, que todavía no es compatible con todos los navegadores y entornos de ejecución. Por lo tanto, en la práctica, es posible que sea necesario seguir utilizando `_` para definir propiedades privadas en JavaScript. Sin embargo, `#` se considera la forma recomendada de definir propiedades privadas en JavaScript, ya que es más explícito y menos propenso a conflictos de nombres con otras propiedades y métodos.
+
+#### ES2020 # 
+En ES2020 se introdujo la sintaxis campos privados en las clases. Se hace uso de un numeral como prefijo del nombre de la variable.  
+   
+¿Cúal sería la ventaja de usar esto? Que no existe la posibilidad de que alguien modifique la variable privada desde la instancia a menos de que use el setter que le dimos.  
+   
+Con el ejemplo en esta clase, quedaría así:
+
+```javascript
+classCourse{
+  #name;
+
+  constructor({
+    name,
+    classes = []
+  }) {
+    this.#name = name;
+    this.classes = classes;
+  }
+
+  getname() {
+    returnthis.#name;
+  }
+
+  setname(nuevoNombrecito) {
+    if (nuevoNombrecito === 'Curso Malito de Programación Básica') {
+      console.error('Web... no');
+    } else {
+      this.#name = nuevoNombrecito;
+    }
+  }
+}
+```
