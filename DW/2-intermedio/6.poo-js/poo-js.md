@@ -96,15 +96,16 @@ También es posible crear objetos utilizando la sintaxis de la función construc
 ```js
 // Definición de clase Coche  
 class Coche {  
-constructor(marca, modelo, año) {  
-this.marca = marca;  
-this.modelo = modelo;  
-this.año = año;  
-}
+	constructor(marca, modelo, año) {  
+		this.marca = marca;  
+		this.modelo = modelo;  
+		this.año = año;  
+	}
 
-conducir() {  
-console.log(`Conduciendo un ${this.marca} ${this.modelo}`);  
-}  
+	// Método 
+	conducir() {  
+		console.log(`Conduciendo un ${this.marca} ${this.modelo}`);  
+	}  
 }
 
 // Creación de objeto coche con la clase Coche  
@@ -116,14 +117,14 @@ En este ejemplo, se define una clase Coche con un constructor que establece las 
 
 En resumen, los objetos en JavaScript son colecciones de propiedades que pueden contener valores de diferentes tipos, incluyendo otros objetos. Se pueden crear utilizando la sintaxis de objeto literal, la función constructora o la clase. Los objetos en JavaScript son muy flexibles y pueden ser dinámicamente modificados durante la ejecución del programa, lo que los hace muy útiles para la programación en JavaScript.
 
-- **Las clases** es la forma en que se van obtener información la información de cada objetos, a estos se les llama atributos. A partir de estas clases podemos crear objetos, a esto se le llama Instanciar de una clase.
+- **Las clases** es la forma en que se va a obtener la información de cada objetos, a estos se les llama atributos. A partir de estas clases podemos crear objetos, a esto se le llama Instanciar de una clase.
 
 -   **Atributos**: Son las propiedades que tendrán cada uno de los objetos creados con nuestras clases, por ejemplo en la clase lápiz tiene como propiedades o atributos un color, textura, tamaño, forma de la punta, etc. Para el siguiente ejemplo tomamos una clase Usuario y le ponemos como atributo “nombre”
 
--   **Métodos**: Son simples funciones que existen dentro de la clase que determinan las acciones, por ejemplo en el caso del borrador tiene una función de borrar, para el lápiz tiene la función de escribir al igual que la pluma. Para el siguiente ejemplo de código ejecutaremos un método para saludar
+-   **Métodos**: Son simples funciones que existen dentro de la clase que determinan las acciones, por ejemplo en el caso del borrador tiene una función de borrar, para el lápiz tiene la función de escribir al igual que la pluma.
 
 
-### En la POO hay 4 pilares que debemos comprender
+#### En la POO hay 4 pilares que debemos comprender
 
 -   **Herencia**: Crear nuevas clases con características similares a partir de otras. Con la herencia puedes crear una clase que sea hijo o una copia de otra clase, al heredar una clase se tiene todos los métodos y atributos de la clase padre, podrás modificarlas solo en caso de ser necesario. Funciona como una jerarquía de lo mas general a lo mas especifico.
 -   **Encapsulamiento**: Esconder datos que solo pueden ser accedidos por la clase. Esta significa restringir u ocultar el acceso a los datos dentro de la misma clase al “mundo exterior”, usualmente solo se modifican en la misma clase. Existen tres clases de encapsulamiento.
@@ -201,7 +202,7 @@ En JavaScript, cada objeto tiene un enlace interno a otro objeto llamado prototi
 
 Cuando se accede a una propiedad o método en un objeto, JavaScript primero busca la propiedad o método en el objeto en sí mismo. Si no se encuentra allí, JavaScript busca en su prototipo. Si la propiedad o método no se encuentra en el prototipo, JavaScript buscará en el prototipo del prototipo y así sucesivamente, hasta que se llegue al final de la cadena de prototipos, que en JavaScript es el objeto `Object.prototype`.
 
-El uso de prototipos en JavaScript es la base de la herencia en JavaScript. Cuando se crea un objeto, se puede especificar su prototipo utilizando la propiedad especial `prototype`. Por ejemplo, se puede crear una función constructora para un objeto `Persona` y especificar su prototipo de la siguiente manera:
+El uso de prototipos es la base de la herencia en JavaScript. Cuando se crea un objeto, se puede especificar su prototipo utilizando la propiedad especial `prototype`. Por ejemplo, se puede crear una función constructora para un objeto `Persona` y especificar su prototipo de la siguiente manera:
 
 ```js
 function Persona(nombre, edad) {
@@ -222,7 +223,7 @@ persona2.saludar(); // Hola, mi nombre es Maria
 
 En este ejemplo, la función constructora `Persona` tiene un prototipo que contiene el método `saludar`. Cuando se crea una nueva instancia de `Persona` utilizando el operador `new`, la instancia hereda el prototipo de `Persona`, lo que significa que también hereda el método `saludar`.
 
-El uso de prototipos en JavaScript permite la creación de objetos con propiedades y métodos compartidos, lo que ayuda a la eficiencia y simplicidad del código. Además, permite la creación de estructuras de herencia complejas y dinámicas en JavaScript.
+El uso de prototipos en JavaScript permite la creación de objetos con propiedades y métodos compartidos, lo que ayuda a la eficiencia y simplicidad del código. Además, permite la creación de estructuras de herencia complejas y dinámicas.
 
 #### Objeto
 
@@ -316,7 +317,7 @@ persona1.saludar(); // muestra "Hola, mi nombre es Juan y tengo 30 años." por c
 
 Aquí, creamos un objeto "persona1" a partir de la clase "Persona" y luego llamamos al método "saludar" utilizando la notación de punto.
 
-Otro ejemplo de método en JavaScriptsería el siguiente:
+Otro ejemplo de método en JavaScript sería el siguiente:
 
 ```js
 class Rectangulo {
