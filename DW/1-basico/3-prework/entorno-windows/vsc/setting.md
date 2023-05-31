@@ -2,27 +2,57 @@
 
 - Indenticator
 
-## Cambiar terminal  
-- Ctrl + , (coma)
+## Abrir archivo `settings.json`
+
+- `Ctrl` + `,` (coma)
  - Open settings: Esquina derecha superior
 	 - Icono hoja con esquina doblada y con flecha 
 
+## Quitar scroll horizontal 
+
 ```json
 {
-    "workbench.colorTheme": "🏴 blackbird → midnight",
+    "editor.wordWrap": "on", //👈👀
+}
+```
+
+Si no quieres configurar esto, solo usa control z cada vez que quieras tener todo en una sola vista sin necesidad de hacer scroll. 
+
+## Configurar indentación del código 
+
+Estilo de sangrado. 
+```json
+{
+	"editor.tabSize": 2, //👈👀
+}
+```
+
+## Cambiar terminal  
+
+```json
+{
     "terminal.integrated.defaultProfile.windows": "Git Bash", //👈👀
 }
 ```
 
-- Ver View
+Otra opción 
+```json
+{
+	"terminal.integrated.defaultProfile.windows": "PowerShell" //👈👀
+}
+```
+
+Para ver la terminal usar:  
+- `Ctrl` + `ñ`
+
+También:   
+- View: Ver
 - Terminal 
 
 ## Mover a la derecha barra de actividades
 
-```js
+```json
 {
-    "workbench.colorTheme": "🏴 blackbird → midnight",
-    "terminal.integrated.defaultProfile.windows": "Git Bash", 
     "workbench.sideBar.location": "right", //👈👀
 }
 ```
@@ -31,8 +61,6 @@
 
 ```json
 {
-    "workbench.colorTheme": "🏴 blackbird → midnight",
-    "terminal.integrated.defaultProfile.windows": "Git Bash",
     "editor.minimap.enabled": false, //👈👀
 }
 ```
@@ -41,9 +69,6 @@
 
 ```json
 {
-    "workbench.colorTheme": "🏴 blackbird → midnight",
-    "terminal.integrated.defaultProfile.windows": "Git Bash", 
-    "editor.minimap.enabled": false, 
     "editor.scrollbar.vertical": "auto", //👈👀
     "editor.overviewRulerBorder": false, //👈👀
     "editor.hideCursorInOverviewRuler": true, //👈👀
@@ -52,14 +77,8 @@
 
 ## Ocultar Debugging 🔴
 
-```js
+```json
 {
-    "workbench.colorTheme": "🏴 blackbird → midnight",
-    "terminal.integrated.defaultProfile.windows": "Git Bash", 
-    "editor.minimap.enabled": false,
-    "editor.scrollbar.vertical": "auto",
-    "editor.overviewRulerBorder": false,
-    "editor.hideCursorInOverviewRuler": true,
     "editor.glyphMargin": false, //👈👀
 }
 ```
@@ -68,22 +87,16 @@
 
 ```json
 {
-    "workbench.colorTheme": "🏴 blackbird → midnight",
-    "terminal.integrated.defaultProfile.windows": "Git Bash", 
-    "editor.minimap.enabled": false, 
-    "editor.scrollbar.vertical": "auto", 
-    "editor.overviewRulerBorder": false, 
-    "editor.hideCursorInOverviewRuler": true, 
-    "editor.glyphMargin": false,
     "workbench.activityBar.visible": false, //👈👀
 }
 ```
 
-- Ctrl + Shift + E 
-	- Ctrl + B: Abrir y ocultar 
-- Ctrl + Shift + F 
-- Ctrl + Shift + G 
-- Ctrl + Shift + D 
-- Ctrl + Shift + X
+Atajos para acceder a la barra de actividades: 
+- `Ctrl` + `Shift` + `E` 
+	- `Ctrl` + `B`: Abrir y ocultar 
+- `Ctrl` + `Shift` + `F` 
+- `Ctrl` + `Shift` + `G` 
+- `Ctrl` + `Shift` + `D` 
+- `Ctrl` + `Shift` + `X`
 
 [Tutorial: Cómo configurar VSCode](https://www.youtube.com/watch?v=HiVnGgYudLY)
