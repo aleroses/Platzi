@@ -1,13 +1,13 @@
 function play_video(id){
     const secret_url = "https://platzisecret.com/" + id;
-    console.log('Playing from url' + secret_url);
+    console.log('Playing from url ' + secret_url);
 }
 function pause_video(id){
     const secret_url = "https://platzisecret.com/" + id;
-    console.log('Paused from url' + secret_url);
+    console.log('Paused from url ' + secret_url);
 }
 
-class PlatziClass {
+export class PlatziClass {
     constructor({
         name,
         videoID,
@@ -23,7 +23,11 @@ class PlatziClass {
         pause_video(this.videoID);
     }
 }
-class Classes{
+
+
+
+
+/* class Classes{
     constructor({topic}){
         this.topic = topic;
     }
@@ -48,7 +52,7 @@ class Course{
 
     set name(new_name){
         if(new_name === 'Bad Coding Course'){
-            console.error('Web...no');
+            console.error('Hey! Te wa madrear...');
         }else {
             this._name = new_name;
         }
@@ -277,4 +281,4 @@ simone.approved_course(course_one);
 simone.approved_course(course_three);
 
 alissa.approved_course(course_one);
-alissa.approved_course(course_two);
+alissa.approved_course(course_two); */

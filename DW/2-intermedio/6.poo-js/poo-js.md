@@ -1058,7 +1058,7 @@ La función que se pasa como argumento al método `every()` se ejecuta en cada e
 Aquí hay un ejemplo de cómo usar el método `every()` para comprobar si todos los elementos de un array de números son mayores que 0:
 
 ```javascript
-constnumeros = [2, 4, 6, 8];
+const numeros = [2, 4, 6, 8];
 
 const todosMayoresQueCero = numeros.every(function(numero) {
   return numero > 0;
@@ -1066,8 +1066,6 @@ const todosMayoresQueCero = numeros.every(function(numero) {
 
 console.log(todosMayoresQueCero); // true
 ```
-
-En este ejemplo, el método `every()` comprueba si todos los elementos del array `numeros` son mayores que 0. La función que se pasa como argumento al método `every()` recibe cada elemento del array como un parámetro (`numero` en este caso) y devuelve `true` si el número es mayor que 0. Como todos los elementos del array son mayores que 0, el método `every()` devuelve `true`.
 
 Otro ejemplo podría ser comprobar si todos los elementos de un array de objetos tienen una propiedad específica con un valor determinado:
 
@@ -1084,11 +1082,6 @@ const todosMayoresDeEdad = personas.every(function(persona) {
 
 console.log(todosMayoresDeEdad); // true
 ```
-
-En este ejemplo, el método `every()` comprueba si todos los elementos del array `personas` tienen una propiedad `edad` con un valor mayor o igual a 18. La función que sepasa como argumento al método `every()` recibe cada elemento del array como un parámetro (`persona` en este caso) y devuelve `true` si la edad de la persona es mayor o igual a 18. Como todos los elementos del array cumplen con esta condición, el método `every()` devuelve `true`.
-
-En resumen, el método `every()` se utiliza en JavaScript para comprobar si todos los elementos de un array cumplen con una condición específica. Si la función que se pasa como argumento al método `every()` devuelve `true` para todos los elementos del array, el método `every()` devuelve `true`. Si la función devuelve `false` para al menos un elemento del array, el método `every()` devuelve `false`.
-
 
 ## Pilares de la POO: abstracción y polimorfismo
 
@@ -1348,7 +1341,7 @@ alissa.approved_course(course_two);
 
 ### 11. Qué es encapsulamiento
 
-El encapsulamiento en JavaScript (JS) usando Programación Orientada a Objetos (POO) es un concepto que se refiere a la capacidad de ocultar la complejidad interna de los objetos, protegiendo sus propiedades y métodos para que no sean accesibles desde fuera de la clase. El encapsulamiento permite que los objetos mantengan su estado interno y comportamiento, y solo expongan una interfaz pública que permita interactuar con ellos de manera controlada.
+El encapsulamiento en JavaScript (JS) es un concepto que se refiere a la capacidad de ocultar la complejidad interna de los objetos, protegiendo sus propiedades y métodos para que no sean accesibles desde fuera de la clase. El encapsulamiento permite que los objetos mantengan su estado interno y comportamiento, y solo expongan una interfaz pública que permita interactuar con ellos de manera controlada.
 
 El encapsulamiento se logra en JS POO a través del uso de propiedades y métodos privados y públicos. Las propiedades y métodos privados solo pueden ser accedidos desde dentro de la clase, mientras que las propiedades y métodos públicos pueden ser accedidos desde fuera de la clase.
 
@@ -1360,24 +1353,18 @@ Aquí tienes algunos ejemplos de encapsulamiento en JS POO:
 
 3. Una clase "Coche" que tiene propiedades privadas como "velocidad", "aceleración" y "frenado", y métodos públicos como "acelerar()", "frenar()", "cambiarVelocidad()", etc. La velocidad, aceleración y frenado solo son accesibles desde dentro de la clase, mientras que los métodos públicos permiten interactuar con el coche de manera controlada.
 
-En todos estos ejemplos, el encapsulamiento permite proteger las propiedades y métodos privados de la clase, evitando que sean modificados o accedidos desde fuera de la misma. Esto permite mejorar la seguridad y la estabilidad del código, ya que se evitan errores y comportamientos inesperados que podrían surgir si se modifican las propiedades privadas de manera no controlada. Además, el encapsulamiento permite a los desarrolladores cambiar la implementación interna de la clase sin afectar a su interfaz pública, lo que facilita la evolución del softwarea medida que se requieren cambios o mejoras en la funcionalidad.
+En todos estos ejemplos, el encapsulamiento permite proteger las propiedades y métodos privados de la clase, evitando que sean modificados o accedidos desde fuera de la misma. Esto permite mejorar la seguridad y la estabilidad del código, ya que se evitan errores y comportamientos inesperados que podrían surgir si se modifican las propiedades privadas de manera no controlada. Además, el encapsulamiento permite a los desarrolladores cambiar la implementación interna de la clase sin afectar a su interfaz pública, lo que facilita la evolución del software a medida que se requieren cambios o mejoras en la funcionalidad.
 
 
 #### ¿Qué es encapsulamiento?  
-Es guardar, proteger, guardar o limitar el acceso de cierto atributos y/o propiedades en nuestros prototipos y objetos.
+Es guardar, proteger  o limitar el acceso de cierto atributos y/o propiedades en nuestros prototipos y objetos.
 
 Cuando hablamos de **encapsulamiento **hablamos de:
 
 - Esconder métodos y atributos 👻
-    
-- No permitir la alteración de métodos y atributos ❌
-    
-
-**Encapsulamiento en JavaScript**
-
 - No permitir la alteración de métodos y atributos ❌
 
-_Formas de aplicar encapsulamiento en JavaScript_
+##### Formas de aplicar encapsulamiento en JavaScript
 
 - Getters y setters 🖐
 - Namespaces 🙂
@@ -1407,7 +1394,7 @@ class Course{
 
     set name(new_name){
         if(new_name === 'Bad Coding Course'){
-            console.error('Web...no');
+            console.error('Hey! Te wa madrear...');
         }else {
             this._name = new_name;
         }
@@ -1435,8 +1422,8 @@ course_one.name = 'Bad Coding Course' //mensaje error
 
 #### Dato 
 Pasa algo extraño:   
-Si escribes `cursoProgBasica.name = “Cualquier nombre”` el SET comprueba que cumpla lo que le pedí. PEEEEROOO si pongo por consola:  
-`cursoProgBasica._name = “cualquier cosa”` SE SALTA la barrera del SET y me toma como correcto lo que ponga! 
+Si escribes `course.name = 'Bad Coding Course'` el SET comprueba que cumpla lo que le pedí. PEEEEROOO si escribo por consola:  
+`course._name = 'Bad Coding Course'` SE SALTA la barrera del SET y me toma como correcto lo que ponga! 
 
 ![](https://i.postimg.cc/63jZD9FY/12-get-set-error.jpg)
 
@@ -1500,10 +1487,10 @@ console.log(persona.edad); // 25
 
 En cuanto a si se recomienda más usar `#` o `_` para definir propiedades privadas en JavaScript, es importante tener en cuenta que `#` es una nueva característica introducida en la versión ES2020 de JavaScript, que todavía no es compatible con todos los navegadores y entornos de ejecución. Por lo tanto, en la práctica, es posible que sea necesario seguir utilizando `_` para definir propiedades privadas en JavaScript. Sin embargo, `#` se considera la forma recomendada de definir propiedades privadas en JavaScript, ya que es más explícito y menos propenso a conflictos de nombres con otras propiedades y métodos.
 
-#### ES2020 # 
+#### ES2020 `#` 
 En ES2020 se introdujo la sintaxis campos privados en las clases. Se hace uso de un numeral como prefijo del nombre de la variable.  
    
-¿Cúal sería la ventaja de usar esto? Que no existe la posibilidad de que alguien modifique la variable privada desde la instancia a menos de que use el setter que le dimos.  
+¿Cuál sería la ventaja de usar esto? Que no existe la posibilidad de que alguien modifique la variable privada desde la instancia a menos de que use el setter que le dimos.  
    
 Con el ejemplo en esta clase, quedaría así:
 
@@ -1524,11 +1511,179 @@ classCourse{
   }
 
   setname(nuevoNombrecito) {
-    if (nuevoNombrecito === 'Curso Malito de Programación Básica') {
-      console.error('Web... no');
+    if (nuevoNombrecito === 'Bad Coding Course') {
+      console.error('Hey! Te wa madrear...');
     } else {
       this.#name = nuevoNombrecito;
     }
   }
 }
 ```
+
+### 13. Módulos de ECMAScript 6
+
+El uso de los módulos en JavaScript depende de las declaraciones **_Export_** e **_Import_**.
+
+Para modular, solo basta que el archivo tenga la extensión **_.js_**, pero el motor V8 que es el que corre en los navegadores, recomienda usar la extensión **_.mjs_**
+
+- Esto es util porque queda claro cuál archivo es modulo y cual no.
+- Asegura que los archivos de modulo sean tratados como tal por la extensión **Babel** o **Node.js**
+
+#### Export
+Hay dos formas de exportar:   
+1. Colocar en frente de cada elemento la palabra **_export_**
+2. Exportar en una sola declaración al final del archivo modulo las características que se quieren exportar, ejemplo:
+
+```js
+export {PlatziClass, Student, LearningPaths};
+```
+
+#### Import  
+La importación obviamente se hace en el script que queremos usar dichos elementos.
+
+```js
+import {PlatziClass, Student, LearningPaths} from '/ruta';
+```
+
+#### ¿Como aplicar el modulo en HTML?
+
+```html
+<script type="module" src="main.js"></script>
+```
+
+Otra cosa importante es que podemos **_Renombrar_** las Importaciones y Exportaciones.
+
+> ¿Como renombramos los componentes?  
+> esto básicamente se logra con la palabra clave **_as_**  
+
+Ejemplo:
+
+```js
+export {
+PlatziClass as ClasesPlatzi,
+LearningPaths as RutaAprendizaje
+```
+
+y en donde vayamos a importar, llamamos con su nuevo nombre, ejemplo:
+
+```js
+import { ClasesPlatzi, RutaAprendizaje} from '/ruta';
+```
+
+_NOTA:_
+
+- Se recomienda que el cambio de nombre se haga en la importación y no en la exportación, pero eso ya es criterio del programador
+
+#### Código de la clase 
+
+Se ejecuta usando la extensión Code Runner
+
+```js
+// archivo: 12.modulos.mjs
+function play_video(id){
+    const secret_url = "https://platzisecret.com/" + id;
+    console.log('Playing from url ' + secret_url);
+}
+function pause_video(id){
+    const secret_url = "https://platzisecret.com/" + id;
+    console.log('Paused from url ' + secret_url);
+}
+
+export class PlatziClass {
+    constructor({
+        name,
+        videoID,
+    }){
+        this.name = name;
+        this.videoID = videoID;
+    }
+
+    play(){
+        play_video(this.videoID);
+    }
+    pause(){
+        pause_video(this.videoID);
+    }
+}
+```
+
+```js
+// archivo: 12.module.mjs
+import { PlatziClass } from "./12.modulos.mjs";
+
+const highway_67 = new PlatziClass({
+    name: 'JavaScript: OOP',
+    videoID: '0123456789',
+});
+
+highway_67.play();
+highway_67.pause();
+// Playing from url https://platzisecret.com/0123456789
+// Paused from url https://platzisecret.com/0123456789
+
+highway_67.play();
+highway_67.pause();
+// Playing from url https://platzisecret.com/0123456789
+// Paused from url https://platzisecret.com/0123456789
+
+highway_67.play();
+highway_67.pause();
+// Playing from url https://platzisecret.com/0123456789
+// Paused from url https://platzisecret.com/0123456789
+
+console.log(highway_67);
+console.log(highway_67.name);
+console.log(highway_67.videoID);
+// PlatziClass { name: 'JavaScript: OOP', videoID: '0123456789' }
+// JavaScript: OOP
+// 0123456789
+```
+
+#### Otro ejemplo: 
+
+Para usar `export` e `import` en JavaScript, debes seguir los siguientes pasos:
+
+1. Crear un archivo de JavaScript que contenga el código que deseas exportar. Por ejemplo, crea un archivo llamado `module.js` que contenga lo siguiente:
+
+```js
+//module.js
+export const PI = 3.14159;
+
+export function saludar(nombre) {
+	console.log(`Hola, ${nombre}!`);
+}
+```
+
+2. Crear un archivo de JavaScript separado donde desees importar el código del archivo `module.js`. Por ejemplo, crea un archivo llamado `app.js` que contenga lo siguiente:
+
+```js
+//app.js
+import { PI, saludar } from './module.js';
+
+console.log(PI); // Output: 3.14159
+saludar('Juan'); // Output: Hola, Juan!
+```
+
+3. En el caso de querer ejecutar estos archivos usando la extensión Code Runner, debes asegurarte de tenerla instalada en tu editor de código. Luego, abre el archivo que deseas ejecutar (en este caso, `app.js`) y presiona el botón "Run" (o ejecuta el comando de teclado correspondiente). Esto ejecutará el código y mostrará la salida en la consola de Code Runner.
+
+4. Si deseas ejecutar el código en el navegador, debes crear un archivo HTML que cargue tanto el archivo `module.js` como el archivo `app.js`. Por ejemplo, crea un archivo llamado `index.html` que contenga lo siguiente:
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>My App</title>
+</head>
+<body>
+    <script src="./module.js" type="module"></script>
+    <script src="./app.js" type="module"></script>
+</body>
+</html>
+```
+
+Luego, abre el archivo `index.html` en tu navegador y abre la consola de desarrollador. Verás la salida del código en la consola del navegador.
+
+Es importante destacar que para usar `import` y `export` en el navegador es necesario que el navegador soporte módulos ES6.
+
+Al usar la extensión Live Server, podrás cargar tus archivos HTML y JavaScript como si estuvieran alojados en un servidor web real, lo que te permitirá probar la importación de módulos ES6 en el navegador sin tener problemas con la política de seguridad del navegador al cargar archivos directamente desde el sistema de archivos local.
