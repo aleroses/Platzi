@@ -1687,3 +1687,208 @@ Luego, abre el archivo `index.html` en tu navegador y abre la consola de desarro
 Es importante destacar que para usar `import` y `export` en el navegador es necesario que el navegador soporte módulos ES6.
 
 Al usar la extensión Live Server, podrás cargar tus archivos HTML y JavaScript como si estuvieran alojados en un servidor web real, lo que te permitirá probar la importación de módulos ES6 en el navegador sin tener problemas con la política de seguridad del navegador al cargar archivos directamente desde el sistema de archivos local.
+
+
+### 14. Playgrounds: Controlar accesos con get y set
+
+En este reto dada la siguiente clase:
+
+```js
+export class Course {
+  constructor({
+    name,
+    classes = [],
+  }) {
+    this.name = name;
+    this.classes = classes;
+  }
+
+  get name() {
+
+  }
+
+  set name(nuevoNombrecito) {
+
+  }
+}
+```
+
+Usando el `set` de la propiedad **name** valida siempre que se le quiera asignar un valor lo siguiente:
+
+- Que sea de tipo string.
+    - Si es string convierte la primera letra de cada palabra del nombre en mayúsculas
+- Si no es un string no se cambia el valor de la propiedad name.
+
+La solución debería tener un input y output como los siguientes:
+
+Input
+
+```js
+const courseName = "curso de programación básica"
+const nombreMaysuculas = new Course({
+    name: courseName,
+})
+nombreMayusculas.name
+```
+
+Output
+
+```js
+'Curso de Programación Básica'
+```
+
+Nota: Para resolver este ejercicio se usan métodos vistos en cursos anteriores.
+- `.split()` [[taller-js-primer-videojuego#6. Arreglos multidimensionales en JavaScript#.split]]
+-  `.map()` [[js-basico#19. Métodos de recorridos de Arrays]]
+- `.slice()` [[js-basico#14. Arrays#Métodos de los Arrays]]
+
+#### `.charAt()` 
+El método `charAt()` es un método integrado en JavaScript que se utiliza para obtener el carácter en una posición específica en una cadena de caracteres. Este método toma un índice como argumento y devuelve el carácter en esa posición.
+
+La sintaxis básica del método `charAt()` es la siguiente:
+
+```javascript
+cadena.charAt(indice);
+```
+
+Donde `cadena` es la cadena de caracteres que se va a utilizar y `indice` es el índice del carácter que se desea obtener. El índice comienza en 0 para el primer carácter de la cadena.
+
+Por ejemplo, si queremos obtener el primer carácter de una cadena de texto, podemos utilizar el método `charAt()` de la siguiente manera:
+
+```javascript
+let texto = "Hola mundo";
+let primerCaracter = texto.charAt(0);
+console.log(primerCaracter); // "H"
+```
+
+En este ejemplo, `charAt(0)` devuelve el primer carácter de la cadena `texto`, que es "H".
+
+El método `charAt()` también se puede utilizar para acceder a otros caracteres en una cadena de texto. Por ejemplo, si queremos obtener el tercer carácter de una cadena de texto, podemos utilizar el método `charAt()` de la siguiente manera:
+
+```javascript
+let texto = "Hola mundo";
+let tercerCaracter = texto.charAt(2);
+console.log(tercerCaracter); // "lEn este ejemplo, `charAt(2)` devuelve el tercer carácter de la cadena `texto`, que es "l".
+```
+
+El método `charAt()` es muy útil para acceder a caracteres específicos en una cadena de texto en JavaScript. Además, se puede utilizar en conjunto con otros métodos de JavaScript, como `slice()` y `toUpperCase()`, para realizar transformaciones en caracteres individuales de una cadena de texto.
+
+#### `.toUpperCase()` 
+
+El método `toUpperCase()` es un método integrado en JavaScript que se utiliza para convertir una cadena de caracteres en mayúsculas. Este método no modifica la cadena original, sino que devuelve una nueva cadena en donde todas las letras están en mayúsculas.
+
+La sintaxis básica del método `toUpperCase()` es la siguiente:
+
+```javascript
+cadena.toUpperCase();
+```
+
+Donde `cadena` es la cadena de caracteres que se va a convertir en mayúsculas. El método `toUpperCase()` no toma argumentos.
+
+Por ejemplo, si queremos convertir una cadena de texto en mayúsculas, podemos utilizar el método `toUpperCase()` de la siguiente manera:
+
+```javascript
+let texto = "Hola mundo";
+let textoEnMayusculas = texto.toUpperCase();
+console.log(textoEnMayusculas); // "HOLA MUNDO"
+```
+
+En este ejemplo, `toUpperCase()` devuelve una nueva cadena con todas las letras de la cadena original en mayúsculas.
+
+El método `toUpperCase()` es muy útil para normalizar las cadenas de texto en JavaScript, especialmente cuando se comparan cadenas de texto sin importar las mayúsculas y minúsculas. Además, se puede utilizar en conjunto con otros métodos de JavaScript, como `charAt()` y `slice()`, para realizar transformaciones en caracteres individuales o secciones de una cadena de texto.
+
+#### `.join()`
+
+El método `join()` es un método integrado en JavaScript que se utiliza para unir los elementos de un array en una cadena de caracteres. Este método toma un separador como argumento y devuelve una cadena de caracteres que contiene los elementos del array separados por el separador especificado.
+
+La sintaxis básica del método `join()` es la siguiente:
+
+```javascript
+array.join(separador);
+```
+
+Donde `array` es el array que se va a unir y `separador` es la cadena de caracteres que se utiliza para separar los elementos del array en la cadena resultante. Si no se especifica ningún separador, los elementos del array se unen sin separadores.
+
+Por ejemplo, si queremos unir los elementos de un array en una cadena de texto separados por comas, podemos utilizar el método `join()` de la siguiente manera:
+
+```javascript
+let numeros = [1, 2, 3, 4, 5];
+let numerosComoTexto = numeros.join(',');
+console.log(numerosComoTexto); // "1,2,3,4,5"
+```
+
+En este ejemplo, `join(',')` une los elementos del array `numeros` en una cadena de texto separados por comas.
+
+El método `join()` también se puede utilizar para unir los elementos de un array en una cadena de texto sin separadores. Por ejemplo:
+
+```javascript
+let numeros = [1, 2, 3, 4, 5];
+let numerosComoTextoSinSeparador = numeros.join('');
+console.log(numerosComoTextoSinSeparador); // "12345"
+```
+
+En este ejemplo, `join('')` une los elementos del array `numeros` en una cadena de texto sin separadores.
+
+El método `join()` es muy útil para trabajar con arrays de elementos en JavaScript, especialmente cuando se necesita convertirlos en una cadena de texto. Además, se puede utilizar en conjunto con otros métodos de JavaScript, como `map()` y `toUpperCase()`, para realizar transformaciones complejas en los elementos del array antes de unirlos en una cadena de texto.
+
+#### Solución al reto 
+
+```js
+class Course {
+    constructor({
+        name,
+        classes = [],
+    }){
+        this._name = name;
+        this.classes = classes;
+    }
+
+    get name(){
+        return this._name;
+    }
+    set name(new_name){
+        if(typeof new_name === 'string'){
+            this._name = new_name;
+            const x = new_name.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
+            console.log(x);
+        }else{
+            console.log(`${new_name} isn't a string!`);
+        }
+    }
+}
+
+const course_one = new Course({
+    name: 'course one',
+});
+
+course_one
+course_one.name
+course_one.name = 'eccentric course on computer psychology...'
+course_one.name = 123
+```
+
+#### Otra solución 
+
+```js
+exportclassCourse{
+  constructor({
+    name,
+    classes = [],
+  }) {
+    this._name = name;
+    this.classes = classes;
+  }
+
+  getname() {
+    returnthis._name;
+  }
+
+  setname(nuevoNombrecito) {
+    if (typeof nuevoNombrecito !== "string") {
+      console.log("Parce no puedes hacer eso");
+    } else {
+      this._name = nuevoNombrecito[0].toUpperCase() + nuevoNombrecito.slice(1);
+    }
+  }
+}
+```
