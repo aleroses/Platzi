@@ -1950,3 +1950,69 @@ exportclassCourse{
   }
 }
 ```
+
+## Pilares de la POO: herencia y polimorfismo
+
+### 15. Qué es herencia 
+
+Sirve para crear nuevas clases con características similares a partir de otras. Con la herencia puedes crear una clase que sea hijo o una copia de otra clase, al heredar una clase se tiene todos los métodos y atributos de la clase padre, podrás modificarlas solo en caso de ser necesario. Funciona como una jerarquía de lo mas general a lo mas especifico.
+
+La herencia en JavaScript se basa en el prototipo de objetos. Un objeto en JavaScript tiene un prototipo que es otro objeto del cual hereda propiedades y métodos. Cuando se busca una propiedad o método en un objeto, si no se encuentra en él mismo, se busca en su prototipo, y así sucesivamente hasta que se llega al objeto base `Object.prototype`.
+
+Para crear una clase que herede de otra clase en JavaScript, se puede utilizar la palabra clave `extends`. Por ejemplo:
+
+```javascript
+class Animal {
+  constructor(name) {
+    this.name = name;
+  }
+
+  speak() {
+    console.log(`${this.name} hace un sonido.`);
+  }
+}
+
+class Perro extends Animal {
+  speak() {
+    console.log(`${this.name} ladra.`);
+  }
+}
+
+let perro = new Perro('Fido');
+perro.speak(); // "Fido ladra."
+```
+
+En este ejemplo, la clase `Perro` hereda de la clase `Animal` utilizando la palabra clave `extends`. La clase `Perro` tiene un método `speak` que reemplaza el método `speak` de la clase `Animal`. Al crear una instancia de la clase `Perro` y llamar al método `speak`, se llama al método `speak` de la clase `Perro`.
+
+También se pueden utilizar las propiedades y métodos de la clase padre en la clase hija utilizando la palabra clave `super`. Por ejemplo:
+
+```javascript
+class Animal {
+  constructor(name) {
+    this.name = name;
+  }
+
+  speak() {
+    console.log(`${this.name} hace un sonido.`);
+  }
+}
+
+class Perro extends Animal {
+  constructor(name, raza) {
+    super(name);
+    this.raza = raza;
+  }
+
+  speak() {
+    super.speak();
+    console.log(`${this.name} ladra.`);
+  }
+}
+
+let perro = new Perro('Fido', 'Golden Retriever');
+perro.speak(); // "Fido hace un sonido." "Fido ladra."
+```
+
+En este ejemplo, la clase `Perro` tiene un constructor que utiliza la palabra clave `super` para llamar al constructor de la clase `Animal` y establecer la propiedad `name`. La clase `Perro` también tiene un método `speak` que llama al método `speak` de la clase `Animal` utilizando la palabra clave `super`, y luego agrega el ladrido del perro.
+
+La herencia en JavaScript es una herramienta poderosa que permite reutilizar código y crear jerarquías de clases. Sin embargo, también es importante tener en cuenta que JavaScript es un lenguaje flexible y dinámico, y que la herencia basada en prototipos puede tener algunos comportamientos inesperados. Es importante comprender bien cómo funciona la herencia en JavaScript para utilizarla de manera efectiva.
