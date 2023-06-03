@@ -1839,7 +1839,7 @@ class Course {
         name,
         classes = [],
     }){
-        this._name = name;
+        this.name = name; //this._name = name;👈👀
         this.classes = classes;
     }
 
@@ -1865,9 +1865,67 @@ course_one
 course_one.name
 course_one.name = 'eccentric course on computer psychology...'
 course_one.name = 123
+
+/* 
+'eccentric course on computer psychology...'
+1. .split(' ') Separamos la oración en un array de palabras
+    ['eccentric', 'course', 'on', 'computer', 'psychology...']
+2. .map(word => word) Recorremos el array de palabras 
+    ['eccentric', 'course', 'on', 'computer', 'psychology...']
+3. .charAt(0) Extraemos el primer caracter de cada palabra
+    ['e', 'c', 'o', 'c', 'p']
+4. .toUpperCase() Convertimos cada caracter en mayúscula
+    ['E', 'C', 'O', 'C', 'P']
+5. + .slice(1) Extraemos todas las letras de cada palabra a partir del index 1 en adelante, excepto la letra de la posición 0 y las concatenamos con lo anterior la letra mayuscula obtenida con el método anterior. 
+    ['Eccentric', 'Course', 'On', 'Computer', 'Psychology...']
+6. .join(' ') Unimos el contenido del array usando como separador un espacio
+    'Eccentric Course On Computer Psychology...'
+*/
 ```
 
-#### Otra solución 
+##### `this.name = name;` vs `this._name = name;` en el constructor
+
+Al usar `this._name = name;` no se aplica el set a la primera instancia creada, solo se aplica a las siguientes pero al usar `this.name = name;` si se aplica desde la primera instancia.
+
+```js
+class Course {
+    constructor({
+        name,
+        classes = [],
+    }){
+        this.name = name; //this._name = name; 👈👀
+        this.classes = classes;
+    }
+}
+```
+
+La razón por la que la primera instancia de la clase `Course` creada no se beneficia de la validación en el método setter cuando se utiliza `this._name = name;` en el constructor, es porque el método setter solo se invoca cuando se establece el valor de la propiedad `name` después de la creación del objeto. En el constructor, se está estableciendo directamente el valor de la propiedad privada `_name` sin pasar por el método setter.
+
+Por otro lado, cuando se utiliza `this.name = name;` en el constructor, se está llamando al método setter directamente, y por lo tanto, se aplica la validación en el valor de `name` incluso en la primera instancia creada.
+
+Por ejemplo, si se crea una instancia de la clase `Course` utilizando `this._name = name;` en el constructor:
+
+```javascript
+const course_new = 'course one';
+const course_one = new Course({ name: course_new });
+console.log(course_one.name); // "course one"
+```
+
+En este caso, como se ha establecido directamente el valor de la propiedad privada `_name` en el constructor, la validación en el método setter no se ha aplicado, y por lo tanto, el valor de `name` sigue siendo "course one".
+
+Por otro lado, si se crea una instancia de la clase `Course` utilizando `this.name = name;` en el constructor:
+
+```javascript
+const course_new = 'course one';
+const course_one = new Course({ name: course_new });
+console.log(course_one.name); // "Course One"
+```
+
+En este caso, al utilizar `this.name = name;` en el constructor, se llama al método setter directamente y se aplica la validación en el valor de `name`, por lo que el valor de `name` se cambia a "Course One" (con la primera letra de cada palabra en mayúscula).
+
+Es importante tener en cuenta que, aunque el método setter no se llama al establecer directamente el valor de la propiedad privada `_name` en el constructor, el método getter sí se puede utilizar para acceder al valor de la propiedad `_name` desde fuera de la clase.
+
+#### Otra solución a medias :v 
 
 ```js
 exportclassCourse{
