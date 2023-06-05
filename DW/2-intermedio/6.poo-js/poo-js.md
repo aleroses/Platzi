@@ -2956,3 +2956,191 @@ export class TeacherStudent extends Student {
     }
 }
 ```
+
+## Examen 📌
+
+<details>
+	<summary>Haz clic para ver los resultados 👀</summary>
+	<br/>
+
+1. ¿Qué es __proto__ en JavaScript?   
+	
+	- 📌El mecanismo para que las instancias hereden los métodos y atributos de sus prototipos.   
+	
+	La propiedad `__proto__` es un enlace interno que tienen todos los objetos en JavaScript que apunta a su prototipo. El prototipo es un objeto del cual el objeto actual hereda métodos y propiedades. Cuando se accede a una propiedad en un objeto, JavaScript primero busca la propiedad en el propio objeto y luego en su prototipo a través de la cadena de prototipos hasta que se encuentra la propiedad o se llega al final de la cadena de prototipos.    
+	
+	Es importante destacar que `__proto__` es una propiedad no estándar y no es recomendable usarla en código de producción. En su lugar, se debe usar el método `Object.getPrototypeOf()` para acceder al prototipo de un objeto, o utilizar la sintaxis de clase o la función `Object.create()` para establecer la herencia de prototipos de forma más segura y legible.    
+
+2. ¿Qué podemos guardar dentro de los objetos?
+
+	- Strings
+	- Números
+	-  📌Todas las respuestas son correctas.
+	- Arrays
+	- Otros objetos
+
+	En JavaScript, los objetos pueden contener una variedad de tipos de datos, incluyendo strings, números, arrays, otros objetos y otros tipos de datos. Los objetos en JavaScript se definen como colecciones de pares clave-valor, donde la clave es una cadena que identifica la propiedad y el valor puede ser de cualquier tipo de dato, incluyendo los mencionados anteriormente. 
+
+	Por ejemplo, un objeto puede contener una propiedad "nombre" que almacena un string, una propiedad "edad" que almacena un número, una propiedad "amigos" que almacena un array de strings, y una propiedad "direccion" que almacena otro objeto con propiedades como "calle", "ciudad" y "pais". 
+
+	Es importante destacar que los objetos en JavaScript son dinámicos, lo que significa que se pueden agregar o eliminar propiedades en cualquier momento, y los valores de las propiedades se pueden cambiar en cualquier momento.
+
+3. Los módulos de ECMAScript 6 nos permiten:
+
+	- 📌Aplicar encapsulamiento a nivel de archivos.
+
+	Los módulos de ECMAScript 6 nos permiten definir y exportar un conjunto de funciones, objetos y/o variables desde un archivo JavaScript para que puedan ser importados y utilizados en otros archivos JavaScript. El uso de módulos permite aplicar encapsulamiento a nivel de archivo, lo que significa que el código dentro de un módulo está aislado del código fuera de él, lo que ayuda a prevenir conflictos de nombres y a mantener el código organizado y modularizado. 
+
+	Los módulos ECMAScript 6 se definen utilizando la sintaxis `export` para exportar funciones, objetos y/o variables desde un archivo y la sintaxis `import` para importarlas en otro archivo. Los módulos también pueden tener dependencias, lo que significa que pueden importar otros módulos y utilizar sus funciones, objetos y/o variables. 
+
+	Es importante destacar que el soporte de los módulos ECMAScript 6 varía según el navegador y se requiere una herramienta de compilación como Babel para transpilar el código a una versión compatible con navegadores más antiguos.
+
+4. ¿Para qué creamos objetos en JavaScript?
+
+	- Para agrupar propiedades en una lista dándole un “nombre clave” a cada elemento.
+	- Para agrupar variables relacionadas en un mismo lugar dentro del código.
+	-  📌Todas las respuestas son correctas.
+	- 📌Para crear los moldes de elementos que necesitan nuestros proyectos.
+
+5. ¿Cuál es la convención para nombrar atributos o métodos privados en JavaScript?
+
+	- 📌 Empezar con _ (guión bajo).
+
+6.  ¿Cómo podrías crear un getter que exponga al atributo "privado" _name en JavaScript?
+
+	- 📌get name() { return this._name; }
+
+7.  ¿Qué son los prototipos en JavaScript?
+
+	- 📌Moldes para crear objetos.
+
+8.  ¿Cuál de las siguientes líneas de código para acceder al atributo de un objeto en JavaScript es INCORRECTA?
+
+	-  📌objeto->atributo
+	- objeto.atributo
+	- objeto["atributo"]
+	- objeto[variable]
+
+	Esta sintaxis no es válida en JavaScript para acceder a los atributos de un objeto. En su lugar, se pueden utilizar las siguientes opciones:
+	
+	- La sintaxis de punto `objeto.atributo`: esta sintaxis se utiliza para acceder a un atributo de un objeto utilizando el nombre del atributo como una cadena después del operador de punto.
+	
+	- La sintaxis de corchetes `objeto["atributo"]`: esta sintaxis se utiliza para acceder a un atributo de un objeto utilizando el nombre del atributo como una cadena dentro de corchetes.
+	
+	- La sintaxis de corchetes con una variable `objeto[variable]`: esta sintaxis se utiliza para acceder a un atributo de un objeto utilizando una variable que contiene el nombre del atributo dentro de corchetes.
+	
+	Es importante destacar que la sintaxis de punto es más comúnmente utilizada y es más fácil de leer, mientras que la sintaxis de corchetes es útil en situaciones en las que el nombre del atributo es dinámico o se desconoce de antemano.
+
+9.  ¿Si todos los arrays tienen el método .push dentro de su atributo __proto__, cuál es la forma más cómoda de ejecutarlo desde el array asignaturas en JavaScript?
+
+	- 📌asignaturas.push()
+
+	En JavaScript, el método `push()` es un método que se encuentra en el objeto `Array.prototype`, lo que significa que todos los arrays en JavaScript tienen este método disponible a través de su propiedad `__proto__`. Sin embargo, es importante destacar que el acceso directo a la propiedad `__proto__` no es recomendado para su uso en código de producción y se debe evitar en su lugar se debe utilizar la sintaxis de punto o corchetes para acceder a los métodos y propiedades de un objeto.
+	
+	La sintaxis más común y conveniente para ejecutar el método `push()` desde un array en JavaScript es simplemente llamando al método en el objeto array, como en el ejemplo `asignaturas.push()`. Esto agrega un nuevo elemento al final del array `asignaturas`.
+	
+	Las otras opciones propuestas (`asignaturas.proto.push()`, `asignaturas.super.push()`, `asignaturas.__proto__.push()`, y `asignaturas.prototype.push()`) no son sintaxis válidas para acceder al método `push()` de un array en JavaScript.
+
+10. Las instancias de prototipos también heredan los métodos y atributos del prototipo Object. Esta afirmación es:
+
+	- 📌Verdadera
+
+11.  ¿Qué es herencia en JavaScript?
+
+	- 📌La capacidad de heredar/extender los métodos y atributos de un prototipo "madre".
+
+12.  Para aplicar la herencia en JavaScript, ¿cómo podemos ejecutar el método constructor del prototipo del que extendemos?
+
+	- 📌Con el método super.
+
+13. ¿Qué es abstracción en JavaScript?
+
+	- 📌Crear prototipos "molde" para abstraer la lógica y datos de nuestros objetos.
+
+14. ¿Cuál de las siguientes es una mejor forma de calificar nuestro código JavaScript?
+
+	- 📌Legibilidad.
+
+	La legibilidad se refiere a la facilidad con la que el código se puede leer y entender. Es importante que el código sea legible porque facilita la mantención y solución de errores en el código, y también ayuda a que otros desarrolladores puedan entender el código y colaborar en el proyecto.
+	
+	La modernidad de la sintaxis (opción a) es importante, pero no es el único factor a considerar al calificar nuestro código JavaScript. La cantidad de líneas de código (opción b) y el tiempo que tardas en escribirlo (opción c) también son importantes, pero no son indicadores de la calidad del código en sí mismos. La cantidad de líneas de código repetidas (opción d) es un indicador de la calidad del código, pero solo en la medida en que se refiere a la capacidad del programador para escribir código limpio y eficiente, evitando duplicación innecesaria.
+	
+	En resumen, la legibilidad es un factor clave para calificar nuestro código JavaScript, aunque también debemos considerar otros factores importantes como la eficiencia, el rendimiento, la funcionalidad, la escalabilidad y la capacidad de mantenimiento.
+
+15. Los atributos __proto__ en los objetos de JS pueden contener otro atributo __proto__ por dentro. Esto es:
+
+	- 📌Verdadero
+
+16. ¿Cuáles son las palabras clave que diferencian a una función “normal” de un prototipo en JavaScript?
+
+	-📌this, new y prototype.
+
+	En JavaScript, una función constructora o prototipo es una función especial que se utiliza para crear objetos. Estas funciones se distinguen de las funciones regulares por el uso de las palabras clave `this`, `new` y `prototype`.
+	
+	- `this` se refiere al objeto actual que se está creando o modificando.
+	- `new` se utiliza para crear una nueva instancia del objeto.
+	- `prototype` se refiere al objeto que se utiliza como plantilla para crear nuevos objetos.
+	
+	Por lo tanto, la combinación de estas palabras clave es lo que distingue a una función prototipo de una función regular.
+
+17. ¿Cuál de las siguientes afirmaciones sobre los objetos en JavaScript es INCORRECTA?
+
+	- 📌Los objetos literales NO son instancias de ningún prototipo.
+	- Object es el prototipo madre de todos los objetos y prototipos.
+	- Los objetos son instancias de prototipos.
+	- Los arrays son objetos.
+
+	En JavaScript, todos los objetos son instancias de prototipos, incluyendo los objetos literales. De hecho, los objetos literales son instancias de `Object.prototype`.
+	
+	La opción b es correcta. `Object` es el prototipo madre de todos los objetos y prototipos en JavaScript. Todos los objetos en JavaScript heredan propiedades y métodos de `Object.prototype`, incluyendo el método `toString()`.
+	
+	La opción c es correcta. Los objetos en JavaScript son instancias de prototipos. Cada objeto tiene un prototipo heredado que define sus propiedades y métodos. Los objetos pueden heredar propiedades y métodos de su prototipo heredado y también pueden agregar sus propias propiedades y métodos.
+	
+	La opción d es correcta. Los arrays en JavaScript son objetos que tienen propiedades y métodos especiales para manipular conjuntos de datos. Los arrays heredan propiedades y métodos de `Array.prototype`, que a su vez hereda de `Object.prototype`.
+	
+	Por lo tanto, la afirmación incorrecta es la opción a: "Los objetos literales NO son instancias de ningún prototipo".
+
+
+18. ¿Cuáles son los pilares de la POO?
+
+	- 📌Abstracción, encapsulamiento, herencia y polimorfismo.
+
+	Los pilares de la programación orientada a objetos (POO) son cuatro:
+	
+	1. Abstracción: se refiere a la capacidad de representar objetos del mundo real en el código mediante la identificación de sus características y comportamientos esenciales.
+	
+	2. Encapsulamiento: se refiere a la capacidad de ocultar la complejidad y los detalles innecesarios de una funcionalidad y exponer solo la interfaz necesaria para interactuar con ella.
+	
+	3. Herencia: se refiere a la capacidad de crear nuevas clases a partir de clases existentes, heredando sus propiedades y métodos y agregando nuevas propiedades y métodos.
+	
+	4. Polimorfismo: se refiere a la capacidad de utilizar una sola interfaz para representar diferentes tipos de objetos, de modo que un objeto pueda ser utilizado en lugar de otro.
+
+19. ¿Qué son los objetos literales en JavaScript?
+
+	- 📌Instancias directas del prototipo Object.
+
+	En JavaScript, un objeto literal es una forma de crear un objeto de forma directa, sin necesidad de utilizar una función constructora. La sintaxis de un objeto literal es un conjunto de pares clave-valor entre llaves `{}`.
+	
+	Por ejemplo, el siguiente código crea un objeto literal con dos propiedades:
+
+	```js
+	let miObjeto = { 
+	  propiedad1: "valor1", 
+	  propiedad2: "valor2" 
+	};
+	```
+
+	Los objetos literales son instancias directas del prototipo `Object`. Esto significa que heredan propiedades y métodos de `Object.prototype`, como el método `toString()`.
+	
+	Los objetos literales son una forma común y conveniente de crear objetos en JavaScript, ya que su sintaxis es clara y legible. Sin embargo, los objetos literales no son adecuados para todos los casos y en ocasiones se necesita crear objetos más complejos utilizando funciones constructoras o clases.
+
+20. Completa la frase. "Todos los paradigmas de programación..."
+
+	- 📌Intentan resolver los problemas, falencias o incomodidades de los paradigmas históricamente anteriores.
+
+	Los paradigmas de programación son enfoques y estilos de programación que ofrecen diferentes formas de pensar y abordar el diseño y la implementación de programas. Cada paradigma tiene sus propias características y beneficios, pero todos comparten el objetivo de resolver los problemas, falencias o incomodidades de los paradigmas históricamente anteriores.
+	
+	Por ejemplo, el paradigma imperativo se centró en el control de flujo de la ejecución del programa mediante la secuencia de instrucciones, pero tenía problemas para manejar la complejidad y la modularidad de los programas grandes. El paradigma orientado a objetos surgió como una forma de resolver estos problemas, al permitir la encapsulación, la abstracción, la herencia y el polimorfismo.
+	
+	Cada paradigma tiene sus ventajas y desventajas, y no existe un paradigma que sea superior a todos los demás en todos los casos. En cambio, los programadores deben elegir el paradigma que mejor se adapte a sus necesidades y objetivos, y deben estar dispuestos a aprender y adaptarse a medida que evoluciona la tecnología y cambian las demandas del mercado.
+</details>
