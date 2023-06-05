@@ -1,3 +1,22 @@
+class Comment{
+    constructor({
+        content,
+        pupil_name,
+        pupil_role = 'pupils'
+    }){
+        this.content = content;
+        this.pupil_name = pupil_name;
+        this.pupil_role = pupil_role;
+        this.likes = 0;
+    }
+
+    publish(){
+        console.log(`${this.pupil_name} + (${this.pupil_role})`);
+        console.log(`${this.likes} likes`);
+        console.log(this.content);
+    }
+}
+
 function play_video(id){
     const secret_url = "https://platzisecret.com/" + id;
     console.log('Playing from url' + secret_url);
@@ -94,6 +113,15 @@ class Pupil{
     approved_course(new_course){
         this.approved_courses.push(new_course);
     }
+
+    post_comment(comment_content){
+        const comment = new Comment({
+            content: comment_content,
+            pupil_name: this.name,
+        });
+
+        comment.publish();
+    }
 }
 class Free_pupil extends Pupil{/*  */
     constructor(properties){
@@ -108,7 +136,6 @@ class Free_pupil extends Pupil{/*  */
         }
     }
 }
-
 class Basic_pupil extends Pupil{
     constructor(properties){
         super(properties);
@@ -122,7 +149,6 @@ class Basic_pupil extends Pupil{
         }
     }
 }
-
 class Expert_pupil extends Pupil{
     constructor(properties){
         super(properties);
@@ -130,6 +156,25 @@ class Expert_pupil extends Pupil{
 
     approved_course(new_course){
         this.approved_courses.push(new_course);
+    }
+}
+class Teacher_student extends Pupil{
+    constructor(properties){
+        super(properties)
+    }
+
+    approved_course(new_course){
+        this.approved_course.push(new_course);
+    }
+
+    post_comment(comment_content){
+        const comment = new Comment({
+            content: comment_content,
+            pupil_name: this.name,
+            pupil_role: 'teacher'
+        });
+
+        comment.publish();
     }
 }
 
@@ -230,6 +275,13 @@ const alissa = new Basic_pupil({
     ]
 });
 
+const angela = new Teacher_student({
+    name: 'Angela Gossow',
+    username: 'angela_gossow',
+    email: 'gossow@mail.com',
+    instagram: 'angelagossow'
+})
+
 school_01.launch_of_new_course(new Course({
     name: 'Course 04',
     classes: [
@@ -327,3 +379,9 @@ simone.approved_courses
 simone.approved_course(course_two); //ingles
 alissa.approved_course(course_three); 
 alissa.approved_courses
+
+// polimorfismo
+angela
+angela.post_comment('We want more practical courses and less theory :3');
+alissa.post_comment('I also want more practical courses and less theory!!!')
+angela
