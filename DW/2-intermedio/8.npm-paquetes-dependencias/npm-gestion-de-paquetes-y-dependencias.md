@@ -64,10 +64,6 @@ Ver en Obsidian [[ECMAScript-historia-y-versiones-de-javascript#3. Configurando 
 
 Si estás usando WSL [mirar la documentación](https://learn.microsoft.com/es-mx/windows/dev-environment/javascript/nodejs-on-wsl). Esto te ayudará a instalar nvm, node.js y npm. 
 
-## Notas 
-- [Notion](https://tianmunooz.notion.site/Nuevo-Curso-de-NPM-Gesti-n-de-Paquetes-y-Dependencias-en-JavaScript-386718a496e3473ea60811fb8a6d1242)
-- [Notion](https://luis-ariza.notion.site/NPM-Gesti-n-de-Dependencias-y-Paquetes-en-JavaScript-8d621bda1a3743f6a45f068dcdc2deb3)
-
 ## Configuración de dependencias 
 
 ### 5. Primeros pasos en NPM
@@ -158,8 +154,8 @@ Las dependencias globales son aquellas que están **disponibles para todos los 
 Ligados al sistema operativo y no al proyecto.
 
 - npm install -g cowsay
-	- cowsay
-	- couwsay javascript 
+- cowsay
+- couwsay javascript 
 
 #### Visualizar los paquetes instalados
 
@@ -527,25 +523,216 @@ Esto es importante para tener instaladas siempre la versión adecuada del paquet
 
 ### 12. Crear un paquete
 
+Al crear un paquete para NPM, podrás compartir tu trabajo a varios desarrolladores e [instalar tu paquete](https://platzi.com/clases/3578-npm/52457-instalacion-de-dependencias/) mediante `npm install <tuPaquete>` (ver clase 6).
+
+#### Colocando un nombre a tu paquete
+
+Al publicar un paquete, es necesario que **el nombre sea único**, es decir, no debe existir ningún otro paquete publicado con el mismo nombre en NPM.
+
+Sin embargo, no agregues números, ya que NPM lo detecta como _spam_. Es válido agregar tu nombre de usuario para diferenciarlo,
+
+Asegúrate de eso buscando en la [página oficial de NPM](https://www.npmjs.com/) el nombre del paquete, si no hay coincidencias lo puedes publicar.
+
+#### Proyecto de mensajes aleatorios
+
+Como buena práctica, crea un repositorio remoto en GitHub y clónalo en tu computador. Después, inicia un proyecto con NPM con el comando `npm init -y`. **Con esto ya tienes todo listo para empezar el proyecto.**
+
+Dentro del proyecto crea la siguiente estructura de archivos:
+
+- Un directorio llamado `src` que contenga el archivo principal del proyecto `index.js`
+- Un directorio llamado `bin` que contenga un archivo ejecutable `global.js`
+
+![Directorio base](https://i.postimg.cc/02pgpdWd/12-project-npm.webp)
+
+##### Creando el archivo `index.js`
+
+En el archivo `index.js` agrega el siguiente código:
+
+- Un _array_ llamado `messages` que contiene los mensajes
+- Una función `funnyCommit` que mostrará de manera aleatoria los elementos del _array_, es decir, los mensajes aleatorios.
+- Al final, exporta la función mediante `module.exports`.
+
+```js
+const messages = [
+  "This is where it all begins...",
+  "Commit committed",
+  "Version control is awful",
+  "COMMIT ALL THE FILES!",
+  "The same thing we do every night, Pinky - try to take over the world!",
+  "Lock S-foils in attack position",
+  "This commit is a lie",
+  "I'll explain when you're older!",
+  "Here be Dragons",
+  "Reinventing the wheel. Again.",
+  "This is not the commit message you are looking for",
+  "Batman! (this commit has no parents)",
+];
+
+const funnyCommit = () => {
+  const message = messages[Math.floor(Math.random() * messages.length)];
+  console.log(`\x1b[34m${message}\x1b[89m`);
+}
+
+module.exports = {
+  funnyCommit
+};
+```
+
+##### Creando el archivo `global.js`
+
+En el archivo `global.js` agrega el siguiente código, en el que importamos el la función del archivo `index.js` y la ejecutamos.
+
+```js
+!/usr/bin/env node
+let random = require('../src/index.js');
+
+random.funnyCommit();
+```
+⠀⠀  
+`#!/usr/bin/env node` es una instrucción que sirve para indicar que este archivo se ejecutará con Nodejs. Después realizamos la importación de nuestro archivo `index.js`. Finalmente, ejecutamos la función de mensajes aleatorios `funnyCommit`.
+
+##### Modificar el archivo _package.json_ para el proyecto
+⠀⠀  
+En el archivo `package.json`, agrega `"bin"` haciendo referencia a nuestro archivo `global.js` y `"preferGlobal"` en `true`.
+
+```json
+{
+    ...
+    "bin": {
+        "random-str-msg": "./bin/global.js"
+    },
+    "preferGlobal": true
+}
+```
+
+El nombre que especifiquemos dentro de `"bin"` será el que utilicemos en la terminal cuando el paquete esté instalado.
+
+¡Listo! Ya tienes un paquete para publicarlo en NPM.
 
 
+#### Dato:  
+
+La diferencia entre un módulo local y un módulo global es que el local se guarda DENTRO de la carpeta del proyecto, por lo cual, si quieres ejecutar el script en una terminal, tendrás que viajar primero a la carpeta.
+
+El global, en cambio, lo guarda en un path “universal” (tú mismo puedes personalizarlo) el punto es que puedes ejecutar los scripts de este módulo sin importar en dónde estés ubicado dentro de tu terminal.
+
+Según he leído, se recomienda siempre mantener módulos locales para evitar bugs tremendos de compatibilidad entre tus proyectos y realmente son pocos los módulos que merecen la pena trabajar globales, solo aquellos que te brindan comandos de terminal que frecuentes mucho o que uses en la mayoría de tus proyectos, de resto, es mejor manejar módulos locales.
 
 
+### 13. Publicar un paquete
+
+Antes de publicar el [proyecto de mensajes aleatorios](https://platzi.com/clases/3578-npm/52463-crear-un-paquete/) (clase anterior), debes asegurarte de que el paquete funcione correctamente.
+
+#### Comando `npm link`
+
+El comando `sudo npm link` crea un enlace simbólico para reconocer este paquete dentro del listado de NPM, **sin publicarlo todavía.**
+
+Si no presenta errores, está listo para ser publicado.
+
+#### Simular la instalación de tu paquete
+
+Para simular la instalación de tu paquete de manera local, identifica el directorio en el que te encuentras con el comando `pwd`, **debe ser el mismo del proyecto**.
+
+Después, ejecuta `npm install -g <ruta>`, donde es la ruta del directorio de tu proyecto. Esto sirve para [instalarlo de manera global](https://platzi.com/clases/3578-npm/52457-instalacion-de-dependencias/).
+
+`sudo npm install -g /Users/tuUsuario/tu-paquete`
+
+De esta manera, ya puedes ejecutar el programa con el comando que creamos en `"bin"`, `random-str-msg` y funcionará de forma global en el sistema.
+
+- `random-str-msg`
+	- Commit committed
+- `random-str-msg`
+	- Here be Dragons
+
+#### Cómo publicar un paquete en NPM
+
+Una vez revisado que el paquete funcione correctamente, debes asegurarte de cumplir con los siguientes requisitos: * Asegurar que el programa funcione reduciendo en lo posible los _bugs_ * Revisar que la configuración del archivo package.json sea correcta * Tener un nombre único para el proyecto, usando guiones (-) para separar palabras y evitando números * [Crear una cuenta](https://www.npmjs.com/signup) en NPM, ya que aquí estarán tus paquetes a tu nombre. Después, debes utilizar el comando `npm adduser` para iniciar sesión en la terminal. Llena los datos, si no aparece tu contraseña, no te preocupes, es una forma de seguridad.
+
+Una vez hayas cumplido los requisitos, **ejecuta el comando `npm publish`** y si no existen errores, tu paquete será publicado.
+
+#### Validar con qué usuario publicar un paquete en NPM
+
+Para validar el usuario con el que publicarás un paquete en NPM, debes utilizar el comando `npm whoami` para visualizar el usuario actual, **esto es importante si tienes varias cuentas de NPM**.
+
+### 14. Versionado de paquetes y paquetes privados
+
+El versionado semántico consiste en la estructura que debemos seguir para colocar una versión a nuestro paquete.
+
+#### Qué es el versionado semántico
+
+El versionado semántico está conformado por tres valores:
+
+- **Major:** el valor que muestra la versión que contiene los cambios importantes del paquete
+- **Minor:** el valor que muestra la versión que contiene los cambios en funcionalidades, pero no representan un cambio significativo
+- **Patch:** el valor que muestra la versión que contiene cambios rápidos para solucionar problemas de seguridad o _bugs_
+
+![version](https://i.postimg.cc/rwkgRzpK/14-version.webp)
+
+##### Símbolos ^ y ~ para actualizar las versiones minor y patch
+
+**Existen dos símbolos que acompañan al versionado sirven para actualizar las versiones _minor_ y _patch_ del paquete.**
+
+- **Caret (^):** Permite actualizar las versiones _minor_ y _patch_
+- **Tilde (~):** Permite actualizar las versiones _patch_
+
+Por ejemplo, tenemos la versión `5.2.3`:
+
+- Si tiene el _carret_ `^5.2.3`, actualizará la versión _minor_ y _patch_, por lo que tendrás versiones como `^5.3.3`, `^5.4.3`, `^5.4.4`, y así sucesivamente. Pero no versiones mayores a `6.0.0`.
+- Si tiene la _tilde_ `~5.2.3`, actualizará la versión de _patch_, por lo que tendrás versiones como `~5.2.4`, `~5.2.5`, `~5.2.6`, y así sucesivamente. Pero no versiones mayores a `5.3.0`.
+
+#### Buenas prácticas en el versionado de paquetes
+
+**Lo recomendable es eliminar estos símbolos y tener la versión exacta** (sin símbolos) para evitar problemas de versionado, principalmente con paquetes que los mantienen pocas personas o no son fiables.
+
+Debes manejar las actualizaciones cuando sea pertinente y asegurándote que no entrará en conflicto la nueva versión con la antigua.
+
+#### Cómo realizar cambios a la versión de tu paquete de NPM
+
+**Si realizas cambios en tu código, tienes que cambiar la versión de tu paquete.** Debes utilizar los siguientes comandos, según la versión que desees cambiar:
+
+```bash
+// Aumenta una version path (1.0.0) -> (1.0.1)
+$ npm version patch
+
+// Aumenta una version minor (1.0.0) -> (1.1.0)
+$ npm version minor
+
+// Aumenta una version major (1.0.0) -> (2.0.0)
+$ npm version major
+
+// Aumenta una version específica (1.0.0) -> (3.1.1)
+$ npm version 
+```
+
+Una vez actualizada la versión de tu paquete, puedes ejecutar nuevamente el comando `npm publish` para actualizarlo en los repositorios de NPM.
 
 
+#### Paquetes privados
+
+Para usar paquetes privados necesitas:
+
+- Una versión igual o superior a la 2.7.0 de NPM
+- Tener una cuenta de **usuario u organización de pago**
+
+En un paquete privado de NPM, solo pueden participar el propietario y los colaboradores autorizados. De esta manera, puedes seguir construyendo el paquete con una combinación de **código privado y dependencias públicas**.
+
+#### Actualizar tu paquete en NPM con buenas prácticas
+
+Tu paquete debe contener toda la información posible para que el usuario puede instalarlo, utilizarlo y hasta colaborar para solucionar posibles _bugs_. Por ende, **es necesario que tengas configurado, por lo menos, un archivo `README.md`** y un repositorio remoto (GitHub, GitLab, etc.).
+
+Una vez tengas estos requisitos, puedes actualizar tu paquete a una nueva versión, luego publícalo nuevamente.
+
+#### Cómo crear un archivo _README.md_ para tu paquete
+
+Para crear un archivo _README.md_ puedes utilizar esta [estructura base](https://gist.github.com/gndx/1b2c8482049c6d3b521dffcf33337558) y adecuarla a tu proyecto. Puedes mirar el código haciendo clic en el botón "Raw".
+
+![estructura](https://i.postimg.cc/V6hTM1S5/14-readme-estructura.png)
 
 
+[Documentación sobre versionado](https://semver.org/lang/es/)
 
 
-
-
-
-
-
-
-
-
-### Comando más comunes en NPM
+## Comando más comunes en NPM
 
 Hay muchos comandos disponibles en NPM, pero algunos de los más comunes son:
 
@@ -573,3 +760,135 @@ Hay muchos comandos disponibles en NPM, pero algunos de los más comunes son:
 22. `npm deprecate <paquete> <versión> <mensaje>`: Marca una versión específica de un paquete como obsoleta y muestra un mensaje de advertencia cuando alguien intenta instalarla.
 
 Estos son solo algunos de los comandos más comunes en NPM, pero hay muchos más disponibles dependiendo de las necesidades específicas del proyecto.
+
+
+### Inicializar un proyecto
+
+- `npm init`: Inicializa un proyecto. Luego tienes que responder preguntas básicas del proyecto
+- `npm init -y`: Inicializa un proyecto con una descripción por defecto de las preguntas bases
+
+### Instalando dependencias
+
+- `npm install`: Instala las dependencias escritas del `package.json`
+- `npm install package-name`: Instala el paquete de nombre **package-name** y lo guarda como dependencia para producción
+- `npm install package-name --save-dev`: Instala el paquete y lo guarda como dependencia de desarrollo
+- `npm install package-name@version`: Instala una versión específica del paquete
+- `npm install package-name@latest`: Instala una versión más reciente del paquete
+- `npm install pacakge-name -g`: Instala el paquete de forma global
+- `npm uninstall package-name`: Con eso elimina la dependencia y los paquetes de los cuales depend
+
+### Listando dependencias
+
+- `npm list`: Lista los paquetes instalados en el proyecto
+- `npm list -g`: Lista los paquetes instalados de forma global
+- `npm outdate`: Nos permite mostrar los paquetes que estan desactualizados
+
+### Auditando y corrigiendo vulnerabilidades
+
+- `npm audit`: Audita las dependencias que tenemos instaladas en busca de vulnerabilidades
+- `npm audit fix`: Audita e intenta arreglar las vulnerabilidades de nuestras dependencias
+- `npm audit --json`: Muestra los resultados de la auditoría a manera más profunda en formato json
+- `npm audit fix --force`: Corrige los problemas encontrados en las librerías instalando otras dependencias por debajo si es necesario
+
+### Build de los proyectos
+
+- `npm run build --dd`: Activa el build en formato verbose. Lo cual entrega una información más robusta de lo que se creó en el build
+- `npm ci`: también llamado `npm clean install`. Este comando es similar al comando `npm install`. Con la diferencia que está pensado para ser utilizado en ambientes automatizados.
+
+### Publicar un paquete a npm
+
+- `npm link`: Crea un enlace simbólico para reconocer este paquete dentro del estado de paquete que contiene npm, pero sin publicarlo. De esta forma se puede probar el paquete y garantizar que cumple con lo que se programó
+- `npm adduser`: Inicia sesión en npm desde la terminal
+- `npm publis`: Publica el proyecto creado
+- `npm version x.x.x`: Cambia la version del proyecto a x.x.x
+
+
+
+## Notas 
+- [Notion](https://tianmunooz.notion.site/Nuevo-Curso-de-NPM-Gesti-n-de-Paquetes-y-Dependencias-en-JavaScript-386718a496e3473ea60811fb8a6d1242)
+- [Notion](https://luis-ariza.notion.site/NPM-Gesti-n-de-Dependencias-y-Paquetes-en-JavaScript-8d621bda1a3743f6a45f068dcdc2deb3)
+
+## Examen 📌
+
+<details>
+	<summary>Haz clic para ver los resultados 👀</summary>
+	<br/>
+
+1. Identifica cuál es una instalación de una dependencia global
+
+	- 📌`npm install -g nodemon`
+
+
+2. ¿Cuál es el comando que nos permite inicializar nuestros proyectos con npm?
+
+	- 📌`npm init`
+
+3. ¿Para qué nos sirve el flag '--save-optional' o '-O'?
+
+	- 📌El paquete aparecerá en “optionalDependencies”.
+
+4. ¿Cuál es el comando que nos permite publicar un paquete en npmjs.com?
+
+	- 📌`npm publish`
+
+5. ¿Para qué se usa el comando `'npm init -y'`?
+
+	- 📌Establece la configuración por defecto para el archivo package.json.
+
+6. ¿Cuál es el comando para agregar el nombre del autor a la configuración por defecto de NPM?
+
+	- 📌`npm set init.author.name "example_user"`
+
+7. #### ¿Cuál es el comando que nos permite ver todo el output en la terminal/consola?
+
+	- 📌`npm run build --dd`
+
+La opción `--dd` significa "verbose debugging output", lo que permite ver todo el output detallado del comando `npm run build`. De esta manera, podemos ver cualquier mensaje de error, advertencia o información que se genere durante la ejecución del comando.
+
+8. ¿Cuál es el comando para listar los paquetes y módulos instalados?
+
+	- 📌`npm list`
+
+9. ¿Para quá nos sirve el flag `'--save'`?
+
+	- 📌Instala y agrega la entrada a las dependencias del archivo package.json.
+
+10. ¿Cuál es el alias de 'npm run start'?
+
+	- 📌`npm start`
+
+11. ¿Cuál es el comando que nos permite inicializar nuestros proyectos en git?
+
+	- 📌`git init`
+
+12. ¿Cuál es comando que nos permite identificar las dependencias globales instaladas en nuestro sistema?
+
+	- 📌`npm list -g --depth 0`
+
+El comando que nos permite identificar las dependencias globales instaladas en nuestro sistema es: `npm list -g --depth 0`
+
+La opción `-g` indica que se deben listar los paquetes globales instalados. La opción `--depth` se utiliza para especificar la profundidad de la lista de dependencias que se mostrará. En este caso, `--depth 0` indica que solo se deben mostrar los paquetes de nivel superior y no las dependencias de segundo nivel o posteriores.
+
+Este comando mostrará una lista de los paquetes globales instalados en el sistema junto con su versión. Por ejemplo:
+
+```bash
+/usr/local/lib
+├── create-react-app@4.0.3
+├── npm@7.20.3
+├── serve@12.0.0
+└── nodemon@2.0.12
+```
+
+13. ¿Cuál es el comando que nos permite ver una auditoría en formato json?
+
+	- 📌`npm audit --json`
+
+14. ¿Qué funcionalidad tiene el archivo 'package.json'?
+
+	- 📌Contiene la información general del proyecto: scripts, dependencias y configuraciones de un proyecto.
+
+15. ¿Cuál es el ejemplo correcto para instalar la versión más reciente de un paquete?
+
+	- 📌`npm install json-server@latest`
+
+</details>
