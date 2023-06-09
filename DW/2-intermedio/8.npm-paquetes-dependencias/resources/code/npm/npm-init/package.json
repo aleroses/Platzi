@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node src/index.js",
+    "node": "node src/index.js && node src/index.js"
   },
   "keywords": [
     "javascript",
@@ -12,5 +13,14 @@
     "node"
   ],
   "author": "ale roses <ale.vrs@outlook.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "optionalDependencies": {
+    "eslint": "^8.42.0"
+  },
+  "dependencies": {
+    "howler": "^2.2.3",
+    "json-server": "^0.17.3",
+    "moment": "^2.29.4",
+    "react": "^18.2.0"
+  }
 }
