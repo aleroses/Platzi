@@ -1687,5 +1687,697 @@ parse_to_url("La API para nunca parar de aprender");
 parse_to_url("Curso de arrays");
 ```
 
+### 22. Concat
+
+El método `concat` **es inmutable** y consiste en crear un nuevo _array_ a partir de la unión de otros valores o _arrays_ especificados como argumentos.
+
+Este método recibe **uno o varios argumentos**:
+
+- Valores cualesquiera y/o _arrays_ para concatenar.
+
+```js
+let result = array.concat(otherArray)
+```
+
+#### Diferencia entre la estructura _for_ y el método _concat_
+
+Si deseas utilizar una estructura `for` para concatenar _arrays_, debes copiar el primer _array_ **sin su referencia en memoria** para que no exista mutabilidad. Puedes realizar una copia con el _spread operator_ (operador de propagación) o con el nuevo método `structuredClone`. También puedes utilizar el método `push` si no importa la mutabilidad del _array_ original.
+
+Con el método `concat`, solo debemos establecer el/los elemento/s a concatenar a un _array_ de manera **inmutable**, es decir, los elementos originales no cambiarán.
+
+```js
+const numbers1 = [1,2,3,4]
+const numbers2 = [5,6,7,8]
+const numbers3 = [9,10,11,12]
+
+const result1 = numbers1.concat("hola", "mundo")
+const result2 = numbers1.concat(numbers2)
+const result3 = numbers1.concat(numbers2, "hola")
+const result4 = numbers1.concat(numbers2, numbers3)
+
+result1 // [ 1, 2, 3, 4, 'hola', 'mundo' ]
+result2 // [ 1, 2, 3, 4, 5, 6, 7, 8 ]
+result3 // [ 1, 2, 3, 4, 5, 6, 7, 8, 'hola' ]
+result4 // [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 ]
+```
+
+#### Ejemplos de la clase: 
+
+```js
+const elements = [1,1,2,2];
+const otherElements = [3,3,4,4]
+
+const fusion = elements.concat(otherElements);
+console.log(fusion);
+// [ 1, 1, 2, 2, 3, 3, 4, 4 ]
+
+// Para clonar sin dejar una referencia en memoria anterior debemos usar: algo = [...elements];
+
+// Otra forma de concatenar: spread operator solo para arrays 
+const fusion_two = [...elements, ...otherElements]
+console.log(fusion_two);
+// [ 1, 1, 2, 2, 3, 3, 4, 4 ]
+
+// Otro ejemplo 
+const fusion_three = [...elements, 'random'];
+console.log(fusion_three);
+// [ 1, 1, 2, 2, 'random' ]
+
+// Agregar elementos al array original 
+elements.push(...otherElements);
+console.log(elements);
+// [ 1, 1, 2, 2, 3, 3, 4, 4 ]
+```
+
+#### Dato: 
+
+Si buscas obtener un nuevo array sin valores repetidos, puedes utilizar `new Set` más los spread operators. 
+
+```js
+// Unir sin repetir valores
+const array_one = ["Java","JavaScript", 'PHP'];
+const array_two = ["C#", "PHP" , "Java"];
+
+const merged_arrays = [...new Set([...array_one, ...array_two])]
+
+console.log(merged_arrays)
+// ['Java', 'JavaScript', 'PHP', 'C#']
+```
+
+
+### 23. Flat 
+
+El método `flat` es **inmutable** que consiste en retornar un _array_ donde los _sub-arrays_ han sido aplanados hasta una profundidad especificada. El aplanamiento consiste en transformar un _array_ de _arrays_ a una sola dimensión.
+
+Este procedimiento recibe un argumento:
+
+- La **profundidad** del aplanamiento, por defecto, tiene un valor de 1. Si se desea aplanar todos los _sub-arrays_ en una sola dimensión, utiliza el valor de `Infinity`.
+
+```js
+array.flat(profundidad)
+```
+
+#### Diferencia entre la estructura _for_ y el método _flat_
+
+Si se utiliza la estructura `for` para aplanar un _array_ de _arrays_, es necesario utilizar otra estructura `for` para cada sub-nivel del _array_ o recursión.
+
+```js
+const matrix = [
+  [1,2,3],
+  [4,5,6],
+  [7,8,9],
+]
+
+const flatArray = []
+
+for(let i=0; i<matrix.length; i++){
+  const array = matrix[i]
+  for(let j=0; j<array.length; j++){
+    flatArray.push(matrix[i][j])
+  }
+}
+
+console.log(flatArray)
+// [ 1, 2, 3, 4, 5, 6, 7, 8, 9 ]
+```
+
+Con el método `flat` solamente es necesario indicar la profundidad de aplanamiento del _array_.
+
+```js
+const array = [1,2,[3,4],5,6]
+const result = array.flat() 
+result// [1,2,3,4,5,6]
+
+const array2 = [1, 2, [3, 4, [5, 6]]];
+const result2 = array2.flat() 
+result2// [1, 2, 3, 4, [5, 6]]
+
+const array3 = [1, 2, [3, 4, [5, 6]]]
+const result3 = array3.flat(2) 
+result3// [1, 2, 3, 4, 5, 6]
+
+const array4 = [1, 2, [3, 4, [5, 6, [7, 8, [9, 10]]]]]
+const result4 = array4.flat(Infinity) 
+result4// [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+```
+
+#### Aplanando con recursividad 
+
+```js
+// Si matriz fuera = 'Hola', la función retornaría [ 'hola' ]
+const matriz = [
+    [1,2,3],
+    [4,5,6, [1,2, [1,2]]],
+    [7,8,9]
+];
+
+// Profundidad
+function depth(list){
+    let new_list = [];
+    if(typeof list != "object") return [list];
+
+    list.forEach(element => {
+        new_list = new_list.concat(depth(element));
+    });
+    return new_list;
+}
+
+const new_array = depth(matriz);
+console.log(new_array);
+```
+
+Primero, En JavaScript, los arreglos (`arrays`) son objetos, por lo que técnicamente son de tipo "object". Por lo tanto, la comparación con el operador `typeof` para verificar si el argumento es un objeto se aplica tanto a los objetos como a los arreglos.
+
+En el código de ejemplo, la función `depth` se utiliza para trabajar con cualquier tipo de objeto o matriz, no solo para matrices. Por lo tanto, la comparación con el operador `typeof` se realiza para asegurarse de que el argumento que se pasa a la función es realmente una matriz o un objeto, de lo contrario, se devuelve una lista que contiene solo el argumento original (esto ocurre cuando el argumento no es un objeto).
+
+Segundo, la recursividad es una técnica en la que una función se llama a sí misma dentro de su propia definición. Es decir, una función puede invocarse a sí misma para resolver un problema o realizar una tarea, en lugar de utilizar un bucle o una iteración.
+
+La recursividad se utiliza a menudo en JavaScript cuando se trata de estructuras de datos complejas, como árboles o listas enlazadas. También se usa en problemas matemáticos que se pueden dividir en subproblemas más pequeños.
+
+Un ejemplo simple de función recursiva en JavaScript es la función factorial, que calcula el factorial de un número entero positivo. El factorial de un número n se define como el producto de todos los enteros positivos desde 1 hasta n. La función factorial se puede definir recursivamente de la siguiente manera:
+
+```js
+function factorial(n) {
+  if (n === 0) {
+    return 1;
+  } else {
+    return n * factorial(n - 1);
+  }
+}
+```
+
+En esta función, si el argumento `n` es igual a cero, se devuelve 1. De lo contrario, se devuelve el producto de `n` y el resultado de llamar a la función `factorial` con `n-1` como argumento. La función se llama a sí misma repetidamente con argumentos más pequeños hasta que se alcanza el caso base, que es cuando `n` es igual a cero.
+
+Otro ejemplo de recursividad en JavaScript es la función `fibonacci`, que calcula la secuencia de Fibonacci. La secuencia de Fibonacci es una serie de números en la que cada número es la suma de los dos números anteriores. La función `fibonacci` se puede definir recursivamente de la siguiente manera:
+
+```js
+function fibonacci(n) {
+  if (n === 0 || n === 1) {
+    return n;
+  } else {
+    return fibonacci(n - 1) + fibonacci(n - 2);
+  }
+}
+```
+
+En esta función, si el argumento `n` es igual a cero o a uno, se devuelve `n`. De lo contrario, se devuelve la suma de los resultados de llamar a la función `fibonacci` con `n-1` y `n-2` como argumentos. La función se llama a sí misma repetidamente con argumentos más pequeños hasta que se alcanza el caso base, que son los dos primeros números de la secuencia de Fibonacci (0 y 1).
+
+
+### 24. FlatMap
+
+El método `flatMap` es **inmutable** y consiste en la combinación de los métodos `map` y `flat`. Primero realiza la iteración de los elementos del `array` (como si fuera `map`), y después los aplana en **una sola profundidad** (como si fuera `flat`).
+
+Este procedimiento recibe los mismos argumentos que el [método map](https://platzi.com/clases/2461-arrays/40873-map/).
+
+```js
+const strings = ["Nunca pares", "de Aprender"]
+
+strings.map(string => string.split(" ")) 
+// [ [ 'Nunca', 'pares' ], [ 'de', 'Aprender' ] ]
+
+strings.flatMap(string => string.split(" ")) 
+// [ 'Nunca', 'pares', 'de', 'Aprender' ]
+```
+
+```js
+const numbers = [1, 2, 3, 4]
+
+numbers.map(number => [number * 2]) 
+// [[2], [4], [6], [8]]
+
+numbers.flatMap(number => [number *2]) 
+// [2, 4, 6, 8]
+```
+
+Cuidado con el método `flatMap`, primero realiza el `map` y luego el `flat`.
+
+```js
+const numbers2 = [1,[2,3], 4, 5]
+numbers2.flatMap(number => [number *2]) 
+// [ 2, NaN, 8, 10 ]
+// * Recuerda: NaN = No a Number
+```
+
+#### Ejemplo de la clase
+
+```js
+const users = [
+    { userId: 1, username: "Tom", attributes: ["Nice", "Cute"] },
+    { userId: 2, username: "Mike", attributes: ["Lovely"] },
+    { userId: 3, username: "Nico", attributes: ["Nice", "Cool"] },
+];
+
+// Extraemos los attributes y convertimos todo a un solo array
+const result = users.map(user => user.attributes).flat()
+console.log(result);
+// [ 'Nice', 'Cute', 'Lovely', 'Nice', 'Cool' ]
+
+// Lo mismopero con flatMap
+const result_two = users.flatMap(user => user.attributes);
+console.log(result_two);
+// [ 'Nice', 'Cute', 'Lovely', 'Nice', 'Cool' ]
+
+
+// Ejemplo 02
+const calendars = {
+    primaryCalendar: [
+        {
+            startDate: new Date(2021, 1, 1, 15),
+            endDate: new Date(2021, 1, 1, 15, 30),
+            title: "Cita 1",
+        },
+        {
+            startDate: new Date(2021, 1, 1, 17),
+            endDate: new Date(2021, 1, 1, 18),
+            title: "Cita 2",
+        },
+    ],
+    secondaryCalendar: [
+        {
+            startDate: new Date(2021, 1, 1, 12),
+            endDate: new Date(2021, 1, 1, 12, 30),
+            title: "Cita 2",
+        },
+        {
+            startDate: new Date(2021, 1, 1, 9),
+            endDate: new Date(2021, 1, 1, 10),
+            title: "Cita 4",
+        },
+    ],
+};
+
+const result_three = Object.values(calendars).flatMap(item => {
+    /* console.log('item', item); */
+    return item.map(date => date.startDate);
+});
+
+console.log(result_three);
+/* 
+[
+    2021-02-01T20:00:00.000Z,
+    2021-02-01T22:00:00.000Z,
+    2021-02-01T17:00:00.000Z,
+    2021-02-01T14:00:00.000Z
+]
+*/
+```
+
+### 25. Playground: calcula el total de palabras en un texto
+
+En este desafío tienes array de strings y cada línea es un fragmento, el Zen de Python, tu reto es hacer un método que retorne el número de palabras totales que tiene el array.
+
+Para solucionarlo vas a encontrar una función llamada `countWords` que tiene un parámetro de entrada:
+
+- array: Un array de frases
+
+Dentro del cuerpo de la función `countWords` debes escribir tu solución.
+
+Ejemplo:
+
+```js
+Input: [
+  "Beautiful is better than ugly",
+  "Explicit is better than implicit",
+  "Simple is better than complex",
+  "Complex is better than complicated",
+]
+
+Output: 20
+```
+
+#### Solution 
+
+```js
+function words(array) {
+	// Divide cada frase y la vuelve a unir luego hace un conteo
+    return array.flatMap(w => w.split(' ')).length;
+}
+
+words([
+    "Beautiful is better than ugly",
+    "Explicit is better than implicit",
+    "Simple is better than complex",
+    "Complex is better than complicated"
+]); // 20
+words([]); // 0
+```
+
+
+### 26. Mutable functions
+
+Las funciones mutables consisten en cambiar el _array_ original. Estos métodos son:
+
+- push
+- unshift
+- pop
+- shift
+- splice
+- sort
+
+#### Método push
+
+El método `push` **agrega** uno o varios elementos al **final** del _array_ original. El método recibe como argumento los valores a agregar. Retorna el número de elementos del _array_ mutado.
+
+```js
+const array = [1,2,3]
+array.push(4,5)
+console.log(array) // [ 1, 2, 3, 4, 5 ]
+```
+
+#### Método unshift
+
+El método `unshift` **agrega** uno o varios elementos al **inicio** del _array_ original. El método recibe como argumento los valores a agregar. Retorna el número de elementos del _array_ mutado.
+
+```js
+const array = [3,4,5]
+array.unshift(1,2)
+console.log(array) // [ 1, 2, 3, 4, 5 ]
+```
+
+#### Método pop
+
+El método `pop` **extrae** el elemento del **final** del _array_ original. El método no recibe ningún argumento. Retorna el elemento extraído, si no se guarda en una variable, el [Garbage Collection](https://platzi.com/clases/1798-javascript-navegador/25687-garbage-collection/){target="_blank"} lo elimina.
+
+```js
+const array = [1,2,3,4]
+const lastElement = array.pop()
+console.log(lastElement) // 4
+console.log(array) // [ 1, 2, 3 ]
+```
+
+#### Método shift
+
+El método `shift` **extrae** el elemento del **inicio** del _array_ original. El método no recibe ningún argumento. Retorna el elemento extraído, si no se guarda en una variable, el [Garbage Collection](https://platzi.com/clases/1798-javascript-navegador/25687-garbage-collection/){target="_blank"} lo elimina.
+
+```js
+const array = [1,2,3,4]
+const firstElement = array.shift()
+console.log(firstElement) // 1
+console.log(array) // [ 2, 3, 4 ]
+```
+
+#### Método splice
+
+El método `splice` **extrae** uno o varios elementos del _array_ original a partir del índice y los reemplaza con otro elemento especificado como argumento. Retorna un _array_ con los elementos extraídos, si no se guarda en una variable, el [Garbage Collection](https://platzi.com/clases/1798-javascript-navegador/25687-garbage-collection/){target="_blank"} lo elimina.
+
+El método `splice` recibe tres argumentos:
+
+- El **índice** donde comenzará a cambiar el _array_.
+- La **cantidad de elementos** que serán reemplazados.
+- **Uno o varios elementos** que reemplazarán a los originales del _array_.
+
+```js
+array.splice(índice, cantidad, items)
+array.splice(índice, cantidad, item1, item2, ..., itemN)
+```
+
+##### Ejemplos utilizando el método _splice_
+
+```js
+const array = [1,2,3,4]
+const elements = array.splice(2,1,"tres")
+console.log(elements) // [3]
+console.log(array) // [ 1, 2, 'tres', 4 ]
+
+const array = [1,2,3,4]
+const elements = array.splice(1,2,"dos", "tres")
+console.log(elements) // [ 2, 3 ]
+console.log(array) // [ 1, 'dos', 'tres', 4 ]
+```
+
+#### Retos 
+
+```js
+// Reto 01: Eliminar un elemento sin borrarlo de la lista original 
+const reto_one = [
+    { title: 'Pizza', price: 121, id: '🍕' },
+    { title: 'Burger', price: 121, id: '🍔' },
+    { title: 'Hot cakes', price: 121, id: '🥞' },
+];
+
+const products_one = reto_one.filter(p => p.id != "🍔");
+console.log("Original: ", reto_one);
+console.log("Copia: ", products_one);
+```
+
+```js
+// Reto 02: Modificar una nueva lista sin modificar el original. 
+// Debemos copiar solo los elementos para que no tengan la misma dirección en memoria. 
+
+const reto_two = [
+    { title: 'Pizza', price: 121, id: '🍕' },
+    { title: 'Burger', price: 121, id: '🍔' },
+    { title: 'Hot cakes', price: 121, id: '🥞' },
+];
+
+const update_two = {
+    id: "🥞",
+    changes: {
+        price: 200,
+        description: 'delicious'
+    }
+}
+
+const product_index_two = reto_two.findIndex(item => item.id === update.id);
+
+const products_two = [...reto_two];
+products_two[product_index_two] = {
+    ...reto_two[product_index_two],
+    ...update_two.changes,
+};
+
+console.log("Original", reto_two);
+console.log("Update", products_two);
+```
+
+### 27. Sort
+
+El método `sort` es **mutable** y consiste en ordenar un _array_ a partir de los valores [Unicode](https://es.wikipedia.org/wiki/Unicode) de los caracteres y este retorna un _array_ con la misma referencia en memoria que el original.
+
+Este proceso recibe **un argumento**:
+
+- Una función de comparación que compara cada elemento con otro. Por defecto, evalúa el valor Unicode del caracter.
+
+```js
+let sortedArray = array.sort(function())
+```
+
+La función comparativa, que recibe como argumento el método `sort`, utiliza **dos parámetros**:
+
+- El **primer elemento** a comparar.
+- El **segundo elemento** a comparar.
+
+```js
+array.sort(function(first, second))
+```
+
+Si la función comparativa retorna un número mayor que 0, entonces el primer elemento se sitúa antes que el segundo. Si es menor que 0, entonces el segundo elemento se sitúa antes que el primero. Esto es importante, ya que ordenar los elementos por el valor Unicode provoca resultados inesperados.
+
+#### Ordenamiento de palabras
+
+Si ordenas un _array_ de palabras, puede ordenar correctamente por el valor Unicode de los caracteres de la palabra. Sin embargo, en algunos navegadores o entornos de ejecución (como Node) puede que esto falle, por lo tanto, debes utilizar la función `localeCompare`.
+
+Ten en cuenta que las mayúsculas, minúsculas y caracteres con tilde tienen un valor Unicode diferente, por lo que debes asegurarte que todas las palabras estén en la misma condición.
+
+```js
+const words = [
+    "réservé",
+    "premier",
+    "communiqué",
+    "café",
+    "adieu",
+    "éclair",
+    "banana",
+]
+
+words.sort((a,b) => a.localeCompare(b))
+// [ 'adieu', 'banana', 'café', 'communiqué', 'éclair', 'premier', 'réservé' ]
+```
+
+#### Ordenamiento de números
+
+Si ordenas un _array_ de números, provoca un ordenamiento inesperado porque ordena por el valor Unicode de los caracteres del número.
+
+```js
+const numbers = [1, 30, 4, 21, 100000]
+numbers.sort() 
+console.log(numbers)
+// [ 1, 100000, 21, 30, 4 ]
+```
+
+Para arreglar este comportamiento, es necesario utilizar la siguiente función comparativa:
+
+- De manera ascendente `(a, b) => a - b`
+- De manera descendente `(a, b) => b - a`
+
+```js
+// Ascendente
+const numbers = [1, 30, 4, 21, 100000]
+numbers.sort((a,b) => a - b) 
+console.log(numbers)
+// [ 1, 4, 21, 30, 100000 ]
+
+// Descendente
+const numbers = [1, 30, 4, 21, 100000]
+numbers.sort((a,b) => b - a) 
+console.log(numbers)
+// [ 100000, 30, 21, 4, 1 ]
+```
+
+#### Ordenamiento de objetos por su propiedad
+
+A partir de la función comparativa puedes ordenar los elementos de cualquier forma. Cuando necesites ordenar un _array_ de objetos, compara una **propiedad** de tipo numérica de la misma forma que el ordenamiento de números, ya sea de manera descendente o ascendente.
+
+```js
+const orders = [
+    {
+        customerName: "Nicolas",
+        total: 600,
+        delivered: true,
+    },
+    {
+        customerName: "Zulema",
+        total: 120,
+        delivered: false,
+    },
+    {
+        customerName: "Santiago",
+        total: 1840,
+        delivered: true,
+    },
+    {
+        customerName: "Valentina",
+        total: 240,
+        delivered: true,
+    },
+]
+```
+
+Por ejemplo, creemos un algoritmo que ordene los pedidos del _array_ `orders` por su valor total.
+
+```js
+orders.sort((a,b) => a.total - b.total)
+
+console.log(orders)
+/* [
+  {
+    customerName: 'Zulema',
+    total: 120,
+    delivered: false
+  },
+  {
+    customerName: 'Valentina',
+    total: 240,
+    delivered: true
+  },
+  {
+    customerName: 'Nicolas',
+    total: 600,
+    delivered: true
+  },
+  {
+    customerName: 'Santiago',
+    total: 1840,
+    delivered: true
+  }
+]
+*/
+```
+
+
 ## Otros apuntes  :poop:  
 - [Notion](https://funny-tibia-d59.notion.site/Manipulaci-n-de-Arrays-en-JS-893d49287bc94bd289fac1a218a0ca83)
+
+## Examen 📌
+
+<details>
+	<summary>Haz clic para ver los resultados 👀</summary>
+	<br/>
+
+1. ¿Cuál es el resultado del siguiente código?
+
+	```js
+	const array = [['🐸','🐱'],'🐹', ['🐯']]; 
+	const rta = array.flat();
+	```
+
+	- 📌 `[ '🐸', '🐱', '🐹', '🐯' ]`
+
+2. ¿Cuál es el resultado del siguiente código?
+
+	```js
+	const array = ['a', 'bb', 'ccc']; 
+	const rta = array.map(item => item.length);
+	```
+
+	- 📌 `[ 1, 2, 3 ]`
+
+3. Cuál de estos métodos me retorna la posición del array en donde está el emoji 🐸?
+
+	```js
+	const array = ['🐸','🐱','🐹']; 
+	const rta = array.findIndex(item => item === '🐸'); 
+	```
+
+4. El método forEach es el recomendado para filtrar elementos de un array?
+
+	- 📌Falso
+
+	El método `forEach()` en JavaScript es utilizado para iterar sobre los elementos de un array y ejecutar una función para cada uno de ellos. Sin embargo, no es el método recomendado para filtrar elementos de un array, ya que no devuelve un nuevo array con los elementos filtrados.
+	
+	Para filtrar elementos de un array, se recomienda el uso del método `filter()`, que crea un nuevo array con los elementos que cumplen una condición determinada por una función de filtrado. Este método es más adecuado para filtrar elementos de un array, ya que devuelve un nuevo array sin modificar el array original.
+	
+	Por lo tanto, la respuesta correcta es a) Falso.
+
+5. ¿Cuál de estos métodos me retorna un `true` si alguno de los elementos del array tiene este emoji 🐸?
+
+	```js
+	const array = ['🐸','🐱','🐹']; 
+	const rta = array.some(item => item === '🐸')
+	```
+
+6. ¿Cuál de los siguientes códigos ordena este array `[11,1,13,99,8]` de menor a mayor?
+
+	```js
+	const array = [11,1,13,99,8]; 
+	array.sort((a,b) => a - b);
+	```
+
+7. Cuál es una forma de copiar los elementos de un array sin tener problemas de mutabilidad?
+
+	```js
+	const listA = [1,2,2,4]; 
+	const newList = [...listA];
+	```
+
+8. Reduce es un método que NO cambia el estado original de un array?
+
+	- 📌Verdadero
+
+9. Sort es un método que cambia el estado original de un array?
+
+	- 📌Verdadero
+
+10. Filter es un método que cambia el estado original de un array?
+
+	- 📌Falso
+
+11. ¿Por qué el siguiente código cambia el estado original del array?
+
+	```javascript
+	const array = [{age: 1}, {age:2}]; 
+	const rta = array.map(item => {   
+	  item.name = 'My name';
+	  return item; 
+	})
+	```
+
+	- 📌Porque al trabajar con objetos se está modificando la referencia en memoria.
+
+12. Si quiero obtener la suma de todos los valores de este array `[1,1,1,1,1]`, ¿cuál es el código que lo va a resolver?
+
+	```javascript
+	const array = [1,1,1,1,1]; 
+	const rta = array.reduce((total, item) => total + item, 0)
+	```
+</details>
