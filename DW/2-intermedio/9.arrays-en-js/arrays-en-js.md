@@ -739,7 +739,7 @@ const numbers = [5,4,8,6,2]
 
 const reducedValue = numbers.reduce((suma, number) => (
     suma + number**2
-), 0) // <- Valor inicial
+), 0) // <- Valor inicial 0
 
 console.log(reducedValue) // 145
 ```
@@ -831,8 +831,72 @@ De esta manera obtendrás el objeto de frecuencias. Puedes utilizar este algorit
 
 #### Ejemplo de la clase: 
 
+##### Primer ejemplo:  
 ```js
 const items = [1, 3, 2, 3, 3, 1, 10];
+
+const rpta = items.reduce((obj, item) => { // obj = {} 👈👀
+    if(!obj[item]){
+        obj[item] = 1;
+    }else {
+        obj[item] = obj[item] + 1;
+    }
+    return obj;
+}, {}); // obj = {} 👈👀
+console.log(rpta);
+// { '1': 2, '2': 1, '3': 3, '10': 1 }
+```
+
+Explicación:   
+Se utiliza el método `reduce()` para contar el número de ocurrencias de cada elemento del arreglo `items`.
+
+Como sabemos el método `reduce()` aplica una función reductora a cada elemento del arreglo, **devolviendo un único valor** que resulta de la acumulación de los valores previos. En este caso, el valor acumulado es **un objeto** de nombre **obj** que contiene la cantidad de veces que cada elemento aparece en el arreglo.
+
+La función reductora recibe dos argumentos: el objeto acumulador y el elemento actual del arreglo. En cada iteración, la función comprueba si el elemento actual ya está en el objeto acumulador. Si no está, se agrega al objeto con un valor inicial de 1. Si ya está, se incrementa el valor correspondiente en 1.
+
+Nota: Para comprender lo que ocurre en el if y else debemos saber lo siguiente, así que veamos el siguiente ejemplo:  
+
+```js
+const something = {
+    1: `a`,
+    2: `b`,
+    3: `c`,
+}
+
+const another_thing = {
+    a: 1,
+    b: 2,
+    c: 3,
+}
+// Obtenemos valores 
+console.log(something[2]); //b
+console.log(another_thing['c']); //3 
+```
+
+Cuando decimos `something[2]` o `another_thing['c']` estamos accediendo a sus values a través de sus respectivos key. 
+
+Entonces:  
+```js
+if(!obj[item]){
+        obj[item] = 1;
+    }
+```
+En esta parte estamos diciendo que si el Objeto {} de nombre obj que al inicio está vacío no contiene ese key que es 1 { 1: } debes igualarlo a 1 quedando { 1: 1 } y así sucesivamente con el resto de números. 
+
+Luego: 
+```js
+else {
+	obj[item] = obj[item] + 1;
+}
+return obj;
+```
+Si llegara a existir ese key, ejemplo 1 en este caso { 1: 1 } ya existe así que debes sumarle un 1 por cada vez que se repita { 1: 2 }
+
+Al final de la iteración, el **objeto acumulador obj** se devuelve como el resultado final de la reducción. En este caso, el objeto final contendrá las claves o keys correspondientes a cada elemento del arreglo `items`, y sus valores serán las cantidades de veces que aparecen en el arreglo.
+
+
+##### Segundo ejemplo:  
+```js
 const data = [
     {
         customerName: 'Nicolas',
@@ -856,17 +920,6 @@ const data = [
     }
 ];
 
-const rpta = items.reduce((obj, item) => {
-    if(!obj[item]){
-        obj[item] = 1;
-    }else {
-        obj[item] = obj[item] + 1;
-    }
-    return obj;
-}, {});
-console.log(rpta);
-// { '1': 2, '2': 1, '3': 3, '10': 1 }
-
 const rpta1 = data 
 .map(item => item.level)
 .reduce((obj, item) => {
@@ -881,6 +934,757 @@ const rpta1 = data
 console.log(rpta1);
 
 // { low: 2, medium: 2, hight: 1 }
+```
+
+Otra forma:    
+```js
+const find = data.reduce((obj, item) => {
+    obj[item.level] ? obj[item.level] += 1 : obj[item.level] = 1;
+    return obj;
+}, {});
+
+console.log(find);
+// { low: 2, medium: 2, hight: 1 }
+```
+
+#### Reto: 
+
+```js
+const number_list = [];
+// Generamos numeros aleatorios
+for (let i=0; i < 10; i++) {
+    number_list.push(Math.floor(Math.random() * 10) + 1);
+}
+
+const find_ranges = number_list.reduce((range, item) => {
+    if(item <= 2){
+        range['1-2'] += 1;
+    }else if(item <= 4){
+        range['3-4'] += 1;
+    }else if(item <= 6){
+        range['5-6'] += 1;
+    }else if(item <= 8){
+        range['7-8'] += 1;
+    }else if(item <= 10){
+        range['9-10'] += 1;
+    }
+    
+    return range;
+}, {
+    '1-2': 0,
+    '3-4': 0,
+    '5-6': 0,
+    '7-8': 0,
+    '9-10': 0
+    }
+);
+
+console.log(number_list);
+console.log(find_ranges);
+```
+
+### 12. Playground: calcula la suma total de elementos en un array
+
+Tienes un array de números y tu reto es retornar la suma de todos los valores en él.
+
+Para solucionarlo vas a encontrar una función llamada `calcSum` que recibe un parámetro de entrada:
+
+- numbers: Un array de números
+
+Dentro del cuerpo de la función `calcSum` debes escribir tu solución.
+
+Ejemplo 1:
+
+```js
+Input: [1, 1, 1]
+Ouput: 3
+```
+
+Ejemplo 2:
+
+```js
+Input: [2, 4, 8]
+Output: [2, 4, 8]
+```
+
+Ejemplo 3:
+
+```js
+Input: []
+Output: 0
+```
+
+#### Solución 
+
+```js
+function calc_sum(array){
+    console.log(array.reduce((sum, item) => sum + item, 0)); 
+}
+
+calc_sum([1, 1, 1]); // 3
+calc_sum([2, 4, 8]); // 14
+calc_sum([]); // 0
+```
+
+## Métodos en JavaScript 
+
+### 13. Some 
+
+El método `some`es **inmutable** y consiste retornar un valor lógico verdadero **si existe al menos un elemento que cumpla la condición** establecida en la función _(callback)_.
+
+Este método recibe **dos argumentos**:
+
+- La función que itera y evalúa cada elemento del _array_ hasta que al menos uno cumpla con la condición especificada (obligatorio).
+- Un objeto al que puede hacer referencia el contexto `this` en la función. Si se lo omite, será `undefined`. Recuerde que `this` en _arrow functions_ es el objeto global.
+
+```js
+array.some(function(), thisArg)
+```
+
+La función, que recibe como argumento el método `some`, utiliza **tres parámetros**:
+
+- El **valor actual del elemento iterado**. Es decir, si es la primera iteración, será el primer elemento, y así sucesivamente.
+- El **índice del elemento iterado**. Es decir, si es la primera iteración, será el índice `0`, y así sucesivamente.
+- El **array que está iterando**.
+
+```js
+array.some(function(element, index, array))
+```
+
+#### Diferencia entre la estructura _for_ y el método _some_
+
+Los métodos de _arrays_ nos permiten realizar algoritmos con una menor cantidad de líneas que una estructura `for`, con un resultado igual o parecido.
+
+Por ejemplo, hagamos un algoritmo que indique si en un _array_ existe al menos un número par.
+
+Si utilizamos la estructura `for`, necesitaremos una variable de tipo booleana con el valor `false` e iterar hasta que la condición se cumpla. La palabra reservada `break` rompe el ciclo repetitivo.
+
+```js
+const numbers = [1, 2, 3, 5]
+
+let respuesta = false
+for (let i=0; i < numbers.length; i++){
+    const element = numbers[i]
+    if (element % 2 === 0) {
+        respuesta = true
+        break
+    }
+}
+
+console.log(respuesta) // true
+```
+
+Con el método `some` solo debemos establecer la función que indique la condición a cumplir para cada elemento.
+
+```js
+const numbers = [1, 2, 3, 5]
+
+const respuesta = numbers.some(item => item % 2 === 0)
+console.log(respuesta) // true
+```
+
+#### Ejemplo de la clase: 
+
+##### Ejemplo 01
+
+```js
+const numbers = [1, 2, 3, 4];
+
+const validate = numbers.some(item => item % 2 === 0);
+console.log(validate); //true
+```
+
+##### Ejemplo 02
+
+```js
+const orders = [
+    {
+        customerName: 'Nicolas',
+        total: 60,
+        delivered: true,
+    },
+    {
+        customerName: 'Zulema',
+        total: 120,
+        delivered: false,
+    },
+    {
+        customerName: 'Santiago',
+        total: 180,
+        delivered: true,
+    },
+    {
+        customerName: 'Nicolas',
+        total: 240,
+        delivered: true,
+    }
+];
+
+const order = orders.some(item => item.delivered);
+console.log(order); // true
+```
+
+##### Ejemplo 03
+
+Para este ejemplo debemos instalar una librería, esto con la finalidad de saber si dos fechas coinciden: 
+
+Dentro del repositorio clonado:  
+- npm i date-fns
+
+Luego ingresamos a https://date-fns.org/ ingresamos en su documentación, buscamos `areIntervalsOverlapping` y copiamos `var areIntervalsOverlapping = require('date-fns/areIntervalsOverlapping')` esto luego lo usaremos en el código mirar ejemplo: 
+
+```js
+const dates = [
+    {
+        startDate: new Date(2021, 1, 1, 10),
+        endDate: new Date(2021, 1, 1, 11),
+        title: "Cita de trabajo",
+    },
+    {
+        startDate: new Date(2021, 1, 1, 15),
+        endDate: new Date(2021, 1, 1, 15, 30),
+        title: "Cita con mi jefe",
+    },
+    {
+        startDate: new Date(2021, 1, 1, 20),
+        endDate: new Date(2021, 1, 1, 21),
+        title: "Cena",
+    },
+];
+
+const new_appointment = {
+    startDate: new Date(2021, 1, 1, 20),
+    endDate: new Date(2021, 1, 1, 21),
+}
+
+const areIntervalsOverlapping = require('date-fns/areIntervalsOverlapping') 👈👀
+
+const isOverlap = (new_date) => {
+    return dates.some(date => {
+        return areIntervalsOverlapping(
+            { start: date.startDate, end: date.endDate},
+            { start: new_date.startDate, end: new_date.endDate},
+        )
+    })
+}
+
+console.log(isOverlap(new_appointment));
+```
+
+### 14. Playground: ¿al menos 1 de los números es par?
+
+Tu reto es retornar `true` si dentro de array de números al menos uno es un número par, para solucionarlo vas a encontrar una función llamada `checkArray` que recibe un parámetro de entrada:
+
+- numbers: Un array de números
+
+Dentro del cuerpo de la función `checkArray` debes escribir tu solución.
+
+Ejemplo 1:
+
+```js
+Input: [1, 3, 5, 7, 10, 11]
+Output: true
+```
+
+Ejemplo 2:
+
+```js
+Input: [1, 3, 5]
+Output: false
+```
+
+Ejemplo 3:
+
+```js
+Input: []
+Output: false
+```
+
+#### Solution 
+
+```js
+function check_array(numbers){
+    return numbers.some(number => number % 2 === 0)
+}
+
+check_array([1, 3, 5, 7, 10, 11]); // true
+check_array([1, 3, 5]); // false
+check_array([]); // false
+```
+
+
+### 15. Every
+
+El método `every`es **inmutable** y consiste retornar un valor lógico verdadero **si todos los elementos cumplen con la condición** establecida en la función _(callback)_.
+
+Este método recibe **dos argumentos**:
+
+- La función que itera y evalúa cada elemento del _array_ hasta que al menos uno cumpla con la condición especificada (obligatorio).
+- Un objeto al que puede hacer referencia el contexto `this` en la función. Si se lo omite, será `undefined`. Recuerde que `this` en _arrow functions_ es el objeto global.
+
+```js
+array.every(function(), thisArg)
+```
+
+La función, que recibe como argumento el método `every`, utiliza **tres parámetros**:
+
+- El **valor actual del elemento iterado**. Es decir, si es la primera iteración, será el primer elemento, y así sucesivamente.
+- El **índice del elemento iterado**. Es decir, si es la primera iteración, será el índice `0`, y así sucesivamente.
+- El **array que está iterando**.
+
+```js
+array.every(function(element, index, array))
+```
+
+#### Diferencia entre la estructura _for_ y el método _every_
+
+Los métodos de _arrays_ nos permiten realizar algoritmos con una menor cantidad de líneas que una estructura `for`, con un resultado igual o parecido.
+
+Por ejemplo, hagamos un algoritmo que indique si en un _array_, todos los elementos son menores o iguales a 40.
+
+Si utilizamos la estructura `for`, necesitaremos una variable de tipo booleana con el valor `true` e iterar hasta que una condición contraria al enunciado se cumpla. La palabra reservada `break` rompe el ciclo repetitivo.
+
+```js
+const numbers = [1, 30, 41, 29, 10, 13]
+
+let respuesta = true
+for (let i=0; i < numbers.length; i++){
+    const element = numbers[i]
+    if (element >= 40) {
+        respuesta = false
+        break
+    }
+}
+
+console.log(respuesta) // false
+```
+
+Con el método `every`, solo debemos establecer la función que indique la condición a cumplir para cada elemento.
+
+```js
+const numbers = [1, 30, 39, 29, 10, 13]
+
+const respuesta = numbers.every(item => item < 40)
+console.log(respuesta) // true
+```
+
+#### Reto: 
+
+```js
+// Todos deben ser menores de 15
+const team = [
+    {
+        name: "Nicolas",
+        age: 12,
+    },
+    {
+        name: "Andrea",
+        age: 8,
+    },
+    {
+        name: "Zulema",
+        age: 2,
+    },
+    {
+        name: "Santiago",
+        age: 18,
+    },
+];
+
+const result = team.every(item => item.age < 15)
+console.log(result);
+```
+
+### 16. Playground: retorna un booleano si todos los elementos son pares
+
+Tu reto es retornar `true` si dentro de array de números todos son pares, para solucionarlo vas a encontrar una función llamada `checkArray` que recibe un parámetro de entrada:
+
+- numbers: Un array de números
+
+Dentro del cuerpo de la función `checkArray` debes escribir tu solución.
+
+Ejemplo 1:
+
+```js
+Input: [2, 4, 6, 8, 10]
+Output: true
+```
+
+Ejemplo 2:
+
+```js
+Input: [1, 3, 5, 7, 10, 11]
+Output: false
+```
+
+Ejemplo 3:
+
+```js
+Input: [1, 3, 5]
+Output: false
+```
+
+Ejemplo 4:
+
+```js
+Input: []
+Output: false
+```
+
+
+#### Solution 
+
+```js
+// Evaluar si todos son pares
+
+function check_array(array) {
+    return array.length > 0 
+    ? array.every(index => index % 2 === 0)
+    : false;
+}
+
+check_array([2, 4, 6, 8, 10]); //true
+check_array([1, 3, 5, 7, 10, 11]);  //false
+check_array([1, 3, 5]); //false
+check_array([]); //false
+```
+
+
+### 17. Find y FindIndex
+
+Los métodos `find` y `findIndex` consisten en encontrar el **primer elemento de un _array_ que cumpla con la condición especificada** en la función _(callback)_.
+
+En el caso de `find` retornará el elemento completo, si cumple con la condición, caso contrario retornará `undefined`. El método `findIndex` retornará el índice del elemento encontrado, caso contrario retornará `-1`.
+
+Estos procedimientos reciben **dos argumentos**:
+
+- La función que itera y evalúa cada elemento del _array_ hasta encuentre uno que cumpla con la condición especificada (obligatorio).
+- Un objeto al que puede hacer referencia el contexto `this` en la función. Si se lo omite, será `undefined`. Recuerde que `this` en _arrow functions_ es el objeto global.
+
+```js
+array.find(function(), thisArg)
+array.findIndex(function(), thisArg)
+```
+
+La función, que recibe como argumento los métodos `find` y `findIndex`, utiliza **tres parámetros**:
+
+- El **valor actual del elemento iterado**. Es decir, si es la primera iteración, será el primer elemento, y así sucesivamente.
+- El **índice del elemento iterado**. Es decir, si es la primera iteración, será el índice `0`, y así sucesivamente.
+- El **array que está iterando**.
+
+```js
+array.find(function(element, index, array))
+array.findIndex(function(element, index, array))
+```
+
+#### Diferencia entre la estructura _for_ y los métodos _find_ y _findIndex_
+
+Los métodos de _arrays_ nos permiten realizar algoritmos con una menor cantidad de líneas que una estructura `for`, con un resultado igual o parecido.
+
+Por ejemplo, hagamos un algoritmo que devuelva el primer elemento que sea mayor a 40 de un _array_.
+
+Si utilizamos la estructura `for`, necesitaremos una variable con el valor `undefined` e iterar hasta que se cumpla la condición. La palabra reservada `break` rompe el ciclo repetitivo.
+
+```js
+const numbers = [1, 30, 41, 29, 50, 60]
+
+let respuesta = undefined
+for (let i=0; i < numbers.length; i++){
+    const element = numbers[i]
+    if (element >= 40) {
+        respuesta = element
+        break
+    }
+}
+
+console.log(respuesta) // 41
+```
+
+Si se necesita el índice, en lugar de una variable con el valor de `undefined`, debería estar un valor de `-1`. Y también cambiar el valor del elemento por el del índice del `for`.
+
+Con los métodos `find` y `findIndex`, solo debemos establecer la función que indique la condición a cumplir para cada elemento.
+
+```js
+const numbers = [1, 30, 41, 29, 50, 60]
+
+const respuesta = numbers.find(item => item >= 40)
+const respuesta2 = numbers.findIndex(item => item >= 40)
+
+console.log(respuesta) // 41
+console.log(respuesta2) // 2
+```
+
+Recuerda que si los métodos `find` y `findIndex` no encuentran EL elemento, devolverán `undefined` y `-1`, respectivamente.
+
+```js
+const numbers = ["a", "b", "c"]
+
+const respuesta = numbers.find(item => item >= 40)
+const respuesta2 = numbers.findIndex(item => item >= 40)
+
+console.log(respuesta) // undefined
+console.log(respuesta2) // -1
+```
+
+### 18. Includes
+
+El método `includes` determina si un _array_ o _string_ incluye un determinado elemento. Devuelve `true` o `false`, si existe o no respectivamente.
+
+Este método recibe dos argumentos:
+
+- El **elemento** a comparar.
+- El **índice inicial** desde donde comparar hasta el último elemento.
+
+#### Índices positivos y negativos
+
+Los índices positivos comienzan desde 0 hasta la longitud total menos uno, de **izquierda a derecha** del _array_.
+
+```js
+[0,1,2,3, ...., lenght-1]
+```
+
+Los índices negativos comienzan desde -1 hasta el negativo de la longitud total del _array_, de **derecha a izquierda**.
+
+```js
+[-lenght, ...,  -3, -2, -1]
+```
+
+#### Diferencia entre la estructura _for_ y el método _includes_
+
+Los métodos de _arrays_ nos permiten realizar algoritmos con una menor cantidad de líneas que una estructura `for`, con un resultado igual o parecido.
+
+Por ejemplo, hagamos un algoritmo que indique si en un _array_ existe un elemento en específico.
+
+Si utilizamos la estructura `for`, necesitaremos una variable de tipo booleana con el valor `false` e iterar hasta que encuentre el elemento específico. La palabra reservada `break` rompe el ciclo repetitivo.
+
+```js
+const pets = [ "cat", "dog", "bat" ]
+
+let includeInArray = false
+for (let i = 0; i < pets.length; i++){
+    const item = pets[i]
+    if (item === "cat"){
+        includeInArray = true
+        break
+    }
+}
+
+console.log(includeInArray) // true
+```
+
+#### Ejemplos utilizando el método _includes_
+
+El método `includes` se utiliza para _arrays_ y _strings_. El método es sensible a mayúsculas, minúsculas y espacios.
+
+```js
+//Utilizando strings
+const saludo = "Hola mundo"
+
+saludo.includes("Hola") // true
+saludo.includes("Mundo") // false
+saludo.includes(" ") // true
+saludo.includes("Hola", 1) // false
+saludo.includes("mundo", -5) // true
+```
+
+```js
+// Utilizando arrays
+const frutas = ["manzana", "pera", "piña", "uva"]
+
+frutas.includes("manzana") // true
+frutas.includes("Pera") // false
+frutas.includes("sandía") // false
+frutas.includes("manzana", 1) // false
+frutas.includes("piña", -1) // false
+frutas[0].includes("man") // true
+```
+
+### 19. Playground: buscador de palabras con parámetros de búsqueda
+
+Tu reto es retornar un array solo con las palabras que cumplan con la condición de tener un término de búsqueda dado.
+
+Para solucionarlo vas a encontrar una función llamada `filterByTerm` que recibe los siguientes parámetros de entrada:
+
+- array: Un array de strigs con palabras
+- term: Un string con el término a buscar
+
+Dentro del cuerpo de la función `filterByTerm` debes escribir tu solución.
+
+Ejemplo 1:
+
+```js
+Input:
+array: ["ana", "santi", "nico", "anastasia"]
+term: "ana"
+
+Ouput:
+["ana", "anastasia"]
+```
+
+Ejemplo 2:
+
+```js
+Input:
+array: ["ana", "santi", "nico", "anastasia"]
+term: "xyz"
+
+Output:
+[]
+```
+
+#### Result 
+
+```js
+//  Retornar un array solo con las palabras que cumplan con la condición
+
+function filter_by_term(array, term) {
+    return array.filter(x => x.includes(term));
+}
+
+filter_by_term(["ana", "santi", "nico", "anastasia"], "ana");
+//['ana', 'anastasia']
+filter_by_term(["ana", "santi", "nico", "anastasia"], "xyz");
+//[]
+```
+
+### 20. Join
+
+El método `join` une los elementos del _array_, mediante una separación, y retorna un _string_. Si un elemento es `undefined` o `null`, se convierte en una cadena vacía.
+
+Este procedimiento recibe un argumento:
+
+- La **separación** de cada elemento del _array_ al unirlos.
+
+```js
+array.join(separación)
+```
+
+#### Diferencia entre la estructura _for_ y el método _join_
+
+Los métodos de _arrays_ nos permiten realizar algoritmos con una menor cantidad de líneas que una estructura `for`, con un resultado igual o parecido.
+
+Si utilizamos la estructura `for` para recrear el método `join`, necesitaremos una variable con el valor acumuladora con un _string_ vacío y otra con el valor del separador. Se debe evaluar si existe elementos `null` o `undefined`, se lo puede realizar con el operador [nullish coalescing](https://platzi.com/clases/1815-ecmascript-6/39727-ecmascript-2020-caracteristicas-importantes/).
+
+```js
+const elements = ["hola", null, "como", "estas"]
+
+let acumulator = ""
+const separator = "/"
+for (let i = 0; i<elements.length; i++){
+  const element = elements[i] ?? ""
+  if(i !== elements.length-1){
+    acumulator += element + separator
+  }else{
+    acumulator += element
+  }
+}
+
+console.log(acumulator) // 'hola//como/estas'
+```
+
+Con el método `join` solamente debemos establecer el separador de cada elemento como argumento.
+
+```js
+const elements = ["hola", null, "como", "estas"]
+
+const resultado = elements.join("/")
+
+console.log(resultado) // 'hola//como/estas'
+```
+
+#### Método split de strings
+
+El método `split` de _strings_, es lo contrario que el método `join`, consiste en separar un _string_ en _substrings_, indicando un valor a separar. Este método retornará un _array_ de los elementos separados.
+
+Este método recibe dos argumentos:
+
+- El **separador** que especifica el conjunto de caracteres a separar en _substrings_.
+- El **límite** de elementos separados a retornar.
+
+```js
+const cadena = "JavaScript es maravilloso, con JavaScript puedo crear el futuro de la web."
+
+cadena.split(" ") 
+/* [ 'JavaScript', 'es', 'maravilloso,', 'con', 'JavaScript', 'puedo', 'crear', 'el', 'futuro', 'de', 'la', 'web.' ]
+*/
+cadena.split(", ") 
+/* [ 
+    'JavaScript es maravilloso', 
+    'con JavaScript puedo crear el futuro de la web.' 
+]*/
+cadena.split("JavaScript")
+/* [
+    '', 
+    ' es maravilloso, con ', 
+    ' puedo crear el futuro de la web.' 
+]*/
+cadena.split(" ", 3) // [ 'JavaScript', 'es', 'maravilloso,' ]
+```
+
+#### Ejemplo de clase: 
+
+```js
+// join()
+const elements = ["Fire", "Air", "Water"];
+
+const result = elements.join(' ') //('--')
+console.log(result); 
+// Fire Air Water
+
+// split()
+const title = 'Lorem input xd infinito';
+const split_array = title.split(' ')
+console.log(split_array); 
+// [ 'Lorem', 'input', 'xd', 'infinito' ]
+
+// join() + toLowerCase(); volver minusculas
+const transformation = split_array.join(' ').toLowerCase();
+console.log(transformation);
+// lorem input xd infinito
+```
+
+### 21. Playground: construye URLs a partir de strings
+
+En este desafío vas a recibir el título de un artículo y tú debes transformarlo en un formato de URL en donde normalmente se transforma todo en minúscula y se cambian los espacios por un guion (-).
+
+Para solucionarlo vas a encontrar una función llamada `parseToURL` que recibe un parámetro de entrada:
+
+- title: Un String con el título.
+
+Dentro del cuerpo de la función `parseToURL` debes escribir tu solución.
+
+Ejemplo 1:
+
+```js
+Input: "La forma de correr Python"
+Output: "la-forma-de-correr-python"
+```
+
+Ejemplo 2:
+
+```js
+Input: "La API para nunca parar de aprender"
+Output: "la-api-para-nunca-parar-de-aprender"
+```
+
+Ejemplo 3:
+
+```js
+Input: "Curso de arrays"
+Output: "curso-de-arrays"
+```
+
+#### Solution 
+
+```js
+// Unir con -- y volver a minusculas
+function parse_to_url(title) {
+    return title.split(' ').join('-').toLowerCase()
+}
+
+parse_to_url("La forma de correr Python");
+parse_to_url("La API para nunca parar de aprender");
+parse_to_url("Curso de arrays");
 ```
 
 ## Otros apuntes  :poop:  
