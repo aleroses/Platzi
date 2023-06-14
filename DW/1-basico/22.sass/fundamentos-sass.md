@@ -372,3 +372,1480 @@ footer{
 ```
 
 [Editar imagenes](https://picresize.com/)
+
+## 7. At Rules: CSS y nesting
+
+### At-rules CSS
+
+Es una declaración que cumple con diferentes funciones, se inicializa con el símbolo @ y cuenta con sintaxis propia. Las at-rules dentro de Sass ayudan a mantener la compatibilidad con próximas versiones de CSS.
+
+#### Ejemplos: 
+
+- @use: importa, módulos estilos y funciones de otras hojas de estilos. la diferencia con @import es que import se encarga de hacer los estilos globales.
+- @function: permite crear funciones personalizadas, sin embargo Sass cuenta con funciones ya existentes.
+- @forward: Recibe como parámetro una URL y nos ayuda a cargar los estilos de nuestra hoja de estilos, es muy importante hacer uso de @use para que los módulos esten disponibles en nuestra hoja de estilos.
+- @extend: tiene que ver con el concepto de herencia.
+- @at-root: se encarga de cargar nuestros estilos en el root del css.
+- @include: nos ayuda a invocar los mixins.
+- @error, @warn @debug: sirven para cuando hay algún error, una advertencia o se quiere debugear, respectivamente
+- @for, @if, @each, @while: tienen que ver con estructuras de control, se pueden usar dentro de una función
+
+
+#### Tipos de At-rules y ejemplos
+
+1. **At-rules de Animaciones y Transiciones:** estas at-rules permiten definir animaciones y transiciones para los elementos HTML en una página web. Ejemplos de at-rules en esta categoría incluyen **`@keyframes`**, **`@transition`**, y **`@animation`**.  
+2. **At-rules de Media Queries:** estas at-rules permiten definir estilos para diferentes tamaños de pantalla y dispositivos. Ejemplos de at-rules en esta categoría incluyen **`@media`**, **`@import`**, y **`@charset`**.  
+3. **At-rules de Variables y Mixins:** estas at-rules permiten definir variables y funciones reutilizables para estilos CSS. Ejemplos de at-rules en esta categoría incluyen **`@variable`**, **`@mixin`**, y **`@include`**.  
+4. **At-rules de Fuentes y Tipografía:** estas at-rules permiten definir estilos para fuentes y tipografía en una página web. Ejemplos de at-rules en esta categoría incluyen **`@font-face`**, **`@font-feature-values`**, y **`@font-size-adjust`**.  
+5. **At-rules de Compatibilidad con Navegadores:** estas at-rules permiten definir estilos específicos para navegadores y versiones de navegadores específicos. Ejemplos de at-rules en esta categoría incluyen **`@-webkit-keyframes`**, **`@-moz-document`**, y **`@supports`**.  
+6. **At-rules de Grillas y Diseño:** estas at-rules permiten definir estilos para diseños de grillas y disposición de elementos en una página web. Ejemplos de at-rules en esta categoría incluyen **`@grid`**, **`@flexbox`**, y **`@supports`**.  
+7. **At-rules de Selectores:** estas at-rules permiten definir estilos para selectores específicos en una página web. Ejemplos de at-rules en esta categoría incluyen **`@page`**, **`@namespace`**, y **`@document`**.
+8. **At-rules de Colores:** estas at-rules permiten definir estilos para colores y gradientes en una página web. Ejemplos de at-rules en esta categoría incluyen **`@color-profile`**, **`@counter-style`**, y **`@mask`**.  
+9. **At-rules de Imágenes y Multimedia:** estas at-rules permiten definir estilos para imágenes y multimedia en una página web. Ejemplos de at-rules en esta categoría incluyen **`@image`**, **`@media-document`**, y **`@media-rules`**.  
+10. **At-rules de Estilos Generales:** estas at-rules permiten definir estilos generales para la página web. Ejemplos de at-rules en esta categoría incluyen **`@charset`**, **`@viewport`**, y **`@scope`**.  
+11. **At-rules de Interactividad:** estas at-rules permiten definir estilos para la interactividad y el comportamiento de los elementos HTML en una página web. Ejemplos de at-rules en esta categoría incluyen **`@scroll-timeline`**, **`@pointer`**, y **`@input-placeholder`**.  
+12. **At-rules de Debugging:** estas at-rules permiten ayudar en la depuración de los estilos CSS. Ejemplos de at-rules en esta categoría incluyen **`@debug`**, **`@warn`**, y **`@error`**.
+
+### Nesting
+
+Nesting o la anidación permite tener selectores dentro de otros, lo cual nos ayuda a simplificar código, escribiendo los selectores en el orden que aparecen en el HTML.
+
+```css
+nav {
+    ul {
+        margin: 4px;
+        padding: 5px;
+        list-style: none;
+    }
+    li {
+        display: inline-block;
+    }
+    a {
+        display: block;
+        padding: 6px 12px;
+        text-decoration: none;
+    }
+}
+```
+
+### Código de la clase
+
+```html
+<body>
+    <nav>
+        <p>Eco-store</p>
+        <div class="icons">
+            <button class="profile">
+                <svg width="36" height="36" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M5.121 17.804C7.21942 16.6179 9.58958 15.9963 12 16C14.5 16 16.847 16.655 18.879 17.804M15 10C15 10.7956 14.6839 11.5587 14.1213 12.1213C13.5587 12.6839 12.7956 13 12 13C11.2044 13 10.4413 12.6839 9.87868 12.1213C9.31607 11.5587 9 10.7956 9 10C9 9.20435 9.31607 8.44129 9.87868 7.87868C10.4413 7.31607 11.2044 7 12 7C12.7956 7 13.5587 7.31607 14.1213 7.87868C14.6839 8.44129 15 9.20435 15 10ZM21 12C21 13.1819 20.7672 14.3522 20.3149 15.4442C19.8626 16.5361 19.1997 17.5282 18.364 18.364C17.5282 19.1997 16.5361 19.8626 15.4442 20.3149C14.3522 20.7672 13.1819 21 12 21C10.8181 21 9.64778 20.7672 8.55585 20.3149C7.46392 19.8626 6.47177 19.1997 5.63604 18.364C4.80031 17.5282 4.13738 16.5361 3.68508 15.4442C3.23279 14.3522 3 13.1819 3 12C3 9.61305 3.94821 7.32387 5.63604 5.63604C7.32387 3.94821 9.61305 3 12 3C14.3869 3 16.6761 3.94821 18.364 5.63604C20.0518 7.32387 21 9.61305 21 12Z" stroke="#7C6A0A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+	            </svg>
+            </button>
+            <button class="wishlist">
+                <svg width="36" height="36" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M3.34255 7.7779C3.5687 7.23194 3.90017 6.73586 4.31804 6.31799C4.7359 5.90012 5.23198 5.56865 5.77795 5.3425C6.32392 5.11635 6.90909 4.99995 7.50004 4.99995C8.09099 4.99995 8.67616 5.11635 9.22213 5.3425C9.7681 5.56865 10.2642 5.90012 10.682 6.31799L12 7.63599L13.318 6.31799C14.162 5.47407 15.3066 4.99997 16.5 4.99997C17.6935 4.99997 18.8381 5.47407 19.682 6.31799C20.526 7.16191 21.0001 8.30651 21.0001 9.49999C21.0001 10.6935 20.526 11.8381 19.682 12.682L12 20.364L4.31804 12.682C3.90017 12.2641 3.5687 11.7681 3.34255 11.2221C3.1164 10.6761 3 10.0909 3 9.49999C3 8.90904 3.1164 8.32387 3.34255 7.7779Z" stroke="#7C6A0A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </button>
+            <button class="car">
+                <svg width="36" height="36" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M3 3H5L5.4 5M5.4 5H21L17 13H7M5.4 5L7 13M7 13L4.707 15.293C4.077 15.923 4.523 17 5.414 17H17M17 17C16.4696 17 15.9609 17.2107 15.5858 17.5858C15.2107 17.9609 15 18.4696 15 19C15 19.5304 15.2107 20.0391 15.5858 20.4142C15.9609 20.7893 16.4696 21 17 21C17.5304 21 18.0391 20.7893 18.4142 20.4142C18.7893 20.0391 19 19.5304 19 19C19 18.4696 18.7893 17.9609 18.4142 17.5858C18.0391 17.2107 17.5304 17 17 17ZM9 19C9 19.5304 8.78929 20.0391 8.41421 20.4142C8.03914 20.7893 7.53043 21 7 21C6.46957 21 5.96086 20.7893 5.58579 20.4142C5.21071 20.0391 5 19.5304 5 19C5 18.4696 5.21071 17.9609 5.58579 17.5858C5.96086 17.2107 6.46957 17 7 17C7.53043 17 8.03914 17.2107 8.41421 17.5858C8.78929 17.9609 9 18.4696 9 19Z" stroke="#7C6A0A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </button>
+        </div>
+    </nav>
+    <main class="main-section">
+        <article>
+            <div class="impact-section">
+                <h1>Impacto ecológico</h1>
+                <p>Debido al impacto ambiental siendo las acciones humanas las que  modifican el ambiente, Eco-store se compromete a elaborar sus productos de manera artesanal y con materiales que favorecen al cuidado del medio ambiente.</p>
+                <button>Conoce más</button>
+            </div>
+            <div class="image-section">
+                <img src="" alt="">
+            </div>
+        </article>
+        <section class="product-section">
+            <div class="healthcare">
+                <h2>Cuidado de la salud</h2>
+            </div>
+            <div class="furniture">
+                <h2>Decoración del hogar</h2>
+            </div>
+        </section>
+        <section class="info-section">
+            <div class="about-us">
+                <h2>¿Por qué nosotros?</h2>
+                <div class="earth">
+                    <img src="" alt="">
+                    <p></p>
+                </div>
+                <div class="inovation">
+                    <img src="" alt="">
+                    <p></p>
+                </div>
+            </div>
+            <div class="gallery">
+                <h2>Galería de estilos</h2>
+                <div>
+                    <img src="" alt="">
+                </div>
+                <div>
+                    <img src="" alt="">
+                </div>
+                <div>
+                    <img src="" alt="">
+                </div>
+            </div>
+            <div class="location">
+                <h2>Encuéntranos en</h2>
+                <div class="map">
+                    <img src="" alt="">
+                </div>
+                <p></p>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <h3>Eco-store</h3>
+        <p>Careers</p>
+        <p>Careers</p>
+        <p>Careers</p>
+        <div class="social-media">
+            <img src="" alt="">
+            <img src="" alt="">
+            <img src="" alt="">
+        </div>
+    </footer>
+</body>
+```
+
+```css
+$primary-color: #FFEFE7;
+$secondary-color: #FFDAC6;
+$tertiary-color: #BABD8D;
+$primary-text-color: #7C6A0A;
+$font-stack: 'IBM Plex Sans', sans-serif;
+
+body {
+    margin: 0px;
+    padding: 0ps;
+    background-color: $primary-color;
+    font-family: $font-stack;
+}
+
+nav {
+    width: auto;
+    display: flex;
+    justify-content: space-between;
+    color: $primary-text-color;
+    padding: 15px;
+    p {
+        font-size: 1.5em;
+        /* padding: 30px; */
+    }
+    .icons {
+        display: flex;
+        gap: 15px;
+        button {
+            background: none;
+            border-style: none;
+        }
+    }
+}
+
+footer{
+    $background: #FA9500;
+    background-color: $background;
+    width: 100%;
+    height: 250px;
+}
+```
+
+## Quiz: Reglas y uso 
+
+1. ¿Qué símbolo se utiliza para inicializar At Rules en CSS y Sass?
+	- `&`
+	- `#`
+	- 📌 `@`
+
+2. ¿Qué es la flag ‘default’ en Sass?  
+	- 📌 Una flag que asigna un valor a la variable si y solo si la variable no ha sido definida o su valor es igual a nulo.
+	- Una flag que cambia automáticamente los colores primarios y secundarios en Figma. 
+
+3. ¿Qué sucede si no se establecen medidas para el main?
+	- Elementos como la navbar y el footer no serán visibles.
+	- 📌 El main no será visible.
+
+4. ¿Dónde se asignan las clases a las etiquetas 'section'?
+	- 📌 Dentro del atributo class en la propia etiqueta 'section'
+	- En un archivo CSS separado
+
+5. Sobre las At Rules, ¿cuál es la función de la regla @function?
+	- Importar módulos y estilos globales.
+	- 📌 Crear funciones personalizadas.
+	- Cargar estilos en el root del CSS.
+
+## 8. Expresiones: Literales y Operaciones
+
+Una expresión es todo aquello que va del lado derecho de una variable, admitiendo varios tipos de valores. 
+
+Las expresiones son mucho más poderosas que los valores CSS simples, ya que se pasan como argumentos a mixins y funciones.
+
+### Expresiones literales  
+● Números  
+● Strings  
+● Colores  
+● Booleanos  
+● Null  
+● Listas  
+● Mapas
+
+### Ejemplo de CSS con expresiones
+
+```scss
+/* Números */
+div {
+  width: 200px; /* Valor numérico */
+  opacity: 0.8; /* Valor numérico */
+  font-size: 18px; /* Valor numérico */
+}
+
+/* Strings */
+h1 {
+  content: "Hola"; /* Valor de cadena */
+  font-family: "Arial", sans-serif; /* Valor de cadena */
+}
+
+/* Colores */
+p {
+  color: red; /* Valor de color */
+  background-color: #00ff00; /* Valor de color en formato hexadecimal */
+  border: 1px solid rgb(255, 0, 0); /* Valor de color en formato de función RGB */
+}
+
+/* Booleanos */
+span {
+  display: none; /* Valor booleano (false) */
+  visibility: visible; /* Valor booleano (true) */
+}
+
+/* Null */
+section {
+  --mi-variable: null; /* Valor null */
+}
+
+/* Listas */
+ul {
+  list-style: square inside; /* Valor de lista */
+  margin: 10px 20px 30px; /* Valor de lista */
+}
+
+/* Mapas */
+body {
+  --mi-mapa: (primary-color: blue, secondary-color: red); /* Valor de mapa */
+  color: var(--mi-mapa, primary-color); /* Uso de mapa en una propiedad */
+}
+```
+
+
+## Quiz: Expresiones 
+
+1. ¿Cuáles son algunas de las unidades de medida comunes para establecer estilos en páginas web?
+	- Kilómetros, grados Celsius, litros
+	- 📌 Pixeles, porcentaje de la pantalla, view height (vh) y view width (vw)
+
+2. ¿Qué formatos de color se pueden utilizar al diseñar páginas web?
+	- Decimal, binario, octal
+	- 📌 Código hexadecimal, RGB, RGBA
+
+## 9. Creando la estructura de la sección main
+
+### Código de la clase 
+
+```html
+<body>
+    <nav>
+        <p>Eco-store</p>
+        <div class="icons">
+            <button class="profile">
+                <svg width="36" height="36" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M5.121 17.804C7.21942 16.6179 9.58958 15.9963 12 16C14.5 16 16.847 16.655 18.879 17.804M15 10C15 10.7956 14.6839 11.5587 14.1213 12.1213C13.5587 12.6839 12.7956 13 12 13C11.2044 13 10.4413 12.6839 9.87868 12.1213C9.31607 11.5587 9 10.7956 9 10C9 9.20435 9.31607 8.44129 9.87868 7.87868C10.4413 7.31607 11.2044 7 12 7C12.7956 7 13.5587 7.31607 14.1213 7.87868C14.6839 8.44129 15 9.20435 15 10ZM21 12C21 13.1819 20.7672 14.3522 20.3149 15.4442C19.8626 16.5361 19.1997 17.5282 18.364 18.364C17.5282 19.1997 16.5361 19.8626 15.4442 20.3149C14.3522 20.7672 13.1819 21 12 21C10.8181 21 9.64778 20.7672 8.55585 20.3149C7.46392 19.8626 6.47177 19.1997 5.63604 18.364C4.80031 17.5282 4.13738 16.5361 3.68508 15.4442C3.23279 14.3522 3 13.1819 3 12C3 9.61305 3.94821 7.32387 5.63604 5.63604C7.32387 3.94821 9.61305 3 12 3C14.3869 3 16.6761 3.94821 18.364 5.63604C20.0518 7.32387 21 9.61305 21 12Z" stroke="#7C6A0A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </button>
+            <button class="wishlist">
+                <svg width="36" height="36" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M3.34255 7.7779C3.5687 7.23194 3.90017 6.73586 4.31804 6.31799C4.7359 5.90012 5.23198 5.56865 5.77795 5.3425C6.32392 5.11635 6.90909 4.99995 7.50004 4.99995C8.09099 4.99995 8.67616 5.11635 9.22213 5.3425C9.7681 5.56865 10.2642 5.90012 10.682 6.31799L12 7.63599L13.318 6.31799C14.162 5.47407 15.3066 4.99997 16.5 4.99997C17.6935 4.99997 18.8381 5.47407 19.682 6.31799C20.526 7.16191 21.0001 8.30651 21.0001 9.49999C21.0001 10.6935 20.526 11.8381 19.682 12.682L12 20.364L4.31804 12.682C3.90017 12.2641 3.5687 11.7681 3.34255 11.2221C3.1164 10.6761 3 10.0909 3 9.49999C3 8.90904 3.1164 8.32387 3.34255 7.7779Z" stroke="#7C6A0A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </button>
+            <button class="car">
+                <svg width="36" height="36" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M3 3H5L5.4 5M5.4 5H21L17 13H7M5.4 5L7 13M7 13L4.707 15.293C4.077 15.923 4.523 17 5.414 17H17M17 17C16.4696 17 15.9609 17.2107 15.5858 17.5858C15.2107 17.9609 15 18.4696 15 19C15 19.5304 15.2107 20.0391 15.5858 20.4142C15.9609 20.7893 16.4696 21 17 21C17.5304 21 18.0391 20.7893 18.4142 20.4142C18.7893 20.0391 19 19.5304 19 19C19 18.4696 18.7893 17.9609 18.4142 17.5858C18.0391 17.2107 17.5304 17 17 17ZM9 19C9 19.5304 8.78929 20.0391 8.41421 20.4142C8.03914 20.7893 7.53043 21 7 21C6.46957 21 5.96086 20.7893 5.58579 20.4142C5.21071 20.0391 5 19.5304 5 19C5 18.4696 5.21071 17.9609 5.58579 17.5858C5.96086 17.2107 6.46957 17 7 17C7.53043 17 8.03914 17.2107 8.41421 17.5858C8.78929 17.9609 9 18.4696 9 19Z" stroke="#7C6A0A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </button>
+        </div>
+    </nav>
+    <main class="main-section">
+        <article>
+            <div class="impact-section">
+                <h1>Impacto ecológico</h1>
+                <p>Debido al impacto ambiental siendo las acciones humanas <br> las que  modifican el ambiente, Eco-store <br> se compromete a elaborar sus productos de manera <br> artesanal y con materiales que favorecen al cuidado <br> del medio ambiente.</p>
+                <button>Conoce más</button>
+            </div>
+            <div class="image-section">
+                <img src="./assets/img/main-2.jpg" alt="">
+            </div>
+        </article>
+        <section class="product-section">
+            <div class="healthcare">
+                <h2>Cuidado de la salud</h2>
+            </div>
+            <div class="furniture">
+                <h2>Decoración del hogar</h2>
+            </div>
+        </section>
+        <section class="info-section">
+            <div class="about-us">
+                <h2>¿Por qué nosotros?</h2>
+                <div class="earth">
+                    <img src="" alt="">
+                    <p></p>
+                </div>
+                <div class="inovation">
+                    <img src="" alt="">
+                    <p></p>
+                </div>
+            </div>
+            <div class="gallery">
+                <h2>Galería de estilos</h2>
+                <div>
+                    <img src="" alt="">
+                </div>
+                <div>
+                    <img src="" alt="">
+                </div>
+                <div>
+                    <img src="" alt="">
+                </div>
+            </div>
+            <div class="location">
+                <h2>Encuéntranos en</h2>
+                <div class="map">
+                    <img src="" alt="">
+                </div>
+                <p></p>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <h3>Eco-store</h3>
+        <p>Careers</p>
+        <p>Careers</p>
+        <p>Careers</p>
+        <div class="social-media">
+            <img src="" alt="">
+            <img src="" alt="">
+            <img src="" alt="">
+        </div>
+    </footer>
+</body>
+```
+
+```scss
+$primary-color: rgba(255, 239, 231, 1);
+$secondary-color: #FFDAC6;
+$tertiary-color: #BABD8D;
+$primary-text-color: #7C6A0A;
+$quaternary-color: #FA9500;
+$font-stack: 'IBM Plex Sans', sans-serif;
+$paragraph-size: 1.5em;
+
+body {
+    margin: 0px;
+    padding: 0ps;
+    background-color: $primary-color;
+    font-family: $font-stack;
+}
+
+nav {
+    width: auto;
+    display: flex;
+    justify-content: space-between;
+    color: $primary-text-color;
+    padding: 15px;
+    p {
+        font-size: $paragraph-size;
+        /* padding: 30px; */
+    }
+    .icons {
+        display: flex;
+        gap: 15px;
+        button {
+            background: none;
+            border-style: none;
+        }
+    }
+}
+
+article {
+    width: auto;
+    color: $primary-text-color;
+    padding-left: 45px;
+    padding-right: 45px;
+    display: flex;
+    justify-content: space-between;
+    .impact-section {
+        display: flex;
+        flex-direction: column;
+        padding-top: 50px;
+        gap: 25px;
+    }
+    h1 {
+        font-size: 3em;
+        padding: 0px;
+        margin: 0px;
+    }
+    p {
+        font-size: $paragraph-size;
+    }
+    button {
+        width: 12vw;
+        padding: 20px;
+        background-color: $quaternary-color;
+        border-radius: none;
+        border-radius: 35px;
+        color: white;
+        font-size: 1em;
+    }
+    img {
+        width: 25vw;
+        border-radius: 19px;
+    }
+}
+
+footer{
+    background-color: $quaternary-color;
+    width: 100%;
+    height: 250px;
+}
+```
+
+### Borrar línea
+
+Parra borrar la línea actual en **Windows y Linux** usar: 
+- `Ctrl` + `Shift` + `K`
+
+## Quiz: Sección main 📌
+
+1. ¿Cómo se puede organizar elementos de una columna en un contenedor Flex?
+
+	- Usar `grid-template-columns`
+	- 📌 Cambiar la `flex-direction` a `column` y ajustar el espacio entre elementos con `gap`
+
+2. ¿Qué propiedad CSS puede ser empleada para eliminar margen y padding existente en un elemento?
+
+	- padding: none; margin: none;
+	- inherit
+	- 📌 padding: 0; margin: 0;
+
+3. ¿Cómo se ajusta el espacio entre elementos en una columna usando CSS?
+
+	- 📌 Usando 'gap: 25px'
+	- Usando 'margin: 25px'
+
+## 10. ¿Qué es la herencia y cómo funciona en SASS?
+
+La herencia es un mecanismo mediante el cual un selector puede recibir estilos CSS que vienen de variables utilizadas previamente.
+
+### Uso de la herencia en Sass
+
+La directiva @extend de Sass nos permite organizar código y crear CSS más limpio.
+
+```scss
+.error {
+    border: 1px #f00;
+    background-color: #fdd;
+
+    &--serius {
+        @extend .error;
+        border-width: 3px;
+    }
+}
+```
+
+
+Muchas veces al estar creando nuestros estilos podemos caer en la repetición de código, esto conlleva a dos problemas, Primero se comienza a extender bastante la hoja de estilos y se vuelve difícil de mantener a lo largo del tiempo, el otro problema que puede surgir es el desorden, entonces, si queremos arreglar o cambiar alguna parte de nuestro código va a ser más difícil hacerlo.
+
+Por suerte tenemos SASS, piénsalo así, muchas veces usamos [patrones de diseño](https://carlosazaustre.es/los-5-patrones-del-responsive-design) que nos dan ciertas guías o convenciones para saber como organizar CSS y lo mismo pasa con [BEM: Block, Element, Modifier](https://getbem.com/).
+
+BEM nos propone crear estilos generales con una clase y luego modificar esa clase según nos convenga, por ejemplo:
+
+```html
+<div class="error error--serious">
+  Oh no! You've been hacked!
+</div>
+```
+
+En este ejemplo tenemos un div con dos clases “error” y _“error–serious”_, una buena opción para estilizar este div, suponiendo que los necesitáramos reutilizar más adelante, sería de la siguiente forma:  
+
+- Estilizamos la clase general con los estilos básicos que se repetirán a lo largo de los div
+- Luego estilizamos el div en específico que tendrá otros estilos adicionales.
+
+```css
+.error {
+  border: 1px #f00;
+  background-color: #fdd;
+}
+
+.error--serious {
+  border-width: 3px;
+}
+```
+
+Pero esto se puede simplificar a un más usando la [herencia con SASS](https://sass-lang.com/documentation/at-rules/extend)
+
+```scss
+.error {
+  border: 1px #f00;
+  background-color: #fdd;
+
+  &--serious {
+    @extend .error;
+    border-width: 3px;
+  }
+}
+```
+
+De esta manera no solo estamos organizando el código y evitando reutilizar código, si no además se puede entender de una mejor forma de donde viene los estilos heredados y a que clase hacen referencia
+
+
+## 11. Creando la estructura de la sección de Cuidado de la Salud y Decoración del Hogar
+
+```html 
+<body>
+    <nav>
+        <p>Eco-store</p>
+        <div class="icons">
+            <button class="profile">
+                <svg width="36" height="36" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M5.121 17.804C7.21942 16.6179 9.58958 15.9963 12 16C14.5 16 16.847 16.655 18.879 17.804M15 10C15 10.7956 14.6839 11.5587 14.1213 12.1213C13.5587 12.6839 12.7956 13 12 13C11.2044 13 10.4413 12.6839 9.87868 12.1213C9.31607 11.5587 9 10.7956 9 10C9 9.20435 9.31607 8.44129 9.87868 7.87868C10.4413 7.31607 11.2044 7 12 7C12.7956 7 13.5587 7.31607 14.1213 7.87868C14.6839 8.44129 15 9.20435 15 10ZM21 12C21 13.1819 20.7672 14.3522 20.3149 15.4442C19.8626 16.5361 19.1997 17.5282 18.364 18.364C17.5282 19.1997 16.5361 19.8626 15.4442 20.3149C14.3522 20.7672 13.1819 21 12 21C10.8181 21 9.64778 20.7672 8.55585 20.3149C7.46392 19.8626 6.47177 19.1997 5.63604 18.364C4.80031 17.5282 4.13738 16.5361 3.68508 15.4442C3.23279 14.3522 3 13.1819 3 12C3 9.61305 3.94821 7.32387 5.63604 5.63604C7.32387 3.94821 9.61305 3 12 3C14.3869 3 16.6761 3.94821 18.364 5.63604C20.0518 7.32387 21 9.61305 21 12Z" stroke="#7C6A0A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </button>
+            <button class="wishlist">
+                <svg width="36" height="36" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M3.34255 7.7779C3.5687 7.23194 3.90017 6.73586 4.31804 6.31799C4.7359 5.90012 5.23198 5.56865 5.77795 5.3425C6.32392 5.11635 6.90909 4.99995 7.50004 4.99995C8.09099 4.99995 8.67616 5.11635 9.22213 5.3425C9.7681 5.56865 10.2642 5.90012 10.682 6.31799L12 7.63599L13.318 6.31799C14.162 5.47407 15.3066 4.99997 16.5 4.99997C17.6935 4.99997 18.8381 5.47407 19.682 6.31799C20.526 7.16191 21.0001 8.30651 21.0001 9.49999C21.0001 10.6935 20.526 11.8381 19.682 12.682L12 20.364L4.31804 12.682C3.90017 12.2641 3.5687 11.7681 3.34255 11.2221C3.1164 10.6761 3 10.0909 3 9.49999C3 8.90904 3.1164 8.32387 3.34255 7.7779Z" stroke="#7C6A0A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </button>
+            <button class="car">
+                <svg width="36" height="36" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M3 3H5L5.4 5M5.4 5H21L17 13H7M5.4 5L7 13M7 13L4.707 15.293C4.077 15.923 4.523 17 5.414 17H17M17 17C16.4696 17 15.9609 17.2107 15.5858 17.5858C15.2107 17.9609 15 18.4696 15 19C15 19.5304 15.2107 20.0391 15.5858 20.4142C15.9609 20.7893 16.4696 21 17 21C17.5304 21 18.0391 20.7893 18.4142 20.4142C18.7893 20.0391 19 19.5304 19 19C19 18.4696 18.7893 17.9609 18.4142 17.5858C18.0391 17.2107 17.5304 17 17 17ZM9 19C9 19.5304 8.78929 20.0391 8.41421 20.4142C8.03914 20.7893 7.53043 21 7 21C6.46957 21 5.96086 20.7893 5.58579 20.4142C5.21071 20.0391 5 19.5304 5 19C5 18.4696 5.21071 17.9609 5.58579 17.5858C5.96086 17.2107 6.46957 17 7 17C7.53043 17 8.03914 17.2107 8.41421 17.5858C8.78929 17.9609 9 18.4696 9 19Z" stroke="#7C6A0A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </button>
+        </div>
+    </nav>
+    <main class="main-section">
+        <article>
+            <div class="impact-section">
+                <h1>Impacto ecológico</h1>
+                <p>Debido al impacto ambiental siendo las acciones humanas <br> las que  modifican el ambiente, Eco-store <br> se compromete a elaborar sus productos de manera <br> artesanal y con materiales que favorecen al cuidado <br> del medio ambiente.</p>
+                <button>Conoce más</button>
+            </div>
+            <div class="image-section">
+                <img src="./assets/img/main-2.jpg" alt="">
+            </div>
+        </article>
+        <section class="product-section">
+            <div class="healthcare">
+                <h2>Cuidado de la salud</h2>
+                <div class="card-section">
+                    <div class="product-card">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M3.34255 7.7779C3.5687 7.23194 3.90017 6.73586 4.31804 6.31799C4.7359 5.90012 5.23198 5.56865 5.77795 5.3425C6.32392 5.11635 6.90909 4.99995 7.50004 4.99995C8.09099 4.99995 8.67616 5.11635 9.22213 5.3425C9.7681 5.56865 10.2642 5.90012 10.682 6.31799L12 7.63599L13.318 6.31799C14.162 5.47407 15.3066 4.99997 16.5 4.99997C17.6935 4.99997 18.8381 5.47407 19.682 6.31799C20.526 7.16191 21.0001 8.30651 21.0001 9.49999C21.0001 10.6935 20.526 11.8381 19.682 12.682L12 20.364L4.31804 12.682C3.90017 12.2641 3.5687 11.7681 3.34255 11.2221C3.1164 10.6761 3 10.0909 3 9.49999C3 8.90904 3.1164 8.32387 3.34255 7.7779Z" stroke="#3F3F46" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <div class="product-image">
+                            <img src="./assets/img/products/toothbrush.jpg" alt="">
+                        </div>
+                        <h3>Cepillo de bambú</h3>
+                        <p>Paquete de 2 unidades</p>
+                    </div>
+                </div>
+            </div>
+            <div class="furniture">
+                <h2>Decoración del hogar</h2>
+            </div>
+        </section>
+        <section class="info-section">
+            <div class="about-us">
+                <h2>¿Por qué nosotros?</h2>
+                <div class="earth">
+                    <img src="" alt="">
+                    <p></p>
+                </div>
+                <div class="inovation">
+                    <img src="" alt="">
+                    <p></p>
+                </div>
+            </div>
+            <div class="gallery">
+                <h2>Galería de estilos</h2>
+                <div>
+                    <img src="" alt="">
+                </div>
+                <div>
+                    <img src="" alt="">
+                </div>
+                <div>
+                    <img src="" alt="">
+                </div>
+            </div>
+            <div class="location">
+                <h2>Encuéntranos en</h2>
+                <div class="map">
+                    <img src="" alt="">
+                </div>
+                <p></p>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <h3>Eco-store</h3>
+        <p>Careers</p>
+        <p>Careers</p>
+        <p>Careers</p>
+        <div class="social-media">
+            <img src="" alt="">
+            <img src="" alt="">
+            <img src="" alt="">
+        </div>
+    </footer>
+</body>
+```
+
+```scss
+$primary-color: rgba(255, 239, 231, 1);
+$secondary-color: #FFDAC6;
+$tertiary-color: #BABD8D;
+$primary-text-color: #7C6A0A;
+$quaternary-color: #FA9500;
+$font-stack: 'IBM Plex Sans', sans-serif;
+$paragraph-size: 1.5em;
+
+body {
+    margin: 0px;
+    padding: 0ps;
+    background-color: $primary-color;
+    font-family: $font-stack;
+}
+
+nav {
+    width: auto;
+    display: flex;
+    justify-content: space-between;
+    color: $primary-text-color;
+    padding: 15px;
+    p {
+        font-size: $paragraph-size;
+        /* padding: 30px; */
+    }
+    .icons {
+        display: flex;
+        gap: 15px;
+        button {
+            background: none;
+            border-style: none;
+        }
+    }
+}
+
+article {
+    width: auto;
+    color: $primary-text-color;
+    display: flex;
+    padding-left: 45px;
+    padding-right: 45px;
+    padding-top: 70px;
+    justify-content: space-between;
+    .impact-section {
+        display: flex;
+        flex-direction: column;
+        padding-top: 50px;
+        gap: 25px;
+    }
+    h1 {
+        font-size: 3em;
+        padding: 0px;
+        margin: 0px;
+    }
+    p {
+        font-size: $paragraph-size;
+    }
+    button {
+        width: 12vw;
+        padding: 20px;
+        background-color: $quaternary-color;
+        border-radius: none;
+        border-radius: 35px;
+        color: white;
+        font-size: 1em;
+        border: none;
+    }
+    img {
+        width: 25vw;
+        border-radius: 19px;
+    }
+}
+
+section {
+    width: 100%;
+    height: auto;
+    padding: 60px;
+    h2 {
+        color: $primary-text-color;
+        font-size: 2em;
+    }
+    .healthcare {
+        h2 {
+            font-weight: 300;
+            padding-bottom: 60px;
+        }
+        .product-card {
+            width: 12vw;
+            height: auto;
+            background-color: $secondary-color;
+            color: $primary-text-color;
+            padding: 20px;
+            border-radius: 8px;
+            img {
+                width: 150px;
+                height: 250px;
+                background-image: cover;
+                border-radius: 6px;
+            }
+        }
+    }
+}
+
+footer{
+    background-color: $quaternary-color;
+    width: 100%;
+    height: 250px;
+}
+```
+
+## 12. Usando flexbox en la sección de Cuidado de la Salud y Decoración del Hogar
+
+```html
+<body>
+    <nav>
+        <p>Eco-store</p>
+        <div class="icons">
+            <button class="profile">
+                <svg width="36" height="36" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M5.121 17.804C7.21942 16.6179 9.58958 15.9963 12 16C14.5 16 16.847 16.655 18.879 17.804M15 10C15 10.7956 14.6839 11.5587 14.1213 12.1213C13.5587 12.6839 12.7956 13 12 13C11.2044 13 10.4413 12.6839 9.87868 12.1213C9.31607 11.5587 9 10.7956 9 10C9 9.20435 9.31607 8.44129 9.87868 7.87868C10.4413 7.31607 11.2044 7 12 7C12.7956 7 13.5587 7.31607 14.1213 7.87868C14.6839 8.44129 15 9.20435 15 10ZM21 12C21 13.1819 20.7672 14.3522 20.3149 15.4442C19.8626 16.5361 19.1997 17.5282 18.364 18.364C17.5282 19.1997 16.5361 19.8626 15.4442 20.3149C14.3522 20.7672 13.1819 21 12 21C10.8181 21 9.64778 20.7672 8.55585 20.3149C7.46392 19.8626 6.47177 19.1997 5.63604 18.364C4.80031 17.5282 4.13738 16.5361 3.68508 15.4442C3.23279 14.3522 3 13.1819 3 12C3 9.61305 3.94821 7.32387 5.63604 5.63604C7.32387 3.94821 9.61305 3 12 3C14.3869 3 16.6761 3.94821 18.364 5.63604C20.0518 7.32387 21 9.61305 21 12Z" stroke="#7C6A0A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </button>
+            <button class="wishlist">
+                <svg width="36" height="36" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M3.34255 7.7779C3.5687 7.23194 3.90017 6.73586 4.31804 6.31799C4.7359 5.90012 5.23198 5.56865 5.77795 5.3425C6.32392 5.11635 6.90909 4.99995 7.50004 4.99995C8.09099 4.99995 8.67616 5.11635 9.22213 5.3425C9.7681 5.56865 10.2642 5.90012 10.682 6.31799L12 7.63599L13.318 6.31799C14.162 5.47407 15.3066 4.99997 16.5 4.99997C17.6935 4.99997 18.8381 5.47407 19.682 6.31799C20.526 7.16191 21.0001 8.30651 21.0001 9.49999C21.0001 10.6935 20.526 11.8381 19.682 12.682L12 20.364L4.31804 12.682C3.90017 12.2641 3.5687 11.7681 3.34255 11.2221C3.1164 10.6761 3 10.0909 3 9.49999C3 8.90904 3.1164 8.32387 3.34255 7.7779Z" stroke="#7C6A0A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </button>
+            <button class="car">
+                <svg width="36" height="36" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M3 3H5L5.4 5M5.4 5H21L17 13H7M5.4 5L7 13M7 13L4.707 15.293C4.077 15.923 4.523 17 5.414 17H17M17 17C16.4696 17 15.9609 17.2107 15.5858 17.5858C15.2107 17.9609 15 18.4696 15 19C15 19.5304 15.2107 20.0391 15.5858 20.4142C15.9609 20.7893 16.4696 21 17 21C17.5304 21 18.0391 20.7893 18.4142 20.4142C18.7893 20.0391 19 19.5304 19 19C19 18.4696 18.7893 17.9609 18.4142 17.5858C18.0391 17.2107 17.5304 17 17 17ZM9 19C9 19.5304 8.78929 20.0391 8.41421 20.4142C8.03914 20.7893 7.53043 21 7 21C6.46957 21 5.96086 20.7893 5.58579 20.4142C5.21071 20.0391 5 19.5304 5 19C5 18.4696 5.21071 17.9609 5.58579 17.5858C5.96086 17.2107 6.46957 17 7 17C7.53043 17 8.03914 17.2107 8.41421 17.5858C8.78929 17.9609 9 18.4696 9 19Z" stroke="#7C6A0A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </button>
+        </div>
+    </nav>
+    <main class="main-section">
+        <article>
+            <div class="impact-section">
+                <h1>Impacto ecológico</h1>
+                <p>Debido al impacto ambiental siendo las acciones humanas <br> las que  modifican el ambiente, Eco-store <br> se compromete a elaborar sus productos de manera <br> artesanal y con materiales que favorecen al cuidado <br> del medio ambiente.</p>
+                <button>Conoce más</button>
+            </div>
+            <div class="image-section">
+                <img src="./assets/img/main-2.jpg" alt="">
+            </div>
+        </article>
+        <section class="product-section">
+            <div class="healthcare">
+                <h2>Cuidado de la salud</h2>
+                <div class="card-section">
+                    <div class="product-card">
+                        <div class="icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M3.34255 7.7779C3.5687 7.23194 3.90017 6.73586 4.31804 6.31799C4.7359 5.90012 5.23198 5.56865 5.77795 5.3425C6.32392 5.11635 6.90909 4.99995 7.50004 4.99995C8.09099 4.99995 8.67616 5.11635 9.22213 5.3425C9.7681 5.56865 10.2642 5.90012 10.682 6.31799L12 7.63599L13.318 6.31799C14.162 5.47407 15.3066 4.99997 16.5 4.99997C17.6935 4.99997 18.8381 5.47407 19.682 6.31799C20.526 7.16191 21.0001 8.30651 21.0001 9.49999C21.0001 10.6935 20.526 11.8381 19.682 12.682L12 20.364L4.31804 12.682C3.90017 12.2641 3.5687 11.7681 3.34255 11.2221C3.1164 10.6761 3 10.0909 3 9.49999C3 8.90904 3.1164 8.32387 3.34255 7.7779Z" stroke="#7C6A0A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <div class="product-image">
+                            <img src="./assets/img/products/toothbrush.jpg" alt="">
+                        </div>
+                        <h3>Cepillo de bambú</h3>
+                        <p>Paquete de 2 unidades</p>
+                    </div>
+                    <div class="product-card">
+                        <div class="icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M3.34255 7.7779C3.5687 7.23194 3.90017 6.73586 4.31804 6.31799C4.7359 5.90012 5.23198 5.56865 5.77795 5.3425C6.32392 5.11635 6.90909 4.99995 7.50004 4.99995C8.09099 4.99995 8.67616 5.11635 9.22213 5.3425C9.7681 5.56865 10.2642 5.90012 10.682 6.31799L12 7.63599L13.318 6.31799C14.162 5.47407 15.3066 4.99997 16.5 4.99997C17.6935 4.99997 18.8381 5.47407 19.682 6.31799C20.526 7.16191 21.0001 8.30651 21.0001 9.49999C21.0001 10.6935 20.526 11.8381 19.682 12.682L12 20.364L4.31804 12.682C3.90017 12.2641 3.5687 11.7681 3.34255 11.2221C3.1164 10.6761 3 10.0909 3 9.49999C3 8.90904 3.1164 8.32387 3.34255 7.7779Z" stroke="#7C6A0A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <div class="product-image">
+                            <img src="./assets/img/products/toothbrush.jpg" alt="">
+                        </div>
+                        <h3>Cepillo de bambú</h3>
+                        <p>Paquete de 2 unidades</p>
+                    </div>
+                    <div class="product-card">
+                        <div class="icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M3.34255 7.7779C3.5687 7.23194 3.90017 6.73586 4.31804 6.31799C4.7359 5.90012 5.23198 5.56865 5.77795 5.3425C6.32392 5.11635 6.90909 4.99995 7.50004 4.99995C8.09099 4.99995 8.67616 5.11635 9.22213 5.3425C9.7681 5.56865 10.2642 5.90012 10.682 6.31799L12 7.63599L13.318 6.31799C14.162 5.47407 15.3066 4.99997 16.5 4.99997C17.6935 4.99997 18.8381 5.47407 19.682 6.31799C20.526 7.16191 21.0001 8.30651 21.0001 9.49999C21.0001 10.6935 20.526 11.8381 19.682 12.682L12 20.364L4.31804 12.682C3.90017 12.2641 3.5687 11.7681 3.34255 11.2221C3.1164 10.6761 3 10.0909 3 9.49999C3 8.90904 3.1164 8.32387 3.34255 7.7779Z" stroke="#7C6A0A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <div class="product-image">
+                            <img src="./assets/img/products/toothbrush.jpg" alt="">
+                        </div>
+                        <h3>Cepillo de bambú</h3>
+                        <p>Paquete de 2 unidades</p>
+                    </div>
+                    <div class="product-card">
+                        <div class="icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M3.34255 7.7779C3.5687 7.23194 3.90017 6.73586 4.31804 6.31799C4.7359 5.90012 5.23198 5.56865 5.77795 5.3425C6.32392 5.11635 6.90909 4.99995 7.50004 4.99995C8.09099 4.99995 8.67616 5.11635 9.22213 5.3425C9.7681 5.56865 10.2642 5.90012 10.682 6.31799L12 7.63599L13.318 6.31799C14.162 5.47407 15.3066 4.99997 16.5 4.99997C17.6935 4.99997 18.8381 5.47407 19.682 6.31799C20.526 7.16191 21.0001 8.30651 21.0001 9.49999C21.0001 10.6935 20.526 11.8381 19.682 12.682L12 20.364L4.31804 12.682C3.90017 12.2641 3.5687 11.7681 3.34255 11.2221C3.1164 10.6761 3 10.0909 3 9.49999C3 8.90904 3.1164 8.32387 3.34255 7.7779Z" stroke="#7C6A0A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <div class="product-image">
+                            <img src="./assets/img/products/toothbrush.jpg" alt="">
+                        </div>
+                        <h3>Cepillo de bambú</h3>
+                        <p>Paquete de 2 unidades</p>
+                    </div>
+                    <div class="product-card">
+                        <div class="icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M3.34255 7.7779C3.5687 7.23194 3.90017 6.73586 4.31804 6.31799C4.7359 5.90012 5.23198 5.56865 5.77795 5.3425C6.32392 5.11635 6.90909 4.99995 7.50004 4.99995C8.09099 4.99995 8.67616 5.11635 9.22213 5.3425C9.7681 5.56865 10.2642 5.90012 10.682 6.31799L12 7.63599L13.318 6.31799C14.162 5.47407 15.3066 4.99997 16.5 4.99997C17.6935 4.99997 18.8381 5.47407 19.682 6.31799C20.526 7.16191 21.0001 8.30651 21.0001 9.49999C21.0001 10.6935 20.526 11.8381 19.682 12.682L12 20.364L4.31804 12.682C3.90017 12.2641 3.5687 11.7681 3.34255 11.2221C3.1164 10.6761 3 10.0909 3 9.49999C3 8.90904 3.1164 8.32387 3.34255 7.7779Z" stroke="#7C6A0A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <div class="product-image">
+                            <img src="./assets/img/products/toothbrush.jpg" alt="">
+                        </div>
+                        <h3>Cepillo de bambú</h3>
+                        <p>Paquete de 2 unidades</p>
+                    </div>
+                    <div class="product-card">
+                        <div class="icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M3.34255 7.7779C3.5687 7.23194 3.90017 6.73586 4.31804 6.31799C4.7359 5.90012 5.23198 5.56865 5.77795 5.3425C6.32392 5.11635 6.90909 4.99995 7.50004 4.99995C8.09099 4.99995 8.67616 5.11635 9.22213 5.3425C9.7681 5.56865 10.2642 5.90012 10.682 6.31799L12 7.63599L13.318 6.31799C14.162 5.47407 15.3066 4.99997 16.5 4.99997C17.6935 4.99997 18.8381 5.47407 19.682 6.31799C20.526 7.16191 21.0001 8.30651 21.0001 9.49999C21.0001 10.6935 20.526 11.8381 19.682 12.682L12 20.364L4.31804 12.682C3.90017 12.2641 3.5687 11.7681 3.34255 11.2221C3.1164 10.6761 3 10.0909 3 9.49999C3 8.90904 3.1164 8.32387 3.34255 7.7779Z" stroke="#7C6A0A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <div class="product-image">
+                            <img src="./assets/img/products/toothbrush.jpg" alt="">
+                        </div>
+                        <h3>Cepillo de bambú</h3>
+                        <p>Paquete de 2 unidades</p>
+                    </div>
+                </div>
+            </div>
+            <div class="furniture">
+                <h2>Decoración del hogar</h2>
+                <div class="card-section">
+                    <div class="product-card">
+                        <div class="icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M3.34255 7.7779C3.5687 7.23194 3.90017 6.73586 4.31804 6.31799C4.7359 5.90012 5.23198 5.56865 5.77795 5.3425C6.32392 5.11635 6.90909 4.99995 7.50004 4.99995C8.09099 4.99995 8.67616 5.11635 9.22213 5.3425C9.7681 5.56865 10.2642 5.90012 10.682 6.31799L12 7.63599L13.318 6.31799C14.162 5.47407 15.3066 4.99997 16.5 4.99997C17.6935 4.99997 18.8381 5.47407 19.682 6.31799C20.526 7.16191 21.0001 8.30651 21.0001 9.49999C21.0001 10.6935 20.526 11.8381 19.682 12.682L12 20.364L4.31804 12.682C3.90017 12.2641 3.5687 11.7681 3.34255 11.2221C3.1164 10.6761 3 10.0909 3 9.49999C3 8.90904 3.1164 8.32387 3.34255 7.7779Z" stroke="#7C6A0A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <div class="product-image">
+                            <img src="./assets/img/products/toothbrush.jpg" alt="">
+                        </div>
+                        <h3>Cepillo de bambú</h3>
+                        <p>Paquete de 2 unidades</p>
+                    </div>
+                    <div class="product-card">
+                        <div class="icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M3.34255 7.7779C3.5687 7.23194 3.90017 6.73586 4.31804 6.31799C4.7359 5.90012 5.23198 5.56865 5.77795 5.3425C6.32392 5.11635 6.90909 4.99995 7.50004 4.99995C8.09099 4.99995 8.67616 5.11635 9.22213 5.3425C9.7681 5.56865 10.2642 5.90012 10.682 6.31799L12 7.63599L13.318 6.31799C14.162 5.47407 15.3066 4.99997 16.5 4.99997C17.6935 4.99997 18.8381 5.47407 19.682 6.31799C20.526 7.16191 21.0001 8.30651 21.0001 9.49999C21.0001 10.6935 20.526 11.8381 19.682 12.682L12 20.364L4.31804 12.682C3.90017 12.2641 3.5687 11.7681 3.34255 11.2221C3.1164 10.6761 3 10.0909 3 9.49999C3 8.90904 3.1164 8.32387 3.34255 7.7779Z" stroke="#7C6A0A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <div class="product-image">
+                            <img src="./assets/img/products/toothbrush.jpg" alt="">
+                        </div>
+                        <h3>Cepillo de bambú</h3>
+                        <p>Paquete de 2 unidades</p>
+                    </div>
+                    <div class="product-card">
+                        <div class="icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M3.34255 7.7779C3.5687 7.23194 3.90017 6.73586 4.31804 6.31799C4.7359 5.90012 5.23198 5.56865 5.77795 5.3425C6.32392 5.11635 6.90909 4.99995 7.50004 4.99995C8.09099 4.99995 8.67616 5.11635 9.22213 5.3425C9.7681 5.56865 10.2642 5.90012 10.682 6.31799L12 7.63599L13.318 6.31799C14.162 5.47407 15.3066 4.99997 16.5 4.99997C17.6935 4.99997 18.8381 5.47407 19.682 6.31799C20.526 7.16191 21.0001 8.30651 21.0001 9.49999C21.0001 10.6935 20.526 11.8381 19.682 12.682L12 20.364L4.31804 12.682C3.90017 12.2641 3.5687 11.7681 3.34255 11.2221C3.1164 10.6761 3 10.0909 3 9.49999C3 8.90904 3.1164 8.32387 3.34255 7.7779Z" stroke="#7C6A0A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <div class="product-image">
+                            <img src="./assets/img/products/toothbrush.jpg" alt="">
+                        </div>
+                        <h3>Cepillo de bambú</h3>
+                        <p>Paquete de 2 unidades</p>
+                    </div>
+                    <div class="product-card">
+                        <div class="icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M3.34255 7.7779C3.5687 7.23194 3.90017 6.73586 4.31804 6.31799C4.7359 5.90012 5.23198 5.56865 5.77795 5.3425C6.32392 5.11635 6.90909 4.99995 7.50004 4.99995C8.09099 4.99995 8.67616 5.11635 9.22213 5.3425C9.7681 5.56865 10.2642 5.90012 10.682 6.31799L12 7.63599L13.318 6.31799C14.162 5.47407 15.3066 4.99997 16.5 4.99997C17.6935 4.99997 18.8381 5.47407 19.682 6.31799C20.526 7.16191 21.0001 8.30651 21.0001 9.49999C21.0001 10.6935 20.526 11.8381 19.682 12.682L12 20.364L4.31804 12.682C3.90017 12.2641 3.5687 11.7681 3.34255 11.2221C3.1164 10.6761 3 10.0909 3 9.49999C3 8.90904 3.1164 8.32387 3.34255 7.7779Z" stroke="#7C6A0A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <div class="product-image">
+                            <img src="./assets/img/products/toothbrush.jpg" alt="">
+                        </div>
+                        <h3>Cepillo de bambú</h3>
+                        <p>Paquete de 2 unidades</p>
+                    </div>
+                    <div class="product-card">
+                        <div class="icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M3.34255 7.7779C3.5687 7.23194 3.90017 6.73586 4.31804 6.31799C4.7359 5.90012 5.23198 5.56865 5.77795 5.3425C6.32392 5.11635 6.90909 4.99995 7.50004 4.99995C8.09099 4.99995 8.67616 5.11635 9.22213 5.3425C9.7681 5.56865 10.2642 5.90012 10.682 6.31799L12 7.63599L13.318 6.31799C14.162 5.47407 15.3066 4.99997 16.5 4.99997C17.6935 4.99997 18.8381 5.47407 19.682 6.31799C20.526 7.16191 21.0001 8.30651 21.0001 9.49999C21.0001 10.6935 20.526 11.8381 19.682 12.682L12 20.364L4.31804 12.682C3.90017 12.2641 3.5687 11.7681 3.34255 11.2221C3.1164 10.6761 3 10.0909 3 9.49999C3 8.90904 3.1164 8.32387 3.34255 7.7779Z" stroke="#7C6A0A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <div class="product-image">
+                            <img src="./assets/img/products/toothbrush.jpg" alt="">
+                        </div>
+                        <h3>Cepillo de bambú</h3>
+                        <p>Paquete de 2 unidades</p>
+                    </div>
+                    <div class="product-card">
+                        <div class="icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M3.34255 7.7779C3.5687 7.23194 3.90017 6.73586 4.31804 6.31799C4.7359 5.90012 5.23198 5.56865 5.77795 5.3425C6.32392 5.11635 6.90909 4.99995 7.50004 4.99995C8.09099 4.99995 8.67616 5.11635 9.22213 5.3425C9.7681 5.56865 10.2642 5.90012 10.682 6.31799L12 7.63599L13.318 6.31799C14.162 5.47407 15.3066 4.99997 16.5 4.99997C17.6935 4.99997 18.8381 5.47407 19.682 6.31799C20.526 7.16191 21.0001 8.30651 21.0001 9.49999C21.0001 10.6935 20.526 11.8381 19.682 12.682L12 20.364L4.31804 12.682C3.90017 12.2641 3.5687 11.7681 3.34255 11.2221C3.1164 10.6761 3 10.0909 3 9.49999C3 8.90904 3.1164 8.32387 3.34255 7.7779Z" stroke="#7C6A0A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <div class="product-image">
+                            <img src="./assets/img/products/toothbrush.jpg" alt="">
+                        </div>
+                        <h3>Cepillo de bambú</h3>
+                        <p>Paquete de 2 unidades</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="info-section">
+            <div class="about-us">
+                <h2>¿Por qué nosotros?</h2>
+                <div class="earth">
+                    <img src="" alt="">
+                    <p></p>
+                </div>
+                <div class="inovation">
+                    <img src="" alt="">
+                    <p></p>
+                </div>
+            </div>
+            <div class="gallery">
+                <h2>Galería de estilos</h2>
+                <div>
+                    <img src="" alt="">
+                </div>
+                <div>
+                    <img src="" alt="">
+                </div>
+                <div>
+                    <img src="" alt="">
+                </div>
+            </div>
+            <div class="location">
+                <h2>Encuéntranos en</h2>
+                <div class="map">
+                    <img src="" alt="">
+                </div>
+                <p></p>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <h3>Eco-store</h3>
+        <p>Careers</p>
+        <p>Careers</p>
+        <p>Careers</p>
+        <div class="social-media">
+            <img src="" alt="">
+            <img src="" alt="">
+            <img src="" alt="">
+        </div>
+    </footer>
+</body>
+```
+
+```scss
+$primary-color: rgba(255, 239, 231, 1);
+$secondary-color: #FFDAC6;
+$tertiary-color: #BABD8D;
+$primary-text-color: #7C6A0A;
+$quaternary-color: #FA9500;
+$font-stack: 'IBM Plex Sans', sans-serif;
+$paragraph-size: 1.5em;
+
+body {
+    margin: 0px;
+    padding: 0ps;
+    background-color: $primary-color;
+    font-family: $font-stack;
+}
+
+nav {
+    width: auto;
+    display: flex;
+    justify-content: space-between;
+    color: $primary-text-color;
+    padding: 15px;
+
+    p {
+        font-size: $paragraph-size;
+        /* padding: 30px; */
+    }
+
+    .icons {
+        display: flex;
+        gap: 15px;
+
+        button {
+            background: none;
+            border-style: none;
+        }
+    }
+}
+
+article {
+    width: auto;
+    color: $primary-text-color;
+    display: flex;
+    padding-left: 45px;
+    padding-right: 45px;
+    padding-top: 70px;
+    justify-content: space-between;
+
+    .impact-section {
+        display: flex;
+        flex-direction: column;
+        padding-top: 50px;
+        gap: 25px;
+    }
+
+    h1 {
+        font-size: 3em;
+        padding: 0px;
+        margin: 0px;
+    }
+
+    p {
+        font-size: $paragraph-size;
+    }
+
+    button {
+        width: 12vw;
+        padding: 20px;
+        background-color: $quaternary-color;
+        border-radius: none;
+        border-radius: 35px;
+        color: white;
+        font-size: 1em;
+        border: none;
+    }
+
+    img {
+        width: 25vw;
+        border-radius: 19px;
+    }
+}
+
+section {
+    width: auto;
+    height: auto;
+    padding: 60px;
+
+    h2 {
+        color: $primary-text-color;
+        font-size: 2em;
+    }
+
+    .healthcare {
+        padding-bottom: 60px;
+
+        h2 {
+            font-weight: 300;
+            padding-bottom: 60px;
+        }
+
+        .card-section {
+            display: flex;
+            width: auto;
+            height: auto;
+            justify-content: center;
+            flex-wrap: wrap;
+            align-items: center;
+            column-gap: 200px;
+            row-gap: 80px;
+        }
+
+        .product-card {
+            width: 14vw;
+            height: 45vh; //45
+            background-color: $secondary-color;
+            color: $primary-text-color;
+            padding: 20px;
+            border-radius: 8px;
+
+            .icon {
+                width: 100%;
+                display: flex;
+                justify-content: flex-end;
+                padding-bottom: 12px;
+
+                svg {
+                    width: 28px;
+                    height: 28px;
+                    stroke: #7C6A0A;
+                    stroke-width: 2;
+                }
+
+            }
+
+            .product-image {
+                width: 100%;
+                height: auto;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                img {
+                    width: 12vw;
+                    height: 30vh;
+                    object-fit: cover;
+                    border-radius: 6px;
+                }
+            }
+        }
+    }
+
+    .furniture {
+        @extend .healthcare;
+        .product-card {
+            background-color: $tertiary-color;
+            color: white;
+        }
+    }
+}
+
+footer {
+    background-color: $quaternary-color;
+    width: 100%;
+    height: 250px;
+}
+```
+
+## Quiz: Herencia 📌
+
+1. ¿Qué se hace para posicionar un ícono a la derecha de una card?
+
+	- display: block, float: right
+	- 📌 display: flex, justify-content: flex-end
+
+2. ¿Para qué sirve la herencia en el diseño web?
+
+	- Aumentar la capacidad de almacenamiento y conexión a internet
+	- 📌 Mantener la consistencia y facilitar la edición de elementos similares
+
+## 13. ¿Qué es un mixin en CSS?
+
+Los mixins permiten definir estilos que se pueden reutilizar en toda su hoja de estilos y facilitan evitar el uso de clases no semánticas.
+
+### Uso de mixins en Sass
+
+Se declara con la regla @mixin seguido del nombre que queremos asignar y se invoca con @include seguido del nombre del mixin.
+
+```scss
+@mixin horizontal-list {
+    li {
+        display: inline-block;
+        margin: {
+            left: -2px;
+            right: 2em;
+        }
+    }
+}
+
+nav ul {
+    @include horizontal-list;
+}
+```
+
+### Argumentos en mixins
+
+Un argumento es el nombre de una variable que está separada por una coma. 
+
+La utilidad de los mixins no sería tal si no tuvieran la capacidad de recibir argumentos.
+
+```scss
+@mixin circle2 ($width, $height, $color){
+    width: $width;
+    height: $height;
+    background: $color;
+}
+```
+
+[Documentación](https://sass-lang.com/documentation/at-rules/mixin)
+
+## 14. Implementando mixins en el proyecto
+
+```scss
+$primary-color: rgba(255, 239, 231, 1);
+$secondary-color: #FFDAC6;
+$tertiary-color: #BABD8D;
+$primary-text-color: #7C6A0A;
+$quaternary-color: #FA9500;
+$font-stack: 'IBM Plex Sans', sans-serif;
+$paragraph-size: 1.5em;
+
+@mixin flexCenter($direction, $content, $align) {
+    display: flex;
+    flex-direction: $direction;
+    justify-content: $content;
+    align-items: $align;
+}
+@mixin buttonStyle {
+    button {
+        background: none;
+        border-style: none;
+    }
+}
+
+
+body {
+    margin: 0px;
+    padding: 0ps;
+    background-color: $primary-color;
+    font-family: $font-stack;
+}
+
+nav {
+    width: auto;
+    @include flexCenter(row, space-between, center);
+    color: $primary-text-color;
+    padding: 15px;
+
+    p {
+        font-size: $paragraph-size;
+        /* padding: 30px; */
+    }
+
+    .icons {
+        display: flex;
+        gap: 15px;
+        @include buttonStyle;
+    }
+}
+
+article {
+    width: auto;
+    color: $primary-text-color;
+    @include flexCenter(row, space-between, center);
+    padding-left: 45px;
+    padding-right: 45px;
+    padding-top: 70px;
+
+    .impact-section {
+        @include flexCenter(column, space-evenly, flex-start);
+        padding-top: 50px;
+        gap: 25px;
+    }
+
+    h1 {
+        font-size: 3em;
+        padding: 0px;
+        margin: 0px;
+    }
+
+    p {
+        font-size: $paragraph-size;
+    }
+    @include buttonStyle;
+    button {
+        width: 12vw;
+        padding: 20px;
+        background-color: $quaternary-color;
+        border-radius: none;
+        border-radius: 35px;
+        color: white;
+        font-size: 1em;
+        border: none;
+    }
+
+    img {
+        width: 25vw;
+        border-radius: 19px;
+    }
+}
+
+section {
+    width: auto;
+    height: auto;
+    padding: 60px;
+
+    h2 {
+        color: $primary-text-color;
+        font-size: 2em;
+    }
+
+    .healthcare {
+        padding-bottom: 60px;
+
+        h2 {
+            font-weight: 300;
+            padding-bottom: 60px;
+        }
+
+        .card-section {
+            width: auto;
+            height: auto;
+            @include flexCenter(row, space-evenly, center);
+            flex-wrap: wrap;
+            column-gap: 200px;
+            row-gap: 80px;
+        }
+
+        .product-card {
+            width: 14vw;
+            height: 45vh; //45
+            background-color: $secondary-color;
+            color: $primary-text-color;
+            padding: 20px;
+            border-radius: 8px;
+
+            .icon {
+                width: 100%;
+                display: flex;
+                justify-content: flex-end;
+                padding-bottom: 12px;
+
+                svg {
+                    width: 28px;
+                    height: 28px;
+                    stroke: #7C6A0A;
+                    stroke-width: 2;
+                }
+
+            }
+
+            .product-image {
+                width: 100%;
+                height: auto;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                img {
+                    width: 12vw;
+                    height: 30vh;
+                    object-fit: cover;
+                    border-radius: 6px;
+                }
+            }
+        }
+    }
+
+    .furniture {
+        @extend .healthcare;
+        .product-card {
+            background-color: $tertiary-color;
+            color: white;
+        }
+    }
+}
+
+footer {
+    background-color: $quaternary-color;
+    width: 100%;
+    height: 250px;
+}
+```
+
+## Quiz: Mixins 📌
+
+1. ¿Qué símbolo se utiliza para incluir mixins en Sass?
+
+	- 📌`@include`
+
+2. ¿Qué facilita el uso de mixins?
+
+	- 📌 La manipulación y estilización de elementos en un diseño
+
+3. ¿Cuál es el propósito de usar argumentos en los mixins de Sass?
+
+	- 📌 Hacer que los mixins sean más dinámicos y reutilizables
+
+4. ¿Para qué se utiliza la variable 'direction' en el mixin de flexbox?
+
+	- 📌 Define la orientación de las columnas (flex direction row o flex direction column)
+
+## 15. Creación de nuestras propias funciones
+
+Las funciones permiten definir operaciones complejas en valores de Sass. Las funciones se definen usando la regla @function.
+
+### Ejemplos 
+
+Sass como preprocesador tiene una gran cantidad de funciones. Algunos de los ejemplos son: 
+
+1. Funciones RGB 
+2. Funciones HSL 
+3. Funciones de opacidad 
+4. Funciones sobre strings 
+5. Funciones sobre números
+
+### Operaciones
+
+Sass es compatible con una gran cantidad de operadores útiles para trabajar con diferentes valores. Estos incluyen los operadores matemáticos estándar y operadores para varios otros tipos, por ejemplo: `==` y `!=`.
+
+### Jerarquía de operaciones
+
+1. Los operadores unarios `not`, `+` y `-` 
+2. Operadores `*` ,` /` y `%` 
+3. Operadores `+` y `-` 
+4. Operadores `>`, `>=`, `<` y `<=`
+5. Operadores de comparación `==` y `!=` 
+6. El operador lógico `and` 
+7. El operador lógico `or` 
+8. El operador de asignación `=`
+
+### Declaración de una función
+
+Las funciones se llaman utilizando la sintaxis de función CSS normal.
+
+```scss
+@function pow($base, $exponent){
+    $result: 1;
+    @for $_ from 1 through $exponent {
+        $result: $result * $base;
+    }
+    @return $result;
+}
+
+.sidebar {
+    float: left;
+    margin-left: pow(4, 3) * 1px;
+}
+```
+
+[Documentación](https://sass-lang.com/documentation/at-rules/function)
+
+
+## 16. Creando la estructura de la sección '¿Por qué nosotros?'
+
+
+Revisar extension: 
+- css peek 
+	- F12
+	- ctrl + clic
+- Intellisense for css 
+	- Botón ⚡
+
+
+```
+```
+
+```
+```
+
+```
+```

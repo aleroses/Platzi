@@ -1,26 +1,186 @@
-$primary-color: #FFEFE7;
+$primary-color: rgba(255, 239, 231, 1);
 $secondary-color: #FFDAC6;
 $tertiary-color: #BABD8D;
 $primary-text-color: #7C6A0A;
+$quaternary-color: #FA9500;
 $font-stack: 'IBM Plex Sans', sans-serif;
+$paragraph-size: 1.5em;
+
+@mixin flexCenter($direction, $content, $align) {
+    display: flex;
+    flex-direction: $direction;
+    justify-content: $content;
+    align-items: $align;
+}
+@mixin buttonStyle {
+    button {
+        background: none;
+        border-style: none;
+    }
+}
+
 
 body {
-    margin: 0;
-    padding: 0;
+    margin: 0px;
+    padding: 0ps;
+    background-color: $primary-color;
+    font-family: $font-stack;
 }
 
 nav {
-    width: 100%;
-    height: 100px;
+    width: auto;
+    @include flexCenter(row, space-between, center);
+    color: $primary-text-color;
+    padding: 15px;
+
+    p {
+        font-size: $paragraph-size;
+        /* padding: 30px; */
+    }
+
+    .icons {
+        display: flex;
+        gap: 15px;
+        @include buttonStyle;
+    }
 }
 
-main{
-    background-color: $primary-color;
+article {
+    width: auto;
+    color: $primary-text-color;
+    @include flexCenter(row, space-between, center);
+    padding-left: 45px;
+    padding-right: 45px;
+    padding-top: 70px;
+
+    .impact-section {
+        @include flexCenter(column, space-evenly, flex-start);
+        padding-top: 50px;
+        gap: 25px;
+    }
+
+    h1 {
+        font-size: 3em;
+        padding: 0px;
+        margin: 0px;
+    }
+
+    p {
+        font-size: $paragraph-size;
+    }
+    @include buttonStyle;
+    button {
+        width: 12vw;
+        padding: 20px;
+        background-color: $quaternary-color;
+        border-radius: none;
+        border-radius: 35px;
+        color: white;
+        font-size: 1em;
+        border: none;
+    }
+
+    img {
+        width: 25vw;
+        border-radius: 19px;
+    }
 }
 
-footer{
-    $background: #FA9500;
-    background-color: $background;
+section {
+    width: auto;
+    height: auto;
+    padding: 60px;
+
+    h2 {
+        color: $primary-text-color;
+        font-size: 2em;
+    }
+
+    .healthcare {
+        padding-bottom: 60px;
+
+        h2 {
+            font-weight: 300;
+            padding-bottom: 60px;
+        }
+
+        .card-section {
+            width: auto;
+            height: auto;
+            @include flexCenter(row, space-evenly, center);
+            flex-wrap: wrap;
+            column-gap: 200px;
+            row-gap: 80px;
+        }
+
+        .product-card {
+            width: 14vw;
+            height: 45vh; //45
+            background-color: $secondary-color;
+            color: $primary-text-color;
+            padding: 20px;
+            border-radius: 8px;
+
+            .icon {
+                width: 100%;
+                display: flex;
+                justify-content: flex-end;
+                padding-bottom: 12px;
+
+                svg {
+                    width: 28px;
+                    height: 28px;
+                    stroke: #7C6A0A;
+                    stroke-width: 2;
+                }
+
+            }
+
+            .product-image {
+                width: 100%;
+                height: auto;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                img {
+                    width: 12vw;
+                    height: 30vh;
+                    object-fit: cover;
+                    border-radius: 6px;
+                }
+            }
+        }
+    }
+
+    .furniture {
+        @extend .healthcare;
+        .product-card {
+            background-color: $tertiary-color;
+            color: white;
+        }
+    }
+}
+
+footer {
+    background-color: $quaternary-color;
     width: 100%;
     height: 250px;
 }
+
+
+
+
+
+/* @function pow($base, $exponent){
+    $result: 1;
+    @for $_ from 1 through $exponent {
+        $result: $result * $base;
+    }
+    @return $result;
+}
+
+.sidebar {
+    float: left;
+    margin-left: pow(4, 3) * 1px;
+} */
