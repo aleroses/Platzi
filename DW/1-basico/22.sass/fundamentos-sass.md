@@ -1832,6 +1832,8 @@ Las funciones se llaman utilizando la sintaxis de función CSS normal.
 
 ## 16. Creando la estructura de la sección '¿Por qué nosotros?'
 
+```
+```
 
 Revisar extension: 
 - css peek 
@@ -1840,12 +1842,743 @@ Revisar extension:
 - Intellisense for css 
 	- Botón ⚡
 
+## 17. Creando la estructura de la sección Galería de Estilos
 
-```
+
+## 18. Creando la estructura de la sección Mapa y Footer
+
+```js
+<body>
+    <nav>
+        <p>Eco-store</p>
+        <div class="icons">
+            <button class="profile">
+                <svg width="36" height="36" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M5.121 17.804C7.21942 16.6179 9.58958 15.9963 12 16C14.5 16 16.847 16.655 18.879 17.804M15 10C15 10.7956 14.6839 11.5587 14.1213 12.1213C13.5587 12.6839 12.7956 13 12 13C11.2044 13 10.4413 12.6839 9.87868 12.1213C9.31607 11.5587 9 10.7956 9 10C9 9.20435 9.31607 8.44129 9.87868 7.87868C10.4413 7.31607 11.2044 7 12 7C12.7956 7 13.5587 7.31607 14.1213 7.87868C14.6839 8.44129 15 9.20435 15 10ZM21 12C21 13.1819 20.7672 14.3522 20.3149 15.4442C19.8626 16.5361 19.1997 17.5282 18.364 18.364C17.5282 19.1997 16.5361 19.8626 15.4442 20.3149C14.3522 20.7672 13.1819 21 12 21C10.8181 21 9.64778 20.7672 8.55585 20.3149C7.46392 19.8626 6.47177 19.1997 5.63604 18.364C4.80031 17.5282 4.13738 16.5361 3.68508 15.4442C3.23279 14.3522 3 13.1819 3 12C3 9.61305 3.94821 7.32387 5.63604 5.63604C7.32387 3.94821 9.61305 3 12 3C14.3869 3 16.6761 3.94821 18.364 5.63604C20.0518 7.32387 21 9.61305 21 12Z"
+                        stroke="#7C6A0A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+            </button>
+            <button class="wishlist">
+                <svg width="36" height="36" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M3.34255 7.7779C3.5687 7.23194 3.90017 6.73586 4.31804 6.31799C4.7359 5.90012 5.23198 5.56865 5.77795 5.3425C6.32392 5.11635 6.90909 4.99995 7.50004 4.99995C8.09099 4.99995 8.67616 5.11635 9.22213 5.3425C9.7681 5.56865 10.2642 5.90012 10.682 6.31799L12 7.63599L13.318 6.31799C14.162 5.47407 15.3066 4.99997 16.5 4.99997C17.6935 4.99997 18.8381 5.47407 19.682 6.31799C20.526 7.16191 21.0001 8.30651 21.0001 9.49999C21.0001 10.6935 20.526 11.8381 19.682 12.682L12 20.364L4.31804 12.682C3.90017 12.2641 3.5687 11.7681 3.34255 11.2221C3.1164 10.6761 3 10.0909 3 9.49999C3 8.90904 3.1164 8.32387 3.34255 7.7779Z"
+                        stroke="#7C6A0A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+            </button>
+            <button class="car">
+                <svg width="36" height="36" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M3 3H5L5.4 5M5.4 5H21L17 13H7M5.4 5L7 13M7 13L4.707 15.293C4.077 15.923 4.523 17 5.414 17H17M17 17C16.4696 17 15.9609 17.2107 15.5858 17.5858C15.2107 17.9609 15 18.4696 15 19C15 19.5304 15.2107 20.0391 15.5858 20.4142C15.9609 20.7893 16.4696 21 17 21C17.5304 21 18.0391 20.7893 18.4142 20.4142C18.7893 20.0391 19 19.5304 19 19C19 18.4696 18.7893 17.9609 18.4142 17.5858C18.0391 17.2107 17.5304 17 17 17ZM9 19C9 19.5304 8.78929 20.0391 8.41421 20.4142C8.03914 20.7893 7.53043 21 7 21C6.46957 21 5.96086 20.7893 5.58579 20.4142C5.21071 20.0391 5 19.5304 5 19C5 18.4696 5.21071 17.9609 5.58579 17.5858C5.96086 17.2107 6.46957 17 7 17C7.53043 17 8.03914 17.2107 8.41421 17.5858C8.78929 17.9609 9 18.4696 9 19Z"
+                        stroke="#7C6A0A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+            </button>
+        </div>
+    </nav>
+    <main class="main-section">
+        <article>
+            <div class="impact-section">
+                <h1>Impacto ecológico</h1>
+                <p>Debido al impacto ambiental siendo las acciones humanas <br> las que modifican el ambiente, Eco-store
+                    <br> se compromete a elaborar sus productos de manera <br> artesanal y con materiales que favorecen
+                    al cuidado <br> del medio ambiente.</p>
+                <button>Conoce más</button>
+            </div>
+            <div class="image-section">
+                <img src="./assets/img/main-2.jpg" alt="">
+            </div>
+        </article>
+        <section class="product-section">
+            <div class="healthcare">
+                <h2>Cuidado de la salud</h2>
+                <div class="card-section">
+                    <div class="product-card">
+                        <div class="icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M3.34255 7.7779C3.5687 7.23194 3.90017 6.73586 4.31804 6.31799C4.7359 5.90012 5.23198 5.56865 5.77795 5.3425C6.32392 5.11635 6.90909 4.99995 7.50004 4.99995C8.09099 4.99995 8.67616 5.11635 9.22213 5.3425C9.7681 5.56865 10.2642 5.90012 10.682 6.31799L12 7.63599L13.318 6.31799C14.162 5.47407 15.3066 4.99997 16.5 4.99997C17.6935 4.99997 18.8381 5.47407 19.682 6.31799C20.526 7.16191 21.0001 8.30651 21.0001 9.49999C21.0001 10.6935 20.526 11.8381 19.682 12.682L12 20.364L4.31804 12.682C3.90017 12.2641 3.5687 11.7681 3.34255 11.2221C3.1164 10.6761 3 10.0909 3 9.49999C3 8.90904 3.1164 8.32387 3.34255 7.7779Z"
+                                    stroke="#7C6A0A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </div>
+                        <div class="product-image">
+                            <img src="./assets/img/products/toothbrush.jpg" alt="">
+                        </div>
+                        <h3>Cepillo de bambú</h3>
+                        <p>Paquete de 2 unidades</p>
+                    </div>
+                    <div class="product-card">
+                        <div class="icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M3.34255 7.7779C3.5687 7.23194 3.90017 6.73586 4.31804 6.31799C4.7359 5.90012 5.23198 5.56865 5.77795 5.3425C6.32392 5.11635 6.90909 4.99995 7.50004 4.99995C8.09099 4.99995 8.67616 5.11635 9.22213 5.3425C9.7681 5.56865 10.2642 5.90012 10.682 6.31799L12 7.63599L13.318 6.31799C14.162 5.47407 15.3066 4.99997 16.5 4.99997C17.6935 4.99997 18.8381 5.47407 19.682 6.31799C20.526 7.16191 21.0001 8.30651 21.0001 9.49999C21.0001 10.6935 20.526 11.8381 19.682 12.682L12 20.364L4.31804 12.682C3.90017 12.2641 3.5687 11.7681 3.34255 11.2221C3.1164 10.6761 3 10.0909 3 9.49999C3 8.90904 3.1164 8.32387 3.34255 7.7779Z"
+                                    stroke="#7C6A0A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </div>
+                        <div class="product-image">
+                            <img src="./assets/img/products/toothbrush.jpg" alt="">
+                        </div>
+                        <h3>Cepillo de bambú</h3>
+                        <p>Paquete de 2 unidades</p>
+                    </div>
+                    <div class="product-card">
+                        <div class="icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M3.34255 7.7779C3.5687 7.23194 3.90017 6.73586 4.31804 6.31799C4.7359 5.90012 5.23198 5.56865 5.77795 5.3425C6.32392 5.11635 6.90909 4.99995 7.50004 4.99995C8.09099 4.99995 8.67616 5.11635 9.22213 5.3425C9.7681 5.56865 10.2642 5.90012 10.682 6.31799L12 7.63599L13.318 6.31799C14.162 5.47407 15.3066 4.99997 16.5 4.99997C17.6935 4.99997 18.8381 5.47407 19.682 6.31799C20.526 7.16191 21.0001 8.30651 21.0001 9.49999C21.0001 10.6935 20.526 11.8381 19.682 12.682L12 20.364L4.31804 12.682C3.90017 12.2641 3.5687 11.7681 3.34255 11.2221C3.1164 10.6761 3 10.0909 3 9.49999C3 8.90904 3.1164 8.32387 3.34255 7.7779Z"
+                                    stroke="#7C6A0A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </div>
+                        <div class="product-image">
+                            <img src="./assets/img/products/toothbrush.jpg" alt="">
+                        </div>
+                        <h3>Cepillo de bambú</h3>
+                        <p>Paquete de 2 unidades</p>
+                    </div>
+                    <div class="product-card">
+                        <div class="icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M3.34255 7.7779C3.5687 7.23194 3.90017 6.73586 4.31804 6.31799C4.7359 5.90012 5.23198 5.56865 5.77795 5.3425C6.32392 5.11635 6.90909 4.99995 7.50004 4.99995C8.09099 4.99995 8.67616 5.11635 9.22213 5.3425C9.7681 5.56865 10.2642 5.90012 10.682 6.31799L12 7.63599L13.318 6.31799C14.162 5.47407 15.3066 4.99997 16.5 4.99997C17.6935 4.99997 18.8381 5.47407 19.682 6.31799C20.526 7.16191 21.0001 8.30651 21.0001 9.49999C21.0001 10.6935 20.526 11.8381 19.682 12.682L12 20.364L4.31804 12.682C3.90017 12.2641 3.5687 11.7681 3.34255 11.2221C3.1164 10.6761 3 10.0909 3 9.49999C3 8.90904 3.1164 8.32387 3.34255 7.7779Z"
+                                    stroke="#7C6A0A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </div>
+                        <div class="product-image">
+                            <img src="./assets/img/products/toothbrush.jpg" alt="">
+                        </div>
+                        <h3>Cepillo de bambú</h3>
+                        <p>Paquete de 2 unidades</p>
+                    </div>
+                    <div class="product-card">
+                        <div class="icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M3.34255 7.7779C3.5687 7.23194 3.90017 6.73586 4.31804 6.31799C4.7359 5.90012 5.23198 5.56865 5.77795 5.3425C6.32392 5.11635 6.90909 4.99995 7.50004 4.99995C8.09099 4.99995 8.67616 5.11635 9.22213 5.3425C9.7681 5.56865 10.2642 5.90012 10.682 6.31799L12 7.63599L13.318 6.31799C14.162 5.47407 15.3066 4.99997 16.5 4.99997C17.6935 4.99997 18.8381 5.47407 19.682 6.31799C20.526 7.16191 21.0001 8.30651 21.0001 9.49999C21.0001 10.6935 20.526 11.8381 19.682 12.682L12 20.364L4.31804 12.682C3.90017 12.2641 3.5687 11.7681 3.34255 11.2221C3.1164 10.6761 3 10.0909 3 9.49999C3 8.90904 3.1164 8.32387 3.34255 7.7779Z"
+                                    stroke="#7C6A0A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </div>
+                        <div class="product-image">
+                            <img src="./assets/img/products/toothbrush.jpg" alt="">
+                        </div>
+                        <h3>Cepillo de bambú</h3>
+                        <p>Paquete de 2 unidades</p>
+                    </div>
+                    <div class="product-card">
+                        <div class="icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M3.34255 7.7779C3.5687 7.23194 3.90017 6.73586 4.31804 6.31799C4.7359 5.90012 5.23198 5.56865 5.77795 5.3425C6.32392 5.11635 6.90909 4.99995 7.50004 4.99995C8.09099 4.99995 8.67616 5.11635 9.22213 5.3425C9.7681 5.56865 10.2642 5.90012 10.682 6.31799L12 7.63599L13.318 6.31799C14.162 5.47407 15.3066 4.99997 16.5 4.99997C17.6935 4.99997 18.8381 5.47407 19.682 6.31799C20.526 7.16191 21.0001 8.30651 21.0001 9.49999C21.0001 10.6935 20.526 11.8381 19.682 12.682L12 20.364L4.31804 12.682C3.90017 12.2641 3.5687 11.7681 3.34255 11.2221C3.1164 10.6761 3 10.0909 3 9.49999C3 8.90904 3.1164 8.32387 3.34255 7.7779Z"
+                                    stroke="#7C6A0A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </div>
+                        <div class="product-image">
+                            <img src="./assets/img/products/toothbrush.jpg" alt="">
+                        </div>
+                        <h3>Cepillo de bambú</h3>
+                        <p>Paquete de 2 unidades</p>
+                    </div>
+                </div>
+            </div>
+            <div class="furniture">
+                <h2>Decoración del hogar</h2>
+                <div class="card-section">
+                    <div class="product-card">
+                        <div class="icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M3.34255 7.7779C3.5687 7.23194 3.90017 6.73586 4.31804 6.31799C4.7359 5.90012 5.23198 5.56865 5.77795 5.3425C6.32392 5.11635 6.90909 4.99995 7.50004 4.99995C8.09099 4.99995 8.67616 5.11635 9.22213 5.3425C9.7681 5.56865 10.2642 5.90012 10.682 6.31799L12 7.63599L13.318 6.31799C14.162 5.47407 15.3066 4.99997 16.5 4.99997C17.6935 4.99997 18.8381 5.47407 19.682 6.31799C20.526 7.16191 21.0001 8.30651 21.0001 9.49999C21.0001 10.6935 20.526 11.8381 19.682 12.682L12 20.364L4.31804 12.682C3.90017 12.2641 3.5687 11.7681 3.34255 11.2221C3.1164 10.6761 3 10.0909 3 9.49999C3 8.90904 3.1164 8.32387 3.34255 7.7779Z"
+                                    stroke="#7C6A0A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </div>
+                        <div class="product-image">
+                            <img src="./assets/img/products/toothbrush.jpg" alt="">
+                        </div>
+                        <h3>Cepillo de bambú</h3>
+                        <p>Paquete de 2 unidades</p>
+                    </div>
+                    <div class="product-card">
+                        <div class="icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M3.34255 7.7779C3.5687 7.23194 3.90017 6.73586 4.31804 6.31799C4.7359 5.90012 5.23198 5.56865 5.77795 5.3425C6.32392 5.11635 6.90909 4.99995 7.50004 4.99995C8.09099 4.99995 8.67616 5.11635 9.22213 5.3425C9.7681 5.56865 10.2642 5.90012 10.682 6.31799L12 7.63599L13.318 6.31799C14.162 5.47407 15.3066 4.99997 16.5 4.99997C17.6935 4.99997 18.8381 5.47407 19.682 6.31799C20.526 7.16191 21.0001 8.30651 21.0001 9.49999C21.0001 10.6935 20.526 11.8381 19.682 12.682L12 20.364L4.31804 12.682C3.90017 12.2641 3.5687 11.7681 3.34255 11.2221C3.1164 10.6761 3 10.0909 3 9.49999C3 8.90904 3.1164 8.32387 3.34255 7.7779Z"
+                                    stroke="#7C6A0A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </div>
+                        <div class="product-image">
+                            <img src="./assets/img/products/toothbrush.jpg" alt="">
+                        </div>
+                        <h3>Cepillo de bambú</h3>
+                        <p>Paquete de 2 unidades</p>
+                    </div>
+                    <div class="product-card">
+                        <div class="icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M3.34255 7.7779C3.5687 7.23194 3.90017 6.73586 4.31804 6.31799C4.7359 5.90012 5.23198 5.56865 5.77795 5.3425C6.32392 5.11635 6.90909 4.99995 7.50004 4.99995C8.09099 4.99995 8.67616 5.11635 9.22213 5.3425C9.7681 5.56865 10.2642 5.90012 10.682 6.31799L12 7.63599L13.318 6.31799C14.162 5.47407 15.3066 4.99997 16.5 4.99997C17.6935 4.99997 18.8381 5.47407 19.682 6.31799C20.526 7.16191 21.0001 8.30651 21.0001 9.49999C21.0001 10.6935 20.526 11.8381 19.682 12.682L12 20.364L4.31804 12.682C3.90017 12.2641 3.5687 11.7681 3.34255 11.2221C3.1164 10.6761 3 10.0909 3 9.49999C3 8.90904 3.1164 8.32387 3.34255 7.7779Z"
+                                    stroke="#7C6A0A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </div>
+                        <div class="product-image">
+                            <img src="./assets/img/products/toothbrush.jpg" alt="">
+                        </div>
+                        <h3>Cepillo de bambú</h3>
+                        <p>Paquete de 2 unidades</p>
+                    </div>
+                    <div class="product-card">
+                        <div class="icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M3.34255 7.7779C3.5687 7.23194 3.90017 6.73586 4.31804 6.31799C4.7359 5.90012 5.23198 5.56865 5.77795 5.3425C6.32392 5.11635 6.90909 4.99995 7.50004 4.99995C8.09099 4.99995 8.67616 5.11635 9.22213 5.3425C9.7681 5.56865 10.2642 5.90012 10.682 6.31799L12 7.63599L13.318 6.31799C14.162 5.47407 15.3066 4.99997 16.5 4.99997C17.6935 4.99997 18.8381 5.47407 19.682 6.31799C20.526 7.16191 21.0001 8.30651 21.0001 9.49999C21.0001 10.6935 20.526 11.8381 19.682 12.682L12 20.364L4.31804 12.682C3.90017 12.2641 3.5687 11.7681 3.34255 11.2221C3.1164 10.6761 3 10.0909 3 9.49999C3 8.90904 3.1164 8.32387 3.34255 7.7779Z"
+                                    stroke="#7C6A0A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </div>
+                        <div class="product-image">
+                            <img src="./assets/img/products/toothbrush.jpg" alt="">
+                        </div>
+                        <h3>Cepillo de bambú</h3>
+                        <p>Paquete de 2 unidades</p>
+                    </div>
+                    <div class="product-card">
+                        <div class="icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M3.34255 7.7779C3.5687 7.23194 3.90017 6.73586 4.31804 6.31799C4.7359 5.90012 5.23198 5.56865 5.77795 5.3425C6.32392 5.11635 6.90909 4.99995 7.50004 4.99995C8.09099 4.99995 8.67616 5.11635 9.22213 5.3425C9.7681 5.56865 10.2642 5.90012 10.682 6.31799L12 7.63599L13.318 6.31799C14.162 5.47407 15.3066 4.99997 16.5 4.99997C17.6935 4.99997 18.8381 5.47407 19.682 6.31799C20.526 7.16191 21.0001 8.30651 21.0001 9.49999C21.0001 10.6935 20.526 11.8381 19.682 12.682L12 20.364L4.31804 12.682C3.90017 12.2641 3.5687 11.7681 3.34255 11.2221C3.1164 10.6761 3 10.0909 3 9.49999C3 8.90904 3.1164 8.32387 3.34255 7.7779Z"
+                                    stroke="#7C6A0A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </div>
+                        <div class="product-image">
+                            <img src="./assets/img/products/toothbrush.jpg" alt="">
+                        </div>
+                        <h3>Cepillo de bambú</h3>
+                        <p>Paquete de 2 unidades</p>
+                    </div>
+                    <div class="product-card">
+                        <div class="icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M3.34255 7.7779C3.5687 7.23194 3.90017 6.73586 4.31804 6.31799C4.7359 5.90012 5.23198 5.56865 5.77795 5.3425C6.32392 5.11635 6.90909 4.99995 7.50004 4.99995C8.09099 4.99995 8.67616 5.11635 9.22213 5.3425C9.7681 5.56865 10.2642 5.90012 10.682 6.31799L12 7.63599L13.318 6.31799C14.162 5.47407 15.3066 4.99997 16.5 4.99997C17.6935 4.99997 18.8381 5.47407 19.682 6.31799C20.526 7.16191 21.0001 8.30651 21.0001 9.49999C21.0001 10.6935 20.526 11.8381 19.682 12.682L12 20.364L4.31804 12.682C3.90017 12.2641 3.5687 11.7681 3.34255 11.2221C3.1164 10.6761 3 10.0909 3 9.49999C3 8.90904 3.1164 8.32387 3.34255 7.7779Z"
+                                    stroke="#7C6A0A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </div>
+                        <div class="product-image">
+                            <img src="./assets/img/products/toothbrush.jpg" alt="">
+                        </div>
+                        <h3>Cepillo de bambú</h3>
+                        <p>Paquete de 2 unidades</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="info-section">
+            <div class="about-us">
+                <h2>¿Por qué nosotros?</h2>
+                <div class="mission-section">
+                    <div class="earth">
+                        <img src="./assets/img/earth.png" alt="">
+                        <p>
+                            Compromiso con el medio ambiente garantizando el uso de materiales 100% reciclables.
+                        </p>
+                    </div>
+                    <div class="inovation">
+                        <img src="./assets/img/ecology.png" alt="">
+                        <p>
+                            Innovando con estilo el diseño de nuestros muebles es único.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="gallery">
+                <h2>Galería de estilos</h2>
+                <div class="gallery-images">
+                    <img src="./assets/img/gallery-1.jpg" alt="">
+                    <img src="./assets/img/gallery-2.jpg" alt="">
+                    <img src="./assets/img/gallery-3.jpg" alt="">
+                </div>
+            </div>
+            <div class="location">
+                <h2>Encuéntranos en</h2>
+                <div class="map">
+                    <img src="./assets/img/map.png" alt="">
+                </div>
+                <h3>Centro Mayor Centro Comercial</h3>
+                <p>Cl. 38A Sur #34d-51, Bogotá, Colombia</p>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <h3>Eco-store</h3>
+        <p>Careers</p>
+        <p>Terms and conditions</p>
+        <p>Eco-store inc</p>
+        <div class="social-media">
+            <img src="./assets/img/instagram-logo.png" alt="">
+            <img src="./assets/img/twitter-logo.png" alt="">
+            <img src="./assets/img/facebook-logo.png" alt="">
+        </div>
+    </footer>
+</body>
 ```
 
-```
+```scss
+$primary-color: rgba(255, 239, 231, 1);
+$secondary-color: #FFDAC6;
+$tertiary-color: #BABD8D;
+$primary-text-color: #7C6A0A;
+$quaternary-color: #FA9500;
+$font-stack: 'IBM Plex Sans', sans-serif;
+$paragraph-size: 1.5em;
+
+@mixin flexCenter($direction, $content, $align) {
+    display: flex;
+    flex-direction: $direction;
+    justify-content: $content;
+    align-items: $align;
+}
+@mixin buttonStyle {
+    button {
+        background: none;
+        border-style: none;
+    }
+}
+
+
+body {
+    margin: 0px;
+    padding: 0ps;
+    background-color: $primary-color;
+    font-family: $font-stack;
+}
+
+nav {
+    width: auto;
+    @include flexCenter(row, space-between, center);
+    color: $primary-text-color;
+    padding: 15px;
+
+    p {
+        font-size: $paragraph-size;
+        /* padding: 30px; */
+    }
+
+    .icons {
+        display: flex;
+        gap: 15px;
+        @include buttonStyle;
+    }
+}
+
+article {
+    width: auto;
+    color: $primary-text-color;
+    @include flexCenter(row, space-between, center);
+    padding-left: 45px;
+    padding-right: 45px;
+    padding-top: 70px;
+
+    .impact-section {
+        @include flexCenter(column, space-evenly, flex-start);
+        padding-top: 50px;
+        gap: 25px;
+    }
+
+    h1 {
+        font-size: 3em;
+        padding: 0px;
+        margin: 0px;
+    }
+
+    p {
+        font-size: $paragraph-size;
+    }
+    @include buttonStyle;
+    button {
+        width: 12vw;
+        padding: 20px;
+        background-color: $quaternary-color;
+        border-radius: none;
+        border-radius: 35px;
+        color: white;
+        font-size: 1em;
+        border: none;
+        &:hover {
+            transform: scale(1.1);
+        }
+    }
+
+    img {
+        width: 25vw;
+        border-radius: 19px;
+    }
+}
+
+section {
+    width: auto;
+    height: auto;
+    padding: 60px;
+
+    h2 {
+        color: $primary-text-color;
+        font-size: 2em;
+    }
+
+    .healthcare {
+        padding-bottom: 60px;
+
+        h2 {
+            font-weight: 300;
+            padding-bottom: 60px;
+        }
+
+        .card-section {
+            width: auto;
+            height: auto;
+            @include flexCenter(row, space-evenly, center);
+            flex-wrap: wrap;
+            column-gap: 200px;
+            row-gap: 80px;
+        }
+
+        .product-card {
+            width: 14vw;
+            height: 45vh; //45
+            background-color: $secondary-color;
+            color: $primary-text-color;
+            padding: 20px;
+            border-radius: 8px;
+
+            .icon {
+                width: 100%;
+                display: flex;
+                justify-content: flex-end;
+                padding-bottom: 12px;
+
+                svg {
+                    width: 28px;
+                    height: 28px;
+                    stroke: #7C6A0A;
+                    stroke-width: 2;
+                }
+
+            }
+
+            .product-image {
+                width: 100%;
+                height: auto;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                img {
+                    width: 12vw;
+                    height: 30vh;
+                    object-fit: cover;
+                    border-radius: 6px;
+                }
+            }
+        }
+    }
+
+    .furniture {
+        @extend .healthcare;
+        .product-card {
+            background-color: $tertiary-color;
+            color: white;
+        }
+    }
+}
+
+.about-us {
+    padding-bottom: 60px;
+    h2 {
+        font-weight: bold;
+        padding-bottom: 60px;   
+    }
+    .mission-section {
+        @include flexCenter(row, space-evenly, center);
+        .earth {
+            $text-color: #E86424;
+            width: 30vw;
+            display: flex;
+            gap: 40px;
+            color: $text-color;
+            img {
+                object-fit: contain;
+            }
+
+            p {
+                text-align: center;
+                font-size: $paragraph-size;
+            }
+        }
+    }
+    .inovation {
+        @extend .earth;
+    }
+}
+
+.gallery {
+    h2 {
+        font-weight: bold;
+        padding-bottom: 60px;   
+    }
+    .gallery-images {
+        @include flexCenter(row, space-between, center);
+        img {
+            width: 28vw;
+            height: 45vh;
+            object-fit: conver;
+            object-position: 5px 35%;
+            border-radius: 16px;
+            &:hover {
+                transform: scale(1.1);
+                transition-duration: 0.3s;
+                // animation: aumento 10s ease-in-out infinite 20s;
+            }
+        }
+    }
+}
+
+.location {
+    $text-color: #E86424;
+    color: $text-color;
+    h2 {
+        padding-bottom: 60px;
+        padding-top: 60px;
+    }
+    .map {
+        @include flexCenter(row, center, center);
+        padding-bottom: 50px;
+    }
+    h3, p {
+        font-size: $paragraph-size;
+    }
+}
+
+footer {
+    background-color: $quaternary-color;
+    width: 100%;
+    height: auto;
+    padding: 40px;
+    color: white;
+    .social-media {
+        @include flexCenter(row, center, center);
+        gap: 40px;
+        padding-bottom: 40px;
+    }
+}
 ```
 
+## Quiz: Proyecto 
+
+1. ¿Qué se necesita modificar para ajustar el tamaño de las imágenes en una clase?
+
+	- Cambiar los valores de `width` y `height` según sea necesario
+
+2. ¿Qué se crea para organizar mejor una sección?
+
+	- Div
+
+3. ¿Qué función se utiliza para acomodar íconos horizontalmente y centrados?
+
+	- justify-content: center;
+
+
+## 19. Presentación de Github pages y deploy
+
+
+## Quiz: Deploy 
+
+1. ¿Cuál es el primer paso para desplegar un proyecto en GitHub Pages?
+
+	 - Seleccionar el repositorio del proyecto público en tu perfil de GitHub
+
+2. ¿En qué sección de la configuración del repositorio puedes encontrar la opción 'GitHub Pages'?
+
+	- En 'Settings'
+
+3. ¿Qué es GitHub Pages?
+
+	- Es un servicio gratuito de alojamiento web
+
+## 20. Aprende a instalar y configurar Sass mediante Node.js
+
+### Instrucciones 
+
+1. Abre una terminal y navega hasta la carpeta raíz de tu proyecto.
+
+Asegúrate de tener Node.js instalado en tu sistema. Puedes verificarlo escribiendo node -v en la terminal. Si no lo tienes instalado, ve al [sitio web oficial](https://nodejs.org/en) de Node.js para descargarlo e instalarlo.
+
+2. Ejecuta el siguiente comando para instalar Sass a nivel global:
+
+```shell
+npm install -g sass
 ```
+
+3. Ahora que tienes Sass instalado a nivel global, puedes compilar tus archivos Sass en CSS con el siguiente comando en la terminal:
+
+```bash
+sass input.scss output.css
 ```
+
+4. Reemplaza “input.scss” con la ruta y el nombre de tu archivo Sass, y “output.css” con la ruta y el nombre de tu archivo CSS de salida. Por ejemplo:
+
+```shell
+sass styles/main.scss styles/main.css
+```
+
+5. Si quieres compilar automáticamente tus archivos Sass en CSS cada vez que hagas cambios, puedes usar la opción --watch:
+
+```shell
+sass --watch input.scss:output.css
+```
+
+6. Si estás utilizando Node.js en tu proyecto, también puedes usar un paquete de npm llamado sass para compilar tus archivos Sass en CSS. Para instalarlo, ejecuta el siguiente comando:
+
+```shell
+npm install sass
+```
+
+7. En tu archivo de configuración de Node.js (como package.json) agrega un script para compilar tus archivos Sass en CSS. Por ejemplo:
+
+```json
+"scripts": {
+  "build:css": "sass input.scss output.css"
+}
+```
+
+8. Ahora puedes ejecutar el script con el siguiente comando:
+
+```shell
+npm run build:css
+```
+
+Eso es todo. Con estas instrucciones deberías poder instalar y configurar Sass en tu proyecto de Node.js.
+
+## Examen: 📌
+
+<details>
+  <summary>Haz click aquí para ver los resultados 👀</summary>
+  <br/>
+
+1. Selecciona la opción correcta
+
+	- 📌Para hacer uso de la herencia en Sass es necesario utilizar la regla @extend seguido del nombre de la clase.
+
+2. Selecciona la opción correcta
+
+	- 📌El uso de HTML semántico incluye etiquetas como: `<section>`,`<article>` y `<main>`.
+
+3. Son ejemplos de expresiones simples
+
+	- 📌Números, strings y booleanos.
+
+	Las expresiones simples son aquellas que no están compuestas por otras expresiones más complejas. En este caso, los números, strings y booleanos son tipos de datos simples en muchos lenguajes de programación. 
+	
+	Los caracteres especiales, las operaciones aritméticas, los booleanos, las listas y los mapas son elementos más complejos que pueden ser utilizados en expresiones más complejas. Sin embargo, en su forma individual, no se consideran expresiones simples.
+
+4. ¿Cómo se utilizan los mixins en Sass?
+
+	- 📌Se declaran con la directiva @mixin y se invocan con @include seguido del nombre del mixin.
+
+5. Para inicializar el uso de flexbox debemos utilizar la propiedad de CSS display: flex
+
+	- 📌 Verdadero
+
+6. Selecciona la opción correcta
+
+	- 📌La anidación dentro de Sass permite tener selectores dentro de otros y nos ayudan a simplificar el código.
+
+7. Selecciona la opción correcta
+
+	- 📌Las variables en Sass se declaran de la siguiente manera: $primary-color: red;
+
+8. Los mixins permiten definir estilos que se pueden reutilizar en toda su hoja de estilos y facilitan evitar el uso de clases no semánticas
+
+	- 📌 Verdadero
+
+9. Las declaraciones universales se pueden utilizar en cualquier parte de la hoja de estilos.
+
+	- 📌 Verdadero
+
+10. ¿Qué es un preprocesador?
+
+	- 📌 Un preprocesador es una herramienta que nos permite traducir nuestros estilos escritos a una sintaxis específica a CSS nativo.
+
+11. ¿Para qué sirven las at-Rules?
+
+	- 📌 Son reglas de CSS que cumplen con diferentes funciones y cuenta con su sintaxis propia.
+
+	Las at-rules son reglas de CSS que comienzan con el símbolo "@". Estas reglas cumplen con diferentes funciones y tienen su propia sintaxis, lo que les permite modificar el comportamiento de los estilos. Algunos ejemplos de at-rules comunes incluyen "@media", "@import", "@font-face", "@keyframes", entre otros.
+	
+	Sass, por otro lado, es un preprocesador de CSS que permite a los desarrolladores escribir código CSS más eficiente y flexible. Aunque Sass tiene su propia sintaxis y características adicionales, las at-rules en Sass se utilizan principalmente para extender la funcionalidad de las at-rules de CSS estándar, como por ejemplo para utilizar variables en ellas.
+
+12. Selecciona la opción correcta
+
+	- 📌 La herencia es un mecanismo mediante el cual un selector puede recibir estilos utilizados previamente.
+
+13. Selecciona la opción correcta
+
+	- 📌 Un proyecto de Sass se compone de un archivo de entrada (Input) un archivo de Salida (Output) y el comando de compilación.
+
+	En un proyecto típico de Sass, se tiene un archivo de entrada (Input) que contiene el código Sass y se utiliza para escribir estilos más eficientes y flexibles. Luego, se utiliza un comando de compilación para compilar el archivo de entrada y generar un archivo de salida (Output) en formato CSS. El archivo de salida es el que se utiliza en el sitio web para aplicar los estilos.
+	
+	Es importante destacar que, aunque el archivo de salida puede tener cualquier nombre y ubicación deseada, es importante seguir una estructura de carpetas organizada para evitar confusiones. Además, se pueden utilizar herramientas como automatizadores de tareas, como Gulp o Grunt, para automatizar el proceso de compilación y ahorrar tiempo en el desarrollo.
+	
+	El comando de compilación de Sass se utiliza para convertir un archivo de entrada en formato Sass a un archivo de salida en formato CSS. 
+
+	El comando de compilación puede variar dependiendo de la herramienta o el entorno de desarrollo que se esté utilizando. Sin embargo, uno de los comandos de compilación más comunes es el siguiente:
+	
+	`sass [ruta-del-archivo-de-entrada]/[nombre-del-archivo-de-entrada].scss [ruta-del-archivo-de-salida]/[nombre-del-archivo-de-salida].css`
+	
+	En este comando, se debe reemplazar "[ruta-del-archivo-de-entrada]", "[nombre-del-archivo-de-entrada]", "[ruta-del-archivo-de-salida]" y "[nombre-del-archivo-de-salida]" con las rutas y nombres de los archivos correspondientes en el proyecto.
+	
+	También existen herramientas y entornos de desarrollo que automatizan el proceso de compilación y no requieren que se ejecute el comando manualmente cada vez que se realice un cambio en el archivo de entrada.
+
+14. ¿Qué es el Scope?
+
+	- 📌El scope hace referencia al contexto en el que son declaradas las variables.
+
+	En Sass, el scope se refiere al alcance o contexto en el que se pueden utilizar las variables. Al igual que en otros lenguajes de programación, las variables en Sass solo son accesibles en el ámbito o contexto en el que se declaran.
+	
+	En la mayoría de los casos, las variables se definen en el nivel superior del archivo Sass o dentro de un bloque o selector anidado específico. Las variables definidas en el nivel superior del archivo Sass tienen un alcance global y pueden ser utilizadas en cualquier parte del archivo. Las variables definidas dentro de un bloque o selector anidado tienen un alcance local y solo pueden ser utilizadas dentro de ese bloque o selector.
+
+	Por ejemplo, en el siguiente código Sass:
+	
+	```scss
+	$color: blue; // variable global
+	
+	.container {
+	  $background: red; // variable local
+	  background-color: $background;
+	  color: $color;
+	}
+	```
+
+	La variable `$color` se declara en el nivel superior del archivo Sass y, por lo tanto, tiene un alcance global. La variable `$background` se declara dentro del bloque `.container` y, por lo tanto, tiene un alcance local. En la regla de estilo `background-color: $background;`, se utiliza la variable `$background`, que solo es accesible dentro del bloque `.container`. En cambio, en la regla de estilo `color: $color;`, se utiliza la variable `$color`, que es accesible en cualquier parte del archivo Sass.
+	
+	En resumen, el scope en Sass se refiere al alcance o contexto en el que se pueden utilizar las variables, y se determina por el nivel de anidamiento en el que se declaran.
+
+15. ¿Qué significa la sigla Sass?
+
+	- 📌Syntactically Awesome Style sheets
+
+16. Es una ventaja de utilizar preprocesadores.
+
+	- 📌Aumentan la productividad y permiten tener un código más mantenible.
+
+17. Selecciona la opción correcta referente a la definición de Sass.
+
+	- 📌 Es un preprocesador de CSS que se utiliza para agregar características adicionales a CSS.
+
+</details>
