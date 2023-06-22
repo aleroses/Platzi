@@ -800,4 +800,233 @@ plugins: [
 ```
 
 
-## 12. # Tailwind como API para la creación de un Design System
+## 12. Tailwind como API para la creación de un Design System
+
+Un design system es el archivo donde se definen todos los estilos, tamaños, tipografías y colores que se usarán en el proyecto.
+
+### Automatizar compilación del archivo de tailwind:   👈👀
+
+En lugar de correr el comando `npx tailwindcss -i ./src/css/tailwind.css -o ./public/css/tailwind.css --watch` para poder ver los cambios en tu proyecto, podemos agregar un `script` en nuestro archivo `package.json`.  
+
+```js
+{
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "",
+    "tw:build": "tailwindcss -i ./src/css/tailwind.css -o ./public/css/tailwind.css --watch" 👈👀
+  },
+  "autor": "",
+  "license": "ISC",
+  "devDependencies": {
+    "tailwindcss": "^3.3.2" 👈👀
+  }
+}
+```
+
+### Personalización 
+
+Agregamos nuestras imágenes en la carpeta public:
+
+```bash
+╰─ tree -L 3
+.
+├── node_modules
+├── package-lock.json
+├── package.json
+├── public
+│   ├── css
+│   │   └── tailwind.css
+│   ├── img 👈👀
+│   │   ├── LA.jpg
+│   │   ├── bali.jpg
+│   │   ├── chicago.jpg
+│   │   ├── europe.jpg
+│   │   ├── iceland.jpg
+│   │   ├── miami.jpg
+│   │   ├── new_york.jpg
+│   │   ├── norway.jpg
+│   │   ├── sanFrancisco.jpg
+│   │   ├── sanFranciscoDesktop.jpg
+│   │   ├── seattle.jpg
+│   │   ├── switzerland.jpg
+│   │   ├── sydney.jpg
+│   │   └── yosemite.jpg
+│   └── index.html
+├── src
+│   └── css
+│       └── tailwind.css
+└── tailwind.config.js
+```
+
+Esta configuración permite usar todos los colores predeterminados por tailwind y los colores que agregamos de manera personalizada. También agregamos la tipografía a usar en el proyecto. 
+```js
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: ['./public/index.html', './src/**/*.{html,js}'],
+  theme: {
+    fontFamily: { 👈👀
+      'Montserrat': ["Montserrat", "sans-serif"]
+    },
+    backgroundColor: theme => ({ 👈👀
+      ...theme('colors'),
+      'primary': '#CC2D4A',
+      'secondary': '#8FA206',
+      'tertiary': '#61AEC9',
+    }),
+    textColor: theme => ({ 👈👀
+      ...theme('colors'),
+      'primary': '#CC2D4A',
+      'secondary': '#8FA206',
+      'tertiary': '#61AEC9',
+    }),
+    /*
+    Esto funciona pero no nos permite usar los colores de Tailwind 
+	  colors: {
+      primary: '#CC2D4A',
+      secondary: "#8FA206",
+      tertiary: "#61AEC9",
+    }, 
+    textColor: {
+      primary: '#CC2D4A',
+      secondary: "#8FA206",
+      tertiary: "#61AEC9",
+    },*/
+    extend: {
+      backgroundImage: { 👈👀
+        'sanFrancisco': "url('./public/img/sanFrancisco.png')",
+        'sanFranciscoDesktop': "url('./public/img/sanFranciscoDesktop.jpg')",
+        'yosemite': "url('./public/img/yosemite.jpg')",
+        'LA': "url('./public/img/LA.jpg')",
+        'seattle': "url('./public/img/seattle.jpg')",
+        'new_york': "url('./public/img/new_york.jpg')",
+        'norway': "url('./public/img/norway.jpg')",
+        'sydney': "url('./public/img/sydney.jpg')",
+        'miami': "url('./public/img/miami.jpg')",
+        'switzerland': "url('./public/img/switzerland.jpg')",
+        'bali': "url('./public/img/bali.jpg')",
+        'norway': "url('./public/img/norway.jpg')",
+        'chicago': "url('./public/img/chicago.jpg')",
+        'europe': "url('./public/img/europe.jpg')",
+        'iceland': "url('./public/img/iceland.jpg')",
+      },
+    }
+  },
+  plugins: [],
+}
+```
+
+📌 Tener cuidado con la ruta donde están ubicadas nuestras imágenes. 
+
+### Ejecutando los cambios  
+
+Ahora ya podemos hacer cambios en nuestro index.html. No olvidar agregar los enlaces de la tipografía. 
+
+```html
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../public/css/tailwind.css"> 
+    <link rel="preconnect" href="https://fonts.googleapis.com"> 👈👀
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 👈👀
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet"> 👈👀
+    <title>Trips!!!</title>
+</head>
+
+<body>
+    <section class="w-screen h-screen bg-gray-950 grid grid-cols-3 grid-rows-3 gap-4 p-4">
+        <div class="bg-indigo-950 col-span-3 font-Montserrat text-xl text-emerald-400">Hello World</div>
+        <div class="bg-secondary row-start-2 row-end-4"></div>
+        <div class="bg-tertiary col-start-2 col-end-4"></div>
+        <div class="bg-primary col-start-2 col-end-4"></div>
+    </section>
+</body>
+</html>
+```
+
+En la terminal: `npm run tw:build`
+
+Open with live server...  
+![](https://i.postimg.cc/C5kX5By9/12-tailwind-como-api.png)
+
+
+## 13. Construyendo el cuerpo del proyecto
+
+```html
+<body>
+    <nav></nav>
+    <div id="tab_bar"></div>
+    <section>
+        <div id="home"></div>
+        <div id="recomendados"></div>
+        <div id="rentas_destacadas"></div>
+    </section>
+    <footer>
+
+    </footer>
+</body>
+```
+
+## 14. Creando la sección de Home
+
+### Clasificación automática de clases con Prettier
+
+Este complemento escanea sus plantillas en busca de atributos de clase que contengan clases CSS de Tailwind y luego ordena esas clases automáticamente siguiendo nuestro [orden de clase recomendado](https://tailwindcss.com/blog/automatic-class-sorting-with-prettier#how-classes-are-sorted) .
+
+![](https://i.postimg.cc/763h3F65/14-ordenar-clases-prettier.jpg)
+
+```html
+<!-- Before -->
+<button class="text-white px-4 sm:px-8 py-2 sm:py-3 bg-sky-700 hover:bg-sky-800">...</button>
+
+<!-- After -->
+<button class="bg-sky-700 px-4 py-2 text-white hover:bg-sky-800 sm:px-8 sm:py-3">...</button>
+```
+
+Para comenzar, simplemente instálelo `prettier-plugin-tailwindcss`como una dependencia de desarrollo:
+
+```sh
+npm install -D prettier prettier-plugin-tailwindcss
+```
+
+- [Documentación + Instalación](https://tailwindcss.com/blog/automatic-class-sorting-with-prettier)
+- [Personalizar Prettier](https://www.youtube.com/watch?v=ouNMLoyEqZw)
+
+
+### Código de la clase 
+
+```html
+<body>
+    <nav></nav>
+    <div id="tab_bar"></div>
+    <section class="h-screen w-full">
+      <div id="home">
+        <div class="h-3/4 w-full">
+          <div
+            class="absolute flex h-full w-full flex-col items-center space-y-96 py-4"
+          >
+            <input
+              class="rounded-full p-3 shadow-sm outline-none"
+              placeholder="San Francisco"
+              type="search"
+            />
+            <button
+              class="w-36 rounded-full bg-white p-4 text-xl font-semibold text-primary shadow-sm"
+            >
+              Explora
+            </button>
+          </div>
+          <div class="h-full w-full">
+            <img src="./img/sanFrancisco.jpg" alt="" />
+          </div>
+        </div>
+      </div>
+      <div id="recomendados"></div>
+      <div id="rentas_destacadas"></div>
+    </section>
+    <footer></footer>
+</body>
+```
+
+## 15. Diseñando nuestras cards
