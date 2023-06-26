@@ -1080,7 +1080,7 @@ Para hacer la extracción de componentes se procede a lo siguiente:
 
 En el archivo `src/css/tailwind.css` se crean clases cuyo nombre será el adecuado para identificar cierto componente, dentro de la clase se introducirán todos los estilos de Tailwind que se estarán reutilizando haciendo el uso de la directiva `@apply` seguido de las clases de Tailwind.
 
-```jsx
+```css
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -1096,13 +1096,13 @@ Haciendo lo anterior se puede utilizar el nombre de la nueva clase en nuestro ar
 
 Archivo `index.html`:
 
-```jsx
-<div class="card"> 👈👀
-	<div class="w-full h-3/5 rounded-t-lg bg-norway bg-cover"></div>
-	<div class="w-full h-2/5 bg-secondary rounded-b-lg">
-			<p class="text-white font-bold text-xl px-4 py-2">Norway</p>
-			<p class="text-white px-4">Paisajes Increíbles</p>
-	</div>
+```html
+<div class="card">👈👀
+    <div class="h-3/5 w-full rounded-t-lg bg-norway bg-cover"></div>
+    <div class="h-2/5 w-full rounded-b-lg bg-secondary">
+        <p class="px-4 py-2 text-xl font-bold text-white">Norway</p>
+        <p class="px-4 text-base text-white">Paisajes Increíbles</p>
+    </div>
 </div>
 ```
 
