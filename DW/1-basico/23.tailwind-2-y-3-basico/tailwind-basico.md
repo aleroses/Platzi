@@ -800,7 +800,7 @@ plugins: [
 ```
 
 
-## 12. Tailwind como API para la creación de un Design System
+## 12. Tailwind como API para la creación de un Design System `v3.3.2`
 
 Un design system es el archivo donde se definen todos los estilos, tamaños, tipografías y colores que se usarán en el proyecto.
 
@@ -894,21 +894,20 @@ module.exports = {
     },*/
     extend: {
       backgroundImage: { 👈👀
-        'sanFrancisco': "url('./public/img/sanFrancisco.png')",
-        'sanFranciscoDesktop': "url('./public/img/sanFranciscoDesktop.jpg')",
-        'yosemite': "url('./public/img/yosemite.jpg')",
-        'LA': "url('./public/img/LA.jpg')",
-        'seattle': "url('./public/img/seattle.jpg')",
-        'new_york': "url('./public/img/new_york.jpg')",
-        'norway': "url('./public/img/norway.jpg')",
-        'sydney': "url('./public/img/sydney.jpg')",
-        'miami': "url('./public/img/miami.jpg')",
-        'switzerland': "url('./public/img/switzerland.jpg')",
-        'bali': "url('./public/img/bali.jpg')",
-        'norway': "url('./public/img/norway.jpg')",
-        'chicago': "url('./public/img/chicago.jpg')",
-        'europe': "url('./public/img/europe.jpg')",
-        'iceland': "url('./public/img/iceland.jpg')",
+        'sanFrancisco': "url('../img/sanFrancisco.jpg')",
+        'sanFranciscoDesktop': "url('../img/sanFranciscoDesktop.jpg')",
+        'yosemite': "url('../img/yosemite.jpg')",
+        'LA': "url('../img/LA.jpg')",
+        'seattle': "url('../img/seattle.jpg')",
+        'new_york': "url('../img/new_york.jpg')",
+        norway: "url('../img/norway.jpg')",
+        'sydney': "url('../img/sydney.jpg')",
+        'miami': "url('../img/miami.jpg')",
+        'switzerland': "url('../img/switzerland.jpg')",
+        'bali': "url('../img/bali.jpg')",
+        'chicago': "url('../img/chicago.jpg')",
+        'europe': "url('../img/europe.jpg')",
+        'iceland': "url('../img/iceland.jpg')",
       },
     }
   },
@@ -916,7 +915,7 @@ module.exports = {
 }
 ```
 
-📌 Tener cuidado con la ruta donde están ubicadas nuestras imágenes. 
+📌 **Nota para la clase 15:** Tener cuidado con la ruta donde están ubicadas nuestras imágenes. Ejemplo: Esta no es una ruta correcta para Tailwind `'sanFrancisco': "url('./public/img/sanFrancisco.png')"` lo correcto es `'sanFrancisco': "url('../img/sanFrancisco.jpg')"`. 
 
 ### Ejecutando los cambios  
 
@@ -937,7 +936,7 @@ Ahora ya podemos hacer cambios en nuestro index.html. No olvidar agregar los enl
 <body>
     <section class="w-screen h-screen bg-gray-950 grid grid-cols-3 grid-rows-3 gap-4 p-4">
         <div class="bg-indigo-950 col-span-3 font-Montserrat text-xl text-emerald-400">Hello World</div>
-        <div class="bg-secondary row-start-2 row-end-4"></div>
+        <div class="bg-secondary row-start-2 row-end-4 bg-new_york"></div>
         <div class="bg-tertiary col-start-2 col-end-4"></div>
         <div class="bg-primary col-start-2 col-end-4"></div>
     </section>
@@ -945,10 +944,11 @@ Ahora ya podemos hacer cambios en nuestro index.html. No olvidar agregar los enl
 </html>
 ```
 
-En la terminal: `npm run tw:build`
+En la terminal: `npm run tw:build` para visualizar los cambios y usar `ctrl + c` para matar el proceso. 
 
-Open with live server...  
-![](https://i.postimg.cc/C5kX5By9/12-tailwind-como-api.png)
+`index.html` Open with live server...  
+![](https://i.postimg.cc/C5kX5By9/12-tailwind-como-api.png)  
+![](https://i.postimg.cc/Y0vFnQdM/12-tailwind-api-img.png)
 
 
 ## 13. Construyendo el cuerpo del proyecto
@@ -1030,3 +1030,94 @@ npm install -D prettier prettier-plugin-tailwindcss
 ```
 
 ## 15. Diseñando nuestras cards
+
+```html
+<body>
+    <nav></nav>
+    <div id="tab_bar"></div>
+    <section class="h-screen w-full">
+      <div id="home">
+        <div class="h-3/4 w-full">
+          <div
+            class="absolute flex h-full w-full flex-col items-center space-y-96 py-4"
+          >
+            <input
+              class="rounded-full p-3 shadow-sm outline-none"
+              placeholder="San Francisco"
+              type="search"
+            />
+            <button
+              class="w-36 rounded-full bg-white p-4 text-xl font-semibold text-primary shadow-sm"
+            >
+              Explora
+            </button>
+          </div>
+          <div class="h-full w-full">
+            <img src="./img/sanFrancisco.jpg" alt="" />
+          </div>
+        </div>
+      </div>
+      <div class="p-20" id="recomendados">
+        <div class="h-64 w-48 rounded-lg shadow-md">
+          <div class="h-3/5 w-full rounded-t-lg bg-norway bg-cover"></div>
+          <div class="h-2/5 w-full rounded-b-lg bg-secondary">
+            <p class="px-4 py-2 text-xl font-bold text-white">Norway</p>
+            <p class="px-4 text-base text-white">Paisajes Increíbles</p>
+          </div>
+        </div>
+      </div>
+      <div id="rentas_destacadas"></div>
+    </section>
+    <footer></footer>
+</body>
+```
+
+## 16. Extracción de componentes a clases para nuestra card
+
+La extracción de componentes sirve para no escribir el mismo código en componentes que se utilizarán más de una vez _(ej. cards)_ y poder mantener el principio de utility-first. La extracción de componentes trabaja de la mano con la directiva `@apply`.
+
+Para hacer la extracción de componentes se procede a lo siguiente:
+
+En el archivo `src/css/tailwind.css` se crean clases cuyo nombre será el adecuado para identificar cierto componente, dentro de la clase se introducirán todos los estilos de Tailwind que se estarán reutilizando haciendo el uso de la directiva `@apply` seguido de las clases de Tailwind.
+
+```jsx
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {👈👀
+  .card {
+    @apply w-48 h-64 shadow-md rounded-lg;
+  }
+}
+```
+
+Haciendo lo anterior se puede utilizar el nombre de la nueva clase en nuestro archivo HTML, es importante ejecutar el script `tw:build` para que se efectúen los cambios.
+
+Archivo `index.html`:
+
+```jsx
+<div class="card"> 👈👀
+	<div class="w-full h-3/5 rounded-t-lg bg-norway bg-cover"></div>
+	<div class="w-full h-2/5 bg-secondary rounded-b-lg">
+			<p class="text-white font-bold text-xl px-4 py-2">Norway</p>
+			<p class="text-white px-4">Paisajes Increíbles</p>
+	</div>
+</div>
+```
+
+
+### Evita abstracciones prematuras
+
+Hagas lo que hagas, no uses "@apply" solo para que las cosas se vean "más limpias". Sí, las plantillas HTML llenas de clases de Tailwind son un poco feas. Hacer cambios en un proyecto que tiene toneladas de CSS personalizado es peor.
+
+Si comienzas a usar "@apply" para todo, básicamente estarás escribiendo CSS de nuevo y desechando todas las ventajas de flujo de trabajo y mantenimiento que te da Tailwind, por ejemplo:
+
+- Tienes que pensar en nombres de clases todo el tiempo: nada te ralentizará o te agotará más que pensar en un nombre de clase para algo que no merece ser nombrado.
+- Tienes que saltar entre varios archivos para hacer cambios: lo cual es un matador de flujo de trabajo mucho más grande de lo que pensarías antes de colocar todo en el mismo lugar.
+- Cambiar estilos es más aterrador: CSS es global, ¿estás seguro de que puedes cambiar el valor de "min-width" en esa clase sin romper algo en otra parte del sitio?
+- Tu paquete CSS será más grande: ¡ouch!
+
+Si vas a usar "@apply", úsalo para cosas muy pequeñas y altamente reutilizables como botones y controles de formulario, y aun así solo si no estás usando un marco como React donde un componente sería una mejor opción.
+
+[Documentación de la extracción de componentes en Tailwind:](https://tailwindcss.com/docs/reusing-styles#avoiding-premature-abstraction)
