@@ -5,6 +5,10 @@
 - [Repo del proyecto](https://github.com/platzi/PlatziTravel)
 - [Resultado final](https://anamdiazs.github.io/PlatziTravel/)
 
+### Otro diseño
+- [Lo mismo pero mejor](https://luisariza.github.io/travel-page/)
+- [Repo del proyecto](https://github.com/luisAriza/travel-page)
+
 ## 2. Tailwind 3.0: ¿Qué hay de nuevo?
 
 Hola, el proyecto de este curso fue creado con la versión 2.0 de Tailwind, pero en diciembre de 2021 salió la versión 3.0. Es muy importante que tengas en cuenta que cuando comiences el proyecto lo harás con esta nueva versión, lo cual **no afectara para el desarrollo del proyecto**.
@@ -1121,3 +1125,91 @@ Si comienzas a usar "@apply" para todo, básicamente estarás escribiendo CSS de
 Si vas a usar "@apply", úsalo para cosas muy pequeñas y altamente reutilizables como botones y controles de formulario, y aun así solo si no estás usando un marco como React donde un componente sería una mejor opción.
 
 [Documentación de la extracción de componentes en Tailwind:](https://tailwindcss.com/docs/reusing-styles#avoiding-premature-abstraction)
+
+
+## 17. Creando la sección de Recomendados
+
+```html
+<body>
+    <nav></nav>
+    <div id="tab_bar"></div>
+    <section class="h-screen w-full">
+      <div id="home">
+        <div class="h-3/4 w-full">
+          <div
+            class="absolute flex h-full w-full flex-col items-center space-y-96 py-4"
+          >
+            <input
+              class="rounded-full p-3 shadow-sm outline-none"
+              placeholder="San Francisco"
+              type="search"
+            />
+            <button
+              class="w-36 rounded-full bg-white p-4 text-xl font-semibold text-primary shadow-sm"
+            >
+              Explora
+            </button>
+          </div>
+          <div class="h-full w-full">
+            <img src="./img/sanFrancisco.jpg" alt="" />
+          </div>
+        </div>
+      </div>
+      <div class="p-6" id="recomendados">👈👀
+        <p class="text-3xl font-semibold text-primary">Recomendados</p>
+        <div
+          class="mt-6 flex h-72 w-auto items-center space-x-6 overflow-x-auto overscroll-x-contain"
+        > 👈👀
+          <div class="card"> 👈👀
+            <div class="h-3/5 w-full rounded-t-lg bg-norway bg-cover"></div>
+            <div class="h-2/5 w-full rounded-b-lg bg-secondary">
+              <p class="px-4 py-2 text-xl font-bold text-white">Norway</p>
+              <p class="px-4 text-base text-white">Paisajes Increíbles</p>
+            </div>
+          </div>
+          <div class="card"> 👈👀
+            <div class="h-3/5 w-full rounded-t-lg bg-new_york bg-cover"></div>
+            <div class="h-2/5 w-full rounded-b-lg bg-white">
+              <p class="px-4 py-2 text-xl font-bold text-tertiary">New York</p>
+              <p class="px-4 text-base text-tertiary">La gran manzana</p>
+            </div>
+          </div>
+          <div class="card"> 👈👀
+            <div class="h-3/5 w-full rounded-t-lg bg-yosemite bg-cover"></div>
+            <div class="h-2/5 w-full rounded-b-lg bg-secondary">
+              <p class="px-4 py-2 text-xl font-bold text-white">Yosemite</p>
+              <p class="px-4 text-base text-white">A break from the world</p>
+            </div>
+          </div>
+          <div class="card"> 👈👀
+            <div class="h-3/5 w-full rounded-t-lg bg-seattle bg-cover"></div>
+            <div class="h-2/5 w-full rounded-b-lg bg-white">
+              <p class="px-4 py-2 text-xl font-bold text-tertiary">Norway</p>
+              <p class="px-4 text-base text-tertiary">Big City</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="rentas_destacadas"></div>
+    </section>
+    <footer></footer>
+</body>
+```
+
+Modificamos archivo tailwind.css
+```css
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+    .card {
+        @apply h-64 w-48 rounded-lg shadow-md flex-none; 👈👀
+    }
+}
+```
+
+Resultado:   
+![](https://i.postimg.cc/8P3P8ktD/17-scroll-x.png)
+
+[Documentación: overflow](https://tailwindcss.com/docs/overflow)
