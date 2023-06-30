@@ -1724,7 +1724,7 @@ Agregamos una clase dentro del archivo `tailwind.css`
 ## 22. TabBar funcional
 
 ```html
-  <body class="font-Montserrat">
+<body class="font-Montserrat">
     <nav></nav>
     <section class="h-auto w-full">
       <div id="home">
@@ -1972,14 +1972,546 @@ también:
 ```
 
 
+Obtén mas iconos desde la página [Heroicons](https://heroicons.com/)
 
 
+## 23. Haciendo responsivo nuestro proyecto
 
+```html
+<body class="font-Montserrat">
+    <nav></nav>
+    <section class="h-auto w-full">
+      <div id="home">
+        <div class="h-3/4 w-full">
+          <div
+            class="absolute flex h-full w-full flex-col items-center space-y-96 py-4 lg:items-start lg:justify-start lg:space-y-0 lg:pt-20"
+          >
+            <input
+              class="rounded-full p-3 shadow-sm outline-none transition duration-300 focus-within:shadow-sm focus:w-11/12 focus:ring-2 lg:hidden"
+              placeholder="San Francisco"
+              type="search"
+            />
+            <div class="hidden h-auto pb-6 lg:flex lg:w-2/5">
+              <p class="ml-16 text-4xl font-bold">
+                Encuentra más ubicaciones como esta
+              </p>
+            </div>
+            <button
+              class="w-36 transform rounded-full bg-white p-4 text-lg font-semibold text-primary shadow-sm transition duration-500 ease-in-out hover:-translate-y-1 hover:scale-110 hover:bg-primary hover:text-white lg:ml-16"
+            >
+              Explorar
+            </button>
+          </div>
+          <div
+            class="h-full w-full lg:h-96 lg:bg-sanFranciscoDesktop lg:bg-cover lg:bg-center"
+          >
+            <img class="lg:hidden" src="./img/sanFrancisco.jpg" alt="" />
+          </div>
+        </div>
+      </div>
+      <div class="p-6" id="recomendados">
+        <p class="text-3xl font-semibold text-primary">Recomendados</p>
+        <div
+          class="mt-6 flex h-72 w-auto items-center space-x-6 overflow-x-auto overflow-y-hidden overscroll-x-contain"
+        >
+          <div class="card">
+            <div class="h-3/5 w-full rounded-t-lg bg-norway bg-cover"></div>
+            <div class="h-2/5 w-full rounded-b-lg bg-secondary">
+              <p class="px-4 py-2 text-xl font-bold text-white">Norway</p>
+              <p class="px-4 text-base text-white">Paisajes Increíbles</p>
+            </div>
+          </div>
+          <div class="card">
+            <div class="h-3/5 w-full rounded-t-lg bg-new_york bg-cover"></div>
+            <div class="h-2/5 w-full rounded-b-lg bg-white">
+              <p class="px-4 py-2 text-xl font-bold text-tertiary">New York</p>
+              <p class="px-4 text-base text-tertiary">La gran manzana</p>
+            </div>
+          </div>
+          <div class="card">
+            <div class="h-3/5 w-full rounded-t-lg bg-yosemite bg-cover"></div>
+            <div class="h-2/5 w-full rounded-b-lg bg-secondary">
+              <p class="px-4 py-2 text-xl font-bold text-white">Yosemite</p>
+              <p class="px-4 text-base text-white">A break from the world</p>
+            </div>
+          </div>
+          <div class="card">
+            <div class="h-3/5 w-full rounded-t-lg bg-seattle bg-cover"></div>
+            <div class="h-2/5 w-full rounded-b-lg bg-white">
+              <p class="px-4 py-2 text-xl font-bold text-tertiary">Norway</p>
+              <p class="px-4 text-base text-tertiary">Big City</p>
+            </div>
+          </div>
+          <div class="card">
+            <div
+              class="h-3/5 w-full rounded-t-lg bg-switzerland bg-cover"
+            ></div>
+            <div class="h-2/5 w-full rounded-b-lg bg-secondary">
+              <p class="px-4 py-2 text-xl font-bold text-white">Switzerland</p>
+              <p class="px-4 text-base text-white">Big City</p>
+            </div>
+          </div>
+          <div class="card">
+            <div class="h-3/5 w-full rounded-t-lg bg-sydney bg-cover"></div>
+            <div class="h-2/5 w-full rounded-b-lg bg-white">
+              <p class="px-4 py-2 text-xl font-bold text-tertiary">Sydney</p>
+              <p class="px-4 text-base text-tertiary">Big City</p>
+            </div>
+          </div>
+          <div class="card">
+            <div class="h-3/5 w-full rounded-t-lg bg-europe bg-cover"></div>
+            <div class="h-2/5 w-full rounded-b-lg bg-secondary">
+              <p class="px-4 py-2 text-xl font-bold text-white">Europa</p>
+              <p class="px-4 text-base text-white">Big City</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="h-auto w-full px-6" id="rentas_destacadas">
+        <p class="mt-6 pb-6 pt-2 text-2xl font-semibold text-primary">
+          Rentas Destacadas
+        </p>
+        <div
+          class="flex h-auto w-full flex-col items-center justify-center space-y-6"
+        >
+          <div class="h-96 w-full rounded-xl bg-chicago bg-cover">
+            <p class="cardTitle">Chicago</p>
+            <p class="mr-24 pl-8 text-sm text-black">
+              2 habitaciones, baño y cocina
+            </p>
+          </div>
+          <div class="h-96 w-full rounded-xl bg-miami bg-cover">
+            <p class="cardTitle">Miami</p>
+            <p class="mr-24 pl-8 text-sm text-black">
+              2 habitaciones, baño y cocina
+            </p>
+          </div>
+          <div class="h-96 w-full rounded-xl bg-LA bg-cover">
+            <p class="cardTitle">Los Angeles</p>
+            <p class="mr-24 pl-8 text-sm text-white">
+              2 habitaciones, baño y cocina
+            </p>
+          </div>
+          <div class="h-96 w-full rounded-xl bg-bali bg-cover">
+            <p class="cardTitle">Bali</p>
+            <p class="mr-24 pl-8 text-sm text-white">
+              2 habitaciones, baño y cocina
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="h-full w-full" id="faqs">
+        <div class="flex h-full w-full flex-col space-y-4 px-6">
+          <p class="mt-6 text-3xl font-semibold text-primary">FAQS</p>
+          <div>
+            <p class="text-xl font-medium text-primary">
+              Política de Cancelación
+            </p>
+            <p class="pt-2 text-base">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo
+              repudiandae minus, ut itaque provident!
+            </p>
+          </div>
+          <div>
+            <p class="text-xl font-medium text-primary">
+              Política de Cancelación
+            </p>
+            <p class="pt-2 text-base">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo
+              repudiandae minus, ut itaque provident!
+            </p>
+          </div>
+          <div>
+            <p class="text-xl font-medium text-primary">
+              Política de Cancelación
+            </p>
+            <p class="pt-2 text-base">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo
+              repudiandae minus, ut itaque provident!
+            </p>
+          </div>
+          <div>
+            <p class="text-xl font-medium text-primary">
+              Política de Cancelación
+            </p>
+            <p class="pt-2 text-base">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo
+              repudiandae minus, ut itaque provident!
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <footer
+      class="mb-16 h-auto w-full space-y-2 border-t border-gray-300 bg-gray-50 p-6"
+    >
+      <p class="text-lg">Acerca De</p>
+      <p class="text-sm text-gray-400">Acerca De</p>
+      <p class="text-sm text-gray-400">Inversionistas</p>
+      <p class="text-sm text-gray-400">Empleos</p>
+      <p class="text-sm text-gray-400">Términos y Condiciones</p>
+      <p class="text-sm text-gray-400">Trips, Inc.</p>
+    </footer>
+    <div
+      class="fixed bottom-0 left-0 flex h-16 w-full items-center justify-center space-x-8 bg-white shadow-md lg:hidden"
+      id="tab_bar"
+    >
+      <a href="#home">
+        <svg
+          width="30"
+          height="30"
+          viewBox="0 0 20 20"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            class="fill-current text-gray-400"
+            d="M10.707 2.29303C10.5195 2.10556 10.2652 2.00024 10 2.00024C9.73488 2.00024 9.48057 2.10556 9.29304 2.29303L2.29304 9.29303C2.11088 9.48163 2.01009 9.73423 2.01237 9.99643C2.01465 10.2586 2.11981 10.5094 2.30522 10.6948C2.49063 10.8803 2.74144 10.9854 3.00364 10.9877C3.26584 10.99 3.51844 10.8892 3.70704 10.707L4.00004 10.414V17C4.00004 17.2652 4.1054 17.5196 4.29293 17.7071C4.48047 17.8947 4.73482 18 5.00004 18H7.00004C7.26526 18 7.51961 17.8947 7.70715 17.7071C7.89468 17.5196 8.00004 17.2652 8.00004 17V15C8.00004 14.7348 8.1054 14.4805 8.29293 14.2929C8.48047 14.1054 8.73482 14 9.00004 14H11C11.2653 14 11.5196 14.1054 11.7071 14.2929C11.8947 14.4805 12 14.7348 12 15V17C12 17.2652 12.1054 17.5196 12.2929 17.7071C12.4805 17.8947 12.7348 18 13 18H15C15.2653 18 15.5196 17.8947 15.7071 17.7071C15.8947 17.5196 16 17.2652 16 17V10.414L16.293 10.707C16.4816 10.8892 16.7342 10.99 16.9964 10.9877C17.2586 10.9854 17.5095 10.8803 17.6949 10.6948C17.8803 10.5094 17.9854 10.2586 17.9877 9.99643C17.99 9.73423 17.8892 9.48163 17.707 9.29303L10.707 2.29303Z"
+            fill="#3F3F46"
+          />
+        </svg>
+      </a>
+      <a href="#rentas_destacadas">
+        <svg
+          width="30"
+          height="30"
+          viewBox="0 0 20 20"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            class="fill-current text-primary"
+            fill-rule="evenodd"
+            clip-rule="evenodd"
+            d="M8 3.99997C6.93913 3.99997 5.92172 4.4214 5.17157 5.17155C4.42143 5.92169 4 6.93911 4 7.99997C4 9.06084 4.42143 10.0783 5.17157 10.8284C5.92172 11.5785 6.93913 12 8 12C9.06087 12 10.0783 11.5785 10.8284 10.8284C11.5786 10.0783 12 9.06084 12 7.99997C12 6.93911 11.5786 5.92169 10.8284 5.17155C10.0783 4.4214 9.06087 3.99997 8 3.99997ZM2 7.99997C1.99988 7.05568 2.22264 6.12468 2.65017 5.28271C3.0777 4.44074 3.69792 3.71157 4.4604 3.1545C5.22287 2.59743 6.10606 2.22819 7.03815 2.07681C7.97023 1.92543 8.92488 1.99618 9.82446 2.28332C10.724 2.57046 11.5432 3.06587 12.2152 3.72927C12.8872 4.39266 13.3931 5.20531 13.6919 6.10111C13.9906 6.9969 14.0737 7.95056 13.9343 8.88452C13.795 9.81848 13.4372 10.7064 12.89 11.476L17.707 16.293C17.8892 16.4816 17.99 16.7342 17.9877 16.9964C17.9854 17.2586 17.8802 17.5094 17.6948 17.6948C17.5094 17.8802 17.2586 17.9854 16.9964 17.9876C16.7342 17.9899 16.4816 17.8891 16.293 17.707L11.477 12.891C10.5794 13.5293 9.52335 13.9081 8.42468 13.9861C7.326 14.0641 6.22707 13.8381 5.2483 13.3329C4.26953 12.8278 3.44869 12.063 2.87572 11.1223C2.30276 10.1816 1.99979 9.10141 2 7.99997Z"
+            fill="#3F3F46"
+          />
+        </svg>
+      </a>
+      <a href="#recomendados">
+        <svg
+          width="30"
+          height="30"
+          viewBox="0 0 20 20"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            class="fill-current text-gray-400"
+            fill-rule="evenodd"
+            clip-rule="evenodd"
+            d="M3.172 5.17202C3.92211 4.42214 4.93934 4.00087 6 4.00087C7.06066 4.00087 8.07789 4.42214 8.828 5.17202L10 6.34302L11.172 5.17202C11.541 4.78998 11.9824 4.48525 12.4704 4.27561C12.9584 4.06598 13.4833 3.95563 14.0144 3.95102C14.5455 3.9464 15.0722 4.04761 15.5638 4.24873C16.0554 4.44986 16.502 4.74687 16.8776 5.12244C17.2532 5.49801 17.5502 5.94462 17.7513 6.4362C17.9524 6.92779 18.0536 7.45451 18.049 7.98562C18.0444 8.51674 17.934 9.04162 17.7244 9.52964C17.5148 10.0177 17.21 10.459 16.828 10.828L10 17.657L3.172 10.828C2.42212 10.0779 2.00085 9.06068 2.00085 8.00002C2.00085 6.93936 2.42212 5.92213 3.172 5.17202Z"
+            fill="#3F3F46"
+          />
+        </svg>
+      </a>
+      <button>
+        <svg
+          width="30"
+          height="30"
+          viewBox="0 0 29 29"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            class="fill-current text-gray-400"
+            d="M25.0748 19.2748C22.9267 20.2465 20.5334 20.5405 18.214 20.1177C15.8945 19.6949 13.7589 18.5753 12.0918 16.9082C10.4246 15.241 9.30509 13.1055 8.88228 10.786C8.45946 8.46654 8.75347 6.0733 9.72512 3.92514C8.01494 4.69801 6.51777 5.87422 5.36208 7.35288C4.20638 8.83154 3.42666 10.5685 3.08979 12.4147C2.75293 14.261 2.86898 16.1614 3.428 17.9529C3.98702 19.7444 4.97232 21.3736 6.29935 22.7006C7.62639 24.0276 9.25556 25.0129 11.0471 25.572C12.8386 26.131 14.739 26.247 16.5852 25.9102C18.4315 25.5733 20.1684 24.7936 21.6471 23.6379C23.1257 22.4822 24.302 20.985 25.0748 19.2748V19.2748Z"
+            fill="#CC2D4A"
+          />
+        </svg>
+      </button>
+      <a href="">
+        <svg
+          width="30"
+          height="30"
+          viewBox="0 0 20 20"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            class="fill-current text-gray-400"
+            fill-rule="evenodd"
+            clip-rule="evenodd"
+            d="M10 9C10.7956 9 11.5587 8.68393 12.1213 8.12132C12.6839 7.55871 13 6.79565 13 6C13 5.20435 12.6839 4.44129 12.1213 3.87868C11.5587 3.31607 10.7956 3 10 3C9.20435 3 8.44129 3.31607 7.87868 3.87868C7.31607 4.44129 7 5.20435 7 6C7 6.79565 7.31607 7.55871 7.87868 8.12132C8.44129 8.68393 9.20435 9 10 9ZM3 18C3 17.0807 3.18106 16.1705 3.53284 15.3212C3.88463 14.4719 4.40024 13.7003 5.05025 13.0503C5.70026 12.4002 6.47194 11.8846 7.32122 11.5328C8.1705 11.1811 9.08075 11 10 11C10.9193 11 11.8295 11.1811 12.6788 11.5328C13.5281 11.8846 14.2997 12.4002 14.9497 13.0503C15.5998 13.7003 16.1154 14.4719 16.4672 15.3212C16.8189 16.1705 17 17.0807 17 18H3Z"
+            fill="#3F3F46"
+          />
+        </svg>
+      </a>
+    </div>
+</body>
 ```
-```
 
 
-```
+## 24. Haciendo responsivo nuestro proyecto: rentas destacadas
+
+```html
+<body class="font-Montserrat">
+    <nav></nav>
+    <section class="h-auto w-full">
+      <div id="home">
+        <div class="h-3/4 w-full">
+          <div
+            class="absolute flex h-full w-full flex-col items-center space-y-96 py-4 lg:items-start lg:justify-start lg:space-y-0 lg:pt-20"
+          >
+            <input
+              class="rounded-full p-3 shadow-sm outline-none transition duration-300 focus-within:shadow-sm focus:w-11/12 focus:ring-2 lg:hidden"
+              placeholder="San Francisco"
+              type="search"
+            />
+            <div class="hidden h-auto pb-6 lg:flex lg:w-2/5">
+              <p class="ml-16 text-4xl font-bold">
+                Encuentra más ubicaciones como esta
+              </p>
+            </div>
+            <button
+              class="w-36 transform rounded-full bg-white p-4 text-lg font-semibold text-primary shadow-sm transition duration-500 ease-in-out hover:-translate-y-1 hover:scale-110 hover:bg-primary hover:text-white lg:ml-16"
+            >
+              Explorar
+            </button>
+          </div>
+          <div
+            class="h-full w-full lg:h-96 lg:bg-sanFranciscoDesktop lg:bg-cover lg:bg-center"
+          >
+            <img class="lg:hidden" src="./img/sanFrancisco.jpg" alt="" />
+          </div>
+        </div>
+      </div>
+      <div class="p-6" id="recomendados">
+        <p class="text-3xl font-semibold text-primary">Recomendados</p>
+        <div
+          class="mt-6 flex h-72 w-auto items-center space-x-6 overflow-x-auto overflow-y-hidden overscroll-x-contain"
+        >
+          <div class="card">
+            <div class="h-3/5 w-full rounded-t-lg bg-norway bg-cover"></div>
+            <div class="h-2/5 w-full rounded-b-lg bg-secondary">
+              <p class="px-4 py-2 text-xl font-bold text-white">Norway</p>
+              <p class="px-4 text-base text-white">Paisajes Increíbles</p>
+            </div>
+          </div>
+          <div class="card">
+            <div class="h-3/5 w-full rounded-t-lg bg-new_york bg-cover"></div>
+            <div class="h-2/5 w-full rounded-b-lg bg-white">
+              <p class="px-4 py-2 text-xl font-bold text-tertiary">New York</p>
+              <p class="px-4 text-base text-tertiary">La gran manzana</p>
+            </div>
+          </div>
+          <div class="card">
+            <div class="h-3/5 w-full rounded-t-lg bg-yosemite bg-cover"></div>
+            <div class="h-2/5 w-full rounded-b-lg bg-secondary">
+              <p class="px-4 py-2 text-xl font-bold text-white">Yosemite</p>
+              <p class="px-4 text-base text-white">A break from the world</p>
+            </div>
+          </div>
+          <div class="card">
+            <div class="h-3/5 w-full rounded-t-lg bg-seattle bg-cover"></div>
+            <div class="h-2/5 w-full rounded-b-lg bg-white">
+              <p class="px-4 py-2 text-xl font-bold text-tertiary">Norway</p>
+              <p class="px-4 text-base text-tertiary">Big City</p>
+            </div>
+          </div>
+          <div class="card">
+            <div
+              class="h-3/5 w-full rounded-t-lg bg-switzerland bg-cover"
+            ></div>
+            <div class="h-2/5 w-full rounded-b-lg bg-secondary">
+              <p class="px-4 py-2 text-xl font-bold text-white">Switzerland</p>
+              <p class="px-4 text-base text-white">Big City</p>
+            </div>
+          </div>
+          <div class="card">
+            <div class="h-3/5 w-full rounded-t-lg bg-sydney bg-cover"></div>
+            <div class="h-2/5 w-full rounded-b-lg bg-white">
+              <p class="px-4 py-2 text-xl font-bold text-tertiary">Sydney</p>
+              <p class="px-4 text-base text-tertiary">Big City</p>
+            </div>
+          </div>
+          <div class="card">
+            <div class="h-3/5 w-full rounded-t-lg bg-europe bg-cover"></div>
+            <div class="h-2/5 w-full rounded-b-lg bg-secondary">
+              <p class="px-4 py-2 text-xl font-bold text-white">Europa</p>
+              <p class="px-4 text-base text-white">Big City</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="h-auto w-full px-6 lg:px-6" id="rentas_destacadas">
+        <p class="mt-6 pb-6 pt-2 text-2xl font-semibold text-primary">
+          Rentas Destacadas
+        </p>
+        <div class="flex h-auto w-full flex-col items-center justify-center">
+          <div
+            class="mb-8 h-96 w-full rounded-xl bg-chicago bg-cover lg:bg-center"
+          >
+            <p class="cardTitle lg:text-black">Chicago</p>
+            <p class="mr-24 pl-8 text-sm text-black">
+              2 habitaciones, baño y cocina
+            </p>
+          </div>
+          <div class="lg:flex lg:h-full lg:w-full lg:space-x-4">
+            <div
+              class="mb-8 h-96 w-full rounded-xl bg-miami bg-cover lg:h-auto"
+            >
+              <p class="cardTitle">Miami</p>
+              <p class="mr-24 pl-8 text-sm text-black lg:text-lg">
+                2 habitaciones, baño y cocina
+              </p>
+            </div>
+            <div class="h-full w-full">
+              <div class="mb-8 h-96 w-full rounded-xl bg-LA bg-cover">
+                <p class="cardTitle">Los Angeles</p>
+                <p class="mr-24 pl-8 text-sm text-white lg:text-lg">
+                  2 habitaciones, baño y cocina
+                </p>
+              </div>
+              <div class="mb-8 h-96 w-full rounded-xl bg-bali bg-cover">
+                <p class="cardTitle">Bali</p>
+                <p class="mr-24 pl-8 text-sm text-white lg:text-lg">
+                  2 habitaciones, baño y cocina
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="h-full w-full" id="faqs">
+        <div class="flex h-full w-full flex-col space-y-4 px-6">
+          <p class="mt-6 text-3xl font-semibold text-primary">FAQS</p>
+          <div>
+            <p class="text-xl font-medium text-primary">
+              Política de Cancelación
+            </p>
+            <p class="pt-2 text-base">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo
+              repudiandae minus, ut itaque provident!
+            </p>
+          </div>
+          <div>
+            <p class="text-xl font-medium text-primary">
+              Política de Cancelación
+            </p>
+            <p class="pt-2 text-base">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo
+              repudiandae minus, ut itaque provident!
+            </p>
+          </div>
+          <div>
+            <p class="text-xl font-medium text-primary">
+              Política de Cancelación
+            </p>
+            <p class="pt-2 text-base">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo
+              repudiandae minus, ut itaque provident!
+            </p>
+          </div>
+          <div>
+            <p class="text-xl font-medium text-primary">
+              Política de Cancelación
+            </p>
+            <p class="pt-2 text-base">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo
+              repudiandae minus, ut itaque provident!
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <footer
+      class="mb-16 h-auto w-full space-y-2 border-t border-gray-300 bg-gray-50 p-6"
+    >
+      <p class="text-lg">Acerca De</p>
+      <p class="text-sm text-gray-400">Acerca De</p>
+      <p class="text-sm text-gray-400">Inversionistas</p>
+      <p class="text-sm text-gray-400">Empleos</p>
+      <p class="text-sm text-gray-400">Términos y Condiciones</p>
+      <p class="text-sm text-gray-400">Trips, Inc.</p>
+    </footer>
+    <div
+      class="fixed bottom-0 left-0 flex h-16 w-full items-center justify-center space-x-8 bg-white shadow-md lg:hidden"
+      id="tab_bar"
+    >
+      <a href="#home">
+        <svg
+          width="30"
+          height="30"
+          viewBox="0 0 20 20"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            class="fill-current text-gray-400"
+            d="M10.707 2.29303C10.5195 2.10556 10.2652 2.00024 10 2.00024C9.73488 2.00024 9.48057 2.10556 9.29304 2.29303L2.29304 9.29303C2.11088 9.48163 2.01009 9.73423 2.01237 9.99643C2.01465 10.2586 2.11981 10.5094 2.30522 10.6948C2.49063 10.8803 2.74144 10.9854 3.00364 10.9877C3.26584 10.99 3.51844 10.8892 3.70704 10.707L4.00004 10.414V17C4.00004 17.2652 4.1054 17.5196 4.29293 17.7071C4.48047 17.8947 4.73482 18 5.00004 18H7.00004C7.26526 18 7.51961 17.8947 7.70715 17.7071C7.89468 17.5196 8.00004 17.2652 8.00004 17V15C8.00004 14.7348 8.1054 14.4805 8.29293 14.2929C8.48047 14.1054 8.73482 14 9.00004 14H11C11.2653 14 11.5196 14.1054 11.7071 14.2929C11.8947 14.4805 12 14.7348 12 15V17C12 17.2652 12.1054 17.5196 12.2929 17.7071C12.4805 17.8947 12.7348 18 13 18H15C15.2653 18 15.5196 17.8947 15.7071 17.7071C15.8947 17.5196 16 17.2652 16 17V10.414L16.293 10.707C16.4816 10.8892 16.7342 10.99 16.9964 10.9877C17.2586 10.9854 17.5095 10.8803 17.6949 10.6948C17.8803 10.5094 17.9854 10.2586 17.9877 9.99643C17.99 9.73423 17.8892 9.48163 17.707 9.29303L10.707 2.29303Z"
+            fill="#3F3F46"
+          />
+        </svg>
+      </a>
+      <a href="#rentas_destacadas">
+        <svg
+          width="30"
+          height="30"
+          viewBox="0 0 20 20"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            class="fill-current text-primary"
+            fill-rule="evenodd"
+            clip-rule="evenodd"
+            d="M8 3.99997C6.93913 3.99997 5.92172 4.4214 5.17157 5.17155C4.42143 5.92169 4 6.93911 4 7.99997C4 9.06084 4.42143 10.0783 5.17157 10.8284C5.92172 11.5785 6.93913 12 8 12C9.06087 12 10.0783 11.5785 10.8284 10.8284C11.5786 10.0783 12 9.06084 12 7.99997C12 6.93911 11.5786 5.92169 10.8284 5.17155C10.0783 4.4214 9.06087 3.99997 8 3.99997ZM2 7.99997C1.99988 7.05568 2.22264 6.12468 2.65017 5.28271C3.0777 4.44074 3.69792 3.71157 4.4604 3.1545C5.22287 2.59743 6.10606 2.22819 7.03815 2.07681C7.97023 1.92543 8.92488 1.99618 9.82446 2.28332C10.724 2.57046 11.5432 3.06587 12.2152 3.72927C12.8872 4.39266 13.3931 5.20531 13.6919 6.10111C13.9906 6.9969 14.0737 7.95056 13.9343 8.88452C13.795 9.81848 13.4372 10.7064 12.89 11.476L17.707 16.293C17.8892 16.4816 17.99 16.7342 17.9877 16.9964C17.9854 17.2586 17.8802 17.5094 17.6948 17.6948C17.5094 17.8802 17.2586 17.9854 16.9964 17.9876C16.7342 17.9899 16.4816 17.8891 16.293 17.707L11.477 12.891C10.5794 13.5293 9.52335 13.9081 8.42468 13.9861C7.326 14.0641 6.22707 13.8381 5.2483 13.3329C4.26953 12.8278 3.44869 12.063 2.87572 11.1223C2.30276 10.1816 1.99979 9.10141 2 7.99997Z"
+            fill="#3F3F46"
+          />
+        </svg>
+      </a>
+      <a href="#recomendados">
+        <svg
+          width="30"
+          height="30"
+          viewBox="0 0 20 20"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            class="fill-current text-gray-400"
+            fill-rule="evenodd"
+            clip-rule="evenodd"
+            d="M3.172 5.17202C3.92211 4.42214 4.93934 4.00087 6 4.00087C7.06066 4.00087 8.07789 4.42214 8.828 5.17202L10 6.34302L11.172 5.17202C11.541 4.78998 11.9824 4.48525 12.4704 4.27561C12.9584 4.06598 13.4833 3.95563 14.0144 3.95102C14.5455 3.9464 15.0722 4.04761 15.5638 4.24873C16.0554 4.44986 16.502 4.74687 16.8776 5.12244C17.2532 5.49801 17.5502 5.94462 17.7513 6.4362C17.9524 6.92779 18.0536 7.45451 18.049 7.98562C18.0444 8.51674 17.934 9.04162 17.7244 9.52964C17.5148 10.0177 17.21 10.459 16.828 10.828L10 17.657L3.172 10.828C2.42212 10.0779 2.00085 9.06068 2.00085 8.00002C2.00085 6.93936 2.42212 5.92213 3.172 5.17202Z"
+            fill="#3F3F46"
+          />
+        </svg>
+      </a>
+      <button>
+        <svg
+          width="30"
+          height="30"
+          viewBox="0 0 29 29"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            class="fill-current text-gray-400"
+            d="M25.0748 19.2748C22.9267 20.2465 20.5334 20.5405 18.214 20.1177C15.8945 19.6949 13.7589 18.5753 12.0918 16.9082C10.4246 15.241 9.30509 13.1055 8.88228 10.786C8.45946 8.46654 8.75347 6.0733 9.72512 3.92514C8.01494 4.69801 6.51777 5.87422 5.36208 7.35288C4.20638 8.83154 3.42666 10.5685 3.08979 12.4147C2.75293 14.261 2.86898 16.1614 3.428 17.9529C3.98702 19.7444 4.97232 21.3736 6.29935 22.7006C7.62639 24.0276 9.25556 25.0129 11.0471 25.572C12.8386 26.131 14.739 26.247 16.5852 25.9102C18.4315 25.5733 20.1684 24.7936 21.6471 23.6379C23.1257 22.4822 24.302 20.985 25.0748 19.2748V19.2748Z"
+            fill="#CC2D4A"
+          />
+        </svg>
+      </button>
+      <a href="">
+        <svg
+          width="30"
+          height="30"
+          viewBox="0 0 20 20"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            class="fill-current text-gray-400"
+            fill-rule="evenodd"
+            clip-rule="evenodd"
+            d="M10 9C10.7956 9 11.5587 8.68393 12.1213 8.12132C12.6839 7.55871 13 6.79565 13 6C13 5.20435 12.6839 4.44129 12.1213 3.87868C11.5587 3.31607 10.7956 3 10 3C9.20435 3 8.44129 3.31607 7.87868 3.87868C7.31607 4.44129 7 5.20435 7 6C7 6.79565 7.31607 7.55871 7.87868 8.12132C8.44129 8.68393 9.20435 9 10 9ZM3 18C3 17.0807 3.18106 16.1705 3.53284 15.3212C3.88463 14.4719 4.40024 13.7003 5.05025 13.0503C5.70026 12.4002 6.47194 11.8846 7.32122 11.5328C8.1705 11.1811 9.08075 11 10 11C10.9193 11 11.8295 11.1811 12.6788 11.5328C13.5281 11.8846 14.2997 12.4002 14.9497 13.0503C15.5998 13.7003 16.1154 14.4719 16.4672 15.3212C16.8189 16.1705 17 17.0807 17 18H3Z"
+            fill="#3F3F46"
+          />
+        </svg>
+      </a>
+    </div>
+</body>
 ```
 
 
