@@ -2852,7 +2852,6 @@ Obtén mas iconos desde la página [Heroicons](https://heroicons.com/)
 ## 26. Agregando el Dark Mode
 
 Para agregar el dark mode se debe configurar el archivo `tailwind.config.js` agregando la propiedad **`darkMode`** seguido de la palabra `‘class’`.
-tailwind.config.js
 
 ```js
 /** @type {import('tailwindcss').Config} */
@@ -3310,10 +3309,103 @@ index.html
 </body>
 ```
 
+## 27. Content CSS antes Purge CSS
 
-```
+Tailwind es un framework pesado para producción y para ello ofrece la opción de hacer purge CSS, esto no es otra cosa más que eliminar estilos, clases, breakpoints y cosas adicionales que no se utilizan en el proyecto.
+
+Para realizar esto, en el archivo `tailwind.config.js` se agrega la propiedad `content` _(antes llamada purge)_, donde se incluirán los paths de los archivos.
+
+```js
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: ['./public/index.html', './src/**/*.{html,js}'],👈👀
+  darkMode: 'class', //or 'media' or 'class'
+  theme: {
+    fontFamily: {
+      'Montserrat': ["Montserrat", "sans-serif"]
+    },
+    backgroundColor: theme => ({
+      ...theme('colors'),
+      'primary': '#CC2D4A',
+      'secondary': '#8FA206',
+      'tertiary': '#61AEC9',
+    }),
+    textColor: theme => ({
+      ...theme('colors'),
+      'primary': '#CC2D4A',
+      'secondary': '#8FA206',
+      'tertiary': '#61AEC9',
+    }),
+    extend: {
+      backgroundImage: {
+        'sanFrancisco': "url('../img/sanFrancisco.jpg')",
+        'sanFranciscoDesktop': "url('../img/sanFranciscoDesktop.jpg')",
+        'yosemite': "url('../img/yosemite.jpg')",
+        'LA': "url('../img/LA.jpg')",
+        'seattle': "url('../img/seattle.jpg')",
+        'new_york': "url('../img/new_york.jpg')",
+        norway: "url('../img/norway.jpg')",
+        'sydney': "url('../img/sydney.jpg')",
+        'miami': "url('../img/miami.jpg')",
+        'switzerland': "url('../img/switzerland.jpg')",
+        'bali': "url('../img/bali.jpg')",
+        'chicago': "url('../img/chicago.jpg')",
+        'europe': "url('../img/europe.jpg')",
+        'iceland': "url('../img/iceland.jpg')",
+      },
+    }
+  },
+  variants: {
+    /* width: ["responsive", "hover", "focus"], */
+    extend: {},
+  },
+  plugins: [],
+}
 ```
 
+Posteriormente, para hacer el build se ejecuta el siguiente comando en terminal:
 
+Según la documentación:  
+- `npx tailwindcss -o ./public/css/tailwind.css --minify`  
+
+Según el curso, aun que yo no noté ningún cambio con este comando...
+- `npx tailwindcss -i ./src/css/tailwind.css -o ./public/css/tailwind.css --minify`
+
+También podemos agregarlo como un script dentro del `package.json` para ejecutar el comando de manera mas corta. 
+
+```js
+{
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "",
+    "tw:build": "tailwindcss -i ./src/css/tailwind.css -o ./public/css/tailwind.css --watch",
+    "tw:minify": "npx tailwindcss -i ./src/css/tailwind.css -o ./public/css/tailwind.css --minify"👈👀
+  },
+  "autor": "",
+  "license": "ISC",
+  "devDependencies": {
+    "prettier": "^2.8.8",
+    "prettier-plugin-tailwindcss": "^0.3.0",
+    "tailwindcss": "^3.3.2"
+  }
+}
 ```
-```
+
+En la terminal: `npm run tw:minify`  
+
+Con esto se puede hacer un despliegue del proyecto _(carpeta public)_. 
+
+Para hacer deploy:    
+1. Hacer el build minificado
+2. Verificar la ruta de la hoja de estilo del archivo `index.html`:
+	- `<link rel="stylesheet" href="../public/css/tailwind.css" />`
+
+> _(debe ser el archivo css que se encuentra en la carpeta `public`)_.
+
+Con esto hecho se puede subir la carpeta `public` a algún servidor con alojamiento gratuito _(ej. netlify, github pages, etc)_.
+
+
+
+
+[Documentación](https://tailwindcss.com/docs/optimizing-for-production)
