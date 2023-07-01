@@ -3499,89 +3499,64 @@ Nos vamos a la carpeta de nuestro proyecto a través de la terminal y lo pegamos
 	
 	> Vídeo: [Creación del proyecto e instalación de Tailwind](https://platzi.com/clases/2702-tailwind/45492-creacion-del-proyecto-e-instalacion-de-tailwind/)
 
----
+9. ¿Con qué directiva es posible agrupar clases para extraerlas a un componente?
 
-#### ¿Con qué directiva es posible agrupar clases para extraerlas a un componente?
+	- @apply
 
-```
-	 @apply
-```
+	> Razón: La directiva @apply permite escribir CSS personalizado, agrupandolo para usarlo como clases en distintos componentes.
+	
+	> Vídeo: [Extracción de componentes a clases para nuestra card](https://platzi.com/clases/2702-tailwind/45503-extraccion-de-componentes-a-clases-para-nuestra-ca/)
 
-Razón: La directiva @apply permite escribir CSS personalizado, agrupandolo para usarlo como clases en distintos componentes.
+10. ¿Cómo funciona flexbox?
 
-Vídeo: [Extracción de componentes a clases para nuestra card](https://platzi.com/clases/2702-tailwind/45503-extraccion-de-componentes-a-clases-para-nuestra-ca/)
+	- Funciona principalmente con filas y columnas
 
----
 
-#### ¿Cómo funciona flexbox?
+	> Razón: Flexbox esta diseñado como un modelo unidimensional de layout, y como un método que pueda ayudar a distribuir el espacio entre los ítems de una interfaz y mejorar las capacidades de alineación.
+	
+	> Vídeo: [Flexbox](https://platzi.com/clases/2702-tailwind/45496-flexbox-y-grid/)
 
-```
-	 Funciona principalmente con filas y columnas
-```
+11. ¿Cuál es el nombre del archivo de configuración?
 
-Razón: Flexbox esta diseñado como un modelo unidimensional de layout, y como un método que pueda ayudar a distribuir el espacio entre los ítems de una interfaz y mejorar las capacidades de alineación.
+	- tailwind.config.js
 
-Vídeo: [Flexbox](https://platzi.com/clases/2702-tailwind/45496-flexbox-y-grid/)
+	> Razón: El archivo de configuración se llama tailwind.config.js, este es diseñado para añadir una propia paleta de colores, configurar el modo oscuro, agregar las rutas de las plantillas. [Presets](https://tailwindcss.com/docs/presets#merging-logic-in-depth)
+	
+	> Vídeo: [Creación del proyecto e instalación de Tailwind](https://platzi.com/clases/2702-tailwind/45492-creacion-del-proyecto-e-instalacion-de-tailwind/)
 
----
+12. ¿Con cuál clase se inicializan las transiciones dentro de tailwind?
 
-#### ¿Cuál es el nombre del archivo de configuración?
+	- transition
 
-```
-	 tailwind.config.js
-```
+	> Razón: Para agregar una transición al componente, se usa la clase transition [Transition Property](https://tailwindcss.com/docs/transition-property)
+	
+	> Vídeo: [Agregando animaciones al proyecto](https://platzi.com/clases/2702-tailwind/45505-agregando-animaciones-al-proyecto/)
 
-Razón: El archivo de configuración se llama tailwind.config.js, este es diseñado para añadir una propia paleta de colores, configurar el modo oscuro, agregar las rutas de las plantillas. [Presets](https://tailwindcss.com/docs/presets#merging-logic-in-depth)
+13. ¿Cuál de las siguientes clases nos permite que nuestros elementos se comporten en fila con un espaciado horizontal entre los elementos?
 
-Vídeo: [Creación del proyecto e instalación de Tailwind](https://platzi.com/clases/2702-tailwind/45492-creacion-del-proyecto-e-instalacion-de-tailwind/)
+	- flex space-x-4
 
----
 
-#### ¿Con cuál clase se inicializan las transiciones dentro de tailwind?
+	> Razón: Para agregar espaciado horizontal entre los elementos se usa la clase space-x-valor[Space Between](https://tailwindcss.com/docs/space)
+	
+	> Vídeo: [Creando la sección de Recomendados](https://platzi.com/clases/2702-tailwind/45504-creando-la-seccion-de-recomendados/)
 
-```
-	 transition
-```
+14. Dentro del proyecto se utiliza el dark mode configurado mediante la clase dark
 
-Razón: Para agregar una transición al componente, se usa la clase transition [Transition Property](https://tailwindcss.com/docs/transition-property)
+	- verdadero
 
-Vídeo: [Agregando animaciones al proyecto](https://platzi.com/clases/2702-tailwind/45505-agregando-animaciones-al-proyecto/)
 
----
+	> Razón: Para configurar el mode oscuro, se hace a través del archivo tailwind.config.js. [Dark Mode](https://tailwindcss.com/docs/dark-mode)
+	
+	> Vídeo: [Agregando el Dark Mode](https://platzi.com/clases/2702-tailwind/45513-agregando-el-dark-mode/)
 
-#### ¿Cuál de las siguientes clases nos permite que nuestros elementos se comporten en fila con un espaciado horizontal entre los elementos?
+15. ¿Cómo especificamos los estilos para versión web del proyecto?
 
-```
-	flex space-x-4
-```
+	- Especificando el breakpoint antes de agregar las clases ej. lg:w-full lg:h-full
 
-Razón: Para agregar espaciado horizontal entre los elementos se usa la clase space-x-valor[Space Between](https://tailwindcss.com/docs/space)
+	> Razón: Para especificar como se comportará en una pantalla especificar se usa el nombre de la clase del breakpoint, luego el comportamiento. [Customizing Screens](https://tailwindcss.com/docs/screens)
 
-Vídeo: [Creando la sección de Recomendados](https://platzi.com/clases/2702-tailwind/45504-creando-la-seccion-de-recomendados/)
-
----
-
-#### Dentro del proyecto se utiliza el dark mode configurado mediante la clase dark
-
-```
-	 verdadero
-```
-
-Razón: Para configurar el mode oscuro, se hace a través del archivo tailwind.config.js. [Dark Mode](https://tailwindcss.com/docs/dark-mode)
-
-Vídeo: [Agregando el Dark Mode](https://platzi.com/clases/2702-tailwind/45513-agregando-el-dark-mode/)
-
----
-
-#### ¿Cómo especificamos los estilos para versión web del proyecto?
-
-```
-	 Especificando el breakpoint antes de agregar las clases ej. lg:w-full lg:h-full
-```
-
-Razón: Para especificar como se comportará en una pantalla especificar se usa el nombre de la clase del breakpoint, luego el comportamiento. [Customizing Screens](https://tailwindcss.com/docs/screens)
-
-Vídeo: [Haciendo responsivo nuestro proyecto: rentas destacadas](https://platzi.com/clases/2702-tailwind/45511-haciendo-responsivo-nuestro-proyecto-rentas-destac/)
+	> Vídeo: [Haciendo responsivo nuestro proyecto: rentas destacadas](https://platzi.com/clases/2702-tailwind/45511-haciendo-responsivo-nuestro-proyecto-rentas-destac/)
 
 
 
