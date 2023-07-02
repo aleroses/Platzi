@@ -675,7 +675,7 @@ const parrafito = document.querySelector('.parrafito');
 const pid = document.querySelector('#pid');
 ```
 
-🔥 **Emmet para HTML:** Ver nota: [[emmet]]    
+🔥 **Emmet para HTML:** Ver nota: [[4.emmet]]    
 Si escribes una etiqueta y pegado un `.` (punto) das enter o tab; se vuelve clase.     
 Ejemplo:     
 ```html

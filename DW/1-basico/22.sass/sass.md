@@ -1,15 +1,21 @@
 # SASS
 
-Sass (Syntactically Awesome Style Sheets) es un preprocesador de CSS (Cascading Style Sheets), es decir, un lenguaje de programación que se utiliza para generar hojas de estilo en cascada (CSS) de manera más eficiente y sencilla. 
+Sass (Syntactically Awesome Style Sheets / Hojas de estilo sintácticamente impresionantes) es un preprocesador de CSS (Cascading Style Sheets), que permite escribir código CSS de manera más eficiente y rápida. 
 
-En resumen, Sass no es un lenguaje de programación en sí mismo, pero se utiliza en el desarrollo web para generar código CSS.
+Sass ofrece características avanzadas como: 
+- Variables
+- Anidamiento
+- Mixins
+- Herencia
+- Entre otras
 
-- [Descargar Node Lts](https://nodejs.org/es)
+Esto para mejorar la legibilidad y **modularidad** del código CSS. 
 
-Verifica si tienes instalado node
-- node -v
+Sass se compila a CSS, lo que significa que los navegadores web pueden interpretar el código resultante de manera similar a como lo hacen con el CSS tradicional.
 
 ## 1. Creamos estructura del proyecto
+
+Crea una carpeta que contenga un `index.html` y agrega la siguiente estructura:  
 
 ```html
 <!DOCTYPE html>
@@ -52,6 +58,12 @@ Verifica si tienes instalado node
 </html>
 ```
 
+Para empezar a trabajar con Sass necesitamos descargar Node:  
+- [Descargar Node Lts](https://nodejs.org/es)
+
+Verifica en la terminal si tienes instalado node:  
+- node -v
+
 ## 2. Instalamos SASS
 
 Dentro de nuestro proyecto abrimos una terminal para inicializar el instalador de paquetes NPM (Node Package Manager) en nuestro proyecto: 
@@ -78,9 +90,9 @@ Creamos una carpeta llamada `sass` con un archivo `style.scss`:
     └── style.scss👈👀
 ```
 
-## 3. Referencias archivo CSS
+## 3. Referenciar archivo CSS
 
-No podemos referenciar al archivo .scss en el HTML , si no, debemos referenciar a un archivo CSS para lo cual:
+Como no podemos referenciar al archivo .scss en el HTML , debemos referenciar a un archivo CSS para lo cual:
 
 1. Observamos los cambios: 
 - sass --watch sass:css
@@ -120,6 +132,7 @@ h2 {
 
 ## 4. Variables 
 
+`style.scss`  
 ```scss
 $color-one: steelblue;
 
@@ -132,7 +145,7 @@ h2 {
 
 ## 5. Modularizar 
 
-Crear archivos sass sin que sean compilados para esto, creamos un archivo llamado `navbar.scss` dentro de la carpeta sass, esto genera un archivo dentro de la carpeta css:  
+También podemos crear archivos sass sin que sean compilados para esto, creamos un archivo llamado `navbar.scss` dentro de la carpeta sass, esto genera un archivo dentro de la carpeta css:  
 
 ```bash
 ╰─ tree -L 3                                                    
@@ -151,14 +164,14 @@ Crear archivos sass sin que sean compilados para esto, creamos un archivo llamad
     └── style.scss
 ```
 
-navbar.scss  
+`navbar.scss`  
 ```scss
 .nav {
     background-color: steelblue;
 }
 ```
 
-Para ocultar/eliminar este archivo de la carpeta css solo debemos cambiarle el nombre  `_navbar.scss` agregando un guion bajo, luego debemos eliminar el archivo `navbar.css.map`. 
+Para ocultar/eliminar este archivo de la carpeta css y empezar a hacer uso de la modularización solo debemos cambiarle el nombre  `_navbar.scss` agregando un guion bajo, luego debemos eliminar el archivo `navbar.css.map`. 
 
 ```bash
 ╰─ tree -L 3                                                    
@@ -189,7 +202,7 @@ Lo llamamos dentro del archivo `style.scss`:
 ```scss
 $color-one: steelblue;
 
-@use 'navbar';
+@use 'navbar'; 👈👀
 
 h2 {
     color: $color-one;
@@ -642,4 +655,76 @@ Esta función convierte unidades de medida px a rem.
 }
 ```
 
-![Tutorial: SASS en 40 MINUTOS](https://www.youtube.com/watch?v=kaSVabk-jbA)
+
+## 11. Resultado en `style.css`
+
+Después de haber escrito todo en sintaxis Sass este es el resultado transformado a CSS.
+
+```css
+.root {
+  --primary: crimson;
+}
+
+.nav {
+  background-color: slateblue;
+}
+.nav__container {
+  width: 90%;
+  margin: 0 auto;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  gap: 1em;
+}
+.nav__item {
+  color: #fff;
+  text-decoration: none;
+  /* &:hover {
+      color: #000;
+  } */
+}
+.nav__item--active {
+  border-bottom: underline;
+}
+@media (min-width: 764px) {
+  .nav__container {
+    justify-content: flex-end;
+  }
+}
+
+.hero__container {
+  height: calc(100vh - 70px);
+  background-image: linear-gradient(rgba(122, 24, 151, 0.2470588235), rgba(0, 0, 0, 0.8235294118)), url("../img/fierro.jpg");
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  /* background-size: contain;
+  background-repeat: no-repeat;
+  background-position: 0 0; */
+}
+.hero__texts {
+  width: 90%;
+  color: #fff;
+}
+.hero__title {
+  font-size: 2.3125rem;
+  margin-bottom: 0.625rem;
+}
+.hero__paragraph {
+  font-size: 1.125rem;
+}
+
+/* @use 'animaciones'; */
+h2 {
+  background-color: slateblue;
+}
+
+/*# sourceMappingURL=style.css.map */
+```
+
+
+[Tutorial: SASS en 40 MINUTOS](https://www.youtube.com/watch?v=kaSVabk-jbA)
