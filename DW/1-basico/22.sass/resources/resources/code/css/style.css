@@ -1,0 +1,65 @@
+/* Podemos usarlos con o sin argumentos */
+/* Funciones */
+.root {
+  --primary: crimson;
+}
+
+.nav {
+  background-color: slateblue;
+}
+.nav__container {
+  width: 90%;
+  margin: 0 auto;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  gap: 1em;
+}
+.nav__item {
+  color: #fff;
+  text-decoration: none;
+  /* &:hover {
+      color: #000;
+  } */
+}
+.nav__item--active {
+  border-bottom: underline;
+}
+@media (min-width: 764px) {
+  .nav__container {
+    justify-content: flex-end;
+  }
+}
+
+.hero__container {
+  height: calc(100vh - 70px);
+  background-image: linear-gradient(rgba(122, 24, 151, 0.2470588235), rgba(0, 0, 0, 0.8235294118)), url("../img/fierro.jpg");
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  /* background-size: contain;
+  background-repeat: no-repeat;
+  background-position: 0 0; */
+}
+.hero__texts {
+  width: 90%;
+  color: #fff;
+}
+.hero__title {
+  font-size: 2.3125rem;
+  margin-bottom: 0.625rem;
+}
+.hero__paragraph {
+  font-size: 1.125rem;
+}
+
+/* @use 'animaciones'; */
+h2 {
+  background-color: slateblue;
+}
+
+/*# sourceMappingURL=style.css.map */
