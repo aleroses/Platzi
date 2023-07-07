@@ -223,7 +223,7 @@ Nuevamente guardamos cambios en git, enviamos cambios a GitHub y publicamos en G
 - git push origin master
 - npm run deploy ✨👈👀
 	- > delete@1.0.0 deploy
-    - >	gh-pages -d .
+	- gh-pages -d .
 	- Published ✨👈👀
 ```
 
