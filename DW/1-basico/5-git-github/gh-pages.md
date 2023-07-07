@@ -61,6 +61,8 @@ Instalación:
 
 ```bash
 - npm i gh-pages
+// Con esto te aseguras que instalas la ultima versión
+- npm i gh-pages@latest
 ```
 
 Esto nos crea una carpeta `node_modules` que al final del proyecto cuando tengamos que subir la web a GitHub Pages podemos ignorarla y para eso usamos un archivo `.gitignore` y agregamos `node_modules`. 
@@ -83,6 +85,35 @@ Si revisamos nuestro archivo `package.json` veremos la versión de `gh-pages` in
     "gh-pages": "^5.0.0"👈👀
   }
 }
+```
+
+### Vulnerabilidades 
+
+En caso la terminal te muestre algo así...
+
+```bash
+up to date, audited 43 packages in 695ms
+
+5 packages are looking for funding
+  run `npm fund` for details
+👇👀
+4 moderate severity vulnerabilities 👈👀
+
+To address all issues (including breaking changes), run: 
+  npm audit fix --force 👈👀
+
+Run `npm audit` for details. 👈👀
+```
+
+Debemos ejecutar los comandos que nos muestra en el mensaje: 
+
+```bash
+// Para tener detalles 
+- npm audit 
+// Le damos solución a las vulnerabilidades 
+- npm audit fix --force
+- npm audit
+	- found 0 vulnerabilities
 ```
 
 - [NPM gh-pages](https://www.npmjs.com/package/gh-pages)
@@ -128,7 +159,11 @@ Publicamos en GitHub Pages todo lo que está al inicio o en la raíz del proyect
 
 Ahora si revisamos nuestro repositorio en GitHub veremos que tenemos una rama extra llamada `gh-pages`. 
 
-Para ver el enlace de nuestro proyecto desplegado nos vamos a `Settings/Pages`. 
+Para ver el enlace de nuestro proyecto desplegado nos vamos a `settings/Pages`. 
+
+📌En caso no se muestre el enlace de tu web, asegurate de tener seleccionada la rama **`gh-pages` `/(root)`**
+
+![](https://i.postimg.cc/9QYNHb0t/gh-pages.png)
 
 ## 7. Actualizando web
 
