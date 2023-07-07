@@ -11,6 +11,8 @@ Debes buscar en Visual Studio Code la extensión **Prettier** e instalarla sin m
 
 Aquí puedes configurar como quieres que se vean tus archivos formateados, al terminar solo le das en `Copy config JSON`, vas a tu proyecto y creas un archivo con el nombre `.prettierrc`. 
 
+📌Nota: Para mayor detalle sobre la configuración puedes ver un tutorial donde explican esto. Ver link parte inferior. 
+
 Queda algo así...  
 ```json
 {
