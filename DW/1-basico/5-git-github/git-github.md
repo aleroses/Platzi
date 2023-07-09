@@ -587,7 +587,7 @@ El comando `git merge` nos permite crear un nuevo commit con la **_combinación 
 - `git branch --merged`: Muestra las ramas que han sido fusionadas con la rama activa.        
 - `git branch --no-merged`: Muestra todas las ramas que contienen trabajos sin fusionar.   
 - `git log --oneline --graph --all`: Permite visualizar la estructura gráfica de las ramas.     
-- `git branch -D "nameBranch"`: Permite eliminar ramas.   
+- `git branch -D nameBranch`: Permite eliminar ramas.   
 
 📌 Recuerda que al ejecutar el comando `git checkout` para cambiar de rama o commit **_puedes perder el trabajo que no hayas guardado_**. Guarda tus cambios antes de hacer git checkout.❗❗❗	   
 
@@ -600,7 +600,7 @@ Página para practicar:
 
 ## 17. Resolución de conflictos al hacer un merge
 
-Git nunca borra nada a menos que nosotros se lo indiquemos. Cuando usamos los comandos `git merge` o `git checkout` estamos cambiando de rama o creando un nuevo commit, no borrando ramas ni commits (recuerda que puedes borrar commits con `git reset` y ramas con `git branch -d`).
+Git nunca borra nada a menos que nosotros se lo indiquemos. Cuando usamos los comandos `git merge` o `git checkout` estamos cambiando de rama o creando un nuevo commit, no borrando ramas ni commits (recuerda que puedes borrar commits con `git reset` y ramas con `git branch -d branchName`).
 
 Git es muy inteligente y puede resolver algunos conflictos automáticamente: cambios, nuevas líneas, entre otros. Pero algunas veces no sabe cómo resolver estas diferencias, por ejemplo, cuando dos ramas diferentes hacen cambios distintos a una misma línea.
 

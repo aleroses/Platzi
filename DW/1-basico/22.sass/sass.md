@@ -62,20 +62,28 @@ Para empezar a trabajar con Sass necesitamos descargar Node:
 - [Descargar Node Lts](https://nodejs.org/es)
 
 Verifica en la terminal si tienes instalado node:  
-- node -v
+
+```bash
+node -v
+```
 
 ## 2. Instalamos SASS
 
 Dentro de nuestro proyecto abrimos una terminal para inicializar el instalador de paquetes NPM (Node Package Manager) en nuestro proyecto: 
-- npm init -y
+
+```bash
+npm init -y
+```
 
 Esto creará un archivo llamado `package.json` que nos servirá para activar sass.
 
-Instalamos sass: 
-- npm install sass --save-dev
+```bash
+// Instalamos sass: 
+npm install sass --save-dev
 
-Instalar sass de manera global: 
-- npm install -g sass
+//Instalar sass de manera global: 
+npm install -g sass
+```
 
 Creamos una carpeta llamada `sass` con un archivo `style.scss`: 
 
@@ -95,7 +103,10 @@ Creamos una carpeta llamada `sass` con un archivo `style.scss`:
 Como no podemos referenciar al archivo .scss en el HTML , debemos referenciar a un archivo CSS para lo cual:
 
 1. Observamos los cambios: 
-- sass --watch sass:css
+
+```bash
+sass --watch sass:css
+```
 
 Ahora tenemos esta estructura:  
 
@@ -130,7 +141,7 @@ h2 {
 }
 ```
 
-## 4. Variables 
+## 4. Variables Globales 
 
 `style.scss`  
 ```scss
@@ -229,7 +240,8 @@ h2 {
     background-color: variables.$color;👈👀
 }
 ```
-parcharts
+
+partial
 
 
 ## 6. Nesting / Anidamiento + BEM
@@ -591,7 +603,7 @@ Si nos damos cuenta, estamos usando un mixin que creamos en un archivo aparte, p
 Creamos una función dentro del archivo `_mixinsfunc.scss`
 
 ```scss
-@use 'sass:math';👈👀
+@use 'sass:math'; //Modulo integrado👈👀
 
 /* Podemos usarlos con o sin argumentos */
 @mixin crear-flexbox($justify) {
@@ -727,4 +739,4 @@ h2 {
 ```
 
 
-[Tutorial: SASS en 40 MINUTOS](https://www.youtube.com/watch?v=kaSVabk-jbA)
+[🔥 SASS en 40 MINUTOS](https://www.youtube.com/watch?v=kaSVabk-jbA)

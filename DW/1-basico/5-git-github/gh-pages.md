@@ -33,7 +33,7 @@ Debes tener [Nodejs](https://nodejs.org/es) instalado, para verificar la versió
 Inicializamos el proyecto con NPM, esto creará en automático un archivo llamado `package. json` que nos servirá para crear scripts, entre otras cosas.  
 
 ```bash
-- npm init -y
+npm init -y
 ```
 
  `package. json`  
@@ -57,12 +57,14 @@ Este es un resumen de algunos datos de nuestro proyecto como nombre, versión, e
 
 ## 3. Modulo gh-pages de NPM
 
-Instalación:  
+```bash
+// Instalación: 
+npm i gh-pages
+```
 
 ```bash
-- npm i gh-pages
 // Con esto te aseguras que instalas la ultima versión
-- npm i gh-pages@latest
+npm i gh-pages@latest
 ```
 
 Esto nos crea una carpeta `node_modules` que al final del proyecto cuando tengamos que subir la web a GitHub Pages podemos ignorarla y para eso usamos un archivo `.gitignore` y agregamos `node_modules`. 
@@ -222,7 +224,7 @@ Nuevamente guardamos cambios en git, enviamos cambios a GitHub y publicamos en G
 - git commit -am "Tercer commit"
 - git push origin master
 - npm run deploy ✨👈👀
-	- > delete@1.0.0 deploy
+	- delete@1.0.0 deploy
 	- gh-pages -d .
 	- Published ✨👈👀
 ```
