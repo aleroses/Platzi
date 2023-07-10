@@ -303,3 +303,146 @@ Es decir que “se deja atrás” la asignación.
 Obviamente ningún desarrollador debería de escribir código así de confuso, esto es solo para saber como funciona JavaScript y su engine, ese conocimiento te hace un mejor desarrollador y te destaca de entre otros.
 
 📌Nota: Una estricta definición de hoisting sugiere que las declaraciones de variables y funciones son físicamente movidas al comienzo del código, asignándolas en memoria dentro de un contexto de ejecución.
+
+## 7. Memory Heap
+
+El comportamiento de JavaScript es síncrono, es decir, solamente puede **ejecutar una tarea a la vez**. Esto puede ser beneficio o perjudicial dependiendo los casos. Por ende, para ejecutar cada tarea, JavaScript se organiza en dos estructuras de datos: el _Memory Heap_ y el _Call Stack_.
+
+### Qué es Memory Heap
+
+El _memory heap_ **consiste en una manera desorganizada o aleatoria de guardar la información**, ya sea valores, funciones, entre otros. ¿Recuerdas el componente de tu computador que guarda información de manera aleatoria? Exactamente, la RAM es donde **guardará esta información mediante una referencia o dirección**.
+
+- [Memoria y cómo se guardan los datos.](https://platzi.com/clases/2156-estructuras-datos/33722-memoria-y-como-se-guardan-los-datos/)
+
+Por ejemplo, declaras una variable `nombre` y le asignas un valor, esta se guardará en la memoria RAM utilizando una referencia que manejará el _memory heap_. De esta manera, el Engine sabrá que variable mostrar cuando sea utilizada después de la declaración, **pidiendo la referencia de memoria al _memory heap_ y buscándola en la memoria RAM**.
+
+![Representación del memory heap para almacenar datos](https://i.postimg.cc/NLhZwWQ3/7-memory-heap.png)
+
+#### Valores por referencia
+
+¿Qué pasa con estructuras más complejas, como arrays u objetos? Pues que estas se guardarán en una dirección de memoria diferente a sus valores, pero referenciadas entre sí. Por ejemplo, mira el siguiente código y piensa cuál es el resultado:
+
+```js
+const objeto1 = {valor: 1}
+const objeto2 = objeto1
+objeto2.valor = 2
+
+console.log(objeto1.valor)
+console.log(objeto1 === objeto2)
+```
+
+Primero mostrará el valor `2` y después `true`. La explicación es que la referencia de ambos objetos a sus valores es la misma, por lo que si modificas un valor, también lo harás en ambos.
+
+![Parámetros de referencia para dos objetos](https://i.postimg.cc/Hn8FRp10/7-parametros-referencia.png)
+
+
+📌Nota: Las variables se almacenan en el Memory Heap. El call satck es un espacio en memoria para ejecuccion de funciones. Closure es a lo que te refieres que despues de una ejecucion podemos tener referencia a los valores retornados. El call stack no almacena referencias a objetos o variables.
+
+## 8. Qué es Call Stack
+
+El _Call Stack_ consiste en ordenar las funciones que son invocadas de arriba hacia abajo, donde **la última tarea será la que se ejecute primero**. Una vez se ha guardado la información del archivo o programa, es momento de ejecutarlas.
+
+En primer lugar, guarda todas las funciones o declaraciones en _anonymous_ que representa el objeto global.
+
+![Representación del Call Stack](https://i.postimg.cc/BbFHcfTw/8-call-back.png)
+
+Y así sucesivamente. Va agregando y quitando ejecuciones en el orden correspondiente. Es por eso que JavaScript realiza una tarea a la vez.
+
+### Ejemplo de ejecución
+
+El siguiente código contiene tres funciones `hello`, `world` y `main` que ya han sido guardadas en el _memory heap_ al declararlas y están listas para ejecutarse.
+
+![Ejemplo de ejecución función main](https://i.postimg.cc/wBWX9VxF/8-function-main.png)
+
+Al llegar a la función `main`, el _Engine_ lo coloca en el _Call Stack_ para ejecutarlo. Pero dentro se encuentran más invocaciones a otras funciones, por ende, primero ejecutará la que esté más arriba hasta ejecutarlas todas.
+
+![Ejemplo de ejecución función hello](https://i.postimg.cc/HLW0GKmV/8-function-hello.png)
+
+Al invocar la función `hello`, el _Engine_ lo coloca en el _Call Stack_. La función `console.log` también es una función, por lo que el **Engine** también lo colocará en el _Call Stack_.
+
+![Ejemplo de ejecución función console.log dentro de hello](https://i.postimg.cc/XYkKzWTR/8-function-console-log.png)
+
+Una vez ejecutada la función `console.log` el _Engine_ lo sacará del _Call Stack_.
+
+![Ejemplo de ejecución función hello finalizada](https://i.postimg.cc/9MKy7Q77/8-function-hello-finalizada.png)
+
+Como la función `hello` ya ha sido ejecutada, el Engine lo sacará del _Call Stack_ para seguir ejecutando la función `main`.
+
+![Ejemplo de ejecución función world](https://i.postimg.cc/ZRCrndCm/8-function-world.png)
+
+Y así sucesivamente, hasta que termine de ejecutarse `main`, o todas las tareas en el _Call Stack_. Cuando no existan tareas en el _Call Stack_, el programa habrá finalizado.
+
+> Anonymous: Cuando ejecutamos un programa en JavaScript la primer función que se agrega a la pila (Call Stack) es una función anónima que engloba a todo el programa, es algo así como el hilo principal del programa y cuando esta función salga de la pila significa que se termino la ejecución del programa principal.
+
+### Debugger 
+
+Para acceder al debugger del navegador y hacer pruebas de Call Stack puedes abrir una página en blanco usando `about:blank`, luego presiona `Ctrl + Shift + I`, te vas a `Sources >> Snippets` creas un `+ New snippet`, por último agregas el código que quieres probar. Recuerda guardar cambios usando `Ctrl + S`
+
+```js
+function restarDos(num){
+    return num - 2;
+}
+
+function calcular(){
+    const sumarTotal = 4 + 5;
+    return restarDos(sumarTotal);
+}
+
+debugger;
+
+calcular();
+```
+
+![](https://i.postimg.cc/ZRCMKMr5/9-debugger.png)
+
+[🔥 1. La PILA DE EJECUCIÓN (Call Stack) de JAVASCRIPT](https://www.youtube.com/watch?v=ygA5U7Wgsg8&t=384s)
+
+
+## 9. Garbage Collection
+
+**_Garbage Collection_** es un proceso automático realizado por el motor de JavaScript que consiste en **eliminar aquellos objetos que no tienen referencias o son inalcanzables para el contexto de ejecución**, a través del algoritmo _mark-and-sweep_ (marcado y barrido).
+
+![Algoritmo marcado y barrido](https://i.postimg.cc/R00PXDpL/9-garbage-collection.gif)
+
+El _Garbage Collection_ es importante para liberar aquellas referencias en memoria y no exista un desbordamiento en las tareas _(Stack overflow)_. Por ejemplo, un ciclo infinito que provoque el colapso de la página web.
+
+### Algoritmo marcado y barrido
+
+El algoritmo marcado y barrido _(mark-and-sweep)_ hace **referencia a cuando un tipo de dato se vuelve inalcanzable para el programa**. El motor de JavaScript empieza por la raíz, la cual es el Objeto Global, a medida que el programa avanza los objetos van creando o borrando referencias a sus raíces.
+
+Cuando un objeto se queda sin ninguna referencia, se dice que el objeto es inalcanzable, en este momento el _Garbage Collection_ libera el espacio que usaban las variables u objetos cuando aún tenían una referencia.
+
+Desde 2012, los navegadores utilizan un _Garbage Collection_, que ha ido recibiendo mejoras en su implementación constantemente.
+
+### Ejemplo de _Garbage Collection_
+
+En este punto de tu estudio, ya conocerás los métodos `shift` y `pop` de _arrays_, puede que los hayas entendido como eliminar el primer y último elemento de un _array_, respectivamente.
+
+Pues no funcionan exactamente como “eliminar”, sino como **extraer** el primer y último elemento, pero si **no lo guardamos en una variable, el _Garbage Collection_ lo eliminará**.
+
+```js
+const array = [1,2,3,4,5]
+// Extrae el último elemento, guarda la referencia en la variable lastElement.
+const lastElement = array.pop() 
+console.log(lastElement) //5
+```
+
+```js
+const array = [1,2,3,4,5]
+// Extrae el último elemento, pero no existe la referencia, entonces el Garbage Collection lo eliminará
+array.pop() 
+console.log(array) // [1,2,3,4]
+```
+
+Por lo tanto, el que elimina ese valor, es el _Garbage Collection_.
+
+Otro ejemplo: Creamos un objeto con algunos datos que serán almacenados en memoria pero inmediatamente cambiamos esos datos por otro, esto hace que los datos anteriores sean limpiados por el _Garbage Collection_. 
+
+```js
+var car = {
+	marca: "Totoya",
+	modelo: "2020"
+}
+
+car = "Mio"
+```
