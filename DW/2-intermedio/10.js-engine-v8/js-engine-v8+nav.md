@@ -446,3 +446,178 @@ var car = {
 
 car = "Mio"
 ```
+
+## 10. Qué es Stack overflow
+
+**_Stack overflow_** es un término empleado para referirse al **desbordamiento de tareas** en el _Call Stack_ del motor de JavaScript. Esto ocurre por ciclos infinitos, funciones recursivas sin control, cambios de estado continuo, o algún programa que exceda las tareas que puede ejecutar el navegador.
+
+![Representación gráfica de Stack overflow](https://i.postimg.cc/CKCyhVNH/10-stack-overflow.png)
+
+Anteriormente, los navegadores no estaban preparados para manejar un _stack overflow_, **por lo que la página web colapsaba y cerraba la aplicación**. En la actualidad, si el navegador encuentra este problema, detiene la ejecución del código evitando que colapse la página web.
+
+![Error del navegador debido al stack overflow](https://i.postimg.cc/MpQ2LBfL/10-ejemplo.png)
+
+_[Stack overflow](https://es.stackoverflow.com/)_ también es un sitio de **preguntas y respuestas de ingeniería de software**, uno de tus mejores aliados en tu carrera de estudios.
+
+![](https://i.postimg.cc/DZQZsDc7/10-web-stack-overflow.png)
+
+## 11. JavaScript Runtime o tiempo de ejecución 
+
+Recordando el material de [Call Stack](https://platzi.com/clases/1798-javascript-navegador/25685-call-stack/), se mencionó que JavaScript realiza una tarea a la vez en el _Call Stack_, esto se denomina código síncrono o _Single thread_. **La sincronía puede presentar problemas en operaciones que demoren demasiado**.
+
+![Representación de síncronismo en JavaScript](https://i.postimg.cc/76yBmBpB/11-runtime.png)
+
+![](https://i.postimg.cc/zBbgH5d6/11-runtime2.png)
+
+### Ejemplo práctico
+
+Por ejemplo, imagina que JavaScript es una tienda de tacos, tú trabajas ahí y solamente puedes hacer una preparación a la vez. Llegan tres personas que ordenan un taco, una torta y un taco, y tienes que atenderlos en ese orden.
+
+El primer taco probablemente se demore 5 minutos. Luego, la preparación de la torta es más compleja, por lo que posiblemente demorará 20 minutos. En este punto, el tercer cliente se ha hartado de la espera y se retira. Este proceso no es óptimo.
+
+```js
+console.log("taco")
+console.log("torta")
+console.log("taco")
+```
+
+En Internet sucede lo mismo, si un usuario no observa información en tu página web en los primeros cinco segundo, se retirará.
+
+Entonces, una solución sería ejecutar las tareas más lentas (torta) después de las más rápidas (tacos). Y esta solución se llama **asincronismo** y JavaScript tiene una manera de manejarlo.
+
+[JavaScript — Cómo funciona el Runtime Environment — JRE)](https://mauriciogc.medium.com/javascript-c%C3%B3mo-funciona-el-runtime-environment-jre-8ebceafdc938)
+
+## 12. Qué es la asincronía en JavaScript
+
+**La asincronía de JavaScript consiste en delegar algunas tareas** para que las ejecute el navegador, una vez esas tareas están terminadas entran en otra estructura llamada _Callback queue_. En el _Callback queue_ la primera tarea que entra, es la primera en salir. ¿Cómo salen? Mediante el _Event Loop_.
+
+El _Event loop_ es el encargado de preguntar al _Call Stack_ si ya ha terminado todas sus tareas. Entonces, si y solo si el _Call Stack_ está vacío, el _Event loop_ moverá las funciones que están en el _Callback queue_ para que se ejecuten.
+
+Para entender mejor este término, retomemos el ejemplo de los tacos, pero ahora tienes un compañero. Entonces tú delegas la tarea de preparar la torta a otra persona, mientras realizas los tacos.
+
+Luego de 5 minutos por cada tarea, entregas las tortas a los clientes correspondientes. Después de 10 minutos necesitas la torta, entonces preguntas ¿ya está lista la torta? Tu ayudante te entrega la torta y se lo entregas. En total fueron 20 minutos y todos los clientes recibieron su pedido. Así funciona la asincronía en JavaScript.
+
+🌮 - **call stack** : _el taquero (órdenes rápidas)_  
+👨‍🍳 - **web APIs** : _la cocina_  
+🌯 - **callback queue** : _las órdenes preparadas_  
+💁‍♂️ - **event loop** : _el mesero_
+
+![](https://i.postimg.cc/yxfRfnkw/11-runtime3.png)
+
+### Asincronía en JavaScript
+
+El proceso completo que sigue JavaScript se muestra en la siguiente imagen:
+
+![Representación de la asincronía de JavaScript](https://i.postimg.cc/HW279KtP/12-representacion-asincronia.png)
+
+Las **Web APIs son herramientas adicionales que te ofrece el navegador** para realizar peticiones, modificar el DOM, entre otras. Estas herramientas las puedes observar en el objeto global `window`.
+
+### Ejemplo de asincronía
+
+Rápidamente, la función asíncrona `setTimeout` consiste en ejecutar otra función en cierto tiempo. Recibe dos valores, la función a establecer un retraso y el tiempo en milisegundos.
+
+Observa el siguiente código y piensa cuál será el resultado:
+
+```js
+const foo = () => console.log("First");
+const bar = () => setTimeout(() => console.log("Second"), 0);
+const baz = () => console.log("Third");
+
+bar(); // Lo envió a ejecutarse hasta el final
+foo(); // Entró a foo, ejecutó el console.log y se eliminó del call stack
+baz(); // Entró en baz, ejecutó y se eliminó 
+```
+
+El resultado es:
+
+- Primero se muestra en consola `"First"`.
+- Segundo se muestra en consola `"Third"`.
+- Después de medio segundo, `"Second"`.
+
+Esto es porque la función `bar` salió del _Call Stack_ para esperar asíncronamente un tiempo definido (0 segundos en este caso). Después tendrá que esperar (sin importar el tiempo establecido en `setTimeout`) hasta que se vacíe el _Call Stack_ para que el _Event loop_ le permita entrar nuevamente al _Call Stack_ para ejecutarse.
+
+![Asincronía en JavaScript](https://i.postimg.cc/zXGHtjtD/12-asincronia.gif)
+
+**Fuente:** [JavaScript Visualized: Event Loop](https://dev.to/lydiahallie/javascript-visualized-event-loop-3dif)
+
+### Callbacks, Promesas y Async/Await
+
+El tema de asincronía en JavaScript es muy amplio, aún falta conocer los temas de _callbacks_, promesas y “async / await” (una estructura de las nuevas versiones de ECMAScript). Por lo que te recomiendo el [Curso de Asincronismo con JavaScript](https://platzi.com/cursos/asincronismo-js-2019/).
+
+
+## 13. Recapitulación
+
+**JavaScript** nació en 1995 por cuenta de la necesidad de interacción en la web y el paso del tiempo y logró estandarizar en todos los navegadores gracias al grupo ECMA.
+
+Aún con sus mejoras del lenguaje, la naturaleza de JS de solo poder procesar una tarea a la vez. Además de los motores de JS, necesarios para interpretar el código JS y compilarlo a Byte code, tenían serias limitaciones al momento de ejecutar aplicaciones complejas como Google Maps, pero todo esto cambio en 2008 gracias al motor V8 V8 de Chrome.
+
+### Temas 
+
+- Qué es un JavaScript Engine 
+- Qué es y cómo funciona V8
+- Qué es el Entorno y Objeto Global 
+- Hoisting y cómo evitarlo 
+- Cómo funciona el JIT Compiler (Just In Time Compiler)
+- Sincronía y Asincronía de JavaScript 
+- Qué es Memory Heap y Call Stack 
+- Qué es un Stack overflow 
+- Cómo funciona JavaScript Runtime 
+
+## **El motor JS V8**
+
+Resumen  
+Aquí dejo un video por si quieren profundizar [Link](https://www.youtube.com/watch?v=7GeDNQRQy0Y)  
+Una vez que Chrome recibe el código o los scripts JavaScript en la página web, el motor JS V8 comienza a analizarlo. Primero, analizará parcialmente el código comprobando errores de sintaxis. Si no encuentra ninguno, comienza a leer el código de arriba a abajo. Su objetivo final es convertir el código JavaScript en código de máquina que la computadora pueda entender. Pero antes de comprender qué hace exactamente con el código, debemos comprender el entorno en el que se analiza.
+
+### Event Loop
+
+Tarea asignada para mover del Tas Queue al Stack, Solo si el Stack esta vacío
+
+#### Memory Heap (Montón)
+
+- Donde se almacena los valores de las variables y las funciones
+- Se destina un espacio en memoria para las variables.
+- La información en el memory heap, No se guarda de manera lineal
+
+**EL MONTÓN**
+
+El primer contenedor en el entorno, que también forma parte del motor V8 JS Engine, se denomina “montón de memoria”. A medida que el motor JS V8 encuentra variables y declaraciones de funciones en el código, las almacena en el **montón** .
+
+#### Call Stack (Pila) = El ultimo que entra es el primero en salir
+
+- Como se mandan a llamar las variables y las funciones
+- Las tareas en el callstack se apilan de abajo hacia arriba.
+- Se llaman de la última que mandamos a llamar hacia abajo
+- En la base de la pila reposa el Global Object
+- Si una función llama a otra, la pone encima de la pila.
+- Se ejecuta una tarea a la vez (sincronía)
+- Una vez que se van ejecutando las tareas se van retirando de la pila
+- Al ejecutar todas las tareas se retira el Global object.
+
+**LA PILA**
+
+El segundo contenedor en el entorno se denomina “pila de llamadas”. También es parte del motor JS V8. Cuando JS Engine encuentra un elemento procesable, como una llamada a función, lo agrega a la **pila** .
+
+#### Task Queue (Cola) = El primer que entra es el primero en salir
+
+Cola de tareas, se maneja la concurrencia, se agregan las tareas que ya están listas para pasar el **stack** (Pila). El **stack** debe de esta vacío
+
+#### MicroTask Queue (Micro Tareas)
+
+Las promesas tienen otra forma de ejecutarse y una prioridad superior
+
+#### Web APIs
+
+JavaScript del lado del cliente: setTimeout, XMLHttpRequest, File reader, DOM
+
+Node: fs, https
+
+#### Garbage Collection
+
+limpia la memoria de los datos no utilizados para no sobrecargarla y seguir trabajando sin problemas.
+
+![](https://i.postimg.cc/L5pgfgVK/3-v8.png)
+
+
+
+[Curso JavaScript Engine (V8)](https://platzi.com/cursos/javascript-navegador/).
