@@ -68,7 +68,7 @@ El bucle de eventos es un patrón de diseño que **espera** y **distribuye** eve
 ![](https://i.postimg.cc/qMgpkN4d/3-proceso.png)
 
 
-Ver los apuntes del curso `Curso de JavaScript Engine (V8) y el Navegador`:  
+Ver los apuntes del `Curso de JavaScript Engine (V8) y el Navegador`:  
 [[js-engine-v8+nav#7. Memory Heap]]
 [[js-engine-v8+nav#8. Qué es Call Stack]]
 [[js-engine-v8+nav#12. Qué es la asincronía en JavaScript]]
@@ -121,6 +121,66 @@ npx gitignore node
 
 **Un Callback** es una una función que se pasa como argumento de otra función y que será invocada.
 
+Los callbacks son útiles en JavaScript cuando se necesita ejecutar una función después de que se complete otra función o tarea de forma asincrónica. En otras palabras, los callbacks se utilizan en situaciones en las que la ejecución de una tarea puede llevar tiempo y no se debe bloquear el hilo principal de JavaScript mientras se espera el resultado.
+
+Algunos ejemplos comunes de uso de callbacks en JavaScript son:
+
+1. Manejo de eventos: Los Callbacks son muy útiles para manejar eventos. Por ejemplo, cuando se hace clic en un botón, se puede llamar a una función de Callback que ejecuta una acción específica. 
+
+2. Operaciones asincrónicas: Cuando se realizan operaciones que pueden tardar mucho tiempo, como la lectura de un archivo o la llamada a una API, se puede utilizar un Callback para manejar el resultado de la operación una vez que se ha completado.
+
+3. Animaciones: Los callbacks también se utilizan en animaciones para controlar la secuencia de los eventos. Por ejemplo, se puede utilizar un callback para iniciar la siguiente animación después de que se haya completado la anterior.
+
+4. Programación funcional: La programación funcional en JavaScript se basa en gran medida en el uso de callbacks. Por ejemplo, se pueden pasar funciones de callback como argumentos a otras funciones para crear funciones más complejas.
+
+En resumen, los callbacks son útiles en cualquier situación en la que se necesite ejecutar una función después de que se haya completado otra tarea de forma asincrónica.
+
+### Ejemplos + Explicación 
+
+Puedes ver como se ejecuta el código línea a línea usando el debugger de Chrome o Edge. Para usarlo usa `Ctrl + Shift + I` en cualquier web o si prefieres coloca en la URL `about:blank` para abrir una página en blanco, ahora busca Sources y por ultimo `>> Snippets`. Ahora ya puedes probar tu código creando `+ New snippet`
+
+```js
+function greeting(name){ 👈👀
+    alert(`Hi ${name}!!!`);
+}
+
+function ask_for_name(callback){
+    let name = prompt('Enter your name: ');
+    callback(name); 👈👀
+}
+
+debugger;
+
+ask_for_name(greeting); 👈👀
+```
+
+1. Al correr el snippet en la parte de Call Stack vemos que de manera global coloca todo el proyecto como anonymous.
+2. Luego llega a la invocación de la función `ask_for_name(greeting);` que se le está pasando la función `greeting` como argumento, tener en cuenta que al pasarle la función `greeting` todavía no se está invocando. 
+3. Al entrar a la función `ask_for_name(callback);` ahora ejecuta el `prompt` que muestra un input para ingresar un nombre. 
+4. Ahora llega al `callback(name)` que es el  `greeting` anteriormente pasado como argumento, pero esta vez ya se está invocando y al cual se le está dando el argumento que necesita, extraído de `let name` para mostrar el `alert` final. 
+
+![](https://i.postimg.cc/rsBdXs7r/video1377438465-online-video-cutter-com.gif)
+
+Otro ejemplo: 
+```js
+function makingOrder(orden) {
+    console.log(`Ready ${orden}`);
+}
+
+function order(orden, callback) {
+    console.log(`Taking order ${orden}`);
+    setTimeout(() => {
+        callback(orden)
+    }, 3000)
+    console.log(`Doing order ${orden}`,);
+}
+
+order('Burger', makingOrder);
+```
+
+![](https://i.postimg.cc/4y2rvzZR/6-callback2.gif)
+
+Más ejemplos:  
 ```js
 /* Ejemplo 01 */
 function sum(num1, num2) {
@@ -147,16 +207,17 @@ setTimeout(() => {
 // Hola
 
 // Ahora hagamos lo mismo pero con otra estructura
-function gretting(name){
+function greeting(name){
     console.log(`Hola ${name}`);
 }
 
-setTimeout(gretting, 2000, 'Ghost!');
+setTimeout(greeting, 2000, 'Ghost!');
 // Hola Ghost!
 ```
 
 
 ```js
+/* Ejemplo 03 */
 function sum(num1, num2) {
     return num1 + num2;
 }
