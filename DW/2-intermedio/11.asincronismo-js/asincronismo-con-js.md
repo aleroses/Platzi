@@ -613,7 +613,7 @@ Listo🥳, dejamos preparado nuestro callback sin errores y con la información 
 
 - Hay que regresarnos al primer if y utilizar la estructura de else para que en caso de haber un error registrarlo y enviarlo al callback (donde antes habiamos puesto ‘null’) y ahora pasar el null en la parte de los datos, ya que nunca pudo consultarlos.
 
-```
+```js
 if (xhttp.readyState === 4) {
 	if (xhttp.status === 200) {
 		callback(null, JSON.parse(xhttp.responseText)); ✅
@@ -641,7 +641,7 @@ xhttp.send();
 
 Para no usar “Magic numbers” se pueden declarar los estados a verificar como constantes, les dejo mi código completo
 
-```
+```js
 const XMLHttpRequest = require('XMLHttpRequest');
 const API = 'https://api.escuelajs.co/api/v1/products';
 const DONE = 4;
@@ -663,11 +663,6 @@ functionfetchData(urlApi, callback) {
 }
 ```
 
-![Angel](https://static.platzi.com/media/avatars/avatars/angelduarte_7a25a88b-c512-4fb9-b2ad-addc65569966.jpg)
-
-[angelduarte](https://platzi.com/p/angelduarte/)
-
-10897
 
 
 
