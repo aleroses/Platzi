@@ -390,7 +390,6 @@ Otra definición:
 - **`PATCH`** → Actualiza parcialmente un recurso.
 - **`DELETE`** → Elimina un recurso.  
 
-
 ### Códigos de estados del servidor 
 
 Los códigos de estado (status codes) del servidor son una parte fundamental del protocolo HTTP, ya que indican el **resultado de una solicitud realizada por un cliente al servidor**. 
@@ -442,9 +441,7 @@ Los códigos de estado más comunes:
 - **`503`** → _Service Unavailable_: indica que el servidor no está disponible temporalmente para procesar la solicitud.
 
 
-
 ### Ejemplo
-
 
 1. Ir a la consola y ubicarnos en la carpeta del proyecto y escribir el comando para instalar el paquete **XMLHttpRequest**:  
 
@@ -506,97 +503,85 @@ functionfetchData(urlApi, callback){
 }
 ```
 
-
-
 ### Explicación paso a paso de la construcción de la función `fetchData`.
 
 1. Primero debemos declarar e importar el paquete de [XMLHttpRequest](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest), que nos permite utilizar objetos (XHR) para interactuar con servidores (en este caso la API de Platzi) para esto hacemos:
 
-```
+```js
 const XMLHttpRequest = require('XMLHttpRequest');
 ```
 
-- Lo que hace aquí “[require()](https://nodejs.org/api/modules.html#requireid)” es importar el módulo del id que le pasemos, además puede importar JSON y archivos locales. Pero necesitamos trabajar con XMLHttpRequest para manipular la API.  
-    |
+- Lo que hace aquí “[require()](https://nodejs.org/api/modules.html#requireid)” es importar el módulo del ID que le pasemos, además puede importar JSON y archivos locales. Pero necesitamos trabajar con XMLHttpRequest para manipular la API.  
 
-1. Declaramos como constante el url de la API:
+2. Declaramos como constante el URL de la API:
 
-```
+```js
 const API = 'https://api.escuelajs.co/api/v1/products';
 ```
 
-1. Ahora es momento de iniciar con la función principal que en términos simples es:
+3. Ahora es momento de iniciar con la función principal que en términos simples es:
 
-```
+```js
 function fetchData(urlApi, callback) {
 }
 ```
 
-- El parámetro ‘urlApi’ hace referencia a cualquier API con la cuál estemos trabajando, en este caso la FakeStore de Platzi.
+- El parámetro ‘urlApi’ hace referencia a cualquier API con la cual estemos trabajando, en este caso la FakeStore de Platzi.
 - El segundo parámetro ‘callback’ es donde posteriormente vamos a pasar una función como argumento para poder controlar el flujo de información de la API.  
-    |
 
-1. Necesitamos alguna manera de poder manipular las solicitudes que haremos para consultar los datos, para ello vamos a crear un espacio en memoria (una variable) en donde guardar el objeto (XHR) que importamos y gracias a los métodos ya construídos nos será mil veces más fácil desarrollar nuestra funcíon.
+4. Necesitamos alguna manera de poder manipular las solicitudes que haremos para consultar los datos, para ello vamos a crear un espacio en memoria (una variable) en donde guardar el objeto (XHR) que importamos y gracias a los métodos ya construidos nos será mil veces más fácil desarrollar nuestra función.
 
-```
-let xhttp = newXMLHttpRequest();
-```
-
-- Si estas familiarizado con OOP ([Programación Orientada a Objetos](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Basics#object_basics)) sabrás entonces que esto no es más que un constructor vacío, de la misma forma que:
-
-```
-	 let perrito = newAnimal(); 🐶
-	 let manzana = newFruta();  🍎
+```js
+let xhttp = new XMLHttpRequest();
 ```
 
-1. Muy bien, ya podemos utilizar nuestra variable ‘xhttp’ (en conjunto al callback) como un objeto para acceder y manipular la API. Primero debemos abrir una solicitud (un request) esto lo hacemos con el método ‘[.open()](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/open)’
+- Si estás familiarizado con OOP ([Programación Orientada a Objetos](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Basics#object_basics)) sabrás entonces que esto no es más que un constructor vacío, de la misma forma que:
 
+```js
+let perrito = new Animal(); 🐶
+let manzana = new Fruta();  🍎
 ```
-    xhttp.open('GET', urlApi, true);
+
+5. Muy bien, ya podemos utilizar nuestra variable `xhttp` (en conjunto al callback) como un objeto para acceder y manipular la API. Primero debemos abrir una solicitud (un request) esto lo hacemos con el método ‘[.open()](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/open)’
+
+```js
+xhttp.open('GET', urlApi, true);
 ```
 
-- Ahora bien el primer parámetro es el tipo de solicitud que vamos a realizar, pudo haber sido “POST”, “PUT”, “DELETE”. Pero vamos a utilizar “GET” 😎
-- El segundo parámetro es la url de la API a la cuál le vamos a realizar el request.
-- Último y tercer parámetro recibe un booleano para indicarle si vamos a utilizar asíncronismo o no, tal simple como TRUE o FALSE según el caso.
+- Ahora bien, el primer parámetro es el tipo de solicitud que vamos a realizar, pudo haber sido “POST”, “PUT”, “DELETE”. Pero vamos a utilizar “GET” 😎
+- El segundo parámetro es la URL de la API a la cual le vamos a realizar el request.
+- Último y tercer parámetro recibe un booleano para indicarle si vamos a utilizar asincronismo o no, tal simple como TRUE o FALSE según el caso.
 
----
+6. Vamos a hacer una función anónima para verificar que el request de los datos ha salido con éxito y en caso de un tener error hacer registro de este. Para ello nos vamos a apoyar de la propiedad de ‘[.onreadystatechange](https://www.w3schools.com/xml/ajax_xmlhttprequest_response.asp)’ esta llamará a la función cada que el [readyState](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/readyState) cambie (readyState retorna el número del estado en dónde se encuentra el request)
 
-> Todo bien hasta aquí ¿cierto?, toma un pequeño descanso para repasar todo lo que has aprendido, que lo siguiente es un poquito más complejo.
-
----
-
-|
-
-1. Vamos a hacer una función anónima para verificar que el request de los datos ha salido con éxito y en caso de un tener error hacer registro de éste. Para ello nos vamos a apoyar de la propiedad de ‘[.onreadystatechange](https://www.w3schools.com/xml/ajax_xmlhttprequest_response.asp)’ ésta llamará a la función cada que el [readyState](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/readyState) cambie (readyState retorna el número del estado en dónde se encuentra el request)
-
-```
+```js
 xhttp.onreadystatechange = function(e){
 }
 ```
 
-- Ahora bien el ciclo de vida del readyState es el siguiente:  
+- Ahora bien, el ciclo de vida del `readyState` es el siguiente:  
     ![readyState](https://i.imgur.com/tds60G9.png)  
-    Entonces debemos parar en ‘4’ cuando la operacion ha sido completada
+    Entonces debemos parar en ‘4’ cuando la operación ha sido completada
 
-```
-	if (xhttp.readyState === 4) {
+```js
+if (xhttp.readyState === 4) {
 } ✅
 ```
 
-- Una vez completado con éxito necesitamos saber que tipo de respuesta nos entregó el servidor, así que volvemos a verificar con un ’ if ’ la propiedad ‘[.status](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/status)’ según el tipo de respuestas:  
+- Una vez completado con éxito necesitamos saber qué tipo de respuesta nos entregó el servidor, así que volvemos a verificar con un if la propiedad ‘[.status](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/status)’ según el tipo de respuestas:  
     ![](https://i.imgur.com/4opBaJk.png)  
     Entonces el if nos queda de la siguiente manera:
 
-```
+```js
 if (xhttp.readyState === 4) {
 	if (xhttp.status === 200) {
 	} ✅
 } ✅
 ```
 
-- ¡Ya comprobamos que tanto el request como el response hayan sido exitosos! Ahora podemos invocar nuestro callback (función por definir más tarde para manipular los datos)
+- ¡Ya comprobamos que tanto el request como él response hayan sido exitosos! Ahora podemos invocar nuestro callback (función por definir más tarde para manipular los datos)
 
-```
+```js
 if(xhttp.readyState === 4) {
 	if(xhttp.status === 200) {
 		callback(null, JSON.parse(xhttp.responseText));
@@ -604,14 +589,14 @@ if(xhttp.readyState === 4) {
 } ✅
 ```
 
-¿Y por qué tiene tantos parámetros el callback si aún nisquiera lo hemos definido? 🤔 Mira te explico:
+¿Y por qué tiene tantos parámetros el callback si aún ni siquiera lo hemos definido? 🤔 Mira te explico:
 
 - El primero vamos a utilizarlo en caso de que se presente un error, pero como ya hemos verificado eso podemos simplemente dejarlo como un ‘null’.
 - En el segundo usamos la función ‘[JSON.parse()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse)’ para convertir en datos que podamos controlar el texto que nos retorna la propiedad ‘[.responseText](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/responseText)’ después de hacer el request.
 
-Listo🥳, dejamos preparado nuestro callback sin errores y con la información “traducida” para cualquier momento en el que necesitemos usarla. Pero (sep, siempre hay un ‘pero’) ¿Y si el request no es exitoso?¿Qué va a pasar con nuestra función?😔
+Listo🥳, dejamos preparado nuestro callback sin errores y con la información “traducida” para cualquier momento en el que necesitemos usarla. Pero ¿Y si el request no es exitoso? ¿Qué va a pasar con nuestra función?😔
 
-- Hay que regresarnos al primer if y utilizar la estructura de else para que en caso de haber un error registrarlo y enviarlo al callback (donde antes habiamos puesto ‘null’) y ahora pasar el null en la parte de los datos, ya que nunca pudo consultarlos.
+- Hay que regresarnos al primer if y utilizar la estructura de else para que en caso de haber un error registrarlo y enviarlo al callback (donde antes habíamos puesto ‘null’) y ahora pasar el null en la parte de los datos, ya que nunca pudo consultarlos.
 
 ```js
 if (xhttp.readyState === 4) {
@@ -624,20 +609,14 @@ if (xhttp.readyState === 4) {
 }
 ```
 
-1. 🏆 ¡¡ Acabamos la función !! 🏆  
+7. 🏆 ¡¡Acabamos la función!! 🏆  
     Ya solo resta utilizar el método ‘[.send()](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/send)’ después de procesar los datos para enviar el request al server (API)
 
-```
+```js
 xhttp.send();
 ```
 
----
-
-### Cualquier feedback es bien recibido para complementar mis conocimientos y el de cualquiera que lea esto.
-
----
-
-<h5>⚠️(BONUS)⚠️</h5>
+### ⚠️(BONUS)⚠️
 
 Para no usar “Magic numbers” se pueden declarar los estados a verificar como constantes, les dejo mi código completo
 
@@ -655,7 +634,7 @@ functionfetchData(urlApi, callback) {
         if (xhttp.readyState === DONE && xhttp.status === OK) {
             callback(null, JSON.parse(xhttp.responseText));
         } else {
-            const error = newError('error' + urlApi);
+            const error = new Error('error' + urlApi);
             return callback(error, null);
         }
     }
