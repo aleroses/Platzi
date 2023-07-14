@@ -12,3 +12,4 @@
 *.zip
 *.vscode
 *.obsidian
+/node_modules/
