@@ -1710,7 +1710,36 @@ Entonces, digamos que quiero agregar una imagen justo en el centro de mi blogpos
 Vemos los cambios
 
 
-✨ Buscar inspiración en otros proyectos         
+### Ignora carpetas 
+
+La forma básica de excluir una carpeta es la siguiente: 
+
+```
+/my_folder/
+```
+
+Para excluir una carpeta específica que se encuentra en diferentes ubicaciones dentro de un repositorio de Git, puede utilizar el siguiente patrón.
+
+```
+**/my_folder/
+```
+
+El doble asterisco `**` indica que la coincidencia se realizará en cualquier subdirectorio del repositorio. El `/` al final de la línea asegura que solo se excluya la carpeta `my_folder` y no los archivos que puedan tener el mismo nombre.
+
+También puedes hacer lo siguiente: 
+
+```
+**/{my_folder, another_folder}/
+```
+
+Esta línea excluye tanto la carpeta `my_folder` como la carpeta `another_folder` en cualquier subdirectorio del repositorio.
+
+📌 Nota: Al momento de crear un repositorio remoto en GitHub puedes especificar que quieres que se añada un archivo `.gitignore template: **Node**`, este tendrá los archivos que más comúnmente se deben ignorar como la carpeta `node_modules` la cual puede llegar a ser muy pesada:
+
+![](https://i.postimg.cc/jS3rgkV4/gitignore.png)
+
+
+### ✨ Buscar inspiración en otros proyectos         
 - Ver archivo .gitignore
 	- laravel/laravel
 	- Vuejs/vue
