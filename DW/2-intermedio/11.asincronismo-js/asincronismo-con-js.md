@@ -472,15 +472,14 @@ npm i xmlhttprequest
 `challenge.js`  
 ```js
 // Llamado al XmlHttpRequest
-const XMLHttppRequest = requiere('xmlhttprquest'); 
-const XMLHttppRequest = require('xmlhttprequest').XMLHttpRequest;
+const XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
 // API en mayúscula porque es una referencia que no va a cambiar
 const API = 'https://api.escuelajs.co/api/v1'; 
 
 // urlApi: no confundir y colocar API
-functionfetchData(urlApi, callback){ 
+function fetchData(urlApi, callback){ 
 	// Referencia a new XMLHttpRequest
-	let xhttp = new XMLHttppRequest(); 
+	let xhttp = new XMLHttpRequest(); 
 
 	// Petición "obtener" con true para habilitarlo
 	xhttp.open('GET', urlApi, true); 
@@ -492,13 +491,13 @@ functionfetchData(urlApi, callback){
 			if(xhttp.status === 200 ){ 
 				// Dentro de xhttp.responseTex recibimos lo que entrega el servidor en texto y se hace la transformación en JSON
 				callback(null, JSON.parse(xhttp.responseText)); 
+			} else {
+				const error = new Error('Error ' + urlApi);
+				// Es null porque no se está regresando ningún dato
+				return callback(error,null); 
 			}
-		} else {
-			const error = newError('Error' + urlApi);
-			// Es null porque no se está regresando ningún dato
-			return callback(error,null); 
-		}
-		}
+		} 
+	}
 	xhttp.send();
 }
 ```
@@ -642,7 +641,34 @@ functionfetchData(urlApi, callback) {
 }
 ```
 
+### Otra explicación 
 
+```js
+const XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest; // Se importa el módulo xmlhttprequest y se crea una instancia de la clase XMLHttpRequest
+const API = 'https://api.escuelajs.co/api/v1'; // Se define la URL base de la API
+
+function fetchData(urlApi, callback) { // Se define la función fetchData que recibe una URL y una función de callback como parámetros
+  let xhttp = new XMLHttpRequest(); // Se crea una instancia de la clase XMLHttpRequest
+
+  xhttp.open('GET', urlApi, true); // Se establece la solicitud HTTP GET con la URL proporcionada como primer parámetro
+  xhttp.onreadystatechange = function (event) { // Se define una función de callback que se ejecuta cuando cambia el estado de la solicitud
+    if (xhttp.readyState === 4) { // Si el estado de la solicitud es 4, significa que se ha completado la solicitud
+      if (xhttp.status === 200) { // Si el código de estado HTTP es 200, significa que la solicitud se ha completado con éxito
+        callback(null, JSON.parse(xhttp.responseText)); // Se llama a la función de callback con el primer parámetro null y con los datos de respuesta parseados como JSON
+      } else { // Si el código de estado HTTP no es 200, significa que ha ocurrido un error
+        const error = new Error('Error en ' + urlApi); // Se crea una instancia de la clase Error con el mensaje de error personalizado
+        callback(error, null); // Se llama a la función de callback con el primer parámetro de error y el segundo parámetro como null
+      }
+    }
+  }
+
+  xhttp.send(); // Se envía la solicitud HTTP
+}
+```
+
+En resumen, la función `fetchData` utiliza la clase `XMLHttpRequest` para realizar una solicitud HTTP GET a una URL proporcionada como parámetro. Si la solicitud se completa con éxito, se llama a la función de callback con los datos de respuesta parseados como JSON. Si la solicitud falla, se llama a la función de callback con un objeto de error personalizado.
+
+Es importante destacar que esta implementación de `fetchData` es asíncrona, lo que significa que no bloquea la ejecución del programa mientras se realiza la solicitud HTTP. En su lugar, la función de callback se llama después de que se complete la solicitud, lo que permite que el programa continúe su ejecución normalmente mientras se espera la respuesta de la API.
 
 
 _La nueva forma de hacer peticiones a una API es el_[fetch](https://developer.mozilla.org/es/docs/Web/API/Fetch_API).
