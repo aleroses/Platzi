@@ -696,8 +696,8 @@ Es importante destacar que esta implementación de `fetchData` es asíncrona, lo
 _La nueva forma de hacer peticiones a una API es el_[fetch](https://developer.mozilla.org/es/docs/Web/API/Fetch_API).
 
 
-[Métodos y Propiedades del objeto XMLHttpRequest](http://dis.um.es/~lopezquesada/documentos/IES_1314/IAW/curso/UT7/libroswebajax/www.librosweb.es/ajax/capitulo7/metodos_y_propiedades_del_objeto_xmlhttprequest.html)
-[Fakeapi](https://fakeapi.platzi.com/)
+- [Métodos y Propiedades del objeto XMLHttpRequest](http://dis.um.es/~lopezquesada/documentos/IES_1314/IAW/curso/UT7/libroswebajax/www.librosweb.es/ajax/capitulo7/metodos_y_propiedades_del_objeto_xmlhttprequest.html)
+- [Fakeapi](https://fakeapi.platzi.com/)
 
 
 ## 9. Fetch data
@@ -713,6 +713,7 @@ function fetchData(urlApi, callback) {
 	xhttp.onreadystatechange = function (event) {
 		if (xhttp.readyState === 4) {
 			if (xhttp.status == 200) {
+				// Puedes quitarle el JSON.parse para ver como viene toda la información (DOMString cadena de caracteres)
 				callback(null, JSON.parse(xhttp.responseText));
 			} else {
 				const error = new Error('Error en ', urlApi);
@@ -725,8 +726,8 @@ function fetchData(urlApi, callback) {
 }
 
 
-// Template strings
-fetchData(`${API}/products`, function (error1, data1) {
+// Template strings y Optional chaining '?.'
+fetchData(`${API}/products`, function (error1, data1) { 👈👀
 	if (error1) return console.error(error1);
 
 	fetchData(`${API}/products/${data1[0].id}`, function (error2, data2) {
@@ -742,79 +743,63 @@ fetchData(`${API}/products`, function (error1, data1) {
 	});
 });
 
-
 // Obtenemos: 
 {
-  id: 113,
-  title: 'Ergonomic Concrete Keyboard',
-  price: 436,
-  description: 'Ergonomic executive chair upholstered in bonded black leather and PVC padded seat and back for all-day comfort and support',
+  id: 2,
+  title: 'Oriental Bronze Car',
+  price: 342,
+  description: "Boston's most advanced compression wear technology increases muscle oxygenation, stabilizes active muscles",
   images: [
-    'https://picsum.photos/640/640?r=4730',
-    'https://picsum.photos/640/640?r=1506',
-    'https://picsum.photos/640/640?r=957'
+    'https://picsum.photos/640/640?r=2863',
+    'https://picsum.photos/640/640?r=4222',
+    'https://picsum.photos/640/640?r=3311'
   ],
-  creationAt: '2023-07-15T05:13:53.000Z',
-  updatedAt: '2023-07-15T05:13:53.000Z',
+  creationAt: '2023-07-16T06:10:35.000Z',
+  updatedAt: '2023-07-16T06:10:35.000Z',
   category: {
-    id: 5,
-    name: 'Others',
-    image: 'https://picsum.photos/640/640?r=7736',
-    creationAt: '2023-07-15T05:13:53.000Z',
-    updatedAt: '2023-07-15T05:13:53.000Z'
+    id: 3,
+    name: 'Furniture',
+    image: 'https://picsum.photos/640/640?r=2068',
+    creationAt: '2023-07-16T06:10:35.000Z',
+    updatedAt: '2023-07-16T06:10:35.000Z'
   }
 }
-Ergonomic Concrete Keyboard
-Others
+Oriental Bronze Car
+Furniture
 ```
 
-- Para evitar la mala práctica de un **Call Hell**, no es recomendable exceder de 3 _callback_, para ello se utilizan _las promesas o el Async Away_.  
-
-- Existen varios tipos de console, dependiendo del navegador, la fuente o el color cambian de acuerdo al tipo (fuente: [aquí](https://developer.mozilla.org/es/docs/Web/API/Console)):
+✨ Esta es otra forma de hacer lo mismo pero mas sencilla de entender. 
 
 ```js
-console.info("info"); //muestra un mensaje de información en la consola web
-console.error("error"); //muestra mensaje de un error
-console.warn("warn"); //muestra mensaje de advertencia
-console.log("log"); //para mensajes generales de registro de información
+fetchData(`${API}/products`, function (error, all) {
+    if (error) return console.log(error);
 
+    const product = all[0];
+
+	/*console.log(all);*/ 👈👀// Muestra un array de objetos
+    console.log(product)
+    console.log(product.title)
+    console.log(product.category.name)
+})
 ```
 
-**Siguiendo con el proyecto:**  
+### Explicación de la invocación de FetchData:  
 
 En el archivo **challenge.js** se agrega el siguiente código:
 
-```js
-fetchData(`${API}/products`, function (error1, data1) {
-    if (error1) returnconsole.error(error1); //si hay error, devuelve el error
-    fetchData (`${API}/products/${data1[0].id}`, function(error2, data2){
-        if(error2) returnconsole.error(error2); //valida el error 2
-        //se usa Optional chaining '?.' que es una forma segura de acceder a las propiedades de los objetos anidados, incluso si no existe una propiedad intermedia:
-        fetchData(`${API}/categories/${data2?.category?.id}`, function(error3, data3){
-            if(error3) returnconsole.error(error3);
-            //evitar el callback hell
-            console.log(data1[0]);
-            console.log(data2.title);
-            console.log(data3.name);
-        });
-    });
-});
-```
-
-Mas info:  
 ```js
 const XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 const API = "https://api.escuelajs.co/api/v1";
 
 //funcion principal que obtendrá la informacion del producto como un objeto
 functionfetchData(urlApi, callback) {
-    //inicializar un objeto de tipo XMLHttpRequest
+    //instanciar un objeto de tipo XMLHttpRequest
     let xhttp = new XMLHttpRequest();
-    //El metodo .open realiza la petición de apertura de comunicación, el metodo puede ser 'GET' o 'POST', luego se envia la URL, si es asincrono (true o false), usuario y contraseña. En esta caso solo se utiliza el metodo, la url y async
+    //El método .open realiza la petición de apertura de comunicación, el metodo puede ser 'GET' o 'POST', luego se envia la URL, si es asincrono (true o false), usuario y contraseña. En esta caso solo se utiliza el método, la url y async
     xhttp.open('GET', urlApi, true);
-    //en este metodo Almacena el nombre de la función que se ejecutará cuando el objeto XMLHttpRequest cambie de estado
+    //en este método Almacena el nombre de la función que se ejecutará cuando el objeto XMLHttpRequest cambie de estado
     xhttp.onreadystatechange = function (event) {
-        //el atributo readyState define el estado del objeto XMLHttpRequest
+        //la propiedad readyState define el estado del objeto XMLHttpRequest
         //0 No inicializado
         //1 Loading
         //2 ejecutado
@@ -823,7 +808,7 @@ functionfetchData(urlApi, callback) {
         if (xhttp.readyState === 4) {
             //si la respuesta de la API es exitosa (200 Ok)
             if (xhttp.status === 200) {
-                //se ejecuta el callback recibiendo como argumentos un objeto, como la respuesta de la API es un texto plano, el metodo JSON.parse tranformará este texto en un objeto.
+                //se ejecuta el callback recibiendo como argumentos un array de objetos, como la respuesta de la API es un texto plano, el metodo JSON.parse tranformará este texto en un objeto.
                 //El atributo devuelve un DOMString que contiene la  respuesta a la consulta como un texto o null si la consulta no tuvo exito o aun no ha sido completada.
                 callback(null, JSON.parse(xhttp.responseText));
                 //si la respuesta de la API no es exitosa se captura el error
@@ -839,7 +824,7 @@ functionfetchData(urlApi, callback) {
   xhttp.send();
 }
 
-//se invoca el metodo fetchData() pasandole como argumentos la varible API concatenada con la cadena 'products' para acceder a la URL de la API deseada, y una función anónima que recibe 2 parámetros (un objeto de error y un arreglo que almacena todos los objetos traidos por la API).
+//se invoca el método fetchData() pasandole como argumentos la varible API concatenada con la cadena 'products' para acceder a la URL de la API deseada que contiene un array con objetos, y una función anónima que recibe 2 parámetros (un objeto de error y un arreglo que almacena todos los objetos traidos por la API).
 fetchData(`${API}/products`, function (error1, data1) {
     //se valida si existe un error, en caso de que exista se detiene el proceso y se imprime el error
     if (error1) returnconsole.error(error1);
@@ -864,35 +849,89 @@ fetchData(`${API}/products`, function (error1, data1) {
 });
 ```
 
-Existen 5 categorias de producto:
+📌 DOMString: En el lenguaje de programación JavaScript, un atributo de tipo `DOMString` representa una cadena de caracteres que se utiliza para representar texto o valores de cadena en el Document Object Model (DOM).
 
-- ‘nuevo’
-- ‘Electronics’
-- ‘Furniture’
-- ‘Shoes’
-- ‘Others’
+El DOM es una representación en memoria de un documento HTML o XML que permite a los desarrolladores acceder y manipular los elementos de la página web de manera programática utilizando JavaScript. Cuando se manipulan elementos del DOM con JavaScript, los valores de los atributos se representan como `DOMString`.
 
-.  
-La llamada a la API para obtener la categoria, no obtiene la categoria asociada al producto, obtiene el primer tipo de categoria (‘nuevo’). Esto debido a como esta construida la API.  
-.  
-Tambien mencionar que para obtener la información no era necesario hacer tantos callbacks, solo con este bloque se podia obtener lo mismo y la categoria real asociada al producto
 
-```
-fetchData(`${API}/products`, function (error, all) {
-    if (error) return console.log(error);
+### Optional chaining '?.' 
 
-    const product = all[0];
-    
-    console.log(product)
-    console.log(product.title)
-    console.log(product.category.name)
-})
+El operador de encadenamiento opcional `?.` es una característica introducida en ECMAScript 2020 que permite acceder a las propiedades de un objeto sin tener que verificar explícitamente si el objeto y sus propiedades existen. El operador `?.` se utiliza para evitar errores de referencia nula y simplificar el código en situaciones en las que se accede a propiedades anidadas de un objeto.
+
+Antes de la introducción del operador de encadenamiento opcional, la forma común de acceder a las propiedades de un objeto anidado era verificar explícitamente si cada propiedad existía utilizando el operador `&&`:
+
+```js
+if (obj && obj.prop1 && obj.prop1.prop2) {
+  // hacer algo con obj.prop1.prop2
+}
 ```
 
-Aunque claro que todo se hizo para illustrar un poco el callback hell y llamadas que podian ser dependientes (o eso creo).  
-.  
-Ademas tambien en el manejo de errores, al no ser tan personalizado pues no veo necesario declararlos explicitamente, ya que la misma consola nos los arroja.  
-.  
-Yo tambien apenas estoy aprendiendo del tema, asi que cualquier cosa que vean que me equivoco, agradeceria su retroalimentación.
+Con el operador de encadenamiento opcional, podemos simplificar este código de la siguiente manera:
 
-[Optional Chaining](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Optional_chaining)
+```js
+if (obj?.prop1?.prop2) {
+  // hacer algo con obj.prop1.prop2
+}
+```
+
+En este ejemplo, el operador `?.` se utiliza para verificar si el objeto `obj` existe antes de acceder a sus propiedades `prop1` y `prop2`. Si alguna de las propiedades no existe o es nullish (`null` o `undefined`), se devuelve `undefined` en lugar de lanzar una excepción de referencia nula.
+
+El operador de encadenamiento opcional también se puede utilizar para llamar a métodos en objetos anidados:
+
+```js
+obj?.method1?.();
+```
+
+En este ejemplo, el operador `?.` se utiliza para llamar al método `method1` en el objeto `obj` solo si existe.
+
+En resumen, el operador de encadenamiento opcional `?.` es una característica útil de ECMAScript 2020 que simplifica el acceso a las propiedades de un objeto anidado y ayuda a evitar errores de referencia nula en el código.
+
+### Callback hell
+
+"Callback hell" (o "infierno de los callbacks") es un término que se utiliza en JavaScript para describir una situación en la que se anidan múltiples funciones de devolución de llamada (callbacks) dentro de otras funciones de devolución de llamada, lo que puede dificultar la legibilidad y el mantenimiento del código.
+
+En JavaScript, las funciones de devolución de llamada se utilizan comúnmente para realizar tareas asincrónicas, como realizar solicitudes HTTP o leer archivos. Cuando se anidan varias funciones de devolución de llamada, el código puede volverse difícil de leer y mantener debido a la cantidad de anidamiento y la necesidad de realizar un seguimiento de varias variables y estados.
+
+Por ejemplo, un ejemplo de "callback hell" podría ser el siguiente:
+
+```js
+asyncOperation1(function(result1) {
+  asyncOperation2(result1, function(result2) {
+    asyncOperation3(result2, function(result3) {
+      asyncOperation4(result3, function(result4) {
+        // Hacer algo con los resultados
+      });
+    });
+  });
+});
+```
+
+En este ejemplo, cada función de devolución de llamada anida otra función de devolución de llamada, lo que puede hacer que el código sea difícil de leer y seguir. Para evitar el callback hell, se pueden utilizar técnicas como las promesas o async/await para manejar de forma más clara y legible el flujo de control asíncrono en el código JavaScript.
+
+📌 Nota: Para evitar la mala práctica de un **Call Hell**, no es recomendable exceder de 3 _callback_, para ello se utilizan _las promesas o el Async Away_.  
+
+### Console
+
+JavaScript tiene una variedad de métodos de consola que se utilizan para imprimir o mostrar información en la consola del navegador o en el entorno de Node.js.
+
+1. `console.log()`: Se utiliza para imprimir mensajes en la consola del navegador o en el entorno de Node.js. Puedes pasar cualquier tipo de dato a `console.log()` y se imprimirá en la consola.
+
+2. `console.error()`: Este método se utiliza para imprimir mensajes de error en la consola del navegador o en el entorno de Node.js. Los mensajes de error aparecerán en rojo para que sea más fácil identificarlos.
+
+3. `console.warn()`: Este método se utiliza para imprimir mensajes de advertencia en la consola del navegador o en el entorno de Node.js. Los mensajes de advertencia aparecerán en amarillo para que sea más fácil identificarlos.
+
+4. `console.info()`: Este método se utiliza para imprimir mensajes informativos en la consola del navegador o en el entorno de Node.js. Los mensajes informativos aparecerán en azul para que sea más fácil identificarlos.
+
+5. `console.clear()`: Este método se utiliza para borrar la consola del navegador o en el entorno de Node.js para eliminar cualquier mensaje previo.
+
+6. `console.table()`: Este método se utiliza para imprimir datos en forma de tabla en la consola del navegador o en el entorno de Node.js. Se puede utilizar con matrices y objetos para visualizar los datos de una manera más legible.
+
+7. `console.group() / console.groupEnd()`: Estos métodos se utilizan para agrupar mensajes de consola relacionados para que sea más fácil de leer. `console.group()` se utiliza para comenzar un grupo y `console.groupEnd()` se utiliza para finalizar el grupo.
+
+8. `console.time() / console.timeEnd()`: Estos métodos se utilizan para medir el tiempo transcurrido entre dos puntos en el código. `console.time()` se utiliza para comenzar el temporizador y `console.timeEnd()` se utiliza para detener el temporizador y mostrar el tiempo transcurrido en la consola.
+
+Estos son solo algunos de los métodos más comunes de consola en JavaScript, pero hay muchos más disponibles. Cada uno puede ser útil en diferentes situaciones para ayudarte a depurar y realizar un seguimiento del código.
+
+
+- [Documentación](https://developer.mozilla.org/es/docs/Web/API/Console)
+- [Optional Chaining](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Optional_chaining)
