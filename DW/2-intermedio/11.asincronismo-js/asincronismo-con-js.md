@@ -498,6 +498,7 @@ function fetchData(urlApi, callback){
 			}
 		} 
 	}
+	// Realizamos la petición
 	xhttp.send();
 }
 ```
@@ -559,8 +560,16 @@ xhttp.onreadystatechange = function(e){
 ```
 
 - Ahora bien, el ciclo de vida del `readyState` es el siguiente:  
-    ![readyState](https://i.imgur.com/tds60G9.png)  
-    Entonces debemos parar en ‘4’ cuando la operación ha sido completada
+    
+|Value|State|Description|
+|---|---|---|
+|`0`|`UNSENT`|Client has been created. `open()` not called yet.|
+|`1`|`OPENED`|`open()` has been called.|
+|`2`|`HEADERS_RECEIVED`|`send()` has been called, and headers and status are available.|
+|`3`|`LOADING`|Downloading; `responseText` holds partial data.|
+|`4`|`DONE`|The operation is complete.|
+    
+    Entonces debemos parar en `4` cuando la operación ha sido completada
 
 ```js
 if (xhttp.readyState === 4) {
@@ -620,7 +629,7 @@ xhttp.send();
 Para no usar “Magic numbers” se pueden declarar los estados a verificar como constantes, les dejo mi código completo
 
 ```js
-const XMLHttpRequest = require('XMLHttpRequest');
+const XMLHttpRequest = require('XMLHttpRequest').XMLHttpRequest;
 const API = 'https://api.escuelajs.co/api/v1/products';
 const DONE = 4;
 const OK = 200;
@@ -644,25 +653,38 @@ functionfetchData(urlApi, callback) {
 ### Otra explicación 
 
 ```js
-const XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest; // Se importa el módulo xmlhttprequest y se crea una instancia de la clase XMLHttpRequest
-const API = 'https://api.escuelajs.co/api/v1'; // Se define la URL base de la API
+// Se importa el módulo xmlhttprequest y se crea una instancia de la clase XMLHttpRequest
+const XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest; 
+// Se define la URL base de la API
+const API = 'https://api.escuelajs.co/api/v1'; 
 
-function fetchData(urlApi, callback) { // Se define la función fetchData que recibe una URL y una función de callback como parámetros
-  let xhttp = new XMLHttpRequest(); // Se crea una instancia de la clase XMLHttpRequest
+// Se define la función fetchData que recibe una URL y una función de callback como parámetros
+function fetchData(urlApi, callback) { 
+// Se crea una instancia de la clase XMLHttpRequest
+  let xhttp = new XMLHttpRequest(); 
 
-  xhttp.open('GET', urlApi, true); // Se establece la solicitud HTTP GET con la URL proporcionada como primer parámetro
-  xhttp.onreadystatechange = function (event) { // Se define una función de callback que se ejecuta cuando cambia el estado de la solicitud
-    if (xhttp.readyState === 4) { // Si el estado de la solicitud es 4, significa que se ha completado la solicitud
-      if (xhttp.status === 200) { // Si el código de estado HTTP es 200, significa que la solicitud se ha completado con éxito
-        callback(null, JSON.parse(xhttp.responseText)); // Se llama a la función de callback con el primer parámetro null y con los datos de respuesta parseados como JSON
-      } else { // Si el código de estado HTTP no es 200, significa que ha ocurrido un error
-        const error = new Error('Error en ' + urlApi); // Se crea una instancia de la clase Error con el mensaje de error personalizado
-        callback(error, null); // Se llama a la función de callback con el primer parámetro de error y el segundo parámetro como null
+// Se establece la solicitud HTTP GET con la URL proporcionada como primer parámetro
+  xhttp.open('GET', urlApi, true);
+// Se define una función de callback que se ejecuta cuando cambia el estado de la solicitud 
+  xhttp.onreadystatechange = function (event) { 
+// Si el estado de la solicitud es 4, significa que se ha completado la solicitud  
+    if (xhttp.readyState === 4) { 
+// Si el código de estado HTTP es 200, significa que la solicitud se ha completado con éxito
+      if (xhttp.status === 200) { 
+// Se llama a la función de callback con el primer parámetro null y con los datos de respuesta parseados como JSON
+        callback(null, JSON.parse(xhttp.responseText)); 
+// Si el código de estado HTTP no es 200, significa que ha ocurrido un error
+      } else { 
+// Se crea una instancia de la clase Error con el mensaje de error personalizado
+        const error = new Error('Error en ' + urlApi);
+// Se llama a la función de callback con el primer parámetro de error y el segundo parámetro como null 
+        callback(error, null); 
       }
     }
   }
 
-  xhttp.send(); // Se envía la solicitud HTTP
+// Se envía y realiza la solicitud HTTP
+  xhttp.send(); 
 }
 ```
 
@@ -674,7 +696,203 @@ Es importante destacar que esta implementación de `fetchData` es asíncrona, lo
 _La nueva forma de hacer peticiones a una API es el_[fetch](https://developer.mozilla.org/es/docs/Web/API/Fetch_API).
 
 
-
-
 [Métodos y Propiedades del objeto XMLHttpRequest](http://dis.um.es/~lopezquesada/documentos/IES_1314/IAW/curso/UT7/libroswebajax/www.librosweb.es/ajax/capitulo7/metodos_y_propiedades_del_objeto_xmlhttprequest.html)
 [Fakeapi](https://fakeapi.platzi.com/)
+
+
+## 9. Fetch data
+
+```js
+const XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
+const API = 'https://api.escuelajs.co/api/v1';
+
+function fetchData(urlApi, callback) {
+	let xhttp = new XMLHttpRequest();
+
+	xhttp.open('GET', urlApi, true);
+	xhttp.onreadystatechange = function (event) {
+		if (xhttp.readyState === 4) {
+			if (xhttp.status == 200) {
+				callback(null, JSON.parse(xhttp.responseText));
+			} else {
+				const error = new Error('Error en ', urlApi);
+				callback(error, null);
+			}
+		}
+	}
+
+	xhttp.send();
+}
+
+
+// Template strings
+fetchData(`${API}/products`, function (error1, data1) {
+	if (error1) return console.error(error1);
+
+	fetchData(`${API}/products/${data1[0].id}`, function (error2, data2) {
+		if (error2) return console.error(error2);
+		
+		fetchData(`${API}/categories/${data2?.category?.id}`, function (error3, data3) {
+			if (error3) return console.error(error3);
+			
+			console.log(data1[0]);
+			console.log(data2.title);
+			console.log(data3.name);
+		});
+	});
+});
+
+
+// Obtenemos: 
+{
+  id: 113,
+  title: 'Ergonomic Concrete Keyboard',
+  price: 436,
+  description: 'Ergonomic executive chair upholstered in bonded black leather and PVC padded seat and back for all-day comfort and support',
+  images: [
+    'https://picsum.photos/640/640?r=4730',
+    'https://picsum.photos/640/640?r=1506',
+    'https://picsum.photos/640/640?r=957'
+  ],
+  creationAt: '2023-07-15T05:13:53.000Z',
+  updatedAt: '2023-07-15T05:13:53.000Z',
+  category: {
+    id: 5,
+    name: 'Others',
+    image: 'https://picsum.photos/640/640?r=7736',
+    creationAt: '2023-07-15T05:13:53.000Z',
+    updatedAt: '2023-07-15T05:13:53.000Z'
+  }
+}
+Ergonomic Concrete Keyboard
+Others
+```
+
+- Para evitar la mala práctica de un **Call Hell**, no es recomendable exceder de 3 _callback_, para ello se utilizan _las promesas o el Async Away_.  
+
+- Existen varios tipos de console, dependiendo del navegador, la fuente o el color cambian de acuerdo al tipo (fuente: [aquí](https://developer.mozilla.org/es/docs/Web/API/Console)):
+
+```js
+console.info("info"); //muestra un mensaje de información en la consola web
+console.error("error"); //muestra mensaje de un error
+console.warn("warn"); //muestra mensaje de advertencia
+console.log("log"); //para mensajes generales de registro de información
+
+```
+
+**Siguiendo con el proyecto:**  
+
+En el archivo **challenge.js** se agrega el siguiente código:
+
+```js
+fetchData(`${API}/products`, function (error1, data1) {
+    if (error1) returnconsole.error(error1); //si hay error, devuelve el error
+    fetchData (`${API}/products/${data1[0].id}`, function(error2, data2){
+        if(error2) returnconsole.error(error2); //valida el error 2
+        //se usa Optional chaining '?.' que es una forma segura de acceder a las propiedades de los objetos anidados, incluso si no existe una propiedad intermedia:
+        fetchData(`${API}/categories/${data2?.category?.id}`, function(error3, data3){
+            if(error3) returnconsole.error(error3);
+            //evitar el callback hell
+            console.log(data1[0]);
+            console.log(data2.title);
+            console.log(data3.name);
+        });
+    });
+});
+```
+
+Mas info:  
+```js
+const XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
+const API = "https://api.escuelajs.co/api/v1";
+
+//funcion principal que obtendrá la informacion del producto como un objeto
+functionfetchData(urlApi, callback) {
+    //inicializar un objeto de tipo XMLHttpRequest
+    let xhttp = new XMLHttpRequest();
+    //El metodo .open realiza la petición de apertura de comunicación, el metodo puede ser 'GET' o 'POST', luego se envia la URL, si es asincrono (true o false), usuario y contraseña. En esta caso solo se utiliza el metodo, la url y async
+    xhttp.open('GET', urlApi, true);
+    //en este metodo Almacena el nombre de la función que se ejecutará cuando el objeto XMLHttpRequest cambie de estado
+    xhttp.onreadystatechange = function (event) {
+        //el atributo readyState define el estado del objeto XMLHttpRequest
+        //0 No inicializado
+        //1 Loading
+        //2 ejecutado
+        //3 interactuando
+        //4 completado
+        if (xhttp.readyState === 4) {
+            //si la respuesta de la API es exitosa (200 Ok)
+            if (xhttp.status === 200) {
+                //se ejecuta el callback recibiendo como argumentos un objeto, como la respuesta de la API es un texto plano, el metodo JSON.parse tranformará este texto en un objeto.
+                //El atributo devuelve un DOMString que contiene la  respuesta a la consulta como un texto o null si la consulta no tuvo exito o aun no ha sido completada.
+                callback(null, JSON.parse(xhttp.responseText));
+                //si la respuesta de la API no es exitosa se captura el error
+            } else {
+                //se inicializa un objeto de tipo Error donde se le envian como argumentos un mensaje de error y la URL de la API para conocer en dónde se produjo el error
+                const error = newError("Error" + urlApi);
+                //se ejecuta el callback recibiendo como argumentos el error y null debido a que no se pudo obtener el objeto
+                return callback(error, null);
+            }
+        }
+    //el método .send() envia la petición al servidor
+  }
+  xhttp.send();
+}
+
+//se invoca el metodo fetchData() pasandole como argumentos la varible API concatenada con la cadena 'products' para acceder a la URL de la API deseada, y una función anónima que recibe 2 parámetros (un objeto de error y un arreglo que almacena todos los objetos traidos por la API).
+fetchData(`${API}/products`, function (error1, data1) {
+    //se valida si existe un error, en caso de que exista se detiene el proceso y se imprime el error
+    if (error1) returnconsole.error(error1);
+    //se invoca nuevamente la función fetchData con el fin de acceder a un objeto puntual del arreglo data1, se envia como parámetros la url de la API apuntando al atributo del primer objeto de arreglo data1 y nuevamente una función anónima.
+    fetchData(`${API}/products/${data1[0].id}`, function (error2, data2) {
+        //si en este punto se identifica un error se imprime en consola y se detiene el proceso
+        if (error2) returnconsole.error(error2);
+        //Se invoca nuevamente la funcion fetchData con el fin de acceder a la categoria, se envían como parametros la url de la API con la concatenación de 'Categories' y el atributo Id de categoria del objeto data2 de la función anterior
+        //en este caso puntual se hace uso de Optional Caining el cual hace una evalucación de las propiedades de un objeto y en vez de arrojar un error devuelve undefined en caso que la propiedad no exista o sea null.
+        //igual que las anteriores e envia una funcion anonima con 2 argumentos, un objeto Error y un objeto de datos
+        fetchData(`${API}/categories/${data2?.category?.id}`, function (error3, data3) {
+            //se valida si existe error, en caso de que exista se detiene el proceso y se imprime el error
+            if (error3) returnconsole.error(error3);
+            //Se imprime el objeto en la posición 1 del arreglo de los objetos obtenidos en el metodo invocado inicialmente
+            console.log(data1[0]);
+            //Se imprime el titulo del objeto que se consultó en la seguna invocación de la función
+            console.log(data2.title);
+            //Se imprime el nombre de la categoria a la que pertenece el objeto que se consultó en la seguna invocación del método.
+            console.log(data3.name);
+        });
+  });
+});
+```
+
+Existen 5 categorias de producto:
+
+- ‘nuevo’
+- ‘Electronics’
+- ‘Furniture’
+- ‘Shoes’
+- ‘Others’
+
+.  
+La llamada a la API para obtener la categoria, no obtiene la categoria asociada al producto, obtiene el primer tipo de categoria (‘nuevo’). Esto debido a como esta construida la API.  
+.  
+Tambien mencionar que para obtener la información no era necesario hacer tantos callbacks, solo con este bloque se podia obtener lo mismo y la categoria real asociada al producto
+
+```
+fetchData(`${API}/products`, function (error, all) {
+    if (error) return console.log(error);
+
+    const product = all[0];
+    
+    console.log(product)
+    console.log(product.title)
+    console.log(product.category.name)
+})
+```
+
+Aunque claro que todo se hizo para illustrar un poco el callback hell y llamadas que podian ser dependientes (o eso creo).  
+.  
+Ademas tambien en el manejo de errores, al no ser tan personalizado pues no veo necesario declararlos explicitamente, ya que la misma consola nos los arroja.  
+.  
+Yo tambien apenas estoy aprendiendo del tema, asi que cualquier cosa que vean que me equivoco, agradeceria su retroalimentación.
+
+[Optional Chaining](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Optional_chaining)
