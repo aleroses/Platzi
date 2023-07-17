@@ -768,7 +768,221 @@ Oriental Bronze Car
 Furniture
 ```
 
-✨ Esta es otra forma de hacer lo mismo pero mas sencilla de entender. 
+### ¿Cómo llegamos a ese resultado?
+
+Ya vimos lo que obtenemos como resultado final, pero, ¿Cómo llegamos a ese resultado? 
+
+1. En el primer `fetchData` obtenemos un array enorme con muchos objetos dentro: 
+```js
+fetchData(`${API}/products`, function (error1, data1) {
+	if (error1) return console.error(error1);
+	console.log(data1);
+});
+
+// Obtenemos esto y más:  
+[
+  {
+    id: 2,
+    title: 'Oriental Bronze Car',
+    price: 342,
+    description: "Boston's most advanced compression wear technology increases muscle oxygenation, stabilizes active muscles",
+    images: [
+      'https://picsum.photos/640/640?r=2863',
+      'https://picsum.photos/640/640?r=4222',
+      'https://picsum.photos/640/640?r=3311'
+    ],
+    creationAt: '2023-07-16T06:10:35.000Z',
+    updatedAt: '2023-07-16T06:10:35.000Z',
+    category: {
+      id: 3,
+      name: 'Furniture',
+      image: 'https://picsum.photos/640/640?r=2068',
+      creationAt: '2023-07-16T06:10:35.000Z',
+      updatedAt: '2023-07-16T06:10:35.000Z'
+    }
+  },
+  {
+    id: 4,
+    title: 'Tasty Frozen Table',
+    price: 962,
+    description: 'Andy shoes are designed to keeping in mind durability as well as trends, the most stylish range of shoes & sandals',
+    images: [
+      'https://picsum.photos/640/640?r=7246',
+      'https://picsum.photos/640/640?r=9914',
+      'https://picsum.photos/640/640?r=1496'
+    ],
+    creationAt: '2023-07-16T06:10:35.000Z',
+    updatedAt: '2023-07-16T06:10:35.000Z',
+    category: {
+      id: 4,
+      name: 'Shoes',
+      image: 'https://picsum.photos/640/640?r=260',
+      creationAt: '2023-07-16T06:10:35.000Z',
+      updatedAt: '2023-07-16T06:10:35.000Z'
+    }
+  },
+  ...
+    {
+    id: 102,
+    title: 'Awesome Granite Bacon',
+    price: 1,
+    description: 'New ABC 13 9370, 13.3, 5th Gen CoreA5-8250U, 8GB RAM, 256GB SSD, power UHD Graphics, OS 10 Home, OS Office A & J 2016',
+    images: [
+      'https://picsum.photos/640/640?r=4809',
+      'https://picsum.photos/640/640?r=8923',
+      'https://picsum.photos/640/640?r=8980'
+    ],
+    creationAt: '2023-07-16T06:10:35.000Z',
+    updatedAt: '2023-07-16T06:10:35.000Z',
+    category: {
+      id: 2,
+      name: 'Electronics',
+      image: 'https://picsum.photos/640/640?r=4582',
+      creationAt: '2023-07-16T06:10:35.000Z',
+      updatedAt: '2023-07-16T06:10:35.000Z'
+    }
+  }
+  ... 100 more items
+```
+
+2. En el segundo `fetchData` obtenemos solo el primer objeto y extraemos el `title` usando `console.log(data2.title);`: 
+
+```js
+fetchData(`${API}/products`, function (error1, data1) {
+	if (error1) return console.error(error1);
+	/* console.log(data1); */
+
+	fetchData(`${API}/products/${data1[0].id}`, function(error2, data2){
+		if(error2) return console.error(error2);
+		console.log(data2);
+	});
+});
+
+// Obtenemos el objeto de la posición [0], lo que no logro entender es el porqué le agregan un .id, ya que, sin eso no funciona :v
+{
+  id: 2,
+  title: 'Oriental Bronze Car', 👈👀
+  price: 342,
+  description: "Boston's most advanced compression wear technology increases muscle oxygenation, stabilizes active muscles",
+  images: [
+    'https://picsum.photos/640/640?r=2863',
+    'https://picsum.photos/640/640?r=4222',
+    'https://picsum.photos/640/640?r=3311'
+  ],
+  creationAt: '2023-07-16T06:10:35.000Z',
+  updatedAt: '2023-07-16T06:10:35.000Z',
+  category: {
+    id: 3,
+    name: 'Furniture',
+    image: 'https://picsum.photos/640/640?r=2068',
+    creationAt: '2023-07-16T06:10:35.000Z',
+    updatedAt: '2023-07-16T06:10:35.000Z'
+  }
+}
+```
+3. En el tercer  `fetchData` buscamos a qué categoría pertenece el producto que obtuvimos anteriormente, pero primero veamos las categorías existentes... :  
+
+```js
+fetchData(`${API}/products`, function (error1, data1) {
+	if (error1) return console.error(error1);
+	/* console.log(data1); */
+
+	fetchData(`${API}/products/${data1[0].id}`, function(error2, data2){
+		if(error2) return console.error(error2);
+		/* console.log(data2); */
+
+		fetchData(`${API}/categories/`, function (error3, data3){
+			if(error3) return console.error(error3);
+			console.log(data3);
+		});
+	});
+});
+
+// Obtenemos: 
+[
+  {
+    id: 1,
+    name: 'Clothes',
+    image: 'https://picsum.photos/640/640?r=193',
+    creationAt: '2023-07-16T06:10:35.000Z',
+    updatedAt: '2023-07-16T06:10:35.000Z'
+  },
+  {
+    id: 2,
+    name: 'Electronics',
+    image: 'https://picsum.photos/640/640?r=4582',
+    creationAt: '2023-07-16T06:10:35.000Z',
+    updatedAt: '2023-07-16T06:10:35.000Z'
+  },
+  {
+    id: 3,
+    name: 'Furniture', 👈👀 // Esto es lo que necesitamos
+    image: 'https://picsum.photos/640/640?r=2068',
+    creationAt: '2023-07-16T06:10:35.000Z',
+    updatedAt: '2023-07-16T06:10:35.000Z'
+  },
+  {
+    id: 4,
+    name: 'Shoes',
+    image: 'https://picsum.photos/640/640?r=260',
+    creationAt: '2023-07-16T06:10:35.000Z',
+    updatedAt: '2023-07-16T06:10:35.000Z'
+  },
+  {
+    id: 5,
+    name: 'Others',
+    image: 'https://picsum.photos/640/640?r=5088',
+    creationAt: '2023-07-16T06:10:35.000Z',
+    updatedAt: '2023-07-16T06:10:35.000Z'
+  },
+  {
+    id: 32,
+    name: 'New Category',
+    image: 'https://placeimg.com/640/480/any',
+    creationAt: '2023-07-16T23:28:51.000Z',
+    updatedAt: '2023-07-16T23:28:51.000Z'
+  },
+  {
+    id: 33,
+    name: 'New Category',
+    image: 'https://placeimg.com/640/480/any',
+    creationAt: '2023-07-16T23:31:07.000Z',
+    updatedAt: '2023-07-16T23:31:07.000Z'
+  }
+]
+```
+
+Ahora filtremos la categoría de nuestro producto, para lo cual concatenamos el ID que debe buscar `${API}/categories/${data2?.category?.id}`, con esto a través de los datos del producto obtenidos en `data2` entramos a `producto.categoria.id` que si nos fijamos es igual a `3`. Usando `console.log(data3.name);` podemos tener el nombre de la categoría a la que pertenece nuestro producto: 
+
+```js
+fetchData(`${API}/products`, function (error1, data1) {
+	if (error1) return console.error(error1);
+	/* console.log(data1); */
+
+	fetchData(`${API}/products/${data1[0].id}`, function(error2, data2){
+		if(error2) return console.error(error2);
+		/* console.log(data2); */
+
+		fetchData(`${API}/categories/${data2?.category?.id}`, function (error3, data3){
+			if(error3) return console.error(error3);
+			console.log(data3);
+		});
+	});
+});
+
+// Obtenemos 
+{
+  id: 3,
+  name: 'Furniture',👈👀 // Fin 
+  image: 'https://picsum.photos/640/640?r=2068',
+  creationAt: '2023-07-16T06:10:35.000Z',
+  updatedAt: '2023-07-16T06:10:35.000Z'
+}
+```
+
+### Otra forma
+
+✨ Esta es otra forma de hacer lo mismo, pero más sencilla de entender. 
 
 ```js
 fetchData(`${API}/products`, function (error, all) {
@@ -776,8 +990,8 @@ fetchData(`${API}/products`, function (error, all) {
 
     const product = all[0];
 
-	/*console.log(all);*/ 👈👀// Muestra un array de objetos
-    console.log(product)
+	/* console.log(all); */ //👈👀 Muestra un array de objetos
+	console.log(product);
     console.log(product.title)
     console.log(product.category.name)
 })
