@@ -1149,3 +1149,266 @@ Estos son solo algunos de los métodos más comunes de consola en JavaScript, pe
 
 - [Documentación](https://developer.mozilla.org/es/docs/Web/API/Console)
 - [Optional Chaining](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Optional_chaining)
+
+## 10. Callback hell
+
+**CallBacks Hell**: Consiste en múltiples _Callbacks anidados_ que provocan que el código se vuelva difícil de leer y ‘_debuggear_’ y por eso se debe evitar.
+
+### Otra forma de ejecutar el código creado
+
+Para compilar el código y mostrar el resultado desde consola, podemos ejecutar este comando: 
+
+```bash
+node src/callback/challenge.js
+```
+
+También podemos agregar un `script` en nuestro archivo `package.json` para no tener que escribir toda la ruta cada vez que queramos ver los resultados desde consola.
+
+```js
+{
+  "name": "asincronismo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "callback": "node src/callback/challenge.js"👈👀
+  },
+  "keywords": [
+    "javascript"
+  ],
+  "author": "aleroses <ale.vrs@outlook.com>",
+  "license": "MIT",
+  "dependencies": {
+    "xmlhttprequest": "^1.8.0"
+  }
+}
+```
+
+Ahora ya podemos correr nuestro comando `npm run callback` y ver los resultados en consola.
+
+## 11. Qué son las promesas
+
+Las promesas en JavaScript son objetos que representan la eventual finalización (o falla) de una operación asíncrona y permiten manejar el resultado de dicha operación de manera más eficiente y legible que con **callbacks anidados**, los cuales puedes llegar a ser muy engorrosos (ejemplo clase 9). En lugar de esperar a que una operación asíncrona termine para continuar con el siguiente paso, se puede crear una promesa que se resolverá en el futuro, y luego trabajar con ella en lugar de bloquear el flujo del programa. Las promesas también permiten encadenar varias operaciones asíncronas en secuencia y manejar errores de manera centralizada.
+
+Las promesas pueden suceder:  
+- Ahora
+- En el futuro
+- Nunca  
+
+### Crear una promesa
+
+Utilizamos la palabra reservada `new` seguida de la palabra `Promise` que es _el constructor de la promesa_. Este constructor recibe un único parámetro que es una función, la cual, a su vez, recibe otros dos parámetros: `resolve` y `reject`.
+
+- El parámetro `resolve` se utiliza para cuando la promesa devuelve el valor correctamente.
+- El parámetro `reject`, se usa en el que caso de que no funcione.  
+
+#### Ejemplo:
+
+```js
+const promise = new Promise(function (resolve, reject){
+resolve('hey!');
+});
+```
+
+### Los tres estados de las promesas:
+
+1. **Pendiente (pending):** Es el estado inicial de una promesa, lo que significa que aún no se ha resuelto ni rechazado. En este estado, la promesa está esperando a que se complete la operación asíncrona que representa.
+
+2. **Resuelta (fulfilled):** Es el estado en el que una promesa se encuentra cuando se ha completado correctamente la operación asíncrona que representa. En este estado, se ha llamado a la función `resolve` de la promesa con un valor que se puede manejar en la llamada posterior `then`. 
+
+3. **Rechazada (rejected):** Es el estado en el que una promesa se encuentra cuando se produce un error durante la operación asíncrona que representa. En este estado, se ha llamado a la función `reject` de la promesa con un motivo que se puede manejar en la llamada posterior `catch`.
+
+Es importante destacar que una vez que una promesa cambia de estado, no puede cambiar de nuevo a otro estado. Por ejemplo, una promesa que se ha resuelto no puede cambiar a estado pendiente o rechazado, y una promesa que se ha rechazado no puede cambiar a estado resuelto o pendiente.
+
+
+#### Ejemplo con `then` y `catch`:  
+
+Para probar el código, en el proyecto se crea la carpeta llamada `promise` dentro de la carpeta `src` y por último creamos el archivo `index.js` en la ruta: `src/promise`
+
+```bash
+╰─ tree -L 3
+.
+├── node_modules      
+│   └── xmlhttprequest
+│       ├── LICENSE   
+│       ├── README.md     
+│       ├── lib
+│       └── package.json  
+├── package-lock.json     
+├── package.json
+└── src 👈👀
+    ├── callback
+    │   ├── challenge.js  
+    │   └── index.js      
+    ├── playground        
+    │   └── 07.callback.js
+    └── promise 👈👀
+        └── index.js 👈👀
+```
+
+
+`index.js`
+
+```js
+//ejemplo de contar vacas: 15 or 9
+const cows = 15; //valor inicial de vacas
+
+const countCows = newPromise(function(resolve, reject){
+//solo si el número de vacas supera 10, se llama al resolve
+//de lo contrario: se llama a reject
+if(cows > 10){
+resolve(`We have ${cows} cows on the farm`);
+} else {
+reject("There is no cows on the farm");
+}
+});
+
+//con solo .then se obtiene el resultado de la promesa de acuerdo a resolve o reject
+//con .catch podemos obtener más información de un futuro error que se presente
+//con .finally podemos imprimir un mensaje que indica que ya se ejecutó la promesa
+countCows
+	.then((result) => {
+		console.log(result);
+	}).catch((error) => {
+		console.log(error);
+	}).finally(() => console.log('Finally'));
+//se usan arrow function () =>
+
+// Usando 15 obtenemos: 
+We have 15 cows on the farm
+Finally
+
+// Usando 9 obtenemos: 
+There is no cows on the farm.
+Finally
+```
+
+Otra forma:  
+```js
+const cows = 0;
+
+const count_cows = new Promise((resolve, reject) => {
+	cows >= 1
+		? resolve(`I have ${cows} cows on the farm.`)
+		: reject('There is no cows on the farm.')
+});
+
+count_cows
+	.then((result) => console.log(result))
+	.catch((error) => console.log(error))
+	.finally(() => console.log('Finally'));
+
+// Usando 0 obtenemos: 
+There is no cows on the farm.
+Finally
+
+// Usando 9 obtenemos: 
+I have 9 cows on the farm.
+Finally
+```
+
+#### Otros ejemplos: 
+
+1. Realizar una solicitud HTTP asíncrona y manejar la respuesta:
+
+```js
+fetch('https://jsonplaceholder.typicode.com/todos/1')
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .catch(error => console.error(error))
+
+// Obtenemos: 
+{ userId: 1, id: 1, title: 'delectus aut autem', completed: false }
+```
+
+En este ejemplo, se usa la función `fetch` para realizar una solicitud HTTP asíncrona y se devuelve una promesa que representa la respuesta. Luego, se encadena una serie de llamadas `then` para procesar la respuesta, convirtiendo los datos a formato JSON y luego registrando los datos en la consola. Si se produce algún error durante la solicitud, se captura en el bloque `catch`.
+
+2. Realizar múltiples solicitudes HTTP en paralelo y manejar los resultados:
+
+```js
+Promise.all([
+  fetch('https://jsonplaceholder.typicode.com/todos/1'),
+  fetch('https://jsonplaceholder.typicode.com/todos/2'),
+  fetch('https://jsonplaceholder.typicode.com/todos/3')
+])
+.then(responses => Promise.all(responses.map(response => response.json())))
+.then(data => console.log(data))
+.catch(error => console.error(error))
+
+// Obtenemos: 
+[
+  { userId: 1, id: 1, title: 'delectus aut autem', completed: false },
+  {
+    userId: 1,
+    id: 2,
+    title: 'quis ut nam facilis et officia qui',
+    completed: false
+  },
+  { userId: 1, id: 3, title: 'fugiat veniam minus', completed: false }
+]
+```
+
+En este ejemplo, se usan varias llamadas `fetch` para realizar múltiples solicitudes HTTP en paralelo, y se devuelve una matriz de promesas que representan las respuestas. Luego, se usa `Promise.all` para esperar a que todas las promesas se resuelvan y devolver una matriz con los resultados. Finalmente, se utiliza la función `map` para convertir cada respuesta en formato JSON y se registra la matriz de datos en la consola. Si se produce algún error durante alguna de las solicitudes, se captura en el bloque `catch`.
+
+
+
+### Ejemplos de promesas
+
+Ejemplos de cómo crear promesas en JavaScript utilizando el constructor `Promise`:
+
+1. Crear una promesa que se resuelve después de un tiempo determinado:
+
+```js
+const delay = ms => {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve(`Resuelto después de ${ms} ms`);
+    }, ms);
+  });
+}
+
+delay(2000)
+  .then(data => console.log(data))
+  .catch(error => console.error(error));
+
+// Obtenemos: 
+Resuelto después de 2000 ms
+```
+
+En este ejemplo, se define una función `delay` que devuelve una promesa que se resuelve después de un tiempo determinado especificado en milisegundos. Dentro de la función, se utiliza el método `setTimeout` para retrasar la resolución de la promesa y luego se llama a la función `resolve` con un mensaje de éxito. Luego, se usa la llamada `then` para manejar el resultado de la promesa y se registra el mensaje en la consola después de que se resuelve. Si se produce algún error durante la ejecución de la promesa, se captura en el bloque `catch`.
+
+2. Crear una promesa que se rechaza si se produce un error:
+
+```js
+const XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
+
+const getJSON = url => {
+  return new Promise((resolve, reject) => {
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET', url, true);
+    xhr.onload = () => {
+      if (xhr.status === 200) {
+        resolve(JSON.parse(xhr.responseText));
+      } else {
+        reject(`Error al obtener los datos: ${xhr.status} ${xhr.statusText}`);
+      }
+    };
+    xhr.onerror = () => {
+      reject('Error de red');
+    };
+    xhr.send();
+  });
+}
+
+getJSON('https://jsonplaceholder.typicode.com/todos/1')
+  .then(data => console.log(data))
+  .catch(error => console.error(error));
+
+// Obtenemos: 
+{ userId: 1, id: 1, title: 'delectus aut autem', completed: false }
+```
+
+En este ejemplo, se define una función `getJSON` que devuelve una promesa que se resuelve si la solicitud HTTP se realiza correctamente o se rechaza si se produce algún error. Dentro de la función, se utiliza el objeto `XMLHttpRequest` para realizar una solicitud GET a una URL especificada y luego se llama a la función `resolve` con los datos si la solicitud se realiza correctamente. Si se produce algún error durante la solicitud, se llama a la función `reject` con un mensaje de error. Luego, se usa la llamada `then` para manejar el resultado de la promesa y se registra los datos en la consola si se resuelve correctamente. Si se produce algún error durante la ejecución de la promesa, se captura en el bloque `catch`.
+
+🔥 [Arrow functions: Ejemplos ](https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Functions/Arrow_functions)
