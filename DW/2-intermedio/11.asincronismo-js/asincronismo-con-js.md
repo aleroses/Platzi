@@ -1412,3 +1412,256 @@ getJSON('https://jsonplaceholder.typicode.com/todos/1')
 En este ejemplo, se define una función `getJSON` que devuelve una promesa que se resuelve si la solicitud HTTP se realiza correctamente o se rechaza si se produce algún error. Dentro de la función, se utiliza el objeto `XMLHttpRequest` para realizar una solicitud GET a una URL especificada y luego se llama a la función `resolve` con los datos si la solicitud se realiza correctamente. Si se produce algún error durante la solicitud, se llama a la función `reject` con un mensaje de error. Luego, se usa la llamada `then` para manejar el resultado de la promesa y se registra los datos en la consola si se resuelve correctamente. Si se produce algún error durante la ejecución de la promesa, se captura en el bloque `catch`.
 
 🔥 [Arrow functions: Ejemplos ](https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Functions/Arrow_functions)
+
+
+## 12. Playground: Crea una función de delay que soporte asincronismo
+
+En este desafío tienes la función `delay` la cual se espera que un tiempo específico retorne un mensaje.
+
+La función deberá recibir dos parámetros:
+
+- time: el tiempo de espera
+- message: el mensaje que debe imprimir después del tiempo de espera
+
+La función `delay` debe retornar una promesa para poderlo usarlo de forma asíncrona.
+
+> Nota: Debes usar la función `setTimeout` con el namespace `window` para poder monitorear su uso en la ejecución de pruebas, ejemplo:
+
+```js
+window.setTimeout(() => {
+  // code
+})
+```
+
+Ejemplo 1:
+
+```js
+Input:
+delay(2000, "Hello after 2s")
+.then((message) => console.log(message))
+
+Output:
+// after 2s
+"Hello after 2s"
+```
+
+Ejemplo 2:
+
+```js
+Input:
+delay(3000, "Hello after 3s")
+.then((message) => console.log(message))
+
+Output:
+// after 3s
+"Hello after 3s"
+```
+
+## 13. Fetch 
+
+`fetch` es una función nativa que proporciona una forma fácil de hacer solicitudes HTTP y obtener datos de recursos externos, como APIs web o archivos JSON. `fetch` usa promesas y proporciona una interfaz más simple y flexible que el antiguo objeto `XMLHttpRequest` (XHR).
+
+La sintaxis básica de `fetch` es la siguiente:
+
+```js
+fetch(url)
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .catch(error => console.error(error));
+```
+
+Aquí, `fetch` toma una URL como argumento y devuelve una promesa que resuelve en la respuesta de la solicitud. Luego, se utiliza el método `json()` en la respuesta para extraer los datos en formato JSON de la respuesta. Finalmente, se procesan los datos en la segunda promesa `then`, y cualquier error se maneja en la cláusula `catch`.
+
+### Primeros pasos con fetch (buscar)
+ 
+Para poder usar **fetch**, primero tenemos que instalarlo, para eso nos vamos a la terminal del proyecto y ejecutamos el siguiente comando:
+
+```bash
+npm i node-fetch
+```
+
+Para poder compilar desde VSC, debemos registrar el módulo en `package.json`, abrimos el archivo y agregamos `"type": "module"`:
+
+```json
+{
+  "name": "asincronismo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "callback": "node src/callback/challenge.js"
+  },
+  "keywords": [
+    "javascript"
+  ],
+  "author": "aleroses <ale.vrs@outlook.com>",
+  "license": "MIT",
+  "dependencies": {
+    "node-fetch": "^3.3.1",
+    "xmlhttprequest": "^1.8.0"
+  },
+  "type": "module"👈👀🔥
+}
+```
+
+Creamos la siguiente estructura donde haremos algunos ejemplos: 
+
+```bash
+.
+├── node_modules
+├── package-lock.json
+├── package.json
+└── src
+    ├── callback
+    │   ├── challenge.js
+    │   └── index.js
+    ├── playground
+    │   ├── 07.callback.js
+    │   └── 12.promise.js
+    └── promise
+        ├── challenge.js 👈👀🔥
+        └── index.js
+```
+
+`challenge.js`  
+```js
+import fetch from 'node-fetch';
+const API = 'https://api.escuelajs.co/api/v1';
+
+function fetchData(urlApi) {
+	return fetch(urlApi);
+}
+
+fetchData(`${API}/products`)
+	.then(response => response.json())
+	.then(products => {
+		console.log(products);
+	})
+	.then(() => {
+		console.log('Hi');
+	})
+	.catch(error => console.log(error));
+
+// Obtenemos una Array con objetos que tienen información de muchos productos: 
+[
+  {
+    id: 4,
+    title: 'test',
+    price: 2,
+    description: 'string',
+    images: [ 'https://picsum.photos/640/640?r=6088' ],
+    creationAt: '2023-07-19T07:11:23.000Z',
+    updatedAt: '2023-07-19T15:58:43.000Z',
+    category: {
+      id: 2,
+      name: 'Electronics',
+      image: 'https://picsum.photos/640/640?r=5082',
+      creationAt: '2023-07-19T07:11:23.000Z',
+      updatedAt: '2023-07-19T07:11:23.000Z'
+    }
+  },
+  {
+    id: 8,
+    title: 'Ergonomic Soft Salad',
+    price: 383,
+    description: 'The beautiful range of Apple Naturalé that has an exciting mix of natural ingredients. With the Goodness of 100% Natural Ingredients',
+    images: [
+      'https://picsum.photos/640/640?r=1449',
+      'https://picsum.photos/640/640?r=3868',
+      'https://picsum.photos/640/640?r=2899'
+    ],
+    creationAt: '2023-07-19T07:11:23.000Z',
+    updatedAt: '2023-07-19T07:11:23.000Z',
+    category: {
+      id: 1,
+      name: 'Clothes',
+      image: 'https://picsum.photos/640/640?r=5136',
+      creationAt: '2023-07-19T07:11:23.000Z',
+      updatedAt: '2023-07-19T07:11:23.000Z'
+    }
+  },
+  {
+    id: 106,
+    title: 'Rustic Rubber Tuna',
+    price: 626,
+    description: 'Carbonite web goalkeeper gloves are ergonomically designed to give easy fit',
+    images: [
+      'https://picsum.photos/640/640?r=3242',
+      'https://picsum.photos/640/640?r=2927',
+      'https://picsum.photos/640/640?r=2304'
+    ],
+    creationAt: '2023-07-19T07:11:23.000Z',
+    updatedAt: '2023-07-19T07:11:23.000Z',
+    category: {
+      id: 3,
+      name: 'Change title',
+      image: 'https://picsum.photos/640/640?r=8535',
+      creationAt: '2023-07-19T07:11:23.000Z',
+      updatedAt: '2023-07-19T17:51:32.000Z'
+    }
+  },
+  ... 364 more items
+]
+```
+
+Ahora obtengamos el título y nombre de la categoría del producto seleccionado. 
+
+```js
+import fetch from 'node-fetch';
+const API = "https://api.escuelajs.co/api/v1";
+
+function fetchData(urlApi) {
+	return fetch(urlApi);
+}
+
+// Para obtener datos necesitas 1 fetchData y 2 .then (1 para convertirlo a json y 1 para mostrarlo)
+fetchData(`${API}/products`)
+	.then(response => response.json())
+	.then(products => {
+		// console.log(products);
+		return fetchData(`${API}/products/${products[0].id}`)
+	})
+	.then(response => response.json())
+	.then(product => {
+		// console.log(product);
+		console.log(product.title);
+		return fetchData(`${API}/categories/${product.category.id}`)
+	})
+	.then(response => response.json())
+	.then(category => {
+		// console.log(category)
+		console.log(category.name);
+	})
+	.catch(err => console.log(err))
+	.finally(() => console.log('Finally'));
+
+// Obtenemos 
+Handcrafted Cotton Bike
+Electronics
+Finally
+
+// fetch - buscar
+// delay - demora
+```
+
+Esta es una forma más sencilla de hacer lo mismo: 
+
+```json
+import fetch from "node-fetch";
+const API = 'https://api.escuelajs.co/api/v1';
+
+function fetchData(urlApi) {
+	return fetch(urlApi);
+}
+
+fetchData(`${API}/products`)
+	.then(response => response.json())
+	.then(product => {
+		// console.log(product[0]);
+		console.log(product[0].title);
+		console.log(product[0].category.name);
+	})
+	.catch(err => console.log(err))
+	.finally(() => console.log('Finally'));
+```
