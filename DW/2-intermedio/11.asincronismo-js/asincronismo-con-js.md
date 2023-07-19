@@ -1647,7 +1647,7 @@ Finally
 
 Esta es una forma más sencilla de hacer lo mismo: 
 
-```json
+```js
 import fetch from "node-fetch";
 const API = 'https://api.escuelajs.co/api/v1';
 
