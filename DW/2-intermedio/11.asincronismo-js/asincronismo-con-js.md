@@ -1665,3 +1665,166 @@ fetchData(`${API}/products`)
 	.catch(err => console.log(err))
 	.finally(() => console.log('Finally'));
 ```
+
+## 14. Fetch POST
+
+🔥 Revisa los apuntes de la clase 8 [[asincronismo-con-js#8. XMLHTTPRequest#Características del protocolo HTTP]]
+
+El método `POST` es uno de los métodos HTTP que se utilizan para enviar datos desde un cliente a un servidor. En particular, el método `POST` se utiliza para enviar datos que se utilizarán para crear o actualizar un recurso en el servidor.
+
+> A diferencia del método `GET`, que se utiliza para recuperar información del servidor, el método `POST` envía datos al servidor para que se procesen.
+
+### Opciones para realizar una solicitud HTTP `POST`
+
+Cada opción o parámetro tiene un propósito específico en la configuración y el envío de la solicitud HTTP. Las opciones de solicitud se utilizan para especificar la forma en que se enviará la solicitud HTTP, qué tipo de datos se enviarán y cómo se procesarán los datos de respuesta. Algunas de las opciones de solicitud son obligatorias, mientras que otras son opcionales o dependen del tipo de solicitud que se esté realizando.
+
+- `method: 'POST'`: Esto indica que se utilizará el método `POST` para realizar la solicitud.
+
+- `mode: 'cors'`: Esto establece el modo de la solicitud. En este caso, se está utilizando el modo "cors" (Cross-Origin Resource Sharing -Compartición de recursos entre diferentes orígenes), que permite solicitudes entre diferentes dominios, esto quiere decir que permitir que los recursos de diferentes orígenes se compartan entre sí en la web. Por ejemplo, una página web alojada en un dominio diferente puede solicitar recursos de otro dominio mediante JavaScript. CORS funciona mediante el uso de encabezados HTTP especiales para indicar que un recurso determinado puede ser compartido entre diferentes orígenes. Los servidores pueden configurar sus respuestas HTTP para incluir estos encabezados y permitir que se compartan los recursos.
+
+- `credentials: 'same-origin'`: Son cualquier información que se utiliza para autenticar a un usuario o para identificar una sesión de usuario en un sitio web. Las credenciales pueden incluir información como cookies, tokens de autenticación o certificados. Cuando se realizan solicitudes HTTP, se pueden enviar credenciales al servidor para identificar al usuario o sesión correspondiente. La opción `credentials` en una solicitud HTTP indica qué tipo de credenciales se deben enviar con la solicitud. En este caso, se está utilizando "same-origin", lo que significa que se enviarán las mismas credenciales utilizadas para la página actual.
+
+- `headers: {'Content-Type': 'application/json'}`: Los encabezados HTTP son piezas de información que se envían junto con una solicitud HTTP o una respuesta HTTP. Los encabezados proporcionan información adicional sobre la solicitud o la respuesta, como el tipo de contenido que se está enviando, la longitud de los datos, el tipo de codificación, etc. Los encabezados también se pueden utilizar para enviar información personalizada entre el cliente y el servidor. Por ejemplo, un encabezado personalizado podría utilizarse para enviar un token de autenticación con una solicitud HTTP. En este caso, se está utilizando un encabezado `Content-Type` con el valor `application/json`, lo que indica que los datos que se enviarán en el cuerpo de la solicitud estarán en formato JSON.
+
+- `body: JSON.stringify(data)`: Esto establece el cuerpo de la solicitud. En este caso, se está utilizando el método `JSON.stringify()` para convertir el objeto `data` a una cadena JSON que se enviará como el cuerpo de la solicitud.
+
+
+
+Todos estos valores se utilizan para configurar y enviar una solicitud HTTP `POST` utilizando JavaScript, con la opción de enviar los datos en formato JSON.
+
+Es importante tener en cuenta que las opciones de solicitud pueden variar según el lenguaje de programación o la biblioteca que se esté utilizando para realizar la solicitud HTTP. Pero en general, estas opciones se utilizan para configurar y enviar una solicitud HTTP con la información necesaria para que el servidor pueda procesarla correctamente.
+
+###  ¿Qué es un origen cruzado?
+
+El término "origen cruzado" (en inglés "cross-origin") se refiere a una situación en la que una página web (o una aplicación web) intenta acceder a recursos (como archivos, scripts, imágenes, etc.) que se encuentran en un servidor o dominio diferente al de la página web. Por ejemplo, si la página web se carga desde el dominio "www.example.com" y trata de acceder a recursos en el dominio "api.example.com", esto se considera una situación de origen cruzado.
+
+Los navegadores web modernos limitan el acceso de una página web a recursos de origen cruzado por motivos de seguridad. Sin embargo, en algunos casos, es necesario permitir el acceso a recursos de origen cruzado (por ejemplo, cuando se utiliza una API de terceros). En estos casos, se utiliza la técnica de "Compartición de recursos de origen cruzado" (CORS) para permitir que la página web acceda a los recursos de otro dominio.
+
+La técnica de CORS utiliza encabezados HTTP especiales para indicar que un recurso determinado puede ser compartido entre diferentes orígenes. El servidor web debe configurar sus respuestas HTTP para incluir estos encabezados y permitir que se compartan los recursos.
+
+Por lo tanto, CORS se utiliza para permitir que una página web acceda a recursos de origen cruzado de forma segura. Si los encabezados CORS no están configurados correctamente, el navegador web bloqueará la solicitud debido a motivos de seguridad.
+
+### Usemos POST
+
+Crea un archivo `post.js` dentro de `src/promise`:  
+
+```bash
+╰─ tree -L 3
+.
+├── node_modules
+├── package-lock.json
+├── package.json
+└── src
+    ├── callback
+    │   ├── challenge.js
+    │   └── index.js
+    ├── playground
+    │   ├── 07.callback.js
+    │   └── 12.promise.js
+    └── promise
+        ├── challenge.js
+        ├── index.js
+        └── post.js 👈👀🔥
+```
+
+`post.js`
+```js
+import fetch from "node-fetch";
+const API = "https://api.escuelajs.co/api/v1"
+
+function postData(urlApi, data) {
+	const response = fetch(urlApi, {
+		method: 'POST',
+		mode: 'cors', // permiso, por defecto va estar siempre en cors
+		credentials: 'same-origin',
+		headers: {
+			'Content-Type': 'application/json' // necesario indicar que es lo que se está enviando (data tipo json)
+		},
+		body: JSON.stringify(data) // el método JSON.stringify() convierte un objeto o valor de JavaScript en una cadena de texto JSON
+	});
+
+	return response;
+}
+
+// estructura obligatoria de como debe ser el objeto que se quiere crear con POST
+const data = {
+	"title": "New Product 212",
+	"price": 212,
+	"description": "A description",
+	"categoryId": 1,
+	"images": ["https://placeimg.com/640/480/any"]
+}
+
+// podemos usar el postData como una promesa y con .then obtener la respuesta como un objeto json y mostrarlo después en la consola
+postData(`${API}/products`, data)
+	.then((response) => response.json())
+	.then(data => console.log(data))
+	.catch((err) => console.log(err));
+```
+
+Si todo va bien podremos ver en la consola un objeto, pero si algo falla debería salir un 400 (Bad Request).
+
+```js
+Valores añadidos a la Fake API: 
+https://api.escuelajs.co/api/v1/products/448
+https://api.escuelajs.co/api/v1/products/212
+```
+
+### Usemos PUT 
+
+```js
+//Con PUT para actualizar un objeto
+functionputData(urlApi, dataUpdate) {
+    const response = fetch(urlApi, {
+        method: 'PUT',
+        mode: 'cors',
+        credentials: 'same-origin',
+        headers:{
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(dataUpdate)
+    });
+    return response;
+}
+
+const dataUpdate = {
+    "title": "Se puede cambiar tambien otras caracteristicas",
+    "price": 10// no es necesario colocar todas las características del objeto, solo las que se cambiarán
+}
+
+putData(`${API}/products/271`, dataUpdate) //se debe colocar el id del objeto que se quiere modificar
+    .then(response => response.json())
+    .then(dataUpdate =>console.log(dataUpdate));
+```
+
+### Usemos DELETE 
+
+```js
+//Eliminar un objeto indicando el id con DELETE
+function deleteData(urlApi) { //no es necesario pasar la data
+    const response = fetch(urlApi, {
+        method: 'DELETE',
+        mode: 'cors',
+        credentials: 'same-origin',
+        headers:{
+            'Content-Type': 'application/json'
+        } //no es necesario especificar el body
+    });
+    return response;
+}
+
+const idNumber = 271; //se debe colocar el id del objeto qu se quiere modificar
+
+deleteData(`${API}/products/${idNumber}`) //no es necesario pasar data
+    .then(() => {
+        console.log(`Borrado ${idNumber}`); //es opcional imprimir en consola
+    });
+```
+
+```js
+
+```
+
+
+- [Concepto de Cors](https://javascript.info/fetch-crossorigin)
+- [Documentación Cors](https://developer.mozilla.org/en-US/docs/Glossary/CORS)
