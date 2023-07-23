@@ -1696,7 +1696,7 @@ Es importante tener en cuenta que las opciones de solicitud pueden variar según
 
 ###  ¿Qué es un origen cruzado?
 
-El término "origen cruzado" (en inglés "cross-origin") se refiere a una situación en la que una página web (o una aplicación web) intenta acceder a recursos (como archivos, scripts, imágenes, etc.) que se encuentran en un servidor o dominio diferente al de la página web. Por ejemplo, si la página web se carga desde el dominio "www.example.com" y trata de acceder a recursos en el dominio "api.example.com", esto se considera una situación de origen cruzado.
+El término "origen cruzado" (en inglés "cross-origin") se refiere a una situación en la que una página web (o una aplicación web) intenta acceder a recursos (como archivos, scripts, imágenes, etc.) que se encuentran en un servidor o dominio diferente al de la página web. Por ejemplo, si la página web se carga desde el dominio `www.example.com` y trata de acceder a recursos en el dominio `api.example.com`, esto se considera una situación de origen cruzado.
 
 Los navegadores web modernos limitan el acceso de una página web a recursos de origen cruzado por motivos de seguridad. Sin embargo, en algunos casos, es necesario permitir el acceso a recursos de origen cruzado (por ejemplo, cuando se utiliza una API de terceros). En estos casos, se utiliza la técnica de "Compartición de recursos de origen cruzado" (CORS) para permitir que la página web acceda a los recursos de otro dominio.
 
@@ -1823,6 +1823,22 @@ deleteData(`${API}/products/${idNumber}`) //no es necesario pasar data
 
 ```js
 
+```
+
+
+
+### [Imágenes Aleatorias](https://picsum.photos/)
+	
+Simplemente, agregue el tamaño de imagen deseado (ancho y alto) después de nuestra URL y obtendrá una imagen aleatoria.
+
+```
+https://picsum.photos/200/300
+```
+
+Para obtener una imagen cuadrada, simplemente agregue el tamaño.
+
+```
+https://picsum.photos/200
 ```
 
 
