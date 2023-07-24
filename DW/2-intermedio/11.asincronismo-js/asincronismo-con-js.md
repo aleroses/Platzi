@@ -1774,7 +1774,7 @@ https://api.escuelajs.co/api/v1/products/212
 
 ```js
 //Con PUT para actualizar un objeto
-functionputData(urlApi, dataUpdate) {
+function putData(urlApi, dataUpdate) {
     const response = fetch(urlApi, {
         method: 'PUT',
         mode: 'cors',
@@ -1800,12 +1800,15 @@ putData(`${API}/products/271`, dataUpdate) //se debe colocar el id del objeto qu
 ### Usemos DELETE 
 
 ```js
+import fetch from 'node-fetch';
+const API = 'https://api.escuelajs.co/api/v1';
+
 //Eliminar un objeto indicando el id con DELETE
 function deleteData(urlApi) { //no es necesario pasar la data
     const response = fetch(urlApi, {
         method: 'DELETE',
-        mode: 'cors',
-        credentials: 'same-origin',
+        mode: 'cors', //no es necesario
+        credentials: 'same-origin',//no es necesario
         headers:{
             'Content-Type': 'application/json'
         } //no es necesario especificar el body
@@ -1821,14 +1824,9 @@ deleteData(`${API}/products/${idNumber}`) //no es necesario pasar data
     });
 ```
 
-```js
-
-```
-
-
 
 ### [Imágenes Aleatorias](https://picsum.photos/)
-	
+
 Simplemente, agregue el tamaño de imagen deseado (ancho y alto) después de nuestra URL y obtendrá una imagen aleatoria.
 
 ```
@@ -1844,3 +1842,83 @@ https://picsum.photos/200
 
 - [Concepto de Cors](https://javascript.info/fetch-crossorigin)
 - [Documentación Cors](https://developer.mozilla.org/en-US/docs/Glossary/CORS)
+
+
+## 15. Funciones asíncronas
+
+`async` y `await` son características que permiten escribir código asíncrono de manera más legible y fácil de entender. `new Promise()` es una forma de crear una promesa en JavaScript que se utiliza comúnmente para manejar tareas asíncronas.
+
+Una promesa es un objeto que representa un valor que puede no estar disponible de inmediato, pero que eventualmente se resolverá (con un valor) o se rechazará (con un error). Cuando se crea una promesa con `new Promise()`, se le pasa una función que define qué debe hacer la promesa. Esta función toma dos argumentos, `resolve` y `reject`, que son funciones que se llaman para resolver o rechazar la promesa, respectivamente.
+
+Por ejemplo, la siguiente función devuelve una promesa que se resuelve después de 1 segundo con el valor "¡Hola Mundo!":
+
+```js
+function sayHello() {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve("¡Hola Mundo!");
+    }, 1000);
+  });
+}
+```
+
+Para utilizar `async` y `await` con una promesa, primero se define una función `async` que contiene la lógica asincrónica. En este caso, llamamos a la función `sayHello()` y esperamos a que se resuelva usando la palabra clave `await`. Veamos un ejemplo:
+
+```js
+async function printHello() {
+  const message = await sayHello();
+  console.log(message);
+}
+
+printHello(); 
+// esperará 1 segundo y luego imprimirá "¡Hola Mundo!"
+```
+
+En este ejemplo, la función `printHello()` llama a `sayHello()` y espera a que se resuelva antes de imprimir el mensaje en la consola. La palabra clave `await` hace que la función `printHello()` espere a que se resuelva la promesa devuelta por `sayHello()` antes de continuar con la siguiente línea de código.
+
+`async` y `await` son útiles porque permiten escribir código asíncrono de manera más legible y fácil de entender, ya que se parece más a código sincrónico. También hacen que sea más fácil manejar errores, ya que se pueden utilizar bloques `try` / `catch` para capturar y manejar errores.
+
+### Ejemplo de la clase:  
+
+```js
+const fnAsync = () => {
+	return new Promise((resolve, reject) => {
+		true
+			? setTimeout(() => resolve('3. Async!!!'), 2000)
+			: reject(new Error('Error!'));
+	});
+}
+
+// async es para el cuerpo de la función
+const anotherFn = async() => {
+	// await estará dentro de la lógica a implementar
+	const something = await fnAsync();
+	console.log(something);
+	console.log('4. Hello!!!');
+}
+
+console.log('1. Before');
+anotherFn();
+console.log('2. After');
+
+// Obtenemos: 
+1. Before
+2. After
+// Despues de 2 segundos...
+3. Async!!!
+4. Hello!!!
+```
+
+
+```js
+
+```
+
+
+```js
+
+```
+
+```js
+
+```
