@@ -1909,16 +1909,172 @@ console.log('2. After');
 4. Hello!!!
 ```
 
+También podemos ver su ejecución de la siguiente manera: 
 
 ```js
+function fnAsync() {
+	return '3. Third'
+}
 
+const anotherFn = async() => {
+	const response = await fnAsync();
+	console.log(response);
+	console.log('4. The end!!!');
+}
+
+console.log('1. First');
+anotherFn();
+console.log('2. Second');
+
+// Obtenemos: 
+1. First
+2. Second
+3. Third
+4. The end!!!
+```
+
+![](https://i.postimg.cc/RqxVWb4t/async-await.gif)
+
+
+## 16. Try and catch  
+
+`try` y `catch` son constructores de JavaScript que se utilizan para manejar errores en el código. 
+
+El bloque `try` se utiliza para envolver el código que se considera propenso a generar un error. Si ocurre un error en el bloque `try`, el control se transfiere al bloque `catch` correspondiente.
+
+El bloque `catch` se utiliza para capturar y manejar cualquier excepción o error que se haya producido en el bloque `try`. El bloque `catch` toma un parámetro, que es el objeto de error que se ha producido en el bloque `try`.
+
+Un ejemplo de uso de `try` y `catch` en JavaScript sería el siguiente:
+
+```js
+try {
+  // Código propenso a generar un error
+  console.log(variableInexistente);
+} catch(error) {
+  // Manejo del error
+  console.log("Se ha producido un error: " + error.message);
+}
+
+// Obtenemos: 
+Se ha producido un error: variableInexistente is not defined
+```
+
+Con `try` y `catch`, puedes manejar errores de manera efectiva y asegurarte de que tu programa no se bloquee o se cierre debido a errores inesperados.
+
+### Ejemplo de la clase:  
+
+```js
+import fetch from 'node-fetch';
+const API = 'https://api.escuelajs.co/api/v1';
+
+async function fetchData(urlApi) {
+	const response = await fetch(urlApi);
+	const data = await response.json();
+	return data;
+}
+
+const anotherFunction = async (urlApi) => {
+	try {
+		const products = await fetchData(`${urlApi}/products`);
+		const product = await fetchData(`${urlApi}/products/${products[0].id}`);
+		const category = await fetchData(`${urlApi}/categories/${product.category.id}`)
+
+		// console.log(products);
+		console.log(product.title);
+		console.log(category.name);
+
+	} catch (err) {
+		console.error(err);
+	}
+}
+
+anotherFunction(API);
+```
+
+### Lo mismo pero más sencillo: 
+
+```js
+import fetch from 'node-fetch';
+const API = 'https://api.escuelajs.co/api/v1'
+
+const fetchFunction = async () => {
+	try {
+		const response = await fetch(`${API}/products`);
+		const data = await response.json();
+		console.log({
+			//data: data[0],
+			title: data[0].title,
+			category: data[0].category.name,
+		});
+	} catch (err) {
+		console.error(err);
+	}
+}
+
+fetchFunction();
+
+// Obtenemos: 
+{ title: 'Rustic Metal Computers', category: 'Others' }
 ```
 
 
-```js
+## 17. Playground: Captura el error de una petición
 
+En este desafío vas a conectarte a una API que no existe, por ende debes capturar el error haciendo uso de try/catch y lanzar un error con el mensaje `API Not Found`.
+
+Para lanzar el error debes usar el siguiente bloque de código:
+
+```js
+throw new Error('API Not Found');
 ```
 
-```js
+Para solucionarlo vas a encontrar una función llamada runCode que no recibe parámetros de entrada, dentro del cuerpo de la función runCode debes escribir tu solución.
 
+Ejemplo:
+
+```js
+Input:
+await runCode();
 ```
+```js
+Output:
+Error: API Not Found
+```
+
+### Solución personal: 
+
+```js
+import fetch from "node-fetch";
+// const API = 'https://api.escuelajs.co/api/v1'
+const API = 'https://domain-api-com';
+
+const x = async () => {
+	try {
+		//const response = await fetch(`${API}/products`);
+		const response = await fetch(API);
+		const data = await response.json();
+		console.log(data[0]);
+	} catch (e) {
+		console.error(e);
+	}
+}
+
+x();
+```
+
+### Solución Platzi:
+
+```js
+export async function runCode() {
+  const url = 'https://domain-api-com';
+  try {
+    return await fetch(url);
+  } catch {
+    throw new Error('API Not Found'); 🔥🤔😢
+  }
+}
+```
+
+## 18. ¿Cómo enfrentar los errores?
+
+## 19. 
