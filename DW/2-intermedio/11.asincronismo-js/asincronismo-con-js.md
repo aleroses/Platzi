@@ -2077,4 +2077,79 @@ export async function runCode() {
 
 ## 18. ¿Cómo enfrentar los errores?
 
-## 19. 
+## 19. Generators
+
+Los Generators son una característica que permite la creación de funciones especiales que pueden ser pausadas y reanudadas en cualquier momento mientras se ejecutan. 
+
+> Estas funciones son conocidas como "generators" o "generadores" porque pueden generar una secuencia de valores a través de múltiples llamadas.
+
+Los Generators se declaran usando la palabra clave `function*` en lugar de `function`. Dentro del cuerpo de una función Generadora, se pueden utilizar la palabra clave `yield` para **pausar la ejecución de la función y devolver un valor**. La función Generadora puede ser reanudada en cualquier momento llamándola nuevamente, y la ejecución continuará desde el punto donde se dejó.
+
+### Utilidad 
+
+Los Generators son útiles para generar secuencias de valores que pueden ser consumidos por otras partes de un programa de manera eficiente. Por ejemplo, se pueden utilizar para iterar sobre grandes conjuntos de datos de manera perezosa, lo que significa que los elementos se generan bajo demanda en lugar de cargarse todos de una vez en la memoria. Esto es especialmente útil para trabajar con conjuntos de datos que no caben en la memoria disponible.
+
+Otro uso común de los Generators es en la implementación de iteradores personalizados. Al devolver valores de manera perezosa usando `yield`, se puede crear un iterador personalizado que permita recorrer una estructura de datos de manera más flexible y eficiente.
+
+Aquí hay un ejemplo simple de cómo utilizar un Generador para iterar sobre una secuencia de números:
+
+```js
+// Función* Generadora 👀👇
+function* generateNumbers() {
+  let i = 0;
+  while (true) {
+    yield i++;
+  }
+}
+
+// Para obtener la secuencia de valores generados
+// por la función Generadora debemos asignar el
+// objeto Generador devuelto a una const...
+const numberGenerator = generateNumbers();
+console.log(numberGenerator.next().value); // 0
+console.log(numberGenerator.next().value); // 1
+console.log(numberGenerator.next().value); // 2
+```
+
+En este ejemplo, la función Generadora `generateNumbers` utiliza un bucle infinito para generar una secuencia infinita de números enteros. Cada vez que se llama a la función `next` en el objeto Generador devuelto, la ejecución se reanuda en el punto donde se dejó y se devuelve el siguiente valor generado por la función.
+
+### Ejemplos de la clase 
+
+```js
+// Ejemplo 1:
+function* gen() {
+	yield 1;
+	yield 2;
+	yield 3;
+}
+
+const g = gen();
+console.log(g); // Object [Generator] {}
+console.log(g.next()); // { value: 1, done: false }🔥
+console.log(g.next().value); // 2
+console.log(g.next().value); // 3
+console.log(g.next().value); // undefined
+```
+
+La palabra clave `yield` dentro de una función Generadora devuelve un objeto con dos propiedades: `value` y `done`. La propiedad `value` representa el valor generado por la función Generadora, mientras que la propiedad `done` es un valor booleano que indica si la función Generadora ha terminado de generar valores o no.
+
+```js
+// Ejemplo 2:
+function* iterate(array) {
+	for (let value of array) {
+		yield value
+	}
+}
+
+const it = iterate(['oscar', 'omar', 'ana', 'lucia', 'juan']);
+console.log(it.next()); // { value: 'oscar', done: false }
+console.log(it.next().value); // omar
+console.log(it.next().value); // ana
+console.log(it.next().value); // lucia
+console.log(it.next().value); // juan
+console.log(it.next().value); // undefined
+console.log(it.next().value); // undefined
+```
+
+```js
+```
