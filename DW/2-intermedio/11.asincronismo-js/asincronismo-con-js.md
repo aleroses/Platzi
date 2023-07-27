@@ -2113,6 +2113,8 @@ console.log(numberGenerator.next().value); // 2
 
 En este ejemplo, la función Generadora `generateNumbers` utiliza un bucle infinito para generar una secuencia infinita de números enteros. Cada vez que se llama a la función `next` en el objeto Generador devuelto, la ejecución se reanuda en el punto donde se dejó y se devuelve el siguiente valor generado por la función.
 
+📌 Nota: La expresión `yield i++` primero devuelve el valor actual de `i` y luego incrementa su valor en 1 para la siguiente llamada a la función generadora. Por lo tanto, el primer valor devuelto será siempre el valor actual de `i` antes de que se incremente.
+
 ### Ejemplos de la clase 
 
 ```js
@@ -2151,5 +2153,36 @@ console.log(it.next().value); // undefined
 console.log(it.next().value); // undefined
 ```
 
+### Usando una API
+
 ```js
+import fetch from 'node-fetch';
+const API = 'https://api.escuelajs.co/api/v1';
+
+// Declaración de fetchData como la función del Generador
+async function* fetchData(url) {
+	const response = await fetch(url);
+	yield await response.json();
+};
+
+// Llamadas con el método next() en el objeto del Generador usando .then() y manipulando value y done
+fetchData(`${API}/products`).next().then(({ value, done }) => {
+	//Imprime la lista de los Productos de la API
+	// console.log(value); 
+	const id = value[0].id;
+	const title = value[0].title;
+	const category = value[0].category.name
+	console.log({
+		id: id,
+		title: title,
+		category: category
+	});
+	
+	// En consola usa: Ctrl + Click sobre el enlace
+	console.log(`Ctrl + Click: 🔥${API}/products/${id}`);
+});
+
+// Obtenemos: 
+{ id: 30, title: 'Electronic Metal Table', category: 'Electronics' }
+Ctrl + Click: 🔥https://api.escuelajs.co/api/v1/products/30
 ```
