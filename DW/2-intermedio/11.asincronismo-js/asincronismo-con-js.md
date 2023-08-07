@@ -2563,12 +2563,12 @@ Aquí modificamos el código, según convenga. Por comodidad, en mi HTML agregu�
 ```js
 const API = 'https://youtube-v31.p.rapidapi.com/search?channelId=UCX9NJ471o7Wie1DQe94RVIg&part=snippet%2Cid&order=date&maxResults=9';
 
-const content = document.querySelector('.content__show') || null;
+const content = document.querySelector('.content__show') || null; // 👈👀 Tener en cuenta
 
 const options = {
 	method: 'GET',
 	headers: {
-		// Esta key no se debe mostrar 
+		// Esta key no se debe mostrar  
 		'X-RapidAPI-Key': '6c8aec95f0mshc835fd1a770d505p1250bfjsn6fdebd898161',
 		'X-RapidAPI-Host': 'youtube-v31.p.rapidapi.com'
 	}
