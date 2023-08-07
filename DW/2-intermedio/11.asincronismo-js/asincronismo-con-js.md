@@ -30,30 +30,94 @@ JavaScript es síncrono y no bloqueante, con un bucle de eventos (concurrencia),
 
 JavaScript es single-threaded aún con múltiples procesadores, solo se pueden ejecutar tareas en un solo hilo, llamado el hilo principal.
 
-> Sincrónico = sucede al mismo tiempo. Asincrónico = no sucede al mismo tiempo.
+> 🔥 Sincrónico = sucede al mismo tiempo. 
+> 🔥 Asincrónico = no sucede al mismo tiempo.
 
 ### Conceptos importantes para entender el asincronismo:  
 
-• 🧵 **Thread**: Thread (hilo) para JavaScript permite realizar programación multihilos en este entorno. En realidad, simula la creación y ejecución de hilos, pero para el desarrollador es lo mismo. Esto simplifica muchísimo la creación de aplicaciones JavaScript.  
-• 🚫 **Bloqueante**: Una llamada u operación bloqueante no devuelve el control a la aplicación hasta que se ha completado. Por tanto el thread queda bloqueado en estado de espera. Ejemplo: Una alerta.  
-• 🚿 **No bloqueante**: Una tarea no bloqueante se devuelve inmediatamente con independencia del resultado. Si se completó, devuelve los datos. Si no, un error.  
-• 🎞️ **Síncrono**: Las tareas se ejecutan de forma secuencial, se debe esperar a que se complete para continuar con la siguiente tarea.  
-• 🚦 **Asíncrono**: Las tareas pueden ser realizadas más tarde, lo que hace posible que una respuesta sea procesada en diferido. La finalización de la operación I/O (entrada/salida) se señaliza más tarde, mediante un mecanismo específico como por ejemplo un callback, una promesa o un evento, lo que hace posible que la respuesta sea procesada en diferido.  
-• 🛤️ **Paralelismo**: El paralelismo es la ejecución simultánea de dos o más tareas. Algunas tareas se pueden dividir en partes más pequeñas que pueden ser resueltas simultáneamente.  
-• 🎮 **Concurrencia**: La concurrencia es la capacidad de un algoritmo o programa para ejecutar más de una tarea a la vez. El concepto es similar al procesamiento paralelo, pero con la posibilidad de que muchos trabajos independientes hagan diferentes cosas a la vez en lugar de ejecutar el mismo trabajo.  
-• 🌀 **Eventloop o Loop de eventos**: El bucle de eventos es un patrón de diseño que espera y distribuye eventos o mensajes en un programa.  
+#### Thread  
+Un Thread o hilo, es una secuencia de instrucciones que se ejecutan de forma concurrente. Esto se **simula** mediante la programación asíncrona y el uso de Web Workers. Aunque no se creen hilos reales, se logra la ejecución concurrente de tareas en segundo plano, permitiendo un mejor rendimiento y evitando bloqueos en el hilo principal.  
+
+#### Bloqueante  
+Se refiere a una operación que detiene la ejecución del hilo principal hasta que dicha operación se complete. Una llamada u operación bloqueante no devuelve el control a la aplicación hasta que se ha completado. Durante ese tiempo, el thread o hilo principal no puede realizar ninguna otra tarea y queda bloqueado, en estado de espera (inactivo). Ejemplo: Una alerta.  
+
+#### No bloqueante  
+Se refiere a una operación que no detiene la ejecución del hilo principal mientras se lleva a cabo. En lugar de esperar a que la operación se complete, se programa para ejecutarse en segundo plano o de manera asíncrona. Esto permite que el hilo principal continúe ejecutando otras tareas sin quedar inactivo. Las operaciones no bloqueantes, como las solicitudes de red o las operaciones de archivo, se gestionan mediante devoluciones de llamada (callbacks), promesas o async/await, lo que permite que el programa siga avanzando sin interrupciones mientras se esperan los resultados de la operación.
+
+> Una tarea no bloqueante se devuelve inmediatamente con independencia del resultado. Si se completó, devuelve los datos. Si no, un error.  
+
+#### Síncrono  
+En JavaScript, "síncrono" se refiere a un tipo de ejecución secuencial en la que una tarea debe completarse antes de que otra pueda comenzar. En un contexto síncrono, el programa espera a que una operación se complete antes de pasar a la siguiente línea de código. Esto significa que la ejecución se bloquea hasta que la operación actual finalice. Las operaciones síncronas pueden incluir llamadas a funciones, bucles y operaciones de lectura/escritura de archivos locales. Durante la ejecución sincrónica, no se pueden realizar otras tareas y el programa sigue una secuencia de instrucciones en orden.
+
+#### Asíncrono  
+Se refiere a un tipo de ejecución en la que las tareas se realizan de forma independiente y sin bloquear el hilo principal. En un contexto asíncrono, una tarea puede comenzar su ejecución y continuar en segundo plano mientras el programa principal sigue ejecutando otras tareas. 
+
+Las operaciones asíncronas se gestionan mediante callbacks, promesas o async/await, lo que permite que el programa continúe su flujo de ejecución sin esperar a que la tarea asíncrona se complete. Esto es especialmente útil para operaciones que pueden llevar tiempo, como solicitudes de red, operaciones de archivo o llamadas a API, ya que permite que otras partes del programa sigan funcionando sin bloqueos.
+
+
+#### Paralelismo
+Se refiere a la capacidad de ejecutar múltiples tareas simultáneamente en diferentes hilos o núcleos de procesamiento. Sin embargo, es importante tener en cuenta que JavaScript por sí solo no admite paralelismo real a nivel de hilos debido a su naturaleza de un solo subproceso (single-threaded).
+
+Sin embargo, mediante el uso de Web Workers, que son scripts en segundo plano, se puede lograr un tipo limitado de paralelismo en JavaScript. Los Web Workers permiten ejecutar tareas en hilos separados, lo que puede mejorar el rendimiento y la capacidad de respuesta de una aplicación al realizar cálculos intensivos o tareas que requieren mucho tiempo, dejando el hilo principal libre para otras operaciones. Aunque los Web Workers no brindan un paralelismo completo, pueden aprovechar los múltiples núcleos de procesamiento disponibles en los dispositivos modernos para realizar tareas en paralelo de manera eficiente.
+
+
+#### Concurrencia  
+Se refiere a la capacidad de ejecutar múltiples tareas de manera independiente y en un orden no determinístico. A diferencia del paralelismo, que implica la ejecución simultánea de tareas en diferentes hilos o núcleos, la concurrencia en JavaScript se logra a través del modelo de programación asíncrona.
+
+Las operaciones asíncronas, como las solicitudes de red o las operaciones de lectura/escritura de archivos, se ejecutan de manera concurrente en el hilo principal y se manejan mediante callbacks, promesas o async/await. Esto permite que varias tareas se inicien y se realicen en paralelo, aprovechando eficientemente el tiempo de procesamiento y evitando bloqueos. La concurrencia en JavaScript es especialmente útil para mejorar la capacidad de respuesta de las aplicaciones y evita que el hilo principal se bloquee mientras se esperan resultados de operaciones que pueden llevar tiempo.
+
+
+#### Eventloop o Bucle de eventos
+Es un mecanismo clave para el manejo de la concurrencia y la ejecución asíncrona. Es parte del entorno de tiempo de ejecución de JavaScript, como el navegador o Node.js.
+
+El Event Loop se encarga de manejar y coordinar la ejecución de eventos y tareas asíncronas en JavaScript. Funciona de la siguiente manera: cuando se ejecuta un código, las tareas síncronas se ejecutan de inmediato, mientras que las tareas asíncronas se colocan en una cola de eventos.
+
+El Event Loop monitorea constantemente la pila de llamadas y la cola de eventos. Cuando la pila de llamadas está vacía, toma el siguiente evento de la cola y lo procesa, lo que implica la ejecución de su callback asociado. Esto permite que las tareas asíncronas se ejecuten en el momento adecuado sin bloquear la ejecución del hilo principal.
+
+En resumen, el Event Loop garantiza que las tareas asíncronas se ejecuten en el momento adecuado y mantiene la capacidad de respuesta del programa mientras maneja la concurrencia en JavaScript.
+
+> El bucle de eventos es un patrón de diseño que espera y distribuye eventos o mensajes en un programa.  
 
 ### Formas de manejar la asincronía en JavaScript:  
 
-• 📩 **Callbacks**: Una función que se pasa como argumento de otra función y que será invocada.  
-• ✨ **Promesas**: (Implementado en ES6) Una promesa es una función no-bloqueante y asíncrona la cual puede retornar un valor ahora, en el futuro o nunca.  
-• 🛣️ **Async / Await**: (Implementado en ES2017) Permite estructurar una función asincrónica sin bloqueo de una manera similar a una función sincrónica ordinaria.  
+- **Callbacks**: Una función que se pasa como argumento de otra función y que será invocada.  
+- **Promesas**: (Implementado en ES6) Una promesa es una función no-bloqueante y asíncrona, la cual puede retornar un valor ahora, en el futuro o nunca.  
+- **Async / Await**: (Implementado en ES2017) Permite estructurar una función asincrónica sin bloqueo de una manera similar a una función sincrónica ordinaria.  
 
-📌 _En JavaScript_ casi todas las operaciones de I/O (Entrada y Salida) no se bloquean. A esto se le conoce como asincronismo. Lo único que no es procesado antes de que termine la operación son _los callbacks_, ya que éstos están amarrados a una operación y esperan a que sea finalizada para poder ejecutarse.  
+📌 _En JavaScript_ casi todas las operaciones de I/O (Entrada y Salida) no se bloquean. A esto se le conoce como asincronismo. Lo único que no es procesado antes de que termine la operación son _los callbacks_, ya que estos están amarrados a una operación y esperan a que sea finalizada para poder ejecutarse.  
 
 ⏳ _El asincronismo_ es una manera de aprovechar el tiempo y los recursos de la aplicación, ejecutando tareas y procesos mientras otros son resueltos en background (como la llegada de la información de una API), para posteriormente continuar con las tareas que requerían esa información que no tenías de manera instantánea.  
 
-⏲️ _Un ejemplo fácil de asincronismo vs sincronismo_ es invitar a unos amigos a una fiesta y ofrecer una parrillada. Primero decides colocar la carne y verduras a la parrilla y luego repartir bebidas y algo para picar (snacks). Si fuera una persona síncrona (Blocking) tendrías que esperar a que la comida de la parrilla esté cocinada y luego atender a los invitados. Pero si fuera una persona asíncrona (Non Blocking) luego de poner la carne al carbón, sacas las bebidas frías de la nevera y compartes con los invitados mientras se cocina la carne. La acción de que la comida en la parrillada esté lista sería un callback que está esperando que finalice el proceso para ejecutarse. Pero otros procesos (como compartir la velada con bebidas y algo de picar) ya podrían irse realizando.
+#### Ejemplo de sincronismo vs. asincronismo
+
+Imagina que JavaScript es una tienda de tacos, tú trabajas ahí y solamente puedes hacer una preparación a la vez. Llegan tres personas que ordenan un taco, una torta y un taco, y tienes que atenderlos en ese orden.
+
+El primer taco probablemente se demore 5 minutos. Luego, la preparación de la torta es más compleja, por lo que posiblemente demorará 20 minutos. En este punto, el **tercer** cliente se ha hartado de la espera y se retira. Este proceso no es óptimo.
+
+```js
+console.log("taco")
+console.log("torta")
+console.log("taco")
+```
+
+En Internet sucede lo mismo, si un usuario no observa información en tu página web en los primeros cinco segundo, se retirará.
+
+Entonces, una solución sería ejecutar las tareas más lentas (torta) después de las más rápidas (tacos). Y esta solución se llama **asincronismo** y JavaScript tiene una manera de manejarlo.
+
+Para entender mejor que es el asincronismo, retomemos el ejemplo de los tacos, pero ahora tienes un compañero. Entonces tú delegas la tarea de preparar la torta a otra persona, mientras realizas los tacos.
+
+Luego de 5 minutos por cada tarea, entregas los tacos a los clientes correspondientes. Después de 10 minutos necesitas la torta, entonces preguntas ¿ya está lista la torta? Tu ayudante te entrega la torta y se lo entregas. En total fueron 20 minutos y todos los clientes recibieron su pedido. Así funciona la asincronía en JavaScript.
+
+🌮 - **call stack** : _el taquero (órdenes rápidas)_  
+👨‍🍳 - **web APIs** : _la cocina_  
+🌯 - **task queue** : _las órdenes preparadas_  
+💁‍♂️ - **event loop** : _el mesero_
+
+![](https://i.postimg.cc/L5pgfgVK/3-v8.png)
+
+
+[JavaScript — Cómo funciona el Runtime Environment — JRE)](https://mauriciogc.medium.com/javascript-c%C3%B3mo-funciona-el-runtime-environment-jre-8ebceafdc938)
+
 
 
 ## 3. Event Loop

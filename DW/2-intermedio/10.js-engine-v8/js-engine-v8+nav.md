@@ -529,7 +529,7 @@ El _Event loop_ es el encargado de preguntar al _Call Stack_ si ya ha termin
 
 Para entender mejor este término, retomemos el ejemplo de los tacos, pero ahora tienes un compañero. Entonces tú delegas la tarea de preparar la torta a otra persona, mientras realizas los tacos.
 
-Luego de 5 minutos por cada tarea, entregas las tortas a los clientes correspondientes. Después de 10 minutos necesitas la torta, entonces preguntas ¿ya está lista la torta? Tu ayudante te entrega la torta y se lo entregas. En total fueron 20 minutos y todos los clientes recibieron su pedido. Así funciona la asincronía en JavaScript.
+Luego de 5 minutos por cada tarea, entregas los tacos a los clientes correspondientes. Después de 10 minutos necesitas la torta, entonces preguntas ¿ya está lista la torta? Tu ayudante te entrega la torta y se lo entregas. En total fueron 20 minutos y todos los clientes recibieron su pedido. Así funciona la asincronía en JavaScript.
 
 🌮 - **call stack** : _el taquero (órdenes rápidas)_  
 👨‍🍳 - **web APIs** : _la cocina_  
