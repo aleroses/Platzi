@@ -2563,12 +2563,12 @@ Aquí modificamos el código, según convenga. Por comodidad, en mi HTML agregu�
 ```js
 const API = 'https://youtube-v31.p.rapidapi.com/search?channelId=UCX9NJ471o7Wie1DQe94RVIg&part=snippet%2Cid&order=date&maxResults=9';
 
-const content = document.querySelector('.content__show') || null; // 👈👀 Tener en cuenta
+const content = document.querySelector('.content__show') || null;
 
 const options = {
 	method: 'GET',
 	headers: {
-		// Esta key no se debe mostrar  
+		// Esta key no se debe mostrar 
 		'X-RapidAPI-Key': '6c8aec95f0mshc835fd1a770d505p1250bfjsn6fdebd898161',
 		'X-RapidAPI-Host': 'youtube-v31.p.rapidapi.com'
 	}
@@ -2585,16 +2585,18 @@ async function fetchData(urlApi) {
 		const videos = await fetchData(API);
 		let view = `
 			${videos.items.map(video => `
-				<article class="content__video">
-					<figure>
-						<img src="${video.snippet.thumbnails.high.url}" alt="${video.snippet.description}" />
-					</figure>
-					<div>
-						<p>
-							${video.snippet.title}
-						</p>
-					</div>
-			</article>
+				<a href="https://youtube.com/watch?v=${video.id.videoId}" target="_blank">
+					<article class="content__video">
+						<figure>
+							<img src="${video.snippet.thumbnails.high.url}" alt="${video.snippet.description}" />
+						</figure>
+						<div>
+							<p>
+								${video.snippet.title}
+							</p>
+						</div>
+					</article>
+				</a>
 			`).slice(0, 4).join('')}
 		`;
 
@@ -2610,7 +2612,153 @@ async function fetchData(urlApi) {
 
 
 - [Proyecto desplegado](https://aleroses.github.io/async-landing/)
+- [Como evitar mostrar la Key](https://kinsta.com/knowledgebase/what-is-an-environment-variable/)
+- [Paquete dotenv](https://www.npmjs.com/package/dotenv)
+- [YouTube Data API](https://developers.google.com/youtube/v3?hl=es-419)
 - [Modo oscuro en tu aplicación de react! 🌙](https://dev.to/franklin030601/usando-modo-oscuro-en-tu-aplicacion-de-react-m48)
 
 
-## 22. 
+## 22. Desplegando el proyecto
+
+Para desplegar nuestro proyecto dentro de GitHub Pages debemos instalar un paquete que nos permitirá agregar todo el proyecto en una rama llamada gh-pages, permitiendo habilitar automáticamente la opción de mostrar nuestra página web, esto en lugar de hacerlo manualmente.   
+
+```bash
+// Instalación dentro de nuestro proyecto: 
+npm i gh-pages
+
+// También puedes usar..
+npm install gh-pages --save-dev
+```
+
+Puedes crear un script dentro de nuestro archivo `package.json` que permita correr el comando de despliegue de manera más intuitiva o amigable. 
+
+```json
+{
+  "name": "async-landing",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "deploy": "gh-pages -d public" 👈👀
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "gh-pages": "^5.0.0"
+  }
+}
+```
+En este caso yo estoy trabajando con una carpeta llamada public, pero puedes agregar el nombre de tu carpeta sin problemas. 
+
+📌 Nota: Antes de hacer deploy no olvides realizar `git add .`,  `git commit -am "cambios"` y un `git push origin master`.  
+
+Ahora, para desplegar el proyecto en GitHub Pages ejecuta el siguiente comando:  
+
+```bash
+// Si agregaste el script
+npm run deploy
+
+// Si no agregaste el script... 
+npx gh-pages -d public
+```
+
+✨ Ahora si ingresas al repositorio de tu proyecto en GitHub dentro de Settings - Pages, podrás encontrar el enlace a tu web desplegada. 
+
+### Atributo `defer`
+
+El atributo `defer` en la etiqueta `<script>` se utiliza para indicarle al navegador que el script se debe descargar de forma asíncrona mientras se sigue procesando el resto de la página, pero se debe ejecutar solo después de que se haya cargado y procesado todo el contenido HTML.
+
+La principal ventaja de usar `defer` es que permite que el script se ejecute después de que la estructura HTML se haya construido, pero antes de que se dispare el evento `DOMContentLoaded`. Esto significa que el script no bloqueará la renderización ni la interactividad de la página, ya que se ejecutará en segundo plano mientras los usuarios pueden interactuar con el contenido visible.
+
+Al usar `defer`, se mantiene el orden de los scripts en el documento, lo que puede ser importante si hay dependencias entre ellos. Además, si hay varios scripts con el atributo `defer`, se ejecutarán en el orden en el que aparecen en el HTML.
+
+Aquí tienes un ejemplo de cómo se puede utilizar el atributo `defer` en la etiqueta `<script>`:
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Título de la página</title>
+    <script src="archivo1.js" defer></script>
+    <script src="archivo2.js" defer></script> 👈👀
+</head>
+<body>
+    <!-- Contenido de la página -->
+</body>
+</html>
+```
+
+También:  
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Título de la página</title>
+</head>
+<body>
+    <!-- Contenido de la página -->
+    
+    <script src="archivo.js" defer></script> 👈👀
+</body>
+</html>
+```
+
+En resumen, el uso de `defer` te permite cargar y ejecutar scripts de forma asíncrona, manteniendo el orden y evitando bloquear la renderización de la página, lo que puede mejorar el rendimiento y la experiencia del usuario.
+
+
+✨ Indentar hacia atrás: `Ctrl` + `?`
+
+## 23. Playground: Crea una utilidad para hacer peticiones
+
+En este desafío debes crear una función que usando `fetch` haga llamadas a una API y esta función debe contar las siguientes características:
+
+- Realiza la transformación de datos a JSON
+- Solo permite hacer peticiones tipo GET
+- Recibir como parámetro de entrada un string que será la URL
+- Validar que una URL sea correcta, si no lo es debe lanzar un error con el mensaje `Invalid URL`
+- Si la URL tiene el formato correcto, pero no existe, debería lanzar un error con el mensaje `Something was wrong`
+
+Recuerda, para lanzar el error debes usar `throw`, ejemplo:
+
+```js
+throw new Error('Something was wrong');
+```
+
+Para solucionarlo vas a encontrar una función llamada `fetchData` que recibe un parámetros de entrada:
+
+- url: La url de la API.
+
+Dentro del cuerpo de la función `fetchData` debes escribir tu solución.
+
+Ejemplo 1:
+
+```js
+Input:
+await fetchData('https://api.escuelajs.co/api/v1/categories');
+
+Output
+// return data in json
+[...]
+```
+
+Ejemplo 2:
+
+```js
+Input:
+await fetchData('----');
+
+Output
+Error: Invalid URL
+```
+
+Ejemplo 3:
+
+```js
+Input:
+await fetchData('https://domain-a.com/api-1');
+
+Output:
+Error: Something was wrong
+```
