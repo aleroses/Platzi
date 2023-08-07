@@ -716,6 +716,13 @@ Recargamos la web y podemos ver que todo se agregó
 
 📌 Si hacemos cambios en GitHub debemos actualizar nuestro repositorio local con `git pull origin master`
 
+✨Para cambiar el nombre de un repositorio remoto, usar el siguiente comando: 
+
+```bash
+$ git remote rename origin destination
+# Change remote name from 'origin' to 'destination'
+```
+
 🎲
 
 ## 20. Cómo funcionan las llaves públicas y privadas
