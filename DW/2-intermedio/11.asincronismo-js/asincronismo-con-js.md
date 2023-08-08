@@ -110,14 +110,14 @@ Luego de 5 minutos por cada tarea, entregas los tacos a los clientes correspondi
 
 🌮 - **call stack** : _el taquero (órdenes rápidas)_  
 👨‍🍳 - **web APIs** : _la cocina_  
-🌯 - **task queue** : _las órdenes preparadas_  
+🌯 - **callback queue** : _las órdenes preparadas_  
 💁‍♂️ - **event loop** : _el mesero_
 
 ![](https://i.postimg.cc/L5pgfgVK/3-v8.png)
 
-
+[[js-engine-v8+nav#11. JavaScript Runtime o tiempo de ejecución]]  
+[[js-engine-v8+nav#12. Qué es la asincronía en JavaScript]]
 [JavaScript — Cómo funciona el Runtime Environment — JRE)](https://mauriciogc.medium.com/javascript-c%C3%B3mo-funciona-el-runtime-environment-jre-8ebceafdc938)
-
 
 
 ## 3. Event Loop
@@ -146,9 +146,12 @@ Ver los apuntes del `Curso de JavaScript Engine (V8) y el Navegador`:
 
 ## 5. Configuración
 
-Creamos una carpeta para trabajar el proyecto: 
-- git init 
-- npm init -y
+Creamos una carpeta para trabajar el proyecto y luego ejecutamos uno de estos dos comandos: 
+
+```bash
+git init // Para configuración personalizada
+npm init -y // Para configuración por defecto
+```
 
 Creamos la siguiente estructura para trabajar e instalamos la extensión **Code Runner**: 
 
@@ -156,30 +159,206 @@ Creamos la siguiente estructura para trabajar e instalamos la extensión **Code 
 ╰─ tree -L 3
 .
 ├── package.json
-├── .gitignore //👈👀 Agregamos /node_modules/
+├── .gitignore //👈👀🔥 Agregamos /node_modules/
 └── src
     └── callback
         └── index.js
 ```
 
-📌Nota: Un comando útil para ignorar archivos cuando se utiliza git con **node** es:
+📌 Nota: Un comando útil para ignorar archivos cuando se utiliza git con **node** es:
 
 ```bash
 npx gitignore node
 ```
 
 
-
 ### Conceptos fundamentales antes de crear el proyecto:  
 
-- **Web APIs JavaScript del lado del cliente**: setTimeout, XMLHttpRequest, File Reader, DOM. Node: fs, https.
-- **API**: El término API es una abreviatura de “Application Programming Interface” (Interfaz de programación de aplicaciones en español). Es un conjunto de rutinas que provee acceso a funciones de un determinado software.
-- **Hoisting**: Sugiere que las declaraciones de variables y funciones son físicamente movidas al comienzo del código en tiempo de compilación.
-- **XML**: Lenguaje de marcado creado para la transferencia de información, legible tanto para seres humanos como para aplicaciones informáticas, y basado en una sencillez extrema y una rígida sintaxis. Así como el HTML estaba basado y era un subconjunto de SGML, la reformulación del primero bajo la sintaxis de XML dio lugar al XHTML; XHTML es, por tanto, un subconjunto de XML.
-- **DOM**: El DOM permite acceder y manipular las páginas XHTML como si fueran documentos XML. De hecho, DOM se diseñó originalmente para manipular de forma sencilla los documentos XML.
-- **Events**: Comportamientos del usuario que interactúa con una página que pueden detectarse para lanzar una acción, como por ejemplo que el usuario haga click en un elemento (onclick), que elija una opción de un desplegable (onselect), que pase el ratón sobre un objeto (onmouseover), etc.
-- **Compilar**: Compilar es generar código ejecutable por una máquina, que puede ser física o abstracta como la máquina virtual de Java.
-- **Transpilar**: Transpilar es generar a partir de código en un lenguaje código en otro lenguaje. Es decir, un programa produce otro programa en otro lenguaje cuyo comportamiento es el mismo que el original.
+#### Web APIs JavaScript del lado del cliente
+Las "Web APIs JavaScript del lado del cliente" son conjuntos de interfaces y funcionalidades proporcionadas por el entorno del navegador para permitir la interacción del código JavaScript con diversos aspectos del navegador y el entorno del usuario.
+
+Estas APIs incluyen funcionalidades como la manipulación del DOM (Document Object Model), la gestión de eventos, la manipulación de elementos multimedia (audio y video), la manipulación de formularios, el acceso a la geolocalización, el almacenamiento local (localStorage, IndexedDB), la comunicación con servidores a través de XMLHttpRequest o Fetch API, entre otros.
+
+Estas APIs proporcionan a los desarrolladores herramientas y capacidades adicionales para crear aplicaciones web interactivas y ricas en funcionalidades, permitiendo interactuar con elementos de la interfaz de usuario, acceder y modificar datos, realizar llamadas a servicios externos, entre otras operaciones, todo desde el lado del cliente (es decir, en el navegador del usuario).
+
+Algunas de las Web APIs del lado del cliente más comunes incluyen:
+
+- `DOM` (Document Object Model): Esta API proporciona una representación estructurada y accesible de los documentos HTML y XML en el navegador. Permite la manipulación y navegación de elementos, estilos, eventos y contenido de la página.
+
+- `XMLHttpRequest` (XHR): Esta API permite realizar solicitudes HTTP asíncronas desde el navegador y recibir respuestas del servidor. Es ampliamente utilizada para realizar llamadas AJAX y obtener datos actualizados sin necesidad de recargar la página.
+
+- `Fetch`: Esta API también permite realizar solicitudes HTTP asíncronas desde el navegador, pero proporciona una interfaz más moderna y basada en promesas para manejar las respuestas.
+
+- `Web Storage`: Esta API proporciona mecanismos para almacenar datos en el navegador, incluyendo `localStorage` y `sessionStorage`, que permiten almacenar datos persistentes o de sesión respectivamente.
+
+- `Geolocation`: Esta API permite acceder a la ubicación geográfica del usuario si se le da permiso. Proporciona información sobre la latitud, longitud y precisión del dispositivo.
+
+- `Canvas`: Esta API permite la creación y manipulación de gráficos y dibujos en tiempo real utilizando JavaScript. Se utiliza para crear gráficos, animaciones y visualizaciones interactivas en el navegador.
+
+Estas son solo algunas de las Web APIs del lado del cliente disponibles en los navegadores modernos. Existen muchas más API que proporcionan funcionalidades adicionales para interactuar con el entorno del usuario y crear aplicaciones web ricas en funcionalidades.
+
+#### API
+API significa "Application Programming Interface" (Interfaz de Programación de Aplicaciones). 
+
+En JavaScript una API es un conjunto de reglas y funciones que proporcionan una interfaz estandarizada para interactuar con componentes de software, como el navegador, el sistema operativo o servicios externos. Estas APIs permiten a los desarrolladores acceder a funcionalidades específicas y realizar tareas como manipular el DOM, realizar solicitudes HTTP, acceder a la geolocalización y mucho más, simplificando el desarrollo de aplicaciones al proporcionar una interfaz bien definida y documentada.
+
+
+#### Hoisting
+El "hoisting" en JavaScript es un comportamiento especial del lenguaje donde las declaraciones de variables y funciones se mueven automáticamente al comienzo de su ámbito, antes de que se ejecute el código. En otras palabras, las declaraciones son "elevadas" o "izadas" al principio del ámbito en lugar de mantenerse en su posición original en el código.
+
+Esto significa que, aunque se declare una variable o función en cualquier parte del código, en realidad se procesará y se reconocerá antes de ejecutar cualquier otra línea de código en ese ámbito.
+
+Por ejemplo, en el siguiente código:
+
+```javascript
+console.log(x); // undefined
+var x = 5;
+console.log(x); // 5
+```
+
+Aunque la variable `x` se imprime antes de que se le asigne un valor, no se produce un error. Esto se debe a que la declaración `var x` es elevada al principio del ámbito, lo que significa que su declaración se procesa antes de que se ejecute el código en sí. Como resultado, `x` se considera declarada pero sin un valor asignado, lo que se representa como `undefined` cuando se imprime en la primera línea. Luego, cuando se le asigna o inicializa con el valor `5`, se imprime correctamente.
+
+📌 Nota: Es importante tener en cuenta que solo se eleva la **declaración** de las variables y no la asignación. Además, el hoisting solo ocurre en el ámbito de las funciones o en el ámbito global cuando se utiliza `var`. Otros tipos de declaraciones, como `let` y `const`, no se ven afectados por el hoisting en la misma medida. Por lo tanto, es una buena práctica declarar las variables al comienzo de su ámbito para evitar confusiones y errores.
+
+#### XML  
+XML (eXtensible Markup Language) es un lenguaje de marcado utilizado para estructurar datos en un formato legible por humanos y máquinas. En JavaScript, se puede trabajar con XML utilizando las API proporcionadas por el navegador, como el DOM (Document Object Model).
+
+Con el DOM, es posible cargar y analizar documentos XML, acceder a los elementos y atributos del documento, realizar modificaciones en la estructura, y extraer o modificar los datos contenidos en el XML.
+
+Por ejemplo, supongamos que tenemos el siguiente fragmento de un documento XML:
+
+```xml
+<person>
+  <name>John Doe</name>
+  <age>30</age>
+  <city>New York</city>
+</person>
+```
+
+En JavaScript, podemos cargar este documento XML y acceder a sus elementos y atributos utilizando el DOM:
+
+```js
+// Cargar el documento XML
+const parser = new DOMParser();
+const xmlDoc = parser.parseFromString(xmlString, "text/xml");
+
+// Acceder a los elementos y atributos
+const personElement = xmlDoc.querySelector("person");
+const nameElement = personElement.querySelector("name");
+const ageElement = personElement.querySelector("age");
+const cityElement = personElement.querySelector("city");
+
+const name = nameElement.textContent;
+const age = parseInt(ageElement.textContent);
+const city = cityElement.textContent;
+
+console.log(name); // "John Doe"
+console.log(age); // 30
+console.log(city); // "New York"
+```
+
+De esta manera, podemos utilizar JavaScript para cargar y manipular documentos XML, extraer datos, realizar modificaciones y trabajar con la estructura del XML utilizando el DOM y las API proporcionadas por el navegador.
+
+##### JSON en lugar de XML 
+Si bien JavaScript se puede utilizar para manipular documentos XML utilizando las API del DOM, es importante tener en cuenta que el uso de XML ha disminuido en popularidad en comparación con otros formatos de intercambio de datos, como JSON (JavaScript Object Notation).
+
+En la actualidad, JSON es el formato de datos preferido en la mayoría de las aplicaciones web y servicios web. JSON es más ligero, más fácil de leer y escribir para los programadores, y se integra de manera más natural con JavaScript.
+
+Sin embargo, aún puede haber casos en los que se encuentre trabajando con XML, especialmente en sistemas heredados o en aplicaciones específicas que todavía utilizan XML como formato de intercambio de datos. En tales casos, JavaScript y las API del DOM pueden ser utilizadas para cargar, manipular y extraer datos de documentos XML.
+
+Ahora que si tiene el control sobre el formato de los datos y puede elegir, es recomendable considerar el uso de JSON u otros formatos más modernos y ampliamente aceptados en lugar de XML al trabajar con JavaScript y aplicaciones web en general.
+
+#### DOM
+DOM (Document Object Model) se refiere a una representación estructurada y accesible de los documentos HTML, XHTML o XML en forma de un árbol de elementos. El DOM permite manipular y acceder a los elementos, atributos y contenido de un documento web utilizando JavaScript.
+
+En términos más simples, el DOM en JavaScript proporciona una interfaz para interactuar con los elementos de una página web. Esto significa que puedes acceder al contenido de un elemento, modificar su estilo, agregar o eliminar elementos, controlar eventos y realizar muchas otras acciones en tiempo real.
+
+Por ejemplo, supongamos que tienes el siguiente fragmento de un documento HTML:
+
+```html
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Mi página web</title>
+  </head>
+  <body>
+    <h1>Bienvenido</h1>
+    <p>Este es un párrafo de ejemplo.</p>
+    <button id="myButton">Haz clic aquí</button>
+  </body>
+</html>
+```
+
+En JavaScript, puedes utilizar el DOM para acceder y manipular los elementos de la página:
+
+```js
+// Acceder al título de la página
+const pageTitle = document.title;
+console.log(pageTitle); // "Mi página web"
+
+// Acceder al contenido del párrafo
+const paragraph = document.querySelector("p");
+console.log(paragraph.textContent); // "Este es un párrafo de ejemplo."
+
+// Modificar el estilo del encabezado
+const heading = document.querySelector("h1");
+heading.style.color = "red";
+
+// Agregar un evento al botón
+const button = document.getElementById("myButton");
+button.addEventListener("click", function() {
+  alert("¡Haz hecho clic en el botón!");
+});
+```
+
+En resumen, el DOM permite acceder, manipular y controlar los elementos y contenido de una página web. Esto proporciona la capacidad de interactuar con los elementos de una página, modificar su apariencia y comportamiento, y responder a eventos del usuario.
+
+#### Events
+Los "events" (eventos) son acciones o sucesos que ocurren en la interfaz de usuario o en el entorno de ejecución de una aplicación. Los eventos pueden ser desencadenados por el usuario, como hacer clic en un botón, mover el mouse sobre un elemento, o por el sistema, como la carga completa de un documento o el tiempo transcurrido en un temporizador.
+
+Los eventos en JavaScript permiten que tu código responda y realice acciones específicas cuando ocurren estos sucesos. Puedes utilizar "event listeners" (escuchadores de eventos) para configurar funciones que se ejecuten cuando un evento en particular ocurra.
+
+Por ejemplo, supongamos que tienes un botón con el id "myButton" en tu página HTML y deseas mostrar un mensaje cuando se haga clic en él. Puedes utilizar el evento "click" y un event listener para lograrlo:
+
+```js
+const button = document.getElementById("myButton");
+
+button.addEventListener("click", function() {
+  console.log("¡Has hecho clic en el botón!");
+});
+```
+
+En este caso, cuando el usuario hace clic en el botón, se dispara el evento "click" y la función proporcionada como argumento al event listener se ejecuta, mostrando el mensaje en la consola.
+
+Los eventos en JavaScript son fundamentales para crear interactividad en las aplicaciones web. Puedes utilizar eventos para responder a las acciones del usuario, como hacer clic, pasar el mouse, escribir en un campo de texto, así como para reaccionar a eventos del sistema, como la carga de la página o cambios en el estado de la aplicación.
+
+En resumen, los eventos en JavaScript son sucesos que ocurren en la interfaz de usuario o en el entorno de ejecución de una aplicación. Permiten que tu código responda y realice acciones específicas cuando estos eventos ocurren, lo que brinda interactividad y dinamismo a tus aplicaciones web.
+
+
+#### Compilar
+En desarrollo web, "compilar" se refiere al proceso de convertir código fuente escrito en un lenguaje de programación adicional, como TypeScript o Sass, en código JavaScript que pueda ser interpretado por los navegadores. Esto se logra mediante el uso de herramientas llamadas "compiladores" o "transpiladores". La compilación permite utilizar características avanzadas y sintaxis propias de estos lenguajes adicionales, y luego transformarlas en código JavaScript estándar para su ejecución en el navegador. Es un paso importante para optimizar y preparar el código antes de su despliegue en un sitio web.
+
+#### Transpilar
+Transpilar en JavaScript significa convertir código fuente escrito en un lenguaje de programación adicional o de próxima generación en código JavaScript equivalente que sea compatible con versiones anteriores del lenguaje y pueda ser ejecutado por los navegadores actuales.
+
+La transpilación se utiliza principalmente cuando se desea utilizar características avanzadas y sintaxis de lenguajes como TypeScript, JSX, ECMAScript 6 (ES6) o versiones posteriores, que no son compatibles con todos los navegadores. El código fuente en estos lenguajes adicionales se transpila a una versión anterior de JavaScript, generalmente ES5, que es ampliamente soportada por los navegadores.
+
+Durante la transpilación, se aplican transformaciones al código fuente para convertir las características específicas del lenguaje adicional en código JavaScript equivalente. Esto puede incluir la verificación de tipos, el soporte para clases, funciones de flecha, módulos, desestructuración y muchas otras características avanzadas.
+
+El uso de herramientas de transpilación, como Babel, permite a los desarrolladores escribir código en lenguajes adicionales o de próxima generación sin preocuparse por la compatibilidad del navegador. El código se transpila a una versión de JavaScript que puede ser interpretada y ejecutada de manera confiable por una amplia gama de navegadores.
+
+En resumen, transpilar en JavaScript implica convertir código fuente escrito en un lenguaje adicional o de próxima generación en código JavaScript compatible con versiones anteriores, utilizando herramientas de transpilación. Esto permite utilizar características avanzadas y sintaxis moderna, mientras se garantiza la compatibilidad con los navegadores actuales.
+
+#### Compilar vs. Transpilar
+Compilar y transpilar no son lo mismo, aunque están relacionados y comparten algunas similitudes.
+
+La compilación se refiere al proceso de convertir un código fuente en un lenguaje de programación a un código ejecutable en un formato diferente. Por lo general, implica la traducción completa del código fuente en un solo paso, generando un archivo ejecutable o un archivo de código objeto que puede ser ejecutado directamente por una máquina o un entorno de ejecución específico.
+
+Por otro lado, la transpilación es una forma específica de compilación en la que el código fuente se traduce de un lenguaje de programación a otro lenguaje de programación de nivel similar. En el contexto de JavaScript, la transpilación se refiere principalmente a convertir código fuente escrito en un lenguaje adicional o de próxima generación (como TypeScript, JSX o ECMAScript 6) a código JavaScript equivalente que pueda ser interpretado y ejecutado por los navegadores actuales.
+
+La diferencia principal radica en que la compilación puede implicar la traducción a un lenguaje completamente diferente y en un formato ejecutable final, mientras que la transpilación se enfoca en la traducción a un lenguaje similar y compatible con un entorno de ejecución específico.
+
+En resumen, la compilación y la transpilación son procesos relacionados pero distintos. La compilación implica la traducción completa del código fuente a un formato ejecutable diferente, mientras que la transpilación se refiere a la traducción de un lenguaje de programación a otro lenguaje de nivel similar, generalmente para garantizar la compatibilidad con un entorno de ejecución específico.
 
 ## 6. Qué son los Callbacks
 
@@ -201,7 +380,7 @@ En resumen, los callbacks son útiles en cualquier situación en la que se neces
 
 ### Ejemplos + Explicación 
 
-Puedes ver como se ejecuta el código línea a línea usando el debugger de Chrome o Edge. Para usarlo usa `Ctrl + Shift + I` en cualquier web o si prefieres coloca en la URL `about:blank` para abrir una página en blanco, ahora busca Sources y por ultimo `>> Snippets`. Ahora ya puedes probar tu código creando `+ New snippet`
+Puedes ver como se ejecuta el código línea a línea usando el debugger de Chrome o Edge. Para usarlo presiona `Ctrl + Shift + I` en cualquier web o si prefieres coloca en la URL `about:blank` para abrir una página en blanco, ahora busca Sources y por ultimo `>> Snippets`. Ahora ya puedes probar tu código creando `+ New snippet`
 
 ```js
 function greeting(name){ 👈👀
