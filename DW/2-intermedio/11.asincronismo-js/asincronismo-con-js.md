@@ -1384,29 +1384,6 @@ En este ejemplo, el operador `?.` se utiliza para llamar al método `method1` en
 
 En resumen, el operador de encadenamiento opcional `?.` es una característica útil de ECMAScript 2020 que simplifica el acceso a las propiedades de un objeto anidado y ayuda a evitar errores de referencia nula en el código.
 
-### Callback hell
-
-"Callback hell" (o "infierno de los callbacks") es un término que se utiliza en JavaScript para describir una situación en la que se anidan múltiples funciones de devolución de llamada (callbacks) dentro de otras funciones de devolución de llamada, lo que puede dificultar la legibilidad y el mantenimiento del código.
-
-En JavaScript, las funciones de devolución de llamada se utilizan comúnmente para realizar tareas asincrónicas, como realizar solicitudes HTTP o leer archivos. Cuando se anidan varias funciones de devolución de llamada, el código puede volverse difícil de leer y mantener debido a la cantidad de anidamiento y la necesidad de realizar un seguimiento de varias variables y estados.
-
-Por ejemplo, un ejemplo de "callback hell" podría ser el siguiente:
-
-```js
-asyncOperation1(function(result1) {
-  asyncOperation2(result1, function(result2) {
-    asyncOperation3(result2, function(result3) {
-      asyncOperation4(result3, function(result4) {
-        // Hacer algo con los resultados
-      });
-    });
-  });
-});
-```
-
-En este ejemplo, cada función de devolución de llamada anida otra función de devolución de llamada, lo que puede hacer que el código sea difícil de leer y seguir. Para evitar el callback hell, se pueden utilizar técnicas como las promesas o async/await para manejar de forma más clara y legible el flujo de control asíncrono en el código JavaScript.
-
-📌 Nota: Para evitar la mala práctica de un **Call Hell**, no es recomendable exceder de 3 _callback_, para ello se utilizan _las promesas o el Async Away_.  
 
 ### Console
 
@@ -1436,11 +1413,33 @@ Estos son solo algunos de los métodos más comunes de consola en JavaScript, pe
 
 ## 10. Callback hell
 
-**CallBacks Hell**: Consiste en múltiples _Callbacks anidados_ que provocan que el código se vuelva difícil de leer y ‘_debuggear_’ y por eso se debe evitar.
+"Callback hell" (o "infierno de los callbacks") es un término que se utiliza en JavaScript para describir una situación en la que se anidan múltiples funciones de devolución de llamada (callbacks) dentro de otras funciones de devolución de llamada, lo que puede dificultar la legibilidad y el mantenimiento del código.
+
+En JavaScript, las funciones de devolución de llamada se utilizan comúnmente para realizar tareas asincrónicas, como realizar solicitudes HTTP o leer archivos. Cuando se anidan varias funciones de devolución de llamada, el código puede volverse difícil de leer y mantener debido a la cantidad de anidamiento y la necesidad de realizar un seguimiento de varias variables y estados.
+
+Por ejemplo, un ejemplo de "callback hell" podría ser el siguiente:
+
+```js
+asyncOperation1(function(result1) {
+  asyncOperation2(result1, function(result2) {
+    asyncOperation3(result2, function(result3) {
+      asyncOperation4(result3, function(result4) {
+        // Hacer algo con los resultados
+      });
+    });
+  });
+});
+```
+
+En este ejemplo, cada función de devolución de llamada anida otra función de devolución de llamada, lo que puede hacer que el código sea difícil de leer y seguir. Para evitar el callback hell, se pueden utilizar técnicas como las promesas o async/await para manejar de forma más clara y legible el flujo de control asíncrono en el código JavaScript.
+
+📌 Nota: Para evitar la mala práctica de un **Call Hell**, no es recomendable exceder de 3 _callback_, para ello se utilizan _las promesas o el Async Away_.  
+
+> **CallBacks Hell**: Consiste en múltiples _Callbacks anidados_ que provocan que el código se vuelva difícil de leer y ‘_debuggear_’ y por eso se debe evitar.
 
 ### Otra forma de ejecutar el código creado
 
-Para compilar el código y mostrar el resultado desde consola, podemos ejecutar este comando: 
+Lo común sería darle al icono ▶ Code Run, pero también podemos compilar y mostrar el resultado de nuestro código desde la consola y para esto podemos ejecutar este comando: 
 
 ```bash
 node src/callback/challenge.js
@@ -1493,6 +1492,8 @@ Utilizamos la palabra reservada `new` seguida de la palabra `Promise` que es
 const promise = new Promise(function (resolve, reject){
 resolve('hey!');
 });
+
+console.log(promise);
 ```
 
 ### Los tres estados de las promesas:
@@ -1541,11 +1542,11 @@ const cows = 15; //valor inicial de vacas
 const countCows = newPromise(function(resolve, reject){
 //solo si el número de vacas supera 10, se llama al resolve
 //de lo contrario: se llama a reject
-if(cows > 10){
-resolve(`We have ${cows} cows on the farm`);
-} else {
-reject("There is no cows on the farm");
-}
+	if(cows > 10){
+		resolve(`We have ${cows} cows on the farm`);
+	} else {
+		reject("There is no cows on the farm");
+	}
 });
 
 //con solo .then se obtiene el resultado de la promesa de acuerdo a resolve o reject
