@@ -1207,18 +1207,18 @@ fetchData(`${API}/products`, function (error1, data1) {
 
 ```js
 fetchData(`${API}/products`, function (error1, data1) {
-	if (error1) return console.error(error1);
-	/* console.log(data1); */
+  if (error1) return console.error(error1);
+  /* console.log(data1); */
 
-	fetchData(`${API}/products/${data1[0].id}`, function(error2, data2){
-		if(error2) return console.error(error2);
-		/* console.log(data2); */
+  fetchData(`${API}/products/${data1[0].id}`, function (error2, data2) {
+    if (error2) return console.error(error2);
+    /* console.log(data2); */
 
-		fetchData(`${API}/categories/`, function (error3, data3){
-			if(error3) return console.error(error3);
-			console.log(data3);
-		});
-	});
+    fetchData(`${API}/categories/`, function (error3, data3) {
+      if (error3) return console.error(error3);
+      console.log(data3);
+    });
+  });
 });
 
 // Obtenemos: 
@@ -1279,18 +1279,18 @@ Ahora filtremos la categoría de nuestro producto, para lo cual concatenamos el 
 
 ```js
 fetchData(`${API}/products`, function (error1, data1) {
-	if (error1) return console.error(error1);
-	/* console.log(data1); */
+  if (error1) return console.error(error1);
+  /* console.log(data1); */
 
-	fetchData(`${API}/products/${data1[0].id}`, function(error2, data2){
-		if(error2) return console.error(error2);
-		/* console.log(data2); */
+  fetchData(`${API}/products/${data1[0].id}`, function (error2, data2) {
+    if (error2) return console.error(error2);
+    /* console.log(data2); */
 
-		fetchData(`${API}/categories/${data2?.category?.id}`, function (error3, data3){
-			if(error3) return console.error(error3);
-			console.log(data3);
-		});
-	});
+    fetchData(`${API}/categories/${data2?.category?.id}`, function (error3, data3) {
+      if (error3) return console.error(error3);
+      console.log(data3);
+    });
+  });
 });
 
 // Obtenemos 
@@ -1310,14 +1310,14 @@ fetchData(`${API}/products`, function (error1, data1) {
 
 ```js
 fetchData(`${API}/products`, function (error, all) {
-    if (error) return console.log(error);
+  if (error) return console.log(error);
 
-    const product = all[0];
+  const product = all[0];
 
-	/* console.log(all); */ //👈👀 Muestra un array de objetos
-	console.log(product);
-    console.log(product.title)
-    console.log(product.category.name)
+  /* console.log(all); */ //👈👀 Muestra un array de objetos
+  console.log(product);
+  console.log(product.title)
+  console.log(product.category.name)
 })
 ```
 
@@ -1330,14 +1330,14 @@ const API = 'https://api.escuelajs.co/api/v1/products';
 
 xhr.open('GET', API, true);
 xhr.onreadystatechange = function () {
-	if (xhr.readyState === xhr.DONE) { //4
-		if (xhr.status === 200) {
-			const respuesta = JSON.parse(xhr.responseText);
-			console.log(respuesta);
-		} else {
-			console.log('Error en la solicitud');
-		}
-	}
+  if (xhr.readyState === xhr.DONE) { //4
+    if (xhr.status === 200) {
+      const respuesta = JSON.parse(xhr.responseText);
+      console.log(respuesta);
+    } else {
+      console.log('Error en la solicitud');
+    }
+  }
 };
 
 xhr.send();
@@ -1543,24 +1543,24 @@ Para probar el código, en el proyecto se crea la carpeta llamada `promise` de
 const cows = 15; //valor inicial de vacas
 
 const countCows = newPromise(function (resolve, reject) {
-	//solo si el número de vacas supera 10, se llama al resolve
-	//de lo contrario: se llama a reject
-	if (cows > 10) {
-		resolve(`We have ${cows} cows on the farm`);
-	} else {
-		reject("There is no cows on the farm");
-	}
+  //solo si el número de vacas supera 10, se llama al resolve
+  //de lo contrario: se llama a reject
+  if (cows > 10) {
+    resolve(`We have ${cows} cows on the farm`);
+  } else {
+    reject("There is no cows on the farm");
+  }
 });
 
 //con solo .then se obtiene el resultado de la promesa de acuerdo a resolve o reject
 //con .catch podemos obtener más información de un futuro error que se presente
 //con .finally podemos imprimir un mensaje que indica que ya se ejecutó la promesa
 countCows
-	.then((result) => {
-		console.log(result);
-	}).catch((error) => {
-		console.log(error);
-	}).finally(() => console.log('Finally'));
+  .then((result) => {
+    console.log(result);
+  }).catch((error) => {
+    console.log(error);
+  }).finally(() => console.log('Finally'));
 //se usan arrow function () =>
 
 // Usando 15 obtenemos: 
@@ -1577,15 +1577,15 @@ Otra forma:
 const cows = 0;
 
 const count_cows = new Promise((resolve, reject) => {
-	cows >= 1
-		? resolve(`I have ${cows} cows on the farm.`)
-		: reject('There is no cows on the farm.')
+  cows >= 1
+    ? resolve(`I have ${cows} cows on the farm.`)
+    : reject('There is no cows on the farm.')
 });
 
 count_cows
-	.then((result) => console.log(result))
-	.catch((error) => console.log(error))
-	.finally(() => console.log('Finally'));
+  .then((result) => console.log(result))
+  .catch((error) => console.log(error))
+  .finally(() => console.log('Finally'));
 
 // Usando 0 obtenemos: 
 There is no cows on the farm.
@@ -1687,13 +1687,13 @@ En este ejemplo, se usan varias llamadas `fetch` para realizar múltiples solici
 Para la API usada en clase sería así: 
 ```js
 Promise.all([
-	fetch('https://api.escuelajs.co/api/v1/products/6'),
-	fetch('https://api.escuelajs.co/api/v1/categories/3'),
-	fetch('https://api.escuelajs.co/api/v1/users/3')
+  fetch('https://api.escuelajs.co/api/v1/products/6'),
+  fetch('https://api.escuelajs.co/api/v1/categories/3'),
+  fetch('https://api.escuelajs.co/api/v1/users/3')
 ])
-	.then(responses => Promise.all(responses.map(response => response.json())))
-	.then(data => console.log(data))
-	.catch(e => console.log(e))
+  .then(responses => Promise.all(responses.map(response => response.json())))
+  .then(data => console.log(data))
+  .catch(e => console.log(e))
 ```
 
 En resumen, `Promise.all()` es útil cuando se necesita realizar múltiples operaciones asíncronas y se desea esperar a que todas se completen antes de continuar con el código.
