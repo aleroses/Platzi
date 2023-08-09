@@ -1809,6 +1809,57 @@ Output:
 "Hello after 3s"
 ```
 
+### Solución 
+
+Forma 01:  
+```js
+const delay = (ms, message) => {
+	return new Promise(resolve => {
+		setTimeout(() => {
+			resolve(message)
+		}, ms)
+	})
+}
+
+delay(2000, 'hi')
+	.then(response => console.log(response))
+	.catch(e => console.log(e));
+
+// Obtenemos despues de 2 seg
+hi
+```
+
+Forma 02:  
+```js
+function delay(time, message) {
+	return new Promise((resolve) => {
+		setTimeout(() => {
+			resolve(message);
+		}, time);
+	});
+};
+
+delay(2000, 'Hi Ghost')
+	.then((result) => console.log(result))
+	.finally(() => console.log('Finally'));
+
+// Obtenemos despues de 2 seg
+Hi Ghost
+Finally
+```
+
+Forma para Platzi: 
+```js
+export function delay(time, message) {
+  return new Promise((resolve, reject) => {
+    window.setTimeout(() => {
+      resolve(message);
+    }, time);
+  });
+}
+```
+
+
 ## 13. Fetch 
 
 `fetch` es una función nativa que proporciona una forma fácil de hacer solicitudes HTTP y obtener datos de recursos externos, como APIs web o archivos JSON. `fetch` usa promesas y proporciona una interfaz más simple y flexible que el antiguo objeto `XMLHttpRequest` (XHR).
