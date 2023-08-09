@@ -727,22 +727,23 @@ const XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
 const API = 'https://api.escuelajs.co/api/v1';
 
 function fetchData(urlAPI, callback) {
-	let xhttp = new XMLHttpRequest();
+  let xhttp = new XMLHttpRequest();
 
-	xhttp.open('GET', urlAPI, true);
-	xhttp.onreadystatechange = function (event) {
-		if (xhttp.readyState === 4) {
-			if (xhttp.status === 200) {
-				callback(null, JSON.parse(xhttp.responseText));
-			} else {
-				const error = new Error(`Error en ${urlAPI}`);
+  xhttp.open('GET', urlAPI, true);
+  xhttp.onreadystatechange = function (event) {
+    if (xhttp.readyState === 4) {
+      if (xhttp.status === 200) {
+        callback(null, JSON.parse(xhttp.responseText));
+      } else {
+        const error = new Error(`Error en ${urlAPI}`);
 
-				callback(error, null);
-			}
-		}
-	}
+        callback(error, null);
+      }
+    }
+  }
 
-	xhttp.send();
+  xhttp.send();
+}
 ```
 
 ### 🔥 Explicación línea a línea
@@ -852,8 +853,8 @@ Entonces se realiza la comprobación si `readyState` es igual a `4`, lo que i
 
 ```js
 if (xhttp.readyState === 4) {
-	if (xhttp.status === 200) {
-	} ✅
+  if (xhttp.status === 200) {
+  } ✅
 } ✅
 ```
 
@@ -869,10 +870,10 @@ El código de estado HTTP `200` representa una respuesta exitosa. Indica que la 
 ¡Ya comprobamos que tanto el request (pedido/solicitud) como él response (respuesta) hayan sido exitosos! Ahora podemos invocar nuestro callback (función por definir más tarde para manipular los datos).
 
 ```js
-if(xhttp.readyState === 4) {
-	if(xhttp.status === 200) {
-		callback(null, JSON.parse(xhttp.responseText));
-	} ✅
+if (xhttp.readyState === 4) {
+  if (xhttp.status === 200) {
+    callback(null, JSON.parse(xhttp.responseText));
+  } ✅
 } ✅
 ```
 
@@ -886,12 +887,12 @@ Al invocar `callback(null, JSON.parse(xhttp.responseText))`, se pasa `null` c
 
 ```js
 if (xhttp.readyState === 4) {
-	if (xhttp.status === 200) {
-		callback(null, JSON.parse(xhttp.responseText)); ✅
-	} ✅
+  if (xhttp.status === 200) {
+    callback(null, JSON.parse(xhttp.responseText)); ✅
+  } ✅
 } else ❌ {
-		const error = new Error(`Error en ${urlAPI}`);
-		callback(error, null);
+  const error = new Error(`Error en ${urlAPI}`);
+  callback(error, null);
 }
 ```
 
@@ -905,7 +906,7 @@ Si te fijaste en el código anterior dentro del `else`, estamos usando una `cons
 
 ```js
 else ❌ {
-	const error = new Error(`Error en ${urlAPI}`);
+  const error = new Error(`Error en ${urlAPI}`);
 }
 ```
 
@@ -917,8 +918,8 @@ El objeto `Error` creado se utiliza para representar un error durante la ejecu
 
 ```js
 else ❌ {
-		const error = new Error(`Error en ${urlAPI}`);
-		callback(error, null); 👈👀
+  const error = new Error(`Error en ${urlAPI}`);
+  callback(error, null); 👈👀
 }
 ```
 
