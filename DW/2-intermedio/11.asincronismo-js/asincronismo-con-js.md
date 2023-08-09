@@ -1814,16 +1814,16 @@ Output:
 Forma 01:  
 ```js
 const delay = (ms, message) => {
-	return new Promise(resolve => {
-		setTimeout(() => {
-			resolve(message)
-		}, ms)
-	})
+  return new Promise(resolve => {
+    setTimeout(() => {
+      resolve(message)
+    }, ms)
+  })
 }
 
 delay(2000, 'hi')
-	.then(response => console.log(response))
-	.catch(e => console.log(e));
+  .then(response => console.log(response))
+  .catch(e => console.log(e));
 
 // Obtenemos despues de 2 seg
 hi
@@ -1832,16 +1832,16 @@ hi
 Forma 02:  
 ```js
 function delay(time, message) {
-	return new Promise((resolve) => {
-		setTimeout(() => {
-			resolve(message);
-		}, time);
-	});
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve(message);
+    }, time);
+  });
 };
 
 delay(2000, 'Hi Ghost')
-	.then((result) => console.log(result))
-	.finally(() => console.log('Finally'));
+  .then((result) => console.log(result))
+  .finally(() => console.log('Finally'));
 
 // Obtenemos despues de 2 seg
 Hi Ghost
