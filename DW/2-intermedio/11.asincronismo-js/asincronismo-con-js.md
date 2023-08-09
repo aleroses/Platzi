@@ -554,7 +554,7 @@ El uso de `window` también puede ser útil en situaciones donde hay ambigüedad
 
 ## 8. XMLHTTPRequest
 
-**XMLHttpRequest** (XHR) es un objeto JavaScript que se utiliza para realizar solicitudes HTTP / HTTPS asincrónicas desde un navegador web para recibir datos del servidor web.
+**XMLHttpRequest** (XHR) es un objeto JavaScript que se utiliza para realizar solicitudes HTTP / HTTPS asíncronas desde un navegador web para enviar y recibir datos hacia y desde un servidor web.
 
 ### Propiedades
 
@@ -684,7 +684,7 @@ Los códigos de estado más comunes:
 - **`503`** → _Service Unavailable_: indica que el servidor no está disponible temporalmente para procesar la solicitud.
 
 
-### Ejemplo
+### Ejemplo usando GET 
 
 1. Ir a la consola y ubicarnos en la carpeta del proyecto y escribir el comando para instalar el paquete **XMLHttpRequest**:  
 
@@ -746,82 +746,110 @@ function fetchData(urlApi, callback){
 }
 ```
 
-### Explicación paso a paso de la construcción de la función `fetchData`.
+### Explicación línea a línea
 
-1. Primero debemos declarar e importar el paquete de [XMLHttpRequest](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest), que nos permite utilizar objetos (XHR) para interactuar con servidores (en este caso la API de Platzi) para esto hacemos:
-
-```js
-const XMLHttpRequest = require('XMLHttpRequest');
-```
-
-- Lo que hace aquí “[require()](https://nodejs.org/api/modules.html#requireid)” es importar el módulo del ID que le pasemos, además puede importar JSON y archivos locales. Pero necesitamos trabajar con XMLHttpRequest para manipular la API.  
-
-2. Declaramos como constante el URL de la API:
+#### Importar módulo para acceder a su clase
 
 ```js
-const API = 'https://api.escuelajs.co/api/v1/products';
-```
+const XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
+```  
+Usamos la sentencia `require` para importar el módulo llamado `'xmlhttprequest'`.
 
-3. Ahora es momento de iniciar con la función principal que en términos simples es:
+La sintaxis `require('xmlhttprequest').XMLHttpRequest` se utiliza para acceder a la clase `XMLHttpRequest` del módulo `'xmlhttprequest'`. La clase `XMLHttpRequest` es una parte fundamental de la API de JavaScript que permite realizar solicitudes HTTP asíncronas desde el lado del cliente o del servidor.
+
+Al asignarla a la constante `XMLHttpRequest`, se está creando una nueva instancia de la clase `XMLHttpRequest` que se puede utilizar para enviar y recibir datos a través de solicitudes HTTP.
+
+#### Almacenar URL que representa nuestra API
+
+```js
+const API = 'https://api.escuelajs.co/api/v1';
+```   
+Al asignar la URL a la constante `API`, se facilita el acceso a la URL en el resto del código. Esto significa que se puede utilizar la constante `API` en otras partes del programa para realizar solicitudes a la API, obtener datos y trabajar con ellos en el código JavaScript.
+
+#### Función fetchData
 
 ```js
 function fetchData(urlApi, callback) {
 }
-```
+```  
+Esta función está diseñada para recibir una URL de la API y una función de devolución de llamada (callback) como argumentos. Esta última se invocará dentro de la función `fetchData` una vez que los datos estén disponibles. Esta función callback se utiliza para manejar y procesar los datos recibidos de la API de acuerdo con la lógica específica del programa.
 
-- El parámetro ‘urlApi’ hace referencia a cualquier API con la cual estemos trabajando, en este caso la FakeStore de Platzi.
-- El segundo parámetro ‘callback’ es donde posteriormente vamos a pasar una función como argumento para poder controlar el flujo de información de la API.  
-
-4. Necesitamos alguna manera de poder manipular las solicitudes que haremos para consultar los datos, para ello vamos a crear un espacio en memoria (una variable) en donde guardar el objeto (XHR) que importamos y gracias a los métodos ya construidos nos será mil veces más fácil desarrollar nuestra función.
+####  Creación de una nueva instancia
 
 ```js
-let xhttp = new XMLHttpRequest();
-```
+const xhttp = new XMLHttpRequest();
+``` 
 
-- Si estás familiarizado con OOP ([Programación Orientada a Objetos](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Basics#object_basics)) sabrás entonces que esto no es más que un constructor vacío, de la misma forma que:
+Si recordamos la primera línea `const XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;` nos indica que está importando el módulo `'xmlhttprequest'` y asignando la clase `XMLHttpRequest` a la constante `XMLHttpRequest`. 
+
+Dicho esto, en la siguiente línea de código `const xhttp = new XMLHttpRequest();`, se crea una nueva **instancia** de `XMLHttpRequest` utilizando la clase `XMLHttpRequest` importada en la primera línea. Esta instancia se almacena en la constante `xhttp` y se usará para realizar solicitudes HTTP/HTTPS en Node.js utilizando la implementación proporcionada por el módulo `'xmlhttprequest'`.
+
+📌 Nota: Si estás familiarizado con OOP ([Programación Orientada a Objetos](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Basics#object_basics)) sabrás entonces que esto no es más que un constructor vacío, de la misma forma que:
 
 ```js
 let perrito = new Animal(); 🐶
 let manzana = new Fruta();  🍎
 ```
 
-5. Muy bien, ya podemos utilizar nuestra variable `xhttp` (en conjunto al callback) como un objeto para acceder y manipular la API. Primero debemos abrir una solicitud (un request) esto lo hacemos con el método ‘[.open()](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/open)’
+Una vez que has creado la instancia de `XMLHttpRequest`, puedes utilizar los métodos y propiedades que posee la clase `XMLHttpRequest` para realizar solicitudes HTTP/HTTPS y manejar la respuesta del servidor.
+
+- Los métodos son las funciones que se pueden invocar en una instancia de `XMLHttpRequest` para realizar acciones específicas, como enviar una solicitud HTTP, establecer encabezados personalizados o cancelar una solicitud. Ejemplos de métodos son `open()`, `send()`, `abort()`, `setRequestHeader()`, entre otros.
+
+- Las propiedades son los valores que se pueden leer o modificar en una instancia de `XMLHttpRequest` para obtener información sobre el estado de la solicitud o la respuesta recibida. Ejemplos de propiedades son `readyState`, `status`, `responseText`, `responseXML`, `onreadystatechange`, entre otros.
+
+#### Usando métodos de XMLHttpRequest  
 
 ```js
-xhttp.open('GET', urlApi, true);
+xhttp.open('GET', urlAPI, true);
 ```
 
-- Ahora bien, el primer parámetro es el tipo de solicitud que vamos a realizar, pudo haber sido “POST”, “PUT”, “DELETE”. Pero vamos a utilizar “GET” 😎
-- El segundo parámetro es la URL de la API a la cual le vamos a realizar el request.
-- Último y tercer parámetro recibe un booleano para indicarle si vamos a utilizar asincronismo o no, tal simple como TRUE o FALSE según el caso.
+En esta línea de código, se utiliza el método `open()` del objeto `XMLHttpRequest` para configurar la solicitud HTTP antes de enviarla al servidor.
 
-6. Vamos a hacer una función anónima para verificar que el request de los datos ha salido con éxito y en caso de un tener error hacer registro de este. Para ello nos vamos a apoyar de la propiedad de ‘[.onreadystatechange](https://www.w3schools.com/xml/ajax_xmlhttprequest_response.asp)’ esta llamará a la función cada que el [readyState](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/readyState) cambie (readyState retorna el número del estado en dónde se encuentra el request)
+El método `open()` acepta tres parámetros:
+
+1. El primer parámetro representa el método HTTP a utilizar, en este caso, se utiliza `'GET'` para indicar que se realizará una solicitud de tipo GET al servidor.
+
+2. El segundo parámetro es la URL de la API a la cual se enviará la solicitud. En este caso, se utiliza la variable `urlAPI`, que es el primer parámetro de la función `fetchData`.
+
+3. El tercer parámetro es un booleano que indica si la solicitud debe ser asíncrona (`true`) o síncrona (`false`). En este caso, se establece en `true` para realizar una solicitud asincrónica, lo que significa que la función `fetchData` no se bloqueará y permitirá que el código continúe ejecutándose mientras se espera la respuesta del servidor.
+
+Al llamar al método `open()` con los parámetros adecuados, se configura la solicitud HTTP para que se realice una solicitud `GET` a la URL especificada, y se establece la asincronía para permitir un comportamiento no bloqueante.
+
+#### Evento que se activa cada vez que el estado de la solicitud cambia
 
 ```js
-xhttp.onreadystatechange = function(e){
+xhttp.onreadystatechange = function (event) {
+
 }
 ```
+Esta línea se utiliza para asignar una función anónima a la propiedad `onreadystatechange` de la clase `XMLHttpRequest`. Esta función se ejecutará cada vez que cambie el estado de la solicitud y te permite realizar acciones específicas en función del estado y la respuesta recibida del servidor.
 
-- Ahora bien, el ciclo de vida del `readyState` es el siguiente:  
-    
-|Value|State|Description|
-|---|---|---|
-|`0`|`UNSENT`|Client has been created. `open()` not called yet.|
-|`1`|`OPENED`|`open()` has been called.|
-|`2`|`HEADERS_RECEIVED`|`send()` has been called, and headers and status are available.|
-|`3`|`LOADING`|Downloading; `responseText` holds partial data.|
-|`4`|`DONE`|The operation is complete.|
-    
-    Entonces debemos parar en `4` cuando la operación ha sido completada
+Con esto, vamos a verificar que el request de los datos ha salido con éxito y en caso de un tener error hacer registro de este. 
+
+#### Comprobar el estado de la solicitud
 
 ```js
 if (xhttp.readyState === 4) {
-} ✅
+}
 ```
 
-- Una vez completado con éxito necesitamos saber qué tipo de respuesta nos entregó el servidor, así que volvemos a verificar con un if la propiedad ‘[.status](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/status)’ según el tipo de respuestas:  
-    ![](https://i.imgur.com/4opBaJk.png)  
-    Entonces el if nos queda de la siguiente manera:
+Dentro de la función anónima asignada a `onreadystatechange`, se puede realizar una comprobación utilizando la propiedad `readyState` de la clase `XMLHttpRequest`.
+
+La propiedad `readyState` indica el estado actual de la solicitud y puede tener los siguientes valores:
+
+|Valor |Estado        |Descripción |
+|------|--------------|------------|
+|`0`  |`UNINITIALIZED`|No inicializado, todavía no se llamó a `open()`.|
+|`1`  |`LOADING`     |Cargando, todavía no se llamó a `send()`.|
+|`2`  |`LOADED`      |Cargado, `send()` ya fue invocado, y los encabezados y el estado están disponibles.|
+|`3`  |`INTERACTIVE`  |Interactivo, Descargando; `responseText` contiene información parcial.|
+|`4`  |`COMPLETED`    |Completo, la operación está terminada.|
+
+Entonces se realiza la comprobación si `readyState` es igual a `4`, lo que indica que la solicitud se ha completado.
+
+[Documentación: readyState](https://developer.mozilla.org/es/docs/Web/API/Document/readyState)
+
+#### Verificar si el estado de la respuesta del servidor es exitoso
 
 ```js
 if (xhttp.readyState === 4) {
@@ -830,7 +858,16 @@ if (xhttp.readyState === 4) {
 } ✅
 ```
 
-- ¡Ya comprobamos que tanto el request como él response hayan sido exitosos! Ahora podemos invocar nuestro callback (función por definir más tarde para manipular los datos)
+La línea `if (xhttp.status === 200) {}` dentro de la función anónima se utiliza para verificar si el estado de la respuesta del servidor es exitoso.
+
+Después de que la solicitud HTTP se haya completado y el estado de `readyState` sea `4` (DONE), se puede acceder a la propiedad `status` de la clase `XMLHttpRequest` para obtener el código de estado de la respuesta del servidor.
+
+El código de estado HTTP `200` representa una respuesta exitosa. Indica que la solicitud se realizó correctamente y el servidor devolvió una respuesta válida.
+
+
+#### Invocar el callback
+
+Ya comprobamos que tanto el request (pedido/solicitud) como él response (respuesta) hayan sido exitosos! Ahora podemos invocar nuestro callback (función por definir más tarde para manipular los datos)
 
 ```js
 if(xhttp.readyState === 4) {
@@ -840,14 +877,13 @@ if(xhttp.readyState === 4) {
 } ✅
 ```
 
-¿Y por qué tiene tantos parámetros el callback si aún ni siquiera lo hemos definido? 🤔 Mira te explico:
+Esta línea se utiliza para invocar a la función `callback` y pasarle los datos obtenidos de la respuesta del servidor.
 
-- El primero vamos a utilizarlo en caso de que se presente un error, pero como ya hemos verificado eso podemos simplemente dejarlo como un ‘null’.
-- En el segundo usamos la función ‘[JSON.parse()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse)’ para convertir en datos que podamos controlar el texto que nos retorna la propiedad ‘[.responseText](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/responseText)’ después de hacer el request.
+Al alcanzar este punto del código, significa que la solicitud se ha completado exitosamente y se ha recibido una respuesta válida del servidor.
 
-Listo🥳, dejamos preparado nuestro callback sin errores y con la información “traducida” para cualquier momento en el que necesitemos usarla. Pero ¿Y si el request no es exitoso? ¿Qué va a pasar con nuestra función?😔
+Al invocar `callback(null, JSON.parse(xhttp.responseText))`, se pasa `null` como el primer argumento, lo cual indica que no ha ocurrido ningún error durante la solicitud. El segundo argumento, `JSON.parse(xhttp.responseText)`, es el cuerpo de la respuesta del servidor que ha sido convertido de una cadena de texto JSON a un objeto JavaScript utilizando `JSON.parse`.
 
-- Hay que regresarnos al primer if y utilizar la estructura de else para que en caso de haber un error registrarlo y enviarlo al callback (donde antes habíamos puesto ‘null’) y ahora pasar el null en la parte de los datos, ya que nunca pudo consultarlos.
+#### Else en caso la respuesta del servidor no tiene un estado exitoso
 
 ```js
 if (xhttp.readyState === 4) {
@@ -855,21 +891,50 @@ if (xhttp.readyState === 4) {
 		callback(null, JSON.parse(xhttp.responseText)); ✅
 	} ✅
 } else ❌ {
-		consterror = new Error('error' + urlApi);
-		returncallback(error, null);
+		const error = new Error(`Error en ${urlAPI}`);
+		callback(error, null);
 }
 ```
 
-7. 🏆 ¡¡Acabamos la función!! 🏆  
-    Ya solo resta utilizar el método ‘[.send()](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/send)’ después de procesar los datos para enviar el request al server (API)
+El bloque `else` y la creación de la constante `error` en la función `fetchData` se utilizan para manejar los casos en los que la respuesta del servidor no tiene un estado exitoso.
+
+Dentro del bloque de código condicional que verifica si el estado de la respuesta del servidor es `200`, en caso de que no sea así, se ejecuta el bloque `else`. Esto indica que la respuesta del servidor no fue exitosa y puede haber ocurrido algún error.
+
+#### Crear objetos de error
+
+Si te fijaste en el código anterior dentro del `else`, estamos usando una `const error`, pero que significa esto exactamente?   
+
+```js
+else ❌ {
+		const error = new Error(`Error en ${urlAPI}`);
+}
+```
+
+La línea `const error = new Error(`Error en ${urlAPI}`);` no está relacionada directamente con la clase `XMLHttpRequest`. En JavaScript, `Error` es una clase incorporada que se utiliza para crear objetos de error (es parte del lenguaje).
+
+Cuando se crea una instancia de `Error` utilizando `new Error()`, se crea un nuevo objeto de error con un mensaje de error personalizado. El mensaje de error se puede proporcionar como argumento en la creación del objeto, como ocurre en este caso con el uso de una plantilla de cadena de texto (`template literal`) para incluir la URL de la API (`urlAPI`) que generó el error.
+
+El objeto `Error` creado se utiliza para representar un error durante la ejecución del código. Al pasar este objeto como primer argumento a la función de devolución de llamada (`callback`), se indica que se ha producido un error durante la solicitud.
+
+```js
+else ❌ {
+		const error = new Error(`Error en ${urlAPI}`);
+		callback(error, null); 👈👀
+}
+```
+
+### Método send()
 
 ```js
 xhttp.send();
 ```
 
+Por último, `xhttp.send()` se utiliza para enviar la solicitud HTTP al servidor. Esta línea de código envía la solicitud que se configuró previamente con `xhttp.open()`. Después de llamar a `xhttp.send()`, la solicitud se envía al servidor y se espera recibir una respuesta.
+
+
 ### ⚠️(BONUS)⚠️
 
-Para no usar “Magic numbers” se pueden declarar los estados a verificar como constantes, les dejo mi código completo
+Para no usar “Magic numbers” se pueden declarar los estados a verificar como constantes, les dejo el código completo
 
 ```js
 const XMLHttpRequest = require('XMLHttpRequest').XMLHttpRequest;
