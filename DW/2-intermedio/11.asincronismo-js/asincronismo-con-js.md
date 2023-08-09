@@ -1539,10 +1539,10 @@ Para probar el código, en el proyecto se crea la carpeta llamada `promise` de
 //ejemplo de contar vacas: 15 or 9
 const cows = 15; //valor inicial de vacas
 
-const countCows = newPromise(function(resolve, reject){
-//solo si el número de vacas supera 10, se llama al resolve
-//de lo contrario: se llama a reject
-	if(cows > 10){
+const countCows = newPromise(function (resolve, reject) {
+	//solo si el número de vacas supera 10, se llama al resolve
+	//de lo contrario: se llama a reject
+	if (cows > 10) {
 		resolve(`We have ${cows} cows on the farm`);
 	} else {
 		reject("There is no cows on the farm");
