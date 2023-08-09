@@ -712,41 +712,40 @@ npm i xmlhttprequest
         └── 07.callback.js
 ```
 
-`challenge.js`  
-```js
-// Llamado al XmlHttpRequest
-const XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
-// API en mayúscula porque es una referencia que no va a cambiar
-const API = 'https://api.escuelajs.co/api/v1'; 
+📌 Nota: En caso de tener algún error en consola como que `require` no está definido, crea nuevamente un proyecto en cualquier parte de tu PC menos en la misma carpeta donde te sale el error. 
 
-// urlApi: no confundir y colocar API
-function fetchData(urlApi, callback){ 
-	// Referencia a new XMLHttpRequest
-	let xhttp = new XMLHttpRequest(); 
-
-	// Petición "obtener" con true para habilitarlo
-	xhttp.open('GET', urlApi, true); 
-	// Escucha diferentes estados de la solicitud y conocer cuando está disponible la información
-	xhttp.onreadystatechange = function(event) { 
-		// Si el estado ha sido completada la llamada
-		if(xhttp.readyState === 4) { 
-			// El servido responde de forma correcta
-			if(xhttp.status === 200 ){ 
-				// Dentro de xhttp.responseTex recibimos lo que entrega el servidor en texto y se hace la transformación en JSON
-				callback(null, JSON.parse(xhttp.responseText)); 
-			} else {
-				const error = new Error('Error ' + urlApi);
-				// Es null porque no se está regresando ningún dato
-				return callback(error,null); 
-			}
-		} 
-	}
-	// Realizamos la petición
-	xhttp.send();
-}
+Usa:   
+```bash
+npm init -y
+npx gitignore node
+npm i xmlhttprequest
 ```
 
-### Explicación línea a línea
+`challenge.js`  
+```js
+const XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
+const API = 'https://api.escuelajs.co/api/v1';
+
+function fetchData(urlAPI, callback) {
+	let xhttp = new XMLHttpRequest();
+
+	xhttp.open('GET', urlAPI, true);
+	xhttp.onreadystatechange = function (event) {
+		if (xhttp.readyState === 4) {
+			if (xhttp.status === 200) {
+				callback(null, JSON.parse(xhttp.responseText));
+			} else {
+				const error = new Error(`Error en ${urlAPI}`);
+
+				callback(error, null);
+			}
+		}
+	}
+
+	xhttp.send();
+```
+
+### 🔥 Explicación línea a línea
 
 #### Importar módulo para acceder a su clase
 
@@ -772,9 +771,9 @@ Al asignar la URL a la constante `API`, se facilita el acceso a la URL en el re
 function fetchData(urlApi, callback) {
 }
 ```  
-Esta función está diseñada para recibir una URL de la API y una función de devolución de llamada (callback) como argumentos. Esta última se invocará dentro de la función `fetchData` una vez que los datos estén disponibles. Esta función callback se utiliza para manejar y procesar los datos recibidos de la API de acuerdo con la lógica específica del programa.
+Esta función está diseñada para recibir la URL de la API y una función de devolución de llamada (callback) como argumentos. Esta última se invocará dentro de la función `fetchData` una vez que los datos estén disponibles. Esta función callback se utiliza para manejar y procesar los datos recibidos de la API de acuerdo con la lógica específica del programa.
 
-####  Creación de una nueva instancia
+####  Crear una nueva instancia
 
 ```js
 const xhttp = new XMLHttpRequest();
@@ -787,8 +786,8 @@ Dicho esto, en la siguiente línea de código `const xhttp = new XMLHttpRequest
 📌 Nota: Si estás familiarizado con OOP ([Programación Orientada a Objetos](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Basics#object_basics)) sabrás entonces que esto no es más que un constructor vacío, de la misma forma que:
 
 ```js
-let perrito = new Animal(); 🐶
-let manzana = new Fruta();  🍎
+let puppy = new Animal(); 🐶
+let apple = new Fruit();  🍎
 ```
 
 Una vez que has creado la instancia de `XMLHttpRequest`, puedes utilizar los métodos y propiedades que posee la clase `XMLHttpRequest` para realizar solicitudes HTTP/HTTPS y manejar la respuesta del servidor.
@@ -867,7 +866,7 @@ El código de estado HTTP `200` representa una respuesta exitosa. Indica que la 
 
 #### Invocar el callback
 
-Ya comprobamos que tanto el request (pedido/solicitud) como él response (respuesta) hayan sido exitosos! Ahora podemos invocar nuestro callback (función por definir más tarde para manipular los datos)
+¡Ya comprobamos que tanto el request (pedido/solicitud) como él response (respuesta) hayan sido exitosos! Ahora podemos invocar nuestro callback (función por definir más tarde para manipular los datos).
 
 ```js
 if(xhttp.readyState === 4) {
@@ -883,7 +882,7 @@ Al alcanzar este punto del código, significa que la solicitud se ha completado 
 
 Al invocar `callback(null, JSON.parse(xhttp.responseText))`, se pasa `null` como el primer argumento, lo cual indica que no ha ocurrido ningún error durante la solicitud. El segundo argumento, `JSON.parse(xhttp.responseText)`, es el cuerpo de la respuesta del servidor que ha sido convertido de una cadena de texto JSON a un objeto JavaScript utilizando `JSON.parse`.
 
-#### Else en caso la respuesta del servidor no tiene un estado exitoso
+#### Else en caso la respuesta del servidor no tenga un estado exitoso
 
 ```js
 if (xhttp.readyState === 4) {
@@ -906,7 +905,7 @@ Si te fijaste en el código anterior dentro del `else`, estamos usando una `cons
 
 ```js
 else ❌ {
-		const error = new Error(`Error en ${urlAPI}`);
+	const error = new Error(`Error en ${urlAPI}`);
 }
 ```
 
@@ -923,7 +922,7 @@ else ❌ {
 }
 ```
 
-### Método send()
+#### Método send()
 
 ```js
 xhttp.send();
@@ -932,9 +931,75 @@ xhttp.send();
 Por último, `xhttp.send()` se utiliza para enviar la solicitud HTTP al servidor. Esta línea de código envía la solicitud que se configuró previamente con `xhttp.open()`. Después de llamar a `xhttp.send()`, la solicitud se envía al servidor y se espera recibir una respuesta.
 
 
-### ⚠️(BONUS)⚠️
+### Resumen:  
 
-Para no usar “Magic numbers” se pueden declarar los estados a verificar como constantes, les dejo el código completo
+```js
+/* 
+require para importar el módulo xmlhttprequest y a la vez acceder a su clase xmlhttprequest. Mas adelante usaremos la const creada aquí (puede tener cualquier nombre) para instanciar esta clase (crear un objeto basado en xmlhttprequest) esto va a funcionar como OOP permitiendonos usar sus propiedades y métodos internos. 
+*/
+const XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
+/* Almacenamos la URL de la API a usar (esto por comodidad) */
+const API = 'https://api.escuelajs.co/api/v1';
+
+/* 
+Para que el pedido funcione correctamente necesitamos que nuestra función tenga dos parametros: 1 para obtener la url de la api y 2 para procesar los datos recibidos usando una funtion callback que se creará despues. 
+*/
+function fetchData(urlAPI, callback) {
+	/* 
+	Instanciamos nuestra clase obtenida en la primera línea (prueba cambiando el nombre de XMLHttpRequest tanto en la primera const como en el new XMLHttpRequest verás que puede llevar cualquier nombre y que no es una palabra reservada de JS pero ambos deben ser iguales) ejemplo: const lol = require... y xhttp = new lol();. Como mencione antes esto permitirá usar las propiedades y métodos internos de la clase XMLHttpRequest que obtuvimos en la importación de este modulo. 
+	*/
+	let xhttp = new XMLHttpRequest();
+
+	/* 
+	Habiendo creado el objeto xhttp podemos usar el método open que establece los parametros de la conexión al servidor como vemos, necesita tres parametros para funcionar de manera asincrona lo que significa que la funcion fetchData no se bloqueará y permitirá que el código continúe ejecutándose mientras espera alguna respuesta. 
+	*/
+	xhttp.open('GET', urlAPI, true);
+	/* 
+	La propiedad onreadystatechange permite asignar una función en este caso anonima que se ejecutará cada vez que cambie el estado de la solicitud. Esto permitirá usar condicionales para verificar si la solicitud tuvo exito o no.  
+	*/
+	xhttp.onreadystatechange = function (event) {
+		/* 
+		La propiedad readyState devuelve el estado actual de la solicitud. El 4 nos dice que la operación fue completada (completada si pero no nos dice si trae datos con exito o si se completo con algún error)
+		*/
+		if (xhttp.readyState === 4) {
+			/* 
+			La propiedad status nos dice si la respuesta fue exitosa o no. El 200 nos dice que todo está ok y que trae el contenido con exito, contrario a 204 que nos dice que no hay contenido. 
+			*/
+			if (xhttp.status === 200) {
+				/* 
+				Invocamos a la función callback la cual tendrá dos argumentos, uno en caso de error y el otro en caso todo esté bien. Si te das cuenta al alcanzar este punto de nuestros condicionales significa que todo está bien y que nuestra solicitud si trae datos, por lo que al no haber errores colocamos un null como primer argumento. Para el segundo argumento usamos la propiedad responseText que contiene la respuesta del servidor como una cadena de texto, lo cual es dificil de leer por lo que hacemos una coversión a formato JSON (objeto) de los datos obtenidos.
+				*/
+				callback(null, JSON.parse(xhttp.responseText));
+			} else {
+				/* 
+				Ahora en caso de error y si así lo deseamos definimos un error personalizado usando la clase Error incorporada en el lenguaje JS lo que nos permite crear un objeto que tendrá una cadena de texto y el enlace de la API que nos está mandando el error. 
+				*/
+				const error = new Error(`Error en ${urlAPI}`);
+
+				/* 
+				Al tener un error como primer argumento le pasamos el error personalizado y como segundo parametro null. 
+				*/
+				callback(error, null);
+			}
+		}
+	}
+
+	/* 
+	Por último usamos el método send() para enviar la solicitud HTTP al servidor. Lo que quiere decir que envía los parametros establecidos en el método open()
+	*/
+	xhttp.send();
+}
+```
+
+🔥 _La nueva forma de hacer peticiones a una API es el_[fetch](https://developer.mozilla.org/es/docs/Web/API/Fetch_API).
+
+
+- [Métodos y Propiedades del objeto XMLHttpRequest](http://dis.um.es/~lopezquesada/documentos/IES_1314/IAW/curso/UT7/libroswebajax/www.librosweb.es/ajax/capitulo7/metodos_y_propiedades_del_objeto_xmlhttprequest.html)
+- [Fakeapi](https://fakeapi.platzi.com/)
+
+
+### ⚠️(BONUS)⚠️
+Para no usar “Magic numbers” se pueden declarar los estados a verificar como constantes, les dejo el código completo. 
 
 ```js
 const XMLHttpRequest = require('XMLHttpRequest').XMLHttpRequest;
@@ -957,56 +1022,6 @@ functionfetchData(urlApi, callback) {
     xhttp.send();
 }
 ```
-
-### Otra explicación 
-
-```js
-// Se importa el módulo xmlhttprequest y se crea una instancia de la clase XMLHttpRequest
-const XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest; 
-// Se define la URL base de la API
-const API = 'https://api.escuelajs.co/api/v1'; 
-
-// Se define la función fetchData que recibe una URL y una función de callback como parámetros
-function fetchData(urlApi, callback) { 
-// Se crea una instancia de la clase XMLHttpRequest
-  let xhttp = new XMLHttpRequest(); 
-
-// Se establece la solicitud HTTP GET con la URL proporcionada como primer parámetro
-  xhttp.open('GET', urlApi, true);
-// Se define una función de callback que se ejecuta cuando cambia el estado de la solicitud 
-  xhttp.onreadystatechange = function (event) { 
-// Si el estado de la solicitud es 4, significa que se ha completado la solicitud  
-    if (xhttp.readyState === 4) { 
-// Si el código de estado HTTP es 200, significa que la solicitud se ha completado con éxito
-      if (xhttp.status === 200) { 
-// Se llama a la función de callback con el primer parámetro null y con los datos de respuesta parseados como JSON
-        callback(null, JSON.parse(xhttp.responseText)); 
-// Si el código de estado HTTP no es 200, significa que ha ocurrido un error
-      } else { 
-// Se crea una instancia de la clase Error con el mensaje de error personalizado
-        const error = new Error('Error en ' + urlApi);
-// Se llama a la función de callback con el primer parámetro de error y el segundo parámetro como null 
-        callback(error, null); 
-      }
-    }
-  }
-
-// Se envía y realiza la solicitud HTTP
-  xhttp.send(); 
-}
-```
-
-En resumen, la función `fetchData` utiliza la clase `XMLHttpRequest` para realizar una solicitud HTTP GET a una URL proporcionada como parámetro. Si la solicitud se completa con éxito, se llama a la función de callback con los datos de respuesta parseados como JSON. Si la solicitud falla, se llama a la función de callback con un objeto de error personalizado.
-
-Es importante destacar que esta implementación de `fetchData` es asíncrona, lo que significa que no bloquea la ejecución del programa mientras se realiza la solicitud HTTP. En su lugar, la función de callback se llama después de que se complete la solicitud, lo que permite que el programa continúe su ejecución normalmente mientras se espera la respuesta de la API.
-
-
-_La nueva forma de hacer peticiones a una API es el_[fetch](https://developer.mozilla.org/es/docs/Web/API/Fetch_API).
-
-
-- [Métodos y Propiedades del objeto XMLHttpRequest](http://dis.um.es/~lopezquesada/documentos/IES_1314/IAW/curso/UT7/libroswebajax/www.librosweb.es/ajax/capitulo7/metodos_y_propiedades_del_objeto_xmlhttprequest.html)
-- [Fakeapi](https://fakeapi.platzi.com/)
-
 
 ## 9. Fetch data
 
@@ -1288,8 +1303,9 @@ fetchData(`${API}/products`, function (error1, data1) {
 }
 ```
 
-### Otra forma
+### Otras formas 
 
+#### Forma 01
 ✨ Esta es otra forma de hacer lo mismo, pero más sencilla de entender. 
 
 ```js
@@ -1305,75 +1321,35 @@ fetchData(`${API}/products`, function (error, all) {
 })
 ```
 
-### Explicación de la invocación de FetchData:  
-
-En el archivo **challenge.js** se agrega el siguiente código:
+#### Forma 02
 
 ```js
-const XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
-const API = "https://api.escuelajs.co/api/v1";
+const XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
+const xhr = new XMLHttpRequest();
+const API = 'https://api.escuelajs.co/api/v1/products';
 
-//funcion principal que obtendrá la informacion del producto como un objeto
-functionfetchData(urlApi, callback) {
-    //instanciar un objeto de tipo XMLHttpRequest
-    let xhttp = new XMLHttpRequest();
-    //El método .open realiza la petición de apertura de comunicación, el metodo puede ser 'GET' o 'POST', luego se envia la URL, si es asincrono (true o false), usuario y contraseña. En esta caso solo se utiliza el método, la url y async
-    xhttp.open('GET', urlApi, true);
-    //en este método Almacena el nombre de la función que se ejecutará cuando el objeto XMLHttpRequest cambie de estado
-    xhttp.onreadystatechange = function (event) {
-        //la propiedad readyState define el estado del objeto XMLHttpRequest
-        //0 No inicializado
-        //1 Loading
-        //2 ejecutado
-        //3 interactuando
-        //4 completado
-        if (xhttp.readyState === 4) {
-            //si la respuesta de la API es exitosa (200 Ok)
-            if (xhttp.status === 200) {
-                //se ejecuta el callback recibiendo como argumentos un array de objetos, como la respuesta de la API es un texto plano, el metodo JSON.parse tranformará este texto en un objeto.
-                //El atributo devuelve un DOMString que contiene la  respuesta a la consulta como un texto o null si la consulta no tuvo exito o aun no ha sido completada.
-                callback(null, JSON.parse(xhttp.responseText));
-                //si la respuesta de la API no es exitosa se captura el error
-            } else {
-                //se inicializa un objeto de tipo Error donde se le envian como argumentos un mensaje de error y la URL de la API para conocer en dónde se produjo el error
-                const error = newError("Error" + urlApi);
-                //se ejecuta el callback recibiendo como argumentos el error y null debido a que no se pudo obtener el objeto
-                return callback(error, null);
-            }
-        }
-    //el método .send() envia la petición al servidor
-  }
-  xhttp.send();
-}
+xhr.open('GET', API, true);
+xhr.onreadystatechange = function () {
+	if (xhr.readyState === xhr.DONE) { //4
+		if (xhr.status === 200) {
+			const respuesta = JSON.parse(xhr.responseText);
+			console.log(respuesta);
+		} else {
+			console.log('Error en la solicitud');
+		}
+	}
+};
 
-//se invoca el método fetchData() pasandole como argumentos la varible API concatenada con la cadena 'products' para acceder a la URL de la API deseada que contiene un array con objetos, y una función anónima que recibe 2 parámetros (un objeto de error y un arreglo que almacena todos los objetos traidos por la API).
-fetchData(`${API}/products`, function (error1, data1) {
-    //se valida si existe un error, en caso de que exista se detiene el proceso y se imprime el error
-    if (error1) returnconsole.error(error1);
-    //se invoca nuevamente la función fetchData con el fin de acceder a un objeto puntual del arreglo data1, se envia como parámetros la url de la API apuntando al atributo del primer objeto de arreglo data1 y nuevamente una función anónima.
-    fetchData(`${API}/products/${data1[0].id}`, function (error2, data2) {
-        //si en este punto se identifica un error se imprime en consola y se detiene el proceso
-        if (error2) returnconsole.error(error2);
-        //Se invoca nuevamente la funcion fetchData con el fin de acceder a la categoria, se envían como parametros la url de la API con la concatenación de 'Categories' y el atributo Id de categoria del objeto data2 de la función anterior
-        //en este caso puntual se hace uso de Optional Caining el cual hace una evalucación de las propiedades de un objeto y en vez de arrojar un error devuelve undefined en caso que la propiedad no exista o sea null.
-        //igual que las anteriores e envia una funcion anonima con 2 argumentos, un objeto Error y un objeto de datos
-        fetchData(`${API}/categories/${data2?.category?.id}`, function (error3, data3) {
-            //se valida si existe error, en caso de que exista se detiene el proceso y se imprime el error
-            if (error3) returnconsole.error(error3);
-            //Se imprime el objeto en la posición 1 del arreglo de los objetos obtenidos en el metodo invocado inicialmente
-            console.log(data1[0]);
-            //Se imprime el titulo del objeto que se consultó en la seguna invocación de la función
-            console.log(data2.title);
-            //Se imprime el nombre de la categoria a la que pertenece el objeto que se consultó en la seguna invocación del método.
-            console.log(data3.name);
-        });
-  });
-});
+xhr.send();
 ```
 
-📌 DOMString: En el lenguaje de programación JavaScript, un atributo de tipo `DOMString` representa una cadena de caracteres que se utiliza para representar texto o valores de cadena en el Document Object Model (DOM).
+Obtenemos el objeto JSON completo, a partir de aquí podemos extraer lo que necesitamos. 
 
-El DOM es una representación en memoria de un documento HTML o XML que permite a los desarrolladores acceder y manipular los elementos de la página web de manera programática utilizando JavaScript. Cuando se manipulan elementos del DOM con JavaScript, los valores de los atributos se representan como `DOMString`.
+### Datos
+
+- DOMString: En el lenguaje de programación JavaScript, un atributo de tipo `DOMString` representa una cadena de caracteres que se utiliza para representar texto o valores de cadena en el Document Object Model (DOM).
+
+- El DOM es una representación en memoria de un documento HTML o XML que permite a los desarrolladores acceder y manipular los elementos de la página web de manera programática utilizando JavaScript. Cuando se manipulan elementos del DOM con JavaScript, los valores de los atributos se representan como `DOMString`.
 
 
 ### Optional chaining '?.' 
