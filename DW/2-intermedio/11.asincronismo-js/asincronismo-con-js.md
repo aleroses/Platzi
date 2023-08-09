@@ -945,49 +945,49 @@ const API = 'https://api.escuelajs.co/api/v1';
 Para que el pedido funcione correctamente necesitamos que nuestra función tenga dos parametros: 1 para obtener la url de la api y 2 para procesar los datos recibidos usando una funtion callback que se creará despues. 
 */
 function fetchData(urlAPI, callback) {
-	/* 
-	Instanciamos nuestra clase obtenida en la primera línea (prueba cambiando el nombre de XMLHttpRequest tanto en la primera const como en el new XMLHttpRequest verás que puede llevar cualquier nombre y que no es una palabra reservada de JS pero ambos deben ser iguales) ejemplo: const lol = require... y xhttp = new lol();. Como mencione antes esto permitirá usar las propiedades y métodos internos de la clase XMLHttpRequest que obtuvimos en la importación de este modulo. 
-	*/
-	let xhttp = new XMLHttpRequest();
+  /* 
+  Instanciamos nuestra clase obtenida en la primera línea (prueba cambiando el nombre de XMLHttpRequest tanto en la primera const como en el new XMLHttpRequest verás que puede llevar cualquier nombre y que no es una palabra reservada de JS pero ambos deben ser iguales) ejemplo: const lol = require... y xhttp = new lol();. Como mencione antes esto permitirá usar las propiedades y métodos internos de la clase XMLHttpRequest que obtuvimos en la importación de este modulo. 
+  */
+  let xhttp = new XMLHttpRequest();
 
-	/* 
-	Habiendo creado el objeto xhttp podemos usar el método open que establece los parametros de la conexión al servidor como vemos, necesita tres parametros para funcionar de manera asincrona lo que significa que la funcion fetchData no se bloqueará y permitirá que el código continúe ejecutándose mientras espera alguna respuesta. 
-	*/
-	xhttp.open('GET', urlAPI, true);
-	/* 
-	La propiedad onreadystatechange permite asignar una función en este caso anonima que se ejecutará cada vez que cambie el estado de la solicitud. Esto permitirá usar condicionales para verificar si la solicitud tuvo exito o no.  
-	*/
-	xhttp.onreadystatechange = function (event) {
-		/* 
-		La propiedad readyState devuelve el estado actual de la solicitud. El 4 nos dice que la operación fue completada (completada si pero no nos dice si trae datos con exito o si se completo con algún error)
-		*/
-		if (xhttp.readyState === 4) {
-			/* 
-			La propiedad status nos dice si la respuesta fue exitosa o no. El 200 nos dice que todo está ok y que trae el contenido con exito, contrario a 204 que nos dice que no hay contenido. 
-			*/
-			if (xhttp.status === 200) {
-				/* 
-				Invocamos a la función callback la cual tendrá dos argumentos, uno en caso de error y el otro en caso todo esté bien. Si te das cuenta al alcanzar este punto de nuestros condicionales significa que todo está bien y que nuestra solicitud si trae datos, por lo que al no haber errores colocamos un null como primer argumento. Para el segundo argumento usamos la propiedad responseText que contiene la respuesta del servidor como una cadena de texto, lo cual es dificil de leer por lo que hacemos una coversión a formato JSON (objeto) de los datos obtenidos.
-				*/
-				callback(null, JSON.parse(xhttp.responseText));
-			} else {
-				/* 
-				Ahora en caso de error y si así lo deseamos definimos un error personalizado usando la clase Error incorporada en el lenguaje JS lo que nos permite crear un objeto que tendrá una cadena de texto y el enlace de la API que nos está mandando el error. 
-				*/
-				const error = new Error(`Error en ${urlAPI}`);
+  /* 
+  Habiendo creado el objeto xhttp podemos usar el método open que establece los parametros de la conexión al servidor como vemos, necesita tres parametros para funcionar de manera asincrona lo que significa que la funcion fetchData no se bloqueará y permitirá que el código continúe ejecutándose mientras espera alguna respuesta. 
+  */
+  xhttp.open('GET', urlAPI, true);
+  /* 
+  La propiedad onreadystatechange permite asignar una función en este caso anonima que se ejecutará cada vez que cambie el estado de la solicitud. Esto permitirá usar condicionales para verificar si la solicitud tuvo exito o no.  
+  */
+  xhttp.onreadystatechange = function (event) {
+    /* 
+    La propiedad readyState devuelve el estado actual de la solicitud. El 4 nos dice que la operación fue completada (completada si pero no nos dice si trae datos con exito o si se completo con algún error)
+    */
+    if (xhttp.readyState === 4) {
+      /* 
+      La propiedad status nos dice si la respuesta fue exitosa o no. El 200 nos dice que todo está ok y que trae el contenido con exito, contrario a 204 que nos dice que no hay contenido. 
+      */
+      if (xhttp.status === 200) {
+        /* 
+        Invocamos a la función callback la cual tendrá dos argumentos, uno en caso de error y el otro en caso todo esté bien. Si te das cuenta al alcanzar este punto de nuestros condicionales significa que todo está bien y que nuestra solicitud si trae datos, por lo que al no haber errores colocamos un null como primer argumento. Para el segundo argumento usamos la propiedad responseText que contiene la respuesta del servidor como una cadena de texto, lo cual es dificil de leer por lo que hacemos una coversión a formato JSON (objeto) de los datos obtenidos.
+        */
+        callback(null, JSON.parse(xhttp.responseText));
+      } else {
+        /* 
+        Ahora en caso de error y si así lo deseamos definimos un error personalizado usando la clase Error incorporada en el lenguaje JS lo que nos permite crear un objeto que tendrá una cadena de texto y el enlace de la API que nos está mandando el error. 
+        */
+        const error = new Error(`Error en ${urlAPI}`);
 
-				/* 
-				Al tener un error como primer argumento le pasamos el error personalizado y como segundo parametro null. 
-				*/
-				callback(error, null);
-			}
-		}
-	}
+        /* 
+        Al tener un error como primer argumento le pasamos el error personalizado y como segundo parametro null. 
+        */
+        callback(error, null);
+      }
+    }
+  }
 
-	/* 
-	Por último usamos el método send() para enviar la solicitud HTTP al servidor. Lo que quiere decir que envía los parametros establecidos en el método open()
-	*/
-	xhttp.send();
+  /* 
+  Por último usamos el método send() para enviar la solicitud HTTP al servidor. Lo que quiere decir que envía los parametros establecidos en el método open()
+  */
+  xhttp.send();
 }
 ```
 
@@ -1007,7 +1007,7 @@ const API = 'https://api.escuelajs.co/api/v1/products';
 const DONE = 4;
 const OK = 200;
 
-functionfetchData(urlApi, callback) {
+function fetchData(urlApi, callback) {
     let xhttp = new XMLHttpRequest();
 
     xhttp.open('GET', urlApi, true);
@@ -1030,40 +1030,40 @@ const XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
 const API = 'https://api.escuelajs.co/api/v1';
 
 function fetchData(urlApi, callback) {
-	let xhttp = new XMLHttpRequest();
+  let xhttp = new XMLHttpRequest();
 
-	xhttp.open('GET', urlApi, true);
-	xhttp.onreadystatechange = function (event) {
-		if (xhttp.readyState === 4) {
-			if (xhttp.status == 200) {
-				// Puedes quitarle el JSON.parse para ver como viene toda la información (DOMString cadena de caracteres)
-				callback(null, JSON.parse(xhttp.responseText));
-			} else {
-				const error = new Error('Error en ', urlApi);
-				callback(error, null);
-			}
-		}
-	}
+  xhttp.open('GET', urlApi, true);
+  xhttp.onreadystatechange = function (event) {
+    if (xhttp.readyState === 4) {
+      if (xhttp.status == 200) {
+        // Puedes quitarle el JSON.parse para ver como viene toda la información (DOMString cadena de caracteres)
+        callback(null, JSON.parse(xhttp.responseText));
+      } else {
+        const error = new Error('Error en ', urlApi);
+        callback(error, null);
+      }
+    }
+  }
 
-	xhttp.send();
+  xhttp.send();
 }
 
 
 // Template strings y Optional chaining '?.'
 fetchData(`${API}/products`, function (error1, data1) { 👈👀
-	if (error1) return console.error(error1);
+  if (error1) return console.error(error1);
 
-	fetchData(`${API}/products/${data1[0].id}`, function (error2, data2) {
-		if (error2) return console.error(error2);
-		
-		fetchData(`${API}/categories/${data2?.category?.id}`, function (error3, data3) {
-			if (error3) return console.error(error3);
-			
-			console.log(data1[0]);
-			console.log(data2.title);
-			console.log(data3.name);
-		});
-	});
+  fetchData(`${API}/products/${data1[0].id}`, function (error2, data2) {
+    if (error2) return console.error(error2);
+
+    fetchData(`${API}/categories/${data2?.category?.id}`, function (error3, data3) {
+      if (error3) return console.error(error3);
+
+      console.log(data1[0]);
+      console.log(data2.title);
+      console.log(data3.name);
+    });
+  });
 });
 
 // Obtenemos: 
@@ -1098,8 +1098,8 @@ Ya vimos lo que obtenemos como resultado final, pero, ¿Cómo llegamos a ese res
 1. En el primer `fetchData` obtenemos un array enorme con muchos objetos dentro: 
 ```js
 fetchData(`${API}/products`, function (error1, data1) {
-	if (error1) return console.error(error1);
-	console.log(data1);
+  if (error1) return console.error(error1);
+  console.log(data1);
 });
 
 // Obtenemos esto y más:  
@@ -1172,13 +1172,13 @@ fetchData(`${API}/products`, function (error1, data1) {
 
 ```js
 fetchData(`${API}/products`, function (error1, data1) {
-	if (error1) return console.error(error1);
-	/* console.log(data1); */
+  if (error1) return console.error(error1);
+  /* console.log(data1); */
 
-	fetchData(`${API}/products/${data1[0].id}`, function(error2, data2){
-		if(error2) return console.error(error2);
-		console.log(data2);
-	});
+  fetchData(`${API}/products/${data1[0].id}`, function (error2, data2) {
+    if (error2) return console.error(error2);
+    console.log(data2);
+  });
 });
 
 // Obtenemos el objeto de la posición [0], lo que no logro entender es el porqué le agregan un .id, ya que, sin eso no funciona :v
