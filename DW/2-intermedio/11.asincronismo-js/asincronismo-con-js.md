@@ -1494,6 +1494,9 @@ resolve('hey!');
 });
 
 console.log(promise);
+
+// Obtenemos: 
+Promise { 'hey!' }
 ```
 
 ### Los tres estados de las promesas:
@@ -1611,6 +1614,51 @@ En este ejemplo, se usa la función `fetch` para realizar una solicitud HTTP as�
 
 2. Realizar múltiples solicitudes HTTP en paralelo y manejar los resultados:
 
+Para estos ejemplos usaremos `Promise.all()` que es un método estático que se utiliza para combinar múltiples promesas en una sola. Toma un iterable (como un arreglo) que contiene promesas y devuelve una nueva promesa que se resuelve cuando todas las promesas del iterable se han resuelto.
+
+Cuando se utiliza `Promise.all()`, se pasan las promesas como argumentos en forma de arreglo y se devuelve una nueva promesa. Esta nueva promesa se resuelve cuando todas las promesas del arreglo se han resuelto correctamente o se rechaza tan pronto como una de las promesas se rechaza.
+
+Aquí hay un ejemplo para ilustrar su funcionamiento:
+
+```js
+const promise1 = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    resolve('Promesa 1 resuelta');
+  }, 2000);
+});
+
+const promise2 = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    resolve('Promesa 2 resuelta');
+  }, 3000);
+});
+
+const promise3 = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    reject('Promesa 3 rechazada');
+  }, 2500);
+});
+
+Promise.all([promise1, promise2, promise3])
+  .then(resultados => {
+    console.log(resultados);
+  })
+  .catch(error => {
+    console.log(error);
+  });
+
+// Obtenemos: De las 3 promesas se rechazó una por lo que se devuelve el catch
+Promesa 3 rechazada
+```
+
+En el ejemplo anterior, se crean tres promesas (`promise1`, `promise2` y `promise3`) que se resuelven o rechazan después de un tiempo determinado mediante el uso de `setTimeout`. Luego, se utiliza `Promise.all()` pasando las tres promesas como un arreglo.
+
+Si todas las promesas se resuelven correctamente, el método `then` de la promesa devuelta por `Promise.all()` se ejecutará y recibirá un arreglo con los resultados de las promesas en el mismo orden que se pasaron. En este caso, se imprimirá en la consola: `["Promesa 1 resuelta", "Promesa 2 resuelta"]`.
+
+Si alguna de las promesas se rechaza, el método `catch` de la promesa devuelta por `Promise.all()` se ejecutará y recibirá el motivo del rechazo de la primera promesa que se rechazó. En este caso, se imprimirá en la consola: `"Promesa 3 rechazada"`.
+
+Otro ejemplo:  
+
 ```js
 Promise.all([
   fetch('https://jsonplaceholder.typicode.com/todos/1'),
@@ -1636,6 +1684,19 @@ Promise.all([
 
 En este ejemplo, se usan varias llamadas `fetch` para realizar múltiples solicitudes HTTP en paralelo, y se devuelve una matriz de promesas que representan las respuestas. Luego, se usa `Promise.all` para esperar a que todas las promesas se resuelvan y devolver una matriz con los resultados. Finalmente, se utiliza la función `map` para convertir cada respuesta en formato JSON y se registra la matriz de datos en la consola. Si se produce algún error durante alguna de las solicitudes, se captura en el bloque `catch`.
 
+Para la API usada en clase sería así: 
+```js
+Promise.all([
+	fetch('https://api.escuelajs.co/api/v1/products/6'),
+	fetch('https://api.escuelajs.co/api/v1/categories/3'),
+	fetch('https://api.escuelajs.co/api/v1/users/3')
+])
+	.then(responses => Promise.all(responses.map(response => response.json())))
+	.then(data => console.log(data))
+	.catch(e => console.log(e))
+```
+
+En resumen, `Promise.all()` es útil cuando se necesita realizar múltiples operaciones asíncronas y se desea esperar a que todas se completen antes de continuar con el código.
 
 
 ### Ejemplos de promesas
@@ -1665,6 +1726,10 @@ En este ejemplo, se define una función `delay` que devuelve una promesa que se 
 
 2. Crear una promesa que se rechaza si se produce un error:
 
+Para este ejemplo usaremos `onload` que es una propiedad de `XMLHttpRequest` que recibe una función que se ejecutará cuando la solicitud se halla realizado con éxito y se halla recibido una respuesta del servidor.
+
+Además, usaremos la propiedad `onerror` que se utiliza para asignar una función que se ejecutará cuando se produzca un error durante la realización de la solicitud.
+
 ```js
 const XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
 
@@ -1690,8 +1755,10 @@ getJSON('https://jsonplaceholder.typicode.com/todos/1')
   .then(data => console.log(data))
   .catch(error => console.error(error));
 
-// Obtenemos: 
+// Obtenemos: Si todo va bien
 { userId: 1, id: 1, title: 'delectus aut autem', completed: false }
+// Obtenemos: Si algo sale mal 
+Error al obtener los datos: 404 null
 ```
 
 En este ejemplo, se define una función `getJSON` que devuelve una promesa que se resuelve si la solicitud HTTP se realiza correctamente o se rechaza si se produce algún error. Dentro de la función, se utiliza el objeto `XMLHttpRequest` para realizar una solicitud GET a una URL especificada y luego se llama a la función `resolve` con los datos si la solicitud se realiza correctamente. Si se produce algún error durante la solicitud, se llama a la función `reject` con un mensaje de error. Luego, se usa la llamada `then` para manejar el resultado de la promesa y se registra los datos en la consola si se resuelve correctamente. Si se produce algún error durante la ejecución de la promesa, se captura en el bloque `catch`.
