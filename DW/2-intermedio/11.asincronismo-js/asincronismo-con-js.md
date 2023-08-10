@@ -1934,18 +1934,18 @@ import fetch from 'node-fetch';
 const API = 'https://api.escuelajs.co/api/v1';
 
 function fetchData(urlApi) {
-	return fetch(urlApi);
+  return fetch(urlApi);
 }
 
 fetchData(`${API}/products`)
-	.then(response => response.json())
-	.then(products => {
-		console.log(products);
-	})
-	.then(() => {
-		console.log('Hi');
-	})
-	.catch(error => console.log(error));
+  .then(response => response.json())
+  .then(products => {
+    console.log(products);
+  })
+  .then(() => {
+    console.log('Hi');
+  })
+  .catch(error => console.log(error));
 
 // Obtenemos una Array con objetos que tienen información de muchos productos: 
 [
@@ -2016,29 +2016,29 @@ import fetch from 'node-fetch';
 const API = "https://api.escuelajs.co/api/v1";
 
 function fetchData(urlApi) {
-	return fetch(urlApi);
+  return fetch(urlApi);
 }
 
 // Para obtener datos necesitas 1 fetchData y 2 .then (1 para convertirlo a json y 1 para mostrarlo)
 fetchData(`${API}/products`)
-	.then(response => response.json())
-	.then(products => {
-		// console.log(products);
-		return fetchData(`${API}/products/${products[0].id}`)
-	})
-	.then(response => response.json())
-	.then(product => {
-		// console.log(product);
-		console.log(product.title);
-		return fetchData(`${API}/categories/${product.category.id}`)
-	})
-	.then(response => response.json())
-	.then(category => {
-		// console.log(category)
-		console.log(category.name);
-	})
-	.catch(err => console.log(err))
-	.finally(() => console.log('Finally'));
+  .then(response => response.json())
+  .then(products => {
+    // console.log(products);
+    return fetchData(`${API}/products/${products[0].id}`)
+  })
+  .then(response => response.json())
+  .then(product => {
+    // console.log(product);
+    console.log(product.title);
+    return fetchData(`${API}/categories/${product.category.id}`)
+  })
+  .then(response => response.json())
+  .then(category => {
+    // console.log(category)
+    console.log(category.name);
+  })
+  .catch(err => console.log(err))
+  .finally(() => console.log('Finally'));
 
 // Obtenemos 
 Handcrafted Cotton Bike
@@ -2056,18 +2056,18 @@ import fetch from "node-fetch";
 const API = 'https://api.escuelajs.co/api/v1';
 
 function fetchData(urlApi) {
-	return fetch(urlApi);
+  return fetch(urlApi);
 }
 
 fetchData(`${API}/products`)
-	.then(response => response.json())
-	.then(product => {
-		// console.log(product[0]);
-		console.log(product[0].title);
-		console.log(product[0].category.name);
-	})
-	.catch(err => console.log(err))
-	.finally(() => console.log('Finally'));
+  .then(response => response.json())
+  .then(product => {
+    // console.log(product[0]);
+    console.log(product[0].title);
+    console.log(product[0].category.name);
+  })
+  .catch(err => console.log(err))
+  .finally(() => console.log('Finally'));
 ```
 
 ## 14. Fetch POST
@@ -2137,33 +2137,34 @@ import fetch from "node-fetch";
 const API = "https://api.escuelajs.co/api/v1"
 
 function postData(urlApi, data) {
-	const response = fetch(urlApi, {
-		method: 'POST',
-		mode: 'cors', // permiso, por defecto va estar siempre en cors
-		credentials: 'same-origin',
-		headers: {
-			'Content-Type': 'application/json' // necesario indicar que es lo que se está enviando (data tipo json)
-		},
-		body: JSON.stringify(data) // el método JSON.stringify() convierte un objeto o valor de JavaScript en una cadena de texto JSON
-	});
+  const response = fetch(urlApi, {
+    method: 'POST',
+    // Si comentas mode y credentials igual funciona
+    mode: 'cors', // permiso, por defecto va estar siempre en cors
+    credentials: 'same-origin',
+    headers: {
+      'Content-Type': 'application/json' // necesario indicar que es lo que se está enviando (data tipo json)
+    },
+    body: JSON.stringify(data) // el método JSON.stringify() convierte un objeto o valor de JavaScript en una cadena de texto JSON
+  });
 
-	return response;
+  return response;
 }
 
 // estructura obligatoria de como debe ser el objeto que se quiere crear con POST
 const data = {
-	"title": "New Product 212",
-	"price": 212,
-	"description": "A description",
-	"categoryId": 1,
-	"images": ["https://placeimg.com/640/480/any"]
+  "title": "New Product 212",
+  "price": 212,
+  "description": "A description",
+  "categoryId": 1,
+  "images": ["https://placeimg.com/640/480/any"]
 }
 
 // podemos usar el postData como una promesa y con .then obtener la respuesta como un objeto json y mostrarlo después en la consola
 postData(`${API}/products`, data)
-	.then((response) => response.json())
-	.then(data => console.log(data))
-	.catch((err) => console.log(err));
+  .then((response) => response.json())
+  .then(data => console.log(data))
+  .catch((err) => console.log(err));
 ```
 
 Si todo va bien podremos ver en la consola un objeto, pero si algo falla debería salir un 400 (Bad Request).
@@ -2286,19 +2287,19 @@ En este ejemplo, la función `printHello()` llama a `sayHello()` y espera a que 
 
 ```js
 const fnAsync = () => {
-	return new Promise((resolve, reject) => {
-		true
-			? setTimeout(() => resolve('3. Async!!!'), 2000)
-			: reject(new Error('Error!'));
-	});
+  return new Promise((resolve, reject) => {
+    true
+      ? setTimeout(() => resolve('3. Async!!!'), 2000)
+      : reject(new Error('Error!'));
+  });
 }
 
 // async es para el cuerpo de la función
-const anotherFn = async() => {
-	// await estará dentro de la lógica a implementar
-	const something = await fnAsync();
-	console.log(something);
-	console.log('4. Hello!!!');
+const anotherFn = async () => {
+  // await estará dentro de la lógica a implementar
+  const something = await fnAsync();
+  console.log(something);
+  console.log('4. Hello!!!');
 }
 
 console.log('1. Before');
@@ -2317,13 +2318,13 @@ También podemos ver su ejecución de la siguiente manera:
 
 ```js
 function fnAsync() {
-	return '3. Third'
+  return '3. Third'
 }
 
-const anotherFn = async() => {
-	const response = await fnAsync();
-	console.log(response);
-	console.log('4. The end!!!');
+const anotherFn = async () => {
+  const response = await fnAsync();
+  console.log(response);
+  console.log('4. The end!!!');
 }
 
 console.log('1. First');
@@ -2372,24 +2373,24 @@ import fetch from 'node-fetch';
 const API = 'https://api.escuelajs.co/api/v1';
 
 async function fetchData(urlApi) {
-	const response = await fetch(urlApi);
-	const data = await response.json();
-	return data;
+  const response = await fetch(urlApi);
+  const data = await response.json();
+  return data;
 }
 
 const anotherFunction = async (urlApi) => {
-	try {
-		const products = await fetchData(`${urlApi}/products`);
-		const product = await fetchData(`${urlApi}/products/${products[0].id}`);
-		const category = await fetchData(`${urlApi}/categories/${product.category.id}`)
+  try {
+    const products = await fetchData(`${urlApi}/products`);
+    const product = await fetchData(`${urlApi}/products/${products[0].id}`);
+    const category = await fetchData(`${urlApi}/categories/${product.category.id}`)
 
-		// console.log(products);
-		console.log(product.title);
-		console.log(category.name);
+    // console.log(products);
+    console.log(product.title);
+    console.log(category.name);
 
-	} catch (err) {
-		console.error(err);
-	}
+  } catch (err) {
+    console.error(err);
+  }
 }
 
 anotherFunction(API);
@@ -2402,17 +2403,17 @@ import fetch from 'node-fetch';
 const API = 'https://api.escuelajs.co/api/v1'
 
 const fetchFunction = async () => {
-	try {
-		const response = await fetch(`${API}/products`);
-		const data = await response.json();
-		console.log({
-			//data: data[0],
-			title: data[0].title,
-			category: data[0].category.name,
-		});
-	} catch (err) {
-		console.error(err);
-	}
+  try {
+    const response = await fetch(`${API}/products`);
+    const data = await response.json();
+    console.log({
+      //data: data[0],
+      title: data[0].title,
+      category: data[0].category.name,
+    });
+  } catch (err) {
+    console.error(err);
+  }
 }
 
 fetchFunction();
@@ -2453,14 +2454,14 @@ import fetch from "node-fetch";
 const API = 'https://domain-api-com';
 
 const x = async () => {
-	try {
-		//const response = await fetch(`${API}/products`);
-		const response = await fetch(API);
-		const data = await response.json();
-		console.log(data[0]);
-	} catch (e) {
-		console.error(e);
-	}
+  try {
+    //const response = await fetch(`${API}/products`);
+    const response = await fetch(API);
+    const data = await response.json();
+    console.log(data[0]);
+  } catch (e) {
+    console.error(e);
+  }
 }
 
 x();
@@ -2524,9 +2525,9 @@ En este ejemplo, la función Generadora `generateNumbers` utiliza un bucle infin
 ```js
 // Ejemplo 1:
 function* gen() {
-	yield 1;
-	yield 2;
-	yield 3;
+  yield 1;
+  yield 2;
+  yield 3;
 }
 
 const g = gen();
@@ -2542,9 +2543,9 @@ La palabra clave `yield` dentro de una función Generadora devuelve un objeto co
 ```js
 // Ejemplo 2:
 function* iterate(array) {
-	for (let value of array) {
-		yield value
-	}
+  for (let value of array) {
+    yield value
+  }
 }
 
 const it = iterate(['oscar', 'omar', 'ana', 'lucia', 'juan']);
@@ -2565,25 +2566,25 @@ const API = 'https://api.escuelajs.co/api/v1';
 
 // Declaración de fetchData como la función del Generador
 async function* fetchData(url) {
-	const response = await fetch(url);
-	yield await response.json();
+  const response = await fetch(url);
+  yield await response.json();
 };
 
 // Llamadas con el método next() en el objeto del Generador usando .then() y manipulando value y done
 fetchData(`${API}/products`).next().then(({ value, done }) => {
-	//Imprime la lista de los Productos de la API
-	// console.log(value); 
-	const id = value[0].id;
-	const title = value[0].title;
-	const category = value[0].category.name
-	console.log({
-		id: id,
-		title: title,
-		category: category
-	});
-	
-	// En consola usa: Ctrl + Click sobre el enlace
-	console.log(`Ctrl + Click: 🔥${API}/products/${id}`);
+  //Imprime la lista de los Productos de la API
+  // console.log(value); 
+  const id = value[0].id;
+  const title = value[0].title;
+  const category = value[0].category.name
+  console.log({
+    id: id,
+    title: title,
+    category: category
+  });
+
+  // En consola usa: Ctrl + Click sobre el enlace
+  console.log(`Ctrl + Click: 🔥${API}/products/${id}`);
 });
 
 // Obtenemos: 
@@ -2595,29 +2596,29 @@ Ctrl + Click: 🔥https://api.escuelajs.co/api/v1/products/30
 
 ```js
 async function* fetchAPI(url) {
-	let nextPage = url;
-	while (nextPage != null) {
-		const response = await fetch(nextPage);
-		const data = await response.json();
-		yield data.results;
-		nextPage = data.next;
-	}
+  let nextPage = url;
+  while (nextPage != null) {
+    const response = await fetch(nextPage);
+    const data = await response.json();
+    yield data.results;
+    nextPage = data.next;
+  }
 }
 
 const API_URL = 'https://swapi.dev/api/people/';
 
 (async () => {
-	for await (const results of fetchAPI(API_URL)) {
-		console.log(results);
-	}
+  for await (const results of fetchAPI(API_URL)) {
+    console.log(results);
+  }
 })();
 
 // Alternativa a la función anonima
 /* 
 async function fetchAndLogData() {
-	for await (const results of fetchAPI(API_URL)) {
-		console.log(results);
-	}
+  for await (const results of fetchAPI(API_URL)) {
+    console.log(results);
+  }
 }
 
 fetchAndLogData(); 
@@ -2848,19 +2849,19 @@ Nos entrega el siguiente código, el cual usaremos en nuestro proyecto:
 ```js
 const url = 'https://youtube-v31.p.rapidapi.com/search?channelId=UCX9NJ471o7Wie1DQe94RVIg&part=snippet%2Cid&order=date&maxResults=2';
 const options = {
-	method: 'GET',
-	headers: {
-		'X-RapidAPI-Key': '6c8aec95f0mshc835fd1a770d505p1250bfjsn6fdebd898161',
-		'X-RapidAPI-Host': 'youtube-v31.p.rapidapi.com'
-	}
+  method: 'GET',
+  headers: {
+    'X-RapidAPI-Key': '6c8aec95f0mshc835fd1a770d505p1250bfjsn6fdebd898161',
+    'X-RapidAPI-Host': 'youtube-v31.p.rapidapi.com'
+  }
 };
 
 try {
-	const response = await fetch(url, options);
-	const result = await response.text();
-	console.log(result);
+  const response = await fetch(url, options);
+  const result = await response.text();
+  console.log(result);
 } catch (error) {
-	console.error(error);
+  console.error(error);
 }
 ```
 
@@ -2970,24 +2971,24 @@ const API = 'https://youtube-v31.p.rapidapi.com/search?channelId=UCX9NJ471o7Wie1
 const content = document.querySelector('.content__show') || null;
 
 const options = {
-	method: 'GET',
-	headers: {
-		// Esta key no se debe mostrar 
-		'X-RapidAPI-Key': '6c8aec95f0mshc835fd1a770d505p1250bfjsn6fdebd898161',
-		'X-RapidAPI-Host': 'youtube-v31.p.rapidapi.com'
-	}
+  method: 'GET',
+  headers: {
+    // Esta key no se debe mostrar 
+    'X-RapidAPI-Key': '6c8aec95f0mshc835fd1a770d505p1250bfjsn6fdebd898161',
+    'X-RapidAPI-Host': 'youtube-v31.p.rapidapi.com'
+  }
 };
 
 async function fetchData(urlApi) {
-	const response = await fetch(urlApi, options);
-	const data = await response.json();
-	return data;
+  const response = await fetch(urlApi, options);
+  const data = await response.json();
+  return data;
 }
 
 (async () => {
-	try {
-		const videos = await fetchData(API);
-		let view = `
+  try {
+    const videos = await fetchData(API);
+    let view = `
 			${videos.items.map(video => `
 				<a href="https://youtube.com/watch?v=${video.id.videoId}" target="_blank">
 					<article class="content__video">
@@ -3004,11 +3005,11 @@ async function fetchData(urlApi) {
 			`).slice(0, 4).join('')}
 		`;
 
-		content.innerHTML = view;
-	} catch (e) {
-		console.log(e);
-		console.warn(e);
-	}
+    content.innerHTML = view;
+  } catch (e) {
+    console.log(e);
+    console.warn(e);
+  }
 })();
 ```
 
