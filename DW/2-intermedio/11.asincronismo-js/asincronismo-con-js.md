@@ -2288,19 +2288,23 @@ En este ejemplo, la función `printHello()` llama a `sayHello()` y espera a que 
 ```js
 const fnAsync = () => {
   return new Promise((resolve, reject) => {
-    true
-      ? setTimeout(() => resolve('3. Async!!!'), 2000)
-      : reject(new Error('Error!'));
+    true // false para probar el reject
+      ? setTimeout(() => resolve("3. Async!!!"), 2000)
+      : setTimeout(() => reject("3. This is an error"), 2000);
   });
-}
+};
 
 // async es para el cuerpo de la función
 const anotherFn = async () => {
-  // await estará dentro de la lógica a implementar
-  const something = await fnAsync();
-  console.log(something);
-  console.log('4. Hello!!!');
-}
+  try {
+    // await estará dentro de la lógica a implementar
+    const something = await fnAsync();
+    console.log(something);
+  } catch (error) {
+    console.error(error);
+  }
+  console.log("4. Hello!!!");
+};
 
 console.log('1. Before');
 anotherFn();
@@ -2313,6 +2317,8 @@ console.log('2. After');
 3. Async!!!
 4. Hello!!!
 ```
+
+📌 Nota: En caso de ejecutarse el reject debemos usar un try catch de lo contrario no obtendremos el contenido de este. 
 
 También podemos ver su ejecución de la siguiente manera: 
 
@@ -2479,6 +2485,25 @@ export async function runCode() {
   }
 }
 ```
+
+También:  
+
+```js
+export async function runCode() {
+  // Tu código aquí 👈
+  try {
+    const url = "https://domain-api-com";
+    const response = await fetch(url);
+    const data = await response.json();
+    console.log(data);
+  } catch {
+    throw new Error("API Not Found");
+  }
+}
+
+runCode();
+```
+
 
 ## 18. ¿Cómo enfrentar los errores?
 
@@ -3002,7 +3027,7 @@ async function fetchData(urlApi) {
             </div>
           </article>
         </a>
-          `).slice(0, 4).join('')}
+        `).slice(0, 4).join('')}
     `;
 
     content.innerHTML = view;
