@@ -2490,7 +2490,6 @@ También:
 
 ```js
 export async function runCode() {
-  // Tu código aquí 👈
   try {
     const url = "https://domain-api-com";
     const response = await fetch(url);
@@ -2595,22 +2594,24 @@ async function* fetchData(url) {
   yield await response.json();
 };
 
-// Llamadas con el método next() en el objeto del Generador usando .then() y manipulando value y done
-fetchData(`${API}/products`).next().then(({ value, done }) => {
-  //Imprime la lista de los Productos de la API
-  // console.log(value); 
-  const id = value[0].id;
-  const title = value[0].title;
-  const category = value[0].category.name
-  console.log({
-    id: id,
-    title: title,
-    category: category
-  });
+fetchData(`${API}/product`)
+  .next()
+  .then(({ value, done }) => {
+    //Imprime la lista de los Productos de la API
+    // console.log(value);
+    const id = value[0].id;
+    const title = value[0].title;
+    const category = value[0].category.name;
+    console.log({
+      id: id,
+      title: title,
+      category: category,
+    });
 
-  // En consola usa: Ctrl + Click sobre el enlace
-  console.log(`Ctrl + Click: 🔥${API}/products/${id}`);
-});
+    // En consola usa: Ctrl + Click sobre el enlace
+    console.log(`Ctrl + Click: 🔥${API}/products/${id}`);
+  })
+  .catch((e) => console.log(e));
 
 // Obtenemos: 
 { id: 30, title: 'Electronic Metal Table', category: 'Electronics' }
@@ -2618,6 +2619,47 @@ Ctrl + Click: 🔥https://api.escuelajs.co/api/v1/products/30
 ```
 
 #### Otro ejemplo 
+
+Si accedemos a `https://swapi.dev/api/people/` veremos como está construida la información por lo que en `yield` se usa `data.results`. 
+
+```json
+{
+    "count": 82, 
+    "next": "https://swapi.dev/api/people/?page=2", 
+    "previous": null, 
+    "results": [ 👈👀🔥
+        {
+            "name": "Luke Skywalker", 
+            "height": "172", 
+            "mass": "77", 
+            "hair_color": "blond", 
+            "skin_color": "fair", 
+            "eye_color": "blue", 
+            "birth_year": "19BBY", 
+            "gender": "male", 
+            "homeworld": "https://swapi.dev/api/planets/1/", 
+            "films": [
+                "https://swapi.dev/api/films/1/", 
+                "https://swapi.dev/api/films/2/", 
+                "https://swapi.dev/api/films/3/", 
+                "https://swapi.dev/api/films/6/"
+            ], 
+            "species": [], 
+            "vehicles": [
+                "https://swapi.dev/api/vehicles/14/", 
+                "https://swapi.dev/api/vehicles/30/"
+            ], 
+            "starships": [
+                "https://swapi.dev/api/starships/12/", 
+                "https://swapi.dev/api/starships/22/"
+            ], 
+            "created": "2014-12-09T13:50:51.644000Z", 
+            "edited": "2014-12-20T21:17:56.891000Z", 
+            "url": "https://swapi.dev/api/people/1/"
+        } 
+```
+
+Con el código siguiente obtenemos todos los datos que posee esta api en cuanto a `people` se refiere. 
 
 ```js
 async function* fetchAPI(url) {
@@ -2650,6 +2692,32 @@ fetchAndLogData();
 */
 ```
 
+Obtengamos solo los nombres de los personajes: 
+```js
+async function* data(url) {
+  let nextPage = url;
+  while (nextPage != null) {
+    const response = await fetch(nextPage);
+    const data = await response.json();
+
+    for (const results of data.results) {
+      yield results.name;
+    }
+
+    nextPage = data.next;
+  }
+}
+
+const API_URL = "https://swapi.dev/api/people/";
+
+(async () => {
+  for await (const results of data(API_URL)) {
+    console.log(results);
+  }
+})();
+```
+
+
 🔥 ¿Por qué usamos un While en este ejemplo??
 
 La línea `while (nextPage != null)` se utiliza para hacer una solicitud a la API de varias páginas y recibir todos los datos disponibles.
@@ -2669,6 +2737,59 @@ En JavaScript, las funciones asincrónicas se definen con la palabra clave `asyn
 Además, el bucle `for-await-of` que se utiliza para iterar sobre la secuencia generada por `fetchAPI` solo se puede utilizar dentro de una función asincrónica. Por lo tanto, la función asincrónica anónima se utiliza para crear un contexto asincrónico y permitir el uso del bucle `for-await-of`.
 
 En resumen, el envoltorio `(async () => { ... })()` se utiliza para crear una función asincrónica anónima y ejecutarla inmediatamente, lo que permite el uso del bucle `for-await-of` para iterar sobre la secuencia generada por `fetchAPI`.
+
+
+### For of vs For in 
+
+La diferencia entre los bucles `for...in` y `for...of` en JavaScript radica en cómo iteran sobre las estructuras de datos y qué valores proporcionan durante la iteración.
+
+1. `for...in`:
+
+- El bucle `for...in` se utiliza para iterar sobre las propiedades enumerables de un objeto.
+- Itera sobre las claves (propiedades) de un objeto, incluyendo las propiedades heredadas del prototipo.
+- Es útil para recorrer objetos, pero no se recomienda para iterar sobre matrices o cadenas de caracteres.
+- Proporciona el nombre de la propiedad en cada iteración.
+
+Ejemplo de `for...in` con un objeto:
+
+```javascript
+const obj = { a: 1, b: 2, c: 3 };
+
+for (const key in obj) {
+  console.log(key); // Imprime: a, b, c
+  console.log(obj[key]); // Imprime: 1, 2, 3
+}
+```
+
+2. `for...of`:
+
+- El bucle `for...of` se utiliza para iterar sobre elementos iterables, como matrices, cadenas de caracteres, conjuntos (Sets), mapas (Maps), etc.
+- Itera sobre los valores de los elementos, en lugar de las claves o propiedades.
+- No proporciona acceso directo a las claves o índices de los elementos iterados.
+- Es útil cuando solo se necesitan los valores de los elementos y no se requiere el conocimiento de sus índices o claves.
+
+Ejemplo de `for...of` con una matriz:
+
+```javascript
+const arr = [1, 2, 3];
+
+for (const value of arr) {
+  console.log(value); // Imprime: 1, 2, 3
+}
+```
+
+Ejemplo de `for...of` con una cadena de caracteres:
+
+```javascript
+const str = 'Hola';
+
+for (const char of str) {
+  console.log(char); // Imprime: H, o, l, a
+}
+```
+
+En resumen, `for...in` se utiliza para iterar sobre las propiedades de un objeto, mientras que `for...of` se utiliza para iterar sobre los valores de elementos en estructuras de datos iterables como matrices y cadenas de caracteres. 
+
 
 ## 20. Proyecto del curso
 
@@ -3109,12 +3230,12 @@ Aquí tienes un ejemplo de cómo se puede utilizar el atributo `defer` en la eti
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Título de la página</title>
-    <script src="archivo1.js" defer></script>
-    <script src="archivo2.js" defer></script> 👈👀
+  <title>Título de la página</title>
+  <script src="archivo1.js" defer></script>
+  <script src="archivo2.js" defer></script> 👈👀
 </head>
 <body>
-    <!-- Contenido de la página -->
+  <!-- Contenido de la página -->
 </body>
 </html>
 ```
@@ -3125,12 +3246,12 @@ También:
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Título de la página</title>
+  <title>Título de la página</title>
 </head>
 <body>
-    <!-- Contenido de la página -->
-    
-    <script src="archivo.js" defer></script> 👈👀
+  <!-- Contenido de la página -->
+ 
+  <script src="archivo.js" defer></script> 👈👀
 </body>
 </html>
 ```
@@ -3192,3 +3313,123 @@ await fetchData('https://domain-a.com/api-1');
 Output:
 Error: Something was wrong
 ```
+
+### Soluciones 
+
+#### Primera posible solución:
+
+```js
+async function fetchData(url) {
+  if (!url.startsWith("http://") && !url.startsWith("https://")) {
+    throw new Error("Invalid URL");
+  }
+
+  const response = await fetch(url, { method: "GET" });
+
+  if (!response.ok) {
+    throw new Error("Something was wrong");
+  }
+
+  const data = await response.json();
+  return data;
+}
+
+try {
+  const data = await fetchData("https://api.escuelajs.co/api/v1/categories");
+  console.log(data);
+} catch (error) {
+  console.error(error);
+}
+```
+
+🔥 `.startsWith()`   
+La función `startsWith()` es un método disponible en las cadenas de texto en JavaScript. Se utiliza para verificar si una cadena comienza con el texto especificado. Retorna `true` si la cadena empieza con el texto proporcionado, y `false` en caso contrario.
+
+La sintaxis básica del método `startsWith()` es la siguiente:
+
+```js
+cadena.startsWith(texto)
+```
+
+- `cadena`: La cadena de texto en la cual se va a realizar la verificación.
+- `texto`: El texto que se va a verificar si es el inicio de la cadena.
+
+Aquí tienes un ejemplo de uso del método `startsWith()`:
+
+```js
+const cadena = "Hola, mundo";
+
+console.log(cadena.startsWith("Hola"));
+// Resultado: true
+
+console.log(cadena.startsWith("mundo"));
+// Resultado: false
+```
+
+> En el contexto de la solución proporcionada, `url.startsWith("http://")` y `url.startsWith("https://")` se utilizan para verificar si la URL comienza con "http://" o "https://". Esto se hace para asegurarse de que la URL tenga el formato correcto, ya que generalmente las direcciones web válidas comienzan con uno de estos dos protocolos.
+
+
+🔥 `response.ok`   
+La propiedad `ok` de un objeto de respuesta (`response`) es un valor booleano que indica si la respuesta de la solicitud HTTP se considera exitosa. Si el valor de `response.ok` es `true`, significa que la respuesta tiene un código de estado HTTP en el rango 200-299, lo que indica una respuesta exitosa. Si el valor de `response.ok` es `false`, significa que el código de estado de la respuesta no está en ese rango y se considera que la respuesta no fue exitosa.
+
+Para verificar si una respuesta HTTP es exitosa, se debe utilizar la propiedad `ok` de la respuesta, como se muestra en el siguiente ejemplo:
+
+```js
+if (response.ok) {
+  // La respuesta fue exitosa (código de estado 200-299)
+  // Realizar alguna acción...
+} else {
+  // La respuesta no fue exitosa (código de estado fuera del rango 200-299)
+  // Realizar alguna acción...
+}
+```
+
+
+#### Segunda para PLATZI:
+
+```js
+export async function runCode(url) {
+  try { // validar formato correcto url
+    new URL(url);
+  } catch (e) {
+    throw new Error('Invalid URL');
+  }
+  try { // validar que exista url
+    const response = await fetch(url)
+    return response.json();
+  } catch (e) {
+    throw new Error('Something was wrong');
+  }
+}
+```
+
+🔥 `new URL(url);`  
+`new URL(url)` es una forma de crear un objeto URL en JavaScript utilizando la clase `URL`. Esta clase proporciona métodos y propiedades para trabajar con URLs de manera más conveniente.
+
+Cuando se crea un objeto URL utilizando `new URL(url)`, se realiza una validación de la URL proporcionada y se descompone en sus diferentes componentes, como el protocolo, el nombre de dominio, el puerto, la ruta, los parámetros de consulta, entre otros.
+
+Aquí tienes un ejemplo de cómo se utiliza `new URL(url)`:
+
+```js
+const url = "https://www.example.com/path?param1=value1&param2=value2";
+const objURL = new URL(url);
+
+console.log(objURL.protocol);
+// Resultado: "https:"
+
+console.log(objURL.hostname);
+// Resultado: "www.example.com"
+
+console.log(objURL.pathname);
+// Resultado: "/path"
+
+console.log(objURL.search);
+// Resultado: "?param1=value1&param2=value2"
+```
+
+En este ejemplo, se crea un objeto URL a partir de la cadena `url` utilizando `new URL(url)`. Luego, se pueden acceder a los diferentes componentes de la URL utilizando las propiedades del objeto URL, como `protocol`, `hostname`, `pathname` y `search`.
+
+Esta forma de trabajar con objetos URL puede ser útil para analizar y manipular fácilmente las diferentes partes de una URL, como extraer parámetros de consulta, modificar componentes individuales o construir nuevas URLs basadas en la existente.
+
+Es importante tener en cuenta que la clase `URL` está disponible en los navegadores modernos y en el entorno de ejecución de Node.js a partir de la versión 10. Si estás utilizando un entorno más antiguo, es posible que `URL` no esté disponible o requiera de un polyfill o una librería adicional para su uso.
+
