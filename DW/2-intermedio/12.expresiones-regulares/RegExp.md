@@ -36,7 +36,7 @@ En este ejemplo, el método `match()` se utiliza en la cadena `texto` para busca
 
 Las expresiones regulares en JavaScript son muy poderosas y flexibles. Pueden incluir metacaracteres, clases de caracteres, cuantificadores, agrupaciones y mucho más para definir patrones de búsqueda más complejos.
 
-## Método `.match()` 
+### Método `.match()` 
 
 El método `.match()` en JavaScript se utiliza para buscar una cadena de texto en busca de coincidencias con una expresión regular. Devuelve un array que contiene todas las coincidencias encontradas o `null` si no se encuentra ninguna coincidencia.
 
@@ -76,7 +76,7 @@ Además, si la expresión regular tiene paréntesis de captura, el método `.mat
 
 En resumen, el método `.match()` es útil cuando quieres buscar coincidencias de una expresión regular en una cadena de texto y necesitas obtener las coincidencias encontradas.
 
-## Método `.exec()`
+### Método `.exec()`
 
 El método `.exec()` es un método de la clase `RegExp` en JavaScript que se utiliza para ejecutar una búsqueda de coincidencias de una expresión regular en una cadena de texto. A diferencia del método `.match()`, el método `.exec()` proporciona información más detallada sobre las coincidencias, incluyendo las subcadenas coincidentes y sus posiciones.
 
@@ -128,6 +128,8 @@ while ((resultado = regex.exec(texto)) !== null) {
 
 En este ejemplo, la expresión regular `/Hola/g` busca todas las apariciones de la palabra "Hola" en la cadena `texto`. Al utilizar un bucle `while`, el método `.exec()` se llama repetidamente hasta que ya no se encuentren más coincidencias. En cada iteración, se muestra la subcadena coincidente encontrada.
 
+### Paréntesis de captura  
+
 Si la expresión regular tiene paréntesis de captura, se pueden acceder a las subexpresiones capturadas utilizando los índices correspondientes en el array de resultados. Por ejemplo:
 
 ```js
@@ -141,3 +143,55 @@ console.log(resultado[1]); // 'Juan'
 En este ejemplo, la expresión regular `/Hola, mi nombre es ([A-Za-z]+)/` busca la frase "Hola, mi nombre es " seguida de un nombre que consiste en letras. El resultado del método `.exec()` contiene dos elementos en el array: la subcadena coincidente completa y la subexpresión capturada (el nombre).
 
 En resumen, el método `.exec()` es útil cuando necesitas obtener información detallada sobre las coincidencias de una expresión regular, incluyendo las subcadenas coincidentes y sus posiciones. También te permite trabajar con paréntesis de captura para extraer información específica de las coincidencias.
+
+### Ampliemos sobre `/([A-Za-z]+)/`
+
+La expresión regular `/Hola, mi nombre es ([A-Za-z]+)/` se utiliza para buscar una cadena que comienza con "Hola, mi nombre es " seguido de un nombre que consiste en una o más letras.
+
+A continuación, desglosaré los elementos de la expresión regular:
+
+- `/` y `/`: Estos son los delimitadores que indican el inicio y el final de la expresión regular.
+
+- `Hola, mi nombre es `: Esta es la cadena literal que se busca al principio de la coincidencia. Corresponde exactamente a la secuencia de caracteres "Hola, mi nombre es ".
+
+- `([A-Za-z]+)`: Estos son paréntesis que se utilizan para agrupar una parte de la expresión regular y capturarla como un grupo de captura. El grupo de captura se utiliza para extraer la porción coincidente de la cadena cuando se encuentra una coincidencia.
+
+- `[A-Za-z]`: Esto es una clase de caracteres que define un rango de caracteres permitidos. En este caso, `[A-Za-z]` significa que se aceptan cualquier letra mayúscula o minúscula. Las letras de la A a la Z y de la a a la z.
+
+- `+`: Este es un cuantificador que indica que la clase de caracteres `[A-Za-z]` puede aparecer una o más veces en la cadena.
+
+En resumen, la expresión regular busca una cadena que comienza con "Hola, mi nombre es " y luego captura el nombre que sigue a esa parte. El nombre debe consistir en una o más letras mayúsculas o minúsculas. Por ejemplo, la expresión regular coincidiría con las siguientes cadenas:
+
+- "Hola, mi nombre es John"
+- "Hola, mi nombre es Maria"
+- "Hola, mi nombre es Alejandro"
+
+Sin embargo, no coincidiría con las siguientes cadenas:
+
+- "Hola, mi nombre es 123" (no contiene solo letras)
+- "Hola, mi nombre es " (no hay un nombre después de la parte inicial)
+
+Ejemplos: 
+
+```js
+const text = "Hi, my name is Ghost707";
+const regex = /is ([A-Za-z0-9]+)/;
+const result = regex.exec(text);
+
+console.log(result[0]); //is Ghost707
+```
+
+```js
+const text = "Hi, this is the bug 1A2B3c4d";
+const regex = /bug ([A-Za-z0-9]+)/;
+const result = text.match(regex); 
+
+console.log(result[0]); //bug 1A2B3c4d
+```
+
+## 3. Aplicaciones de las expresiones regulares
+
+https://rubular.com/
+
+
+https://cheatography.com/davechild/cheat-sheets/regular-expressions/
