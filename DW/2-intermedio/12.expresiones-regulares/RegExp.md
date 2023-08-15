@@ -21,20 +21,9 @@ var regex = /patrón/;
 
 Donde "patrón" es el patrón que quieres buscar. Por ejemplo, si quieres buscar todas las coincidencias de la palabra "Hola" en una cadena, puedes usar la expresión regular `/Hola/`.
 
-Una vez que tienes una expresión regular, puedes utilizar los métodos proporcionados por la clase `RegExp` o los métodos de los objetos de cadena (como `match()`, `replace()`, `search()`, `split()`, entre otros) para realizar operaciones de búsqueda, reemplazo, extracción, etc.
+Una vez que tienes una expresión regular, puedes utilizar los métodos proporcionados por la clase `RegExp` como `test()`, `exec()` o los métodos de los objetos de cadena (como `match()`, `replace()`, `search()`, `split()`, entre otros) para realizar operaciones de búsqueda, reemplazo, extracción, etc.
 
-Aquí hay un ejemplo de cómo usar una expresión regular para buscar todas las coincidencias de la palabra "Hola" en una cadena:
-
-```js
-const texto = "Hola, ¿cómo estás? Hola a todos.";
-const regex = /Hola/g; // 'g' indica que la búsqueda es global (todas las coincidencias)
-const coincidencias = texto.match(regex);
-console.log(coincidencias); // ['Hola', 'Hola']
-```
-
-En este ejemplo, el método `match()` se utiliza en la cadena `texto` para buscar todas las coincidencias de la expresión regular `regex` y devuelve un array con las coincidencias encontradas.
-
-Las expresiones regulares en JavaScript son muy poderosas y flexibles. Pueden incluir metacaracteres, clases de caracteres, cuantificadores, agrupaciones y mucho más para definir patrones de búsqueda más complejos.
+> Las expresiones regulares pueden incluir metacaracteres, clases de caracteres, cuantificadores, agrupaciones y mucho más para definir patrones de búsqueda más complejos.
 
 ### Método `.match()` 
 
@@ -45,8 +34,6 @@ La sintaxis básica del método `.match()` es la siguiente:
 ```js
 cadena.match(expresionRegular)
 ```
-
-Donde `cadena` es la cadena de texto en la que quieres buscar coincidencias, y `expresionRegular` es la expresión regular que defines para realizar la búsqueda.
 
 Aquí hay un ejemplo simple de cómo usar el método `.match()`:
 
@@ -68,13 +55,9 @@ var coincidencias = texto.match(regex);
 console.log(coincidencias); // ['Hola', 'Hola']
 ```
 
-En este ejemplo, la expresión regular `/Hola/g` busca todas las apariciones de la palabra "Hola" en la cadena `texto`. El método `.match()` devuelve un array con todas las coincidencias encontradas, en este caso, `['Hola', 'Hola']`.
-
 Es importante tener en cuenta que si la expresión regular tiene la bandera `g` habilitada, el método `.match()` no devuelve información sobre las subcadenas coincidentes ni sus posiciones. Para obtener información más detallada sobre las coincidencias, se pueden utilizar métodos como `.exec()`.
 
 Además, si la expresión regular tiene paréntesis de captura, el método `.match()` también devuelve los resultados de las subexpresiones capturadas en el array de coincidencias.
-
-En resumen, el método `.match()` es útil cuando quieres buscar coincidencias de una expresión regular en una cadena de texto y necesitas obtener las coincidencias encontradas.
 
 ### Método `.exec()`
 
@@ -85,8 +68,6 @@ La sintaxis básica del método `.exec()` es la siguiente:
 ```js
 expresionRegular.exec(cadena)
 ```
-
-Donde `expresionRegular` es la expresión regular que defines para realizar la búsqueda y `cadena` es la cadena de texto en la que quieres buscar coincidencias.
 
 Aquí hay un ejemplo simple de cómo usar el método `.exec()`:
 
@@ -145,8 +126,6 @@ console.log(resultado[1]); // 'Juan'
 ```
 
 En este ejemplo, la expresión regular `/Hola, mi nombre es ([A-Za-z]+)/` busca la frase "Hola, mi nombre es " seguida de un nombre que consiste en letras. El resultado del método `.exec()` contiene dos elementos en el array: la subcadena coincidente completa y la subexpresión capturada (el nombre).
-
-En resumen, el método `.exec()` es útil cuando necesitas obtener información detallada sobre las coincidencias de una expresión regular, incluyendo las subcadenas coincidentes y sus posiciones. También te permite trabajar con paréntesis de captura para extraer información específica de las coincidencias.
 
 ### Ampliemos sobre `/([A-Za-z]+)/`
 
@@ -458,3 +437,4 @@ console.log(result); // ["Hola", "amigos", "bienvenidos"]
 En este ejemplo, la cadena `str` se divide en un array de subcadenas utilizando `/\./` como el separador. Esto significa que la cadena se divide en cada punto (`.`) que se encuentra. Como resultado, obtenemos un array con las subcadenas separadas: `["Hola", "amigos", "bienvenidos"]`.
 
 
+https://regex101.com/

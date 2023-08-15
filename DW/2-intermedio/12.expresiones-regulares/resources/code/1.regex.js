@@ -22,10 +22,12 @@ while (
 
 /* --------------- Ejemplo 03 ---------------- */
 
-/* const text = "Hi, my name is Ghost707";
+const text = "Hi, my name is Ghost707";
 const regex = /is ([A-Za-z0-9]+)/;
 const result = regex.exec(text);
-console.log(result[0]); */
+console.log(result);
+console.log(result[0]);
+console.log(result[1]);
 
 /* --------------- Ejemplo 04 ---------------- */
 /* const text = "Hi, this is the bug 1A2B3c4d";
