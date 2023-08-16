@@ -11,7 +11,7 @@
 123456789
 12345678910
 12345678910a
-12345 678910
+12345 678910a
 123453243
 hola
 palabra 
@@ -21,9 +21,26 @@ Hola amigos.
 Hola a todos.
 ejemplos
 
+
 // Usando Ctrl + F en VSC
 .: cualquier caracter
 . :(.espacio)
 ..........
 ...: Encuentra multiplos de 3
 
+// 6. 
+\d
+\d\d\d
+\w
+\s para espacios
+\d\s\w
+\w\w\w\w
+[0-9] Equivalente a \d
+[6-9]
+[a-z]
+[a-zA-Z]
+[a-zA-Z0-9]
+[a-zA-Z0-9_]
+[a-fA-F0-9_]
+[a-fA-F0-9_\.]
+[a-tA-F0-5_\.]

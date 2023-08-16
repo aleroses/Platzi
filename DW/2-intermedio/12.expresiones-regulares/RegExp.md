@@ -483,3 +483,48 @@ En este ejemplo, la cadena `str` se divide en un array de subcadenas utilizando 
 
 
 https://regex101.com/
+
+## 6. Las clases predefinidas y construidas
+
+Las búsquedas en las expresiones regulares funcionan en múltiplos de la cantidad de caracteres que explícitamente indicamos.
+
+|Regex|Qué hace|Descripción|Inverso|
+|---|---|---|---|
+|`.`|Character|Cualquier caracter, selecciona cada uno de los caracteres||
+|`/d`|Digit|**Digits**: (`d` minúscula) Encuentra todos los dígitos (número) de 0 a 9, es equivalente a poner [0-9].|`\D`|
+|`/w`|Word|**All word characters**, Encuentra todos los caracteres que son parte de una palabra, tanto letras (minúsculas o mayúsculas) como números, es equivalente a poner [a-zA-Z0-9_].|`\W`|
+|`/s`|Space|**WhiteSpaces**, Encuentra todos los espacios (los saltos de línea y tabuladores también son espacios).|`\S`|
+|[0-9]|Specific Digit|Encuentra todos los dígitos de 0 a 9.||
+|[0-9a-zA-Z]|Specific Word Character|Encontrará todos los caracteres que estén del 0-9 o que sean letras mayúsculas o minúsculas (`\w`)||
+|[a-zA-Z]||nos encontrará solamente las letras, tanto mayúsculas como minúsculas.||
+|`\`|Diagonal invertida|Escapa los caracteres, permite que un carácter especial se muestre|
+
+Podemos combinarlas así: 
+```js
+\d
+\d\d\d
+\w
+\s para espacios
+\d\s\w
+\w\w\w\w
+[0-9] Equivalente a \d
+[6-9]
+[a-z]
+[a-zA-Z]
+[a-zA-Z0-9]
+[a-zA-Z0-9_]
+[a-fA-F0-9_]
+[a-fA-F0-9_\.]
+[a-tA-F0-5_\.]
+```
+
+
+Buscando hexadecimales de 6 dígitos y con # al inicio
+
+```
+[#][0-9a-fA-F]{6}
+```
+
+
+
+https://eead-csic-compbio.github.io/perl_bioinformatica/node18.html
