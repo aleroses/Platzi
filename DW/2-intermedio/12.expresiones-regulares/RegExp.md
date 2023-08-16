@@ -356,7 +356,7 @@ console.log(` Result: ${result_five} => ${result_six}`);
 3. Reemplazar todas las ocurrencias de una letra seguida de cualquier carácter y luego otra letra: Recuerda que `/g` buscará todas las coincidencias en lugar de detenerse en la primera.
 
 ```js
-// /([1era letra])otro caracter([2da letra])/g 
+// Patrón: /([1era letra])otro caracter([2da letra])/g 
 const regex = /([a-zA-Z]).([a-zA-Z])/g; 
 const str = "Hola mundo";
 
@@ -395,20 +395,20 @@ Recuerda que en las expresiones regulares, el punto (.) tiene un significado esp
 
 #### Datos para entender los ejemplos
 
-1. `\b`: El `\b` es una secuencia de escape en una expresión regular que representa una "límite de palabra". Se utiliza para hacer coincidir posiciones en una cadena donde hay un cambio entre un carácter de palabra (`\w`) y un carácter que no es de palabra (`\W`), o viceversa. En otras palabras, `\b` coincide con una posición en la cadena donde hay una transición entre caracteres de palabra y no palabra.
+1. `\b`: El `\b` representa una "límite de palabra". Se utiliza para hacer coincidir posiciones en una cadena donde hay un cambio entre un carácter alfanumérico (letras mayúsculas y minúsculas, dígitos y guiones bajos "_") `\w` y cualquier carácter que no sea alfanumérico `\W`, o viceversa. En otras palabras, `\b` coincide con una posición en la cadena donde hay una transición entre caracteres de palabra y no palabra.
 
-2. `\w`: El `\w` es una clase de caracteres en una expresión regular que coincide con cualquier carácter alfanumérico (letras mayúsculas y minúsculas, y dígitos) y el guion bajo (\_). Es equivalente a `[a-zA-Z0-9_]`. En resumen, `\w` coincide con cualquier carácter de palabra.
+2. `\w`: El `\w` expresión regular que coincide con cualquier carácter alfanumérico (letras mayúsculas y minúsculas, y dígitos) y el guion bajo (\_). Es equivalente a `[a-zA-Z0-9_]`. En resumen, `\w` coincide con cualquier carácter de palabra.
 
 3. `{3}`: Las llaves `{}` se utilizan para cuantificar la repetición de un elemento en una expresión regular. En este caso, `{3}` se coloca después de `\w` y significa que el elemento `\w` debe repetirse exactamente 3 veces. Es decir, coincide con una secuencia de tres caracteres de palabra consecutivos.
 
 En el primer ejemplo que mencioné:
 
-```javascript
+```js
 const regex = /\b\w{3}\b/;
-const result = regex.test("Hola"); // true
+const result = regex.test("Hola"); // false
 ```
 
-La expresión regular busca una secuencia de tres caracteres de palabra que formen una palabra completa en sí misma. En este caso, "Hola" cumple con este criterio y, por lo tanto, la expresión regular devuelve `true`.
+La expresión regular busca una secuencia de tres caracteres de palabra que formen una palabra completa en sí misma. En este caso, "Hola" no cumple con este criterio y, por lo tanto, la expresión regular devuelve `false`.
 
 4. `[aeiou]`: Los corchetes `[ ]` se utilizan para crear una clase de caracteres en una expresión regular. Dentro de los corchetes, se enumeran los caracteres que deseas que coincidan. En este caso, `[aeiou]` representa una clase de caracteres que coincide con cualquier vocal en minúscula. Es decir, coincide con cualquiera de los caracteres "a", "e", "i", "o" o "u".
 
@@ -420,7 +420,7 @@ La expresión regular busca una secuencia de tres caracteres de palabra que form
 
 En el ejemplo que mencionaste:
 
-```javascript
+```js
 const regex = /[aeiou].*[aeiou]/;
 const result = regex.test("Hola mundo"); // true
 ```
@@ -431,7 +431,7 @@ La expresión regular busca una cadena que tenga una vocal seguida de cualquier 
 
 Aquí tienes un ejemplo de cómo se utiliza el método `.test()`:
 
-```javascript
+```js
 const regex = /Hola/;
 const str = "Hola mundo";
 const result = regex.test(str);
@@ -457,11 +457,11 @@ En este ejemplo, creamos una expresión regular `/Hola/` que busca la cadena "Ho
 
 Aquí tienes un ejemplo para ilustrar cómo se utiliza:
 
-```javascript
+```js
 const regex = /([a-zA-Z]).([a-zA-Z])/g;
 const str = "Hola mundo";
 const result = str.replace(regex, "$2$1");
-console.log(result); // "oHla munod"
+console.log(result); // "lHmaduo"
 ```
 
 En este ejemplo, la expresión regular busca dos caracteres alfabéticos separados por cualquier carácter. Luego, el método `.replace()` invierte el orden de los caracteres encontrados y reemplaza las coincidencias en la cadena `str`. Como resultado, obtenemos la cadena "oHla munod".
@@ -472,7 +472,7 @@ En este ejemplo, la expresión regular busca dos caracteres alfabéticos separad
 
 Aquí tienes un ejemplo para ilustrar cómo se utilizan:
 
-```javascript
+```js
 const regex = /\./;
 const str = "Hola.amigos.bienvenidos";
 const result = str.split(regex);

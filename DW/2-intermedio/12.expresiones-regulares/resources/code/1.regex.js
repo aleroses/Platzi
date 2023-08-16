@@ -82,38 +82,22 @@ console.log(` Result: ${result_five} => ${result_six}`);
 // Result: false => null */
 
 /* --------------- Ejemplo 09 ---------------- */
-const regex = /([a-zA-Z]).([a-zA-Z])/g;
+// Patrón: /([1era letra])otro caracter([2da letra])/g
+/* const regex = /([a-zA-Z]).([a-zA-Z])/g;
 const str = "Hola mundo";
-const result_one = str.replace(regex, "$2"); 
-const result_two = str.replace(regex, "$1"); 
-const result_three = str.replace(regex, "$2$1"); 
-console.log(result_one, result_two, result_three);
+const result_one = str.replace(regex, "$2"); // 2da letra
+const result_two = str.replace(regex, "$1"); // 1era letra
+const result_three = str.replace(regex, "$2$1");
+console.log(result_one, result_two, result_three); */
+
+// Hola mundo
+// --l--m--do
+// H--a--u--o
+// lHmaduo
 
 /* 
-Hola mundo
---l--m--do 
-H--a--u--o
-lHmaduo
-
-Hola mundox
---l--m--dox
-H--a--u--ox
-lHmaduox
-
-Holax mundox
---la--m--dox 
-H--ax--u--ox 
-lHamxduox
-
-Hola-mundooo
---l--m--d--o 
-H--a--u--o-- 
-lHmaduoo
-*/
-
-// quiero oHla munod
-
-/* const cadena = "Hola mundo";
+// Ejemplos de uso de replace()
+const cadena = "Hola mundo";
 const nuevaCadena = cadena.replace("mundo", "amigo");
 console.log(nuevaCadena); // "Hola amigo" */
 
@@ -122,10 +106,13 @@ const nuevaCadena = cadena.replace(/o/g, "e");
 console.log(nuevaCadena); // "Hela munde" */
 
 /* const cadena = "Juan Pérez";
+// \s representa un espacio en blanco. 
 const nuevaCadena = cadena.replace(/(\w+)\s(\w+)/, "$2, $1");
 console.log(nuevaCadena); // "P, Juanérez"
 // P, Juanérez */
 
-
-
 /* --------------- Ejemplo 10 ---------------- */
+const regex = /\./;
+const str = "Hola.amigos.bienvenidos";
+const result = str.split(regex);
+console.log(result);
