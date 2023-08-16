@@ -41,10 +41,10 @@ Aquí hay un ejemplo simple de cómo usar el método `.match()`:
 var texto = "Hola, ¿cómo estás?";
 var regex = /estás/;
 var coincidencia = texto.match(regex);
-console.log(coincidencia); // ['estás']
+console.log(coincidencia); 
+// Obtenemos: Información sobre las subcadenas coincidentes y sus posiciones
+// [ 'estás', index: 12, input: 'Hola, ¿cómo estás?', groups: undefined ]
 ```
-
-En este ejemplo, la expresión regular `/estás/` busca la palabra "estás" en la cadena `texto`. El método `.match()` devuelve un array con la coincidencia encontrada, en este caso, `['estás']`.
 
 Si la expresión regular tiene la bandera `g` (global) habilitada, el método `.match()` buscará todas las coincidencias en lugar de detenerse en la primera. En ese caso, el método `.match()` devuelve un array con todas las coincidencias encontradas.
 
@@ -83,7 +83,7 @@ En este ejemplo, la expresión regular `/estás/` busca la palabra "estás" en l
 ```js
 [
   'estás',
-  index: 14,
+  index: 12,
   input: 'Hola, ¿cómo estás?',
   groups: undefined
 ]
@@ -91,7 +91,7 @@ En este ejemplo, la expresión regular `/estás/` busca la palabra "estás" en l
 
 El primer elemento del array es la subcadena coincidente encontrada, en este caso, `'estás'`. Luego, se proporciona información adicional:
 
-- `index`: La posición inicial de la coincidencia en la cadena original (en este caso, 14).
+- `index`: La posición inicial de la coincidencia en la cadena original (en este caso, 12).
 - `input`: La cadena original en la que se realizó la búsqueda.
 - `groups`: Si la expresión regular tiene paréntesis de captura, este objeto contiene las subexpresiones capturadas.
 

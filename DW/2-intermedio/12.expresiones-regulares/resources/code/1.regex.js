@@ -1,15 +1,15 @@
 /* --------------- Ejemplo 01---------------- */
 /* const text = "Hola, ¿cómo estás? Hola a todos.";
 const regex = /Hola/g;
-const coincidencias = text.match(regex); 
+const coincidencias = text.match(regex);
 
 console.log(coincidencias); */
 
 /* --------------- Ejemplo 02 ---------------- */
 /* var texto = "Hola, ¿cómo estás? Hola a todos.";
 var regex_one = /Hola/g;
-var resultado;
 var regex_two = /a/g;
+var resultado;
 var salida;
 
 while (
@@ -23,11 +23,17 @@ while (
 /* --------------- Ejemplo 03 ---------------- */
 
 /* const text = "Hi, my name is Ghost707";
-const regex = /is ([A-Za-z0-9]+)/;
+const regex = /([A-Za-z0-9]+)/;
 const result = regex.exec(text);
+
 console.log(result);
 console.log(result[0]);
 console.log(result[1]); */
+
+const text = "Hi, my name is Ghost707";
+const regex = /([A-Za-z])./g;
+const result = text.match(regex);
+console.log(result);
 
 /* --------------- Ejemplo 04 ---------------- */
 /* const text = "Hi, this is the bug 1A2B3c4d";
@@ -112,7 +118,7 @@ console.log(nuevaCadena); // "P, Juanérez"
 // P, Juanérez */
 
 /* --------------- Ejemplo 10 ---------------- */
-const regex = /\./;
+/* const regex = /\./;
 const str = "Hola.amigos.bienvenidos";
 const result = str.split(regex);
-console.log(result);
+console.log(result); */
