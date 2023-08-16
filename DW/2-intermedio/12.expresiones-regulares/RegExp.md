@@ -222,8 +222,6 @@ La expresión regular `/\d/g` coincide con todos los dígitos presentes en el te
 
 La expresión regular `/\w/g` coincide con todas las letras y números presentes en el texto y devuelve una matriz con los caracteres encontrados. En este caso, el resultado sería `["H", "o", "l", "a", "M", "i", "n", "ú", "m", "e", "r", "o", "d", "e", "t", "e", "l", "é", "f", "o", "n", "o", "e", "s", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "y", "m", "i", "d", "i", "r", "e", "c", "c", "i", "ó", "n", "d", "e", "c", "o", "r", "r", "e", "o", "e", "s", "e", "j", "e", "m", "p", "l", "o", "m", "a", "i", "l", "c", "o", "m"]`.
 
-Ten en cuenta que las expresiones regulares pueden ser mucho más complejas y abarcar muchos otros patrones. Este ejemplo es solo una introducción básica para mostrar cómo se pueden usar `\d` y `\w`.
-
 ### Cuidado!!! 
 
 En el ejemplo anterior usamos `\d` para extraer los dígitos (fíjate en ese `\backslash`) pero, si quisiéramos buscar coincidencias con la letra `d` sería de la siguiente forma. 
@@ -268,11 +266,12 @@ En Visual Studio Code, puedes utilizar el atajo "Control + F" (o "Cmd + F" en ma
 
 Cuando activas la opción de expresiones regulares en el cuadro de búsqueda, puedes utilizar el punto (.) y otras expresiones regulares para buscar patrones específicos en tu código o texto. Por ejemplo, si deseas buscar todas las apariciones de una palabra de cinco letras que comienza con "a" y termina con "o", puedes usar la expresión regular `a...o` en la función de búsqueda de VS Code.
 
-En Visual Studio Code se Vería de la siguiente forma: 
+En Visual Studio Code se vería de la siguiente forma: 
 
 ![](https://i.postimg.cc/y6LpgKsM/5-vsc-regex.png)
 
-Usando VSC y Ctrl + F podemos hacer pruebas usando punto:  
+Para hacer búsquedas en texto con expresiones regulares en VSC, puedes crear un archivo `.txt` y presionar `Ctrl + F`.  
+
 ```
 1
 12
@@ -296,7 +295,8 @@ Hola a todos.
 ```
 
 Con los datos anteriores podemos aplicar lo siguiente...  
-```js
+
+```
 . // Encuentra todos los caracteres existentes
 . // (.espacio) Encuentra un carácter seguido de todos los espacios que encuentra (espacio también es otro carácter)
 .......... // Encuentra 10 caracteres unidos y multiplos de 10
@@ -304,11 +304,18 @@ Con los datos anteriores podemos aplicar lo siguiente...
 a...o // Busca palabras de 5 letras que comienza con "a" y termina con "o"
 ```
 
-📌 Nota: Usando la herramienta de búsqueda de VSC podemos reemplazar fácilmente algún texto
+📌 Nota: Usando la herramienta de búsqueda de VSC podemos reemplazar texto fácilmente.
 
 ![](https://i.postimg.cc/SR1gw6gS/5-vsc-reemplazar.png)
 
 Recuerda que cuando utilizas el punto (.) en una expresión regular, debes tener en cuenta que coincide con cualquier carácter, por lo que es posible que desees escaparlo con una barra invertida (.) si deseas buscar un punto literal en el texto. Por ejemplo, si deseas buscar la palabra "ejemplo." en un texto, puedes usar la expresión regular `ejemplo\.`.
+
+Usando JavaScript quedaría así:  
+```js
+const text = 'Hi, this is an example.'
+const result = text.match(/example\./g)
+console.log(result); // [ 'example.' ]
+```
 
 ### Ejemplos 
 
@@ -318,29 +325,67 @@ Aquí tienes algunos ejemplos útiles de cómo utilizar expresiones regulares en
 
 1. Coincidir con una palabra que comienza con una letra y tiene tres caracteres en total:
 
-```javascript
-const regex = /\b\w{3}\b/;
-const result = regex.test("Hola"); // true
+```js
+const regex = /\b\w{3}\b/; // \b: Límite de palabra (\w)
+const result_one = regex.test("Hola"); //false
+const result_two = regex.test("two"); //true
+const result_three = regex.test("Al3"); //true
 ```
 
-2. Coincidir con una cadena que tiene una vocal seguida de cualquier carácter y luego otra vocal:
+2. Coincidir con una cadena que tiene una vocal seguida de cualquier carácter, seguida de más caracteres random, pero que deba terminar en otra vocal:
 
-```javascript
+```js
 const regex = /[aeiou].*[aeiou]/;
-const result = regex.test("Hola mundo"); // true
+
+const result_one = regex.test("Hola mundo");
+const result_two = regex.exec("Hola mundo");
+console.log(` Result: ${result_one} => ${result_two}`);
+// Result: true => ola mundo
+
+const result_three = regex.test("Hello word");
+const result_four = regex.exec("Hello word");
+console.log(` Result: ${result_three} => ${result_four}`);
+// Result: true => ello wo
+
+const result_five = regex.test("Word");
+const result_six = regex.exec("Word");
+console.log(` Result: ${result_five} => ${result_six}`);
+// Result: false => null
 ```
 
-3. Reemplazar todas las ocurrencias de una letra seguida de cualquier carácter y luego otra letra:
+3. Reemplazar todas las ocurrencias de una letra seguida de cualquier carácter y luego otra letra: Recuerda que `/g` buscará todas las coincidencias en lugar de detenerse en la primera.
 
-```javascript
-const regex = /([a-zA-Z]).([a-zA-Z])/g;
+```js
+// /([1era letra])otro caracter([2da letra])/g 
+const regex = /([a-zA-Z]).([a-zA-Z])/g; 
 const str = "Hola mundo";
-const result = str.replace(regex, "$2$1"); // "oHla munod"
+
+// `$2` se utiliza como patrón de reemplazo. Esto significa que solo se conservará la segunda letra capturada en cada coincidencia. 
+// 👉Hol = l (1era letra)otro caracter(2da letra)👈👀🔥
+// 👉a m = m (1era letra)otro caracter(2da letra)👈👀🔥
+// 👉und = d (1era letra)otro caracter(2da letra)👈👀🔥
+// 👉o   = o no coincide con el patrón 👈👀🔥
+const result_one = str.replace(regex, "$2"); 
+// `$1` se utiliza como patrón de reemplazo. Esto significa que solo se conservará la primera letra capturada en cada coincidencia.
+// 👉Hol = H (1era letra)otro caracter(2da letra)👈👀🔥
+// 👉a m = a (1era letra)otro caracter(2da letra)👈👀🔥
+// 👉und = u (1era letra)otro caracter(2da letra)👈👀🔥
+// 👉o   = o no coincide con el patrón 👈👀🔥
+const result_two = str.replace(regex, "$1"); 
+// `$2$1` se utiliza como patrón de reemplazo. Esto significa que se intercambiarán las posiciones de las dos letras encontradas en cada coincidencia. Primero la segunda letra y segundo la primera. 
+// 👉Hol = lH (1era letra)otro caracter(2da letra)👈👀🔥
+// 👉a m = ma (1era letra)otro caracter(2da letra)👈👀🔥
+// 👉und = du (1era letra)otro caracter(2da letra)👈👀🔥
+// 👉o   = o no coincide con el patrón 👈👀🔥
+const result_three = str.replace(regex, "$2$1"); 
+console.log(result_one, result_two, result_three);
+// --l--m--do   H--a--u--o   lHmaduo
+// lmdo Hauo lHmaduo
 ```
 
 4. Dividir una cadena en base a un punto:
 
-```javascript
+```js
 const regex = /\./;
 const str = "Hola.amigos.bienvenidos";
 const result = str.split(regex); // ["Hola", "amigos", "bienvenidos"]

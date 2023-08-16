@@ -1,5 +1,5 @@
 /* --------------- Ejemplo ---------------- */
-/* 
+
 1
 12
 123
@@ -19,10 +19,11 @@ palabra
 Hola mundo.
 Hola amigos.
 Hola a todos.
+ejemplos
 
 // Usando Ctrl + F en VSC
 .: cualquier caracter
 . :(.espacio)
 ..........
 ...: Encuentra multiplos de 3
-*/
+
