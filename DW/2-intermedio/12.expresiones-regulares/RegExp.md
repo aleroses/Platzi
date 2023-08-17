@@ -598,5 +598,145 @@ if (regex.test(colorCode)) {
 
 En este ejemplo, la expresión regular se utiliza con el método `test()` para verificar si el código de color `#FF00FF` cumple con el patrón establecido. En este caso, el código de color es válido y se imprimirá el mensaje "El código de color es válido." Si el código de color no cumpliera con el patrón, se imprimiría el mensaje "El código de color no es válido."
 
+También:  
+```js
+const regex = /[#][a-fA-F\d]{6}/g;
+const colorCode = "#FF00FF#AB20AFas12#FF00FF as12#AB20AF as12#FF00FF#AB20AF as12#FF00FF";
+const result = colorCode.match(regex);
+console.log(result);
+```
+
+Obtenemos:  
+```js
+[
+  '#FF00FF',
+  '#AB20AF',
+  '#FF00FF',
+  '#AB20AF',
+  '#FF00FF',
+  '#AB20AF',
+  '#FF00FF'
+]
+```
 
 https://eead-csic-compbio.github.io/perl_bioinformatica/node18.html
+
+
+## 7. Los delimitadores: +, *, ?
+
+En las expresiones regulares, los caracteres `*`, `+` y `?` son cuantificadores que se utilizan para especificar la cantidad de ocurrencias de un elemento en una cadena.
+
+- El asterisco `*` indica que el elemento precedente puede aparecer cero o más veces. Por ejemplo:
+
+  - `.*` coincide con cualquier cadena, ya que el punto `.` coincide con cualquier carácter y el asterisco `*` indica que puede aparecer cero o más veces.
+  - `\d*` coincide con cualquier secuencia de dígitos numéricos, incluyendo una cadena vacía.
+
+- El signo de más `+` indica que el elemento precedente debe aparecer al menos una vez o más. Por ejemplo:
+
+  - `\d+` coincide con una secuencia de uno o más dígitos numéricos.
+  - `\d+[a-z]` coincide con una secuencia de dígitos seguida de una letra minúscula.
+
+- El signo de interrogación `?` indica que el elemento precedente puede aparecer cero o una vez. Por ejemplo:
+
+  - `\d?` coincide con un dígito numérico opcional. Puede coincidir con un solo dígito o con nada.
+  - `\d?[a-z]s` coincide con un dígito numérico opcional, seguido de una letra minúscula, seguida de la letra 's'.
+
+A continuación, te proporciono algunos ejemplos interesantes:
+
+1. `\d*[a-z][a-z]?`
+
+   - Coincide con una cadena que puede comenzar con cero o más dígitos, seguida de una o dos letras minúsculas.
+   - Ejemplo de coincidencia: "123ab" o "xyz".
+
+En JavaScript se vería de la siguiente manera: 
+```js
+const text = '123ab';
+const regex = /\d?[a-z][a-z]?/g;
+const result = text.match(regex);
+console.log(result); //[ '3ab' ]
+```
+```js
+const text = 'xyz';
+const regex = /\d?[a-z][a-z]?/g;
+const result = text.match(regex);
+console.log(result); //[ 'xy', 'z' ]
+```
+
+2. `\d*[a-z]s`
+
+   - Coincide con una cadena que puede comenzar con cero o más dígitos, seguida de una letra minúscula y la letra 's'.
+   - Ejemplo de coincidencia: "9cats" o "dogs".
+
+En JavaScript se vería de la siguiente manera: 
+```js
+const text = '9cats';
+const regex = /\d*[a-z]s/g;
+const result = text.match(regex);
+console.log(result); //[ 'ts' ]
+```
+```js
+const text = 'dogs';
+const regex = /\d*[a-z]s/g;
+const result = text.match(regex);
+console.log(result); //[ 'gs' ]
+```
+
+
+3. `\d*[a-z]s?`
+
+   - Coincide con una cadena que puede comenzar con cero o más dígitos, seguida de una letra minúscula y la letra 's' que es opcional.
+   - Ejemplo de coincidencia: "9cat" o "dogs".
+
+En JavaScript se vería de la siguiente manera: 
+```js
+const text = '9cat';
+const regex = /\d*[a-z]s?/g;
+const result = text.match(regex);
+console.log(result); //[ '9c', 'a', 't' ]
+```
+```js
+const text = 'dogs';
+const regex = /\d*[a-z]s?/g;
+const result = text.match(regex);
+console.log(result); //[ 'd', 'o', 'gs' ]
+```
+
+
+4. `\d*[a-z]?s\d*`
+
+   - Coincide con una cadena que puede comenzar con cero o más dígitos, seguida de una letra minúscula opcional, la letra 's' y cero o más dígitos.
+   - Ejemplo de coincidencia: "123s456" o "a2s".
+
+En JavaScript se vería de la siguiente manera: 
+```js
+const text = '123s456';
+const regex = /\d*[a-z]?s\d*/g;
+const result = text.match(regex);
+console.log(result); //[ '123s456' ]
+```
+```js
+const text = 'a2s';
+const regex = /\d*[a-z]?s\d*/g;
+const result = text.match(regex);
+console.log(result); //[ '2s' ]
+```
+
+5. `\d*[a-z]?s\d+`
+
+   - Coincide con una cadena que puede comenzar con cero o más dígitos, seguida de una letra minúscula opcional, la letra 's' y al menos un dígito.
+   - Ejemplo de coincidencia: "123s456" o "a2s789".
+
+En JavaScript se vería de la siguiente manera: 
+```js
+const text = '123s456';
+const regex = /\d*[a-z]?s\d+/g;
+const result = text.match(regex);
+console.log(result); //[ '123s456' ]
+```
+```js
+const text = 'a2s789';
+const regex = /\d*[a-z]?s\d+/g;
+const result = text.match(regex);
+console.log(result); //[ '2s789' ]
+```
+

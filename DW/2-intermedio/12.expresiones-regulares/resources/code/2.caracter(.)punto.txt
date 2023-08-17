@@ -44,3 +44,29 @@ ejemplos
 [a-fA-F0-9_]
 [a-fA-F0-9_\.]
 [a-tA-F0-5_\.]
+
+// 7. 
+.* 0 o todos 
+\d* 
+\d+ 1 o más 
+\d? 0 o 1 
+\d+[a-z]
+\d*[a-z]
+\d*[a-z][a-z]?
+\d*[a-z]s
+\d*[a-z]s?
+\d*[a-z]?s\d*
+\d*[a-z]?s\d+
+
+
+Explicame que significa el * el + y el ? en expresiones regulares, explicame sus diferencias y dame ejemplos interesantes. Te dejo algunos ejemplos basicos: .* 0 o todos 
+\d* 
+\d+ 1 o más 
+\d? 0 o 1 
+\d+[a-z]
+\d*[a-z]
+\d*[a-z][a-z]?
+\d*[a-z]s
+\d*[a-z]s?
+\d*[a-z]?s\d*
+\d*[a-z]?s\d+

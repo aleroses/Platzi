@@ -133,11 +133,35 @@ const result = str.split(regex);
 console.log(result); */
 
 /* -----Buscando hexadecimales de 6 dígitos y con # al inicio----- */
-const regex = /[#][0-9a-fA-F]{6}/;
-const colorCode = "#FF00FF";
+/* const regex = /[#][0-9a-fA-F]{6}/;
+const colorCode =
+  "#FF00FF#AB20AF as12#FF00FF#AB20AF #FF00FF#AB20AF #FF00FF#AB20AF #FF00FF";
 
 if (regex.test(colorCode)) {
   console.log("El código de color es válido.");
 } else {
   console.log("El código de color no es válido.");
-}
+} */
+
+/* 
+const regex = /[#][a-fA-F\d]{6}/g;
+const colorCode = "#FF00FF#AB20AFas12#FF00FF as12#AB20AF as12#FF00FF#AB20AF as12#FF00FF";
+const result = colorCode.match(regex);
+console.log(result); 
+*/
+
+/* --------------- Ejemplo 11 ---------------- */
+/* const text = 'xyz';
+const regex = /\d?[a-z][a-z]?/g;
+const result = text.match(regex);
+console.log(result); */
+
+/* const text = 'dogs';
+const regex = /\d*[a-z]s/g;
+const result = text.match(regex);
+console.log(result); */
+
+const text = 'a2s789';
+const regex = /\d*[a-z]?s\d+/g;
+const result = text.match(regex);
+console.log(result);
