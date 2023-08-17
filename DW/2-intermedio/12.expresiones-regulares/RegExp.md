@@ -127,6 +127,48 @@ console.log(resultado[1]); // 'Juan'
 
 En este ejemplo, la expresión regular `/Hola, mi nombre es ([A-Za-z]+)/` busca la frase "Hola, mi nombre es " seguida de un nombre que consiste en letras. El resultado del método `.exec()` contiene dos elementos en el array: la subcadena coincidente completa y la subexpresión capturada (el nombre).
 
+Otro ejemplo: 
+```js
+const text = "Hi, my name is Ghost";
+// Patrón: 1 letras y cualquer otro carácter
+const regex = /([A-Za-z])./; 
+const result = text.match(regex);
+console.log(result);
+```
+
+Obtenemos:  
+```js
+[
+  'Hi', // Expresión regular: /([A-Za-z])./
+  'H', // Subexpresión: ([A-Za-z])
+  index: 0,
+  input: 'Hi, my name is Ghost',
+  groups: undefined
+]
+```
+- La expresión regular es `/([A-Za-z])./`. Es la expresión regular completa que se utiliza para buscar coincidencias en la cadena de texto.
+- La subexpresión es `([A-Za-z])`. Es la parte de la expresión regular que está dentro de los paréntesis. Esta subexpresión captura una letra mayúscula o minúscula.
+
+También:  
+```js
+const text = "Hi, my name is Ghost";
+// Patrón: 1 letras y cualquer otro carácter
+const regex = /([A-Za-z])./g; //👈👀
+const result = text.match(regex);
+console.log(result);
+```
+
+Obtenemos:  
+```js
+[
+  'Hi', 'my',
+  'na', 'me',
+  'is', 'Gh',
+  'os'
+]
+```
+
+
 ### Ampliemos sobre `/([A-Za-z]+)/`
 
 La expresión regular `/Hola, mi nombre es ([A-Za-z]+)/` se utiliza para buscar una cadena que comienza con "Hola, mi nombre es " seguido de un nombre que consiste en una o más letras.
@@ -244,7 +286,7 @@ Dígitos encontrados: [
 Letras d: [ 'd', 'd', 'd' ]
 ```
 
-Esto mismo con `\w` y `w`. 
+Esto mismo con el metacaracter `\w` y la letra `w`. 
 
 ## 5. El caracter (.)
 
@@ -332,6 +374,19 @@ const result_two = regex.test("two"); //true
 const result_three = regex.test("Al3"); //true
 ```
 
+También:  
+```js
+const regex = /\b\w{3}\b/g; // \b: Límite de palabra (\w)
+const result_one = [
+  "Holaeioua".match(regex),
+  "Hol aeioua".match(regex),
+  "Hol aei oua".match(regex)
+];
+
+console.log(result_one);
+// [ null, [ 'Hol' ], [ 'Hol', 'aei', 'oua' ] ]
+```
+
 2. Coincidir con una cadena que tiene una vocal seguida de cualquier carácter, seguida de más caracteres random, pero que deba terminar en otra vocal:
 
 ```js
@@ -386,7 +441,7 @@ console.log(result_one, result_two, result_three);
 4. Dividir una cadena en base a un punto:
 
 ```js
-const regex = /\./;
+const regex = /\./; // Escapamos el . con \
 const str = "Hola.amigos.bienvenidos";
 const result = str.split(regex); // ["Hola", "amigos", "bienvenidos"]
 ```
@@ -418,7 +473,7 @@ La expresión regular busca una secuencia de tres caracteres de palabra que form
 
 7. `[aeiou]`: En este caso, `[aeiou]` se utiliza nuevamente para representar una clase de caracteres que coincide con cualquier vocal en minúscula.
 
-En el ejemplo que mencionaste:
+En el ejemplo anterior que mencione:
 
 ```js
 const regex = /[aeiou].*[aeiou]/;
@@ -437,8 +492,6 @@ const str = "Hola mundo";
 const result = regex.test(str);
 console.log(result); // true
 ```
-
-En este ejemplo, creamos una expresión regular `/Hola/` que busca la cadena "Hola". Luego, llamamos al método `.test()` en la expresión regular `regex` y le pasamos la cadena `str` como argumento. El método `.test()` devuelve `true` porque la cadena `str` contiene la palabra "Hola".
 
 9. `/([a-zA-Z]).([a-zA-Z])/g`: Esta es una expresión regular delimitada por barras diagonales `/`. Veamos qué significa cada parte de la expresión:
 
@@ -519,12 +572,31 @@ Podemos combinarlas así:
 ```
 
 
-Buscando hexadecimales de 6 dígitos y con # al inicio
+### Buscando hexadecimales de 6 dígitos y con # al inicio
 
-```
+```js
 [#][0-9a-fA-F]{6}
 ```
 
+La expresión regular `[#][0-9a-fA-F]{6}` se utiliza para buscar cadenas de texto que cumplan con el siguiente patrón:
+
+- El primer carácter debe ser el símbolo de numeral (`#`).
+- Los siguientes 6 caracteres deben ser dígitos hexadecimales, es decir, pueden ser cualquier número del 0 al 9 o cualquier letra de la A a la F (mayúscula o minúscula).
+
+Un ejemplo de cómo se puede utilizar esta expresión regular es para validar códigos de colores hexadecimales en formato RGB. Por ejemplo, si tienes una cadena de texto que representa un código de color hexadecimal, como `#FF00FF`, puedes utilizar la expresión regular para verificar si cumple con el formato esperado:
+
+```js
+const regex = /[#][0-9a-fA-F]{6}/;
+const colorCode = '#FF00FF';
+
+if (regex.test(colorCode)) {
+  console.log('El código de color es válido.');
+} else {
+  console.log('El código de color no es válido.');
+}
+```
+
+En este ejemplo, la expresión regular se utiliza con el método `test()` para verificar si el código de color `#FF00FF` cumple con el patrón establecido. En este caso, el código de color es válido y se imprimirá el mensaje "El código de color es válido." Si el código de color no cumpliera con el patrón, se imprimiría el mensaje "El código de color no es válido."
 
 
 https://eead-csic-compbio.github.io/perl_bioinformatica/node18.html

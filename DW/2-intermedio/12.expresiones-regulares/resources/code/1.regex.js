@@ -23,28 +23,29 @@ while (
 /* --------------- Ejemplo 03 ---------------- */
 
 /* const text = "Hi, my name is Ghost707";
-const regex = /([A-Za-z0-9]+)/;
+const regex = /is ([A-Za-z0-9]+)/;
 const result = regex.exec(text);
 
 console.log(result);
 console.log(result[0]);
 console.log(result[1]); */
 
-const text = "Hi, my name is Ghost707";
-const regex = /([A-Za-z])./g;
+/* const text = "Hi, my name is Ghost";
+// Patrón: 1 letras y cualquer otro carácter
+const regex = /([A-Za-z])./g; 
 const result = text.match(regex);
-console.log(result);
+console.log(result); */
 
 /* --------------- Ejemplo 04 ---------------- */
 /* const text = "Hi, this is the bug 1A2B3c4d";
 const regex = /bug ([A-Za-z0-9]+)/;
-const result = text.match(regex); 
+const result = text.match(regex);
 
 console.log(result[0]); */
 
 /* --------------- Ejemplo 05 ---------------- */
 /* const texto =
-"Hola! Mi número de teléfono es 123-456-7890 y mi dirección de correo es ejemplo@mail.com";
+  "Hola! Mi número de teléfono es 123-456-7890 y mi dirección de correo es ejemplo@mail.com";
 
 const digitos = texto.match(/\d/g);
 const letra_d = texto.match(/d/g);
@@ -56,18 +57,26 @@ console.log("Letras y números encontrados:", letrasNumeros); */
 
 /* --------------- Ejemplo 06 ---------------- */
 
-/* const text = "Hi, this is a example.";
+/* const text = "Hi, this is an example.";
 const result = text.match(/example\./g);
 console.log(result); */
 
 /* --------------- Ejemplo 07 ---------------- */
-/* 
-const regex = /\b\w{3}\b/;  // \b: Límite de palabra (\w)
+
+/* const regex = /\b\w{3}\b/;  // \b: Límite de palabra (\w)
 const result_one = regex.test("Hola");
 const result_two = regex.test("two");
 const result_three = regex.test("Al3");
 
 console.log(result_one, result_two, result_three); */
+
+/* const regex = /\b\w{3}\b/g; // \b: Límite de palabra (\w)
+const result_one = [
+  "Holaeioua".match(regex),
+  "Hol aeioua".match(regex),
+  "Hol aei oua".match(regex)
+];
+console.log(result_one); */
 
 /* --------------- Ejemplo 08 ---------------- */
 /* const regex = /[aeiou].*[aeiou]/;
@@ -93,7 +102,7 @@ console.log(` Result: ${result_five} => ${result_six}`);
 const str = "Hola mundo";
 const result_one = str.replace(regex, "$2"); // 2da letra
 const result_two = str.replace(regex, "$1"); // 1era letra
-const result_three = str.replace(regex, "$2$1");
+const result_three = str.replace(regex, "$2$1"); // 2da y 1era
 console.log(result_one, result_two, result_three); */
 
 // Hola mundo
@@ -122,3 +131,13 @@ console.log(nuevaCadena); // "P, Juanérez"
 const str = "Hola.amigos.bienvenidos";
 const result = str.split(regex);
 console.log(result); */
+
+/* -----Buscando hexadecimales de 6 dígitos y con # al inicio----- */
+const regex = /[#][0-9a-fA-F]{6}/;
+const colorCode = "#FF00FF";
+
+if (regex.test(colorCode)) {
+  console.log("El código de color es válido.");
+} else {
+  console.log("El código de color no es válido.");
+}
