@@ -70,3 +70,17 @@ Explicame que significa el * el + y el ? en expresiones regulares, explicame sus
 \d*[a-z]s?
 \d*[a-z]?s\d*
 \d*[a-z]?s\d+
+
+// 8. Los contadores {1,4}
+\d\d
+\d{2, 5} {min, max}
+\w{4,} {min, infinito}
+(\d{2}\.?-? ?){5} // Busca numero telefonico de 10 dígitos
+(\d{2}[\-\. ]?){5} 
+
+
+1234324289
+12-34.32-42.89
+12-34.32-42.89
+12-34.32-42.89
+12-34.32-42.89

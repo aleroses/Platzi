@@ -740,3 +740,62 @@ const result = text.match(regex);
 console.log(result); //[ '2s789' ]
 ```
 
+### Resumen 
+
+|Clases                     |Contadores                      |
+|---------------------------|--------------------------------|
+|`\w` caracteres de palabra |`*` cero o muchos                |
+|`\d` dígitos               |`+` uno o muchos                 |
+|`\s` espacios              |`?` cero o uno                   |
+|`[0-9] ~ \d`                |`[Clase]{x,y}` entre `x` y `y` repeticiones de la clase |
+|`[0-9a-zA-Z_] ~  \w`         |`[clase]{x,}` al menos `x` ocurrencias de la clase      |
+
+#### Agrupaciones:  
+(XYZ) agrupa las clases X, Y y Z.    
+En muchas implementaciones de RegEx, estas clases sirven para luego reemplazar, referenciándolas como `$1`, `$m[1]` o `\1` (entre otras) dependiendo en lenguaje o software que se use.  
+
+[Practicar RegEx](https://regexr.com/)
+
+## 8. Los contadores {min, max}
+
+En las expresiones regulares, los contadores `{min,max}` se utilizan para especificar el número mínimo y máximo de ocurrencias de un patrón. Aquí tienes una explicación detallada sobre los contadores:
+
+- `{n}`: Coincide exactamente con 'n' ocurrencias del patrón.
+- `{n,}`: Coincide con al menos 'n' ocurrencias del patrón.
+- `{,m}`: Coincide con un máximo de 'm' ocurrencias del patrón.
+- `{n,m}`: Coincide con al menos 'n' y un máximo de 'm' ocurrencias del patrón.
+
+Ahora, para el patrón que encuentre números telefónicos de 10 dígitos que puedan tener puntos, espacios, guiones u otros caracteres de separación, puedes utilizar la siguiente expresión regular en JavaScript:
+
+```js
+function encontrarNumerosTelefonicos(texto) {
+  var patron = /(\d[\d\s.-]{8,}\d)/g;
+  var numerosTelefonicos = texto.match(patron);
+  
+  if (numerosTelefonicos) {
+    console.log("Números telefónicos encontrados:");
+    console.log(numerosTelefonicos);
+  } else {
+    console.log("No se encontraron números telefónicos.");
+  }
+}
+
+// Ejemplo de uso
+var texto =
+  "Mi número de teléfono es 1234567890. También puedes contactarme al 987-654-3210 o al 555 123 4567, incluso en el 555.123.4567 o al 12-34.32-42.89.";
+
+encontrarNumerosTelefonicos(texto);
+// Obtenemos: 
+Números telefónicos encontrados:
+[
+  '1234567890',
+  '987-654-3210',
+  '555 123 4567',
+  '555.123.4567',
+  '12-34.32-42.89'
+]
+```
+
+En este ejemplo, la expresión regular `(\d[\d\s.-]{8,}\d)` busca un número telefónico que comienza y termina con un dígito (`\d`), y tiene entre 8 y cualquier cantidad de ocurrencias (`{8,}`) de dígitos, espacios, puntos (`.`), guiones (`-`) o cualquier otro carácter de separación (`\s`). El modificador `g` al final de la expresión regular permite encontrar todas las ocurrencias en el texto.
+
+El resultado mostrará todos los números telefónicos encontrados en el texto que cumplen con el patrón.

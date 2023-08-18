@@ -161,7 +161,26 @@ const regex = /\d*[a-z]s/g;
 const result = text.match(regex);
 console.log(result); */
 
-const text = 'a2s789';
+/* const text = 'a2s789';
 const regex = /\d*[a-z]?s\d+/g;
 const result = text.match(regex);
-console.log(result);
+console.log(result); */
+
+/* --  Buscar número telefonico 10 dígitos -- */
+function encontrarNumerosTelefonicos(texto) {
+  var patron = /(\d[\d\s.-]{8,}\d)/g;
+  var numerosTelefonicos = texto.match(patron);
+
+  if (numerosTelefonicos) {
+    console.log("Números telefónicos encontrados:");
+    console.log(numerosTelefonicos);
+  } else {
+    console.log("No se encontraron números telefónicos.");
+  }
+}
+
+// Ejemplo de uso
+var texto =
+  "Mi número de teléfono es 1234567890. También puedes contactarme al 987-654-3210 o al 555 123 4567, incluso en el 555.123.4567 o al 12-34.32-42.89.";
+
+encontrarNumerosTelefonicos(texto);
