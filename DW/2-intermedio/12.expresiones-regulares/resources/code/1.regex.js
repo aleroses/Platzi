@@ -167,7 +167,7 @@ const result = text.match(regex);
 console.log(result); */
 
 /* --  Buscar número telefonico 10 dígitos -- */
-function encontrarNumerosTelefonicos(texto) {
+/* function encontrarNumerosTelefonicos(texto) {
   var patron = /(\d[\d\s.-]{8,}\d)/g;
   var numerosTelefonicos = texto.match(patron);
 
@@ -183,4 +183,40 @@ function encontrarNumerosTelefonicos(texto) {
 var texto =
   "Mi número de teléfono es 1234567890. También puedes contactarme al 987-654-3210 o al 555 123 4567, incluso en el 555.123.4567 o al 12-34.32-42.89.";
 
-encontrarNumerosTelefonicos(texto);
+encontrarNumerosTelefonicos(texto); */
+
+/* --- Buscar datos con una coma---- */
+/* const pattern = /.+?,/g;
+const text = 'csv1,csv2,csv3,csv4,csv5 1234,543,234,567,567 123,543,234,567,567'
+const result = text.match(pattern);
+console.log(result); */
+
+/* Usos de ? */
+/* const pattern = /colou?r/g;
+console.log('color'.match(pattern));
+console.log('colour'.match(pattern));
+console.log('colur'.match(pattern));
+*/
+
+/* const pattern = /a.+?b/g;
+console.log('aabb'.match(pattern)); // aab
+console.log('aaabbb'.match(pattern)); // aaab
+console.log('aabbbb'.match(pattern)); // aab
+console.log('aab'.match(pattern)); // aab */
+
+const pattern = /\?/g;
+console.log('Hello?'.match(pattern));
+console.log('Hello'.match(pattern));
+
+
+
+
+
+
+
+
+/* --- Buscar datos sin coma ---- */
+/* const pattern = /[^,\s]+/g;
+const text = 'csv1,csv2,csv3,csv4,csv5 1234,543,234,567,567 123,543,234,567,567'
+const result = text.match(pattern);
+console.log(result); */

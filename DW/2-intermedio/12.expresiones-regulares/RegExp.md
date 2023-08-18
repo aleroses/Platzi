@@ -799,3 +799,47 @@ Números telefónicos encontrados:
 En este ejemplo, la expresión regular `(\d[\d\s.-]{8,}\d)` busca un número telefónico que comienza y termina con un dígito (`\d`), y tiene entre 8 y cualquier cantidad de ocurrencias (`{8,}`) de dígitos, espacios, puntos (`.`), guiones (`-`) o cualquier otro carácter de separación (`\s`). El modificador `g` al final de la expresión regular permite encontrar todas las ocurrencias en el texto.
 
 El resultado mostrará todos los números telefónicos encontrados en el texto que cumplen con el patrón.
+
+
+## 18. El caso de (?) como delimitador
+
+El símbolo "?" en expresiones regulares tiene diferentes usos y puede tener diferentes efectos dependiendo de su contexto. Aquí tienes algunos ejemplos para entender su funcionamiento:
+
+1. Coincidencia opcional:
+   El símbolo "?" se utiliza para indicar que el elemento o grupo anterior es opcional, es decir, puede aparecer cero o una vez en la cadena de texto.
+
+   Ejemplo:
+
+   ```js
+   const pattern = /colou?r/; // Coincide con "color" y "colour"
+   console.log(pattern.test("color")); // true
+   console.log(pattern.test("colour")); // true
+   console.log(pattern.test("colur")); // false
+   ```
+   En este caso la `u` es opcional, puede aparecer 0 o 1 vez. 
+
+2. Modificador de "lazy" o "no greedy":
+   Cuando se utiliza después de los cuantificadores "\*", "+", "?" o "{}", el símbolo "?" modifica el comportamiento del cuantificador para que coincida con el mínimo número de veces posible.
+
+   Ejemplo:
+
+   ```js
+   const pattern = /a.+?b/; // Coincide con la cadena "a" seguida de cualquier contenido seguido de "b", pero de la forma más corta posible
+   console.log(pattern.test("aabb")); // true aab
+   console.log(pattern.test("aaabbb")); // true aaab
+   console.log(pattern.test("aabbbb")); // true aab
+   console.log(pattern.test("aab")); // true aab
+   ```
+
+3. Escape de caracteres especiales:
+   El símbolo "?" se utiliza para escapar caracteres especiales y tratarlos literalmente en lugar de su significado especial en expresiones regulares.
+
+   Ejemplo:
+
+   ```js
+   const pattern = /\?/; // Coincide con el símbolo de interrogación literal "?"
+   console.log(pattern.test("Hello?")); // true [ '?' ]
+   console.log(pattern.test("Hello")); // false null
+   ```
+
+Estos son solo algunos ejemplos del uso del símbolo "?" en expresiones regulares. Recuerda que su comportamiento puede variar dependiendo del contexto en el que se utilice.

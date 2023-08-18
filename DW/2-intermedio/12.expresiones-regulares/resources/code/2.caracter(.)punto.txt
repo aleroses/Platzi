@@ -84,3 +84,9 @@ Explicame que significa el * el + y el ? en expresiones regulares, explicame sus
 12-34.32-42.89
 12-34.32-42.89
 12-34.32-42.89
+
+csv1,csv2,csv3,csv4,csv5
+1234,543,234,567,567
+123,543,234,567,567
+
+/.+?,?/
