@@ -843,3 +843,68 @@ El símbolo "?" en expresiones regulares tiene diferentes usos y puede tener dif
    ```
 
 Estos son solo algunos ejemplos del uso del símbolo "?" en expresiones regulares. Recuerda que su comportamiento puede variar dependiendo del contexto en el que se utilice.
+
+
+## 10. Not (^), su uso y sus peligros
+
+El símbolo "^" en expresiones regulares tiene varios usos y efectos dependiendo de su contexto. Aquí tienes algunos ejemplos para entender su funcionamiento:
+
+1. Coincidencia al inicio de una cadena:
+   El símbolo "^" se utiliza para indicar que el patrón debe coincidir al inicio de una cadena.
+
+   Ejemplo:
+
+   ```js
+   const pattern = /^abc/; // Coincide con "abc" solo si aparece al inicio de la cadena
+   console.log(pattern.test("abcdef")); // true [ 'abc' ]
+   console.log(pattern.test("xyzabc")); // false null
+   console.log(pattern.test("abcxyz")); // true [ 'abc' ]
+   ```
+
+2. Negación de caracteres:
+   Cuando se utiliza dentro de corchetes "\[^\]", el símbolo "^" se utiliza para negar un conjunto de caracteres. Indica que cualquier carácter distinto a los especificados puede coincidir.
+
+   Ejemplo:
+
+   ```js
+   const pattern = /[^0-9]/; // Coincide con cualquier caracter que no sea un dígito del 0 al 9
+   console.log(pattern.test("abc")); // true [ 'a', 'b', 'c' ]
+   console.log(pattern.test("123")); // false null
+   console.log(pattern.test("!@#")); // true [ '!', '@', '#' ]
+   ```
+
+3. Complemento de una clase de caracteres:
+   Cuando se utiliza después de "\[" pero no al inicio de la clase, el símbolo "^" se utiliza para indicar el complemento de una clase de caracteres. Coincide con cualquier caracter que no esté especificado en la clase.
+
+   Ejemplo:
+
+   ```js
+   const pattern = /[a-z^]/; // Coincide con cualquier letra minúscula o el símbolo "^"
+   console.log(pattern.test("a")); // true
+   console.log(pattern.test("^")); // true
+   console.log(pattern.test("1")); // false
+   console.log('^a12^34@sdf'.match(pattern));
+   // [ '^', 'a', '^', 's', 'd', 'f' ]
+   ```
+
+### Uso de ^ en diferentes líneas 
+
+Ejemplo del uso del símbolo caret (^) para representar el comienzo de una línea en una expresión regular:
+
+```js
+const pattern = /^Hola/gm;
+const text = `Hola, ¿cómo estás?
+¡Hola! Bienvenido. //¡👈👀 no coincide 
+Hola a todos.`;
+
+const matches = text.match(pattern);
+console.log(matches); // [ 'Hola', 'Hola' ]
+```
+
+En este ejemplo, la expresión regular `/^Hola/gm` se utiliza para encontrar todas las apariciones de la palabra "Hola" al comienzo de una línea en un texto. La bandera "g" indica una búsqueda global y la bandera "m" (multiline) habilita el comportamiento de que el caret (^) coincida con el comienzo de cada línea y no solo con el inicio del texto.
+
+Estos son solo algunos ejemplos del uso del símbolo "^" en expresiones regulares. Recuerda que su comportamiento puede variar dependiendo de las banderas y del contexto en el que se utilice.
+
+
+
+## 

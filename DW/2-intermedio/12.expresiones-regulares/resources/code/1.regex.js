@@ -191,7 +191,7 @@ const text = 'csv1,csv2,csv3,csv4,csv5 1234,543,234,567,567 123,543,234,567,567'
 const result = text.match(pattern);
 console.log(result); */
 
-/* Usos de ? */
+/* ---------------Usos de ?--------------- */
 /* const pattern = /colou?r/g;
 console.log('color'.match(pattern));
 console.log('colour'.match(pattern));
@@ -204,10 +204,32 @@ console.log('aaabbb'.match(pattern)); // aaab
 console.log('aabbbb'.match(pattern)); // aab
 console.log('aab'.match(pattern)); // aab */
 
-const pattern = /\?/g;
+/* const pattern = /\?/g;
 console.log('Hello?'.match(pattern));
-console.log('Hello'.match(pattern));
+console.log('Hello'.match(pattern)); */
 
+/* -------------- Usos de ^ ------------------- */
+/* const pattern = /^abc/g;
+console.log('abcdef'.match(pattern));
+console.log('xyzabc'.match(pattern));
+console.log('abcxyz'.match(pattern)); */
+
+/* const pattern = /[^0-9]/g;
+console.log('123abc'.match(pattern));
+console.log('123'.match(pattern));
+console.log('!@#'.match(pattern));
+console.log('123abc!@#'.match(pattern)); */
+
+/* const pattern = /[a-z^]/g;
+console.log('^a12^34@sdf'.match(pattern)); */
+
+const pattern = /^Hola/gm;
+const text = `Hola, ¿cómo estás?
+¡Hola! Bienvenido.
+Hola a todos.`;
+
+const matches = text.match(pattern);
+console.log(matches);
 
 
 
