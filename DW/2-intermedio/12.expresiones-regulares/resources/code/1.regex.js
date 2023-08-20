@@ -255,9 +255,9 @@ const texto = "La temperatura es de 25 grados Celsius.";
 
 const numeros = texto.match(regex);
 console.log(numeros);
-// Salida: ["25"] */
 
-const text = `
+/* -------- Encontrar solo números --------- */
+/* const text = `
 555658
 56-58-11
 56.58.11
@@ -267,9 +267,7 @@ const text = `
 const pattern = /\d[\d\W]{6,}\d\W/gm;
 const numbers = text.match(pattern);
 console.log(numbers);
-console.log(numbers[0].replace('/\n/g', ' '));
-
-
+console.log(numbers[0].replace("/\n/g", " ")); */
 
 /* const regex = /^[a-zA-Z\u00C0-\u017F]+$/g;
 const texto = "Hola";
@@ -277,3 +275,57 @@ const texto = "Hola";
 const resultado = texto.replace(regex, "");
 console.log(texto.match(regex));
 console.log(resultado); */
+
+/* ------------- $ ------------------------- */
+/* const regex = /\w+er$/g;
+console.log('correr'.match(regex));
+console.log('leer'.match(regex));
+console.log('saltar'.match(regex)); */
+
+/* const text = 'Hola, mundo!';
+const new_text = text.replace(/.$/,"*");
+console.log(new_text); */
+
+/* const regex = /\d$/g;
+console.log('123'.match(regex));
+console.log('abc'.match(regex));
+console.log('456xyz'.match(regex)); */
+
+/* const regex = /^\d+$/g;
+console.log('12345'.match(regex));
+console.log('456xyz'.match(regex));
+console.log('abc123'.match(regex)); */
+
+/* const regex = /^[a-z]+$/g;
+console.log('hola'.match(regex));
+console.log('Hola'.match(regex));
+console.log('hola123'.match(regex)); */
+
+/* const regex = /^[^\s]+$/g;
+console.log("hola".match(regex));
+console.log("hola mundo".match(regex));
+console.log("hola\tmundo".match(regex)); */
+
+/* const regex = /^[aeiou].*[bcdfghjklmnpqrstvwxyz]$/g;
+console.log("apple".match(regex));
+console.log("orange".match(regex)); 
+console.log("elephant".match(regex));  */
+
+
+/* ----- Hacer un match con las lineas 1 y 6: --------- */
+const text = `
+3rgergwg0
+354656546
+aa
+3
+3
+3$%^%$^$%78`;
+
+/* const pattern = /^\d[^0-9]{2,}\d?\d$/gm; */
+/* const pattern = /^\d[\D]{2,}\d?\d$/gm; */
+/* const pattern = /^\d[\D]{2,}\d+$/gm; */
+const pattern = /^\d\D{2,}\d+$/gm;
+
+const match = text.match(pattern);
+console.log(match);
+

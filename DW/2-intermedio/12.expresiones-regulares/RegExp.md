@@ -1011,4 +1011,109 @@ Obtenemos:
 6 09 587
 ```
 
-## 12. 
+## 12. Principio (^) y final de línea ($) 
+
+En una expresión regular, el símbolo `$` se utiliza para representar el final de una cadena de texto. Indica que la coincidencia debe ocurrir al final de la cadena.
+
+Aquí tienes algunos ejemplos de cómo se puede utilizar el símbolo `$` en JavaScript junto con expresiones regulares:
+
+1. Coincidir una palabra que termine con "er":
+
+```js
+const regex = /\w+er$/g;
+console.log(regex.test("correr")); // true [ 'correr' ]
+console.log(regex.test("leer")); // true [ 'leer' ]
+console.log(regex.test("saltar")); // false null
+```
+
+En este ejemplo, la expresión regular `/\w+er$/` busca una palabra que termine con "er". Las palabras "correr" y "leer" coinciden con la expresión regular porque terminan con "er", mientras que "saltar" no coincide porque no termina con "er".
+
+2. Reemplazar el último carácter de una cadena:
+
+```js
+const texto = "Hola, mundo!";
+const nuevoTexto = texto.replace(/.$/g, "*");
+console.log(nuevoTexto); // Hola, mundo*
+```
+
+En este ejemplo, la expresión regular `.$` busca el último carácter de la cadena. Utilizando el método `replace`, se reemplaza el último carácter con el asterisco "*". El resultado es "Hola, mundo*".
+
+3. Validar que una cadena termine con un número:
+
+```js
+const regex = /\d$/g;
+console.log(regex.test("123")); // true [ '3' ]
+console.log(regex.test("abc")); // false null
+console.log(regex.test("456xyz")); // false null
+```
+
+En este ejemplo, la expresión regular `/\d$/` verifica si una cadena termina con un número. La cadena "123" coincide con la expresión regular porque termina con un número, mientras que las cadenas "abc" y "456xyz" no coinciden porque no terminan con un número.
+
+4. Coincidir una cadena que contenga solo dígitos numéricos:
+
+```js
+const regex = /^\d+$/g;
+console.log(regex.test("12345")); // true [ '12345' ]
+console.log(regex.test("456xyz")); // false null
+console.log(regex.test("abc123")); // false null
+```
+
+En este ejemplo, la expresión regular `/^\d+$/` busca una cadena que contenga solo dígitos numéricos. La primera cadena coincide porque contiene solo dígitos numéricos, mientras que las siguientes dos cadenas no coinciden debido a la presencia de caracteres no numéricos.
+
+5. Coincidir una cadena que solo contiene letras minúsculas:
+
+```js
+const regex = /^[a-z]+$/g;
+console.log(regex.test("hola")); // true [ 'hola' ]
+console.log(regex.test("Hola")); // false null
+console.log(regex.test("hola123")); // false null
+```
+
+En este ejemplo, la expresión regular `/^[a-z]+$/` busca una cadena que comienza desde el principio (`^`) y termina al final (`$`) y contiene solo letras minúsculas de la a a la z. La primera cadena coincide porque contiene solo letras minúsculas, mientras que las siguientes dos cadenas no coinciden debido a las letras mayúsculas y los dígitos incluidos.
+
+6. Coincidir una cadena que no contiene espacios en blanco:
+
+```js
+const regex = /^[^\s]+$/;
+console.log(regex.test("hola")); // true [ 'hola' ]
+console.log(regex.test("hola mundo")); // false null
+console.log(regex.test("hola\tmundo")); // false null
+```
+
+En este ejemplo, la expresión regular `/^[^\s]+$/` busca una cadena que comienza desde el principio (`^`) y termina al final (`$`) y no contiene ningún espacio en blanco. La primera cadena coincide porque no contiene espacios en blanco, mientras que las siguientes dos cadenas no coinciden debido a la presencia de espacios y tabulaciones.
+
+7. Coincidir una cadena que comienza con una vocal y termina con una consonante:
+
+```js
+const regex = /^[aeiou].*[bcdfghjklmnpqrstvwxyz]$/g;
+console.log(regex.test("apple")); // false null
+console.log(regex.test("orange")); // false null
+console.log(regex.test("elephant")); // true [ 'elephant' ]
+```
+
+En este ejemplo, la expresión regular `/^[aeiou].*[bcdfghjklmnpqrstvwxyz]$/` busca una cadena que comienza desde el principio (`^`) con una vocal (a, e, i, o, u), seguida de cualquier cantidad de caracteres (`.*`), y termina al final (`$`) con una consonante (excepto las vocales). La primera cadena no coincide porque no cumple con el patrón, mientras que las siguientes dos cadenas coinciden porque cumplen con el patrón especificado.
+
+### Reto: Hacer match con las líneas 1 y 6
+
+```js
+const text = `
+3rgergwg0
+354656546
+aa
+3
+3
+3$%^%$^$%78`;
+
+/* const pattern = /^\d[^0-9]{2,}\d?\d$/gm; */
+/* const pattern = /^\d[\D]{2,}\d?\d$/gm; */
+/* const pattern = /^\d[\D]{2,}\d+$/gm; */
+const pattern = /^\d\D{2,}\d+$/gm;
+
+const match = text.match(pattern);
+console.log(match);
+// [ '3rgergwg0', '3$%^%$^$%78' ]
+```
+
+[Chuleta RegEx](http://w3.unpocodetodo.info/utiles/regex.php)
+
+## 
