@@ -223,22 +223,57 @@ console.log('123abc!@#'.match(pattern)); */
 /* const pattern = /[a-z^]/g;
 console.log('^a12^34@sdf'.match(pattern)); */
 
-const pattern = /^Hola/gm;
+/* const pattern = /^Hola/gm;
 const text = `Hola, ¿cómo estás?
 ¡Hola! Bienvenido.
 Hola a todos.`;
 
 const matches = text.match(pattern);
-console.log(matches);
-
-
-
-
-
-
+console.log(matches); */
 
 /* --- Buscar datos sin coma ---- */
 /* const pattern = /[^,\s]+/g;
-const text = 'csv1,csv2,csv3,csv4,csv5 1234,543,234,567,567 123,543,234,567,567'
+const text =
+"csv1,csv2,csv3,csv4,csv5 1234,543,234,567,567 123,543,234,567,567";
 const result = text.match(pattern);
 console.log(result); */
+
+/* const text =
+"csv1,csv2,csv3,csv4,csv5 1234,543,234,567,567 123,543,234,567,567";
+const pattern = /[^,\s]+/g;
+console.log(text.match(pattern)); */
+
+/* --------- \W y \D ----------- */
+
+/* const regex = /[\W_]/g;
+const texto = "¡Hola, mundo! ¿Cómo estás?";
+
+console.log(texto.match(regex)); */
+
+/* const regex = /\D+/g;
+const texto = "La temperatura es de 25 grados Celsius.";
+
+const numeros = texto.match(regex);
+console.log(numeros);
+// Salida: ["25"] */
+
+const text = `
+555658
+56-58-11
+56.58.11
+563.78-8
+6 09 587
+76y87r98`;
+const pattern = /\d[\d\W]{6,}\d\W/gm;
+const numbers = text.match(pattern);
+console.log(numbers);
+console.log(numbers[0].replace('/\n/g', ' '));
+
+
+
+/* const regex = /^[a-zA-Z\u00C0-\u017F]+$/g;
+const texto = "Hola";
+
+const resultado = texto.replace(regex, "");
+console.log(texto.match(regex));
+console.log(resultado); */

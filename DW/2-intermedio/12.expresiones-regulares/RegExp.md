@@ -906,5 +906,109 @@ En este ejemplo, la expresión regular `/^Hola/gm` se utiliza para encontrar tod
 Estos son solo algunos ejemplos del uso del símbolo "^" en expresiones regulares. Recuerda que su comportamiento puede variar dependiendo de las banderas y del contexto en el que se utilice.
 
 
+### Peligros 
 
-## 
+A continuación, se detallan algunos de los posibles peligros asociados con el uso de "^" en regex:
+
+1. Inicio de línea: El "^" se utiliza en regex para hacer coincidir el inicio de una línea. Esto significa que si se usa incorrectamente, puede afectar la lógica de coincidencia y producir resultados inesperados. Por ejemplo, si se espera que una expresión regular coincida con una palabra específica en cualquier parte de una cadena, pero se usa "^" para anclarla al inicio de la cadena, no se obtendrán coincidencias en otros contextos.
+
+2. Inyección de caracteres: Si se permite la entrada de usuarios en una expresión regular y se utiliza "^" sin una validación adecuada, podría permitir una inyección de caracteres no deseados. Esto podría llevar a vulnerabilidades de seguridad, como ataques de inyección de código o manipulación de patrones de búsqueda.
+
+3. Diferencias entre implementaciones: El comportamiento del "^" puede variar ligeramente entre las diferentes implementaciones de regex. Algunos motores de regex pueden interpretar "^" de manera diferente, lo que podría conducir a resultados inconsistentes en diferentes plataformas o entornos.
+
+Para evitar estos peligros, es recomendable seguir buenas prácticas al utilizar "^" en regex:
+
+- Comprender claramente el contexto y el propósito del uso de "^" en la expresión regular.
+- Validar y filtrar cuidadosamente la entrada de usuarios antes de utilizarla en una expresión regular.
+- Considerar el uso de caracteres de escape (como "^") si se necesita una coincidencia literal del símbolo "^".
+- Probar exhaustivamente las expresiones regulares en diferentes entornos y plataformas para garantizar que el comportamiento sea consistente.
+
+### `\W` y `\D` 
+
+En las expresiones regulares (regex), los caracteres especiales `\W` y `\D` se utilizan para hacer coincidir patrones específicos en cadenas de texto. Aquí tienes una explicación de cada uno y ejemplos útiles:
+
+1. `\W`: Coincide con cualquier carácter que no sea una letra, número o guion bajo. Es equivalente a la clase de caracteres negados `[^\w]`. En otras palabras, coincide con caracteres no alfanuméricos.
+
+	Los caracteres alfanuméricos son los siguientes:   
+	- Letras mayúsculas del alfabeto inglés: A, B, C, ..., Z
+	- Letras minúsculas del alfabeto inglés: a, b, c, ..., z
+	- Dígitos numéricos: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9
+
+	Los caracteres no alfanuméricos pueden variar según el contexto y la configuración regional. Algunos ejemplos comunes de caracteres no alfanuméricos incluyen:   
+	- Espacios en blanco: ` ` (espacio), `\t` (tabulación), `\n` (salto de línea), `\r` (retorno de carro).  
+	- Símbolos de puntuación: `.`, `,`, `;`, `¡`, `:`, `"`, `'` (apóstrofos), `(`, `)`, `[`, `]`, `{`, `}`.  
+	- Símbolos matemáticos: `+`, `-`, `*`, `/`, `=`, `>`, `<`, etc.  
+	- Símbolos monetarios: `$` (dólar), `€` (euro), `£` (libra), `¥` (yen), etc.  
+	- Símbolos de exclamación, interrogación y otros símbolos especiales: `!`, `?` y otros caracteres especiales como `@`, `#`, `%`, `&`, `|`, `~`, etc.  
+	
+	📌 Nota: En JavaScript, las letras con tildes, como á, é, í, ó, ú, y sus equivalentes en mayúsculas, Á, É, Í, Ó, Ú, se consideran caracteres no alfanuméricos.
+   
+   Ejemplo: `/[\W_]/g`  
+
+```js
+const regex = /[\W_]/g;
+const texto = "¡Hola, mundo! ¿Cómo estás?";
+
+console.log(texto.match(regex));
+```
+
+	Obtenemos: 
+```js
+[
+  '¡', ',', ' ', '!',
+  ' ', '¿', 'ó', ' ',
+  'á', '?'
+]
+```
+
+
+   Este ejemplo buscará cualquier carácter no alfanumérico o guion bajo en una cadena de texto. Es útil para eliminar o reemplazar todos los caracteres especiales o de puntuación en una cadena, dejando solo letras y números. Por ejemplo, se podría utilizar para limpiar una cadena de entrada antes de procesarla o para validar nombres de usuario que solo deben contener letras y números.
+
+2. `\D`: Coincide con cualquier carácter que no sea un dígito del 0 al 9. Es equivalente a la clase de caracteres negados `[^0-9]`. En otras palabras, coincide con cualquier carácter no numérico.
+
+   Ejemplo: `/\D+/g`
+
+```js
+const regex = /\D+/g;
+const texto = "La temperatura es de 25 grados Celsius.";
+
+const numeros = texto.match(regex);
+console.log(numeros);
+```
+
+	Obtenemos: 
+```js
+[ 'La temperatura es de ', ' grados Celsius.' ]
+```
+
+   Este ejemplo buscará cualquier secuencia de uno o más caracteres no numéricos en una cadena de texto. Es útil para eliminar o extraer todos los caracteres que no son dígitos en una cadena. Por ejemplo, se podría utilizar para extraer solo los números de teléfono de una cadena que puede contener otros caracteres, como espacios o guiones.
+
+> `Alt + 94`
+
+## 11. Reto: Filtrando letras en números telefónicos utilizando negaciones
+
+Solución: 
+```js
+const text = `
+555658
+56-58-11
+56.58.11
+563.78-8
+6 09 587
+76y87r98`;
+const pattern = /\d[\d\W]{6,}\d\W/gm;
+const numbers = text.match(pattern);
+console.log(numbers);
+console.log(numbers[0].replace('/\n/g', ' '));
+```
+Obtenemos:  
+```js
+[ '555658\n56-58-11\n56.58.11\n563.78-8\n6 09 587\n' ]
+555658
+56-58-11
+56.58.11
+563.78-8
+6 09 587
+```
+
+## 12. 
