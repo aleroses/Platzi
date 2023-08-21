@@ -1147,6 +1147,29 @@ En este ejemplo, cada línea del archivo de registro representa un evento o una 
 
 ### Análisis de ficheros log
 
+En esta parte haremos búsquedas de direcciones IP, pero antes necesitamos saber cuál es su estructura. 
+
+#### Partes de una IP
+
+Una dirección IP (Protocolo de Internet) es un **identificador numérico único** asignado a cada dispositivo conectado a una red, ya sea una red local o la Internet. Una dirección IP se compone de cuatro secciones numéricas separadas por puntos, como en el formato "xxx.xxx.xxx.xxx". 
+
+> Cada una de estas secciones se llama octeto o byte y puede contener un valor numérico del 0 al 255👈👀.
+
+Aquí está la descomposición de las partes de una dirección IP:
+
+1. Primer octeto: Determina la clase de red a la que pertenece la dirección. Basándose en el valor del primer octeto, se pueden identificar las direcciones IP en las clases A, B, C, D o E. Las clases de direcciones IP se utilizan para asignar rangos de direcciones a diferentes tamaños de redes, lo que permite un enrutamiento eficiente.
+    
+2. Segundo octeto: Este también desempeña un papel en la clasificación de la dirección IP y en la determinación de la estructura jerárquica de direccionamiento en Internet. Junto con el primer octeto, ayuda a definir el tamaño de la red y el número de subredes posibles dentro de una red.
+    
+3. Tercer octeto: Este es relevante para la subdivisión y asignación de direcciones dentro de una red. Ayuda a definir las subredes más pequeñas y permite una mayor flexibilidad en la asignación de direcciones IP dentro de una red específica.
+    
+4. Cuarto octeto: Este es importante para identificar dispositivos individuales dentro de una red. Cada dispositivo conectado a la red tiene un número de identificación único en el cuarto octeto que lo distingue de otros dispositivos en la misma red.
+
+En conjunto, estos cuatro octetos forman la dirección IP completa que identifica un dispositivo único en una red. Cada octeto tiene 8 bits, lo que da lugar a una dirección IP de 32 bits en total. Sin embargo, existen también direcciones IP con diferentes longitudes, como las direcciones IPv6, que utilizan 128 bits para una mayor cantidad de direcciones disponibles en la Internet.
+
+
+#### Expresiones regulares en Sistemas Operativos
+
 Para analizar archivos de registro (logs) utilizando expresiones regulares en sistemas operativos como Linux u otros, puedes seguir los siguientes pasos:
 
 1. Identifica el formato del archivo de registro: Antes de comenzar a utilizar expresiones regulares, es importante comprender el formato del archivo de registro que deseas analizar. Esto incluye conocer la estructura de cada línea de registro y los patrones que deseas extraer.
@@ -1158,16 +1181,29 @@ Para analizar archivos de registro (logs) utilizando expresiones regulares en si
 4. Utiliza la herramienta adecuada con la expresión regular: Aplica la herramienta elegida (por ejemplo, `grep`, `sed` o `awk`) junto con la expresión regular para buscar y extraer la información deseada del archivo de registro. Por ejemplo, si deseas buscar todas las líneas que contienen una dirección IP en un archivo de registro, puedes usar el comando `grep` de la siguiente manera:
 
    ```shell
-   grep -E '[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+' archivo.log
+   grep -E '^((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$' archivo.log
    ```
 
    Este comando utiliza la opción `-E` para habilitar el uso de expresiones regulares extendidas y busca líneas que contengan una secuencia de números separados por puntos, lo cual es una representación básica de una dirección IP.
+
+   Esta expresión regular valida direcciones IP en el formato "xxx.xxx.xxx.xxx", donde cada "xxx" puede ser un número del 0 al 255. A continuación, se explica cómo se compone la expresión regular:
+
+    - `^` y `$`: Estos anclajes aseguran que la expresión regular coincida con toda la cadena y no solo con una parte de ella.
+    - `(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)`: Este grupo de captura verifica cada sección numérica de la dirección IP. Permite números del 0 al 255, con algunas consideraciones adicionales:
+        - `25[0-5]`: Permite números del 250 al 255.
+        - `2[0-4][0-9]`: Permite números del 200 al 249.
+        - `[01]?[0-9][0-9]?`: Permite números del 0 al 199. El dígito inicial es opcional para permitir números como "01" o "001".
+        - `|`: El operador de alternancia o "alternation". Se utiliza para expresar opciones alternativas entre diferentes patrones o subexpresiones. Este intentará hacer coincidir una de las opciones separadas por el operador. Funciona de manera similar al operador de "OR" lógico que se encuentra en otros contextos de programación.
+    - `(\.){3}`: Esto verifica que haya tres puntos (.) en la dirección IP para separar las cuatro secciones numéricas.
+    - `(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)`: Esta parte final verifica la última sección numérica de la dirección IP.
+
+    Esta expresión regular garantiza que las direcciones IP sean válidas y cumplan con las restricciones del rango de direcciones permitido.
 
 5. Refina y ajusta tu expresión regular según sea necesario: A medida que analices los resultados y te familiarices más con el archivo de registro, es posible que necesites ajustar y refinar tu expresión regular para lograr una mayor precisión o manejar casos especiales.
 
 Recuerda que existen herramientas y lenguajes de programación más avanzados, como Python o Perl, que ofrecen capacidades más poderosas para el análisis de archivos de registro utilizando expresiones regulares.
 
-### Usando JavaScript 
+#### Usando JavaScript 
 
 Para analizar archivos de registro utilizando expresiones regulares en JavaScript, puedes seguir estos pasos:
 

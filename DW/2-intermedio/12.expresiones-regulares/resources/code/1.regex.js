@@ -327,7 +327,28 @@ const pattern = /^\d\D{2,}\d+$/gm;
 
 const match = text.match(pattern);
 console.log(match);
- */
+*/
+
+/* -------------------- Buscar IPs ----------------- */
+
+const ips = `
+192.168.0.1
+172.16.0.1
+10.0.0.1
+192.168.1.1
+192.168.2.1
+192.168.10.1
+192.168.100.1
+192.168.254.1
+192.168.0.100
+192.168.1.100
+123..456
+1.2.3.4.5
+`;
+// const pattern = /[\d\.]{8,}/gm;
+const pattern = /^((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/gm;
+// const pattern = /[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+/g;;
+console.log(ips.match(pattern));
 
 /* ------ Buscar número de Telefono similares +1 (123) 456-7890 -----*/
 /* const text = `
@@ -356,7 +377,7 @@ if (matches) {
 } */
 
 /* ------- Buscar URLs----------- */
-const urlRegex = /((https?:\/\/)?[\w-]+(\.[\w-]+)+\.?(:\d+)?(\/\S*)?)/gi;
+/* const urlRegex = /((https?:\/\/)?[\w-]+(\.[\w-]+)+\.?(:\d+)?(\/\S*)?)/gi;
 const text = `
 https://www.ejemplo.com
 http://subdominio.ejemplo.com/ruta
@@ -369,4 +390,4 @@ ftp://ftp.example.com/file.txt
 https://www.example.com/?param=value
 http://www.example.com/page.html#section`;
 const urls = text.match(urlRegex);
-console.log(urls); 
+console.log(urls);  */
