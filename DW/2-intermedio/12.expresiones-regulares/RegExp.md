@@ -1225,7 +1225,7 @@ const logFilePath = 'ruta/al/archivo.log';
 const logContent = fs.readFileSync(logFilePath, 'utf-8');
 
 // Definir la expresión regular
-const ipRegex = /[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+/g;
+const ipRegex = /^((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/gm;
 
 // Aplicar la expresión regular al contenido del archivo
 const ipMatches = logContent.match(ipRegex);
@@ -1239,6 +1239,43 @@ if (ipMatches) {
 } else {
   console.log('No se encontraron direcciones IP en el archivo de registro.');
 }
+```
+
+También:  
+```js
+const ips = `
+192.168.0.1
+172.16.0.1
+10.0.0.1
+192.168.1.1
+192.168.2.1
+192.168.10.1
+192.168.100.1
+192.168.254.1
+192.168.0.100
+192.168.1.100
+123..456
+1.2.3.4.5
+`;
+
+const pattern = /^((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/gm;
+console.log(ips.match(pattern));
+```
+
+Obtenemos:  
+```js
+[
+  '192.168.0.1',
+  '172.16.0.1',
+  '10.0.0.1',
+  '192.168.1.1',
+  '192.168.2.1',
+  '192.168.10.1',
+  '192.168.100.1',
+  '192.168.254.1',
+  '192.168.0.100',
+  '192.168.1.100'
+]
 ```
 
 - [Generar data](https://www.generatedata.com/)

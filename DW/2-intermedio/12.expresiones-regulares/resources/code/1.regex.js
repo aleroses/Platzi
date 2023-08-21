@@ -345,9 +345,8 @@ const ips = `
 123..456
 1.2.3.4.5
 `;
-// const pattern = /[\d\.]{8,}/gm;
+
 const pattern = /^((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/gm;
-// const pattern = /[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+/g;;
 console.log(ips.match(pattern));
 
 /* ------ Buscar número de Telefono similares +1 (123) 456-7890 -----*/
