@@ -1319,7 +1319,7 @@ Esta expresión regular busca coincidencias de URLs en el texto y admite los sig
 - Dominios que contienen letras, números, guiones y subrayados.
 - Dominios que tienen una o más partes separadas por puntos.
 - Opcionalmente, permite especificar un número de puerto después del dominio.
-- Opcionalmente, permite especificar una ruta después del dominio, que puede contener caracteres no espaciados (/ \\S\*).
+- Opcionalmente, permite especificar una ruta después del dominio, que puede contener caracteres no espaciados `(/ \\S\*)`.
 
 Puedes usar esta expresión regular en JavaScript para encontrar y extraer URLs de una cadena de texto. Por ejemplo:
 
@@ -1356,8 +1356,5 @@ Obtenemos:
 
 Recuerda que esta expresión regular puede no ser perfecta para todos los casos posibles de URLs, ya que la estructura de las URLs puede variar y existen muchas posibles combinaciones. Sin embargo, esta expresión regular básica puede ser útil en muchos escenarios.
 
-```js
-
-```
 
 
