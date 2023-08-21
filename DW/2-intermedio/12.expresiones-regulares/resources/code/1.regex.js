@@ -331,7 +331,7 @@ console.log(match);
 
 /* -------------------- Buscar IPs ----------------- */
 
-const ips = `
+/* const ips = `
 192.168.0.1
 172.16.0.1
 10.0.0.1
@@ -347,7 +347,7 @@ const ips = `
 `;
 
 const pattern = /^((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/gm;
-console.log(ips.match(pattern));
+console.log(ips.match(pattern)); */
 
 /* ------ Buscar número de Telefono similares +1 (123) 456-7890 -----*/
 /* const text = `
@@ -365,23 +365,23 @@ console.log(ips.match(pattern));
 +12 (123) 456-7890`;
 
 const phoneNumberRegex =
-  /(\+\d{1}\s?)?(\()?(\d{3})(\))?([-.\s]?)(\d{3})([-.\s]?)(\d{3,4})/gm;
+  /(\+\d{1}\s?)?[\(]?(\d{3})[\)]?([.-\s]?)(\d{3})([.-\s]?)(\d{4})/gm;
 const matches = text.match(phoneNumberRegex);
 
 if (matches) {
   const phoneNumber = matches;
-  console.log("Número de teléfono encontrado:", phoneNumber);
+  console.log("Números de teléfono encontrado:", phoneNumber);
 } else {
   console.log("No se encontró un número de teléfono válido.");
 } */
 
 /* ------- Buscar URLs----------- */
-/* const urlRegex = /((https?:\/\/)?[\w-]+(\.[\w-]+)+\.?(:\d+)?(\/\S*)?)/gi;
+const urlRegex = /((https?:\/\/)?[\w-]+(\.[\w-]+)+\.?(:\d+)?(\/\S*)?)/gi;
 const text = `
 https://www.ejemplo.com
-http://subdominio.ejemplo.com/ruta
+http://sub-dominio.ejemplo.com/ruta
 https://www.example.com
-http://subdomain.example.com/path
+http://sub-domain.example.com/path
 https://www.google.com
 https://www.github.com/user/repository
 http://localhost:3000
@@ -389,4 +389,4 @@ ftp://ftp.example.com/file.txt
 https://www.example.com/?param=value
 http://www.example.com/page.html#section`;
 const urls = text.match(urlRegex);
-console.log(urls);  */
+console.log(urls);

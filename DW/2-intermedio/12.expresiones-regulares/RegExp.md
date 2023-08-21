@@ -1307,13 +1307,16 @@ const text = `
 +1 1234567890
 12-345-6789
 +12 (123) 456-7890`;
+
+const phoneNumberRegex =
+  /(\+\d{1}\s?)?(\()?(\d{3})(\))?([-.\s]?)(\d{3})([-.\s]?)(\d{3,4})/gm;
 const matches = text.match(phoneNumberRegex);
 
 if (matches) {
-  const phoneNumber = matches[0];
-  console.log('Número de teléfono encontrado:', phoneNumber);
+  const phoneNumber = matches;
+  console.log("Números de teléfono encontrado:", phoneNumber);
 } else {
-  console.log('No se encontró un número de teléfono válido.');
+  console.log("No se encontró un número de teléfono válido.");
 }
 ```
 
@@ -1336,7 +1339,7 @@ Recuerda que esta expresión regular cubre un formato específico de número de 
 
 ## 15. URLs
 
-Una URL (Uniform Resource Locator) es una dirección que se utiliza para localizar recursos en la web, como páginas web, imágenes, archivos, etc. Una URL tiene varias partes que indican la ubicación y el tipo de recurso al que se está accediendo. A continuación, te explico las partes principales de una URL:
+Una URL (Uniform Resource Locator o Localizador Uniforme de Recursos) es una dirección que se utiliza para localizar recursos en la web, como páginas web, imágenes, archivos, etc. Una URL tiene varias partes que indican la ubicación y el tipo de recurso al que se está accediendo. A continuación, te explico las partes principales de una URL:
 
 1. **Protocolo**: Indica el protocolo de comunicación que se utilizará para acceder al recurso. Ejemplos comunes son "http://" (para páginas web no seguras) y "https://" (para páginas web seguras).
 
@@ -1399,9 +1402,9 @@ Puedes usar esta expresión regular en JavaScript para encontrar y extraer URLs 
 ```js
 const text = `
 https://www.ejemplo.com
-http://subdominio.ejemplo.com/ruta
+http://sub-dominio.ejemplo.com/ruta
 https://www.example.com
-http://subdomain.example.com/path
+http://sub-domain.example.com/path
 https://www.google.com
 https://www.github.com/user/repository
 http://localhost:3000
@@ -1427,7 +1430,34 @@ Obtenemos:
 ]
 ```
 
+La `i` al final de la expresión regular es una bandera o modificador que indica una coincidencia insensible a mayúsculas y minúsculas, por lo tanto, la expresión regular coincidirá tanto con letras mayúsculas como minúsculas, sin distinguir entre ellas.
+
 Recuerda que esta expresión regular puede no ser perfecta para todos los casos posibles de URLs, ya que la estructura de las URLs puede variar y existen muchas posibles combinaciones. Sin embargo, esta expresión regular básica puede ser útil en muchos escenarios.
 
+### Paréntesis `( )` y Corchetes `[ ]`
+En las expresiones regulares, los paréntesis `( )` y los corchetes `[ ]` tienen diferentes propósitos:
 
+1. Paréntesis `( )`: Los paréntesis se utilizan para agrupar y capturar subexpresiones en una expresión regular. Puedes utilizar paréntesis para crear grupos lógicos y aplicar operaciones a esos grupos. Además, los paréntesis también se utilizan para capturar y extraer partes específicas de una cadena que coinciden con la subexpresión dentro de los paréntesis. Puedes acceder a estas capturas utilizando referencias de grupos especiales, como `\1`, `\2`, etc.
+
+Por ejemplo:
+
+```
+/(ab)+/
+```
+
+En esta expresión regular, los paréntesis `(ab)` forman un grupo capturador, y el `+` indica que el grupo puede repetirse una o más veces. Esto coincidirá con cadenas como "ab", "abab", "ababab", etc.
+
+2. Corchetes `[ ]`: Los corchetes se utilizan para definir una clase de caracteres en una expresión regular. Dentro de los corchetes, puedes especificar un conjunto de caracteres permitidos para la coincidencia. La expresión regular coincidirá con cualquier carácter que se encuentre dentro de los corchetes.
+
+Por ejemplo:
+
+```
+/[aeiou]/
+```
+
+En esta expresión regular, los corchetes `[aeiou]` definen una clase de caracteres que contiene las vocales en inglés. La expresión regular coincidirá con cualquier vocal que se encuentre en el texto analizado.
+
+Es importante tener en cuenta que los corchetes también pueden utilizar rangos y otros metacaracteres para definir clases de caracteres más complejas. Por ejemplo, `[0-9]` coincidirá con cualquier dígito del 0 al 9.
+
+En resumen, los paréntesis `( )` se utilizan para agrupar y capturar subexpresiones, mientras que los corchetes `[ ]` se utilizan para definir clases de caracteres.
 
