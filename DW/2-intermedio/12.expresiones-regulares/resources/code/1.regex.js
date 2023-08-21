@@ -311,9 +311,8 @@ console.log("apple".match(regex));
 console.log("orange".match(regex)); 
 console.log("elephant".match(regex));  */
 
-
 /* ----- Hacer un match con las lineas 1 y 6: --------- */
-const text = `
+/* const text = `
 3rgergwg0
 354656546
 aa
@@ -321,11 +320,53 @@ aa
 3
 3$%^%$^$%78`;
 
-/* const pattern = /^\d[^0-9]{2,}\d?\d$/gm; */
-/* const pattern = /^\d[\D]{2,}\d?\d$/gm; */
-/* const pattern = /^\d[\D]{2,}\d+$/gm; */
+// const pattern = /^\d[^0-9]{2,}\d?\d$/gm;
+// const pattern = /^\d[\D]{2,}\d?\d$/gm;
+// const pattern = /^\d[\D]{2,}\d+$/gm;
 const pattern = /^\d\D{2,}\d+$/gm;
 
 const match = text.match(pattern);
 console.log(match);
+ */
 
+/* ------ Buscar número de Telefono similares +1 (123) 456-7890 -----*/
+/* const text = `
++1 (123) 456-7890
+(123) 456-7890
+123-456-7890
+123.456.7890
+1234567890
+123-456-7890
+
+1234567890
+(123) 45-6789
++1 1234567890
+12-345-6789
++12 (123) 456-7890`;
+
+const phoneNumberRegex =
+  /(\+\d{1}\s?)?(\()?(\d{3})(\))?([-.\s]?)(\d{3})([-.\s]?)(\d{3,4})/gm;
+const matches = text.match(phoneNumberRegex);
+
+if (matches) {
+  const phoneNumber = matches;
+  console.log("Número de teléfono encontrado:", phoneNumber);
+} else {
+  console.log("No se encontró un número de teléfono válido.");
+} */
+
+/* ------- Buscar URLs----------- */
+const urlRegex = /((https?:\/\/)?[\w-]+(\.[\w-]+)+\.?(:\d+)?(\/\S*)?)/gi;
+const text = `
+https://www.ejemplo.com
+http://subdominio.ejemplo.com/ruta
+https://www.example.com
+http://subdomain.example.com/path
+https://www.google.com
+https://www.github.com/user/repository
+http://localhost:3000
+ftp://ftp.example.com/file.txt
+https://www.example.com/?param=value
+http://www.example.com/page.html#section`;
+const urls = text.match(urlRegex);
+console.log(urls); 

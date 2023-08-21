@@ -99,3 +99,7 @@ csv1,csv2,csv3,csv4,csv5
 \^ 
 [^0-5a-c]
 \d\d\D?\d\d\D?\d\d
+
+
+^\+?\d+[#pe]?\d*$
+

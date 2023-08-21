@@ -1209,9 +1209,153 @@ if (ipMatches) {
 - [Colección de logs en diferentes sistemas](https://github.com/logpai/loghub)
 -  [Using Logs to Investigate – SQL Injection Attack Example](https://www.acunetix.com/blog/articles/using-logs-to-investigate-a-web-application-attack/)
 
+## 14. Teléfonos
 
+Ejemplo de expresión regular en JavaScript para buscar números de teléfono móvil que sigan un formato específico con la cantidad de números igual a `+1 (123) 456-7890` y a este otro (123) 456-7890:
 
-## 
+```js
+const phoneNumberRegex =
+  /(\+\d{1}\s?)?(\()?(\d{3})(\))?([-.\s]?)(\d{3})([-.\s]?)(\d{3,4})/gm;
+```
+
+Puedes utilizar esta expresión regular en JavaScript para buscar números de teléfono que sigan el formato especificado. Por ejemplo:
+
+```js
+const text = `
++1 (123) 456-7890
+(123) 456-7890
+123-456-7890
+123.456.7890
+1234567890
+123-456-7890
+
+1234567890
+(123) 45-6789
++1 1234567890
+12-345-6789
++12 (123) 456-7890`;
+const matches = text.match(phoneNumberRegex);
+
+if (matches) {
+  const phoneNumber = matches[0];
+  console.log('Número de teléfono encontrado:', phoneNumber);
+} else {
+  console.log('No se encontró un número de teléfono válido.');
+}
+```
+
+Obtenemos: 
+```js
+Número de teléfono encontrado: [
+  '+1 (123) 456-7890',
+  '(123) 456-7890',
+  '123-456-7890',
+  '123.456.7890',
+  '1234567890',
+  '123-456-7890',
+  '1234567890',
+  '+1 1234567890',
+  '(123) 456-7890'
+]
+```
+
+Recuerda que esta expresión regular cubre un formato específico de número de teléfono. Si necesitas buscar números en otros formatos o considerar más variaciones, es posible que debas ajustar la expresión regular para adaptarla a tus necesidades.
+
+## 15. URLs
+
+Una URL (Uniform Resource Locator) es una dirección que se utiliza para localizar recursos en la web, como páginas web, imágenes, archivos, etc. Una URL tiene varias partes que indican la ubicación y el tipo de recurso al que se está accediendo. A continuación, te explico las partes principales de una URL:
+
+1. **Protocolo**: Indica el protocolo de comunicación que se utilizará para acceder al recurso. Ejemplos comunes son "http://" (para páginas web no seguras) y "https://" (para páginas web seguras).
+
+2. **Dominio**: Es el nombre o la dirección IP del servidor donde reside el recurso. Por ejemplo, "www.ejemplo.com" o "192.168.0.1". El dominio también puede contener subdominios, como "subdominio.ejemplo.com".
+
+3. **Puerto**: Es un número opcional que especifica el puerto de red utilizado para la comunicación. Si no se especifica, se utiliza el puerto predeterminado para el protocolo en cuestión (por ejemplo, el puerto 80 para HTTP y el puerto 443 para HTTPS).
+
+4. **Ruta**: Especifica la ubicación del recurso dentro del servidor. Puede incluir carpetas y subcarpetas separadas por barras ("/"). Por ejemplo, "/carpeta1/carpeta2/recurso.html".
+
+5. **Query string**: Es una cadena de consulta opcional que se utiliza para enviar datos adicionales al servidor. Se indica mediante el símbolo de interrogación ("?") seguido de pares clave-valor separados por ampersand ("&"). Por ejemplo, "?param1=valor1&param2=valor2".
+
+6. **Fragmento**: Identifica una sección específica dentro del recurso. Se indica mediante el símbolo de almohadilla ("#") seguido de un identificador. Por ejemplo, "#seccion1".
+
+Estas son las partes principales de una URL, pero también puede haber otras partes específicas dependiendo del tipo de recurso o de las funcionalidades adicionales que se utilicen.
+
+### Top Level Domains 
+
+Los Top Level Domains (TLD) o dominios de nivel superior son la parte más alta de la estructura jerárquica del sistema de nombres de dominio (DNS). Se encuentran al final de un nombre de dominio y representan la categoría o la clasificación general del sitio web o del recurso al que se hace referencia.
+
+Los TLD se dividen en dos categorías principales:
+
+1. **TLD genéricos (gTLD)**: Son TLD que se utilizan a nivel global y no están asociados a un país en particular. Algunos ejemplos de gTLD comunes son:
+
+   - .com: utilizado para sitios web comerciales.
+   - .org: utilizado para organizaciones sin fines de lucro.
+   - .net: utilizado para proveedores de servicios de red.
+   - .edu: utilizado para instituciones educativas.
+   - .gov: utilizado para entidades gubernamentales.
+
+2. **TLD de código de país (ccTLD)**: Son TLD que están asociados a un país o territorio específico. Cada país tiene asignado su propio ccTLD de dos letras, basado en el código de país ISO 3166-1. Algunos ejemplos de ccTLD son:
+
+   - .us: para Estados Unidos.
+   - .uk: para Reino Unido.
+   - .ca: para Canadá.
+   - .de: para Alemania.
+   - .jp: para Japón.
+
+Además de los gTLD y ccTLD, también existen otros tipos de TLD más específicos, como los TLD de infraestructura (.arpa) y los TLD patrocinados por organizaciones (.museum, .aero, etc.).
+
+Los TLD ayudan a organizar y clasificar los sitios web en función de su propósito o ubicación geográfica. Al utilizar diferentes TLD en una URL, se puede indicar la naturaleza o el enfoque del sitio web.
+
+### Buscando URL's
+
+Aquí tienes una expresión regular en JavaScript para encontrar URLs en una cadena de texto:
+
+```js
+const urlRegex = /((https?:\/\/)?[\w-]+(\.[\w-]+)+\.?(:\d+)?(\/\S*)?)/gi;
+```
+
+Esta expresión regular busca coincidencias de URLs en el texto y admite los siguientes casos:
+
+- URLs que comienzan con "http://" o "https://".
+- Dominios que contienen letras, números, guiones y subrayados.
+- Dominios que tienen una o más partes separadas por puntos.
+- Opcionalmente, permite especificar un número de puerto después del dominio.
+- Opcionalmente, permite especificar una ruta después del dominio, que puede contener caracteres no espaciados (/ \\S\*).
+
+Puedes usar esta expresión regular en JavaScript para encontrar y extraer URLs de una cadena de texto. Por ejemplo:
+
+```js
+const text = `
+https://www.ejemplo.com
+http://subdominio.ejemplo.com/ruta
+https://www.example.com
+http://subdomain.example.com/path
+https://www.google.com
+https://www.github.com/user/repository
+http://localhost:3000
+ftp://ftp.example.com/file.txt
+https://www.example.com/?param=value
+http://www.example.com/page.html#section`;
+const urls = text.match(urlRegex);
+console.log(urls);
+```
+
+Obtenemos: 
+```js
+[
+  'https://www.ejemplo.com',
+  'http://subdominio.ejemplo.com/ruta',
+  'https://www.example.com',
+  'http://subdomain.example.com/path',
+  'https://www.google.com',
+  'https://www.github.com/user/repository',
+  'ftp.example.com/file.txt',
+  'https://www.example.com/?param=value',
+  'http://www.example.com/page.html#section'
+]
+```
+
+Recuerda que esta expresión regular puede no ser perfecta para todos los casos posibles de URLs, ya que la estructura de las URLs puede variar y existen muchas posibles combinaciones. Sin embargo, esta expresión regular básica puede ser útil en muchos escenarios.
+
 ```js
 
 ```
