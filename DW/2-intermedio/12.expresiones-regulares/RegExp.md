@@ -1410,7 +1410,8 @@ https://www.github.com/user/repository
 http://localhost:3000
 ftp://ftp.example.com/file.txt
 https://www.example.com/?param=value
-http://www.example.com/page.html#section`;
+http://www.example.com/page.html#section
+http-123423312,`;
 const urls = text.match(urlRegex);
 console.log(urls);
 ```
@@ -1461,3 +1462,195 @@ Es importante tener en cuenta que los corchetes también pueden utilizar rangos 
 
 En resumen, los paréntesis `( )` se utilizan para agrupar y capturar subexpresiones, mientras que los corchetes `[ ]` se utilizan para definir clases de caracteres.
 
+## 16. Mails
+
+Puedes utilizar expresiones regulares (regex) para validar direcciones de correo electrónico. A continuación te proporciono un ejemplo de expresión regular que puedes utilizar como punto de partida:
+
+```js
+const pattern = /^[a-zA-Z0-9._+-]+@(?:[a-zA-Z0-9-]+\.)+[a-zA-Z]{2,}$/gm;  
+// También:  
+// const pattern = /^[\w._+-]+@(?:[\w-]+\.)+[a-zA-Z]{2,}$/gm;
+
+const text = `
+example@gmail.com
+john.doe@yahoo.com
+jane_smith123@hotmail.com
+info@company.co.uk
+johndoe1234@domain.name
+user1234@example.co
+test-email@email-provider.com
+myemail123@subdomain.domain.com
+alice+bob@gmail.com
+1234567890@example.com
+
+exam_ple@gmail.com
+john.doe@y!ahoo.com
+jane@smith@hotmail
+info@company
+johndoe@-domain.name
+@example.com
+test-email@
+myemail123@subdomain..com
+alice@+bob@gmail.com
+1234567890@example
+`;
+console.log(text.match(pattern));
+```
+
+Esta expresión regular sigue una estructura básica para validar direcciones de correo electrónico, pero ten en cuenta que la validación completa de direcciones de correo electrónico puede ser un desafío debido a la complejidad del estándar RFC 5322 que define el formato de las direcciones de correo electrónico.
+
+Ten en cuenta que esta expresión regular es una implementación básica y no garantiza una validación exhaustiva de todas las posibles direcciones de correo electrónico válidas según el estándar RFC 5322. Sin embargo, puede ser útil en muchos casos prácticos.
+
+### Grupos de no captura
+
+En las expresiones regulares, los grupos de no captura son una construcción especial que permite agrupar elementos sin capturar la coincidencia en un grupo separado. A diferencia de los grupos de captura tradicionales, los grupos de no captura no asignan un número de grupo para almacenar la coincidencia.
+
+La sintaxis para crear un grupo de no captura es `(?: ... )`. Los elementos que deseas agrupar sin capturar se colocan dentro de los paréntesis, después del `?:`.
+
+Aquí hay un ejemplo para ilustrar cómo funcionan los grupos de no captura:
+
+Supongamos que tenemos la siguiente expresión regular:
+
+```regex
+/(apple|banana)(?:s|es)/
+```
+
+- `(apple|banana)`: Este es un grupo de captura que capturará la coincidencia de "apple" o "banana".
+- `(?:s|es)`: Este es un grupo de no captura. Coincide con la letra "s" o el sufijo "es". Sin embargo, a diferencia del grupo de captura anterior, no almacenará la coincidencia en un grupo separado.
+
+Si aplicamos esta expresión regular a la cadena "apples", obtendríamos una coincidencia en el grupo de captura para "apple" y también coincidiría con el grupo de no captura para "s". Sin embargo, no se almacenará la coincidencia del grupo de no captura en un grupo numerado.
+
+En resumen, los grupos de no captura `(?: ... )` son útiles cuando deseas agrupar elementos en una expresión regular sin necesidad de capturar la coincidencia en un grupo separado. Esto puede ser útil para simplificar la estructura de la expresión regular, reducir la cantidad de grupos numerados o cuando no necesitas acceder a la coincidencia específica de ese grupo en particular.
+
+#### Ejemplos con JavaScript
+
+1. Ejemplo: Coincidencia de palabras que terminan en "ing" pero sin capturar el sufijo:
+
+```js
+const regex = /\b\w+(?:ing)\b/g;
+const text = "I'm running and jumping. The car is moving.";
+
+const matches = text.match(regex);
+console.log(matches); // ["running", "jumping", "moving"]
+```
+
+En este ejemplo, el grupo de no captura `(?:ing)` se utiliza para agrupar el sufijo "ing" en las palabras, pero no se captura como un grupo numerado.
+
+2. Ejemplo: Coincidencia de colores hexadecimales, ignorando el símbolo "#" pero sin capturarlo:
+
+```js
+const regex = /#(?:[A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})/g;
+const text = "The colors are #FF0000, #00FF00, and #0000FF.";
+
+const matches = text.match(regex);
+console.log(matches); // ["#FF0000", "#00FF00", "#0000FF"]
+```
+
+En este caso, el grupo de no captura `(?:[A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})` se utiliza para agrupar las combinaciones de caracteres hexadecimales de 6 dígitos o 3 dígitos, pero no se captura el símbolo "#" como un grupo numerado.
+
+Recuerda que los grupos de no captura `(?: ... )` son útiles cuando deseas agrupar elementos sin capturar la coincidencia en un grupo separado. Esto puede ser especialmente útil cuando solo estás interesado en el resultado final y no necesitas acceder a la coincidencia específica de ese grupo en particular.
+
+
+## 17. Localizaciones 
+
+Para hacer coincidencias con localizaciones en expresiones regulares, generalmente se utiliza una combinación de caracteres literales y clases de caracteres para especificar los patrones de búsqueda. El enfoque exacto puede variar dependiendo de los requisitos específicos de la localización que deseas buscar. A continuación, te proporcionaré algunos ejemplos comunes:
+
+1. Coincidir con códigos postales numéricos de Estados Unidos (formato de 5 dígitos):
+
+```js
+const regex = /\b\d{5}\b/g;
+const text = "Los códigos postales son 90210, 10001, y 60601.";
+
+const matches = text.match(regex);
+console.log(matches); // ["90210", "10001", "60601"]
+```
+
+En este ejemplo, la expresión regular `\b\d{5}\b` busca coincidencias de 5 dígitos numéricos entre límites de palabras.
+
+2. Coincidir con nombres de ciudades que comienzan con mayúscula:
+
+```js
+const regex = /\b[A-ZÀ-ÿ][a-zA-ZÀ-ÿ\s]+\b/g;
+const text = "Nueva York, San Francisco, Los Ángeles.";
+
+const matches = text.match(regex);
+console.log(matches); // ["Nueva York", "San Francisco", "Los Ángeles"]
+```
+
+En este caso, se busca coincidencias de palabras que comienzan con una letra mayúscula, seguidas de letras mayúsculas, minúsculas o espacios incluyendo letras con tildes.
+
+✨ À = `Alt + 183`
+✨ ÿ = `Alt + 152`
+
+### Otros formatos 
+
+> No es trabajo de las expresiones regulares determinar si un valor es correcto, de eso se encarga el lenguaje de programación. Las expresiones regulares determinan si tiene la **forma** correcta.
+
+1. Latitud y longitud:
+
+```js
+-?\d{1,3}\.\d{1,6},\s?-?\d{1,3}\.\d{1,6}
+
+-99.205646,19.429707,2275.10
+-99.205581, 19.429652,2275.10
+-99.204654,19.428952,2275.58
+```
+
+- Latitud, longitud y metros sobre el nivel del mar:
+
+```js
+^-?\d{1,3}\.\d{1,6},\s?-?\d{1,3}\.\d{1,6},.*$
+
+-99.205646,19.429707,2275.10
+-99.205581, 19.429652,2275.10
+-99.204654,19.428952,2275.58
+```
+
+- Formato W-E, N-S:
+
+```js
+^-?\d{1,3}\s\d{1,2}'\s\d{1,2}.\d{1,2}"[WE],\s-?\d{1,3}\s\d{1,2}'\s\d{1,2}.\d{1,2}"[NS]$
+
+-99 12' 34.08"W, 19 34' 56.98"N  
+-34 54' 32.00"E, -3 21' 67.00"S
+```
+
+📌 Tip: puede pasar que al trabajar con csv, se tengan espacios entre columnas. Para evitar problemas, añadir un `\s?` a la expresión regular.
+
+
+[What3words](https://what3words.com/t%C3%ADmido.platos.autocar)
+
+
+## 18. Nombres(?) Reto
+
+```js
+const text = `
+Camilo Sarmiento Gálvez
+Alejandro Pliego Abasto
+Milagros Reyes Japón
+Samuel París Arrabal
+Juan Pablo Tafalla
+Axel Gálvez Velázquez
+Óscar Montreal Aparicio
+Jacobo Pozo Tassis
+Guillermo Ordóñez Espiga
+Eduardo Pousa Curbelo
+Ivanna Bienvenida Kevin
+Ada Tasis López
+Luciana Sáenz García
+Florencia Sainz Márquz
+Catarina Cazalla Lombarda
+Paloma Gallo Perro
+Margarita Quesada Florez
+Vicente Fox Quesada
+Iris Graciani
+Asunción Carballar
+Constanza Muñoz
+Manuél Andres García Márquez
+`;
+//const regex = /^[A-Z][a-z]{3,}\s?[A-Z]?[a-z]{0,}/gm;
+//const regex = /^[A-ZÀ-ÿ][a-zÀ-ÿ]{3,}\s?[A-ZÀ-ÿ]?[a-zÀ-ÿ]{0,}/gm;
+// const regex = /^[A-Za-zÀ-ÿ]{1,}\s?[A-ZÀ-ÿ]?[a-zÀ-ÿ]{0,}/gm;
+const regex = /^[A-Za-zÀ-ÿ\s?]{1,}$/gm;
+console.log(text.match(regex));
+```

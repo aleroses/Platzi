@@ -376,7 +376,7 @@ if (matches) {
 } */
 
 /* ------- Buscar URLs----------- */
-const urlRegex = /((https?:\/\/)?[\w-]+(\.[\w-]+)+\.?(:\d+)?(\/\S*)?)/gi;
+/* const urlRegex = /((https?:\/\/)?[\w-]+(\.[\w-]+)+\.?(:\d+)?(\/\S*)?)/gi;
 const text = `
 https://www.ejemplo.com
 http://sub-dominio.ejemplo.com/ruta
@@ -387,6 +387,121 @@ https://www.github.com/user/repository
 http://localhost:3000
 ftp://ftp.example.com/file.txt
 https://www.example.com/?param=value
-http://www.example.com/page.html#section`;
+http://www.example.com/page.html#section
+http-123423312,`;
 const urls = text.match(urlRegex);
-console.log(urls);
+console.log(urls); */
+
+/* ------- Validar Mails----------- */
+/* const text = `
+example@gmail.com
+john.doe@yahoo.com
+jane_smith123@hotmail.com
+info@company.co.uk
+johndoe1234@domain.name
+user1234@example.co
+test-email@email-provider.com
+myemail123@subdomain.domain.com
+alice+bob@gmail.com
+1234567890@example.com
+
+exam_ple@gmail.com
+john.doe@y!ahoo.com
+jane@smith@hotmail
+info@company
+johndoe@-domain.name
+@example.com
+test-email@
+myemail123@subdomain..com
+alice@+bob@gmail.com
+1234567890@example
+`;
+
+const pattern = /^[\w._+-]+@(?:[\w-]+\.)+[a-zA-Z]{2,}$/gm;
+console.log(text.match(pattern)); */
+
+/* ----- Grupo de no Captura (?: ... ) ------- */
+/* const pattern = /(apple|banana)(?:s|es)/;
+console.log('apples'.match(pattern)); */
+
+/* const regex = /\b\w+(?:ing)\b/g;
+const text = "I'm running and jumping. The car is moving.";
+
+const matches = text.match(regex);
+console.log(matches); */
+
+/* const regex = /#(?:[A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})/g;
+const text = "The colors are #FF0000, #00FF00, and #0000FF.";
+
+const matches = text.match(regex);
+console.log(matches);
+*/
+
+/* ---- Geolocalización */
+/* const regex = /\b\d{5}\b/g;
+const text = "Los códigos postales son 90210, 10001, y 60601.";
+
+const matches = text.match(regex);
+console.log(matches); */
+/* 
+const regex = /\b[A-ZÀ-ÿ][a-zA-ZÀ-ÿ\s]+\b/g;
+const text = "Nueva York, San Francisco, Los Ángeles.";
+
+const matches = text.match(regex);
+console.log(matches); // À = Alt + 183 // ÿ = Alt + 152 */
+
+/* const pattern = /-?\d{1,3}\.\d{1,6},\s?-?\d{1,3}\.\d{1,6}/gm;
+const text = `
+-99.205646,19.429707,2275.10
+-99.205581, 19.429652,2275.10
+-99.204654,19.428952,2275.58
+`;
+console.log(text.match(pattern)); */
+
+/* const pattern = /^-?\d{1,3}\.\d{1,6},\s?-?\d{1,3}\.\d{1,6},.*$/gm;
+const text = `
+-99.205646,19.429707,2275.10
+-99.205581, 19.429652,2275.10
+-99.204654,19.428952,2275.58
+`;
+console.log(text.match(pattern)); */
+
+/* const pattern =
+  /^-?\d{1,3}\s\d{1,2}'\s\d{1,2}.\d{1,2}"[WE],\s-?\d{1,3}\s\d{1,2}'\s\d{1,2}.\d{1,2}"[SN]$/gm;
+const text = `
+-99 12' 34.08"W, 19 34' 56.98"N  
+-34 54' 32.00"E, -3 21' 67.00"S
+`;
+console.log(text.match(pattern)); */
+
+/* --------- Nombres ---------- */
+const text = `
+Camilo Sarmiento Gálvez
+Alejandro Pliego Abasto
+Milagros Reyes Japón
+Samuel París Arrabal
+Juan Pablo Tafalla
+Axel Gálvez Velázquez
+Óscar Montreal Aparicio
+Jacobo Pozo Tassis
+Guillermo Ordóñez Espiga
+Eduardo Pousa Curbelo
+Ivanna Bienvenida Kevin
+Ada Tasis López
+Luciana Sáenz García
+Florencia Sainz Márquz
+Catarina Cazalla Lombarda
+Paloma Gallo Perro
+Margarita Quesada Florez
+Vicente Fox Quesada
+Iris Graciani
+Asunción Carballar
+Constanza Muñoz
+Manuél Andres García Márquez
+`;
+//const regex = /^[A-Z][a-z]{3,}\s?[A-Z]?[a-z]{0,}/gm;
+//const regex = /^[A-ZÀ-ÿ][a-zÀ-ÿ]{3,}\s?[A-ZÀ-ÿ]?[a-zÀ-ÿ]{0,}/gm;
+//const regex = /^[A-Za-zÀ-ÿ]{1,}\s?[A-ZÀ-ÿ]?[a-zÀ-ÿ]{0,}/gm;
+const regex = /^[A-Za-zÀ-ÿ\s?]{1,}$/gm;
+//const regex = /^([A-Ú][a-ú]+\s?){1,5}$/gm;
+console.log(text.match(regex));
