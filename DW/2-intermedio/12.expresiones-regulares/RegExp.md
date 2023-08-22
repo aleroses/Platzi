@@ -1648,9 +1648,12 @@ Asunción Carballar
 Constanza Muñoz
 Manuél Andres García Márquez
 `;
-//const regex = /^[A-Z][a-z]{3,}\s?[A-Z]?[a-z]{0,}/gm;
-//const regex = /^[A-ZÀ-ÿ][a-zÀ-ÿ]{3,}\s?[A-ZÀ-ÿ]?[a-zÀ-ÿ]{0,}/gm;
-// const regex = /^[A-Za-zÀ-ÿ]{1,}\s?[A-ZÀ-ÿ]?[a-zÀ-ÿ]{0,}/gm;
-const regex = /^[A-Za-zÀ-ÿ\s?]{1,}$/gm;
+/* 
+const regex = /^[A-Za-zÀ-ÿ]+\s?[A-Za-zÀ-ÿ]+[\S? ]([A-Za-zÀ-ÿ]+)?[\S? ]([A-Za-zÀ-ÿ]+)/gm; 
+*/
+const regex = /([A-Za-zÀ-ÿ]+[\S? ?]?){1,4}/gm;
 console.log(text.match(regex));
 ```
+
+✨ À = `Alt + 183`
+✨ ÿ = `Alt + 152`
