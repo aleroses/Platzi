@@ -1657,3 +1657,43 @@ console.log(text.match(regex));
 
 ✨ À = `Alt + 183`
 ✨ ÿ = `Alt + 152`
+
+## 19. Búsqueda y reemplazo
+
+Para trabajar archivos con JavaScript lo podemos hacer con los módulos `fs` y `path` para lo que necesitamos tener instalado Node.js. Una vez instalado podemos usar el siguiente comando para empezar a trabajar con `npm`: 
+
+```bash
+npm init -y
+```
+
+Esta vez trabajaré con la siguiente estructura:  
+```bash
+├── 19.busqueda-reemplazo
+│   ├── main.js
+│   ├── movies.dat
+│   └── package.json
+```
+
+Importamos los módulos necesarios para empezar a trabajar con el archivo `movies.dat`
+
+```js
+const fs = require("fs");
+const path = require("path");
+const filePath = path.join(__dirname, "./movies.dat");
+
+fs.readFile(filePath, "utf-8", (err, data) => {
+  if (err) {
+    console.error("Error al leer el archivo:", err);
+    return;
+  }
+
+  // Aquí puedes trabajar con el contenido del archivo .dat
+  console.log(data[0]);
+
+  // Aplica expresiones regulares para extraer la información deseada
+  // y realiza las operaciones necesarias
+});
+```
+
+- [Movie Data](https://github.com/gingsmith/moviedemo/blob/master/movies.dat)
+- [Practicar Jugando](https://manzdev.github.io/regex-people/)

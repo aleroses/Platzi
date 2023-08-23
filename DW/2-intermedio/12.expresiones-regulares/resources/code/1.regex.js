@@ -475,7 +475,7 @@ const text = `
 console.log(text.match(pattern)); */
 
 /* --------- Nombres ---------- */
-const text = `
+/* const text = `
 Camilo Sarmiento Gálvez
 Alejandro Pliego Abasto
 Milagros Reyes Japón
@@ -499,9 +499,15 @@ Asunción Carballar
 Constanza Muñoz
 Manuél Andres García Márquez
 `;
-/* 
-const regex =
-  /^[A-Za-zÀ-ÿ]+\s?[A-Za-zÀ-ÿ]+[\S? ]([A-Za-zÀ-ÿ]+)?[\S? ]([A-Za-zÀ-ÿ]+)/gm; 
-*/
+//const regex =
+//  /^[A-Za-zÀ-ÿ]+\s?[A-Za-zÀ-ÿ]+[\S? ]([A-Za-zÀ-ÿ]+)?[\S? ]([A-Za-zÀ-ÿ]+)/gm;
+
 const regex = /([A-Za-zÀ-ÿ]+[\S? ?]?){1,4}/gm;
-console.log(text.match(regex));
+console.log(text.match(regex)); */
+
+/* ----------------------- Reemplazar ------------------------- */
+
+//  ^\d{1,5}+::([\w\s:,\)\(\.\'\-\&\!\/?]+)\s\(\d\d\d\d\)::.*$
+// `insert into movies (year, title) values ($2, '$1');`
+
+const fs = require('fs');
