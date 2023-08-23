@@ -9,8 +9,9 @@ fs.readFile(filePath, "utf-8", (err, data) => {
   }
 
   // Aquí puedes trabajar con el contenido del archivo .dat
-  console.log(data[0]);
+  //console.log(data);
 
-  // Aplica expresiones regulares para extraer la información deseada
-  // y realiza las operaciones necesarias
+  //const pattern = /^\d+::([\w\s:,\(\)'\.\-&!\/]+)\s\((\d+)\)::.*$/gm;
+  const pattern = /^\d+::(.*)\s\((\d+)\)::.*$/gm;
+  console.log(data.match(pattern));
 });

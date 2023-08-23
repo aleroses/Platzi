@@ -1687,13 +1687,32 @@ fs.readFile(filePath, "utf-8", (err, data) => {
     return;
   }
 
-  // Aquí puedes trabajar con el contenido del archivo .dat
-  console.log(data[0]);
+  //console.log(data);
 
-  // Aplica expresiones regulares para extraer la información deseada
-  // y realiza las operaciones necesarias
+  //const pattern = /^\d+::([\w\s:,\(\)'\.\-&!\/]+)\s\((\d+)\)::.*$/gm;
+  const pattern = /^\d+::(.*)\s\((\d+)\)::.*$/gm;
+  console.log(data.match(pattern));
 });
+```
+
+La primera expresión regular usada en el código JavaScript trae saltos de línea que no necesitamos, en cambio, la segunda expresión regular es mucho más limpia y trae más coincidencias. 
+
+```js
+^\d+::([\w\s:,\(\)'\.\-&!\/]+)\s\((\d\d\d\d)\)::.*$
+
+$1,$2 hasta $9
+
+insert into movies (year, title) values($2, '$1');
+
+{title:"$1", year:$2},
 ```
 
 - [Movie Data](https://github.com/gingsmith/moviedemo/blob/master/movies.dat)
 - [Practicar Jugando](https://manzdev.github.io/regex-people/)
+
+## 20. Uso de REGEX para descomponer querys GET
+
+```exp
+Find: [\?&](\w+)=([^&\n]+) 
+Replace: \n - $1=$2
+```
