@@ -1975,8 +1975,8 @@ Match para expresiones regulares en PHP:
 
 ```
 preg_match( '/regex/',
-		$line,
-		$m)
+	$line,
+	$m)
 ```
 
 donde:  
@@ -2070,4 +2070,109 @@ fclose($file);
 printf("\n\nMatch %d\n No match %d\n", $match, $nomatch);
 
 printf("Tiempo: %d segs\n", time() - $t);
+```
+
+### Banderas
+
+Las expresiones regulares pueden tener banderas que afectan la búsqueda, éstas deberán de estar hasta el final de la línea.
+
+[**Listado de Banderas en js:**](https://javascript.info/regexp-introduction#flags)  
+**`i`**  
+Con este indicador, la búsqueda no distingue entre mayúsculas y minúsculas: no hay diferencia entre A y a  
+**`g`**  
+Con esta marca, la búsqueda busca todas las coincidencias, sin ella, solo se devuelve la primera coincidencia.  
+**`m`**  
+Modo multilínea  
+**`s`**  
+Habilita el modo “dotall”, que permite un punto. para que coincida con el carácter de nueva línea \ n  
+**`u`**  
+Permite el soporte completo de Unicode. La bandera permite el procesamiento correcto de pares sustitutos.  
+**`y`**  
+Modo “adhesivo”: búsqueda en la posición exacta del texto
+
+> Nunca pierdan la capacidad de expresar bien los datos.
+
+## 25. Python
+
+En Python 3.9 la palabra “with” cierra el archivo automáticamente cuando no se requiera más acceso a este, por lo que no necesitamos usar “close” al final.
+
+```python
+import re
+
+filename = "results.csv"
+
+pattern = re.compile(r'^([\d]{4,4})\-.*$')
+
+with open(filename, "r", encoding="utf-8") as f:
+    for line in f:
+        res = re.match(pattern, line)
+        if res:
+            print(f"{res.group(1)}\n")
+```
+
+[Python Regex Cheatsheet  ](https://www.debuggex.com/cheatsheet/regex/python)
+
+## 26. Java
+
+Código para leer un archivo en Java:  
+
+```java
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io:IOException;
+
+public  class regex{
+
+    public static void main(String[] args){
+        String file = "./results.csv";
+
+        try{
+            BufferedReader br = new BufferedReader(new FileReader(file));
+            String line;
+            while((line = br.readLine()) != null){
+                system.out.println(line);
+            }
+        }catch(Exception e){
+            system.out.println("nope!");
+        }
+    }
+}
+```
+
+## 27. Java aplicado
+
+Obtener la fecha de los partidos separada por Año, mes, día. 
+
+```java
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+public class MatchSoccer {
+	public static void main(String[] args) {
+
+		String path = "/home/danielcamacho/STS4/WorkspaceSTS4/RegexJava/src/futbol.txt";
+
+		List<String> resultados = new ArrayList<>();
+
+		try {
+			resultados = Files.readAllLines(Paths.get(path), StandardCharsets.UTF_8);
+		} catch (IOException e) {
+
+		}
+		Pattern pt = Pattern.compile("^(\\d{4})\\-(\\d{2})\\-(\\d{2})");
+
+		for (int i = 0; i < resultados.size(); i++) {
+			Matcher match = pt.matcher(resultados.get(i));
+			match.find();
+			System.out.println("Year: " + match.group(1) + " Month: " + match.group(2) + " Day: " + match.group(3));
+					
+		}
+	}
+}
 ```
