@@ -510,4 +510,21 @@ console.log(text.match(regex)); */
 //  ^\d{1,5}+::([\w\s:,\)\(\.\'\-\&\!\/?]+)\s\(\d\d\d\d\)::.*$
 // `insert into movies (year, title) values ($2, '$1');`
 
-const fs = require('fs');
+/* ---------- 20. Descomponer querys GET ------------------ */
+/* const text = `
+https://b3co.com/?s=fotografia&mode=search&module=blog
+https://www.google.com/search?q=regex+platzi&oq=regex+platzi&aqs=chrome..69i57j69i60.6885j0j9&sourceid=chrome&ie=UTF-8
+https://co.search.yahoo.com/search?p=flickr&fr=yfp-t&fp=1&toggle=1&cop=mss&ie=UTF-8
+`;
+
+const pattern = /[\?&](\w+)=([^&\n]+)/gm; 
+//console.log(text.match(pattern));
+console.log(text.replace(pattern, `\n - $1 = $2`)); */
+
+/* --------------- */
+var url = "https://www.example.com/search?q=keyword&category=books";
+var urlObj = new URL(url);
+var queryString = urlObj.search;
+
+console.log(urlObj);
+console.log(queryString);

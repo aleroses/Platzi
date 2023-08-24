@@ -1761,7 +1761,115 @@ more data...
 
 ## 20. Uso de REGEX para descomponer querys GET
 
-```exp
+En la clase 15 ya vimos las partes de una URL y en el punto 5 vimos un breve concepto de lo que son las query strings pero vamos a ampliar un poco mas. 
+
+Ver [[#15. URLs]]  
+
+### Query String 
+
+Una cadena de consulta (query string) en una URL es una parte de la URL que sigue al símbolo de interrogación "?" y contiene información adicional en forma de pares de clave-valor. Se utiliza principalmente para transmitir datos desde el cliente al servidor a través de una solicitud HTTP GET.
+
+La cadena de consulta en una URL está compuesta por uno o más parámetros separados por el símbolo "&". Cada parámetro consta de un nombre y un valor, separados por el símbolo igual "=".
+
+Por ejemplo, considera la siguiente URL:
+
+```
+https://www.example.com/search?q=keyword&category=books
+```
+
+En esta URL, la cadena de consulta comienza después del símbolo de interrogación "?" y contiene dos parámetros: "q" con el valor "keyword" y "category" con el valor "books". Esto significa que la URL se utiliza para realizar una búsqueda de libros con la palabra clave "keyword" en una categoría específica.
+
+La cadena de consulta se utiliza para enviar información adicional al servidor, como filtros de búsqueda, opciones de clasificación, identificadores únicos u otros datos relevantes para la solicitud. El servidor puede utilizar estos parámetros para procesar la solicitud y devolver resultados específicos según los criterios proporcionados.
+
+En el lado del servidor, se pueden acceder a los parámetros de la cadena de consulta para su procesamiento utilizando el lenguaje de programación y el marco o biblioteca correspondientes.
+
+Es importante tener en cuenta que la cadena de consulta GET es visible en la URL y puede contener información sensible. Por lo tanto, es recomendable evitar enviar datos confidenciales a través de la cadena de consulta y utilizar métodos de envío de datos más seguros, como el método POST, cuando sea necesario.
+
+### Veamos más ejemplos
+
+URL que contienen cadenas de consulta (query strings) en formato GET:
+
+1. `https://www.example.com/search?q=keyword&category=books` Esta URL tiene dos parámetros en la cadena de consulta: "q" con el valor "keyword" y "category" con el valor "books".
+
+2. `https://www.example.com/products?id=123&sort=price&filter=on-sale` Esta URL tiene tres parámetros en la cadena de consulta: "id" con el valor "123", "sort" con el valor "price" y "filter" con el valor "on-sale".
+
+3. `https://www.example.com/page?lang=en&page=2` Esta URL tiene dos parámetros en la cadena de consulta: "lang" con el valor "en" y "page" con el valor "2".
+
+4. `https://www.example.com/news?category=sports&limit=10&sort=latest` Esta URL tiene tres parámetros en la cadena de consulta: "category" con el valor "sports", "limit" con el valor "10" y "sort" con el valor "latest".
+
+### Usemos JavaScript 
+
+```js
+const text = `
+https://b3co.com/?s=fotografia&mode=search&module=blog
+https://www.google.com/search?q=regex+platzi&oq=regex+platzi&aqs=chrome..69i57j69i60.6885j0j9&sourceid=chrome&ie=UTF-8
+https://co.search.yahoo.com/search?p=flickr&fr=yfp-t&fp=1&toggle=1&cop=mss&ie=UTF-8
+`;
+
+const pattern = /[\?&](\w+)=([^&\n]+)/gm; 
+//console.log(text.match(pattern));
+console.log(text.replace(pattern, `\n - $1 = $2`)); //👈👀🔥
+```
+
+Obtenemos: 
+```js
+https://b3co.com/
+ - s = fotografia
+ - mode = search
+ - module = blog
+https://www.google.com/search
+ - q = regex+platzi
+ - oq = regex+platzi
+ - aqs = chrome..69i57j69i60.6885j0j9
+ - sourceid = chrome
+ - ie = UTF-8
+https://co.search.yahoo.com/search
+ - p = flickr
+ - fr = yfp-t
+ - fp = 1
+ - toggle = 1
+ - cop = mss
+ - ie = UTF-8
+```
+
+### Quitar el dominio con js para atender al query con regex
+
+Para extraer la cadena de consulta (query string) de una URL y omitir el dominio utilizando JavaScript, puedes utilizar la función `URL` para crear un objeto URL a partir de la URL completa y luego acceder a la propiedad `search` del objeto URL. No es necesario utilizar expresiones regulares para este caso.
+
+Aquí tienes un ejemplo de cómo hacerlo:
+
+```js
+var url = "https://www.example.com/search?q=keyword&category=books";
+var urlObj = new URL(url);
+var queryString = urlObj.search;
+
+console.log(urlObj);
+console.log(queryString);
+```
+
+En la consola, se imprimirá el objeto y la cadena de consulta:
+
+```js
+URL {
+  href: 'https://www.example.com/search?q=keyword&category=books',
+  origin: 'https://www.example.com',
+  protocol: 'https:',
+  username: '',
+  password: '',
+  host: 'www.example.com',
+  hostname: 'www.example.com',
+  port: '',
+  pathname: '/search',
+  search: '?q=keyword&category=books', //👈👀🔥
+  searchParams: URLSearchParams { 'q' => 'keyword', 'category' => 'books' },
+  hash: ''
+}
+?q=keyword&category=books //👈👀🔥
+```
+
+A partir de aquí, puedes manipular la cadena de consulta según tus necesidades, tal como la vista anteriormente en la que se usaron expresiones regulares.
+
+```js
 Find: [\?&](\w+)=([^&\n]+) 
 Replace: \n - $1=$2
 ```
