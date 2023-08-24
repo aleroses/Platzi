@@ -1873,3 +1873,201 @@ A partir de aquí, puedes manipular la cadena de consulta según tus necesidades
 Find: [\?&](\w+)=([^&\n]+) 
 Replace: \n - $1=$2
 ```
+
+## 21. Explicación del Proyecto
+
+Vamos a utilizar un archivo de resultados de partidos de fútbol histórico con varios datos. El archivo es un csv de más de 39000 líneas diferentes.
+
+Con cada lenguaje intentaremos hacer una solución un poquito diferente para aprovecharlo y saber cómo utilizar expresiones regulares en cada uno de los lenguajes.
+
+Usaremos las expresiones regulares en:
+
+- Perl
+- PHP
+- Python
+- JavaScript
+
+- [Extensión Excel Viewer](https://marketplace.visualstudio.com/items?itemName=GrapeCity.gc-excelviewer)
+- [Extensión Rainbow CSV](https://marketplace.visualstudio.com/items?itemName=mechatroner.rainbow-csv)
+
+## 22. Perl
+
+Match para expresiones regulares en Perl:
+
+```
+m/regex/
+```
+
+Código para obtener partidos jugados en febrero:
+
+```perl
+#!/usr/bin/perl
+
+use strict;
+use warnings;
+
+my $t = time;
+
+open(my $f, "<../regex/results.csv") or die("no hay archivo");
+
+my $match = 0;
+my $nomatch = 0;
+
+while(<$f>) {
+  chomp; # omite saltos de linea y otros caracteres
+  # 2018-06-04,Italy,Netherlands,1,1,Friendly,Turin,Italy,FALSE
+  # m --> match 
+  # en pearl: /regex/
+  if(m/^[\d]{4,4}\-02\-.*$/){
+    printf $_."\n";
+    $match++;
+  } else{
+    $nomatch++;
+  }
+
+}
+
+close($f);
+
+printf("Se encontraron \n - %d matches\n - %d no matches\ntardo %d segundos\n"
+  , $match, $nomatch, time() - $t);
+```
+
+Código para obtener los partidos en los que ganan los visitantes:
+
+```perl
+#!/usr/bin/perl
+
+use strict;
+use warnings;
+
+my $t = time;
+
+open(my $f, "<../regex/results.csv") or die("no hay archivo");
+
+my $match = 0;
+my $nomatch = 0;
+
+while(<$f>) {
+  chomp;
+
+  if(m/^([\d]{4,4}).*?,(.*?),(.*?),(\d+),(\d+),.*$/){
+    if($5 > $4) {
+      printf("%s: %s (%d) - (%d) %s\n",
+        $1, $2, $4, $5, $3
+        );
+      }
+      $match++;
+  } else {
+    $nomatch++;
+  }
+}
+
+close($f);
+
+printf("Se encontraron \n - %d matches\n - %d no matches\ntardo %d segundos\n"
+  , $match, $nomatch, time() - $t);
+```
+
+## 23. PHP
+
+Match para expresiones regulares en PHP:
+
+```
+preg_match( '/regex/',
+		$line,
+		$m)
+```
+
+donde:  
+
+- regex: es la expresión regular.
+    
+- $line: cadena de caracteres (cada línea del archivo).
+    
+- $m: arreglo en donde cada match va a ir en cada uno de los lugares. En el script, este arreglo tiene dos elementos, donde el elemento [0] es la cadena de caracteres de prueba y el elemento [1] es el grupo de caracteres que hace match.
+
+Expresión regular para obtener partidos jugados en enero del 2018:
+
+
+```
+^2018\-01\-(\d\d),.*$
+```
+
+Código:
+
+```php
+<?php
+$file = fopen("../files/results.csv","r");
+
+$match   = 0;
+$nomatch = 0;
+
+while(!feof($file)) {
+    $line = fgets($file);
+    if(preg_match(
+        '/^2018\-01\-(\d\d),.*$/',
+        $line,
+        $m
+      )
+    ) {
+        print_r($m); 
+        $match++;
+    } else {
+        $nomatch++;
+    }
+}
+fclose($file);
+
+printf("\n\nmatch: %d\nnomatch: %d\n", $match, $nomatch);
+```
+
+
+## 24. Utilizando PHP en la práctica
+
+Regex para hacer match con la totalidad de los datos:   
+
+```
+/^(\d{4,4}\-\d\d\-\d\d),([\w\-\.\ ñáéíóúçã&]+),([\w\-\.\ ñáéíóúçã&]+),(\d+),(\d+),.*$/i
+```  
+
+Código completo:  
+
+```php
+<?php
+
+$file = fopen("../Curso de Expresiones Regulares/results.csv", "r");
+
+$match = 0;
+$nomatch = 0;
+
+$t = time();
+
+while (!feof($file)) {
+    $line = fgets($file);
+    #echo $line;
+    #'/^2018\-01\-(\d\d),.*$/'
+    #2018-01-31,Mexico,Bosnia-Herzegovina,1,0,Friendly,San Antonio,USA,TRUE
+    if (preg_match('/^(\d{4,4}\-\d\d\-\d\d),([\w\-\.\ ñáéíóúçã&]+),([\w\-\.\ ñáéíóúçã&]+),(\d+),(\d+),.*$/i', $line, $m)) {
+        #print_r($m); #imprime el arreglo
+        if ($m[4] == $m[5]) {
+            echo "empate: " ;
+        } elseif ($m[4] > $m[5]) {
+            echo "local:   " ;
+        } else {
+            echo "visitante: ";
+        }
+        printf("\t%s, %s [%d - %d]\n", $m[2], $m[3], $m[4], $m[5]);
+        $match++;
+    } else {
+        $nomatch++;
+        echo $line;
+    }
+}
+
+fclose($file);
+
+printf("\n\nMatch %d\n No match %d\n", $match, $nomatch);
+
+printf("Tiempo: %d segs\n", time() - $t);
+```

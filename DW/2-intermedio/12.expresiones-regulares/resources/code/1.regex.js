@@ -521,10 +521,14 @@ const pattern = /[\?&](\w+)=([^&\n]+)/gm;
 //console.log(text.match(pattern));
 console.log(text.replace(pattern, `\n - $1 = $2`)); */
 
-/* --------------- */
+/* --------------- Descomponer URL -------------- */
 var url = "https://www.example.com/search?q=keyword&category=books";
 var urlObj = new URL(url);
 var queryString = urlObj.search;
 
 console.log(urlObj);
 console.log(queryString);
+
+/* --------- 22. Perl ------------- */
+
+/* ---------- 23. PHP --------------- */
