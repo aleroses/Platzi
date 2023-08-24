@@ -1697,14 +1697,63 @@ fs.readFile(filePath, "utf-8", (err, data) => {
 
 La primera expresión regular usada en el código JavaScript trae saltos de línea que no necesitamos, en cambio, la segunda expresión regular es mucho más limpia y trae más coincidencias. 
 
+Debemos notar que estamos creando dos grupos de captura que se definen utilizando paréntesis `( )` que se ven de la siguiente manera: `(.*)` y `(\d+)`. No confundir con `\( y \)` los cuales son para escapar los `( )` y hacer una búsqueda literal de estos. 
+
+Estos dos grupos se identifican como `$1` y `$2` respectivamente, pudiendo llegar hasta `$9` en algunos lenguajes. Permitiendo extraer y manipular partes específicas de una cadena que coinciden con el patrón definido. 
+
+### Creando tablas con los grupos `$1` y `$2`
+
 ```js
-^\d+::([\w\s:,\(\)'\.\-&!\/]+)\s\((\d\d\d\d)\)::.*$
+const fs = require("fs");
+const path = require("path");
+const filePath = path.join(__dirname, "./movies.dat");
 
-$1,$2 hasta $9
+fs.readFile(filePath, "utf-8", (err, data) => {
+  if (err) {
+    console.error("Error al leer el archivo:", err);
+    return;
+  }
 
-insert into movies (year, title) values($2, '$1');
+  const pattern = /^\d+::(.*)\s\((\d+)\)::.*$/gm;
+  console.log(data.replace(pattern, `insert into movies (year, title) values($2, '$1')`)); //👈👀🔥
+});
+```
 
-{title:"$1", year:$2},
+Obteniendo como resultado:   
+```js
+insert into movies (year, title) values(1995, 'Toy Story')
+insert into movies (year, title) values(1995, 'Jumanji')
+insert into movies (year, title) values(1995, 'Grumpier Old Men')
+more data... 
+```
+
+### Creando Objeto JSON con los grupos `$1` y `$2`
+
+```js
+const fs = require("fs");
+const path = require("path");
+const filePath = path.join(__dirname, "./movies.dat");
+
+fs.readFile(filePath, "utf-8", (err, data) => {
+  if (err) {
+    console.error("Error al leer el archivo:", err);
+    return;
+  }
+
+  const pattern = /^\d+::(.*)\s\((\d+)\)::.*$/gm;
+  console.log(data.replace(pattern, `{title: "$1", year: $2}`)); //👈👀🔥
+});
+```
+
+Obteniendo como resultado:   
+```js
+{title: "Toy Story", year: 1995}
+{title: "Jumanji", year: 1995}
+{title: "Grumpier Old Men", year: 1995}
+{title: "Waiting to Exhale", year: 1995}
+{title: "Father of the Bride Part II", year: 1995}
+{title: "Heat", year: 1995}
+more data... 
 ```
 
 - [Movie Data](https://github.com/gingsmith/moviedemo/blob/master/movies.dat)

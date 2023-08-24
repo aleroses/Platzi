@@ -10679,11 +10679,3 @@
 65126::Choke (2008)::Comedy|Drama
 65130::Revolutionary Road (2008)::Drama|Romance
 65133::Blackadder Back & Forth (1999)::Comedy
-
-^\d+::([\w\s:,\(\)'\.\-&!\/]+)\s\((\d\d\d\d)\)::.*$
-
-$1,$2 hasta $9
-
-insert into movies (year, title) values($2, '$1');
-
-{title:"$1", year:$2},
