@@ -2332,21 +2332,7 @@ cat ../files/results.csv | grep Brazil | grep Uruguay | grep ^1952
 
 1. ¿Cuál de las siguientes expresiones sería útil para encontrar palabras que empiecen con letra mayúscula?
 
-a 📌 mal
-
-`/[A-Z]?\w/`
-
-b
-
-`/[A-Z]{1}/i`
-
-c
-
-`/[a-z]/i`
-
-d 📌
-
-`/[A-Z][a-z]+/`
+	- 📌 `/[A-Z][a-z]+/`
 
 2. La clase `\w` es equivalente a:
 
@@ -2362,21 +2348,7 @@ d 📌
 
 5. La expresión `^1.*` encuentra:
 
-a 📌mal
-
-cualquier palabra que empiece con `1`
-
-b
-
-una línea que no empiece con `1`
-
-c 📌
-
-una línea que empiece con `1`
-
-d
-
-una palabra que no empiece con `1`
+	- 📌 una línea que empiece con `1`
 
 6. El patrón `a*` significa exactamente:
 
@@ -2384,9 +2356,10 @@ una palabra que no empiece con `1`
 
 7. Cuál de las siguientes líneas SÍ hará match con la expresión
 
-```js
-/[a-z]{6,}@?gmail\.com
-```
+	```js
+	/[a-z]{6,}@?gmail\.com
+	```
+	
 	- 📌 prueba@gmail.com
 
 8. El patrón `/\[\d+?\],.*/` ¿con cuál opción hará match?:
@@ -2419,19 +2392,7 @@ una palabra que no empiece con `1`
 
 15. Una expresión greedy significa que se intentará encontrar el patrón:
 
-a 📌 mal
-
-las menos veces que sea posible
-
-b
-
-sólo una vez
-
-c
-
-siempre
-
-d 📌 tantas veces como sea posible
+	- 📌 tantas veces como sea posible
 
 16. Para usar un rango de caracteres (por ejemplo 0-9 o a-g) lo tenemos que delimitar en la expresión con:
 
@@ -2451,19 +2412,5 @@ d 📌 tantas veces como sea posible
 
 20. El patrón `a+` significa exactamente:
 
-a 📌 mal
-
-una `a` y cualquier otro carácter
-
-b
-
-cero o más `a`
-
-c
-
-cero o sólo una `a`
-
-d 📌
-
-una o más `a`
+	- 📌 una o más `a`
 </details>
