@@ -1887,6 +1887,7 @@ Usaremos las expresiones regulares en:
 - Python
 - JavaScript
 
+- [Archivo results.csv](https://github.com/aleroses/Platzi/blob/master/DW/2-intermedio/12.expresiones-regulares/resources/code/21.lenguajes/football_results.csv)
 - [Extensión Excel Viewer](https://marketplace.visualstudio.com/items?itemName=GrapeCity.gc-excelviewer)
 - [Extensión Rainbow CSV](https://marketplace.visualstudio.com/items?itemName=mechatroner.rainbow-csv)
 
@@ -2259,3 +2260,210 @@ public class MatchSoccer {
   </body>
 </html>
 ```
+
+### Otros posibles casos:  
+
+```js
+Validar número de tarjeta de crédito:
+^((67\d{2})|(4\d{3})|(5[1-5]\d{2})|(6011))(-?\s?\d{4}){3}|(3[4,7])\ d{2}-?\s?\d{6}-?\s?\d{5}$
+
+Validar un código postal:
+^([1-9]{2}|[0-9][1-9]|[1-9][0-9])[0-9]{3}$
+
+Validar dirección IP:
+^(([1-9]?[0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5]).){3}([1-9]?[0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$
+
+Validar número de telefóno:
+^+?\d{1,3}?[- .]?(?(?:\d{2,3}))?[- .]?\d\d\d[- .]?\d\d\d\d$
+```
+
+## 29. `grep` y `find` desde consola
+
+En el contexto de la Interfaz línea de comandos (CLI), `grep` es un comando utilizado para buscar patrones en archivos o en la salida de otros comandos. 
+
+> El nombre "grep" proviene de la frase "global regular expression print" (impresión global de expresiones regulares).
+
+El comando `grep` toma como entrada una cadena de texto y busca todas las líneas que coincidan con ese patrón en un archivo o en la salida de otro comando. Puedes especificar patrones utilizando expresiones regulares, lo que brinda una gran flexibilidad en la búsqueda de texto.
+
+Aquí tienes la sintaxis básica para usar `grep`:
+
+```
+grep [opciones] <patrón> <archivo>
+```
+
+Algunas opciones comunes de `grep` son:
+
+- `-i`: Realiza una búsqueda insensible a mayúsculas y minúsculas.
+- `-r` o `-R`: Busca de manera recursiva en todos los archivos y directorios dentro de un directorio.
+- `-l`: Muestra solo el nombre de los archivos que contienen una coincidencia.
+- `-n`: Muestra el número de línea junto con la línea que coincide.
+- `-v`: Invierte la búsqueda, mostrando las líneas que no coinciden con el patrón.
+
+Aquí tienes un ejemplo de uso de `grep`:
+
+```
+grep "error" archivo.log
+```
+
+Este comando buscará todas las líneas en el archivo `archivo.log` que contengan la palabra "error" y las mostrará en la salida.
+
+`grep` es una herramienta muy útil para buscar y filtrar información en archivos de texto o en la salida de otros comandos en la línea de comandos.
+
+Más ejemplos usando el archivo `results.csv`:  
+
+```
+cat ../files/results.csv
+cat ../files/results.csv | wc -l
+cat ../files/results.csv | grep ^2012
+cat ../files/results.csv | grep .3[0-9].
+cat ../files/results.csv | grep [SE]
+cat ../files/results.csv | grep Brazil
+cat ../files/results.csv | grep Brazil | grep Uruguay | wc -l
+cat ../files/results.csv | grep Brazil | grep Uruguay | grep ^1952
+```
+
+- [Archivo results.csv](https://github.com/aleroses/Platzi/blob/master/DW/2-intermedio/12.expresiones-regulares/resources/code/21.lenguajes/football_results.csv)
+
+## Examen 📌
+
+<details>
+	<summary>Haz clic para ver los resultados 👀</summary>
+	<br/>
+
+1. ¿Cuál de las siguientes expresiones sería útil para encontrar palabras que empiecen con letra mayúscula?
+
+a 📌 mal
+
+`/[A-Z]?\w/`
+
+b
+
+`/[A-Z]{1}/i`
+
+c
+
+`/[a-z]/i`
+
+d 📌
+
+`/[A-Z][a-z]+/`
+
+2. La clase `\w` es equivalente a:
+
+	- 📌 `[a-zA-Z0-9_]`
+
+3. Si quisiera hacer que una expresión no distinga entre mayúsculas y minúsculas, debo agregarle la bandera:
+
+	- 📌 `/i`
+
+4. El patrón `a.` significa exactamente:
+
+	- 📌 una `a` y cualquier otro carácter
+
+5. La expresión `^1.*` encuentra:
+
+a 📌mal
+
+cualquier palabra que empiece con `1`
+
+b
+
+una línea que no empiece con `1`
+
+c 📌
+
+una línea que empiece con `1`
+
+d
+
+una palabra que no empiece con `1`
+
+6. El patrón `a*` significa exactamente:
+
+	- 📌 cero o más `a`
+
+7. Cuál de las siguientes líneas SÍ hará match con la expresión
+
+```js
+/[a-z]{6,}@?gmail\.com
+```
+	- 📌 prueba@gmail.com
+
+8. El patrón `/\[\d+?\],.*/` ¿con cuál opción hará match?:
+
+	- 📌 `[12],34,56,78`
+
+9. Para delimitar el número de ocurrencias de alguna expresión (una, dos o tres, en este caso), el número de repeticiones buscadas se denota por:
+
+	- 📌 {1,3}
+
+10. Cuando tenemos un problema y lo planeamos solucionar con expresiones regulares, entonces:
+
+	- 📌 tardaremos un poco más en solucionarlo, pero tendremos una solución robusta y duradera
+
+11. Supongamos que tenemos un archivo csv con códigos de producto, todos los códigos son dos caracteres seguidos por 8 a 10 dígitos, pero solo queremos los productos que empiecen con AB o CD, ¿qué expresión usarías?
+
+	- 📌 `/^(AB|CD)\d{8,10}$/`
+
+12. Cuál de las siguientes líneas NO hará match con la expresión `/^[\w\s]+$/`:
+
+	- 📌 12,34,56,78
+
+13. El símbolo que denota cualquier carácter es:
+
+	- 📌 `.`
+
+14. El carácter que denota cualquier fin de línea es:
+
+	- 📌 `$`
+
+15. Una expresión greedy significa que se intentará encontrar el patrón:
+
+a 📌 mal
+
+las menos veces que sea posible
+
+b
+
+sólo una vez
+
+c
+
+siempre
+
+d 📌 tantas veces como sea posible
+
+16. Para usar un rango de caracteres (por ejemplo 0-9 o a-g) lo tenemos que delimitar en la expresión con:
+
+	- 📌 `[]`
+
+17. Si quiero encontrar grupos de sólo 3 caracteres numéricos, cuál de las siguientes expresiones NO funciona:
+
+	- 📌 `\d+…`
+
+18. El patrón `a?` significa exactamente:
+
+	- 📌 cero o solo una `a`
+
+19. La expresión `[^rm][a-z]+` encontrará:
+
+	- 📌 Todas las palabras que NO empiecen con “r” o “m”
+
+20. El patrón `a+` significa exactamente:
+
+a 📌 mal
+
+una `a` y cualquier otro carácter
+
+b
+
+cero o más `a`
+
+c
+
+cero o sólo una `a`
+
+d 📌
+
+una o más `a`
+</details>
