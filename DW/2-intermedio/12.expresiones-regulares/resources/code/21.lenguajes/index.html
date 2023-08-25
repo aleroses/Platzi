@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RegExp en JavaScript</title>
+    <style>
+      body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        font-family: Arial;
+      }
+
+      input[type="text"] {
+        font-size: 14px;
+        width: 250px;
+        padding: 6px;
+        color: #598b09;
+      }
+
+      input[type="text"].error {
+        color: red;
+      }
+
+      .btn {
+        text-align: center;
+        background-color: #7dc800;
+        padding: 0.6em 0.8em 0.8em;
+        border: none;
+        color: white;
+        margin: 5px;
+        border-radius: 5px;
+        cursor: pointer;
+        box-shadow: inset 0 -0.2em rgba(0, 0, 0, 0.2);
+        outline: 0;
+        transition: 0.2s;
+        will-change: transform;
+      }
+      .btn:active {
+        transform: scale(0.9);
+      }
+
+      .btn:disabled {
+        background-color: gray;
+        transform: initial;
+      }
+    </style>
+  </head>
+  <body>
+    <input type="text" id="email" autocomplete="off" onkeyup="Validar();" />
+    <input
+      type="button"
+      id="btn"
+      class="btn"
+      value="Enviar"
+      disabled="disabled"
+    />
+
+    <script>
+      function Validar() {
+        var Email = document.getElementById("email").value;
+        var btn = document.getElementById("btn");
+        var textbox = document.getElementById("email");
+        if (Email.match(/^[\w\.\-_\+]{5,30}@[\w\.\-]{3,}\.\w{2,5}$/i)) {
+          btn.disabled = false;
+          console.log(Email + ": Entro");
+          textbox.classList.remove("error");
+        } else {
+          console.log(Email + ": NO entro");
+          textbox.classList.add("error");
+        }
+        // console.log(Email);
+      }
+    </script>
+  </body>
+</html>
