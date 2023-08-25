@@ -1,6 +1,7 @@
 # Curso de Expresiones Regulares
 > **Alberto Alcocer** 
 > Inicio: `13-08-2023`
+> Finalización: `25-08-2023`
 
 ## 1. Todo lo que aprenderás sobre expresiones regulares
 
