@@ -1,4 +1,5 @@
-/* const URL = "https://api.thecatapi.com/v1/images/search";
+/* 
+const URL = "https://api.thecatapi.com/v1/images/search";
 const button = document.querySelector("button");
 
 function cat() {

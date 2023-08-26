@@ -196,3 +196,31 @@ button {
 - [The cat api](https://thecatapi.com/)
 - [The cat api Documentation](https://developers.thecatapi.com/view-account/ylX4blBYT9FaoVd6OhvR?report=gpN-ReBkp)
 - [JSON Formatter](https://chrome.google.com/webstore/detail/json-formatter/bcjindcccaagfpapjjmafapmmgkkhgoa)
+
+## 4. Endpoints y query parameters
+
+### Endpoints  
+
+En el contexto de desarrollo web y las API, los "endpoints" se refieren a las URL específicas de un servidor que se utilizan para acceder a recursos o realizar operaciones en una API. Cada endpoint representa una ruta única en el servidor que está asociada con una funcionalidad específica. Los endpoints se utilizan para realizar solicitudes a la API y obtener respuestas correspondientes.
+
+Por ejemplo, supongamos que estás construyendo una API de libros. Algunos ejemplos de endpoints podrían ser:
+
+- `/books`: Este endpoint podría utilizarse para obtener una lista de todos los libros disponibles.
+- `/books/{id}`: Este endpoint podría utilizarse para obtener información detallada sobre un libro específico, donde `{id}` representa el identificador único del libro.
+- `/books/{id}/reviews`: Este endpoint podría utilizarse para obtener las reseñas de un libro específico.
+
+### Query parameters
+
+En cuanto a los "query parameters" (parámetros de consulta), son una forma de proporcionar información adicional en una solicitud HTTP para filtrar, ordenar o limitar los resultados de una consulta. Los query parameters se agregan a una URL después del signo de interrogación (`?`) y se especifican en forma de pares clave-valor separados por ampersand (`&`).
+
+Por ejemplo, considera la siguiente URL con query parameters:
+
+```
+/books?genre=fiction&author=John+Doe
+```
+
+En este caso, `genre` y `author` son query parameters. El valor `fiction` del parámetro `genre` indica que solo se desean libros de género ficción, y el valor `John+Doe` del parámetro `author` indica que solo se desean libros escritos por el autor John Doe.
+
+Los query parameters son opcionales y pueden ser utilizados según las necesidades de la API. Permiten personalizar las solicitudes y obtener resultados más específicos. En el backend, se pueden utilizar los valores de los query parameters para filtrar la información en la base de datos o realizar otras operaciones relevantes antes de devolver los resultados al cliente.
+
+En resumen, los endpoints son las URL específicas de un servidor que representan funcionalidades particulares de una API, mientras que los query parameters son parámetros opcionales que se agregan a una URL para personalizar las solicitudes y obtener resultados específicos.
