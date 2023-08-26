@@ -72,7 +72,7 @@ En resumen, SSR se refiere a la técnica de renderizar el contenido en el servid
 
 Web que nos muestra una fotografía de un gato diferente, cada vez que le damos al botón random. 
 
-Usando fetch:  
+Usando `fetch`:  
 
 ```js
 const URL = "https://api.thecatapi.com/v1/images/search";
@@ -88,6 +88,24 @@ function cat() {
       const img = document.querySelector("img");
       img.src = data[0].url;
     });
+}
+
+window.addEventListener("load", cat);
+button.addEventListener("click", cat);
+```
+
+Usando `async` y `await`:  
+
+```js
+const API = "https://api.thecatapi.com/v1/images/search";
+const img = document.querySelector("img");
+const button = document.querySelector("button");
+
+async function cat() {
+  const resolve = await fetch(API);
+  const data = await resolve.json();
+  console.log(data);
+  img.src = data[0].url;
 }
 
 window.addEventListener("load", cat);
