@@ -1,3 +1,5 @@
+
+/* ----------------- Usando fetch ---------------------- */
 /* 
 const URL = "https://api.thecatapi.com/v1/images/search";
 const button = document.querySelector("button");
@@ -18,7 +20,7 @@ window.addEventListener("load", cat);
 button.addEventListener("click", cat); 
 */
 
-/* ----- usando async await --------- */
+/* ---------- Usando async await --------- */
 const API = "https://api.thecatapi.com/v1/images/search";
 const img = document.querySelector("img");
 const button = document.querySelector("button");
@@ -32,16 +34,3 @@ async function cat() {
 
 window.addEventListener("load", cat);
 button.addEventListener("click", cat);
-
-/* --------- Esta solución no muestra nada al iniciar la web ---- */
-/* const URL = "https://api.thecatapi.com/v1/images/search";
-
-async function myCat() {
-  const res = await fetch(URL);
-  const data = await res.json();
-  const img = document.querySelector("img");
-  img.src = data[0].url;
-}
-
-const myButton = document.querySelector("button");
-myButton.onclick = myCat; */

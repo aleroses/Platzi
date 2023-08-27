@@ -224,3 +224,378 @@ En este caso, `genre` y `author` son query parameters. El valor `fiction` del pa
 Los query parameters son opcionales y pueden ser utilizados según las necesidades de la API. Permiten personalizar las solicitudes y obtener resultados más específicos. En el backend, se pueden utilizar los valores de los query parameters para filtrar la información en la base de datos o realizar otras operaciones relevantes antes de devolver los resultados al cliente.
 
 En resumen, los endpoints son las URL específicas de un servidor que representan funcionalidades particulares de una API, mientras que los query parameters son parámetros opcionales que se agregan a una URL para personalizar las solicitudes y obtener resultados específicos.
+
+### Solución PLATZI  
+
+```html
+<body>
+  <h1>Random kittens</h1>
+
+  <img id="img1" width="150" alt="Foto gatito aleatorio">
+  <img id="img2" width="150" alt="Foto gatito aleatorio">
+  <img id="img3" width="150" alt="Foto gatito aleatorio">
+  <button onclick="reload()">Recargar</button> 👈👀
+
+  <script src="./main.js"></script>
+</body>
+```
+
+```js
+const API_URL = 'https://api.thecatapi.com/v1/images/search?limit=3';
+
+async function reload() {
+  const res = await fetch(API_URL);
+  const data = await res.json();
+
+  console.log(data)
+  const img1 = document.getElementById('img1');
+  const img2 = document.getElementById('img2');
+  const img3 = document.getElementById('img3');
+  
+  img1.src = data[0].url;
+  img2.src = data[1].url;
+  img3.src = data[2].url;
+}
+
+reload();
+```
+
+### Solución personal 
+
+```html
+<body>
+  <header>
+    <h1>Random kittens</h1>
+  </header>
+  <main>
+    <!-- Content: Figure + img -->
+  </main>
+  <button onclick="reload()">Random</button>
+  
+  <script src="./main.js"></script>
+</body>
+```
+
+A pesar de que solo necesitamos 3 imágenes, la API nos da 10,sí que es con lo que trabajaremos:  
+```js
+const API_URL = "https://api.thecatapi.com/v1/images/search?limit=3";
+
+async function reload() {
+  const response = await fetch(API_URL);
+  const data = await response.json();
+
+  //console.log(data);
+  const container = document.querySelector('main')
+  container.innerHTML = '';
+  
+  data.map((img) => {
+    const content = document.createElement("figure");
+    content.innerHTML = `<img src="${img.url}" alt="Kitten pictures">`;
+    container.append(content)
+  });
+}
+
+reload();
+//window.addEventListener('load', reload)
+```
+
+```css
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  width: 100vw;
+  height: auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 3fr auto;
+  background-color: darkslateblue;
+  padding: 1rem;
+}
+
+header {
+  width: 80vw;
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+h1 {
+  display: flex;
+  justify-content: center;
+}
+
+main {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(160px, 100%), 1fr));
+  gap: 1rem;
+  width: 80vw;
+  margin: 1rem auto;
+}
+
+img {
+  width: 100%;
+  height: 100%;
+}
+
+button {
+  border: none;
+  background-color: crimson;
+  width: 5rem;
+  height: 2.5rem;
+  border-radius: 1rem;
+  margin: 0 auto;
+  cursor: pointer;
+  justify-items: ;
+}
+```
+
+### Dato 
+
+Es recomendable colocar los query parameters en una variable de manera ordenada en un array:
+
+```js
+const querystring = [
+  '?',
+  'limit=3',
+  '&order=Desc',
+].join('');
+
+const URL = `https://api.thecatapi.com/v1/images/search${querystring}`;
+```
+
+También:  
+```js
+const URL = [
+  "https://api.thecatapi.com/v1/images/search",
+  "?limit=3",
+  "&order=Desc",
+].join("");
+```
+
+## 5. ¿Qué son los HTTP Status Codes?
+
+Ver: [[asincronismo-con-js#8. XMLHTTPRequest#Códigos de estados del servidor]]  
+
+Los códigos de estado (status codes) del servidor son una parte fundamental del protocolo HTTP, ya que indican el **resultado de una solicitud realizada por un cliente al servidor**.
+
+Los códigos de estado más comunes:
+
+- **`1xx` Información** → Indican que la petición fue recibida por el servidor, pero está siendo procesada por el servidor.
+    - 100: Continuar
+    - 101: Cambio de protocolo
+- **`2xx` Éxito** → Indican que la petición fue recibida, aceptada y procesada correctamente.
+    - 200: OK
+    - 201: Creado
+    - 202: Aceptado
+    - 204: Sin contenido
+- **`3xx` Redirección** → Indican que hay que tomar acciones adicionales para completar la solicitud.
+    - 300: Múltiples opciones
+    - 301: Movido permanentemente
+    - 302: Encontrado
+    - 304: No modificado
+    - 307: Redirección temporal
+    - 308: Redirección permanente
+- **`4xx` Errores del cliente** → Indican errores del lado del cliente que hizo mal una solicitud.
+    - 400: Solicitud incorrecta
+    - 401: No autorizado
+    - 403: Prohibido
+    - 404: No encontrado
+    - 405: Método no permitido
+    - 408: Tiempo de espera de solicitud
+    - 429: Demasiadas solicitudes
+- **`5xx` Errores del servidor** → Indican errores del servidor. Suelen aparecer cuando existe un fallo en la ejecución en el servidor.
+    - 500: Error interno del servidor
+    - 501: No implementado
+    - 502: Puerta de enlace incorrecta
+    - 503: Servicio no disponible
+    - 504: Tiempo de espera de la puerta de enlace
+    - 505: Versión de HTTP no compatible
+
+### Los códigos más comunes a la hora de interactuar con una API son:
+
+- **`200`** → _OK_ → Indica que todo está correcto.
+- **`201`** → _Created_ → Todo está correcto cuando se hizo una solicitud POST, el recurso se creó y se guardó correctamente.
+- **`204`** → _No Content_ → Indica que la solicitud se completó correctamente, pero no devolvió información. Este es común cuando se hacen peticiones con el verbo DELETE.
+- **`400`** → _Bad Request_ → Indica que la solicitud del cliente es incorrecta o que ha habido un error en su sintaxis.
+- **`401`** → _Unauthorized_ → Significa que antes de hacer una solicitud al servidor nos debemos autenticar.
+- **`403`** → _Forbidden_ → Indica que no tenemos acceso a ese recurso aunque se esté autenticado.
+- **`404`** → _Not Found_ → Indica que no existe el recurso que se está intentando acceder.
+- **`500`** → _Internal Server Error_ → Indica que algo falló, es un error que retorna el servidor cuando la solicitud no pudo ser procesada.
+- **`503`** → _Service Unavailable_: indica que el servidor no está disponible temporalmente para procesar la solicitud.
+
+
+### HTTP status ranges in a nutshell: 
+
+|HTTP status ranges in a nutshell: |Los rangos de estado HTTP en pocas palabras:|
+|----------------------------------|---------------------------|
+|1xx: hold on                      |1xx: espera|
+|2xx: here you go                  |2xx: aquí tienes|
+|3xx: go away                      |3xx: vete|
+|4xx: you fucked up                |4xx: la cagaste|
+|5xx: I fucked up                  |5xx: La cagué|
+
+
+### Error 418  
+
+El código de estado HTTP 418, "I'm a teapot" (Soy una tetera), es un código de estado de error humorístico y no estándar que se utiliza en situaciones inusuales o para fines de prueba. No tiene un significado específico en el protocolo HTTP y no está destinado a ser implementado en aplicaciones web reales.
+
+El código de estado HTTP 418 fue definido en la especificación de extensión del protocolo Hyper Text Coffee Pot Control Protocol (HTCPCP). Esta especificación fue creada como una broma en 1998, haciendo referencia a la idea de que las teteras podrían ser dispositivos controlables a través de HTTP.
+
+En resumen, el código de estado 418 no tiene una utilidad real en el protocolo HTTP y se utiliza principalmente como una broma o para pruebas. En aplicaciones web reales, los códigos de estado HTTP más comunes son los que comienzan con 1, 2, 3 o 4, como 200 (OK), 404 (No encontrado), 500 (Error del servidor), entre otros.
+
+Es importante tener en cuenta que el código de estado 418 no debe ser utilizado en aplicaciones web reales, ya que no es reconocido como un código de estado válido y puede causar confusión en los clientes y servidores HTTP.
+
+- [HTTP STATUS DOGS](https://httpstatusdogs.com/)
+- [Error: 418](https://www.youtube.com/watch?v=mH4s5q_DpX4)
+
+
+
+## 6. ¿Qué es una API KEY?
+
+Una API KEY, es un código alfanumérico único que se utiliza para **autenticar** y **autorizar** el acceso a una API. 
+
+> Es una forma de identificación y control de acceso que permite a los desarrolladores o usuarios acceder a los recursos protegidos por la API.
+
+Una API KEY actúa como una llave o contraseña que se incluye en las solicitudes realizadas a una API. Al proporcionar la API KEY correcta, el servidor de la API puede verificar la autenticidad y la autorización del solicitante y permitirle acceder a los recursos o realizar determinadas acciones.
+
+La autenticación y la autorización son dos conceptos fundamentales en la seguridad de las API. Aunque están relacionados, cumplen funciones diferentes:
+
+### Autenticación  
+
+La autenticación verifica la identidad del usuario o la aplicación que intenta acceder a la API. El objetivo es asegurarse de que el solicitante sea quien dice ser. Hay diferentes métodos comunes de autenticación en las API:
+
+   - API Key: Se genera una clave de API única y se proporciona al usuario o la aplicación. El solicitante debe incluir la clave de API en cada solicitud para demostrar su identidad.
+
+   - Tokens de acceso: Utilizando protocolos como OAuth, se emiten tokens de acceso temporales después de que el usuario o la aplicación autentica exitosamente. Estos tokens se utilizan para identificar al solicitante en las solicitudes siguientes.
+
+   - Autenticación basada en cookies o sesiones: Se utiliza un mecanismo de sesión en el que el servidor genera y mantiene una cookie o un identificador de sesión, que se envía en las solicitudes para autenticar al usuario.
+
+   - Autenticación basada en JWT (JSON Web Tokens): Se utiliza un token en formato JWT que contiene información codificada y firmada sobre el usuario o la aplicación. El servidor verifica la autenticidad y la integridad del token para autenticar al solicitante.
+
+
+### Autorización  
+
+Una vez que el solicitante ha sido autenticado, la autorización determina qué acciones o recursos tiene permitido acceder. La autorización define los permisos y los niveles de acceso para diferentes usuarios o roles. Algunos enfoques comunes para la autorización en las API son:
+
+   - Roles y permisos: Se definen roles predefinidos con diferentes permisos. Después de la autenticación, el servidor verifica si el usuario o la aplicación tiene los permisos adecuados para realizar la acción solicitada.
+
+   - ACL (Access Control List): Se utiliza una lista de control de acceso que asigna permisos específicos a usuarios o aplicaciones individuales para cada recurso o acción.
+
+   - Reglas de autorización personalizadas: Se implementan reglas lógicas específicas para determinar la autorización basada en criterios personalizados definidos por la API.
+
+
+El propósito principal de utilizar una API KEY es controlar el acceso a la API y asegurarse de que solo los usuarios autorizados puedan utilizarla. Esto permite a los proveedores de la API monitorear y limitar el uso de sus recursos, y también les brinda la capacidad de revocar o regenerar las claves en caso de abuso o compromiso de seguridad.
+
+### Formas de enviar una API KEY en una solicitud  
+
+#### Query Parameter (Parámetro de consulta)
+
+La API Key se incluye en la URL de la solicitud como un parámetro de consulta. 
+
+Por ejemplo: 
+
+```
+https://api.example.com/endpoint?api_key=ABC123
+``` 
+
+Aquí, "api_key" es el nombre del parámetro y "ABC123" es el valor de la API Key. Esta forma es simple y fácil de implementar, ya que solo se necesita agregar el parámetro a la URL. Sin embargo, ten en cuenta que el uso de parámetros de consulta puede exponer la API Key en los registros del servidor, en los historiales de navegación y en otras ubicaciones sensibles.
+
+#### Authorization Header (Encabezado de autorización)
+
+La API Key se envía en el encabezado de autorización de la solicitud HTTP. 
+
+Por ejemplo: 
+
+```
+Authorization: X-API-Key ABC123
+```
+
+Aquí, "X-API-Key" es el nombre del encabezado y "ABC123" es el valor de la API Key. Esta forma es más segura, ya que la API Key no se muestra directamente en la URL y no queda expuesta en lugares sensibles. Además, el encabezado de autorización es una convención comúnmente utilizada para enviar información de autenticación y autorización en las solicitudes HTTP.
+
+
+```js
+const apiKey = "ABC123";
+const apiUrl = "https://api.example.com/weather";
+
+fetch(apiUrl, {
+  headers: {
+    "Authorization": `X-API-Key ${apiKey}`
+  }
+})
+  .then(response => response.json())
+  .then(data => {
+    // Hacer algo con la respuesta de la API
+    console.log(data);
+  })
+  .catch(error => {
+    // Manejar errores de la solicitud
+    console.error("Error:", error);
+  });
+```
+
+
+La API KEY se envía generalmente como un encabezado o un parámetro en las solicitudes HTTP realizadas a la API. Dependiendo de la API y su implementación, la forma exacta de incluir la API KEY puede variar. Algunas APIs requieren que se incluya la API KEY en cada solicitud, mientras que otras pueden utilizar mecanismos de autenticación más avanzados, como OAuth, que generan tokens de acceso temporales en lugar de API KEYs estáticas.
+
+#### Otras alternativas  
+
+1. Authorization: Basic: Es un esquema de autenticación básico que se utiliza para enviar credenciales en una solicitud HTTP. Consiste en enviar el nombre de usuario y la contraseña codificados en base64 en el encabezado de autorización. Por ejemplo: `Authorization: Basic QWxhZGRpbjpPcGVuU2VzYW1l`. Sin embargo, este método no es muy seguro, ya que las credenciales se envían en texto plano y pueden ser interceptadas si no se utiliza una conexión segura (HTTPS).
+
+2. Authorization: Bearer Token: Se utiliza para enviar tokens de acceso en el encabezado de autorización. Los tokens de acceso son generados por un servidor de autenticación y se utilizan para autenticar y autorizar las solicitudes a una API. Por ejemplo: `Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c`. Los tokens de acceso pueden tener una duración limitada y deben renovarse o solicitarse nuevamente una vez que expiran.
+
+3. OAuth 2.0: Es un protocolo de autorización estándar que permite a una aplicación obtener acceso limitado a una cuenta de usuario en un servicio de terceros, sin compartir las credenciales de inicio de sesión. En lugar de compartir las credenciales, OAuth 2.0 utiliza tokens de acceso para permitir que una aplicación acceda a los recursos protegidos en nombre del usuario. El flujo de OAuth 2.0 implica la interacción entre la aplicación, el servidor de autorización y el servidor de recursos para obtener y utilizar los tokens de acceso.
+
+4. Access Key + Secret Key: Este método se utiliza comúnmente en servicios de almacenamiento en la nube y API de proveedores. Consiste en utilizar un par de claves: una clave de acceso (Access Key) y una clave secreta (Secret Key). La clave de acceso se utiliza para identificar la aplicación o cliente que realiza la solicitud, mientras que la clave secreta se utiliza como una firma para autenticar la solicitud. Estas claves se mantienen en secreto y se utilizan para generar una firma criptográfica que se envía junto con la solicitud para demostrar la autenticidad de la solicitud.
+
+### Application Based Authentication  
+
+La autenticación basada en la aplicación se refiere a un método de autenticación donde la identidad y los permisos de acceso se otorgan a nivel de la aplicación en lugar de a nivel de usuario. En este enfoque, la aplicación en sí misma se autentica utilizando credenciales específicas de la aplicación, como una clave de API o un certificado digital. Una vez autenticada la aplicación, se le otorgan permisos y se le permite acceder a los recursos o realizar acciones en nombre de la aplicación. Este tipo de autenticación es comúnmente utilizado en escenarios de integración de API o servicios, donde una aplicación necesita acceder a recursos externos en nombre de los usuarios o realizar tareas automatizadas.
+
+### User Based Authentication  
+
+La autenticación basada en el usuario se refiere a un método de autenticación donde la identidad y los permisos de acceso se otorgan a nivel de usuario individual. En este enfoque, cada usuario tiene sus propias credenciales únicas, como un nombre de usuario y una contraseña, que se utilizan para autenticar al usuario y verificar su identidad. Una vez autenticado, el usuario tiene acceso a los recursos y funcionalidades asignados a su cuenta específica. Este tipo de autenticación es común en aplicaciones web y móviles, donde los usuarios se registran con sus propias cuentas y tienen acceso personalizado a los datos y funciones de la aplicación.
+
+
+
+### Usando una API KEY 
+
+Para obtener una key de **The cat api** debes dirigirte a Pricing y luego a [GignUp for Free](https://thecatapi.com/signup), colocas tu correo y una breve descripción de lo que harás con la API, luego te enviarán un correo con la key solicitada. 
+
+```js
+const querystring = ["?", "limit=3"].join("");
+
+const API_URL = `https://api.thecatapi.com/v1/images/search${querystring}&api_key=lover_xdW5fCl0zzlol50jHsAhxdFJV6jC9RT3YY5lolcP78HvGH80daxzY`; 👈👀
+
+async function reload() {
+  const response = await fetch(API_URL);
+  const data = await response.json();
+
+  //console.log(data);
+  const container = document.querySelector("main");
+  container.innerHTML = "";
+
+  data.map((img) => {
+    const content = document.createElement("figure");
+    content.innerHTML = `<img src="${img.url}" alt="Kitten pictures">`;
+    container.append(content);
+  });
+}
+
+reload();
+```
+
+Esto nos mostrará 3 imágenes, aunque ya no se actualiza al recargar ni al picarle al botón Random. Para que funcione nuevamente debemos quitarle `"&order=Desc"` a la primera `const`. 
+
+- [4 Most Used REST API Authentication Methods](https://blog.restcase.com/4-most-used-rest-api-authentication-methods/)
+
+## 7. Maquetación del proyecto
+
+
+
+
+
+
+
