@@ -775,3 +775,6 @@ Estos son los verbos HTTP más comunes, pero también existen otros menos utiliz
 - Verbos [[asincronismo-con-js#8. XMLHTTPRequest#Características del protocolo HTTP#Los Verbos HTTP mas comunes son]] 
 - Uso de Get, Post, Put y Delete [[get-post-put-delete]]
 
+## 9. GET: leyendo kittens favoritos
+
+[Documentación](https://developers.thecatapi.com/view-account/ylX4blBYT9FaoVd6OhvR?report=mkzf_eYzV)
