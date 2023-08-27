@@ -593,9 +593,185 @@ Esto nos mostrará 3 imágenes, aunque ya no se actualiza al recargar ni al pica
 
 ## 7. Maquetación del proyecto
 
+Mi código...  
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Random Kittens</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <h1>Random Kittens</h1>
+    <main id="random">
+      <h2>Kittens List</h2>
+      <section class="container">
+        <!-- Content ...
+        <figure>
+          <img id="img1" width="150" alt="Random kittens" />
+          <img class="save" src="./heart.svg" alt="Heart icon">
+        </figure> -->
+    </section>
+
+      <button class="reload" onclick="reload()">Random</button>
+    </main>
+
+    <section class="favorites" id="favorites">
+      <h2>Kittens Favorites</h2>
+      <figure>
+        <img id="img1" width="150" alt="Random kittens" />
+        <button class="delete">Delete</button>
+      </figure>
+    </section>
+
+    <script src="./main.js"></script>
+  </body>
+</html>
+```
+
+```js
+const querystring = ["?", "limit=6"].join("");
+
+const API_URL = `https://api.thecatapi.com/v1/images/search${querystring}&api_key=lover_W59yADfCl0hFZEyJV6jC9RT3YY5Q43H80daxZBiTzY`;
+
+async function reload() {
+  const response = await fetch(API_URL);
+  const data = await response.json();
+
+  //console.log(data);
+  const container = document.querySelector(".container");
+  container.innerHTML = "";
+
+  data.map((img) => {
+    const content = document.createElement("figure");
+    content.innerHTML = `
+      <img src="${img.url}" alt="Kitten pictures">
+      <img class="save" src="./heart.svg" alt="Heart icon">
+    `;
+    container.append(content);
+  });
+}
+
+reload();
+```
+
+```css
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  width: 90vw;
+  height: auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 3fr auto;
+  background-color: #090b10;
+  padding: 1rem;
+  margin: 0 auto;
+}
+
+main {
+  width: 80vw;
+  height: auto;
+  margin: 0 auto 1rem;
+}
+
+h1, h2 {
+  width: 80vw;
+  display: flex;
+  justify-content: center;
+  justify-self: center;
+  color: #cbd5e1;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(160px, 100%), 1fr));
+  gap: 1rem;
+  /* width: 80vw; */
+  margin: 1rem auto;
+}
+
+figure {
+  position: relative; ✨
+  /* display: inline-block; */
+}
+
+img {
+  width: 100%;
+  height: 100%;
+  border-radius: 1rem;
+  /* display: block; */
+}
+
+button {
+  background-color: #EF002E;
+  border: none;
+  border-radius: 1rem;
+  cursor: pointer;
+}
+
+.save {
+  width: 2.6rem;
+  height: 2rem;
+  position: absolute; ✨
+  top: 10px;
+  right: 0;
+  cursor: pointer;
+}
+
+.reload {
+  width: 5rem;
+  height: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.delete {
+  width: 5rem;
+  height: 2rem;
+}
+
+.favorites {
+  width: 80vw;
+  height: auto;
+}
+```
+
+[Código de la clase](https://github.com/platzi/consumo-api-rest-javascript/tree/b67034778148ecbec54241e476cec9b74427ce21)
 
 
+## 8. ¿Qué son los Métodos HTTP?
+
+**Verbos**: También conocidos como métodos HTTP, indican acciones que están asociadas a peticiones y recursos, es decir, sirven para la manipulación de recursos cliente/servidor. 
+
+### Los Verbos HTTP más comunes son:
+
+1. **GET**: Recupera los datos identificados por el URI (Uniform Resource Identifier) proporcionado. Por lo general, se utiliza para solicitar información.
+
+2. **POST**: Envía datos al servidor para crear o actualizar un recurso. Se utiliza para enviar información de formularios, subir archivos, etc.
+
+3. **PUT**: Actualiza los datos identificados por el URI proporcionado. Se utiliza para actualizar la información existente.
+
+4. **DELETE**: Elimina el recurso identificado por el URI proporcionado.
+
+5. **HEAD**: Recupera los encabezados de respuesta que se devolverían si se realizara una solicitud GET al URI proporcionado. Se utiliza para verificar la existencia de un recurso y obtener información sobre él, sin descargar el cuerpo completo de la respuesta.
+
+6. **OPTIONS**: Recupera los métodos HTTP que el servidor admite para un recurso determinado. Se utiliza para obtener información sobre los métodos disponibles para interactuar con un recurso.
+
+7. **PATCH**: Realiza una actualización parcial de los datos identificados por el URI proporcionado. Es similar a PUT, pero se utiliza para realizar pequeñas actualizaciones en lugar de reemplazar completamente un recurso.
+
+Estos son los verbos HTTP más comunes, pero también existen otros menos utilizados, como TRACE, CONNECT, PROPFIND, etc.
 
 
-
+- Verbos [[asincronismo-con-js#8. XMLHTTPRequest#Características del protocolo HTTP#Los Verbos HTTP mas comunes son]] 
+- Uso de Get, Post, Put y Delete [[get-post-put-delete]]
 
