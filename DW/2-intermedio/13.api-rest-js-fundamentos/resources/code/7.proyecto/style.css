@@ -44,6 +44,12 @@ h1, h2 {
   margin: 1rem auto;
 }
 
+span {
+  background-color: #4f46e5;
+  color: #cbd5e1;
+  padding: 1rem;
+}
+
 figure {
   position: relative;
   /* display: inline-block; */

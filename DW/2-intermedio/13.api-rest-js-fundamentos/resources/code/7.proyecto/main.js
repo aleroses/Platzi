@@ -22,27 +22,66 @@ async function load_random() {
 
 load_random(); */
 
-const querystring = ["?", "limit=3"].join("");
+const query_string = ["?", "limit=2"].join("");
+const API_KEY = [
+  "&",
+  "api_key=",
+  "live_W59yADfCl0zz50jHsAElmhFZEyJV6jC9RT3YY5Q43cP78HvD8XNGH80daxZBiTzY",
+].join("");
 
-const API_URL_RANDOM = `https://api.thecatapi.com/v1/images/search${querystring}&api_key=live_W59yADfCl0zz50jHsAElmhFZEyJV6jC9RT3YY5Q43cP78HvD8XNGH80daxZBiTzY`;
-const API_URL_FAVORITES = 'https://api.thecatapi.com/v1/favourites';
+const API_URL_RANDOM = `https://api.thecatapi.com/v1/images/search${query_string}${API_KEY}`;
+const API_URL_FAVORITES = `https://api.thecatapi.com/v1/favourites${query_string}${API_KEY}`;
 
 async function load_random() {
-  const response = await fetch(API_URL_RANDOM);
-  const data = await response.json();
+  try {
+    const response = await fetch(API_URL_RANDOM);
+    const container = document.querySelector(".container");
+    const request_failed = document.createElement("span");
 
-  //console.log(data);
-  const container = document.querySelector(".container");
-  container.innerHTML = "";
+    if (response.status === 200) {
+      const data = await response.json();
 
-  data.map((img) => {
-    const content = document.createElement("figure");
-    content.innerHTML = `
-      <img src="${img.url}" alt="Kitten pictures">
-      <img class="save" src="./heart.svg" alt="Heart icon">
-    `;
-    container.append(content);
-  });
+      /* console.log("Random");
+      console.log(data); */
+      container.innerHTML = "";
+
+      data.map((img) => {
+        const content = document.createElement("figure");
+        content.innerHTML = `
+        <img src="${img.url}" alt="Kitten pictures">
+        <img class="save" src="./heart.svg" alt="Heart icon">
+        `;
+        container.append(content);
+      });
+    } else {
+      request_failed.innerText = `Request failed. Status code: ${response.status}`;
+      container.append(request_failed);
+    }
+  } catch (e) {
+    request_failed.innerText = `An error occurred: ${e.message}`;
+    container.append(request_failed);
+  }
+}
+
+async function load_favorites() {
+  try {
+    const response = await fetch(API_URL_RANDOM);
+    const request_failed = document.createElement("span");
+
+    if (response.status === 200) {
+      const data = await response.json();
+
+      /* console.log("Random");
+      console.log(data); */
+    } else {
+      request_failed.innerText = `Request failed. Status code: ${response.status}`;
+      container.append(request_failed);
+    }
+  } catch (e) {
+    request_failed.innerText = `An error occurred: ${e.message}`;
+    container.append(request_failed);
+  }
 }
 
 load_random();
+load_favorites();
