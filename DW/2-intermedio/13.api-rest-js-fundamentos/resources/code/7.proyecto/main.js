@@ -44,12 +44,13 @@ async function load_random() {
       /* console.log("Random");
       console.log(data); */
       container.innerHTML = "";
+      let n_buttons = 1;
 
       data.map((img) => {
         const content = document.createElement("figure");
         content.innerHTML = `
         <img src="${img.url}" alt="Kitten pictures">
-        <img class="save" src="./heart.svg" alt="Heart icon">
+        <img class="save btn${n_buttons++}" onclick="save_favorites()" src="./heart.svg" alt="Heart icon">
         `;
         container.append(content);
       });
@@ -65,14 +66,14 @@ async function load_random() {
 
 async function load_favorites() {
   try {
-    const response = await fetch(API_URL_RANDOM);
+    const response = await fetch(API_URL_FAVORITES);
     const request_failed = document.createElement("span");
 
     if (response.status === 200) {
       const data = await response.json();
 
-      /* console.log("Random");
-      console.log(data); */
+      console.log("Favorites");
+      console.log(data);
     } else {
       request_failed.innerText = `Request failed. Status code: ${response.status}`;
       container.append(request_failed);
@@ -83,5 +84,34 @@ async function load_favorites() {
   }
 }
 
+async function save_favorites() {
+  try {
+    const response = await fetch(API_URL_FAVORITES, {
+      method: "POST", 
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        image_id: "dje", //cma.jpg
+      }),
+    });
+    const favorite_cat = document.querySelector(".favorite__cat");
+    const request_failed = document.createElement("span");
+
+    if (response.status === 200) {
+      const data = await response.json();
+      console.log(response);
+      console.log(data);
+    } else {
+      request_failed.innerText = `Request failed. Status code: ${response.status}`;
+      favorite_cat.append(request_failed);
+    }
+  } catch (e) {
+    request_failed.innerText = `An error occurred: ${e.message}`;
+    container.append(request_failed);
+  }
+}
+
 load_random();
 load_favorites();
+save_favorites();

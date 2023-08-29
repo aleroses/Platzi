@@ -852,3 +852,144 @@ span {
 ```
 
 [Documentación](https://developers.thecatapi.com/view-account/ylX4blBYT9FaoVd6OhvR?report=mkzf_eYzV)
+
+## 10. POST: guardando kittens favoritos
+
+Mi código...   
+```js
+const query_string = ["?", "limit=2"].join("");
+const API_KEY = [
+  "&",
+  "api_key=",
+  "live_W59yADfCl0zz50jHsAElmhFZEyJV6jC9RT3YY5Q43cP78HvD8XNGH80daxZBiTzY",
+].join("");
+
+const API_URL_RANDOM = `https://api.thecatapi.com/v1/images/search${query_string}${API_KEY}`;
+const API_URL_FAVORITES = `https://api.thecatapi.com/v1/favourites${query_string}${API_KEY}`;
+
+async function load_random() {
+  try {
+    const response = await fetch(API_URL_RANDOM);
+    const container = document.querySelector(".container");
+    const request_failed = document.createElement("span");
+
+    if (response.status === 200) {
+      const data = await response.json();
+
+      /* console.log("Random");
+      console.log(data); */
+      container.innerHTML = "";
+      let n_buttons = 1;
+
+      data.map((img) => {
+        const content = document.createElement("figure");
+        content.innerHTML = `
+        <img src="${img.url}" alt="Kitten pictures">
+        <img class="save btn${n_buttons++}" onclick="save_favorites()" src="./heart.svg" alt="Heart icon">
+        `;
+        container.append(content);
+      });
+    } else {
+      request_failed.innerText = `Request failed. Status code: ${response.status}`;
+      container.append(request_failed);
+    }
+  } catch (e) {
+    request_failed.innerText = `An error occurred: ${e.message}`;
+    container.append(request_failed);
+  }
+}
+
+async function load_favorites() {
+  try {
+    const response = await fetch(API_URL_FAVORITES);
+    const request_failed = document.createElement("span");
+
+    if (response.status === 200) {
+      const data = await response.json();
+
+      console.log("Favorites");
+      console.log(data);
+    } else {
+      request_failed.innerText = `Request failed. Status code: ${response.status}`;
+      container.append(request_failed);
+    }
+  } catch (e) {
+    request_failed.innerText = `An error occurred: ${e.message}`;
+    container.append(request_failed);
+  }
+}
+
+async function save_favorites() {
+  try {
+    const response = await fetch(API_URL_FAVORITES, {
+      method: "POST", 
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        image_id: "dje", //cma.jpg
+      }),
+    });
+    const favorite_cat = document.querySelector(".favorite__cat");
+    const request_failed = document.createElement("span");
+
+    if (response.status === 200) {
+      const data = await response.json();
+      console.log(response);
+      console.log(data);
+    } else {
+      request_failed.innerText = `Request failed. Status code: ${response.status}`;
+      favorite_cat.append(request_failed);
+    }
+  } catch (e) {
+    request_failed.innerText = `An error occurred: ${e.message}`;
+    container.append(request_failed);
+  }
+}
+
+load_random();
+load_favorites();
+save_favorites();
+```
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Random Kittens</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <h1>Random Kittens</h1>
+    <main id="random">
+      <h2>Kittens List</h2>
+      <section class="container">
+        <!-- 
+        <figure>
+          <img id="img1" width="150" alt="Random kittens" />
+          <img class="save" src="./heart.svg" alt="Heart icon">
+        </figure> -->
+      </section>
+
+      <button class="reload" onclick="load_random()">Random</button>
+    </main>
+
+    <section class="favorites" id="favorites">
+      <h2>Kittens Favorites</h2>
+      <div class="favorite__cat">
+        <!-- 
+        <figure>
+          <img id="img1" width="150" alt="Random kittens" />
+          <button class="delete">Delete</button>
+        </figure> -->
+      </div>
+    </section>
+
+    <script src="./main.js"></script>
+  </body>
+</html>
+```
+
+[Código de la clase](https://github.com/platzi/consumo-api-rest-javascript/blob/4b9b69002c84dfd0a4e3dd1a9b543f22b0398eb3/main.js)
