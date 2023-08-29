@@ -33,10 +33,10 @@ const API_URL_RANDOM = `https://api.thecatapi.com/v1/images/search${query_string
 const API_URL_FAVORITES = `https://api.thecatapi.com/v1/favourites${query_string}${API_KEY}`;
 
 async function load_random() {
+  const request_failed = document.createElement("span");
+  const container = document.querySelector(".container");
   try {
     const response = await fetch(API_URL_RANDOM);
-    const container = document.querySelector(".container");
-    const request_failed = document.createElement("span");
 
     if (response.status === 200) {
       const data = await response.json();
@@ -65,9 +65,11 @@ async function load_random() {
 }
 
 async function load_favorites() {
+  const container = document.querySelector(".container");
+  const request_failed = document.createElement("span");
+
   try {
     const response = await fetch(API_URL_FAVORITES);
-    const request_failed = document.createElement("span");
 
     if (response.status === 200) {
       const data = await response.json();
@@ -85,18 +87,20 @@ async function load_favorites() {
 }
 
 async function save_favorites() {
+  const favorite_cat = document.querySelector(".favorite__cat");
+  const request_failed = document.createElement("span");
+
   try {
     const response = await fetch(API_URL_FAVORITES, {
-      method: "POST", 
+      method: "POST",
       headers: {
         "Content-Type": "application/json",
+        /* "x-api-key": API_KEY, */
       },
       body: JSON.stringify({
         image_id: "dje", //cma.jpg
       }),
     });
-    const favorite_cat = document.querySelector(".favorite__cat");
-    const request_failed = document.createElement("span");
 
     if (response.status === 200) {
       const data = await response.json();
@@ -108,7 +112,7 @@ async function save_favorites() {
     }
   } catch (e) {
     request_failed.innerText = `An error occurred: ${e.message}`;
-    container.append(request_failed);
+    favorite_cat.append(request_failed);
   }
 }
 
