@@ -861,7 +861,7 @@ const query_string = ["?", "limit=2"].join("");
 const API_KEY = [
   "&",
   "api_key=",
-  "live_W59yADfCl0zz50jHsAElmhFZEyJV6jC9RT3YY5Q43cP78HvD8XNGH80daxZBiTzY",
+  "lover_W59yEyJV6jC9RT3YYGH80daxZBiTzY",
 ].join("");
 
 const API_URL_RANDOM = `https://api.thecatapi.com/v1/images/search${query_string}${API_KEY}`;

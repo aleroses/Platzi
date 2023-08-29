@@ -24,7 +24,7 @@ load_random(); */
 
 const query_string = ["?", "limit=2"].join("");
 const API_KEY = [
-  "&",
+  "&", //?
   "api_key=",
   "live_W59yADfCl0zz50jHsAElmhFZEyJV6jC9RT3YY5Q43cP78HvD8XNGH80daxZBiTzY",
 ].join("");
@@ -41,8 +41,8 @@ async function load_random() {
     if (response.status === 200) {
       const data = await response.json();
 
-      /* console.log("Random");
-      console.log(data); */
+      console.log("Random");
+      console.log(data);
       container.innerHTML = "";
       let n_buttons = 1;
 
@@ -95,7 +95,6 @@ async function save_favorites() {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        /* "x-api-key": API_KEY, */
       },
       body: JSON.stringify({
         image_id: "dje", //cma.jpg
@@ -104,7 +103,8 @@ async function save_favorites() {
 
     if (response.status === 200) {
       const data = await response.json();
-      console.log(response);
+      //console.log('Save');
+      console.log('Save ', response);
       console.log(data);
     } else {
       request_failed.innerText = `Request failed. Status code: ${response.status}`;
@@ -118,4 +118,4 @@ async function save_favorites() {
 
 load_random();
 load_favorites();
-save_favorites();
+//save_favorites();
