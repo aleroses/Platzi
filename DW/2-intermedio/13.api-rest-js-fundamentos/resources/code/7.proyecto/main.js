@@ -35,7 +35,7 @@ const API_URL_RANDOM = `https://api.thecatapi.com/v1/images/search${query_string
 const API_URL_FAVORITES = `https://api.thecatapi.com/v1/favourites?${API_KEY}`;
 //const API_URL_IMAGES = `https://api.thecatapi.com/v1/images?${API_KEY}`;
 const API_URL_FAVORITES_DELETE = (id) =>
-  `https://api.thecatapi.com/v1/favourites/${id}?{API_KEY}`;
+  `https://api.thecatapi.com/v1/favourites/:${id}?${API_KEY}`;
 
 const request_failed = document.createElement("span");
 const container = document.querySelector(".container");
@@ -85,13 +85,15 @@ async function load_favorites() {
 
       let n = 0;
 
+      const content = document.createElement("figure");
+      content.innerHTML = "";
+
       data.forEach((kitten) => {
-        const content = document.createElement("figure");
         content.innerHTML = `
         <img class="img${n++}" src="${kitten.image.url}" alt="Kitten pictures">
-        <img class="delete btn${n}"    src="./svg/delete.svg" alt="Delete icon">
+        <img class="delete btn${n}" onclick="delete_favorites(${kitten.id.toString()})" src="./svg/delete.svg" alt="Delete icon">
         `;
-
+        //console.log(kitten.id);
         favorite_cat.append(content);
       });
     } else {
@@ -122,6 +124,8 @@ async function save_favorites(id) {
       //console.log('Save');
       console.log("Save ", response);
       console.log(data);
+
+      load_favorites();
     } else {
       request_failed.innerText = `Request failed. Status code: ${response.status}`;
       favorite_cat.append(request_failed);
@@ -137,11 +141,21 @@ async function delete_favorites(id) {
     const response = await fetch(API_URL_FAVORITES_DELETE(id), {
       method: "DELETE",
     });
-  } catch (error) {
-    
+
+    if (response.status === 200) {
+      const data = await response.json();
+      console.log("Delete", response);
+      console.log(data);
+
+      load_favorites();
+    } else {
+      request_failed.innerText = `Request failed. Status code: ${response.status}`;
+      favorite_cat.append(request_failed);
+    }
+  } catch (e) {
+    request_failed.innerText = `An error occurred: ${e.message}`;
+    favorite_cat.append(request_failed);
   }
-
-
 }
 
 load_random();
