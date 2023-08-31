@@ -88,12 +88,26 @@ button {
   margin: 0 auto;
 }
 
-.delete {
-  width: 5rem;
-  height: 2rem;
-}
-
 .favorites {
   width: 80vw;
   height: auto;
+  margin: 0 auto;
 }
+
+.favorite__cat {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(160px, 100%), 1fr));
+  gap: 1rem;
+  /* width: 80vw; */
+  margin: 1rem auto;
+}
+
+
+.delete {
+  width: 2rem;
+  height: 2rem;
+  position: absolute;
+  right: 0;
+  top: 6px;
+}
+

@@ -24,17 +24,24 @@ load_random(); */
 
 const query_string = ["?", "limit=2"].join("");
 const API_KEY = [
-  "&", //?
+  //"?", ? &
   "api_key=",
   "live_W59yADfCl0zz50jHsAElmhFZEyJV6jC9RT3YY5Q43cP78HvD8XNGH80daxZBiTzY",
 ].join("");
 
-const API_URL_RANDOM = `https://api.thecatapi.com/v1/images/search${query_string}${API_KEY}`;
-const API_URL_FAVORITES = `https://api.thecatapi.com/v1/favourites${query_string}${API_KEY}`;
+// Api Key que si funciona: c08d415f-dea7-4a38-bb28-7b2188202e46
+
+const API_URL_RANDOM = `https://api.thecatapi.com/v1/images/search${query_string}&${API_KEY}`;
+const API_URL_FAVORITES = `https://api.thecatapi.com/v1/favourites?${API_KEY}`;
+//const API_URL_IMAGES = `https://api.thecatapi.com/v1/images?${API_KEY}`;
+const API_URL_FAVORITES_DELETE = (id) =>
+  `https://api.thecatapi.com/v1/favourites/${id}?{API_KEY}`;
+
+const request_failed = document.createElement("span");
+const container = document.querySelector(".container");
+const favorite_cat = document.querySelector(".favorite__cat");
 
 async function load_random() {
-  const request_failed = document.createElement("span");
-  const container = document.querySelector(".container");
   try {
     const response = await fetch(API_URL_RANDOM);
 
@@ -44,13 +51,15 @@ async function load_random() {
       console.log("Random");
       console.log(data);
       container.innerHTML = "";
-      let n_buttons = 1;
+      let n = 0;
 
       data.map((img) => {
         const content = document.createElement("figure");
         content.innerHTML = `
-        <img src="${img.url}" alt="Kitten pictures">
-        <img class="save btn${n_buttons++}" onclick="save_favorites()" src="./heart.svg" alt="Heart icon">
+        <img class="img${n++}" src="${img.url}" alt="Kitten pictures">
+        <img class="save btn${n}" onclick="save_favorites('${
+          img.id
+        }')" src="./svg/heart.svg" alt="Heart icon"> 
         `;
         container.append(content);
       });
@@ -65,9 +74,6 @@ async function load_random() {
 }
 
 async function load_favorites() {
-  const container = document.querySelector(".container");
-  const request_failed = document.createElement("span");
-
   try {
     const response = await fetch(API_URL_FAVORITES);
 
@@ -76,6 +82,18 @@ async function load_favorites() {
 
       console.log("Favorites");
       console.log(data);
+
+      let n = 0;
+
+      data.forEach((kitten) => {
+        const content = document.createElement("figure");
+        content.innerHTML = `
+        <img class="img${n++}" src="${kitten.image.url}" alt="Kitten pictures">
+        <img class="delete btn${n}"    src="./svg/delete.svg" alt="Delete icon">
+        `;
+
+        favorite_cat.append(content);
+      });
     } else {
       request_failed.innerText = `Request failed. Status code: ${response.status}`;
       container.append(request_failed);
@@ -86,25 +104,23 @@ async function load_favorites() {
   }
 }
 
-async function save_favorites() {
-  const favorite_cat = document.querySelector(".favorite__cat");
-  const request_failed = document.createElement("span");
-
+async function save_favorites(id) {
   try {
     const response = await fetch(API_URL_FAVORITES, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        "x-api-key": API_KEY,
       },
       body: JSON.stringify({
-        image_id: "dje", //cma.jpg
+        image_id: id, //cma.jpg
       }),
     });
 
     if (response.status === 200) {
       const data = await response.json();
       //console.log('Save');
-      console.log('Save ', response);
+      console.log("Save ", response);
       console.log(data);
     } else {
       request_failed.innerText = `Request failed. Status code: ${response.status}`;
@@ -114,6 +130,18 @@ async function save_favorites() {
     request_failed.innerText = `An error occurred: ${e.message}`;
     favorite_cat.append(request_failed);
   }
+}
+
+async function delete_favorites(id) {
+  try {
+    const response = await fetch(API_URL_FAVORITES_DELETE(id), {
+      method: "DELETE",
+    });
+  } catch (error) {
+    
+  }
+
+
 }
 
 load_random();

@@ -997,3 +997,173 @@ save_favorites();
 ```
 
 [Código de la clase](https://github.com/platzi/consumo-api-rest-javascript/blob/4b9b69002c84dfd0a4e3dd1a9b543f22b0398eb3/main.js)
+
+## 11. Consultas a la API para escribir HTML dinámico
+
+Usando mi propia API KEY nos muestra una lista de 100 imágenes como favoritos, pero usando la API KEY de la clase funciona bien. 
+
+```js
+const query_string = ["?", "limit=2"].join("");
+const API_KEY = [
+  //"?", ? &
+  "api_key=",
+  "love_W59yADfElmhFZEyJV6jC9RT3YY5Q43cP7GH80dax",
+].join("");
+
+// Api Key que si funciona: 
+// c08d415f-dea7-4a38-bb28-7b2188202e46 👈👀
+
+const API_URL_RANDOM = `https://api.thecatapi.com/v1/images/search${query_string}&${API_KEY}`;
+const API_URL_FAVORITES = `https://api.thecatapi.com/v1/favourites?${API_KEY}`;
+const API_URL_IMAGES = `https://api.thecatapi.com/v1/images?${API_KEY}`;
+
+const request_failed = document.createElement("span");
+const container = document.querySelector(".container");
+const favorite_cat = document.querySelector(".favorite__cat");
+
+async function load_random() {
+  try {
+    const response = await fetch(API_URL_RANDOM);
+
+    if (response.status === 200) {
+      const data = await response.json();
+
+      console.log("Random");
+      console.log(data);
+      container.innerHTML = "";
+      let n = 0;
+
+      data.map((img) => {
+        const content = document.createElement("figure");
+        content.innerHTML = `
+        <img class="img${n++}" src="${img.url}" alt="Kitten pictures">
+        <img class="save btn${n}" onclick="save_favorites('${
+          img.id
+        }')" src="./svg/heart.svg" alt="Heart icon"> 
+        `;
+        container.append(content);
+      });
+    } else {
+      request_failed.innerText = `Request failed. Status code: ${response.status}`;
+      container.append(request_failed);
+    }
+  } catch (e) {
+    request_failed.innerText = `An error occurred: ${e.message}`;
+    container.append(request_failed);
+  }
+}
+
+async function load_favorites() {
+  try {
+    const response = await fetch(API_URL_FAVORITES);
+
+    if (response.status === 200) {
+      const data = await response.json();
+
+      console.log("Favorites");
+      console.log(data);
+
+      let n = 0;
+
+      data.forEach((kitten) => {
+        const content = document.createElement("figure");
+        content.innerHTML = `
+        <img class="img${n++}" src="${kitten.image.url}" alt="Kitten pictures">
+        <img class="save btn${n}"    src="./svg/delete.svg" alt="Delete icon">
+        `;
+
+        favorite_cat.append(content);
+      });
+    } else {
+      request_failed.innerText = `Request failed. Status code: ${response.status}`;
+      container.append(request_failed);
+    }
+  } catch (e) {
+    request_failed.innerText = `An error occurred: ${e.message}`;
+    container.append(request_failed);
+  }
+}
+
+async function save_favorites(id) {
+  try {
+    const response = await fetch(API_URL_FAVORITES, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "x-api-key": API_KEY,
+      },
+      body: JSON.stringify({
+        image_id: id, //cma.jpg
+      }),
+    });
+
+    if (response.status === 200) {
+      const data = await response.json();
+      //console.log('Save');
+      console.log("Save ", response);
+      console.log(data);
+    } else {
+      request_failed.innerText = `Request failed. Status code: ${response.status}`;
+      favorite_cat.append(request_failed);
+    }
+  } catch (e) {
+    request_failed.innerText = `An error occurred: ${e.message}`;
+    favorite_cat.append(request_failed);
+  }
+}
+
+load_random();
+load_favorites();
+//save_favorites();
+```
+
+### append() vs appendChild()
+
+En JavaScript, tanto el método `append()` como el método `appendChild()` se utilizan para agregar elementos a un elemento padre en el DOM (Documento Object Model). Sin embargo, hay una diferencia clave entre ellos.
+
+El método `append()` es un método más reciente y más versátil que `appendChild()`. Puede aceptar múltiples argumentos separados por comas y también puede aceptar objetos DOM, cadenas de texto y otros tipos de datos. Estos argumentos se agregan al final del elemento padre en el orden en que se proporcionan.
+
+Aquí hay un ejemplo de cómo se usa el método `append()`:
+
+```javascript
+const parentElement = document.getElementById('my-parent-element');
+const childElement1 = document.createElement('div');
+const childElement2 = document.createElement('p');
+const textNode = document.createTextNode('Hello, world!');
+
+parentElement.append(childElement1, childElement2, textNode);
+```
+
+En este ejemplo, el método `append()` agrega `childElement1`, `childElement2` y `textNode` al final del elemento padre `parentElement`.
+
+Por otro lado, el método `appendChild()` es un método más antiguo y solo puede aceptar un solo argumento, que debe ser un objeto DOM. Este método agrega el elemento proporcionado como argumento al final del elemento padre.
+
+Aquí hay un ejemplo de cómo se usa el método `appendChild()`:
+
+```javascript
+const parentElement = document.getElementById('my-parent-element');
+const childElement = document.createElement('div');
+
+parentElement.appendChild(childElement);
+```
+
+En este ejemplo, el método `appendChild()` agrega `childElement` al final del elemento padre `parentElement`.
+
+En resumen, la principal diferencia entre `append()` y `appendChild()` radica en su capacidad para aceptar múltiples argumentos y tipos de datos. `append()` es más flexible y puede agregar varios elementos y tipos de datos al final del elemento padre, mientras que `appendChild()` solo puede agregar un objeto DOM al final del elemento padre.
+
+## 12. DELETE: borrando kittens favoritos
+
+```js
+
+```
+
+- [Código de la clase](https://github.com/platzi/consumo-api-rest-javascript/tree/059992c2290a96254fc8ed53c7668debe6aef1a7)
+- [Documentación](https://developers.thecatapi.com/view-account/ylX4blBYT9FaoVd6OhvR?report=mkzf_eYzV)
+
+
+
+```js
+```
+
+```js
+```
