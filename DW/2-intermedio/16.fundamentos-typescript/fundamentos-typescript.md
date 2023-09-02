@@ -51,4 +51,237 @@ En general, el uso de TypeScript puede mejorar la calidad del código, la produc
 - Node 
 - Google Chrome 
 
-## 
+## 2. TypeScript vs. JavaScript
+
+¿TypeScript es diferente a JavaScript? ¿Un desarrollador en TypeScript es diferente a uno en JavaScript? La respuesta a ambas es sí, sin embargo, no hay una notable diferencia. Uno (TypeScript) se base en el otro (JavaScript) añadiendo elementos para mejorar la detección de bugs y experiencia de desarrollo.
+
+### Panorama
+
+JavaScript ha sufrido un incremento exponencial en su uso, pues se puede usar en Frontend, Backend, IoT, entre otros. No obstante, este no fue creado como un lenguaje maduro desde el inicio, fue con el tiempo que ha ido mejorando hasta lo que es hoy en día.
+
+En JavaScript solo te das cuenta de que tienes un error hasta el momento en que lo ejecutas, sea en el navegador o en un entorno de ejecución como NodeJS, más no antes. Lo que queremos como desarrolladores es obtener retroalimentación lo antes posible para tener la menor cantidad de errores en producción
+
+### El aporte de TypeScript
+
+TypeScript abarca todo lo que tiene JavaScript, más las nuevas versiones de ECMAScript, y añade análisis estático a nuestro código.  
+
+![¿Qué engloba Typescript?](https://static.platzi.com/media/articlases/Images/ctf-4.jpg)
+
+#### ¿Qué significa análisis de código estático?
+
+> Entre más rápido encuentres un error, más fácil será solucionarlo
+
+En el libro _Software Engineering at Google_[1] señalan ciertas capas para detectar fallas en el desarrollo de programas:
+
+1. **Análisis de código estático:** corre en el editor de código en busca de un typo (error en la escritura de un término), llamadas incorrectas a funciones y brinda autocompletado de código
+2. **Pruebas Unitarias (Unit Tests):** se realiza pruebas para verificar si una parte del código hace lo que queremos que ejecute
+3. **Pruebas de Integración (Integration Tests):** vemos como todo el código funciona en conjunto y que se ejecute cómo deseamos
+4. **Revisión de código (Code Review):** se verifica si se ha seguido con las normas, estándares y mejores prácticas establecidas por el equipo.
+
+[1] Software Engineering at Google. Lessons Learned from Programming Over Time - Titus Winters, Tom Manshreck y Hyrum Wright.
+
+- [Software Engineering at Google](https://swizec.com/blog/what-i-learned-from-software-engineering-at-google/)
+- [Libro: Software Engineering at Google](https://abseil.io/resources/swe-book)
+
+## 3. Configurado nuestro proyecto
+
+Instalaremos TypeScript solo para este proyecto, pero primero debemos tener la siguiente estructura:   
+
+```bash
+╰─ tree -L 3
+.
+├── node_modules
+│   └── typescript
+│       ├── LICENSE.txt
+│       ├── README.md
+│       ├── SECURITY.md
+│       ├── ThirdPartyNoticeText.txt
+│       ├── bin
+│       ├── lib
+│       └── package.json
+├── package-lock.json
+├── package.json
+└── src
+```
+
+Para crear los archivos y carpetas podemos usar la CLI o hacerlo desde VSC. 
+
+```bash
+mkdir ts-project
+cd ts-project
+code .
+```
+
+Una vez en Visual Studio Code creamos los archivos `.gitignore` y `.editorconfig`. 
+
+Para añadir todo lo necesario dentro del primer archivo podemos usar la web [gitignore.io](https://www.toptal.com/developers/gitignore) y buscar **Windows**, **macOS**, **Linux** y **Node**, luego copiamos el resultado dentro del archivo. 
+
+Para el segundo archivo necesitamos instalar la extensión `EditorConfig for VS Code` y luego agregarle lo siguiente: 
+
+```
+# Editor configuration, see https://editorconfig.org
+root = true
+
+[*]
+charset = utf-8
+indent_style = space
+indent_size = 2
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+[*.ts]
+quote_type = single
+
+[*.md]
+max_line_length = off
+trim_trailing_whitespace = false
+```
+
+Después de tener esto, abrimos la consola de VSC usando `Ctrl + ñ` y ejecutamos los siguientes comando:  
+
+```bash
+npm init -y
+npm install typescript --save-dev
+npx tsc --version  
+	(Version 5.2.2)
+```
+
+
+
+- Plugin: EditorConfig for VS Code
+- [Documentación npm-init](https://docs.npmjs.com/cli/v7/commands/npm-init)
+
+## 4. Atrapando bugs
+
+Usando la extensión Error Lens ⚠ me muestra solo un error, pero al agregar dentro del código `// @ts-check` ahora vemos que tenemos muchos errores. 
+
+```js
+// @ts-check
+(()=> {
+  const myCart = [];
+  const products = [];
+  const limit = 2;
+
+  async function getProducts() {
+    const rta = await fetch('http://api.escuelajs.co/api/v1/products', {
+      mehtod: 'GET'
+    });
+    const data = await rta.parseJson();
+    products.concat(data);
+  }
+  function getTotal() {
+    const total = 0;
+    for (const i = 0; i < products.length(); i++) {
+      total += products[i].prize;
+    }
+    return total;
+  }
+  function addProduct(index) {
+    if (getTotal <= limit) {
+      myCart.push(products[index]);
+    }
+  }
+
+  await getProducts(); ❌👈👀 Error Lens 
+  addProducto(1);
+  addProducto(2);
+  const total = getTotal();
+  console.log(total);
+  const person = {
+    name: 'Nicolas',
+    lastName: 'Molina'
+  }
+  const rta = person +  limit;
+  console.log(rta);
+});
+```
+
+Código sin errores:   
+```js
+// @ts-check
+async () => {
+  const myCart = [];
+  const products = [];
+  const limit = 2;
+
+  async function getProducts() {
+    const rta = await fetch("http://api.escuelajs.co/api/v1/products", {
+      method: "GET",
+    });
+    const data = await rta.json();
+    products.concat(data);
+  }
+
+  function getTotal() {
+    let total = 0;
+
+    for (let i = 0; i < products.length; i++) {
+      total += products[i].prize;
+    }
+
+    return total;
+  }
+
+  function addProduct(index) {
+    if (getTotal() <= limit) {
+      myCart.push(products[index]);
+    }
+  }
+
+  await getProducts();
+  addProduct(1);
+  addProduct(2);
+
+  const total = getTotal();
+  console.log(total);
+
+  const person = {
+    name: "Nicolas",
+    lastName: "Molina",
+  };
+  const rta = `${person}: ${limit}`;
+  console.log(rta);
+};
+
+```
+
+### `//@ts-check`
+
+La directiva `//@ts-check` es una directiva de TypeScript que se utiliza en archivos de código JavaScript para habilitar la comprobación de tipos estática en ese archivo específico, incluso si el archivo no se ha convertido completamente a TypeScript.
+
+Cuando se incluye `//@ts-check` en la parte superior de un archivo JavaScript, el compilador de TypeScript realizará una verificación estática de tipos en ese archivo y mostrará advertencias y errores relacionados con los tipos de datos.
+
+Esta directiva es útil cuando se trabaja en un proyecto que es principalmente JavaScript, pero se desea aprovechar las ventajas de la comprobación de tipos estática proporcionada por TypeScript. Al agregar `//@ts-check`, se pueden detectar errores de tipos y recibir sugerencias y autocompletado mejorados en el editor o entorno de desarrollo.
+
+Es importante tener en cuenta que `//@ts-check` no convierte automáticamente el archivo JavaScript a TypeScript ni habilita todas las características de TypeScript. Simplemente habilita la comprobación de tipos estática en ese archivo en particular.
+
+Aquí hay un ejemplo de cómo se puede utilizar `//@ts-check` en un archivo JavaScript:
+
+```js
+//@ts-check
+
+function sum(a, b) {
+  return a + b;
+}
+
+sum(10, "20"); // Error de tipos: se está intentando sumar un número y una cadena
+```
+
+En este caso, al habilitar `//@ts-check`, el compilador de TypeScript mostrará un error de tipo en la llamada a la función `sum`, ya que se está intentando sumar un número y una cadena, lo cual es incompatible.
+
+En resumen, `//@ts-check` es una directiva de TypeScript que se utiliza en archivos JavaScript para habilitar la comprobación de tipos estática en ese archivo específico, lo que permite detectar errores de tipos y recibir sugerencias mejoradas en el editor o entorno de desarrollo.
+
+[Working with JavaScript](https://code.visualstudio.com/docs/nodejs/working-with-javascript#_type-checking-javascript)
+
+
+
+
+
+
+
+
+
+
+
+
+
