@@ -1,7 +1,8 @@
 # Curso de API REST con Javascript: Fundamentos
 
+> Curso desactualizado... 
 > Inicio: `25-08-2023`
-> Finalización: ``
+> Finalización: `01-09-2023`
 
 ## 1. ¿Qué es una API REST?
 
@@ -1125,7 +1126,7 @@ El método `append()` es un método más reciente y más versátil que `appendCh
 
 Aquí hay un ejemplo de cómo se usa el método `append()`:
 
-```javascript
+```js
 const parentElement = document.getElementById('my-parent-element');
 const childElement1 = document.createElement('div');
 const childElement2 = document.createElement('p');
@@ -1140,7 +1141,7 @@ Por otro lado, el método `appendChild()` es un método más antiguo y solo pued
 
 Aquí hay un ejemplo de cómo se usa el método `appendChild()`:
 
-```javascript
+```js
 const parentElement = document.getElementById('my-parent-element');
 const childElement = document.createElement('div');
 
@@ -1152,6 +1153,8 @@ En este ejemplo, el método `appendChild()` agrega `childElement` al final del e
 En resumen, la principal diferencia entre `append()` y `appendChild()` radica en su capacidad para aceptar múltiples argumentos y tipos de datos. `append()` es más flexible y puede agregar varios elementos y tipos de datos al final del elemento padre, mientras que `appendChild()` solo puede agregar un objeto DOM al final del elemento padre.
 
 ## 12. DELETE: borrando kittens favoritos
+
+Si logras borrar las imágenes házmelo saber en este [comentario](https://platzi.com/discusiones/2985-api/332494-nuevas-api_key-al-usar-una-api_key-creada-por-estos-dias-no-funciona-lo-de-anadir-favoritos-pero-si-uso-la-api_key-del-profe-magicame/), de todas maneras dejo mi código para que lo veas. 
 
 ```js
 const query_string = ["?", "limit=2"].join("");
@@ -1299,10 +1302,447 @@ load_favorites();
 - [Código de la clase](https://github.com/platzi/consumo-api-rest-javascript/tree/059992c2290a96254fc8ed53c7668debe6aef1a7)
 - [Documentación](https://developers.thecatapi.com/view-account/ylX4blBYT9FaoVd6OhvR?report=mkzf_eYzV)
 
+## 13. ¿Qué son los Headers HTTP?
 
+En JavaScript, los encabezados (headers) se utilizan para comunicarse con una API (Application Programming Interface) y enviar información adicional junto con una solicitud HTTP. Los encabezados son pares clave-valor que se incluyen en la solicitud para proporcionar detalles sobre la solicitud o para controlar el comportamiento de la API.
+
+Cuando interactúas con una API, es posible que necesites enviar ciertos encabezados para cumplir con los requisitos de autenticación, especificar el formato de los datos que esperas recibir o proporcionar metadata adicional.
+
+Puedes agregar encabezados a una solicitud HTTP utilizando el objeto `Headers` (o encabezados) en JavaScript. Aquí hay un ejemplo básico de cómo puedes crear y agregar encabezados a una solicitud:
 
 ```js
+// Crear un objeto Headers
+const headers = new Headers();
+
+// Agregar encabezados a la solicitud
+headers.append('Content-Type', 'application/json'); // Establece el tipo de contenido como JSON
+headers.append('Authorization', 'Bearer your_token'); // Agrega un encabezado de autorización con un token de acceso
+
+// Realizar una solicitud HTTP utilizando los encabezados
+fetch('https://api.example.com/data', {
+  method: 'GET',
+  headers: headers
+})
+  .then(response => response.json())
+  .then(data => {
+    // Hacer algo con los datos de la respuesta
+    console.log(data);
+  })
+  .catch(error => {
+    // Manejar errores
+    console.error(error);
+  });
 ```
 
+En este ejemplo, creamos un objeto `Headers` y luego usamos el método `append` para agregar dos encabezados: `Content-Type` y `Authorization`. El encabezado `Content-Type` se establece en `application/json`, lo que indica que esperamos recibir datos en formato JSON. El encabezado `Authorization` se utiliza para autenticar la solicitud y se establece con un token de acceso.
+
+Luego, utilizamos la función `fetch` para realizar una solicitud GET a la URL `https://api.example.com/data` y pasamos el objeto `Headers` en la propiedad `headers` de la configuración de la solicitud.
+
+Recuerda que los encabezados específicos que debes enviar pueden variar según la API con la que estés trabajando. Deberás consultar la documentación de la API para conocer los encabezados necesarios y su formato adecuado.
+
+### Tipos de Headers  
+
+Los encabezados HTTP son parámetros que se envían en una transacción HTTP y contienen información relevante sobre el estado de la transacción en curso.
+
+Cuando un cliente realiza una solicitud a un servidor, este puede enviar información adicional en el encabezado de la solicitud. Esta información puede incluir detalles sobre el recurso solicitado y datos sobre el cliente que realiza la solicitud, como autenticación y políticas de caché.
+
+#### Request Headers
+
+Algunos ejemplos de encabezados de solicitud son:
+
+- `Accept`: Informa al servidor sobre el tipo de datos que el cliente puede entender o aceptar. Por ejemplo, se puede especificar que se acepta contenido en formato HTML, XML o imágenes.  
 ```js
+Accept: text/html 
+Accept: application/xhtml+xml 
+Accept: image/png
 ```
+
+- `Accept-Encoding`: Envía información sobre el tipo de codificación que el cliente puede entender, como la compresión gzip.  
+```js
+Accept-Encoding: gzip
+Accept-Encoding: gzip, compress
+```
+
+- `Authorization`: Se utiliza para enviar credenciales al servidor y determinar si el cliente tiene acceso a ciertos recursos. Puede incluir diferentes tipos de autenticación, como Basic o Bearer tokens.  
+```js
+Authorization: Basic YWxhZGRpbjpvcGVuc2VzYW1l 
+Authorization: Bearer eyYWxhZGRpbjpvcGVuc2VzYW1l
+```
+
+- `Accept-Language`: Permite al servidor conocer el idioma preferido por el cliente para enviar respuestas localizadas, como horarios, fechas o medidas específicas del idioma.
+```js
+Accept-Language: fr-CH
+Accept-Language: en-US
+```
+
+#### Response Headers  
+
+Por otro lado, los encabezados de respuesta son enviados por el servidor en su respuesta al cliente y proporcionan información sobre el estado de la solicitud. 
+
+Algunos ejemplos de encabezados de respuesta son:
+
+- `Age`: Contiene información sobre el tiempo que un objeto ha estado en caché.
+```js
+Age: 24
+```
+
+- `Server`: Describe el software utilizado por el servidor que maneja la solicitud.  
+```js
+Server: Apache/2.4.1 (Unix)
+```
+
+- `Location`: Indica la URL a la que se debe redirigir una página, especialmente en respuestas de redireccionamiento.
+
+#### Representation Headers  
+
+Los Representation Headers (encabezados de representación) son un tipo de encabezados HTTP que proporcionan información sobre el cuerpo de una solicitud o respuesta. Estos encabezados están relacionados con la representación del contenido, es decir, con el formato y el tipo de datos que se envían o reciben.
+
+Aquí hay algunos ejemplos de Representation Headers:
+
+- `Content-Type`: Este encabezado indica el tipo de contenido o formato de archivo que se envía en el cuerpo de una solicitud o respuesta. Por ejemplo, se puede establecer como "application/json" para indicar que el contenido es un objeto JSON, o "text/html" para indicar que el contenido es una página HTML.   
+```js
+Content-Type: text/html; charset=UTF-8
+```
+
+- `Content-Encoding`: Este encabezado se utiliza para indicar la codificación aplicada al cuerpo de una respuesta. Puede especificar la compresión utilizada, como "gzip" o "deflate", lo que permite al cliente descomprimir correctamente el contenido.   
+```js
+Content-Encoding: compress 
+Content-Encoding: gzip
+```
+
+
+- `Content-Language`: Este encabezado indica el idioma principal o los idiomas en los que está escrito el contenido del cuerpo de la respuesta. Ayuda a los clientes a determinar el idioma preferido para presentar la respuesta al usuario.  
+```js
+Content-Language: en-US
+Content-Language: en-CA
+```
+
+- `Content-Length`: Este encabezado indica la longitud en bytes del cuerpo de la solicitud o respuesta. Es útil para que el receptor pueda determinar cuántos bytes debe leer para completar la lectura del contenido.
+
+- `Content-Disposition`: Este encabezado se utiliza para indicar si el contenido del cuerpo de la respuesta debe mostrarse directamente al usuario o si se debe descargar como un archivo adjunto. Puede especificar el nombre de archivo sugerido y otros parámetros relacionados con la presentación del contenido.
+
+Estos encabezados son importantes tanto para el cliente como para el servidor, ya que permiten una comunicación efectiva sobre el tipo y formato de los datos intercambiados. Al utilizar los encabezados de representación adecuados, se asegura que el cliente pueda interpretar y procesar correctamente el contenido enviado por el servidor.
+
+Es importante tener en cuenta que los encabezados de representación pueden variar según la API o el servicio web al que estés accediendo. Consulta la documentación correspondiente para obtener detalles precisos sobre los encabezados de representación requeridos y su formato adecuado en cada caso.
+
+
+- [Headers](https://apipheny.io/api-headers/)
+- [Documentación](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers)  
+
+## 14. Header de autorización
+
+Usar la siguiente forma para proporcionar nuestra API KEY es igual de inseguro. 
+
+```js
+const response = await fetch(
+'https://api.thecatapi.com/v1/favourites?limit=20&sub_id=user-123&order=DESC',{
+    headers:{
+        "content-type":"application/json",
+        'x-api-key': 'YOUR-KEY' 👈👀
+    }
+});
+const favourites = await response.json();
+```
+
+Para ver la API KEY utilizada en alguna web solo te vas al inspector de elementos en el apartado `Network`, veremos varias opciones en la parte inferior, en este caso necesitamos ver la de `favourites`. Verás que se muestran bastantes opciones y justo debajo encontrarás la API KEY usada.  
+
+![](https://i.postimg.cc/x1b4J9T2/14-ver-api-key.png)
+
+
+- [Rest Client | Extension de Visual Studio Code](https://www.youtube.com/watch?v=3QLcHjNp-08)
+- [Extensión Rest Client](https://blog.bitsrc.io/vs-codes-rest-client-plugin-is-all-you-need-to-make-api-calls-e9e95fcfd85a)
+
+## 15. Header de Content-Type
+
+El encabezado `Content-Type` es uno de los encabezados de representación más importantes en HTTP. Indica el tipo de contenido o formato de archivo que se envía en el cuerpo de una solicitud o respuesta. El valor del encabezado `Content-Type` especifica la naturaleza del contenido y permite que los agentes de usuario interpreten y procesen adecuadamente los datos.
+
+El valor del `Content-Type` consta de dos partes: el tipo de medio (media type) y, opcionalmente, el subtipo. Estas partes están separadas por una barra diagonal (/). El tipo de medio se refiere a la categoría general del contenido, mientras que el subtipo indica una forma o variante específica dentro de esa categoría.
+
+Aquí hay algunos ejemplos de tipos de medios y subtipos comunes utilizados en el encabezado `Content-Type`:
+
+- `text/html`: Indica que el contenido es una página HTML, que se muestra en los navegadores web.
+- `application/json`: Indica que el contenido es un objeto JSON (JavaScript Object Notation), utilizado para intercambiar datos estructurados entre aplicaciones.
+- `application/xml`: Indica que el contenido es un documento XML (eXtensible Markup Language), utilizado para representar datos estructurados y compartir información entre sistemas.
+- `application/pdf`: Indica que el contenido es un archivo PDF (Portable Document Format), utilizado para presentar documentos de manera independiente del software, hardware y sistema operativo utilizados.
+- `image/jpeg`: Indica que el contenido es una imagen en formato JPEG (Joint Photographic Experts Group), comúnmente utilizado para almacenar fotografías y gráficos en formato comprimido.
+- `audio/mp3`: Indica que el contenido es un archivo de audio en formato MP3, ampliamente utilizado para la reproducción de música y otros sonidos.
+- `video/mp4`: Indica que el contenido es un archivo de video en formato MP4 (MPEG-4 Part 14), utilizado para almacenar y reproducir videos de alta calidad.
+
+Estos son solo algunos ejemplos de tipos de medios y subtipos comunes, pero existen muchos más. Además, es posible utilizar parámetros adicionales en el encabezado `Content-Type` para proporcionar información adicional sobre la codificación de caracteres, la versión del formato, etc.
+
+Es importante establecer correctamente el `Content-Type` para que el receptor pueda interpretar y procesar adecuadamente el contenido. Cuando se envía una solicitud, el cliente especifica el `Content-Type` que está enviando al servidor. Por otro lado, cuando el servidor envía una respuesta, incluye el `Content-Type` para indicar el tipo de contenido devuelto.
+
+Siempre es recomendable consultar la documentación de la API o el servicio que estés utilizando para determinar los tipos de medios y subtipos específicos que admite en su implementación.
+
+
+## 16. FormData: publicando imágenes de kittens
+
+`FormData` es una interfaz de JavaScript que proporciona una forma sencilla de construir y enviar datos de formulario HTML mediante una solicitud HTTP. Se utiliza para recopilar datos de entrada de formularios, como campos de texto, campos de archivo, casillas de verificación y botones de opción, y enviarlos de manera eficiente a un servidor.
+
+La interfaz `FormData` permite crear un objeto que representa un conjunto de pares clave-valor correspondientes a los campos del formulario. Puedes agregar campos y sus valores utilizando los métodos proporcionados por `FormData`. Una vez que hayas agregado todos los campos que deseas enviar, puedes enviar los datos a través de una solicitud AJAX utilizando `XMLHttpRequest` u otras librerías como `fetch`.
+
+Aquí hay un ejemplo de cómo utilizar `FormData` para recopilar y enviar datos de un formulario:
+
+```js
+// Obtener una referencia al formulario
+const form = document.getElementById('myForm');
+
+// Crear un objeto FormData y agregar campos al formulario
+const formData = new FormData(form);
+formData.append('additionalField', 'additionalValue');
+
+// Enviar los datos mediante una solicitud AJAX
+const xhr = new XMLHttpRequest();
+xhr.open('POST', '/submit', true);
+xhr.send(formData);
+```
+
+En este ejemplo, se crea un objeto `FormData` utilizando el formulario con el ID "myForm". Luego, se agrega un campo adicional utilizando el método `append()`. Finalmente, se envían los datos a través de una solicitud AJAX POST utilizando `XMLHttpRequest` y el objeto `FormData` como el cuerpo de la solicitud.
+
+`FormData` también proporciona métodos útiles para manipular y eliminar campos, como `delete()`, `set()`, `get()`, entre otros, que te permiten modificar los datos antes de enviarlos.
+
+Una ventaja adicional de usar `FormData` es que automáticamente maneja la codificación de caracteres y el formato adecuado para los datos enviados, incluyendo la capacidad de enviar archivos adjuntos a través de campos de entrada de archivo.
+
+En resumen, `FormData` es una interfaz de JavaScript que facilita la recopilación y el envío de datos de formulario HTML a través de solicitudes HTTP. Es especialmente útil cuando necesitas enviar datos estructurados, incluyendo archivos, a través de una solicitud AJAX.
+
+- [Código de la clase](https://github.com/platzi/consumo-api-rest-javascript/tree/93e7314bec42af1df8f27c88a7bfae28a41c3b26)
+- [Proyecto propuesto](https://github.com/jeisonxm/Dog-App-API-REST/tree/main)
+- [Colores random](https://colorhunt.co/palettes/random)
+
+
+## 17. Axios: librerías de JavaScript para consumir APIs
+
+- Axios
+- Trae.js
+- node-fetch (para Node.js)
+- request (para Node.js)
+
+Axios es una biblioteca de JavaScript que se utiliza para realizar solicitudes HTTP desde el navegador o desde Node.js. Proporciona una interfaz fácil de usar para realizar solicitudes a servidores web y manejar las respuestas de manera eficiente.
+
+Para utilizar Axios, primero debes incluir la biblioteca en tu proyecto. Puedes hacerlo a través de una etiqueta `<script>` en tu archivo HTML o mediante un gestor de paquetes como npm o Yarn en tu entorno de desarrollo.
+
+Aquí tienes un ejemplo de cómo utilizar Axios para realizar una solicitud GET a una API y manejar la respuesta:
+
+```js
+// Importar Axios en un entorno de desarrollo de Node.js
+const axios = require('axios');
+
+// Realizar una solicitud GET a una API
+axios.get('https://api.example.com/data')
+  .then(response => {
+    // Manejar la respuesta exitosa
+    console.log(response.data);
+  })
+  .catch(error => {
+    // Manejar errores
+    console.error(error);
+  });
+```
+
+En este ejemplo, se utiliza `axios.get()` para realizar una solicitud GET a la URL `'https://api.example.com/data'`. La función `get()` devuelve una promesa que se puede encadenar con los métodos `then()` y `catch()`.
+
+Dentro de `then()`, puedes acceder a la respuesta utilizando `response.data`, que contiene los datos devueltos por la API.
+
+En caso de que ocurra un error durante la solicitud, se captura en el bloque `catch()` y se puede manejar adecuadamente.
+
+Recuerda que Axios también admite otros métodos de solicitud HTTP, como `post()`, `put()`, `delete()`, etc., que se pueden utilizar según las necesidades de tu aplicación.
+
+Este es solo un ejemplo básico de cómo utilizar Axios para realizar una solicitud HTTP GET y manejar la respuesta. Axios ofrece una amplia gama de características adicionales, como el manejo de encabezados, la cancelación de solicitudes, la configuración de interceptores, etc., que puedes explorar en la documentación oficial de Axios.
+
+[Documentación Axios](https://axios-http.com/docs/intro)
+
+## 18. CORS, caché, redirect y tu propio clon de fetch
+
+CORS (Cross-Origin Resource Sharing) es un mecanismo de seguridad utilizado por los navegadores web para restringir las solicitudes de recursos (como archivos JavaScript, imágenes, estilos, etc.) que se realizan desde un origen (dominio, protocolo y puerto) diferente al del propio documento que realiza la solicitud. CORS permite que los servidores especifiquen qué dominios tienen permiso para acceder a los recursos y qué tipos de solicitudes están permitidas.
+
+Mode:  
+- cors 
+- no-cors 
+- same-origin
+
+La caché es un mecanismo utilizado para almacenar temporalmente datos en un lugar cercano al cliente, como el navegador web, con el fin de acelerar las solicitudes posteriores para esos datos. Cuando un recurso se almacena en caché, la próxima vez que se solicite, se puede recuperar rápidamente desde la caché en lugar de tener que obtenerlo nuevamente desde el servidor. Esto puede mejorar el rendimiento y reducir la carga en el servidor.
+
+Caché:   
+- default 
+- no-store 
+- reload 
+- no-cache 
+- force-cache 
+- only-if-cached 
+
+El redirect (redireccionamiento) es una técnica utilizada para enviar a un cliente web a una ubicación diferente de la que solicitó inicialmente. Cuando un servidor recibe una solicitud, puede responder con un código de estado de redirección y una URL de destino. El cliente web luego realiza automáticamente una nueva solicitud a la URL de destino. Esto puede ser útil para redirigir a los usuarios a una nueva página después de realizar una acción o para redirigir solicitudes a un recurso en una ubicación diferente.
+
+### Clon fetch 
+
+Ejemplo básico de un clon de `fetch` en JavaScript:
+
+```js
+function myFetch(url, options) {
+  return new Promise((resolve, reject) => {
+    const xhr = new XMLHttpRequest();
+    xhr.open(options.method || 'GET', url);
+
+    // Configurar encabezados de solicitud
+    if (options.headers) {
+      for (let header in options.headers) {
+        xhr.setRequestHeader(header, options.headers[header]);
+      }
+    }
+
+    // Manejar la respuesta de la solicitud
+    xhr.onload = function() {
+      if (xhr.status >= 200 && xhr.status < 300) {
+        resolve(xhr.response);
+      } else {
+        reject(new Error(xhr.statusText));
+      }
+    };
+
+    // Manejar errores de red
+    xhr.onerror = function() {
+      reject(new Error('Error de red'));
+    };
+
+    // Enviar la solicitud
+    xhr.send(options.body);
+  });
+}
+
+// Ejemplo de uso
+myFetch('https://api.example.com/data', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({ key: 'value' })
+})
+  .then(response => {
+    console.log('Respuesta:', response);
+  })
+  .catch(error => {
+    console.error('Error:', error);
+  });
+```
+
+## 19. GraphQL, Web Sockets y Web 3.0: el mundo más allá de REST
+
+1. `sendBeacon`: es una API proporcionada por los navegadores web que permite enviar datos al servidor de forma asíncrona antes de que el usuario abandone la página. Se utiliza principalmente para enviar datos de análisis, registros de errores u otra información importante que no debe perderse incluso si el usuario cierra la página. A diferencia de las solicitudes HTTP tradicionales, `sendBeacon` garantiza que los datos se envíen de manera confiable antes de que se descargue la página.
+
+2. GraphQL: es un lenguaje de consultas y una especificación desarrollada por Facebook. Proporciona una forma eficiente y flexible de solicitar y entregar datos desde un servidor a través de una API. A diferencia de REST, donde se obtienen datos predefinidos en puntos finales específicos, GraphQL permite a los clientes enviar consultas específicas para obtener solo los datos necesarios en una sola solicitud. Esto reduce la cantidad de datos transferidos y evita el problema de underfetching o overfetching de información.
+
+3. Web Sockets: Los Web Sockets son un protocolo de comunicación bidireccional en tiempo real que permite una conexión persistente entre un cliente y un servidor a través de la web. A diferencia de las solicitudes HTTP tradicionales, que siguen el modelo de solicitud-respuesta, los Web Sockets permiten una comunicación continua y en tiempo real entre el cliente y el servidor. Esto es especialmente útil para aplicaciones en tiempo real como chats, juegos en línea y actualizaciones en vivo.
+
+4. Web 3.0: El término "Web 3.0" se refiere a una visión futura de la web en la que se espera que haya una evolución significativa en términos de interconectividad y funcionalidad. Aunque no hay una definición precisa y aceptada universalmente de Web 3.0, se espera que incluya tecnologías emergentes como inteligencia artificial, aprendizaje automático, blockchain y realidad virtual/aumentada. Se espera que Web 3.0 brinde experiencias más personalizadas, seguras y descentralizadas, y abra nuevas posibilidades en áreas como finanzas, identidad digital, Internet de las cosas y más.
+
+Estos conceptos representan avances tecnológicos interesantes más allá del enfoque tradicional de REST y ofrecen nuevas formas de interactuar, comunicarse y desarrollar aplicaciones en la web.
+
+### DNS - ENS 
+
+1. DNS (Domain Name System): El Sistema de Nombres de Dominio (DNS) es un sistema fundamental en Internet que se utiliza para traducir los nombres de dominio legibles para los humanos en direcciones IP numéricas, que son las que las computadoras utilizan para comunicarse entre sí. En lugar de recordar direcciones IP complicadas, como 192.168.0.1, los usuarios pueden acceder a los sitios web utilizando nombres de dominio más fáciles de recordar, como www.ejemplo.com. Cuando un usuario ingresa un nombre de dominio en el navegador, el sistema DNS se encarga de resolver ese nombre de dominio en la dirección IP correspondiente para que la solicitud pueda dirigirse al servidor correcto y cargar el sitio web deseado.
+
+2. ENS (Ethereum Name Service): El Servicio de Nombres Ethereum (ENS) es un sistema de nombres de dominio descentralizado basado en la tecnología blockchain de Ethereum. Similar al DNS, el ENS permite a los usuarios asociar nombres legibles para los humanos con direcciones Ethereum y otros recursos relacionados con Ethereum, como contratos inteligentes. Por ejemplo, en lugar de utilizar una dirección Ethereum larga y compleja para recibir tokens, se puede asociar un nombre de dominio legible, como "miwallet.eth", con la dirección correspondiente. Esto facilita la interacción con las aplicaciones y servicios en el ecosistema de Ethereum al eliminar la necesidad de copiar y pegar direcciones complicadas.
+
+El ENS utiliza contratos inteligentes en Ethereum para almacenar y mantener los registros de nombres de dominio y sus correspondientes direcciones y otros datos relacionados. Además de las direcciones Ethereum, el ENS también puede asociar otros recursos como direcciones IP, metadatos y claves públicas. Proporciona una capa de abstracción adicional sobre las direcciones Ethereum subyacentes, lo que facilita la usabilidad y la adopción generalizada de aplicaciones descentralizadas en Ethereum.
+
+En resumen, DNS es un sistema utilizado en Internet para traducir nombres de dominio en direcciones IP, mientras que ENS es un sistema similar pero basado en blockchain que permite asociar nombres legibles para los humanos con direcciones Ethereum y otros recursos relacionados con Ethereum.
+
+## 20. Toma el Curso Práctico de Consumo de API REST con JavaScript
+
+## Examen 📌
+<details>
+	<summary>Haz clic para ver los resultados 👀</summary>
+	<br/>
+
+1. ¿Cuál de las siguientes herramientas nos permiten consumir una API REST desde JavaScript?
+
+	- 📌 fetch()
+
+2. ¿Qué son los query parameters?
+
+	- 📌 Son información complementaria a los endpoints para específicar aún más el contenido o el tipo de contenido que necesitamos.
+
+3. ¿Cuál es una diferencia en la navegación de páginas web con Server Side Rendering / SSR vs. con Client Side Rendering / CSR (Single Page Applications / SPA)?
+
+	- 📌 Con SSR la página debe volver a cargar desde cero en cada navegación. Con CSR solo carga una vez y cambia su contenido dinámicamente en cada navegación gracias a JavaScript.
+
+4. Como frontend developer es mi responsabilidad aprender (al menos) los fundamentos del desarrollo backend.
+
+	- 📌 Verdadero
+
+5. ¿Qué son los métodos HTTP?
+
+	- 📌 Un indicador del tipo de consulta que debemos enviar en cada petición (GET, POST, DELETE, etc.).
+
+6. ¿Qué nos indica el método GET en HTTP?
+
+	- 📌 Lectura
+
+7. ¿Qué son los HTTP Status Codes?
+
+	- 📌 Son un indicador de cómo le fue a nuestra consulta HTTP (error, éxito, redirect, etc.).
+
+8. ¿Qué significa un HTTP Status Code de 300?
+
+	- 📌 Redirect: la ruta consultada nos envía a otro lugar.
+
+9. ¿Qué son los Headers HTTP?
+
+	- 📌 Son metainformación que indica cómo leer o responder una solicitud (Content-Type, Authorization, Set-Cookie, etc.).
+
+10. ¿Qué nos indica el método POST en HTTP?
+
+	- 📌 Creación
+
+11. ¿Qué tipo de respuesta suelen entregarnos las API REST?
+
+	- 📌 JSON
+
+12. ¿Cuáles son las 2 responsabilidades principales del frontend development?
+
+	- 📌 Interactuar con los usuarios y comunicarse con el backend.
+
+13. ¿Qué nos indica el método DELETE en HTTP?
+
+	- 📌 Eliminación
+
+14. ¿Para qué sirven herramientas como el JSON Viewer?
+
+	- 📌 Para ver de una forma más legible las respuesta de tipo JSON.
+
+15. Los HTTP Status Codes son un indicador confiable para saber qué tipo de respuesta entregarle a los usuarios.
+
+	- 📌 Falso
+
+16. ¿Cuál es una de las diferencias entre una respuesta HTTP para humanos (usuarios) vs. para robots?
+
+	- 📌 El servidor seguramente responde HTML para humanos y JSON para robots.
+
+17. ¿Para qué sirve una API REST? Pista: API REST, no solo API ni interfaz.
+
+	- Sirven exclusivamente para enviar archivos JSON del backend al frontend, no soportan ningún otro formato.
+
+	- 📌 Mal: Son interfaces web para comunicar humanos (usuarios) con robots por HTTP.
+
+	- Sirven exclusivamente para enviar archivos XML del backend al frontend, no soportan ningún otro formato.
+
+	- 📌 Quizá: Son interfaces para comunicar robots con otros robots por HTTP.
+
+18. ¿Qué son los endpoints?
+
+	- 📌 Son las distintas rutas de una misma API que podemos consumir para obtener resultados más específicos.
+
+19. ¿Cuál es la diferencia entre PUT y PATCH?
+
+	- 📌 PUT indica que es una edición completa a la versión original, PATCH es solo una edición de algún detalle muy específico.
+
+	Tanto PUT como PATCH son métodos HTTP utilizados para realizar actualizaciones en un recurso en un servidor. Sin embargo, hay una diferencia clave entre ellos en cuanto a la forma en que se maneja la actualización.
+	
+	PUT: El método PUT se utiliza para realizar una actualización completa de un recurso en el servidor. Al enviar una solicitud PUT, se reemplaza completamente el recurso existente con los nuevos datos proporcionados. Esto significa que se debe enviar y proporcionar todos los campos y valores del recurso, incluso aquellos que no se desean cambiar.
+	
+	PATCH: El método PATCH se utiliza para realizar una actualización parcial o incremental de un recurso en el servidor. Con PATCH, se envían solo los datos que deben ser modificados o actualizados, sin afectar el resto del recurso. Esto permite realizar cambios específicos y más pequeños en un recurso sin tener que enviar todos los datos nuevamente.
+
+20. ¿Cuál es la diferencia entre autenticación y autorización?
+
+	- 📌 Autenticación es para identificar quién es cada quien, autorización es para identificar qué permisos o accesos tiene cada quien.
+
+</details>
