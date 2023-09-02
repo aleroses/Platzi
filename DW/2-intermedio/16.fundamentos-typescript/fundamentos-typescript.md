@@ -153,8 +153,9 @@ npx tsc --version
 
 ## 4. Atrapando bugs
 
-Usando la extensión Error Lens ⚠ me muestra solo un error, pero al agregar dentro del código `// @ts-check` ahora vemos que tenemos muchos errores. 
+Dentro de la carpeta `src` creamos un archivo llamado `demo.js`, luego agregamos el código propuesto en clase e inmediatamente vemos que usando la extensión Error Lens ⚠ nos muestra solo un error, pero al agregar dentro del código `//@ts-check` ahora vemos que tenemos muchos errores. 
 
+`src > demo.js`
 ```js
 // @ts-check
 (()=> {
@@ -273,8 +274,124 @@ En resumen, `//@ts-check` es una directiva de TypeScript que se utiliza en archi
 
 [Working with JavaScript](https://code.visualstudio.com/docs/nodejs/working-with-javascript#_type-checking-javascript)
 
+## 5. El compilador de TypeScript
 
+Creamos un nuevo archivo en la carpeta `src > 01-hello.ts` y le cambiamos la extensión al archivo `demo.js` por `demo.ts`. 
 
+`src > 01-hello.ts`  
+```ts
+const my_name = 'Nicolas';
+console.log(my_name);
+```
+Ahora podemos convertir este archivo .ts a un archivo .js usando el siguiente comando: 
+
+```bash
+npx tsc src/01-hello.ts
+```
+
+Ahora notamos que nuestro archivo demo.ts nos muestra un error en `.prize`, para no complicarnos solo elimínalo, además ya podemos quitarle el `//@ts-check`: 
+
+```js
+const myCart = [];
+const products = [];
+const limit = 2;
+
+(async () => {
+  async function getProducts() {
+    const rta = await fetch('http://api.escuelajs.co/api/v1/products', {
+      method: 'GET',
+    });
+    const data = await rta.json();
+    products.concat(data);
+  }
+
+  function getTotal() {
+    let total = 0;
+
+    for (let i = 0; i < products.length; i++) {
+      // total += products[i].prize;
+      total += products[i];
+    }
+
+    return total;
+  }
+
+  function addProduct(index) {
+    if (getTotal() <= limit) {
+      myCart.push(products[index]);
+    }
+  }
+
+  await getProducts();
+  addProduct(1);
+  addProduct(2);
+
+  const total = getTotal();
+  console.log(total);
+
+  const person = {
+    name: 'Nicolas',
+    lastName: 'Molina',
+  };
+  const rta = `${person}: ${limit}`;
+  console.log(rta);
+})();
+```
+
+Nuevamente, convirtamos esto a un archivo .js usando el mismo comando anterior, pero añadiendo una especificación que indique que necesitamos el código en ES6: 
+
+```bash
+npx tsc src/demo.ts --target es6
+```
+
+Notemos que ahora tenemos todo poco ordenado...
+```bash
+╰─ tree -L 3
+.      
+├── node_modules       
+├── package-lock.json
+├── package.json
+└── src
+    ├── 01-hello.js 👈👀
+    ├── 01-hello.ts
+    ├── demo.js 👈👀
+    └── demo.ts
+```
+
+Esto lo solucionamos creando una carpeta `dist` en donde enviaremos todos los archivos convertidos a formato .js. Una vez creado podemos usar los siguientes comandos: 
+
+```bash
+npx tsc src/demo.ts --target es6 --outDir dist
+npx tsc src/*.ts --target es6 --outDir dist 👀👈 También *
+```
+
+Quedando de la siguiente manera:  
+```bash
+╰─ tree -L 3
+.
+├── dist
+│   ├── 01-hello.js 👈👀   
+│   └── demo.js  👈👀   
+├── node_modules       
+├── package-lock.json
+├── package.json
+└── src
+    ├── 01-hello.ts
+    └── demo.ts 👈👀 Eliminamos los archivos repetidos
+```
+
+Ahora ya podemos ejecutar el archivo que queramos con el siguiente comando: 
+
+```bash
+node dist/01-hello.js
+```
+Mostrando: Nicolas ✨
+
+### Deno: un entorno nativo para ambos lenguajes
+
+[Deno](https://deno.land/), del mismo creador de Node.js, es un nuevo entorno de ejecución para JavaScript que puede correr también nativamente TypeScript. Sin embargo, aún no tiene la madurez en el ecosistema de Node.js
+
+_Contribución creada por: Martín Álvarez._
 
 
 
