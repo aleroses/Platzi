@@ -1,7 +1,7 @@
 # Curso de Fundamentos de TypeScript
 
 > Inicio: `01-09-2023`
-> Finalización: ``
+> Finalización: `03-09-2023`
 
 [Apuntes en Notion](https://francocarrara.notion.site/Curso-de-Fundamentos-de-TypeScript-30ed370135f049a1bd6786302bea9e81)
 
