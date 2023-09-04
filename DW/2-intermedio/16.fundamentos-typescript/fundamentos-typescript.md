@@ -1727,40 +1727,347 @@ En caso de llegar a cambiar el nombre de alguna variable o función, te darás c
 1. Clic derecho sobre la palabra a cambiar y seleccionar `Rename Symbol`, se abrirá una ventana donde debes escribir el nuevo nombre y luego dar enter. 
 2. Selecciona la palabra a cambiar y presiona F2, se te abrirá la misma ventana anterior, escribe el nuevo nombre y da enter. 
 
-## 22. 
+## 22. Usando librerías que soportan TypeScript
 
-### Código de la clase 
+Las librerías que tienen soporte para TypeScript nos facilitan su uso, y más aún si usas editores de código que se integran bien con este “lenguaje”, pues brindan información muy útil como indicar:
 
-`src > 11-undefined-null.ts`  
-```ts
-
-```
-
-- 🦄 Consola: `node dist/11-undefined-null.ts` y `npx tsc --watch`
-- 🦄 Quokka: F1: Quokka.js: Start on Current File
-
-
-
-
-### Código de la clase 
-
-`src > 11-undefined-null.ts`  
-```ts
-
-```
-
-- 🦄 Consola: `node dist/11-undefined-null.ts` y `npx tsc --watch`
-- 🦄 Quokka: F1: Quokka.js: Start on Current File
-
+- La cantidad de parámetros esperados por una función
+- El tipo de datos de los parámetros y variables
+- El tipo de dato que retornará la función
+- Autocompletado al usar métodos de un módulo
+- Mejores prácticas
 
 
 
 ### Código de la clase 
 
-`src > 11-undefined-null.ts`  
-```ts
+Para esta clase usaremos la librería `date-fns` la cual tiene soporte para TypeScript, pero si no estamos seguros de que la librería que vamos a usar tiene o no soporte podemos entrar al repo de dicha librería y revisar si tiene el archivo `tsconfig.json`.  
 
+También, en la página de `npm` de cada librería avisa si tiene soporte para TypeScript, al lado del nombre de la librería sale un icono azul de TypeScript.
+
+Instalación:  
+```bash
+npm install date-fns --save
 ```
 
-- 🦄 Consola: `node dist/11-undefined-null.ts` y `npx tsc --watch`
+`src > 16-data-fns.ts`  
+```ts
+import { subDays, format } from "date-fns";
+
+const date = new Date(1998, 1, 28); // 0 = enero, 1 = febrero
+const rta = subDays(date, 30);
+const str = format(rta, "yyy/MM/dd");
+console.log(str); //1998/01/29
+
+/* 
+subDays: hace restas en fechas 
+
+node dist/16-data-fns.ts
+*/
+```
+
+- 🦄 Consola: `node dist/16-data-fns.ts` y `npx tsc --watch`
 - 🦄 Quokka: F1: Quokka.js: Start on Current File
+
+- [Instalación data-fns](https://date-fns.org/docs/Getting-Started#installation)
+- [Repo data-fns](https://github.com/date-fns/date-fns)
+
+## 23. Usando librerías que NO soportan TypeScript
+
+El ecosistema de TypeScript ha creado unos módulos para agregar manualmente el tipado a las librerías que no tienen soporte de tipos.
+
+Por ejemplo, si quieres trabajar con la librería [lodash](https://lodash.com/), en Visual Studio Code se te indicará que instales un sistema de tipos para que puedas desarrollar sin problemas desde TypeScript:
+
+![Error al queres utilizar lodash en TypeScript](https://static.platzi.com/media/articlases/Images/lodash-tiny.png)
+
+
+- [Documentación](https://lodash.com/docs/4.17.15)
+- [Repo Lodash](https://github.com/lodash/lodash)
+
+
+### Código de la clase 
+Instalación:  
+```bash
+npm i lodash 
+
+// En la documentación encontrarás 
+npm i -g npm
+npm i --save lodash
+```
+
+En la documentación mencionan que podemos hacer uso de la librería de la siguiente manera: 
+```ts
+var _ = require('lodash');
+```
+
+Esto no es compatible con TypeScript por lo que nosotros podemos usar la siguiente forma: 
+```ts
+import _ from "lodash";
+```
+Pero esto no es todo, si posamos el cursor sobre el error mostrado al agregar la línea anterior, veremos que nos sugiere un comando el cual nos ayudara a usar esta librería que recordemos no tiene soporte para TypeScript. 
+
+```bash
+npm i --save-dev @types/lodash
+```
+
+Luego de esto ya podremos trabajar con la librería...
+
+`src > 17-load.ts`  
+```ts
+// var _ = require('lodash');
+import _ from "lodash";
+
+const data = [
+  {
+    user_name: "ale",
+    role: "admin",
+  },
+  {
+    user_name: "ghost",
+    role: "seller",
+  },
+  {
+    user_name: "zombie",
+    role: "customer",
+  },
+];
+
+const rta = _.groupBy(data, (item) => item.role);
+console.log(rta);
+```
+
+- 🦄 Consola: `node dist/17-load.js` y `npx tsc --watch`
+- 🦄 Quokka: F1: Quokka.js: Start on Current File
+
+```bash
+╰─ node dist/17-load.js
+{
+  admin: [ { user_name: 'ale', role: 'admin' } ],
+  seller: [ { user_name: 'ghost', role: 'seller' } ],
+  customer: [ { user_name: 'zombie', role: 
+'customer' } ]
+}
+```
+
+## 24. Toma el Curso de Tipos Avanzados y Funciones en TypeScript
+
+TypeScript será el amigo que analizará el código por ti constantemente indicando cuáles líneas podrían ser vulnerables a tener errores.
+
+En el [Curso de TypeScript: Tipos Avanzados y Funciones](https://platzi.com/cursos/typescript-tipos-avanzados/) se trabajarán en funciones y tipos de manera más profunda.
+
+  
+## Examen 📌
+<details>
+	<summary>Haz clic para ver los resultados 👀</summary>
+	<br/>
+
+1. Cuando hay librerías que no tiene  soporte a tipos por ejemplo en el caso de  lodash podemos agregar el soporte a tipos usando el comando...
+
+a
+
+npm i @ts/lodash --save-dev
+
+b 📌
+
+npm i @types/lodash --save-dev
+
+c
+
+npm i @lodash/types --save-dev
+
+2. ¿Cuál es el comando con el cual pueda habilitar el análisis de código de TypeScript en un archivo JavaScript?
+
+a
+
+@check-ts
+
+b
+
+@check-types
+
+c 📌
+
+@ts-check
+
+3. ¿Cuál de estas formas es la manera correcta de definir un objeto como parámetros de una función?
+
+a
+
+function login( {email: string, password: string}: data) { console.log(data.email, data.password); }
+
+b
+
+function login(data: (email: string, password: string)) { console.log(data.email, data.password); }
+
+c 📌
+
+function login(data: {email: string, password: string}) { console.log(data.email, data.password); }
+
+4. ¿Cuál es la manera correcta de crear un propio tipo para definir los atributos de un Producto?
+
+a
+
+class Product = { title: string, createAt: Date, stock: number, shirtSize?: Sizes };
+
+b 📌
+
+type Product = { title: string, createAt: Date, stock: number, shirtSize?: Sizes };
+
+c
+
+new type Product = { title: string, createAt: Date, stock: number, shirtSize?: Sizes };
+
+5. Si se define esta variable  let myProductPrice = 100; ¿Cuál es el tipo que infiere TS?
+
+a
+
+Integer
+
+b 📌
+
+number
+
+c
+
+Number
+
+d
+
+int
+
+6. ¿Cuál es la opción correcta para decirle al compilador de TS la versión de JavaScript a la cual debe transpilar?
+
+a
+
+npx tsc src/** --version es6
+
+b
+
+npx tsc src/** --es es6
+
+c 📌
+
+npx tsc src/** --target es6
+
+d
+
+npx tsc src/** --js es6
+
+7. Teniendo en cuenta este código: `type Sizes = 'S' | 'M' | 'L' | 'XL';  let shirtSize: Sizes; shirtSize = 'xxl';` ¿El valor asignado a  shirtSize es válido?
+
+a 📌
+
+FALSE
+
+b
+
+TRUE
+
+8. Teniendo en cuenta esta instrucción `const rta = 1 + '1';` ¿Cuál sería el tipo de dato que infiere TS de rta?
+
+a 📌
+
+string
+
+b
+
+undefined
+
+c
+
+number
+
+9. ¿Cuál de las siguientes en la manera correcta de definir una parámetro opcional en una función?
+
+a
+
+function sum(a??: number) {}
+
+b
+
+function sum(a!: number) {}
+
+c 📌
+
+function sum(a?: number) {}
+
+10. Una prueba práctica es definir una variable con un valor boolean de esta manera:  const myBoolean: Boolean = true;
+
+a 
+
+Si, esta perfecto.
+
+b 📌
+
+No, ya que se debe evitar el boolean con Mayúscula
+
+11. ¿Cuál sería la forma correcta de definir un array que solo soporte números y booleanos?
+
+a
+
+let mixed: [number | boolean ];
+
+b
+
+let mixed: (Number | Boolean )[];
+
+c 📌
+
+let mixed: (number | boolean )[];
+
+12. ¿Cuál es el tipado correcto para crear una variable que soporte strings y null?
+
+a
+
+let myName: (string ?? null) = null;
+
+b 📌
+
+let myName: (string | null) = null;
+
+c
+
+let myName: (string || null) = null;
+
+13. ¿Cuál es la forma correcta de definir un hexadecimal en TS?
+
+a
+
+let hex = 0bfff;
+
+b 📌
+
+let hex = 0xfff;
+
+c
+
+let hex = 0fff;
+
+14. Si quiero declarar una función que no tiene retorno ¿cuál de las siguientes palabras reservadas de TS usaría?
+
+a
+
+empty
+
+b 📌
+
+void
+
+c
+
+any
+
+15. ¿Cuál sería la forma correcta de definir una variable que solo soporte números y strings?
+
+a 📌
+
+let myVar: number | string;
+
+b
+
+let myVar: number ?? string;
+
+c
+
+let myVar: number & string;
+</details>
