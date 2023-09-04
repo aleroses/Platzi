@@ -1020,8 +1020,747 @@ node dist/08-any.ts
 
 ## 14. Union Types
 
+Los `|` nos permite definir más de un tipo de dato a una variable, argumento de una función, etc.
+
+```ts
+let userId: string | number;
+
+userId = 10;
+userId = "10";
+
+function helloUser(id: string | number){
+    console.log(`Hola usuario con el número de id ${id}`);
+}
+```
+
+Aquí indicamos que **id** y **userId** pueden ser de tipo `string` o `number`.
+
+### Una mejor práctica
+
+El tipo de dato `any` nos brinda la flexibilidad de JavaScript en TypeScript con respecto al tipado. Sin embargo, si deseamos eso, es mejor hacer uso de los Union Types.
+
+### Código de la clase 
+
+`src > 09-union-types.ts`  
+```ts
+(() => {
+  let user_id: string | number;
+  user_id = 1212;
+  user_id = "asasa";
+
+  function greeting(my_text: string | number) {
+    if (typeof my_text === "string") {
+      console.log(`String lower case: ${my_text.toLowerCase()}`);
+    } else {
+      console.log(`Number to fixed: ${my_text.toFixed(1)}`);
+    }
+  }
+
+  greeting("Ale Roses");
+  greeting(12.1212);
+})();
+```
+
+- 🦄 Consola: `node dist/09-union-types.ts` y `npx tsc --watch`
+- 🦄 Quokka: F1: Quokka.js: Start on Current File
+
+[Documentación](https://www.typescriptlang.org/docs/handbook/2/everyday-types.html#union-types)  
+
+## 15. Alias y tipos literales
+
+Los Alias nos permiten darle un nombre a uno o varios tipos de datos en conjunto. Un ejemplo de como se definen sería así:
+
+```ts
+type UserID = string | boolean | number;
+```
+
+¡Ahora `UserID` lo podemos usar como si fuese un tipo de dato `string`, `boolean` o `number`!
+
+```ts
+let dynamicVar: UserID = "300";
+
+dynamicVar = true;
+dynamicVar = 200;
+```
+
+Los Union Types que vayamos a utilizar ahora serán menos tediosos de escribir, pues con los Alias podemos utilizar el mismo conjunto de tipos de datos en la definición de varias variables, beneficiándonos en escribir menos código.
+
+```ts
+type UserID = string | boolean | number;
+
+let dynamicVar: UserID = "300";
+
+function helloUser( userId: UserID ) {
+    console.log(`Un saludo al usuario con el número de id ${userId}`);
+}
+```
+
+**Nota:** la palabra _type_ en los Alias es algo propio de TypeScript.
+
+### Tipos Literales (Literal Types)
+
+Gracias a esto podemos definir explícita y literalmente los posibles valores que puede tomar nuestra variable. Por ejemplo:
+
+```ts
+let shirtSize: "S" | "M" | "L" | "XL";
+
+shirtSize = "M"; //CORRECTO
+shirtSize = "S"; //CORRECTO
+shirtSize = "qwrty"; //ERROR. No está en las opciones.
+shirtSize = "SS"; //ERROR. Letra de más.
+shirtSize = "m"; //ERROR. Está en minúscula.
+```
+
+Definimos que la variable `shirtSize` pueda ser una de las 4 posibles opciones de valores, que estos sean de tipo `string` y que estén en mayúscula, por tanto, si queremos asignar un valor que no sea exactamente como lo declaramos, TypeScript nos mostrará un error.
+
+### Alias + Tipos Literales
+
+También podríamos combinarlas para facilitar aún más el desarrollo de nuestro programa:
+
+```ts
+type Sizes = 'S' | 'M' | 'L' | 'XL';
+
+let shirtSize: Sizes;
+shirtSize = "M";
+
+function yourSize( userSize: Sizes ){
+    console.log(`Tu medida es ${userSize}`);
+}
+```
+
+Nota: Los nombres de los `type` deben estar en `PascalCase`. Otras notaciones pueden ser `camelCase` y mi favorita `snake_case` 🦄🔥
+
+
+### Código de la clase 
+
+`src > 10-alias.ts`  
+```ts
+(() => {
+  type UserId = string | number | boolean;
+  let user_id: UserId;
+
+  // Literal types
+  type Sizes = "S" | "M" | "L" | "XL";
+  let shirt_size: Sizes;
+  shirt_size = "S";
+  shirt_size = "M";
+  shirt_size = "L";
+  shirt_size = "XL";
+
+  function greeting(user_id: UserId, size: Sizes) {
+    if (typeof user_id === "string") {
+      console.log(`String lower case: ${user_id.toLowerCase()}`);
+    }
+  }
+
+	greeting(1111, 'S')
+	greeting('AB', 'S')
+})();
+```
+
+- 🦄 Consola: `node dist/10-alias.ts` y `npx tsc --watch`
+- 🦄 Quokka: F1: Quokka.js: Start on Current File
+
+
+## 16. Null y Undefined  
+
+Estos dos funcionan como dos tipos de datos, al igual que, por ejemplo, `string` o `number`.
+
+El tipo de dato`null` es para indicar un valor nulo y `undefined` para algo indefinido. Son tipos diferentes.
+
+### Null y Undefined como tipo Any
+
+En **TypeScript**, si **no especificamos** que va a ser `null` o `undefined`, estos son **inferidos** como tipo `any`:
+
+```ts
+//TypeScript
+let myVar = null; //Tipo any
+let otherVar = undefined; //Tipo any
+
+let myNull: null = null; // Tipo null
+let myUndefined: undefined = undefined; //Tipo undefined
+```
+
+### Union Types como emergencia
+
+Hay casos en la que queremos que una variable sea de tipo `string` o `number` y que al inicializarlas sean de tipo `null` o `undefined` para luego asignarles un valor del tipo de dato de los primeros mencionados. En este contexto podríamos usar los [Union Types](https://platzi.com/clases/2878-typescript/47243-union-types/):
+
+```ts
+let myNumber: number | null = null;
+myNumber = 50;
+
+let myString: string | undefined = undefined;
+myString = "Hola TypeScript";
+```
+
+
+### Código de la clase 
+
+`src > 11-undefined-null.ts`  
+```ts
+(() => {
+  let my_null: null = null;
+  let my_undefinded: undefined = undefined;
+
+  let my_number: number | null = null;
+  my_number = 12;
+
+  let my_string: string | undefined = undefined;
+  my_string = "lol";
+
+  function hi(name: string | null) {
+    let hello = "Hola ";
+
+    if (name) {
+      hello += "name";
+    } else {
+      hello += "nobody";
+    }
+
+    console.log(hello);
+  }
+
+  function hi_two(name: string | null) {
+    let hello = "Hola ";
+
+    hello += name?.toLowerCase() || 'nobody';
+    // Optional chaining (?.)
+    console.log(hello);
+  }
+
+  hi("Ale Roses");
+  hi(null);
+
+  hi_two("Ale Roses");
+  hi_two(null);
+})();
+```
+
+- 🦄 Consola: `node dist/11-undefined-null.ts` y `npx tsc --watch`
+- 🦄 Quokka: F1: Quokka.js: Start on Current File
+
+## 17. Funciones
+
+Las **funciones** son nativas de JavaScript y esencialmente funcionan igual en TypeScript. Sin embargo, este último, con su sistema de tipado, nos ayudará a llevar a cabo una implementación más segura:
+
+- Podemos definir que los argumentos de la función tengan un determinado tipo de dato (o más de uno si se usa Union Types):
+
+```ts
+type Sizes = 's' | 'M' | 'L' | 'XL'; //Alias y Tipos Literales
+
+function createProductJson(
+    title: string,
+    createdAt: Date,
+    stock: number,
+    size: Sizes
+){
+   return {
+        title,
+        createdAt,
+        stock,
+        size
+    }
+}
+```
+
+En el argumento `createdAt` se indica que es de tipo Date en alusión al **objeto Date** propio de JavaScript y no a un tipo de dato como `string` o `number`. Son diferentes las definiciones.
+
+- Cuando hagamos uso de nuestra función, TypeScript comprobará que le envíes todos los parámetros en orden y con el tipo de dato que se declaró en la función:
+
+```ts
+const producto1 = createProductJson(
+    "titulo",
+    new Date('10/10/3030'),
+    30,
+    'M'
+)
+```
+
+![Ejemplo de una función en TypeScript](https://static.platzi.com/media/articlases/Images/ts10l.png)
+
+En **Visual Studio Code**, si dejas el cursor sobre el nombre de la función que vas a invocar, te mostrará un mensaje con los detalles de la función, lo que espera como parámetros y lo que devolverá indicando además el orden y el tipo de dato de cada variable.
+
+- Si queremos que un argumento sea opcional de enviar, podemos usar el modificador `?` junto al nombre del argumento:
+
+```ts
+type Sizes = 's' | 'M' | 'L' | 'XL'; //Alias y Tipos Literales
+
+function createProductJson(
+    title: string,
+    createdAt: Date,
+    stock?: number,
+    size?: Sizes
+){
+    /*Código de la función*/
+}
+```
+
+**Nota:** cuando definamos **argumentos opcionales** en una función, estas **deben** ubicarse al **final**, si no **TypeScript** nos indicará un **error, ya que podría haber confusiones al momento de invocar la función y enviar los respectivos parámetros:
+
+```ts
+function randomFunc(title: string, amount?: number){} //CORRECTO
+
+function otherFunc(title?: string, amount: number){} // ERROR
+```
+
+### Return explicito con `( )` en vez de `{ }`
+
+```ts
+const createProductToJson2 = (
+    title: string,
+    createdAt: Date,
+    stock: number,
+    size?: Sizes
+  ) => ({ title, createdAt, stock, size });
+```
+
+
+### Código de la clase 
+
+`src > 12-functions.ts`  
+```ts
+(() => {
+  type Sizes = "S" | "M" | "L" | "XL";
+
+  function create_products_to_json(
+    title: string,
+    created_at: Date,
+    stock: number,
+    size: Sizes
+  ) {
+    return {
+      title,
+      created_at,
+      stock,
+      size,
+    };
+  }
+
+  const product_01 = create_products_to_json("P1", new Date(), 12, "XL");
+  console.log(product_01);
+  console.log(product_01.title);
+  console.log(product_01.stock);
+
+  const create_products_to_json_two = (
+    title: string,
+    created_at: Date,
+    stock: number,
+    size?: Sizes
+  ) => {
+    return {
+      title,
+      created_at,
+      stock,
+      size,
+    };
+  };
+
+  const product_02 = create_products_to_json_two("P2", new Date(), 12);
+  console.log(product_02);
+  console.log(product_02.title);
+  console.log(product_02.stock);
+  console.log(product_02.size);
+})();
+```
+
+- 🦄 Consola: `node dist/11-undefined-null.ts` y `npx tsc --watch`
+- 🦄 Quokka: F1: Quokka.js: Start on Current File
+
+## 18. Retorno de funciones
+
+En TypeScript podemos especificar el tipo de dato del valor que nos retornará una función o indicar si no se devolverá dato alguno:
+
+### Retornos tipados en TypeScript
+
+El tipo de retorno se especificará después de los paréntesis en los que se encuentran los argumentos de la función:
+
+1. **Void: funciones sin retorno**  
+    Este tipo de función ejecuta ciertas instrucciones, pero no devuelve dato alguno. Estas son conocidas como funciones de tipo `void`. Se definen así:
+
+```ts
+//TypeScript
+function imprimirNombre(yourName: string): void {
+    console.log(`Hello ${yourName}`);
+}
+```
+
+2. **Funciones con retorno**  
+    Por el contrario, si en la función devolveremos algún valor, podemos especificar el tipo de dato de este:
+
+```ts
+//TypeScript
+function suma(a: number, b: number): number {
+    return a + b;
+}
+
+function holaMundo(): string {
+    return "Hello, World!";
+}
+```
+
+También los retornos pueden ser más de un tipo de dato:
+
+```ts
+//TypeScript
+function devolverMayor(a: number, b: number): number | string {
+    if(a > b){
+        // Retorna un número
+        return a;
+    } else if( b > a ) {
+        // Retorna un número
+        return b;
+    } else {
+        // Retorna un string
+        return `Los números ${a} y ${b} son iguales`;
+    }
+}
+```
+
+### TypeScript también lo infiere
+
+Si no indicamos en nuestra declaración de la función el tipado del retorno, TypeScript, al igual que con las variables, lo puede inferir según si retornas datos (sea `string`, `number`, etc.) o si nada es devuelto (tipo `void`).
+
+
+
+### Código de la clase 
+
+`src > 13-return-functions.ts`  
+```ts
+(() => {
+  const calc_total = (prices: number[]): string => {
+    let total = 0;
+    prices.forEach((item) => {
+      total += item;
+    });
+    return total.toString();
+  };
+
+  const print_total = (prices: number[]): void => {
+    const rta = calc_total(prices);
+    console.log(`Total: ${rta}`);
+  };
+
+  // const rta = print_total([1, 2, 3, 4, 5]);
+  // rta no return nada así que es void (vacío)
+  print_total([1, 2, 3, 4, 5]);
+})();
+```
+
+- 🦄 Consola: `node dist/13-return-functions.ts` y `npx tsc --watch`
+- 🦄 Quokka: F1: Quokka.js: Start on Current File
+
+## 19. Objetos en funciones
+
+Nuestras funciones pueden recibir objetos como argumentos. En TypeScript también podemos declarar el tipado de estos. Veamos un ejemplo:
+
+```ts
+//TypeScript
+function imprimirDatos( data: { username: string, email: string } ): void {
+
+    console.log(`Tu nombre de usuario es ${data.username} y tu email es ${data.email}`)
+    
+}
+
+imprimirDatos({
+      username: 'freddier',
+      email: 'freddy@email.com'
+})
+```
+
+En el ejemplo, el nombre `data` hace referencia al objeto que recibirá la función `imprimirDatos`. Por ello, para acceder al valor de `username` lo definimos en el `console.log` como `data.username` y para el `email` como `data.email`, pues así es como se accede a las propiedades de un objeto.
+
+Finalmente, cuando invocamos `imprimirDatos` y queremos enviar el objeto que nos pide como parámetro, simplemente se colocará entre llaves los atributos del mismo sin colocar un nombre de referencia como `data` tal como lo hicimos en la definición de la función.
+
+
+### Código de la clase 
+
+`src > 14-functions-objs.ts`  
+```ts
+(() => {
+  const login = (data: { email: string; password: number }) => {
+    console.log(data.email, data.password);
+  };
+
+  login({
+    email: "ale@roses.co",
+    password: 123,
+  });
+
+  type Sizes = "S" | "M" | "L" | "XL";
+  const products: any[] = [];
+
+  const add_product = (data: {
+    title: string;
+    created_at: Date;
+    stock: number;
+    size?: Sizes;
+  }) => {
+    products.push(data);
+  };
+
+  add_product({
+    title: "Product 01",
+    created_at: new Date(),
+    stock: 12,
+  });
+	add_product({
+    title: "Product 02",
+    created_at: new Date(),
+    stock: 13,
+		size: 'XL'
+  });
+
+	console.log(products);
+	
+})();
+```
+
+- 🦄 Consola: `node dist/14-functions-objs.ts` y `npx tsc --watch`
+- 🦄 Quokka: F1: Quokka.js: Start on Current File
+
+## 20. Objetos como tipos
+
+En TypeScript también podemos usar los Alias para definir la estructura de tipado que debería tener un objeto:
+
+```ts
+//TypeScript
+type userData = {
+    username: string,
+    email: string
+}
+```
+
+Y luego este “nuevo tipo” puede ser usado en un `array`, por ejemplo, para definir el tipado de los objetos que queramos añadir:
+
+```ts
+//TypeScript
+type userData = {
+    username: string,
+    email: string
+}
+
+let usersList: userData[] = [];
+
+usersList.push({
+    username: "freddier", //CORRECTO
+    email: "freddy@email.com", //CORRECTO
+});
+usersList.push({
+    username: "cvander", //CORRECTO
+    email: true, // ERROR. Debe ser de tipo string y NO de tipo boolean
+});
+```
+
+
+### Código de la clase 
+
+`src > 15-objs.ts`  
+```ts
+(() => {
+  type Sizes = "S" | "M" | "L" | "XL";
+  type Product = {
+    title: string;
+    created_at: Date;
+    stock: number;
+    size?: Sizes;
+  };
+  const products: Product[] = [];
+
+  const add_product = (data: Product) => {
+    products.push(data);
+  };
+
+  add_product({
+    title: "Product 01",
+    created_at: new Date(),
+    stock: 12,
+  });
+  add_product({
+    title: "Product 02",
+    created_at: new Date(),
+    stock: 13,
+    size: "XL",
+  });
+
+  console.log(products);
+})();
+```
+
+- 🦄 Consola: `node dist/15-objs.ts` y `npx tsc --watch`
+- 🦄 Quokka: F1: Quokka.js: Start on Current File
+
+
+## 21. Módulos: import y export
+
+Nuestro código puede ser dividido en varios **módulos** (archivos), por lo que para poder usar las funciones o variables que existen en uno y queramos acceder desde otro, utilizamos `import` y `export`.
+
+### Export
+
+```ts
+/*---->  Archivo: funciones.ts  <----*/
+export function suma(a: number, b: number): number {
+    return a + b;
+}
+
+export function resta(a: number, b: number): number {
+    return a - b;
+}
+
+export let numerosRandom = [1, 30, 40, 50];
+export type Sizes = "S" | "M" | "L" | "XL";
+```
+
+Como observamos, tenemos un archivo llamado `funciones.ts` la cual contiene dos funciones: _suma_ y _resta_. Si estas queremos usarlas desde otro archivo, necesitamos usar la palabra reservada `export` justo antes de definir nuestra función (lo mismo aplica para las variables). De esta forma indicamos que serán exportados para ser utilizados desde otro archivo JavaScript/TypeScript.
+
+### Import
+
+```ts
+/*---> Archivo: programa.ts  <---*/
+import {suma, resta, Sizes} from "./funciones.ts";
+```
+
+Finalmente, las funciones o variables que queramos utilizar desde otro archivo son importadas de la siguiente manera:
+
+1. Usamos la palabra reservada `import`
+2. Entre llaves indicamos las funciones y/o variables que queremos acceder. Hacemos una separación con comas
+3. Usamos la palabra reservada `from`, seguido de, entre comillas dobles o simples, la ruta de la ubicación en la que se encuentra el archivo del cual estamos importando su código.
+
+### Nota
+
+Si es un módulo **TypeScript** lo que estamos importando, es importante que en la **ruta** de los **import** figure la **extensión `.ts`** de dicho archivo. Si es un archivo JavaScript, colocar la **extensión `.js`** es **opcional**.
+
+
+### Código de la clase 
+
+Creamos la siguiente estructura:  
+```bash
+╰─ tree -L 3
+.
+├── 01-hello.ts
+├── ...
+├── 15-objs.ts
+├── demo.ts
+└── products 👈👀👇🔥
+    ├── main.ts 
+    ├── product.model.ts 
+    └── product.service.ts 
+```
+
+`src > products > product.model.ts`  
+```ts
+export type Sizes = "S" | "M" | "L" | "XL";
+export type Product = {
+  title: string;
+  created_at: Date;
+  stock: number;
+  size?: Sizes;
+};
+```
+
+`src > products > product.service.ts`  
+```ts
+import { Product } from "./product.model";
+
+export const products: Product[] = [];
+
+export const add_product = (data: Product) => {
+  products.push(data);
+};
+
+export const calc_stock = (): number => {
+  let total = 0;
+  products.forEach((item) => {
+    total += item.stock;
+  });
+
+  return total;
+};
+```
+
+`src > products > main.ts`  
+```ts
+import { products, add_product, calc_stock } from "./product.service";
+
+add_product({
+  title: "Product 01",
+  created_at: new Date(),
+  stock: 5,
+});
+
+add_product({
+  title: "Product 02",
+  created_at: new Date(),
+  stock: 6,
+  size: "XL",
+});
+
+console.log(products);
+
+const total = calc_stock();
+console.log(total);
+```
+
+```bash
+╰─ node dist/products/main.js
+[
+  {
+    title: 'Product 01',
+    created_at: 2023-09-04T02:17:08.532Z,
+    stock: 5
+  },
+  {
+    title: 'Product 02',
+    created_at: 2023-09-04T02:17:08.532Z,
+    stock: 6,
+    size: 'XL'
+  }
+]
+11
+```
+
+- 🦄 Consola: `node dist/products/main.ts` y `npx tsc --watch`
+
+### 🔥 Dato importante 
+
+En caso de llegar a cambiar el nombre de alguna variable o función, te darás cuenta de que hace falta cambiar este mismo nombre en todos lados donde lo hayas usado, para esto tienes dos opciones que harán el trabajo por ti: 
+
+1. Clic derecho sobre la palabra a cambiar y seleccionar `Rename Symbol`, se abrirá una ventana donde debes escribir el nuevo nombre y luego dar enter. 
+2. Selecciona la palabra a cambiar y presiona F2, se te abrirá la misma ventana anterior, escribe el nuevo nombre y da enter. 
+
+## 22. 
+
+### Código de la clase 
+
+`src > 11-undefined-null.ts`  
+```ts
+
+```
+
+- 🦄 Consola: `node dist/11-undefined-null.ts` y `npx tsc --watch`
+- 🦄 Quokka: F1: Quokka.js: Start on Current File
 
 
 
 
-node dist/08-any.ts
+### Código de la clase 
+
+`src > 11-undefined-null.ts`  
+```ts
+
+```
+
+- 🦄 Consola: `node dist/11-undefined-null.ts` y `npx tsc --watch`
+- 🦄 Quokka: F1: Quokka.js: Start on Current File
+
+
+
+
+### Código de la clase 
+
+`src > 11-undefined-null.ts`  
+```ts
+
+```
+
+- 🦄 Consola: `node dist/11-undefined-null.ts` y `npx tsc --watch`
+- 🦄 Quokka: F1: Quokka.js: Start on Current File
