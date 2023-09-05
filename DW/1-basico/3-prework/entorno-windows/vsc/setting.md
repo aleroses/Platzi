@@ -6,7 +6,7 @@
 
 - `Ctrl` + `,` (coma)
  - Open settings: Esquina derecha superior
-	 - Icono hoja con esquina doblada y con flecha 
+	 - Icono hoja con esquina doblada y con flecha ↪📄
 
 ## Quitar scroll horizontal 
 
@@ -65,7 +65,7 @@ También:
 }
 ```
 
-## Ocultar scrollbar  
+## Ocultar Scrollbar  
 
 ```json
 {
@@ -83,7 +83,15 @@ También:
 }
 ```
 
-## Ocultar barra de actividades 
+## Ocultar Line Numbers
+
+```json
+{
+    "editor.lineNumbers": "off", //👈👀
+}
+```
+
+## Ocultar Barra de Actividades 
 
 ```json
 {
@@ -99,4 +107,16 @@ Atajos para acceder a la barra de actividades:
 - `Ctrl` + `Shift` + `D` 
 - `Ctrl` + `Shift` + `X`
 
-[Tutorial: Cómo configurar VSCode](https://www.youtube.com/watch?v=HiVnGgYudLY)
+[🔥 Tutorial: Cómo configurar VSCode](https://www.youtube.com/watch?v=HiVnGgYudLY)
+
+## Autocompletar Elementos JSX 
+
+```json
+{
+  "emmet.includeLanguages": {
+    "javascript": "javascriptreact"
+  }
+}
+```
+
+[🔥 Tutorial: Configurar autocompletado JSX](https://www.youtube.com/watch?v=jIjws68ATY8)
