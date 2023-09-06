@@ -468,4 +468,479 @@ Para poder tener autocompletado de elementos JSX en React debes agregar lo sigui
 }
 ```
 
-[Tutorial](https://www.youtube.com/watch?v=jIjws68ATY8)
+## 3. Componentes de TODO Machine
+
+### Código de la clase 
+
+Vamos a crear diferentes componentes, cada uno con su respectivo archivo, de tal manera que se vea tal cual la siguiente estructura: 
+
+```bash
+╰─ tree -L 2
+.
+├── README.md
+├── node_modules
+├── package-lock.json
+├── package.json
+├── public
+│   ├── favicon.ico
+│   ├── index.html
+│   ├── manifest.json
+│   ├── react192.png
+│   ├── react512.png
+│   └── robots.txt
+└── src
+    ├── App.css
+    ├── App.js 🦄✨
+    ├── TodoButton.js 👈👀
+    ├── TodoCounter.js 👈👀
+    ├── TodoItem.js 👈👀
+    ├── TodoList.js 👈👀
+    ├── TodoSearch.js 👈👀
+    ├── index.css
+    ├── index.js
+    └── platzi.webp
+```
+
+`src > TodoCounter.js`  
+```js
+function TodoCounter() {
+  return <h1>Haz completado 3 de 5 ToDos</h1>;
+}
+
+export { TodoCounter };
+```
+
+`src > TodoSearch.js`  
+```js
+function TodoSearch() {
+  return <input placeholder="Lorem lorem lorem" />;
+}
+
+export { TodoSearch };
+```
+
+`src > TodoList.js`  
+```js
+function TodoList(props) {
+  return <ul>{props.children}</ul>;
+}
+
+export { TodoList };
+```
+
+`src > TodoItem.js`  
+```js
+function TodoItem() {
+  return (
+    <li>
+      <span>✔</span>
+      <p>Don't cry</p>
+      <span>❌</span>
+    </li>
+  );
+}
+
+export { TodoItem };
+```
+
+`src > TodoButton.js`  
+```js
+function TodoButton() {
+  return <button>❤</button>;
+}
+
+export { TodoButton };
+```
+
+Una vez tenemos creado los componentes, ahora si podemos importarlos en nuestro archivo `App.js`. 
+
+```js
+import { TodoCounter } from "./TodoCounter";
+import { TodoSearch } from "./TodoSearch";
+import { TodoList } from "./TodoList";
+import { TodoItem } from "./TodoItem";
+import { TodoButton } from "./TodoButton";
+
+import "./App.css";
+
+function App() {
+  return (
+    <div className="App">
+      <TodoCounter />
+      <TodoSearch />
+
+      <TodoList>
+        <TodoItem />
+        <TodoItem />
+        <TodoItem />
+      </TodoList>
+
+      <TodoButton />
+    </div>
+  );
+}
+
+export default App;
+```
+
+
+📌 Dato: Si queremos importar de manera rápida un componente previamente creado, podemos presionar `Ctrl + Barra Espaciadora` sobre la invocación del componente, en este caso podría ser `<TodoButton👈👀 />` y luego damos enter. 
+
+### Props 
+
+En React, los props (abreviatura de "propiedades") son uno de los conceptos fundamentales para pasar datos y configuraciones entre componentes. Los props son utilizados para transmitir información desde un componente padre a un componente hijo.
+
+Cuando creas un componente en React, puedes pasarle datos utilizando atributos similares a los atributos HTML. Estos datos se denominan props y se pasan como argumentos al componente en su declaración. Los props son objetos que contienen pares clave-valor, donde la clave es el nombre del prop y el valor es el dato que se está pasando.
+
+Aquí tienes un ejemplo básico para ilustrar cómo se utilizan los props:
+
+```jsx
+// ComponentePadre.js
+import React from 'react';
+import ComponenteHijo from './ComponenteHijo';
+
+const ComponentePadre = () => {
+  const nombre = 'Juan';
+  const edad = 25;
+
+  return (
+    <div>
+      <ComponenteHijo nombre={nombre} edad={edad} />
+    </div>
+  );
+};
+
+export default ComponentePadre;
+```
+
+```jsx
+// ComponenteHijo.js
+import React from 'react';
+
+const ComponenteHijo = (props) => {
+  return (
+    <div>
+      <h2>Nombre: {props.nombre}</h2>
+      <p>Edad: {props.edad}</p>
+    </div>
+  );
+};
+
+export default ComponenteHijo;
+```
+
+En el ejemplo anterior, el componente `ComponentePadre` pasa los props `nombre` y `edad` al componente `ComponenteHijo`. El componente hijo recibe los props como argumento en su función y puede acceder a ellos utilizando la sintaxis `props.propName`. En este caso, se muestra el nombre y la edad recibidos en el componente hijo.
+
+Los props son de solo lectura, lo que significa que no se deben modificar dentro del componente hijo. Si necesitas modificar datos dentro de un componente, puedes utilizar el estado (state). Los props se utilizan principalmente para transmitir datos estáticos o configuraciones entre componentes.
+
+Además de los datos primitivos como cadenas de texto o números, también puedes pasar funciones como props para permitir la comunicación entre componentes y manejar eventos o acciones en el componente padre.
+
+En resumen, los props en React son utilizados para pasar datos y configuraciones entre componentes. Permiten la comunicación unidireccional desde un componente padre a un componente hijo. Los props son de solo lectura y se accede a ellos dentro del componente hijo a través del objeto `props`.
+
+### Exportar e Importar Componentes 
+
+En React, existen diferentes formas de exportar e importar componentes. Las dos formas mencionadas en clase son `export default App;` y `export { App };`, son dos enfoques distintos para exportar un componente desde un archivo.
+
+1. `export default App;`: Esta sintaxis se utiliza para exportar un solo valor por defecto desde un archivo. Es comúnmente utilizado para exportar el componente principal de una aplicación React. Solo se puede tener un valor `default` por archivo. Al importar el componente en otro archivo, no es necesario usar llaves de desestructuración y se puede elegir cualquier nombre para el componente importado.
+
+Ejemplo de exportación:
+```js
+// App.js
+import React from 'react';
+
+const App = () => {
+  // ...
+};
+
+export default App;
+```
+
+Ejemplo de importación:
+```js
+// OtroArchivo.js
+import MiComponente from './App'; // No se usan llaves de desestructuración
+
+// ...
+```
+
+2. `export { App };`: Esta sintaxis se utiliza para exportar uno o varios valores específicos desde un archivo. Puedes exportar múltiples componentes o variables utilizando esta sintaxis. Al importar los valores en otro archivo, debes usar llaves de desestructuración y respetar el nombre exacto utilizado en la exportación.
+
+Ejemplo de exportación:
+```js
+// Componentes.js
+import React from 'react';
+
+const Componente1 = () => {
+  // ...
+};
+
+const Componente2 = () => {
+  // ...
+};
+
+export { Componente1, Componente2 };
+```
+
+Ejemplo de importación:
+```js
+// OtroArchivo.js
+import { Componente1, Componente2 } from './Componentes'; // Se usan llaves de desestructuración
+
+// ...
+```
+
+En resumen, `export default` se utiliza para exportar un solo valor por defecto, mientras que `export { }` se utiliza para exportar múltiples valores específicos. La elección de cuál usar depende de la estructura y necesidades de tu aplicación.
+
+- [Extensión: ES7+ React/Redux/React-Native snippets](https://marketplace.visualstudio.com/items?itemName=dsznajder.es7-react-js-snippets) rfce
+
+## 4. ¿Cómo se comunican los componentes? Props y atributos
+
+### Desestructuración
+
+La desestructuración es una característica de JavaScript que también se puede utilizar en React como una alternativa para acceder a los props de manera más concisa y directa. En lugar de acceder a los props a través del objeto `props.propName`, puedes extraer los props específicos que necesitas y utilizarlos directamente en tu componente.
+
+Aquí tienes un ejemplo que muestra cómo se utiliza la desestructuración con los props:
+
+```jsx
+// ComponenteHijo.js
+import React from 'react';
+
+const ComponenteHijo = ({ nombre, edad }) => {
+  return (
+    <div>
+      <h2>Nombre: {nombre}</h2>
+      <p>Edad: {edad}</p>
+    </div>
+  );
+};
+
+export default ComponenteHijo;
+```
+
+En este ejemplo, en lugar de utilizar `props.nombre` y `props.edad`, hemos desestructurado los props en los parámetros de la función del componente hijo: `({ nombre, edad })`. Esto significa que solo estamos extrayendo los valores de `nombre` y `edad` del objeto `props`, lo que nos permite utilizar directamente esas variables en el componente sin necesidad de acceder a través de `props`.
+
+Es importante destacar que la desestructuración solo extrae los props necesarios del objeto `props`. Si hay otros props que no se han desestructurado, seguirán estando disponibles en el objeto `props`.
+
+En resumen, la desestructuración es una característica de JavaScript que se puede utilizar en React para acceder a los props de manera más concisa y directa. Permite extraer los props necesarios y utilizarlos como variables individuales en lugar de acceder a través del objeto `props`. Esto simplifica la sintaxis y mejora la legibilidad del código.
+
+
+### Propiedad Children 
+
+La prop `children` en React es una prop especial que permite pasar contenido entre las etiquetas de apertura y cierre de un componente. Esta prop se utiliza para transmitir elementos hijos directos a un componente y proporciona una forma flexible de componer componentes y anidar contenido dentro de ellos.
+
+Cuando utilizas la prop `children`, puedes incluir cualquier tipo de contenido dentro del componente, ya sean elementos de React, texto, números u otros componentes. Puedes pensar en `children` como el espacio reservado para el contenido que se encuentra entre las etiquetas de apertura y cierre de un componente.
+
+Aquí tienes un ejemplo para ilustrar cómo se utiliza la prop `children`:
+
+```jsx
+// ComponentePadre.js
+import React from 'react';
+
+const ComponentePadre = () => {
+  return (
+    <div>
+      <h1>Título del componente padre</h1>
+      <ComponenteHijo>
+        <p>Este es un párrafo dentro del componente hijo.</p>
+        <button>Haz clic</button>
+      </ComponenteHijo>
+    </div>
+  );
+};
+
+export default ComponentePadre;
+```
+
+```jsx
+// ComponenteHijo.js
+import React from 'react';
+
+const ComponenteHijo = ({ children }) => {
+  return (
+    <div>
+      <h2>Componente Hijo</h2>
+      {children}
+    </div>
+  );
+};
+
+export default ComponenteHijo;
+```
+
+En este ejemplo, el componente `ComponentePadre` pasa contenido entre las etiquetas de apertura y cierre del componente `ComponenteHijo`. El contenido incluye un párrafo y un botón. En el componente hijo, utilizamos la prop `children` para mostrar el contenido pasado.
+
+La prop `children` puede utilizarse de diversas formas en el componente receptor. Puede ser renderizada directamente utilizando `{children}` como en el ejemplo anterior, o puedes manipularla, recorrerla o aplicarle lógica según tus necesidades.
+
+Es importante mencionar que el componente receptor puede tener otros props además de `children`. Puedes combinar la prop `children` con otros props para crear componentes más flexibles y reutilizables.
+
+La prop `children` permite componer componentes de manera dinámica y anidar contenido de una forma intuitiva. Es útil cuando deseas que un componente contenga contenido variable o cuando necesitas crear componentes reutilizables que pueden envolver otros elementos o componentes.
+
+En resumen, la prop `children` en React permite pasar contenido entre las etiquetas de apertura y cierre de un componente. Es una forma de componer componentes y anidar contenido dentro de ellos. Puedes utilizar cualquier tipo de contenido, como elementos de React, texto o componentes, y acceder a él utilizando la prop `children` en el componente receptor.
+
+### `<React.Fragment>` o `<> </>`
+
+En React, `<React.Fragment>` o `<> </>` (también conocido como JSX Fragment) es una característica que te permite agrupar múltiples elementos hijos sin necesidad de agregar un elemento contenedor adicional como un div.
+
+Cuando trabajas con JSX en React, generalmente se espera que devuelvas un solo elemento JSX en el método `render()` de un componente. Sin embargo, puede haber situaciones en las que desees renderizar varios elementos adyacentes sin envolverlos en un elemento contenedor adicional. Aquí es donde `<React.Fragment>` o `<> </>` resultan útiles.
+
+Aquí tienes un ejemplo para ilustrar cómo se utiliza `<React.Fragment>`:
+
+```jsx
+import React from 'react';
+
+const ComponentePadre = () => {
+  return (
+    <React.Fragment>
+      <h1>Título del componente</h1>
+      <p>Este es un párrafo dentro del componente.</p>
+      <button>Haz clic</button>
+    </React.Fragment>
+  );
+};
+
+export default ComponentePadre;
+```
+
+En este ejemplo, hemos utilizado `<React.Fragment>` para envolver múltiples elementos adyacentes: un encabezado (`<h1>`), un párrafo (`<p>`) y un botón (`<button>`). `<React.Fragment>` no genera un elemento adicional en el DOM, sino que solo actúa como un contenedor imaginario para agrupar los elementos.
+
+Una forma más corta y concisa de utilizar fragmentos es utilizando la sintaxis `<> </>` (también conocida como fragment shorthand o fragmento abreviado) en lugar de `<React.Fragment>`:
+
+```jsx
+import React from 'react';
+
+const ComponentePadre = () => {
+  return (
+    <>
+      <h1>Título del componente</h1>
+      <p>Este es un párrafo dentro del componente.</p>
+      <button>Haz clic</button>
+    </>
+  );
+};
+
+export default ComponentePadre;
+```
+
+En este caso, hemos utilizado `<> </>` en lugar de `<React.Fragment>`, lo cual es una forma más compacta y legible de lograr el mismo resultado.
+
+Al utilizar `<React.Fragment>` o `<> </>`, puedes agrupar elementos sin crear nodos adicionales en el DOM. Esto puede ser útil cuando necesitas renderizar una lista de elementos sin agregar un contenedor adicional o cuando deseas evitar estilos o efectos no deseados que podrían ser aplicados por el elemento contenedor.
+
+En resumen, `<React.Fragment>` o `<> </>` en React son utilizados para agrupar múltiples elementos hijos sin necesidad de agregar un elemento contenedor adicional. Proporcionan una forma conveniente de renderizar elementos adyacentes y evitar nodos adicionales en el DOM.
+
+### Renderizar elementos a través de un Array
+
+En React, puedes renderizar elementos a través de un array utilizando el método `map()`. El método `map()` itera sobre cada elemento de un array y devuelve un nuevo array con los elementos modificados según la lógica que definas. Puedes utilizar este nuevo array para renderizar elementos en tu componente.
+
+Aquí tienes un ejemplo para ilustrar cómo renderizar elementos a través de un array en React:
+
+```jsx
+import React from 'react';
+
+const ComponentePadre = () => {
+  const elementos = ['Elemento 1', 'Elemento 2', 'Elemento 3'];
+
+  return (
+    <div>
+      {elementos.map((elemento, index) => (
+        <p key={index}>{elemento}</p>
+      ))}
+    </div>
+  );
+};
+
+export default ComponentePadre;
+```
+
+En este ejemplo, tenemos un componente `ComponentePadre` que contiene un array llamado `elementos`. Utilizamos el método `map()` en `elementos` para iterar sobre cada elemento y generar un nuevo array de elementos `<p>`.
+
+Dentro del método `map()`, utilizamos una función de flecha para definir la lógica de renderizado de cada elemento. En este caso, estamos generando un `<p>` para cada elemento en el array `elementos`. La propiedad `key` se establece en el índice del elemento para proporcionar una identificación única a cada elemento.
+
+Finalmente, el nuevo array de elementos generados se renderiza dentro del componente `ComponentePadre`.
+
+Ten en cuenta que cuando utilizas el método `map()` para renderizar elementos a partir de un array, es importante proporcionar una `key` única para cada elemento. La `key` ayuda a React a realizar una actualización eficiente de los elementos cuando cambian.
+
+
+### Código de la clase 
+
+Vamos a recorrer un array para mostrar por defaut al usuario algunas tareas: 
+
+`src > App.js`   
+```js
+import { TodoCounter } from "./TodoCounter";
+import { TodoSearch } from "./TodoSearch";
+import { TodoList } from "./TodoList";
+import { TodoItem } from "./TodoItem";
+import { TodoButton } from "./TodoButton";
+
+import "./App.css";
+import React from "react";
+
+const defaultTodos = [
+  { text: "Lorem lorem", completed: false },
+  { text: "Don't cry", completed: false },
+  { text: "Lorem lorem", completed: false },
+  { text: "Don't cry", completed: false },
+  { text: "Lorem lorem", completed: false },
+];
+
+function App() {
+  return (
+    <React.Fragment>
+      <TodoCounter completed={16} total={25} />
+      <TodoSearch />
+
+      <TodoList>
+        {defaultTodos.map((todo) => (
+          <TodoItem
+            key={todo.text}
+            text={todo.text}
+            completed={todo.completed}
+          />
+        ))}
+      </TodoList>
+
+      <TodoButton />
+    </React.Fragment>
+  );
+}
+
+export default App;
+```
+
+`src > TodoCounter.js`   
+```js
+function TodoCounter({ completed, total }) {
+  return (
+    <h1>
+      Haz completado {completed} de {total} ToDos
+    </h1>
+  );
+}
+
+export { TodoCounter };
+```
+
+`src > TodoList.js`   
+```js
+function TodoList({ children }) {
+  return <ul>{children}</ul>;
+}
+
+export { TodoList };
+```
+
+`src > TodoItem.js`   
+```js
+function TodoItem(props) {
+  return (
+    <li>
+      <span>✔</span>
+      <p>{props.text}</p>
+      <span>❌</span>
+    </li>
+  );
+}
+
+export { TodoItem };
+```
+
