@@ -1375,4 +1375,251 @@ export { TodoButton };
 - [Repo 02](https://github.com/alejandroch1202/todo)  
 
 
-## 
+## 6. Eventos en React: onClick, onChange
+
+En React, los eventos son acciones o interacciones que ocurren en los elementos de la interfaz de usuario, como hacer clic en un botón, mover el mouse sobre un elemento, ingresar texto en un campo de entrada, etc. Los eventos en React se manejan utilizando funciones llamadas "manejadores de eventos" que se ejecutan cuando ocurre el evento.
+
+Aquí hay algunos conceptos clave relacionados con los eventos en React:
+
+1. Sintaxis de manejo de eventos: En React, los manejadores de eventos se pasan como funciones a los elementos JSX utilizando una sintaxis especial. Por ejemplo, para manejar el evento de clic en un botón, puedes hacer algo como esto:
+
+```jsx
+<button onClick={handleClick}>Haz clic aquí</button>
+```
+
+En este ejemplo, `handleClick` es la función que se ejecutará cuando se haga clic en el botón.
+
+2. Eventos sintéticos: React utiliza eventos sintéticos que son una envoltura cruzada de los eventos nativos del navegador. Estos eventos sintéticos tienen la misma interfaz que los eventos nativos del navegador, pero se comportan de manera consistente en todos los navegadores. Por lo tanto, no necesitas preocuparte por la compatibilidad del navegador al manejar eventos en React.
+
+3. Pasar argumentos a los manejadores de eventos: Si necesitas pasar argumentos adicionales a un manejador de eventos, puedes hacerlo utilizando una función de flecha o una función anónima en el lugar donde se define el manejador de eventos. Por ejemplo:
+
+```jsx
+<button onClick={() => handleClick(arg1, arg2)}>Haz clic aquí</button>
+```
+
+Aquí, `arg1` y `arg2` son los argumentos que se pasan al manejador de eventos `handleClick`.
+
+4. Prevención de comportamiento predeterminado: En algunos casos, es posible que desees evitar el comportamiento predeterminado de un evento, como evitar que un formulario se envíe o evitar que un enlace cambie de página. En React, puedes llamar al método `preventDefault()` en el evento pasado al manejador de eventos para evitar el comportamiento predeterminado. Por ejemplo:
+
+```jsx
+function handleSubmit(event) {
+  event.preventDefault();
+  // Resto del código de manejo del formulario
+}
+
+<form onSubmit={handleSubmit}>
+  {/* Campos de formulario */}
+  <button type="submit">Enviar</button>
+</form>
+```
+
+En este ejemplo, al llamar a `event.preventDefault()`, evitamos que el formulario se envíe y la página se recargue.
+
+Estos son solo algunos aspectos básicos de los eventos en React. React proporciona una amplia gama de eventos que se pueden utilizar para interactuar con los elementos de la interfaz de usuario y controlar el flujo de la aplicación. Puedes consultar la documentación oficial de React para obtener más información sobre los eventos y cómo utilizarlos en tu aplicación.
+
+### `onClick` y `onChange`
+
+En React, `onClick` y `onChange` son dos de los eventos más comunes utilizados para manejar interacciones y cambios en los elementos de la interfaz de usuario.
+
+1. `onClick`: El evento `onClick` se dispara cuando se hace clic en un elemento, como un botón, un enlace o una imagen. Puedes asignar una función al evento `onClick` para ejecutar acciones específicas cuando se produce el clic. Por ejemplo:
+
+```jsx
+<button onClick={handleClick}>Haz clic aquí</button>
+```
+
+En este caso, cuando el botón se hace clic, se ejecutará la función `handleClick`.
+
+2. `onChange`: El evento `onChange` se utiliza principalmente para elementos de entrada, como campos de texto o selectores. Se dispara cuando el valor del elemento cambia, generalmente cuando el usuario ingresa texto o selecciona una opción diferente. Puedes asignar una función al evento `onChange` para manejar los cambios y actualizar el estado de la aplicación. Por ejemplo:
+
+```jsx
+<input type="text" onChange={handleChange} />
+```
+
+Aquí, `handleChange` es la función que se ejecutará cuando el valor del campo de texto cambie.
+
+Cuando se utiliza `console.log(event)` para registrar la información proporcionada por un evento, se mostrará en la consola un objeto `Event` que contiene varios datos relevantes. Algunos de los datos más comunes y útiles que se pueden encontrar en el objeto `event` son:
+
+- `event.target`: Hace referencia al elemento del DOM en el que ocurrió el evento. Puede ser útil para identificar el elemento específico que desencadenó el evento.
+- `event.currentTarget`: Es similar a `event.target`, pero hace referencia al elemento en el que se definió el manejador de eventos. En la mayoría de los casos, `event.currentTarget` y `event.target` serán iguales, pero pueden diferir en situaciones donde se usan eventos delegados.
+- `event.preventDefault()`: Una función que se puede llamar para evitar el comportamiento predeterminado del evento, como evitar que un enlace cambie de página o que un formulario se envíe.
+- `event.stopPropagation()`: Una función que se puede llamar para detener la propagación del evento a elementos superiores. Esto evita que el evento se propague a través de la jerarquía de elementos en el DOM.
+- `event.keyCode` o `event.key`: Estos campos contienen información sobre la tecla que se presionó en eventos de teclado, lo cual puede ser útil para realizar acciones específicas en respuesta a una tecla en particular.
+
+Estos son solo algunos ejemplos de la información relevante que se puede encontrar en el objeto `event`. La disponibilidad y los detalles específicos pueden variar según el tipo de evento y el contexto en el que se utiliza.
+
+### Código de la clase 
+
+`src > components > TodoButton.js`  
+```js
+import "../css/TodoButton.css";
+
+function TodoButton() {
+  return (
+    <button
+      className="add"
+      onClick={(event) => { 👈👀
+        console.log(event);
+        console.log(event.target);
+        //<button class="add"></button>
+      }}
+    ></button>
+  );
+}
+
+export { TodoButton };
+```
+
+`src > components > TodoSearch.js`  
+```js
+import "../css/TodoSearch.css";
+
+function TodoSearch() {
+  return (
+    <input
+      className="search"
+      placeholder="Search..."
+      onChange={(event) => { 👈👀
+        console.log("search");
+        console.log(event);
+        console.log(event.target);
+        console.log(event.target.value);
+        // h hi
+      }}
+    />
+  );
+}
+
+export { TodoSearch };
+```
+
+📌 Dato: Eliminamos algunas cosas del archivo `manifest.json`, ya que la consola mostraba errores por usar un icono de React, el cual ya había eliminado previamente. 
+
+```json
+  "icons": [
+    {
+      "src": "favicon.ico",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "react192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "react512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+```
+
+## 7. ¿Qué es el estado?
+
+En React, los estados son objetos que contienen datos y representan la información que puede cambiar durante el ciclo de vida de un componente. Los estados son utilizados para almacenar y controlar la información dinámica en una aplicación React. Cuando un estado cambia, React se encarga de actualizar automáticamente la interfaz de usuario para reflejar ese cambio.
+
+Aquí hay algunos conceptos clave sobre los estados en React:
+
+1. Declaración del estado: En un componente de React, puedes declarar un estado utilizando el hook `useState`. El hook `useState` retorna un array con dos elementos: el valor actual del estado y una función que se utiliza para actualizar ese estado. Por ejemplo:
+
+```jsx
+import React, { useState } from 'react';
+
+function MyComponent() {
+  const [count, setCount] = useState(0);
+
+  // Resto del código del componente
+}
+```
+
+En este ejemplo, `count` es el estado y `setCount` es la función que se utiliza para actualizar el estado.
+
+2. Actualización del estado: Para actualizar el estado, debes llamar a la función que se utiliza para actualizarlo, en este caso `setCount`. Puedes llamar a esta función en respuesta a eventos o en cualquier otro lugar donde desees actualizar el estado. Por ejemplo:
+
+```jsx
+function handleButtonClick() {
+  setCount(count + 1);
+}
+```
+
+En este caso, `setCount` se llama con el nuevo valor del estado, en este caso, `count + 1`. Al llamar a `setCount`, React se encargará de actualizar el estado y volverá a renderizar el componente con el nuevo valor.
+
+3. Renderizado condicional: Puedes utilizar el estado para controlar el renderizado condicional de elementos en tu interfaz de usuario. Por ejemplo, puedes mostrar u ocultar un elemento basado en el valor de un estado. Aquí hay un ejemplo:
+
+```jsx
+function MyComponent() {
+  const [isVisible, setIsVisible] = useState(true);
+
+  return (
+    <div>
+      {isVisible && <p>Este elemento se muestra si isVisible es verdadero</p>}
+      <button onClick={() => setIsVisible(!isVisible)}>Mostrar/Ocultar</button>
+    </div>
+  );
+}
+```
+
+En este ejemplo, el elemento `<p>` se muestra si el estado `isVisible` es `true`. Al hacer clic en el botón, se llama a la función `setIsVisible` para cambiar el valor del estado entre `true` y `false`, lo que provoca la aparición o desaparición del elemento `<p>` en la interfaz de usuario.
+
+4. Uso de múltiples estados: Puedes utilizar múltiples estados en un componente para manejar diferentes datos o características. Simplemente declara diferentes estados utilizando `useState` según tus necesidades. Por ejemplo:
+
+```jsx
+function MyComponent() {
+  const [name, setName] = useState('');
+  const [age, setAge] = useState(0);
+
+  // Resto del código del componente
+}
+```
+
+En este caso, `name` y `age` son dos estados diferentes que se pueden actualizar y utilizar por separado.
+
+Los estados en React son fundamentales para crear componentes interactivos y dinámicos. Al utilizar estados, puedes controlar y actualizar los datos en tu aplicación de manera eficiente, lo que permite que la interfaz de usuario reaccione de manera automática y refleje los cambios en los datos.
+
+Aquí tienes un ejemplo básico de cómo utilizar estados en React para crear un contador simple:
+
+```jsx
+import React, { useState } from 'react';
+
+function Counter() {
+  const [count, setCount] = useState(0);
+
+  const increment = () => {
+    setCount(count + 1);
+  };
+
+  const decrement = () => {
+    setCount(count - 1);
+  };
+
+  return (
+    <div>
+      <h1>Contador: {count}</h1>
+      <button onClick={increment}>Incrementar</button>
+      <button onClick={decrement}>Decrementar</button>
+    </div>
+  );
+}
+
+export default Counter;
+```
+
+En este ejemplo, utilizamos el hook `useState` para declarar un estado llamado `count` con un valor inicial de `0`. Luego, definimos dos funciones `increment` y `decrement` que actualizan el estado `count` aumentándolo o disminuyéndolo en 1 respectivamente.
+
+Dentro del componente, mostramos el valor actual del contador utilizando la variable `count` entre llaves `{count}`. Al hacer clic en los botones "Incrementar" o "Decrementar", se llama a las funciones correspondientes y se actualiza el estado `count`, lo que provoca que React vuelva a renderizar el componente con el nuevo valor del contador.
+
+
+
+
+### Código de la clase 
+
+`src > components > TodoButton.js`  
+```js
+```
+
+
+### Código de la clase 
+
+`src > components > TodoButton.js`  
+```js
+```
