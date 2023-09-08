@@ -504,7 +504,7 @@ Vamos a crear diferentes componentes, cada uno con su respectivo archivo, de tal
 `src > TodoCounter.js`  
 ```js
 function TodoCounter() {
-  return <h1>Haz completado 3 de 5 ToDos</h1>;
+  return <h1>Has completado 3 de 5 ToDos</h1>;
 }
 
 export { TodoCounter };
@@ -912,7 +912,7 @@ export default App;
 function TodoCounter({ completed, total }) {
   return (
     <h1>
-      Haz completado {completed} de {total} ToDos
+      Has completado {completed} de {total} ToDos
     </h1>
   );
 }
@@ -944,3 +944,435 @@ function TodoItem(props) {
 export { TodoItem };
 ```
 
+[Dominando las keys en React.js: aprende cómo implementarlas](https://platzi.com/blog/react-keys/)
+
+
+## 5. Estilos CSS en React
+
+En React, puedes agregar estilos a tus componentes de varias formas. Aquí te explicaré algunas opciones comunes:
+
+1. CSS Externo: Puedes usar archivos CSS externos de la misma manera que lo harías en una página web regular. Simplemente importa el archivo CSS en el componente donde deseas aplicar los estilos. Por ejemplo:
+
+```jsx
+import React from 'react';
+import './styles.css';
+
+const MiComponente = () => {
+  return <div className="mi-estilo">Contenido del componente</div>;
+};
+
+export default MiComponente;
+```
+
+En el archivo CSS `styles.css`, puedes definir la clase `mi-estilo` con los estilos deseados:
+
+```css
+.mi-estilo {
+  color: blue;
+  font-weight: bold;
+}
+```
+
+2. Estilos en línea: Puedes aplicar estilos en línea directamente a elementos JSX utilizando el atributo `style`. Define un objeto JavaScript con las propiedades de estilo y asígnalo al atributo `style` del elemento. Por ejemplo:
+
+```jsx
+import React from 'react';
+
+const MiComponente = () => {
+  const estilo = {
+    color: 'blue',
+    fontWeight: 'bold'
+  };
+
+  return <div style={estilo}>Contenido del componente</div>;
+};
+
+export default MiComponente;
+```
+
+3. Módulos de Estilo: React también admite módulos de estilo, que te permiten definir estilos específicos para cada componente. Los módulos de estilo generan nombres de clase únicos y los asignan automáticamente a los elementos JSX en tu componente. Para usar módulos de estilo, debes renombrar tu archivo de estilo con una extensión `.module.css`. Por ejemplo, `styles.module.css`.
+
+```jsx
+import React from 'react';
+import styles from './styles.module.css';
+
+const MiComponente = () => {
+  return <div className={styles.miEstilo}>Contenido del componente</div>;
+};
+
+export default MiComponente;
+```
+
+En el archivo `styles.module.css`, define las clases de estilo como propiedades del objeto `styles`:
+
+```css
+.miEstilo {
+  color: blue;
+  font-weight: bold;
+}
+```
+
+Estas son solo algunas de las formas comunes de agregar estilos en React. Puedes elegir la opción que mejor se adapte a tus necesidades.
+
+### Clases condicionales basadas en propiedades
+
+En React, las clases CSS que se generan dinámicamente utilizando expresiones lógicas, se conocen comúnmente como "clases condicionales" o "clases condicionales basadas en propiedades".
+
+En el siguiente ejemplo:
+
+```jsx
+<p className={`${props.completed && "p--completed"}`}>...</p>
+```
+
+Se utiliza una expresión lógica para condicionar la aplicación de una clase CSS. Si `props.completed` es verdadero, se agrega la clase `"p--completed"`; de lo contrario, no se agrega la clase.
+
+El uso de las llaves `{}` y la sintaxis `${}` dentro de la cadena de clase permite evaluar la expresión lógica y generar una cadena de clase condicionalmente.
+
+Es importante tener en cuenta que esto es una técnica común en React para condicionar la aplicación de clases CSS en función de las propiedades o el estado de los componentes. Puedes utilizar esta técnica en combinación con cualquier librería de estilos en React, como CSS Modules, Styled Components o cualquier otro enfoque que prefieras para manejar los estilos en tu aplicación React.
+
+Otro ejemplo:  
+
+Supongamos que tenemos un componente llamado `TaskItem` que representa un elemento de una lista de tareas, y queremos aplicar una clase condicionalmente según si la tarea está completada o no:
+
+```jsx
+import React from 'react';
+
+const TaskItem = (props) => {
+  return (
+    <div className={`task-item ${props.completed ? 'task-completed' : ''}`}>
+      {props.taskName}
+    </div>
+  );
+};
+
+export default TaskItem;
+```
+
+En este ejemplo, el componente `TaskItem` recibe una propiedad `completed` que indica si la tarea está completada. Utilizamos la expresión lógica `props.completed ? 'task-completed' : ''` para generar de manera condicional la cadena de clase CSS.
+
+Si `props.completed` es verdadero, se agrega la clase `"task-completed"` a la clase principal `"task-item"`. De lo contrario, no se agrega ninguna clase adicional.
+
+Luego, en el renderizado del componente, utilizamos la clase resultante en el elemento `<div>` que representa el elemento de la tarea.
+
+### Código de la clase 
+
+Para realizar esta parte y tener un poco de orden cree la siguiente estructura:   
+```bash
+├── package-lock.json
+├── package.json
+├── public
+│   ├── index.html
+│   ├── manifest.json
+│   └── robots.txt
+└── src
+    ├── App.js
+    ├── components 👈👀👇
+    │   ├── TodoButton.js
+    │   ├── TodoCounter.js
+    │   ├── TodoItem.js
+    │   ├── TodoList.js
+    │   └── TodoSearch.js
+    ├── css 👈👀👇
+    │   ├── TodoButton.css
+    │   ├── TodoCounter.css
+    │   ├── TodoItem.css
+    │   ├── TodoList.css
+    │   ├── TodoSearch.css
+    │   └── index.css
+    ├── index.js
+    └── svg 👈👀👇
+        ├── add-purple.svg
+        ├── check-completed.svg
+        ├── check.svg
+        ├── delete-hover.svg
+        ├── delete.svg
+        └── search.svg
+```
+
+`src > App.js`  
+```js
+import React from "react";
+import { TodoCounter } from "./components/TodoCounter";
+import { TodoSearch } from "./components/TodoSearch";
+import { TodoList } from "./components/TodoList";
+import { TodoItem } from "./components/TodoItem";
+import { TodoButton } from "./components/TodoButton";
+
+const defaultTodos = [
+  { text: "Lorem lorem", completed: true }, 👈👀🔥
+  { text: "Don't cry", completed: false },
+  { text: "Lorem ipsus", completed: false },
+  { text: "Take care", completed: false },
+  { text: "Loremlorem", completed: false },
+];
+
+function App() {
+  return (
+    <>
+      <TodoCounter completed={16} total={25} />
+      <TodoSearch />
+
+      <TodoList>
+        {defaultTodos.map((todo) => (
+          <TodoItem
+            key={todo.text}
+            text={todo.text}
+            completed={todo.completed} 👈👀🔥
+          />
+        ))}
+      </TodoList>
+
+      <TodoButton />
+    </>
+  );
+}
+
+export default App;
+```
+
+En el `index.html` agregamos las fuentes de nuestra preferencia.  
+
+`src > css > index.css`  
+```css
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  background-color: #090b10;
+  padding: 4rem 1.5rem 2rem;
+  font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+  min-height: 100vh;
+}
+```
+
+#### Componente TodoCounter  
+`src > components > TodoCounter.js`  
+```js
+import "../css/TodoCounter.css";
+
+function TodoCounter({ completed, total }) {
+  return (
+    <h1>
+      Has completado <span className="completed">{completed}</span> de <span className="total">{total}</span> ToDos
+    </h1>
+  );
+}
+
+export { TodoCounter };
+```
+
+`src > css > TodoCounter.css`  
+```css
+h1 {
+	width: auto;
+	height: 15vh;
+	font-size: 24px;
+	text-align: center;
+	margin: 0 auto;
+	/* display: flex;
+	justify-content: center;
+	align-items: center; */
+	color: #cbd5e1;
+	padding: 0 2rem;
+}
+
+span {
+	color: #4f46e5;
+
+}
+```
+
+#### Componente TodoSearch  
+`src > components > TodoSearch.js`  
+```js
+import '../css/TodoSearch.css'
+
+function TodoSearch() {
+  return <input className='search' placeholder="Search..." />;
+}
+
+export { TodoSearch };
+```
+
+`src > css > TodoSearch.css`  
+```css
+input {
+  margin: 1.5rem auto 2rem;
+  display: flex;
+  width: 15rem;
+  height: 2rem;
+  border-radius: 10px;
+  padding: 1rem;
+  
+  background-image: url("../svg/search.svg");
+  background-repeat: no-repeat;
+  background-position: 202px center;
+  
+  border: 1px solid #4f46e5;
+  box-shadow: -5px 5px 5px -5px #4f46e5;
+  /* background: rgba(255, 255, 255, 0.1); 
+  background: hsla(0,0%,100%,.5); */
+  background-color: rgba(0.035, 0.043, 0.063, 0.1);
+  color: #cbd5e1;
+}
+
+input::placeholder {
+  color: #cbd5e1;
+}
+```
+
+#### Componente TodoList
+`src > components > TodoList.js`  
+```js
+import '../css/TodoList.css'
+
+function TodoList({ children }) {
+  return <ul>{children}</ul>;
+}
+
+export { TodoList };
+```
+
+`src > css > TodoList.css`  
+```css
+ul {
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: 1rem;
+	justify-items: center;
+}
+```
+
+#### Componente TodoItem 
+`src > components > TodoItem.js`  
+```js
+import "../css/TodoItem.css";
+
+function TodoItem(props) {
+  return (
+    <li>
+      <span className={`check ${props.completed && "check--active"}`}></span> 👈👀🔥
+      <p className={`${props.completed && "p--completed"}`}>{props.text}</p> 👈👀🔥
+      <span className={`delete`}></span> 👈👀🔥
+    </li>
+  );
+}
+
+export { TodoItem };
+```
+
+Si dentro del array `defaultTodos` creado en el componente padre `App.js` existe alguna tarea en `true` esta cumplirá con los parámetros definidos dentro de la `className` del elemento `p` definida en el componente `TodoItems.js` y dará el estilo `text-decoration: line-through;` que tachará nuestra tarea como realizada. 
+
+`src > css > TodoItem.css`  
+```css
+li {
+  list-style: none;
+  background-color: #cbd5e1;
+  width: 15rem;
+  height: 3rem;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1rem 0 0.5rem;
+
+  position: relative;
+}
+
+.check {
+  background-image: url("../svg/check.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.check--active {
+  background-image: url("../svg/check-completed.svg");
+}
+
+.delete {
+  background-image: url("../svg/delete.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  width: 15px;
+  height: 15px;
+  cursor: pointer;
+
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.delete:hover {
+  background-image: url("../svg/delete-hover.svg");
+}
+
+p {
+  width: 85%;
+  height: auto;
+  margin: 0 5px 0;
+  color: #090b10;
+}
+
+.p--completed {
+  text-decoration: line-through;
+}
+```
+
+#### Componente TodoButton  
+`src > components > TodoButton.js`  
+```js
+import "../css/TodoButton.css";
+
+function TodoButton() {
+  return <button className="add"></button>;
+}
+
+export { TodoButton };
+```
+
+`src > css > TodoButton.css`  
+```css
+.add {
+  border: none;
+  background-color: #090b10;
+  border-radius: 50%;
+  width: 3rem;
+  height: 3rem;
+
+  background-image: url("../svg/add-purple.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  position: fixed;
+	bottom: 1rem;
+	right: 1rem;
+	cursor: pointer;
+  
+  transition: transform 0.3s ease;
+}
+
+.add:hover {
+  transform: rotate(90deg);
+}
+```
+
+- [Código de mi proyecto](https://github.com/aleroses/react-todo)
+- [Diseño en Figma](https://www.figma.com/file/3aZkIjXMEzBDACmWxqUVes/TODO-Machine-Mockup?type=design&node-id=0-1&mode=design&t=SrHeYaczPsRfmRLW-0)
+- [Diseño Prototipo](https://www.figma.com/proto/3aZkIjXMEzBDACmWxqUVes/TODO-Machine-Mockup?type=design&amp%3Bnode-id=1-3&amp%3Bt=NH0HT6nS2TxaLKp4-1&amp%3Bscaling=min-zoom&amp%3Bpage-id=0%3A1&amp%3Bstarting-point-node-id=1%3A3&amp%3Bmode=design&node-id=1-3&starting-point-node-id=1%3A3)
+- [Guía BEM](https://platzi.com/blog/bem/)
+- [Proyecto 01](https://pandrea-hub.github.io/TODOs/)
+- [Repo P01](https://github.com/dioselyn/tasks)
+- [Proyecto 02](https://dioselyn.github.io/tasks/)
+- [Repo 01](https://github.com/Sharonina/Taskify/tree/main)
+- [Repo 02](https://github.com/alejandroch1202/todo)  
+
+
+## 

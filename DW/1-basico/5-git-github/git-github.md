@@ -856,7 +856,7 @@ Ahora podemos actualizar la URL que guardamos en nuestro repositorio remoto, sol
 - Dentro de nuestro proyecto
 - `git remote -v`
 - `git remote set-url origin url-ssh-repo-de-github`
-	- origin es un estándar de la industria y perfectamente se puede colocar otro nombre.
+	- origin es un estándar de la industria y perfectamente se puede colocar otro nombre. Esto también sirve si deseas cambiar la URL por otra. 
 
 
 📌 Si es la primera vez que añades una URL utiliza el comando:     
