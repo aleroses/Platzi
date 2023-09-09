@@ -1608,8 +1608,359 @@ En este ejemplo, utilizamos el hook `useState` para declarar un estado llamado `
 
 Dentro del componente, mostramos el valor actual del contador utilizando la variable `count` entre llaves `{count}`. Al hacer clic en los botones "Incrementar" o "Decrementar", se llama a las funciones correspondientes y se actualiza el estado `count`, lo que provoca que React vuelva a renderizar el componente con el nuevo valor del contador.
 
+### Atributos `value` y `placeholder` 
+
+La diferencia principal entre los atributos `value` y `placeholder` en un elemento `input` en HTML es la siguiente:
+
+- `value`: El atributo `value` especifica el valor inicial o el valor actual de un campo de entrada. Muestra un texto predeterminado dentro del campo de entrada cuando se carga la página. El usuario puede editar o modificar este valor antes de enviarlo. Si el usuario no modifica el valor, se enviará el valor predeterminado establecido en el atributo `value`. Ejemplo: `<input type="text" value="Ejemplo de valor predeterminado">`.
+
+- `placeholder`: El atributo `placeholder` se utiliza para proporcionar una sugerencia o una pista sobre el formato o el tipo de datos que se espera en el campo de entrada. Es un texto de marcador de posición que se muestra en el campo de entrada antes de que el usuario escriba algo. No se envía junto con el formulario al enviarlo, y desaparece tan pronto como el usuario comienza a escribir en el campo. El objetivo principal del atributo `placeholder` es brindar orientación al usuario sobre qué tipo de información debe ingresar en el campo. Ejemplo: `<input type="text" placeholder="Ingrese su nombre">`.
+
+### Código de la clase 
+
+`src > components > TodoSearch.js`  
+```js
+import React from "react"; 👈👀
+import "../css/TodoSearch.css";
+
+function TodoSearch() {
+  const [searchValue, setSearchValue] = React.useState(""); 👈👀
+
+  console.log('Users search ToDos from ' + searchValue);
+
+  return (
+    <input
+      placeholder="Search..."
+      className="search"
+      value={searchValue} 👈👀
+      onChange={(event) => {
+        setSearchValue(event.target.value); 👈👀
+      }}
+    />
+  );
+}
+
+export { TodoSearch };
+```
+
+[Curso de React.js: Manejo Profesional del Estado](https://platzi.com/cursos/react-estado/)
 
 
+## 8. Contando TODOs
+
+En React, la comunicación entre un componente hijo y un componente padre se puede lograr mediante el uso de estados y funciones de devolución de llamada (callbacks).
+
+Aquí tienes los pasos básicos para lograr la comunicación entre un componente hijo y un componente padre:
+
+1. En el componente padre, define un estado y una función de devolución de llamada que se pasará al componente hijo como una prop.
+
+```jsx
+import React, { useState } from 'react';
+import ChildComponent from './ChildComponent';
+
+function ParentComponent() {
+  const [childData, setChildData] = useState('');
+
+  const handleChildData = (data) => {
+    setChildData(data);
+  };
+
+  return (
+    <div>
+      <ChildComponent onChildData={handleChildData} />
+      <p>Data from child: {childData}</p>
+    </div>
+  );
+}
+
+export default ParentComponent;
+```
+
+2. En el componente hijo, define una función que se activará cuando ocurra algún evento o acción en el componente hijo. Luego, llama a la función de devolución de llamada pasada desde el componente padre, pasando los datos relevantes como argumento.
+
+```jsx
+import React from 'react';
+
+function ChildComponent({ onChildData }) {
+  const handleClick = () => {
+    const data = 'Hello from child!';
+    onChildData(data);
+  };
+
+  return (
+    <button onClick={handleClick}>Send Data to Parent</button>
+  );
+}
+
+export default ChildComponent;
+```
+
+En este ejemplo, el componente hijo (`ChildComponent`) tiene un botón que, cuando se hace clic, activa la función `handleClick`. Dentro de esta función, se crea una variable `data` que contiene los datos que deseas enviar al componente padre. Luego, se llama a la función de devolución de llamada `onChildData` pasada como prop desde el componente padre, pasando `data` como argumento.
+
+En el componente padre (`ParentComponent`), la función `handleChildData` se ejecuta cuando se activa la función de devolución de llamada desde el componente hijo. Dentro de esta función, se actualiza el estado `childData` con los datos recibidos. El valor actualizado del estado se muestra en el componente padre.
+
+![](https://i.postimg.cc/9FvCX53k/8-using-states.png)
+
+De esta manera, los datos se comunican desde el componente hijo hasta el componente padre mediante el uso de estados y funciones de devolución de llamada.
+
+### Estados derivados
+
+En React, los estados derivados se refieren a los estados que se calculan o derivan a partir de otros estados existentes. Estos estados derivados no se almacenan como datos en sí mismos, sino que se calculan dinámicamente según los cambios en los estados base.
+
+Un ejemplo común de un estado derivado en React es calcular el total de una lista de elementos. Supongamos que tienes una lista de números y quieres calcular la suma de todos ellos. Puedes almacenar la lista de números en un estado base y luego calcular el total como un estado derivado.
+
+Aquí tienes un ejemplo de cómo podrías implementar esto en un componente de React:
+
+```jsx
+import React, { useState } from 'react';
+
+const NumberList = () => {
+  const [numbers, setNumbers] = useState([1, 2, 3, 4, 5]);
+
+  // Cálculo del estado derivado
+  const total = numbers.reduce((accumulator, current) => accumulator + current, 0);
+
+  return (
+    <div>
+      <ul>
+        {numbers.map((number, index) => (
+          <li key={index}>{number}</li>
+        ))}
+      </ul>
+      <p>Total: {total}</p>
+    </div>
+  );
+};
+
+export default NumberList;
+```
+
+En este ejemplo, el estado base es `numbers`, que es un arreglo de números. El estado derivado `total` se calcula utilizando el método `reduce()` en el arreglo `numbers`. Cada vez que se actualizan los números, el total se recalcula automáticamente.
+
+Los estados derivados son útiles cuando necesitas realizar cálculos o transformaciones basadas en los estados existentes. Ayudan a mantener la lógica de tu componente más modular y fácil de entender, ya que puedes calcular valores derivados según sea necesario en lugar de almacenarlos explícitamente como estados separados.
+
+### Operador `!!`  
+
+El operador `!!` en JavaScript se utiliza para convertir un valor en su equivalente booleano. Esencialmente, se utiliza para obtener el valor booleano de una expresión, independientemente del tipo de datos original.
+
+Cuando se aplica el operador `!!` a un valor, se realiza una conversión implícita a `boolean` siguiendo las reglas de conversión del lenguaje. El resultado final será `true` si el valor original se considera "verdadero" o `false` si se considera "falso".
+
+La conversión a booleano sigue las siguientes reglas:
+- Valores considerados "falsos": `false`, `0`, `""` (cadena vacía), `null`, `undefined`, `NaN`.
+- Valores considerados "verdaderos": cualquier valor que no sea "falso".
+
+Aquí hay algunos ejemplos para ilustrar el uso del operador `!!`:
+
+```javascript
+console.log(!!0);           // false
+console.log(!!1);           // true
+console.log(!!"Hello");     // true
+console.log(!!"");          // false
+console.log(!!null);        // false
+console.log(!!undefined);   // false
+console.log(!!NaN);         // false
+```
+
+En relación con los tipos de datos booleanos en JavaScript, el operador `!!` se utiliza a menudo para garantizar que una variable o una expresión se evalúe como un valor booleano explícito. Esto puede ser útil en situaciones donde necesitas asegurarte de que un valor se interprete como `true` o `false`, independientemente de su tipo original.
+
+Por ejemplo, supongamos que tienes una variable `x` que puede tener diferentes tipos de datos y quieres asegurarte de que se evalúe como un booleano. Puedes usar `!!` para lograrlo:
+
+```javascript
+var x = "Hello";
+var booleanValue = !!x;  // true
+
+console.log(booleanValue);  // true
+```
+
+En este caso, `!!x` convierte el valor de `x` en un booleano explícito, y el resultado es `true`, ya que cualquier valor que no sea "falso" se considera "verdadero" en JavaScript.
+
+
+### Código de la clase 
+
+`src > App.js`  
+```js
+import React from "react";
+import { TodoCounter } from "./components/TodoCounter";
+import { TodoSearch } from "./components/TodoSearch";
+import { TodoList } from "./components/TodoList";
+import { TodoItem } from "./components/TodoItem";
+import { TodoButton } from "./components/TodoButton";
+
+const defaultTodos = [
+  { text: "Lorem lorem", completed: true },
+  { text: "Don't cry", completed: false },
+  { text: "Lorem ipsus", completed: false },
+  { text: "Take care", completed: false },
+  { text: "Loremlorem", completed: true },
+];
+
+function App() {
+  const [todos, setTodos] = React.useState(defaultTodos);
+  const [searchValue, setSearchValue] = React.useState("");
+
+  const completedTodos = todos.filter((todo) => !!todo.completed).length;
+  const totalTodos = todos.length;
+
+  console.log("Users search ToDos from " + searchValue);
+
+  return (
+    <>
+      <TodoCounter completed={completedTodos} total={totalTodos} />
+      <TodoSearch searchValue={searchValue} setSearchValue={setSearchValue} />
+
+      <TodoList>
+        {defaultTodos.map((todo) => (
+          <TodoItem
+            key={todo.text}
+            text={todo.text}
+            completed={todo.completed}
+          />
+        ))}
+      </TodoList>
+
+      <TodoButton />
+    </>
+  );
+}
+
+export default App;
+```
+
+`src > components > TodoSearch.js`  
+```js
+import React from "react";
+import "../css/TodoSearch.css";
+
+function TodoSearch({ searchValue, setSearchValue }) {
+  return (
+    <input
+      placeholder="Search..."
+      className="search"
+      value={searchValue}
+      onChange={(event) => {
+        setSearchValue(event.target.value);
+      }}
+    />
+  );
+}
+
+export { TodoSearch };
+```
+
+## 9. Buscando TODOs
+
+### Método `include`  
+
+En JavaScript o React, `include` es un método que se utiliza para verificar si un elemento específico está presente en un arreglo o cadena de texto. Este método devuelve un valor booleano (`true` o `false`) según si el elemento se encuentra o no en la colección.
+
+El método `include` se utiliza principalmente para realizar comprobaciones de pertenencia en arrays y cadenas de texto. A continuación, te mostraré ejemplos de cómo se puede utilizar en ambos casos:
+
+- Con arrays:
+```javascript
+const numbers = [1, 2, 3, 4, 5];
+
+console.log(numbers.includes(3)); // true
+console.log(numbers.includes(6)); // false
+```
+
+En este ejemplo, el método `includes` se utiliza para verificar si el número 3 está presente en el array `numbers`. Como el número 3 está en el array, el método devuelve `true`. Luego, se verifica si el número 6 está presente en el array, pero como no existe, el método devuelve `false`.
+
+- Con cadenas de texto:
+```javascript
+const message = "Hello, world!";
+
+console.log(message.includes("Hello")); // true
+console.log(message.includes("foo")); // false
+```
+
+Aquí, se utiliza `includes` para verificar si la cadena de texto "Hello" está presente en el mensaje. Como la cadena "Hello" se encuentra en el mensaje, el método devuelve `true`. Sin embargo, al verificar la presencia de la cadena "foo", que no está en el mensaje, el método devuelve `false`.
+
+El método `includes` es útil para realizar acciones condicionales basadas en la presencia o ausencia de un elemento en un arreglo o cadena de texto. Puedes utilizarlo para realizar búsquedas simples y determinar si un valor específico se encuentra en una colección de datos.
+
+### Métodos `toLowerCase()` y `toLocaleLowerCase()`
+
+En JavaScript y React, tanto `toLowerCase()` como `toLocaleLowerCase()` son métodos que se utilizan para convertir una cadena de texto a minúsculas. Sin embargo, existen diferencias sutiles entre ellos.
+
+El método `toLowerCase()` convierte todos los caracteres de una cadena de texto a minúsculas según las reglas de conversión de minúsculas de Unicode. A continuación, te muestro un ejemplo de cómo se puede utilizar:
+
+```javascript
+const message = "Hello, World!";
+
+console.log(message.toLowerCase()); // "hello, world!"
+```
+
+En este ejemplo, el método `toLowerCase()` se aplica a la cadena de texto "Hello, World!" y devuelve la cadena en minúsculas "hello, world!".
+
+Por otro lado, el método `toLocaleLowerCase()` también convierte una cadena de texto a minúsculas, pero lo hace utilizando las reglas de conversión de minúsculas específicas del idioma actual. Esto significa que el resultado puede variar según el idioma del entorno en el que se esté ejecutando el código. Aquí tienes un ejemplo:
+
+```javascript
+const message = "Île-de-France";
+
+console.log(message.toLocaleLowerCase()); // "île-de-france" (dependiendo del idioma del entorno)
+```
+
+En este ejemplo, el método `toLocaleLowerCase()` se aplica a la cadena de texto "Île-de-France" y devuelve la cadena en minúsculas "île-de-france" utilizando las reglas de conversión de minúsculas específicas del idioma actual.
+
+En resumen, `toLowerCase()` convierte una cadena de texto a minúsculas utilizando las reglas de conversión de Unicode, mientras que `toLocaleLowerCase()` lo hace utilizando las reglas de conversión de minúsculas específicas del idioma actual. La elección entre uno u otro depende del contexto y de las necesidades específicas de tu aplicación.
+
+### Código de la clase 
+
+`src > App.js`  
+```js
+import React from "react";
+import { TodoCounter } from "./components/TodoCounter";
+import { TodoSearch } from "./components/TodoSearch";
+import { TodoList } from "./components/TodoList";
+import { TodoItem } from "./components/TodoItem";
+import { TodoButton } from "./components/TodoButton";
+
+const defaultTodos = [
+  { text: "Lorem lorem", completed: true },
+  { text: "Don't cry", completed: false },
+  { text: "Lorem ipsus", completed: false },
+  { text: "Take care", completed: false },
+  { text: "Loremlorem", completed: true },
+];
+
+function App() {
+  const [todos, setTodos] = React.useState(defaultTodos);
+  const [searchValue, setSearchValue] = React.useState("");
+
+  const completedTodos = todos.filter((todo) => !!todo.completed).length;
+  const totalTodos = todos.length;
+
+  const searchedTodos = todos.filter((todo) => {
+    const todoText = todo.text.toLowerCase();
+    const searchText = searchValue.toLowerCase();
+    return todoText.includes(searchText);
+  });
+
+  console.log("Users search ToDos from " + searchValue);
+
+  return (
+    <>
+      <TodoCounter completed={completedTodos} total={totalTodos} />
+      <TodoSearch searchValue={searchValue} setSearchValue={setSearchValue} />
+
+      <TodoList>
+        {searchedTodos.map((todo) => (
+          <TodoItem
+            key={todo.text}
+            text={todo.text}
+            completed={todo.completed}
+          />
+        ))}
+      </TodoList>
+
+      <TodoButton />
+    </>
+  );
+}
+
+export default App;
+```
+
+## 10.
 
 ### Código de la clase 
 
@@ -1617,6 +1968,7 @@ Dentro del componente, mostramos el valor actual del contador utilizando la vari
 ```js
 ```
 
+## 11. 
 
 ### Código de la clase 
 
