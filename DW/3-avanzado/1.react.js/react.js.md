@@ -1774,6 +1774,39 @@ console.log(booleanValue);  // true
 
 En este caso, `!!x` convierte el valor de `x` en un booleano explícito, y el resultado es `true`, ya que cualquier valor que no sea "falso" se considera "verdadero" en JavaScript.
 
+### Métodos `filter` y `find`
+
+El método `filter` se utiliza para filtrar elementos de una matriz (array) según un criterio específico y crear una nueva matriz con los elementos que cumplen con ese criterio. Toma una función de devolución de llamada (callback) como argumento, que se ejecuta para cada elemento de la matriz y devuelve `true` si se debe incluir en la nueva matriz filtrada, o `false` si no se debe incluir.
+
+Aquí tienes un ejemplo de cómo usar `filter`:
+
+```javascript
+const numbers = [1, 2, 3, 4, 5, 6];
+
+const evenNumbers = numbers.filter(function(number) {
+  return number % 2 === 0;
+});
+
+console.log(evenNumbers); // Resultado: [2, 4, 6]
+```
+
+En el ejemplo anterior, se define una matriz llamada `numbers` que contiene números del 1 al 6. Luego, se utiliza el método `filter` para crear una nueva matriz llamada `evenNumbers`, que solo contiene los números pares de la matriz original.
+
+El método `find`, por otro lado, se utiliza para encontrar el primer elemento que cumple con un criterio específico en una matriz. Al igual que `filter`, también toma una función de devolución de llamada como argumento. Esta función se ejecuta para cada elemento de la matriz y devuelve `true` si se encuentra el elemento deseado, o `false` si no se encuentra. El método `find` devuelve el primer elemento que cumple con el criterio o `undefined` si no se encuentra ningún elemento.
+
+Aquí tienes un ejemplo de cómo usar `find`:
+
+```javascript
+const fruits = ['apple', 'banana', 'orange', 'mango'];
+
+const foundFruit = fruits.find(function(fruit) {
+  return fruit === 'orange';
+});
+
+console.log(foundFruit); // Resultado: 'orange'
+```
+
+En el ejemplo anterior, se define una matriz llamada `fruits` que contiene diferentes frutas. Luego, se utiliza el método `find` para encontrar la primera fruta que sea igual a `'orange'`. El método devuelve `'orange'`, que es el primer elemento que cumple con el criterio.
 
 ### Código de la clase 
 
@@ -1849,7 +1882,7 @@ export { TodoSearch };
 
 ## 9. Buscando TODOs
 
-### Método `include`  
+### Método `includes.()`  
 
 En JavaScript o React, `include` es un método que se utiliza para verificar si un elemento específico está presente en un arreglo o cadena de texto. Este método devuelve un valor booleano (`true` o `false`) según si el elemento se encuentra o no en la colección.
 
@@ -1874,6 +1907,13 @@ console.log(message.includes("foo")); // false
 ```
 
 Aquí, se utiliza `includes` para verificar si la cadena de texto "Hello" está presente en el mensaje. Como la cadena "Hello" se encuentra en el mensaje, el método devuelve `true`. Sin embargo, al verificar la presencia de la cadena "foo", que no está en el mensaje, el método devuelve `false`.
+
+- Con cadenas de texto vacías:
+```javascript
+const vacio = ""; // Recuerda esto, es muy importante
+
+console.log(vacio.includes("")); // true
+```
 
 El método `includes` es útil para realizar acciones condicionales basadas en la presencia o ausencia de un elemento en un arreglo o cadena de texto. Puedes utilizarlo para realizar búsquedas simples y determinar si un valor específico se encuentra en una colección de datos.
 
@@ -1924,7 +1964,7 @@ const defaultTodos = [
 
 function App() {
   const [todos, setTodos] = React.useState(defaultTodos);
-  const [searchValue, setSearchValue] = React.useState("");
+  const [searchValue, setSearchValue] = React.useState(""); 👈👀
 
   const completedTodos = todos.filter((todo) => !!todo.completed).length;
   const totalTodos = todos.length;
@@ -1932,7 +1972,7 @@ function App() {
   const searchedTodos = todos.filter((todo) => {
     const todoText = todo.text.toLowerCase();
     const searchText = searchValue.toLowerCase();
-    return todoText.includes(searchText);
+    return todoText.includes(searchText); // "" vacío 👈👀
   });
 
   console.log("Users search ToDos from " + searchValue);
@@ -1943,7 +1983,7 @@ function App() {
       <TodoSearch searchValue={searchValue} setSearchValue={setSearchValue} />
 
       <TodoList>
-        {searchedTodos.map((todo) => (
+        {searchedTodos.map((todo) => ( 👈👀
           <TodoItem
             key={todo.text}
             text={todo.text}
@@ -1960,12 +2000,366 @@ function App() {
 export default App;
 ```
 
-## 10.
+#### Dato importante 
+
+🦄 ¿Por qué si `searchValue` está vacío `""`, devuelve todos los valores del array cuando se filtra?
+
+```jsx
+const searchedTodos = todos.filter((todo) => {
+    const todoText = todo.text.toLowerCase();
+    const searchText = searchValue.toLowerCase();
+    return todoText.includes(searchText);
+  })
+```
+
+Lo primero, estamos aplicando el método `includes()` de strings, es decir:
+
+```jsx
+const todoText = todo.text.toLowerCase(); // string
+const searchText = searchValue.toLowerCase(); // string
+return todoText.includes(searchText); // booleano
+// "texto".include("") true 
+```
+
+Si aplicamos un `includes()` cuyo valor es vacío, él va a devolver un `TRUE`, por ejemplo:
+
+```jsx
+console.log({
+  letra: "A".includes(""), //True
+  vacio: "".includes(""), //True
+  nombre: "Ale".includes(""), //True
+  nombreCompleto: "Ale Roses".includes(""), //True
+  numero: "3".includes(""), //True
+});
+```
+
+✨ Como resultado, cada elemento `todo` recorrido va a ser `True` y por ende el `filter()` aplicado va a devolver cada elemento del array.
+
+[Explicación relevante sobre `include()`](https://platzi.com/comentario/4911151/)
+
+### Normalizar strings
+
+En un ámbito profesional (dependiendo cada caso de uso), para un campo de buscar, podemos normalizar ambos strings (ToDos ingresados previamente y ToDo de búsqueda), ignorando mayúsculas, ignorando acentos, quitando espacios, en cualquier posición del string.
+
+Método:
+
+```jsx
+const normalizeString = (string) => {
+    string = string || "";
+    string = string.toLowerCase();
+    // remover acentos
+    string = string.normalize("NFD").replace(/[\u0300-\u036f]/g, ""); 👈👀 //Regex
+    string = string.trim();
+    returnstring;
+  };
+```
+
+Uso:  
+
+```jsx
+const filteredTodos = todos.filter((todo) => {
+    let { text: normalizedTodo } = todo;
+    normalizedTodo = normalizeString(normalizedTodo);
+    let normalizedSearch = normalizeString(searchValue);
+
+    return normalizedTodo.includes(normalizedSearch);
+  });
+```
+
+## 10. Completando y eliminando TODOs
+
+### Operador de propagación 
+
+El operador `[...array]` en JavaScript se conoce como el operador de propagación (spread operator). Se utiliza para descomponer o "desempaquetar" un elemento iterable, como un array o un objeto iterable, en elementos individuales. Esto permite copiar los elementos de un array u objeto iterable en otro array o en los argumentos de una función de una manera más conveniente.
+
+Aquí tienes algunos ejemplos para comprender mejor cómo se usa el operador de propagación:
+
+1. Copiar un array:
+
+```javascript
+const originalArray = [1, 2, 3];
+const newArray = [...originalArray];
+
+console.log(newArray); // Resultado: [1, 2, 3]
+```
+
+En este ejemplo, el operador de propagación `...originalArray` descompone el array `originalArray` en elementos individuales y crea un nuevo array `newArray` que contiene los mismos elementos. Esto se conoce como una copia superficial (shallow copy) del array.
+
+2. Unir arrays:
+
+```javascript
+const array1 = [1, 2, 3];
+const array2 = [4, 5, 6];
+const mergedArray = [...array1, ...array2];
+
+console.log(mergedArray); // Resultado: [1, 2, 3, 4, 5, 6]
+```
+
+En este ejemplo, el operador de propagación se utiliza para combinar los elementos de `array1` y `array2` en un solo array `mergedArray`. Al descomponer ambos arrays con `...array1` y `...array2`, se obtienen los elementos individuales y se combinan en un nuevo array.
+
+3. Pasar argumentos a una función:
+
+```javascript
+function sum(a, b, c) {
+  return a + b + c;
+}
+
+const numbers = [1, 2, 3];
+const result = sum(...numbers);
+
+console.log(result); // Resultado: 6
+```
+
+En este ejemplo, el operador de propagación se utiliza para pasar los elementos del array `numbers` como argumentos a la función `sum`. Al descomponer el array con `...numbers`, los elementos individuales se pasan como argumentos a la función, lo que permite realizar operaciones con ellos.
+
+El operador de propagación `[...algo]` es una forma útil de trabajar con arrays y objetos iterables en JavaScript, ya sea para copiar, combinar o pasar elementos como argumentos. Te permite trabajar con los elementos individuales de manera más flexible y concisa.
+
+### Método `findIndex`  
+
+El método `findIndex` en JavaScript se utiliza para encontrar el índice del primer elemento en un array que cumple con un criterio determinado. Devuelve el índice del elemento encontrado, o -1 si no se encuentra ningún elemento que cumpla con el criterio.
+
+La sintaxis general del método `findIndex` es la siguiente:
+
+```javascript
+array.findIndex(callback( element[, index[, array]] )[, thisArg])
+```
+
+- `callback`: Una función de devolución de llamada que se ejecuta para cada elemento del array. Recibe hasta tres argumentos opcionales:
+  - `element`: El elemento actual que se está procesando en el array.
+  - `index` (opcional): El índice del elemento actual en el array.
+  - `array` (opcional): El array en el que se está llamando a `findIndex`.
+- `thisArg` (opcional): Un valor que se utiliza como `this` cuando se ejecuta la función de devolución de llamada.
+
+Aquí tienes un ejemplo para comprender cómo se utiliza `findIndex`:
+
+```javascript
+const numbers = [1, 2, 3, 4, 5];
+
+const evenIndex = numbers.findIndex(function(number, index) {
+  return number % 2 === 0 && index % 2 === 0;
+});
+
+console.log(evenIndex); // Resultado: -1 sin coincidencias 
+```
+
+En este ejemplo, `findIndex` se utiliza para buscar el índice del primer número par que también tiene un índice par en el array `numbers`. La función de devolución de llamada comprueba si el número es par (`number % 2 === 0`) y si el índice es par (`index % 2 === 0`). En este caso, no hay coincidencias, por lo tanto, `evenIndex` se establece en -1.
+
+Aquí tienes otro ejemplo que utiliza `findIndex`:
+
+```js
+const numeros = [10, 20, 30, 40, 50];
+
+const indice = numeros.findIndex((elemento) => elemento > 30);
+
+console.log(indice); // Devuelve indice 3
+```
+
+En este ejemplo, el arreglo `numeros` contiene una serie de números. Utilizamos `findIndex` para encontrar el índice del primer elemento que sea mayor a 30. La función de callback `elemento > 30` devuelve `true` para el elemento `40`, y `findIndex` devuelve el índice correspondiente, que es 3.
+
+Es importante tener en cuenta que `findIndex` finaliza tan pronto como encuentra un elemento que cumple con el criterio y devuelve su índice correspondiente. Si no se encuentra ningún elemento que cumpla con el criterio, se devuelve -1.
+
+### Método `splice()`
+
+El método `splice` en JavaScript se utiliza para modificar el contenido de un array al eliminar, reemplazar o agregar elementos en posiciones específicas. Puede realizar cambios en el lugar (es decir, modificar el array original) y también devuelve un nuevo array que contiene los elementos eliminados.
+
+La sintaxis general del método `splice` es la siguiente:
+
+```javascript
+array.splice(start, deleteCount, item1, item2, ...);
+```
+
+- `start`: Un índice entero que especifica la posición en la que se inicia la modificación del array. Si es un número negativo, se cuenta desde el final del array. Si es mayor que la longitud del array, `splice` actuará al final del array.
+- `deleteCount` (opcional): Un entero que indica el número de elementos que se deben eliminar a partir de la posición `start`. Si se omite o es 0, no se eliminarán elementos.
+- `item1, item2, ...` (opcional): Elementos que se agregarán al array a partir de la posición `start`.
+
+A continuación, te mostraré algunos ejemplos para comprender cómo se usa el método `splice`:
+
+1. Eliminar elementos de un array:
+
+```javascript
+const numbers = [1, 2, 3, 4, 5];
+numbers.splice(2, 2);
+
+console.log(numbers); // Resultado: [1, 2, 5]
+```
+
+En este ejemplo, `splice(2, 2)` elimina 2 elementos a partir del índice 2 en el array `numbers`. Como resultado, los elementos 3 y 4 son eliminados, y el array se modifica para contener `[1, 2, 5]`.
+
+2. Reemplazar elementos en un array:
+
+```javascript
+const fruits = ['apple', 'banana', 'orange', 'mango'];
+fruits.splice(1, 2, 'grape', 'kiwi');
+
+console.log(fruits); // Resultado: ['apple', 'grape', 'kiwi', 'mango']
+```
+
+En este ejemplo, `splice(1, 2, 'grape', 'kiwi')` reemplaza 2 elementos a partir del índice 1 en `fruits` con los elementos `'grape'` y `'kiwi'`. Como resultado, los elementos `'banana'` y `'orange'` son reemplazados, y el array se modifica para contener `['apple', 'grape', 'kiwi', 'mango']`.
+
+3. Agregar elementos a un array:
+
+```javascript
+const colors = ['red', 'blue', 'green'];
+colors.splice(1, 0, 'yellow', 'purple');
+
+console.log(colors); // Resultado: ['red', 'yellow', 'purple', 'blue', 'green']
+```
+
+En este ejemplo, `splice(1, 0, 'yellow', 'purple')` agrega los elementos `'yellow'` y `'purple'` en el índice 1 de `colors`. Como `deleteCount` es 0, no se eliminan elementos. Los nuevos elementos se insertan en la posición especificada, y el array se modifica para contener `['red', 'yellow', 'purple', 'blue', 'green']`.
+
+El método `splice` es una forma poderosa de modificar arrays en JavaScript al eliminar, reemplazar o agregar elementos en posiciones específicas. Te permite realizar cambios en el lugar y obtener los elementos eliminados en caso de necesitarlos.
+
+### El operador `delete`
+
+El operador `delete` se utiliza para eliminar una propiedad de un objeto o un elemento de un arreglo. 
+
+La sintaxis general del operador `delete` es la siguiente:
+
+```javascript
+delete objeto.propiedad; // Elimina una propiedad de un objeto
+```
+
+o
+
+```javascript
+delete arreglo[indice]; // Elimina un elemento de un arreglo
+```
+
+Aquí tienes algunos ejemplos de cómo se utiliza el operador `delete`:
+
+```javascript
+const persona = {
+  nombre: "Juan",
+  edad: 30,
+  ciudad: "Madrid"
+};
+
+delete persona.edad; // Elimina la propiedad "edad" del objeto "persona"
+
+console.log(persona); // Muestra: { nombre: "Juan", ciudad: "Madrid" }
+
+
+const numeros = [10, 20, 30, 40, 50];
+
+delete numeros[2]; // Elimina el elemento en el índice 2 del arreglo "numeros"
+
+console.log(numeros); // Muestra: [10, 20, undefined, 40, 50]
+```
+
+Es importante tener en cuenta que el operador `delete` solo puede eliminar propiedades de objetos que sean configurables. Al intentar eliminar una propiedad no configurable o una variable declarada con `var`, `let` o `const`, el operador `delete` no tendrá ningún efecto y devolverá `false`. Además, el operador `delete` no puede eliminar variables o funciones declaradas con `var`, `let` o `const`.
 
 ### Código de la clase 
 
-`src > components > TodoButton.js`  
+`src > App.js`  
 ```js
+import React from "react";
+import { TodoCounter } from "./components/TodoCounter";
+import { TodoSearch } from "./components/TodoSearch";
+import { TodoList } from "./components/TodoList";
+import { TodoItem } from "./components/TodoItem";
+import { TodoButton } from "./components/TodoButton";
+
+const defaultTodos = [
+  { text: "Lorem lorem", completed: true },
+  { text: "Don't cry", completed: false },
+  { text: "Lorem ipsus", completed: false },
+  { text: "Take care", completed: false },
+  { text: "Loremlorem", completed: true },
+];
+
+function App() {
+  const [todos, setTodos] = React.useState(defaultTodos);
+  const [searchValue, setSearchValue] = React.useState("");
+
+  const completedTodos = todos.filter((todo) => !!todo.completed).length;
+  const totalTodos = todos.length;
+
+  const searchedTodos = todos.filter((todo) => {
+    const todoText = todo.text.toLowerCase();
+    const searchText = searchValue.toLowerCase();
+    return todoText.includes(searchText);
+  });
+
+  const completeTodo = (text) => {
+    const newTodos = [...todos]; 👈👀 // nuevo array
+    const todoIndex = newTodos.findIndex((todo) => todo.text == text);
+
+    // newTodos[todoIndex].completed = true;
+    // true = false / false = true 
+    newTodos[todoIndex].completed = !newTodos[todoIndex].completed;
+    setTodos(newTodos); 👈👀 // Actualiza 
+  };
+
+  const deleteTodo = (text) => {
+    const newTodos = [...todos];
+    const todoIndex = newTodos.findIndex((todo) => todo.text == text);
+
+    newTodos.splice(todoIndex, 1);
+    setTodos(newTodos); 👈👀 // Actualiza 
+  };
+
+  return (
+    <>
+      <TodoCounter completed={completedTodos} total={totalTodos} />
+      <TodoSearch searchValue={searchValue} setSearchValue={setSearchValue} />
+
+      <TodoList>
+        {searchedTodos.map((todo) => (
+          <TodoItem
+            key={todo.text}
+            text={todo.text}
+            completed={todo.completed}
+            // Alimenta la f completeTodo con el texto
+            onComplete={() => completeTodo(todo.text)} 
+            onDelete={() => deleteTodo(todo.text)}
+          />
+        ))}
+      </TodoList>
+
+      <TodoButton />
+    </>
+  );
+}
+
+export default App;
+```
+
+`src > components > TodoItem.js`  
+```js
+import "../css/TodoItem.css";
+
+function TodoItem(props) {
+  return (
+    <li>
+      <span
+        className={`check ${props.completed && "check--active"}`}
+        onClick={props.onComplete}
+      ></span>
+      <p className={`${props.completed && "p--completed"}`}>{props.text}</p>
+      <span className="delete" onClick={props.onDelete}></span>
+    </li>
+  );
+}
+
+export { TodoItem };
+```
+
+`src > components > TodoItem.js`  
+```js
+import "../css/TodoCounter.css";
+
+function TodoCounter({ completed, total }) {
+  return total == completed ? ( 👈👀
+    <h1 className="total">Completaste todos los ToDos</h1>
+  ) : ( 👈👀
+    <h1>
+      Has completado <span className="completed">{completed}</span> de{" "}
+      <span className="total">{total}</span> ToDos
+    </h1>
+  );
+}
+
+export { TodoCounter };
 ```
 
 ## 11. 
