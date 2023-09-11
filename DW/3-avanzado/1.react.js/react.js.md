@@ -2421,11 +2421,6 @@ function DeleteIcon() {
 export { DeleteIcon };
 ```
 
-`src > components > TodoButton.js`  
-```js
-
-```
-
 `src > components > TodoItem.js`  
 ```js
 import { CompleteIcon } from "./CompleteIcon";
@@ -2544,15 +2539,200 @@ Para evitar el prop drilling, se pueden utilizar otras técnicas como el uso de 
 
 En resumen, el prop drilling es un patrón en React donde los datos se pasan desde un componente principal a través de varios niveles de componentes secundarios, lo cual puede complicar el código y dificultar el mantenimiento. Se recomienda explorar otras técnicas como el uso de Context API o la implementación de un estado global para evitar el prop drilling en situaciones donde sea necesario compartir datos entre componentes.
 
+### Render Props
+
+El patrón Render Props en React es una técnica que permite compartir código y funcionalidad entre componentes utilizando una prop especial llamada "render prop". En esencia, un componente con Render Props acepta una función como prop y utiliza esa función para renderizar su contenido.
+
+El concepto clave del patrón Render Props es que un componente proporciona una función a otro componente a través de una prop, y el componente receptor puede invocar esa función y utilizar el resultado para renderizar su propio contenido. Esto permite la reutilización de lógica y comportamiento entre componentes de manera flexible.
+
+Aquí hay un ejemplo básico para ilustrar cómo funciona el patrón Render Props:
+
+```jsx
+// Componente con Render Props
+class RenderPropComponent extends React.Component {
+  render() {
+    // Llama a la función prop y pasa un valor como argumento
+    return this.props.render("Hola desde el Render Prop");
+  }
+}
+
+// Componente que utiliza el Render Prop
+class App extends React.Component {
+  render() {
+    return (
+      <div>
+        <h1>App</h1>
+        <RenderPropComponent render={(message) => (
+          <p>{message}</p>
+        )} />
+      </div>
+    );
+  }
+}
+```
+
+En este ejemplo, el componente `RenderPropComponent` acepta una prop llamada `render` que es una función. Luego, invoca esa función pasando un mensaje como argumento. El componente `App` utiliza `RenderPropComponent` y pasa una función como `render` prop que renderiza un elemento `p` con el mensaje recibido.
+
+El patrón Render Props es útil cuando se desea compartir lógica o comportamiento complejo entre componentes sin tener que depender de la herencia de componentes o de bibliotecas externas. Permite una mayor flexibilidad y reutilización de código al permitir que los componentes consumidores controlen cómo se renderiza el contenido proporcionado por el componente con Render Props.
+
+Cabe destacar que el patrón Render Props puede ser combinado con otros patrones y técnicas de React, como el uso de hooks o context, para crear componentes más poderosos y flexibles.
+
+### Código de la clase 
+
+Espero este resumen te ayude un poco:  
+
+1. Debemos partir desde` App.js` que es el primer lugar en el cual enviamos una función encapsulada dentro de una `prop` a cada uno de los componentes `TodoItem` que se crean.  
+
+    [Render Props - documentación](https://es.legacy.reactjs.org/docs/render-props.html)
+
+```js
+<TodoList>
+  {searchedTodos.map((todo) => (
+    <TodoItem
+      key={todo.text}
+      text={todo.text}
+      completed={todo.completed}
+      // Pasar una función a un componente sin ejecutarla inmediatamente
+    ✨onComplete={() => completeTodo(todo.text)} 👈👀
+    ✨onDelete={() => deleteTodo(todo.text)} 👈👀
+    />
+  ))}
+</TodoList>
+```
+
+Si recordamos la función `completeTodo` compara el texto del ToDo renderizado en pantalla con una nueva lista y si ambos son iguales debe cambiar el `completed` a `true` para luego ser actualizado con la función `setTodos` dentro del estado `React.useState`. Algo similar pasa con la función `deleteTodo` la única diferencia es que esta compara los textos para saber cuál ToDo debe eliminar e inmediatamente actualizar el estado. 
+
+2. Como se aprecia, estamos pasando las funciones mencionadas anteriormente en las props `onComplete` y `onDelete` del componente `TodoItem`. Luego en nuestro componente `TodoItem` reemplazamos los `span` por dos nuevos componentes `<CompleteIcon onComplete={props.onComplete} />` y  `<DeleteIcon onDelete={props.onDelete} />` las que recibirán las funciones anteriores en dos `props` que volvemos a llamar `onComplete` y `onDelete`.  
+
+```jsx
+function TodoItem(props) {
+  return (
+    <li>
+      <CompleteIcon completed={props.completed} ✨onComplete={props.onComplete}👈👀 />
+      <p className={`${props.completed && "p--completed"}`}>{props.text}</p>
+      <DeleteIcon ✨onDelete={props.onDelete}👈👀 />
+    </li>
+  );
+}
+```
+
+Finalmente, las recibiremos en nuestros componentes `CompleteIcon` y `DeleteIcon` respectivamente, y es ahí donde por fin crearemos ese evento 🦄`onClick` que las ejecutará.
+
+```js
+function CompleteIcon({ completed, ✨onComplete👈👀 }) {
+  return (
+    <TodoIcon
+      type="check"
+      color={completed ? "#4CAF50" : "#4F46E5"}
+    🦄onClick={onComplete}👈👀 
+    />
+  );
+}
+```
+
+```js
+function DeleteIcon({ onDelete }) {
+  return <TodoIcon type="delete" color="#4F46E5" 🦄onClick={onDelete}👈👀 />;
+}
+```
+
+En resumen:  
+
+![](https://i.postimg.cc/7h8hVVKn/9-dynamic-icons.png)
+
+Solo para aclarar un detalle, en los componentes DeleteIcon y CompleteIcon el ‘onClick’ también es una propiedad, no es el evento, esta propiedad también la enviamos a nuestro componente **TodoIcon** donde se encuentra el elemento `<span>` y es allí en donde realmente ocurre el evento **onClick**.
+
+
+[Comentario](https://platzi.com/comentario/4759553/)
+
+
+
+#### Otro resumen 
+
+**Lógica para renderizar SVG’s de forma dinámica
+
+Tenemos la siguiente situación: Tenemos un componente llamado “TodoItem.js”, el cual renderiza cada uno de los elementos de nuestro listado de tareas a completar. Cada ítem contiene 3 elementos: 
+
+- Un botón de completado que contiene un ícono
+    
+- El texto de la tarea
+    
+- Un botón para eliminar la tarea que también contiene un ícono
+    
+
+Para insertar esos íconos se pueden usar diferentes métodos como los emojis con el plugin de vsc, con una librería de íconos para React o importando SVG´s de forma dinámica como componentes de React. 
+
+Entonces para seguir el tercer camino en primer lugar vamos a añadir diferentes archivos en nuestro “src” antes que nada los svg llamados en este caso: “check.svg” y “delete.svg”. Adicional a esto crearemos un archivo js para cada ícono a renderizar y un archivo para contener la lógica de importación de los svg ́s para todos los íconos, en nuestro caso: “CompleteIcon.js”, “DeleteIcon.js” y “TodoIcons.js”
+
+La serie de pasos sería la siguiente: 
+
+1. Crear un par de archivos: TodoIcons.js y TodoIcons.css.![](https://lh5.googleusercontent.com/H_aeXe1KSKd2Tw9TexK1m759g4aGwBa0Uhd_nyChjkaBnk0W9fVZRf5gfxz56pEKa_vEktkubPW0X_B26a575iYjmV7K5fPoD2iooIwgKc4iJfiWvVbar-IV-WhR_ONo8eZ96t-i5lJhH01X6h4v6w)
+    
+
+  
+
+En este archivo lo primero que necesitamos es importar los íconos SVG como ReactComponent as <Nombre-para-diferenciar>. Luego importamos el archivo donde ubicamos los estilos para los íconos. Creamos un objeto llamado “iconTypes” que contendrá un diccionario de íconos, le pasamos el nombre de elemento y adentro una arrow function para enviar la propiedad color al renderizado. En las líneas 14 y 15 es donde se hace el llamado a los archivos svg, se les agrega una clase para los estilos en el css y se asigna el color del svg con la propiedad fill. 
+
+Luego creamos una función para llamar al renderizado de los íconos. Esta función TodoIcons recibe 3 props:
+
+- type: El tipo de ícono que recibirá (En este caso “check” o “delete”)
+    
+- color: El color de relleno del ícono. 
+    
+- onClickEvent: El evento que va a realizar el ícono (botón) al darle click. 
+    
+
+Luego el retorno de la función será la plantilla para renderizar cualquier ícono. En el caso en particular los íconos de “check” y “delete” irán en una línea por lo que invocamos un span y ubicamos clases generales que servirán como contenedores de los íconos, para darles la posición, tamaño, disposición, etc. Usamos template literals para pasar de forma dinámica el tipo de ícono que vamos a renderizar cada vez que se llame la función, dependiendo del tipo se usará uno u otro estilo del documento css. 
+
+Dentro del span se llama al objeto creado al inicio, por eso usamos las llaves, luego a modo de key le pasamos cuál type queremos y finalmente el color entre paréntesis porque es una arrow function. 
+
+Toda esta lógica es una especie de componente plantilla para renderizar cualquier ícono dentro de este componente js se realiza: El import del svg, el renderizado del ícono svg, se llama a los estilos para el ícono y el contenedor del ícono y la activación del evento onClick. 
+
+2. Creamos un archivo.js para cada ícono (botón) a renderizar. En este ejemplo “CompleteIcon.js” y “DeleteIcon.js”, hijos de TodoItem.js y padres de TodoIcons.js.![](https://lh3.googleusercontent.com/umD1OIjS674dhAaa1zQZKCgQq1xh59sYdAxUsC4zLvJjVcbfznEqIbmWfzgt0f_3sN-qLAQkrEfKYl2qx7ZtoH6CW86nv4KhXWZzNzBjCN-_IaUrpvG-lObPWEftMpaYJ00AAndxQ08wtmefIkXIBA)![](https://lh4.googleusercontent.com/2Mdchc_Xax-YwxJJw32_wcitHwPx_CSMt3LjmgVXwP2QXQFS4P9uMLbHtyozigSKp8lAKV0fN4ccylwe3RAooLWlvQHjw9OPPpNLK4BQBp09od2g1WJ-YFTUK2WrW9oynarXdXzb5-lOujPWApx2Bw)
+    
+
+  
+
+Este archivo es más simple y su función es de recibir los props enviamos del componente padre. Los props deconstruidos serían: “completed” y “onComplete/onDelete”. El primero sirve para determinar con un condicional ternario si el color a enviar será uno u otro. El segundo es equivalente para el ícono de check y delete que sería el evento al darle click. 
+
+  
+
+Por lo tanto, este archivo sirve para:
+
+- Recibir los props deconstruidos de su componente padre (TodoItems.js): completed y onComplete / onDelete.
+    
+- Crear el listado de props a enviar al componente hijo TodoIcons.js, los props son: type, color y onClickEvent.}
+    
+- Declarar los valores para esos props que se enviarán al componente hijo, es decir qué tipo de ícono es, el color y la acción que se realizará al darle click al ícono.
+    
+
+  
+
+3. Pasamos al componente TodoItem.js. Este componente es hijo de App.js y padre de “CompleteIcon.js” y “DeleteIcon.js”. Como hijo recibe props y como padre envía completed y onComplete / onDelete. ![](https://lh5.googleusercontent.com/yxByMENTDexJZY4LPSm2_-P2Y-jYbICHyU6OJM9PmEV7TrREtzIeeg-W4gXmzDwFX1zfwtRbWupv6n3-uCvJ_eYFgKd33aMmmNQDaoBbvTfJci7Z4cW_BRi9mE3CHcAJvTJsuLAaBGNJEd1E1KAF1g)
+    
+
+  
+
+Las funciones de este componente serán:
+
+- Llamar a los componentes CompleteIcon y DeleteIcon para ser renderizados en TodoItem.
+    
+- Recibir los props completed y onComplete / onDelete del componente padre. 
+    
+- Crear el listado de props a enviar a los componentes hijos que necesitan saber los estados de los eventos. Para el ícono de check se necesita saber si está completado o no y la acción a realizar cuando esté completado. Para el ícono de delete únicamente la acción a realizar al darle click al botón, es decir onDelete. 
+    
+
+Se recibe también como props el texto y se realizan otras funciones para el renderizado de cada ítem, pero esto no es parte de la lógica del renderizado dinámico de los íconos.**
+
+
+
+
 
 create react herramienta 
 
 Empaquetamiento de CRA.
 
 
-`src > components > TodoButton.js`  
-```js
-```
 
 `src > components > TodoButton.js`  
 ```js
@@ -2562,9 +2742,9 @@ Empaquetamiento de CRA.
 ```js
 ```
 
-
-
-### Código de la clase 
+`src > components > TodoButton.js`  
+```js
+```
 
 `src > components > TodoButton.js`  
 ```js
