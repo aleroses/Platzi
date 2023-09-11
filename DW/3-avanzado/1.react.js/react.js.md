@@ -2362,7 +2362,220 @@ function TodoCounter({ completed, total }) {
 export { TodoCounter };
 ```
 
-## 11. 
+## 11. Iconos en React: librerías y SVG
+
+React Icons es una biblioteca de componentes de iconos populares que se pueden utilizar en aplicaciones React. Proporciona una forma conveniente de agregar iconos a tus componentes sin necesidad de descargar imágenes o utilizar fuentes de iconos externas.
+
+Para comenzar a utilizar React Icons, primero debes instalarlo en tu proyecto. Puedes hacerlo a través de npm o yarn ejecutando el siguiente comando en la línea de comandos:
+
+```bash
+npm install react-icons
+```
+
+Una vez que hayas instalado React Icons, puedes importar los iconos individuales que deseas utilizar en tus componentes. Por ejemplo, si quieres utilizar el icono de corazón de la biblioteca de FontAwesome, puedes importarlo de la siguiente manera:
+
+```jsx
+import { FaHeart } from 'react-icons/fa';
+
+const MiComponente = () => {
+  return (
+    <div>
+      <h1>Mi componente con icono</h1>
+      <FaHeart />
+    </div>
+  );
+}
+```
+
+En este ejemplo, importamos el componente de icono `FaHeart` de la biblioteca de FontAwesome. Luego, simplemente colocamos el componente `<FaHeart />` en el lugar donde deseamos que aparezca el icono.
+
+React Icons ofrece una amplia variedad de bibliotecas de iconos populares, como FontAwesome, Material Design Icons, Ionicons y muchas más. Puedes explorar la documentación de React Icons para obtener una lista completa de las bibliotecas de iconos compatibles y los iconos disponibles.
+
+Recuerda que para utilizar los iconos, debes asegurarte de tener instalada la biblioteca de iconos correspondiente junto con React Icons. Además, puedes personalizar los iconos utilizando las propiedades y estilos de React según tus necesidades específicas.
+
+[React Icons ](https://react-icons.github.io/react-icons/)
+
+### Código de la clase 
+
+`src > components > CompleteIcon.js`  
+```js
+import React from "react";
+import { TodoIcon } from "./TodoIcon";
+
+function CompleteIcon() {
+  return <TodoIcon type="check" color="gray" />;
+}
+
+export { CompleteIcon };
+```
+
+`src > components > DeleteIcon.js`  
+```js
+import React from "react";
+import { TodoIcon } from "./TodoIcon";
+
+function DeleteIcon() {
+  return <TodoIcon type="delete" color="red" />;
+}
+
+export { DeleteIcon };
+```
+
+`src > components > TodoButton.js`  
+```js
+
+```
+
+`src > components > TodoItem.js`  
+```js
+import { CompleteIcon } from "./CompleteIcon";
+import { DeleteIcon } from "./DeleteIcon";
+import "../css/TodoItem.css";
+
+function TodoItem(props) {
+  return (
+    <li>
+      <CompleteIcon />
+      <p className={`${props.completed && "p--completed"}`}>{props.text}</p>
+      <DeleteIcon />
+    </li>
+  );
+}
+
+export { TodoItem };
+```
+
+`src > components > TodoIcon.js`  
+```js
+import { ReactComponent as CheckSvg } from "../svg/check.svg";
+import { ReactComponent as DeleteSvg } from "../svg/delete.svg";
+
+const iconTypes = {
+  check: <CheckSvg />,
+  delete: <DeleteSvg />,
+};
+
+function TodoIcon({ type }) {
+  return <span className={`${type} check--active`}>{iconTypes[type]}</span>;
+  /* 
+		<span
+      className={`check ${props.completed && "check--active"}`}
+        onClick={props.onComplete}
+    ></span> 
+		<span className="delete" onClick={props.onDelete}>
+		</span> 
+	*/
+}
+
+export { TodoIcon };
+```
+
+`src > css > TodoItem.css`  
+```js
+li {
+  list-style: none;
+  background-color: #cbd5e1;
+  width: 15rem;
+  height: 3rem;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1rem 0 0.5rem;
+
+  position: relative;
+}
+
+.check {
+  /* background-image: url("../svg/check.svg"); 
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  width: 20px;
+  height: 20px; */
+  cursor: pointer;
+}
+
+.check--active {
+  /* background-image: url("../svg/check-completed.svg"); */
+}
+
+.delete {
+  /* background-image: url("../svg/delete.svg"); 
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  width: 15px;
+  height: 15px; */
+  cursor: pointer;
+
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.delete:hover {
+  /* background-image: url("../svg/delete-hover.svg"); */
+}
+
+p {
+  width: 85%;
+  height: auto;
+  margin: 0 5px 0;
+  color: #090b10;
+}
+
+.p--completed {
+  text-decoration: line-through;
+}
+```
+
+## 12. Iconos con colores dinámicos
+
+### Prop drilling  
+
+El prop drilling, también conocido como prop passing, es un patrón común en React donde los datos se pasan desde un componente principal a través de varios niveles de componentes secundarios para llegar al componente que realmente necesita esos datos. Esto ocurre cuando un componente necesita acceder a ciertos datos o funciones que se encuentran en un componente superior en la jerarquía de componentes.
+
+En React, los datos se pasan de arriba hacia abajo a través de las props, que son propiedades inmutables. Sin embargo, cuando se tienen muchos niveles de componentes anidados y se necesita acceder a los datos en componentes más profundos, es necesario pasar las props a través de cada nivel de la jerarquía de componentes, incluso si los componentes intermedios no los utilizan directamente. Esto puede llevar a un código más complicado y difícil de mantener.
+
+El prop drilling se considera una solución "inelegante" debido a que puede hacer que el código sea más difícil de leer y mantener. Además, si en algún momento se necesita agregar un nuevo componente en medio de la cadena de componentes, se tendría que actualizar la forma en que se pasan las props a través de todos los niveles anteriores.
+
+Para evitar el prop drilling, se pueden utilizar otras técnicas como el uso de Context API de React o la implementación de un estado global con bibliotecas como Redux o MobX. Estas soluciones permiten acceder a los datos desde cualquier componente en la aplicación sin tener que pasar las props a través de cada nivel de componentes.
+
+En resumen, el prop drilling es un patrón en React donde los datos se pasan desde un componente principal a través de varios niveles de componentes secundarios, lo cual puede complicar el código y dificultar el mantenimiento. Se recomienda explorar otras técnicas como el uso de Context API o la implementación de un estado global para evitar el prop drilling en situaciones donde sea necesario compartir datos entre componentes.
+
+
+create react herramienta 
+
+Empaquetamiento de CRA.
+
+
+`src > components > TodoButton.js`  
+```js
+```
+
+`src > components > TodoButton.js`  
+```js
+```
+
+`src > components > TodoButton.js`  
+```js
+```
+
+
+
+### Código de la clase 
+
+`src > components > TodoButton.js`  
+```js
+```
+
+
+### Código de la clase 
+
+`src > components > TodoButton.js`  
+```js
+```
 
 ### Código de la clase 
 
