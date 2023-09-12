@@ -2577,13 +2577,53 @@ El patrón Render Props es útil cuando se desea compartir lógica o comportamie
 
 Cabe destacar que el patrón Render Props puede ser combinado con otros patrones y técnicas de React, como el uso de hooks o context, para crear componentes más poderosos y flexibles.
 
-### Código de la clase 
+[Render Props - documentación](https://es.legacy.reactjs.org/docs/render-props.html)
 
-Espero este resumen te ayude un poco:  
+### `create-react-app`  
+
+La herramienta "create-react-app" es una utilidad de línea de comandos (CLI) que facilita la creación de aplicaciones web de React. Fue desarrollada por Facebook y proporciona una configuración predeterminada y una estructura de directorios predefinida para comenzar a desarrollar rápidamente con React.
+
+Create React App configura automáticamente un entorno de desarrollo moderno con una configuración optimizada para crear aplicaciones React. Maneja tareas como la configuración de Webpack, Babel y otros paquetes necesarios para la compilación y ejecución de la aplicación. También incluye un servidor de desarrollo para facilitar la visualización y la recarga en vivo durante el desarrollo.
+
+Al utilizar la herramienta "create-react-app", puedes generar rápidamente una base sólida para tu aplicación React sin tener que preocuparte por la configuración inicial. Esto te permite concentrarte en escribir código y desarrollar tu aplicación de manera más eficiente.
+
+Para utilizar "create-react-app", necesitarás tener Node.js instalado en tu computadora. Puedes instalarlo utilizando el gestor de paquetes npm (Node Package Manager). Una vez que Node.js esté instalado, puedes utilizar el siguiente comando en tu terminal para crear un nuevo proyecto de React:
+
+```bash
+npx create-react-app nombre-del-proyecto
+```
+
+Esto creará un nuevo directorio llamado "nombre-del-proyecto" con la estructura y configuración necesarias para comenzar a desarrollar tu aplicación React. A partir de ahí, puedes utilizar otros comandos proporcionados por "create-react-app" para iniciar el servidor de desarrollo, generar una versión optimizada para producción y realizar otras tareas comunes relacionadas con el desarrollo de React.
+
+En resumen, "create-react-app" es una herramienta que simplifica la configuración inicial y el entorno de desarrollo para crear aplicaciones web con React, permitiéndote comenzar a desarrollar rápidamente sin tener que preocuparte por la configuración complicada.
+
+### Empaquetamiento de CRA
+
+El empaquetamiento de CRA (Create React App) se refiere al proceso de generar los archivos finales optimizados y listos para producción de una aplicación creada con la herramienta "create-react-app".
+
+Cuando desarrollas una aplicación de React con CRA, normalmente trabajas con archivos JavaScript y otros recursos (como hojas de estilo, imágenes, fuentes, etc.) de manera modular y separados en diferentes módulos y componentes. Durante el desarrollo, CRA utiliza un servidor de desarrollo interno que se encarga de compilar y empaquetar estos archivos de manera eficiente para que puedan ser ejecutados en el navegador.
+
+Sin embargo, cuando estás listo para llevar tu aplicación a producción, necesitas generar una versión optimizada y lista para ser distribuida en un servidor web. Para eso, CRA proporciona un comando llamado "npm run build" que realiza el empaquetamiento de la aplicación.
+
+Cuando ejecutas "npm run build", CRA realiza una serie de tareas, incluyendo:
+
+1. Combinación y minificación de archivos: Los diferentes archivos JavaScript y recursos de la aplicación se combinan en un solo archivo JavaScript (normalmente llamado "bundle.js"). Además, se realiza la minificación de este archivo, lo que implica eliminar espacios en blanco, comentarios y reducir el tamaño del código para mejorar la velocidad de carga de la aplicación.
+
+2. Optimización de recursos: Las imágenes, fuentes y otros recursos utilizados en la aplicación se optimizan para reducir su tamaño sin comprometer significativamente su calidad. Esto ayuda a mejorar la velocidad de carga de la aplicación y a reducir el consumo de ancho de banda.
+
+3. Generación de archivos estáticos: CRA genera una serie de archivos estáticos que contienen la aplicación empaquetada y lista para ser servida por un servidor web. Estos archivos incluyen el archivo HTML principal, el archivo JavaScript empaquetado, las hojas de estilo y otros recursos necesarios.
+
+Una vez que el proceso de empaquetamiento se completa, obtendrás una carpeta llamada "build" que contiene todos los archivos necesarios para desplegar tu aplicación en un servidor web. Puedes tomar estos archivos y subirlos a un servidor web estático, un servicio de alojamiento o cualquier otra plataforma de tu elección para que tu aplicación esté disponible en línea.
+
+En resumen, el empaquetamiento de CRA es el proceso de generar los archivos finales optimizados y listos para producción de una aplicación de React creada con "create-react-app". Este proceso combina, minifica y optimiza los archivos de la aplicación, generando una versión lista para ser desplegada en un servidor web.
+
+### Entendamos lo que se hizo...
+
+Antes de colocar el código dejaré algunos resúmenes para entender mejor lo que se hizo en clase:  
+
+### Explicación 01
 
 1. Debemos partir desde` App.js` que es el primer lugar en el cual enviamos una función encapsulada dentro de una `prop` a cada uno de los componentes `TodoItem` que se crean.  
-
-    [Render Props - documentación](https://es.legacy.reactjs.org/docs/render-props.html)
 
 ```js
 <TodoList>
@@ -2616,7 +2656,7 @@ function TodoItem(props) {
 }
 ```
 
-Finalmente, las recibiremos en nuestros componentes `CompleteIcon` y `DeleteIcon` respectivamente, y es ahí donde por fin crearemos ese evento 🦄`onClick` que las ejecutará.
+3. Las recibiremos en nuestros componentes `CompleteIcon` y `DeleteIcon` respectivamente, aquí también recibimos la propiedad 🦄`onClick` que viene desde el componente `TodoIcon.js`.
 
 ```js
 function CompleteIcon({ completed, ✨onComplete👈👀 }) {
@@ -2624,7 +2664,7 @@ function CompleteIcon({ completed, ✨onComplete👈👀 }) {
     <TodoIcon
       type="check"
       color={completed ? "#4CAF50" : "#4F46E5"}
-    🦄onClick={onComplete}👈👀 
+    🔥onClick={onComplete}👈👀 
     />
   );
 }
@@ -2632,124 +2672,329 @@ function CompleteIcon({ completed, ✨onComplete👈👀 }) {
 
 ```js
 function DeleteIcon({ onDelete }) {
-  return <TodoIcon type="delete" color="#4F46E5" 🦄onClick={onDelete}👈👀 />;
+  return <TodoIcon type="delete" color="#4F46E5" 🔥onClick={onDelete}👈👀 />;
 }
 ```
 
-En resumen:  
-
 ![](https://i.postimg.cc/7h8hVVKn/9-dynamic-icons.png)
 
-Solo para aclarar un detalle, en los componentes DeleteIcon y CompleteIcon el ‘onClick’ también es una propiedad, no es el evento, esta propiedad también la enviamos a nuestro componente **TodoIcon** donde se encuentra el elemento `<span>` y es allí en donde realmente ocurre el evento **onClick**.
+Finalmente, la propiedad `onClick` también la enviamos a nuestro componente `TodoIcon` donde se encuentra el elemento `<span>` y es allí en donde por fin ocurre el evento `onClick`.
 
+```js
+function TodoIcon({ type, color, onClick }) {
+  return (
+    /* type puede ser check o delete */
+    <span className={`${type}`} 🦄onClick={onClick}👈👀>
+      {iconTypes[type](color)}
+    </span>
+  );
+}
+```
 
 [Comentario](https://platzi.com/comentario/4759553/)
 
+### Explicación 02
 
+Lógica para renderizar SVG's de forma dinámica
 
-#### Otro resumen 
+Presentamos la siguiente situación:  
+Tenemos un componente llamado `TodoItem.js`, el cual renderiza cada uno de los elementos de nuestro listado de tareas a completar. Cada ítem contiene 3 elementos: 
 
-**Lógica para renderizar SVG’s de forma dinámica
-
-Tenemos la siguiente situación: Tenemos un componente llamado “TodoItem.js”, el cual renderiza cada uno de los elementos de nuestro listado de tareas a completar. Cada ítem contiene 3 elementos: 
-
-- Un botón de completado que contiene un ícono
-    
+- Un botón de completado que contiene un ícono ✔
 - El texto de la tarea
-    
-- Un botón para eliminar la tarea que también contiene un ícono
-    
+- Un botón para eliminar la tarea que también contiene un ícono ❌
 
-Para insertar esos íconos se pueden usar diferentes métodos como los emojis con el plugin de vsc, con una librería de íconos para React o importando SVG´s de forma dinámica como componentes de React. 
+Para insertar esos íconos se pueden usar diferentes métodos como:  
+- Emojis usando un plugin de Visual Studio Code o usando `Windows + .` para insertarlos directamente en el código.
+- Librerías de íconos para React. 
+- Importando SVG's de forma dinámica como componentes de React. 
 
-Entonces para seguir el tercer camino en primer lugar vamos a añadir diferentes archivos en nuestro “src” antes que nada los svg llamados en este caso: “check.svg” y “delete.svg”. Adicional a esto crearemos un archivo js para cada ícono a renderizar y un archivo para contener la lógica de importación de los svg ́s para todos los íconos, en nuestro caso: “CompleteIcon.js”, “DeleteIcon.js” y “TodoIcons.js”
+En este caso seguiremos el tercer camino, en primer lugar, vamos a añadir diferentes archivos en nuestra carpeta `src` antes que nada los svg llamados en este caso: `check.svg` y `delete.svg`. Adicional a esto crearemos un archivo JS para cada ícono a renderizar y un archivo para contener la lógica de importación de los svg's para todos los íconos, en nuestro caso: `CompleteIcon.js`, `DeleteIcon.js`y `TodoIcons.js`
+
+Esta estructura de carpetas y archivos se vería así: 
+
+```bash
+├── package-lock.json
+├── package.json
+├── public
+│   ├── index.html
+│   ├── manifest.json
+│   └── robots.txt
+└── src
+    ├── App.js
+    ├── components
+    │   ├── CompleteIcon.js 👈👀
+    │   ├── DeleteIcon.js 👈👀
+    │   ├── TodoButton.js
+    │   ├── TodoCounter.js
+    │   ├── TodoIcon.js 👈👀
+    │   ├── TodoItem.js
+    │   ├── TodoList.js
+    │   └── TodoSearch.js
+    ├── css
+    │   ├── TodoButton.css
+    │   ├── TodoCounter.css
+    │   ├── TodoIcon.css 👈👀
+    │   ├── TodoItem.css
+    │   ├── TodoList.css
+    │   ├── TodoSearch.css
+    │   └── index.css
+    ├── index.js
+    └── svg
+        ├── add.svg
+        ├── check.svg 👈👀
+        ├── delete.svg 👈👀
+        └── search.svg
+```
 
 La serie de pasos sería la siguiente: 
 
-1. Crear un par de archivos: TodoIcons.js y TodoIcons.css.![](https://lh5.googleusercontent.com/H_aeXe1KSKd2Tw9TexK1m759g4aGwBa0Uhd_nyChjkaBnk0W9fVZRf5gfxz56pEKa_vEktkubPW0X_B26a575iYjmV7K5fPoD2iooIwgKc4iJfiWvVbar-IV-WhR_ONo8eZ96t-i5lJhH01X6h4v6w)
-    
+1. Archivos: `TodoIcons.js` y `TodoIcons.css`.
 
-  
+```jsx
+// Importamos los svg 👀👇
+import { ReactComponent as CheckSvg } from "../svg/check.svg";
+import { ReactComponent as DeleteSvg } from "../svg/delete.svg";
+import "../css/TodoIcon.css"; // Estilos
 
-En este archivo lo primero que necesitamos es importar los íconos SVG como ReactComponent as <Nombre-para-diferenciar>. Luego importamos el archivo donde ubicamos los estilos para los íconos. Creamos un objeto llamado “iconTypes” que contendrá un diccionario de íconos, le pasamos el nombre de elemento y adentro una arrow function para enviar la propiedad color al renderizado. En las líneas 14 y 15 es donde se hace el llamado a los archivos svg, se les agrega una clase para los estilos en el css y se asigna el color del svg con la propiedad fill. 
+const iconTypes = { 👈👀👇
+ 🔥check: (color) => <CheckSvg fill={color} />,
+ 🔥delete: (color) => (
+    <DeleteSvg
+      className="icon"
+      fill="#4F46E5"
+      stroke="#4F46E5"
+      strokeWidth="0.1"
+    />
+  ),
+};
 
-Luego creamos una función para llamar al renderizado de los íconos. Esta función TodoIcons recibe 3 props:
+function TodoIcon({ type, color, onClick }) {
+  return (
+    /* type puede ser check o delete */
+    <span className={`${type}`} onClick={onClick}>
+      {iconTypes[type](color)}
+    </span>
+  );
+}
 
-- type: El tipo de ícono que recibirá (En este caso “check” o “delete”)
-    
-- color: El color de relleno del ícono. 
-    
-- onClickEvent: El evento que va a realizar el ícono (botón) al darle click. 
-    
+export { TodoIcon };
+```
 
-Luego el retorno de la función será la plantilla para renderizar cualquier ícono. En el caso en particular los íconos de “check” y “delete” irán en una línea por lo que invocamos un span y ubicamos clases generales que servirán como contenedores de los íconos, para darles la posición, tamaño, disposición, etc. Usamos template literals para pasar de forma dinámica el tipo de ícono que vamos a renderizar cada vez que se llame la función, dependiendo del tipo se usará uno u otro estilo del documento css. 
+En este archivo lo primero que necesitamos es importar los íconos SVG como `ReactComponent as <Nombre-para-diferenciar>`. Luego importamos el archivo donde ubicamos los estilos para los íconos. Creamos un objeto llamado `iconTypes` que contendrá un diccionario de íconos, le pasamos el nombre de elemento y adentro una arrow function para enviar la propiedad color al renderizado. Dentro de esta función es donde se hace el llamado a los archivos svg, se les agrega una clase para los estilos en el css y se asigna el color del svg con la propiedad fill. 
 
-Dentro del span se llama al objeto creado al inicio, por eso usamos las llaves, luego a modo de key le pasamos cuál type queremos y finalmente el color entre paréntesis porque es una arrow function. 
+Creamos un componente para llamar al renderizado de los íconos. Este componente `TodoIcons` recibe 3 `props`:
 
-Toda esta lógica es una especie de componente plantilla para renderizar cualquier ícono dentro de este componente js se realiza: El import del svg, el renderizado del ícono svg, se llama a los estilos para el ícono y el contenedor del ícono y la activación del evento onClick. 
+- `type`: El tipo de ícono que recibirá (En este caso “check” o “delete”)
+- `color`: El color de relleno del ícono. 
+- `onClickEvent`: El evento que va a realizar el ícono (botón) al darle click. 
 
-2. Creamos un archivo.js para cada ícono (botón) a renderizar. En este ejemplo “CompleteIcon.js” y “DeleteIcon.js”, hijos de TodoItem.js y padres de TodoIcons.js.![](https://lh3.googleusercontent.com/umD1OIjS674dhAaa1zQZKCgQq1xh59sYdAxUsC4zLvJjVcbfznEqIbmWfzgt0f_3sN-qLAQkrEfKYl2qx7ZtoH6CW86nv4KhXWZzNzBjCN-_IaUrpvG-lObPWEftMpaYJ00AAndxQ08wtmefIkXIBA)![](https://lh4.googleusercontent.com/2Mdchc_Xax-YwxJJw32_wcitHwPx_CSMt3LjmgVXwP2QXQFS4P9uMLbHtyozigSKp8lAKV0fN4ccylwe3RAooLWlvQHjw9OPPpNLK4BQBp09od2g1WJ-YFTUK2WrW9oynarXdXzb5-lOujPWApx2Bw)
-    
+Luego el retorno de este componente será la plantilla para renderizar cualquier ícono. En este caso en particular los íconos de `check` y `delete` irán en una línea, por lo que invocamos un `span` y ubicamos clases generales que servirán como contenedores de los íconos, para darles la posición, tamaño, disposición, etc. Usamos template literals para pasar de forma dinámica el tipo de ícono que vamos a renderizar cada vez que se llame la función, dependiendo del tipo se usará uno u otro estilo del documento css. 
 
-  
+Dentro del `span` se llama al objeto `{iconTypes}` creado al inicio, para esto usamos las llaves, luego le pasamos el `[type]` y finalmente el `(color)` entre paréntesis porque la función tiene un parámetro. 
 
-Este archivo es más simple y su función es de recibir los props enviamos del componente padre. Los props deconstruidos serían: “completed” y “onComplete/onDelete”. El primero sirve para determinar con un condicional ternario si el color a enviar será uno u otro. El segundo es equivalente para el ícono de check y delete que sería el evento al darle click. 
+Toda esta lógica es una especie de componente plantilla para renderizar cualquier ícono. Dentro de este componente se realiza: 
+- El `import` del svg
+- El renderizado del ícono svg
+- Se llama a los estilos para el ícono y el contenedor del ícono 
+- La activación del evento `onClick`. 
 
-  
+2. `CompleteIcon.js` y `DeleteIcon.js` hijos de TodoItem.js y padres de TodoIcons.js.
+
+```js
+import React from "react";
+import { TodoIcon } from "./TodoIcon";
+						  👀👇       👀👇
+function CompleteIcon({ completed, onComplete }) {
+  return (
+    <TodoIcon
+      type="check"
+    ✨color={completed ? "#4CAF50" : "#4F46E5"} 👈👀
+      onClick={onComplete}
+    />
+  );
+}
+
+export { CompleteIcon };
+```
+
+```js
+import React from "react";
+import { TodoIcon } from "./TodoIcon";
+
+function DeleteIcon({ onDelete }) {
+  return <TodoIcon type="delete" color="#4F46E5" onClick={onDelete} />;
+}
+
+export { DeleteIcon };
+```
+
+Este archivo es más simple y su función es de recibir los props enviamos del componente padre. Los props deconstruidos serían: `completed` y `onComplete / onDelete`. El primero sirve para determinar con un condicional ternario si el color a enviar será uno u otro. El segundo es equivalente para el ícono de `check` y `delete` que sería el evento al darle `click`. 
 
 Por lo tanto, este archivo sirve para:
 
-- Recibir los props deconstruidos de su componente padre (TodoItems.js): completed y onComplete / onDelete.
-    
-- Crear el listado de props a enviar al componente hijo TodoIcons.js, los props son: type, color y onClickEvent.}
-    
-- Declarar los valores para esos props que se enviarán al componente hijo, es decir qué tipo de ícono es, el color y la acción que se realizará al darle click al ícono.
-    
+- Recibir los props deconstruidos de su componente padre `TodoItems.js`: `completed` y `onComplete / onDelete`.
+- Crear el listado de props a enviar al componente hijo `TodoIcon.js`, los props son: `type`, `color` y `onClick`.
+- Declarar los valores para esos props que se enviarán al componente hijo, es decir qué tipo de ícono es, el color y la acción que se realizará al darle `click` al ícono.
 
-  
+3. Pasamos al componente `TodoItem.js`. Este componente es hijo de `App.js` y padre de `CompleteIcon.js` y `DeleteIcon.js`. Como hijo recibe props y como padre envía `completed` y `onComplete / onDelete`. 
 
-3. Pasamos al componente TodoItem.js. Este componente es hijo de App.js y padre de “CompleteIcon.js” y “DeleteIcon.js”. Como hijo recibe props y como padre envía completed y onComplete / onDelete. ![](https://lh5.googleusercontent.com/yxByMENTDexJZY4LPSm2_-P2Y-jYbICHyU6OJM9PmEV7TrREtzIeeg-W4gXmzDwFX1zfwtRbWupv6n3-uCvJ_eYFgKd33aMmmNQDaoBbvTfJci7Z4cW_BRi9mE3CHcAJvTJsuLAaBGNJEd1E1KAF1g)
-    
+```js
+import { CompleteIcon } from "./CompleteIcon";
+import { DeleteIcon } from "./DeleteIcon";
+import "../css/TodoItem.css";
 
-  
+function TodoItem(props) {
+  return (
+    <li>
+      <CompleteIcon completed={props.completed} onComplete={props.onComplete} />
+      <p className={`${props.completed && "p--completed"}`}>{props.text}</p>
+      <DeleteIcon onDelete={props.onDelete} />
+    </li>
+  );
+}
+
+export { TodoItem };
+``` 
 
 Las funciones de este componente serán:
 
-- Llamar a los componentes CompleteIcon y DeleteIcon para ser renderizados en TodoItem.
-    
-- Recibir los props completed y onComplete / onDelete del componente padre. 
-    
-- Crear el listado de props a enviar a los componentes hijos que necesitan saber los estados de los eventos. Para el ícono de check se necesita saber si está completado o no y la acción a realizar cuando esté completado. Para el ícono de delete únicamente la acción a realizar al darle click al botón, es decir onDelete. 
-    
+- Llamar a los componentes `CompleteIcon` y `DeleteIcon` para ser renderizados en `TodoItem`.
+- Recibir los props `completed` y `onComplete / onDelete` del componente padre. 
+- Crear el listado de props a enviar a los componentes hijos que necesitan saber los estados de los eventos. Para el ícono de `check` se necesita saber si está completado o no y la acción a realizar cuando esté completado. Para el ícono de delete únicamente la acción a realizar al darle `click` al botón, es decir `onDelete`. 
 
-Se recibe también como props el texto y se realizan otras funciones para el renderizado de cada ítem, pero esto no es parte de la lógica del renderizado dinámico de los íconos.**
+Se recibe también como props el texto y se realizan otras funciones para el renderizado de cada ítem, pero esto no es parte de la lógica del renderizado dinámico de los íconos.
 
 
+### Código de la clase 
 
-
-
-create react herramienta 
-
-Empaquetamiento de CRA.
-
-
-
-`src > components > TodoButton.js`  
+`src > components > TodoIcon.js`  
 ```js
+import { ReactComponent as CheckSvg } from "../svg/check.svg";
+import { ReactComponent as DeleteSvg } from "../svg/delete.svg";
+import "../css/TodoIcon.css";
+
+const iconTypes = {
+  check: (color) => <CheckSvg fill={color} />,
+  delete: (color) => (
+    <DeleteSvg
+      className="icon"
+      fill="#4F46E5"
+      stroke="#4F46E5"
+      strokeWidth="0.1"
+    />
+  ),
+};
+
+function TodoIcon({ type, color, onClick }) {
+  return (
+    /* type puede ser check o delete	*/
+    <span className={`${type}`} onClick={onClick}>
+      {iconTypes[type](color)}
+    </span>
+  );
+}
+
+export { TodoIcon };
 ```
 
-`src > components > TodoButton.js`  
-```js
+`src > css > TodoIcon.css`  
+```css
+.icon:hover{
+  fill: #EA0031;
+}
 ```
 
-`src > components > TodoButton.js`  
+`src > components > CompleteIcon.js`  
 ```js
+import React from "react";
+import { TodoIcon } from "./TodoIcon";
+
+function CompleteIcon({ completed, onComplete }) {
+  return (
+    <TodoIcon
+      type="check"
+      color={completed ? "#4CAF50" : "#4F46E5"}
+      onClick={onComplete}
+    />
+  );
+}
+
+export { CompleteIcon };
 ```
 
-`src > components > TodoButton.js`  
+`src > components > DeleteIcon.js`  
 ```js
+import React from "react";
+import { TodoIcon } from "./TodoIcon";
+
+function DeleteIcon({ onDelete }) {
+  return <TodoIcon type="delete" color="#4F46E5" onClick={onDelete} />;
+}
+
+export { DeleteIcon };
 ```
 
+`src > components > TodoItem.js`  
+```js
+import { CompleteIcon } from "./CompleteIcon";
+import { DeleteIcon } from "./DeleteIcon";
+import "../css/TodoItem.css";
+
+function TodoItem(props) {
+  return (
+    <li>
+      <CompleteIcon completed={props.completed} onComplete={props.onComplete} />
+      <p className={`${props.completed && "p--completed"}`}>{props.text}</p>
+      <DeleteIcon onDelete={props.onDelete} />
+    </li>
+  );
+}
+
+export { TodoItem };
+```
+
+`src > css > TodoItem.css`  
+```js
+li {
+  list-style: none;
+  background-color: #cbd5e1;
+  width: 15rem;
+  height: 3rem;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1rem 0 0.5rem;
+
+  position: relative;
+}
+
+.check {
+  cursor: pointer;
+}
+
+.delete {
+  cursor: pointer;
+
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+p {
+  width: 85%;
+  height: auto;
+  margin: 0 5px 0;
+  color: #090b10;
+}
+
+.p--completed {
+  text-decoration: line-through;
+}
+```
+
+## 13. 
 
 ### Código de la clase 
 
@@ -2757,8 +3002,26 @@ Empaquetamiento de CRA.
 ```js
 ```
 
+
+`src > components > DeleteIcon.js`  
+```js
+```
+
+`src > components > DeleteIcon.js`  
+```js
+```
+
 ### Código de la clase 
 
 `src > components > TodoButton.js`  
+```js
+```
+
+
+`src > components > DeleteIcon.js`  
+```js
+```
+
+`src > components > DeleteIcon.js`  
 ```js
 ```
