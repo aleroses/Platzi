@@ -2804,7 +2804,7 @@ Toda esta lógica es una especie de componente plantilla para renderizar cualqui
 ```js
 import React from "react";
 import { TodoIcon } from "./TodoIcon";
-				  👀👇       👀👇
+			  👀👇       👀👇
 function CompleteIcon({ completed, onComplete }) {
   return (
     <TodoIcon
