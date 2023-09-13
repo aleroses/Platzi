@@ -2656,7 +2656,7 @@ function TodoItem(props) {
 }
 ```
 
-3. Las recibiremos en nuestros componentes `CompleteIcon` y `DeleteIcon` respectivamente, aquí también recibimos la propiedad 🦄`onClick` que viene desde el componente `TodoIcon.js`.
+3. Las recibiremos en nuestros componentes `CompleteIcon` y `DeleteIcon` respectivamente, aquí también recibimos la propiedad 🦄`onClick` que viene desde el componente `TodoIcon`.
 
 ```js
 function CompleteIcon({ completed, ✨onComplete👈👀 }) {
@@ -2669,7 +2669,7 @@ function CompleteIcon({ completed, ✨onComplete👈👀 }) {
   );
 }
 ```
-
+---
 ```js
 function DeleteIcon({ onDelete }) {
   return <TodoIcon type="delete" color="#4F46E5" 🔥onClick={onDelete}👈👀 />;
@@ -2680,7 +2680,7 @@ function DeleteIcon({ onDelete }) {
 
 Finalmente, la propiedad `onClick` también la enviamos a nuestro componente `TodoIcon` donde se encuentra el elemento `<span>` y es allí en donde por fin ocurre el evento `onClick`.
 
-```js
+```jsx
 function TodoIcon({ type, color, onClick }) {
   return (
     /* type puede ser check o delete */
