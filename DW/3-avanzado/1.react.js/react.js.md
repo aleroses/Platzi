@@ -3010,44 +3010,261 @@ p {
 
 ## 13. Local Storage con React.js
 
-El localStorage es una característica de JavaScript que permite almacenar datos en el navegador de forma persistente. Puedes utilizar el localStorage en una aplicación de React para almacenar y recuperar datos locales en el navegador del usuario.
+El `localStorage` es una característica de JavaScript que permite almacenar datos en el navegador de forma persistente. Puedes utilizar el `localStorage` en una aplicación de React para almacenar y recuperar datos locales en el navegador del usuario.
 
-Aquí hay una explicación básica de cómo funciona y cómo se usa el localStorage en React:
+Aquí hay una explicación básica de cómo funciona y cómo se usa el `localStorage` en React:
 
-1. Importa el localStorage: Primero, debes importar el localStorage en tu archivo de componente de React. Puedes hacerlo agregando la siguiente línea al principio de tu archivo:
+1. Importa el `localStorage`: Primero, debes importar el `localStorage` en tu archivo de componente de React. Puedes hacerlo agregando la siguiente línea al principio de tu archivo:
 
 ```javascript
 import React from 'react';
 ```
 
-2. Guardar datos en el localStorage: Para guardar datos en el localStorage, puedes utilizar el método `setItem(key, value)`. El "key" es una cadena que identifica el dato que deseas guardar, y el "value" es el dato que deseas almacenar. Por ejemplo, si deseas guardar el nombre del usuario, puedes hacerlo de la siguiente manera:
+2. Guardar datos en el `localStorage`: Para guardar datos en el `localStorage`, puedes utilizar el método `setItem(key, value)`. El "key" es una cadena que identifica el dato que deseas guardar, y el "value" es el dato que deseas almacenar. Por ejemplo, si deseas guardar el nombre del usuario, puedes hacerlo de la siguiente manera:
 
 ```javascript
 localStorage.setItem('nombre', 'John');
 ```
 
-3. Recuperar datos del localStorage: Para recuperar datos del localStorage, utiliza el método `getItem(key)`. Proporciona la "key" del dato que deseas recuperar y el método devolverá el valor asociado a esa clave. Por ejemplo, para obtener el nombre del usuario que guardamos anteriormente, puedes usar:
+3. Recuperar datos del `localStorage`: Para recuperar datos del `localStorage`, utiliza el método `getItem(key)`. Proporciona la "key" del dato que deseas recuperar y el método devolverá el valor asociado a esa clave. Por ejemplo, para obtener el nombre del usuario que guardamos anteriormente, puedes usar:
 
 ```javascript
 const nombre = localStorage.getItem('nombre');
 console.log(nombre); // Imprime "John"
 ```
 
-4. Eliminar datos del localStorage: Si deseas eliminar un dato específico del localStorage, puedes utilizar el método `removeItem(key)`. Proporciona la "key" del dato que deseas eliminar y se eliminará del almacenamiento local. Por ejemplo:
+4. Eliminar datos del `localStorage`: Si deseas eliminar un dato específico del `localStorage`, puedes utilizar el método `removeItem(key)`. Proporciona la "key" del dato que deseas eliminar y se eliminará del almacenamiento local. Por ejemplo:
 
 ```javascript
 localStorage.removeItem('nombre');
 ```
 
-5. Limpiar todos los datos del localStorage: Si deseas eliminar todos los datos almacenados en el localStorage, puedes usar el método `clear()`. Esto eliminará todos los datos guardados en el almacenamiento local. Por ejemplo:
+5. Limpiar todos los datos del `localStorage`: Si deseas eliminar todos los datos almacenados en el `localStorage`, puedes usar el método `clear()`. Esto eliminará todos los datos guardados en el almacenamiento local. Por ejemplo:
 
 ```javascript
 localStorage.clear();
 ```
 
-Es importante tener en cuenta que el localStorage tiene capacidad limitada (generalmente alrededor de 5 MB) y los datos almacenados en él están disponibles incluso después de cerrar y volver a abrir el navegador.
+Es importante tener en cuenta que el `localStorage` tiene capacidad limitada (generalmente alrededor de 5 MB) y los datos almacenados en él están disponibles incluso después de cerrar y volver a abrir el navegador.
 
-Recuerda que el localStorage es específico del navegador y solo puede ser accedido por la misma aplicación en el mismo dominio. Si necesitas compartir datos entre diferentes aplicaciones o dominios, puedes considerar otras opciones como el sessionStorage o utilizar una solución de almacenamiento en el lado del servidor.
+Recuerda que el `localStorage` es específico del navegador y solo puede ser accedido por la misma aplicación en el mismo dominio. Si necesitas compartir datos entre diferentes aplicaciones o dominios, puedes considerar otras opciones como el `sessionStorage` o utilizar una solución de almacenamiento en el lado del servidor.
+
+### Guardando `strings`
+
+El objeto `localStorage` en los navegadores web es una función que permite almacenar datos de forma persistente en el navegador. Sin embargo, `localStorage` solo puede almacenar datos en forma de cadenas de texto (strings). Esto significa que, si deseas guardar estructuras complejas de datos, como objetos JavaScript o matrices, deberás convertirlos en cadenas de texto antes de almacenarlos en `localStorage`.
+
+Para guardar una estructura compleja en `localStorage`, puedes utilizar el método `JSON.stringify()` para convertir el objeto en una cadena de texto JSON legible. Luego, puedes almacenar esa cadena de texto en `localStorage`. Por ejemplo:
+
+```javascript
+var myObject = { name: "John", age: 30 };
+var jsonString = JSON.stringify(myObject);
+localStorage.setItem("myData", jsonString);
+```
+
+Para recuperar los datos de `localStorage` y convertirlos nuevamente en una estructura compleja, puedes usar el método `JSON.parse()`. Por ejemplo:
+
+```javascript
+var storedData = localStorage.getItem("myData");
+var parsedObject = JSON.parse(storedData);
+console.log(parsedObject.name);  // "John"
+console.log(parsedObject.age);   // 30
+```
+
+### Código de la clase 
+
+Hacemos algunas pruebas en la consola del navegador `Ctrl + Shift + i`:  
+
+```js
+const defaultTodos = [
+  { text: "Lorem lorem", completed: true },
+  { text: "Don't cry", completed: false },
+  { text: "Lorem ipsus", completed: false },
+  { text: "Take care", completed: false },
+  { text: "Loremlorem", completed: true },
+];
+
+let stringTodos = JSON.stringify(defaultTodos);
+localStorage.setItem('ToDos_v1', stringTodos);
+
+const localStorageTodos = localStorage.getItem('ToDos_v1')
+let parsedItems = JSON.parse(localStorageTodos);
+
+localStorage.removeItem('ToDos_v1');
+localStorage.getItem('ToDos_v1')
+
+// Nuevamente agregamos info para visualizar en la web
+const defaultTodos = [
+  { text: "Lorem lorem", completed: true },
+  { text: "Don't cry", completed: false },
+  { text: "Lorem ipsus", completed: false },
+  { text: "Take care", completed: false },
+  { text: "Loremlorem", completed: true },
+];
+
+localStorage.setItem("ToDos_v1", JSON.stringify(defaultTodos));
+```
+
+`src > App.js`  
+```js
+import React from "react";
+import { TodoCounter } from "./components/TodoCounter";
+import { TodoSearch } from "./components/TodoSearch";
+import { TodoList } from "./components/TodoList";
+import { TodoItem } from "./components/TodoItem";
+import { TodoButton } from "./components/TodoButton";
+
+/* const defaultTodos = [
+  { text: "Lorem lorem", completed: true },
+  { text: "Don't cry", completed: false },
+  { text: "Lorem ipsus", completed: false },
+  { text: "Take care", completed: false },
+  { text: "Loremlorem", completed: true },
+];
+
+localStorage.setItem("ToDos_v1", JSON.stringify(defaultTodos)); */
+// localStorage.removeItem("ToDos_v1"); 
+
+function App() {
+  const localStorageTodos = localStorage.getItem("ToDos_v1"); 👈👀
+
+  let parsedTodos; 👈👀👇
+  if (!localStorageTodos) {
+    localStorage.setItem("ToDos_v1", JSON.stringify([]));
+    parsedTodos = [];
+  } else {
+    parsedTodos = JSON.parse(localStorageTodos);
+  }
+
+  const [todos, setTodos] = React.useState(parsedTodos); 👈👀
+  const [searchValue, setSearchValue] = React.useState("");
+
+  const completedTodos = todos.filter((todo) => !!todo.completed).length;
+  const totalTodos = todos.length;
+
+  const searchedTodos = todos.filter((todo) => {
+    const todoText = todo.text.toLowerCase();
+    const searchText = searchValue.toLowerCase();
+    return todoText.includes(searchText);
+  });
+
+  const saveTodos = (newTodos) => { 👈👀
+    localStorage.setItem("ToDos_v1", JSON.stringify(newTodos));
+    setTodos(newTodos);
+  };
+
+  const completeTodo = (text) => {
+    const newTodos = [...todos];
+    const todoIndex = newTodos.findIndex((todo) => todo.text == text);
+
+    // newTodos[todoIndex].completed = true;
+    // true = false / false = true
+    newTodos[todoIndex].completed = !newTodos[todoIndex].completed;
+    ✨saveTodos(newTodos); 👈👀
+  };
+
+  const deleteTodo = (text) => {
+    const newTodos = [...todos];
+    const todoIndex = newTodos.findIndex((todo) => todo.text == text);
+
+    newTodos.splice(todoIndex, 1);
+    ✨saveTodos(newTodos); 👈👀
+  };
+
+  return (
+    <>
+      <TodoCounter completed={completedTodos} total={totalTodos} />
+      <TodoSearch searchValue={searchValue} setSearchValue={setSearchValue} />
+
+      <TodoList>
+        {searchedTodos.map((todo) => (
+          <TodoItem
+            key={todo.text}
+            text={todo.text}
+            completed={todo.completed}
+            // Pasar una función a un componente sin ejecutarla inmediatamente
+            onComplete={() => completeTodo(todo.text)}
+            onDelete={() => deleteTodo(todo.text)}
+          />
+        ))}
+      </TodoList>
+
+      <TodoButton />
+    </>
+  );
+}
+
+export default App;
+```
+
+
+### 🔴 Evita acceder al `localStorage` dentro del componente
+
+Acceder a los valores del `localStorage` dentro del componente es muy pesado en cuanto al rendimiento, ya que se **ejecuta sincrónicamente en cada re-renderizado del componente**. En su lugar, puedes leerlo utilizando un `callback` que retorne el valor inicial del `useState`, esto permitirá acceder a la información una sola vez al momento que se crea el componente, esto por la definición de `useState`.  
+
+```js
+const [todos, setTodos] = useState(() => {
+  const todosFromStorage = window.localStorage.getItem('TODOS_V1')
+  if (todosFromStorage) return JSON.parse(todosFromStorage)
+  return []
+})
+```
+
+## 14. Custom Hooks
+
+Los Custom Hooks en React son una característica que te permite extraer lógica de componentes funcionales para reutilizarla en diferentes componentes. Los Custom Hooks son funciones JavaScript que siguen ciertas convenciones al nombrar y utilizar los hooks de React existentes, como `useState`, `useEffect`, `useContext`, entre otros.
+
+Al crear un Custom Hook, puedes encapsular una funcionalidad específica y luego utilizarla en múltiples componentes funcionales. Esto promueve la reutilización de código y ayuda a mantener tus componentes más limpios y enfocados en su lógica principal.
+
+Para definir un Custom Hook, simplemente creas una función que utilice uno o más hooks existentes. Por convención, el nombre de un Custom Hook debe comenzar con el prefijo "use". A partir de ahí, puedes escribir la lógica personalizada que deseas encapsular y reutilizar.
+
+Aquí hay un ejemplo básico de un Custom Hook que maneja un contador:
+
+```javascript
+import { useState } from 'react';
+
+function useCounter(initialValue) {
+  const [count, setCount] = useState(initialValue);
+
+  const increment = () => {
+    setCount(count + 1);
+  };
+
+  const decrement = () => {
+    setCount(count - 1);
+  };
+
+  return [count, increment, decrement];
+}
+
+export default useCounter;
+```
+
+En este ejemplo, el Custom Hook `useCounter` utiliza el hook `useState` para manejar el estado del contador. Proporciona una interfaz para obtener el valor del contador, así como para incrementarlo y decrementarlo.
+
+Luego, en cualquier componente funcional, puedes utilizar este Custom Hook para agregar la funcionalidad del contador:
+
+```javascript
+import React from 'react';
+import useCounter from './useCounter';
+
+function CounterComponent() {
+  const [count, increment, decrement] = useCounter(0);
+
+  return (
+    <div>
+      <p>Count: {count}</p>
+      <button onClick={increment}>Increment</button>
+      <button onClick={decrement}>Decrement</button>
+    </div>
+  );
+}
+
+export default CounterComponent;
+```
+
+En este ejemplo, `CounterComponent` utiliza el Custom Hook `useCounter` para obtener el estado del contador y las funciones `increment` y `decrement`. Esto te permite reutilizar la lógica del contador en cualquier otro componente funcional sin tener que repetir el código.
+
+[🔥 La CLAVE de los CUSTOM HOOKS en React](https://www.youtube.com/watch?v=K4vCTeKKCkU)
 
 ### Código de la clase 
 
@@ -3063,13 +3280,6 @@ Recuerda que el localStorage es específico del navegador y solo puede ser acced
 `src > components > DeleteIcon.js`  
 ```js
 ```
-
-### Código de la clase 
-
-`src > components > TodoButton.js`  
-```js
-```
-
 
 `src > components > DeleteIcon.js`  
 ```js
