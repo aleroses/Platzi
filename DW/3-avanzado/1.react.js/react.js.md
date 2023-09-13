@@ -2698,7 +2698,7 @@ function TodoIcon({ type, color, onClick }) {
 Lógica para renderizar SVG's de forma dinámica
 
 Presentamos la siguiente situación:  
-Tenemos un componente llamado `TodoItem.js`, el cual renderiza cada uno de los elementos de nuestro listado de tareas a completar. Cada ítem contiene 3 elementos: 
+Tenemos un componente llamado `TodoItem`, el cual renderiza cada uno de los elementos de nuestro listado de tareas a completar. Cada ítem contiene 3 elementos: 
 
 - Un botón de completado que contiene un ícono ✔
 - El texto de la tarea
@@ -2707,9 +2707,19 @@ Tenemos un componente llamado `TodoItem.js`, el cual renderiza cada uno de los e
 Para insertar esos íconos se pueden usar diferentes métodos como:  
 - Emojis usando un plugin de Visual Studio Code o usando `Windows + .` para insertarlos directamente en el código.
 - Librerías de íconos para React. 
-- Importando SVG's de forma dinámica como componentes de React. 
+- Importando los SVG de forma dinámica como componentes de React. ✨
 
-En este caso seguiremos el tercer camino, en primer lugar, vamos a añadir diferentes archivos en nuestra carpeta `src` antes que nada los svg llamados en este caso: `check.svg` y `delete.svg`. Adicional a esto crearemos un archivo JS para cada ícono a renderizar y un archivo para contener la lógica de importación de los svg's para todos los íconos, en nuestro caso: `CompleteIcon.js`, `DeleteIcon.js`y `TodoIcons.js`
+En este caso seguiremos el tercer camino, en primer lugar, vamos a añadir diferentes archivos en nuestra carpeta `src`: 
+
+- Los SVG llamados en este caso: 
+	- `check.svg` 
+	- `delete.svg`. 
+- Un archivo JS para cada ícono a renderizar:
+	- `CompleteIcon.js`
+	- `DeleteIcon.js`
+- Un archivo para contener la lógica de importación de los SVG's para todos los íconos con su respectivo CSS:
+	- `TodoIcon.js`
+	- `TodoIcon.css` ✨
 
 Esta estructura de carpetas y archivos se vería así: 
 
@@ -2749,7 +2759,7 @@ Esta estructura de carpetas y archivos se vería así:
 
 La serie de pasos sería la siguiente: 
 
-1. Archivos: `TodoIcons.js` y `TodoIcons.css`.
+1. Archivos: `TodoIcon.js` y `TodoIcon.css`.
 
 ```jsx
 // Importamos los svg 👀👇
@@ -2757,6 +2767,7 @@ import { ReactComponent as CheckSvg } from "../svg/check.svg";
 import { ReactComponent as DeleteSvg } from "../svg/delete.svg";
 import "../css/TodoIcon.css"; // Estilos
 
+// Object = { key: value }
 const iconTypes = { 👈👀👇
  🔥check: (color) => <CheckSvg fill={color} />,
  🔥delete: (color) => (
@@ -2769,10 +2780,10 @@ const iconTypes = { 👈👀👇
   ),
 };
 
-function TodoIcon({ type, color, onClick }) {
+function TodoIcon({ type, color, 🔥onClick👈👀 }) {
   return (
     /* type puede ser check o delete */
-    <span className={`${type}`} onClick={onClick}>
+    <span className={`${type}`} ✨onClick={onClick}👈👀>
       {iconTypes[type](color)}
     </span>
   );
@@ -2781,49 +2792,51 @@ function TodoIcon({ type, color, onClick }) {
 export { TodoIcon };
 ```
 
-En este archivo lo primero que necesitamos es importar los íconos SVG como `ReactComponent as <Nombre-para-diferenciar>`. Luego importamos el archivo donde ubicamos los estilos para los íconos. Creamos un objeto llamado `iconTypes` que contendrá un diccionario de íconos, le pasamos el nombre de elemento y adentro una arrow function para enviar la propiedad color al renderizado. Dentro de esta función es donde se hace el llamado a los archivos svg, se les agrega una clase para los estilos en el css y se asigna el color del svg con la propiedad fill. 
+En este archivo lo primero que necesitamos es importar los íconos SVG como `ReactComponent as <Nombre-para-diferenciar>`. Luego importamos el archivo donde ubicamos los estilos para los íconos. Creamos un objeto llamado `iconTypes` que contendrá un diccionario de íconos, le pasamos una `key` que será  `check` o `delete` y como `value` le damos una `arrow function` para enviar la prop color al renderizado. Dentro de esta función es donde se hace el llamado a los archivos SVG `<CheckSvg/>` y `<DeleteSvg/>`, se les agrega una clase para los estilos en el CSS y se asigna el color del SVG con la propiedad `fill`. 
 
 Creamos un componente para llamar al renderizado de los íconos. Este componente `TodoIcons` recibe 3 `props`:
 
-- `type`: El tipo de ícono que recibirá (En este caso “check” o “delete”)
+- `type`: El tipo de ícono que recibirá (`check` o `delete`)
 - `color`: El color de relleno del ícono. 
-- `onClickEvent`: El evento que va a realizar el ícono (botón) al darle click. 
+- `onClick`: El evento que va a realizar el ícono (botón) al darle clic. 
 
-Luego el retorno de este componente será la plantilla para renderizar cualquier ícono. En este caso en particular los íconos de `check` y `delete` irán en una línea, por lo que invocamos un `span` y ubicamos clases generales que servirán como contenedores de los íconos, para darles la posición, tamaño, disposición, etc. Usamos template literals para pasar de forma dinámica el tipo de ícono que vamos a renderizar cada vez que se llame la función, dependiendo del tipo se usará uno u otro estilo del documento css. 
+📌 Dato importante: No confundir el `onClick` creado como prop con el `onClick` definido dentro de la etiqueta `span`, este último es un evento y el anterior como ya se dijo es una propiedad.  
 
-Dentro del `span` se llama al objeto `{iconTypes}` creado al inicio, para esto usamos las llaves, luego le pasamos el `[type]` y finalmente el `(color)` entre paréntesis porque la función tiene un parámetro. 
+Luego el retorno de este componente será la plantilla para renderizar cualquier ícono. En este caso en particular los íconos de `check` y `delete` irán en una línea, por lo que invocamos un `span` y ubicamos clases generales que servirán como contenedores de los íconos, para darles la posición, tamaño, disposición, etc. Usamos `template literals` para pasar de forma dinámica el tipo de ícono que vamos a renderizar cada vez que se llame la función, dependiendo del tipo se usará uno u otro estilo del documento CSS. 
+
+Dentro del `span` se llama al objeto `{iconTypes}` creado al inicio, luego le pasamos el `[type]` y finalmente accedemos a la `arrow function` pasándole como argumento el `(color)` entre paréntesis porque la función tiene un parámetro. 
 
 Toda esta lógica es una especie de componente plantilla para renderizar cualquier ícono. Dentro de este componente se realiza: 
-- El `import` del svg
-- El renderizado del ícono svg
+- El `import` del SVG
+- El renderizado del ícono SVG
 - Se llama a los estilos para el ícono y el contenedor del ícono 
 - La activación del evento `onClick`. 
 
-2. `CompleteIcon.js` y `DeleteIcon.js` hijos de TodoItem.js y padres de TodoIcons.js.
+2. `CompleteIcon.js` y `DeleteIcon.js` hijos de `TodoItem` y padres de `TodoIcons`.
 
 ```js
 import React from "react";
 import { TodoIcon } from "./TodoIcon";
-			  👀👇       👀👇
+ 
 function CompleteIcon({ completed, onComplete }) {
-  return (
+  return (                 👀👆       👀👆
     <TodoIcon
-      type="check"
+      type="check" 👈👀
     ✨color={completed ? "#4CAF50" : "#4F46E5"} 👈👀
-      onClick={onComplete}
+      onClick={onComplete} // Este onClick es un prop no un event
     />
   );
 }
 
 export { CompleteIcon };
 ```
-
+---
 ```js
 import React from "react";
 import { TodoIcon } from "./TodoIcon";
 
 function DeleteIcon({ onDelete }) {
-  return <TodoIcon type="delete" color="#4F46E5" onClick={onDelete} />;
+  return <TodoIcon type="delete" color="#4F46E5" 🔥onClick={onDelete} />; // Este onClick es un prop
 }
 
 export { DeleteIcon };
@@ -2833,11 +2846,11 @@ Este archivo es más simple y su función es de recibir los props enviamos del c
 
 Por lo tanto, este archivo sirve para:
 
-- Recibir los props deconstruidos de su componente padre `TodoItems.js`: `completed` y `onComplete / onDelete`.
-- Crear el listado de props a enviar al componente hijo `TodoIcon.js`, los props son: `type`, `color` y `onClick`.
-- Declarar los valores para esos props que se enviarán al componente hijo, es decir qué tipo de ícono es, el color y la acción que se realizará al darle `click` al ícono.
+- Recibir los props deconstruidos de su componente padre `TodoItem`: `completed` y `onComplete / onDelete`.
+- Crear el listado de props a enviar al componente hijo `TodoIcon`, los props son: `type`, `color` y `onClick`.
+- Declarar los valores para esos props que se enviarán al componente hijo, es decir, qué tipo de ícono es, el color y la acción que se realizará al darle `click` al ícono.
 
-3. Pasamos al componente `TodoItem.js`. Este componente es hijo de `App.js` y padre de `CompleteIcon.js` y `DeleteIcon.js`. Como hijo recibe props y como padre envía `completed` y `onComplete / onDelete`. 
+3. Pasamos al componente `TodoItem`. Este componente es hijo de `App` y padre de `CompleteIcon` y `DeleteIcon`. Como hijo recibe props y como padre envía `completed` y `onComplete / onDelete`. 
 
 ```js
 import { CompleteIcon } from "./CompleteIcon";
@@ -2861,10 +2874,11 @@ Las funciones de este componente serán:
 
 - Llamar a los componentes `CompleteIcon` y `DeleteIcon` para ser renderizados en `TodoItem`.
 - Recibir los props `completed` y `onComplete / onDelete` del componente padre. 
-- Crear el listado de props a enviar a los componentes hijos que necesitan saber los estados de los eventos. Para el ícono de `check` se necesita saber si está completado o no y la acción a realizar cuando esté completado. Para el ícono de delete únicamente la acción a realizar al darle `click` al botón, es decir `onDelete`. 
+- Crear el listado de props a enviar a los componentes hijos que necesitan saber los estados de los eventos. Para el ícono de `check` se necesita saber si está completado o no y la acción a realizar cuando esté completado. Para el ícono de `delete` únicamente la acción a realizar al darle `click` al botón, es decir `onDelete`. 
 
 Se recibe también como props el texto y se realizan otras funciones para el renderizado de cada ítem, pero esto no es parte de la lógica del renderizado dinámico de los íconos.
 
+[Comentario](https://platzi.com/comentario/4803401/)
 
 ### Código de la clase 
 
