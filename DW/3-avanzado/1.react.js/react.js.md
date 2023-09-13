@@ -3008,7 +3008,46 @@ p {
 }
 ```
 
-## 13. 
+## 13. Local Storage con React.js
+
+El localStorage es una característica de JavaScript que permite almacenar datos en el navegador de forma persistente. Puedes utilizar el localStorage en una aplicación de React para almacenar y recuperar datos locales en el navegador del usuario.
+
+Aquí hay una explicación básica de cómo funciona y cómo se usa el localStorage en React:
+
+1. Importa el localStorage: Primero, debes importar el localStorage en tu archivo de componente de React. Puedes hacerlo agregando la siguiente línea al principio de tu archivo:
+
+```javascript
+import React from 'react';
+```
+
+2. Guardar datos en el localStorage: Para guardar datos en el localStorage, puedes utilizar el método `setItem(key, value)`. El "key" es una cadena que identifica el dato que deseas guardar, y el "value" es el dato que deseas almacenar. Por ejemplo, si deseas guardar el nombre del usuario, puedes hacerlo de la siguiente manera:
+
+```javascript
+localStorage.setItem('nombre', 'John');
+```
+
+3. Recuperar datos del localStorage: Para recuperar datos del localStorage, utiliza el método `getItem(key)`. Proporciona la "key" del dato que deseas recuperar y el método devolverá el valor asociado a esa clave. Por ejemplo, para obtener el nombre del usuario que guardamos anteriormente, puedes usar:
+
+```javascript
+const nombre = localStorage.getItem('nombre');
+console.log(nombre); // Imprime "John"
+```
+
+4. Eliminar datos del localStorage: Si deseas eliminar un dato específico del localStorage, puedes utilizar el método `removeItem(key)`. Proporciona la "key" del dato que deseas eliminar y se eliminará del almacenamiento local. Por ejemplo:
+
+```javascript
+localStorage.removeItem('nombre');
+```
+
+5. Limpiar todos los datos del localStorage: Si deseas eliminar todos los datos almacenados en el localStorage, puedes usar el método `clear()`. Esto eliminará todos los datos guardados en el almacenamiento local. Por ejemplo:
+
+```javascript
+localStorage.clear();
+```
+
+Es importante tener en cuenta que el localStorage tiene capacidad limitada (generalmente alrededor de 5 MB) y los datos almacenados en él están disponibles incluso después de cerrar y volver a abrir el navegador.
+
+Recuerda que el localStorage es específico del navegador y solo puede ser accedido por la misma aplicación en el mismo dominio. Si necesitas compartir datos entre diferentes aplicaciones o dominios, puedes considerar otras opciones como el sessionStorage o utilizar una solución de almacenamiento en el lado del servidor.
 
 ### Código de la clase 
 
