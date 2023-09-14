@@ -3196,7 +3196,6 @@ function App() {
 export default App;
 ```
 
-
 ### 🔴 Evita acceder al `localStorage` dentro del componente
 
 Acceder a los valores del `localStorage` dentro del componente es muy pesado en cuanto al rendimiento, ya que se **ejecuta sincrónicamente en cada re-renderizado del componente**. En su lugar, puedes leerlo utilizando un `callback` que retorne el valor inicial del `useState`, esto permitirá acceder a la información una sola vez al momento que se crea el componente, esto por la definición de `useState`.  
@@ -3268,11 +3267,367 @@ En este ejemplo, `CounterComponent` utiliza el Custom Hook `useCounter` para obt
 
 ### Código de la clase 
 
-`src > components > TodoButton.js`  
+`src > App.js`  
 ```js
+import React from "react";
+import { TodoCounter } from "./components/TodoCounter";
+import { TodoSearch } from "./components/TodoSearch";
+import { TodoList } from "./components/TodoList";
+import { TodoItem } from "./components/TodoItem";
+import { TodoButton } from "./components/TodoButton";
+
+/* const defaultTodos = [
+  { text: "Lorem lorem", completed: true },
+  { text: "Don't cry", completed: false },
+  { text: "Lorem ipsus", completed: false },
+  { text: "Take care", completed: false },
+  { text: "Loremlorem", completed: true },
+];
+
+localStorage.setItem("ToDos_v1", JSON.stringify(defaultTodos)); */
+// localStorage.removeItem("ToDos_v1"); 
+
+function useLocalStorage(itemName, initialValue) { 👈👀
+  const localStorageItem = localStorage.getItem(itemName);
+
+  let parsedItem;
+  if (!localStorageItem) {
+    localStorage.setItem(itemName, JSON.stringify(initialValue));
+    parsedItem = initialValue;
+  } else {
+    parsedItem = JSON.parse(localStorageItem);
+  }
+
+  const [item, setItem] = React.useState(parsedItem);
+
+  const saveItem = (newItem) => {
+    localStorage.setItem(itemName, JSON.stringify(newItem));
+    setItem(newItem);
+  };
+
+  return [item, saveItem];
+}
+
+function App() {
+  const [todos, saveTodos] = useLocalStorage('ToDos_v1', []);
+  const [searchValue, setSearchValue] = React.useState("");
+
+  const completedTodos = todos.filter((todo) => !!todo.completed).length;
+  const totalTodos = todos.length;
+
+  const searchedTodos = todos.filter((todo) => {
+    const todoText = todo.text.toLowerCase();
+    const searchText = searchValue.toLowerCase();
+    return todoText.includes(searchText);
+  });
+
+  const completeTodo = (text) => {
+    const newTodos = [...todos];
+    const todoIndex = newTodos.findIndex((todo) => todo.text == text);
+
+    // newTodos[todoIndex].completed = true;
+    // true = false / false = true
+    newTodos[todoIndex].completed = !newTodos[todoIndex].completed;
+    saveTodos(newTodos);
+  };
+
+  const deleteTodo = (text) => {
+    const newTodos = [...todos];
+    const todoIndex = newTodos.findIndex((todo) => todo.text == text);
+
+    newTodos.splice(todoIndex, 1);
+    saveTodos(newTodos);
+  };
+
+  return (
+    <>
+      <TodoCounter completed={completedTodos} total={totalTodos} />
+      <TodoSearch searchValue={searchValue} setSearchValue={setSearchValue} />
+
+      <TodoList>
+        {searchedTodos.map((todo) => (
+          <TodoItem
+            key={todo.text}
+            text={todo.text}
+            completed={todo.completed}
+            // Pasar una función a un componente sin ejecutarla inmediatamente
+            onComplete={() => completeTodo(todo.text)}
+            onDelete={() => deleteTodo(todo.text)}
+          />
+        ))}
+      </TodoList>
+
+      <TodoButton />
+    </>
+  );
+}
+
+export default App;
 ```
 
+### 🔴 Evita las dependencias dentro de tus componentes con Custom Hooks
 
+Cuando estás utilizando paquetes dentro de React, por ejemplo, el paquete inventado `QueryPlatzi`, **evita importarlo en cada componente**, a menos que sea necesario.
+
+```js
+import { useQueryPlatzi } from 'query-platzi'
+
+function Component () {	
+	const query = useQueryPlatzi()
+	
+	return ...
+}
+```
+
+En su lugar, crea un custom Hook para abstraer la funcionalidad del paquete. 
+
+```js
+// archivo-> hooks/useQueryApp.js
+import { useQueryPlatzi } from 'query-platzi'
+
+export function useQueryApp () {	
+	return useQueryPlatzi
+}
+```
+
+Aunque parezca algo insignificante, es realmente poderoso, ya que, si en un futuro necesitas cambiar el paquete `QueryPlatzi` por otro, **solo lo harás en un solo sitio**. De esta forma el componente se mantiene lo más **declarativo** posible.
+
+```js
+import { useQueryApp } from '@hooks/useQueryApp'
+
+function Component () {	
+	const query = useQueryApp() 
+	//Solo realizo una función, utilizar la query
+	
+	return ...
+}
+```
+
+Finalmente, según la documentación de React, si observas un `useEffect` muy usado o con mucha lógica, lo más seguro es que puedas abstraerlo en un custom Hook.  
+
+Fuente: [Reutilización de lógica utlizando Hooks personalizados](https://es.react.dev/learn/reusing-logic-with-custom-hooks)
+
+## 15. Organización de archivos y carpetas
+
+```bash
+├── package-lock.json
+├── package.json
+├── public
+│   ├── index.html
+│   ├── manifest.json
+│   └── robots.txt
+└── src
+    ├── App.js
+    ├── components 👈👀👇
+    │   ├── CompleteIcon
+    │   │   ├── check.svg
+    │   │   └── index.js
+    │   ├── DeleteIcon
+    │   │   ├── delete.svg
+    │   │   └── index.js
+    │   ├── TodoButton
+    │   │   ├── TodoButton.css
+    │   │   ├── add.svg
+    │   │   └── index.js
+    │   ├── TodoCounter
+    │   │   ├── TodoCounter.css
+    │   │   └── index.js
+    │   ├── TodoIcon
+    │   │   ├── TodoIcon.css
+    │   │   └── index.js
+    │   ├── TodoItem
+    │   │   ├── TodoItem.css
+    │   │   └── index.js
+    │   ├── TodoList
+    │   │   ├── TodoList.css
+    │   │   └── index.js
+    │   ├── TodoSearch
+    │   │   ├── TodoSearch.css
+    │   │   ├── index.js
+    │   │   └── search.svg
+    │   └── test.js
+    ├── css
+    │   ├── index.css
+    │   └── test.css
+    ├── index.js
+    └── svg
+        ├── add-pink.svg
+        ├── check-completed.svg
+        └── delete-hover.svg
+```
+
+✨ Para ordenar de manera más rápida puedes hacer esto: 
+
+Teniendo un archivo `algo.js` puedes darle a `rename`, le agregas algo así `algo/index.js` y le das enter. De esta manera se crea una carpeta `algo` con un archivo `index.js` dentro. 
+
+### Código de la clase 
+
+Debes cambiar todos los `import` que entren en conflicto y colocar las rutas correctas. 
+
+## 16. Feature-First Directories en React
+
+En React, "Feature-First Directories" se refiere a una estructura de organización de archivos y carpetas en un proyecto de React basada en características o funcionalidades. En lugar de organizar los archivos por tipos (componentes, estilos, etc.), se agrupan según las características o características específicas de la aplicación.
+
+En un enfoque de "Feature-First Directories", se crea una carpeta separada para cada característica o módulo de la aplicación. Dentro de cada carpeta, se colocan todos los archivos relacionados con esa característica, como componentes, estilos, pruebas y cualquier otro archivo necesario específicamente para esa característica.
+
+Esta estructura tiene varias ventajas. Primero, facilita la comprensión y navegación del código, ya que los archivos relacionados están agrupados juntos. Además, es más escalable, ya que es más fácil agregar nuevas características o modificar características existentes sin afectar otras partes del proyecto. También promueve una mayor reutilización de componentes, ya que los componentes específicos de una característica están ubicados en la misma carpeta y pueden ser más fácilmente identificados y reutilizados en otros lugares si es necesario.
+
+Aquí hay un ejemplo de cómo podría verse la estructura de directorios en un enfoque de "Feature-First Directories":
+
+```bash
+/src
+  /features
+    /Home
+      /components
+        HomePage.js
+        HomeHeader.js
+        HomeFooter.js
+      /styles
+        home.css
+      /tests
+        HomePage.test.js
+      index.js
+    /Login
+      /components
+        LoginForm.js
+        LoginButton.js
+      /styles
+        login.css
+      /tests
+        LoginForm.test.js
+      index.js
+  /shared
+    /components
+      Header.js
+      Footer.js
+    /styles
+      shared.css
+    /tests
+      Header.test.js
+  App.js
+  index.js
+```
+
+En este ejemplo, hay dos características principales: "Home" y "Login". Cada una tiene su propia carpeta que contiene los componentes, estilos y pruebas específicos de esa característica. Además, hay una carpeta "shared" para componentes, estilos y pruebas compartidos que pueden ser utilizados por múltiples características.
+
+La estructura de "Feature-First Directories" no es una convención estricta en React, pero puede ser una forma organizativa útil y efectiva dependiendo del tamaño y complejidad del proyecto. Es importante tener en cuenta que la estructura de directorios puede variar según las preferencias del equipo de desarrollo y las necesidades específicas del proyecto.
+
+
+### Código de la clase 
+
+En esta clase también creamos una carpeta para el archivo `App.js` que ahora se llamará `index.js` y además movimos una parte del código a otro archivo llamado `useLocalStorage.js` en esta misma carpeta: 
+
+`src > App > index.js`  
+```js
+import React from "react";
+import { TodoCounter } from "../components/TodoCounter/index";
+import { TodoSearch } from "../components/TodoSearch/index";
+import { TodoList } from "../components/TodoList/index";
+import { TodoItem } from "../components/TodoItem/index";
+import { TodoButton } from "../components/TodoButton/index";
+import { useLocalStorage } from "./useLocalStorage";
+
+/* const defaultTodos = [
+  { text: "Lorem lorem", completed: true },
+  { text: "Don't cry", completed: false },
+  { text: "Lorem ipsus", completed: false },
+  { text: "Take care", completed: false },
+  { text: "Loremlorem", completed: true },
+];
+
+localStorage.setItem("ToDos_v1", JSON.stringify(defaultTodos)); */
+// localStorage.removeItem("ToDos_v1");
+
+function App() {
+  const [todos, saveTodos] = useLocalStorage("ToDos_v1", []);
+  const [searchValue, setSearchValue] = React.useState("");
+
+  const completedTodos = todos.filter((todo) => !!todo.completed).length;
+  const totalTodos = todos.length;
+
+  const searchedTodos = todos.filter((todo) => {
+    const todoText = todo.text.toLowerCase();
+    const searchText = searchValue.toLowerCase();
+    return todoText.includes(searchText);
+  });
+
+  const completeTodo = (text) => {
+    const newTodos = [...todos];
+    const todoIndex = newTodos.findIndex((todo) => todo.text === text);
+
+    // newTodos[todoIndex].completed = true;
+    // true = false / false = true
+    newTodos[todoIndex].completed = !newTodos[todoIndex].completed;
+    saveTodos(newTodos);
+  };
+
+  const deleteTodo = (text) => {
+    const newTodos = [...todos];
+    const todoIndex = newTodos.findIndex((todo) => todo.text === text);
+
+    newTodos.splice(todoIndex, 1);
+    saveTodos(newTodos);
+  };
+
+  return (
+    <>
+      <TodoCounter completed={completedTodos} total={totalTodos} />
+      <TodoSearch searchValue={searchValue} setSearchValue={setSearchValue} />
+
+      <TodoList>
+        {searchedTodos.map((todo) => (
+          <TodoItem
+            key={todo.text}
+            text={todo.text}
+            completed={todo.completed}
+            // Pasar una función a un componente sin ejecutarla inmediatamente
+            onComplete={() => completeTodo(todo.text)}
+            onDelete={() => deleteTodo(todo.text)}
+          />
+        ))}
+      </TodoList>
+
+      <TodoButton />
+    </>
+  );
+}
+
+export default App;
+```
+
+`src > App > useLocalStorage.js`  
+```js
+import React from "react";
+
+function useLocalStorage(itemName, initialValue) {
+  const localStorageItem = localStorage.getItem(itemName);
+
+  let parsedItem;
+  if (!localStorageItem) {
+    localStorage.setItem(itemName, JSON.stringify(initialValue));
+    parsedItem = initialValue;
+  } else {
+    parsedItem = JSON.parse(localStorageItem);
+  }
+
+  const [item, setItem] = React.useState(parsedItem);
+
+  const saveItem = (newItem) => {
+    localStorage.setItem(itemName, JSON.stringify(newItem));
+    setItem(newItem);
+  };
+
+  return [item, saveItem];
+}
+
+export { useLocalStorage };
+```
+
+[4 estructuras para organizar tu proyecto de React y React Native](https://reboot.studio/blog/es/estructuras-organizar-proyecto-react)
+
+## 17. 
+
+### Código de la clase 
 `src > components > DeleteIcon.js`  
 ```js
 ```
@@ -3281,6 +3636,25 @@ En este ejemplo, `CounterComponent` utiliza el Custom Hook `useCounter` para obt
 ```js
 ```
 
+### Código de la clase 
+`src > components > DeleteIcon.js`  
+```js
+```
+
+`src > components > DeleteIcon.js`  
+```js
+```
+
+### Código de la clase 
+`src > components > DeleteIcon.js`  
+```js
+```
+
+`src > components > DeleteIcon.js`  
+```js
+```
+
+### Código de la clase 
 `src > components > DeleteIcon.js`  
 ```js
 ```
