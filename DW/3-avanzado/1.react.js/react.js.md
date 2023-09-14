@@ -3460,6 +3460,31 @@ Fuente: [Reutilización de lógica utlizando Hooks personalizados](https://es.r
 
 Teniendo un archivo `algo.js` puedes darle a `rename`, le agregas algo así `algo/index.js` y le das enter. De esta manera se crea una carpeta `algo` con un archivo `index.js` dentro. 
 
+### Crear carpetas automáticamente  
+
+Un comando para que se cree la carpeta automáticamente con el nombre y luego lo guarde en la misma
+
+```bash
+#!/bin/bash
+
+# Obtener todos los nombres de archivo con extensión .tsx
+files=$(find . -type f -name "*.tsx")
+
+# Recorrer los nombres de archivo
+for file in $files; do
+  # Obtener el nombre del archivo sin la extensión .tsx
+  filename=$(basename "$file" .tsx)
+  
+  # Crear la carpeta con el mismo nombre
+  mkdir "$filename"
+  
+  # Mover el archivo a la carpeta
+  mv "$file" "$filename/"
+done
+
+echo "Se han creado las carpetas y se han movido los archivos .tsx."
+```
+
 ### Código de la clase 
 
 Debes cambiar todos los `import` que entren en conflicto y colocar las rutas correctas. 
@@ -3625,25 +3650,315 @@ export { useLocalStorage };
 
 [4 estructuras para organizar tu proyecto de React y React Native](https://reboot.studio/blog/es/estructuras-organizar-proyecto-react)
 
-## 17. 
+## 17. Tips para naming y abstracción de componentes React
+
+### Stateless component y Stateful component
+
+En el contexto de React, los términos "stateless" y "stateful" se utilizan para describir los componentes y su manejo de datos.
+
+1. Stateless component (componente sin estado): También conocido como componente funcional, es un componente de React que no tiene estado interno y no utiliza el concepto de "estado" de React. Se implementa como una función en lugar de una clase y generalmente se utiliza para componentes simples que no requieren mantener o manipular datos.
+
+Un componente sin estado se basa únicamente en las props que recibe como argumento y devuelve elementos de React (generalmente JSX) según esas props. No almacena información adicional ni realiza cambios en su propio estado interno. Estos componentes son más fáciles de entender, probar y mantener debido a su simplicidad y falta de lógica interna compleja.
+
+Ejemplo de un componente sin estado en React:
+
+```jsx
+function Greeting(props) {
+  return <h1>Hello, {props.name}!</h1>;
+}
+```
+
+2. Stateful component (componente con estado): También conocido como componente de clase, es un componente de React que mantiene un estado interno y puede realizar cambios en ese estado. Se implementa como una clase que extiende la clase base `React.Component`.
+
+Un componente con estado tiene la capacidad de almacenar y manipular datos a través de su estado interno. Utiliza el método `setState()` para actualizar su estado y, cuando el estado cambia, React se encarga de actualizar automáticamente la interfaz de usuario correspondiente. Estos componentes son útiles para manejar componentes más complejos que requieren interacción y actualización dinámica.
+
+Ejemplo de un componente con estado en React:
+
+```jsx
+class Counter extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { count: 0 };
+  }
+
+  increment() {
+    this.setState({ count: this.state.count + 1 });
+  }
+
+  render() {
+    return (
+      <div>
+        <p>Count: {this.state.count}</p>
+        <button onClick={() => this.increment()}>Increment</button>
+      </div>
+    );
+  }
+}
+```
+
+> _Statefull_: Componentes que se enfocan en el manejo de estados y la logica de la app (delete, complete, save)
+> _Stateless_: Componentes que se encargan de la interfaz (AppUI)
+
+En resumen, los componentes sin estado (stateless) en React son funciones que no tienen un estado interno y se basan únicamente en las props recibidas, mientras que los componentes con estado (stateful) son clases que mantienen un estado interno y pueden realizar cambios en ese estado utilizando `setState()`.
+
+### AppUI.js
+El archivo `AppUI.js` en React puede ser un componente personalizado que define la interfaz de usuario (UI) principal de una aplicación. No hay ninguna convención específica en React que establezca el nombre `AppUI.js`, por lo que es posible que sea un nombre elegido por los desarrolladores para su componente de interfaz de usuario principal.
+
+En general, el componente `AppUI.js` podría contener la estructura básica de la interfaz de usuario de una aplicación, como la disposición de los componentes, la navegación, los estilos y cualquier otro elemento visual. Puede incluir otros componentes de React y utilizar props y estado para gestionar la interacción y el flujo de datos dentro de la aplicación.
+
+Aquí hay un ejemplo simplificado de cómo podría verse un archivo `AppUI.js`:
+
+```jsx
+import React from 'react';
+
+const AppUI = () => {
+  return (
+    <div>
+      <header>
+        <h1>My App</h1>
+      </header>
+      <nav>
+        {/* Componente de navegación */}
+      </nav>
+      <main>
+        {/* Componentes de contenido */}
+      </main>
+      <footer>
+        {/* Componente de pie de página */}
+      </footer>
+    </div>
+  );
+};
+
+export default AppUI;
+```
+
+En este ejemplo, el archivo `AppUI.js` define la estructura básica de la aplicación, incluyendo un encabezado, una navegación, un contenido principal y un pie de página. Cada sección puede contener componentes adicionales que se importan y se utilizan dentro de `AppUI`.
 
 ### Código de la clase 
-`src > components > DeleteIcon.js`  
-```js
+
+Creamos un nuevo archivo llamado `AppUI.js` así que terminamos con la siguiente estructura: 
+
+```bash
+├── package-lock.json
+├── package.json
+├── public
+│   ├── index.html
+│   ├── manifest.json
+│   └── robots.txt
+└── src
+    ├── App
+    │   ├── AppUI.js 👈👀
+    │   ├── index.js
+    │   └── useLocalStorage.js
+    ├── components
+    │   ├── CompleteIcon
+    │   │   ├── check.svg
+    │   │   └── index.js
+    │   ├── DeleteIcon
+    │   │   ├── delete.svg
+    │   │   └── index.js
+    │   ├── TodoButton
+    │   │   ├── TodoButton.css
+    │   │   ├── add.svg
+    │   │   └── index.js
+    │   ├── TodoCounter
+    │   │   ├── TodoCounter.css
+    │   │   └── index.js
+    │   ├── TodoIcon
+    │   │   ├── TodoIcon.css
+    │   │   └── index.js
+    │   ├── TodoItem
+    │   │   ├── TodoItem.css
+    │   │   └── index.js
+    │   ├── TodoList
+    │   │   ├── TodoList.css
+    │   │   └── index.js
+    │   ├── TodoSearch
+    │   │   ├── TodoSearch.css
+    │   │   ├── index.js
+    │   │   └── search.svg
+    │   └── test.js
+    ├── index.css
+    └── index.js
 ```
 
-`src > components > DeleteIcon.js`  
+`src > App > index.js`  
 ```js
+import React from "react";
+import { AppUI } from "./AppUI";
+import { useLocalStorage } from "./useLocalStorage";
+
+function App() {
+  const [todos, saveTodos] = useLocalStorage("ToDos_v1", []);
+  const [searchValue, setSearchValue] = React.useState("");
+
+  const completedTodos = todos.filter((todo) => !!todo.completed).length;
+  const totalTodos = todos.length;
+
+  const searchedTodos = todos.filter((todo) => {
+    const todoText = todo.text.toLowerCase();
+    const searchText = searchValue.toLowerCase();
+    return todoText.includes(searchText);
+  });
+
+  const completeTodo = (text) => {
+    const newTodos = [...todos];
+    const todoIndex = newTodos.findIndex((todo) => todo.text === text);
+
+    // newTodos[todoIndex].completed = true;
+    // true = false / false = true
+    newTodos[todoIndex].completed = !newTodos[todoIndex].completed;
+    saveTodos(newTodos);
+  };
+
+  const deleteTodo = (text) => {
+    const newTodos = [...todos];
+    const todoIndex = newTodos.findIndex((todo) => todo.text === text);
+
+    newTodos.splice(todoIndex, 1);
+    saveTodos(newTodos);
+  };
+
+  return <AppUI 
+  completedTodos = {completedTodos}
+  totalTodos = {  totalTodos}
+  searchValue = {  searchValue}
+  setSearchValue = {  setSearchValue}
+  searchedTodos = {  searchedTodos}
+  completeTodo = {  completeTodo}
+  deleteTodo = {  deleteTodo}
+  />;
+}
+
+export default App;
 ```
 
-### Código de la clase 
-`src > components > DeleteIcon.js`  
+`src > App > AppUI.js`  
 ```js
+import { TodoCounter } from "../components/TodoCounter/"; //index
+import { TodoSearch } from "../components/TodoSearch/index";
+import { TodoList } from "../components/TodoList/index";
+import { TodoItem } from "../components/TodoItem/index";
+import { TodoButton } from "../components/TodoButton/index";
+
+function AppUI({
+  completedTodos,
+  totalTodos,
+  searchValue,
+  setSearchValue,
+  searchedTodos,
+  completeTodo,
+  deleteTodo,
+}) {
+  return (
+    <>
+      <TodoCounter completed={completedTodos} total={totalTodos} />
+      <TodoSearch searchValue={searchValue} setSearchValue={setSearchValue} />
+
+      <TodoList>
+        {searchedTodos.map((todo) => (
+          <TodoItem
+            key={todo.text}
+            text={todo.text}
+            completed={todo.completed}
+            // Pasar una función a un componente sin ejecutarla inmediatamente
+            onComplete={() => completeTodo(todo.text)}
+            onDelete={() => deleteTodo(todo.text)}
+          />
+        ))}
+      </TodoList>
+
+      <TodoButton />
+    </>
+  );
+}
+
+export { AppUI };
 ```
 
-`src > components > DeleteIcon.js`  
-```js
+## 18. ¿Qué son los efectos en React?
+
+En React, los efectos son funciones especiales que permiten realizar tareas secundarias (side effects) en componentes funcionales. Los efectos se ejecutan después de que el componente se renderiza en la interfaz de usuario y se utilizan principalmente para manejar operaciones asíncronas, suscripciones a eventos, manipulación del DOM y otras interacciones con el entorno externo.
+
+El hook `useEffect` es el que se utiliza para definir efectos en un componente funcional de React. Se ejecuta después del renderizado inicial del componente y luego en cada actualización del mismo, a menos que se especifique lo contrario.
+
+La sintaxis básica del `useEffect` es la siguiente:
+
+```jsx
+import React, { useEffect } from 'react';
+
+function MyComponent() {
+  useEffect(() => {
+    // Lógica del efecto
+    // Se ejecuta después del renderizado inicial y en cada actualización del componente
+
+    // Retorno opcional de una función de limpieza
+    return () => {
+      // Lógica de limpieza (opcional)
+      // Se ejecuta antes de desmontar el componente o antes de la siguiente ejecución del efecto
+    };
+  }, [dependency1, dependency2]);
+  
+  // ...
+}
 ```
+
+El primer argumento de `useEffect` es una función que contiene la lógica del efecto. Esta función se ejecuta después del renderizado inicial y en cada actualización del componente. Puedes realizar cualquier tarea dentro de esta función, como realizar llamadas a API, suscribirte a eventos, actualizar el estado del componente, etc.
+
+El segundo argumento de `useEffect` es una matriz opcional de dependencias. Estas dependencias son variables o propiedades que el efecto debe observar. Si alguna de estas dependencias cambia entre renderizaciones, el efecto se volverá a ejecutar. Si no se proporciona un arreglo de dependencias, el efecto se ejecutará en cada actualización del componente.
+
+Además, la función de retorno opcional dentro del efecto se utiliza para realizar la limpieza de recursos o cancelar tareas cuando el componente se desmonta o antes de que se ejecute el efecto nuevamente.
+
+### Ejemplo de uso  
+
+Aquí tienes un ejemplo de cómo se puede utilizar el hook `useEffect` en un componente funcional de React:
+
+```jsx
+import React, { useState, useEffect } from 'react';
+
+function Timer() {
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    // Función que se ejecuta después del renderizado inicial y en cada actualización del componente
+    console.log('Efecto ejecutado');
+
+    // Actualizar el título de la página con el valor actual de count
+    document.title = `Contador: ${count}`;
+
+    // Retorno de la función de limpieza
+    return () => {
+      // Función de limpieza que se ejecuta antes de desmontar el componente o antes de la siguiente ejecución del efecto
+      console.log('Efecto limpiado');
+    };
+  }, [count]);
+
+  return (
+    <div>
+      <p>Contador: {count}</p>
+      <button onClick={() => setCount(count + 1)}>Incrementar</button>
+    </div>
+  );
+}
+
+export default Timer;
+```
+
+En este ejemplo, hemos creado un componente funcional llamado `Timer` que muestra un contador y un botón de incremento. El valor del contador se almacena en el estado utilizando el hook `useState`.
+
+Luego, utilizamos el hook `useEffect` para establecer un efecto que se ejecutará después del renderizado inicial y en cada actualización del componente. En este caso, el efecto actualiza el título de la página con el valor actual de `count` y muestra mensajes en la consola.
+
+También hemos especificado `[count]` como una dependencia del efecto, lo que significa que el efecto se ejecutará solo cuando el valor de `count` cambie.
+
+Finalmente, hemos proporcionado una función de limpieza dentro del efecto que se ejecutará antes de desmontar el componente o antes de la siguiente ejecución del efecto. En este ejemplo, simplemente muestra un mensaje en la consola.
+
+Cuando ejecutes este componente, verás que el título de la página se actualiza con el valor actual del contador y los mensajes de consola se mostrarán cuando el efecto se ejecute o se limpie.
+
+Espero que este ejemplo te ayude a comprender cómo se utiliza el hook `useEffect` en un componente funcional de React.
+
+
+## 19. 
 
 ### Código de la clase 
 `src > components > DeleteIcon.js`  
