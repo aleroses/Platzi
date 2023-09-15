@@ -3889,7 +3889,7 @@ La sintaxis básica del `useEffect` es la siguiente:
 import React, { useEffect } from 'react';
 
 function MyComponent() {
-  useEffect(() => {
+  useEffect(() => { // 1er argumento () => {}
     // Lógica del efecto
     // Se ejecuta después del renderizado inicial y en cada actualización del componente
 
@@ -3898,7 +3898,7 @@ function MyComponent() {
       // Lógica de limpieza (opcional)
       // Se ejecuta antes de desmontar el componente o antes de la siguiente ejecución del efecto
     };
-  }, [dependency1, dependency2]);
+  }, [dependency1, dependency2]); // 2do argumento []
   
   // ...
 }
@@ -3957,23 +3957,429 @@ Cuando ejecutes este componente, verás que el título de la página se actualiz
 
 Espero que este ejemplo te ayude a comprender cómo se utiliza el hook `useEffect` en un componente funcional de React.
 
+## 19. Estados de carga y error
 
-## 19. 
+En esta clase aún faltó algo de código, así que lo agregaré completo en la siguiente clase. 
 
-### Código de la clase 
-`src > components > DeleteIcon.js`  
-```js
-```
-
-`src > components > DeleteIcon.js`  
-```js
-```
+## 20. Actualizando estados desde useEffect
 
 ### Código de la clase 
-`src > components > DeleteIcon.js`  
+
+A causa de un error, eliminamos el `ToDos_v1` del `localStorage` para volverlo a crear de inmediato.  
+
+```js
+localStorage.removeItem("ToDos_v1"); // 1er paso 👈👀
+
+const defaultTodos = [ // 2do paso 👈👀👇
+  { text: "Lorem lorem", completed: true },
+  { text: "Don't cry", completed: false },
+  { text: "Lorem ipsus", completed: false },
+  { text: "Take care", completed: false },
+  { text: "Loremlorem", completed: true },
+];
+
+localStorage.setItem("ToDos_v1", JSON.stringify(defaultTodos));
+```
+
+`src > App > index.js`  
+```js
+import React from "react";
+import { AppUI } from "./AppUI";
+import { useLocalStorage } from "./useLocalStorage";
+
+function App() {
+  const {
+    item: todos,
+    saveItem: saveTodos,
+    loading,
+    error,
+  } = useLocalStorage("ToDos_v1", []);
+  const [searchValue, setSearchValue] = React.useState("");
+
+  const completedTodos = todos.filter((todo) => !!todo.completed).length;
+  const totalTodos = todos.length;
+
+  const searchedTodos = todos.filter((todo) => {
+    const todoText = todo.text.toLowerCase();
+    const searchText = searchValue.toLowerCase();
+    return todoText.includes(searchText);
+  });
+
+  const completeTodo = (text) => {
+    const newTodos = [...todos];
+    const todoIndex = newTodos.findIndex((todo) => todo.text === text);
+
+    // newTodos[todoIndex].completed = true;
+    // true = false / false = true
+    newTodos[todoIndex].completed = !newTodos[todoIndex].completed;
+    saveTodos(newTodos);
+  };
+
+  const deleteTodo = (text) => {
+    const newTodos = [...todos];
+    const todoIndex = newTodos.findIndex((todo) => todo.text === text);
+
+    newTodos.splice(todoIndex, 1);
+    saveTodos(newTodos);
+  };
+
+  return (
+    <AppUI
+      loading={loading}
+      error={error}
+      completedTodos={completedTodos}
+      totalTodos={totalTodos}
+      searchValue={searchValue}
+      setSearchValue={setSearchValue}
+      searchedTodos={searchedTodos}
+      completeTodo={completeTodo}
+      deleteTodo={deleteTodo}
+    />
+  );
+}
+
+export default App;
+```
+
+`src > App > useLocalStorage.js`  
+```js
+import React from "react";
+
+function useLocalStorage(itemName, initialValue) {
+  const [item, setItem] = React.useState(initialValue);
+  const [loading, setLoading] = React.useState(true);
+  const [error, setError] = React.useState(false);
+
+  React.useEffect(() => {
+    setTimeout(() => {
+      try {
+        const localStorageItem = localStorage.getItem(itemName);
+
+        let parsedItem;
+
+        if (!localStorageItem) {
+          localStorage.setItem(itemName, JSON.stringify(initialValue));
+          parsedItem = initialValue;
+        } else {
+          parsedItem = JSON.parse(localStorageItem);
+          setItem(parsedItem);
+        }
+
+        setLoading(false);
+      } catch (error) {
+        setLoading(false);
+        setError(true);
+      }
+    }, 2000);
+  }, []);
+
+  const saveItem = (newItem) => {
+    localStorage.setItem(itemName, JSON.stringify(newItem));
+    setItem(newItem);
+  };
+
+  return { item, saveItem, loading, error };
+}
+
+export { useLocalStorage };
+```
+
+`src > App > AppUI.js`  
+```js
+import { TodoCounter } from "../components/TodoCounter/"; //index
+import { TodoSearch } from "../components/TodoSearch/index";
+import { TodoList } from "../components/TodoList/index";
+import { TodoItem } from "../components/TodoItem/index";
+import { TodoButton } from "../components/TodoButton/index";
+
+function AppUI({
+  loading,
+  error,
+  completedTodos,
+  totalTodos,
+  searchValue,
+  setSearchValue,
+  searchedTodos,
+  completeTodo,
+  deleteTodo,
+}) {
+  return (
+    <>
+      <TodoCounter completed={completedTodos} total={totalTodos} />
+      <TodoSearch searchValue={searchValue} setSearchValue={setSearchValue} />
+
+      <TodoList>
+        {loading && <span>Loading...</span>}
+        {error && <span>An error occurred!!! 😬</span>}
+        {(!loading && searchedTodos.lenght === 0) && <span>Create your first ToDo 🦄</span>}
+
+        {searchedTodos.map((todo) => (
+          <TodoItem
+            key={todo.text}
+            text={todo.text}
+            completed={todo.completed}
+            // Pasar una función a un componente sin ejecutarla inmediatamente
+            onComplete={() => completeTodo(todo.text)}
+            onDelete={() => deleteTodo(todo.text)}
+          />
+        ))}
+      </TodoList>
+
+      <TodoButton />
+    </>
+  );
+}
+
+export { AppUI };
+```
+
+- [Introduction to Backend Development by Bryan Garay](https://bg99astro.notion.site/bg99astro/96b34391949840388c431fd0fd3f02ce?v=36c7227e67784fc5848bc19835eeef8b)
+- [Curso de React con Vite by Bryan Garay](https://bg99astro.notion.site/bg99astro/2658332bba3f40448545b6f3ba1c099f?v=bde7de79341747989e2a5f1f5ac7df80)
+
+
+## 21. Reto: loading skeletons
+
+Para esta clase creamos algunas carpetas y archivos: 
+
+```bash
+├── package-lock.json
+├── package.json
+├── public
+│   ├── index.html
+│   ├── manifest.json
+│   └── robots.txt
+└── src
+    ├── App
+    │   ├── AppUI.js
+    │   ├── index.js
+    │   └── useLocalStorage.js
+    ├── components
+    │   ├── CompleteIcon
+    │   │   ├── check.svg
+    │   │   └── index.js
+    │   ├── DeleteIcon
+    │   │   ├── delete.svg
+    │   │   └── index.js
+    │   ├── TodoButton
+    │   │   ├── TodoButton.css
+    │   │   ├── add.svg
+    │   │   └── index.js
+    │   ├── TodoCounter
+    │   │   ├── TodoCounter.css
+    │   │   └── index.js
+    │   ├── TodoIcon
+    │   │   ├── TodoIcon.css
+    │   │   └── index.js
+    │   ├── TodoItem
+    │   │   ├── TodoItem.css
+    │   │   └── index.js
+    │   ├── TodoList
+    │   │   ├── TodoList.css
+    │   │   └── index.js
+    │   ├── TodoSearch
+    │   │   ├── TodoSearch.css
+    │   │   ├── index.js
+    │   │   └── search.svg
+    │   ├── TodosEmpty 👈👀👇
+    │   │   └── index.js
+    │   ├── TodosError 👈👀
+    │   │   └── index.js
+    │   └── TodosLoading 👈👀
+    │       ├── TodosLoading.css
+    │       └── index.js
+    ├── css
+    │   └── index.css
+    ├── index.css
+    ├── index.js
+    └── index.js
+```
+
+### Código de la clase 
+
+`src > App > AppUI.js`  
+```js
+import { TodoCounter } from "../components/TodoCounter/"; //index
+import { TodoSearch } from "../components/TodoSearch/index";
+import { TodoList } from "../components/TodoList/index";
+import { TodoItem } from "../components/TodoItem/index";
+import { TodoButton } from "../components/TodoButton/index";
+import { TodosLoading } from "../components/TodosLoading";
+import { TodosError } from "../components/TodosError";
+import { TodosEmpty } from "../components/TodosEmpty";
+
+function AppUI({
+  loading,
+  error,
+  completedTodos,
+  totalTodos,
+  searchValue,
+  setSearchValue,
+  searchedTodos,
+  completeTodo,
+  deleteTodo,
+}) {
+  return (
+    <>
+      <TodoCounter completed={completedTodos} total={totalTodos} />
+      <TodoSearch searchValue={searchValue} setSearchValue={setSearchValue} />
+
+      <TodoList>
+        {loading && <TodosLoading/>} 👈👀🔥
+        {error && <TodosError/>} 👈👀🔥
+        {(!loading && searchedTodos.lenght === 0) && <TodosEmpty/>} 👈👀🔥
+
+        {searchedTodos.map((todo) => (
+          <TodoItem
+            key={todo.text}
+            text={todo.text}
+            completed={todo.completed}
+            // Pasar una función a un componente sin ejecutarla inmediatamente
+            onComplete={() => completeTodo(todo.text)}
+            onDelete={() => deleteTodo(todo.text)}
+          />
+        ))}
+      </TodoList>
+
+      <TodoButton />
+    </>
+  );
+}
+
+export { AppUI };
+```
+
+`src > components > TodosLoading.js`  
+```js
+import React from "react";
+import "./TodosLoading.css";
+
+function TodosLoading({}) {
+  return (
+    <div className="container">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  );
+}
+
+export { TodosLoading };
+```
+
+`src > components > TodosLoading.css`  
+```js
+.container {
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  border-radius: 50%;
+  height: 96px;
+  width: 96px;
+  animation: rotate_3922 1.2s linear infinite;
+  background-color: #9b59b6;
+  background-image: linear-gradient(#4f46e5, #090b10, #4f46e5);
+}
+
+.container span {
+  position: absolute;
+  border-radius: 50%;
+  height: 100%;
+  width: 100%;
+  background-color: #9b59b6;
+  background-image: linear-gradient(#4f46e5, #090b10, #4f46e5);
+}
+
+.container span:nth-of-type(1) {
+  filter: blur(5px);
+}
+
+.container span:nth-of-type(2) {
+  filter: blur(10px);
+}
+
+.container span:nth-of-type(3) {
+  filter: blur(25px);
+}
+
+.container span:nth-of-type(4) {
+  filter: blur(50px);
+}
+
+.container::after {
+  content: "";
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  right: 10px;
+  bottom: 10px;
+  background-color: #090b10;
+  border: solid 5px #4f46e5;
+  border-radius: 50%;
+}
+
+@keyframes rotate_3922 {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+```
+
+`src > components > TodosEmpty.js`  
+```js
+import React from "react";
+
+function TodosEmpty({}) {
+  return (
+		<span>Create your first ToDo...</span>
+	)
+}
+
+export { TodosEmpty };
+```
+
+`src > components > TodosError.js`  
+```js
+import React from "react";
+
+function TodosError({}) {
+  return (
+		<span>Error...</span>
+	)
+}
+
+export { TodosError };
+```
+
+[✨ Create, share, and use beautiful custom elements made with CSS or Tailwind](https://uiverse.io/)
+
+## 
+### Código de la clase 
+
+
+`src > App > index.js`  
 ```js
 ```
 
-`src > components > DeleteIcon.js`  
+
+`src > App > index.js`  
 ```js
+```
+
+`src > App > index.js`  
+```js
+```
+
+
+`src > App > index.js`  
+```js
+```
+
+`src > components > TodosLoading.js`  
+```js
+
 ```
