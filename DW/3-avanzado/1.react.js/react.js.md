@@ -4357,29 +4357,660 @@ export { TodosError };
 
 [✨ Create, share, and use beautiful custom elements made with CSS or Tailwind](https://uiverse.io/)
 
-## 
+## 22. ¿Qué es React Context?
+
+En React, el método `createContext` se utiliza para crear un contexto, que es una forma de compartir datos entre componentes en una jerarquía sin tener que pasar explícitamente las props a través de cada nivel. Proporciona una forma eficiente de transmitir datos a través de múltiples componentes sin necesidad de utilizar props intermedias.
+
+La sintaxis básica para utilizar `createContext` es la siguiente:
+
+```jsx
+const MiContexto = React.createContext(valorPorDefecto);
+```
+
+Aquí, `valorPorDefecto` es el valor inicial que se proporciona al contexto. Este valor se utilizará cuando un componente consumidor no pueda encontrar un proveedor correspondiente.
+
+Para utilizar el contexto creado, hay dos componentes principales involucrados:
+
+1. **Proveedor (Provider):** El proveedor es un componente de React que envuelve a los componentes que desean consumir el contexto. Proporciona el valor actual del contexto a los componentes descendientes.
+
+2. **Consumidor (Consumer):** El consumidor es un componente de React que se utiliza para acceder al valor del contexto proporcionado por el proveedor. Puede ser utilizado en cualquier nivel de la jerarquía de componentes descendientes del proveedor.
+
+Aquí tienes un ejemplo de cómo se utiliza `createContext` en React:
+
+```jsx
+// Crear el contexto
+const MiContexto = React.createContext("valor por defecto");
+
+// Componente proveedor
+function ProveedorComponente() {
+  const valorContexto = "Valor del contexto proporcionado";
+  
+  return (
+    <MiContexto.Provider value={valorContexto}>
+      <ComponenteHijo />
+    </MiContexto.Provider>
+  );
+}
+
+// Componente consumidor
+function ComponenteHijo() {
+  return (
+    <MiContexto.Consumer>
+      {valor => <p>El valor del contexto es: {valor}</p>}
+    </MiContexto.Consumer>
+  );
+}
+
+// Componente principal que utiliza el proveedor y el consumidor
+function App() {
+  return (
+    <div>
+      <ProveedorComponente />
+    </div>
+  );
+}
+
+ReactDOM.render(<App />, document.getElementById('root'));
+```
+
+En este ejemplo, se crea el contexto `MiContexto` con un valor por defecto de `"valor por defecto"`. Luego, se utiliza el componente `MiContexto.Provider` para envolver al componente `ComponenteHijo` y proporcionarle un valor específico (`"Valor del contexto proporcionado"`). Dentro del componente `ComponenteHijo`, se utiliza el componente `MiContexto.Consumer` para acceder al valor del contexto y renderizarlo.
+
+Es importante tener en cuenta que los componentes consumidores solo pueden acceder al contexto si están dentro del árbol de componentes descendientes del proveedor correspondiente. Si no hay un proveedor en el árbol, se utilizará el valor por defecto proporcionado al crear el contexto.
+
+
+[[#12. Iconos con colores dinámicos#Render Props]]
+
+![](https://i.postimg.cc/1zY7jL01/22-react-context.png)
+
 ### Código de la clase 
 
+En esta clase el código quedó inconcluso, por lo que se agregará en la siguiente clase. Por el momento dejaré la estructura de los archivos que se agregaron: 
+
+```bash
+├── package-lock.json
+├── package.json
+├── public
+│   ├── index.html
+│   ├── manifest.json
+│   └── robots.txt
+└── src
+    ├── App
+    │   ├── AppUI.js
+    │   └── index.js
+    ├── components
+    │   ├── CompleteIcon
+    │   │   ├── check.svg
+    │   │   └── index.js
+    │   ├── DeleteIcon
+    │   │   ├── delete.svg
+    │   │   └── index.js
+    │   ├── TodoButton
+    │   │   ├── TodoButton.css
+    │   │   ├── add.svg
+    │   │   └── index.js
+    │   ├── TodoContext 👈👀
+    │   │   ├── index.js
+    │   │   └── useLocalStorage.js ✨ Lo movimos a esta carpeta
+    │   ├── TodoCounter
+    │   │   ├── TodoCounter.css
+    │   │   └── index.js
+    │   ├── TodoIcon
+    │   │   ├── TodoIcon.css
+    │   │   └── index.js
+    │   ├── TodoItem
+    │   │   ├── TodoItem.css
+    │   │   └── index.js
+    │   ├── TodoList
+    │   │   ├── TodoList.css
+    │   │   └── index.js
+    │   ├── TodoSearch
+    │   │   ├── TodoSearch.css
+    │   │   ├── index.js
+    │   │   └── search.svg
+    │   ├── TodosEmpty
+    │   │   └── index.js
+    │   ├── TodosError
+    │   │   └── index.js
+    │   └── TodosLoading
+    │       ├── TodosLoading.css
+    │       └── index.js
+    ├── css
+    │   └── index.css
+    ├── index.css
+    └── index.js
+```
+
+## 23. ✨ useContext
+
+En React, el hook `useContext` se utiliza para acceder al valor de un contexto creado con `createContext`. Proporciona una forma sencilla de consumir el contexto en componentes funcionales sin necesidad de utilizar el componente `Context.Consumer`.
+
+La sintaxis básica para utilizar `useContext` es la siguiente:
+
+```jsx
+const valorContexto = useContext(MiContexto);
+```
+
+Aquí, `MiContexto` es el contexto creado con `createContext`, y `valorContexto` es la variable donde se almacenará el valor actual del contexto.
+
+Para utilizar `useContext`, es necesario que el componente funcional en el que se esté utilizando esté dentro del árbol de componentes descendientes del proveedor correspondiente al contexto. De lo contrario, `useContext` devolverá el valor por defecto proporcionado al crear el contexto.
+
+Aquí tienes un ejemplo de cómo se utiliza `useContext` en React:
+
+```jsx
+// Crear el contexto
+const MiContexto = React.createContext("valor por defecto");
+
+// Componente proveedor
+function ProveedorComponente() {
+  const valorContexto = "Valor del contexto proporcionado";
+  
+  return (
+    <MiContexto.Provider value={valorContexto}>
+      <ComponenteHijo />
+    </MiContexto.Provider>
+  );
+}
+
+// Componente consumidor
+function ComponenteHijo() {
+  const valorContexto = useContext(MiContexto);
+  
+  return <p>El valor del contexto es: {valorContexto}</p>;
+}
+
+// Componente principal que utiliza el proveedor y el consumidor
+function App() {
+  return (
+    <div>
+      <ProveedorComponente />
+    </div>
+  );
+}
+
+ReactDOM.render(<App />, document.getElementById('root'));
+```
+
+En este ejemplo, se crea el contexto `MiContexto` con un valor por defecto de `"valor por defecto"`. Luego, se utiliza el componente `MiContexto.Provider` para envolver al componente `ComponenteHijo` y proporcionarle un valor específico (`"Valor del contexto proporcionado"`). Dentro del componente `ComponenteHijo`, se utiliza el hook `useContext` para acceder al valor del contexto y renderizarlo.
+
+Es importante tener en cuenta que `useContext` solo puede ser utilizado en componentes funcionales y no en componentes de clase. Además, `useContext` debe ser utilizado dentro del cuerpo de la función del componente funcional, no puede ser utilizado en bloques de código condicionales o loops.
+
+### Código de la clase 
 
 `src > App > index.js`  
 ```js
+import React from "react";
+import { AppUI } from "./AppUI";
+import { TodoProvider } from "../components/TodoContext";
+
+function App() {
+  return <TodoProvider>
+    <AppUI />;
+  </TodoProvider>
+}
+
+export default App;
 ```
 
+`src > components > TodoContext > index.js`  
+```js
+import React from "react";
+import { useLocalStorage } from "./useLocalStorage";
 
+const TodoContext = React.createContext();
+
+function TodoProvider({ children }) {
+  const {
+    item: todos,
+    saveItem: saveTodos,
+    loading,
+    error,
+  } = useLocalStorage("ToDos_v1", []);
+  const [searchValue, setSearchValue] = React.useState("");
+
+  const completedTodos = todos.filter((todo) => !!todo.completed).length;
+  const totalTodos = todos.length;
+
+  const searchedTodos = todos.filter((todo) => {
+    const todoText = todo.text.toLowerCase();
+    const searchText = searchValue.toLowerCase();
+    return todoText.includes(searchText);
+  });
+
+  const completeTodo = (text) => {
+    const newTodos = [...todos];
+    const todoIndex = newTodos.findIndex((todo) => todo.text === text);
+
+    // newTodos[todoIndex].completed = true;
+    // true = false / false = true
+    newTodos[todoIndex].completed = !newTodos[todoIndex].completed;
+    saveTodos(newTodos);
+  };
+
+  const deleteTodo = (text) => {
+    const newTodos = [...todos];
+    const todoIndex = newTodos.findIndex((todo) => todo.text === text);
+
+    newTodos.splice(todoIndex, 1);
+    saveTodos(newTodos);
+  };
+
+  return (
+    <TodoContext.Provider
+      value={{
+        loading,
+        error,
+        completedTodos,
+        totalTodos,
+        searchValue,
+        setSearchValue,
+        searchedTodos,
+        completeTodo,
+        deleteTodo,
+      }}
+    >
+      {children}
+    </TodoContext.Provider>
+  );
+}
+
+export { TodoContext, TodoProvider };
+```
+
+`src > App > AppUI.js`  
+```js
+import React from "react";
+import { TodoCounter } from "../components/TodoCounter/"; //index
+import { TodoSearch } from "../components/TodoSearch/index";
+import { TodoList } from "../components/TodoList/index";
+import { TodoItem } from "../components/TodoItem/index";
+import { TodoButton } from "../components/TodoButton/index";
+import { TodosLoading } from "../components/TodosLoading";
+import { TodosError } from "../components/TodosError";
+import { TodosEmpty } from "../components/TodosEmpty";
+import { TodoContext } from "../components/TodoContext";
+
+function AppUI({}) {
+  const { loading, error, searchedTodos, completeTodo, deleteTodo } =
+    React.useContext(TodoContext);
+  return (
+    <>
+      <TodoCounter />
+      <TodoSearch />
+
+      <TodoList>
+        {loading && <TodosLoading />}
+        {error && <TodosError />}
+        {!loading && searchedTodos.lenght === 0 && <TodosEmpty />}
+
+        {searchedTodos.map((todo) => (
+          <TodoItem
+            key={todo.text}
+            text={todo.text}
+            completed={todo.completed}
+            // Pasar una función a un componente sin ejecutarla inmediatamente
+            onComplete={() => completeTodo(todo.text)}
+            onDelete={() => deleteTodo(todo.text)}
+          />
+        ))}
+      </TodoList>
+
+      <TodoButton />
+    </>
+  );
+}
+
+export { AppUI };
+```
+
+`src > components > TodoContext > useLocalStorage.js`  
+```js
+import React from "react";
+
+function useLocalStorage(itemName, initialValue) {
+  const [item, setItem] = React.useState(initialValue);
+  const [loading, setLoading] = React.useState(true);
+  const [error, setError] = React.useState(false);
+
+  React.useEffect(() => {
+    setTimeout(() => {
+      try {
+        const localStorageItem = localStorage.getItem(itemName);
+
+        let parsedItem;
+
+        if (!localStorageItem) {
+          localStorage.setItem(itemName, JSON.stringify(initialValue));
+          parsedItem = initialValue;
+        } else {
+          parsedItem = JSON.parse(localStorageItem);
+          setItem(parsedItem);
+        }
+
+        setLoading(false);
+      } catch (error) {
+        setLoading(false);
+        setError(true);
+      }
+    }, 2000);
+  }, []);
+
+  const saveItem = (newItem) => {
+    localStorage.setItem(itemName, JSON.stringify(newItem));
+    setItem(newItem);
+  };
+
+  return { item, saveItem, loading, error };
+}
+
+export { useLocalStorage };
+```
+
+`src > components > TodoCounter > index.js`  
+```js
+import React from "react";
+import "../TodoCounter/TodoCounter.css";
+import { TodoContext } from "../TodoContext";
+
+function TodoCounter() {
+  const { completedTodos, totalTodos } = React.useContext(TodoContext);
+
+  return totalTodos == completedTodos ? (
+    <h1 className="total">Completaste todos los ToDos</h1>
+  ) : (
+    <h1>
+      Has completado <span className="completed">{completedTodos}</span> de{" "}
+      <span className="total">{totalTodos}</span> ToDos
+    </h1>
+  );
+}
+
+export { TodoCounter };
+```
+
+`src > components > TodoSearch > index.js`  
+```js
+import React from "react";
+import "./TodoSearch.css";
+import { TodoContext } from "../TodoContext";
+
+function TodoSearch() {
+  const { searchValue, setSearchValue } = React.useContext(TodoContext);
+
+  return (
+    <input
+      placeholder="Search..."
+      className="search"
+      value={searchValue}
+      onChange={(event) => {
+        setSearchValue(event.target.value);
+      }}
+    />
+  );
+}
+
+export { TodoSearch };
+```
+
+## 24. ¿Qué son los React Portals?
+
+En React, los Portals son una característica que permite renderizar un componente en un nodo del DOM que está fuera de la jerarquía de componentes principal. Esto significa que puedes renderizar un componente en un lugar del DOM que no está directamente relacionado con el árbol de componentes en el que se encuentra el componente padre.
+
+Los Portals son útiles en situaciones en las que necesitas renderizar un componente en un nodo específico del DOM, como un contenedor de diálogo, un modal, un portal de notificaciones o cualquier otro elemento que deba mostrarse fuera de su ubicación original en el árbol de componentes.
+
+La sintaxis para utilizar Portals en React es la siguiente:
+
+```jsx
+ReactDOM.createPortal(componente, contenedor)
+```
+
+Aquí, `componente` es el componente que deseas renderizar, y `contenedor` es un elemento del DOM en el que se desea renderizar el componente.
+
+Aquí tienes un ejemplo de cómo se utiliza un Portal en React:
+
+```jsx
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+// Componente principal
+function App() {
+  return (
+    <div>
+      {/* ... */}
+      {ReactDOM.createPortal(
+        <ModalComponente />,
+        document.getElementById('modal-root')
+      )}
+    </div>
+  );
+}
+
+// Componente de modal
+function ModalComponente() {
+  return (
+    <div className="modal">
+      <h2>Modal</h2>
+      {/* ... */}
+    </div>
+  );
+}
+
+ReactDOM.render(<App />, document.getElementById('root'));
+```
+
+En este ejemplo, el componente `ModalComponente` se está renderizando utilizando un Portal. El componente `ModalComponente` se renderizará en el elemento con el ID `modal-root`, que puede ser cualquier elemento del DOM existente o incluso un elemento creado dinámicamente.
+
+Al utilizar Portals, puedes crear componentes modales, diálogos o cualquier otra interfaz que necesite renderizarse en un lugar específico del DOM sin que su estructura se vea afectada por la jerarquía de componentes circundante.
+
+### Código de la clase 
 `src > App > index.js`  
 ```js
+import React from "react";
+import { AppUI } from "./AppUI";
+import { TodoProvider } from "../components/TodoContext";
+
+function App() {
+  return <TodoProvider>
+    <AppUI />;
+  </TodoProvider>
+}
+
+export default App;
 ```
 
-`src > App > index.js`  
+`src > App > AppUI.js`  
 ```js
+import React from "react";
+import { TodoCounter } from "../components/TodoCounter/"; //index
+import { TodoSearch } from "../components/TodoSearch/index";
+import { TodoList } from "../components/TodoList/index";
+import { TodoItem } from "../components/TodoItem/index";
+import { TodoButton } from "../components/TodoButton/index";
+import { TodosLoading } from "../components/TodosLoading";
+import { TodosError } from "../components/TodosError";
+import { TodosEmpty } from "../components/TodosEmpty";
+import { Modal } from "../components/Modal";
+import { TodoContext } from "../components/TodoContext";
+
+function AppUI({}) {
+  const {
+    loading,
+    error,
+    searchedTodos,
+    completeTodo,
+    deleteTodo,
+    openModal,
+    setOpenModal,
+  } = React.useContext(TodoContext);
+  return (
+    <>
+      <TodoCounter />
+      <TodoSearch />
+
+      <TodoList>
+        {loading && <TodosLoading />}
+        {error && <TodosError />}
+        {!loading && searchedTodos.lenght === 0 && <TodosEmpty />}
+
+        {searchedTodos.map((todo) => (
+          <TodoItem
+            key={todo.text}
+            text={todo.text}
+            completed={todo.completed}
+            // Pasar una función a un componente sin ejecutarla inmediatamente
+            onComplete={() => completeTodo(todo.text)}
+            onDelete={() => deleteTodo(todo.text)}
+          />
+        ))}
+      </TodoList>
+
+      <TodoButton />
+
+      {openModal && <Modal>Add ToDo 🦄</Modal>}
+    </>
+  );
+}
+
+export { AppUI };
+
 ```
 
-
-`src > App > index.js`  
+`src > components > TodoContext > index.js`  
 ```js
+import React from "react";
+import { useLocalStorage } from "./useLocalStorage";
+
+const TodoContext = React.createContext();
+
+function TodoProvider({ children }) {
+  const {
+    item: todos,
+    saveItem: saveTodos,
+    loading,
+    error,
+  } = useLocalStorage("ToDos_v1", []);
+  const [searchValue, setSearchValue] = React.useState("");
+  const [openModal, setOpenModal] = React.useState(true); //👈👀
+
+  const completedTodos = todos.filter((todo) => !!todo.completed).length;
+  const totalTodos = todos.length;
+
+  const searchedTodos = todos.filter((todo) => {
+    const todoText = todo.text.toLowerCase();
+    const searchText = searchValue.toLowerCase();
+    return todoText.includes(searchText);
+  });
+
+  const completeTodo = (text) => {
+    const newTodos = [...todos];
+    const todoIndex = newTodos.findIndex((todo) => todo.text === text);
+
+    // newTodos[todoIndex].completed = true;
+    // true = false / false = true
+    newTodos[todoIndex].completed = !newTodos[todoIndex].completed;
+    saveTodos(newTodos);
+  };
+
+  const deleteTodo = (text) => {
+    const newTodos = [...todos];
+    const todoIndex = newTodos.findIndex((todo) => todo.text === text);
+
+    newTodos.splice(todoIndex, 1);
+    saveTodos(newTodos);
+  };
+
+  return (
+    <TodoContext.Provider
+      value={{
+        loading,
+        error,
+        completedTodos,
+        totalTodos,
+        searchValue,
+        setSearchValue,
+        searchedTodos,
+        completeTodo,
+        deleteTodo,
+        openModal,
+        setOpenModal,
+      }}
+    >
+      {children}
+    </TodoContext.Provider>
+  );
+}
+
+export { TodoContext, TodoProvider };
 ```
 
-`src > components > TodosLoading.js`  
+`src > components > Modal > index.js`  
+```js
+import React from "react";
+import ReactDom from "react-dom";
+
+function Modal({ children }) {
+  return ReactDom.createPortal(
+    <div className="Modal">{children}</div>,
+    document.getElementById("modal")
+  );
+}
+
+export { Modal };
+```
+
+`public > index.html`  
+```js
+<body>
+  <noscript>You need to enable JavaScript to run this app.</noscript>
+  <div id="root"></div>
+  <div id="modal"></div>
+</body>
+```
+
+## 25. Reto: estados para abrir y cerrar un modal
+
+### Código de la clase 
+`src > components > TodoContext > useLocalStorage.js`  
 ```js
 
 ```
+
+`src > components > TodoContext > useLocalStorage.js`  
+```js
+
+```
+
+`src > components > TodoContext > useLocalStorage.js`  
+```js
+
+```
+
+`src > components > TodoContext > useLocalStorage.js`  
+```js
+
+
+
+### Código de la clase 
+`src > components > TodoContext > useLocalStorage.js`  
+```js
+
+```
+
+
+### Código de la clase 
+`src > components > TodoContext > useLocalStorage.js`  
+```js
+
+```
+
+`src > components > TodoContext > useLocalStorage.js`  
+```js
+
+```
+
+`src > components > TodoContext > useLocalStorage.js`  
+```js
+
+```
+
+`src > components > TodoContext > useLocalStorage.js`  
+```js
