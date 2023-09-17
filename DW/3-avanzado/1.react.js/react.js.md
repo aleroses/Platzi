@@ -5554,44 +5554,83 @@ npm run deploy
 
 Revisa tu repositorio en GitHub: `Settings > Pages` espera unos minutos y listo.   
 
+[Documentación](https://create-react-app.dev/docs/deployment/)
+
+## 29. Presentación de proyectos para tu portafolio
+
+Puedes cambiar la rama principal de tu repo:  
+`Settings > Branches 🔁 gh-pages`
+
+### Añade un README.md 
+
+Aquí tienes un ejemplo de cómo podría ser un README.md para tu proyecto de ToDo List en GitHub:
+
+```markdown
+# ToDo List
+
+![ToDo List](screenshot.png)
+
+Este es un proyecto de ToDo List simple y fácil de usar. Te permite crear, organizar y realizar un seguimiento de tus tareas pendientes de manera eficiente.
+
+## Características
+
+- Agrega tareas con un título y una descripción.
+- Marca las tareas como completadas.
+- Elimina las tareas que ya no necesitas.
+- Filtra las tareas según su estado (completadas, pendientes).
+- Interfaz intuitiva y fácil de usar.
+
+## Tecnologías utilizadas
+
+- HTML
+- CSS
+- JavaScript
+- React
+
+## Demo
+
+Puedes ver una demostración en vivo del proyecto [aquí](https://tu-url-de-demo).
+
+## Capturas de pantalla
+
+![Captura de pantalla 1](screenshot1.png)
+![Captura de pantalla 2](screenshot2.png)
+
+## Instalación
+
+1. Clona este repositorio: `git clone https://tu-repositorio.git`
+2. Abre el archivo `index.html` en tu navegador web.
+
+## Contribuciones
+
+Las contribuciones son bienvenidas. Si tienes alguna idea para mejorar este proyecto, no dudes en abrir un problema o enviar una solicitud de extracción.
+
+## Licencia
+
+Este proyecto está bajo la Licencia [MIT](LICENSE).
+```
+
+En este ejemplo, he incluido secciones como Características, Tecnologías utilizadas, Demo, Capturas de pantalla, Instalación, Contribuciones y Licencia. Puedes personalizar el contenido según las características específicas de tu proyecto y agregar cualquier otra sección que creas necesaria.
+
+Recuerda reemplazar las URLs de las capturas de pantalla y la demostración en vivo con las URLs correspondientes a tu proyecto. Además, asegúrate de tener un archivo de captura de pantalla llamado `screenshot.png` (o cambia el nombre en el archivo README.md) en el mismo directorio que el archivo README.md.
+
+- [Un interesante proyecto](https://gaoux.github.io/to-do-list/)
+- [Repo](https://github.com/Gaoux/to-do-list)
+- [Otro diseño](https://alvarenga144.github.io/TodoList-Reactjs18/)
+
+Probar hosting: Vercel  
+[😲 Subir Tu Página Web a Internet ¡GRATIS! con Vercel ⭐](https://www.youtube.com/watch?v=OcmYyTmAsOI)
+
+## 30. Diferencias entre versiones de React.js
+
+
+
+## 31. 
+
 ### Código de la clase 
 `src > components > TodoContext > useLocalStorage.js`  
 ```js
 
 ```
 
-`src > components > TodoContext > useLocalStorage.js`  
-```js
 
-```
-
-`src > components > TodoContext > useLocalStorage.js`  
-```js
-
-```
-
-`src > components > TodoContext > useLocalStorage.js`  
-```js
-```
-
-### Código de la clase 
-`src > components > TodoContext > useLocalStorage.js`  
-```js
-
-```
-
-`src > components > TodoContext > useLocalStorage.js`  
-```js
-
-```
-
-### Código de la clase 
-`src > components > TodoContext > useLocalStorage.js`  
-```js
-
-```
-
-`src > components > TodoContext > useLocalStorage.js`  
-```js
-
-```
