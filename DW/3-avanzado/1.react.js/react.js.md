@@ -4969,25 +4969,590 @@ export { Modal };
 ## 25. Reto: estados para abrir y cerrar un modal
 
 ### Código de la clase 
-`src > components > TodoContext > useLocalStorage.js`  
+`src > components > TodoContext > index.js`  
 ```js
+import React from "react";
+import { useLocalStorage } from "./useLocalStorage";
 
+const TodoContext = React.createContext();
+
+function TodoProvider({ children }) {
+  const {
+    item: todos,
+    saveItem: saveTodos,
+    loading,
+    error,
+  } = useLocalStorage("ToDos_v1", []);
+  const [searchValue, setSearchValue] = React.useState("");
+  const [openModal, setOpenModal] = React.useState(false); //👈👀
+
+  const completedTodos = todos.filter((todo) => !!todo.completed).length;
+  const totalTodos = todos.length;
+
+  const searchedTodos = todos.filter((todo) => {
+    const todoText = todo.text.toLowerCase();
+    const searchText = searchValue.toLowerCase();
+    return todoText.includes(searchText);
+  });
+
+  const completeTodo = (text) => {
+    const newTodos = [...todos];
+    const todoIndex = newTodos.findIndex((todo) => todo.text === text);
+
+    // newTodos[todoIndex].completed = true;
+    // true = false / false = true
+    newTodos[todoIndex].completed = !newTodos[todoIndex].completed;
+    saveTodos(newTodos);
+  };
+
+  const deleteTodo = (text) => {
+    const newTodos = [...todos];
+    const todoIndex = newTodos.findIndex((todo) => todo.text === text);
+
+    newTodos.splice(todoIndex, 1);
+    saveTodos(newTodos);
+  };
+
+  return (
+    <TodoContext.Provider
+      value={{
+        loading,
+        error,
+        completedTodos,
+        totalTodos,
+        searchValue,
+        setSearchValue,
+        searchedTodos,
+        completeTodo,
+        deleteTodo,
+        openModal,
+        setOpenModal,
+      }}
+    >
+      {children}
+    </TodoContext.Provider>
+  );
+}
+
+export { TodoContext, TodoProvider };
 ```
 
-`src > components > TodoContext > useLocalStorage.js`  
+`src > App > AppUI.js`  
 ```js
+import React from "react";
+import { TodoCounter } from "../components/TodoCounter/"; //index
+import { TodoSearch } from "../components/TodoSearch/index";
+import { TodoList } from "../components/TodoList/index";
+import { TodoItem } from "../components/TodoItem/index";
+import { TodoButton } from "../components/TodoButton/index";
+import { TodosLoading } from "../components/TodosLoading";
+import { TodosError } from "../components/TodosError";
+import { TodosEmpty } from "../components/TodosEmpty";
+import { Modal } from "../components/Modal";
+import { TodoContext } from "../components/TodoContext";
 
+function AppUI({}) {
+  const {
+    loading,
+    error,
+    searchedTodos,
+    completeTodo,
+    deleteTodo,
+    openModal,
+    setOpenModal,
+  } = React.useContext(TodoContext);
+  return (
+    <>
+      <TodoCounter />
+      <TodoSearch />
+
+      <TodoList>
+        {loading && <TodosLoading />}
+        {error && <TodosError />}
+        {!loading && searchedTodos.lenght === 0 && <TodosEmpty />}
+
+        {searchedTodos.map((todo) => (
+          <TodoItem
+            key={todo.text}
+            text={todo.text}
+            completed={todo.completed}
+            // Pasar una función a un componente sin ejecutarla inmediatamente
+            onComplete={() => completeTodo(todo.text)}
+            onDelete={() => deleteTodo(todo.text)}
+          />
+        ))}
+      </TodoList>
+
+      <TodoButton setOpenModal={setOpenModal} /> 👈👀
+
+      {openModal && <Modal>Add ToDo 🦄</Modal>}
+    </>
+  );
+}
+
+export { AppUI };
 ```
 
-`src > components > TodoContext > useLocalStorage.js`  
+`src > components > TodoButton > TodoButton.css`  
 ```js
+.add {
+  border: none;
+  background-color: #090b10;
+  border-radius: 50%;
+  width: 3rem;
+  height: 3rem;
 
+  background-image: url("./add.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  /* box-shadow: -5px 5px 5px -5px #4f46e5; */
+
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  cursor: pointer;
+
+  transition: transform 0.3s ease;
+  z-index: 1;
+}
+
+.add:hover {
+  transform: rotate(90deg);
+}
 ```
 
-`src > components > TodoContext > useLocalStorage.js`  
+`src > components > TodoButton > index.js`  
 ```js
+import "./TodoButton.css";
 
+function TodoButton({ setOpenModal }) {
+  return (
+    <button
+      className="add"
+      onClick={() => {
+        setOpenModal((state) => !state);
+      }}
+    ></button>
+  );
+}
 
+export { TodoButton };
+```
+
+`src > components > Modal > index.js`  
+```js
+import React from "react";
+import ReactDom from "react-dom";
+import "./Modal.css";
+
+function Modal({ children }) {
+  return ReactDom.createPortal(
+    <div className="ModalBackground">{children}</div>,
+    document.getElementById("modal")
+  );
+}
+
+export { Modal };
+```
+
+`src > components > Modal > Modal.css`  
+```css
+.ModalBackground {
+  width: 80dvw;
+  max-width: 25rem;
+  height: 40dvh;
+  background-color: rgba(79, 70, 229, 0.99);
+  /* border: 1px solid #090b10; 
+	box-shadow: -5px 5px 5px -5px #090b10;*/
+  border-radius: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  color: #090b10;
+  font-weight: 600;
+
+  position: fixed;
+  top: 14rem;
+  left: 0;
+  right: 0;
+  /* bottom: 0; */
+}
+```
+
+## 26. Maquetando formularios en React
+
+### Código de la clase 
+`src > App > AppUI.js`  
+```js
+import React from "react";
+import { TodoCounter } from "../components/TodoCounter/"; //index
+import { TodoSearch } from "../components/TodoSearch/index";
+import { TodoList } from "../components/TodoList/index";
+import { TodoItem } from "../components/TodoItem/index";
+import { TodoButton } from "../components/TodoButton/index";
+import { TodosLoading } from "../components/TodosLoading";
+import { TodosError } from "../components/TodosError";
+import { TodosEmpty } from "../components/TodosEmpty";
+import { Modal } from "../components/Modal";
+import { TodoContext } from "../components/TodoContext";
+import { TodoForm } from "../components/TodoForm";
+
+function AppUI({}) {
+  const {
+    loading,
+    error,
+    searchedTodos,
+    completeTodo,
+    deleteTodo,
+    openModal,
+    setOpenModal,
+  } = React.useContext(TodoContext);
+  return (
+    <>
+      <TodoCounter />
+      <TodoSearch />
+
+      <TodoList>
+        {loading && <TodosLoading />}
+        {error && <TodosError />}
+        {!loading && searchedTodos.lenght === 0 && <TodosEmpty />}
+
+        {searchedTodos.map((todo) => (
+          <TodoItem
+            key={todo.text}
+            text={todo.text}
+            completed={todo.completed}
+            // Pasar una función a un componente sin ejecutarla inmediatamente
+            onComplete={() => completeTodo(todo.text)}
+            onDelete={() => deleteTodo(todo.text)}
+          />
+        ))}
+      </TodoList>
+
+      <TodoButton setOpenModal={setOpenModal} />
+
+      {openModal && (
+        <Modal>
+          <TodoForm />
+        </Modal>
+      )}
+    </>
+  );
+}
+
+export { AppUI };
+```
+
+`src > components > TodoForm > index.js`  
+```js
+import React from "react";
+import "./TodoForm.css";
+
+function TodoForm() {
+  return (
+    <form
+      onSubmit={(event) => {
+        event.preventDefault();
+      }}
+      action=""
+    >
+      <label htmlFor="">Write a new ToDo</label>
+      <textarea
+        name=""
+        id=""
+        cols="30"
+        rows="10"
+        placeholder="Write something..."
+      />
+      <div className="buttons">
+        <button type="" className="TodoForm cancel">
+          Cancel
+        </button>
+        <button type="" className="TodoForm save">
+          Save
+        </button>
+      </div>
+    </form>
+  );
+}
+
+export { TodoForm };
+```
+
+`src > components > TodoForm > TodoForm.css`  
+```js
+form {
+  width: 80%;
+  height: 80%;
+  display: grid;
+  grid-template-rows: 0.5fr 2fr 0.5fr;
+  /* justify-items: center; */
+}
+
+label {
+	text-align: center;
+}
+
+textarea {
+	font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+  width: 100%;
+  height: 90%;
+  border-radius: 10px;
+  padding: 0.5rem;
+	background-color: #cbd5e1;
+}
+
+.buttons {
+	display: flex;
+  justify-content: space-between;
+}
+
+.TodoForm {
+	font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+  border: none;
+  border-radius: 10px;
+  width: 5rem;
+  cursor: pointer;
+	color: bold;
+	font-weight: 600;
+}
+
+.cancel {
+	background-color: #cbd5e1;
+}
+
+.save {
+  background-color: #090b10;
+  color: #cbd5e1;
+}
+```
+
+## 27. Crear TODOs: React Context dentro de React Portals
+
+### Estado Local 
+
+En el contexto de React, un estado local se refiere a la capacidad de un componente de mantener y gestionar su propio conjunto de datos internos. El estado local es una característica importante de React que permite a los componentes almacenar y actualizar información específica de su estado interno sin depender de otros componentes.
+
+Cuando se crea un componente en React, se puede definir un estado local utilizando el método `useState` provisto por la biblioteca. El estado local es una variable que contiene datos específicos del componente y se puede modificar mediante la función proporcionada por `useState`.
+
+Aquí tienes un ejemplo básico de cómo se puede utilizar el estado local en un componente de React:
+
+```jsx
+import React, { useState } from 'react';
+
+function MiComponente() {
+  const [contador, setContador] = useState(0);
+
+  const incrementarContador = () => {
+    setContador(contador + 1);
+  };
+
+  return (
+    <div>
+      <p>Contador: {contador}</p>
+      <button onClick={incrementarContador}>Incrementar</button>
+    </div>
+  );
+}
+```
+
+En este ejemplo, el componente `MiComponente` tiene un estado local llamado `contador` que se inicializa en 0 utilizando `useState`. Luego se define una función `incrementarContador` que actualiza el estado `contador` al incrementarlo en 1 cuando se hace clic en el botón.
+
+Cada vez que el estado local cambia, React se encarga de actualizar automáticamente la interfaz de usuario del componente para reflejar los cambios. Esto permite que los componentes de React sean reactivos y se actualicen dinámicamente en función de su estado interno.
+
+### Código de la clase 
+`src > components > TodoForm > index.js`  
+```js
+import React from "react";
+import { TodoContext } from "../TodoContext";
+import "./TodoForm.css";
+
+function TodoForm() {
+  const { addTodo, setOpenModal } = React.useContext(TodoContext);
+
+  const onSubmit = (event) => {
+    event.preventDefault();
+    addTodo(newTodoValue);
+    setOpenModal(false);
+  };
+
+  const [newTodoValue, setNewTodoValue] = React.useState("");
+
+  const onCancel = () => {
+    setOpenModal(false);
+  };
+
+  const onChange = (event) => {
+    setNewTodoValue(event.target.value);
+  };
+
+  return (
+    <form onSubmit={onSubmit} action="">
+      <label htmlFor="">Write a new ToDo</label>
+      <textarea
+        name=""
+        id=""
+        cols="30"
+        rows="10"
+        placeholder="Write something..."
+        value={newTodoValue}
+        onChange={onChange}
+      />
+      <div className="buttons">
+        <button type="button" className="TodoForm cancel" onClick={onCancel}>
+          Cancel
+        </button>
+        <button type="submit" className="TodoForm save">
+          Save
+        </button>
+      </div>
+    </form>
+  );
+}
+
+export { TodoForm };
+```
+
+`src > components > TodoContext > index.js`  
+```js
+import React from "react";
+import { useLocalStorage } from "./useLocalStorage";
+
+const TodoContext = React.createContext();
+
+function TodoProvider({ children }) {
+  const {
+    item: todos,
+    saveItem: saveTodos,
+    loading,
+    error,
+  } = useLocalStorage("ToDos_v1", []);
+  const [searchValue, setSearchValue] = React.useState("");
+  const [openModal, setOpenModal] = React.useState(false); //👈👀
+
+  const completedTodos = todos.filter((todo) => !!todo.completed).length;
+  const totalTodos = todos.length;
+
+  const searchedTodos = todos.filter((todo) => {
+    const todoText = todo.text.toLowerCase();
+    const searchText = searchValue.toLowerCase();
+    return todoText.includes(searchText);
+  });
+
+  const addTodo = (text) => {
+    const newTodos = [...todos];
+
+    newTodos.push({
+      text,
+      completed: false,
+    });
+    saveTodos(newTodos);
+  };
+
+  const completeTodo = (text) => {
+    const newTodos = [...todos];
+    const todoIndex = newTodos.findIndex((todo) => todo.text === text);
+
+    // newTodos[todoIndex].completed = true;
+    // true = false / false = true
+    newTodos[todoIndex].completed = !newTodos[todoIndex].completed;
+    saveTodos(newTodos);
+  };
+
+  const deleteTodo = (text) => {
+    const newTodos = [...todos];
+    const todoIndex = newTodos.findIndex((todo) => todo.text === text);
+
+    newTodos.splice(todoIndex, 1);
+    saveTodos(newTodos);
+  };
+
+  return (
+    <TodoContext.Provider
+      value={{
+        loading,
+        error,
+        completedTodos,
+        totalTodos,
+        searchValue,
+        setSearchValue,
+        searchedTodos,
+        completeTodo,
+        deleteTodo,
+        openModal,
+        setOpenModal,
+        addTodo,
+      }}
+    >
+      {children}
+    </TodoContext.Provider>
+  );
+}
+
+export { TodoContext, TodoProvider };
+```
+
+## 28. Despliegue de TODO Machine en GitHub Pages
+
+Primero instalemos `GitHub Pages` 
+
+```bash
+npm i --save-dev gh-pages
+```
+
+Entramos al archivo `package.json` y agregamos: 
+
+```
+{
+  "browserslist": {
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ],
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ]
+  },
+  "dependencies": {
+    "react": "^18",
+    "react-dom": "^18",
+    "react-scripts": "^5.0.1",
+    "web-vitals": "^2.1.4"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app"
+    ]
+  },
+  "homepage": ".", 👈👀✨
+  "name": "platzi-intro-react-base",
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "predeploy": "npm run build", 👈👀✨
+    "deploy": "gh-pages -d build", 👈👀✨
+    "eject": "react-scripts eject"
+  },
+  "version": "0.1.0",
+  "devDependencies": {
+    "gh-pages": "^6.0.0"
+  }
+}
+```
+
+Ahora:  
+```bash
+npm run build // Crea carpeta build
+npm run deploy 
+```
+
+Revisa tu repositorio en GitHub: `Settings > Pages` espera unos minutos y listo.   
 
 ### Código de la clase 
 `src > components > TodoContext > useLocalStorage.js`  
@@ -4995,6 +5560,19 @@ export { Modal };
 
 ```
 
+`src > components > TodoContext > useLocalStorage.js`  
+```js
+
+```
+
+`src > components > TodoContext > useLocalStorage.js`  
+```js
+
+```
+
+`src > components > TodoContext > useLocalStorage.js`  
+```js
+```
 
 ### Código de la clase 
 `src > components > TodoContext > useLocalStorage.js`  
@@ -5007,6 +5585,7 @@ export { Modal };
 
 ```
 
+### Código de la clase 
 `src > components > TodoContext > useLocalStorage.js`  
 ```js
 
@@ -5014,3 +5593,5 @@ export { Modal };
 
 `src > components > TodoContext > useLocalStorage.js`  
 ```js
+
+```
