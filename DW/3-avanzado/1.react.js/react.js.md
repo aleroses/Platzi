@@ -5623,14 +5623,379 @@ Probar hosting: Vercel
 
 ## 30. Diferencias entre versiones de React.js
 
+Cambiemos la versión de React en el `package.json` de `18` a `17.0.2`: 
 
+```json
+{
+  "browserslist": {
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ],
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ]
+  },
+  "dependencies": {
+    "react": "^17.0.2", 👈👀
+    "react-dom": "^17.0.2", 👈👀
+    "react-scripts": "^5.0.1",
+    "web-vitals": "^2.1.4"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app"
+    ]
+  },
+  "homepage": ".",
+  "name": "platzi-intro-react-base",
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
+    "eject": "react-scripts eject"
+  },
+  "version": "0.1.0",
+  "devDependencies": {
+    "gh-pages": "^6.0.0"
+  }
+}
+```
 
-## 31. 
+Eliminemos la carpeta `node_modules` y también el `package-lock.json`: 
+
+```bash
+rm -fr node_modules
+rm package-lock.json
+```
+
+Instalemos todo pero ahora con la versión especificada en el archivo `package.json`: 
+
+```bash
+npm i 
+```
+
+Corramos el proyecto y veamos lo que está fallando para corregir: 
+
+```bash
+npm start
+```
+
+### En búsqueda de soluciones 
+
+Algo que nos puede ayudar a encontrar la solución a los problemas de migrar un proyecto a una versión anterior es buscar: 
+
+- ¿Qué diferencias hay entre una versión en específico y la última?
+- Change React 18 17.0.2
+
+[Info](https://dev.to/ifeanyichima/how-to-downgrade-from-react-18-to-1702-818)
 
 ### Código de la clase 
-`src > components > TodoContext > useLocalStorage.js`  
+`src > index.js`  
 ```js
+import React from "react";
+import { render } from "react-dom";
+import "./index.css";
+import App from "./App";
 
+const root = document.getElementById("root");
+render(<App />, root);
 ```
+
+### ¿Por qué es importante saber actualizar un proyecto a versiones anteriores y viceversa? 
+
+Por las siguientes razones:
+
+1. Mantenimiento de compatibilidad: React es una biblioteca de JavaScript en constante evolución, y periódicamente se lanzan nuevas versiones con mejoras, correcciones de errores y nuevas características. Sin embargo, estas actualizaciones pueden introducir cambios en la API o comportamiento del código existente, lo que podría romper tu proyecto si no se actualiza correctamente. Saber cómo actualizar un proyecto de React a una nueva versión te permite aprovechar las mejoras y mantener tu código compatible con las últimas características y estándares.
+
+2. Estabilidad y rendimiento: Las actualizaciones de React a menudo incluyen mejoras de rendimiento y correcciones de errores. Al actualizar tu proyecto a versiones más recientes, puedes beneficiarte de estas mejoras y asegurarte de que tu aplicación funcione de manera más eficiente y estable.
+
+3. Comunidad y soporte: React cuenta con una gran comunidad de desarrolladores y una amplia gama de bibliotecas y herramientas complementarias. Estas comunidades y bibliotecas tienden a centrarse en las versiones más recientes de React, por lo que estar actualizado te permite aprovechar al máximo los recursos disponibles, obtener soporte y beneficiarte de las últimas soluciones y mejores prácticas.
+
+4. Seguridad: Las versiones más recientes de React suelen incluir parches de seguridad que abordan vulnerabilidades conocidas. Al mantener tu proyecto actualizado, te aseguras de que estás utilizando una versión de React que tiene las correcciones de seguridad más recientes, lo que ayuda a proteger tu aplicación y los datos de los usuarios.
+
+Sin embargo, también es importante saber cómo retroceder a versiones anteriores en algunos casos. Puede haber situaciones donde una actualización de React cause problemas de compatibilidad con ciertas dependencias o bibliotecas utilizadas en tu proyecto. Saber cómo volver a una versión anterior de React te permite solucionar estos problemas y mantener la estabilidad de tu aplicación hasta que los problemas de compatibilidad se resuelvan.
+
+### Retroceder a la versión 16 de React
+
+Aquí hay algunos ajustes que podrías considerar al retroceder de la versión 17 a la versión 16 de React:
+
+1. Ajustes en las importaciones: En la versión 17 de React, se introdujo una nueva forma de importar los módulos, utilizando el formato de “namespace import”. En la versión 16, puedes volver a utilizar las importaciones normales de ES6. Asegúrate de actualizar las importaciones en tu código, por ejemplo, cambiando import * as React from ‘react’ a import React from ‘react’.
+    
+2. Cambios en el uso de las refs: La forma de acceder a las refs en los componentes cambió entre la versión 16 y la versión 17. En la versión 16, puedes utilizar ref={(ref) => this.myRef = ref} para asignar una ref a un elemento. Asegúrate de ajustar cualquier código relacionado con el uso de refs en tu aplicación.
+    
+3. Revisar cambios específicos: La versión 17 de React introdujo algunos cambios específicos en el comportamiento y las API de React. Al retroceder a la versión 16, revisa los cambios entre las versiones y ajusta tu código en consecuencia.
+    
+4. Realizar pruebas exhaustivas: Después de realizar los ajustes, es importante realizar pruebas exhaustivas en tu aplicación para asegurarte de que todo funcione correctamente. Prueba todas las funcionalidades y verifica que no haya errores o problemas.
+    
+
+Recuerda que es recomendable seguir utilizando la versión más reciente de React, ya que cada versión trae mejoras, correcciones de errores y nuevas características. Retroceder a versiones anteriores puede llevar a problemas de compatibilidad y limitar las capacidades de tu aplicación.
+
+## 31. ¿Cuándo realmente necesitas React.js?
+
+React.js es una biblioteca de JavaScript que se utiliza ampliamente en el desarrollo de aplicaciones web y móviles. Aquí hay algunas situaciones en las que puede ser especialmente beneficioso utilizar React.js:
+
+1. Aplicaciones de una sola página (Single-Page Applications, SPAs): React.js es ideal para construir SPAs, donde el contenido se carga de forma dinámica en una sola página sin necesidad de recargarla por completo. React permite crear interfaces de usuario interactivas y receptivas, lo que mejora la experiencia del usuario al proporcionar una navegación fluida y una respuesta rápida a las acciones del usuario.
+
+2. Interfaces de usuario complejas: Si estás construyendo una aplicación con una interfaz de usuario compleja y dinámica, React.js te permite dividir la interfaz en componentes más pequeños y reutilizables. Esto facilita la gestión del estado de la aplicación y mejora la organización y mantenimiento del código.
+
+3. Actualización de partes específicas de la interfaz de usuario: React.js utiliza un enfoque basado en componentes y el concepto de Virtual DOM (DOM virtual). Esto permite actualizar solo las partes específicas de la interfaz de usuario que han cambiado, en lugar de volver a renderizar toda la página. Esto mejora el rendimiento y la eficiencia, especialmente en aplicaciones con un gran número de componentes.
+
+4. Colaboración con otras bibliotecas o frameworks: React.js se puede utilizar junto con otras bibliotecas o frameworks, como Redux para la gestión del estado, React Router para la navegación, o incluso integrarse con frameworks de desarrollo móvil como React Native. Esto brinda flexibilidad y facilidad para aprovechar diferentes herramientas y tecnologías en tu proyecto.
+
+5. Desarrollo de aplicaciones móviles: Si deseas desarrollar aplicaciones móviles nativas para iOS y Android, React Native, basado en React.js, es una opción poderosa. React Native te permite escribir código en JavaScript y compilarlo en código nativo, lo que facilita el desarrollo multiplataforma y el uso compartido de código entre plataformas.
+
+En resumen, React.js es especialmente útil cuando necesitas crear interfaces de usuario dinámicas, interactivas y complejas, así como cuando deseas desarrollar aplicaciones web o móviles eficientes y de alto rendimiento.
+
+### Modelo MVP
+
+El Modelo MVP (Modelo-Vista-Presentador) es un patrón de arquitectura de software que se utiliza para diseñar y organizar aplicaciones. Proporciona una separación clara de responsabilidades entre las diferentes capas de la aplicación, lo que facilita el mantenimiento, la reutilización de código y la prueba unitaria.
+
+En el patrón MVP, los componentes principales son:
+
+1. Modelo (Model): Representa los datos y la lógica de negocio de la aplicación. El modelo no se ocupa de la interfaz de usuario, sino que se enfoca en la manipulación y gestión de datos.
+
+2. Vista (View): Es responsable de la presentación de la interfaz de usuario y la interacción con el usuario. La vista se encarga de recibir las interacciones del usuario y mostrar los datos proporcionados por el presentador.
+
+3. Presentador (Presenter): Actúa como intermediario entre el modelo y la vista. El presentador recibe las acciones del usuario desde la vista, realiza las operaciones necesarias en el modelo y actualiza la vista con los datos correspondientes.
+
+Ahora, veamos cómo se puede aplicar el patrón MVP en una aplicación de React:
+
+1. Modelo: En una aplicación de React, el modelo puede consistir en componentes o clases que representan los datos y la lógica de negocio de la aplicación. Estos componentes no deben estar directamente relacionados con la interfaz de usuario, sino que se centran en la gestión de datos y en proporcionar métodos y funciones para manipularlos.
+
+2. Vista: En React, los componentes pueden actuar como la vista en el patrón MVP. Estos componentes son responsables de la presentación de la interfaz de usuario y la interacción con el usuario. Reciben datos del presentador y los muestran en la interfaz de usuario. Además, también pueden enviar eventos o acciones al presentador cuando ocurren interacciones del usuario.
+
+3. Presentador: El presentador en React puede ser un componente o una clase que se encarga de la lógica de presentación y comunicación entre la vista y el modelo. Recibe eventos o acciones de la vista y realiza las operaciones necesarias en el modelo. Luego, actualiza la vista con los datos correspondientes.
+
+La comunicación entre la vista y el presentador en React se puede lograr a través de la propagación de props o mediante el uso de contextos o bibliotecas de administración de estados como Redux o MobX.
+
+Al utilizar el patrón MVP en React, se logra una clara separación de responsabilidades entre la lógica de negocio, la presentación de la interfaz de usuario y la comunicación entre ellos. Esto facilita la comprensión, el mantenimiento y la extensibilidad del código, ya que cada componente tiene una única responsabilidad y se puede probar de manera aislada.
+
+
+## 32. React con Create React App
+
+Crearemos un proyecto desde cero, así que debes ubicarte en una carpeta donde puedas empezar este proyecto y abre la CLI: 
+
+```bash
+npx create-react-app nombre-del-poyecto
+npx create-react-app cra-test 👈👀
+```
+
+Ahora entramos a la carpeta creada y la abrimos con Visual Studio Code: 
+
+```bash
+ls
+cd cra-test
+ll
+code ./ -r
+npm start
+```
+
+Con esto ya está todo listo para empezar a trabajar en tu proyecto. 
+
+### Otros pasos 
+
+Para comenzar un proyecto con React utilizando Create React App, sigue los siguientes pasos:
+
+1. Instala Node.js: Antes de comenzar, asegúrate de tener Node.js instalado en tu sistema. Puedes descargarlo e instalarlo desde el sitio oficial de Node.js (https://nodejs.org).
+
+2. Instala Create React App: Una vez que tengas Node.js instalado, abre tu terminal o línea de comandos y ejecuta el siguiente comando para instalar Create React App de forma global:
+
+```bash
+npm install -g create-react-app
+```
+
+3. Crea un nuevo proyecto de React: En la ubicación donde deseas crear tu proyecto, ejecuta el siguiente comando para generar una nueva aplicación de React utilizando Create React App:
+
+```bash
+npx create-react-app my-app
+```
+
+Reemplaza "my-app" con el nombre que desees para tu proyecto.
+
+4. Espera a que se complete la instalación: Create React App descargará todas las dependencias necesarias y configurará la estructura básica de tu proyecto. Esto puede llevar unos minutos.
+
+5. Accede al directorio del proyecto: Una vez que la instalación se haya completado, accede al directorio de tu proyecto ejecutando el siguiente comando:
+
+```bash
+cd my-app
+```
+
+Reemplaza "my-app" con el nombre de tu proyecto.
+
+6. Inicia el servidor de desarrollo: Ahora, ejecuta el siguiente comando para iniciar el servidor de desarrollo y ver tu aplicación en el navegador:
+
+```bash
+npm start
+```
+
+Esto abrirá automáticamente tu aplicación en tu navegador predeterminado en la dirección `http://localhost:3000`.
+
+¡Y eso es todo! Ahora tienes un proyecto de React configurado y listo para comenzar a desarrollar. Puedes editar los archivos en la carpeta `src` para construir tu aplicación de React y ver los cambios en tiempo real en el servidor de desarrollo.
+
+Create React App proporciona una configuración predeterminada y herramientas útiles para el desarrollo de aplicaciones de React. Puedes encontrar más información sobre cómo personalizar y utilizar Create React App en la documentación oficial: https://create-react-app.dev/docs/getting-started/
+
+## Alternativas a Create React App
+
+Además de Create React App, existen otras herramientas y alternativas populares para iniciar y configurar proyectos de React. Algunas de ellas son:
+
+1. Next.js: Next.js es un framework de React que permite crear aplicaciones web de React con renderizado del lado del servidor (SSR) y generación de sitios estáticos. Proporciona una configuración optimizada y muchas características adicionales, como enrutamiento incorporado, pre-renderizado, manejo de API, entre otros.
+
+2. Gatsby: Gatsby es otro framework popular de React que se utiliza para crear sitios web estáticos y de alto rendimiento. Gatsby combina React con GraphQL y proporciona una amplia gama de características, como optimización de rendimiento, pre-renderizado, enrutamiento y una gran cantidad de complementos para ampliar su funcionalidad.
+
+3. Parcel: Parcel es un empaquetador de módulos web que puede ser utilizado para proyectos de React. Es fácil de usar y no requiere una configuración compleja. Parcel se encarga de la compilación y el empaquetado de los archivos de tu proyecto, lo que simplifica el proceso de configuración inicial.
+
+4. webpack: webpack es una herramienta de construcción muy popular y altamente personalizable. Puede ser configurado para manejar proyectos de React y proporciona una amplia gama de características, como el empaquetado de módulos, la optimización de código, el manejo de assets y el soporte para una variedad de loaders y plugins.
+
+Estas son solo algunas de las alternativas disponibles para iniciar proyectos de React. Cada herramienta tiene sus propias características y enfoques, por lo que es recomendable investigar y evaluar cuál se adapta mejor a las necesidades específicas de tu proyecto.
+
+## 33. React con Next.js
+
+Crearemos un proyecto desde cero, así que debes ubicarte en una carpeta donde puedas empezar este proyecto y abre la CLI: 
+
+```bash
+npx create-next-app@latest next-test
+y
+No
+No
+No
+
+cd next-test
+code ./ -r
+npm run dev 
+```
+
+Esto te mostrará en consola lo siguiente, solo debes hacer un `Ctrl + Click` sobre el enlace `http://localhost:3000`: 
+
+```bash
+> next-text@0.1.0 dev
+> next dev
+
+- ready started server on [::]:3000, url: http://localhost:3000 👈👀🔥
+Attention: Next.js now collects completely anonymous telemetry regarding usage. 😐😐🤨
+This information is used to shape Next.js' roadmap and prioritize features.
+You can learn more, including how to opt-out if you'd not like to participate in this anonymous program, by visiting the following URL:
+https://nextjs.org/telemetry
+```
+
+### Otros pasos 
+
+Para comenzar un proyecto con React utilizando Next.js, sigue los siguientes pasos:
+
+1. Instala Node.js: Antes de comenzar, asegúrate de tener Node.js instalado en tu sistema. Puedes descargarlo e instalarlo desde el sitio oficial de Node.js (https://nodejs.org).
+
+2. Crea un nuevo proyecto de Next.js: Abre tu terminal o línea de comandos y ejecuta el siguiente comando para crear un nuevo proyecto de Next.js:
+
+```bash
+npx create-next-app my-app
+```
+
+Reemplaza "my-app" con el nombre que desees para tu proyecto.
+
+3. Espera a que se complete la instalación: Next.js descargará todas las dependencias necesarias y configurará la estructura básica de tu proyecto. Esto puede llevar unos minutos.
+
+4. Accede al directorio del proyecto: Una vez que la instalación se haya completado, accede al directorio de tu proyecto ejecutando el siguiente comando:
+
+```bash
+cd my-app
+```
+
+Reemplaza "my-app" con el nombre de tu proyecto.
+
+5. Inicia el servidor de desarrollo: Ahora, ejecuta el siguiente comando para iniciar el servidor de desarrollo y ver tu aplicación en el navegador:
+
+```bash
+npm run dev
+```
+
+Esto abrirá automáticamente tu aplicación en tu navegador predeterminado en la dirección `http://localhost:3000`.
+
+¡Y eso es todo! Ahora tienes un proyecto de React configurado con Next.js y listo para comenzar a desarrollar. Puedes editar los archivos en la carpeta `pages` para construir tus páginas de React y ver los cambios en tiempo real en el servidor de desarrollo.
+
+Next.js proporciona un conjunto de características adicionales, como el renderizado del lado del servidor (SSR), la generación de sitios estáticos, el enrutamiento incorporado, la carga de datos inicial, entre otros. Puedes encontrar más información sobre cómo utilizar y personalizar Next.js en la documentación oficial: https://nextjs.org/docs/getting-started
+
+Next.js es especialmente útil para construir aplicaciones web de React con rendimiento optimizado y características avanzadas, como la carga de datos previa a la renderización y la generación de sitios estáticos.
+
+### Sever-side rendering 
+
+Server-side rendering (SSR), también conocido como renderizado del lado del servidor, es un enfoque en el cual la generación inicial de la interfaz de usuario de una aplicación web se realiza en el servidor y se envía al cliente como HTML completo. En lugar de enviar solo el código JavaScript de la aplicación y esperar a que se ejecute en el navegador para generar la interfaz de usuario, SSR permite que el servidor envíe una versión ya generada de la interfaz de usuario al cliente.
+
+En un proceso de SSR típico:
+
+1. El cliente realiza una solicitud al servidor para una página web.
+2. El servidor ejecuta la lógica de la aplicación y genera la interfaz de usuario en HTML.
+3. El servidor envía el HTML completamente renderizado al cliente.
+4. El cliente recibe el HTML y lo muestra en el navegador.
+5. El cliente también puede recibir el código JavaScript necesario para la interactividad adicional de la aplicación.
+
+La principal ventaja del SSR es que permite que el cliente vea rápidamente el contenido completo de la página, incluso antes de que se cargue y ejecute el código JavaScript de la aplicación. Esto mejora la velocidad de carga percibida y la accesibilidad, especialmente en conexiones de red más lentas o dispositivos menos potentes.
+
+Además, el SSR también puede mejorar el SEO (Optimización para Motores de Búsqueda) al permitir que los motores de búsqueda indexen y comprendan mejor el contenido de la página en su formato HTML completo.
+
+Sin embargo, el SSR también puede tener algunas limitaciones y desafíos. El renderizado en el servidor puede requerir más recursos computacionales en el servidor, y las interacciones dinámicas en la interfaz de usuario pueden requerir una comunicación adicional entre el cliente y el servidor.
+
+En resumen, el server-side rendering (SSR) es un enfoque en el que la generación inicial de la interfaz de usuario se realiza en el servidor y se envía al cliente como HTML completo, lo que mejora la velocidad de carga percibida y la accesibilidad de la aplicación web.
+
+## 34. React con Vite
+
+```bash
+npm -v
+npm create vite@latest vite-test
+	- √ Select a framework: » React
+	- √ Select a variant: » JavaScript
+
+// Usar este comando en caso de tener npm desactualizado
+npm create vite@latest vitetest -- --template react
+
+// Luego
+cd vite-test 
+npm i
+code ./ -r
+npm run dev
+```
+
+### Otros pasos 
+
+Para comenzar un proyecto con React utilizando Vite, sigue los siguientes pasos:
+
+1. Instala Node.js: Antes de comenzar, asegúrate de tener Node.js instalado en tu sistema. Puedes descargarlo e instalarlo desde el sitio oficial de Node.js (https://nodejs.org).
+
+2. Crea un nuevo proyecto de React con Vite: Abre tu terminal o línea de comandos y ejecuta el siguiente comando para crear un nuevo proyecto de React con Vite:
+
+```bash
+npx create-vite my-app --template react
+```
+
+Reemplaza "my-app" con el nombre que desees para tu proyecto.
+
+3. Espera a que se complete la instalación: Vite descargará todas las dependencias necesarias y configurará la estructura básica de tu proyecto. Esto puede llevar unos minutos.
+
+4. Accede al directorio del proyecto: Una vez que la instalación se haya completado, accede al directorio de tu proyecto ejecutando el siguiente comando:
+
+```bash
+cd my-app
+```
+
+Reemplaza "my-app" con el nombre de tu proyecto.
+
+5. Inicia el servidor de desarrollo: Ahora, ejecuta el siguiente comando para iniciar el servidor de desarrollo y ver tu aplicación en el navegador:
+
+```bash
+npm run dev
+```
+
+Esto abrirá automáticamente tu aplicación en tu navegador predeterminado en la dirección `http://localhost:3000`.
+
+¡Y eso es todo! Ahora tienes un proyecto de React configurado con Vite y listo para comenzar a desarrollar. Puedes editar los archivos en la carpeta `src` para construir tu aplicación de React y ver los cambios en tiempo real en el servidor de desarrollo.
+
+Vite es una herramienta de desarrollo rápida que permite un tiempo de compilación instantáneo y una experiencia de desarrollo optimizada. Proporciona un servidor de desarrollo rápido, soporte para módulos ES y una configuración mínima necesaria.
+
+Puedes encontrar más información sobre cómo utilizar y personalizar Vite en la documentación oficial: https://vitejs.dev/
+
+
 
 
