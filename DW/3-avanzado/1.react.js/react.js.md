@@ -5996,6 +5996,409 @@ Vite es una herramienta de desarrollo rápida que permite un tiempo de compilaci
 
 Puedes encontrar más información sobre cómo utilizar y personalizar Vite en la documentación oficial: https://vitejs.dev/
 
+##
 
+## Examen 📌
 
+<details>
+	<summary>Haz clic para ver los resultados 👀</summary>
+	<br/>
+1. ¿Qué son las props en React?
+
+a
+
+La forma de recibir/escuchar/reaccionar ante las acciones o interacciones de los usuarios en nuestra aplicación.
+
+b 📌
+
+La forma de comunicar componentes entre sí para transportar información.
+
+c
+
+La forma en que React guarda información de nuestro componente para escuchar cuando tenga cambios y disparar un nuevo render.
+
+2. ¿Cuál de las siguientes es una forma o herramienta válida para trabajar proyectos con React.js?
+
+a
+
+Configuración personalizada con Webpack.
+
+b
+
+Create React App
+
+c 📌
+
+Todas las respuestas son correctas.
+
+d
+
+Vite
+
+e
+
+Next.js
+
+3. ¿Cómo podemos enviar información de un componente "abuelo" a un componente "nieto" sin necesidad de pasar las props por el componente "hijo/padre"?
+
+a
+
+Usando React State.
+
+b
+
+Usando React Props.
+
+c 📌
+
+Usando React Context.
+
+d
+
+Usando React Portals.
+
+4. ¿Cómo escuchamos cuando los usuarios envíen un formulario con React?
+
+a
+
+`NombreComponente.addEventListener('submit')`
+
+b
+
+`onsubmit`
+
+c
+
+`submit`
+
+d
+
+`NombreComponente.addEventListener('formsubmit')`
+
+e 📌
+
+`onSubmit`
+
+5. ¿Para qué sirve React Context?
+
+a
+
+Para comunicar componentes entre sí a pesar de tener componentes padres diferentes.
+
+b 📌
+
+Para comunicar componentes sin tener que pasar la información como props por cada componente intermedio.
+
+c
+
+Para teletransportar componentes a un nodo de HTML distinto al nodo donde hace render el resto de la aplicación.
+
+d
+
+Para teletransportar componentes a un documento HTML distinto a donde hace render el resto de la aplicación.
+
+6. ¿Cómo creamos un contexto en React?
+
+a 📌
+
+`React.createContext`
+
+b
+
+`ReactDOM.createContext`
+
+c
+
+`ReactDOM.context`
+
+d
+
+`React.context`
+
+7. ¿Qué son los eventos en React?
+
+a
+
+La forma de recibir/escuchar/reaccionar ante los renders de nuestros componentes.
+
+b 📌
+
+La forma de recibir/escuchar/reaccionar ante las acciones o interacciones de los usuarios en nuestra aplicación.
+
+c
+
+La forma de recibir/escuchar/reaccionar ante los cambios en el estado de nuestros componentes.
+
+8. ¿Qué es React.js?
+
+a
+
+Solo una libreria.
+
+b 📌
+
+React es tanto una librería como una arquitectura.
+
+c
+
+Solo una arquitectura.
+
+9. ¿Qué significa el "ecosistema de React"?
+
+a
+
+Todas las herramientas open-source (únicamente las oficiales) relacionadas con React.
+
+b 📌
+
+Todas las herramientas open-source (oficiales y no oficiales) relacionadas con React.
+
+c
+
+Algunas de las herramientas internas que usa React para construir su código fuente.
+
+10. ¿Cómo escuchamos el evento de click en un botón con React?
+
+a
+
+`onclick`
+
+b 📌
+
+`onClick`
+
+c
+
+`click`
+
+d
+
+`NombreComponente.addEventListener('click')`
+
+11. ¿Qué es el estado en React?
+
+a 📌
+
+La forma en que React guarda información de nuestro componente para escuchar cuando tenga cambios y disparar un nuevo render.
+
+b
+
+La forma de recibir/escuchar/reaccionar ante las acciones o interacciones de los usuarios en nuestra aplicación.
+
+c
+
+La forma de comunicar componentes entre sí para transportar información.
+
+12. ¿Qué es JSX?
+
+a 📌
+
+Una sintaxis especial de JavaScript para escribir elementos y componentes de React que se siente como HTML.
+
+b
+
+Una versión muy futura de ECMAScript que nos permite escribir React con superpoderes de HTML.
+
+c
+
+Una sintaxis especial de HTML para escribir elementos y componentes de React que se siente como JavaScript.
+
+d
+
+Una versión muy futura de ECMAScript que nos permite escribir React con superpoderes de JavaScript.
+
+13. ¿Podemos crear más de un estado en nuestros componentes de React?
+
+a
+
+Falso
+
+b  📌
+
+Verdadero
+
+14. ¿Para qué sirven los efectos en React?
+
+a
+
+Para guardar información de nuestro componente, escuchar cuando tenga cambios y disparar un nuevo render.
+
+b 📌
+
+Para ejecutar bloques de código en componentes únicamente si se cumplen ciertas condiciones en cada nuevo render.
+
+c
+
+Para ejecutar bloques de código que requieren asincronismo dentro de los componentes de nuestra aplicación.
+
+d
+
+Para ejecutar bloques de código dentro de los componentes únicamente cuando los usuarios realicen cualquier acción o interacción.
+
+15. ¿Cómo escuchamos cuando un usuario escriba en un input o textarea con React?
+
+a
+
+`oninputchange`
+
+b
+
+`onchange`
+
+c
+
+`change`
+
+d
+
+`onWrite`
+
+e 📌
+
+`onChange`
+
+16. ¿Cómo creamos un portal en React?
+
+a
+
+React.createPortal
+
+b 📌
+
+ReactDOM.createPortal
+
+17. ¿Cuál es la diferencia entre componentes y elementos en React?
+
+a
+
+Los elementos se crean con clases que extienden de React.Component. Los componentes son funciones que pueden usar React Hooks.
+
+b 📌
+
+Los componentes son grupos de elementos, reciben props y pueden crear estado o efectos. Los elementos reciben atributos o eventos y (casi siempre) se transforman en etiquetas de HTML.
+
+c
+
+Los componentes se crean con clases que extienden de React.Component. Los elementos son funciones que pueden usar React Hooks.
+
+d
+
+Los elementos son grupos de componentes, reciben props y pueden crear estado o efectos. Los componentes reciben atributos o eventos y (casi siempre) se transforman en etiquetas de HTML.
+
+18. ¿Qué propiedad debemos enviarle al Provider de un contexto en React para consumirlo desde su respectivo Consumer?
+
+a
+
+context
+
+b
+
+Todas las propiedades enviadas al componente Provider podrán consumirse desde el componente Consumer.
+
+c  📌
+
+value
+
+d
+
+state
+
+19. ¿Cómo usamos React Context con la sintaxis de React Hooks?
+
+a📌
+
+`useContext(Contexto)`
+
+b
+
+`useContext(Contexto.Provider)`
+
+c
+
+`useContext("NombreDelContexto")`
+
+d
+
+`useContext(Contexto.Consumer)`
+
+20. ¿Cuál de las siguientes es una forma VÁLIDA de crear un estado en React?
+
+a
+
+```
+const { nombreDelEstado, setNombreDelEstado } = React.useState("valor inicial de estado");
+```
+b 📌
+
+```
+const [nombreDelEstado, setNombreDelEstado] = React.useState("valor inicial de estado");
+```
+
+c
+
+```
+const nombreDelEstado = React.useState("valor inicial de estado");
+const setNombreDelEstado = nombreDelEstado.setState();
+```
+
+21. ¿Para qué sirven los portales en React?
+
+a
+
+Para teletransportar componentes a un documento HTML distinto a donde hace render el resto de la aplicación
+
+b
+
+Para comunicar componentes sin tener que pasar la información como props por cada componente intermedio.
+
+c 📌
+
+Para teletransportar componentes a un nodo de HTML distinto al nodo donde hace render el resto de la aplicación.
+
+d
+
+Para comunicar componentes entre sí a pesar de tener componentes padres diferentes.
+
+22. ¿Cuál de los siguientes bloques de código ejecuta nuestro efecto únicamente la primera vez que se renderiza nuestro componente?
+
+a
+
+```
+React.useEffect(() => { console.log("Efectito"); });
+```
+b
+
+```
+React.useEffect(() => { console.log("Efectito"); }, window);
+```
+c 📌
+
+```
+React.useEffect(() => { console.log("Efectito"); }, []);
+```
+
+d
+
+```
+React.useEffect(() => { console.log("Efectito"); }, document.addEventListener('load'));
+```
+
+23. ¿Por qué debemos compilar nuestro proyecto con React.js antes de subirlo a GitHub Pages?
+
+a
+
+No es obligatorio compilar nuestro proyecto antes de subirlo a GitHub Pages.
+
+b 📌
+
+Porque GitHub Pages solo nos permite desplegar aplicaciones estáticas.
+
+c
+
+Porque GitHub Pages tiene muy poco espacio de almacenamiento.
+
+d
+
+Porque GitHub Pages no soporta interacciones de los usuarios.
+</details>
 
