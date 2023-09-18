@@ -351,7 +351,11 @@ let nombre = "Ale";
 Abrimos la terminal `Ctrl + ñ` de Visual Studio Code y ejecutamos:    
 
 ```bash
+// Crea una nueva carpeta para el proyecto
 npx create-react-app mi-app
+
+// Crea el proyecto en la misma carpeta
+npx create-react-app .
 ```
 
 Al finalizar te debe salir el siguiente mensaje: 
@@ -397,7 +401,7 @@ Ahora, debes ver la siguiente estructura de carpetas y archivos:
 ├── package.json
 ├── public
 │   ├── favicon.ico
-│   ├── index.html
+│   ├── index.html 👈👀✨
 │   ├── logo192.png
 │   ├── logo512.png
 │   ├── manifest.json
@@ -413,7 +417,38 @@ Ahora, debes ver la siguiente estructura de carpetas y archivos:
     └── setupTests.js
 ```
 
+Veamos que tiene nuestro proyecto:  
+```bash
+npm start
+```
 
+Esto abrirá nuestro proyecto en el navegador usando `localhost:3000` esto quiere decir que nuestra PC está actuando como un servidor local para poder acceder a los archivos de la aplicación y mostrar sus resultados. 
+
+Puedes ver más sobre el contenido de los archivos de nuestro proyecto en estos apuntes hechos anteriormente: 
+
+[Carpetas y Archivos de la clase](https://github.com/aleroses/Platzi/blob/master/DW/3-avanzado/1.react.js/react.js.md#carpetas-y-archivos-de-la-clase)
+
+### Empezar proyecto de testimonios 
+
+Tengo la siguiente estructura y dentro de la carpeta `freeCodeCamp` crearé un nuevo proyecto y al final se verá algo así. 
+
+```bash
+.
+├── freeCodeCamp
+│   └── my-app
+│   └── testimony 👈👀✨
+```
+
+Creamos el proyecto: 
+```bash
+npx create-react-app testimony 👈👀
+cd testimony/
+code ./ -r
+```
+
+### Identificar los Componentes
+
+1hora 30
 
 
 ## Proyecto 02: Contador de clics 
