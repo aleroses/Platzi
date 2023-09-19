@@ -448,8 +448,29 @@ code ./ -r
 
 ### Identificar los Componentes
 
-1hora 30
+Creamos una carpeta src  components Testimony.js y otra carpeta src imagenes y agregamos las imagenes que descarguemos de aquí [repo](https://github.com/estefaniacn/testimonios-freecodecamp/tree/master/src/imagenes)
 
+Configurar Indentación o Espaciado:    
+Presiona `F1` busca la opción `Indent Using Spaces` y elige `2`. También puedes acceder desde la parte inferior del editor, aparece `Space: 4` le das clic y cambias a `2`, ya que es un estándar. 
+
+Ejecutamos el proyecto:  
+```bash
+npm start
+```
+
+
+[Extensión React Developer Tools](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=es)
+
+Buscas `Tienda de Google > Chrome web Store > React Developer Tools` Añadir ➕
+
+jsx es igual a js
+
+ya no es necesario importar React form 'react' pero si se trabajan con hook si se debe importar
+
+
+separar datos { } cambiar alt
+
+https://github.com/estefaniacn/testimonios-freecodecamp
 
 ## Proyecto 02: Contador de clics 
 
