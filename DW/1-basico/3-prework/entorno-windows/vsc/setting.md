@@ -12,7 +12,7 @@
 
 ```json
 {
-    "editor.wordWrap": "on", //👈👀
+  "editor.wordWrap": "on", //👈👀
 }
 ```
 
@@ -23,22 +23,26 @@ Si no quieres configurar esto, solo usa control z cada vez que quieras tener tod
 Estilo de sangrado. 
 ```json
 {
-	"editor.tabSize": 2, //👈👀
+  "editor.tabSize": 2, //👈👀
 }
 ```
+
+Presiona `F1` busca la opción `Indent Using Spaces` y elige `2`. También puedes acceder desde la parte inferior del editor, aparece `Space: 4` le das clic y cambias a `2`. 
+
+Adicional puedes buscar `Convert Indentation to Spaces` para que cada indentación hecha con el tabulador se transforme a espacios, en este caso a 2 espacios. Esto nos ayuda a que no se distorsione el código cuando lo subamos a GitHub. 
 
 ## Cambiar terminal  
 
 ```json
 {
-    "terminal.integrated.defaultProfile.windows": "Git Bash", //👈👀
+  "terminal.integrated.defaultProfile.windows": "Git Bash", //👈👀
 }
 ```
 
 Otra opción 
 ```json
 {
-	"terminal.integrated.defaultProfile.windows": "PowerShell" //👈👀
+  "terminal.integrated.defaultProfile.windows": "PowerShell" //👈👀
 }
 ```
 
@@ -53,7 +57,7 @@ También:
 
 ```json
 {
-    "workbench.sideBar.location": "right", //👈👀
+  "workbench.sideBar.location": "right", //👈👀
 }
 ```
 
@@ -61,7 +65,7 @@ También:
 
 ```json
 {
-    "editor.minimap.enabled": false, //👈👀
+  "editor.minimap.enabled": false, //👈👀
 }
 ```
 
@@ -69,9 +73,9 @@ También:
 
 ```json
 {
-    "editor.scrollbar.vertical": "auto", //👈👀
-    "editor.overviewRulerBorder": false, //👈👀
-    "editor.hideCursorInOverviewRuler": true, //👈👀
+  "editor.scrollbar.vertical": "auto", //👈👀
+  "editor.overviewRulerBorder": false, //👈👀
+  "editor.hideCursorInOverviewRuler": true, //👈👀
 }
 ```
 
@@ -79,7 +83,7 @@ También:
 
 ```json
 {
-    "editor.glyphMargin": false, //👈👀
+  "editor.glyphMargin": false, //👈👀
 }
 ```
 
@@ -87,7 +91,7 @@ También:
 
 ```json
 {
-    "editor.lineNumbers": "off", //👈👀
+  "editor.lineNumbers": "off", //👈👀
 }
 ```
 
@@ -95,7 +99,7 @@ También:
 
 ```json
 {
-    "workbench.activityBar.visible": false, //👈👀
+  "workbench.activityBar.visible": false, //👈👀
 }
 ```
 

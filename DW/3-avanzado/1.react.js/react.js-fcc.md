@@ -70,6 +70,22 @@ subgraph Componentes
 end
 ```
 
+```mermaid
+graph LR
+subgraph Componentes
+    Padre -- nombre = ale --> Hijo(Hijo \n prop.nombre \n prop.apellido)
+    Hijo -- nombre = cat --> Nieto_01(Nieto_01 \n prop.nombre \n prop.apellido)
+    Hijo -- nombre = dog --> Nieto_02(Nieto_02 \n prop.nombre \n prop.apellido)
+
+    Hijo -- apellido = kitten --> Nieto_01
+    Hijo -- apellido = puppy --> Nieto_02
+
+    Padre -- apellido = roses --> Hijo
+end
+```
+
+En React, cuando utilizas la sintaxis `prop.apellido` estás accediendo a una propiedad (prop) llamada "apellido" que ha sido pasada a ese componente como un dato desde su componente padre.
+
 ### Estado (State): 
 
 Representación en JavaScript del conjunto de propiedades de un componente y sus **valores actuales**. Propiedades no se refiere a los props, sino a información que se representa sobre el componente. 
@@ -448,32 +464,167 @@ code ./ -r
 
 ### Identificar los Componentes
 
-Creamos una carpeta src  components Testimony.js y otra carpeta src imagenes y agregamos las imagenes que descarguemos de aquí [repo](https://github.com/estefaniacn/testimonios-freecodecamp/tree/master/src/imagenes)
+Creamos algunos archivos como `src > components > Testimony.js` y `src > imagenes` a la que le agregamos las imágenes a usar, estas las podemos descargar aquí [repo: testimonios-freecodecamp](https://github.com/estefaniacn/testimonios-freecodecamp/tree/master/src/imagenes).
 
-Configurar Indentación o Espaciado:    
-Presiona `F1` busca la opción `Indent Using Spaces` y elige `2`. También puedes acceder desde la parte inferior del editor, aparece `Space: 4` le das clic y cambias a `2`, ya que es un estándar. 
+Debemos tener los siguientes archivos:  
+```bash
+.
+├── node_modules
+├── package-lock.json
+├── package.json
+├── public
+│   ├── index.html
+│   ├── manifest.json
+│   └── robots.txt
+└── src
+    ├── App.css
+    ├── App.js
+    ├── components 👈👀👇
+    │   └── Testimony.js
+    ├── imagenes 👈👀👇
+    │   ├── testimonio-emma.png
+    │   ├── testimonio-sarah.png
+    │   └── testimonio-shawn.png
+    ├── index.css
+    ├── index.js
+    └── stylesheets 👈👀👇
+        └── Testimonio.css
+```
 
 Ejecutamos el proyecto:  
 ```bash
 npm start
 ```
 
+#### ✨ Configurar Indentación o Espaciado:    
+
+Presiona `F1` busca la opción `Indent Using Spaces` y elige `2`. También puedes acceder desde la parte inferior del editor, aparece `Space: 4` le das clic y cambias a `2`, ya que es un estándar. 
+
+Adicional puedes buscar `Convert Indentation to Spaces` para que cada indentación hecha con el tabulador se transforme a espacios, en este caso a 2 espacios. Esto nos ayuda a que no se distorsione el código cuando lo subamos a GitHub. 
+
+#### Extensión React Developer Tools
+
+Utiliza las Herramientas de Desarrollo de React (React Developer Tools) **para inspeccionar componentes de React, editar props y estado, e identificar problemas de rendimiento**.
 
 [Extensión React Developer Tools](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=es)
 
-Buscas `Tienda de Google > Chrome web Store > React Developer Tools` Añadir ➕
+![](https://i.postimg.cc/85x47TBs/react-developer-tools.jpg)
 
-jsx es igual a js
+📌 La extensión en los archivos `jsx` es igual a `js`, no hay diferencia.
 
-ya no es necesario importar React form 'react' pero si se trabajan con hook si se debe importar
 
+### Código del proyecto Testimonios 
+
+`public > index.html`   
+```html
+<body>
+  <noscript>You need to enable JavaScript to run this app.</noscript>
+  <div id="root"></div> 👈👀
+</body>
+```
+
+`src > index.js`
+```jsx
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import App from "./App";
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(
+  <React.StrictMode>
+    <App /> 👈👀 // Componente
+  </React.StrictMode>
+);
+```
+
+`src > App.js`
+```jsx
+import "./App.css";
+// Puedes agregar u omitir la extensión.js 👈👀👇
+import { Testimonio } from "./components/Testimony";
+
+function App() { 👈👀 // Componente usado en el index.js
+  return (
+    <div className="App">
+      <h1>Esto es lo que dicen nuestros alumnos sobre FreeCodeCamp:</h1>
+      <div className="contenedor-principal">
+        <Testimonio
+          nombre="Shawn Wang"
+          pais="Singapur"
+          imagen="shawn"
+          cargo="Ingeniero de Software"
+          empresa="Amazon"
+          testimonio="Da miedo cambiar de carrera. Solo gané la confianza de que podía programar trabajando a través de los cientos de horas de lecciones gratuitas en freeCodeCamp. Dentro de un año tuve un trabajo de seis cifras como ingeniero de software. freeCodeCamp cambió mi vida."
+        />
+        <Testimonio
+          nombre="Sarah Chima"
+          pais="Nigeria"
+          imagen="sarah"
+          cargo="Ingeniera de Software"
+          empresa="ChatDesk"
+          testimonio="FreeCodeCamp fue la puerta de entrada a mi carrera como desarrollador de software. El plan de estudios bien estructurado llevó mis conocimientos de programación de un nivel de principiante total a un nivel muy seguro. Era todo lo que necesitaba para conseguir mi primer trabajo de desarrollador en una empresa increíble."
+        />
+        <Testimonio
+          nombre="Emma Bostian"
+          pais="Suecia"
+          imagen="emma"
+          cargo="Ingeniero de Software"
+          empresa="Spotify"
+          testimonio="Siempre he tenido problemas para aprender JavaScript. He tomado muchos cursos, pero el curso de freeCodeCamp fue el que se quedó. Estudiar JavaScript, así como estructuras de datos y algoritmos en freeCodeCamp me dio las habilidades y la confianza que necesitaba para conseguir el trabajo de mis sueños como ingeniero de software en Spotify."
+        />
+      </div>
+    </div>
+  );
+}
+
+export default App;
+```
+
+`src > components > Testimony.js`
+```jsx
+import React from "react";
+import "../stylesheets/Testimonio.css";
+
+// export function Testimonio(){} 👈👀 también se puede
+function Testimonio(props) {
+  return (
+    <div className="contenedor-testimonio">
+      <img
+        className="imagen-testimonio"
+        src={require(`../imagenes/testimonio-${props.imagen}.png`)}
+        alt="Foto de Emma"
+      />
+      <div className="contenedor-texto-testimonio">
+        <p className="nombre-testimonio">
+          <strong>{props.nombre}</strong> en {props.pais}
+        </p>
+        <p className="cargo-testimonio">
+          {props.cargo} en <strong>{props.empresa}</strong>
+        </p>
+        <p className="texto-testimonio">"{props.testimonio}"</p>
+      </div>
+    </div>
+  );
+}
+
+// Exportación por defecto
+// export default Testimonio; 👈👀
+
+// Exportación nombrada
+export { Testimonio }; 👈👀
+
+```
 
 separar datos { } cambiar alt
 
-https://github.com/estefaniacn/testimonios-freecodecamp
 
 ## Proyecto 02: Contador de clics 
 
+
+`public > `
+```jsx
+```
 ## Proyecto 03: Calculadora 
 
 ## Proyecto 04: Aplicación de tareas 
