@@ -616,16 +616,190 @@ export { Testimonio }; 👈👀
 
 ```
 
-separar datos { } cambiar alt
-
+☘ Reto: Separar los datos o testimonios, quizá en un objeto `{ }` o array `[ ]` en su propio archivo y por último actualizar el `alt` de cada imagen según corresponda. 
 
 ## Proyecto 02: Contador de clics 
 
+```bash
+pwd
+  /c/react/freeCodeCamp 👈👀
+npx create-react-app click-contador
+cd click-contador
+code ./ -r
+ctrl + ñ 👈👀✨
+npm start
+```
 
-`public > `
+📌 Para matar un proceso en la CLI, usar `Ctrl + c`.
+
+Ahora debemos importar la imagen a usar, pero primero la descargamos de [repo: contador-de-clicks](https://github.com/estefaniacn/contador-de-clics-freecodecamp/blob/master/src/imagenes/freecodecamp-logo.png)
+
+### Código 
+
+Para este proyecto necesitamos la siguiente estructura: 
+
+```bash
+.
+├── node_modules
+├── package-lock.json
+├── package.json
+├── public
+│   ├── index.html
+│   ├── manifest.json
+│   └── robots.txt
+└── src
+    ├── App.css
+    ├── App.js
+    ├── components 👈👀👇
+    │   ├── Button.js
+    │   └── Contador.js
+    ├── images 👈👀👇
+    │   └── freecodecamp-logo.png
+    ├── index.css
+    ├── index.js
+    └── stylesheets 👈👀👇
+        ├── Contador.css
+        └── Button.css
+```
+
+`public > index.html`  
+
+```html
+<body>
+  <noscript>You need to enable JavaScript to run this app.</noscript>
+  <div id="root"></div> 👈👀✨
+</body>
+```
+
+`src > index.js > `
+```jsx
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import App from "./App";
+
+const root = ReactDOM.createRoot(document.getElementById("root")); 👈👀
+root.render(
+  <React.StrictMode>
+    <App /> 👈👀
+  </React.StrictMode>
+);
+```
+
+`src > App.js`  
+```jsx
+import "./App.css";
+import { Button } from "./components/Button";
+import { Contador } from "./components/Contador";
+import freeCodeCampLogo from "./images/freecodecamp-logo.png";
+import { useState } from "react";
+
+function App() {
+  const [numClics, setNumClics] = useState(0);
+
+  const manejarClic = () => {
+    setNumClics(numClics + 1);
+  };
+
+  const reiniciarContador = () => {
+    setNumClics(0)
+  };
+
+  return (
+    <div className="App">
+      <div className="freecodecamp-logo-contenedor">
+        <img
+          className="freecodecamp-logo"
+          src={freeCodeCampLogo}
+          alt="Logo de freeCodeCamp"
+        />
+      </div>
+      <div className="contenedor-principal">
+        <Contador numClics={numClics} />
+        <Button texto="Clic" esBotonDeClic={true} manejarClic={manejarClic} />
+        <Button
+          texto="Reiniciar"
+          esBotonDeClic={false}
+          manejarClic={reiniciarContador}
+        />
+      </div>
+    </div>
+  );
+}
+
+export default App;
+```
+
+`src > components > Contador.js`
+```jsx
+import React from "react";
+import "../stylesheets/Contador.css";
+
+function Contador({ numClics }) {
+  return <div className="contador">{numClics}</div>;
+}
+
+export { Contador };
+```
+
+`src > components > Button.js`
+```jsx
+import React from "react";
+import '../stylesheets/Button.css'
+
+function Button({ texto, esBotonDeClic, manejarClic }) {
+  return (
+    <button
+      className={esBotonDeClic ? "boton-clic" : "boton-reiniciar"}
+      onClick={manejarClic}
+    >
+      {texto}
+    </button>
+  );
+}
+
+export { Button };
+```
+
+### Nombrar eventos y funciones 
+
+En React, hay algunas convenciones comunes para nombrar eventos y las funciones que manejan esos eventos. Aquí tienes algunas convenciones populares:
+
+1. Eventos: Los nombres de los eventos se escriben en minúsculas y siguen la convención camelCase. Por ejemplo, "onClick", "onChange", "onSubmit", etc.
+
+2. Funciones manejadoras de eventos: Las funciones que manejan los eventos generalmente se nombran utilizando el prefijo "handle" seguido del nombre del evento en camelCase. Por ejemplo, "handleClick", "handleChange", "handleSubmit", etc.
+
+3. Eventos en componentes: Cuando agregas un controlador de eventos a un elemento en un componente, generalmente se utiliza la forma abreviada de la sintaxis de arrow function o se enlaza el contexto en el constructor o mediante la función `bind`. Por ejemplo:
+
+```jsx
+class MyComponent extends React.Component {
+  handleClick = () => {
+    // Lógica del evento
+  }
+
+  render() {
+    return (
+      <button onClick={this.handleClick}>Click aquí</button>
+    );
+  }
+}
+```
+
+Estas convenciones no son obligatorias, pero son ampliamente utilizadas y ayudan a mantener un código más legible y consistente en proyectos de React. Recuerda que lo más importante es mantener una convención que se ajuste a tu equipo y ser coherente en su aplicación a lo largo del código.
+
+### Prettier (extensión)
+
+Para agregar automáticamente los puntos y comas al guardar usando `Ctrl + s` puedes usar **Prettier**. Además, permite personalizar algunas otras cosas, te dejo mis [Apuntes Prettier](https://github.com/aleroses/Platzi/blob/master/DW/1-basico/3-prework/entorno-windows/vsc/prettier.md)
+
+### `import React from "react";`
+
+En versiones actuales de React ya no es necesario el `import React from "react";` solo debemos importar los hooks que vayamos a usar. 
+
+## Proyecto 03: Calculadora 
+
+`src > components > `
 ```jsx
 ```
-## Proyecto 03: Calculadora 
 
 ## Proyecto 04: Aplicación de tareas 
 
