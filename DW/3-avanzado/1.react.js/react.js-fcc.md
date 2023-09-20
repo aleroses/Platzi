@@ -797,6 +797,124 @@ En versiones actuales de React ya no es necesario el `import React from "react";
 
 ## Proyecto 03: Calculadora 
 
+```bash
+cd ..
+npx create-react-app calculator
+cd calculator/
+code ./ -r
+npm start
+```
+
+### `isNaN` 
+
+En JavaScript, la función `isNaN` se utiliza para comprobar si un valor es NaN (Not-a-Number) o no. NaN es un valor especial en JavaScript que representa la falta de un valor numérico válido.
+
+La sintaxis de `isNaN` es la siguiente:
+
+```javascript
+isNaN(valor)
+```
+
+Donde `valor` es el valor que se desea comprobar si es NaN o no.
+
+La función `isNaN` devuelve `true` si el valor pasado como argumento es NaN, y devuelve `false` si el valor es un número válido o cualquier otro tipo de dato.
+
+Aquí tienes algunos ejemplos de cómo se puede utilizar `isNaN`:
+
+```javascript
+console.log(isNaN(123));        // false, 123 es un número válido
+console.log(isNaN('456'));      // false, '456' se puede convertir a un número
+console.log(isNaN('abc'));      // true, 'abc' no se puede convertir a un número
+console.log(isNaN(true));       // false, true se convierte a 1, que es un número válido
+console.log(isNaN(undefined));  // true, undefined no se puede convertir a un número
+console.log(isNaN(null));       // false, null se convierte a 0, que es un número válido
+```
+
+Es importante tener en cuenta que `isNaN` intentará convertir el valor a un número antes de realizar la comprobación. Si el valor no se puede convertir a un número, se considerará como NaN.
+
+### Propiedad `flex`
+
+La propiedad `flex` admite diferentes combinaciones de valores. La forma completa de la propiedad `flex` es la siguiente:
+
+```css
+flex: <flex-grow> <flex-shrink> <flex-basis>;
+```
+
+Aquí tienes una descripción de cada valor:
+
+- `<flex-grow>`: Define cómo se distribuye el espacio adicional entre los elementos flex. Es un número que indica la proporción en la que el elemento debe crecer en relación con los demás elementos flex. Por ejemplo, si un elemento tiene `flex-grow: 2` y otro tiene `flex-grow: 1`, el primero crecerá el doble que el segundo cuando haya espacio disponible.
+
+- `<flex-shrink>`: Indica cómo se reduce el tamaño de los elementos flex cuando el espacio disponible es insuficiente. Es un número que determina la proporción en la que el elemento debe encogerse en relación con los demás elementos flex. Por ejemplo, si un elemento tiene `flex-shrink: 2` y otro tiene `flex-shrink: 1`, el primero se reducirá el doble que el segundo cuando no haya suficiente espacio.
+
+- `<flex-basis>`: Establece el tamaño inicial del elemento antes de que se distribuya el espacio adicional o se reduzca su tamaño. Puede ser un valor en píxeles (`px`), porcentaje (`%`), `auto` u otros valores válidos para dimensiones CSS. Por defecto, es `auto`, lo que significa que el tamaño se determina según el contenido del elemento.
+
+Por lo tanto, `flex: 1 1` es una forma abreviada de establecer tanto `flex-grow` como `flex-shrink` en 1, mientras que `flex-basis` se deja en su valor predeterminado (`auto`). Esto es útil cuando se desea que los elementos flex se expandan y se contraigan de manera equitativa.
+
+Sin embargo, también puedes especificar valores diferentes para `flex-grow`, `flex-shrink` y `flex-basis` según tus necesidades. Por ejemplo:
+
+```css
+.container {
+  display: flex;
+}
+
+.item {
+  flex: 2 0 100px;
+}
+```
+
+En este caso, el elemento tendrá un `flex-grow` de 2, un `flex-shrink` de 0 y un `flex-basis` de 100 píxeles.
+
+Recuerda que `flex: 1 1` es simplemente una opción común y conveniente para establecer valores iguales para `flex-grow` y `flex-shrink` sin especificar `flex-basis`. Sin embargo, puedes personalizar los valores según tus requisitos específicos.
+
+### Propiedad `user-select `
+
+La propiedad CSS `user-select` se utiliza para controlar si los usuarios pueden seleccionar texto en elementos HTML y cómo se puede realizar la selección. Esta propiedad es útil cuando deseas restringir o permitir la selección de texto en ciertas partes de tu página web.
+
+La sintaxis básica del `user-select` es la siguiente:
+
+```css
+elemento {
+  user-select: valor;
+}
+```
+
+Donde `elemento` es el selector del elemento HTML al que deseas aplicar la propiedad `user-select`, y `valor` es uno de los siguientes:
+
+- `none`: No se permite la selección de texto dentro del elemento ni sus descendientes. El texto no se puede resaltar ni copiar.
+
+- `auto`: La selección de texto está permitida dentro del elemento y sus descendientes. Es el valor predeterminado del navegador.
+
+- `text`: Se permite la selección de texto dentro del elemento y sus descendientes. El texto se puede resaltar y copiar.
+
+- `all`: Se permite la selección de texto dentro del elemento y sus descendientes. Además, el texto se resalta de manera visualmente distintiva para indicar que se puede seleccionar.
+
+Aquí tienes un ejemplo de cómo se puede utilizar `user-select` en CSS:
+
+```css
+p {
+  user-select: none;
+}
+
+div.highlightable {
+  user-select: text;
+}
+
+span.select-all {
+  user-select: all;
+}
+```
+
+En este ejemplo, los elementos `p` tienen la selección de texto desactivada (`user-select: none`). Los elementos `div` con la clase `.highlightable` permiten la selección de texto (`user-select: text`). Y los elementos `span` con la clase `.select-all` no solo permiten la selección de texto, sino que también resaltan visualmente el texto seleccionable (`user-select: all`).
+
+Es importante destacar que la propiedad `user-select` no brinda una protección de seguridad real contra la copia de contenido. Es posible que los usuarios avanzados o aquellos que deshabiliten los estilos CSS puedan seleccionar el texto independientemente de la configuración de `user-select`.
+
+
+
+
+
+
+5:00
+
 `src > components > `
 ```jsx
 ```
