@@ -866,6 +866,76 @@ En este caso, el elemento tendrá un `flex-grow` de 2, un `flex-shrink` de 0 y u
 
 Recuerda que `flex: 1 1` es simplemente una opción común y conveniente para establecer valores iguales para `flex-grow` y `flex-shrink` sin especificar `flex-basis`. Sin embargo, puedes personalizar los valores según tus requisitos específicos.
 
+### Método `trimEnd()` 
+
+El método `trimEnd()` es una función incorporada en JavaScript que se utiliza para eliminar los espacios en blanco al final de una cadena de texto. Devuelve una nueva cadena de texto con los espacios en blanco finales eliminados.
+
+Aquí tienes un ejemplo de cómo funciona `trimEnd()`:
+
+```javascript
+const texto = 'Hola Mundo    ';
+const textoSinEspacios = texto.trimEnd();
+
+console.log(textoSinEspacios); // Resultado: 'Hola Mundo'
+```
+
+En este ejemplo, tenemos una cadena de texto llamada `texto` que contiene espacios en blanco al final. Al llamar a `trimEnd()` en la cadena de texto, se crea una nueva cadena de texto llamada `textoSinEspacios` en la que se eliminan los espacios en blanco finales.
+
+Es importante destacar que `trimEnd()` no modifica la cadena de texto original, sino que devuelve una nueva cadena de texto con los espacios en blanco eliminados. Si deseas modificar la cadena original, debes asignar el resultado de `trimEnd()` a una variable o reasignarla.
+
+Es importante tener en cuenta que `trimEnd()` está disponible a partir de ECMAScript 2019 (ES10) y no es compatible con versiones anteriores de JavaScript. Sin embargo, existe una alternativa para versiones anteriores llamada `trimRight()`, que realiza la misma función de eliminar espacios en blanco finales.
+
+```javascript
+const texto = 'Hola Mundo    ';
+const textoSinEspacios = texto.trimRight();
+
+console.log(textoSinEspacios); // Resultado: 'Hola Mundo'
+```
+
+En resumen, `trimEnd()` es un método en JavaScript que elimina los espacios en blanco al final de una cadena de texto y devuelve una nueva cadena sin esos espacios.
+
+### `onClick(() => {})`
+
+En React, el evento `onClick` **espera recibir una función** como valor para poder ser ejecutado correctamente. Este se utiliza para asignar un controlador de eventos al elemento, como un botón, y especificar qué acción debe realizarse cuando se produce el evento de clic.
+
+Aquí tienes un ejemplo de cómo se utiliza `onClick` con una función:
+
+```jsx
+function ButtonComponent() {
+  const handleClick = () => {
+    console.log('Se hizo clic en el botón');
+  };
+
+  return (
+    <button onClick={handleClick}>
+      Haz clic aquí
+    </button>
+  );
+}
+```
+
+En este caso, `handleClick` es una función que se ejecutará cuando se haga clic en el botón. Al pasar `handleClick` como valor del evento `onClick`, se establece el controlador de eventos adecuado para ese elemento.
+
+Si se pasa cualquier cosa que no sea una función como valor del prop `onClick`, no se generará un error en tiempo de compilación, pero el evento de clic no realizará ninguna acción. Por ejemplo:
+
+```jsx
+function ButtonComponent() {
+  const handleClick = () => {
+    console.log('Se hizo clic en el botón');
+  };
+
+  return (
+    <button onClick={'no es una función'}>
+      Haz clic aquí
+    </button>
+  );
+}
+```
+
+En este caso, al pasar `'no es una función'` como valor de `onClick`, no se producirá ningún error, pero al hacer clic en el botón no se ejecutará ninguna acción.
+
+En resumen, para que `onClick` funcione correctamente, se debe pasar una función como valor para que pueda ser ejecutada cuando ocurra el evento de clic.
+
 ### Propiedad `user-select `
 
 La propiedad CSS `user-select` se utiliza para controlar si los usuarios pueden seleccionar texto en elementos HTML y cómo se puede realizar la selección. Esta propiedad es útil cuando deseas restringir o permitir la selección de texto en ciertas partes de tu página web.
@@ -908,19 +978,291 @@ En este ejemplo, los elementos `p` tienen la selección de texto desactivada (`u
 
 Es importante destacar que la propiedad `user-select` no brinda una protección de seguridad real contra la copia de contenido. Es posible que los usuarios avanzados o aquellos que deshabiliten los estilos CSS puedan seleccionar el texto independientemente de la configuración de `user-select`.
 
+### Biblioteca Math.js
+
+Math.js es una biblioteca matemática de JavaScript de código abierto que proporciona una amplia gama de funciones y utilidades para realizar operaciones matemáticas y manipular estructuras de datos matemáticas complejas. Permite realizar cálculos matemáticos avanzados en JavaScript de manera sencilla y eficiente.
+
+Para usar Math.js en tu proyecto, debes seguir estos pasos:
+
+1. Instalación: Puedes instalar Math.js a través de npm (Node Package Manager) ejecutando el siguiente comando en tu terminal:
+
+   ```bash
+   npm install mathjs
+   ```
+
+	Esto instalará la biblioteca Math.js y sus dependencias en tu proyecto. Para verificar la instalación, revisa el archivo `package.json > "dependencies" {"mathjs": "^11.11.1"}` 
+
+2. Importación: Después de instalar Math.js, debes importarlo en tu archivo JavaScript para poder utilizarlo (En React se importa distinto). Puedes hacerlo de la siguiente manera:
+
+   ```javascript
+   const math = require('mathjs');
+   ```
+
+	Si estás utilizando un entorno de desarrollo moderno que admite módulos ES6, puedes utilizar la importación de ES6:
+
+   ```javascript
+   import math from 'mathjs';
+   ```
+
+3. Uso de funciones y expresiones: Una vez que hayas importado Math.js, puedes utilizar sus funciones y expresiones matemáticas en tu código. Por ejemplo:
+
+   ```javascript
+   const resultado = math.sqrt(16);
+   console.log(resultado); // Resultado: 4
+   ```
+
+    En este ejemplo, se utiliza la función `sqrt()` de Math.js para calcular la raíz cuadrada de `16` y se almacena el resultado en la variable `resultado`. Luego, se muestra el resultado en la consola.
+
+4. Personalización y configuración: Math.js permite personalizar su comportamiento y configuración según tus necesidades. Puedes ajustar la precisión, el redondeo, el número de decimales, entre otras configuraciones. 
+
+[Documentación](https://mathjs.org/ )
+
+### Función `evaluate`en Math.js
+
+En la biblioteca Math.js, la función `evaluate` se utiliza para evaluar expresiones matemáticas en forma de cadenas de texto. Toma una cadena de texto que contiene una expresión matemática y devuelve el resultado de evaluar dicha expresión.
+
+Aquí tienes algunos ejemplos de cómo se utiliza `evaluate` en Math.js:
+
+```javascript
+const math = require('mathjs');
+
+// Ejemplo 1: Evaluación básica
+const resultado1 = math.evaluate('2 + 3 * 4'); 
+console.log(resultado1); // Resultado: 14
+
+// Ejemplo 2: Uso de funciones y constantes
+const resultado2 = math.evaluate('sin(45 deg) * pi');
+console.log(resultado2); // Resultado: 3.141592653589793
+
+// Ejemplo 3: Evaluación con variables
+const x = 5;
+const y = 2;
+const resultado3 = math.evaluate('x^2 + y', { x, y });
+console.log(resultado3); // Resultado: 27
+
+// Ejemplo 4: Evaluación de una expresión con asignación y reutilización de variables
+const expresion = 'a = 3; b = 4; a * b';
+const resultado4 = math.evaluate(expresion);
+console.log(resultado4); // Resultado: 12
+```
+
+En el primer ejemplo, se evalúa la expresión matemática `'2 + 3 * 4'`, que devuelve el resultado `14`. En el segundo ejemplo, se utiliza la función `sin` que devuelve el seno de un número y la constante `pi` para evaluar la expresión `'sin(45 deg) * pi'`, que devuelve el resultado `3.141592653589793`.
+
+En el tercer ejemplo, se muestra cómo se pueden utilizar variables en la expresión. Se define `x` y `y` y se evalúa la expresión `'x^2 + y'`, que devuelve el resultado `27`.
+
+En el cuarto ejemplo, se muestra cómo se puede utilizar `evaluate` para ejecutar una secuencia de instrucciones. La cadena de texto `'a = 3; b = 4; a * b'` asigna valores a las variables `a` y `b` y luego devuelve el resultado de la multiplicación `a * b`, que es `12`.
 
 
+### Código 
 
+Estructura del proyecto:  
+```bash
+.
+├── node_modules
+├── package-lock.json
+├── package.json
+├── public
+│   ├── index.html
+│   ├── manifest.json
+│   └── robots.txt
+└── src
+    ├── App.css
+    ├── App.js
+    ├── components 👈👀👇
+    │   ├── Button.js
+    │   ├── ClearButton.js
+    │   └── Screen.js
+    ├── images 👈👀👇
+    │   └── freecodecamp-logo.png
+    ├── index.css
+    ├── index.js
+    └── stylesheets 👈👀👇
+        ├── Button.css
+        ├── ClearButton.css
+        └── Screen.css
+```
 
+`public > index.html`
+```html
+<body>
+  <noscript>You need to enable JavaScript to run this app.</noscript>
+  <div id="root"></div>
+</body>
+```
 
-5:00
-
-`src > components > `
+`src > index.js`
 ```jsx
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import App from "./App";
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);
+```
+
+`src > App.js`
+```jsx
+import "./App.css";
+import { Button } from "./components/Button";
+import { Pantalla } from "./components/Screen";
+import freeCodeCampLogo from "./images/freecodecamp-logo.png";
+import { BotonClear } from "./components/ClearButton";
+import { useState } from "react";
+import { evaluate } from "mathjs"; //👈👀
+
+function App() {
+  const [input, setInput] = useState("");
+
+  const agregarInput = (val) => {
+    setInput(input + val);
+  };
+
+  const calcularResultado = () => {
+    if (input) {
+      setInput(evaluate(input));
+    } else {
+      alert('Ingrese valores para hacer el cálculo!!')
+    }
+  };
+
+  return (
+    <div className="App">
+      <div className="freecodecamp-logo-contenedor">
+        <img
+          className="freecodecamp-logo"
+          src={freeCodeCampLogo}
+          alt="Logo de freeCodeCamp"
+        />
+      </div>
+      <div className="contenedor-calculadora">
+        <Pantalla input={input} />
+        <div className="fila">
+          <Button manejarClic={agregarInput}>1</Button>
+          <Button manejarClic={agregarInput}>2</Button>
+          <Button manejarClic={agregarInput}>3</Button>
+          <Button manejarClic={agregarInput}>+</Button>
+        </div>
+        <div className="fila">
+          <Button manejarClic={agregarInput}>4</Button>
+          <Button manejarClic={agregarInput}>5</Button>
+          <Button manejarClic={agregarInput}>6</Button>
+          <Button manejarClic={agregarInput}>-</Button>
+        </div>
+        <div className="fila">
+          <Button manejarClic={agregarInput}>7</Button>
+          <Button manejarClic={agregarInput}>8</Button>
+          <Button manejarClic={agregarInput}>9</Button>
+          <Button manejarClic={agregarInput}>*</Button>
+        </div>
+        <div className="fila">
+          <Button manejarClic={calcularResultado}>=</Button>
+          <Button manejarClic={agregarInput}>0</Button>
+          <Button manejarClic={agregarInput}>.</Button>
+          <Button manejarClic={agregarInput}>/</Button>
+        </div>
+        <div className="fila">
+          <BotonClear manejarClear={() => setInput("")}>
+            Clear
+          </BotonClear>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default App;
+```
+
+`src > components > Screen.js`
+```jsx
+import React from "react";
+import "../stylesheets/Screen.css";
+
+const Pantalla = ({ input }) => (
+  <div className="input">{input}</div>
+);
+
+export { Pantalla };
+```
+
+`src > components > Button.js`
+```jsx
+import React from "react";
+import "../stylesheets/Button.css";
+
+function Button(props) {
+  const esOperador = (valor) => {
+    // 2 = false; + = true;
+    return isNaN(valor) && valor !== "." && valor !== "=";
+  };
+
+  return (
+    <button
+      className={`boton-contenedor ${
+        esOperador(props.children) ? "operador" : ""
+      }`.trimEnd()}
+      onClick={() => props.manejarClic(props.children)}
+    >
+      {props.children}
+    </button>
+  );
+}
+
+export { Button };
+```
+
+`src > components > ClearButton.js`
+```jsx
+import React from "react";
+import "../stylesheets/ClearButton.css";
+
+const BotonClear = (props) => (
+  <div className="boton-clear" onClick={props.manejarClear}>
+    {props.children}
+  </div>
+);
+
+export { BotonClear };
 ```
 
 ## Proyecto 04: Aplicación de tareas 
 
+
+`src > components > Button.js`
+```jsx
+
+```
+
+
+`src > components > Button.js`
+```jsx
+
+```
+
+`src > components > Button.js`
+```jsx
+
+```
+
+`src > components > Button.js`
+```jsx
+
+```
+
+`src > components > Button.js`
+```jsx
+
+```
+
+`src > components > Button.js`
+```jsx
+
+```
 ## Componentes de clase 
 
 ## Adaptar los primeros dos proyectos con componentes de clase
