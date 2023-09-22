@@ -1232,41 +1232,1173 @@ export { BotonClear };
 
 ## Proyecto 04: Aplicación de tareas 
 
-
-`src > components > Button.js`
-```jsx
-
+```bash
+cd ..
+pwd
+  /c/react/freeCodeCamp 👈👀
+npx create-react-app tasks
+cd tasks
+code ./ -r
+ctrl + ñ
+npm start
 ```
 
+### React Icons
 
-`src > components > Button.js`
-```jsx
+React Icons es una biblioteca de iconos diseñada específicamente para su uso con React. Proporciona una amplia gama de iconos populares y reconocibles que se pueden utilizar en tus aplicaciones React sin necesidad de importar imágenes o utilizar fuentes externas.
 
+La ventaja principal de React Icons es que los iconos se representan como componentes React reutilizables, lo que significa que puedes utilizarlos fácilmente en tu código JSX. Esto facilita su integración y personalización, ya que puedes ajustar su tamaño, color y otros estilos aplicando las propiedades de React.
+
+Para empezar a usar React Icons, debes seguir estos pasos:
+
+1. Instalar React Icons: En tu proyecto React, abre una terminal y ejecuta el siguiente comando para instalar React Icons utilizando npm (Node Package Manager):
+```bash
+// No agrega una entrada específica en el archivo `package.json`.
+npm install react-icons
+
+// Agrega una entrada en el archivo `package.json` con la versión específica
+npm install react-icons --save
+```
+O si estás utilizando Yarn, puedes ejecutar:
+```bash
+yarn add react-icons
 ```
 
-`src > components > Button.js`
-```jsx
+Revisa el archivo `package.json` `"dependencies": {"react-icons": "^4.11.0"}`
 
+2. Importar los iconos necesarios: En el archivo donde deseas utilizar los iconos, importa los iconos específicos que necesitas. Por ejemplo, si deseas utilizar el icono de corazón, puedes importarlo de la siguiente manera:
+```jsx
+import { FaHeart } from 'react-icons/fa';
 ```
 
-`src > components > Button.js`
+3. Utilizar los iconos en tu componente: Después de importar el icono, puedes utilizarlo en tu componente JSX como cualquier otro componente de React. Por ejemplo:
 ```jsx
+import { FaHeart } from 'react-icons/fa';
 
+function MiComponente() {
+  return (
+    <div>
+      <h1>¡Me gusta este icono!</h1>
+      <FaHeart />
+    </div>
+  );
+}
+```
+En este caso, el icono de corazón se muestra dentro del componente `MiComponente`.
+
+4. Personalizar los iconos (opcional): Si deseas personalizar los iconos, puedes hacerlo ajustando las propiedades de los componentes de icono. Por ejemplo, puedes cambiar el tamaño o el color del icono utilizando las propiedades de estilo de React.
+
+En resumen, React Icons es una biblioteca útil para agregar iconos a tus aplicaciones React de manera sencilla. Solo necesitas importar los iconos necesarios y utilizarlos como componentes en tu código JSX. Recuerda consultar la documentación de React Icons para conocer todos los iconos disponibles y las opciones de personalización.
+
+[Documentación](https://react-icons.github.io/react-icons/)
+
+
+### Propiedad `outline`
+
+La propiedad CSS `outline` se utiliza para agregar un contorno alrededor de un elemento, como un borde visible pero que no ocupa espacio adicional en el diseño. A diferencia de la propiedad `border`, el `outline` no afecta el tamaño o la posición de un elemento.
+
+La sintaxis básica de la propiedad `outline` es la siguiente:
+
+```css
+outline: [ancho] [estilo] [color];
 ```
 
-`src > components > Button.js`
-```jsx
+- `[ancho]` define el grosor del contorno. Puede ser un valor en píxeles (`px`), porcentaje (`%`), `thin`, `medium` o `thick`. Si omites este valor, se utilizará el valor predeterminado del navegador.
+- `[estilo]` define el estilo del contorno. Puede ser `dotted` (punteado), `dashed` (guionado), `solid` (sólido), `double` (doble), `groove` (ranurado), `ridge` (en relieve), `inset` (hundido), `outset` (sobresalido) o `none` (ninguno). El valor predeterminado es `none`. 👈👀
+- `[color]` define el color del contorno. Puede ser cualquier valor de color válido (nombre del color, código hexadecimal, `rgb()`, `rgba()`, etc.). Si omites este valor, se utilizará el color predeterminado del navegador.
 
+Ejemplo de uso de `outline`:
+
+```css
+div {
+  outline: 2px dotted red;
+}
 ```
 
-`src > components > Button.js`
-```jsx
+En este ejemplo, se aplicará un contorno de 2 píxeles de grosor, estilo punteado y color rojo alrededor de todos los elementos `<div>`.
 
+Es importante tener en cuenta que la propiedad `outline` no es parte del modelo de caja de CSS y, por lo tanto, no afecta el flujo o el diseño de los elementos. Además, el `outline` no es compatible con todas las propiedades de `border`, como `border-radius` o `border-image`.
+
+### Propiedad `text-transform`
+
+La propiedad CSS `text-transform` se utiliza para controlar la transformación del texto en un elemento. Permite cambiar la capitalización y el aspecto del texto sin modificar el contenido real.
+
+La sintaxis básica de la propiedad `text-transform` es la siguiente:
+
+```css
+text-transform: valor;
 ```
+
+Los valores comunes para `text-transform` son:
+
+- `none`: No se aplica ninguna transformación al texto. El valor predeterminado.
+- `capitalize`: Transforma la primera letra de cada palabra en mayúscula y las demás letras en minúscula. 👈👀
+- `uppercase`: Transforma todo el texto en letras mayúsculas.
+- `lowercase`: Transforma todo el texto en letras minúsculas.
+- `full-width`: Transforma el texto en caracteres de ancho completo, como los utilizados en los caracteres chinos o japoneses.
+
+Ejemplo de uso de `text-transform`:
+
+```css
+h1 {
+  text-transform: uppercase;
+}
+```
+
+En este ejemplo, todos los elementos `<h1>` tendrán su texto transformado en letras mayúsculas.
+
+Es importante tener en cuenta que la propiedad `text-transform` solo afecta la presentación visual del texto y no altera el contenido real ni su accesibilidad. Por lo tanto, si se selecciona o copia el texto transformado, se conservará su forma original (mayúsculas o minúsculas). Además, algunas transformaciones pueden depender del idioma y la configuración regional, por lo que es posible que no se apliquen correctamente a todos los caracteres o alfabetos.
+
+### Formularios 
+
+En HTML, existen diferentes tipos de formularios que se pueden utilizar para recopilar datos de los usuarios. Cada tipo de formulario puede tener varios atributos que permiten personalizar su comportamiento y apariencia. A continuación, se presentan algunos de los tipos de formularios más comunes y sus atributos asociados:
+
+1. **Formulario básico (`<form>`)**:
+   - Atributos principales: `action`, `method`.
+   - Otros atributos comunes: `id`, `class`, `name`, `autocomplete`, `target`.
+
+2. **Campo de texto (`<input type="text">`)**:
+   - Atributos principales: `name`, `value`, `placeholder`, `required`.
+   - Otros atributos comunes: `id`, `class`, `size`, `maxlength`, `readonly`, `disabled`.
+
+3. **Contraseña (`<input type="password">`)**:
+   - Atributos principales: `name`, `value`, `placeholder`, `required`.
+   - Otros atributos comunes: `id`, `class`, `size`, `maxlength`, `readonly`, `disabled`.
+
+4. **Área de texto (`<textarea>`)**:
+   - Atributos principales: `name`, `placeholder`, `required`.
+   - Otros atributos comunes: `id`, `class`, `rows`, `cols`, `readonly`, `disabled`.
+
+5. **Casilla de verificación (`<input type="checkbox">`)**:
+   - Atributos principales: `name`, `value`, `checked`.
+   - Otros atributos comunes: `id`, `class`, `disabled`.
+
+6. **Botón de opción (`<input type="radio">`)**:
+   - Atributos principales: `name`, `value`, `checked`.
+   - Otros atributos comunes: `id`, `class`, `disabled`.
+
+7. **Menú desplegable (`<select>`)**:
+   - Atributos principales: `name`, `required`.
+   - Otros atributos comunes: `id`, `class`, `size`, `multiple`, `disabled`.
+
+8. **Botón (`<button>`)**:
+   - Atributos principales: `type`.
+   - Otros atributos comunes: `id`, `class`, `name`, `value`, `disabled`.
+
+Estos son solo algunos ejemplos de tipos de formularios y sus atributos asociados más comunes. Cabe destacar que hay otros tipos de formularios y atributos disponibles en HTML para cubrir diferentes necesidades y casos de uso. Es recomendable consultar la documentación oficial de HTML para obtener más información y detalles sobre los tipos de formularios y atributos disponibles.
+
+
+### Evento `onSubmit` 
+
+El evento `onsubmit` se utiliza en el elemento `<form>` en HTML para manejar la acción de envío (submit) del formulario. Es un evento nativo de HTML y se dispara cuando el usuario envía el formulario mediante un botón de envío (`<input type="submit">` o `<button type="submit">`) o al presionar la tecla "Enter" dentro de un campo de texto.
+
+El uso del evento `onSubmit` en HTML puede ser en combinación con JavaScript o React para realizar acciones adicionales, como la validación de los datos ingresados en el formulario antes de enviarlo al servidor.
+
+Aquí hay un ejemplo de cómo se puede utilizar el evento `onsubmit` en un formulario HTML:
+
+```html
+<form onsubmit="myFunction()">
+  <!-- Campos del formulario -->
+  <input type="text" name="name" required>
+  <input type="email" name="email" required>
+  
+  <!-- Botón de envío -->
+  <input type="submit" value="Enviar">
+</form>
+
+<script>
+function myFunction() {
+  // Lógica adicional al enviar el formulario
+  alert("¡Formulario enviado!");
+}
+</script>
+```
+
+En este caso, cuando el usuario envía el formulario, se ejecutará la función `myFunction()` que muestra un mensaje de alerta. Puedes realizar otras acciones, como validar los campos del formulario antes de enviarlo o realizar una solicitud HTTP al servidor.
+
+#### Aclaración 
+
+En HTML, el evento de envío de formulario se maneja utilizando el atributo `onsubmit` en el elemento `<form>`. Por ejemplo:
+
+```html
+<form onsubmit="myFunction()">
+  <!-- Campos del formulario -->
+  <input type="text" name="name" required>
+  <input type="email" name="email" required>
+  
+  <!-- Botón de envío -->
+  <input type="submit" value="Enviar">
+</form>
+```
+
+En React, sin embargo, se utiliza la convención de nomenclatura camelCase para los nombres de eventos. Por lo tanto, en lugar de `onsubmit`, se utiliza `onSubmit` (con la "S" en mayúscula) al asignar un controlador de eventos a través de JSX. Por ejemplo:
+
+```jsx
+function MyForm() {
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    // Lógica adicional al enviar el formulario
+    alert("¡Formulario enviado!");
+  };
+
+  return ( 👀👇
+    <form onSubmit={handleSubmit}>
+      {/* Campos del formulario */}
+      <input type="text" name="name" required />
+      <input type="email" name="email" required />
+      
+      {/* Botón de envío */}
+      <input type="submit" value="Enviar" />
+    </form>
+  );
+}
+```
+
+En este ejemplo de React, el evento `onSubmit` se asigna al controlador de eventos `handleSubmit`. La función `handleSubmit` se ejecutará cuando se envíe el formulario y se puede realizar cualquier lógica adicional, como la validación de campos o el envío de datos al servidor.
+
+### Método `preventDefault()`
+
+La función `preventDefault()` es un método de JavaScript que se utiliza para prevenir el comportamiento predeterminado de un evento. Cuando se llama a `preventDefault()`, evita que la acción por defecto asociada a un evento ocurra.
+
+En el contexto de un formulario HTML, se utiliza típicamente en combinación con el evento `onsubmit` para evitar que el formulario se envíe y la página se recargue automáticamente al hacer clic en el botón de envío.
+
+Cuando se llama a `preventDefault()` dentro del controlador de eventos, se detiene la acción predeterminada del evento. En el caso del evento `submit` de un formulario, esto significa que no se realizará la solicitud de envío al servidor y la página no se recargará.
+
+Aquí tienes un ejemplo de cómo se utiliza `preventDefault()` en un controlador de eventos de envío de formulario en React:
+
+```jsx
+function MyForm() {
+  const handleSubmit = (event) => {
+    event.preventDefault(); // Evitar el envío del formulario y la recarga de la página
+    // Lógica adicional al enviar el formulario
+    alert("¡Formulario enviado!");
+  };
+
+  return (
+    <form onSubmit={handleSubmit}>
+      {/* Campos del formulario */}
+      <input type="text" name="name" required />
+      <input type="email" name="email" required />
+      
+      {/* Botón de envío */}
+      <input type="submit" value="Enviar" />
+    </form>
+  );
+}
+```
+
+En este ejemplo, al llamar a `event.preventDefault()` dentro del controlador de eventos `handleSubmit`, se evita que el formulario se envíe y se recargue la página. En su lugar, se ejecutará la lógica adicional que se haya definido, en este caso, se muestra una alerta.
+
+La función `preventDefault()` se utiliza en diversas situaciones donde se desea evitar el comportamiento estándar de un evento, como enlaces (`<a>`), botones (`<button>`), envío de formularios, entre otros. Al prevenir el comportamiento predeterminado, se brinda la posibilidad de controlar y personalizar la acción que se llevará a cabo en respuesta al evento.
+
+### Método `trim()` 
+
+La función `trim()` en JavaScript es un método que se utiliza en cadenas de texto para eliminar los espacios en blanco al inicio y al final de la cadena. Es decir, `trim()` elimina los espacios en blanco, los saltos de línea y los caracteres de tabulación que se encuentren al principio y al final de la cadena, pero no afecta los espacios en blanco que se encuentren dentro de la cadena.
+
+La función `trim()` es útil cuando se trabaja con datos de entrada del usuario, como formularios, ya que permite eliminar los espacios adicionales que los usuarios pueden haber introducido accidentalmente al ingresar datos.
+
+Aquí tienes un ejemplo de cómo se utiliza la función `trim()`:
+
+```javascript
+const textoConEspacios = "   Hola, soy un texto con espacios   ";
+const textoSinEspacios = textoConEspacios.trim();
+
+console.log(textoSinEspacios); // "Hola, soy un texto con espacios"
+```
+
+En este ejemplo, la cadena `textoConEspacios` contiene espacios en blanco al principio y al final. Al llamar a `trim()` en esa cadena, se elimina cualquier espacio en blanco adicional, y el resultado se guarda en la variable `textoSinEspacios`. Al imprimir `textoSinEspacios`, se muestra la cadena sin los espacios en blanco al inicio y al final.
+
+Es importante destacar que la función `trim()` no modifica la cadena original, sino que devuelve una nueva cadena con los espacios en blanco eliminados. Por lo tanto, es necesario asignar el resultado a una variable si se desea conservar la versión sin espacios de la cadena.
+
+### Operador de propagación
+
+El operador de propagación en JavaScript, representado por tres puntos (`...`), permite expandir elementos de una estructura iterable, como un arreglo o un objeto, en lugares donde se esperan múltiples elementos. 
+
+En el caso de arreglos, el operador de propagación puede ser utilizado para fusionar varios arreglos en uno solo, o para copiar un arreglo existente mientras se agregan nuevos elementos.
+
+Aquí tienes un ejemplo de cómo se utiliza el operador de propagación para fusionar arreglos:
+
+```javascript
+const arr1 = [1, 2, 3];
+const arr2 = [4, 5, 6];
+const mergedArray = [...arr1, ...arr2];
+
+console.log(mergedArray); // [1, 2, 3, 4, 5, 6]
+```
+
+En este ejemplo, el operador de propagación `...` se utiliza para expandir los elementos de `arr1` y `arr2`, y luego se fusionan en un nuevo arreglo `mergedArray`.
+
+Además de los arreglos, el operador de propagación también se puede utilizar con objetos. Al expandir un objeto con el operador de propagación, se creará una copia superficial del objeto original, y se pueden agregar o reemplazar propiedades.
+
+Aquí tienes un ejemplo de cómo se utiliza el operador de propagación con objetos:
+
+```javascript
+const obj1 = { a: 1, b: 2 };
+const obj2 = { c: 3, d: 4 };
+const mergedObject = { ...obj1, ...obj2 };
+
+console.log(mergedObject); // { a: 1, b: 2, c: 3, d: 4 }
+```
+
+En este ejemplo, el operador de propagación `...` se utiliza para expandir los objetos `obj1` y `obj2`, y luego se fusionan en un nuevo objeto `mergedObject`.
+
+En resumen, el operador de propagación (`...`) es una característica poderosa de JavaScript que permite expandir elementos de arreglos u objetos en lugares donde se esperan múltiples elementos. Esto facilita la fusión de arreglos, copiar arreglos, agregando nuevos elementos y fusionar objetos, ahorrando tiempo y simplificando el código.
+
+- [[reactjs#10. Completando y eliminando TODOs#Operador de propagación]]
+- [Notas Operador de Propagación](https://github.com/aleroses/Platzi/blob/master/DW/3-avanzado/1.react.js/reactjs.md#10-completando-y-eliminando-todos)
+
+### Fragmentos
+
+En React, el uso de `<>` o `</>` se conoce como fragmentos (fragments) o sintaxis de fragmento. Los fragmentos son una característica de JSX que permiten agrupar múltiples elementos sin necesidad de envolverlos en un elemento contenedor, como un `<div>`. Esto es útil cuando se necesita retornar múltiples elementos adyacentes en un componente de React sin crear un nodo DOM adicional.
+
+Aquí tienes un ejemplo de cómo se utilizan los fragmentos en React:
+
+```jsx
+function MyComponent() {
+  return (
+    <>
+      <h1>Título</h1>
+      <p>Párrafo 1</p>
+      <p>Párrafo 2</p>
+    </>
+  );
+}
+```
+
+En este ejemplo, los elementos `<h1>` y `<p>` están envueltos por los fragmentos `<>` y `</>`. Estos fragmentos permiten retornar varios elementos adyacentes sin necesidad de un elemento contenedor adicional.
+
+Es importante destacar que los fragmentos no generan un nodo DOM adicional en el árbol de elementos. En su lugar, se consideran una forma de agrupar elementos sin afectar la estructura del DOM resultante.
+
+Además de utilizar los fragmentos `<>` y `</>`, también se puede utilizar la sintaxis `<React.Fragment>` y `</React.Fragment>` para lograr el mismo resultado. Por ejemplo:
+
+```jsx
+function MyComponent() {
+  return (
+    <React.Fragment>
+      <h1>Título</h1>
+      <p>Párrafo 1</p>
+      <p>Párrafo 2</p>
+    </React.Fragment>
+  );
+}
+```
+
+Ambas formas de sintaxis son equivalentes y se pueden utilizar indistintamente en React. Los fragmentos son una herramienta útil para evitar la necesidad de agregar un elemento contenedor innecesario cuando se desea renderizar múltiples elementos adyacentes en un componente de React.
+
+### Pseudo-clase `:nth-child()`
+
+La pseudo-clase `:nth-child()` en CSS selecciona elementos específicos basados en su posición en relación con sus elementos hermanos dentro de un contenedor.
+
+📌 **nth**: "número" o "enésimo" / Décimo: Tenth
+
+La sintaxis básica de `:nth-child()` es la siguiente:
+
+```css
+selector:nth-child(n)
+```
+
+Donde `selector` es el selector CSS que identifica el tipo de elemento a seleccionar, y `n` es una fórmula que determina la posición del elemento a seleccionar.
+
+Aquí tienes algunos ejemplos para comprender mejor cómo funciona:
+
+1. Seleccionar el primer elemento hijo:
+```css
+ul li:nth-child(1) {
+  /* Reglas de estilo */
+}
+```
+Este selector seleccionará el primer elemento `<li>` que sea hijo de un elemento `<ul>`. 
+
+2. Seleccionar elementos pares:
+```css
+ul li:nth-child(even) {
+  /* Reglas de estilo */
+}
+```
+Este selector seleccionará todos los elementos `<li>` que sean hijos de un elemento `<ul>` y tengan una posición par.
+
+3. Seleccionar elementos impares:
+```css
+ul li:nth-child(odd) {
+  /* Reglas de estilo */
+}
+```
+Este selector seleccionará todos los elementos `<li>` que sean hijos de un elemento `<ul>` y tengan una posición impar.
+
+4. Seleccionar elementos en una posición específica:
+```css
+ul li:nth-child(3n+2) {
+  /* Reglas de estilo */
+}
+```
+Este selector seleccionará los elementos `<li>` que sean hijos de un elemento `<ul>` y tengan una posición que cumpla con la fórmula `3n+2`. En este caso, seleccionaría el segundo, quinto, octavo, y así sucesivamente.
+
+La pseudo-clase `:nth-child()` es una herramienta poderosa para seleccionar elementos específicos basados en su posición en relación con otros elementos hermanos. Puede ser útil para aplicar estilos diferentes a elementos específicos dentro de una lista o para implementar diseños de cuadrículas u otras estructuras repetitivas.
+
+
+### Biblioteca `uuid` 
+
+El paquete `uuid` es una biblioteca de generación de identificadores únicos universalmente (UUID, por sus siglas en inglés) para Node.js y navegadores. Se utiliza comúnmente en aplicaciones de React para generar identificadores únicos que se pueden asignar a elementos, componentes o datos.
+
+Un UUID es un identificador único que se compone de 32 caracteres alfanuméricos, normalmente se representa en formato de cadena separada por guiones, como "f47ac10b-58cc-4372-a567-0e02b2c3d479". Los UUID son útiles cuando se necesita un identificador único para elementos en una aplicación, como elementos de lista, claves de bases de datos, o cualquier otro caso en el que se requiera una identificación única.
+
+El paquete `uuid` en React proporciona una forma sencilla de generar UUIDs en el código. Puedes instalarlo utilizando npm o yarn, y luego importarlo en tu archivo de código:
+
+```bash
+npm install uuid
+```
+
+```jsx
+import { v4 as uuidv4 } from 'uuid';
+
+function MyComponent() {
+  const uniqueId = uuidv4();
+
+  return (
+    <div>
+      <p>El identificador único es: {uniqueId}</p>
+    </div>
+  );
+}
+```
+
+En este ejemplo, se importa la función `v4` del paquete `uuid` con el alias `uuidv4`. Luego, se llama a `uuidv4()` para generar un UUID único y se guarda en la variable `uniqueId`. Este identificador único se puede utilizar en cualquier parte del componente donde sea necesario.
+
+La biblioteca `uuid` ofrece diferentes versiones de UUID, como `v1` y `v3`, pero la versión `v4` es la más comúnmente utilizada, ya que genera UUIDs aleatorios. Sin embargo, puedes elegir la versión que mejor se adapte a tus necesidades.
+
+En resumen, el paquete `uuid` en React es una biblioteca que proporciona una forma sencilla de generar identificadores únicos (UUIDs) que se pueden utilizar en diferentes partes de una aplicación. Esto es útil para asignar identificadores únicos a elementos, componentes o datos en una aplicación de React.
+
+[Documentación](https://www.npmjs.com/package/uuid)
+
+### Datos:  
+
+#### `log`
+Si escribes `log` en Visual Studio Code y das enter, este crea el `console.log()` automáticamente. 
+
+#### Elementos de HTML/JSX
+
+Para autocompletar elementos JSX escribiendo solo `h1 + enter` solo debes agregar lo siguiente a tu configuración de Visual Studio Code: 
+
+Abrimos los Settings     
+- `Ctrl` + `,` (coma)
+- **Open settings:** Esquina derecha superior
+    - Icono hoja con esquina doblada y con flecha ↪📄
+
+Agregamos:   
+```json
+{
+  "emmet.includeLanguages": {
+    "javascript": "javascriptreact"
+  }
+}
+```
+
+Si quieres más configuraciones puedes ver algunas [🔥 aquí](https://github.com/aleroses/Platzi/blob/master/DW/1-basico/3-prework/entorno-windows/vsc/setting.md)
+
+
+### Código 
+
+Estructura de carpetas y archivos:  
+
+```bash
+.
+├── node_modules
+├── package-lock.json
+├── package.json
+├── public
+│   ├── index.html
+│   ├── manifest.json
+│   └── robots.txt
+└── src
+    ├── App.css
+    ├── App.jsx
+    ├── components 👈👀👇
+    │   ├── Task.jsx
+    │   ├── TaskForm.jsx
+    │   └── TasksList.jsx
+    ├── images 👈👀👇
+    │   └── freecodecamp-logo.png
+    ├── index.css
+    ├── index.js
+    └── stylesheets 👈👀👇
+        ├── Task.css
+        ├── TaskForm.css
+        └── TasksList.css
+```
+
+`public > index.html`  
+```html
+<body>
+  <noscript>
+      You need to enable JavaScript to run this app.
+  </noscript>
+  <div id="root"></div>
+</body>
+```
+
+`src > index.js`  
+```jsx
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import App from "./App";
+
+const root = ReactDOM.createRoot(
+  document.getElementById("root")
+);
+root.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);
+```
+
+`src > App.jsx`  
+```jsx
+import "./App.css";
+import freeCodeCampLogo from "./images/freecodecamp-logo.png";
+import { ListaDeTareas } from "./components/TasksList";
+
+function App() {
+  return (
+    <div className="aplicacion-tareas">
+      <div className="freecodecamp-logo-contenedor">
+        <img
+          className="freecodecamp-logo"
+          src={freeCodeCampLogo}
+          alt="logo freecodecamp"
+        />
+      </div>
+      <div className="tareas-lista-principal">
+        <h1>Mis Tareas</h1>
+        <ListaDeTareas />
+      </div>
+    </div>
+  );
+}
+
+export default App;
+```
+
+`src > components > TaskForm.jsx`
+```jsx
+import React, { useState } from "react";
+import "../stylesheets/TaskForm.css";
+import { v4 as uuidv4 } from "uuid";
+
+function TareaFormulario(props) {
+  const [input, setInput] = useState("");
+
+  const manejarCambio = (e) => {
+    setInput(e.target.value);
+  };
+
+  const manejarEnvio = (e) => {
+    e.preventDefault();
+
+    const TareaNueva = {
+      id: uuidv4(),
+      texto: input,
+      completada: false,
+    };
+
+    props.onSubmit(TareaNueva);
+  };
+
+  return (
+    <form
+      className="tarea-formulario"
+      action=""
+      onSubmit={manejarEnvio}
+    >
+      <input
+        className="tarea-input"
+        type="text"
+        placeholder="Ingresa una Tarea"
+        name="texto"
+        onChange={manejarCambio}
+      />
+      <button className="tarea-boton">
+        Agregar Tarea
+      </button>
+    </form>
+  );
+}
+
+export { TareaFormulario };
+```
+
+`src > components > TasksList.jsx`
+```jsx
+import React, { useState } from "react";
+import { TareaFormulario } from "./TaskForm";
+import { Tarea } from "./Task";
+import "../stylesheets/TasksList.css";
+
+function ListaDeTareas() {
+  const [tareas, setTareas] = useState([]);
+
+  const agregarTarea = (tarea) => {
+    if (tarea.texto.trim()) {
+      tarea.texto = tarea.texto.trim();
+
+      const tareasActualizadas = [tarea, ...tareas];
+      setTareas(tareasActualizadas);
+    }
+  };
+
+  const eliminarTarea = (id) => {
+    const tareasActualizadas = tareas.filter(
+      (tarea) => tarea.id !== id
+    );
+    setTareas(tareasActualizadas);
+  };
+
+  const completarTarea = (id) => {
+    const tareasActualizadas = tareas.map(
+      (tarea) => {
+        if (tarea.id === id) {
+          tarea.completada = !tarea.completada;
+        }
+        return tarea;
+      }
+    );
+    setTareas(tareasActualizadas);
+  };
+
+  return (
+    <>
+      <TareaFormulario onSubmit={agregarTarea} />
+      <div className="tareas-lista-contenedor">
+        {tareas.map((tarea ) => (
+          <Tarea
+            key={tarea.id}
+            id={tarea.id}
+            texto={tarea.texto}
+            completada={tarea.completada}
+            completarTarea={completarTarea}
+            eliminarTarea={eliminarTarea}
+          />
+        ))}
+      </div>
+    </>
+  );
+}
+
+export { ListaDeTareas };
+```
+
+`src > components > Task.jsx`  
+```jsx
+import React from "react";
+import "../stylesheets/Task.css";
+import { AiOutlineCloseCircle } from "react-icons/ai";
+
+function Tarea({
+  id,
+  texto,
+  completada,
+  completarTarea,
+  eliminarTarea,
+}) {
+  return (
+    <div
+      className={
+        completada
+          ? "tarea-contenedor completada"
+          : "tarea-contenedor"
+      }
+    >
+      <div
+        className="tarea-texto"
+        onClick={() => completarTarea(id)}
+      >
+        {texto}
+      </div>
+      <div
+        className="tarea-contenedor-iconos"
+        onClick={() => eliminarTarea(id)}
+      >
+        <AiOutlineCloseCircle className="tarea-icono" />
+      </div>
+    </div>
+  );
+}
+
+export { Tarea };
+```
+
 ## Componentes de clase 
+
+```mermaid
+graph LR
+    A(Componente de Clase)
+    A --> Métodos
+    A --> Estado
+```
+
+### Método 
+
+Función asociada a un componente que puede acceder y usar su estado. 
+
+```js
+import React from 'react';
+.         👆👀👇      👀👇
+class NombreComponente extends React.Component {
+}
+```
+
+	Caracteristicas: 
+	- Debe extender React.Component.
+	- Debe tener un método render() para retornar un elemento de JSX.
+	- Pueden recibir props si es necesario (props). 
+
+### Método render()
+
+Es el único método obligatorio para un componente de clase en React. 
+
+```jsx
+import React from 'react';
+.         👆👀👇      👀👇
+class NombreComponente extends React.Component {
+  render() { 👈👀👆       👆👀👇
+    return <h1>¡Hola, {this.props.nombre}!</h1>;
+  }
+}
+```
+
+### Props 
+
+Los componentes de clase también pueden recibir props.
+
+```js
+.                 👀👇
+return <h1>¡Hola, {this.props.nombreDelProp}!</h1>;
+```
+
+### `this` en Componentes de Clase
+
+`this` se refiere al componente actual. 
+
+En los componentes de clase en React, la palabra clave `this` se utiliza para referirse al contexto actual del componente. Permite acceder a las propiedades y métodos del componente dentro de su propia definición.
+
+Cuando se crea un componente de clase en React, `this` se refiere a la instancia del componente en sí mismo. Permite acceder a las propiedades y métodos del componente, así como a su estado.
+
+Aquí hay un ejemplo para ilustrar su uso:
+
+```jsx
+class MiComponente extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      contador: 0
+    };
+  }
+
+  incrementarContador() {
+    this.setState({ contador: this.state.contador + 1 });
+  }
+
+  render() {
+    return (
+      <div>
+        <p>Contador: {this.state.contador}</p>
+        <button onClick={this.incrementarContador.bind(this)}>Incrementar</button>
+      </div>
+    );
+  }
+}
+```
+
+En este ejemplo, `this` se utiliza para acceder al estado del componente (`this.state.contador`) y para llamar al método `incrementarContador()` dentro del evento `onClick` del botón.
+
+Es importante tener en cuenta que en los componentes de clase, `this` debe ser enlazado apropiadamente para garantizar que se refiera al componente actual. Esto se puede hacer utilizando el método `bind()` o utilizando funciones flecha (`() => {}`) en lugar de funciones regulares, ya que las funciones flecha conservan automáticamente el contexto adecuado.
+
+En resumen, `this` en los componentes de clase en React es una referencia al contexto del componente actual. Se utiliza para acceder a las propiedades, métodos y estado del componente dentro de su propia definición.
+
+
+### Constructor 
+
+Método usado para inicializar el estado de un componente de React. 
+
+Es llamado automáticamente cuando se crea el componente. 
+
+```jsx
+.   Componente Padre 👈👀👇
+class Tarea extends React.Component {
+  constructor() { 👈👀👇
+    super();
+    this.state = {completada: true};
+  }
+
+  render() {
+    return <p>Mi tarea</p>
+  }
+}
+```
+
+El constructor debe llamar a `super()` para heredar todas las funciones de su componente "padre" (React.Component)
+
+### props en el Constructor 
+
+Si el componente tiene un método constructor y recibe props, deben ser pasados al `constructor` y a `super()`.
+
+```jsx
+class Tarea extends React.Component {
+  constructor(props) { 👈👀
+    super(props); 👈👀
+  }
+
+  render() {
+    return <p>Mi tarea</p>
+  }
+}
+```
+
+### Estado en el Constructor 
+
+El objeto `state` (estado) se inicializa en el constructor. 
+
+```jsx
+class Tarea extends React.Component {
+  constructor() { 
+    super();
+    this.state = {completada: true}; 👈👀👇
+  }
+
+  render() {
+    return <p>Mi tarea</p>
+  }
+}
+```
+
+Puede tener varias propiedades separadas por comas. 
+
+```jsx
+class Tarea extends React.Component {
+  constructor(props) { 
+    super(props);
+    this.state = { 👈👀👇
+      completada: true,
+      color: azul,
+      prioridad: 1
+    }; 
+  }
+
+  render() {
+    return <p>Mi tarea</p>
+  }
+}
+```
+
+### Accediendo al Estado 
+
+```jsx
+this.state.propiedad
+```
+
+```jsx
+class Tarea extends React.Component {
+  constructor(props) { 
+    super(props);
+    this.state = { 👈👀👇
+      completada: true, // this.state.completada
+      color: azul, // this.state.color
+      prioridad: 1 // this.state.prioridad
+    }; 
+  }
+
+  render() { 👀👇
+    return <p>Mi tarea tienes prioridad: {this.state.prioridad}</p>
+  }
+}
+```
+
+### Actualizando el Estado 
+
+Para actualizar una o más propiedades del objeto `state`, se llama a `this.setState()` y se pasa como argumento un objeto con las propiedades que se van a actualizar y sus nuevos valores. 
+
+```jsx
+this.setState()
+```
+
+```jsx
+this.setState({
+  completada: false,
+  color: "verde"
+})
+```
+
+### Métodos de Ciclo de Vida 
+
+Son métodos especiales de React usados para realizar operaciones con componentes en momentos específicos de su vida en el DOM. 
+
 
 ## Adaptar los primeros dos proyectos con componentes de clase
 
 ### Clon de testimonios 
 
+Si trabajas con Git sería buena idea crear una nueva rama para hacer nuevos cambios: 
+
+Antes de cambiar de rama debes guardar los cambios en Git. 
+```bash
+git add . && git commit -am "Proyecto Testimonios"
+git branch development
+git checkout development 
+```
+
+`src > App.js`  
+```jsx
+import React from "react"; 👈👀
+import "./App.css";
+// Puedes agregar u omitir la extensión.js
+import { Testimonio } from "./components/Testimony";
+
+class App extends React.Component {
+  render() {
+    return (
+      <div className="App">
+        <h1>
+          Esto es lo que dicen nuestros alumnos
+          sobre FreeCodeCamp:
+        </h1>
+        <div className="contenedor-principal">
+          <Testimonio
+            nombre="Shawn Wang"
+            pais="Singapur"
+            imagen="shawn"
+            cargo="Ingeniero de Software"
+            empresa="Amazon"
+            testimonio="Da miedo cambiar de carrera. Solo gané la confianza de que podía programar trabajando a través de los cientos de horas de lecciones gratuitas en freeCodeCamp. Dentro de un año tuve un trabajo de seis cifras como ingeniero de software. freeCodeCamp cambió mi vida."
+          />
+          <Testimonio
+            nombre="Sarah Chima"
+            pais="Nigeria"
+            imagen="sarah"
+            cargo="Ingeniera de Software"
+            empresa="ChatDesk"
+            testimonio="FreeCodeCamp fue la puerta de entrada a mi carrera como desarrollador de software. El plan de estudios bien estructurado llevó mis conocimientos de programación de un nivel de principiante total a un nivel muy seguro. Era todo lo que necesitaba para conseguir mi primer trabajo de desarrollador en una empresa increíble."
+          />
+          <Testimonio
+            nombre="Emma Bostian"
+            pais="Suecia"
+            imagen="emma"
+            cargo="Ingeniero de Software"
+            empresa="Spotify"
+            testimonio="Siempre he tenido problemas para aprender JavaScript. He tomado muchos cursos, pero el curso de freeCodeCamp fue el que se quedó. Estudiar JavaScript, así como estructuras de datos y algoritmos en freeCodeCamp me dio las habilidades y la confianza que necesitaba para conseguir el trabajo de mis sueños como ingeniero de software en Spotify."
+          />
+        </div>
+      </div>
+    );
+  }
+}
+
+export default App;
+```
+
+`src > Testimony.js`
+```jsx
+import React from "react";
+import "../stylesheets/Testimonio.css";
+
+class Testimonio extends React.Component {
+  render() {
+    return (
+      <div className="contenedor-testimonio">
+        <img
+          className="imagen-testimonio"
+          src={require(`../imagenes/testimonio-${this.props.imagen}.png`)}
+          alt={`Foto de ${this.props.nombre}`}
+        />
+        <div className="contenedor-texto-testimonio">
+          <p className="nombre-testimonio">
+            <strong>{this.props.nombre}</strong> en{" "}
+            {this.props.pais}
+          </p>
+          <p className="cargo-testimonio">
+            {this.props.cargo} en{" "}
+            <strong>{this.props.empresa}</strong>
+          </p>
+          <p className="texto-testimonio">
+            "{this.props.testimonio}"
+          </p>
+        </div>
+      </div>
+    );
+  }
+}
+
+export { Testimonio };
+```
+
+Antes de cambiar de rama debes guardar cambios en Git. 
+```bash
+git add . && git commit -am "Cambiar funciones por clases"
+git checkout master 
+```
+
 ### Contador de clics 
+
+```bash
+cd ..
+cd click-contador
+code ./ -r
+git status
+git add . && git commit -am "Cambiar funciones por clases"
+git branch development 
+git checkout development
+```
+
+#### Método `bin()` 
+
+En React, `bind()` es un método que se utiliza para enlazar (bind) el contexto de `this` a un método de un componente de clase. Se utiliza principalmente para asegurarse de que `this` se refiera correctamente al componente en lugar de perder su contexto en ciertos escenarios.
+
+Cuando se define un método en un componente de clase y se lo utiliza como callback en un evento o se pasa como referencia a otro componente, puede ocurrir un problema de pérdida de contexto. Esto significa que cuando el método se llama, `this` dentro de ese método no se refiere al componente actual, lo cual puede provocar errores o comportamientos inesperados.
+
+Para solucionar esto, se utiliza `bind()` para enlazar explícitamente el contexto del componente al método. Al hacerlo, se garantiza que `this` dentro del método se refiera al componente en sí mismo.
+
+Aquí tienes un ejemplo de cómo se utiliza `bind()` en un componente de clase en React:
+
+```jsx
+class MiComponente extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      contador: 0
+    };
+    this.incrementarContador = this.incrementarContador.bind(this);
+  }
+
+  incrementarContador() {
+    this.setState({ contador: this.state.contador + 1 });
+  }
+
+  render() {
+    return (
+      <div>
+        <p>Contador: {this.state.contador}</p>
+        <button onClick={this.incrementarContador}>Incrementar</button>
+      </div>
+    );
+  }
+}
+```
+
+En este ejemplo, se utiliza `bind()` en el constructor del componente para enlazar el contexto de `this` al método `incrementarContador()`. De esta manera, cuando el botón se hace clic, el método se llama correctamente y puede acceder al estado del componente utilizando `this`.
+
+Es importante tener en cuenta que el uso de `bind()` en el constructor es una buena práctica para mejorar el rendimiento. Esto se debe a que `bind()` crea una nueva función enlazada cada vez que se llama, por lo que enlazarlo en el constructor evita que se cree una nueva función en cada renderizado.
+
+En resumen, `bind()` se utiliza en los componentes de clase en React para enlazar el contexto de `this` a un método y garantizar que `this` se refiera correctamente al componente en lugar de perder su contexto. Se utiliza en el constructor del componente para enlazar métodos que se utilizarán como callbacks en eventos o se pasarán como referencias a otros componentes.
+
+
+#### Código 
+
+`src > App.js`  
+```jsx
+import React from "react";
+import "./App.css";
+import { Button } from "./components/Button";
+import { Contador } from "./components/Contador";
+import freeCodeCampLogo from "./images/freecodecamp-logo.png";
+
+class App extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      numClics: 0,
+    };
+    this.manejarClic = this.manejarClic.bind(this);
+    this.reiniciarContador =
+      this.reiniciarContador.bind(this);
+  }
+
+  manejarClic() {
+    this.setState(({ numClics }) => ({
+      numClics: numClics + 1,
+    }));
+  }
+
+  reiniciarContador() {
+    this.setState({ numClics: 0 });
+  }
+
+  render() {
+    return (
+      <div className="App">
+        <div className="freecodecamp-logo-contenedor">
+          <img
+            className="freecodecamp-logo"
+            src={freeCodeCampLogo}
+            alt="Logo de freeCodeCamp"
+          />
+        </div>
+        <div className="contenedor-principal">
+          <Contador
+            numClics={this.state.numClics}
+          />
+          <Button
+            texto="Clic"
+            esBotonDeClic={true}
+            manejarClic={this.manejarClic}
+          />
+          <Button
+            texto="Reiniciar"
+            esBotonDeClic={false}
+            manejarClic={this.reiniciarContador}
+          />
+        </div>
+      </div>
+    );
+  }
+}
+
+export default App;
+```
+
+`src > components > Contador.js`  
+```jsx
+import React from "react";
+import "../stylesheets/Contador.css";
+
+class Contador extends React.Component {
+  render() {
+    return (
+      <div className="contador">{this.props.numClics}</div>
+    );
+  }
+}
+
+export { Contador };
+```
+
+`src > components > Button.js`  
+```jsx
+import React from "react";
+import "../stylesheets/Button.css";
+
+class Button extends React.Component {
+  render() {
+    return (
+      <button
+        className={
+          this.props.esBotonDeClic
+            ? "boton-clic"
+            : "boton-reiniciar"
+        }
+        onClick={this.props.manejarClic}
+      >
+        {this.props.texto}
+      </button>
+    );
+  }
+}
+
+export { Button };
+```
+
+```bash
+git status
+git add . && git commit -am "Agregar clases en lugar de functions"
+git status
+git checkout master
+```
