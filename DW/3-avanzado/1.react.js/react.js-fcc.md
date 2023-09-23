@@ -2,7 +2,15 @@
 
 > Estefania Cassingena Navone  
 > Inicio: `17-09-2023`  
-> Final: ``
+> Final: `22-09-2023`
+
+💻 Código en GitHub:  
+- [Proyecto 1: ](https://github.com/estefaniacn/testimonios-freecodecamp) 
+- [Proyecto 2:](https://github.com/estefaniacn/contador-de-clics-freecodecamp) 
+- [Proyecto 3:](https://github.com/estefaniacn/calculadora-react-freecodecamp) 
+- [Proyecto 4:](https://github.com/estefaniacn/aplicacion-tareas-react) 
+- [Proyecto 1 Componentes de Clase :](https://github.com/estefaniacn/testimonios-freecodecamp-clase) 
+- [Proyecto 2 Componentes de Clase:](https://github.com/estefaniacn/contador-de-clics-clase)
 
 ## 1. Conceptos básicos de React
 ### React 
