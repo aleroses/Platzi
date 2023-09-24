@@ -521,6 +521,48 @@ Utiliza las Herramientas de Desarrollo de React (React Developer Tools) **para 
 
 📌 La extensión en los archivos `jsx` es igual a `js`, no hay diferencia.
 
+#### Método `ReactDOM.createRoot`
+
+En React, `ReactDOM.createRoot` es un método utilizado para renderizar una aplicación de React en el DOM. Fue introducido en la versión 16.9 de React como una alternativa a `ReactDOM.render` para admitir el nuevo modelo de renderizado llamado "Concurrent Mode" (Modo Concurrente) que se introdujo en esa misma versión.
+
+El método `ReactDOM.createRoot` se utiliza para crear un "root" (raíz) de renderizado en el DOM. Este root es el punto de inicio para la renderización de la aplicación de React. A diferencia de `ReactDOM.render`, que toma un elemento de React y lo monta en un nodo del DOM existente, `ReactDOM.createRoot` crea un nuevo root que puede ser utilizado para renderizar y actualizar la aplicación de React de forma concurrente.
+
+Aquí hay un ejemplo de uso de `ReactDOM.createRoot`:
+
+```javascript
+import ReactDOM from 'react-dom';
+
+// ID root creado en el index.html         👀👇
+const rootElement = document.getElementById('root'); 
+const root = ReactDOM.createRoot(rootElement);
+
+root.render(<App />);
+```
+
+En este ejemplo, estamos creando un nuevo root en el nodo del DOM con el id "root". Luego, utilizamos el método `render` del root para renderizar el componente `<App>` en ese root.
+
+La ventaja de usar `ReactDOM.createRoot` en lugar de `ReactDOM.render` es que permite aprovechar el modo concurrente de React. El modo concurrente permite que la renderización y actualización de la interfaz de usuario sean más eficientes y fluidas, especialmente en aplicaciones grandes y complejas.
+
+Sin embargo, es importante destacar que el uso de `ReactDOM.createRoot` y el modo concurrente es opcional. Si estás desarrollando una aplicación más pequeña o no necesitas las características avanzadas del modo concurrente, aún puedes seguir utilizando `ReactDOM.render` para renderizar tu aplicación de React sin problemas.
+
+#### Componente `<React.StrictMode>`
+
+En React, `<React.StrictMode>` es un componente especial que se proporciona como parte de la biblioteca React. Su propósito principal es ayudar a detectar y resaltar posibles problemas en la aplicación durante el desarrollo.
+
+Cuando envuelves tu aplicación en `<React.StrictMode>`, React realiza una serie de verificaciones adicionales y advertencias en modo de desarrollo. Estas verificaciones se implementan para ayudarte a escribir código React de manera más segura, encontrar problemas potenciales y evitar prácticas desactualizadas.
+
+Algunas de las verificaciones y advertencias adicionales que se activan con `<React.StrictMode>` son:
+
+1. Identificación de componentes con efectos secundarios potencialmente problemáticos: StrictMode verifica que los componentes no realicen operaciones potencialmente peligrosas o desaconsejadas, como escribir directamente en el DOM o usar ciertos métodos de ciclo de vida obsoletos.
+
+2. Advertencias sobre el uso de funciones y componentes obsoletos: StrictMode advierte si estás utilizando componentes o funciones de React que están marcados como obsoletos o en desuso. Esto te permite actualizar tu código a las últimas prácticas recomendadas.
+
+3. Advertencias de renderizado duplicado: StrictMode verifica si hay renderizaciones duplicadas en tu aplicación. Esto ayuda a identificar posibles problemas de rendimiento y asegura que tus componentes se rendericen de manera eficiente.
+
+Es importante tener en cuenta que `<React.StrictMode>` solo se activa en el entorno de desarrollo. Cuando construyes tu aplicación para producción, estas verificaciones adicionales no se incluyen en el paquete final.
+
+En resumen, `<React.StrictMode>` es una herramienta útil para detectar y corregir posibles problemas en tu código React durante el desarrollo. Puedes envolver tu aplicación principal con `<React.StrictMode>` en el punto de entrada principal de tu aplicación, como el archivo `index.js`, para aprovechar sus verificaciones y advertencias adicionales.
+
 
 ### Código del proyecto Testimonios 
 
