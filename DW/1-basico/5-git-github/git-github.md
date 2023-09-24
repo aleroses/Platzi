@@ -884,6 +884,19 @@ Your repositories
 		- Vemos los cambios
 		- History
 
+### Conexión a una segunda cuenta de GitHub
+
+Si tengo una máquina (PC, Laptop) que ya está conectado con una cuenta de GitHub y ya tiene una llave SSH, no podre usar esta misma llave SSH en otra cuenta de GitHub, ya que las llaves SSH no son por repositorio ni por proyecto sino por máquina. 
+
+La única manera de enviar proyectos a una nueva cuenta de GitHub es usando HTTPS y no SSH como hubiera preferido. Solo debo configurar Git de manera local de la siguiente manera:  
+
+```bash
+✨ git config --local user.name "[Tu segundo nombre]"
+✨ git config --local user.email "[Tu segunda dirección de correo electrónico]"
+```
+
+📌 Nota: Usamos `--local` porque `--global `ya lo tiene la cuenta principal.
+
 🎲
 
 ## 23. Tags y versiones en Git y GitHub
