@@ -1,5 +1,6 @@
 # React Desde Cero - Curso de React Con Proyectos
 
+> [Aprende React Desde Cero - Curso de React Con Proyectos](https://www.youtube.com/watch?v=6Jfk8ic3KVk)  
 > Estefania Cassingena Navone  
 > Inicio: `17-09-2023`  
 > Final: `22-09-2023`
