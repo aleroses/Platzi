@@ -142,3 +142,94 @@ La unidad `vmin` es útil cuando se desea hacer que los elementos se ajusten pro
 Es importante destacar que `vmin` es compatible con la mayoría de los navegadores modernos, pero puede no ser compatible con versiones antiguas de algunos navegadores. Por lo tanto, es recomendable realizar pruebas y considerar la compatibilidad del navegador al utilizar esta unidad.
 
 En resumen, `vmin` es una unidad de medida relativa en CSS que se utiliza para especificar tamaños o distancias en relación con el valor mínimo entre el ancho y la altura de la ventana gráfica. Permite hacer que los elementos se ajusten proporcionalmente al tamaño de la ventana gráfica.
+
+## Media queries
+
+Los media queries son una característica de CSS que te permiten aplicar estilos diferentes según las características del medio en el que se visualiza una página web. Un medio puede ser el tipo de dispositivo (como una pantalla de computadora, una tableta o un teléfono móvil), características de impresión, orientación de pantalla, resolución, capacidad de color, entre otros.
+
+Los media queries se utilizan para crear diseños responsivos y adaptativos, donde los estilos se ajustan automáticamente según las condiciones del entorno de visualización. Esto permite que una página web se vea bien y funcione correctamente en una amplia variedad de dispositivos y tamaños de pantalla.
+
+Los media queries se definen utilizando la regla `@media` en CSS. Aquí tienes un ejemplo básico de su sintaxis:
+
+```css
+@media tipo-de-medio y (característica) {
+  /* Estilos a aplicar */
+}
+```
+
+Donde:
+- `tipo-de-medio` especifica el tipo de medio para el cual se aplicarán los estilos, como `screen` (pantalla), `print` (impresión), `speech` (voz), entre otros.
+- `característica` es una condición o conjunto de condiciones que deben cumplirse para que los estilos se apliquen. Puedes utilizar características como el ancho de la ventana gráfica (`width`), la relación de aspecto (`aspect-ratio`), la densidad de píxeles (`resolution`), entre otros.
+
+Dentro de un media query, puedes definir los estilos que deseas aplicar para el medio y las características específicas. Por ejemplo:
+
+```css
+@media (min-width: 768px) {
+  /* Estilos a aplicar para pantallas de 768 píxeles o más */
+  body {
+    font-size: 16px;
+  }
+}
+```
+
+En este caso, los estilos dentro del media query se aplicarán solo cuando el ancho de la ventana gráfica sea de 768 píxeles o más.
+
+Las media queries son una herramienta poderosa para crear diseños responsivos y adaptativos en CSS, permitiéndote ajustar tus estilos según las características del medio en el que se visualiza tu página web.
+
+### Más ejemplos de Media Queries 
+
+1. Cambiar el color de fondo en pantallas **más grandes de 768 píxeles**:
+
+```css
+@media (min-width: 768px) {
+  body {
+    background-color: lightblue;
+  }
+}
+```
+
+2. Ocultar un elemento cuando el ancho de la ventana gráfica sea **menor a 500 píxeles**:
+
+```css
+@media (max-width: 500px) {
+  .elemento-a-ocultar {
+    display: none;
+  }
+}
+```
+
+3. Cambiar el tamaño de fuente dependiendo de la orientación del dispositivo:
+
+```css
+@media (orientation: landscape) {
+  .titulo {
+    font-size: 24px;
+  }
+}
+
+@media (orientation: portrait) {
+  .titulo {
+    font-size: 16px;
+  }
+}
+```
+
+4. Ajustar los estilos según la resolución de pantalla:
+
+```css
+@media (min-resolution: 300dpi) {
+  .imagen {
+    width: 300px;
+    height: 300px;
+  }
+}
+
+@media (min-resolution: 150dpi) {
+  .imagen {
+    width: 150px;
+    height: 150px;
+  }
+}
+```
+
+Estos son solo algunos ejemplos para ilustrar cómo puedes utilizar media queries en CSS. Puedes combinar múltiples características y utilizar operadores lógicos como `and`, `or` y `not` para crear consultas más complejas.

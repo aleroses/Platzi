@@ -5554,6 +5554,8 @@ npm run deploy
 
 Revisa tu repositorio en GitHub: `Settings > Pages` espera unos minutos y listo.   
 
+![](https://i.postimg.cc/bNGkxYL3/gh-pages.jpg)
+
 [Documentación](https://create-react-app.dev/docs/deployment/)
 
 ## 29. Presentación de proyectos para tu portafolio

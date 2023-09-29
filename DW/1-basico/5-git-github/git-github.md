@@ -895,7 +895,7 @@ La única manera de enviar proyectos a una nueva cuenta de GitHub es usando HTTP
 ✨ git config --local user.email "[Tu segunda dirección de correo electrónico]"
 ```
 
-📌 Nota: Usamos `--local` porque `--global `ya lo tiene la cuenta principal.
+📌 Nota: Usamos `--local` porque `--global` ya lo tiene la cuenta principal.
 
 🎲
 
