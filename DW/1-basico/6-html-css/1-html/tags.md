@@ -108,3 +108,35 @@ Reemplaza `"ruta/al/logo.png"` con la ruta relativa o absoluta hacia el archivo 
 
 Recuerda que los navegadores pueden almacenar en caché el favicon, por lo que es posible que tarde un poco en actualizarse después de realizar cambios. También ten en cuenta que algunos navegadores pueden ignorar el favicon personalizado si no cumple con ciertos requisitos de tamaño y formato.
 
+## Etiqueta `form`
+
+La etiqueta `<form>` es un elemento HTML utilizado para crear un formulario en una página web. Proporciona una estructura para recopilar y enviar datos del usuario al servidor. Los formularios son una parte fundamental de la interacción entre el sitio web y el usuario, y se utilizan comúnmente para enviar información de registro, comentarios, realizar búsquedas y más.
+
+Los elementos que se pueden utilizar dentro de la etiqueta `<form>` son los siguientes:
+
+1. `<input>`: Se utiliza para crear campos de entrada de datos, como texto, contraseñas, casillas de verificación, botones de radio, archivos adjuntos, etc.
+
+2. `<textarea>`: Permite crear un área de texto de múltiples líneas para que los usuarios ingresen texto largo o comentarios.
+
+3. `<select>`: Crea una lista desplegable de opciones, de la cual los usuarios pueden seleccionar una o varias.
+
+4. `<button>`: Permite agregar botones dentro del formulario, que pueden usarse para enviar el formulario o realizar acciones específicas mediante JavaScript.
+
+5. `<fieldset>`: Ayuda a agrupar y organizar elementos relacionados dentro del formulario. Puede contener etiquetas `<legend>` para proporcionar un título o descripción para el grupo de elementos.
+
+6. `<label>`: Proporciona una etiqueta descriptiva para un elemento de formulario. Ayuda a asociar el texto explicativo con el campo de entrada correspondiente.
+
+7. `<datalist>`: Define una lista de opciones predefinidas para un campo de entrada de texto. Los usuarios pueden seleccionar una opción de la lista o ingresar su propio valor.
+
+8. `<optgroup>`: Se utiliza para agrupar opciones relacionadas dentro de un elemento `<select>`. Ayuda a organizar y estructurar las opciones dentro del menú desplegable.
+
+Aparte de los elementos, también existen atributos específicos que se pueden utilizar con la etiqueta `<form>`:
+
+- `action`: Especifica la URL o la ruta donde se enviarán los datos del formulario para su procesamiento en el servidor.
+- `method`: Indica el método HTTP que se utilizará para enviar los datos del formulario al servidor, como GET o POST.
+- `target`: Define el destino para mostrar la respuesta del servidor después de enviar el formulario, como una nueva ventana (`_blank`) o la misma ventana (`_self`).
+- `enctype`: Especifica el tipo de codificación utilizada para enviar los datos del formulario al servidor, como `application/x-www-form-urlencoded` o `multipart/form-data`.
+
+Además, cada elemento de formulario mencionado anteriormente también tiene sus propios atributos específicos, que se pueden utilizar para personalizar su comportamiento y apariencia. Algunos ejemplos comunes son `name`, `value`, `required`, `placeholder`, `disabled`, `readonly`, entre otros. Estos atributos permiten controlar la validación del formulario, establecer valores predeterminados, proporcionar ayuda contextual y mucho más.
+
+Recuerda que la etiqueta `<form>` y sus elementos son solo una parte de la construcción de formularios en HTML. Para un funcionamiento completo, generalmente se requiere el uso de lenguajes de programación en el lado del servidor, como PHP, para procesar y gestionar los datos enviados por el formulario.
