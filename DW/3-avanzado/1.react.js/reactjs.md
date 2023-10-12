@@ -19,7 +19,7 @@ cd curso-react-intro
 npm i
 ```
 
-Si te aparece algo como esto, tranqui, según leí, esto no nos dará problemas pero ya veremos que pasa...   
+Si te aparece algo como esto, tranqui, según leí, esto no nos dará problemas, pero ya veremos que pasa...   
 
 ```bash
 ╰─ npm i
@@ -172,14 +172,14 @@ Cuando se utiliza JSX (una extensión de sintaxis de JavaScript utilizada en Rea
 ```jsx
 import React from 'react';
 
-// Componente personalizado con nombre en PascalCase
+// Componente 👀👇 con nombre en PascalCase
 class MyCustomComponent extends React.Component {
   render() {
     return <div>Hello, World!</div>;
   }
 }
 
-// Elemento JSX con nombre en minúsculas
+// Elemento JSX con nombre en minúsculas 👀👇
 const myHtmlElement = <div>Hello, World!</div>;
 
 // Uso de componentes en React
@@ -245,6 +245,7 @@ En proyectos de React, como en muchos otros frameworks y bibliotecas de desarrol
 Explicación del uso de cada una de estas carpetas:
 
 1. Carpeta "public":
+
 La carpeta "public" contiene los archivos estáticos que se sirven directamente al navegador sin procesamiento por parte de React u otras herramientas de compilación. Algunos de los archivos comunes que se encuentran en esta carpeta son el archivo HTML principal, imágenes, fuentes, archivos de manifest para aplicaciones web progresivas, entre otros. Estos archivos están disponibles públicamente y son accesibles desde la raíz del dominio o subdirectorio donde se encuentra alojada la aplicación.
 
 2. Carpeta "src":
