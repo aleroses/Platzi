@@ -113,6 +113,20 @@ Atajos para acceder a la barra de actividades:
 
 [🔥 Tutorial: Cómo configurar VSCode](https://www.youtube.com/watch?v=HiVnGgYudLY)
 
+## Otros 
+
+```json
+{
+  "editor.cursorBlinking": "expand",
+  "breadcrumbs.enabled": false,
+  "editor.stickyScroll.enabled": true,
+  "editor.cursorSmoothCaretAnimation": "on",
+  "editor.linkedEditing": true
+}
+```
+
+[🔥 Tutorial: ¡Cambiar configuraciones de Visual Studio Code!](https://www.youtube.com/watch?v=uyEUVgNMvGI)
+
 ## Autocompletar Elementos JSX 
 
 ```json

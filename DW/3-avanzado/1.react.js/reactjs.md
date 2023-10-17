@@ -1701,7 +1701,7 @@ En este ejemplo, el componente hijo (`ChildComponent`) tiene un botón que, cuan
 
 En el componente padre (`ParentComponent`), la función `handleChildData` se ejecuta cuando se activa la función de devolución de llamada desde el componente hijo. Dentro de esta función, se actualiza el estado `childData` con los datos recibidos. El valor actualizado del estado se muestra en el componente padre.
 
-![](https://i.postimg.cc/9FvCX53k/8-using-states.png)
+![](https://i.postimg.cc/mkc06D7s/8-using-states.png)
 
 De esta manera, los datos se comunican desde el componente hijo hasta el componente padre mediante el uso de estados y funciones de devolución de llamada.
 
@@ -1775,6 +1775,21 @@ console.log(booleanValue);  // true
 ```
 
 En este caso, `!!x` convierte el valor de `x` en un booleano explícito, y el resultado es `true`, ya que cualquier valor que no sea "falso" se considera "verdadero" en JavaScript.
+
+### Constructor `Boolean()`
+
+El constructor `Boolean()` puede ser utilizado para crear un objeto booleano a partir de un valor. Si pasas un valor falsy, como 0, null, undefined, NaN o una cadena vacía, el objeto booleano será falso; de lo contrario, será true. Puedes usar el operador de coerción para obtener el valor primitivo booleano. Por ejemplo:
+
+```js
+var dato = 0;
+var booleano = Boolean(dato); // Equivalente booleano usando el constructor Boolean()
+console.log(booleano); // false
+
+booleano = new Boolean(dato).valueOf(); // Obtener el valor primitivo booleano del objeto Boolean
+console.log(booleano); // false
+```
+
+Es importante tener en cuenta que el uso del operador "!!", es común en JavaScript debido a su concisión y claridad. Sin embargo, la alternativa mencionada proporciona una opción adicional para obtener el equivalente booleano de un dato.
 
 ### Métodos `filter` y `find`
 
