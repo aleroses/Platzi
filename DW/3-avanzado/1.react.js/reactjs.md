@@ -4,7 +4,7 @@
 > Inicio: `03-09-2023`
 > Finalización: ``
 
-## 1. ¿Qué necesitas para aprender React.js?
+## **1.** ¿Qué necesitas para aprender React.js?
 
 - Programación Básica 
 - HTML y CSS
