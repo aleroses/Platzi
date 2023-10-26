@@ -8,12 +8,6 @@ const UsersApp = () => {
     setEndPoint("comments");
   };
 
-  /* useEffect(() => {}, []) */
-
-  /* useEffect(() => {
-    fetchUsers();
-  }, []); */
-  
 
   return (
     <>
@@ -27,11 +21,3 @@ const UsersApp = () => {
 };
 
 export { UsersApp };
-
-/* 
-rafc 
-user placeholder
-https://jsonplaceholder.typicode.com/users
-
-2:31:04 
-*/

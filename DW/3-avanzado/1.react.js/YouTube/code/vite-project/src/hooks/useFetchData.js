@@ -13,7 +13,7 @@ const useFetchData = (endPoint) => {
     setIsLoading(isLoading);
   };
 
-  /* Si el endPoint cambia el useEffect se vuelve a ejecutar */
+  // Si el endPoint cambia el useEffect se vuelve a ejecutar 
   useEffect(() => {
     getData();
     /* fetchdata(endPoint).then((res) => {
@@ -30,6 +30,5 @@ const useFetchData = (endPoint) => {
 
 export { useFetchData };
 /* rafc 
-
 2:58:08 
 */
