@@ -1,5 +1,9 @@
 # REACT JS desde cero
 
+[REACT JS desde cero | Curso tutorial completo](https://www.youtube.com/watch?v=ladwC6Lrs-M)
+
+## Instalación 
+
 ```bash
 npm create vite@latest
 cd proyect && npm install
