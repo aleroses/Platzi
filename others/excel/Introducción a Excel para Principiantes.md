@@ -112,4 +112,19 @@ Si tienen configurado Excel en idioma inglés estos son los cambios:
 5. ¿Quién es Annie Martínez Parente?
 	- 📌 Analista senior de Business Intelligence en Platzi
 
-## **4.** 
+## **4.** Elementos de Excel
+
+![](https://i.postimg.cc/gj26YGKL/4-elementos-excel.png)
+
+- Crear hojas
+- Renombrar hojas
+- Arrastrar para ordenar
+- Dar color 
+
+Ver cantidad de filas y columna: Ctrl + Flecha
+
+- Agregar columnas entre otro contenido
+		- Seleccionar columna letra (C)
+		- Inicio > Celdas > Insertar > Insertar columna
+
+Lo mismo para añadir filas y eliminarlas. Ir a Inicio > Celdas

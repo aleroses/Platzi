@@ -41,6 +41,18 @@ Mas extensiones:
 -   javascript (es6) code snippets
 -   **_Better Comments_**: [Resumen de la clase](https://pogolo.notion.site/3-Configurando-nuestras-herramientas-cd23420b450a46c992294285d439d82e)
 
+Para React: 
+
+- [VSC REACT SNIPPETS](https://marketplace.visualstudio.com/items?itemName=burkeholland.simple-react-snippets)
+- [VSC REACT SNIPPETS2 (Instalalo también)](https://marketplace.visualstudio.com/items?itemName=dsznajder.es7-react-js-snippets)
+
+## Instalaciones recomendadas:
+
+- [POSTMAN](https://www.postman.com/downloads/)
+- [MONGO COMPASS](https://www.mongodb.com/try/download/shell)
+- [REACT DEV TOOLS](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=es&authuser=1)
+- [REDUX DEV TOOLS](https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd?hl=es)
+
 ## Atajos vsc
 
 [Lista completa](https://code.visualstudio.com/shortcuts/keyboard-shortcuts-windows.pdf)
