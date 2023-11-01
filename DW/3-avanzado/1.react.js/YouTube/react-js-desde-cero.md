@@ -234,3 +234,60 @@ function Component({ list }) {
 En este ejemplo, tenemos un componente que recibe una prop `list`. Queremos realizar un cálculo costoso en función de `list` y mostrar el resultado en el componente. Al utilizar `useMemo()`, aseguramos que el cálculo solo se realice cuando `list` cambie. Si `list` no ha cambiado desde la última renderización, `memorizedResult` se devuelve directamente sin realizar el cálculo nuevamente.
 
 Es importante tener en cuenta que `useMemo()` solo debe utilizarse cuando realmente necesitas optimizar el rendimiento de tu componente y cuando los cálculos sean lo suficientemente costosos como para justificar el uso de memorización. Usarlo incorrectamente puede llevar a un código más complicado y menos legible. Por lo tanto, es recomendable utilizar `useMemo()` con precaución y realizar pruebas para verificar su impacto en el rendimiento de tu aplicación.
+
+## useCallback
+
+En React, `useCallback()` es un hook que se utiliza para memorizar una función y evitar que se vuelva a crear en cada renderización del componente. Es útil cuando deseas pasar una función como prop a componentes hijos y quieres evitar que esos componentes se vuelvan a renderizar innecesariamente debido a cambios en la función.
+
+La sintaxis básica para utilizar `useCallback()` es la siguiente:
+
+```jsx
+import React, { useCallback } from 'react';
+
+function Component() {
+  const memorizedCallback = useCallback((arg1, arg2) => {
+    // Lógica de la función aquí
+  }, [dependencyList]);
+
+  // Resto del código del componente
+
+  return (
+    // JSX del componente
+  );
+}
+```
+
+Aquí hay una explicación de los pasos involucrados:
+
+1. Importa `useCallback` desde el paquete 'react'.
+2. Dentro del componente, declara una variable utilizando `const` y asigna el resultado de `useCallback()` a esa variable. El primer argumento de `useCallback()` es la función que deseas memorizar. Esta función se almacenará en `memorizedCallback`.
+3. El segundo argumento de `useCallback()` es una lista de dependencias opcional. Esta lista especifica los valores que, cuando cambian, provocarán que la función se vuelva a crear. Si alguna de las dependencias en la lista no ha cambiado desde la última renderización, se devuelve la función memorizada existente en lugar de crear una nueva.
+4. Utiliza `memorizedCallback` en el código donde lo necesites, por ejemplo, al pasar la función como prop a componentes hijos.
+
+La idea detrás de `useCallback()` es que si tienes una función que se pasa como prop a un componente hijo y esa función se vuelve a crear en cada renderización del componente padre, el componente hijo también se volverá a renderizar innecesariamente. Al utilizar `useCallback()`, puedes asegurarte de que la función se memorice y solo se vuelva a crear si alguna de las dependencias cambia.
+
+Aquí hay un ejemplo para ilustrar cómo se puede utilizar `useCallback()`:
+
+```jsx
+function ParentComponent() {
+  const handleClick = useCallback(() => {
+    console.log('Button clicked');
+  }, []);
+
+  return (
+    <div>
+      <ChildComponent onClick={handleClick} />
+    </div>
+  );
+}
+
+function ChildComponent({ onClick }) {
+  return (
+    <button onClick={onClick}>Click me</button>
+  );
+}
+```
+
+En este ejemplo, `handleClick` se memoriza utilizando `useCallback()` en el componente `ParentComponent`. Luego, se pasa como prop `onClick` al componente `ChildComponent`. Debido a que `handleClick` está memorizado, el componente `ChildComponent` no se volverá a renderizar innecesariamente a menos que cambie alguna de las dependencias en la lista de dependencias (`[]` en este caso).
+
+Es importante tener en cuenta que `useCallback()` debe utilizarse con precaución y solo cuando sea necesario optimizar el rendimiento de tu aplicación. Si la función que deseas memorizar no tiene dependencias y no se vuelve a crear en cada renderización, no es necesario utilizar `useCallback()`.
