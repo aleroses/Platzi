@@ -282,6 +282,8 @@ function ParentComponent() {
 }
 
 function ChildComponent({ onClick }) {
+  console.log('Loading...');
+  
   return (
     <button onClick={onClick}>Click me</button>
   );
@@ -291,3 +293,11 @@ function ChildComponent({ onClick }) {
 En este ejemplo, `handleClick` se memoriza utilizando `useCallback()` en el componente `ParentComponent`. Luego, se pasa como prop `onClick` al componente `ChildComponent`. Debido a que `handleClick` está memorizado, el componente `ChildComponent` no se volverá a renderizar innecesariamente a menos que cambie alguna de las dependencias en la lista de dependencias (`[]` en este caso).
 
 Es importante tener en cuenta que `useCallback()` debe utilizarse con precaución y solo cuando sea necesario optimizar el rendimiento de tu aplicación. Si la función que deseas memorizar no tiene dependencias y no se vuelve a crear en cada renderización, no es necesario utilizar `useCallback()`.
+
+## useRef, useMemo y useCallback
+
+useRef: Hook de React que devuelve un objeto mutable que persiste a lo largo de las renderizaciones y no provoca una actualización del componente cuando cambia.
+
+useMemo: Hook de React que devuelve un valor memorizado que se recalcula solo cuando una de las dependencias cambia, lo que ayuda a optimizar el rendimiento evitando cálculos innecesarios.
+
+useCallback: Hook de React que devuelve una versión memorizada de una función, lo que ayuda a optimizar el rendimiento evitando la recreación de la función en cada renderización del componente.
