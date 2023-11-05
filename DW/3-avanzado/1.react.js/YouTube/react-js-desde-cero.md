@@ -357,6 +357,89 @@ El reducer procesa la acción y devuelve el nuevo estado actualizado, que luego 
 
 En resumen, `useReducer` es útil cuando tienes un estado más complejo que puede requerir múltiples acciones para actualizarlo. Te proporciona una forma de administrar el estado de manera más estructurada utilizando un patrón de reducción.
 
+Otro ejemplo: 
+
+```jsx
+import { useReducer, useRef } from "react";
+
+const NewReducer = () => {
+  const inputRef = useRef();
+
+  const [tasks, dispatch] = useReducer(
+    (state = [], action) => {
+      switch (action.type) {
+        case "add_task":
+          {
+            return [
+              ...state,
+              {
+                id: state.length,
+                title: action.title,
+              },
+            ];
+          }
+          break;
+        case "remove_task":
+          {
+            return state.filter(
+              (task, index) => index != action.index
+            );
+          }
+          break;
+
+        default:
+          return state;
+          break;
+      }
+    }
+  );
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    dispatch({
+      type: "add_task",
+      title: inputRef.current.value,
+    });
+  };
+
+  return (
+    <>
+      <h1>Tasks List</h1>
+      <form onSubmit={handleSubmit}>
+        <label htmlFor="">Task</label>
+        <input
+          type="text"
+          name="title"
+          ref={inputRef}
+        />
+        <input type="submit" value="Send" />
+      </form>
+      <div className="tasks">
+        {tasks &&
+          tasks.map((task, index) => (
+            <div className="task" key={index}>
+              <p>{task.title}</p>
+              <button
+                onClick={() =>
+                  dispatch({
+                    type: "remove_task",
+                    index: index,
+                  })
+                }>
+                Borrar
+              </button>
+            </div>
+          ))}
+      </div>
+    </>
+  );
+};
+
+export { NewReducer };
+```
+
+
 ### `switch`
 
 En JavaScript, el `switch` es una declaración que se utiliza para evaluar una expresión y ejecutar diferentes bloques de código según el valor de esa expresión. Proporciona una alternativa más legible y concisa a una serie de declaraciones `if-else` anidadas.
@@ -408,3 +491,5 @@ Es importante tener en cuenta que después de que se ejecuta un bloque de códig
 El `switch` también puede utilizarse sin un caso `default` si no se requiere un bloque de código específico para esa situación.
 
 En resumen, el `switch` en JavaScript se utiliza para evaluar una expresión y ejecutar diferentes bloques de código según el valor de esa expresión. Proporciona una forma más legible y estructurada de manejar múltiples casos en comparación con declaraciones `if-else` anidadas.
+
+[useReducer en 20 min (y crea una lista de tareas)](https://www.youtube.com/watch?v=BACpj7GmiEo)
