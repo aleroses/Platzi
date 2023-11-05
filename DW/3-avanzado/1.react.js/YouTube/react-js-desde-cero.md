@@ -301,3 +301,110 @@ useRef: Hook de React que devuelve un objeto mutable que persiste a lo largo de 
 useMemo: Hook de React que devuelve un valor memorizado que se recalcula solo cuando una de las dependencias cambia, lo que ayuda a optimizar el rendimiento evitando cálculos innecesarios.
 
 useCallback: Hook de React que devuelve una versión memorizada de una función, lo que ayuda a optimizar el rendimiento evitando la recreación de la función en cada renderización del componente.
+
+## useReducer
+
+En React, `useReducer` es un hook que te permite manejar el estado de un componente utilizando un patrón de reducción similar al que se utiliza en Redux. Proporciona una alternativa a `useState` cuando tienes un estado más complejo que puede requerir múltiples acciones para actualizarlo.
+
+La función `useReducer` toma dos argumentos: el primero es el reducer (reductor) y el segundo es el estado inicial. El reducer es una función que especifica cómo se actualiza el estado en respuesta a una acción. Toma el estado actual y la acción como argumentos y devuelve el nuevo estado.
+
+Aquí tienes un ejemplo básico de cómo usar `useReducer`:
+
+```jsx
+import React, { useReducer } from 'react';
+
+// Reducer
+const reducer = (state, action) => {
+  switch (action.type) {
+    case 'INCREMENT':
+      return { count: state.count + 1 };
+    case 'DECREMENT':
+      return { count: state.count - 1 };
+    default:
+      return state;
+  }
+};
+
+// Componente
+const Counter = () => {
+  const [state, dispatch] = useReducer(reducer, { count: 0 });
+
+  const increment = () => {
+    dispatch({ type: 'INCREMENT' });
+  };
+
+  const decrement = () => {
+    dispatch({ type: 'DECREMENT' });
+  };
+
+  return (
+    <div>
+      <p>Count: {state.count}</p>
+      <button onClick={increment}>Increment</button>
+      <button onClick={decrement}>Decrement</button>
+    </div>
+  );
+};
+
+export default Counter;
+```
+
+En este ejemplo, se define un reducer que actualiza el estado del contador en respuesta a las acciones "INCREMENT" y "DECREMENT". El componente `Counter` utiliza `useReducer` para inicializar el estado con `{ count: 0 }` y obtener el estado actual y la función `dispatch` para enviar acciones al reducer.
+
+Cuando se hace clic en los botones "Increment" y "Decrement", se llama a las funciones `increment` y `decrement`, respectivamente, que envían las acciones correspondientes al reducer a través de `dispatch`.
+
+El reducer procesa la acción y devuelve el nuevo estado actualizado, que luego se refleja en la interfaz de usuario.
+
+En resumen, `useReducer` es útil cuando tienes un estado más complejo que puede requerir múltiples acciones para actualizarlo. Te proporciona una forma de administrar el estado de manera más estructurada utilizando un patrón de reducción.
+
+### `switch`
+
+En JavaScript, el `switch` es una declaración que se utiliza para evaluar una expresión y ejecutar diferentes bloques de código según el valor de esa expresión. Proporciona una alternativa más legible y concisa a una serie de declaraciones `if-else` anidadas.
+
+La sintaxis básica de `switch` es la siguiente:
+
+```javascript
+switch (expresion) {
+  case valor1:
+    // código a ejecutar si expresion es igual a valor1
+    break;
+  case valor2:
+    // código a ejecutar si expresion es igual a valor2
+    break;
+  // más casos...
+  default:
+    // código a ejecutar si ninguno de los casos coincide con expresion
+    break;
+}
+```
+
+Aquí hay un ejemplo para ilustrar cómo se usa el `switch`:
+
+```javascript
+let color = 'rojo';
+
+switch (color) {
+  case 'rojo':
+    console.log('El color es rojo');
+    break;
+  case 'azul':
+    console.log('El color es azul');
+    break;
+  case 'verde':
+    console.log('El color es verde');
+    break;
+  default:
+    console.log('No se reconoce el color');
+    break;
+}
+```
+
+En este ejemplo, la variable `color` se evalúa en el `switch`. Si `color` es igual a uno de los casos especificados (en este caso, 'rojo', 'azul' o 'verde'), se ejecutará el bloque de código correspondiente. Si no hay coincidencia en ninguno de los casos, se ejecutará el bloque de código dentro de la declaración `default`.
+
+En el ejemplo dado, como `color` es igual a `'rojo'`, se imprimirá en la consola el mensaje `'El color es rojo'`.
+
+Es importante tener en cuenta que después de que se ejecuta un bloque de código correspondiente a un caso, es necesario usar la palabra clave `break` para salir del `switch`. De lo contrario, el flujo de ejecución continuará hacia los casos siguientes, incluso si no coinciden con la expresión.
+
+El `switch` también puede utilizarse sin un caso `default` si no se requiere un bloque de código específico para esa situación.
+
+En resumen, el `switch` en JavaScript se utiliza para evaluar una expresión y ejecutar diferentes bloques de código según el valor de esa expresión. Proporciona una forma más legible y estructurada de manejar múltiples casos en comparación con declaraciones `if-else` anidadas.
