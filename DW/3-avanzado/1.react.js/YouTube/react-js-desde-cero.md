@@ -493,3 +493,255 @@ El `switch` también puede utilizarse sin un caso `default` si no se requiere un
 En resumen, el `switch` en JavaScript se utiliza para evaluar una expresión y ejecutar diferentes bloques de código según el valor de esa expresión. Proporciona una forma más legible y estructurada de manejar múltiples casos en comparación con declaraciones `if-else` anidadas.
 
 [useReducer en 20 min (y crea una lista de tareas)](https://www.youtube.com/watch?v=BACpj7GmiEo)
+
+### new Date().getDate()
+
+El código `new Date().getDate()` en JavaScript se utiliza para obtener el día del mes actual como un número. Aquí está la explicación paso a paso:
+
+1. "new Date()" crea un nuevo objeto de fecha que representa la fecha y la hora actuales.
+2. ".getDate()" es un método que se aplica a un objeto de fecha y devuelve el día del mes como un número entre 1 y 31.
+
+Aquí tienes algunos ejemplos de cómo podrías usarlo:
+
+Ejemplo 1:
+```javascript
+const fechaActual = new Date();
+const diaDelMes = fechaActual.getDate();
+console.log(diaDelMes); // Muestra el número del día actual en la consola
+```
+Este ejemplo crea un nuevo objeto de fecha que representa la fecha y la hora actuales. Luego, se obtiene el día del mes utilizando el método ".getDate()" y se almacena en la variable "diaDelMes". Finalmente, se muestra el número del día actual en la consola.
+
+Ejemplo 2:
+```javascript
+const fechaEspecifica = new Date('2023-07-15');
+const diaDelMes = fechaEspecifica.getDate();
+console.log(diaDelMes); // Muestra el número del día en la fecha especificada en la consola
+```
+En este caso, se crea un nuevo objeto de fecha que representa la fecha especificada ('2023-07-15'). Luego, se utiliza el método `.getDate()` para obtener el día del mes de esa fecha y se almacena en la variable "diaDelMes". Finalmente, se muestra el número del día en la fecha especificada en la consola.
+
+También:  
+```javascript
+const fechaEspecifica = new Date('2023-07-15');
+fechaEspecifica.setHours(0, 0, 0, 0); // Establecer la hora a las 00:00:00
+const diaDelMes = fechaEspecifica.getDate();
+console.log(diaDelMes); // Muestra el número del día en la fecha especificada en la consola
+```
+
+📌 Nota: Tal parece que hay una discrepancia en la zona horaria cuando se crea el objeto de fecha. El valor que se muestra en la consola es "Fri Jul 14 2023 19:00:00 GMT-0500", lo que indica que el objeto de fecha se crea en una zona horaria que está adelantada en horas. 
+
+Debido a esta discrepancia, el método `.getDate()` devuelve 14, que es el día del mes correspondiente a la fecha en esa zona horaria específica.
+
+Si deseas obtener el día del mes correctamente sin verse afectado por la interpretación de la zona horaria, puedes utilizar el método `getUTCDate()` en JavaScript o el paquete `moment.js`. Aquí tienes ejemplos de ambos enfoques:
+
+Utilizando el método `getUTCDate()` en JavaScript:
+
+```javascript
+const fechaEspecifica = new Date('2023-07-15');
+const diaDelMes = fechaEspecifica.getUTCDate();
+console.log(diaDelMes); // Muestra el número del día en la fecha especificada en la consola
+```
+
+En este ejemplo, utilizamos el método `getUTCDate()` en lugar de `getDate()`. Esto nos da el día del mes en la hora universal coordinada (UTC), que no se ve afectada por la zona horaria.
+
+Utilizando el paquete `moment.js`:
+
+Asegúrate de tener el paquete `moment.js` instalado en tu proyecto. Puedes instalarlo a través de npm con el siguiente comando: `npm install moment`.
+
+```javascript
+const moment = require('moment');
+const fechaEspecifica = moment('2023-07-15');
+const diaDelMes = fechaEspecifica.date();
+console.log(diaDelMes); // Muestra el número del día en la fecha especificada en la consola
+```
+
+En este ejemplo, utilizamos el paquete `moment.js` para manejar las fechas y obtener el día del mes utilizando el método `date()`. El paquete `moment.js` se encarga automáticamente de los ajustes de zona horaria y proporciona resultados consistentes en diferentes entornos.
+
+Estos enfoques te permitirán obtener el día del mes correctamente sin verse afectado por la interpretación de la zona horaria.
+
+Si quieres una fecha en un formato específico puedes usar lo siguiente: 
+
+Para obtener la fecha y hora en el formato "Tue Nov 07 2023 13:02:07" en JavaScript, puedes utilizar diferentes métodos del objeto `Date` para obtener los componentes de la fecha y la hora, y luego combinarlos en la cadena de texto deseada. Aquí tienes un ejemplo de cómo hacerlo:
+
+```javascript
+const fecha = new Date();
+
+const diasSemana = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+const meses = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+const diaSemana = diasSemana[fecha.getDay()];
+const mes = meses[fecha.getMonth()];
+const dia = fecha.getDate();
+const anio = fecha.getFullYear();
+const horas = fecha.getHours();
+const minutos = fecha.getMinutes();
+const segundos = fecha.getSeconds();
+
+const fechaFormateada = `${diaSemana} ${mes} ${dia} ${anio} ${horas}:${minutos}:${segundos}`;
+console.log(fechaFormateada); // Muestra la fecha y hora en el formato especificado en la consola
+```
+
+En este ejemplo, creamos un objeto de fecha utilizando `new Date()` para obtener la fecha y hora actual. Luego, utilizamos los métodos `getDay()`, `getMonth()`, `getDate()`, `getFullYear()`, `getHours()`, `getMinutes()`, y `getSeconds()` para obtener los componentes de la fecha y la hora.
+
+Luego, definimos dos arreglos: `diasSemana` y `meses`, que contienen las representaciones abreviadas de los días de la semana y los meses en inglés.
+
+Finalmente, combinamos los componentes de la fecha y la hora en la cadena de texto `fechaFormateada` utilizando las variables obtenidas y el formato deseado. La cadena resultante se muestra en la consola.
+
+Recuerda que el resultado puede variar dependiendo de la zona horaria y la configuración regional de tu entorno.
+
+### Ejemplo de la clase 
+
+`src > components > ListReducer.jsx`
+```js
+import { useReducer } from "react";
+import { useForm } from "../hooks/useForm";
+
+export const ListReducer = () => {
+  const [state, dispatch] = useReducer(
+    (state, action) => {
+      switch (action.type) {
+        case "[Tasks] Add task":
+          return [...state, action.payload];
+
+        case "[Tasks] Finish task":
+          return state.map((task) => {
+            if (task.id === action.payload) {
+              return {
+                ...task,
+                finished: !task.finished,
+              };
+            }
+            return task;
+          });
+        case "[Tasks] Delete task":
+          return state.filter(
+            (task) => task.id != action.payload
+          );
+
+        case "[Tasks] Clear tasks":
+          return [];
+
+        default:
+          return state;
+      }
+    },
+    [
+      {
+        id: new Date().getTime(),
+        task: "Test task.......",
+        finished: false,
+      },
+    ]
+  );
+
+  console.log(state);
+
+  const {
+    /* task, */ formState,
+    handleInputChange,
+  } = useForm({
+    task: "",
+  });
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    dispatch({
+      type: "[Tasks] Add task",
+      payload: {
+        id: new Date().getTime(),
+        task: formState.task,
+        finished: false,
+      },
+    });
+  };
+
+  const finishTask = (id) => {
+    dispatch({
+      type: "[Tasks] Finish task",
+      payload: id,
+    });
+    console.log("lol", id);
+  };
+
+  const deleteTask = (id) => {
+    dispatch({
+      type: "[Tasks] Delete task",
+      payload: id,
+    });
+  };
+
+  const clear = () => {
+    dispatch({
+      type: "[Tasks] Clear tasks",
+      payload: "",
+    });
+  };
+
+  return (
+    <>
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          name="task"
+          onChange={handleInputChange}
+        />
+        <button type="submit">Submit</button>
+        <button type="button" onClick={clear}>
+          Clear
+        </button>
+      </form>
+      <ul>
+        {state.map((task, index) => (
+          <li key={index}>
+            {task.task}
+            <input
+              type="checkbox"
+              /* value={task.finished} */
+              name=""
+              id=""
+              onChange={() => finishTask(task.id)}
+            />
+            <button
+              onClick={() => deleteTask(task.id)}>
+              Delete
+            </button>
+          </li>
+        ))}
+      </ul>
+    </>
+  );
+};
+```
+
+`src > hooks > useForm.js`
+```js
+import { useState } from "react";
+
+const useForm = (initialForm = {}) => {
+  const [formState, setFormState] =
+    useState(initialForm);
+
+  const handleInputChange = ({ target }) => {
+    /* console.log(target); */
+    console.log(target.name);
+    console.log(target.value);
+    const { name, value } = target;
+
+    /* 
+    Al tener 3 inputs, por cada input al que le ingresemos texto este se va a acumular usando ...spread (operador de propagacion) primero name, luego email y al final password, para luego hacer submit
+    */
+
+    setFormState({
+      ...formState,
+      [name]: value,
+    });
+  };
+
+  return {
+    formState,
+    handleInputChange,
+  };
+};
+
+export { useForm };
+```
