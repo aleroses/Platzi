@@ -745,3 +745,86 @@ const useForm = (initialForm = {}) => {
 
 export { useForm };
 ```
+
+## React Router DOM 
+
+React Router DOM es una biblioteca de enrutamiento para aplicaciones de React. Permite crear rutas en una aplicación de React, lo que significa que puedes definir diferentes componentes que se renderizarán en función de la URL actual.
+
+La biblioteca React Router DOM utiliza el enfoque de enrutamiento basado en el navegador, lo que significa que utiliza la historia del navegador para mantener el estado de la aplicación y sincronizarlo con la URL. Esto permite que la aplicación tenga una experiencia de navegación fluida sin tener que recargar la página completa cada vez que se cambia la URL.
+
+Aquí hay una explicación básica de cómo funciona React Router DOM:
+
+1. Instalación: Primero, debes instalar la biblioteca React Router DOM en tu proyecto de React utilizando npm o yarn.
+
+2. Configuración de rutas: Luego, debes definir las rutas de tu aplicación. Esto se hace utilizando componentes proporcionados por React Router DOM, como `<BrowserRouter>`, `<Route>`, y `<Switch>`. El componente `<BrowserRouter>` envuelve tu aplicación y proporciona el contexto necesario para el enrutamiento.
+
+3. Definición de rutas: Dentro del componente `<BrowserRouter>`, puedes usar el componente `<Route>` para definir una ruta específica y el componente que se renderizará cuando se acceda a esa ruta. Por ejemplo, puedes tener una ruta `/inicio` que renderice el componente `Inicio`, y una ruta `/usuarios` que renderice el componente `Usuarios`.
+
+4. Enlaces y navegación: Para permitir la navegación entre rutas, puedes usar el componente `<Link>` para crear enlaces en tu aplicación. Por ejemplo, puedes crear un enlace a la ruta `/usuarios` utilizando `<Link to="/usuarios">Usuarios</Link>`. Al hacer clic en ese enlace, la URL cambiará y React Router DOM renderizará el componente `Usuarios`.
+
+5. Enrutamiento dinámico: React Router DOM también admite enrutamiento dinámico, lo que significa que puedes pasar parámetros en las URL y acceder a ellos en tus componentes. Por ejemplo, puedes tener una ruta `/usuarios/:id` que renderice el componente `Usuario` y le pase el parámetro `id` como una prop.
+
+En resumen, React Router DOM es una biblioteca que facilita la implementación de enrutamiento en aplicaciones de React. Te permite definir rutas y componentes asociados a esas rutas, proporciona enlaces para la navegación y se encarga de mantener el estado de la aplicación sincronizado con la URL del navegador. Esto brinda una experiencia de navegación fluida y permite crear aplicaciones de una sola página (SPA) con múltiples secciones y vistas.
+
+```bash
+npm create vite@latest
+npm install
+```
+react router dom en google
+
+```bash
+
+npm install react-router-dom
+```
+
+## useContext
+
+En React, el hook `useContext` se utiliza para acceder al contexto de una aplicación. Antes de explicar `useContext`, es importante entender qué es el contexto en React.
+
+El contexto en React es una forma de pasar datos a través del árbol de componentes sin tener que pasar explícitamente las props a lo largo de cada nivel. Esto es útil cuando se desea compartir datos entre múltiples componentes sin tener que pasarlos manualmente a través de las props. El contexto proporciona una forma de compartir datos de manera eficiente y sencilla.
+
+El hook `useContext` es una función que se utiliza para consumir el contexto en un componente funcional. Toma un objeto `Context` creado mediante la función `createContext` y devuelve el valor actual del contexto.
+
+Aquí hay un ejemplo básico de cómo se utiliza `useContext`:
+
+1. Primero, se crea un contexto utilizando la función `createContext`:
+
+```jsx
+const MiContexto = React.createContext();
+```
+
+2. Luego, se proporciona un valor al contexto utilizando el componente `Provider`:
+
+```jsx
+function App() {
+  const valorDelContexto = "Hola, soy el valor del contexto";
+  
+  return (
+    <MiContexto.Provider value={valorDelContexto}>
+      <ComponenteHijo />
+    </MiContexto.Provider>
+  );
+}
+```
+
+3. Después, en un componente hijo, se puede utilizar `useContext` para acceder al valor del contexto:
+
+```jsx
+function ComponenteHijo() {
+  const valorContexto = React.useContext(MiContexto);
+  
+  return <div>{valorContexto}</div>;
+}
+```
+
+En este ejemplo, el componente `ComponenteHijo` utiliza `useContext` para acceder al valor del contexto proporcionado por el componente `App`. El valor del contexto se muestra dentro de un elemento `div`.
+
+Es importante destacar que `useContext` solo puede utilizarse dentro de un componente funcional o de otro hook personalizado. No puede utilizarse dentro de un componente de clase.
+
+En resumen, `useContext` es un hook de React que permite acceder al valor de un contexto proporcionado por un componente `Provider`. Facilita el acceso a datos compartidos en una aplicación sin tener que pasarlos manualmente a través de las props en todos los componentes intermedios.
+
+```bash
+```
+
+```bash
+```
