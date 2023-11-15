@@ -824,7 +824,154 @@ Es importante destacar que `useContext` solo puede utilizarse dentro de un compo
 En resumen, `useContext` es un hook de React que permite acceder al valor de un contexto proporcionado por un componente `Provider`. Facilita el acceso a datos compartidos en una aplicación sin tener que pasarlos manualmente a través de las props en todos los componentes intermedios.
 
 ```bash
+.
+├── README.md
+├── index.html
+├── package-lock.json
+├── package.json
+├── src
+│   ├── App.jsx
+│   ├── assets
+│   ├── main.jsx
+│   └── routes
+│       ├── About.jsx
+│       ├── Contact.jsx
+│       ├── Home.jsx
+│       └── components
+└── vite.config.js
 ```
 
-```bash
+`index.html`
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="/vite.svg" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous" />
+    <title>Vite + React</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script
+      type="module"
+      src="/src/main.jsx"></script>
+  </body>
+</html>
+```
+
+`src > main.jsx`
+```jsx
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { App } from "./App.jsx";
+import { BrowserRouter } from "react-router-dom";
+
+ReactDOM.createRoot(
+  document.getElementById("root")
+).render(
+  <BrowserRouter>
+    <React.StrictMode>
+      <App />
+    </React.StrictMode>
+  </BrowserRouter>
+);
+```
+
+`src > App.jsx`
+```jsx
+import {
+  Navigate,
+  Route,
+  Routes,
+} from "react-router-dom";
+import { NavBar } from "./routes/components/NavBar";
+import { Home } from "./routes/Home";
+import { About } from "./routes/About";
+import { Contact } from "./routes/Contact";
+
+function App() {
+  return (
+    <>
+      <NavBar></NavBar>
+      <Routes>
+        <Route
+          path="/"
+          element={<Home></Home>}></Route>
+        <Route
+          path="/about"
+          element={<About></About>}></Route>
+        <Route
+          path="/contact"
+          element={<Contact></Contact>}></Route>
+        <Route
+          path="/*"
+          element={<Navigate to="/" />}></Route>
+      </Routes>
+    </>
+  );
+}
+
+export { App };
+```
+
+`src > routes > components > NavBar.jsx`
+```jsx
+import { React } from "react";
+import { Link, NavLink } from "react-router-dom";
+
+const NavBar = () => {
+  return (
+    <nav className="navbar navbar-expand-lg navbar-light bg-light">
+      <Link className="navbar-brand">Navbar</Link>
+      <button
+        className="navbar-toggler"
+        type="button">
+        <span className="navbar-toggler-icon"></span>
+      </button>
+      <div
+        className="collapse navbar-collapse"
+        id="navbarNavAltMarkup">
+        <div className="navbar-nav">
+          <NavLink
+            to="/"
+            className="nav-item nav-link active">
+            Home
+          </NavLink>
+          <NavLink
+            to="/about"
+            className="nav-item nav-link">
+            About
+          </NavLink>
+          <NavLink
+            to="/contact"
+            className="nav-item nav-link">
+            Contact
+          </NavLink>
+        </div>
+      </div>
+    </nav>
+  );
+};
+
+export { NavBar };
+```
+
+```jsx
+```
+
+```jsx
+```
+
+```jsx
 ```
