@@ -777,52 +777,6 @@ react router dom en google
 npm install react-router-dom
 ```
 
-## useContext
-
-En React, el hook `useContext` se utiliza para acceder al contexto de una aplicación. Antes de explicar `useContext`, es importante entender qué es el contexto en React.
-
-El contexto en React es una forma de pasar datos a través del árbol de componentes sin tener que pasar explícitamente las props a lo largo de cada nivel. Esto es útil cuando se desea compartir datos entre múltiples componentes sin tener que pasarlos manualmente a través de las props. El contexto proporciona una forma de compartir datos de manera eficiente y sencilla.
-
-El hook `useContext` es una función que se utiliza para consumir el contexto en un componente funcional. Toma un objeto `Context` creado mediante la función `createContext` y devuelve el valor actual del contexto.
-
-Aquí hay un ejemplo básico de cómo se utiliza `useContext`:
-
-1. Primero, se crea un contexto utilizando la función `createContext`:
-
-```jsx
-const MiContexto = React.createContext();
-```
-
-2. Luego, se proporciona un valor al contexto utilizando el componente `Provider`:
-
-```jsx
-function App() {
-  const valorDelContexto = "Hola, soy el valor del contexto";
-  
-  return (
-    <MiContexto.Provider value={valorDelContexto}>
-      <ComponenteHijo />
-    </MiContexto.Provider>
-  );
-}
-```
-
-3. Después, en un componente hijo, se puede utilizar `useContext` para acceder al valor del contexto:
-
-```jsx
-function ComponenteHijo() {
-  const valorContexto = React.useContext(MiContexto);
-  
-  return <div>{valorContexto}</div>;
-}
-```
-
-En este ejemplo, el componente `ComponenteHijo` utiliza `useContext` para acceder al valor del contexto proporcionado por el componente `App`. El valor del contexto se muestra dentro de un elemento `div`.
-
-Es importante destacar que `useContext` solo puede utilizarse dentro de un componente funcional o de otro hook personalizado. No puede utilizarse dentro de un componente de clase.
-
-En resumen, `useContext` es un hook de React que permite acceder al valor de un contexto proporcionado por un componente `Provider`. Facilita el acceso a datos compartidos en una aplicación sin tener que pasarlos manualmente a través de las props en todos los componentes intermedios.
-
 ```bash
 .
 ├── README.md
@@ -967,11 +921,117 @@ const NavBar = () => {
 export { NavBar };
 ```
 
+`src > routes > Home.jsx`
 ```jsx
+const Home = () => {
+  return (
+    <>
+      <table className="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">First</th>
+            <th scope="col">Last</th>
+            <th scope="col">Handle</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1</th>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>@mdo</td>
+          </tr>
+          <tr>
+            <th scope="row">2</th>
+            <td>Jacob</td>
+            <td>Thornton</td>
+            <td>@fat</td>
+          </tr>
+          <tr>
+            <th scope="row">3</th>
+            <td>Larry</td>
+            <td>the Bird</td>
+            <td>@twitter</td>
+          </tr>
+        </tbody>
+      </table>
+    </>
+  );
+};
+
+export { Home };
 ```
 
+`src > routes > About.jsx`
 ```jsx
+const About = () => {
+  return <div>About</div>;
+};
+
+export { About };
 ```
 
+`src > routes > Contact.jsx`
 ```jsx
+
 ```
+
+### Single Page Application (SPA)
+
+Una Single Page Application (SPA), o Aplicación de Página Única en español, es un tipo de aplicación web que carga una sola página HTML inicial y, a partir de ahí, actualiza su contenido dinámicamente utilizando JavaScript. A diferencia de las aplicaciones web tradicionales, donde cada acción del usuario provoca una solicitud al servidor y una carga de página completa, una SPA carga solo los datos necesarios y actualiza la interfaz de usuario sin recargar la página completa.
+
+En una SPA, la lógica de la aplicación se ejecuta principalmente en el lado del cliente, lo que significa que gran parte del procesamiento y la manipulación de datos se realiza en el navegador web del usuario. Las SPAs suelen utilizar tecnologías como AJAX (Asynchronous JavaScript and XML), JSON (JavaScript Object Notation) y frameworks de JavaScript como Angular, React o Vue.js para facilitar la actualización dinámica de la interfaz de usuario.
+
+Las ventajas de las SPAs incluyen una experiencia de usuario más fluida y rápida, ya que solo se cargan los datos y recursos necesarios, evitando la recarga completa de la página. Además, permiten crear interfaces de usuario más interactivas y dinámicas, ya que pueden actualizar partes específicas de la página sin interrumpir la experiencia del usuario.
+
+Sin embargo, las SPAs también presentan algunos desafíos, como una mayor complejidad en el desarrollo y la gestión del estado de la aplicación en el lado del cliente, así como la pérdida de ciertas funcionalidades proporcionadas por el modelo tradicional de múltiples páginas, como la navegación mediante botones "atrás" y "adelante" del navegador.
+
+En resumen, una SPA es una aplicación web que se carga una vez y luego actualiza dinámicamente su contenido sin recargar la página completa, lo que proporciona una experiencia de usuario más fluida y rápida.
+
+## useContext
+
+En React, el hook `useContext` se utiliza para acceder al contexto de una aplicación. Antes de explicar `useContext`, es importante entender qué es el contexto en React.
+
+El contexto en React es una forma de pasar datos a través del árbol de componentes sin tener que pasar explícitamente las props a lo largo de cada nivel. Esto es útil cuando se desea compartir datos entre múltiples componentes sin tener que pasarlos manualmente a través de las props. El contexto proporciona una forma de compartir datos de manera eficiente y sencilla.
+
+El hook `useContext` es una función que se utiliza para consumir el contexto en un componente funcional. Toma un objeto `Context` creado mediante la función `createContext` y devuelve el valor actual del contexto.
+
+Aquí hay un ejemplo básico de cómo se utiliza `useContext`:
+
+1. Primero, se crea un contexto utilizando la función `createContext`:
+
+```jsx
+const MiContexto = React.createContext();
+```
+
+2. Luego, se proporciona un valor al contexto utilizando el componente `Provider`:
+
+```jsx
+function App() {
+  const valorDelContexto = "Hola, soy el valor del contexto";
+  
+  return (
+    <MiContexto.Provider value={valorDelContexto}>
+      <ComponenteHijo />
+    </MiContexto.Provider>
+  );
+}
+```
+
+3. Después, en un componente hijo, se puede utilizar `useContext` para acceder al valor del contexto:
+
+```jsx
+function ComponenteHijo() {
+  const valorContexto = React.useContext(MiContexto);
+  
+  return <div>{valorContexto}</div>;
+}
+```
+
+En este ejemplo, el componente `ComponenteHijo` utiliza `useContext` para acceder al valor del contexto proporcionado por el componente `App`. El valor del contexto se muestra dentro de un elemento `div`.
+
+Es importante destacar que `useContext` solo puede utilizarse dentro de un componente funcional o de otro hook personalizado. No puede utilizarse dentro de un componente de clase.
+
+En resumen, `useContext` es un hook de React que permite acceder al valor de un contexto proporcionado por un componente `Provider`. Facilita el acceso a datos compartidos en una aplicación sin tener que pasarlos manualmente a través de las props en todos los componentes intermedios.
+
