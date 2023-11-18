@@ -1035,3 +1035,4 @@ Es importante destacar que `useContext` solo puede utilizarse dentro de un compo
 
 En resumen, `useContext` es un hook de React que permite acceder al valor de un contexto proporcionado por un componente `Provider`. Facilita el acceso a datos compartidos en una aplicación sin tener que pasarlos manualmente a través de las props en todos los componentes intermedios.
 
+[useContext en 20 minutos](https://www.youtube.com/watch?v=Ae33_gdJgnQ)
