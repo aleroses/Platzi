@@ -1037,19 +1037,325 @@ En resumen, `useContext` es un hook de React que permite acceder al valor de un 
 
 [useContext en 20 minutos](https://www.youtube.com/watch?v=Ae33_gdJgnQ)
 
-## App Clima
+## Project 1: App Clima
 
 Crear cuenta para recibir API Key:  
-[Weather API](https://openweathermap.org/api)
+- [Weather API](https://openweathermap.org/api)
+- [Other features](https://openweathermap.org/current)
 
+[Built-in API request by city name](https://openweathermap.org/current#name)  
+```js
+https://api.openweathermap.org/data/2.5/weather?q={city name}&appid={API key}
+```
+
+[Weather icons](https://openweathermap.org/weather-conditions)  
+```js
+https://openweathermap.org/img/wn/10d@2x.png
+```
+
+
+Para convertir una temperatura de Kelvin (K) a Celsius (°C), puedes utilizar la siguiente fórmula:
+
+°C = K - 273.15
+
+Simplemente resta 273.15 a la temperatura en Kelvin para obtener el equivalente en Celsius. Por ejemplo, si tienes una temperatura de 300 Kelvin, la conversión a Celsius sería:
+
+°C = 300 - 273.15 = 26.85°C
+
+Por lo tanto, 300 Kelvin es equivalente a 26.85 grados Celsius.
 
 ```bash
 npm create vite@latest
-npm i
 cd weather-app
+npm i
 code .
 ```
 
-```bash
-npm run build
+`src > main.jsx`
+```jsx
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { App } from "./App.jsx";
+import "./stylesheets/styles.css";
+
+ReactDOM.createRoot(
+  document.getElementById("root")
+).render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);
 ```
+
+`src > App.jsx`
+```jsx
+import React, { useState } from "react";
+
+const App = () => {
+  const url = `https://api.openweathermap.org/data/2.5/weather`;
+  const API_KEY =
+    "Key que te enviaron al correo";
+
+  const difKelvin = 273.15;
+
+  const [city, setCity] = useState("");
+  const [data, setData] = useState(null);
+
+  const handleChangeCity = (e) => {
+    setCity(e.target.value);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    if (city.length > 0) fetchWeather();
+  };
+
+  const fetchWeather = async () => {
+    try {
+      // ?lat={lat}&lon={lon}&appid={API key}
+      const response = await fetch(
+        `${url}?q=${city}&appid=${API_KEY}`
+      );
+      const dataFetch = await response.json();
+      setData(dataFetch);
+    } catch (error) {
+      console.error("An error occurred!! ", error);
+    }
+  };
+
+  return (
+    <div className="container">
+      <h1>Weather App</h1>
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          value={city}
+          onChange={handleChangeCity}
+        />
+        <button type="submit">Search</button>
+      </form>
+      {data && (
+        <div>
+          <h2>{data.name}</h2>
+          <p>
+            Temperature:{" "}
+            {parseInt(data?.main?.temp - difKelvin)}
+            °C
+          </p>
+          <p>
+            Weather conditions:
+            {data.weather[0].description}
+          </p>
+          <img
+            src={`https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`}
+            alt=""
+          />
+        </div>
+      )}
+    </div>
+  );
+};
+
+export { App };
+```
+
+## Despliegue Vite + Github Pages
+
+### Install gh-pages
+
+-   [más info](https://ull-esit-pl-1617.github.io/tareas-iniciales-Edu-Guille-Oscar-Sergio/Tutorial/gh-pages/gh-pages.html): El módulo gh-pages es un módulo de NPM (Node Package Manager) que **permite automatizar la publicación de archivos en una rama gh-pages** de un repositorio de GitHub (o cualquier otra rama u otro servicio).
+
+```sh
+npm i gh-pages -D
+```
+
+### vite.config.js
+
+-   [ver punto 1](https://vitejs.dev/guide/static-deploy.html#github-pages)
+
+```js
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
+
+// https://vitejs.dev/config/
+export default defineConfig({
+    plugins: [react()],
+    base: "/el-nombre-de-tu-repositorio/", 👈👀
+});
+```
+
+### package.json
+
+```json
+"scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "deploy": "gh-pages -d dist" 👈👀
+}
+```
+
+### Git
+
+```sh
+git init
+git add .
+git commit -m "first commit"
+```
+
+### Crear repositorio en GitHub
+
+Subir el proyecto a GitHub
+
+```sh
+git remote add origin https://github.com/${nombre-cuenta}/${nombre-repositorio}.git
+git branch -M main
+git push -u origin main
+```
+
+### npm run build && npm run deploy
+
+Estos comandos se repiten por cada actualización del proyecto:
+
+```sh
+npm run build
+npm run deploy
+```
+
+🔥 Esperar... y listo!
+
+- [Despliega tu proyecto en GitHub Pages con Vite](https://www.youtube.com/watch?v=igCO5i4NnfU)
+- [Guía para publicar tu sitio web](https://github.com/bluuweb/example-deploy-vite-github-pages/blob/main/README.md)
+
+## Project 2: Movie search 
+
+[The movie DB API](https://www.themoviedb.org/)
+
+[Search](https://developer.themoviedb.org/docs/search-and-query-for-details)
+
+[Img](https://developer.themoviedb.org/docs/image-basics)
+
+
+```js
+# Get
+https://api.themoviedb.org/3/search/movie?query=Jack+Reacher&api_key=Key que te proporcionaron
+# Img
+https://image.tmdb.org/t/p/w500/1E5baAaEse26fej7uHcjOgEE2t2.jpg
+```
+
+```bash
+├── src
+│   ├── App.jsx
+│   ├── assets
+│   │   ├── movie-search.png
+│   │   └── react.svg
+│   ├── main.jsx
+│   └── stylesheets
+│       └── App.css
+```
+
+`src > main.jsx`  
+```jsx
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { App } from "./App.jsx";
+
+ReactDOM.createRoot(
+  document.getElementById("root")
+).render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);
+```
+
+`src > App.jsx`
+```jsx
+import { useState } from "react";
+import "./stylesheets/App.css";
+
+function App() {
+  const [search, setSearch] = useState("");
+  const [movies, setMovies] = useState([]);
+
+  const URL =
+    "https://api.themoviedb.org/3/search/movie";
+  const API_KEY =
+    "Key que te proporcionaron";
+
+  const handleInputChange = (e) => {
+    setSearch(e.target.value);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    fetchMovies();
+  };
+
+  const fetchMovies = async () => {
+    try {
+      const response = await fetch(
+        `${URL}?query=${search}&api_key=${API_KEY}`
+      );
+      const data = await response.json();
+      setMovies(data.results);
+    } catch (error) {
+      console.error("An error occurred!!!", error);
+    }
+  };
+
+  return (
+    <div className="container">
+      <h1 className="title">Movie search</h1>
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          placeholder="Enter the name of your movie"
+          value={search}
+          onChange={handleInputChange}
+        />
+        <button
+          type="submit"
+          className="search-button">
+          Search
+        </button>
+      </form>
+      <div className="movie-list">
+        {movies.map((movie) => (
+          <div
+            key={movie.id}
+            className="movie-card">
+            <img
+              src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+              alt={movie.title}
+            />
+            <h2>{movie.title}</h2>
+            <p>{movie.overview}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+export { App };
+```
+
+## Project 3: Shopping cart
+
+[Fake Store API](https://fakestoreapi.com/)
+[Material UI](https://mui.com/)
+[Barge]()
+
+[Instalación Material UI](https://mui.com/material-ui/getting-started/installation/)
+```bash
+npm install react-router-dom
+
+npm install @mui/material @emotion/react @emotion/styled
+
+npm install @mui/icons-material
+```
+
+https://fakestoreapi.com/products
