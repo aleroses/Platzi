@@ -1350,6 +1350,7 @@ export { App };
 [Barge]()
 
 [Instalación Material UI](https://mui.com/material-ui/getting-started/installation/)
+
 ```bash
 npm install react-router-dom
 
@@ -1358,4 +1359,542 @@ npm install @mui/material @emotion/react @emotion/styled
 npm install @mui/icons-material
 ```
 
+
+```bash
 https://fakestoreapi.com/products 
+```
+
+
+`Estructura del Proyecto`  
+```bash
+.
+├── README.md
+├── index.html
+├── node_modules
+├── package-lock.json
+├── package.json
+├── src
+│   ├── App.jsx
+│   ├── assets
+│   │   └── react.svg
+│   ├── components
+│   │   ├── Card.jsx
+│   │   └── NavBar.jsx
+│   ├── context
+│   │   ├── CartContext.jsx
+│   │   ├── CartProvider.jsx
+│   │   ├── ProductsContext.jsx
+│   │   └── ProductsProvider.jsx
+│   ├── main.jsx
+│   ├── pages
+│   │   ├── Cart.jsx
+│   │   └── Purchases.jsx
+│   └── stylesheets
+│       ├── App.css
+│       ├── card.css
+│       └── list.css
+└── vite.config.js
+```
+
+`src > main.jsx`
+```jsx
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { App } from "./App.jsx";
+import { BrowserRouter } from "react-router-dom";
+
+ReactDOM.createRoot(
+  document.getElementById("root")
+).render(
+  <BrowserRouter>
+    <React.StrictMode>
+      <App />
+    </React.StrictMode>
+  </BrowserRouter>
+);
+```
+
+`src > App.jsx`
+```jsx
+import {
+  Navigate,
+  Route,
+  Routes,
+} from "react-router-dom";
+import "./stylesheets/App.css";
+import { NavBar } from "./components/NavBar";
+import { Cart } from "./pages/Cart";
+import { Purchases } from "./pages/Purchases";
+import { ProductsProvider } from "./context/ProductsProvider";
+import { CartProvider } from "./context/CartProvider";
+
+function App() {
+  return (
+    <ProductsProvider>
+      <CartProvider>
+        <NavBar></NavBar>
+        <div className="container">
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <Purchases></Purchases>
+              }></Route>
+            <Route
+              path="/cart"
+              element={<Cart></Cart>}></Route>
+            <Route
+              path="/*"
+              element={<Navigate to="/" />}></Route>
+          </Routes>
+        </div>
+      </CartProvider>
+    </ProductsProvider>
+  );
+}
+
+export { App };
+```
+
+`index.html`
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="./src/assets/react.svg" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous" />
+    <title>Shopping Cart</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script
+      type="module"
+      src="/src/main.jsx"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"></script>
+  </body>
+</html>
+```
+
+`src > components > Card.jsx`  
+```jsx
+import React, { useState } from "react";
+import "../stylesheets/card.css";
+
+const Card = ({
+  image,
+  title,
+  description,
+  price,
+  handleAdd,
+  handleRemove,
+  handleIncrease,
+  handleDelete,
+}) => {
+  const [added, setAdded] = useState(false);
+
+  const clickAdd = () => {
+    handleAdd();
+    setAdded(true);
+  };
+  const clickRemove = () => {
+    handleRemove();
+    setAdded(false);
+  };
+
+  return (
+    <div className="card">
+      <img
+        src={image}
+        alt={title}
+        className="card-img"
+      />
+      <div className="card-content">
+        <h3 className="card-title">{title}</h3>
+        <p className="card-description">
+          {description}
+        </p>
+        <p className="card-price">{price}</p>
+
+        {added ? (
+          <button
+            type="button"
+            className="button-remove"
+            onClick={clickRemove}>
+            Remove from cart
+          </button>
+        ) : (
+          <button
+            type="button"
+            className="button-add"
+            onClick={clickAdd}>
+            Add from cart
+          </button>
+        )}
+      </div>
+    </div>
+  );
+};
+
+export { Card };
+```
+
+`src > components > NavBar`  
+```jsx
+import React, { useContext } from "react";
+import { Badge } from "@mui/material";
+import { ShoppingCart } from "@mui/icons-material";
+import { NavLink } from "react-router-dom";
+import { CartContext } from "../context/CartContext";
+
+const NavBar = () => {
+  const { purchasesList } = useContext(CartContext);
+
+  return (
+    <nav className="navbar navbar-expand-lg bg-body-tertiary">
+      <div className="container-fluid">
+        <NavLink
+          to="/"
+          className="navbar-brand"
+          href="#">
+          Cart
+        </NavLink>
+        <button
+          className="navbar-toggler"
+          type="button">
+          <span className="navbar-toggler-icon"></span>
+        </button>
+        <div
+          className="collapse navbar-collapse"
+          id="navbarSupportedContent">
+          <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+            <li className="nav-item">
+              <NavLink
+                to="/"
+                className="nav-link active"
+                href="#">
+                Purchases
+              </NavLink>
+            </li>
+          </ul>
+          <NavLink to="/cart">
+            <Badge
+              badgeContent={purchasesList.length}
+              color="secondary">
+              <ShoppingCart color="action" />
+            </Badge>
+          </NavLink>
+        </div>
+      </div>
+    </nav>
+  );
+};
+
+export { NavBar };
+```
+
+`src > context > CartContext.jsx`
+```jsx
+import { createContext } from "react";
+
+const CartContext = createContext();
+
+export { CartContext };
+```
+
+`src > context > CartProvider.jsx`
+```jsx
+import React, { useReducer } from "react";
+import { CartContext } from "./CartContext";
+
+const initialState = [];
+
+const CartProvider = ({ children }) => {
+  const purchasesReducer = (
+    state = initialState,
+    action = {}
+  ) => {
+    switch (action.type) {
+      case "[CART] Add purchase":
+        return [...state, action.payload];
+
+      case "[CART] Increase amount purchase":
+        return state.map((item) => {
+          const quantity = item.amount + 1;
+          if (item.id === action.payload)
+            return { ...item, amount: quantity };
+
+          return item;
+        });
+
+      case "[CART] Decrease amount purchase":
+        return state.map((item) => {
+          const quantity = item.amount - 1;
+          if (
+            item.id === action.payload &&
+            item.amount > 1
+          )
+            return { ...item, amount: quantity };
+        });
+
+      case "[CART] Delete purchase":
+        return state.filter(
+          (purchase) =>
+            purchase.id !== action.payload
+        );
+
+      default:
+        return state;
+    }
+  };
+  const [purchasesList, dispatch] = useReducer(
+    purchasesReducer,
+    initialState
+  );
+
+  const addPurchase = (purchase) => {
+    purchase.amount = 1;
+    const action = {
+      type: "[CART] Add purchase",
+      payload: purchase,
+    };
+
+    dispatch(action);
+  };
+  const increaseAmount = (id) => {
+    const action = {
+      type: "[CART] Increase amount purchase",
+      payload: id,
+    };
+    dispatch(action);
+  };
+  const decreaseAmount = (id) => {
+    const action = {
+      type: "[CART] Decrease amount purchase",
+      payload: id,
+    };
+
+    dispatch(action);
+  };
+  const deletePurchase = (id) => {
+    const action = {
+      type: "[CART] Delete purchase",
+      payload: id,
+    };
+
+    dispatch(action);
+  };
+
+  return (
+    <CartContext.Provider
+      value={{
+        purchasesList,
+        addPurchase,
+        increaseAmount,
+        decreaseAmount,
+        deletePurchase,
+      }}>
+      {children}
+    </CartContext.Provider>
+  );
+};
+
+export { CartProvider };
+```
+
+`src > context > ProductsContext.jsx`  
+```jsx
+import { createContext } from "react";
+
+const ProductsContext = createContext();
+
+export { ProductsContext };
+```
+
+`src > context > ProductsProvider.jsx`
+```jsx
+import React, { useEffect, useState } from "react";
+import { ProductsContext } from "./ProductsContext";
+
+const ProductsProvider = ({ children }) => {
+  const [products, setProducts] = useState([]);
+
+  const fetchProducts = async () => {
+    const response = await fetch(
+      `https://fakestoreapi.com/products`
+    );
+    const data = await response.json();
+    console.log(data);
+    setProducts(data);
+  };
+
+  useEffect(() => {
+    fetchProducts();
+  }, []);
+
+  return (
+    <ProductsContext.Provider value={{ products }}>
+      {children}
+    </ProductsContext.Provider>
+  );
+};
+
+export { ProductsProvider };
+```
+
+
+`src > pages > Cart.jsx`
+```jsx
+import React, { useContext } from "react";
+import { CartContext } from "../context/CartContext";
+
+const Cart = () => {
+  const {
+    purchasesList,
+    addPurchase,
+    increaseAmount,
+    decreaseAmount,
+    deletePurchase,
+  } = useContext(CartContext);
+
+  const calculateTotal = () => {
+    return purchasesList
+      .reduce(
+        (total, item) =>
+          total + item.price * item.amount,
+        0
+      )
+      .toFixed(2);
+  };
+
+  const handlePrint = () => {
+    print();
+  };
+
+  return (
+    <>
+      <table className="table">
+        <thead>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Price</th>
+            <th scope="col">Amount</th>
+            <th scope="col">Delete</th>
+          </tr>
+        </thead>
+        <tbody>
+          {purchasesList.map((item) => (
+            <tr key={item.id}>
+              <th>{item.title}</th>
+              <td>{item.price}</td>
+              <td>
+                <button
+                  className="btn btn-ouline-primary"
+                  onClick={() =>
+                    decreaseAmount(item.id)
+                  }>
+                  -
+                </button>
+                <button className="btn btn-primary">
+                  {item.amount}
+                </button>
+                <button
+                  className="btn btn-ouline-primary"
+                  onClick={() =>
+                    increaseAmount(item.id)
+                  }>
+                  +
+                </button>
+              </td>
+              <td>
+                <button
+                  type="button"
+                  className="btn btn-danger"
+                  onClick={() =>
+                    deletePurchase(item.id)
+                  }>
+                  Delete
+                </button>
+              </td>
+            </tr>
+          ))}
+          <tr>
+            <th>
+              <b>Total: </b>
+            </th>
+            <td>-</td>
+            <td>-</td>
+            <td>${calculateTotal()}</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div className="d-grid gap-2">
+        <button
+          className="btn btn-primary"
+          onClick={handlePrint}
+          disabled={purchasesList < 1}>
+          Buy
+        </button>
+      </div>
+    </>
+  );
+};
+
+export { Cart };
+```
+
+`src > pages > Purchases.jsx`
+```jsx
+import React, { useContext } from "react";
+import { Card } from "../components/Card";
+import { ProductsContext } from "../context/ProductsContext";
+import { CartContext } from "../context/CartContext";
+
+const Purchases = () => {
+  const { products } = useContext(ProductsContext);
+  const { addPurchase, deletePurchase } =
+    useContext(CartContext);
+
+  const handleAdd = (purchase) => {
+    addPurchase(purchase);
+  };
+  const handleRemove = (id) => {
+    deletePurchase(id);
+  };
+
+  return (
+    <>
+      <h1>Purchases: </h1>
+      <hr />
+      {products.map((product) => (
+        <Card
+          key={product.id}
+          image={product.image}
+          title={product.title}
+          description={product.description}
+          price={product.price}
+          handleAdd={() => handleAdd(product)}
+          handleRemove={() =>
+            handleRemove(product.id)
+          }></Card>
+      ))}
+    </>
+  );
+};
+
+export { Purchases };
+```
