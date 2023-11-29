@@ -1345,6 +1345,8 @@ export { App };
 
 ## Project 3: Shopping cart
 
+[Repositorio Original](https://github.com/sergiecode/carrito-compras-react)
+
 [Fake Store API](https://fakestoreapi.com/)
 [Material UI](https://mui.com/)
 [Barge]()
