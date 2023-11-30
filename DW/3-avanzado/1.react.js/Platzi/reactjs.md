@@ -3897,7 +3897,7 @@ function AppUI({
 export { AppUI };
 ```
 
-## 18. ¿Qué son los efectos en React?
+## 18. ¿Qué son los efectos en React? useEffect()
 
 En React, los efectos son funciones especiales que permiten realizar tareas secundarias (side effects) en componentes funcionales. Los efectos se ejecutan después de que el componente se renderiza en la interfaz de usuario y se utilizan principalmente para manejar operaciones asíncronas, suscripciones a eventos, manipulación del DOM y otras interacciones con el entorno externo.
 
