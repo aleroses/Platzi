@@ -723,6 +723,8 @@ $ git remote rename origin destination
 # Change remote name from 'origin' to 'destination'
 ```
 
+🚀 [Mira tus estadísticas](https://www.githubwrapped.io/)
+
 🎲
 
 ## 20. Cómo funcionan las llaves públicas y privadas
