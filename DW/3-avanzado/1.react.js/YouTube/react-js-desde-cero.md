@@ -41,12 +41,66 @@ Done. Now run:
 ```
 
 ```bash
-# Todo en una sola línea
-cd first-project-react && npm install && npm run dev
+# Todo en una sola línea: 
+cd first-project-react && code . && npm install && npm run dev
+# Matar el proceso 
+Ctrl + C
 ```
 
-react y react-dom
+## **3.** Estructura del proyecto 
 
+Si revisamos VSC veremos la siguiente estructura: 
+
+```bash
+.
+├── README.md
+├── index.html
+├── node_modules
+├── package-lock.json
+├── package.json 👈👀
+├── public 👈👀
+│   └── vite.svg
+├── src 👈👀
+│   ├── App.css
+│   ├── App.jsx
+│   ├── assets
+│   │   └── react.svg
+│   ├── index.css
+│   └── main.jsx
+└── vite.config.js 👈👀
+```
+
+La carpeta `src` es donde trabajaremos todo el código del proyecto, la carpeta `public` puede ser eliminada sin problemas.
+
+Un archivo importante es `package.json`, este muestra todas las dependencias instaladas para que nuestro proyecto a crear funcione, además nos muestra los **scripts** o comandos que necesitaremos para revisar o desplegar nuestro proyecto, tales como:
+
+```bash
+# Muestra el proyecto en el navegador
+npm run dev
+# Crea carpeta dist para ser desplegada
+npm run build
+```
+
+Siempre anteponemos `npm run` seguido de lo que necesitamos hacer. 
+
+Por último, el archivo `vite.config.js` permite desplegar nuestro proyecto en GitHub Page, para esto tendremos un capítulo más adelante. 
+
+### dependencies y devDependencies
+
+En un proyecto de React, el archivo `package.json` es un archivo de configuración que se encuentra en la raíz del proyecto. Contiene información sobre el proyecto, como su nombre, versión, descripción y scripts personalizados. También incluye dos secciones importantes relacionadas con las dependencias: "dependencies" y "devDependencies".
+
+Las "dependencies" (dependencias) son los paquetes de software externos que son necesarios para que la aplicación de React funcione correctamente en el entorno de producción. Estas dependencias son requeridas por la aplicación en tiempo de ejecución y se instalan en el entorno de producción cuando se implementa la aplicación. Por ejemplo, pueden ser bibliotecas de React como "react" y "react-dom", o bibliotecas adicionales que se utilizan en el proyecto, como "axios" para realizar solicitudes HTTP.
+
+Por otro lado, las "devDependencies" (dependencias de desarrollo) son paquetes necesarios para desarrollar y construir la aplicación, pero no son necesarios para la ejecución de la aplicación en producción. Estas dependencias incluyen herramientas de compilación, pruebas, linter, empaquetado y otras utilidades que ayudan en el desarrollo y construcción del proyecto. Algunos ejemplos comunes de dependencias de desarrollo en un proyecto de React son "babel" para transpilar el código, "webpack" para empaquetar los recursos, y "jest" para realizar pruebas unitarias.
+
+La principal diferencia entre "dependencies" y "devDependencies" radica en su uso y en qué etapa del ciclo de vida del desarrollo se requieren. Las dependencias se instalan tanto en el entorno de desarrollo como en el de producción, ya que son requeridas para que la aplicación funcione correctamente. Por otro lado, las dependencias de desarrollo solo se instalan en el entorno de desarrollo, ya que son utilizadas para facilitar el proceso de desarrollo y construcción, pero no son necesarias para que la aplicación se ejecute en producción.
+
+Cuando se distribuye o implementa la aplicación de React en un servidor de producción, generalmente solo se instalan las dependencias y no las dependencias de desarrollo. Esto reduce el tamaño y la complejidad del paquete de la aplicación, lo que resulta en un mejor rendimiento y una menor carga para el entorno de producción.
+
+Para instalar las dependencias y devDependencies especificadas en el `package.json`, puedes ejecutar el comando `npm install` o `yarn install` en la línea de comandos dentro del directorio del proyecto. Esto descargará e instalará todas las dependencias requeridas en las ubicaciones adecuadas dentro del proyecto.
+
+## **4.** Build y Dist 
+react y react-dom
 ## Props 
 
 Pasar a las props valores por defectos:
@@ -126,11 +180,7 @@ Hay propios de React y otros que podemos crear (custom hooks)
 
 ```
 
-## Build y Dist 
 
-```bash
-npm run build
-```
 
 ## Helpers
 
