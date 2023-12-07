@@ -216,8 +216,106 @@ Para mayor detalle mira la siguiente imagen:
 
 ## **6.** JSX
 
+JSX (JavaScript XML) es una extensión de sintaxis utilizada en React para describir la estructura de los componentes de la interfaz de usuario. JSX combina JavaScript y XML para permitir la creación de elementos de interfaz de manera más intuitiva y legible.
+
+En lugar de utilizar métodos como `React.createElement` para crear elementos de la interfaz de usuario, JSX permite escribir código similar a HTML dentro de JavaScript. Aquí hay un ejemplo básico de cómo se ve JSX:
+
+```jsx
+const element = <h1>Hola, mundo!</h1>;
+```
+
+En este ejemplo, `<h1>Hola, mundo!</h1>` es un elemento JSX que representa un encabezado de nivel 1. Se parece mucho a HTML, pero en realidad es JavaScript. JSX se compila en llamadas a funciones de React para crear elementos de la interfaz de usuario.
+
+Para utilizar JSX en React, debes seguir estos pasos:
+
+1. Configuración del entorno: Asegúrate de tener configurado un entorno de desarrollo de React. Puedes utilizar herramientas como Create React App para configurar un proyecto de React con JSX preconfigurado.
+
+2. Importar React: Asegúrate de importar la biblioteca de React en tu archivo de JavaScript donde utilizarás JSX. Puedes hacerlo agregando la siguiente línea de código al comienzo del archivo:
+
+```jsx
+import React from 'react';
+```
+
+3. Escribir componentes: Puedes crear componentes de React utilizando JSX. Un componente básico en JSX se ve así:
+
+```jsx
+import React from 'react';
+
+function MiComponente() {
+  return <h1>Hola desde mi componente</h1>;
+}
+```
+
+4. Renderizar componentes: Para mostrar los componentes en la interfaz de usuario, debes renderizarlos en un elemento de destino. Puedes hacerlo utilizando el método `ReactDOM.render()` de la biblioteca ReactDOM. Por ejemplo:
+
+```jsx
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+function MiComponente() {
+  return <h1>Hola desde mi componente</h1>;
+}
+
+ReactDOM.render(<MiComponente />, document.getElementById('root'));
+```
+
+En este ejemplo, el componente `MiComponente` se renderiza dentro del elemento con el `id` "root" en el archivo HTML.
+
+JSX ofrece muchas características adicionales, como la capacidad de utilizar expresiones JavaScript dentro de las llaves `{}` en el código JSX y la posibilidad de utilizar atributos HTML en los elementos JSX. Estas características hacen que JSX sea una herramienta poderosa para crear interfaces de usuario dinámicas y reactivas en React.
+
 ## **7.** Componentes 
 
+En React, un componente es una unidad modular y reutilizable de la interfaz de usuario que puede contener tanto lógica como elementos de presentación. Los componentes en React se dividen en dos categorías: componentes de función y componentes de clase.
+
+Un componente de función es una función de JavaScript que recibe propiedades (props) como argumento y devuelve un elemento de la interfaz de usuario. Aquí tienes un ejemplo de un componente de función básico:
+
+```jsx
+import React from 'react';
+
+function MiComponente(props) {
+  return <h1>Hola, {props.nombre}!</h1>;
+}
+```
+
+En este ejemplo, el componente de función `MiComponente` recibe las propiedades `nombre` a través del argumento `props` y muestra un saludo personalizado en un encabezado.
+
+Un componente de clase es una clase de JavaScript que extiende la clase base `React.Component`. Define el comportamiento y la estructura del componente a través de métodos como `render()`. Aquí tienes un ejemplo de un componente de clase básico:
+
+```jsx
+import React from 'react';
+
+class MiComponente extends React.Component {
+  render() {
+    return <h1>Hola, {this.props.nombre}!</h1>;
+  }
+}
+```
+
+En este ejemplo, el componente de clase `MiComponente` define el método `render()`, que devuelve el elemento de interfaz de usuario. Las propiedades también están disponibles en el componente de clase a través de `this.props`.
+
+Para utilizar un componente en React, debes seguir estos pasos:
+
+1. Importar el componente: En tu archivo de JavaScript donde deseas utilizar el componente, importa el componente adecuado. Puedes hacerlo utilizando la declaración `import`. Por ejemplo:
+
+```jsx
+import MiComponente from './MiComponente';
+```
+
+2. Usar el componente: Una vez importado, puedes utilizar el componente como si fuera una etiqueta HTML. Por ejemplo:
+
+```jsx
+function App() {
+  return (
+    <div>
+      <MiComponente nombre="Juan" />
+    </div>
+  );
+}
+```
+
+En este ejemplo, el componente `MiComponente` se utiliza dentro del componente `App` y se le pasa la propiedad `nombre` con el valor "Juan".
+
+Los componentes en React permiten crear interfaces de usuario modulares y reutilizables. Puedes componer componentes más complejos combinando varios componentes más pequeños y anidándolos dentro de otros componentes. Esto facilita el mantenimiento y la escalabilidad de las aplicaciones de React.
 
 ## Props 
 
