@@ -18,12 +18,31 @@
  - [REACT DEV TOOLS](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=es&authuser=1)
  - [REDUX DEV TOOLS](https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd?hl=es)
 
-## **2.** Crear un proyecto con Vite
+## **2.** Crear un proyecto con Vite /vit/
+
+Abrir terminal (dos opciones):   
+1. Ir a la carpeta que guardará tus proyectos. Dar clic derecho, y seleccionar `Open Git Bash Here`. 
+2. Ir a la carpeta deseada. Presionar` Shift + Clic derecho`, seleccionar `Abrir la ventana de PowerShell Aquí`. 
 
 ```bash
-npm create vite@latest
-cd proyect && npm install
-npm run dev
+npm create vite@latest 👈👀👇
+√ Project name: ... first-project-react 👈👀
+√ Select a framework: » React 👈👀
+√ Select a variant: » JavaScript + SWC 👈👀
+
+Scaffolding project in C:\Learn\Projects\react\
+first-project-react...
+
+Done. Now run:
+
+  cd first-project-react 👈👀👇
+  npm install
+  npm run dev
+```
+
+```bash
+# Todo en una sola línea
+cd first-project-react && npm install && npm run dev
 ```
 
 react y react-dom
