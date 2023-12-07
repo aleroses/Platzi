@@ -2,6 +2,22 @@
 
 [REACT JS desde cero | Curso tutorial completo](https://www.youtube.com/watch?v=ladwC6Lrs-M) 
 
+## Instalaciones necesarias para curso REACT JS
+
+ - [GOOGLE CHROME (NAVEGADOR)](https://www.google.com/intl/es_es/chrome/)
+ - [VISUAL STUDIO CODE (Editor Código)](https://code.visualstudio.com/download)
+ - [GIT (manejador de versiones)](https://git-scm.com/)
+ - [NODE](https://nodejs.org/es)
+ - [VSC REACT SNIPPETS](https://marketplace.visualstudio.com/items?itemName=burkeholland.simple-react-snippets)
+ - [VSC REACT SNIPPETS2 (Instalalo también)](https://marketplace.visualstudio.com/items?itemName=dsznajder.es7-react-js-snippets)
+
+### Instalaciones recomendadas:
+
+ - [POSTMAN](https://www.postman.com/downloads/)
+ - [MONGO COMPASS](https://www.mongodb.com/try/download/shell)
+ - [REACT DEV TOOLS](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=es&authuser=1)
+ - [REDUX DEV TOOLS](https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd?hl=es)
+
 ## Instalación 
 
 ```bash
