@@ -317,7 +317,7 @@ En este ejemplo, el componente `MiComponente` se utiliza dentro del componente `
 
 Los componentes en React permiten crear interfaces de usuario modulares y reutilizables. Puedes componer componentes más complejos combinando varios componentes más pequeños y anidándolos dentro de otros componentes. Esto facilita el mantenimiento y la escalabilidad de las aplicaciones de React.
 
-## Props 
+## **8.** Props 
 
 Pasar a las props valores por defectos:
 
@@ -380,9 +380,85 @@ FirstComponent.propTypes = {
 export { FirstComponent };
 ```
 
-## Hooks
+[¿Qué son las Props?](https://github.com/aleroses/Platzi/blob/master/DW/3-avanzado/1.react.js/Platzi/reactjs.md#props)
 
-Hay propios de React y otros que podemos crear (custom hooks)
+## **9.** Hooks
+
+Los hooks en React son funciones especiales que te permiten agregar estado y otras características de React a componentes de función sin necesidad de utilizar componentes de clase. Los hooks fueron introducidos en React a partir de la versión 16.8 y han revolucionado la forma en que se escribe y organiza el código en React.
+
+Aquí tienes una explicación de los hooks más comunes y cómo se usan:
+
+1. useState: Este hook te permite agregar estado a un componente de función. Devuelve un par de valores: el estado actual y una función para actualizarlo.
+
+```jsx
+import React, { useState } from 'react';
+
+function EjemploDeEstado() {
+  const [contador, setContador] = useState(0);
+
+  return (
+    <div>
+      <p>Contador: {contador}</p>
+      <button onClick={() => setContador(contador + 1)}>Incrementar</button>
+    </div>
+  );
+}
+```
+
+En este ejemplo, `useState(0)` inicializa el estado `contador` con el valor 0. `setContador` es la función que se utiliza para actualizar el estado. Al hacer clic en el botón, se incrementa el contador en 1.
+
+2. useEffect: Este hook te permite realizar efectos secundarios en un componente de función, como llamar a una API, suscribirte a eventos o limpiar recursos. Se ejecuta después de cada renderizado del componente.
+
+```jsx
+import React, { useState, useEffect } from 'react';
+
+function EjemploDeEfecto() {
+  const [datos, setDatos] = useState([]);
+
+  useEffect(() => {
+    // Lógica para cargar los datos desde una API
+    fetchData().then((response) => setDatos(response));
+  }, []);
+
+  return (
+    <ul>
+      {datos.map((dato) => (
+        <li key={dato.id}>{dato.nombre}</li>
+      ))}
+    </ul>
+  );
+}
+```
+
+En este ejemplo, `useEffect` se utiliza para cargar datos desde una API al momento de montar el componente. El segundo argumento `[]` indica que el efecto se ejecuta solo una vez, al igual que el método `componentDidMount` en los componentes de clase.
+
+3. useContext: Este hook te permite acceder al contexto de React en un componente de función. Te permite consumir y actualizar datos compartidos en toda la aplicación sin necesidad de pasar props manualmente.
+
+```jsx
+import React, { useContext } from 'react';
+
+const MiContexto = React.createContext();
+
+function ComponenteConsumidor() {
+  const datos = useContext(MiContexto);
+
+  return <p>{datos}</p>;
+}
+
+function App() {
+  return (
+    <MiContexto.Provider value="Datos compartidos">
+      <ComponenteConsumidor />
+    </MiContexto.Provider>
+  );
+}
+```
+
+En este ejemplo, `useContext` se utiliza para consumir el valor proporcionado por el contexto `MiContexto`. En el componente `App`, se envuelve el componente `ComponenteConsumidor` con el proveedor de contexto `MiContexto.Provider`, que establece el valor compartido.
+
+Estos son solo algunos ejemplos de los hooks más utilizados en React. También existen otros hooks como `useReducer`, `useCallback`, `useMemo` y más, que te permiten gestionar el estado y la lógica de tus componentes de función de manera más eficiente y clara. Los hooks han simplificado enormemente el desarrollo en React y han mejorado la legibilidad y reutilización del código.
+
+📌 Existen Hooks propios de React y otros que podemos crear según nuestras necesidades (custom hooks)
 
 ```bash
 
