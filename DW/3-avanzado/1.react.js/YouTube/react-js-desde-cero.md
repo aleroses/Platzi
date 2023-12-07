@@ -99,8 +99,125 @@ Cuando se distribuye o implementa la aplicación de React en un servidor de prod
 
 Para instalar las dependencias y devDependencies especificadas en el `package.json`, puedes ejecutar el comando `npm install` o `yarn install` en la línea de comandos dentro del directorio del proyecto. Esto descargará e instalará todas las dependencias requeridas en las ubicaciones adecuadas dentro del proyecto.
 
-## **4.** Build y Dist 
-react y react-dom
+## **4.** Automatizar formateo de código 
+
+Para ordenar de manera automática todo nuestro código y ahorrar tiempo podemos usar una extensión llamada **Prettier**, para esto revisa los siguientes apuntes [Prettier extension configuration](https://github.com/aleroses/Platzi/blob/master/DW/1-basico/3-prework/entorno-windows/vsc/prettier.md). 
+
+En estos apuntes está el paso a paso para configurar esta extensión junto con el enlace a su video tutorial.
+
+## **5.** Archivos esenciales 
+
+Al abrir nuestro proyecto vemos en el navegador que tenemos la funcionalidad de aumentar un contador más algunas imágenes. 
+
+Esto es posible gracias a tres archivos principales que están enlazados. 
+
+`index.html`
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="/vite.svg" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0" />
+    <title>Vite + React</title>
+  </head>
+  <body>
+    <div id="root"></div> 👈👀
+    <script 👈👀👇
+      type="module"
+      src="/src/main.jsx"></script>
+  </body>
+</html>
+```
+
+`src > main.jsx`
+
+```jsx
+import React from "react";
+import ReactDOM from "react-dom/client";
+import App from "./App.jsx";
+import "./index.css";
+
+ReactDOM.createRoot( 👈👀👇
+  document.getElementById("root")
+).render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);
+```
+
+`src > App.jsx`
+
+```jsx
+import { useState } from "react";
+import reactLogo from "./assets/react.svg";
+import viteLogo from "/vite.svg";
+import "./App.css";
+
+function App() {
+  const [count, setCount] = useState(0);
+
+  return (
+    <>
+      <div>
+        <a
+          href="https://vitejs.dev"
+          target="_blank">
+          <img
+            src={viteLogo}
+            className="logo"
+            alt="Vite logo"
+          />
+        </a>
+        <a href="https://react.dev" target="_blank">
+          <img
+            src={reactLogo}
+            className="logo react"
+            alt="React logo"
+          />
+        </a>
+      </div>
+      <h1>Vite + React</h1>
+      <div className="card">
+        <button
+          onClick={() =>
+            setCount((count) => count + 1)
+          }>
+          count is {count}
+        </button>
+        <p>
+          Edit <code>src/App.jsx</code> and save to
+          test HMR
+        </p>
+      </div>
+      <p className="read-the-docs">
+        Click on the Vite and React logos to learn
+        more
+      </p>
+    </>
+  );
+}
+
+export default App;
+```
+
+Para mayor detalle mira la siguiente imagen: 
+
+![](https://i.postimg.cc/7Lx8pgsM/1-essential-files.png)
+
+
+
+## **6.** JSX
+
+
+
 ## Props 
 
 Pasar a las props valores por defectos:
