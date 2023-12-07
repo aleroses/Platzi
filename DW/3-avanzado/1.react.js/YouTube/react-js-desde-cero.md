@@ -216,6 +216,7 @@ Para mayor detalle mira la siguiente imagen:
 
 ## **6.** JSX
 
+## **7.** Componentes 
 
 
 ## Props 
