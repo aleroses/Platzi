@@ -2,7 +2,7 @@
 
 [REACT JS desde cero | Curso tutorial completo](https://www.youtube.com/watch?v=ladwC6Lrs-M) 
 
-## Instalaciones necesarias para curso REACT JS
+## **1.** Instalaciones necesarias para curso REACT JS
 
  - [GOOGLE CHROME (NAVEGADOR)](https://www.google.com/intl/es_es/chrome/)
  - [VISUAL STUDIO CODE (Editor Código)](https://code.visualstudio.com/download)
@@ -18,7 +18,7 @@
  - [REACT DEV TOOLS](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=es&authuser=1)
  - [REDUX DEV TOOLS](https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd?hl=es)
 
-## Instalación 
+## **2.** Crear un proyecto con Vite
 
 ```bash
 npm create vite@latest
