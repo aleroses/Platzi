@@ -484,19 +484,60 @@ Estos son solo algunos ejemplos de los hooks más utilizados en React. También 
 
 ## **13.** Contador 
 
-```bash
+[[reactjs#7. ¿Qué es el estado?]]
 
+[Notas sobre useState](https://github.com/aleroses/Platzi/blob/master/DW/3-avanzado/1.react.js/Platzi/reactjs.md#7-qu%C3%A9-es-el-estado)
+
+`src > main.jsx`
+
+```jsx
+import React from "react";
+import ReactDOM from "react-dom/client";
+import App from "./App.jsx";
+
+ReactDOM.createRoot(
+  document.getElementById("root")
+).render(
+  <React.StrictMode>
+    <App value={0}/>
+  </React.StrictMode>
+);
 ```
 
-```bash
+`src > App.jsx`
 
+```jsx
+import { useState } from "react";
+
+function App({ value }) {
+  const initialState = value;
+
+  const [counter, setCounter] =
+    useState(initialState);
+
+  const increaseCounter = () => {
+    setCounter(counter + 1);
+  };
+
+  const decreaseCounter = () => {
+    counter > 0
+      ? setCounter(counter - 1)
+      : setCounter(counter);
+  };
+
+  return (
+    <>
+      <h1>{counter}</h1>
+      <button onClick={increaseCounter}>+</button>
+      <button onClick={decreaseCounter}>-</button>
+    </>
+  );
+}
+
+export default App;
 ```
 
-```bash
-
-```
-
-### Hot module replacement
+## **14.** Hot module replacement
 
 En React, el Hot Module Replacement (HMR), o Reemplazo de Módulos en Caliente, es una función que permite actualizar y reemplazar los módulos individuales en una aplicación en tiempo de ejecución, sin tener que recargar toda la página. Esto es particularmente útil durante el desarrollo, ya que permite una experiencia de desarrollo más rápida y eficiente.
 
@@ -520,6 +561,9 @@ Es importante destacar que el HMR no es solo específico de React, sino que tamb
 
 El HMR en React es una función muy útil para acelerar el ciclo de desarrollo al permitir que los desarrolladores vean los cambios de manera instantánea y eviten tener que recargar manualmente la página después de cada modificación en el código fuente. Esto mejora la productividad y facilita la depuración y experimentación durante el desarrollo de aplicaciones React.
 
+```bash
+
+```
 
 ## Helpers
 
