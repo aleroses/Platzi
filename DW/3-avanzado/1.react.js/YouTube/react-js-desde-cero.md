@@ -561,10 +561,85 @@ Es importante destacar que el HMR no es solo específico de React, sino que tamb
 
 El HMR en React es una función muy útil para acelerar el ciclo de desarrollo al permitir que los desarrolladores vean los cambios de manera instantánea y eviten tener que recargar manualmente la página después de cada modificación en el código fuente. Esto mejora la productividad y facilita la depuración y experimentación durante el desarrollo de aplicaciones React.
 
-```bash
+
+## **15** Recorrer una lista 
+
+`src > main.jsx`  
+
+```jsx
+import React from "react";
+import ReactDOM from "react-dom/client";
+import App from "./App.jsx";
+
+ReactDOM.createRoot(
+  document.getElementById("root")
+).render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);
+```
+
+`src > App.jsx`
+
+```jsx
+import { useState } from "react";
+
+const Items = ({ name, view }) => {
+  return (
+    <li>
+      {name} {view ? "✅" : "❌"}
+    </li>
+  );
+};
+
+function App() {
+  const list = [
+    { name: "One", view: true },
+    { name: "Two", view: true },
+    { name: "Three", view: true },
+    { name: "Four", view: true },
+    { name: "Five", view: true },
+    { name: "Six", view: true },
+    { name: "Seven", view: true },
+    { name: "Eight", view: true },
+    { name: "Nine", view: true },
+    { name: "Ten", view: true },
+    { name: "Eleven", view: false },
+    { name: "Twelve", view: false },
+  ];
+
+  const [data, setData] = useState(list);
+
+  const addTask = () => {
+    setData([
+      ...data,
+      { name: "lol", view: false },
+    ]);
+  };
+
+  return (
+    <>
+      {data.map((item, index) => (
+        <Items
+          key={index}
+          name={item.name}
+          view={item.view}
+        />
+      ))}
+
+      <button onClick={addTask}>Add Task</button>
+    </>
+  );
+}
+
+export default App;
+```
+
+```jsx
 
 ```
-## **15**  
+
 
 
 ## Helpers
