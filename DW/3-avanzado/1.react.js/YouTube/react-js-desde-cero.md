@@ -520,7 +520,7 @@ function App({ value }) {
   };
 
   const decreaseCounter = () => {
-    counter > 0
+    counter > 0 // Operador ternario
       ? setCounter(counter - 1)
       : setCounter(counter);
   };
