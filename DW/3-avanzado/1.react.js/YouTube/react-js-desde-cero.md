@@ -482,9 +482,7 @@ Estos son solo algunos ejemplos de los hooks más utilizados en React. También 
 
 📌 Existen Hooks propios de React y otros que podemos crear según nuestras necesidades (custom hooks)
 
-```bash
-
-```
+## **13.** Contador 
 
 ```bash
 
@@ -494,6 +492,33 @@ Estos son solo algunos ejemplos de los hooks más utilizados en React. También 
 
 ```
 
+```bash
+
+```
+
+### Hot module replacement
+
+En React, el Hot Module Replacement (HMR), o Reemplazo de Módulos en Caliente, es una función que permite actualizar y reemplazar los módulos individuales en una aplicación en tiempo de ejecución, sin tener que recargar toda la página. Esto es particularmente útil durante el desarrollo, ya que permite una experiencia de desarrollo más rápida y eficiente.
+
+Cuando se utiliza HMR en una aplicación React, los cambios que se realizan en el código fuente se reflejan automáticamente en la aplicación sin necesidad de recargar la página. Esto incluye cambios en los componentes, estilos, archivos de configuración y cualquier otro archivo relacionado con la aplicación.
+
+El funcionamiento básico del Hot Module Replacement en React es el siguiente:
+
+1. Durante el proceso de desarrollo, se utiliza una herramienta de construcción como webpack o Parcel junto con el servidor de desarrollo de React (por ejemplo, webpack-dev-server o react-scripts).
+
+2. Cuando se inicia el servidor de desarrollo, se habilita el HMR para la aplicación React.
+
+3. Cuando se realiza un cambio en el código fuente de la aplicación, el servidor de desarrollo detecta esos cambios y envía una notificación al navegador.
+
+4. El navegador recibe la notificación y, en lugar de recargar toda la página, solicita los módulos actualizados al servidor.
+
+5. El servidor de desarrollo compila y emite los módulos actualizados al navegador.
+
+6. El navegador reemplaza los módulos antiguos en la aplicación con los módulos actualizados, lo que permite ver los cambios en tiempo real sin perder el estado de la aplicación.
+
+Es importante destacar que el HMR no es solo específico de React, sino que también se puede utilizar en otros frameworks y bibliotecas. Sin embargo, la integración en React es bastante sencilla y está bien soportada por las herramientas de construcción más populares.
+
+El HMR en React es una función muy útil para acelerar el ciclo de desarrollo al permitir que los desarrolladores vean los cambios de manera instantánea y eviten tener que recargar manualmente la página después de cada modificación en el código fuente. Esto mejora la productividad y facilita la depuración y experimentación durante el desarrollo de aplicaciones React.
 
 
 ## Helpers
