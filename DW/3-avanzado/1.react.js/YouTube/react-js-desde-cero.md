@@ -648,7 +648,15 @@ Estructura:
 
 ```
 
+### Pasar setData en una prop
 
+Correcto, al enviar la función `setData` como prop llamada `addTask` al componente `AddTask`, estás pasando la función que se utiliza para actualizar el estado `data` del componente `App`. Al hacerlo, el componente `AddTask` puede utilizar esa función para agregar nuevas tareas al estado `data`.
+
+Dado que `setData` es una función que actualiza el estado completo, cuando se llama a `addTask` en el componente `AddTask`, se tiene acceso a todo el estado `data` en el momento en que se llama la función. Esto significa que puedes desestructurar el estado dentro de la función de flecha y utilizarlo en la lógica de actualización.
+
+Por ejemplo, en el código `addTask((tasks) => [...tasks, task]);`, `tasks` es el parámetro que representa el estado actual de `data`. Puedes desestructurar el estado y utilizarlo para crear un nuevo arreglo que incluya todos los elementos existentes y la nueva tarea.
+
+En resumen, al pasar la función `setData` como prop `addTask`, puedes utilizarla en el componente `AddTask` para acceder y actualizar el estado completo `data`. Esto te permite desestructurar el estado y utilizarlo en la lógica de actualización según sea necesario.
 
 ## Helpers
 
