@@ -319,6 +319,8 @@ Los componentes en React permiten crear interfaces de usuario modulares y reutil
 
 ## **8.** Props 
 
+[[reactjs#3. Componentes de TODO Machine#Props]]
+
 Pasar a las props valores por defectos:
 
 1. Usando la siguiente sintaxis: 
@@ -382,7 +384,19 @@ export { FirstComponent };
 
 [¿Qué son las Props?](https://github.com/aleroses/Platzi/blob/master/DW/3-avanzado/1.react.js/Platzi/reactjs.md#props)
 
-## **9.** Hooks
+## **09.** Fragments 
+
+[[reactjs#4. ¿Cómo se comunican los componentes? Props y atributos#`<React.Fragment>` o `<> </>`]]
+
+[Fragment](https://github.com/aleroses/Platzi/blob/master/DW/3-avanzado/1.react.js/Platzi/reactjs.md#reactfragmento-)
+
+Alt + Shift + F
+
+## **10.** Estilos en React
+
+[Apuntes sobre estilos en React](https://github.com/aleroses/Platzi/blob/master/DW/3-avanzado/1.react.js/Platzi/reactjs.md#5-estilos-css-en-react)
+
+## **11.** Hooks
 
 Los hooks en React son funciones especiales que te permiten agregar estado y otras características de React a componentes de función sin necesidad de utilizar componentes de clase. Los hooks fueron introducidos en React a partir de la versión 16.8 y han revolucionado la forma en que se escribe y organiza el código en React.
 
