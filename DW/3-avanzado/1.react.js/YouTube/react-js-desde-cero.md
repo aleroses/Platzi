@@ -636,6 +636,14 @@ function App() {
 export default App;
 ```
 
+## **16.** Formulario
+
+Estructura:  
+
+```bash
+
+```
+
 ```jsx
 
 ```
