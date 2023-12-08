@@ -641,22 +641,124 @@ export default App;
 Estructura:  
 
 ```bash
-
+.
+├── README.md
+├── index.html
+├── node_modules
+├── package-lock.json
+├── package.json
+├── src
+│   ├── App.jsx
+│   ├── assets
+│   │   └── react.svg
+│   ├── components
+│   │   └── AddTask.jsx
+│   └── main.jsx
+└── vite.config.js
 ```
+### Primer método para pasar datos entre componentes: 
+
+`src > App.jsx`
+
+```jsx
+import { useState } from "react";
+import { AddTask } from "./components/AddTask";
+
+const Items = ({ name, view }) => {
+  return (
+    <li>
+      {name} {view ? "✅" : "❌"}
+    </li>
+  );
+};
+
+function App() {
+  const list = [
+    { name: "One", view: true },
+    { name: "Two", view: true },
+  ];
+
+  const [data, setData] = useState(list);
+
+  return (
+    <>
+      <AddTask updateTaskList={setData} />
+      {data.map((item, index) => (
+        <Items
+          key={index}
+          name={item.name}
+          view={item.view}
+        />
+      ))}
+    </>
+  );
+}
+
+export default App;
+```
+
+`src > AddTask.jsx`
+
+```jsx
+import React, { useState } from "react";
+
+const AddTask = ({ updateTaskList }) => {
+  const [value, setValue] = useState("");
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    const newTask = {
+      name: value,
+      view: false,
+    };
+
+	// setData también envia su data que es tasks
+    updateTaskList((tasks) => [...tasks, newTask]);
+  };
+
+  const handleChange = (event) => {
+    setValue(event.target.value);
+    console.log(value);
+  };
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <input
+        type="text"
+        value={value}
+        onChange={handleChange}
+      />
+    </form>
+  );
+};
+
+export { AddTask };
+```
+
+#### Pasar setData en una prop
+
+Al enviar la función `setData` como prop llamada `updateTaskList` al componente `AddTask`, estás pasando la función que se utiliza para actualizar el estado `data` del componente `App`. Al hacerlo, el componente `AddTask` puede utilizar esa función para agregar nuevas tareas al estado `data`.
+
+Dado que `setData` es una función que actualiza el estado completo, cuando se llama a `updateTaskList` en el componente `AddTask`, se tiene acceso a todo el estado `data` en el momento en que se llama la función. Esto significa que puedes desestructurar el estado dentro de la función de flecha y utilizarlo en la lógica de actualización.
+
+Por ejemplo, en el código `updateTaskList((tasks) => [...tasks, newTask]);`, `tasks` es el parámetro que representa el estado actual de `data`. Puedes desestructurar el estado y utilizarlo para crear un nuevo arreglo que incluya todos los elementos existentes y la nueva tarea.
+
+En resumen, al pasar la función `setData` como prop `updateTaskList`, puedes utilizarla en el componente `AddTask` para acceder y actualizar el estado completo `data`. Esto te permite desestructurar el estado y utilizarlo en la lógica de actualización según sea necesario.
+
+### Segundo método para pasar datos entre componentes:
+
+`src >`
 
 ```jsx
 
 ```
 
-### Pasar setData en una prop
+`src >`
 
-Correcto, al enviar la función `setData` como prop llamada `addTask` al componente `AddTask`, estás pasando la función que se utiliza para actualizar el estado `data` del componente `App`. Al hacerlo, el componente `AddTask` puede utilizar esa función para agregar nuevas tareas al estado `data`.
+```jsx
 
-Dado que `setData` es una función que actualiza el estado completo, cuando se llama a `addTask` en el componente `AddTask`, se tiene acceso a todo el estado `data` en el momento en que se llama la función. Esto significa que puedes desestructurar el estado dentro de la función de flecha y utilizarlo en la lógica de actualización.
-
-Por ejemplo, en el código `addTask((tasks) => [...tasks, task]);`, `tasks` es el parámetro que representa el estado actual de `data`. Puedes desestructurar el estado y utilizarlo para crear un nuevo arreglo que incluya todos los elementos existentes y la nueva tarea.
-
-En resumen, al pasar la función `setData` como prop `addTask`, puedes utilizarla en el componente `AddTask` para acceder y actualizar el estado completo `data`. Esto te permite desestructurar el estado y utilizarlo en la lógica de actualización según sea necesario.
+```
 
 ## Helpers
 
