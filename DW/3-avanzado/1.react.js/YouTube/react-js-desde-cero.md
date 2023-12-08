@@ -398,7 +398,13 @@ Alt + Shift + F
 
 [Apuntes sobre estilos en React](https://github.com/aleroses/Platzi/blob/master/DW/3-avanzado/1.react.js/Platzi/reactjs.md#5-estilos-css-en-react)
 
-## **11.** Hooks
+## **11.** Eventos 
+
+[[reactjs#6. Eventos en React onClick, onChange]]
+
+[Eventos](https://github.com/aleroses/Platzi/blob/master/DW/3-avanzado/1.react.js/Platzi/reactjs.md#6-eventos-en-react-onclick-onchange)
+
+## **12.** Hooks
 
 Los hooks en React son funciones especiales que te permiten agregar estado y otras características de React a componentes de función sin necesidad de utilizar componentes de clase. Los hooks fueron introducidos en React a partir de la versión 16.8 y han revolucionado la forma en que se escribe y organiza el código en React.
 
