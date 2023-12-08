@@ -394,6 +394,8 @@ Alt + Shift + F
 
 ## **10.** Estilos en React
 
+[[reactjs#5. Estilos CSS en React]]
+
 [Apuntes sobre estilos en React](https://github.com/aleroses/Platzi/blob/master/DW/3-avanzado/1.react.js/Platzi/reactjs.md#5-estilos-css-en-react)
 
 ## **11.** Hooks
