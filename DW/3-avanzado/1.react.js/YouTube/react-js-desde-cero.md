@@ -1011,12 +1011,26 @@ Published 👈👀
 - [Despliega tu proyecto en GitHub Pages con Vite](https://www.youtube.com/watch?v=igCO5i4NnfU)
 - [Guía para publicar tu sitio web](https://github.com/bluuweb/example-deploy-vite-github-pages/blob/main/README.md)
 
+## **19.** Custom hooks
+
+[[reactjs#14. Custom Hooks]]
+
+[Custom Hooks](https://github.com/aleroses/Platzi/blob/master/DW/3-avanzado/1.react.js/Platzi/reactjs.md#14-custom-hooks)
 
 `src >`
 
 ```jsx
 ```
 
+`src >`
+
+```jsx
+```
+
+`src >`
+
+```jsx
+```
 ## Helpers
 
 En React, los "helpers" (ayudantes) son funciones o componentes auxiliares que se utilizan para realizar tareas comunes o simplificar el código en la construcción de aplicaciones. Estos helpers proporcionan funcionalidades adicionales y ayudan a mantener el código limpio y reutilizable.
