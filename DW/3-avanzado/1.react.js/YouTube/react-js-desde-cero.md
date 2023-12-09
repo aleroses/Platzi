@@ -837,26 +837,72 @@ export { AddTask };
 
 [Efectos en React: useEffect()](https://github.com/aleroses/Platzi/blob/master/DW/3-avanzado/1.react.js/Platzi/reactjs.md#18-qu%C3%A9-son-los-efectos-en-react-useeffect)
 
-`src >`
+`src > App.jsx`
 
 ```jsx
-{/* {endPoint === "users"
-        ? data.map((item) => (
+import React, { useState } from "react";
+import { UserList } from "./components/UserList";
+
+const App = () => {
+  const [endPoint, setEndPoint] = useState("users");
+
+  const handleClick = () => {
+    //setEndPoint("posts");
+    endPoint === "posts"
+      ? setEndPoint("users")
+      : setEndPoint("posts");
+  };
+
+  return (
+    <>
+      <h1>Api list</h1>
+      <button onClick={handleClick}>
+        Change data
+      </button>
+      <UserList endPoint={endPoint} />
+    </>
+  );
+};
+
+export default App;
+```
+
+`src > components > UserList.jsx`
+
+```jsx
+import React, { useEffect, useState } from "react";
+
+const UserList = ({ endPoint }) => {
+  const [data, setData] = useState([]);
+
+  const fetchApi = async () => {
+    const response = await fetch(
+      `https://jsonplaceholder.typicode.com/${endPoint}`
+    );
+    const data = await response.json();
+
+    setData(data);
+  };
+
+  useEffect(() => {
+    fetchApi();
+  }, [endPoint]);
+
+  return (
+    <ul>
+      {data.map((item) =>
+        endPoint === "users" 
+          ? (
             <li key={item.id}>{item.name}</li>
-          ))
-        : data.map((item) => (
-            <li key={item.id}>{item.body}</li>
-          ))} */}
-```
+        ) : (
+            <li key={item.id}>{item.title}</li>
+        )
+      )}
+    </ul>
+  );
+};
 
-`src >`
-
-```jsx
-```
-
-`src >`
-
-```jsx
+export { UserList };
 ```
 
 [Json Placeholder](https://jsonplaceholder.typicode.com/users)
@@ -962,6 +1008,12 @@ Published 👈👀
 
 - [Despliega tu proyecto en GitHub Pages con Vite](https://www.youtube.com/watch?v=igCO5i4NnfU)
 - [Guía para publicar tu sitio web](https://github.com/bluuweb/example-deploy-vite-github-pages/blob/main/README.md)
+
+
+`src >`
+
+```jsx
+```
 
 ## Helpers
 
