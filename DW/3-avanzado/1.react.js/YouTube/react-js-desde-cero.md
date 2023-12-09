@@ -865,9 +865,9 @@ export { AddTask };
 
 En este curso se muestra como subir proyectos a [Netlify](https://www.netlify.com/), pero yo lo subiré de GitHub Pages, abajo los pasos: 
 
-```basc
+```bash
+# Matamos el proceso de ejecución
 Ctrl + C
-npm run buil
 ```
 
 ### Install gh-pages
@@ -893,6 +893,8 @@ export default defineConfig({
 });
 ```
 
+Para hacer esto primero debes crear un repositorio en GitHub, ver pasos siguientes. 
+
 ### package.json
 
 ```json
@@ -914,12 +916,32 @@ git commit -m "first commit"
 
 ### Crear repositorio en GitHub
 
-Subir el proyecto a GitHub
-
-```sh
+```bash
 git remote add origin https://github.com/${nombre-cuenta}/${nombre-repositorio}.git
-git branch -M main
-git push -u origin main
+git remote -v
+
+# Si creaste un README y un .gitignore en el repo remoto haz lo siguiente
+git pull origin master --allow-unrelated-histories
+
+# Si te aparece algo así, corrige los conflictos manualmente
+CONFLICT (add/add): Merge conflict in .gitignore 👈👀
+Auto-merging README.md
+CONFLICT (add/add): Merge conflict in README.md 👈👀
+
+# Si no creaste los dos archivos mencionados solo haz lo siguiente
+git branch -M master
+git push -u origin master
+```
+
+📌 Tener cuidado con el nombre de la rama, puede ser **master** o **main**
+
+![](https://i.postimg.cc/G2t9sfJG/2-conflicts.png)
+
+```bash
+# Corregido los conflictos puedes continuar
+git status
+git add . && git commit -am "Update"
+git push origin master
 ```
 
 ### npm run build && npm run deploy
@@ -928,10 +950,15 @@ Estos comandos se repiten por cada actualización del proyecto:
 
 ```sh
 npm run build
-npm run deploy
+npm run deploy 👈👀👇
+
+> first-project-react@0.0.0 deploy
+> gh-pages -d dist
+
+Published 👈👀
 ```
 
-🔥 Esperar... y listo!
+🔥 Esperar... y listo! Los cambios lo puedes ver dentro de tu repo en GitHub > Settings > Pages 
 
 - [Despliega tu proyecto en GitHub Pages con Vite](https://www.youtube.com/watch?v=igCO5i4NnfU)
 - [Guía para publicar tu sitio web](https://github.com/bluuweb/example-deploy-vite-github-pages/blob/main/README.md)
