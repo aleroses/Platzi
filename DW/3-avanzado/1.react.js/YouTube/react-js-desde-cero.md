@@ -1006,6 +1006,8 @@ Published 👈👀
 
 🔥 Esperar... y listo! Los cambios lo puedes ver dentro de tu repo en GitHub > Settings > Pages 
 
+[🚀 Proyecto desplegado](https://alevroses.github.io/react__test/)
+
 - [Despliega tu proyecto en GitHub Pages con Vite](https://www.youtube.com/watch?v=igCO5i4NnfU)
 - [Guía para publicar tu sitio web](https://github.com/bluuweb/example-deploy-vite-github-pages/blob/main/README.md)
 
