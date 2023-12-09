@@ -1157,6 +1157,9 @@ export { fetchApi };
 ```
 
 ![](https://i.postimg.cc/8PRJXjkK/3-network-slow.png)
+
+Una vision general: 
+
 ![](https://i.postimg.cc/NFRjxWNn/4-custom-hooks.jpg)
 
 ## Helpers
