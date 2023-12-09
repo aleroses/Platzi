@@ -682,7 +682,7 @@ function App() {
 
   return (
     <>
-      <AddTask updateTaskList={setData} />
+      <AddTask updateTaskList={setData} /> 👈👀
       {data.map((item, index) => (
         <Items
           key={index}
@@ -770,7 +770,7 @@ function App() {
 
   const [data, setData] = useState(list);
 
-  const handleAddTask = (task) => {
+  const handleAddTask = (task) => { 👈👀
     task = task.trim();
 
     const newTask = {
@@ -778,12 +778,12 @@ function App() {
       view: false,
     };
 
-    setData([...data, newTask]);
+    setData([...data, newTask]); 👈👀
   };
 
   return (
     <>
-      <AddTask updateTaskList={handleAddTask} />
+      <AddTask updateTaskList={handleAddTask} /> 👈👀
       {data.map((item, index) => (
         <Items
           key={index}
@@ -809,7 +809,7 @@ const AddTask = ({ updateTaskList }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    value ? updateTaskList(value) : null;
+    value ? updateTaskList(value) : null; 👈👀
   };
 
   const handleChange = (event) => {
@@ -830,6 +830,29 @@ const AddTask = ({ updateTaskList }) => {
 
 export { AddTask };
 ```
+
+## **17.** useEffect y fetch
+
+[[reactjs#18. ¿Qué son los efectos en React? useEffect()]]
+
+[Efectos en React: useEffect()](https://github.com/aleroses/Platzi/blob/master/DW/3-avanzado/1.react.js/Platzi/reactjs.md#18-qu%C3%A9-son-los-efectos-en-react-useeffect)
+
+`src >`
+
+```jsx
+```
+
+`src >`
+
+```jsx
+```
+
+`src >`
+
+```jsx
+```
+
+[Json Placeholder](https://jsonplaceholder.typicode.com/users)
 
 ## Helpers
 
