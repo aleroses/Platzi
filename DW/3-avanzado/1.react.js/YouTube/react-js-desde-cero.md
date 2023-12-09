@@ -697,7 +697,7 @@ function App() {
 export default App;
 ```
 
-`src > AddTask.jsx`
+`src > components > AddTask.jsx`
 
 ```jsx
 import React, { useState } from "react";
@@ -748,16 +748,87 @@ En resumen, al pasar la función `setData` como prop `updateTaskList`, puedes ut
 
 ### Segundo método para pasar datos entre componentes:
 
-`src >`
+`src > App.jsx`
 
 ```jsx
+import { useState } from "react";
+import { AddTask } from "./components/AddTask";
 
+const Items = ({ name, view }) => {
+  return (
+    <li>
+      {name} {view ? "✅" : "❌"}
+    </li>
+  );
+};
+
+function App() {
+  const list = [
+    { name: "One", view: true },
+    { name: "Two", view: true },
+  ];
+
+  const [data, setData] = useState(list);
+
+  const handleAddTask = (task) => {
+    task = task.trim();
+
+    const newTask = {
+      name: task,
+      view: false,
+    };
+
+    setData([...data, newTask]);
+  };
+
+  return (
+    <>
+      <AddTask updateTaskList={handleAddTask} />
+      {data.map((item, index) => (
+        <Items
+          key={index}
+          name={item.name}
+          view={item.view}
+        />
+      ))}
+    </>
+  );
+}
+
+export default App;
 ```
 
-`src >`
+`src > components > AddTask.jsx`
 
 ```jsx
+import React, { useState } from "react";
 
+const AddTask = ({ updateTaskList }) => {
+  const [value, setValue] = useState("");
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    value ? updateTaskList(value) : null;
+  };
+
+  const handleChange = (event) => {
+    setValue(event.target.value);
+    console.log(value);
+  };
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <input
+        type="text"
+        value={value}
+        onChange={handleChange}
+      />
+    </form>
+  );
+};
+
+export { AddTask };
 ```
 
 ## Helpers
