@@ -1017,20 +1017,148 @@ Published 👈👀
 
 [Custom Hooks](https://github.com/aleroses/Platzi/blob/master/DW/3-avanzado/1.react.js/Platzi/reactjs.md#14-custom-hooks)
 
-`src >`
+Estructura: 
 
-```jsx
+```bash
+.
+├── LICENSE
+├── README.md
+├── index.html
+├── node_modules
+├── package-lock.json
+├── package.json
+├── src 👈👀👇
+│   ├── App.jsx
+│   ├── assets
+│   │   └── react.svg
+│   ├── components
+│   │   ├── UserList.jsx
+│   │   ├── helpers
+│   │   │   └── fetch.js
+│   │   └── hooks
+│   │       └── useFetch.js
+│   └── main.jsx
+└── vite.config.js
 ```
 
-`src >`
+`src > App.jsx`
 
 ```jsx
+import React, { useState } from "react";
+import { UserList } from "./components/UserList";
+
+const App = () => {
+  const [endPoint, setEndPoint] = useState("users");
+
+  const handleClick = () => {
+    //setEndPoint("posts");
+    endPoint === "posts"
+      ? setEndPoint("users")
+      : setEndPoint("posts");
+  };
+
+  return (
+    <>
+      <h1>Api list</h1>
+      <button onClick={handleClick}>
+        Change data
+      </button>
+      <UserList endPoint={endPoint} />
+    </>
+  );
+};
+
+export default App;
 ```
 
-`src >`
+`src > components > UserList.jsx`
 
 ```jsx
+import React, { useEffect, useState } from "react";
+import { useFetch } from "./hooks/useFetch";
+
+const UserList = ({ endPoint }) => {
+  const { data, isLoading } = useFetch(endPoint);
+
+  return (
+    <ul>
+      {isLoading ? (
+        <p>Loading...</p>
+      ) : (
+        data.map((item) =>
+          endPoint === "users" ? (
+            <li key={item.id}>{item.name}</li>
+          ) : (
+            <li key={item.id}>{item.title}</li>
+          )
+        )
+      )}
+    </ul>
+  );
+};
+
+export { UserList };
 ```
+
+`src > components > hooks > useFetch.js`
+
+```js
+import React, { useEffect, useState } from "react";
+import { fetchApi } from "../helpers/fetch";
+
+const useFetch = (endPoint) => {
+  const [data, setData] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  const getData = async () => {
+    const { data, isLoading } = await fetchApi( endPoint );
+		
+    setData(data);
+    setIsLoading(isLoading);
+  };
+
+  useEffect(() => {
+    getData();
+    /* fetchApi(endPoint).then((res) => {
+      setData(res.data);
+      setIsLoading(res.isLoading);
+    }); */
+  }, [endPoint]);
+
+  return {
+    data,
+    isLoading,
+  };
+};
+
+export { useFetch };
+```
+
+`src > components > helpers > fetch.js`
+
+```jsx
+const fetchApi = async (endPoint) => {
+  try {
+    const response = await fetch(
+      `https://jsonplaceholder.typicode.com/${endPoint}`
+    );
+    const data = await response.json();
+
+    return {
+      data,
+      isLoading: false,
+    };
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+export { fetchApi };
+```
+
+![](https://i.postimg.cc/8PRJXjkK/3-network-slow.png)
+![](https://i.postimg.cc/NFRjxWNn/4-custom-hooks.jpg)
+
 ## Helpers
 
 En React, los "helpers" (ayudantes) son funciones o componentes auxiliares que se utilizan para realizar tareas comunes o simplificar el código en la construcción de aplicaciones. Estos helpers proporcionan funcionalidades adicionales y ayudan a mantener el código limpio y reutilizable.
