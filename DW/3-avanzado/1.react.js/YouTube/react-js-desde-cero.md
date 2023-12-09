@@ -840,6 +840,13 @@ export { AddTask };
 `src >`
 
 ```jsx
+{/* {endPoint === "users"
+        ? data.map((item) => (
+            <li key={item.id}>{item.name}</li>
+          ))
+        : data.map((item) => (
+            <li key={item.id}>{item.body}</li>
+          ))} */}
 ```
 
 `src >`
