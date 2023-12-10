@@ -1162,7 +1162,7 @@ Una vision general:
 
 ![](https://i.postimg.cc/NFRjxWNn/4-custom-hooks.jpg)
 
-## Helpers
+### Helpers
 
 En React, los "helpers" (ayudantes) son funciones o componentes auxiliares que se utilizan para realizar tareas comunes o simplificar el código en la construcción de aplicaciones. Estos helpers proporcionan funcionalidades adicionales y ayudan a mantener el código limpio y reutilizable.
 
@@ -1196,6 +1196,22 @@ Recuerda que los helpers son simplemente funciones o componentes adicionales que
 
 [Json Placeholder](https://jsonplaceholder.typicode.com/users)
 
+## **20.** Bootstrap
+
+[Get Bootstrap](https://getbootstrap.com/)
+
+CSS 
+
+```html
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+```
+
+JS
+```html
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+```
+
+## **21.** useCounter()
 ## useRef()
 
 En React, `useRef()` es un hook que se utiliza para crear una referencia mutable que se puede adjuntar a elementos del DOM o a cualquier otro valor mutable. A diferencia de las variables de estado (state), las referencias creadas con `useRef()` no provocan una nueva renderización cuando su valor cambia.
