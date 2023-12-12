@@ -1256,12 +1256,42 @@ const App = () => {
 export default App;
 ```
 
-`> > `
+`src > components > Counter.jsx`
 
 ```jsx
+import React from "react";
+import { useCounter } from "./hooks/useCounter";
+
+const Counter = () => {
+  const { counter, increase, decrease, reset } =
+    useCounter(0);
+
+  return (
+    <>
+      <h1>Counter: {counter}</h1>
+      <button
+        className="btn btn-primary"
+        onClick={() => increase(1)}>
+        +1
+      </button>
+      <button
+        className="btn btn-danger"
+        onClick={() => reset()}>
+        Reset
+      </button>
+      <button
+        className="btn btn-primary"
+        onClick={() => decrease(1)}>
+        -1
+      </button>
+    </>
+  );
+};
+
+export { Counter };
 ```
 
-`> > `
+`src > components > hooks> useCounter.js`
 
 ```jsx
 ```
