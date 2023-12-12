@@ -1294,6 +1294,28 @@ export { Counter };
 `src > components > hooks> useCounter.js`
 
 ```jsx
+import React, { useState } from "react";
+
+const useCounter = (initialValue = 0) => {
+  const [counter, setCounter] =
+    useState(initialValue);
+
+  const increase = (valor = 1) => {
+    setCounter(counter + valor);
+  };
+
+  const decrease = (valor = 1) => {
+    counter ? setCounter(counter - valor) : null;
+  };
+
+  const reset = () => {
+    setCounter(0);
+  };
+
+  return { counter, increase, decrease, reset };
+};
+
+export { useCounter };
 ```
 
 `> > `
