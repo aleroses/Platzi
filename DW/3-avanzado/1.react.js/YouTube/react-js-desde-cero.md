@@ -1318,6 +1318,8 @@ const useCounter = (initialValue = 0) => {
 export { useCounter };
 ```
 
+## Formularios con Hooks
+
 `> > `
 
 ```jsx
