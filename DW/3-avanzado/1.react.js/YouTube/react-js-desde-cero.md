@@ -1320,10 +1320,48 @@ export { useCounter };
 
 ## Formularios con Hooks
 
+Estructura del proyecto:
+
+```bash
+.
+├── LICENSE
+├── README.md
+├── index.html
+├── node_modules
+├── package-lock.json
+├── package.json
+├── src
+│   ├── App.jsx
+│   ├── assets
+│   │   └── react.svg
+│   ├── components
+│   │   ├── Form.jsx
+│   │   └── hooks
+│   │       └── useForm.js
+│   └── main.jsx
+└── vite.config.js
+```
+
 `> > `
 
 ```jsx
 ```
+
+`> > `
+
+```jsx
+```
+
+`> > `
+
+```jsx
+```
+
+`> > `
+
+```jsx
+```
+
 ## useRef()
 
 En React, `useRef()` es un hook que se utiliza para crear una referencia mutable que se puede adjuntar a elementos del DOM o a cualquier otro valor mutable. A diferencia de las variables de estado (state), las referencias creadas con `useRef()` no provocan una nueva renderización cuando su valor cambia.
