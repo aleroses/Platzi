@@ -1245,7 +1245,7 @@ const App = () => {
   return (
     <>
       <div className="container">
-        <h1>Api list</h1>
+	        <h1>Counter</h1>
         <hr />
         <Counter></Counter>
       </div>
@@ -1352,7 +1352,7 @@ const App = () => {
   return (
     <>
       <div className="container">
-        <h1>Api list</h1>
+        <h1>Form</h1>
         <hr />
         <Form></Form>
       </div>
