@@ -1366,11 +1366,107 @@ export default App;
 `src > components > Form.jsx`
 
 ```jsx
+import { useForm } from "./hooks/useForm";
+
+const Form = () => {
+  const initialForm = {
+    userName: "",
+    email: "",
+    password: "",
+  };
+
+  const { userName, email, password, form, handleChange } =
+    useForm(initialForm);
+
+  // const { userName, email, password } = form;
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    console.log(form);
+  };
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <div className="mb-3">
+        <label
+          htmlFor="userName"
+          className="form-label">
+          User Name
+        </label>
+        <input
+          type="text"
+          className="form-control"
+          name="userName"
+          placeholder="Enter your Username"
+          value={userName}
+          onChange={handleChange}
+        />
+      </div>
+      <div className="mb-3">
+        <label
+          htmlFor="email"
+          className="form-label">
+          Email Address
+        </label>
+        <input
+          type="email"
+          className="form-control"
+          name="email"
+          placeholder="Enter your Email"
+          value={email}
+          onChange={handleChange}
+        />
+      </div>
+      <div className="mb-3">
+        <label
+          htmlFor="password"
+          className="form-label">
+          Password
+        </label>
+        <input
+          type="password"
+          className="form-control"
+          name="password"
+          placeholder="Enter your Password"
+          value={password}
+          onChange={handleChange}
+        />
+      </div>
+
+      <button
+        type="submit"
+        className="btn btn-primary">
+        Submit
+      </button>
+    </form>
+  );
+};
+
+export { Form };
 ```
 
-`> > `
+`src > components > hooks > useForm.js `
 
-```jsx
+```js
+import React, { useState } from "react";
+
+const useForm = (initialForm = {}) => {
+  const [form, setForm] = useState(initialForm);
+
+  const handleChange = ({ target }) => {
+    // console.log(target.name);
+    const { name, value } = target;
+    setForm({
+      ...form,
+      [name]: value,
+    });
+  };
+
+  return { ...form, form, handleChange };
+};
+
+export { useForm };
+
 ```
 
 `> > `
