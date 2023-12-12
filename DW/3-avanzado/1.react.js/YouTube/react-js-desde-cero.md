@@ -1235,9 +1235,25 @@ Estructura del proyecto:
 └── vite.config.js
 ```
 
-`> > `
+`src > App.jsx`
 
 ```jsx
+import React, { useState } from "react";
+import { Counter } from "./components/Counter";
+
+const App = () => {
+  return (
+    <>
+      <div className="container">
+        <h1>Api list</h1>
+        <hr />
+        <Counter></Counter>
+      </div>
+    </>
+  );
+};
+
+export default App;
 ```
 
 `> > `
