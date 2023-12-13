@@ -1471,9 +1471,24 @@ export { useForm };
 
 ## **23.** Fetch con Hooks
 
-`> > `
+`src > App.jsx`
 
 ```jsx
+import { Users } from "./components/Users";
+
+const App = () => {
+  return (
+    <>
+      <div className="container">
+        <h1>Api Users</h1>
+        <hr />
+        <Users></Users>
+      </div>
+    </>
+  );
+};
+
+export default App;
 ```
 
 `src > components > hooks > useForm.js `
