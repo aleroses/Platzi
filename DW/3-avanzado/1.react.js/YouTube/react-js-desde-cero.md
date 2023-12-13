@@ -1494,12 +1494,94 @@ export default App;
 `src > components > Users.jsx`
 
 ```jsx
+import React from "react";
+import { useFetch } from "./hooks/useFetch";
 
+const Users = () => {
+  const { data, isLoading, errors } = useFetch(
+    `https://jsonplaceholder.typicode.com/users`
+  );
+
+  return (
+    <>
+      {isLoading ? (
+        <h4>Loading...</h4>
+      ) : (
+        <table className="table">
+          <thead>
+            <tr>
+              <th scope="col">Id</th>
+              <th scope="col">Name</th>
+              <th scope="col">Email</th>
+              <th scope="col">Website</th>
+            </tr>
+          </thead>
+          <tbody>
+            {data.map((user) => {
+              return (
+                <tr key={user.id}>
+                  <th scope="row">{user.id}</th>
+                  <td>{user.name}</td>
+                  <td>{user.email}</td>
+                  <td>{user.website}</td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      )}
+    </>
+  );
+};
+
+export { Users };
 ```
 
-`src > components > hooks > useForm.js `
+`src > components > hooks > useFetch.js `
 
-```jsx
+```js
+import React, { useEffect, useState } from "react";
+
+const useFetch = (url) => {
+  const [state, setState] = useState({
+    data: null,
+    isLoading: true,
+    errors: null,
+  });
+  const { data, isLoading, errors } = state;
+
+  const getData = async () => {
+    try {
+      const response = await fetch(url);
+      const data = await response.json();
+
+      setState({
+        data,
+        isLoading: false,
+        errors: null,
+      });
+    } catch (error) {
+      setState({
+        data: null,
+        isLoading: false,
+        errors: error,
+      });
+    }
+  };
+
+  useEffect(() => {
+    if (!url) return;
+    getData();
+  }, [url]);
+
+  return {
+    data,
+    isLoading,
+    errors,
+  };
+};
+
+export { useFetch };
 ```
 
 `src > components > hooks > useForm.js `
