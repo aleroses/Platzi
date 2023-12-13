@@ -1471,6 +1471,28 @@ export { useForm };
 
 ## **23.** Fetch con Hooks
 
+Estructura:
+
+```bash
+.
+├── LICENSE
+├── README.md
+├── index.html
+├── node_modules
+├── package-lock.json
+├── package.json
+├── src
+│   ├── App.jsx
+│   ├── assets
+│   │   └── react.svg
+│   ├── components
+│   │   ├── Users.jsx
+│   │   └── hooks
+│   │       └── useFetch.js
+│   └── main.jsx
+└── vite.config.js
+```
+
 `src > App.jsx`
 
 ```jsx
