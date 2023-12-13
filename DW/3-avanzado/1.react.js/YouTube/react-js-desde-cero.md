@@ -1456,9 +1456,10 @@ const useForm = (initialForm = {}) => {
   const handleChange = ({ target }) => {
     // console.log(target.name);
     const { name, value } = target;
+    // Obtenemos el { key, value} del objeto
     setForm({
       ...form,
-      [name]: value,
+      [name]: value, // key: value
     });
   };
 
