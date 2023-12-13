@@ -1318,7 +1318,7 @@ const useCounter = (initialValue = 0) => {
 export { useCounter };
 ```
 
-## Formularios con Hooks
+## **22.** Formularios con Hooks
 
 Estructura del proyecto:
 
@@ -1466,10 +1466,16 @@ const useForm = (initialForm = {}) => {
 };
 
 export { useForm };
-
 ```
 
+## **23.** Fetch co Hooks
+
 `> > `
+
+```jsx
+```
+
+`src > components > hooks > useForm.js `
 
 ```jsx
 ```
