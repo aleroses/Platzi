@@ -1837,6 +1837,37 @@ En este ejemplo, tenemos un componente que recibe una prop `list`. Queremos real
 
 Es importante tener en cuenta que `useMemo()` solo debe utilizarse cuando realmente necesitas optimizar el rendimiento de tu componente y cuando los cálculos sean lo suficientemente costosos como para justificar el uso de memorización. Usarlo incorrectamente puede llevar a un código más complicado y menos legible. Por lo tanto, es recomendable utilizar `useMemo()` con precaución y realizar pruebas para verificar su impacto en el rendimiento de tu aplicación.
 
+### Ejemplo del curso 
+
+Estructura:
+
+```bash
+.
+├── LICENSE
+├── README.md
+├── index.html
+├── node_modules
+├── package-lock.json
+├── package.json
+├── src
+│   ├── App.jsx
+│   ├── assets
+│   │   └── react.svg
+│   ├── components
+│   │   └── Calculations.jsx
+│   └── main.jsx
+└── vite.config.js
+```
+
+`src > components > hooks > useForm.js `
+
+```jsx
+```
+
+`src > components > hooks > useForm.js `
+
+```jsx
+```
 
 `src > components > hooks > useForm.js `
 
