@@ -1882,7 +1882,43 @@ export default App;
 `src > components > Calculations.jsx`
 
 ```jsx
+import React, { useMemo, useState } from "react";
 
+const Calculations = () => {
+  const [numberList, setNumberList] = useState([
+    1, 2, 3, 4, 5,
+  ]);
+  const [show, setShow] = useState(true);
+
+  const getCalculo = (numberList) =>
+    useMemo(() => {
+      console.log("Calculating...");
+      return numberList.reduce((a, b) => a * b);
+    }, [numberList]);
+
+  const addNumber = () => {
+    setNumberList([
+      ...numberList,
+      numberList.length + 1,
+    ]);
+    console.log(numberList);
+  };
+
+  return (
+    <>
+      <h2>Calculation</h2>
+      <p>{getCalculo(numberList)}</p>
+      <button onClick={() => setShow(!show)}>
+        {show ? "Show" : "Hide"}
+      </button>
+      <button onClick={() => addNumber()}>
+        Add number
+      </button>
+    </>
+  );
+};
+
+export { Calculations };
 ```
 
 `src > components > hooks > useForm.js `
