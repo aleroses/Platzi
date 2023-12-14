@@ -1606,11 +1606,6 @@ const useFetch = (url) => {
 export { useFetch };
 ```
 
-`src > components > hooks > useForm.js `
-
-```jsx
-```
-
 ## **24.** useRef()
 
 En React, `useRef()` es un hook que se utiliza para crear una referencia mutable que se puede adjuntar a elementos del DOM o a cualquier otro valor mutable. A diferencia de las variables de estado (state), las referencias creadas con `useRef()` no provocan una nueva renderización cuando su valor cambia.
@@ -1661,6 +1656,115 @@ En este ejemplo, hemos creado una referencia llamada `inputRef` y la hemos adjun
 Además de adjuntar referencias a elementos del DOM, `useRef()` también se puede utilizar para mantener referencias a otros valores mutables en el componente. Por ejemplo, puedes usarlo para mantener una referencia a un temporizador, a un objeto mutable o a cualquier otro dato que necesites mantener durante todo el ciclo de vida del componente.
 
 Es importante tener en cuenta que al modificar el valor de una referencia con `refContainer.current`, React no realizará una nueva renderización del componente. Por lo tanto, si necesitas actualizar el estado del componente y provocar una renderización, debes utilizar `useState()` o `useReducer()` en su lugar.
+
+### Ejemplo del curso
+
+Para el ejemplo de `useRef()` reusamos el código del Formulario hecho en el punto 22.
+
+[[#**22.** Formularios con Hooks]]
+
+`src > components > Form.jsx`
+
+```jsx
+import { useRef } from "react";
+import { useForm } from "./hooks/useForm";
+import { useEffect } from "react";
+
+const Form = () => {
+  const focus = useRef();
+  console.log(focus);
+
+  const initialForm = {
+    userName: "",
+    email: "",
+    password: "",
+  };
+
+  const {
+    userName,
+    email,
+    password,
+    form,
+    handleChange,
+  } = useForm(initialForm);
+
+  // const { userName, email, password } = form;
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    console.log(form);
+  };
+
+  useEffect(() => {
+    focus.current.focus();
+  }, []);
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <div className="mb-3">
+        <label
+          htmlFor="userName"
+          className="form-label">
+          User Name
+        </label>
+        <input
+          type="text"
+          className="form-control"
+          name="userName"
+          placeholder="Enter your Username"
+          value={userName}
+          onChange={handleChange}
+        />
+      </div>
+      <div className="mb-3">
+        <label
+          htmlFor="email"
+          className="form-label">
+          Email Address
+        </label>
+        <input
+          ref={focus}
+          type="email"
+          className="form-control"
+          name="email"
+          placeholder="Enter your Email"
+          value={email}
+          onChange={handleChange}
+        />
+      </div>
+      <div className="mb-3">
+        <label
+          htmlFor="password"
+          className="form-label">
+          Password
+        </label>
+        <input
+          type="password"
+          className="form-control"
+          name="password"
+          placeholder="Enter your Password"
+          value={password}
+          onChange={handleChange}
+        />
+      </div>
+
+      <button
+        type="submit"
+        className="btn btn-primary">
+        Submit
+      </button>
+    </form>
+  );
+};
+
+export { Form };
+
+```
+
+`src > components > hooks > useForm.js `
+
+```jsx
+```
 
 ## useMemo
 
