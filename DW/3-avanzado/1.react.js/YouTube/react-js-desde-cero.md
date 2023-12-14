@@ -1666,13 +1666,13 @@ Para el ejemplo de `useRef()` reusamos el código del Formulario hecho en el pun
 `src > components > Form.jsx`
 
 ```jsx
-import { useRef } from "react";
+import { useRef } from "react"; 👈👀
 import { useForm } from "./hooks/useForm";
 import { useEffect } from "react";
 
 const Form = () => {
-  const focus = useRef();
-  console.log(focus);
+  const focus = useRef(); 👈👀
+  console.log(focus); 👈👀
 
   const initialForm = {
     userName: "",
@@ -1695,7 +1695,7 @@ const Form = () => {
     console.log(form);
   };
 
-  useEffect(() => {
+  useEffect(() => { 👈👀👇
     focus.current.focus();
   }, []);
 
@@ -1723,7 +1723,7 @@ const Form = () => {
           Email Address
         </label>
         <input
-          ref={focus}
+          ref={focus} 👈👀
           type="email"
           className="form-control"
           name="email"
