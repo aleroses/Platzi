@@ -1764,11 +1764,6 @@ Solo agregamos un par de cosas, el resto se queda tal cual el ejemplo del punto 
 
 ![](https://i.postimg.cc/J7QMgmKQ/5-useRef.png)
 
-`src > components > hooks > useForm.js `
-
-```jsx
-```
-
 ## **25.** useMemo
 
 En React, `useMemo()` es un hook que te permite optimizar el rendimiento de tus componentes al memorizar el resultado de una función costosa. Básicamente, `useMemo()` se utiliza para evitar cálculos innecesarios cuando los valores de entrada no han cambiado.
@@ -1821,6 +1816,12 @@ function Component({ list }) {
 En este ejemplo, tenemos un componente que recibe una prop `list`. Queremos realizar un cálculo costoso en función de `list` y mostrar el resultado en el componente. Al utilizar `useMemo()`, aseguramos que el cálculo solo se realice cuando `list` cambie. Si `list` no ha cambiado desde la última renderización, `memorizedResult` se devuelve directamente sin realizar el cálculo nuevamente.
 
 Es importante tener en cuenta que `useMemo()` solo debe utilizarse cuando realmente necesitas optimizar el rendimiento de tu componente y cuando los cálculos sean lo suficientemente costosos como para justificar el uso de memorización. Usarlo incorrectamente puede llevar a un código más complicado y menos legible. Por lo tanto, es recomendable utilizar `useMemo()` con precaución y realizar pruebas para verificar su impacto en el rendimiento de tu aplicación.
+
+
+`src > components > hooks > useForm.js `
+
+```jsx
+```
 
 ## useCallback
 
