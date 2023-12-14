@@ -1659,7 +1659,7 @@ Es importante tener en cuenta que al modificar el valor de una referencia con `r
 
 ### Ejemplo del curso
 
-Para el ejemplo de `useRef()` reusamos el código del Formulario hecho en el punto 22.
+Para el ejemplo de `useRef()` reusamos el código del Formulario hecho en el punto 22. 
 
 [[#**22.** Formularios con Hooks]]
 
@@ -1759,6 +1759,8 @@ const Form = () => {
 
 export { Form };
 ```
+
+Solo agregamos un par de cosas, el resto se queda tal cual el ejemplo del punto 22.
 
 `src > components > hooks > useForm.js `
 
