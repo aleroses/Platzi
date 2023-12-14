@@ -1982,6 +1982,27 @@ Es importante tener en cuenta que `useCallback()` debe utilizarse con precaució
 
 ### Ejemplo del curso
 
+Estructura:
+
+```bash
+.
+├── LICENSE
+├── README.md
+├── index.html
+├── node_modules
+├── package-lock.json
+├── package.json
+├── src
+│   ├── App.jsx
+│   ├── assets
+│   │   └── react.svg
+│   ├── components
+│   │   ├── CallBack.jsx
+│   │   └── Increase.jsx
+│   └── main.jsx
+└── vite.config.js
+```
+
 `src > App.jsx`
 
 ```jsx
