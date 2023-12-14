@@ -1859,14 +1859,30 @@ Estructura:
 └── vite.config.js
 ```
 
-`src > components > hooks > useForm.js `
+`src > App.jsx`
 
 ```jsx
+import { Calculations } from "./components/Calculations";
+
+const App = () => {
+  return (
+    <>
+      <div className="container">
+        <h1>Heavy calculations</h1>
+        <hr />
+        <Calculations></Calculations>
+      </div>
+    </>
+  );
+};
+
+export default App;
 ```
 
-`src > components > hooks > useForm.js `
+`src > components > Calculations.jsx`
 
 ```jsx
+
 ```
 
 `src > components > hooks > useForm.js `
