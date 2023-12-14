@@ -1762,6 +1762,8 @@ export { Form };
 
 Solo agregamos un par de cosas, el resto se queda tal cual el ejemplo del punto 22.
 
+![](https://i.postimg.cc/J7QMgmKQ/5-useRef.png)
+
 `src > components > hooks > useForm.js `
 
 ```jsx
