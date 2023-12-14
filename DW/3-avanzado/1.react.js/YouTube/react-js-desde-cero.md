@@ -2211,6 +2211,8 @@ const NewReducer = () => {
 export { NewReducer };
 ```
 
+[useReducer en 20 min (y crea una lista de tareas)](https://www.youtube.com/watch?v=BACpj7GmiEo)
+
 `src > components > hooks > useForm.js `
 
 ```jsx
