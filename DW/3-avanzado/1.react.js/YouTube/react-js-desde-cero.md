@@ -1769,7 +1769,7 @@ Solo agregamos un par de cosas, el resto se queda tal cual el ejemplo del punto 
 ```jsx
 ```
 
-## useMemo
+## **25.** useMemo
 
 En React, `useMemo()` es un hook que te permite optimizar el rendimiento de tus componentes al memorizar el resultado de una función costosa. Básicamente, `useMemo()` se utiliza para evitar cálculos innecesarios cuando los valores de entrada no han cambiado.
 
