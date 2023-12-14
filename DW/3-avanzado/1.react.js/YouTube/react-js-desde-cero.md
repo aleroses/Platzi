@@ -1663,6 +1663,26 @@ Para el ejemplo de `useRef()` reusamos el código del Formulario hecho en el pun
 
 [[#**22.** Formularios con Hooks]]
 
+`src > App.jsx`
+
+```jsx
+import { Form } from "./components/Form";
+
+const App = () => {
+  return (
+    <>
+      <div className="container">
+        <h1>UseRef</h1>
+        <hr />
+        <Form></Form>
+      </div>
+    </>
+  );
+};
+
+export default App;
+```
+
 `src > components > Form.jsx`
 
 ```jsx
