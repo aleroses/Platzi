@@ -1921,12 +1921,7 @@ const Calculations = () => {
 export { Calculations };
 ```
 
-`src > components > hooks > useForm.js `
-
-```jsx
-```
-
-## useCallback
+## **26.** useCallback
 
 En React, `useCallback()` es un hook que se utiliza para memorizar una función y evitar que se vuelva a crear en cada renderización del componente. Es útil cuando deseas pasar una función como prop a componentes hijos y quieres evitar que esos componentes se vuelvan a renderizar innecesariamente debido a cambios en la función.
 
@@ -1984,6 +1979,13 @@ function ChildComponent({ onClick }) {
 En este ejemplo, `handleClick` se memoriza utilizando `useCallback()` en el componente `ParentComponent`. Luego, se pasa como prop `onClick` al componente `ChildComponent`. Debido a que `handleClick` está memorizado, el componente `ChildComponent` no se volverá a renderizar innecesariamente a menos que cambie alguna de las dependencias en la lista de dependencias (`[]` en este caso).
 
 Es importante tener en cuenta que `useCallback()` debe utilizarse con precaución y solo cuando sea necesario optimizar el rendimiento de tu aplicación. Si la función que deseas memorizar no tiene dependencias y no se vuelve a crear en cada renderización, no es necesario utilizar `useCallback()`.
+
+### Ejemplo del curso
+
+`src > components > hooks > useForm.js `
+
+```jsx
+```
 
 ## useRef, useMemo y useCallback
 
