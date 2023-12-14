@@ -1784,7 +1784,7 @@ Solo agregamos un par de cosas, el resto se queda tal cual el ejemplo del punto 
 
 ![](https://i.postimg.cc/J7QMgmKQ/5-useRef.png)
 
-## **25.** useMemo
+## **25.** useMemo()
 
 En React, `useMemo()` es un hook que te permite optimizar el rendimiento de tus componentes al memorizar el resultado de una función costosa. Básicamente, `useMemo()` se utiliza para evitar cálculos innecesarios cuando los valores de entrada no han cambiado.
 
@@ -1921,7 +1921,7 @@ const Calculations = () => {
 export { Calculations };
 ```
 
-## **26.** useCallback
+## **26.** useCallback()
 
 En React, `useCallback()` es un hook que se utiliza para memorizar una función y evitar que se vuelva a crear en cada renderización del componente. Es útil cuando deseas pasar una función como prop a componentes hijos y quieres evitar que esos componentes se vuelvan a renderizar innecesariamente debido a cambios en la función.
 
@@ -2074,7 +2074,7 @@ useMemo: Hook de React que devuelve un valor memorizado que se recalcula solo cu
 
 useCallback: Hook de React que devuelve una versión memorizada de una función, lo que ayuda a optimizar el rendimiento evitando la recreación de la función en cada renderización del componente.
 
-## **28.** useReducer
+## **28.** useReducer()
 
 En React, `useReducer` es un hook que te permite manejar el estado de un componente utilizando un patrón de reducción similar al que se utiliza en Redux. Proporciona una alternativa a `useState` cuando tienes un estado más complejo que puede requerir múltiples acciones para actualizarlo.
 
