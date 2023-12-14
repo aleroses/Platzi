@@ -1982,6 +1982,74 @@ Es importante tener en cuenta que `useCallback()` debe utilizarse con precaució
 
 ### Ejemplo del curso
 
+`src > App.jsx`
+
+```jsx
+import { CallBack } from "./components/CallBack";
+
+const App = () => {
+  return (
+    <>
+      <div className="container">
+        <h1>Use CallBack</h1>
+        <hr />
+        <CallBack></CallBack>
+      </div>
+    </>
+  );
+};
+
+export default App;
+```
+
+`src > components > CallBack.jsx`
+
+```jsx
+import React, {
+  useCallback,
+  useState,
+} from "react";
+import { Increase } from "./Increase";
+
+const CallBack = () => {
+  const [counter, setCounter] = useState(0);
+
+  const increaseFather = useCallback((val) => {
+    setCounter((counterData) => counterData + val);
+  }, []);
+
+  return (
+    <>
+      <h1>Counter: {counter}</h1>
+      <Increase
+        increase={increaseFather}></Increase>
+    </>
+  );
+};
+
+export { CallBack };
+```
+
+`src > components > Increase.jsx`
+
+```jsx
+import React from "react";
+
+const Increase = React.memo(({ increase }) => {
+  console.log("Increasing...");
+  return (
+    <button onClick={() => increase(1)}>+1</button>
+  );
+});
+
+export { Increase };
+```
+
+`src > components > hooks > useForm.js `
+
+```jsx
+```
+
 `src > components > hooks > useForm.js `
 
 ```jsx
