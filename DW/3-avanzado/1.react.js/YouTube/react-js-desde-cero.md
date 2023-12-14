@@ -2045,17 +2045,7 @@ const Increase = React.memo(({ increase }) => {
 export { Increase };
 ```
 
-`src > components > hooks > useForm.js `
-
-```jsx
-```
-
-`src > components > hooks > useForm.js `
-
-```jsx
-```
-
-## useRef, useMemo y useCallback
+## **27.** Repaso: useRef, useMemo y useCallback
 
 useRef: Hook de React que devuelve un objeto mutable que persiste a lo largo de las renderizaciones y no provoca una actualización del componente cuando cambia.
 
@@ -2063,7 +2053,7 @@ useMemo: Hook de React que devuelve un valor memorizado que se recalcula solo cu
 
 useCallback: Hook de React que devuelve una versión memorizada de una función, lo que ayuda a optimizar el rendimiento evitando la recreación de la función en cada renderización del componente.
 
-## useReducer
+## **28.** useReducer
 
 En React, `useReducer` es un hook que te permite manejar el estado de un componente utilizando un patrón de reducción similar al que se utiliza en Redux. Proporciona una alternativa a `useState` cuando tienes un estado más complejo que puede requerir múltiples acciones para actualizarlo.
 
@@ -2198,6 +2188,16 @@ const NewReducer = () => {
 };
 
 export { NewReducer };
+```
+
+`src > components > hooks > useForm.js `
+
+```jsx
+```
+
+`src > components > hooks > useForm.js `
+
+```jsx
 ```
 
 
