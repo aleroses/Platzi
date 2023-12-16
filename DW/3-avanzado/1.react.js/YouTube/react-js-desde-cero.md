@@ -3073,10 +3073,10 @@ Estructura:
 │       ├── About.jsx
 │       ├── Contact.jsx
 │       ├── Home.jsx
+│       ├── Login.jsx
 │       ├── components
 │       │   └── NavBar.jsx
 │       ├── context
-│       │   ├── Login.jsx
 │       │   ├── UserContext.jsx
 │       │   └── UserProvider.jsx
 │       └── hooks
