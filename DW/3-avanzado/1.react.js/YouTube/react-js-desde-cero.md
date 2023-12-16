@@ -2761,16 +2761,22 @@ Aquí hay una explicación básica de cómo funciona React Router DOM:
 
 En resumen, React Router DOM es una biblioteca que facilita la implementación de enrutamiento en aplicaciones de React. Te permite definir rutas y componentes asociados a esas rutas, proporciona enlaces para la navegación y se encarga de mantener el estado de la aplicación sincronizado con la URL del navegador. Esto brinda una experiencia de navegación fluida y permite crear aplicaciones de una sola página (SPA) con múltiples secciones y vistas.
 
+### Ejemplo del curso 
+
 ```bash
 npm create vite@latest
 npm install
 ```
-react router dom en google
+
+[React router DOM](https://reactrouter.com/en/main)
+
+[React router DOM - Tutorial](https://reactrouter.com/en/main/start/tutorial)
 
 ```bash
-
 npm install react-router-dom
 ```
+
+Estructura:
 
 ```bash
 .
@@ -2970,6 +2976,14 @@ export { About };
 `src > routes > Contact.jsx`
 ```jsx
 
+```
+
+`>>`
+```jsx
+```
+
+`>>`
+```jsx
 ```
 
 ### Single Page Application (SPA)
