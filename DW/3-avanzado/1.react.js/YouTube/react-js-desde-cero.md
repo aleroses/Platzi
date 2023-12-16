@@ -2129,7 +2129,7 @@ El reducer procesa la acción y devuelve el nuevo estado actualizado, que luego 
 
 En resumen, `useReducer` es útil cuando tienes un estado más complejo que puede requerir múltiples acciones para actualizarlo. Te proporciona una forma de administrar el estado de manera más estructurada utilizando un patrón de reducción.
 
-Otro ejemplo: 
+Otro ejemplo: Garaje de Ideas **link abajo**
 
 ```jsx
 import { useReducer, useRef } from "react";
