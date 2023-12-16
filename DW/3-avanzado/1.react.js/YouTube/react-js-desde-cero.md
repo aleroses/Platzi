@@ -2215,14 +2215,231 @@ export { NewReducer };
 
 ### Ejemplo del curso
 
-`src > components > hooks > useForm.js `
+Para este ejemplo usamos el archivo `useForm.js` hecho en temas pasados. 
 
-```jsx
-
+Estructura: 
+```bash
+.
+├── LICENSE
+├── README.md        
+├── index.html       
+├── node_modules     
+├── package-lock.json
+├── package.json
+├── src
+│   ├── App.jsx
+│   ├── assets
+│   │   └── react.svg
+│   ├── components
+│   │   ├── TasksList.jsx
+│   │   └── hooks
+│   │       └── useForm.js
+│   └── main.jsx
+└── vite.config.js
 ```
 
-`src > components > hooks > useForm.js `
+`src > App.jsx`
 
+```jsx
+import { TasksList } from "./components/TasksList";
+
+const App = () => {
+  return (
+    <>
+      <div className="container">
+        <h1>Use Reducer</h1>
+        <hr />
+        <TasksList></TasksList>
+      </div>
+    </>
+  );
+};
+
+export default App;
+```
+
+`src > components > TasksList.jsx`
+
+```jsx
+import React, { useReducer } from "react";
+import { useForm } from "./hooks/useForm";
+
+const initialState = [
+  {
+    id: new Date().getTime(),
+    task: "React Course",
+    finished: false,
+  },
+];
+
+const taskReducer = (
+  state = initialState,
+  action = {}
+) => {
+  switch (action.type) {
+    case "[Tasks] Add Task":
+      return [...state, action.payload];
+
+    case "[Tasks] Complete Task":
+      return state.map((task) => {
+        if (task.id === action.payload) {
+          return {
+            ...task,
+            finished: !task.finished,
+          };
+        }
+        return task;
+      });
+
+    case "[Task] Delete task":
+      return state.filter(
+        (task) => task.id !== action.payload
+      );
+
+    case "[Task] Reset tasks":
+      return [];
+
+    default:
+      return state;
+  }
+};
+
+const TasksList = () => {
+  const [state, dispatch] = useReducer(
+    taskReducer,
+    initialState
+  );
+
+  const { task, form, handleChange } = useForm({
+    task: "",
+  });
+
+  const addTask = (event) => {
+    event.preventDefault();
+    if (form.task === "") return;
+    console.log(form);
+
+    const action = {
+      type: "[Tasks] Add Task",
+      payload: {
+        id: new Date().getTime(),
+        task: form.task,
+        finished: false,
+      },
+    };
+
+    dispatch(action);
+  };
+
+  const completeTask = ({ id }) => {
+    const action = {
+      type: "[Tasks] Complete Task",
+      payload: id,
+    };
+
+    dispatch(action);
+  };
+
+  const deleteTask = ({ id }) => {
+    const action = {
+      type: "[Task] Delete task",
+      payload: id,
+    };
+
+    dispatch(action);
+  };
+
+  const reset = () => {
+    const action = {
+      type: "[Task] Reset tasks",
+      payload: "",
+    };
+
+    dispatch(action);
+  };
+
+  return (
+    <>
+      <form onSubmit={addTask}>
+        <div className="mb-3">
+          <input
+            type="text"
+            className="form-control"
+            name="task"
+            placeholder="Enter a new task"
+            value={task}
+            onChange={handleChange}
+          />
+        </div>
+        <button
+          type="submit"
+          className="btn btn-primary">
+          Submit
+        </button>
+        <button
+          type="button"
+          className="btn btn-danger"
+          onClick={reset}>
+          Reset
+        </button>
+      </form>
+      <hr />
+      <ul className="list-group">
+        {state.map((item) => (
+          <li
+            className="list-group-item d-flex justify-content-between"
+            key={item.id}>
+            <span>{item.task}</span>
+            <div>
+              <input
+                type="checkbox"
+                value={item.finished}
+                onChange={() => completeTask(item)}
+              />
+              <button
+                className="btn btn-danger"
+                onClick={() => deleteTask(item)}>
+                Delete
+              </button>
+            </div>
+          </li>
+        ))}
+      </ul>
+    </>
+  );
+};
+
+export { TasksList };
+```
+
+`src > components > hooks > useForm.js`
+
+```jsx
+import React, { useState } from "react";
+
+const useForm = (initialForm = {}) => {
+  const [form, setForm] = useState(initialForm);
+
+  const handleChange = ({ target }) => {
+    // console.log(target.name);
+    const { name, value } = target;
+    setForm({
+      ...form,
+      [name]: value,
+    });
+  };
+
+  return { ...form, form, handleChange };
+};
+
+export { useForm };
+```
+
+`>>`
+```jsx
+```
+
+`>>`
 ```jsx
 ```
 
