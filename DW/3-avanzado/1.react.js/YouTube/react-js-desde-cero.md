@@ -3053,16 +3053,87 @@ En resumen, `useContext` es un hook de React que permite acceder al valor de un 
 
 [useContext en 20 minutos](https://www.youtube.com/watch?v=Ae33_gdJgnQ)
 
+### Ejemplo del curso
 
-`src >>`
+Estructura: 
 
-```jsx
+```bash
+.
+├── README.md
+├── index.html
+├── node_modules
+├── package-lock.json
+├── package.json
+├── src
+│   ├── App.jsx
+│   ├── assets
+│   │   └── react.svg
+│   ├── main.jsx
+│   └── routes
+│       ├── About.jsx
+│       ├── Contact.jsx
+│       ├── Home.jsx
+│       ├── components
+│       │   └── NavBar.jsx
+│       ├── context
+│       │   ├── Login.jsx
+│       │   ├── UserContext.jsx
+│       │   └── UserProvider.jsx
+│       └── hooks
+│           └── useForm.js
+└── vite.config.js
 ```
 
 `src >>`
 
 ```jsx
 ```
+
+`src > components >`
+
+```jsx
+```
+
+`src > components >`
+
+```jsx
+```
+
+`src > components >`
+
+```jsx
+```
+
+`src > components >`
+
+```jsx
+```
+
+`src > components >`
+
+```jsx
+```
+
+`src > components >`
+
+```jsx
+```
+
+`src > components >`
+
+```jsx
+```
+
+`src > components >`
+
+```jsx
+```
+
+`src > components >`
+
+```jsx
+```
+
 
 ## Project 1: App Clima
 
