@@ -3055,7 +3055,7 @@ En resumen, `useContext` es un hook de React que permite acceder al valor de un 
 
 ### Ejemplo del curso
 
-Estructura: 
+Estructura: Continuamos con el ejemplo del tema anterior...
 
 ```bash
 .
@@ -3084,24 +3084,169 @@ Estructura:
 └── vite.config.js
 ```
 
-`src >>`
+`index.html`
 
-```jsx
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="./src/assets/react.svg" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous" />
+    <title>React Router DOM + useContext</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script
+      type="module"
+      src="/src/main.jsx"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"></script>
+  </body>
+</html>
 ```
 
-`src > components >`
+`src > main.jsx`
 
 ```jsx
+import React from "react";
+import ReactDOM from "react-dom/client";
+import App from "./App.jsx";
+import { BrowserRouter } from "react-router-dom";
+
+ReactDOM.createRoot(
+  document.getElementById("root")
+).render(
+  <BrowserRouter>
+    <React.StrictMode>
+      <App />
+    </React.StrictMode>
+  </BrowserRouter>
+);
 ```
 
-`src > components >`
+`src > App.jsx`
 
 ```jsx
+import {
+  Navigate,
+  Route,
+  Routes,
+} from "react-router-dom";
+import { NavBar } from "./routes/components/NavBar";
+import { Home } from "./routes/Home";
+import { About } from "./routes/About";
+import { Contact } from "./routes/Contact";
+import { UserProvider } from "./routes/context/UserProvider";
+import { Login } from "./routes/Login";
+
+function App() {
+  return (
+    <>
+      <UserProvider>
+        <NavBar></NavBar>
+        <Routes>
+          <Route path="/" element={<Home></Home>} />
+          <Route
+            path="/login"
+            element={<Login></Login>}
+          />
+          <Route
+            path="/about"
+            element={<About></About>}
+          />
+          <Route
+            path="/contact"
+            element={<Contact></Contact>}
+          />
+          <Route
+            path="/*"
+            element={<Navigate to="/" />}
+          />
+        </Routes>
+      </UserProvider>
+    </>
+  );
+}
+
+export default App;
 ```
 
-`src > components >`
+`src > routes > components > NavBar.jsx`
 
 ```jsx
+import React from "react";
+import { NavLink } from "react-router-dom";
+
+const NavBar = () => {
+  return (
+    <nav className="navbar navbar-expand-lg bg-body-tertiary">
+      <div className="container-fluid">
+        <NavLink className="navbar-brand">
+          Routing application
+        </NavLink>
+        <button
+          className="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation">
+          <span className="navbar-toggler-icon"></span>
+        </button>
+        <div
+          className="collapse navbar-collapse"
+          id="navbarNav">
+          <ul className="navbar-nav">
+            <li className="nav-item">
+              <NavLink
+                to="/"
+                className="nav-link active">
+                Home
+              </NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink
+                to="/about"
+                className="nav-link">
+                About
+              </NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink
+                to="/contact"
+                className="nav-link">
+                Contact
+              </NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink
+                to="/login"
+                className="nav-link active">
+                Login
+              </NavLink>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  );
+};
+
+export { NavBar };
 ```
 
 `src > components >`
