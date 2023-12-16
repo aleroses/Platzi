@@ -3249,9 +3249,42 @@ const NavBar = () => {
 export { NavBar };
 ```
 
-`src > components >`
+📌 Los archivos de **routes** `About.jsx` y `Contact.jsx` se quedan exactamente igual que el ejemplo anterior. 
+
+`src > routes > Home.jsx`
 
 ```jsx
+import React, { useContext } from "react";
+import { UserContext } from "./context/UserContext";
+
+const Home = () => {
+  const { user } = useContext(UserContext);
+
+  return (
+    <div className="container">
+      <table className="table">
+        <thead>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Technology</th>
+            <th scope="col">Mail</th>
+            <th scope="col">Social Media</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">{user.name}</th>
+            <td>{user.technology}</td>
+            <td>{user.mail}</td>
+            <td>{user.socialmedia}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  );
+};
+
+export { Home };
 ```
 
 `src > components >`
