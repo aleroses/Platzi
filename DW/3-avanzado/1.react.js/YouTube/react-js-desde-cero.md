@@ -2435,15 +2435,6 @@ const useForm = (initialForm = {}) => {
 export { useForm };
 ```
 
-`>>`
-```jsx
-```
-
-`>>`
-```jsx
-```
-
-
 ### `switch`
 
 En JavaScript, el `switch` es una declaración que se utiliza para evaluar una expresión y ejecutar diferentes bloques de código según el valor de esa expresión. Proporciona una alternativa más legible y concisa a una serie de declaraciones `if-else` anidadas.
@@ -2592,7 +2583,7 @@ Finalmente, combinamos los componentes de la fecha y la hora en la cadena de tex
 
 Recuerda que el resultado puede variar dependiendo de la zona horaria y la configuración regional de tu entorno.
 
-### Ejemplo de la clase 
+### Mismo ejemplo para practicar 
 
 `src > components > ListReducer.jsx`
 ```js
@@ -2750,7 +2741,7 @@ const useForm = (initialForm = {}) => {
 export { useForm };
 ```
 
-## React Router DOM 
+## **29.** React Router DOM 
 
 React Router DOM es una biblioteca de enrutamiento para aplicaciones de React. Permite crear rutas en una aplicación de React, lo que significa que puedes definir diferentes componentes que se renderizarán en función de la URL actual.
 
