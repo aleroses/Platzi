@@ -3005,7 +3005,7 @@ Sin embargo, las SPAs también presentan algunos desafíos, como una mayor compl
 
 En resumen, una SPA es una aplicación web que se carga una vez y luego actualiza dinámicamente su contenido sin recargar la página completa, lo que proporciona una experiencia de usuario más fluida y rápida.
 
-### **30.** useContext
+## **30.** useContext()
 
 En React, el hook `useContext` se utiliza para acceder al contexto de una aplicación. Antes de explicar `useContext`, es importante entender qué es el contexto en React.
 
