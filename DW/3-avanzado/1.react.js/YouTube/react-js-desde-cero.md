@@ -2787,16 +2787,19 @@ Estructura:
 ├── src
 │   ├── App.jsx
 │   ├── assets
+│   │   └── react.svg
 │   ├── main.jsx
 │   └── routes
 │       ├── About.jsx
 │       ├── Contact.jsx
 │       ├── Home.jsx
 │       └── components
+│           └── NavBar.jsx
 └── vite.config.js
 ```
 
 `index.html`
+
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -2826,6 +2829,7 @@ Estructura:
 ```
 
 `src > main.jsx`
+
 ```jsx
 import React from "react";
 import ReactDOM from "react-dom/client";
@@ -2844,6 +2848,7 @@ ReactDOM.createRoot(
 ```
 
 `src > App.jsx`
+
 ```jsx
 import {
   Navigate,
@@ -2881,6 +2886,7 @@ export { App };
 ```
 
 `src > routes > components > NavBar.jsx`
+
 ```jsx
 import { React } from "react";
 import { Link, NavLink } from "react-router-dom";
@@ -2923,6 +2929,7 @@ export { NavBar };
 ```
 
 `src > routes > Home.jsx`
+
 ```jsx
 const Home = () => {
   return (
@@ -2965,6 +2972,7 @@ export { Home };
 ```
 
 `src > routes > About.jsx`
+
 ```jsx
 const About = () => {
   return <div>About</div>;
@@ -2974,16 +2982,15 @@ export { About };
 ```
 
 `src > routes > Contact.jsx`
-```jsx
 
-```
-
-`>>`
 ```jsx
-```
+import React from "react";
 
-`>>`
-```jsx
+const Contact = () => {
+  return <div>Contact</div>;
+};
+
+export { Contact };
 ```
 
 ### Single Page Application (SPA)
@@ -2998,7 +3005,7 @@ Sin embargo, las SPAs también presentan algunos desafíos, como una mayor compl
 
 En resumen, una SPA es una aplicación web que se carga una vez y luego actualiza dinámicamente su contenido sin recargar la página completa, lo que proporciona una experiencia de usuario más fluida y rápida.
 
-## useContext
+### **30.** useContext
 
 En React, el hook `useContext` se utiliza para acceder al contexto de una aplicación. Antes de explicar `useContext`, es importante entender qué es el contexto en React.
 
@@ -3045,6 +3052,17 @@ Es importante destacar que `useContext` solo puede utilizarse dentro de un compo
 En resumen, `useContext` es un hook de React que permite acceder al valor de un contexto proporcionado por un componente `Provider`. Facilita el acceso a datos compartidos en una aplicación sin tener que pasarlos manualmente a través de las props en todos los componentes intermedios.
 
 [useContext en 20 minutos](https://www.youtube.com/watch?v=Ae33_gdJgnQ)
+
+
+`src >>`
+
+```jsx
+```
+
+`src >>`
+
+```jsx
+```
 
 ## Project 1: App Clima
 
