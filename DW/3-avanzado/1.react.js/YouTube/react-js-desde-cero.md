@@ -3287,24 +3287,171 @@ const Home = () => {
 export { Home };
 ```
 
-`src > components >`
+`src > routes > Login.jsx`
 
 ```jsx
+import React, { useContext } from "react";
+import { useForm } from "./hooks/useForm";
+import { UserContext } from "./context/UserContext";
+
+const Login = () => {
+  const initialForm = {
+    name: "",
+    technology: "",
+    mail: "",
+    socialmedia: "",
+  };
+
+  const {
+    name,
+    technology,
+    mail,
+    socialmedia,
+    form,
+    handleChange,
+  } = useForm(initialForm);
+
+  const { setUser } = useContext(UserContext);
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    setUser(form);
+  };
+
+  return (
+    <>
+      <form
+        className="container"
+        onSubmit={handleSubmit}>
+        <div className="mb-3">
+          <label
+            htmlFor="name"
+            className="form-label">
+            Name
+          </label>
+          <input
+            type="text"
+            className="form-control"
+            name="name"
+            value={name}
+            onChange={handleChange}
+          />
+        </div>
+        <div className="mb-3">
+          <label
+            htmlFor="technology"
+            className="form-label">
+            Technology
+          </label>
+          <input
+            type="input"
+            className="form-control"
+            name="technology"
+            value={technology}
+            onChange={handleChange}
+          />
+        </div>
+        <div className="mb-3">
+          <label
+            htmlFor="email"
+            className="form-label">
+            Email address
+          </label>
+          <input
+            type="text"
+            className="form-control"
+            name="mail"
+            value={mail}
+            onChange={handleChange}
+          />
+        </div>
+        <div className="mb-3">
+          <label
+            htmlFor="socialmedia"
+            className="form-label">
+            Social media
+          </label>
+          <input
+            type="text"
+            className="form-control"
+            name="socialmedia"
+            value={socialmedia}
+            onChange={handleChange}
+          />
+        </div>
+        <button
+          type="submit"
+          className="btn btn-primary">
+          Register user
+        </button>
+      </form>
+    </>
+  );
+};
+
+export { Login };
 ```
 
-`src > components >`
+`src > routes > context > context > UserContext.jsx`
 
 ```jsx
+import React, { createContext } from "react";
+
+const UserContext = createContext();
+
+export { UserContext };
 ```
 
-`src > components >`
+`src > routes > context > context > UserProvider.jsx`
 
 ```jsx
+import React, { useState } from "react";
+import { UserContext } from "./UserContext";
+
+/* const user = {
+  name: "Ale Roses",
+  technology: "React",
+  mail: "aleroses@mail.com",
+  socialmedia: "@aleroses",
+}; */
+
+const UserProvider = ({ children }) => {
+  const [user, setUser] = useState({});
+
+  return (
+    <UserContext.Provider value={{ user, setUser }}>
+      {children}
+    </UserContext.Provider>
+  );
+};
+
+export { UserProvider };
 ```
 
-`src > components >`
+📌 Usamos el **hook** `useForm.js` creado en clases anteriores
+
+`src > routes > hooks > useForm.js`
 
 ```jsx
+import React, { useState } from "react";
+
+const useForm = (initialForm = {}) => {
+  const [form, setForm] = useState(initialForm);
+
+  const handleChange = ({ target }) => {
+    // console.log(target.name);
+    const { name, value } = target;
+    setForm({
+      ...form,
+      [name]: value,
+    });
+  };
+
+  return { ...form, form, handleChange };
+};
+
+export { useForm };
 ```
 
 `src > components >`
