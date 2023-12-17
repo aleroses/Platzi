@@ -3454,12 +3454,6 @@ const useForm = (initialForm = {}) => {
 export { useForm };
 ```
 
-`src > components >`
-
-```jsx
-```
-
-
 ## Project 1: App Clima
 
 Crear cuenta para recibir API Key:  
@@ -3467,11 +3461,13 @@ Crear cuenta para recibir API Key:
 - [Other features](https://openweathermap.org/current)
 
 [Built-in API request by city name](https://openweathermap.org/current#name)  
+
 ```js
 https://api.openweathermap.org/data/2.5/weather?q={city name}&appid={API key}
 ```
 
-[Weather icons](https://openweathermap.org/weather-conditions)  
+[Weather icons](https://openweathermap.org/weather-conditions) 
+
 ```js
 https://openweathermap.org/img/wn/10d@2x.png
 ```
@@ -3581,6 +3577,13 @@ const App = () => {
 };
 
 export { App };
+```
+
+Formatea lo que traen las API's con [JSON Formatter](https://chromewebstore.google.com/detail/json-formatter/bcjindcccaagfpapjjmafapmmgkkhgoa?pli=1), esto para hacerlo en la misma ventana, sin tener que usar páginas externas.
+
+`src > components >`
+
+```jsx
 ```
 
 ## Despliegue Vite + Github Pages
