@@ -3583,10 +3583,7 @@ Formatea lo que traen las API's con [JSON Formatter](https://chromewebstore.goog
 
 ![](https://i.postimg.cc/GmL74C55/6-network.png)
 
-`src > components >`
-
-```jsx
-```
+[Despliegue: Weather App (alevroses.github.io)](https://alevroses.github.io/react__weather-app/)
 
 ## Despliegue Vite + Github Pages
 
@@ -3770,6 +3767,8 @@ function App() {
 
 export { App };
 ```
+
+
 
 ## Project 3: Shopping cart
 
