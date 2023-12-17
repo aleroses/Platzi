@@ -3581,6 +3581,8 @@ export { App };
 
 Formatea lo que traen las API's con [JSON Formatter](https://chromewebstore.google.com/detail/json-formatter/bcjindcccaagfpapjjmafapmmgkkhgoa?pli=1), esto para hacerlo en la misma ventana, sin tener que usar páginas externas.
 
+![](https://i.postimg.cc/GmL74C55/6-network.png)
+
 `src > components >`
 
 ```jsx
