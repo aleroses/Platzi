@@ -1099,7 +1099,7 @@ En lugar de exponer todos los detalles internos de cómo se implementa la veloci
 
 La ventaja principal de la abstracción en JS POO es que permite escribir código más modular y mantenible, ya que reduce la complejidad del software al ocultar detalles innecesarios y exponer solo lo que es relevante para su uso. Además, la abstracción facilita la reutilización del código, ya que los objetos abstractos pueden ser utilizados en diferentes contextos sin necesidad de conocer su implementación interna. También permite a los desarrolladores trabajar en equipo de manera más eficiente, ya que pueden diseñar y desarrollar componentes independientes que interactúan a través de interfaces claramente definidas y documentadas. En resumen, la abstracción en JS POO es una herramienta poderosa para simplificar la complejidad y mejorar la calidad del software.
 
-### 10. Abstracción en JavaScript
+### **10.** Abstracción en JavaScript
 
 ```js
 // Prototipo para Schools
@@ -1339,7 +1339,7 @@ alissa.approved_course(course_one);
 alissa.approved_course(course_two);
 ```
 
-### 11. Qué es encapsulamiento
+### **11.** Qué es encapsulamiento
 
 El encapsulamiento en JavaScript (JS) es un concepto que se refiere a la capacidad de ocultar la complejidad interna de los objetos, protegiendo sus propiedades y métodos para que no sean accesibles desde fuera de la clase. El encapsulamiento permite que los objetos mantengan su estado interno y comportamiento, y solo expongan una interfaz pública que permita interactuar con ellos de manera controlada.
 
@@ -1372,7 +1372,7 @@ Cuando hablamos de **encapsulamiento **hablamos de:
 - Módulo de ES6 🤝
 
 
-### 12. Getters y setters en JavaScript
+### **12.** Getters y setters en JavaScript
 
 ```js
 class Course{
@@ -1520,7 +1520,7 @@ classCourse{
 }
 ```
 
-### 13. Módulos de ECMAScript 6
+### **13.** Módulos de ECMAScript 6
 
 El uso de los módulos en JavaScript depende de las declaraciones **_Export_** e **_Import_**.
 
@@ -1689,7 +1689,7 @@ Es importante destacar que para usar `import` y `export` en el navegador es nece
 Al usar la extensión Live Server, podrás cargar tus archivos HTML y JavaScript como si estuvieran alojados en un servidor web real, lo que te permitirá probar la importación de módulos ES6 en el navegador sin tener problemas con la política de seguridad del navegador al cargar archivos directamente desde el sistema de archivos local.
 
 
-### 14. Playgrounds: Controlar accesos con get y set
+### **14.** Playgrounds: Controlar accesos con get y set
 
 En este reto dada la siguiente clase:
 
@@ -1953,7 +1953,7 @@ exportclassCourse{
 
 ## Pilares de la POO: herencia y polimorfismo
 
-### 15. Qué es herencia 
+### **15.** Qué es herencia 
 
 Sirve para crear nuevas clases con características similares a partir de otras. Con la herencia puedes crear una clase que sea hijo o una copia de otra clase, al heredar una clase se tiene todos los métodos y atributos de la clase padre, podrás modificarlas solo en caso de ser necesario. Funciona como una jerarquía de lo mas general a lo mas especifico.
 
@@ -2017,7 +2017,7 @@ En este ejemplo, la clase `Perro` tiene un constructor que utiliza la palabra cl
 
 La herencia en JavaScript es una herramienta poderosa que permite reutilizar código y crear jerarquías de clases. Sin embargo, también es importante tener en cuenta que JavaScript es un lenguaje flexible y dinámico, y que la herencia basada en prototipos puede tener algunos comportamientos inesperados. Es importante comprender bien cómo funciona la herencia en JavaScript para utilizarla de manera efectiva.
 
-## 16. Herencia en JavaScript
+### **16.** Herencia en JavaScript
 
 ```js
 function play_video(id){
@@ -2352,7 +2352,7 @@ alissa.approved_courses
 ```
 
 
-### 17. Qué es polimorfismo
+### **17.** Qué es polimorfismo
 
 - Sobrecarga 
 - Paramétrico 
@@ -2443,7 +2443,7 @@ dog.makeSound(); // Output: Bark
 cat.makeSound(); // Output: Meow
 ```
 
-### 18. Polimorfismo en JavaScript
+### **18.** Polimorfismo en JavaScript
 
 ```js
 class Comment{
@@ -2835,7 +2835,7 @@ alissa.post_comment('I also want more practical courses and less theory!!!')
 angela
 ```
 
-### 19. Playgrounds: Sobrescribir métodos heredados
+### **19.** Playgrounds: Sobrescribir métodos heredados
 
 Dentro de este reto encuentras las clases **Student** y **Comment** con un código base, recuerda ir a verlas en el sistema de archivos.
 
