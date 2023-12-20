@@ -2,7 +2,7 @@
 
 ## JavaScript Orientado a Objetos
 
-### 1. JavaScript: orientado a objetos, basado en prototipos
+### **1.** JavaScript: orientado a objetos, basado en prototipos
 
 JavaScript tiene características que lo hacen parecer roto, pero tienen un motivo.
 
@@ -21,7 +21,7 @@ JavaScript tiene características que lo hacen parecer roto, pero tienen un moti
 Normalmente, los lenguajes de programación son orientados a objetos y basados en clases. JS es orientado a objetos y basado en prototipos. 
 
 
-### 2. Qué es programación orientada a objetos
+### **2.** Qué es programación orientada a objetos
 
 #### Paradigma
 
