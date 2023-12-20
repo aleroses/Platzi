@@ -54,7 +54,7 @@ Hasta ahora hemos escuchado de estos 4 ( y los seguirás escuchando muy a menudo
 
 
 
-### 3. Bonus: fútbol y programación orientada a objetos
+### **3.** Bonus: fútbol y programación orientada a objetos
 
 #### ¿Qué es un objeto?
 
@@ -139,7 +139,7 @@ En resumen, los objetos en JavaScript son colecciones de propiedades que pueden 
 
 ## Objetos, clases y prototipos 
 
-### 4. Qué es un objeto en JavaScript 
+### **4.** Qué es un objeto en JavaScript 
 
 > Objetos literales !== instancias POO
 
@@ -436,7 +436,7 @@ En este caso, creamos otra instancia de la clase "Persona" con los valores "Mar�
 En resumen, una instancia en JavaScript es un objeto creado a partir de una función constructora o utilizando la sintaxis de clase. Cada instancia es un objeto único y específico con sus propios valores para los atributos y puede tener su propio comportamiento mediante la definición de sus propios métodos.
 
 
-### 5. Objetos literales y prototipos en JavaScript
+### **5.** Objetos literales y prototipos en JavaScript
 
 #### Código de la clase  
 
@@ -651,7 +651,7 @@ Con suerte, ahora comprende por qué la herencia de prototipos es una caracterí
 
 [Ver articulo](https://dev.to/lydiahallie/javascript-visualized-prototypal-inheritance-47co)
 
-### 6. Clases en JavaScript 
+### **6.** Clases en JavaScript 
 
 Una clase en JavaScript no es más que una sintaxis en algunos casos más cómoda para crear prototipos. Está basada en otros lenguajes los cuales tienen programación orientada a objetos mediante clases.
 
@@ -736,7 +736,7 @@ Atajos de VSC
 	- shift + supr
 
 
-### 7. Ventajas de la programación orientada a objetos
+### **7.** Ventajas de la programación orientada a objetos
 
 Trabajar con objetos literales no es practico cuando se tiene mucha información. Imagina el siguiente ejemplo pero para miles de usuarios, nadie quiere perder tanto tiempo haciendo esto. 
 
@@ -894,7 +894,7 @@ alissa.approved_course('Course 05');
 
 Si dentro de un objeto la clave valor tienen el mismo nombre, solo basta con escribirlo una vez.
 
-### 8. Playgrounds: Manejo de clases
+### **8.** Playgrounds: Manejo de clases
 
 Dadas la siguientes clases:
 
@@ -1085,7 +1085,7 @@ console.log(todosMayoresDeEdad); // true
 
 ## Pilares de la POO: abstracción y polimorfismo
 
-### 9. Qué es abstracción 
+### **9.** Qué es abstracción 
 
 La abstracción es un concepto que se refiere a la capacidad de representar objetos del mundo real en términos de sus características y comportamientos esenciales, y ocultar los detalles complejos de su implementación. La abstracción permite crear clases y objetos que encapsulan datos y comportamientos relacionados, y proporcionan una interfaz clara y simplificada para interactuar con ellos.
 
