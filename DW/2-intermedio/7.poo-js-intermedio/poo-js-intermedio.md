@@ -146,6 +146,109 @@ Estas 3 propiedades son usadas por JavaScript internamente para indicar el lími
 
 Veamos más ejemplos de los [métodos estáticos del prototipo Object](https://platzi.com/clases/2419-javascript-poo-intermedio/40090-metodos-estaticos-del-prototipo-object-lectura/) y sobre el comportamiento que puede tener `this`. 👨‍💻
 
+## **3.** Métodos estáticos del prototipo Object
+
+Veamos unos ejemplos usando los métodos estáticos del prototipo `Object`. Además, podremos observar que `this` puede comportarse diferente según el contexto en donde se encuentre.
+
+Antes de ello, en una carpeta, crea un archivo `main.js` el cual debe estar vinculado a un `index.html` creado en la misma ruta. Editaremos estos archivos en Visual Studio Code (puedes utilizar tu editor preferido) para realizar nuestras implementaciones y visualizaremos los _outputs_ en la consola del navegador.
+
+### Comportamiento de `this` en métodos estáticos
+
+Vamos a crear un objeto con los siguientes atributos:
+
+```js
+const juan = { 
+  name: "Juanito", 
+  age: 18, 
+  approvedCourses: ["Curso 1"], 
+  addCourse(newCourse) { 
+
+// `this` se usa para hacer referencia a la propiedad `approvedCourses` 
+// del objeto en cuestión. 
+  this.approvedCourses.push(newCourse); 
+}
+};
+```
+
+Ahora, utilicemos el método `entries` del prototipo `Object` pasándole como argumento nuestro objeto `juan`:
+
+```js
+console.log( Object.entries(juan) );
+
+// En consola obtenemos un output similar a este: 
+[
+  [ 'name', 'Juanito' ], 
+  [ 'age', 18 ], 
+  [ 
+    'approvedCourses', 
+    [ 'Curso 1' ] 
+  ], 
+  [ 
+    'addCourse', 
+    [ Function: addCourse ] 
+  ] 
+]
+```
+
+Como el resultado es un `Array` que contiene a otros del mismo tipo, podemos acceder a sus índices y subíndices respectivamente. Por tanto, si accedemos al índice donde está la función `addCourse` y lo mostramos en consola, obtendríamos lo siguiente:
+
+```js
+console.log( Object.entries(juan)[3][1] );
+
+// Mensaje en consola del navegador:_ f 
+addCourse(newCourse) { this.approvedCourses.push(newCourse); } / 
+```
+
+Si podemos acceder a la función de esta manera, en principio pensaríamos que es posible añadir un nuevo curso ejecutando la función desde ahí; sin embargo, esto nos produce un error:
+
+```jsx
+Object.entries(juan)[3][1]("Curso 2");
+```
+
+![Inconvenientes con this en un objeto al ejecutar métodos estáticos](https://static.platzi.com/media/articlases/Images/inconvenientes-con-this-en-un-objeto-al-ejecutar-metodos-estaticos-curso-intermedio-de-programacion-orientada-a-objetos-en-javascript.png)
+
+Imprimamos en consola qué es `this` en cada ejecución del método `addCourse`. Cambiemos la estructura del objeto `juan`:
+
+```js
+const juan = { 
+  name: "Juanito", 
+  age: 18, 
+  approvedCourses: ["Curso 1"], 
+  addCourse(newCourse) { 
+  
+  // A dónde a punta `this`: 
+  console.log("This", this); 
+  // Saber si el contexto de`this`tiene definida la propiedad`approvedCourses`: 
+  console.log("This.approvedCourses", this.approvedCourses);
+
+  this.approvedCourses.push(newCourse);
+  }
+};
+```
+
+Nuevamente, añadamos un curso accediendo al método `addCourse` desde la ejecución de `Object.entries`:
+
+`Object.entries(juan)[3][1]('Curso 3');`
+
+![This apunta ahora al subarray creado por Object.entries y ya no hace referencia al objeto juan](https://static.platzi.com/media/articlases/Images/this-apunta-al-subarray-creado-por-object-entries-curso-intermedio-de-programacion-orientada-a-objetos-en-javascript.png)
+
+En el navegador podremos observar que `this` apunta en realidad al subarray `["addCourse", function addCourse]` generado por `entries` y ya no al objeto `juan`. Es por ello que cuando la función `addCourse` intenta ejecutarse no encuentra la propiedad `approvedCourses` en el subarray `["addCourse", function addCourse]` que es donde ahora `this` hace referencia.
+
+## Crear propiedades con accesibilidad editable
+
+Existe un método estático del prototipo `Object` llamado `defineProperty` que no solo nos permite crear un atributo con su respectivo valor en un objeto, sino también nos da la posibilidad de definir las propiedades `writable`, `enumerable` y `configurable` a nuestro gusto. Estas propiedades son las que limitan el acceso y modificación en un objeto de JavaScript:
+
+``` const juan = { name: "Juanito", age: 18, approvedCourses: ["Curso 1"], addCourse(newCourse) { console.log("This", this); console.log("This.approvedCourses", this.approvedCourses);
+
+```
+this.approvedCourses.push(newCourse);
+```
+
+} };
+
+Object.defineProperty(juan, "pruebaNASA", { value: "extraterrestres", writable: true, enumerable: true, configurable: true }); ```
+
+Veamos un poco más acerca de [Object.defineProperty](https://platzi.com/clases/2419-javascript-poo-intermedio/40091-metodos-estaticos-del-prototipo-object-modificacio/). 🤓💪
 
 ## Otros apuntes: 
 
