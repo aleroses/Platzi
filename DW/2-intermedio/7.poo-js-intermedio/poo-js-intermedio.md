@@ -228,25 +228,34 @@ const juan = {
 
 Nuevamente, añadamos un curso accediendo al método `addCourse` desde la ejecución de `Object.entries`:
 
-`Object.entries(juan)[3][1]('Curso 3');`
+```js
+Object.entries(juan)[3][1]('Curso 3');
+```
 
 ![This apunta ahora al subarray creado por Object.entries y ya no hace referencia al objeto juan](https://static.platzi.com/media/articlases/Images/this-apunta-al-subarray-creado-por-object-entries-curso-intermedio-de-programacion-orientada-a-objetos-en-javascript.png)
 
 En el navegador podremos observar que `this` apunta en realidad al subarray `["addCourse", function addCourse]` generado por `entries` y ya no al objeto `juan`. Es por ello que cuando la función `addCourse` intenta ejecutarse no encuentra la propiedad `approvedCourses` en el subarray `["addCourse", function addCourse]` que es donde ahora `this` hace referencia.
 
-## Crear propiedades con accesibilidad editable
+### Crear propiedades con accesibilidad editable
 
 Existe un método estático del prototipo `Object` llamado `defineProperty` que no solo nos permite crear un atributo con su respectivo valor en un objeto, sino también nos da la posibilidad de definir las propiedades `writable`, `enumerable` y `configurable` a nuestro gusto. Estas propiedades son las que limitan el acceso y modificación en un objeto de JavaScript:
 
-``` const juan = { name: "Juanito", age: 18, approvedCourses: ["Curso 1"], addCourse(newCourse) { console.log("This", this); console.log("This.approvedCourses", this.approvedCourses);
+```js
+const juan = {
+  name: "Juanito", 
+  age: 18, 
+  approvedCourses: ["Curso 1"], 
+  addCourse(newCourse) { 
+  
+  console.log("This", this);
+  console.log("This.approvedCourses", this.approvedCourses);
 
+  this.approvedCourses.push(newCourse);
+  }
+};
+
+Object.defineProperty(juan, "pruebaNASA", { value: "extraterrestres", writable: true, enumerable: true, configurable: true }); 
 ```
-this.approvedCourses.push(newCourse);
-```
-
-} };
-
-Object.defineProperty(juan, "pruebaNASA", { value: "extraterrestres", writable: true, enumerable: true, configurable: true }); ```
 
 Veamos un poco más acerca de [Object.defineProperty](https://platzi.com/clases/2419-javascript-poo-intermedio/40091-metodos-estaticos-del-prototipo-object-modificacio/). 🤓💪
 
