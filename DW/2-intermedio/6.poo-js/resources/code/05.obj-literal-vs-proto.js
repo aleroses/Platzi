@@ -13,7 +13,7 @@ const natalia = {
 };
 
 // Ver en consola
-natalia;
+//natalia;
 // Modificar objeto literal
 natalia.name = "Mariana";
 natalia.age += 1;
@@ -60,60 +60,50 @@ michael.approved_course("Course 03");
 
 // Otras pruebas
 
-/* function Dog(name, breed, color){
-    this.name = name;
-    this.breed = breed;
-    this.color = color;
-    this.bark = function(){
-        return 'Woof!'
-    };
-};
+/* function Dog(name, breed, color) {
+  this.name = name;
+  this.breed = breed;
+  this.color = color;
+  this.bark = function () {
+    return "Woof!";
+  };
+}
 
-const dog1 = new Dog(
-    "Daisy",
-    "Labrador",
-    "Black",
-);
+const dog1 = new Dog("Daisy", "Labrador", "Black");
 
 const dog2 = new Dog(
-    "Jack",
-    "Jack Russell",
-    "White",
+  "Jack",
+  "Jack Russell",
+  "White"
 );
 
-
-
-
-
-
 class Dog {
-    constructor(name){
-        this.name = name
-    }
+  constructor(name) {
+    this.name = name;
+  }
 
-    bark(){
-        return 'Woof!'
-    }
+  bark() {
+    return "Woof!";
+  }
 }
 
 class Chihuahua extends Dog {
-    constructor(name){
-        super(name)
-    }
+  constructor(name) {
+    super(name);
+  }
 
-    smallBark(){
-        return 'Small woof!'
-    }
+  smallBark() {
+    return "Small woof!";
+  }
 }
 
-const myPet = new Chihuahua('Max');
-
-
-
+const myPet = new Chihuahua("Max");
+console.log(myPet);
+console.log(myPet.smallBark());
 
 const person = {
-    name: 'Lydia',
-    age: 21
-}
+  name: "Lydia",
+  age: 21,
+};
 
 const me = Object.create(person); */
