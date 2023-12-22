@@ -454,7 +454,7 @@ const natalia = {
     approved_course(new_course){
         //approved_course: function()
         this.approved_courses.push(new_course);
-        // this se refiere al objeto natalia.
+        // this se refiere al objeto natalia
     },
 };
 
