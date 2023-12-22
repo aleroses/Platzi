@@ -451,8 +451,10 @@ const natalia = {
     ],
 
     // Metodo función
-    approved_course(new_course){ //approved_course: function()
+    approved_course(new_course){
+        //approved_course: function()
         this.approved_courses.push(new_course);
+        // this se refiere al objeto natalia.
     },
 };
 
