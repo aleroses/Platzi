@@ -725,7 +725,7 @@ alexander
 
 Usando { } el orden de los argumentos ingresados no importa, incluso pueden estar vacíos. 
 
-### Patrón RORO
+#### Patrón RORO
 
 El patrón RORO (Resource Ownership and Initialization) es una técnica utilizada en JavaScript para gestionar la propiedad y la inicialización de recursos, como conexiones de bases de datos, archivos o cualquier otro recurso que requiera una inicialización o liberación adecuada.
 
@@ -764,6 +764,60 @@ En el ejemplo anterior, la función `Resource` se encarga de inicializar el recu
 Al seguir el patrón RORO, garantizas que el recurso se inicializa correctamente y se libera adecuadamente cuando ya no se necesita, evitando posibles problemas de gestión de recursos.
 
 Es importante tener en cuenta que el patrón RORO es solo una convención y no una característica incorporada en JavaScript. Depende de los desarrolladores seguir esta convención para gestionar adecuadamente los recursos en sus aplicaciones.
+
+#### Asignación por desestructuración
+
+La asignación por desestructuración, también conocida como "destructuring assignment" en inglés, es una característica de JavaScript que permite extraer valores de arrays o propiedades de objetos y asignarlos a variables individuales de una manera más concisa.
+
+La sintaxis básica de la asignación por desestructuración en JavaScript es la siguiente:
+
+```javascript
+// Desestructuración de un array
+const [variable1, variable2, ...] = array;
+
+// Desestructuración de un objeto
+const { propiedad1, propiedad2, ... } = objeto;
+```
+
+Ahora, veamos algunos ejemplos para entender mejor cómo se utiliza:
+
+```javascript
+// Desestructuración de un array
+const numbers = [1, 2, 3, 4, 5];
+const [a, b, c] = numbers;
+
+console.log(a); // 1
+console.log(b); // 2
+console.log(c); // 3
+
+// Desestructuración de un objeto
+const person = { name: 'John', age: 30, city: 'London' };
+const { name, age } = person;
+
+console.log(name); // 'John'
+console.log(age); // 30
+```
+
+En el primer ejemplo, se crea un array llamado `numbers`. Luego, se utiliza la asignación por desestructuración para extraer los valores del array y asignarlos a las variables `a`, `b` y `c`. Ahora, puedes acceder a esos valores individualmente.
+
+En el segundo ejemplo, se crea un objeto llamado `person`. Utilizando la asignación por desestructuración, se extraen las propiedades `name` y `age` del objeto y se asignan a las variables del mismo nombre. Así, puedes acceder a esas propiedades directamente.
+
+La asignación por desestructuración también puede ser útil cuando se trabaja con argumentos de funciones:
+
+```javascript
+function printFullName({ firstName, lastName }) {
+  console.log(`${firstName} ${lastName}`);
+}
+
+const person = { firstName: 'John', lastName: 'Doe' };
+printFullName(person); // 'John Doe'
+```
+
+En este ejemplo, la función `printFullName` recibe un objeto con las propiedades `firstName` y `lastName`. Mediante la asignación por desestructuración en los argumentos de la función, se extraen las propiedades y se imprimen para formar el nombre completo.
+
+La asignación por desestructuración también puede utilizarse con asignaciones por defecto y con el operador rest, lo que permite mayor flexibilidad y control sobre la extracción de valores.
+
+En resumen, la asignación por desestructuración en JavaScript es una forma eficiente y concisa de extraer valores de arrays y propiedades de objetos y asignarlos a variables individuales. Esta característica es especialmente útil para trabajar con estructuras de datos más complejas y para realizar asignaciones más rápidas y claras.
 
 #### Tips 
 `[[Prototype]]` en lugar de `__proto__`   
