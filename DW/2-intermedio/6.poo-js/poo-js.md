@@ -725,6 +725,46 @@ alexander
 
 Usando { } el orden de los argumentos ingresados no importa, incluso pueden estar vacíos. 
 
+### Patrón RORO
+
+El patrón RORO (Resource Ownership and Initialization) es una técnica utilizada en JavaScript para gestionar la propiedad y la inicialización de recursos, como conexiones de bases de datos, archivos o cualquier otro recurso que requiera una inicialización o liberación adecuada.
+
+El patrón RORO se basa en el principio de que quien inicializa un recurso es responsable de liberarlo cuando ya no se necesite. Esto ayuda a evitar fugas de memoria y otros problemas relacionados con la gestión de recursos.
+
+A continuación, te mostraré un ejemplo sencillo de cómo se utiliza el patrón RORO en JavaScript:
+
+```javascript
+function Resource() {
+  // Inicialización del recurso
+  console.log("Recurso inicializado");
+
+  // Método para liberar el recurso
+  this.release = function() {
+    console.log("Recurso liberado");
+  };
+}
+
+function doSomethingWithResource() {
+  // Crear una instancia del recurso
+  var resource = new Resource();
+
+  // Realizar operaciones con el recurso
+  console.log("Haciendo algo con el recurso...");
+
+  // Liberar el recurso cuando ya no se necesite
+  resource.release();
+}
+
+// Ejemplo de uso
+doSomethingWithResource();
+```
+
+En el ejemplo anterior, la función `Resource` se encarga de inicializar el recurso y proporciona un método `release` para liberarlo. La función `doSomethingWithResource` crea una instancia del recurso, realiza alguna operación y luego lo libera llamando al método `release` del recurso.
+
+Al seguir el patrón RORO, garantizas que el recurso se inicializa correctamente y se libera adecuadamente cuando ya no se necesita, evitando posibles problemas de gestión de recursos.
+
+Es importante tener en cuenta que el patrón RORO es solo una convención y no una característica incorporada en JavaScript. Depende de los desarrolladores seguir esta convención para gestionar adecuadamente los recursos en sus aplicaciones.
+
 #### Tips 
 `[[Prototype]]` en lugar de `__proto__`   
 La capacidad de visualizar `[[Prototype]]` en lugar de `__proto__` en la consola del navegador depende de la implementación específica del motor JavaScript utilizado por el navegador y puede variar entre las diferentes versiones que este use.

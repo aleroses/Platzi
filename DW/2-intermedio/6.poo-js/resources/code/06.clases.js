@@ -20,8 +20,7 @@ const george = new Student_two(
     ],
 );
 
-// En la consola 
-Student 
+// En la consola  
 Student_two
 george
 george.approved_course('Course 03');
