@@ -55,3 +55,18 @@ const myPet = new Chihuahua("Max");
 
 console.log(myPet);
 console.log(myPet.smallBark());
+
+/* Other */
+const person = {
+  name: "Lydia",
+  age: 21,
+};
+
+const me = Object.create(person);
+console.log(me.name, me.age);
+
+/* Other */
+const thing = { name: "ale", age: 18 };
+thing.__proto__ = Dog.prototype;
+thing.bark();
+console.log({ thing });

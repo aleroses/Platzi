@@ -425,7 +425,7 @@ const persona1 = new Persona("Juan", 30);
 
 En este ejemplo, creamos un objeto "persona1" utilizando la palabra clave "new" y pasando dos argumentos a la función constructora "Persona". Esto crea una instancia de la clase "Persona" con los valores "Juan" y 30 para los atributos "nombre" y "edad", respectivamente.
 
-Cada instancia creada a partir de una función constructora o utilizando la sintaxis de clase es un objeto único y específico consus propios valores para los atributos. Por ejemplo, si creamos otra instancia "persona2" con valores diferentes, esta será un objeto distinto con sus propios valores de atributos:
+Cada instancia creada a partir de una función constructora o utilizando la sintaxis de clase es un objeto único y específico con sus propios valores para los atributos. Por ejemplo, si creamos otra instancia "persona2" con valores diferentes, esta será un objeto distinto con sus propios valores de atributos:
 
 ```js
 const persona2 = new Persona("María", 25);
