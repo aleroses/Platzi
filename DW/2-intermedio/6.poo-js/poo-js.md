@@ -458,6 +458,8 @@ const natalia = {
     },
 };
 
+// Ver en consola
+natalia;
 // Modificar objeto literal 
 natalia.name = "Mariana";
 natalia.age += 1;
