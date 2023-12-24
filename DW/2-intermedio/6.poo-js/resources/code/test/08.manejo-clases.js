@@ -6,7 +6,10 @@ class Band {
   }
 
   add_member(new_member) {
-    this.members.push(new_member);
+    
+
+    /* this.members.push(new_member);
+    console.log("lolcat", this.members); */
   }
 }
 
