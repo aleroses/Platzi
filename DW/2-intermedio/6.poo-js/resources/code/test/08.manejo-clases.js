@@ -6,10 +6,17 @@ class Band {
   }
 
   add_member(new_member) {
-    
+    if (new_member.instrument === "Drums") {
+      const validation = this.members.find(
+        member => member.instrument === "Drums"
+      );
 
-    /* this.members.push(new_member);
-    console.log("lolcat", this.members); */
+      validation
+        ? console.log("Already exist")
+        : this.members.push(new_member);
+    } else {
+      this.members.push(new_member);
+    }
   }
 }
 
