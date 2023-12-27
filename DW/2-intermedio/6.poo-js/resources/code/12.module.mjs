@@ -1,8 +1,8 @@
 import { PlatziClass } from "./12.modulos.mjs";
 
 const highway_67 = new PlatziClass({
-    name: 'JavaScript: OOP',
-    videoID: '0123456789',
+  name: "JavaScript: OOP",
+  videoID: "0123456789",
 });
 
 highway_67.play();

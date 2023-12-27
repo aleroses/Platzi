@@ -62,6 +62,7 @@ class Band {
   }
 
   add_members(new_member) {
+    // First choice
     if (new_member.instrument === "Drums") {
       const validation = this.members.find(
         member => {
@@ -74,6 +75,17 @@ class Band {
         : this.members.push(new_member);
     } else {
       this.members.push(new_member);
+    }
+
+    // Second option
+    if (
+      this.members.every(
+        member => member.instrument !== "Drums"
+      )
+    ) {
+      this.members.push(new_member);
+    } else {
+      console.log(`Nel perro!!`);
     }
   }
 }
@@ -105,9 +117,21 @@ const member_three = new Member({
   instrument: "Drums",
 });
 
+const member_four = new Member({
+  name: "Insane one!!!",
+  instrument: "Bass",
+});
+
+const member_five = new Member({
+  name: "Insane two!!!",
+  instrument: "Drums",
+});
+
 band_one.add_members(member_one);
 band_one.add_members(member_two);
 band_one.add_members(member_three);
+band_one.add_members(member_four);
+band_one.add_members(member_five);
 
 console.log(band_one);
 //console.log(member_one);

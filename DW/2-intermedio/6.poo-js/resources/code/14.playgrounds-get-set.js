@@ -43,30 +43,35 @@ course_one.name = 'eccentric course on computer psychology...'; */
     'Eccentric Course On Computer Psychology...'
 */
 
-class Course{
-    constructor({
-        name,
-        classes = []
-    }){
-        this.name = name;
-        this.classes = classes;
-    }
+class Course {
+  constructor({ name, classes = [] }) {
+    this.name = name;
+    this.classes = classes;
+  }
 
-    get name(){
-        return this._name;
+  get name() {
+    return this._name;
+  }
+  set name(new_name) {
+    if (typeof new_name === "string") {
+      const capital_letters = new_name
+        .split(" ")
+        .map(
+          word =>
+            word.charAt(0).toUpperCase() +
+            word.slice(1)
+        )
+        .join(" ");
+      this._name = capital_letters;
+    } else {
+      console.warn(`${new_name} isn't a string!!`);
     }
-    set name(new_name){
-        if(typeof new_name === 'string'){
-            const capital_letters = new_name.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
-            this._name = capital_letters;
-        }else{
-            console.warn(`${new_name} isn't a string!!`);
-        }
-    }
+  }
 }
 
-const course_new = 'course one';
+const course_new = "course one";
 const course_one = new Course({ name: course_new });
 
-course_one.name = 'eccentric course on computer psychology...';
-course_one.name
+course_one.name =
+  "eccentric course on computer psychology...";
+course_one.name;
