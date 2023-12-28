@@ -1,4 +1,4 @@
-import { PlatziClass } from "./12.modulos.mjs";
+import { PlatziClass } from "./13.modulos.mjs";
 
 const highway_67 = new PlatziClass({
   name: "JavaScript: OOP",
