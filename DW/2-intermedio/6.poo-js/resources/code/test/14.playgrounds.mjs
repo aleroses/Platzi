@@ -9,10 +9,34 @@ const course_one = new Course({
   ],
 });
 
+// course_one.name = 123;
 course_one.name = " secret course ";
 
 // console.log(course_one.name);
 console.log(course_one._name);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* import { Course } from "./14.playgrounds-get-set.mjs";
 

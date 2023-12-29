@@ -25,9 +25,6 @@ class Course {
         });
 
       this._name = format.join(" ");
-
-      //this._name.join(" ");
-      // console.log(this._name);
     } else {
       console.log("This isn't a string.");
     }
