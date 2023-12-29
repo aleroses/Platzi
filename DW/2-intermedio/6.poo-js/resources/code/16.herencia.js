@@ -94,7 +94,6 @@ class Pupil {
   }
 }
 class Free_pupil extends Pupil {
-  /*  */
   constructor(properties) {
     super(properties);
   }
