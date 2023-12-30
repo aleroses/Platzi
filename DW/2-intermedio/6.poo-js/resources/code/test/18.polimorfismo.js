@@ -56,6 +56,7 @@ class Pupil {
   }
 }
 
+
 class Free_pupil extends Pupil {
   constructor(props) {
     super(props);

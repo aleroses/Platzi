@@ -1,4 +1,6 @@
+Identifica el próximo numero de la secuencia:
 10, 37, 82, 145, 226
+
 27 
 18
 45

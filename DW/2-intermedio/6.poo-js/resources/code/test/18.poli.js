@@ -51,5 +51,7 @@ class Pupil {
       content: comment_content,
       pupil_name: this.name,
     });
+
+    comment.publish();
   }
 }
