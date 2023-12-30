@@ -43,6 +43,7 @@ class PlatziClass {
     pause_video(this.videoID);
   }
 }
+
 class Classes {
   constructor({ topic }) {
     this.topic = topic;
