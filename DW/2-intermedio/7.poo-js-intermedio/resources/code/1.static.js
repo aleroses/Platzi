@@ -15,11 +15,22 @@ const little_object = {
   age: 18,
 };
 
+console.log("\n-----keys--------");
 console.log(Object.keys(little_object));
+
+console.log("\n------getOwnPropertyName-------");
 console.log(
   Object.getOwnPropertyNames(little_object)
 );
+
+console.log("\n------entries-------");
 console.log(Object.entries(little_object));
+
+console.log("\n---getOwnPropertyDescriptors----");
+console.log(
+  Object.getOwnPropertyDescriptors(little_object)
+);
+console.log("\n-----------------------------");
 
 /* const ale = {
   name: "Ale",
