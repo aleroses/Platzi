@@ -17,20 +17,6 @@ const little_object = {
 
 console.log(Object.keys(little_object));
 
-/* 
-static Object.keys() - static Object.keys() - static Object.keys()
-static Object.keys() - static Object.keys() - static Object.keys()
-static Object.keys() - static Object.keys() - static Object.keys()
-static Object.keys() - static Object.keys() - static Object.keys()
-static Object.keys() - static Object.keys() - static Object.keys()
-static Object.keys() - static Object.keys() - static Object.keys()
-static Object.keys() - static Object.keys() - static Object.keys()
-static Object.keys() - static Object.keys() - static Object.keys()
-static Object.keys() - static Object.keys() - static Object.keys()
-static Object.keys() - static Object.keys() - static Object.keys()
-static Object.keys() - static Object.keys() - static Object.keys()
-*/
-
 /* const ale = {
   name: "Ale",
   age: 18,
