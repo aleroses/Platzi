@@ -16,6 +16,10 @@ const little_object = {
 };
 
 console.log(Object.keys(little_object));
+console.log(
+  Object.getOwnPropertyNames(little_object)
+);
+console.log(Object.entries(little_object));
 
 /* const ale = {
   name: "Ale",
