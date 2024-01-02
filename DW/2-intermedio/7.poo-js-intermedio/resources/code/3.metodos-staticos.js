@@ -11,3 +11,4 @@ const student = {
 console.log(Object.keys(student));
 console.log(Object.getOwnPropertyNames(student));
 console.log(Object.entries(student));
+console.log(Object.entries(student)[3][0]);
