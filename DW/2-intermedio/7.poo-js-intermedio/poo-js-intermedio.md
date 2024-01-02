@@ -165,7 +165,7 @@ const juan = {
 
 // `this` se usa para hacer referencia a la propiedad `approvedCourses` 
 // del objeto en cuestión. 
-  this.approvedCourses.push(newCourse); 
+   this.approvedCourses.push(newCourse); 
 }
 };
 ```
