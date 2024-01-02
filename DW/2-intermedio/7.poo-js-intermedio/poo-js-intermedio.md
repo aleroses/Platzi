@@ -214,14 +214,14 @@ const juan = {
   name: "Juanito", 
   age: 18, 
   approvedCourses: ["Curso 1"], 
-  addCourse(newCourse) { 
   
-  // A dónde a punta `this`: 
-  console.log("This", this); 
-  // Saber si el contexto de`this`tiene definida la propiedad`approvedCourses`: 
-  console.log("This.approvedCourses", this.approvedCourses);
+  addCourse(newCourse) { 
+    // A dónde apunta `this`: 
+    console.log("This", this); 
+    // Saber si el contexto de`this`tiene definida la propiedad`approvedCourses`: 
+    console.log("This.approvedCourses", this.approvedCourses);
 
-  this.approvedCourses.push(newCourse);
+    this.approvedCourses.push(newCourse);
   }
 };
 ```
@@ -245,12 +245,12 @@ const juan = {
   name: "Juanito", 
   age: 18, 
   approvedCourses: ["Curso 1"], 
-  addCourse(newCourse) { 
   
-  console.log("This", this);
-  console.log("This.approvedCourses", this.approvedCourses);
+  addCourse(newCourse) { 
+    console.log("This", this);
+    console.log("This.approvedCourses", this.approvedCourses);
 
-  this.approvedCourses.push(newCourse);
+    this.approvedCourses.push(newCourse);
   }
 };
 

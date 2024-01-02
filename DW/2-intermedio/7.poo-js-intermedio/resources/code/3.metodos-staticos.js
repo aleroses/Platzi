@@ -16,16 +16,15 @@ const student = {
 /* console.log(Object.keys(student));
 console.log(Object.getOwnPropertyNames(student));
 console.log(Object.entries(student));
-console.log(Object.entries(student)[3][0]); 
-student.addCourse("Course two");
-console.log(Object.entries(student));
+
+console.log(Object.entries(student)[3][1]);
 console.log(
   Object.entries(student)[3][1]("Course three")
-); */
-
+);
 console.log(
   Object.getOwnPropertyDescriptors(student)
 );
+*/
 
 Object.defineProperty(student, "test", {
   value: "UFOs",
@@ -33,6 +32,7 @@ Object.defineProperty(student, "test", {
   enumerable: true,
   configurable: false,
 });
+
 console.log("\n-------------------");
 console.log(
   Object.getOwnPropertyDescriptors(student)
