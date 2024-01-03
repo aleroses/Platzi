@@ -254,7 +254,11 @@ const juan = {
   }
 };
 
-Object.defineProperty(juan, "pruebaNASA", { value: "extraterrestres", writable: true, enumerable: true, configurable: true }); 
+Object.defineProperty(juan, "pruebaNASA", { 
+  value: "extraterrestres", 
+  writable: true, 
+  enumerable: true, 
+  configurable: true }); 
 ```
 
 Veamos un poco más acerca de [Object.defineProperty](https://platzi.com/clases/2419-javascript-poo-intermedio/40091-metodos-estaticos-del-prototipo-object-modificacio/). 🤓💪
