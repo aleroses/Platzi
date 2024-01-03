@@ -350,8 +350,8 @@ Object.defineProperty(juan, "navigator", {
   }
 );
 
-console.log( // Imprimimos las llaves del objeto 
-Object.keys(juan) ); 
+// Imprimimos las llaves del objeto 
+console.log( Object.keys(juan) ); 
 // [ 'name', 'age', 'approvedCourses', 'addCourse' ]
 ```
 
@@ -375,16 +375,14 @@ juan = {
 Object.defineProperty(juan, "navigator", { 
   // Creamos un nuevo atributo 
   value: "Chrome", 
-  enumerable: false, 
-  // 👀 
+  enumerable: false, // 👈👀 
   writable: true, 
   configurable: true, 
   }
 );
 
-console.log( 
 // Imprimimos las propiedades del objeto 
-Object.getOwnPropertyNames(juan) ); 
+console.log( Object.getOwnPropertyNames(juan) ); 
 
 // [ 'name', 'age', 'approvedCourses', 'addCourse', 'navigator' ] 👈 Ya nos aparece
 ```
@@ -412,21 +410,19 @@ Object.defineProperty(juan, "terminal", {
   value: "WSL", 
   enumerable: true, 
   writable: true, 
-  configurable: false, // 👀 
+  configurable: false, // 👈👀 
   }
 );
 
-console.log( 
-// Mostramos las propiedades del objeto previamente... 👁👁 
-Object.keys(juan) ); 
+// Mostramos las propiedades del objeto previamente... 
+console.log( Object.keys(juan) ); 
 
 // [ 'name', 'age', 'approvedCourses', 'addCourse', 'terminal' ]
 
 delete terminal; // Intentamos eliminar ❌
 
-console.log( 
 // Listamos los atributos para comprobar si se eliminó `terminal` 🤔
-Object.keys(juan) ); 
+console.log( Object.keys(juan) ); 
 
 // [ 'name', 'age', 'approvedCourses', 'addCourse', 'terminal' ] 👈 NO se eliminó
 ```
