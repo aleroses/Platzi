@@ -446,11 +446,11 @@ const juan = {
   }
 };
 
+// Creamos un nuevo atributo "editor"
 Object.defineProperty(juan, "editor", { 
-// Creamos un nuevo atributo 
   value: "VSCode", 
   enumerable: true, 
-  writable: false, 
+  writable: false, 👈👀
   configurable: true, 
   }
 );
@@ -532,6 +532,7 @@ juan.name = "Carlitos";
 // Listamos para observar si hubo cambios: 
 console.log(Object.keys(juan)); 
 // [ 'name', 'age', 'approvedCourses', 'addCourse' ] 
+
 // Verificamos si cambió el valor de `name`: 
 console.log(juan.name); // "Juanito"
 ```
