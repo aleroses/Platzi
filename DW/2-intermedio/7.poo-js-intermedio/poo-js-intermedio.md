@@ -623,6 +623,85 @@ Información relevante:
 - [[js-engine-v8+nav#Memory Heap (Montón)]]
 - [Apuntes Curso engine v8](https://github.com/aleroses/Platzi/blob/master/DW/2-intermedio/10.js-engine-v8/js-engine-v8%2Bnav.md#7-memory-heap)
 
+## **6.** Shallow copy en JavaScript
+
+El Shallow Copy (copia superficial) se refiere a la forma de **crear un nuevo objeto a partir de las propiedades de otro**. Esta copia solo se hace a un nivel alto, no se hace con objetos dentro de objetos (nested objects), lo que provoca que la modificación de una de sus propiedades, modifique el objeto principal.
+
+### Shallow copy con el bucle for
+
+Podemos copiar las propiedades de un objeto en otro haciendo uso del bucle `for`:
+
+```js
+const obj1 = { a: "a", b: "b" }
+
+const obj2 = {}
+
+for (propiedad in obj1) { obj2[propiedad] = obj1[propiedad]; } 
+```
+
+Si deseáramos modificar los valores de los atributos del objeto copia, el objeto original no se ve afectado:
+
+```js
+obj2.a = "AAA"; obj2.b = "BBB";
+
+console.log(obj2); // { a: 'AAA', b: 'BBB' } console.log(obj1); // { a: 'AAA', b: 'BBB' } 
+```
+
+Pero, si hay objetos dentro del objeto original (nested objects) el objeto original sí se vería afectado ante las modificaciones hechas en dichos sub objetos:
+
+```js
+const obj1 = { a: "a", b: "b", c: { d: "d", e: "e" } }
+
+const obj2 = {}
+
+for (propiedad in obj1) { obj2[propiedad] = obj1[propiedad]; }
+
+obj2.a = "atributo a"; obj2.b = "atributo b"; obj2.c.d = "objeto dentro de otro";
+
+console.log(obj2); console.log(obj1);
+
+/ _> Mensaje en consola { a: 'atributo a', b: 'atributo b', c: { d: 'objeto dentro de otro', e: 'e' } } { a: 'a', b: 'b', c: { d: 'objeto dentro de otro', e: 'e' } }_ / 
+```
+
+### Shallow copy con Object.assign
+
+El `Object.assign` nos permite realizar el mismo shallow copy que podemos hacer con el bucle `for`.
+
+```js
+const obj1 = { a: "a", b: "b", c: { d: "d", e: "e" } }
+
+const obj3 = Object.assign({}, obj1);
+
+// Con esto podemos crear copias exactas c
+onsole.log(obj1); 
+// { a: 'a', b: 'b', c: { d: 'd', e: 'e' } } 
+console.log(obj3); 
+// { a: 'a', b: 'b', c: { d: 'd', e: 'e' } }
+
+// Sin embargo, si hacemos modificaciones en los nested objects... 
+obj1.c.d = "COPIA DESDE EL OBJ1";
+
+// se verán afectados los demás objetos copiados 
+console.log(obj3); 
+// { a: 'a', b: 'b', c: { d: 'COPIA DESDE EL OBJ1', e: 'e' } } 
+```
+
+Aun así, tendremos los mismos problemas si el objeto original posee **nested objects**.
+
+### Object.create
+
+Nos permite crear un objeto que tenga como parte de su prototipo los atributos de otro objeto:
+
+```js
+const obj1 = { a: "a", b: "b", c: { d: "d", e: "e" } }
+
+const obj4 = Object.create(obj1); 
+```
+
+![Object.create para que un objeto tenga como prototipo los atributos de otro](https://static.platzi.com/media/articlases/Images/object-create-curso-intermedio-de-programacion-orientada-a-objetos-en-javascript.jpg)
+
+Hasta ahora hemos podido resolver parcialmente el problema de copiar objetos, ya que aún tenemos inconvenientes cuando los objetos originales tienen anidados otros objetos. Tratemos de resolver esto con [JSON.parse y JSON.stringify](https://platzi.com/clases/2419-javascript-poo-intermedio/39813-jsonparse-y-jsonstringify/). 👨‍💻
+
 ## Otros apuntes: 
 
 [POO intermedio](https://fantasy-snail-94c.notion.site/Clases-del-Curso-Intermedio-de-Programaci-n-Orientada-a-Objetos-en-JavaScript-9bb99983619e407c9a07b1173c5b0a5d)
