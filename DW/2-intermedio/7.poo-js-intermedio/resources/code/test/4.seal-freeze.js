@@ -15,9 +15,13 @@ const student = {
 
 Object.defineProperty(student, "avocado", {
   value: "delicious 👈👀",
-  configurable: true,
+  configurable: false,
   writable: true,
   enumerable: true,
 });
 
+student.avocado = "bitter 🤯";
+delete student.avocado;
+
 console.log(student);
+console.log(Object.keys(student));
