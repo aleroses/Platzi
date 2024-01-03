@@ -553,7 +553,7 @@ La memoria en JavaScript funciona de la siguiente manera:
 
 Cuando creamos variables en JavaScript (aplicable a casi cualquier otro lenguaje), ejecutamos 2 procesos:
 
-1. El primero es la **inicialización**, es decir, le decimos a JS que vamos a crear una nueva variable con un nombre en específico.
+1. El primero es la **inicialización** o declaración, es decir, le decimos a JS que vamos a crear una nueva variable con un nombre en específico.
     
     ```js
     let name;
