@@ -15,13 +15,34 @@ const student = {
 
 Object.defineProperty(student, "avocado", {
   value: "delicious 👈👀",
-  configurable: false,
+  configurable: true,
   writable: true,
   enumerable: true,
 });
 
+// Object.seal(student);
+Object.freeze(student);
+
 student.avocado = "bitter 🤯";
 delete student.avocado;
 
+// seal No deja añadir ni modificar
+/* Object.defineProperty(student, "test", {
+  value: "insane 👈👀",
+  configurable: true,
+  writable: true,
+  enumerable: true,
+}); 
+
+Object.defineProperty(student, "avocado", {
+  value: "lolcat 👈👀",
+  configurable: true,
+  writable: true,
+  enumerable: true,
+});*/
+
 console.log(student);
 console.log(Object.keys(student));
+console.log(
+  Object.getOwnPropertyDescriptors(student)
+);
