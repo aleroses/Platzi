@@ -553,18 +553,18 @@ La memoria en JavaScript funciona de la siguiente manera:
 
 Cuando creamos variables en JavaScript (aplicable a casi cualquier otro lenguaje), ejecutamos 2 procesos:
 
-1. El primero es la **inicialización** o declaración, es decir, le decimos a JS que vamos a crear una nueva variable con un nombre en específico.
+1. El primero es la **declaración**, es decir, le decimos a JS que vamos a crear una nueva variable con un nombre en específico.
     
     ```js
     let name;
     ```
     
-2. Lo segundo es la asignación: le indicamos a JavaScript que esa variable que generamos con ese nombre en específico tiene un valor.
+2. Lo segundo es la **inicialización**: le indicamos a JavaScript que esa variable que generamos con ese nombre en específico tiene un valor.
     
     ```js
-    // Inicialización 
+    // Declaración 
     let name; 
-    // Asignación
+    // Inicialización
     name = "pepito"; 
     
     let age = 28; 
@@ -584,9 +584,14 @@ En memoria, el nombre de las variables apuntan a sus respectivos valores, sin em
 Si intentamos copiar un objeto en otra variable de esta manera:
 
 ```js
-const juanita = { // ORIGINAL age: 15, email: "juanita@juanita.com" }
+// ORIGINAL
+const juanita = { 
+  age: 15, 
+  email: "juanita@juanita.com" 
+}
 
-const nath = juanita; // COPIA 
+// COPIA 
+const nath = juanita; 
 ```
 
 Cuando intentemos editar los valores de los atributos del objeto copia, los atributos del objeto original se verán igualmente afectados:
@@ -612,6 +617,11 @@ Lo anterior sucede porque cuando copiamos un objeto lo que en realidad estamos c
 ![Cuando copiamos directamente un objeto en otra variable, en realidad copiamos su pointer o apuntador (JS)](https://static.platzi.com/media/articlases/Images/cuando-copiamos-directamente-un-objeto-en-otra-variable-en-realidad-copiamos-su-pointer-o-apuntador-js-curso-intermedio-de-programacion-orientada-a-objetos-en-javascript.jpg)
 
 Entonces, ¿Cómo solucionamos esto? Tenemos 2 formas de hacerlo en JavaScript: el shallow copy y el [deep copy](https://platzi.com/clases/2419-javascript-poo-intermedio/39815-deep-copy-con-recursividad/). Veamos a continuación [cómo aplicar el primero](https://platzi.com/clases/2419-javascript-poo-intermedio/39812-shallow-copy-en-javascript/). 🤔💪
+
+Información relevante:
+
+- [[js-engine-v8+nav#Memory Heap (Montón)]]
+- [Apuntes Curso engine v8](https://github.com/aleroses/Platzi/blob/master/DW/2-intermedio/10.js-engine-v8/js-engine-v8%2Bnav.md#7-memory-heap)
 
 ## Otros apuntes: 
 
