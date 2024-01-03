@@ -419,7 +419,7 @@ console.log( Object.keys(juan) );
 
 // [ 'name', 'age', 'approvedCourses', 'addCourse', 'terminal' ]
 
-delete terminal; // Intentamos eliminar ❌
+delete juan.terminal; // Intentamos eliminar ❌
 
 // Listamos los atributos para comprobar si se eliminó `terminal` 🤔
 console.log( Object.keys(juan) ); 
@@ -491,7 +491,7 @@ Object.seal(juan); // "Sellamos" el objeto
 console.log(Object.keys(juan)); 
 // [ 'name', 'age', 'approvedCourses', 'addCourse' ]
 
-delete age; // Intentamos eliminar un atributo del objeto
+delete juan.age; // Intentamos eliminar un atributo del objeto
 
 // Listamos para observar si hubo cambios: 
 console.log(Object.keys(juan)); 
@@ -524,7 +524,7 @@ Object.freeze(juan); // "Congelamos" el objeto
 console.log(Object.keys(juan)); 
 // [ 'name', 'age', 'approvedCourses', 'addCourse' ]
 
-delete approvedCourses; 
+delete juan.approvedCourses; 
 // Intentamos eliminar un atributo del objeto 
 juan.name = "Carlitos"; 
 // Intentamos sobreescribir el valor de este atributo

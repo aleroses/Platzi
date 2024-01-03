@@ -41,11 +41,13 @@ Object.defineProperty(student, "test_04", {
   configurable: false,
 }); */
 
-
 // console.log(Object.seal(student));
-Object.freeze(student);
+//Object.freeze(student);
 //console.log(student);
 
-console.log(
+/* console.log(
   Object.getOwnPropertyDescriptors(student)
-);
+); */
+
+delete student.addCourse;
+console.log(student);
