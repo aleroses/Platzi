@@ -309,7 +309,13 @@ const juan = {
   }
 };
 
-Object.defineProperty(juan, "nombreNuevaPropiedad", { value: "JavaScript", // Valor que tendrá enumerable: false, writable: true, configurable: false, });
+Object.defineProperty(juan, "nombreNuevaPropiedad", { 
+  value: "JavaScript", // Valor que tendrá 
+  enumerable: false, 
+  writable: true, 
+  configurable: false, 
+  }
+);
 ```
 
 ### Accesibilidad a los atributos de un objeto
@@ -344,7 +350,9 @@ Object.defineProperty(juan, "navigator", {
   }
 );
 
-console.log( // Imprimimos las llaves del objeto Object.keys(juan) ); // [ 'name', 'age', 'approvedCourses', 'addCourse' ]
+console.log( // Imprimimos las llaves del objeto 
+Object.keys(juan) ); 
+// [ 'name', 'age', 'approvedCourses', 'addCourse' ]
 ```
 
 Sin embargo, hay una excepción si usamos `Object.getOwnPropertyNames`:
