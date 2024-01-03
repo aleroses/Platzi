@@ -38,7 +38,7 @@ console.log(
   Object.getOwnPropertyDescriptors(student)
 );
 
-Object.defineProperty(student, {
+Object.defineProperty(student, "test", {
   value: "algo",
   writable: false,
   enumerable: false,

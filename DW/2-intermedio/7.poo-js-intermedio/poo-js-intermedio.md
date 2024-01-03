@@ -263,6 +263,31 @@ Object.defineProperty(juan, "pruebaNASA", {
 
 Veamos un poco más acerca de [Object.defineProperty](https://platzi.com/clases/2419-javascript-poo-intermedio/40091-metodos-estaticos-del-prototipo-object-modificacio/). 🤓💪
 
+### Resumen: 
+
+Al "descomponer" un objeto con `Object.entries` este produce una matriz de matrices con los atributos y métodos del objeto donde cada submatriz contiene el nombre de una propiedad del objeto y su valor correspondiente. Al realizar esta descomposición, se pierde el contexto original del objeto y se crea un nuevo ámbito léxico. Esto significa que las referencias al objeto original, como la palabra reservada `this`, ya no apuntarán al objeto original, sino que se referirán al contexto en el que se ejecuta el código que utiliza la descomposición del objeto. En otras palabras, `this` funcionará de manera diferente en el nuevo contexto generado por `Object.entries`.
+
+El ámbito léxico cambia y por ende la palabra reservada this funciona en un contexto diferente al inicial.
+
+```js
+Object.defineProperty() El método estático 
+
+Object.defineProperty() define una nueva propiedad sobre un objeto, o modifica una ya existente, y devuelve el objeto modificado. 
+
+Sintaxis 
+Object.defineProperty(obj, prop, descriptor) 
+
+Parámetros 
+obj: El objeto sobre el cual se define la propiedad. 
+prop: El nombre de la propiedad a ser definida o modificada. 
+descriptor: Podremos definir las propiedades nativas del objeto 
+``` 
+
+No estoy seguro de mi respuesta por lo que espero su feedback`
+
+
+
+
 ## Otros apuntes: 
 
 [POO intermedio](https://fantasy-snail-94c.notion.site/Clases-del-Curso-Intermedio-de-Programaci-n-Orientada-a-Objetos-en-JavaScript-9bb99983619e407c9a07b1173c5b0a5d)
