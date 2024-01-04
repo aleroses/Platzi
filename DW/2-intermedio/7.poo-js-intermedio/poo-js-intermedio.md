@@ -760,7 +760,14 @@ for (objeto on objetos) {} >> ON es para iterar sus valores
 Con `JSON.stringify` podemos convertir un objeto en un `string` y lo inverso con `JSON.parse`. Podríamos **usar ambos métodos para lograr copiar un objeto en otro**.
 
 ```js
-const obj1 = { a: 'a', b: 'b', c: { d: 'd', e: 'e', } }
+const obj1 = {
+  a: 'a', 
+  b: 'b', 
+  c: { 
+    d: 'd', 
+    e: 'e', 
+  }
+}
 
 // Lo convertimos en String y el resultado lo asignamos en un variable: 
 const stringifiedComplexObj = JSON.stringify(obj1); 
