@@ -627,54 +627,100 @@ Información relevante:
 
 El Shallow Copy (copia superficial) se refiere a la forma de **crear un nuevo objeto a partir de las propiedades de otro**. Esta copia solo se hace a un nivel alto, no se hace con objetos dentro de objetos (nested objects), lo que provoca que la modificación de una de sus propiedades, modifique el objeto principal.
 
-### Shallow copy con el bucle for
+### Shallow copy con el bucle for...in
 
-Podemos copiar las propiedades de un objeto en otro haciendo uso del bucle `for`:
+Podemos copiar las propiedades de un objeto en otro haciendo uso del bucle `for in`:
 
 ```js
-const obj1 = { a: "a", b: "b" }
+const obj1 = { 
+  a: "a", 
+  b: "b" 
+};
 
-const obj2 = {}
+const obj2 = {};
 
-for (propiedad in obj1) { obj2[propiedad] = obj1[propiedad]; } 
+for (propiedad in obj1) { 
+  // propiedad es a luego b
+  obj2[propiedad] = obj1[propiedad]; 
+};
 ```
 
 Si deseáramos modificar los valores de los atributos del objeto copia, el objeto original no se ve afectado:
 
 ```js
-obj2.a = "AAA"; obj2.b = "BBB";
+obj2.a = "AAA"; 
+obj2.b = "BBB";
 
-console.log(obj2); // { a: 'AAA', b: 'BBB' } console.log(obj1); // { a: 'AAA', b: 'BBB' } 
+console.log(obj2); 
+// { a: 'AAA', b: 'BBB' } 
+console.log(obj1); 
+// { a: 'a', b: 'b' } 
 ```
 
 Pero, si hay objetos dentro del objeto original (nested objects) el objeto original sí se vería afectado ante las modificaciones hechas en dichos sub objetos:
 
 ```js
-const obj1 = { a: "a", b: "b", c: { d: "d", e: "e" } }
+const obj1 = {   
+  a: "a", 
+  b: "b", 
+  c: { 
+    d: "d", 
+    e: "e" 
+  };
+};
 
 const obj2 = {}
 
-for (propiedad in obj1) { obj2[propiedad] = obj1[propiedad]; }
+for (propiedad in obj1) { 
+  obj2[propiedad] = obj1[propiedad]; 
+};
 
-obj2.a = "atributo a"; obj2.b = "atributo b"; obj2.c.d = "objeto dentro de otro";
+obj2.a = "atributo a"; 
+obj2.b = "atributo b"; 
+obj2.c.d = "objeto dentro de otro";
 
-console.log(obj2); console.log(obj1);
+console.log(obj2); 
+console.log(obj1);
 
-/ _> Mensaje en consola { a: 'atributo a', b: 'atributo b', c: { d: 'objeto dentro de otro', e: 'e' } } { a: 'a', b: 'b', c: { d: 'objeto dentro de otro', e: 'e' } }_ / 
+// _> Mensaje en consola 
+{ 
+  a: 'atributo a', 
+  b: 'atributo b', 
+  c: { 
+    d: 'objeto dentro de otro', 
+    e: 'e' 
+  }
+} 
+{ 
+  a: 'a', 
+  b: 'b', 
+  c: { 
+    d: 'objeto dentro de otro', 
+    e: 'e' 
+  }
+} 
 ```
 
 ### Shallow copy con Object.assign
 
-El `Object.assign` nos permite realizar el mismo shallow copy que podemos hacer con el bucle `for`.
+El `Object.assign` nos permite realizar el mismo shallow copy (copia superficial) que podemos hacer con el bucle `for`.
 
 ```js
-const obj1 = { a: "a", b: "b", c: { d: "d", e: "e" } }
+const obj1 = {
+  a: "a", 
+  b: "b", 
+  c: { 
+    d: "d", 
+    e: "e" 
+  }
+}
 
+// Con esto podemos crear copias exactas 
 const obj3 = Object.assign({}, obj1);
 
-// Con esto podemos crear copias exactas c
-onsole.log(obj1); 
+console.log(obj1); 
 // { a: 'a', b: 'b', c: { d: 'd', e: 'e' } } 
+
 console.log(obj3); 
 // { a: 'a', b: 'b', c: { d: 'd', e: 'e' } }
 
@@ -701,6 +747,15 @@ const obj4 = Object.create(obj1);
 ![Object.create para que un objeto tenga como prototipo los atributos de otro](https://static.platzi.com/media/articlases/Images/object-create-curso-intermedio-de-programacion-orientada-a-objetos-en-javascript.jpg)
 
 Hasta ahora hemos podido resolver parcialmente el problema de copiar objetos, ya que aún tenemos inconvenientes cuando los objetos originales tienen anidados otros objetos. Tratemos de resolver esto con [JSON.parse y JSON.stringify](https://platzi.com/clases/2419-javascript-poo-intermedio/39813-jsonparse-y-jsonstringify/). 👨‍💻
+
+### Datos sobre for
+
+Existen dos for para objetos:
+
+for (objeto in objetos) {} >> IN es para iterar sus propiedades  
+for (objeto on objetos) {} >> ON es para iterar sus valores
+
+## **7.** 
 
 ## Otros apuntes: 
 
