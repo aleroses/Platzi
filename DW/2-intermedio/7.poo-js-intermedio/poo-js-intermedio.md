@@ -774,13 +774,15 @@ const stringifiedComplexObj = JSON.stringify(obj1);
 // Lo convertimos a objeto y lo asignamos al nuevo objeto: 
 const obj2 = JSON.parse(stringifiedComplexObj);
 
-console.log(obj1); console.log(obj2);
+console.log(obj1); 
+console.log(obj2);
 
 // Si hacemos modificaciones en un de los objetos... 
 obj2.c.d = "nested object"; 
 obj2.c.e = "nested object"; 
 // El objeto original no se vería afectado 
-console.log(obj1); console.log(obj2); 
+console.log(obj1); 
+console.log(obj2); 
 ```
 
 De esta forma, aunque el objeto original tenga objetos anidados, es posible crear un nuevo objeto con las mismas propiedades del original sin que este se vea afectado ante modificaciones en los objetos copias.
@@ -836,7 +838,7 @@ El método `JSON.parse()` analiza una cadena de texto (string) como JSON, transf
 #### ¿Por qué JSON.parse(JSON.stringify()) es una mala práctica para clonar un objeto en JavaScript?
 
 - Puedes perder tipos de datos.
-- JavaScript no te avisara cuando pierdas algún tipo de dato al usar JSON.stringify(), asi que GG mi rey
+- JavaScript no te avisará cuando pierdas algún tipo de dato al usar JSON.stringify().
 - Convierte tipos de datos no soportados en soportados, como infinity y NaN en null
 - Los tipos de datos Date serán parseados como strings, no como Date
 - No es tan rápido y eficiente.
