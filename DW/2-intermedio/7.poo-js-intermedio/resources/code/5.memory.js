@@ -5,5 +5,6 @@ const ale = {
 
 const nath = ale;
 nath.email = "nath@mail.com";
+nath.age = 22;
 
 console.log({ ale, nath });
