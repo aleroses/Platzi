@@ -882,10 +882,72 @@ function recursiva(numerito) {
 }
 ```
 
+### Otros ejemplos 
+
+```js
+/* Another way */
+
+const numbers = [5, 4, 3, 2, 1, 0];
+
+let number = 0;
+
+for (let i = 0; i < numbers.length; i++) {
+  number = numbers[i];
+  console.log({ i, number });
+}
+
+/* Another way */
+
+const data = [0, 1, 2, 3, 4, 5];
+
+function new_recursive(new_data) {
+  if (new_data.length != 0) {
+    const first_number = new_data[0];
+    console.log(first_number);
+
+    new_data.shift();
+
+    new_recursive(new_data);
+  }
+}
+
+new_recursive(data);
+new_recursive(["🙂", "🔥"]);
+```
+
+### Método "shift()"
+
+El método "shift()" en JavaScript se utiliza para eliminar el primer elemento de un array y desplazar todos los demás elementos hacia una posición inferior. A continuación, te explicaré cómo funciona y cómo se usa:
+
+Funcionamiento:
+1. El método "shift()" actúa sobre un array existente y modifica el array original. No crea un nuevo array.
+2. Elimina el primer elemento del array y reduce su longitud en 1.
+3. Desplaza todos los elementos restantes una posición hacia la parte inferior del array, es decir, el elemento que estaba en la posición 1 pasa a la posición 0, el que estaba en la posición 2 pasa a la posición 1, y así sucesivamente.
+4. El valor eliminado (el primer elemento) se devuelve como el resultado del método "shift()".
+
+Uso:
+Aquí tienes un ejemplo básico de cómo utilizar el método "shift()" en JavaScript:
+
+```javascript
+// Definir un array
+var frutas = ["manzana", "naranja", "plátano", "uva"];
+
+// Utilizar el método "shift()"
+var primeraFruta = frutas.shift();
+
+// Imprimir el resultado
+console.log(primeraFruta); // Salida: "manzana"
+console.log(frutas); // Salida: ["naranja", "plátano", "uva"]
+```
+
+En el ejemplo anterior, el método "shift()" se utiliza en el array "frutas". Elimina el primer elemento ("manzana") y lo asigna a la variable "primeraFruta". Luego, se imprime el valor de "primeraFruta" y el array "frutas" modificado.
+
+Es importante tener en cuenta que el método "shift()" modifica el array original, por lo que los elementos se desplazan y el array se acorta. Si deseas conservar el array original, debes hacer una copia antes de utilizar el método "shift()".
+
 ### **¿Por qué escribir programas recursivos?**
 
 - Son más cercanos a la descripción matemática.
-- Generalmente más fáciles de analizar
+- Generalmente, más fáciles de analizar
 - Se adaptan mejor a las estructuras de datos recursivas.
 - Los algoritmos recursivos ofrecen soluciones estructuradas, modulares y elegantemente simples.
 
@@ -901,6 +963,70 @@ function recursiva(numerito) {
 - Cuando las iteraciones sean la mejor opción
 
 Empleemos ahora la recursividad para poder aplicar el [Deep Copy en JavaScript](https://platzi.com/clases/2419-javascript-poo-intermedio/39815-deep-copy-con-recursividad/) y así copiar de manera óptima nuestros objetos. 🤓💪
+
+## **9.** Deep copy con recursividad
+
+Con el Deep Copy podemos **generar copias de objetos sin importar que estos posean objetos anidados o métodos dentro**.
+
+### Aplicando Deep Copy en JavaScript
+
+Veamos el siguiente ejemplo:
+
+``` // OBJETO ORIGINAL const studentBase = { name: undefined, email: undefined, age: undefined, approvedCourses: undefined, learningPaths: undefined, socialMedia: { twitter: undefined, instagram: undefined, facebook: undefined, }, hello() { console.log("Hello, World!"); } };
+
+// FUNCIÓN RECURSIVA function isObject(subject) { // Comprueba si es un objeto return typeof subject == "object"; // Devuelve true o false }
+
+function isArray(subject) { // Comprueba si es una Array return Array.isArray(subject); // Devuelve true o false }
+
+// FUNCIÓN RECURSIVA // Recibe un parametro que puede ser un objeto, array u otro tipo de dato function deepCopy(subject) { let copySubject; // Esta variable se convertira en array, objeto u otro tipo de dato
+
+const subjectIsObject = isObject(subject); // ¿El parámetro es objeto? const subjectIsArray = isArray(subject); // ¿El parámetro es array?
+
+if (subjectIsArray) { // Si es array... copySubject = []; // Asignamos un array vacío donde iremos copiando 1 a 1 los datos } else if (subjectIsObject) { // Si es un objeto... copySubject = {}; // Asignamosun objeto vacío donde iremos copiando 1 a 1 los atributos } else { // Sino es array u objeto... // Entonces es un tipo de dato que se puede copiar sin problemas, retornamos dicho // dicho dato y terminamos con la ejecución de la fucnción. return subject; }
+
+```
+// Continuamos con la ejecución de la función si el parámetro fue array u objeto:
+```
+
+for (key in subject) { // Recorremos cada uno de los atributos o datos del objeto o array // Comprueba si hay un objeto dentro del índice o atributo: const keyIsObject = isObject(subject[key]);
+
+```
+if (keyIsObject) { // Si es verdad que hay un objeto dentro...
+      // Invocamos recursivamente la misma función:
+            copySubject[key] = deepCopy(subject[key]); // 👀🔄
+} else { // Sino...
+  if (subjectIsArray) { // Si el parámetro recibido por la función deepCopy es Array...
+        // Agregamos el elemento a la variable a retornar al final de la función:
+                copySubject.push(subject[key]);
+  } else { 
+            // sino, significa que es objeto el parámetro y además no hay objetos anidados
+            // en el elemento actual dentro del recorrido del bucle for, por tanto, asignamos
+            // dicho elemento como valor a la propiedad correspondiente:
+    copySubject[key] = subject[key];
+  }
+}
+```
+
+}
+
+return copySubject; // Finalmente retornamos el objeto/array copia } ```
+
+Generemos un objeto copia utilizando la función recursiva e intentemos realizar modificaciones en el objeto copia y original:
+
+``` // OBJETO COPIA const juan = deepCopy(studentBase);
+
+// MODIFICACIONES EN EL OBJETO ORIGINAL studentBase.socialMedia.twitter = "@student_twitter"
+
+// MODIFICACIONES EN EL OBJETO COPIA juan.socialMedia.instagram = "@juanDC"
+
+// VEAMOS EN CONSOLA LAS DIFERENCIAS DEL OBJETO ORIGINAL Y LA COPIA console.log(studentBase); console.log(juan);
+
+/ _> Mensaje en consola { name: undefined, email: undefined, age: undefined, approvedCourses: undefined, learningPaths: undefined, socialMedia: { twitter: '@student_twitter', 👈👈 👀 instagram: undefined, facebook: undefined }, hello: [Function: hello] 👈👈 FUNCIÓN } { name: undefined, email: undefined, age: undefined, approvedCourses: undefined, learningPaths: undefined, socialMedia: { twitter: undefined, instagram: '@juanDC', 👈👈 👀 facebook: undefined }, hello: [Function: hello] 👈👈 FUNCIÓN }_ / ```
+
+Podemos notar que los cambios en un objeto no afecta en los valores de las propiedades del otro. Logramos crear una copia de un objeto que no esté condicionada a que si el objeto original tiene objetos anidados o si tiene métodos dentro.
+
+Conozcamos ahora cómo emplear la [abstracción en JavaScript con simplemente objetos](https://platzi.com/clases/2419-javascript-poo-intermedio/40092-abstraccion-con-objetos-literales-y-deep-copy/), es decir, sin utilizar clases. 🤔🚀
+
 
 ## Otros apuntes: 
 
