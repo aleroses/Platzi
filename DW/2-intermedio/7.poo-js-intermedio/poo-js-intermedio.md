@@ -852,11 +852,15 @@ Normalmente, pensaríamos que este tipo de problemas lo podemos resolver con con
 ```js
 // PROBLEMA: 
 // Deseamos imprimir una serie de números desde el 0 hasta n números. En este caso 
-// hasta el 4 let numerito = 0; 
+// hasta el 4 
+let numerito = 0; 
 // Declaramos desde el número que deseamos partir.
 
 // Usamos un bucle while para repetir este proceso hasta que se cumpla la condición: 
-while(numerito < 5) { console.log(numerito); numerito++; } 
+while(numerito < 5) { 
+  console.log(numerito); 
+  numerito++; 
+} 
 ```
 
 Así resolveríamos este problema con recursividad:
