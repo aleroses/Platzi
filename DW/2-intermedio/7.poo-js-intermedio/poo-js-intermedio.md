@@ -972,7 +972,23 @@ Con el Deep Copy podemos **generar copias de objetos sin importar que estos pos
 
 Veamos el siguiente ejemplo:
 
-``` // OBJETO ORIGINAL const studentBase = { name: undefined, email: undefined, age: undefined, approvedCourses: undefined, learningPaths: undefined, socialMedia: { twitter: undefined, instagram: undefined, facebook: undefined, }, hello() { console.log("Hello, World!"); } };
+```js
+// OBJETO ORIGINAL 
+const studentBase = { 
+  name: undefined, 
+  email: undefined, 
+  age: undefined, 
+  approvedCourses: undefined, 
+  learningPaths: undefined, 
+  socialMedia: { 
+    twitter: undefined, 
+    instagram: undefined, 
+    facebook: undefined, 
+  }, 
+  hello() { 
+    console.log("Hello, World!"); 
+  }
+};
 
 // FUNCIÓN RECURSIVA function isObject(subject) { // Comprueba si es un objeto return typeof subject == "object"; // Devuelve true o false }
 
