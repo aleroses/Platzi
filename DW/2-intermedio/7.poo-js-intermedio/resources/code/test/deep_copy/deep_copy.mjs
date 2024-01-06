@@ -40,7 +40,7 @@ function deep_copy(data) {
 const object_three = deep_copy(object_one);
 const object_four = deep_copy(object_two);
 
-// Que hacer cambios despues de hacer hecho las copias...
+// Que hacer cambios despues de haber hecho las copias...
 object_one.a = "AAA";
 
 console.log("One: ", object_one);
