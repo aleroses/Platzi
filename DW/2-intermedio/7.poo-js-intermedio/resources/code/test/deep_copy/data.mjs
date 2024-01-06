@@ -11,4 +11,14 @@ const object_one = {
   },
 };
 
-export { object_one };
+const object_two = [
+  "one",
+  "two",
+  [
+    "three",
+    "four",
+    ["five", "six", "seven", "eight"],
+  ],
+];
+
+export { object_one, object_two };
