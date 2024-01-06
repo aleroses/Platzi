@@ -22,11 +22,11 @@ function is_array(subject) {
 }
 
 function deep_copy(subject) {
-	// Declarar 
+  // Declarar
   let copy_subject;
 
-  const subject_is_array = is_object(subject);
-  const subject_is_object = is_array(subject);
+  const subject_is_array = is_array(subject);
+  const subject_is_object = is_object(subject);
 
   if (subject_is_array) {
     copy_subject = [];
@@ -56,7 +56,7 @@ function deep_copy(subject) {
 const object_two = deep_copy(object_one);
 console.log(object_two);
 
-object_one.a = "AAAA";
+/* object_one.a = "AAAA";
 object_one.c.e = "EEEE";
 console.log({ object_one, object_two });
-console.log(object_two.edit());
+console.log(object_two.edit()); */
