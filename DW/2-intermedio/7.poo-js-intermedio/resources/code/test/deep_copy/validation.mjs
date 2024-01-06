@@ -5,5 +5,4 @@ function is_object(subject) {
 function is_array(subject) {
   return Array.isArray(subject);
 }
-
 export { is_object, is_array };

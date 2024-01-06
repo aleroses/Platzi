@@ -11,7 +11,7 @@ const object_one = {
   },
 };
 
-const object_two = [
+const array_two = [
   "one",
   "two",
   [
@@ -21,4 +21,6 @@ const object_two = [
   ],
 ];
 
-export { object_one, object_two };
+const other_three = "This is a text!!!";
+
+export { object_one, array_two, other_three };
