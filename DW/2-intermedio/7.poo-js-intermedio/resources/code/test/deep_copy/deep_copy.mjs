@@ -52,11 +52,18 @@ console.log("Three: ", other_three);
 console.log("Four: ", object_four);
  */
 
-import { is_object, is_array } from "./validation.mjs";
-import { object_one, array_two, other_three } from "./data.mjs";
+import {
+  is_object,
+  is_array,
+} from "./validation.mjs";
+import {
+  object_one,
+  array_two,
+  other_three,
+} from "./data.mjs";
 
 function deep_copy(data) {
-  let data_copy; //👈👀 Declarar 
+  let data_copy; //👈👀 Declarar
 
   const data_is_object = is_object(data)
     ? (data_copy = {})
@@ -87,4 +94,11 @@ const array_five = deep_copy(array_two);
 const other_six = deep_copy(other_three);
 
 object_four.edit();
-console.log("👉", object_four, "👉", array_five, "👉", other_six );
+console.log(
+  "👉",
+  object_four,
+  "👉",
+  array_five,
+  "👉",
+  other_six
+);
