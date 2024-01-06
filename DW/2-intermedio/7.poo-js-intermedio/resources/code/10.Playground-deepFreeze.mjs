@@ -69,7 +69,8 @@ const x = deep_freeze(student);
 console.log(x);
 
 // Otra solución
-/* function deepFreeze(obj) {
+/* 
+function deepFreeze(obj) {
   if (typeof obj !== "object") return;
 
   Object.freeze(obj);

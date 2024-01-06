@@ -1233,11 +1233,30 @@ console.log(x);
 1. Pasamos un objeto a la función deep_freeze
 2. Congelamos el objeto ingresado (principal)
 3. Obtenemos todas las claves superficiales del objeto 
-  3.1 Obtenemos un array de claves
+	  1. Obtenemos un array de claves
 4. Recorremos cada clave y obtenemos su valor
 5. Si el valor obtenido es un objeto aplicamos recursividad
 
+📌 Nota: Recuerda que JS toma los arrays como objetos, así que el ciclo `for of` con la condicional `typeof` también recorrerá y accederá a los arrays como si fueran objetos.
 
+### Otra solución 
+
+```js
+function deepFreeze(obj) {
+  if (typeof obj !== "object") return;
+
+  Object.freeze(obj);
+
+  for (let key in obj) {
+    deepFreeze(obj[key]);
+  }
+
+  return obj;
+}
+
+const x = deepFreeze(student);
+console.log(x);
+```
 
 ## Otros apuntes: 
 
