@@ -1160,28 +1160,82 @@ console.log(obj2)
 Dado un objeto como el siguiente:
 
 ```js
-const juan = {
-  name: "Juanito",
-  approvedCourses: ["Curso 1","Curso 2"],
+const student = {
+  name: "Ale Roses",
+  approvedCourses: ["Course 1", "Course 2"],
   caracteristicas: {
-    age: 18,
-    colorCabello: 'Negro',
+    age: 22,
+    colorCabello: "Black",
     gustos: {
-      musica: ['rock', 'punk', 'ska'],
-      peliculas: ['drama', 'horros', 'comedia'],
+      musica: ["rock", "punk", "metal"],
+      peliculas: ["history", "horror", "comedy"],
     },
   },
+
   addCourse(newCourse) {
     console.log("This", this);
-    console.log("This.approvedCourses", this.approvedCourses);
+    console.log(
+      "This.approvedCourses",
+      this.approvedCourses
+    );
+
     this.approvedCourses.push(newCourse);
-  }
+  },
 };
+
+export { student }; 👈👀
 ```
 
 Tu reto es crear una función que aplique `Object.freeze` a todos los objetos anidados de forma recursiva para así realmente lograr bloquear todo el objeto. A esto se le conoce comúnmente como **deepFreeze**.
 
 ### Solución 
+
+Creamos un archivo adicional para crear la solución: 
+
+`10.Playground-deepFreeze.mjs`
+
+```js
+import { student } from "./10.data.mjs";
+
+function deep_freeze(subject) {
+  Object.freeze(subject);
+
+  const key_names =
+    Object.getOwnPropertyNames(subject);
+
+  console.log("👉", key_names);
+
+  for (const key of key_names) {
+    const value_name = subject[key];
+    console.log("🔥", value_name);
+
+    if (
+      typeof value_name === "object" &&
+      value_name !== null
+    ) {
+      deep_freeze(value_name);
+    }
+  }
+
+  return subject;
+}
+
+const x = deep_freeze(student);
+
+// // No tendrá efecto 👈👀👇
+// x.name = "John Doe";
+// x.approvedCourses.push("Course 3");
+// x.caracteristicas.age = 25;
+
+console.log(x);
+```
+
+1. Pasamos un objeto a la función deep_freeze
+2. Congelamos el objeto ingresado (principal)
+3. Obtenemos todas las claves superficiales del objeto 
+  3.1 Obtenemos un array de claves
+4. Recorremos cada clave y obtenemos su valor
+5. Si el valor obtenido es un objeto aplicamos recursividad
 
 
 
