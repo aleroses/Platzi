@@ -22,6 +22,7 @@ function is_array(subject) {
 }
 
 function deep_copy(subject) {
+	// Declarar 
   let copy_subject;
 
   const subject_is_array = is_object(subject);
