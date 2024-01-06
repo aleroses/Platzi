@@ -1110,6 +1110,10 @@ Podemos notar que los cambios en un objeto no afecta en los valores de las propi
 
 Conozcamos ahora cómo emplear la [abstracción en JavaScript con simplemente objetos](https://platzi.com/clases/2419-javascript-poo-intermedio/40092-abstraccion-con-objetos-literales-y-deep-copy/), es decir, sin utilizar clases. 🤔🚀
 
+Vista panorámica:
+
+![Deep copy](https://static.platzi.com/media/user_upload/deep-copy-new-ad3b5716-0726-4b26-a278-b1773c53ed3d.jpg)
+
 ### Array.isArray()
 
 En JavaScript, el método `Array.isArray()` se utiliza para verificar si un valor es un array. A continuación, te explicaré cómo funciona y cómo se usa:
@@ -1135,6 +1139,21 @@ En el ejemplo anterior, se utilizan tres variables: `array1`, `array2` y `array3
 Es importante destacar que el método `Array.isArray()` es especialmente útil cuando necesitas verificar si un valor es un array antes de realizar operaciones específicas que solo se pueden aplicar a arrays. Esto ayuda a evitar errores y asegura que solo se trabajará con datos de tipo array cuando sea apropiado.
 
 Recuerda que `Array.isArray()` solo está disponible en versiones de JavaScript más recientes (ES5 en adelante). Si estás trabajando con una versión anterior de JavaScript, puedes utilizar una verificación alternativa, como `typeof array === 'object' && array instanceof Array`, para determinar si un valor es un array.
+
+### Dato: 
+
+```js
+const obj = {a:1,b:{a:2},c:[1,2]}
+const obj2 = structuredClone(obj) 
+//copia de obj en esta linea temporal
+
+obj.b.a = 4 //cambio en obj
+
+console.log(obj)
+
+console.log(obj2) 
+// contiene a obj antes del cambio
+```
 
 ## Otros apuntes: 
 
