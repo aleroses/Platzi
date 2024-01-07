@@ -1573,8 +1573,8 @@ Modificaremos la función creada [anteriormente](https://platzi.com/clases/2419
 
 1. Declaramos un objeto `privateAtributos` en el que colocaremos las propiedades que deseamos que sean privadas y otro objeto `publicAtributos` en el que queremos que sean públicas. Por ahora, solo `name` será privada y por convención se coloca un guion bajo delante del nombre de aquel atributo privado:
     
-    ```js
-     function isObject(subject) {
+```js
+function isObject(subject) {
   return typeof subject == "object";
 }
 
@@ -1598,7 +1598,8 @@ function createStudent({
 } = {}) {
   const privateAtributos = {// 👈👈
     // '_name' es el atributo privado
-    // 'name' es el parámetro que recibe la función "_name": name,
+    // 'name' es el parámetro que recibe la función 
+    "_name": name,
   };
 
   const publicAtributos = {// 👈👈
@@ -1613,9 +1614,9 @@ function createStudent({
   return publicAtributos;
 }
 ```
-    
-    Por consiguiente, solo retornaremos `publicAtributos`, pues contiene las propiedades a las que sí podrán acceder los usuarios.
-    
+
+Por consiguiente, solo retornaremos `publicAtributos`, pues contiene las propiedades a las que sí podrán acceder los usuarios.
+
 2. Crearemos las funciones con las que el usuario puede editar y leer el valor del atributo privado `_name`:
     
 ```js

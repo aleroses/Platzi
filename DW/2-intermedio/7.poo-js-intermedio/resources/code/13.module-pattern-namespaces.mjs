@@ -60,6 +60,7 @@ function create_student({
   const new_private = {
     _name: name,
   };
+  
   const new_public = {
     age,
     email,
@@ -70,6 +71,7 @@ function create_student({
     read_name() {
       return new_private["_name"];
     },
+
     change_name(new_name) {
       new_private["_name"] = new_name;
     },
