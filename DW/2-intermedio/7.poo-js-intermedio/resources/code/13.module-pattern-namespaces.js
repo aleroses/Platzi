@@ -24,11 +24,11 @@ function create_student({
     learning_paths,
 
     read_name() {
-      return new_private["_name"];
+      return new_private._name;
     },
 
     change_name(new_name) {
-      new_private["_name"] = new_name;
+      new_private._name = new_name;
     },
   };
 
@@ -52,12 +52,14 @@ const ale = create_student({
   twitter: "aleroses",
 });
 
-ale.change_name("Ale roses xd");
+/* ale.change_name("Ale roses xd");
 ale.read_name();
+
+// el ._name no deberia cambiar el nombre
 ale._name = "XDXDXD";
 ale.read_name();
 
-ale.change_name("New name xdxdxd");
+ale.change_name("New name xdxdxd"); */
 
 /* ale.read_name = function () {
   return "Potatoes!!";
@@ -65,4 +67,4 @@ ale.change_name("New name xdxdxd");
 
 ale.change_name("New name lolcat");
 
-console.log(ale);
+console.log({ ale });

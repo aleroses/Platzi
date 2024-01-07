@@ -4,13 +4,8 @@ function error_detector(param) {
 
 function create_student({
   name = error_detector("Name"),
-  email = error_detector("Email"),
   age,
   twitter,
-  instagram,
-  facebook,
-  approved_courses = [],
-  learning_paths = [],
 } = {}) {
   const new_private = {
     _name: name,
@@ -18,13 +13,45 @@ function create_student({
 
   const new_public = {
     age,
-    email,
-    social_media: { twitter, instagram, facebook },
-    approved_courses,
-    learning_paths,
+    social_media: { twitter },
 
-		read_name() {
-			
-		}
+    read_name() {
+      console.log("xd", new_private._name);
+      return new_private._name;
+    },
+
+    change_name(new_name) {
+      new_private["_name"] = new_name;
+    },
   };
+
+  Object.defineProperty(new_public, "change_name", {
+    configurable: false,
+    writable: false,
+  });
+
+  Object.defineProperty(new_public, "change_name", {
+    configurable: false,
+    writable: false,
+  });
+
+  return new_public;
 }
+
+const ale = create_student({
+  name: "Ale Roses",
+  age: 18,
+  twitter: "alerxses",
+});
+
+// ale.change_name("PATATAS BRAVAS!!!");
+// ale._name = "x"
+ale.read_name();
+
+console.log(ale);
+
+ale.change_name("locat");
+console.log(ale);
+/* 
+Separar los atributos que queremos que sean privados (name) y público
+*/
