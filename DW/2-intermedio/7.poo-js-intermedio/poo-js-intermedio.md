@@ -1258,6 +1258,317 @@ const x = deepFreeze(student);
 console.log(x);
 ```
 
+## **11.** Abstracción con objetos literales y deep copy
+
+Aplicaremos la **abstracción y encapsulamiento** a nuestros objetos en JavaScript **sin necesidad de utilizar prototipos ni clases**. Emplearemos el deep copy para generar nuevos objetos a partir de un objeto base y los encapsularemos con ayuda de los métodos del superprototipo `Object` tales como `defineProperty`, `seal` y `freeze`.
+
+### Abstracción con deep copy en JavaScript
+
+Vamos a crear un objeto base para un estudiante:
+
+```js
+// OBJETO BASE 
+const studentBase = {
+  name: undefined,
+  email: undefined,
+  age: undefined,
+  approvedCourses: undefined,
+  learningPaths: undefined,
+
+  socialMedia: {
+    twitter: undefined,
+    instagram: undefined,
+    facebook: undefined,
+  },
+};
+```
+
+Con esto podemos crear nuevos estudiantes generando copias a partir de este objeto literal `studentBase`. Para ello emplearemos [deep copy con recursividad](https://platzi.com/clases/2419-javascript-poo-intermedio/39815-deep-copy-con-recursividad/):
+
+```js
+function isObject(subject) {
+  return typeof subject == "object";
+}
+
+function isArray(subject) {
+  return Array.isArray(subject);
+}
+
+// FUNCIÓN RECURSIVA
+function deepCopy(subject) {
+  let copySubject;
+
+  const subjectIsObject = isObject(subject);
+  const subjectIsArray = isArray(subject);
+
+  if (subjectIsArray) {
+    copySubject = [];
+  } else if (subjectIsObject) {
+    copySubject = {};
+  } else {
+    return subject;
+  }
+
+  for (key in subject) {
+    const keyIsObject = isObject(subject[key]);
+
+    if (keyIsObject) {
+      copySubject[key] = deepCopy(subject[key]);
+    } else {
+      if (subjectIsArray) {
+        copySubject.push(subject[key]);
+      } else {
+        copySubject[key] = subject[key];
+      }
+    }
+  }
+
+  return copySubject;
+}
+
+// OBJETO BASE
+const studentBase = {
+  name: undefined,
+  email: undefined,
+  age: undefined,
+  approvedCourses: undefined,
+  learningPaths: undefined,
+  socialMedia: {
+    twitter: undefined,
+    instagram: undefined,
+    facebook: undefined,
+  },
+};
+
+// GENERANDO NUEVOS OBJETOS
+const juan = deepCopy(studentBase);
+const emma = deepCopy(studentBase);
+```
+
+### Encapsulamiento de objetos con Object.defineProperty
+
+Sabemos que con `Object.defineProperty` es posible editar las propiedades `writable`, `enumerable` y `configurable` de los atributos de un objeto. Con esto limitamos el acceso a los datos de los nuevos objetos que generemos.
+
+Editemos la propiedad `configurable` del atributo `name` del objeto `juan` para evitar que sea borrada:
+
+```js
+Object.defineProperty(juan, "name", {
+  // Definimos el valor del atributo "name" como "Juanito"
+  value: "Juanito",
+  configurable: false,
+});
+
+// El resto de propiedades (writable y enumerable) por defecto serán true
+
+// Si intentamos borrar el atributo "name" ...
+delete juan.name;
+
+// Observamos que no fue eliminado dicho atributo, pues bloqueamos su eliminación
+console.log(juan);
+
+/ _> Mensaje en consola 
+{ 
+  name: 'Juanito', 
+  email: undefined, 
+  age: undefined, 
+  approvedCourses: undefined, 
+  learningPaths: undefined, 
+  socialMedia: { 
+    twitter: undefined, 
+    instagram: undefined, 
+    facebook: undefined 
+  }
+} 
+```
+
+### Object.seal para restringir la eliminación de atributos
+
+Seguramente deseemos tener esta configuración con el resto de nuestros atributos y así evitar que sean borradas, pero tendríamos que hacerlo uno por uno. Podemos simplificar esta labor utilizando `Object.seal`:
+
+```js
+Object.seal(juan); 
+// Ahora todos los atributos están restringidos a que sean eliminados
+```
+
+### Verificar si no se pueden borrar los atributos de un objeto
+
+Con `Object.isSealed` podemos comprobar si todas las propiedades de un objeto están bloqueadas a que sean eliminadas. Nos devolverán un booleano.
+
+```js
+Object.isSealed(juan);
+```
+
+### Verificar si los atributos de un objeto no pueden ser borradas ni editadas
+
+Empleamos `Objcet.isFrozen` para preguntar si las propiedades de un objeto están restringidas a su eliminación y edición. Devolverá un booleano.
+
+```js
+Object.isFrozen(juan);
+```
+
+![Datos acerca de las propiedades de encapsulamiento](https://static.platzi.com/media/articlases/Images/datos-acerca-de-las-propiedades-de-encapsulamiento-curso-intermedio-de-programacion-orientada-a-objetos-en-javascript.png)
+
+## **12.** Factory pattern y RORO
+
+Factory pattern (o fábrica de objeto) y RORO (Recibir un Objeto, Retornar un Objeto) son dos patrones que nos ayudan a **crear moldes de objetos a partir de funciones**. Con ello ya no sería necesario utilizar [objetos literales ni deep copy con recursividad](https://platzi.com/clases/2419-javascript-poo-intermedio/40092-abstraccion-con-objetos-literales-y-deep-copy/).
+
+### Generando objetos a partir de funciones
+
+Generaremos una función que nos permita generar nuevos estudiantes. Esta función va a recibir un objeto (con los datos del nuevo estudiante) como parámetro y devolverá el nuevo objeto generado.
+
+```js
+function isObject(subject) {
+  return typeof subject == "object";
+}
+
+function isArray(subject) {
+  return Array.isArray(subject);
+}
+
+function createStudent({
+  name,
+  email,
+  age,
+  twitter,
+  instagram,
+  facebook,
+  approvedCourses,
+  learningPaths,
+}) {
+  return {
+    name,
+    email,
+    age,
+    approvedCourses,
+    learningPaths,
+    socialMedia: { twitter, instagram, facebook },
+  };
+}
+```
+
+Antes de crear nuevos objetos, podríamos darles unas mejoras a nuestra función:
+
+1. Los atributos `approvedCourses` y `learningPaths` deberían ser arreglos vacíos por defecto y así evitamos que sean `undefined` en caso de que no se envíen datos en el momento que se genere un nuevo estudiante:
+
+```js
+function isObject(subject) {
+  return typeof subject == "object";
+}
+
+function isArray(subject) {
+  return Array.isArray(subject);
+}
+
+function createStudent({
+  name,
+  email,
+  age,
+  twitter,
+  instagram,
+  facebook,
+  approvedCourses = [], // 👈👈
+  learningPaths = [], // 👈👈
+}) {
+  return {
+    name,
+    email,
+    age,
+    approvedCourses,
+    learningPaths,
+    socialMedia: { twitter, instagram, facebook },
+  };
+} 
+```
+
+2. Si en caso de invocar a la función `createStudent` no mandamos siquiera un objeto vacío como argumento, nos dará un error. Evitemos esto declarando que el parámetro que recibe la función puede ser un objeto vacío por defecto:
+
+```js
+function isObject(subject) {
+  return typeof subject == "object";
+}
+
+function isArray(subject) {
+  return Array.isArray(subject);
+}
+
+function createStudent({
+  name,
+  email,
+  age,
+  twitter,
+  instagram,
+  facebook,
+  approvedCourses = [],
+  learningPaths = [],
+} = {}) {
+  // 👈👈
+  return {
+    name,
+    email,
+    age,
+    approvedCourses,
+    learningPaths,
+    socialMedia: { twitter, instagram, facebook },
+  };
+}
+```
+    
+3. Deberíamos hacer que algunos campos como `email` sean obligatorios de enviar, pues, no todos los atributos se deberían quedar como `undefined` ni tampoco deberíamos poner valores por defecto a ciertos datos personales de un estudiante. Por tanto, deberíamos avisar mediante un mensaje de error personalizado que ciertos campos son obligatorios:
+
+```js
+function isObject(subject) {
+  return typeof subject == "object";
+}
+
+function isArray(subject) {
+  return Array.isArray(subject);
+}
+
+// Creamos una función con el objetivo de generar un Error el cual
+// tendrá un mensaje customizado por nosotros.
+// Como parámetro indicamos el nombre del atributo que no se está enviando (String)
+function requiredParam(param) {
+  // 👈👈
+
+  throw new Error(param + " es obligatorio");
+  // Este es el mensaje de error generado
+}
+
+function createStudent({
+  // Por defecto, invocamos a la nueva función requiredParam en aquellos
+  // atributos que deseamos que sean obligatorios. Indicamos como argumento el nombre
+  // de dicho atributo.
+  name = requiredParam("name"),
+  // 👈👈
+  email = requiredParam("email"), // 👈👈
+  age,
+  twitter,
+  instagram,
+  facebook,
+  approvedCourses = [],
+  learningPaths = [],
+} = {}) {
+  return {
+    name,
+    email,
+    age,
+    approvedCourses,
+    learningPaths,
+    socialMedia: { twitter, instagram, facebook },
+  };
+}
+```
+
+Ahora, si intentamos crear un objeto que no tenga, por ejemplo, asignado un valor en la propiedad `name`, la consola nos mostrará el mensaje de error que creamos:
+
+```js
+const juan = createStudent({ email: "juanito@frijoles.co"});
+```
+
+![La consola nos muestra un mensaje con formato de Error diciendo que el atributo name es obligatorio](https://static.platzi.com/media/articlases/Images/atributo-obligatorio-en-un-mensaje-de-error-de-la-consola-curso-intermedio-de-programacion-orientada-a-objetos-en-javascript.jpg)
+
+Aprendamos ahora a cómo crear [propiedades privadas en JavaScript](https://platzi.com/clases/2419-javascript-poo-intermedio/39817-module-pattern-y-namespaces-propiedades-privadas-e/). 👨‍💻🚀
+
 ## Otros apuntes: 
 
 [POO intermedio](https://fantasy-snail-94c.notion.site/Clases-del-Curso-Intermedio-de-Programaci-n-Orientada-a-Objetos-en-JavaScript-9bb99983619e407c9a07b1173c5b0a5d)
