@@ -1651,10 +1651,11 @@ function createStudent({
     approvedCourses,
     learningPaths,
     socialMedia: { twitter, instagram, facebook },
-    readName() {
-      // 👈👈
+    
+    readName() {// 👈👈
       return privateAtributos["_name"];
     },
+    
     changeName(newName) {
       // 👈👈
       privateAtributos["_name"] = newName;
