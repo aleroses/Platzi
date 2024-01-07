@@ -1656,8 +1656,7 @@ function createStudent({
       return privateAtributos["_name"];
     },
     
-    changeName(newName) {
-      // 👈👈
+    changeName(newName) { // 👈👈
       privateAtributos["_name"] = newName;
     },
   };
@@ -1668,7 +1667,7 @@ function createStudent({
     
 3. Finalmente, deberíamos evitar que el usuario modifique o elimine los métodos `readName` y `changeName` y dar así mejor seguridad a estos. Con `Object.defineProperty` haremos las configuraciones respectivas para evitar lo mencionado:
     
-    ```js
+```js
 function isObject(subject) {
   return typeof subject == "object";
 }
@@ -1700,27 +1699,24 @@ function createStudent({
     approvedCourses,
     learningPaths,
     socialMedia: { twitter, instagram, facebook },
+    
     readName() {
       return privateAtributos["_name"];
     },
+    
     changeName(newName) {
       privateAtributos["_name"] = newName;
     },
   };
 
-  Object.defineProperty(
-    publicAtributos,
-    "readName",
-    {
-      // 👈👈
+  Object.defineProperty( publicAtributos, "readName", {
+  // 👈👈
       writable: false,
       configurable: false,
     }
   );
-  Object.defineProperty(
-    publicAtributos,
-    "changeName",
-    {
+  
+  Object.defineProperty( publicAtributos, "changeName", {
       // 👈👈
       writable: false,
       configurable: false,
