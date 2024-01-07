@@ -1500,8 +1500,7 @@ function createStudent({
   facebook,
   approvedCourses = [],
   learningPaths = [],
-} = {}) {
-  // 👈👈
+} = {}) { // 👈👈
   return {
     name,
     email,
@@ -1527,9 +1526,7 @@ function isArray(subject) {
 // Creamos una función con el objetivo de generar un Error el cual
 // tendrá un mensaje customizado por nosotros.
 // Como parámetro indicamos el nombre del atributo que no se está enviando (String)
-function requiredParam(param) {
-  // 👈👈
-
+function requiredParam(param) {// 👈👈
   throw new Error(param + " es obligatorio");
   // Este es el mensaje de error generado
 }
