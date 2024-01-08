@@ -21,11 +21,13 @@ function createLearningPath({
     _name: name,
     _courses: courses,
   };
+
   const public = {
     // Getters y Setters
     get name() {
       return private["_name"];
     },
+		
     set name(newName) {
       if (newName.length != 0) {
         private["_name"] = newName;
