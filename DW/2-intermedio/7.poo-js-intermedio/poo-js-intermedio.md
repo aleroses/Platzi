@@ -1744,6 +1744,8 @@ juan.changeName = function (nombreImpostor) {
 
 La desventaja de protegerlos es que no nos permitiría trabajar con el polimorfismo (uno de los pilares de POO).
 
+![](https://static.platzi.com/media/user_upload/13.js-poo-1-1b2c0f08-2b85-466b-b728-bb953b733661.jpg)
+
 
 El funcionamiento de nuestros métodos generados `changeName` y `readName` es muy similar a los [Getters y Setters](https://platzi.com/clases/2419-javascript-poo-intermedio/39818-getters-y-setters/). Veamos cómo aplicar estos en JavaScript. 🤔💪
 
