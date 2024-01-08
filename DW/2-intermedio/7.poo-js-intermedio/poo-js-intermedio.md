@@ -1830,9 +1830,9 @@ function createStudent({
     approvedCourses,
     learningPaths,
     socialMedia: { twitter, instagram, facebook },
-    get name() {
-      // 👈👈 
-			return privateAtributos["_name"];
+    
+    get name() {// 👈👈 
+      return privateAtributos["_name"];
     },
   };
 
@@ -1873,11 +1873,12 @@ function createStudent({
     approvedCourses,
     learningPaths,
     socialMedia: { twitter, instagram, facebook },
+    
     get name() {
       return privateAtributos["_name"];
     },
-    set name(newName) {
-      // 👈👈
+    
+    set name(newName) {// 👈👈
       privateAtributos["_name"] = newName;
     },
   };
@@ -1887,8 +1888,8 @@ function createStudent({
 ```
 
 4. Agreguemos una pequeña validación para garantizar que al menos la asignación a `name` sea de al menos una letra y no sea un `string` vacío.
-    
-    ```js
+
+```js
 function isObject(subject) {
   return typeof subject == "object";
 }
@@ -1919,12 +1920,16 @@ function createStudent({
     approvedCourses,
     learningPaths,
     socialMedia: { twitter, instagram, facebook },
-    get name() {
+    
+    get name() {// 👈👀 ale.name
       return privateAtributos["_name"];
     },
-    set name(newName) {
-      if (newName.length != 0) {
-        // 👈👈 privateAtributos["_name"] = newName; } else { console.warn("Tu nombre debe tener al menos 1 caracter");
+    
+    set name(newName) { // 👈👀 ale.name = 'zombie'
+      if (newName.length != 0) {// 👈👈 
+        privateAtributos["_name"] = newName; 
+      } else { 
+        console.warn("Tu nombre debe tener al menos 1 caracter");
       }
     },
   };
@@ -1944,10 +1949,10 @@ const juan = createStudent({
 
 console.log(juan.name);
 
-// Se ejecuta el GETTER
+// Se ejecuta el SETTER
 juan.name = "Rigoberto";
 
-// Se ejecuta el SETTER
+// Se ejecuta el GETTER
 console.log(juan.name);
 ```
 
@@ -1956,6 +1961,11 @@ Apliquemos `Object.getOwnPropertyDescriptors` sobre nuestro objeto `juan` pa
 `Object.getOwnPropertyDescriptors(juan);`
 
 ![El atributo name no posee la propiedad value y writable como tal, sino que tiene a los métodos get y set en su lugar](https://static.platzi.com/media/articlases/Images/el-atributo-tiene-a-los-metodos-get-y-set-en-vez-de-value-y-writable-curso-intermedio-de-programacion-orientada-a-objetos-en-javascript.png)
+
+### Más datos 
+
+
+
 
 Vamos a aprender ahora a identificar objetos. Primero, conozcamos acerca del [Duck Typing](https://platzi.com/clases/2419-javascript-poo-intermedio/39819-que-es-duck-typing/). 🤔👨‍💻
 
