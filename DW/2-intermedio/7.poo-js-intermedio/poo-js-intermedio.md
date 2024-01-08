@@ -1760,7 +1760,8 @@ Los métodos `readName` y `changeName` [creados anteriormente](https://platz
 
 1. Eliminamos o comentamos las funciones `readName` y `changeName`, además de las encapsulaciones de estos métodos que hicimos con `Object.defineProperty`:
     
-    ``` function isObject(subject) { return typeof subject == "object"; }
+```js
+function isObject(subject) { return typeof subject == "object"; }
     
     function isArray(subject) { return Array.isArray(subject); }
     
@@ -1772,7 +1773,8 @@ Los métodos `readName` y `changeName` [creados anteriormente](https://platz
     
     // Object.defineProperty(publicAtributos, "readName", { 👈👈 // writable: false, // configurable: false, // }); // Object.defineProperty(publicAtributos, "changeName", { 👈👈 // writable: false, // configurable: false, // });
     
-    return publicAtributos; } ```
+    return publicAtributos; } 
+```
     
 2. Definimos el getter con el cual obtendremos el atributo “privado” `name`
     
