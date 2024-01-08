@@ -1751,6 +1751,8 @@ El funcionamiento de nuestros métodos generados `changeName` y `readName` e
 
 ## **14.** Getters y setters
 
+Los getters y los setters son métodos especiales que se utilizan para acceder y modificar las propiedades de un objeto de una manera controlada.
+
 - La sintaxis `get` vincula la propiedad de un objeto con una función que se llamará cuando se busque esa propiedad. [1]
 - La sintaxis `set` vincula la propiedad de un objeto con una función que se llamará cuando se intente hacer una asignación a esa propiedad. [2]
 
@@ -1964,8 +1966,28 @@ Apliquemos `Object.getOwnPropertyDescriptors` sobre nuestro objeto `juan` pa
 
 ### Más datos 
 
+```js
+// Accedemos al GET
+ale.name;
 
+// Accedemos al SET
+ale.name = "XD";
 
+// Al usar el siguiente método estático y fijarnos en name  
+Object.getOwnPropertyDescriptors(ale);
+// Podemos ver que no hay "value" ni "writable" porque ahora tenemos un "get" y un "set" en su lugar
+
+// Pero si editamos esto con 
+Object.defineProperty(ale, "name", {
+  value: "x",
+});
+
+// Vemos que ahora tiene un nuevo value: x pero writable es false
+Object.getOwnPropertyDescriptors(ale);
+// Desaparece get y set
+
+console.log(ale);
+```
 
 Vamos a aprender ahora a identificar objetos. Primero, conozcamos acerca del [Duck Typing](https://platzi.com/clases/2419-javascript-poo-intermedio/39819-que-es-duck-typing/). 🤔👨‍💻
 
@@ -1975,8 +1997,20 @@ _Fuentes:_
 
 [2] [https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/set](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/set)
 
+## **15.** Qué es duck typing
 
+El duck typing es la forma de programar donde identificamos los elementos por los métodos y atributos que tenga por dentro.
 
+### Cómo funciona el duck typing
+
+- Se deben tener parámetros para saber diferenciar dos cosas, dos personas, dos elementos, etc. Si queremos determinar quién es quién, se debe mirar por sus atributos y métodos, aunque puede haber el caso en el que haya elementos parecidos que también se deben diferenciar (impostores), es cuando más detalle se debe poner en identificar qué los compone.
+- El nombre proviene de la frase:
+    
+    > Si parece un pato y grazna como un pato, es un pato.
+    
+    En otras palabras, tiene que cumplir con ciertos métodos y atributos para considerarse alguna cosa.
+
+Ahora sí, veamos cómo aplicar [duck typing en JavaScript](https://platzi.com/clases/2419-javascript-poo-intermedio/39820-duck-typing-en-javascript/). 🦆👨‍💻
 
 ## Otros apuntes: 
 
