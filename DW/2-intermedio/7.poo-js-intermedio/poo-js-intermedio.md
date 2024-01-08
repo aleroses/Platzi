@@ -1747,6 +1747,96 @@ La desventaja de protegerlos es que no nos permitiría trabajar con el polimorfi
 
 El funcionamiento de nuestros métodos generados `changeName` y `readName` es muy similar a los [Getters y Setters](https://platzi.com/clases/2419-javascript-poo-intermedio/39818-getters-y-setters/). Veamos cómo aplicar estos en JavaScript. 🤔💪
 
+## **14.** Getters y setters
+
+- La sintaxis `get` vincula la propiedad de un objeto con una función que se llamará cuando se busque esa propiedad. [1]
+- La sintaxis `set` vincula la propiedad de un objeto con una función que se llamará cuando se intente hacer una asignación a esa propiedad. [2]
+
+### Cómo funciona Get y Set en JavaScript
+
+Los métodos `readName` y `changeName` [creados anteriormente](https://platzi.com/clases/2419-javascript-poo-intermedio/39817-module-pattern-y-namespaces-propiedades-privadas-e/) serán reemplazados por getters y setters:
+
+1. Eliminamos o comentamos las funciones `readName` y `changeName`, además de las encapsulaciones de estos métodos que hicimos con `Object.defineProperty`:
+    
+    ``` function isObject(subject) { return typeof subject == "object"; }
+    
+    function isArray(subject) { return Array.isArray(subject); }
+    
+    function requiredParam(param) { throw new Error(param + " es obligatorio"); }
+    
+    function createStudent({ name = requiredParam("name"), email = requiredParam("email"), age, twitter, instagram, facebook, approvedCourses = [], learningPaths = [], } = {}) { const privateAtributos = { "_name": name, };
+    
+    const publicAtributos = { email, age, approvedCourses, learningPaths, socialMedia: { twitter, instagram, facebook, }, // readName() { 👈👈 // return privateAtributos["_name"]; // }, // changeName(newName) { 👈👈 // privateAtributos["_name"] = newName; // }, };
+    
+    // Object.defineProperty(publicAtributos, "readName", { 👈👈 // writable: false, // configurable: false, // }); // Object.defineProperty(publicAtributos, "changeName", { 👈👈 // writable: false, // configurable: false, // });
+    
+    return publicAtributos; } ```
+    
+2. Definimos el getter con el cual obtendremos el atributo “privado” `name`
+    
+    ``` function isObject(subject) { return typeof subject == "object"; }
+    
+    function isArray(subject) { return Array.isArray(subject); }
+    
+    function requiredParam(param) { throw new Error(param + " es obligatorio"); }
+    
+    function createStudent({ name = requiredParam("name"), email = requiredParam("email"), age, twitter, instagram, facebook, approvedCourses = [], learningPaths = [], } = {}) { const privateAtributos = { "_name": name, };
+    
+    const publicAtributos = { email, age, approvedCourses, learningPaths, socialMedia: { twitter, instagram, facebook, }, get name() { // 👈👈 return privateAtributos["_name"]; }, };
+    
+    return publicAtributos; } ```
+    
+3. Definimos setter con el cual podremos asignar valores a nuestro atributo ”privado” `name`:
+    
+    ``` function isObject(subject) { return typeof subject == "object"; }
+    
+    function isArray(subject) { return Array.isArray(subject); }
+    
+    function requiredParam(param) { throw new Error(param + " es obligatorio"); }
+    
+    function createStudent({ name = requiredParam("name"), email = requiredParam("email"), age, twitter, instagram, facebook, approvedCourses = [], learningPaths = [], } = {}) { const privateAtributos = { "_name": name, };
+    
+    const publicAtributos = { email, age, approvedCourses, learningPaths, socialMedia: { twitter, instagram, facebook, }, get name() { return privateAtributos["_name"]; }, set name(newName) { // 👈👈 privateAtributos["_name"] = newName; } };
+    
+    return publicAtributos; } ```
+    
+4. Agreguemos una pequeña validación para garantizar que al menos la asignación a `name` sea de al menos una letra y no sea un `string` vacío.
+    
+    ``` function isObject(subject) { return typeof subject == "object"; }
+    
+    function isArray(subject) { return Array.isArray(subject); }
+    
+    function requiredParam(param) { throw new Error(param + " es obligatorio"); }
+    
+    function createStudent({ name = requiredParam("name"), email = requiredParam("email"), age, twitter, instagram, facebook, approvedCourses = [], learningPaths = [], } = {}) { const privateAtributos = { "_name": name, };
+    
+    const publicAtributos = { email, age, approvedCourses, learningPaths, socialMedia: { twitter, instagram, facebook, }, get name() { return privateAtributos["_name"]; }, set name(newName) { if (newName.length != 0) { // 👈👈 privateAtributos["_name"] = newName; } else { console.warn("Tu nombre debe tener al menos 1 caracter"); } }, };
+    
+    return publicAtributos; } ```
+    
+
+¡Listo! Ya podemos crear objetos y utilizar los getters y setters respectivos del atributo `name`:
+
+``` const juan = createStudent({ email: "juanito@frijoles.co", name: "Juanito" });
+
+console.log(juan.name); // Se ejecuta el GETTER juan.name = "Rigoberto"; // Se ejecuta el SETTER console.log(juan.name); ```
+
+Apliquemos `Object.getOwnPropertyDescriptors` sobre nuestro objeto `juan` para visualizar la accesibilidad de sus atributos: el atributo `name` no tendrá las propiedades `value` y `wriable` como tal, en vez de eso nos aparecerán las funciones `get` y `set`. Observemos esto en la consola del navegador:
+
+`Object.getOwnPropertyDescriptors(juan);`
+
+![El atributo name no posee la propiedad value y writable como tal, sino que tiene a los métodos get y set en su lugar](https://static.platzi.com/media/articlases/Images/el-atributo-tiene-a-los-metodos-get-y-set-en-vez-de-value-y-writable-curso-intermedio-de-programacion-orientada-a-objetos-en-javascript.png)
+
+Vamos a aprender ahora a identificar objetos. Primero, conozcamos acerca del [Duck Typing](https://platzi.com/clases/2419-javascript-poo-intermedio/39819-que-es-duck-typing/). 🤔👨‍💻
+
+_Fuentes:_
+
+[1] [https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/set](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/set)
+
+[2] [https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/set](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/set)
+
+_Contribución creada por: Martín Álvarez (Platzi Contributor) con el aporte de Andrés Felipe Eslava Zuluaga._
+
 
 ## Otros apuntes: 
 
