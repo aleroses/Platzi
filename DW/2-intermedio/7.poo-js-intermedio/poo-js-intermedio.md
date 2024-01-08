@@ -2399,7 +2399,7 @@ Comenzaremos a utilizar nuevamente prototipos de JavaScript para ahora sí valid
 import { is_array } from "./11.validation.mjs";
 
 function error_detector(param) {
-  throw new Error(param + " es obligatorio");
+  throw new Error(param + " is mandatory!!!");
 }
 
 function create_learning_path({
