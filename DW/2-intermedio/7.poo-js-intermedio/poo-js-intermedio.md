@@ -2841,92 +2841,281 @@ A partir del último [código](https://platzi.com/clases/2419-javascript-poo-in
 
 1. Generamos un objeto `private` en el que colocaremos el atributo, `_learningPaths` el cual al principio será un array vacío. Previo a esto, borramos todo el código que viene después de la asignación de atributos en el objeto `Student`:
     
-    ``` function isObject(subject) { return typeof subject == "object"; }
-    
-    function isArray(subject) { return Array.isArray(subject); }
-    
-    function requiredParam(param) { throw new Error(param + " es obligatorio"); }
-    
-    function LearningPath({ // PROTOTIPO name = requiredParam("name"), // Campo es obligatorio courses = [], // Lista de Cursos que pertencen a la ruta de aprendizaje }) { this.name = name; this.courses = courses; }
-    
-    function Student({ // PROTOTIPO name = requiredParam("name"), email = requiredParam("email"), age, twitter, instagram, facebook, approvedCourses = [], learningPaths = [], } = {}) {
-    
-    ```
-    // ASIGNACIÓN DE ATRIBUTOS
-    this.name = name;
-    this.email = email;
-    this.age = age;
-    this.approvedCourses = approvedCourses;
-    this.socialMedia = {
-        twitter,
-        instagram,
-        facebook,
-    };
-    
-    const private = { // 👈👈
-    "_learningPaths": [],
-    ```
-    
-    };
-    
-    } ```
+    ```js
+function isObject(subject) {
+  return typeof subject == "object";
+}
+
+function isArray(subject) {
+  return Array.isArray(subject);
+}
+
+function requiredParam(param) {
+  throw new Error(param + " es obligatorio");
+}
+
+function LearningPath({
+  // PROTOTIPO
+  name = requiredParam("name"),
+  // Campo es obligatorio
+  courses = [],
+  // Lista de Cursos que pertencen a la ruta de aprendizaje
+}) {
+  this.name = name;
+  this.courses = courses;
+}
+
+function Student({
+  // PROTOTIPO
+  name = requiredParam("name"),
+  email = requiredParam("email"),
+  age,
+  twitter,
+  instagram,
+  facebook,
+  approvedCourses = [],
+  learningPaths = [],
+} = {}) {
+  // ASIGNACIÓN DE ATRIBUTOS
+  this.name = name;
+  this.email = email;
+  this.age = age;
+  this.approvedCourses = approvedCourses;
+  this.socialMedia = {
+    twitter,
+    instagram,
+    facebook,
+  };
+
+  const private = {
+    // 👈👈
+    _learningPaths: [],
+  };
+}
+```
     
 2. Con `Object.defineProperty` añadiremos el _getter_ y _setter_ respectivo a la propiedad `learningPaths`. En el _setter_ es donde validaremos si un nuevo **_learning path_** que deseamos añadir es instancia del prototipo `LearningPath`:
     
-    ``` function isObject(subject) { return typeof subject == "object"; }
-    
-    function isArray(subject) { return Array.isArray(subject); }
-    
-    function requiredParam(param) { throw new Error(param + " es obligatorio"); }
-    
-    function LearningPath({ // PROTOTIPO name = requiredParam("name"), // Campo es obligatorio courses = [], // Lista de Cursos que pertencen a la ruta de aprendizaje }) { this.name = name; this.courses = courses; }
-    
-    function Student({ // PROTOTIPO name = requiredParam("name"), email = requiredParam("email"), age, twitter, instagram, facebook, approvedCourses = [], learningPaths = [], } = {}) {
-    
-    ```
-    // ASIGNACIÓN DE ATRIBUTOS
-    this.name = name;
-    this.email = email;
-    this.age = age;
-    this.approvedCourses = approvedCourses;
-    this.socialMedia = {
-        twitter,
-        instagram,
-        facebook,
-    };
-    
-    const private = {
-    "_learningPaths": [],
-    ```
-    
-    };
-    
-    ```
-    // "this" referencia al prototipo "Student"
-    Object.defineProperty(this, "learningPaths", { // 👈👈
-    get() { // GETTER
+    ```js
+function isObject(subject) {
+  return typeof subject == "object";
+}
+
+function isArray(subject) {
+  return Array.isArray(subject);
+}
+
+function requiredParam(param) {
+  throw new Error(param + " es obligatorio");
+}
+
+function LearningPath({
+  // PROTOTIPO
+  name = requiredParam("name"),
+  // Campo es obligatorio
+  courses = [],
+  // Lista de Cursos que pertencen a la ruta de aprendizaje
+}) {
+  this.name = name;
+  this.courses = courses;
+}
+
+function Student({
+  // PROTOTIPO
+  name = requiredParam("name"),
+  email = requiredParam("email"),
+  age,
+  twitter,
+  instagram,
+  facebook,
+  approvedCourses = [],
+  learningPaths = [],
+} = {}) {
+  // ASIGNACIÓN DE ATRIBUTOS
+  this.name = name;
+  this.email = email;
+  this.age = age;
+  this.approvedCourses = approvedCourses;
+  this.socialMedia = {
+    twitter,
+    instagram,
+    facebook,
+  };
+
+  const private = {
+    _learningPaths: [],
+  };
+
+  // "this" referencia al prototipo "Student"
+  Object.defineProperty(this, "learningPaths", {
+    // 👈👈
+    get() {
+      // GETTER
       return private["_learningPaths"];
     },
-    set(newLp) { // SETTER
+    set(newLp) {
+      // SETTER
       if (newLp instanceof LearningPath) {
-                // Si es que SÍ es una instancia, añadimos al array privado "_learningPaths"
+        // Si es que SÍ es una instancia, añadimos al array privado "_learningPaths"
         private["_learningPaths"].push(newLp);
       } else {
-                // "LPs" hace referencia a Learning Paths
-        console.warn("Alguno de los LPs NO es una instancia del prototipo LearningPath");
+        // "LPs" hace referencia a Learning Paths
+        console.warn(
+          "Alguno de los LPs NO es una instancia del prototipo LearningPath"
+        );
       }
     },
-    ```
-    
-    });
-    
-    } ```
+  });
+}
+```
     
 3. Con un bucle `for in` vamos a recorrer cada una de las rutas de aprendizaje que queramos asignarle al nuevo estudiante para invocar al _setter_ que generamos. Este _setter_ validará al **_learning path_** de turno si es en realidad una instancia del prototipo `LearningPath`:
     
+    ```js
+function isObject(subject) {
+  return typeof subject == "object";
+}
+
+function isArray(subject) {
+  return Array.isArray(subject);
+}
+
+function requiredParam(param) {
+  throw new Error(param + " es obligatorio");
+}
+
+function LearningPath({
+  // PROTOTIPO
+  name = requiredParam("name"),
+  // Campo es obligatorio
+  courses = [],
+  // Lista de Cursos que pertencen a la ruta de aprendizaje
+}) {
+  this.name = name;
+  this.courses = courses;
+}
+
+function Student({
+  // PROTOTIPO
+  name = requiredParam("name"),
+  email = requiredParam("email"),
+  age,
+  twitter,
+  instagram,
+  facebook,
+  approvedCourses = [],
+  learningPaths = [],
+} = {}) {
+  // ASIGNACIÓN DE ATRIBUTOS
+  this.name = name;
+  this.email = email;
+  this.age = age;
+  this.approvedCourses = approvedCourses;
+  this.socialMedia = {
+    twitter,
+    instagram,
+    facebook,
+  };
+
+  const private = {
+    _learningPaths: [],
+  };
+
+  // "this" referencia al prototipo "Student"
+  Object.defineProperty(this, "learningPaths", {
+    get() {
+      // GETTER
+      return private["_learningPaths"];
+    },
+    set(newLp) {
+      // SETTER
+      if (newLp instanceof LearningPath) {
+        // Si es que SÍ es una instancia, añadimos al array privado "_learningPaths"
+        private["_learningPaths"].push(newLp);
+      } else {
+        // "LPs" hace referencia a Learning Paths
+        console.warn(
+          "Alguno de los LPs que quieres añadir NO es una instancia del prototipo LearningPath"
+        );
+      }
+    },
+  });
+
+  for (learningPathIndex in learningPaths) {
+    // 👈👈
+    // Al querer hacer una asignación, estamos invocando al setter de la
+    // propiedad "learningPaths". Entonces, la ruta de aprendizaje ubicado
+    // en el índice actual será validado por el setter para saber si es o no
+    // instancia del prototipo LearningPath:
+    this.learningPaths =
+      learningPaths[learningPathIndex];
+  }
+}
+```
+
+¡Listo! Nuestro atributo `learningPaths` quedó protegido. Intentemos crear un estudiante con sus respectivos **_learning paths_**. Luego intentemos añadir una ruta adicional que sea instancia del prototipo `LearningPath` y otra que no lo sea:
+
+```js
+const escuelaWeb = new LearningPath({
+  name: "Escuela de WebDev",
+});
+const escuelaData = new LearningPath({
+  name: "Escuela de Data Science",
+});
+const juan = new Student({
+  email: "juanito@frijoles.co",
+  name: "Juanito",
+  learningPaths: [escuelaWeb, escuelaData],
+});
+
+console.log(juan.learningPaths); // ANTES
+
+const escuelaMarketing = new LearningPath({
+  name: "Escuela de Marketing",
+});
+
+juan.learningPaths = { name: "Escuela Impostora" }; // 👈👀 juan.learningPaths = escuelaMarketing;
+
+console.log(juan.learningPaths); // DESPUES
+
+// _> Mensaje en consola 
+[ 
+LearningPath { 
+  name: 'Escuela de WebDev', 
+  courses: [] 
+  }, 
+LearningPath { 
+  name: 'Escuela de Data Science', 
+  courses: [] }
+] 
+Alguno de los LPs NO es una instancia del prototipo LearningPath 👈👀 
+[ 
+LearningPath { 
+  name: 'Escuela de WebDev', 
+  courses: [] 
+  }, 
+LearningPath { 
+  name: 'Escuela de Data Science', 
+  courses: [] 
+}, LearningPath { 
+  name: 'Escuela de Marketing', 
+  courses: [] } 
+]
+```
+
+Finalmente, veamos [cómo crear métodos estáticos en JavaScript](https://platzi.com/clases/2419-javascript-poo-intermedio/39823-creando-metodos-estaticos-en-javascript/). 👨‍💻🚀
+
+## **19.** Creando métodos estáticos en JavaScript
+
+Generaremos **un prototipo en el cual añadiremos** 2 **métodos estáticos**: uno para determinar si un determinado valor es del tipo `object` y otro para realizar [deep copy](https://platzi.com/clases/2419-javascript-poo-intermedio/39815-deep-copy-con-recursividad/). A partir del último [código](https://platzi.com/clases/2419-javascript-poo-intermedio/39822-atributos-y-metodos-privados-en-prototipos/) implementado, añadamos las siguientes líneas de código:
+
+1. Crearemos una función `SuperObject` vacío. Esto en realidad será un prototipo:
+    
     ``` function isObject(subject) { return typeof subject == "object"; }
     
     function isArray(subject) { return Array.isArray(subject); }
+    
+    function SuperObject() {} // 👈👈👈👈
     
     function requiredParam(param) { throw new Error(param + " es obligatorio"); }
     
@@ -2972,11 +3161,91 @@ A partir del último [código](https://platzi.com/clases/2419-javascript-poo-in
     });
     
     ```
-    for (learningPathIndex in learningPaths) { // 👈👈
-        // Al querer hacer una asignación, estamos invocando al setter de la
-        // propiedad "learningPaths". Entonces, la ruta de aprendizaje ubicado
-        // en el índice actual será validado por el setter para saber si es o no
-        // instancia del prototipo LearningPath:
+    for (learningPathIndex in learningPaths) {
+    this.learningPaths = learningPaths[learningPathIndex];
+    ```
+    
+    }
+    
+    } ```
+    
+2. Añadimos un método estático por fuera el prototipo `SuperObject` para validar que un dato sea del tipo `object`. Luego, agregamos otro método que nos permita hacer deep copy a un objeto:
+    
+    ``` function isObject(subject) { return typeof subject == "object"; }
+    
+    function isArray(subject) { return Array.isArray(subject); }
+    
+    function SuperObject() {}
+    
+    // Agregamos directamente estos métodos estáticos a nuestro prototipo "SuperObject" SuperObject.isObject = function (subject) { // 👈👈 return typeof subject == "object"; } SuperObject.deepCopy = function (subject) { // 👈👈 let copySubject;
+    
+    const subjectIsObject = isObject(subject); const subjectIsArray = isArray(subject);
+    
+    if (subjectIsArray) { copySubject = []; } else if (subjectIsObject) { copySubject = {}; } else { return subject; }
+    
+    for (key in subject) { const keyIsObject = isObject(subject[key]);
+    
+    ```
+    if (keyIsObject) {
+      copySubject[key] = deepCopy(subject[key]);
+    } else {
+      if (subjectIsArray) {
+        copySubject.push(subject[key]);
+      } else {
+        copySubject[key] = subject[key];
+      }
+    }
+    ```
+    
+    }
+    
+    return copySubject; }
+    
+    function requiredParam(param) { throw new Error(param + " es obligatorio"); }
+    
+    function LearningPath({ // PROTOTIPO name = requiredParam("name"), // Campo es obligatorio courses = [], // Lista de Cursos que pertencen a la ruta de aprendizaje }) { this.name = name; this.courses = courses; }
+    
+    function Student({ // PROTOTIPO name = requiredParam("name"), email = requiredParam("email"), age, twitter, instagram, facebook, approvedCourses = [], learningPaths = [], } = {}) {
+    
+    ```
+    // ASIGNACIÓN DE ATRIBUTOS
+    this.name = name;
+    this.email = email;
+    this.age = age;
+    this.approvedCourses = approvedCourses;
+    this.socialMedia = {
+        twitter,
+        instagram,
+        facebook,
+    };
+    
+    const private = {
+    "_learningPaths": [],
+    ```
+    
+    };
+    
+    ```
+    // "this" referencia al prototipo "Student"
+    Object.defineProperty(this, "learningPaths", {
+    get() { // GETTER
+      return private["_learningPaths"];
+    },
+    set(newLp) { // SETTER
+      if (newLp instanceof LearningPath) {
+                // Si es que SÍ es una instancia, añadimos al array privado "_learningPaths"
+        private["_learningPaths"].push(newLp);
+      } else {
+                // "LPs" hace referencia a Learning Paths
+        console.warn("Alguno de los LPs que quieres añadir NO es una instancia del prototipo LearningPath");
+      }
+    },
+    ```
+    
+    });
+    
+    ```
+    for (learningPathIndex in learningPaths) {
     this.learningPaths = learningPaths[learningPathIndex];
     ```
     
@@ -2985,22 +3254,15 @@ A partir del último [código](https://platzi.com/clases/2419-javascript-poo-in
     } ```
     
 
-¡Listo! Nuestro atributo `learningPaths` quedó protegido. Intentemos crear un estudiante con sus respectivos **_learning paths_**. Luego intentemos añadir una ruta adicional que sea instancia del prototipo `LearningPath` y otra que no lo sea:
+¡Listo! Ya podemos usar estos métodos desde este nuevo prototipo `SuperObject` en nuestro código.
 
-``` const escuelaWeb = new LearningPath({ name: "Escuela de WebDev" }); const escuelaData = new LearningPath({ name: "Escuela de Data Science" }); const juan = new Student({ email: "juanito@frijoles.co", name: "Juanito", learningPaths: [ escuelaWeb, escuelaData, ], });
+``` const copia = SuperObject.deepCopy({ nombre: "Objecto Copia", valor: 100, }); console.log(copia);
 
-console.log(juan.learningPaths); // ANTES
+console.log( SuperObject.isObject(20) ); // false console.log( SuperObject.isObject("JS") ); // false console.log( SuperObject.isObject({name: "Juanito"}) ); // true console.log( SuperObject.isObject(["juan"]) ); // true 👈👀 // Los Arrays son instanticas del superprototipo Array y a su vez esta superclase hereda // del superprototipo Object. Por tanto, son también considaradas del tipo "object" // y es por eso que nos sale "true" ```
 
-const escuelaMarketing = new LearningPath({ name: "Escuela de Marketing" });
+Como **reto** te dejamos modificar el método `isObject` del prototipo `SuperObject` para que cuando le mandemos un Array como argumento, este nos indique `false`. 👀
 
-juan.learningPaths = { name: "Escuela Impostora" }; // 👈👀 juan.learningPaths = escuelaMarketing;
-
-console.log(juan.learningPaths); // DESPUES
-
-/ _> Mensaje en consola [ LearningPath { name: 'Escuela de WebDev', courses: [] }, LearningPath { name: 'Escuela de Data Science', courses: [] } ] Alguno de los LPs NO es una instancia del prototipo LearningPath 👈👀 [ LearningPath { name: 'Escuela de WebDev', courses: [] }, LearningPath { name: 'Escuela de Data Science', courses: [] }, LearningPath { name: 'Escuela de Marketing', courses: [] } ]_ / ```
-
-Finalmente, veamos [cómo crear métodos estáticos en JavaScript](https://platzi.com/clases/2419-javascript-poo-intermedio/39823-creando-metodos-estaticos-en-javascript/). 👨‍💻🚀
-
+_Contribución creada por: Martín Álvarez (Platzi Contributor)_
 
 ## Otros apuntes: 
 
