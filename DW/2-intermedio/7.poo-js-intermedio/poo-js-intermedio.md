@@ -3412,35 +3412,11 @@ Heap
 
 12. ¿En qué memoria se guardan los objetos de JavaScript?
 
-a 📌
-
-Heap
-
-b
-
-Stack
+	- 📌 Heap
 
 13. ¿Cuál de los siguientes métodos estáticos de Object nos permite definir o editar los atributos "ocultos" en la propiedad "patito" de "objetito"?
 
-a
-
-Object.getOwnPropertyDescriptors(objetito)
-
-b
-
-objetito.getOwnPropertyDescriptors(/* ... */)
-
-c
-
-objetito.patito.defineProperty({ /* ... */ })
-
-d 📌
-
-Object.defineProperty(objetito, "patito", { /* ... */ })
-
-e
-
-objetito.defineProperty("patito", { /* ... */ })
+	- 📌 Object.defineProperty(objetito, "patito", { /* ... */ })
 
 14. ¿Cuál de las siguientes afirmaciones es VERDADERA con respecto a "ser" vs. "tener" cuando evaluamos la identidad de nuestros objetos en JavaScript?
 
