@@ -3336,7 +3336,9 @@ console.log(SuperObject.isObject(["juan"]));
 
 Como **reto** te dejamos modificar el método `isObject` del prototipo `SuperObject` para que cuando le mandemos un Array como argumento, este nos indique `false`. 👀
 
-_Contribución creada por: Martín Álvarez (Platzi Contributor)_
+## **20.** ¿Quieres más cursos de POO en JavaScript?
+
+
 
 ## Otros apuntes: 
 
