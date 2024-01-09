@@ -3402,7 +3402,7 @@ Con lo anterior, conocemos mejor cómo se comporta internamente JavaScript cuand
 
 11. ¿Si `const patito = "Donald"`, en qué memoria se guarda "Donald"?
 
-a
+a 📌
 
 Stack
 
