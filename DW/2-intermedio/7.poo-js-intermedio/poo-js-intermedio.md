@@ -3360,6 +3360,339 @@ Con lo anterior, conocemos mejor cómo se comporta internamente JavaScript cuand
 	<summary>Haz clic para ver los resultados 👀</summary>
 	<br/>
 
-1. 
+1. ¿Cuál es el problema de crear copias de objetos con JSON.parse y JSON.stringify?
 
+a
+
+Ninguna de las respuestas es correcta.
+
+b
+
+Todas las respuestas son correctas.
+
+c
+
+Que copian las referencias en memoria del objeto original, no las propiedades del objeto como tal.
+
+d 📌
+
+Que no copian los métodos.
+
+e
+
+Que no copian los nested objects.
+
+2. ¿Cuál es el problema de copiar objetos en JavaScript con el operador de asignación?
+
+a
+
+Que no copiamos los nested objects.
+
+b
+
+Que no copiamos los métodos.
+
+c
+
+Todas las respuestas son correctas.
+
+d 📌
+
+Que copiamos las referencia en memoria del objeto original, no las propiedades del objeto como tal.
+
+e
+
+Ninguna de las respuestas es correcta.
+
+3. ¿Cuál de los siguientes métodos estáticos de Object nos permite listar los nombres y valores de las propiedades de "objetito" en forma de arrays?
+
+a 📌
+
+Object.entries(objetito)
+
+b 
+
+Object.getOwnPropertyDescriptors(objetito)
+
+c
+
+Object.keys(objetito)
+
+d
+
+objetito.entries()
+
+e
+
+objetito.keys()
+
+4. ¿Qué son las propiedades estáticas?
+
+a
+
+Métodos y atributos que podemos llamar cuando creamos una instancia del prototipo.
+
+b
+
+Métodos y atributos que solo se pueden acceder por fuera del prototipo, no por dentro.
+
+c 📌
+
+Métodos y atributos que podemos llamar sin necesidad de crear una instancia del prototipo.
+
+d
+
+Métodos y atributos que solo se pueden acceder desde el prototipo, no por fuera.
+
+5. ¿Qué es recursividad?
+
+a
+
+Cuando un ciclo se ejecuta infinitas veces.
+
+b
+
+Cuando una función llama ciclos (for, while o do while) por dentro.
+
+c
+
+Cuando una función se llama dentro de un ciclo (for, while o do while).
+
+d 📌
+
+Cuando una función se llama a sí misma.
+
+6. ¿Cuál de los siguientes métodos estáticos de Object nos permite listar los atributos "ocultos" en las propiedades de "objetito"?
+
+a
+
+objetito.getOwnPropertyDescriptors()
+
+b
+
+Object.entries(objetito)
+
+c
+
+objetito.keys()
+
+d 📌
+
+Object.getOwnPropertyDescriptors(objetito)
+
+e
+
+Object.keys(objetito)
+
+7. ¿Cuál de los siguientes métodos estáticos de Object nos permite listar los nombres de las propiedades en "objetito"?
+
+a
+
+objetito.keys()
+
+b
+
+Object.getOwnPropertyDescriptors(objetito)
+
+c 📌
+
+Object.keys(objetito)
+
+d
+
+objetito.entries()
+
+e
+
+Object.entries(objetito)
+
+8. ¿Cuál de las siguientes respuestas NO FUNCIONA para crear propiedades privadas con fábricas de objetos en JavaScript?
+
+a
+
+Guardar la propiedad "privada" en un objeto que NO retornaremos en la función.
+
+b
+
+Crear getters y setters para la propiedad "privada".
+
+c
+
+Definir los atributos evaluable, writable y/o configurable como false en la propiedad "privada".
+
+d 📌
+
+Usar la palabra reservada private antes del nombre de la propiedad "privada".
+
+9. ¿En qué memoria se guardan los nombres de las variables en JavaScript?
+
+a
+
+Heap
+
+b 📌
+
+Stack
+
+10. ¿Qué es una fábrica de objetos?
+
+a
+
+Lo mismo que un prototipo.
+
+b 📌
+
+Una función creadora de objetos.
+
+c
+
+Lo mismo que un prototipo, pero con la sintaxis de clases.
+
+11. ¿Si `const patito = "Donald"`, en qué memoria se guarda "Donald"?
+
+a
+
+Stack
+
+b 📌❌
+
+Heap
+
+12. ¿En qué memoria se guardan los objetos de JavaScript?
+
+a 📌
+
+Heap
+
+b
+
+Stack
+
+13. ¿Cuál de los siguientes métodos estáticos de Object nos permite definir o editar los atributos "ocultos" en la propiedad "patito" de "objetito"?
+
+a
+
+Object.getOwnPropertyDescriptors(objetito)
+
+b
+
+objetito.getOwnPropertyDescriptors(/* ... */)
+
+c
+
+objetito.patito.defineProperty({ /* ... */ })
+
+d 📌
+
+Object.defineProperty(objetito, "patito", { /* ... */ })
+
+e
+
+objetito.defineProperty("patito", { /* ... */ })
+
+14. ¿Cuál de las siguientes afirmaciones es VERDADERA con respecto a "ser" vs. "tener" cuando evaluamos la identidad de nuestros objetos en JavaScript?
+
+a
+
+"Tener" requiere validaciones mucho más específicas y complejas para evitar problemas de seguridad.
+
+b
+
+"Ser" requiere validaciones mucho más específicas y complejas para evitar problemas de seguridad.
+
+c 📌❌
+
+"Tener" es mucho más fácil de validar que "ser".
+
+d
+
+"Tener" nos permite hacer validaciones mucho más seguras que "ser".
+
+15. ¿Qué pasa cuando usamos Object.entries para listar un objeto con métodos que llaman a this?
+
+a 📌❌
+
+This hará referencia al objeto original, no al array donde se encuentran la key y el value del método.
+
+b
+
+El método desaparecerá.
+
+c
+
+El método se convertirá en un string con el código de la función.
+
+d
+
+This hará referencia al array donde se encuentran la key y el value del método, no al objeto original.
+
+16. ¿Cómo creamos getters y setters en un prototipo?
+
+a
+
+Fuera del prototipo con NombrePrototipo.get("nombrePropiedad", function () { /* ... */ }) y NombrePrototipo.set("nombrePropiedad", function () { /* ... */ }).
+
+b
+
+Retornando un objeto con get nombrePropiedad() { /* ... */} y set nombrePropiedad() { /* ... */}.
+
+c 📌
+
+Dentro del prototipo usamos Object.defineProperty(this, "nombrePropiedad", { /* ... */ }), fuera del prototipo con Object.defineProperty(NombrePrototipo.prototype, "nombrePropiedad", { /* ... */ }).
+
+17. ¿Cómo creamos getters y setters en una fábrica de objetos literales?
+
+a 📌
+
+Retornando un objeto con get nombrePropiedad() { /* ... */} y set nombrePropiedad() { /* ... */}.
+
+b
+
+Dentro del prototipo usamos Object.defineProperty(this, "nombrePropiedad", { /* ... */ }), fuera del prototipo con Object.defineProperty(NombrePrototipo.prototype, "nombrePropiedad", { /* ... */ }).
+
+c
+
+Fuera del prototipo con NombrePrototipo.get("nombrePropiedad", function () { /* ... */ }) y NombrePrototipo.set("nombrePropiedad", function () { /* ... */ }).
+
+18. ¿Cuál de los siguientes es un problema importante que debemos evitar con ciclos y funciones recursivas?
+
+a 📌
+
+No programar una validación o condición de salida.
+
+b
+
+Programar demasiadas validaciones o condiciones de salida.
+
+c
+
+Combinar ciclos con funciones recursivas.
+
+19. ¿Cómo identificamos objetos con Duck Typing en JavaScript?
+
+a
+
+Usando instanceof para validar si los objetos son instancias de un prototipo en específico.
+
+b 📌
+
+Validando propiedad por propiedad si el objeto cumple ciertas condiciones mínimas.
+
+c
+
+Creando un método especial de validación que no se pueda replicar en objetos impostores.
+
+20. ¿Para qué sirve instanceof en JavaScript?
+
+a
+
+Para asignarle a nuestras instancias un método especial de validación que no se pueda replicar en objetos impostores.
+
+b 📌
+
+Para validar si un objeto es una instancia de algún prototipo en específico.
+
+c
+
+Para validar propiedad por propiedad si un objeto cumple ciertas condiciones mínimas.
 </details>
