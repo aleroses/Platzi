@@ -66,17 +66,18 @@ Herramientas de desarrollador
 
 ## **5.** Extensiones Visual studio code
 
-Para abrir el panel de extensiones usa Ctrl + Shift + X
+Para abrir el panel de extensiones también puedes usar `Ctrl + Shift + X`
 
 - Prettier - Code formatter
 - Color Highlight
+- Highlight Matching Tag
+- ESLint
+- CSS Peek
 - Live server
 - Path intellisense
 - Auto rename tag
 - Material Icon theme
-
-Ver mas extensiones [[ext-vsc-chrome#Extensiones vsc]]
-
+- Code Spell Checker
 
 ## 6. Cómo usar Live Server en proyectos reales de HTML y CSS
 
