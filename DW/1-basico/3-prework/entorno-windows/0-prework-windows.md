@@ -125,7 +125,6 @@ dism.exe /online /enable-feature /featurename:VirtualMachinePlatform //all /nore
 
 Buscamos nuestro Windows Terminal 🔽 y elijes ubuntu, en caso de errores googlea el error.
 
-
 ## 7. Instalar Ubuntu tienda Microsoft
 
 ![Ubuntu](https://i.postimg.cc/jSbsdW8P/7-canonical-ubuntu.png)   
