@@ -43,10 +43,10 @@
 } */
 
 function SuperObject() {
-
 }
 
-SuperObject.deepCopy = 
+SuperObject.deepCopy = function() {}
+
 
 function error_detector(param) {
   throw new Error(param + " is mandatory");
