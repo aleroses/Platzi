@@ -2558,98 +2558,285 @@ console.log({ ale });
 
 Con `instanceof` podemos **saber si un objeto es instancia de cierto prototipo**. Esto nos devuelve `true` o `false`.
 
-## Determinando la procedencia de un objeto
+### Determinando la procedencia de un objeto
 
 A partir del código [creado anteriormente](https://platzi.com/clases/2419-javascript-poo-intermedio/39820-duck-typing-en-javascript/), realizaremos las modificaciones respectivas para que ahora nuestras funciones generadoras de objetos (como `createLearningPath`) sean ahora prototipos. Con ello ya podremos usar `instanceof` para identificar si ciertos objetos son instancias de nuestros prototipos, asegurándonos así de que tengan los atributos y métodos necesarios.
 
 1. Convertiremos nuestras funciones `createLearningPath` y `createStudent` en prototipos. Utilizaremos ahora `this` para asignar los parámetros recibidos a las propiedades de los nuevos prototipos y por ahora no trabajaremos con métodos y atributos privados:
     
-    ``` function isObject(subject) { return typeof subject == "object"; }
-    
-    function isArray(subject) { return Array.isArray(subject); }
-    
-    function requiredParam(param) { throw new Error(param + " es obligatorio"); }
-    
-    function LearningPath({ // 👈👈 PROTOTIPO name = requiredParam("name"), // Campo es obligatorio courses = [], // Lista de Cursos que pertencen a la ruta de aprendizaje }) { this.name = name; this.courses = courses; }
-    
-    function Student({ // 👈👈 PROTOTIPO name = requiredParam("name"), email = requiredParam("email"), age, twitter, instagram, facebook, approvedCourses = [], learningPaths = [], } = {}) {
-    
-    ```
-    this.name = name; // ⬅⬇
-    this.email = email;
-    this.age = age;
-    this.approvedCourses = approvedCourses;
-    this.socialMedia = {
-        twitter,
-        instagram,
-        facebook,
-    }; // ⬅⬆
-    ```
-    
-    } ```
+```js
+function isObject(subject) {
+  return typeof subject == "object";
+}
+
+function isArray(subject) {
+  return Array.isArray(subject);
+}
+
+function requiredParam(param) {
+  throw new Error(param + " es obligatorio");
+}
+
+function LearningPath({
+  // 👈👈 PROTOTIPO
+  name = requiredParam("name"),
+  // Campo es obligatorio
+  courses = [],
+  // Lista de Cursos que pertencen a la ruta de aprendizaje
+}) {
+  this.name = name;
+  this.courses = courses;
+}
+
+function Student({
+  // 👈👈 PROTOTIPO
+  name = requiredParam("name"),
+  email = requiredParam("email"),
+  age,
+  twitter,
+  instagram,
+  facebook,
+  approvedCourses = [],
+  learningPaths = [],
+} = {}) {
+  this.name = name;
+  this.email = email;
+  this.age = age;
+  this.approvedCourses = approvedCourses;
+  this.socialMedia = {
+    twitter,
+    instagram,
+    facebook,
+  };
+}
+```
     
     La propiedad `learningPaths` lo asignaremos luego de haber hecho las validaciones respectivas.
     
 2. Ahora validaremos si nuestras rutas de aprendizaje que vayamos a crear son auténticas, es decir, no solamente se comportan como tal (tienen los atributos y métodos que un **_learning path_** debería tener) sino que también son instancias de nuestro prototipo `LearningPath`:
     
-    ``` function isObject(subject) { return typeof subject == "object"; }
-    
-    function isArray(subject) { return Array.isArray(subject); }
-    
-    function requiredParam(param) { throw new Error(param + " es obligatorio"); }
-    
-    function LearningPath({ // PROTOTIPO name = requiredParam("name") // Campo es obligatorio courses = [], // Lista de Cursos que pertencen a la ruta de aprendizaje }) { this.name = name; this.courses = courses; }
-    
-    function Student({ // PROTOTIPO name = requiredParam("name"), email = requiredParam("email"), age, twitter, instagram, facebook, approvedCourses = [], learningPaths = [], } = {}) {
-    
-    ```
-    this.name = name;
-    this.email = email;
-    this.age = age;
-    this.approvedCourses = approvedCourses;
-    this.socialMedia = {
-        twitter,
-        instagram,
-        facebook,
-    };
-    
-    // Preguntamos primero si el parámetro recibido "learningPaths" sí es un Array:
-    if (isArray(learningPaths)) { // 👈👈
-        // Momentaneamente hacemos esta asignación hasta realizar el resto de
-        // validaciones:
-        this.learningPaths = [];
-    
-        // Vamos a recorrer cada índice del Array "learningPaths"
-        for (learningPathIndex in learningPaths) { // 👈👈
-    
-            // Preguntaremos si el elemento ubicado en el índice actual es una
-            // instancia del prototipo LearningPath. Solo así sabremos si es una
-            // verdadera ruta de aprendizaje:
-            if (learningPaths[learningPathIndex] instanceof LearningPath) { // 👈👈
-    
-                // Si es que SÍ es una instancia de dicho prototipo, entonces agregamos
-                // dicha ruta de aprendizaje al array "learningPaths" del estudiante:
-                this.learningPaths.push(learningPaths[learningPathIndex]);
-    
-            } // If end
-        } // For end
-    } // If end
-    ```
-    
-    } ```
+    ```js
+function isObject(subject) {
+  return typeof subject == "object";
+}
+
+function isArray(subject) {
+  return Array.isArray(subject);
+}
+
+function requiredParam(param) {
+  throw new Error(param + " es obligatorio");
+}
+
+function LearningPath({
+  // PROTOTIPO
+  name = requiredParam("name"),
+  // Campo es obligatorio
+  courses = [],
+  // Lista de Cursos que pertencen a la ruta de aprendizaje
+}) {
+  this.name = name;
+  this.courses = courses;
+}
+
+function Student({
+  // PROTOTIPO
+  name = requiredParam("name"),
+  email = requiredParam("email"),
+  age,
+  twitter,
+  instagram,
+  facebook,
+  approvedCourses = [],
+  learningPaths = [],
+} = {}) {
+  this.name = name;
+  this.email = email;
+  this.age = age;
+  this.approvedCourses = approvedCourses;
+  this.socialMedia = {
+    twitter,
+    instagram,
+    facebook,
+  };
+
+  // Preguntamos primero si el parámetro recibido "learningPaths" sí es un Array:
+  if (isArray(learningPaths)) {
+    // 👈👈
+    // Momentaneamente hacemos esta asignación hasta realizar el resto de
+    // validaciones:
+    this.learningPaths = [];
+
+    // Vamos a recorrer cada índice del Array "learningPaths"
+    for (learningPathIndex in learningPaths) {
+      // 👈👈
+
+      // Preguntaremos si el elemento ubicado en el índice actual es una
+      // instancia del prototipo LearningPath. Solo así sabremos si es una
+      // verdadera ruta de aprendizaje:
+      if (
+        learningPaths[learningPathIndex] instanceof
+        LearningPath
+      ) {
+        // 👈👈
+
+        // Si es que SÍ es una instancia de dicho prototipo, entonces agregamos
+        // dicha ruta de aprendizaje al array "learningPaths" del estudiante:
+        this.learningPaths.push(
+          learningPaths[learningPathIndex]
+        );
+      } // If end
+    } // For end
+  } // If end
+}
+```
     
 
 Ya podemos agregar rutas de aprendizaje a los nuevos estudiantes que generemos. Los **_learning paths_** estarán correctamente validados al momento de realizar la asignación:
 
-``` // Creamos nuevas rutas de aprendizaje que son instancias de "LearningPath" const escuelaWeb = new LearningPath({ name:"Escuela de WebDev" }); const escuelaData = new LearningPath({ name:"Escuela de Data Science" });
+```js
+// Creamos nuevas rutas de aprendizaje que son instancias de "LearningPath"
+const escuelaWeb = new LearningPath({
+  name: "Escuela de WebDev",
+});
+const escuelaData = new LearningPath({
+  name: "Escuela de Data Science",
+});
 
-// Generamos un nuevo estudiante asignandole las rutas creadas hace un momento, pero // además agregamos un objeto con el nombre de una escuela al azar la cual a pesar de // que tenga los mismos atributos, NO es instancia del prototipo LearningPath const juan = new Student({ email:"juanito@frijoles.co", name:"Juanito", learningPaths:[ escuelaWeb, escuelaData, { name: "Escuela Impostora" } ] });
+// Generamos un nuevo estudiante asignandole las rutas creadas hace un momento, pero
+// además agregamos un objeto con el nombre de una escuela al azar la cual a pesar de
+// que tenga los mismos atributos, NO es instancia del prototipo LearningPath
+const juan = new Student({
+  email: "juanito@frijoles.co",
+  name: "Juanito",
+  learningPaths: [
+    escuelaWeb,
+    escuelaData,
+    { name: "Escuela Impostora" },
+  ],
+});
 
-// Si observamos en consola las rutas que tiene el estudiante creado, no nos aparecerá // aquella "Escuela Impostora" que intentamos agregar, esto debido a que no pasó las // Validaciones que establecimos: console.log(juan.learningPaths);
+// Si observamos en consola las rutas que tiene el estudiante creado, no nos aparecerá
+// aquella "Escuela Impostora" que intentamos agregar, esto debido a que no pasó las
+// Validaciones que establecimos:
+console.log(juan.learningPaths);
 
-/ _> Mensaje en consola: 👀 [ LearningPath { name: 'Escuela de WebDev', courses: [] }, LearningPath { name: 'Escuela de Data Science', courses: [] } ]_ / ```
+// _> Mensaje en consola: 👀 
+[ LearningPath { 
+  name: 'Escuela de WebDev', 
+  courses: [] }, 
+  LearningPath { 
+    name: 'Escuela de Data Science', 
+    courses: [] 
+  }
+]
+```
 
 Ahora bien, aprendamos a generar [atributos y métodos privados en prototipos](https://platzi.com/clases/2419-javascript-poo-intermedio/39822-atributos-y-metodos-privados-en-prototipos/). ¡Let’s go! 👨‍💻🕵️‍♀️
+
+### Código de la clase
+
+```js
+import { is_array } from "../11.validation.mjs";
+
+function error_detector(param) {
+  throw new Error(param + " is mandatory");
+}
+
+function LearningPath({
+  name = error_detector("name"),
+  courses = [],
+} = {}) {
+  this.name = name;
+  this.courses = courses;
+}
+
+function Student({
+  name = error_detector("Name"),
+  email = error_detector("Email"),
+  age,
+  twitter,
+  instagram,
+  facebook,
+  approved_courses = [],
+  learning_paths = [],
+} = {}) {
+  this.name = name;
+  this.email = email;
+  this.age = age;
+
+  this.social_media = {
+    twitter,
+    instagram,
+    facebook,
+  };
+
+  if (is_array(learning_paths)) {
+    this.learning_paths = [];
+
+    for (let lp_index in learning_paths) {
+      if (
+        learning_paths[lp_index] instanceof
+        LearningPath
+      ) {
+        this.learning_paths.push(
+          learning_paths[lp_index]
+        );
+      }
+    }
+  }
+}
+
+const school_one = new LearningPath({
+  name: "School one",
+  courses: [],
+});
+const school_two = new LearningPath({
+  name: "School two",
+  courses: [],
+});
+
+const ale = new Student({
+  name: "Ale Roses",
+  age: 18,
+  email: "aleroses@mail.com",
+  twitter: "aleroses",
+  learning_paths: [
+    school_one,
+    school_two,
+    { name: "Impostor", courses: [] },
+  ],
+});
+
+console.log(ale);
+console.log(ale instanceof Student);
+
+const student_impostor = {
+  name: "ale",
+  email: "ale@mail.com",
+};
+console.log(student_impostor instanceof Student);
+
+//ale.learning_paths = school_one;
+//console.log(ale.learning_paths);
+console.log(ale);
+```
+
+### Dato
+
+También pudimos haber usado el **`for ... of`** en lugar del **`for ... in`** para no hacer el código tan verboso.
+
+**For … in** devuelve los índices o las llaves del array u objeto que está siendo iterado.  
+**For … of** devuelve directamente los valores.
+
+Por esa misma razón, casi siempre podemos dejar exclusivamente el `for ... in` para objetos y el `for ... of` para arrays.
+
+![](https://static.platzi.com/media/user_upload/carbon%20%287%29-ffafc572-c5f5-4352-bccc-5806dc3ce8b5.jpg)
+
+## **18.** Atributos y métodos privados en prototipos
+
+
+
 
 ## Otros apuntes: 
 
