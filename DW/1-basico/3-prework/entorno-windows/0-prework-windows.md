@@ -86,7 +86,7 @@ Para abrir el panel de extensiones también puedes usar `Ctrl + Shift + X`
 En vsc: Clic derecho sobre html - Run Live Server   
 
 
-## 6. ¿Qué es Windows Subsystem for Linux?
+## **6.** ¿Qué es Windows Subsystem for Linux?
 
 El Subsistema de Windows para Linux permite a los desarrolladores ejecutar un entorno de GNU/Linux, incluida la mayoría de herramientas de línea de comandos, utilidades y aplicaciones, directamente en Windows, sin modificar y sin la sobrecarga de una máquina virtual tradicional o una configuración de arranque dual.
 
@@ -95,6 +95,11 @@ El Subsistema de Windows para Linux permite a los desarrolladores ejecutar un en
 Verificar w10: CMD: `winver`     
 Versión 2004 (Compilation SO 19041, 450) mínimo   
 
+## **7.** Configurar Windows 11 para soportar la instalación de WSL
+
+Entramos a la tienda de Windows y descargamos: 
+
+- Windows Terminal
 
 ### Instalación de Windows Subsystem for Linux
 
@@ -102,13 +107,23 @@ Seguir pasos:
 [Documentación](https://docs.microsoft.com/en-us/windows/wsl/install-win10)
 
 Power Shell:   
-Clic derecho ejecutar como administrador
+Clic derecho ejecutar como administrador 👈👀
 `wsl --install`
 
 ![Powershell](https://i.postimg.cc/g2dYkFxJ/1-wsl-install.png)
 
 > Si ejecutar Power Shell sin ser Administrador te dará el siguiente error: 
 **La operación solicitada requiere elevación**   
+
+### En caso de conflictos o errores 
+
+Power Shell: Abrir como administrador 
+
+```bash
+dism.exe /online /enable-feature /featurename:VirtualMachinePlatform //all /norestart
+```
+
+Buscamos nuestro Windows Terminal 🔽 y elijes ubuntu, en caso de errores googlea el error.
 
 
 ## 7. Instalar Ubuntu tienda Microsoft
