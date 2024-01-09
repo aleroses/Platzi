@@ -38,7 +38,7 @@ Podemos instalar extensiones útiles:
 [Chrome web store](https://chromewebstore.google.com/?hl=es)
 
 Herramientas de desarrollador 
-- Ctrol + Shift + i
+- Ctrl + Shift + i
 
 ## **4.** Instalando nuestro editor de texto
 
