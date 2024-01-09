@@ -3338,7 +3338,17 @@ Como **reto** te dejamos modificar el método `isObject` del prototipo `Sup
 
 ## **20.** ¿Quieres más cursos de POO en JavaScript?
 
+Repasemos los conocimientos que hemos adquirido en el [Curso Intermedio de Programación Orientada a Objetos en JavaScript](https://platzi.com/cursos/javascript-poo-intermedio/):
 
+- Entendimos cómo funcionan los objetos por dentro. Los objetos no solo tienen atributos y valores, sino también otras propiedades como `writable`, `enumerable` o `configurable` que nos permiten realizar el encapsulamiento de estos.
+- Aprendimos a proteger a nuestros atributos ante posibles modificaciones o eliminaciones con `Object.seal`, `Object.freeze` y `Object.defineProperty`.
+- Conocemos ahora cómo implementar funciones generadoras de objetos sin el uso de clases o prototipos.
+- Sabemos ahora cómo establecer atributos privados y públicos, aunque JavaScript nativamente no tenga **keywords** para indicar esto.
+- Aprendimos a trabajar con _getters_ y _setters_.
+- Entendemos un poco mejor cómo funciona la memoria de JavaScript.
+- Sabemos hacer copias de objetos con Shallow copy y Deep copy en JavaScript.
+
+Con lo anterior, conocemos mejor cómo se comporta internamente JavaScript cuando deseamos aplicar el paradigma de la programación orientada a objetos. 👨‍💻🚀
 
 ## Otros apuntes: 
 
