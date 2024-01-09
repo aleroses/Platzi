@@ -3353,3 +3353,11 @@ Con lo anterior, conocemos mejor cómo se comporta internamente JavaScript cuand
 ## Otros apuntes: 
 
 [POO intermedio](https://fantasy-snail-94c.notion.site/Clases-del-Curso-Intermedio-de-Programaci-n-Orientada-a-Objetos-en-JavaScript-9bb99983619e407c9a07b1173c5b0a5d)
+
+## Examen 📌
+
+<details>
+	<summary>Haz clic para ver los resultados 👀</summary>
+	<br/>
+
+</details>
