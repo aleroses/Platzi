@@ -3456,71 +3456,22 @@ This hará referencia al array donde se encuentran la key y el value del método
 
 16. ¿Cómo creamos getters y setters en un prototipo?
 
-a
-
-Fuera del prototipo con NombrePrototipo.get("nombrePropiedad", function () { /* ... */ }) y NombrePrototipo.set("nombrePropiedad", function () { /* ... */ }).
-
-b
-
-Retornando un objeto con get nombrePropiedad() { /* ... */} y set nombrePropiedad() { /* ... */}.
-
-c 📌
-
-Dentro del prototipo usamos Object.defineProperty(this, "nombrePropiedad", { /* ... */ }), fuera del prototipo con Object.defineProperty(NombrePrototipo.prototype, "nombrePropiedad", { /* ... */ }).
+	- 📌 Dentro del prototipo usamos Object.defineProperty(this, "nombrePropiedad", { /* ... */ }), fuera del prototipo con Object.defineProperty(NombrePrototipo.prototype, "nombrePropiedad", { /* ... */ }).
 
 17. ¿Cómo creamos getters y setters en una fábrica de objetos literales?
 
-a 📌
-
-Retornando un objeto con get nombrePropiedad() { /* ... */} y set nombrePropiedad() { /* ... */}.
-
-b
-
-Dentro del prototipo usamos Object.defineProperty(this, "nombrePropiedad", { /* ... */ }), fuera del prototipo con Object.defineProperty(NombrePrototipo.prototype, "nombrePropiedad", { /* ... */ }).
-
-c
-
-Fuera del prototipo con NombrePrototipo.get("nombrePropiedad", function () { /* ... */ }) y NombrePrototipo.set("nombrePropiedad", function () { /* ... */ }).
+	- 📌 Retornando un objeto con get nombrePropiedad() { /* ... */} y set nombrePropiedad() { /* ... */}.
 
 18. ¿Cuál de los siguientes es un problema importante que debemos evitar con ciclos y funciones recursivas?
 
-a 📌
-
-No programar una validación o condición de salida.
-
-b
-
-Programar demasiadas validaciones o condiciones de salida.
-
-c
-
-Combinar ciclos con funciones recursivas.
+	- 📌 No programar una validación o condición de salida.
 
 19. ¿Cómo identificamos objetos con Duck Typing en JavaScript?
 
-a
-
-Usando instanceof para validar si los objetos son instancias de un prototipo en específico.
-
-b 📌
-
-Validando propiedad por propiedad si el objeto cumple ciertas condiciones mínimas.
-
-c
-
-Creando un método especial de validación que no se pueda replicar en objetos impostores.
+	- 📌 Validando propiedad por propiedad si el objeto cumple ciertas condiciones mínimas.
 
 20. ¿Para qué sirve instanceof en JavaScript?
 
-a
+	- 📌 Para validar si un objeto es una instancia de algún prototipo en específico.
 
-Para asignarle a nuestras instancias un método especial de validación que no se pueda replicar en objetos impostores.
-
-b 📌
-
-Para validar si un objeto es una instancia de algún prototipo en específico.
-
-c
-
-Para validar propiedad por propiedad si un objeto cumple ciertas condiciones mínimas.
 </details>
