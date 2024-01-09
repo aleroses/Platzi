@@ -3360,4 +3360,6 @@ Con lo anterior, conocemos mejor cómo se comporta internamente JavaScript cuand
 	<summary>Haz clic para ver los resultados 👀</summary>
 	<br/>
 
+1. 
+
 </details>
