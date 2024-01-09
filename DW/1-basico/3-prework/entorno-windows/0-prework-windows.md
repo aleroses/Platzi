@@ -40,11 +40,33 @@ Podemos instalar extensiones útiles:
 Herramientas de desarrollador 
 - Ctrl + Shift + i
 
-## **4.** Instalando nuestro editor de texto
+## Quiz
+
+### ¿Qué provee la herramienta Windows Subsystem for Linux?
+
+- La transición entre plataformas Windows y Linux
+
+### ¿Cómo se denomina la extensión que permite conectar y desconectar rápidamente el JavaScript en tu página web?
+
+- Toggle JavaScript
+
+### ¿Qué hace la herramienta Google Lighthouse?
+
+- Automáticamente comprueba la calidad de las páginas web
+
+### ¿Qué plataformas se unifican con Windows Subsystem for Linux?
+
+- Windows y Linux
+
+## **4.** Instalando VSCode
 
 [Visual Studio Code](https://code.visualstudio.com/)  
 
-## **3.** Extensiones Visual studio code
+[[atajos]]
+
+## **5.** Extensiones Visual studio code
+
+Para abrir el panel de extensiones usa Ctrl + Shift + X
 
 - Prettier - Code formatter
 - Color Highlight
@@ -56,7 +78,7 @@ Herramientas de desarrollador
 Ver mas extensiones [[ext-vsc-chrome#Extensiones vsc]]
 
 
-## 4. Cómo usar Live Server en proyectos reales de HTML y CSS
+## 6. Cómo usar Live Server en proyectos reales de HTML y CSS
 
 En vsc:     
 Clic derecho sobre html - Run Live Server   
