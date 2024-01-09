@@ -25,9 +25,19 @@ Ver extensiones para Google Chrome [[vsc-chrome]]
 
 ## **3.** Manejo básico de las DevTools
 
+Podemos entrar a los settings de Chrome y cambiar el idioma: No olvides darle a **Relaunch** para efectuar cambios.
 
+[Chrome settings](chrome://settings/languages)
 
-## **2.** Instalando nuestro editor de texto
+Podemos instalar extensiones útiles: 
+
+- Toggle JavaScript 
+- Dev tools
+- Lighthouse
+
+[Chrome web store](https://chromewebstore.google.com/?hl=es)
+
+## **4.** Instalando nuestro editor de texto
 
 [Visual Studio Code](https://code.visualstudio.com/)  
 
