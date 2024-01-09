@@ -3111,7 +3111,8 @@ Generaremos **un prototipo en el cual añadiremos** 2 **métodos estáticos**
 
 1. Crearemos una función `SuperObject` vacío. Esto en realidad será un prototipo:
     
-    ``` function isObject(subject) { return typeof subject == "object"; }
+```js
+function isObject(subject) { return typeof subject == "object"; }
     
     function isArray(subject) { return Array.isArray(subject); }
     
@@ -3123,7 +3124,7 @@ Generaremos **un prototipo en el cual añadiremos** 2 **métodos estáticos**
     
     function Student({ // PROTOTIPO name = requiredParam("name"), email = requiredParam("email"), age, twitter, instagram, facebook, approvedCourses = [], learningPaths = [], } = {}) {
     
-    ```
+
     // ASIGNACIÓN DE ATRIBUTOS
     this.name = name;
     this.email = email;
@@ -3137,11 +3138,11 @@ Generaremos **un prototipo en el cual añadiremos** 2 **métodos estáticos**
     
     const private = {
     "_learningPaths": [],
-    ```
+
     
     };
     
-    ```
+
     // "this" referencia al prototipo "Student"
     Object.defineProperty(this, "learningPaths", {
     get() { // GETTER
@@ -3156,18 +3157,19 @@ Generaremos **un prototipo en el cual añadiremos** 2 **métodos estáticos**
         console.warn("Alguno de los LPs que quieres añadir NO es una instancia del prototipo LearningPath");
       }
     },
-    ```
+
     
     });
     
-    ```
+
     for (learningPathIndex in learningPaths) {
     this.learningPaths = learningPaths[learningPathIndex];
-    ```
+
     
     }
     
-    } ```
+    } 
+```
     
 2. Añadimos un método estático por fuera el prototipo `SuperObject` para validar que un dato sea del tipo `object`. Luego, agregamos otro método que nos permita hacer deep copy a un objeto:
     
