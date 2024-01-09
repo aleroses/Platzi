@@ -1,7 +1,7 @@
 # Curso de Prework: Configuración de Entorno de Desarrollo en Windows
 > Ricardo Celis
 
-## 1. Qué es el navegador?
+## **1.** Qué es el navegador?
 
 Funciona gracias a https  
 - HTML
@@ -10,22 +10,28 @@ Funciona gracias a https
 
 Versiones de Google Chrome
 - Canary
-- Dev
+- **Dev**
 - Stable
 
 Edge y sus DevTools
 
 Navegador Firefox Developer Edition
 
-Ver extensiones para Google Chrome [[ext-vsc-chrome#Extensiones Chrome]]
+Ver extensiones para Google Chrome [[vsc-chrome]]
+
+## **2.** Descarga e instala un navegador web: Chrome Dev
+
+[Enlace de Descarga](https://www.google.com/intl/es_us/chrome/dev/)
+
+## **3.** Manejo básico de las DevTools
 
 
-## 2. Instalando nuestro editor de texto
+
+## **2.** Instalando nuestro editor de texto
 
 [Visual Studio Code](https://code.visualstudio.com/)  
 
-
-## 3. Extensiones Visual studio code
+## **3.** Extensiones Visual studio code
 
 - Prettier - Code formatter
 - Color Highlight
