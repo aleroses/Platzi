@@ -3362,123 +3362,27 @@ Con lo anterior, conocemos mejor cómo se comporta internamente JavaScript cuand
 
 1. ¿Cuál es el problema de crear copias de objetos con JSON.parse y JSON.stringify?
 
-a
-
-Ninguna de las respuestas es correcta.
-
-b
-
-Todas las respuestas son correctas.
-
-c
-
-Que copian las referencias en memoria del objeto original, no las propiedades del objeto como tal.
-
-d 📌
-
-Que no copian los métodos.
-
-e
-
-Que no copian los nested objects.
+	- 📌Que no copian los métodos.
 
 2. ¿Cuál es el problema de copiar objetos en JavaScript con el operador de asignación?
 
-a
-
-Que no copiamos los nested objects.
-
-b
-
-Que no copiamos los métodos.
-
-c
-
-Todas las respuestas son correctas.
-
-d 📌
-
-Que copiamos las referencia en memoria del objeto original, no las propiedades del objeto como tal.
-
-e
-
-Ninguna de las respuestas es correcta.
+	- 📌 Que copiamos las referencia en memoria del objeto original, no las propiedades del objeto como tal.
 
 3. ¿Cuál de los siguientes métodos estáticos de Object nos permite listar los nombres y valores de las propiedades de "objetito" en forma de arrays?
 
-a 📌
-
-Object.entries(objetito)
-
-b 
-
-Object.getOwnPropertyDescriptors(objetito)
-
-c
-
-Object.keys(objetito)
-
-d
-
-objetito.entries()
-
-e
-
-objetito.keys()
+	- 📌 Object.entries(objetito)
 
 4. ¿Qué son las propiedades estáticas?
 
-a
-
-Métodos y atributos que podemos llamar cuando creamos una instancia del prototipo.
-
-b
-
-Métodos y atributos que solo se pueden acceder por fuera del prototipo, no por dentro.
-
-c 📌
-
-Métodos y atributos que podemos llamar sin necesidad de crear una instancia del prototipo.
-
-d
-
-Métodos y atributos que solo se pueden acceder desde el prototipo, no por fuera.
+	- 📌 Métodos y atributos que podemos llamar sin necesidad de crear una instancia del prototipo.
 
 5. ¿Qué es recursividad?
 
-a
-
-Cuando un ciclo se ejecuta infinitas veces.
-
-b
-
-Cuando una función llama ciclos (for, while o do while) por dentro.
-
-c
-
-Cuando una función se llama dentro de un ciclo (for, while o do while).
-
-d 📌
-
-Cuando una función se llama a sí misma.
+	- 📌 Cuando una función se llama a sí misma.
 
 6. ¿Cuál de los siguientes métodos estáticos de Object nos permite listar los atributos "ocultos" en las propiedades de "objetito"?
 
-a
-
-objetito.getOwnPropertyDescriptors()
-
-b
-
-Object.entries(objetito)
-
-c
-
-objetito.keys()
-
-d 📌
-
-Object.getOwnPropertyDescriptors(objetito)
+	- 📌 Object.getOwnPropertyDescriptors(objetito)
 
 e
 
