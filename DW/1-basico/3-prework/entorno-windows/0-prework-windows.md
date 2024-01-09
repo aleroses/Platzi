@@ -37,6 +37,9 @@ Podemos instalar extensiones útiles:
 
 [Chrome web store](https://chromewebstore.google.com/?hl=es)
 
+Herramientas de desarrollador 
+- Ctrol + Shift + i
+
 ## **4.** Instalando nuestro editor de texto
 
 [Visual Studio Code](https://code.visualstudio.com/)  
