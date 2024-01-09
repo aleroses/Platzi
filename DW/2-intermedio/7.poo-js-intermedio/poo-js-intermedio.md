@@ -3312,9 +3312,27 @@ function Student({
 ¡Listo! Ya podemos usar estos métodos desde este nuevo prototipo `SuperObject` en nuestro código.
 
 ```js
-const copia = SuperObject.deepCopy({ nombre: "Objecto Copia", valor: 100, }); console.log(copia);
+const copia = SuperObject.deepCopy({
+  nombre: "Objecto Copia",
+  valor: 100,
+});
+console.log(copia);
 
-console.log( SuperObject.isObject(20) ); // false console.log( SuperObject.isObject("JS") ); // false console.log( SuperObject.isObject({name: "Juanito"}) ); // true console.log( SuperObject.isObject(["juan"]) ); // true 👈👀 // Los Arrays son instanticas del superprototipo Array y a su vez esta superclase hereda // del superprototipo Object. Por tanto, son también considaradas del tipo "object" // y es por eso que nos sale "true" ```
+console.log(SuperObject.isObject(20));
+// false
+console.log(SuperObject.isObject("JS"));
+// false
+console.log(
+  SuperObject.isObject({ name: "Juanito" })
+);
+// true
+console.log(SuperObject.isObject(["juan"]));
+// true 👈👀
+
+// Los Arrays son instanticas del superprototipo Array y a su vez esta superclase hereda
+// del superprototipo Object. Por tanto, son también considaradas del tipo "object"
+// y es por eso que nos sale "true"
+```
 
 Como **reto** te dejamos modificar el método `isObject` del prototipo `SuperObject` para que cuando le mandemos un Array como argumento, este nos indique `false`. 👀
 
