@@ -3384,73 +3384,21 @@ Con lo anterior, conocemos mejor cómo se comporta internamente JavaScript cuand
 
 	- 📌 Object.getOwnPropertyDescriptors(objetito)
 
-e
-
-Object.keys(objetito)
-
 7. ¿Cuál de los siguientes métodos estáticos de Object nos permite listar los nombres de las propiedades en "objetito"?
 
-a
-
-objetito.keys()
-
-b
-
-Object.getOwnPropertyDescriptors(objetito)
-
-c 📌
-
-Object.keys(objetito)
-
-d
-
-objetito.entries()
-
-e
-
-Object.entries(objetito)
+	- 📌 Object.keys(objetito)
 
 8. ¿Cuál de las siguientes respuestas NO FUNCIONA para crear propiedades privadas con fábricas de objetos en JavaScript?
 
-a
-
-Guardar la propiedad "privada" en un objeto que NO retornaremos en la función.
-
-b
-
-Crear getters y setters para la propiedad "privada".
-
-c
-
-Definir los atributos evaluable, writable y/o configurable como false en la propiedad "privada".
-
-d 📌
-
-Usar la palabra reservada private antes del nombre de la propiedad "privada".
+	- 📌 Usar la palabra reservada private antes del nombre de la propiedad "privada".
 
 9. ¿En qué memoria se guardan los nombres de las variables en JavaScript?
 
-a
-
-Heap
-
-b 📌
-
-Stack
+	- 📌 Stack
 
 10. ¿Qué es una fábrica de objetos?
 
-a
-
-Lo mismo que un prototipo.
-
-b 📌
-
-Una función creadora de objetos.
-
-c
-
-Lo mismo que un prototipo, pero con la sintaxis de clases.
+	- 📌 Una función creadora de objetos.
 
 11. ¿Si `const patito = "Donald"`, en qué memoria se guarda "Donald"?
 
