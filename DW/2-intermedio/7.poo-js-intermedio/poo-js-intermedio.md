@@ -3420,7 +3420,7 @@ Heap
 
 14. ¿Cuál de las siguientes afirmaciones es VERDADERA con respecto a "ser" vs. "tener" cuando evaluamos la identidad de nuestros objetos en JavaScript?
 
-a
+a 📌
 
 "Tener" requiere validaciones mucho más específicas y complejas para evitar problemas de seguridad.
 
@@ -3450,7 +3450,7 @@ c
 
 El método se convertirá en un string con el código de la función.
 
-d
+d 📌
 
 This hará referencia al array donde se encuentran la key y el value del método, no al objeto original.
 
