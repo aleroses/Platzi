@@ -78,14 +78,15 @@ Para abrir el panel de extensiones también puedes usar `Ctrl + Shift + X`
 - Auto rename tag
 - Material Icon theme
 - Code Spell Checker
+- WSL 👈👀 Instalar previo instalación de WSL
+- Node Require
 
-## 6. Cómo usar Live Server en proyectos reales de HTML y CSS
+### Cómo usar Live Server en proyectos reales de HTML y CSS
 
-En vsc:     
-Clic derecho sobre html - Run Live Server   
+En vsc: Clic derecho sobre html - Run Live Server   
 
 
-## 5. ¿Qué es Windows Subsystem for Linux?
+## 6. ¿Qué es Windows Subsystem for Linux?
 
 El Subsistema de Windows para Linux permite a los desarrolladores ejecutar un entorno de GNU/Linux, incluida la mayoría de herramientas de línea de comandos, utilidades y aplicaciones, directamente en Windows, sin modificar y sin la sobrecarga de una máquina virtual tradicional o una configuración de arranque dual.
 
@@ -95,12 +96,12 @@ Verificar w10: CMD: `winver`
 Versión 2004 (Compilation SO 19041, 450) mínimo   
 
 
-## 6. Instalación de Windows Subsystem for Linux
+### Instalación de Windows Subsystem for Linux
 
-Seguir pasos:     
+Seguir pasos:   
 [Documentación](https://docs.microsoft.com/en-us/windows/wsl/install-win10)
 
-Power Shell:     
+Power Shell:   
 Clic derecho ejecutar como administrador
 `wsl --install`
 
