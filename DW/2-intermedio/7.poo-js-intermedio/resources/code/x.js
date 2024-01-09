@@ -2,7 +2,31 @@ function isObject(subject) { return typeof subject == "object"; }
     
     function isArray(subject) { return Array.isArray(subject); }
     
-    function SuperObject() {} // 👈👈👈👈
+    function SuperObject() {}
+    
+    // Agregamos directamente estos métodos estáticos a nuestro prototipo "SuperObject" SuperObject.isObject = function (subject) { // 👈👈 return typeof subject == "object"; } SuperObject.deepCopy = function (subject) { // 👈👈 let copySubject;
+    
+    const subjectIsObject = isObject(subject); const subjectIsArray = isArray(subject);
+    
+    if (subjectIsArray) { copySubject = []; } else if (subjectIsObject) { copySubject = {}; } else { return subject; }
+    
+    for (key in subject) { const keyIsObject = isObject(subject[key]);
+    
+    
+    if (keyIsObject) {
+      copySubject[key] = deepCopy(subject[key]);
+    } else {
+      if (subjectIsArray) {
+        copySubject.push(subject[key]);
+      } else {
+        copySubject[key] = subject[key];
+      }
+    }
+    
+    
+    }
+    
+    return copySubject; }
     
     function requiredParam(param) { throw new Error(param + " es obligatorio"); }
     
@@ -10,7 +34,7 @@ function isObject(subject) { return typeof subject == "object"; }
     
     function Student({ // PROTOTIPO name = requiredParam("name"), email = requiredParam("email"), age, twitter, instagram, facebook, approvedCourses = [], learningPaths = [], } = {}) {
     
-
+    
     // ASIGNACIÓN DE ATRIBUTOS
     this.name = name;
     this.email = email;
@@ -24,11 +48,11 @@ function isObject(subject) { return typeof subject == "object"; }
     
     const private = {
     "_learningPaths": [],
-
+    
     
     };
     
-
+    
     // "this" referencia al prototipo "Student"
     Object.defineProperty(this, "learningPaths", {
     get() { // GETTER
@@ -43,14 +67,14 @@ function isObject(subject) { return typeof subject == "object"; }
         console.warn("Alguno de los LPs que quieres añadir NO es una instancia del prototipo LearningPath");
       }
     },
-
+    
     
     });
     
-
+    
     for (learningPathIndex in learningPaths) {
     this.learningPaths = learningPaths[learningPathIndex];
-
+    
     
     }
     
