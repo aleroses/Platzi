@@ -125,7 +125,7 @@ dism.exe /online /enable-feature /featurename:VirtualMachinePlatform //all /nore
 
 Buscamos nuestro Windows Terminal 🔽 y elijes ubuntu, en caso de errores googlea el error.
 
-## 7. Instalar Ubuntu tienda Microsoft
+### Instalar Ubuntu tienda Microsoft
 
 ![Ubuntu](https://i.postimg.cc/jSbsdW8P/7-canonical-ubuntu.png)   
 Reiniciar pc  
@@ -159,7 +159,6 @@ Done
 - Paso 02: https://www.youtube.com/watch?v=7P039GotVyY
 	- `0x80370102` The virtual machine could not be started because a required feature is not installed.
 	- https://made4geek.com/error-0x80370102-the-virtual-machine-could-not-be-started-because-a-required-feature-is-not-installed-wsl-2-code-example/
-
 
 ## 8. Configuración de Ubuntu en WSL
 
