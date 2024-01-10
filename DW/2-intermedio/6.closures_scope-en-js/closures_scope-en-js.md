@@ -2,8 +2,8 @@
 
 [Curso de Closures y Scope en JavaScript](https://platzi.com/cursos/javascript-closures-scope/)   
 
-> Inicio: `19-12-2023`
-> Finalización: `07-01-2024`
+> Inicio: `10-01-2024`
+> Finalización: `-00-2024`
 
 ## **1.** Bienvenida al Curso de Closures y Scope
 
@@ -109,4 +109,7 @@ En resumen, declarar una variable establece su existencia y nombre, mientras que
 ```
 
 
+## Apuntes
 
+- [Notion: Curso de Closures y Scope en JavaScript](https://whip-soil-3b5.notion.site/Curso-de-Closures-y-Scope-en-JavaScript-d7e0a5f9273b439bb278e6ce6f97db5e)
+- [GitHub: Curso de Closures y Scope en JS](https://github.com/aleroses/Platzi/blob/master/DW/2-intermedio/6.closures_scope-en-js/closures_scope-en-js.md)
