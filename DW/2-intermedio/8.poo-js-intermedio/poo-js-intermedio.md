@@ -3,7 +3,7 @@
 [Curso Intermedio de Programación Orientada a Objetos en JavaScript](https://platzi.com/cursos/javascript-poo-intermedio/)   
 
 > Inicio: `19-12-2023`
-> Finalización: ``
+> Finalización: `07-01-2024`
 
 ## **1.** ¿Qué hay dentro de los objetos en JavaScript?
 
