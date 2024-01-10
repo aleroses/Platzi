@@ -383,7 +383,7 @@ En la terminal
 - ls
 - cat id_rsa.pub
 
-ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDTkPJTn4inOyC8oRKMNFi73M/CIqExdruf9h5KiH0UvdzNAfjzohJDLJ6cdgx6rDtJVEa7AEoDB08r5xMcmwrVPJeDP6Robldc3053WxtO2w9zgoFtm41/rDMNT6uP6sjh6bI7kgz1hLRGbZ0sWNKZH/vnagVLSXoVRY/R1RFAe/cfrTJRg5j8e4b3nw/mGlsOX3PN7GwmBpVM4M7dzka/oPJiwSV6/jVy1m3JtSgvOn7xoupmSRh3kG1mM1KFsURwVa6iaBUuo0rPb60oOZgwyD5awnKOVRw5gNzNpl7noqdrlWP4YHmQT3g5eTAsxU4pDF6qlVBLGo+mS82voTo9XIeFzd9S+G6bmtdb0J+W83D/qdTCQyP9hh/JAdJFiQM5LyjnVFYPRXu+kkGEl54VlRd3ZY8j+9JrHzmNWoR44cjz1+WilrqfDHMgcyqRdSHA2+vL8ad1u1i9LmHe8ZhYF5BB7yfLXuYBKJ6UaPwI1c0rsBJDrp5qdQByUhV0URLPPNk4c3/4WdEHIy+H1RQkxfJIWAtaDbemZYjwDkz7zfmtW11nH0AaysvEvT/sV081r5gGmyl1ACOnzPYsWt16jypUaq9lzbJD6zG75EyZK4F/7mxjJQg0T14jbaZ4Ubxlzit8wUv4qe7tHwJtGcJQgTyOKrfr0pcK9Ux5f7UDqQ== ale.VRs@outlook.com
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDTkPJTn4inOyC8oRKMNFi73M/CIqExdruf9h5KiH0UvdzNAfjzohJDLJ6cdgx6rDtJVEa7AEoDB08r5xMcmwrVPJeDP6Robldc3053WxtO2w9zgoFtm41/rDMNT6uP6sjh6bI7kgz1hLRGbZ0sWNKZH/vnagVLSXoVRY/R1RFAe/cfrTJRg5j8e4b3nw/mGlsOX3PN7GwmBpVM4M7dzka/oPJiwSV6/jVy1m3JtSgvOn7xoupmSRh3kG1mM1KFsURwVa6iaBUuo0rPb60oOZgwyD5awnKOVRw5gNzNpl7noqdrlWP4YHmQT3g5eTAsxU4pDF6qlVBLGo+mS82voTo9XIeFzd9S+G6bmtdb0J+W83D/qdTCQyP9hh/JAdJFiQM5LyjnVFYPRXu+kkGEl54VlRd3ZY8j+9JrHzmNWoR44cjz1+WilrqfDHMgcyqRdSHA2+vL8ad1u1i9LmHe8ZhYF5BB7yfLXuYBKJ6UaPwI1c0rsBJDrp5qdQByUhV0URLPPNk4c3/4WdEHIy+H1RQkxfJIWAtaDbemZYjwDkz7zfmtW11nH0AaysvEvT/sV081r5gGmyl1ACOnzPYsWt16jypUaq9lzbJD6zG75EyZK4F/7mxjJQg0T14jbaZ4Ubxlzit8wUv4qe7tHwJtGcJQgTyOKrfr0pcK9Ux5f7UDqQ== aleroses@outlook.com
 
 - Copiar clave
 
@@ -400,59 +400,77 @@ Vamos a GitHub
 Ver apuntes de Git y GitHub    
 [[git-github#22. Conexión a GitHub con SSH]]
 
+### Forma mas actual 
 
-## 15. Subiendo nuestro primer repositorio
+```bash
+- ssh-keygen -t ed25519 -C "ale@mail.com"
+- Enter :3
+- passphrase: opcional dar enter
+- eval "$(ssh-agent -s)"
+- ssh-add ~/.ssh/id_ed25519
+- Enter passphrase: Si no creaste uno solo dale enter
 
+# Copiar el public key del SSH
+- cat ~/.ssh/id_ed25519.pub
+ssh-ed25529 sfsadfsalklljlsdffdsfkkfjsl 👈👀
+```
+
+El correo que aparece al crear las llaves debe ser el mismo con el que creaste tu cuenta en GitHub.
+
+#### Agregar key en GitHub
+
+- Settings 
+- SSH and GPG keys
+	- SSH keys: New SSH key
+	- Title: New NameWSL
+	- Key: pegamos la llave
+	- ✅ Add SSH key
+
+## 15. Subir tu primer repositorio
+
+```bash
 En la terminal ver nombre de proyecto:  
 - ls
 - cd personalProjects
 - ls
 
-En GitHub    
-- Repositories - New
-- Repository name -> proyectoDemoCursoPrework
-- Description -> Repositorio para pruebas de configuración SSH 
-- Creating repository
+Configurar Git 👈👀
+- git config --global user.email "aleroses@outlook.com"
+- git config --global user.name "Ubuntu user"
+- git config --edit --global
 
-En la terminal    
-- Copiar las instrucciones que aparecen en GitHub   
-- echo "# proyectoDemoCursoPrework" >> README.md
-- ls
-- cd proyectoDemoCursoPrework
-- echo "# proyectoDemoCursoPrework" >> README.md
-- ls
+Ahora sí...
 - git init
 - git add .
 - git commit -m "first commit"
 - clear
-- git config --global user.email "ale.VRs@outlook.com"
-- git config --global user.name ubuntu : al final usuario
-- git config --edit --global
+```
 
-Control + x
+En GitHub    
+- Repositories - New
+- Repository name -> MyWeb
+- Description -> Repositorio para pruebas de configuración SSH 
+- Public
+- Creating repository
 
-- git commit -m "first commit"
-- git remote add origin https://github.com/Alexander-VR/proyectoDemoCursoPrework.git
-- git push -u origin master : (main) eso no XD     
-	correo GitHub
-	contraseña: 8l@ck D06 L3d
+```bash
+# Creamos la conexión remota
+- git remote add origin git@github.com.blablabla
+- git remote -v
 
-Refresh en la web GitHub   
-- index.html
+# Revisar si tu rama se llama main o master
+- git push origin master
+```
 
-En la terminal   
-- code .    
-	Hacer pequeños cambios en el html
-	Control + s
-- clear
+Hacer pequeños cambios en el html y enviemos cambios a GitHub.
+
+```bash
+# En la terminal   
+- git status
 - git add .
-- git commit :
-	Esto no es recomendado   
-	Control + x
-- git commit -m "cambios agregados"
-- git push -u origin master
-	Correo
-	Contraseña
+- git commit -m "Nuevo cambio"
+- git push origin master
+```
 
 Actualizar GitHub y ver los cambios     
 - Entramos en index.html
