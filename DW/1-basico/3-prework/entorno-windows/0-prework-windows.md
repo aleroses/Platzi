@@ -426,7 +426,7 @@ El correo que aparece al crear las llaves debe ser el mismo con el que creaste t
 	- Key: pegamos la llave
 	- ✅ Add SSH key
 
-## 15. Subir tu primer repositorio
+## **16.** Subir tu primer repositorio
 
 ```bash
 En la terminal ver nombre de proyecto:  
