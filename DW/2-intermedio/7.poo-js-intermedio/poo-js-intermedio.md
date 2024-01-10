@@ -3402,13 +3402,7 @@ Con lo anterior, conocemos mejor cómo se comporta internamente JavaScript cuand
 
 11. ¿Si `const patito = "Donald"`, en qué memoria se guarda "Donald"?
 
-a 📌
-
-Stack
-
-b 📌❌
-
-Heap
+	- 📌 Stack
 
 12. ¿En qué memoria se guardan los objetos de JavaScript?
 
@@ -3420,39 +3414,11 @@ Heap
 
 14. ¿Cuál de las siguientes afirmaciones es VERDADERA con respecto a "ser" vs. "tener" cuando evaluamos la identidad de nuestros objetos en JavaScript?
 
-a 📌
-
-"Tener" requiere validaciones mucho más específicas y complejas para evitar problemas de seguridad.
-
-b
-
-"Ser" requiere validaciones mucho más específicas y complejas para evitar problemas de seguridad.
-
-c 📌❌
-
-"Tener" es mucho más fácil de validar que "ser".
-
-d
-
-"Tener" nos permite hacer validaciones mucho más seguras que "ser".
+	- 📌 "Tener" requiere validaciones mucho más específicas y complejas para evitar problemas de seguridad.
 
 15. ¿Qué pasa cuando usamos Object.entries para listar un objeto con métodos que llaman a this?
 
-a 📌❌
-
-This hará referencia al objeto original, no al array donde se encuentran la key y el value del método.
-
-b
-
-El método desaparecerá.
-
-c
-
-El método se convertirá en un string con el código de la función.
-
-d 📌
-
-This hará referencia al array donde se encuentran la key y el value del método, no al objeto original.
+	- 📌 This hará referencia al array donde se encuentran la key y el value del método, no al objeto original.
 
 16. ¿Cómo creamos getters y setters en un prototipo?
 
