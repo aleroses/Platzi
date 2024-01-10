@@ -533,211 +533,61 @@ También lo puedes descargar desde la tienda de Windows.
 
 1. ¿Qué es Ubuntu?
 
-a 📌
-
-Una distribución Linux, es de las más usadas, tiene una terminal potente y fácil de comenzar a utilizar
-
-b
-
-Una distribución de Windows-Kernel
-
-c
-
-Ubuntu es un editor de código fuente desarrollado por Google, es código abierto, y es multiplataforma, además es el que usarás en el resto de cursos de desarrollo web
+	- 📌 Una distribución Linux, es de las más usadas, tiene una terminal potente y fácil de comenzar a utilizar
 
 2. ¿Por qué la virtualización puede ser más lenta que soluciones integradas como WSL2?
 
-a
-
-la virtualización es más lenta porque es más eficiente, respecto a compartir y utilizar recursos
-
-b 📌
-
-Debido a que al virtualizar estamos reservando recursos para que sean ejecutados por la máquina virtual y además estamos corriendo el software encargado de la virtualización misma, esto puede ser intensivo de RAM, disco duro, y procesador
-
-c
-
-La virtualización siempre es más rápida y efectiva que WSL 2
+	- 📌 Debido a que al virtualizar estamos reservando recursos para que sean ejecutados por la máquina virtual y además estamos corriendo el software encargado de la virtualización misma, esto puede ser intensivo de RAM, disco duro, y procesador
 
 3. ¿Cuáles son algunos de los principales usos de Python?
 
-a 📌
-
-Desarrollo backend, Data Science, IA, entre otros
-
-b
-
-Desarrollo de videojuegos móviles, programación de aplicaciones móviles
-
-c
-
-Frontend, Desarrollo de videojuegos e IoT
+	- 📌 Desarrollo backend, Data Science, IA, entre otros
 
 4. ¿Qué es GitHub?
 
-a 📌
-
-Un sitio web creado para que diferentes desarrolladoras y equipos de trabajo puedan subir sus repositorios de Git y manejar de forma eficiente y colaborativa, en la nube su proceso de desarrollo
-
-b
-
-Un software que nos permite interactuar directamente con nuestra computadora a través de comandos y texto, tal como lo hacemos tradicionalmente a través de ventanas, íconos, menús y botones en Windows
-
-c
-
-Git es un sistema de control de versiones y manejo de repositorios, nos permite manejar el progreso en el desarrollo de nuestro software, probar cosas nuevas, regresar a versiones anteriores, y demás
+	- 📌 Un sitio web creado para que diferentes desarrolladoras y equipos de trabajo puedan subir sus repositorios de Git y manejar de forma eficiente y colaborativa, en la nube su proceso de desarrollo
 
 5. ¿Qué es VSCode?
 
-a
-
-Visual Studio Code (VS Code) es un editor de código fuente desarrollado por Oracle, es código abierto, y es multiplataforma, además es el que usarás en el resto de cursos de desarrollo web
-
-b
-
-Visual Studio Code (VS Code) es un editor de código fuente desarrollado por Google, es código abierto, y es multiplataforma, además es el que usarás en el resto de cursos de desarrollo web
-
-c 📌
-
-Visual Studio Code (VS Code) es un editor de código fuente desarrollado por Microsoft, es código abierto, y es multiplataforma, además es el que usarás en el resto de cursos de desarrollo web
+	- 📌 Visual Studio Code (VS Code) es un editor de código fuente desarrollado por Microsoft, es código abierto, y es multiplataforma, además es el que usarás en el resto de cursos de desarrollo web
 
 6. ¿Por qué es importante saber utilizar Git?
 
-a
-
-No es importante
-
-b 📌
-
-Porque es el sistema de control de versiones usado por de facto en la industria tech, nos permite al usarlo con un sitio como Github o similares colaborar y trabajar en equipo
-
-c
-
-Porque nos permitirá resolver bugs en nuestro código
+	- 📌 Porque es el sistema de control de versiones usado por de facto en la industria tech, nos permite al usarlo con un sitio como Github o similares colaborar y trabajar en equipo
 
 7. ¿Quíén fue el creador de Git?
 
-a 📌
-
-Linus Torvalds, el mismo creador de Linux
-
-b
-
-Bill Gates, el mismo creador de Linux
-
-c
-
-Bill Gates, creador de Windows y Microsoft
+	- 📌 Linus Torvalds, el mismo creador de Linux
 
 8. ¿Qué es una terminal?
 
-a
-
-Un software de virtualización que nos permitirá instalar distintos sistemas operativos virtualizando el entorno en el que estamos, compartiendo recursos con la máquina host
-
-b
-
-Una distribución Linux, es de las más usadas, tiene una terminal potente y fácil de comenzar a utilizar
-
-c 📌
-
-Un software que nos permite interactuar directamente con nuestra computadora a través de comandos y texto, tal como lo hacemos tradicionalmente a través de ventanas, íconos, menús y botones en Windows
+	- 📌 Un software que nos permite interactuar directamente con nuestra computadora a través de comandos y texto, tal como lo hacemos tradicionalmente a través de ventanas, íconos, menús y botones en Windows
 
 9. ¿Para qué nos sirve utilizar WSL2?
 
-a
-
-Porque la unión europea tiene lineamientos de que únicamente podemos desarrollar en Linux, además nos da ventaja como sus terminales, sin tener que acostumbrarnos a un Sistema Operativo distinto a que usamos día a día, quizás tienes videollamadas, y en Ubuntu por ejemplo puede ser difícil compartir audio, video, etc. Así que esta fue la forma de Microsoft de ser un sistema útil para desarrollar software que tradicionalmente se hacía en Linux dando la practicidad de Windows
-
-b
-
-WLS2 no tiene ventajas reales, y no es necesariamente útil
-
-c 📌
-
-WSL2 nos permite tomar todas las grandes ventajas y facilidades que siempre han existido de desarrollar en Linux, como sus terminales, sin tener que acostumbrarnos a un Sistema Operativo distinto a que usamos día a día, quizás tienes videollamadas, y en Ubuntu por ejemplo puede ser difícil compartir audio, video, etc. Así que esta fue la forma de Microsoft de ser un sistema útil para desarrollar software que tradicionalmente se hacía en Linux dando la practicidad de Windows
+	- 📌 WSL2 nos permite tomar todas las grandes ventajas y facilidades que siempre han existido de desarrollar en Linux, como sus terminales, sin tener que acostumbrarnos a un Sistema Operativo distinto a que usamos día a día, quizás tienes videollamadas, y en Ubuntu por ejemplo puede ser difícil compartir audio, video, etc. Así que esta fue la forma de Microsoft de ser un sistema útil para desarrollar software que tradicionalmente se hacía en Linux dando la practicidad de Windows
 
 9. Node.js es:
 
-a 📌
-
-Un intérprete de JavaScript, que nos permitirá ejecutar JavaScript en nuestra terminal y no solo en el navegador, se utiliza principalmente para servidores
-
-b
-
-Node es como se le dice a la certificación más importante en el estudio de redes y telecomunicaciones
-
-c
-
-Un intérprete de lenguajes de programación como C. C# y COBOL que nos permite ejecutar estos mismos en la terminal
+	- 📌 Un intérprete de JavaScript, que nos permitirá ejecutar JavaScript en nuestra terminal y no solo en el navegador, se utiliza principalmente para servidores
 
 11. ¿Qué es Virtual Box?
 
-a 📌
-
-Un software de virtualización que nos permitirá instalar distintos sistemas operativos virtualizando el entorno en el que estamos, compartiendo recursos con la máquina host
-
-b
-
-Una distribución de Windows-Kernel
-
-c
-
-Una distribución Linux, es de las más usadas, tiene una terminal potente y fácil de comenzar a utilizar
+	- 📌 Un software de virtualización que nos permitirá instalar distintos sistemas operativos virtualizando el entorno en el que estamos, compartiendo recursos con la máquina host
 
 12. ¿Por qué razón utilizamos Google Chrome?
 
-a
-
-No utilizamos este navegador durante el curso
-
-b
-
-Por ser el navegador de Google, que patrocina a muchos y muchas devs a través del programa de Google Developer Experts
-
-c 📌
-
-Por ser el navegador más utilizado, es importante visualizar nuestros proyectos web como los verán la gran mayoría de usuarios
+	- 📌 Por ser el navegador más utilizado, es importante visualizar nuestros proyectos web como los verán la gran mayoría de usuarios
 
 13. ¿Qué es WSL2?
 
-a 📌
-
-Windows Subsystem for Linux2, un subsistema en Windows que ejecuta el kernel completo de Linux, permitiéndonos ejecutar cualquier distribución de Linux que necesitamos directamente en Windows
-
-b
-
-Windows Subsystem for Lan, un subsIstema en Windows que permite ejecutar y hacer análisis de vulnerabilidad en redes locales sin necesidad de crear máquinas virtuales
-
-c
-
-Una máquina virtual basada en virtual box, que nos permite instalar y ejecutar cualquier distribución de Linux en Windows
+	- 📌 Windows Subsystem for Linux2, un subsistema en Windows que ejecuta el kernel completo de Linux, permitiéndonos ejecutar cualquier distribución de Linux que necesitamos directamente en Windows
 
 14. ¿Para qué nos sirven las DevTools?
 
-a
-
-Para entender el rendimiento de nuestro sitio, para importar bibliotecas y para escribir todo el código de nuestro proyecto
-
-b 📌
-
-Para facilitar el desarrollo de nuestros proyectos web, buscar y corregir errores, entender el rendimiento de nuestro sitio
-
-c
-
-No utilizamos DevTools porque afectan el proceso de desarrollo
+	- 📌 Para facilitar el desarrollo de nuestros proyectos web, buscar y corregir errores, entender el rendimiento de nuestro sitio
 
 15. ¿Qué es Git?
 
-a
-
-Un software que nos permite interactuar directamente con nuestra computadora a través de comandos y texto, tal como lo hacemos tradicionalmente a través de ventanas, íconos, menús y botones en Windows
-
-b
-
-Un sitio web creado para que diferentes desarrolladoras y equipos de trabajo puedan subir sus repositorios de Git y manejar de forma eficiente y colaborativa, en la nube su proceso de desarrollo
-
-c 📌
-
-Git es un sistema de control de versiones y manejo de repositorios, nos permite manejar el progreso en el desarrollo de nuestro software, probar cosas nuevas, regresar a versiones anteriores, y demás
+	- 📌 Git es un sistema de control de versiones y manejo de repositorios, nos permite manejar el progreso en el desarrollo de nuestro software, probar cosas nuevas, regresar a versiones anteriores, y demás
 </details>
