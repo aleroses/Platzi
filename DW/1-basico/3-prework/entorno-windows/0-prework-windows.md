@@ -160,6 +160,9 @@ Done
 	- `0x80370102` The virtual machine could not be started because a required feature is not installed.
 	- https://made4geek.com/error-0x80370102-the-virtual-machine-could-not-be-started-because-a-required-feature-is-not-installed-wsl-2-code-example/
 
+## **8.** Ubuntu en WSL
+
+
 ## 8. Configuración de Ubuntu en WSL
 
 - pwd: muestra posición actual con posiciones anteriores
