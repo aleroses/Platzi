@@ -340,7 +340,11 @@ function example() {
 example()
 ```
 
-## **5.** 
+### Dato
+
+Solo `var` y `let` pueden ser reasignados. 
+
+## **5.** Reasignación y redeclaración
 
 
 
