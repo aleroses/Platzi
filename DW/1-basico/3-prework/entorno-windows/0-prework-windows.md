@@ -80,6 +80,7 @@ Para abrir el panel de extensiones también puedes usar `Ctrl + Shift + X`
 - Code Spell Checker
 - WSL 👈👀 Instalar previo instalación de WSL
 - Node Require
+- Remote development
 
 ### Cómo usar Live Server en proyectos reales de HTML y CSS
 
@@ -125,6 +126,8 @@ dism.exe /online /enable-feature /featurename:VirtualMachinePlatform //all /nore
 
 Buscamos nuestro Windows Terminal 🔽 y elijes ubuntu, en caso de errores googlea el error.
 
+## **8.** Ubuntu en WSL
+
 ### Instalar Ubuntu tienda Microsoft
 
 ![Ubuntu](https://i.postimg.cc/jSbsdW8P/7-canonical-ubuntu.png)   
@@ -160,10 +163,7 @@ Done
 	- `0x80370102` The virtual machine could not be started because a required feature is not installed.
 	- https://made4geek.com/error-0x80370102-the-virtual-machine-could-not-be-started-because-a-required-feature-is-not-installed-wsl-2-code-example/
 
-## **8.** Ubuntu en WSL
-
-
-## 8. Configuración de Ubuntu en WSL
+### Configuración de Ubuntu en WSL
 
 - pwd: muestra posición actual con posiciones anteriores
 - cd : change directory, retrocede al Home
@@ -217,16 +217,17 @@ Crear carpeta de trabajo:
 - code .
 - code .
 
+## **9.** Instalación de VirtualBox
 
-## 9. Instalación de VirtualBox
+[Descargar VirtualBox](https://www.virtualbox.org/wiki/Downloads)   
 
-[Descargar VirtualBox](https://www.virtualbox.org/wiki/Downloads)      
-Windows hosts 
-
-
-## 10. Instalando Ubuntu en una máquina virtual
+Windows hosts 👈👀
 
 [Descargar Ubuntu](https://releases.ubuntu.com/)
+
+## **10.** Instalando Ubuntu en una máquina virtual
+
+Buscar un tutorial actualizado :3
 
 Ver nota de Obsidian [[1-virtual-box#Instalación]]
 
