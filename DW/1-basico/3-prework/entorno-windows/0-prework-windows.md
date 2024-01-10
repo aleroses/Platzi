@@ -314,10 +314,20 @@ En caso algún error en la terminal de Linux:
 - python3
 - num1 = 1.99
 - num2 = 2.01
-- suma = num1+num2
+- suma = num1 + num2
 - print('El resultado: {0} y {1}: {2} '.format(num1, num2, sum))
 
-## 13. Instalando Git
+## Quiz
+
+### ¿Qué se usa para instalar Ubuntu sin problemas?
+
+- Windows Subsystem for Linux
+
+### ¿Qué hace el comando `dism.exe /online /enable-feature -- featurename: virtual machine platform con la opción all no-restart`?
+
+- Habilita la plataforma de Windows para máquinas virtuales
+
+## **14.** Instalando Git
 
 Para borrar necesitas estar en su ubicación exacta
 
