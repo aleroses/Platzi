@@ -231,8 +231,7 @@ Buscar un tutorial actualizado :3
 
 Ver nota de Obsidian [[1-virtual-box#Instalación]]
 
-
-## 11. Comandos básicos de la terminal e instalación de Node.js
+## **11.** Comandos básicos de la terminal
 
 Abrir Ubuntu Terminal      
 - cd ~
@@ -253,6 +252,10 @@ con click derecho
 - q para salir
 
 - cd ~    
+
+
+## **12.** Instalación de Node
+
 - sudo apt-get update      
 	Gestor de paquetes para instalar
 	Contraseña   
@@ -269,8 +272,12 @@ Instalar algo nuevo
 - sudo apt install npm
 	- y
 
+Actualizar nodejs
+- sudo npm install -g n
+- sudo n latest
+- reset
 
-## 12. Cómo configurar tu primer proyecto en React.js
+### Cómo configurar tu primer proyecto en React.js
 
 - clear     
 	Limpiar terminal
@@ -296,6 +303,19 @@ Dentro de VS - Terminal -> new terminal
 En caso algún error en la terminal de Linux:    
 - sudo chown -R ubuntu ~/personalProjects
 
+## **13.** Instalación de Python
+
+- sudo apt install software-properties-common
+- sudo add-apt-repository ppa:deadsnakes/ppa
+- sudo apt update
+- sudo apt install python3.8 
+- python3 --version
+- clear
+- python3
+- num1 = 1.99
+- num2 = 2.01
+- suma = num1+num2
+- print('El resultado: {0} y {1}: {2} '.format(num1, num2, sum))
 
 ## 13. Instalando Git
 
