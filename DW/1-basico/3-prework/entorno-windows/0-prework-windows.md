@@ -358,13 +358,15 @@ En caso no tenerlo instalado:
 - sudo apt-get upgrade
 - sudo apt install git
 
+También:
+- sudo apt-get install git-all
+
 Ver notas en Obsidian de la instalación:     
 [[git-github#5. Instalando Git en Linux]]
 
 Crear cuenta [GitHub](https://github.com/)
 
-
-## 14. Vinculando nuestra llave SSH en GitHub
+## **15.** Vinculando nuestra llave SSH en GitHub
 
 En la terminal    
 - clear
