@@ -557,7 +557,7 @@ Tambien podemos movernos en el tiempo a cualquier otro commit de cualquier otra 
 
 📌 Al iniciar todo proyecto solo tenemos una rama llamada master o main, de donde parten las ramas que queramos hacer.  
 
-> ![Branches](https://i.postimg.cc/dt8MBCJ3/15-branches-git.png)
+> ![Branches](https://i.postimg.cc/qMr060H6/15-2-Introducci-n-a-las-ramas-o-branches-de-Git.png)
 
 🎲
 

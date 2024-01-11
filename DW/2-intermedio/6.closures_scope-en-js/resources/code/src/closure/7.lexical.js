@@ -73,9 +73,3 @@ let myMoneyBox = moneyBox();
 myMoneyBox(4);
 myMoneyBox(10);
 myMoneyBox(6);
-
-var saveCoins = 0;
-const countCoins = coins => {
-  saveCoins += coins;
-  console.log(saveCoins);
-};
