@@ -398,7 +398,177 @@ En React, una librería de JavaScript, puedes utilizar declaraciones con `const
 
 ## **6.** Strict Mode
 
+El **modo estricto** es una funcionalidad que le permite al motor de JavaScript cambiar la manera en que ejecuta el código. En este modo, se **reduce las cosas que podemos hacer**, esto es bueno porque permite manejar errores que son poco perceptibles o que el motor de JavaScript sobreentiende y ayuda a su compilación para corregirlos.
 
+Este en el código colocando en la primera línea `"use strict"` para todo el archivo. También puede utilizarse en la primera línea de una función, pero no para un bloque en específico.
+
+### Ejemplo usando el modo estricto
+
+Si realizas el siguiente código que contiene una asignación sin una declaración, no va a ocurrir un error y el programa se va a ejecutar con normalidad.
+
+```js
+nombre = "Andres"
+console.log(nombre) // "Andres"
+```
+
+En modo estricto, no te permitirá realizar esto y provocará un error.
+
+```js
+"use strict";
+
+nombre = "Andres"
+console.log(nombre) // ReferenceError: nombre is not defined
+```
+
+### Ejemplo usando el modo estricto en una función
+
+Si realizas el siguiente código que retornas una variable no declarada, no va a ocurrir un error y el programa se va a ejecutar con normalidad.
+
+```js
+function myFunction(){
+  return pi = 3.14
+}
+
+console.log(myFunction()) // 3.14
+```
+
+En modo estricto, no te permitirá realizar esto y provocará un error.
+
+```js
+"use strict";
+
+function myFunction(){
+  return pi = 3.14
+}
+
+console.log(myFunction()) // ReferenceError: pi is not defined
+```
+
+[Documentación](https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Strict_mode)
+
+## **7.** ¿Qué es un Closure?
+
+Un **closure** es la combinación entre una función y el ámbito léxico en el que esta fue declarada. Con esto, la función recuerda el ámbito con el cual se creó. Puedes entender los closures como: función interna + scope. Mira estos pasos:
+
+1. Genera una función que retorna una **función interna**.
+2. Esta **función interna** tiene un **scope**, el cual puede ser accedido únicamente por esta función, es decir, las variables, funciones, etc. definidas en el **scope** solo pueden ser accedidas por la **función interna**.
+3. Como resultado, esta **función interna** _retornada_ con su **scope** será nuestro **closure**.
+
+Veamos la siguiente imagen para entenderlo mejor. En la imagen FUNCTION es la función interna de la cual hablamos.
+
+![Closure](https://i.postimg.cc/zXvcf36h/7-closure.png)
+
+### Ámbito léxico
+
+El ámbito léxico se refiere al alcance de una variable siguiendo la cadena de scopes. Una variable se puede abordar desde un nivel inferior hasta uno superior, pero no al contrario.
+
+```js
+function contador(i) {
+  let acumulador = i;
+  
+  function aumentar() {
+    console.log(acumulador);
+    acumulador = acumulador + 1;
+  }
+  
+  return aumentar;
+}
+
+const closure = contador(1);
+// closure() es la función aumentar()
+closure(); // 1
+closure(); // 2
+closure(); // 3
+
+const closure2 = contador(10);
+closure2(); // 10
+closure2(); // 11
+
+closure(); // 4
+```
+
+![](https://i.postimg.cc/MpXFZCyZ/7-closure-example.gif)
+
+Podemos asignar la función `contador` a una variable (`_closure_` y `_closure2_`). Dependiendo del valor que tenga como parámetro, cada variable cambiará el valor inicial por el ámbito léxico, por la que fue originada la variable `acumulador` que está vinculada con la función `aumentar`.
+
+### Ejemplo de closure
+
+La mejor manera de entender un closure es por medio de un ejemplo práctico. Cuando declaramos una función dentro de nuestro global scope, estamos usando un closure.
+
+```js
+var myVar = 'hi';
+
+functio  myFunction() {
+  console.log(myVar);
+}
+
+myFuntion(); // hi
+```
+
+Los closures son básicamente cuando aprovechamos la habilidad de JavaScript de emplear las variables que están en el scope padre de nuestro bloque de código, por eso el global scope es un closure grande. El bloque myFunction puede utilizar TODAS las variables que están disponibles en el bloque inmediato anterior. Usando el ejemplo visto en el video:
+
+Si tú declaras la variable saveCoins en el global scope, estarías usando el mismo principio que si emplearas la segunda función que escribe el profesor porque estás usando las variables que están en el scope padre.
+
+```js
+var saveCoins = 0;
+
+const moneyBox = (coins) => {
+    saveCoins += coins;
+    console.log(saveCoins);
+}
+
+moneyBox(5); //5
+moneyBox(10); //15
+
+```
+
+Sin embargo, está mal visto modificar variables globales, por eso es que quieres crear variables dentro de un scope cerrado y que interactúen entre ellas. Entonces, declaras las variables que vas a usar dentro del scope padre del bloque que las va a modificar para que siempre pueda acceder a ellas.
+
+Para eso originas un nuevo “global scope” ficticio que va a conservar todas las variables que tú quieras monitorear. Ahora mira las similitudes entre el código de arriba y el que está justo abajo de aquí:
+
+```js
+const moneyBox = () => {
+  var saveCoins = 0;
+
+  const countCoins = (coins) => {
+    saveCoins += coins;
+    console.log(saveCoins);
+  };
+	
+  return countCoins;
+};
+
+let myMoneyBox = moneyBox();
+// myMoneyBox() es la arrow function countCoins
+myMoneyBox(4); // 4
+myMoneyBox(10); // 14
+myMoneyBox(6); // 20
+```
+
+¡Si remueves `const moneyBox = () => {}` serían exactamente las mismas líneas de código!
+
+```js
+//const moneyBox = () => {
+var saveCoins = 0;
+
+const countCoins = (coins) => {
+  saveCoins += coins;
+  console.log(saveCoins);
+};
+   // return countCoins;
+//}
+
+```
+
+Lo que estás haciendo es simplemente bajar un nivel tu scope. Quieres que la función moneyBox regrese una función que estuvo declarada dentro de sí misma porque esa función tiene acceso a ese scope que ya no va a existir para que alguien más lo utilice, solamente lo podrá emplear la función countCoins.
+
+Al guardar el resultado de moneyBox (countCoins) en otra variable estás generando el ámbito léxico que menciona el profesor, necesario para no dejar morir ese scope.
+
+### Tutoriales 
+
+- [CLOSURES en JavaScript: Qué son y cómo funcionan](https://www.youtube.com/watch?v=xa8lhVwQBw4)
+- [21. CLAUSURAS (Closures) EN JAVASCRIPT](https://www.youtube.com/watch?v=JXG_gQ0OF74)
+- [Lectura](https://gustavodohara.com/blogangular/execution-context-contexto-ejecucion-javascript/)
 
 ## Apuntes
 
