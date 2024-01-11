@@ -570,6 +570,70 @@ Al guardar el resultado de moneyBox (countCoins) en otra variable estás generan
 - [21. CLAUSURAS (Closures) EN JAVASCRIPT](https://www.youtube.com/watch?v=JXG_gQ0OF74)
 - [Lectura](https://gustavodohara.com/blogangular/execution-context-contexto-ejecucion-javascript/)
 
+## **8.** Playground: Crea un Closure para Sumar
+
+En este desafío recibirás dos números aleatorios por parámetros.
+
+Usando las closures deberás crear una función a la cual se pueda llamar en primer lugar con un solo número y secuencialmente volver a llamarla para completar la suma con el siguiente número:
+
+La solución deberá tener un input y output como la siguiente, en algunos casos puede que no se mande el segundo número por lo que deberás pensar en como manejar ese tipo de casos.
+
+Input:
+
+```js
+// Función curried
+sumWithClosure(2)(3); 👈👀
+```
+
+Output:
+
+```json
+5
+```
+
+Input:
+
+```js
+sumWithClosure(90)();
+```
+
+Output:
+
+```json
+90
+```
+
+### Solución 
+
+```js
+function add(first_number) {
+  function calculate(second_number) {
+    if (second_number) {
+      return first_number + second_number;
+    } else {
+      return first_number;
+    }
+  }
+
+  return calculate;
+}
+
+const result = add(2)(3);
+const result_two = add(90)();
+
+console.log(result, result_two);
+```
+
+### Dato: Currying
+
+Una función «curried» **es una función que toma un número de argumentos uno a la vez, retornando una nueva función que toma el siguiente argumento hasta que todos los argumentos se hayan proporcionado**.
+
+La forma de llamar a una función como `sumWithClosure(2)(3)` se conoce como "currying". El currying es una técnica en programación funcional en la que una función que normalmente toma múltiples argumentos se transforma en una secuencia de funciones que toman un solo argumento.
+
+## **9.** Practicando Closures
+
+
+
 ## Apuntes
 
 - [Notion: Curso de Closures y Scope en JavaScript](https://whip-soil-3b5.notion.site/Curso-de-Closures-y-Scope-en-JavaScript-d7e0a5f9273b439bb278e6ce6f97db5e)

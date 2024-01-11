@@ -22,7 +22,7 @@ function principal(i) {
   return increase;
 }
 
-let closure = principal(1);
+const closure = principal(1);
 closure();
 closure();
 closure();
