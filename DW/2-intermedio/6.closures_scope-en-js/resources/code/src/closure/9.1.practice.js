@@ -31,5 +31,4 @@ moneyBoxAle(10);
 moneyBoxAle(20);
 moneyBoxAle(30);
 
-
 myMoneyBox(10);

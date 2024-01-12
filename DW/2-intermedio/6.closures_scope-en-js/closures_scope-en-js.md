@@ -632,7 +632,74 @@ La forma de llamar a una función como `sumWithClosure(2)(3)` se conoce como "
 
 ## **9.** Practicando Closures
 
+Ahora que ya entiendes qué es un _closure_, te mostraré un ejemplo para emplearlo en un proyecto.
 
+### Cómo utilizar Closure para construir una alcancía
+
+Si creamos una alcancía de la siguiente manera, solamente mostrará el valor enviado, no guardará la información del dinero que le enviamos.
+
+```js
+function alcancia(monedas) {
+  let contenido = 0;
+  contenido = contenido + monedas;
+  return contenido;
+}
+
+const miAlcancia = alcancia;
+miAlcancia(5); // 5
+miAlcancia(4); // 4
+```
+
+Si utilizamos un closure, entonces la variable en que estará en un scope más elevado que la función interior, recordará el ámbito léxico que fue creada. Por lo tanto, cada vez que invoquemos cada función, mostrará el dinero ahorrado en la alcancía.
+
+```js
+function alcancia(cantidadInicial) {
+  let contenido = cantidadInicial;
+
+  return function guardar(monedas) {
+    contenido = contenido + monedas;
+    return contenido;
+  };
+}
+
+const miAlcancia = alcancia(2);
+// miAlcancia es igual a la función guardar
+miAlcancia(5); // 7
+miAlcancia(4); // 11
+
+const otraAlcancia = alcancia(5);
+// otraAlcancia es igual a la función guardar
+otraAlcancia(30); // 35
+otraAlcancia(20); // 55
+
+// miAlcancia y otraAlcancia son independientes
+```
+
+## **10.** Playground: Closure para Almacenar Datos de Mascotas
+
+En este desafío tendrás que crear un closure que nos permita almacenar datos de mascotas en cualquier momento.
+
+Los datos pueden venir de distintas maneras, pueden ser objetos, strings o arrays. En el primer llamado a la función nos servirá para crear nuestra lista en un inicio mientras que los demás llamados nos ayudará a agregar elementos al final de la lista.
+
+Si en algún momento llamamos a la función sin pasarle ningún parámetro esta nos devolverá el array con los datos de todos las mascotas introducidas.
+
+Input:
+
+```js
+const myPetList = createPetList();
+
+myPetList("michi");
+
+myPetList("firulais");
+
+myPetList();
+```
+
+Output:
+
+```js
+["michi", "firulais"]
+```
 
 ## Apuntes
 
