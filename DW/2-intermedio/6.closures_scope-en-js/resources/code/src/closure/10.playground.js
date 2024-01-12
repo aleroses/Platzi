@@ -3,8 +3,6 @@ function data() {
 
   function add(new_pet) {
     new_pet ? pet.push(new_pet) : console.log(pet);
-
-    // console.log(pet);
   }
 
   return add;
