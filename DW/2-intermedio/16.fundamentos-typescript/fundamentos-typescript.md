@@ -147,6 +147,11 @@ npx tsc --version
 	(Version 5.2.2)
 ```
 
+```bash
+## Alternativa a --save-dev
+npm install typescript -D 👈👀
+```
+
 - Plugin: EditorConfig for VS Code
 - [Documentación npm-init](https://docs.npmjs.com/cli/v7/commands/npm-init)
 
@@ -365,6 +370,8 @@ npx tsc src/demo.ts --target es6 --outDir dist
 npx tsc src/*.ts --target es6 --outDir dist 👀👈 También *
 ```
 
+Si ves algo de código antiguo al transpilar puedes cambiar `es6` por `es2021`.
+
 Quedando de la siguiente manera:  
 ```bash
 ╰─ tree -L 3
@@ -386,6 +393,24 @@ Ahora ya podemos ejecutar el archivo que queramos con el siguiente comando:
 node dist/01-hello.js
 ```
 Mostrando: Ale Roses ✨
+
+### Crea un archivo de configuración
+
+Con `npx tsc --init --target es2021` puedes crear la configuración para un proyecto en typescript.
+
+```json
+{
+  "compilerOptions": {
+    "target": "es6",
+    "module": "commonjs",
+    "outDir": "./dist",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true
+  }
+}
+```
 
 ### Deno: un entorno nativo para ambos lenguajes
 
