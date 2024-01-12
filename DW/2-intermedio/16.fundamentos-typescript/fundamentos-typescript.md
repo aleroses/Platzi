@@ -109,6 +109,7 @@ Para crear los archivos y carpetas podemos usar la CLI o hacerlo desde VSC.
 ```bash
 mkdir ts-project
 cd ts-project
+mkdir src
 code .
 ```
 
