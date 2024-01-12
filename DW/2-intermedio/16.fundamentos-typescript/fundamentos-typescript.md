@@ -1,11 +1,11 @@
 # Curso de Fundamentos de TypeScript
 
-> Inicio: `01-09-2023`
+> Inicio: `01-09-2023`  
 > Finalización: `03-09-2023`
 
 [Apuntes en Notion](https://francocarrara.notion.site/Curso-de-Fundamentos-de-TypeScript-30ed370135f049a1bd6786302bea9e81)
 
-## 1. TypeScript
+## **1.** TypeScript
 
 ### Que es TypeScript 
 
@@ -51,7 +51,7 @@ En general, el uso de TypeScript puede mejorar la calidad del código, la produc
 - Node 
 - Google Chrome 
 
-## 2. TypeScript vs. JavaScript
+## **2.** TypeScript vs. JavaScript
 
 ¿TypeScript es diferente a JavaScript? ¿Un desarrollador en TypeScript es diferente a uno en JavaScript? La respuesta a ambas es sí, sin embargo, no hay una notable diferencia. Uno (TypeScript) se base en el otro (JavaScript) añadiendo elementos para mejorar la detección de bugs y experiencia de desarrollo.
 
@@ -83,7 +83,7 @@ En el libro _Software Engineering at Google_[1] señalan ciertas capas para det
 - [Software Engineering at Google](https://swizec.com/blog/what-i-learned-from-software-engineering-at-google/)
 - [Libro: Software Engineering at Google](https://abseil.io/resources/swe-book)
 
-## 3. Configurado nuestro proyecto
+## **3.** Configurado nuestro proyecto
 
 Instalaremos TypeScript solo para este proyecto, pero primero debemos tener la siguiente estructura:   
 
@@ -101,7 +101,7 @@ Instalaremos TypeScript solo para este proyecto, pero primero debemos tener la s
 │       └── package.json
 ├── package-lock.json
 ├── package.json
-└── src
+└── src 👈👀👆
 ```
 
 Para crear los archivos y carpetas podemos usar la CLI o hacerlo desde VSC. 
@@ -149,7 +149,7 @@ npx tsc --version
 - Plugin: EditorConfig for VS Code
 - [Documentación npm-init](https://docs.npmjs.com/cli/v7/commands/npm-init)
 
-## 4. Atrapando bugs
+## **4.** Atrapando bugs
 
 Dentro de la carpeta `src` creamos un archivo llamado `demo.js`, luego agregamos el código propuesto en clase e inmediatamente vemos que usando la extensión Error Lens ⚠ nos muestra solo un error, pero al agregar dentro del código `//@ts-check` ahora vemos que tenemos muchos errores. 
 
@@ -272,7 +272,7 @@ En resumen, `//@ts-check` es una directiva de TypeScript que se utiliza en archi
 
 [Working with JavaScript](https://code.visualstudio.com/docs/nodejs/working-with-javascript#_type-checking-javascript)
 
-## 5. El compilador de TypeScript
+## **5.** El compilador de TypeScript
 
 Creamos un nuevo archivo en la carpeta `src > 01-hello.ts` y le cambiamos la extensión al archivo `demo.js` por `demo.ts`. 
 
