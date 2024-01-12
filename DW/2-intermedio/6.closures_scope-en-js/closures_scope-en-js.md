@@ -703,7 +703,7 @@ Output:
 
 ## **11.** ¿Qué es el Hoisting?
 
-**_Hoisting_** es un término para describir que las **declaraciones de variables y funciones son desplazadas a la parte superior del _scope_ más cercano**, scope global o de función. Esto sucede solamente con las declaraciones y no con las asignaciones.
+**_Hoisting_** es un término para describir que las **declaraciones de variables y funciones son desplazadas a la parte superior del _scope_ más cercano**, scope global o de función. Esto sucede solamente con las declaraciones y no con las asignaciones o inicializaciones.
 
 El código permanece igual, solo es una interpretación del motor de JavaScript. En el caso de las variables solamente sucede cuando son declaradas con `var`.
 
@@ -862,9 +862,317 @@ let nameLet = "myLet"
 - No utilices `var` en las declaraciones de variables.
 - Escribe primero las funciones y luego su invocación.
 
-_Contribución creada por Andrés Guano._
+## **12.** Debugging
+
+_Debugging_ es el término para solucionar _bugs_. Los _bugs_ (“bichos” en inglés) son **errores en la aplicación**, saber cómo solucionarlos de manera eficiente es clave para tu desarrollo como profesional.
+
+**Todo navegador dispone de _Dev tools_** o herramientas de desarrollador, que es un conjunto de características del código de la página web, una de estas es el _debugging_.
+
+**La consola del navegador es importante para ver qué está pasando con el código generado.** La consola se muestra con la combinación de teclas `F12` / `Ctrl + Shift + I` / `Cmd+Opt+I` o clic derecho e “Inspeccionar” en tu navegador preferido (de preferencia Google Chrome).
+
+### Código de ejemplo
+
+El código de ejemplo que se usará en las _Dev Tools_ será el siguiente:
+
+```js
+var a = "Hello global"
+
+function hello() {
+  let b = "Hello function"
+
+  if(true) {
+    let c = "Hello block"
+  }
+}
+
+hello()
+```
+
+### Palabra reservada debugger
+
+La palabra reservada _debugger_ sirve **para detener la ejecución del programa**, pero solo funciona si el panel de las herramientas de desarrollo está abierto. Este panel te mostrará información sobre el código hasta la línea del _debugger_.
+
+Ejecuta el código de prueba que contenga la palabra reservada _debugger_ en la consola de tu navegador, puedes hacerlo en una página en blanco tan solo poniendo [about:blank](http://about:blank/) como una URL.
+
+```js
+var a = "Hello global"
+
+function hello() {
+  let b = "Hello function"
+
+  if(true) {
+    let c = "Hello block"
+    debugger // <---- Palabra reservada para debbuging
+  }
+}
+
+hello()
+```
+
+Al momento de ejecutar el código te aparecerá el panel de _debugging_.
+
+![Herramientas de desarrollador de Chrome](https://static.platzi.com/media/articlases/Images/scope_closure02.png)
+
+En el panel de información, existe un apartado _“Scope”_ que muestra el *scope/ de cada variable correspondiente al punto donde la ejecución se detuvo.
+
+![Sección de Scope de las DevTools de Chrome](https://static.platzi.com/media/articlases/Images/scope_closure03.PNG)
+
+### _Breakpoints_
+
+Los _breakpoints_ son **puntos donde la ejecución del programa se parará**. Para activarlos se debe dar clic en la línea de código que se desea parar.
+
+![Breakpoints en un código JavaScript](https://static.platzi.com/media/articlases/Images/scope_closure04.PNG)
+
+### _Closures_ en _debugging_
+
+Si el código tiene _closures_, aparecerán en el panel _“Scope”_.  
+![scope_closure05.PNG](https://static.platzi.com/media/articlases/Images/scope_closure05.PNG)
+
+Para concluir, deberías aprender a utilizar las herramientas de desarrollo web para ser más eficiente, y de esta forma encontrar de manera eficiente la causa de un error o un comportamiento no deseado que provocaría un _bug_.
+
+[Tutorial: Depurar en VSC](https://www.youtube.com/watch?v=YpFR8Q2lVDU&t=10s)
+
+## **13.** Conclusiones
+
+🎉¡Lo has logrado! 🙌 **Completaste todas las clases** del curso de **Closures y Scope en JavaScript**.
+
+✅ Si aún no queda claro algún tema, vuelve a revisar la clase o deja tu pregunta en la sección de preguntas.
+
+👨‍💻 Te presentamos [JavaScript Hero](https://jshero.platzi.com/), donde podrás practicar los conceptos de JavaScript en un desafío diario, en el que podrás demostrar tus conocimientos sobre lo aprendido durante el curso y mucho más.
+
+🧾 **Realiza la prueba del curso** para recibir tu certificado y no olvides dejar tus 🌟 y tu comentario.
+
+Y por sobre todo, **¡Nunca pares de aprender!** 💚
 
 ## Apuntes
 
 - [Notion: Curso de Closures y Scope en JavaScript](https://whip-soil-3b5.notion.site/Curso-de-Closures-y-Scope-en-JavaScript-d7e0a5f9273b439bb278e6ce6f97db5e)
 - [GitHub: Curso de Closures y Scope en JS](https://github.com/aleroses/Platzi/blob/master/DW/2-intermedio/6.closures_scope-en-js/closures_scope-en-js.md)
+
+## Examen 📌
+
+<details>
+	<summary>Haz clic para ver los resultados 👀</summary>
+	<br/>
+
+1. ¿Qué es Code Runner?
+
+a
+
+Es una función que trae Visual Studio Code para autocompletar el código que vayamos escribiendo.
+
+b ✅
+
+Es un plugin de Visual Studio Code que permite ejecutar el código dentro del editor.
+
+c
+
+Ninguna opción es correcta.
+
+d
+
+Es un plugin de Visual Studio Code que nos habilita el uso del scope y los closures dentro del código.
+
+2. Es el tipo de dato que se asigna por defecto al declarar una variable.
+
+a
+
+String
+
+b
+
+Error
+
+c ✅
+
+Undefined
+
+d
+
+Null
+
+e
+
+Integer
+
+3. JavaScript solo utiliza el hoisting en declaraciones, mas no en inicializaciones
+
+a
+
+Falso
+
+b ✅
+
+Verdadero
+
+4. ¿La herramienta de Google Chrome que nos permite hacer debugging se llama?
+
+a
+
+Google Developer tools
+
+b
+
+Developer Tools
+
+c ✅
+
+Chrome DevTools
+
+d
+
+Google Dev Tools
+
+5. Las variables declaradas con let y const, NO se pueden volver a declarar en el mismo ámbito.
+
+a
+
+Falso
+
+b ✅
+
+Verdadero
+
+6. ¿Qué sucederá si ejecutamos el siguiente código?
+
+```
+ nameOfDog("Elmo"); function nameOfDog(name) { console.log(name); }; 
+```
+
+a ✅
+
+Se muestra en consola el siguiente mensaje: "Elmo".
+
+b
+
+Se muestra en el navegador un alert con el siguiente mensaje: "Elmo".
+
+c
+
+Se muestra en consola el siguiente mensaje: "Error, el valor no está definido".
+
+d
+
+Se muestra en consola el siguiente mensaje: "Variable name undefined".
+
+7. ¿Cuál de las siguientes opciones NO se puede considerar como una variable global?
+
+a ✅
+
+```
+const scope = "I am global";
+
+```
+
+b
+
+```
+let scope = "I am global";`
+```
+
+c
+
+```
+var scope = "I am global";
+```
+
+d
+
+```
+var = “I am global”;
+```
+
+8. Analiza el siguiente código e identifica la variable declarada en el alcance de la función:
+
+```
+const fruits = () => { if (true) { var fruit1 = 'apple'; const fruit2 = 'banana'; let fruit3 = 'kiwi'; } }
+```
+
+a
+
+Todas las opciones son correctas.
+
+b
+
+```
+const fruit2 = ‘banana’;
+```
+
+c
+
+```
+var fruit1 = ‘apple’;
+```
+
+d ✅
+
+```
+let fruit3 = ‘kiwi’;
+```
+
+9. Variables declaradas con "let" y "const" son de "block scope"
+
+a ✅
+
+Verdadero
+
+b
+
+Falso
+
+10. ¿Cuál es el alcance que tiene el function scope?
+
+a
+
+Se puede acceder a una variable que se ubica en el ámbito global, pero no podemos llamarla dentro de una función.
+
+b ✅
+
+Se puede acceder a una variable que se ubica dentro de una función, pero no podemos llamarla desde el ámbito global.
+
+11. Término que se refiere a la accesibilidad que tiene una variable, función u objeto.
+
+a
+
+Function
+
+b
+
+Global
+
+c
+
+Closure
+
+d ✅
+
+Scope
+
+12. ¿En qué momento se genera una closure?
+
+a
+
+Cuando activamos el modo estricto para definir una variable.
+
+b
+
+En el momento en que una variable llama a una función.
+
+c ✅
+
+Cuando una función accede a una variable fuera de su contexto y la recuerda.
+
+13. ¿Para qué se utiliza el modo estricto en JavaScript?
+
+a ✅
+
+Es un modo de trabajo que nos asegura que cada variable está definida al momento de crear nuestro código.
+
+b
+
+Lo aplicamos para generar variables inmutables de forma estricta.
+
+c
+
+Se utiliza para lograr avanzar en nuestro desarrollo al cumplir con horarios de trabajo definidos y evita que haya distracciones.
+</details>
