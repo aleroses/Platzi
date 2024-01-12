@@ -3,7 +3,8 @@
 [Curso de Closures y Scope en JavaScript](https://platzi.com/cursos/javascript-closures-scope/)   
 
 > Inicio: `10-01-2024`
-> Finalización: `-00-2024`
+> 
+> Finalización: `12-01-2024`
 
 ## **1.** Bienvenida al Curso de Closures y Scope
 
