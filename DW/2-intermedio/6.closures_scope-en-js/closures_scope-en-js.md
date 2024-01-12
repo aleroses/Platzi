@@ -977,9 +977,9 @@ Y por sobre todo, **¡Nunca pares de aprender!** 💚
 
 6. ¿Qué sucederá si ejecutamos el siguiente código?
 
-```js
- nameOfDog("Elmo"); function nameOfDog(name) { console.log(name); }; 
-```
+	```js
+	 nameOfDog("Elmo"); function nameOfDog(name) { console.log(name); }; 
+	```
 
 	- ✅ Se muestra en consola el siguiente mensaje: "Elmo".
 
@@ -1004,7 +1004,7 @@ c
 var scope = "I am global";
 ```
 
-d
+d ✅
 
 ```
 var = “I am global”;
@@ -1013,10 +1013,16 @@ var = “I am global”;
 8. Analiza el siguiente código e identifica la variable declarada en el alcance de la función:
 
 ```js
-const fruits = () => { if (true) { var fruit1 = 'apple'; const fruit2 = 'banana'; let fruit3 = 'kiwi'; } }
+const fruits = () => {
+  if (true) {
+    var fruit1 = "apple";
+    const fruit2 = "banana";
+    let fruit3 = "kiwi";
+  }
+};
 ```
 
-a
+a ✅
 
 Todas las opciones son correctas.
 
