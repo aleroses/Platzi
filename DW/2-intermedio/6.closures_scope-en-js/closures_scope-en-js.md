@@ -957,107 +957,35 @@ Y por sobre todo, **¡Nunca pares de aprender!** 💚
 
 1. ¿Qué es Code Runner?
 
-a
-
-Es una función que trae Visual Studio Code para autocompletar el código que vayamos escribiendo.
-
-b ✅
-
-Es un plugin de Visual Studio Code que permite ejecutar el código dentro del editor.
-
-c
-
-Ninguna opción es correcta.
-
-d
-
-Es un plugin de Visual Studio Code que nos habilita el uso del scope y los closures dentro del código.
+	- ✅ Es un plugin de Visual Studio Code que permite ejecutar el código dentro del editor.
 
 2. Es el tipo de dato que se asigna por defecto al declarar una variable.
 
-a
-
-String
-
-b
-
-Error
-
-c ✅
-
-Undefined
-
-d
-
-Null
-
-e
-
-Integer
+	- ✅ Undefined
 
 3. JavaScript solo utiliza el hoisting en declaraciones, mas no en inicializaciones
 
-a
-
-Falso
-
-b ✅
-
-Verdadero
+	- ✅ Verdadero
 
 4. ¿La herramienta de Google Chrome que nos permite hacer debugging se llama?
 
-a
-
-Google Developer tools
-
-b
-
-Developer Tools
-
-c ✅
-
-Chrome DevTools
-
-d
-
-Google Dev Tools
+	- ✅ Chrome DevTools
 
 5. Las variables declaradas con let y const, NO se pueden volver a declarar en el mismo ámbito.
 
-a
-
-Falso
-
-b ✅
-
-Verdadero
+	- ✅ Verdadero
 
 6. ¿Qué sucederá si ejecutamos el siguiente código?
 
-```
+```js
  nameOfDog("Elmo"); function nameOfDog(name) { console.log(name); }; 
 ```
 
-a ✅
-
-Se muestra en consola el siguiente mensaje: "Elmo".
-
-b
-
-Se muestra en el navegador un alert con el siguiente mensaje: "Elmo".
-
-c
-
-Se muestra en consola el siguiente mensaje: "Error, el valor no está definido".
-
-d
-
-Se muestra en consola el siguiente mensaje: "Variable name undefined".
+	- ✅ Se muestra en consola el siguiente mensaje: "Elmo".
 
 7. ¿Cuál de las siguientes opciones NO se puede considerar como una variable global?
 
-a ✅
+a ✅❌
 
 ```
 const scope = "I am global";
@@ -1084,7 +1012,7 @@ var = “I am global”;
 
 8. Analiza el siguiente código e identifica la variable declarada en el alcance de la función:
 
-```
+```js
 const fruits = () => { if (true) { var fruit1 = 'apple'; const fruit2 = 'banana'; let fruit3 = 'kiwi'; } }
 ```
 
@@ -1104,7 +1032,7 @@ c
 var fruit1 = ‘apple’;
 ```
 
-d ✅
+d ✅❌
 
 ```
 let fruit3 = ‘kiwi’;
@@ -1112,67 +1040,22 @@ let fruit3 = ‘kiwi’;
 
 9. Variables declaradas con "let" y "const" son de "block scope"
 
-a ✅
-
-Verdadero
-
-b
-
-Falso
+	- ✅ Verdadero
 
 10. ¿Cuál es el alcance que tiene el function scope?
 
-a
-
-Se puede acceder a una variable que se ubica en el ámbito global, pero no podemos llamarla dentro de una función.
-
-b ✅
-
-Se puede acceder a una variable que se ubica dentro de una función, pero no podemos llamarla desde el ámbito global.
+	- ✅ Se puede acceder a una variable que se ubica dentro de una función, pero no podemos llamarla desde el ámbito global.
 
 11. Término que se refiere a la accesibilidad que tiene una variable, función u objeto.
 
-a
-
-Function
-
-b
-
-Global
-
-c
-
-Closure
-
-d ✅
-
-Scope
+	- ✅ Scope
 
 12. ¿En qué momento se genera una closure?
 
-a
-
-Cuando activamos el modo estricto para definir una variable.
-
-b
-
-En el momento en que una variable llama a una función.
-
-c ✅
-
-Cuando una función accede a una variable fuera de su contexto y la recuerda.
+	- ✅ Cuando una función accede a una variable fuera de su contexto y la recuerda.
 
 13. ¿Para qué se utiliza el modo estricto en JavaScript?
 
-a ✅
+	- ✅ Es un modo de trabajo que nos asegura que cada variable está definida al momento de crear nuestro código.
 
-Es un modo de trabajo que nos asegura que cada variable está definida al momento de crear nuestro código.
-
-b
-
-Lo aplicamos para generar variables inmutables de forma estricta.
-
-c
-
-Se utiliza para lograr avanzar en nuestro desarrollo al cumplir con horarios de trabajo definidos y evita que haya distracciones.
 </details>
