@@ -28,7 +28,7 @@ async () => {
     }
   }
 
-  await getProducts(); //❌👈👀 Error Lens
+  await getProducts();
   addProduct(1);
   addProduct(2);
 
@@ -39,7 +39,6 @@ async () => {
     name: "Nicolas",
     lastName: "Molina",
   };
-
-  const rta = `${person}:  ${limit}`;
+  const rta = `${person}: ${limit}`;
   console.log(rta);
 };

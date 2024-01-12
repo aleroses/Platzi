@@ -282,9 +282,10 @@ Creamos un nuevo archivo en la carpeta `src > 01-hello.ts` y le cambiamos la ext
 const my_name = 'Ale Roses';
 console.log(my_name);
 ```
-Ahora podemos convertir este archivo .ts a un archivo .js usando el siguiente comando, este creará otro archivo con el mismo nombre pero con la extensión .js: 
+Ahora podemos convertir este archivo `.ts` a un archivo `.js` usando el siguiente comando, este creará otro archivo con el mismo nombre pero con la extensión .js: 
 
 ```bash
+# Recuerda estar fuera de la carpeta src
 npx tsc src/01-hello.ts
 ```
 
