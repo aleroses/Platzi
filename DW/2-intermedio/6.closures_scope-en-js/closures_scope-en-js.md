@@ -985,64 +985,27 @@ Y por sobre todo, **¡Nunca pares de aprender!** 💚
 
 7. ¿Cuál de las siguientes opciones NO se puede considerar como una variable global?
 
-a ✅❌
-
-```
-const scope = "I am global";
-
-```
-
-b
-
-```
-let scope = "I am global";`
-```
-
-c
-
-```
-var scope = "I am global";
-```
-
-d ✅
-
-```
-var = “I am global”;
-```
+	- ✅
+	```js
+	var = “I am global”;
+	```
 
 8. Analiza el siguiente código e identifica la variable declarada en el alcance de la función:
 
-```js
-const fruits = () => {
-  if (true) {
-    var fruit1 = "apple";
-    const fruit2 = "banana";
-    let fruit3 = "kiwi";
-  }
-};
-```
+	```js
+	const fruits = () => {
+	  if (true) {
+	    var fruit1 = "apple";
+	    const fruit2 = "banana";
+	    let fruit3 = "kiwi";
+	  }
+	};
+	```
 
-a ✅
-
-Todas las opciones son correctas.
-
-b
-
-```
-const fruit2 = ‘banana’;
-```
-
-c
-
-```
-var fruit1 = ‘apple’;
-```
-
-d ✅❌
-
-```
-let fruit3 = ‘kiwi’;
-```
+	- ✅
+	```js
+	var fruit1 = ‘apple’;
+	```
 
 9. Variables declaradas con "let" y "const" son de "block scope"
 
