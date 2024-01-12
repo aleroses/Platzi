@@ -396,12 +396,12 @@ Mostrando: Ale Roses ✨
 
 ### Crea un archivo de configuración
 
-Con `npx tsc --init --target es2021` puedes crear la configuración para un proyecto en typescript.
+Con `npx tsc --init --target es2021` puedes crear la configuración para un proyecto en TypeScript.
 
 ```json
 {
   "compilerOptions": {
-    "target": "es6",
+    "target": "es2021",
     "module": "commonjs",
     "outDir": "./dist",
     "strict": true,
@@ -416,8 +416,7 @@ Con `npx tsc --init --target es2021` puedes crear la configuración para un pr
 
 [Deno](https://deno.land/), del mismo creador de Node.js, es un nuevo entorno de ejecución para JavaScript que puede correr también nativamente TypeScript. Sin embargo, aún no tiene la madurez en el ecosistema de Node.js
 
-
-## 6. Veamos el TSConfig.json
+## **6.** Veamos el TSConfig.json
 
 El archivo `TSConfig.json` nos ayuda a ahorrar mucho trabajo manual como transpilar archivo por archivo, indicar el target, etc.
 
