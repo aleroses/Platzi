@@ -1039,26 +1039,25 @@ const otherNumber = (<number>myDynamicVar).toFixed();
 
 Como observamos, podemos tratar nuestra variable `any` como `string` en el primer caso y como `number` en el segundo. Después de esto, podemos acceder a los métodos `toLowerCase()` y `toFixed()` según el tipo de dato correspondiente.
 
-
-
 ### Código de la clase 
 
-`src > 08-any.ts`  
+`src > 08-any.ts`
+
 ```ts
 (() => {
   let my_dynamic_var: any;
   my_dynamic_var = 100;
   my_dynamic_var = null;
   my_dynamic_var = {};
-  my_dynamic_var = "";
+  my_dynamic_var = '';
 
-	my_dynamic_var = 'Hola';
-	const rta = (my_dynamic_var as string).toLowerCase();
-	console.log('Respuesta:', rta);
-	
-	my_dynamic_var = 1212;
-	const rta2 = (<number>my_dynamic_var).toFixed();
-	console.log('Respuesta:', rta2);
+  my_dynamic_var = 'Hola';
+  const rta = (my_dynamic_var as string).toLowerCase();
+  console.log('Respuesta:', rta);
+
+  my_dynamic_var = 1212;
+  const rta2 = (<number>my_dynamic_var).toFixed();
+  console.log('Respuesta:', rta2);
 })();
 
 /* 
@@ -1066,7 +1065,7 @@ node dist/08-any.ts
 */
 ```
 
-## 14. Union Types
+## **14.** Union Types
 
 Los `|` nos permite definir más de un tipo de dato a una variable, argumento de una función, etc.
 
@@ -1114,7 +1113,7 @@ El tipo de dato `any` nos brinda la flexibilidad de JavaScript en TypeScript c
 
 [Documentación](https://www.typescriptlang.org/docs/handbook/2/everyday-types.html#union-types)  
 
-## 15. Alias y tipos literales
+## **15.** Alias y tipos literales
 
 Los Alias nos permiten darle un nombre a uno o varios tipos de datos en conjunto. Un ejemplo de como se definen sería así:
 
