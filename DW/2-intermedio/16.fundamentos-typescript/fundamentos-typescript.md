@@ -429,6 +429,7 @@ npx tsc --init
 ```
 
 Esto nos muestra en consola lo siguiente...  
+
 ```shell
 Created a new tsconfig.json with:                                          TS 
   target: es2016
@@ -473,12 +474,19 @@ const numbers = [1,2,3];
 ```
 
 Ejecutamos el comando anterior y veremos que se crea un nuevo archivo .js en la carpeta `dist`
+
 ```shell
 npx tsc --watch
 ```
 Si queremos ir más allá podemos borrar todos los archivos de la carpeta `dist` y correr el comando anterior, esto creará nuevamente todos los archivos .js
 
-## 7. Qué es el tipado en TypeScript
+Otra alternativa a `npx tsc --watch`  
+
+```bsh
+npx tsc -w *.ts
+```
+
+## **7.** Qué es el tipado en TypeScript
 
 El tipado en TypeScript hace referencia a cómo declaramos una variable, necesitamos asignar el tipo de dato, conocido como **type annotation**, con esto evitamos mezclar distintos tipos de datos.
 
@@ -532,7 +540,7 @@ const age: number = 20;
 - [Manual de TypeScript](https://www.typescriptlang.org/docs/handbook/intro.html),
 - [Probar los ejemplos: Playground de TS](https://www.typescriptlang.org/play)
 
-## 8. Tipos inferidos
+## **8.** Tipos inferidos
 
 TypeScript puede inferir (Extraer un juicio o conclusión a partir de hechos) el tipo de dato de una variable a pesar de no haberlo declarado explícitamente.
 
