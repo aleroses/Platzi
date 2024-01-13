@@ -806,7 +806,7 @@ Para ver el resultado de este código tienes dos opciones:
 - 🦄 Consola: `node dist/05-booleans.js` y `npx tsc --watch`
 - 🦄 Quokka: F1: Quokka.js: Start on Current File
 
-📌 Dato `: boolean` no es lo mismo que `: Boolean`. Recuerda escribirlo en minúscula
+📌 Dato `: boolean` no es lo mismo que `: Boolean`. Recuerda escribirlo en minúscula además TypeScript no acepta **null** ni **undefined**
 
 ## **11.** Strings
 
