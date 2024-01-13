@@ -781,6 +781,7 @@ let isNew = false;
 ### Código de la clase 
 
 `src > 05-booleans.ts`  
+
 ```ts
 (() => {
   let is_enable = true;
@@ -869,7 +870,7 @@ let summary = `
 - También respeta la indentación:
 
 ```ts
-let html= `
+let html = `
 <!DOCTYPE html>
 <html lang="en">
   <head>
