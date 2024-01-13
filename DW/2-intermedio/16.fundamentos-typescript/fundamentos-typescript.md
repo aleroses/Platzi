@@ -915,7 +915,15 @@ node dist/06-strings.ts
 */
 ```
 
-## 12. Arrays
+Extensión “Turbo Console Log” con pulsar `CTRL + ALT + L` hace un console log de la variable que queramos imprimir con detalles interesantes.
+
+```ts
+// Te posas sobre summary y pulsas `CTRL + ALT + L`
+const summary: string = `${product}`;
+console.log("🚀 ~ summary:", summary)
+```
+
+## **12.** Arrays
 
 Es una colección de datos ordenada. Los definimos de la siguiente manera:
 
@@ -992,7 +1000,11 @@ Dejamos claro que queremos que soporte los tipos de dato `string` y `number`.
 })();
 ```
 
-## 13. Any
+📌 Nota: Recordemos la diferencia entre **object** y **Object**. Recordemos que object es el correcto, porque nos va a diferenciar entre datos primitivos (number, string, boolean, etc) y todo lo que no sea esto, puede caber dentro de object.
+
+[Documentación oficinal de typescript](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-2-2.html)
+
+## **13.** Any
 
 Es un tipo de dato exclusivo de TypeScript. Su traducción sería “cualquiera”, ya que literalmente nos permite almacenar cualquier tipo de dato en una variable:
 
