@@ -580,7 +580,7 @@ my_product_price.toFixed(); 👈👀
 
 TypeScript señalará como **error** aquellas variables con el mismo nombre **a pesar** de estar en **archivos distintos**. Esto no sucederá en entornos preconfigurados como por ejemplo Angular o React, ya que estos trabajan de forma modular o tienen un alcance (scope) para cada variable.
 
-Si deseas trabajar con los mismos nombres de variables en diferentes archivos, puedes crear una función anónima autoejecutada:
+Si deseas trabajar con los mismos nombres de variables en diferentes archivos, puedes crear una **función anónima autoejecutada**:
 
 ```ts
 // Inmediately Invoked Function Expression (IIFE). ()()
@@ -593,7 +593,7 @@ Lo mismo por cada variable que desees tener el mismo nombre (`myName` para este
 
 [IIFE: Expresión de función ejecutada inmediatamente](https://developer.mozilla.org/es/docs/Glossary/IIFE)
 
-## 9. Numbers
+## **9.** Numbers
 
 El tipo de dato `number` se usa para variables que contendrán números positivos, negativos o decimales.
 
@@ -686,13 +686,14 @@ let otherNumber: Number = 20; // Mala practica.
 ### Código de la clase  
 
 `src > 04-numbers.ts`
+
 ```ts
 (() => {
   let product_price = 100;
   product_price = 12;
   console.log("Price: ", product_price);
 
-  let customer_age = 28; // let customer_age: number = 28; error 👈👀🔥
+  let customer_age = 28;
   customer_age = customer_age + 1; // 29
   console.log("Customer age: ", customer_age);
 
@@ -703,7 +704,7 @@ let otherNumber: Number = 20; // Mala practica.
     console.log("Is greater!!!");
   }
 
-  let discount = parseInt("100"); // "sada" NaN
+  let discount = parseInt("100");
   console.log("Discount: ", discount);
 
   if (discount <= 200) {
@@ -768,7 +769,7 @@ Podremos ver el resultado usando `console.log()` o como ejemplo `user.password /
 
 [🔥 Quokka.js, Curso Práctico de Quokka.js](https://www.youtube.com/watch?v=gpEJTPaOuys)
 
-## 10. Booleans
+## **10.** Booleans
 
 Este tipo de dato solo puede tomar dos valores: `true` o `false`.
 
@@ -807,7 +808,7 @@ Para ver el resultado de este código tienes dos opciones:
 
 📌 Dato `: boolean` no es lo mismo que `: Boolean`. Recuerda escribirlo en minúscula
 
-## 11. Strings
+## **11.** Strings
 
 Este tipo de dato nos permite almacenar una cadena de caracteres.
 
