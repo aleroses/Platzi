@@ -1497,18 +1497,19 @@ function devolverMayor(a: number, b: number): number | string {
 
 Si no indicamos en nuestra declaración de la función el tipado del retorno, TypeScript, al igual que con las variables, lo puede inferir según si retornas datos (sea `string`, `number`, etc.) o si nada es devuelto (tipo `void`).
 
-
-
 ### Código de la clase 
 
-`src > 13-return-functions.ts`  
+`src > 13-return-functions.ts`
+
 ```ts
 (() => {
   const calc_total = (prices: number[]): string => {
     let total = 0;
+    
     prices.forEach((item) => {
       total += item;
     });
+    
     return total.toString();
   };
 
@@ -1526,7 +1527,7 @@ Si no indicamos en nuestra declaración de la función el tipado del retorno, Ty
 - 🦄 Consola: `node dist/13-return-functions.ts` y `npx tsc --watch`
 - 🦄 Quokka: F1: Quokka.js: Start on Current File
 
-## 19. Objetos en funciones
+## **19.** Objetos en funciones
 
 Nuestras funciones pueden recibir objetos como argumentos. En TypeScript también podemos declarar el tipado de estos. Veamos un ejemplo:
 
@@ -1547,7 +1548,6 @@ imprimirDatos({
 En el ejemplo, el nombre `data` hace referencia al objeto que recibirá la función `imprimirDatos`. Por ello, para acceder al valor de `username` lo definimos en el `console.log` como `data.username` y para el `email` como `data.email`, pues así es como se accede a las propiedades de un objeto.
 
 Finalmente, cuando invocamos `imprimirDatos` y queremos enviar el objeto que nos pide como parámetro, simplemente se colocará entre llaves los atributos del mismo sin colocar un nombre de referencia como `data` tal como lo hicimos en la definición de la función.
-
 
 ### Código de la clase 
 

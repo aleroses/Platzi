@@ -14,11 +14,10 @@
     return total.toString();
   };
 
-  const total = (prices: number[]) => {
+  const total = (prices: number[]): void => {
     const rta = calculate(prices);
     console.log(`The total is: ${rta}`);
   };
 
-  const rta = calculate([1, 2, 3]);
-  console.log(rta);
+  total([1, 2, 3]);
 })();
