@@ -32,7 +32,7 @@
   login({ email: 'aleroses@mail.com', password: 'cracker' });
 })();
 
-type Data = {
+/* type Data = {
   email: string;
   password: string;
 };
@@ -42,4 +42,4 @@ const login = (data: Data) => {
   console.log(email, password);
 };
 
-login({ email: 'test@test', password: '12131' });
+login({ email: 'test@test', password: '12131' }); */

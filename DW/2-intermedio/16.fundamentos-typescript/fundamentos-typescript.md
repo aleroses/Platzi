@@ -1670,7 +1670,6 @@ usersList.push({
 });
 ```
 
-
 ### Código de la clase 
 
 `src > 15-objs.ts`  
