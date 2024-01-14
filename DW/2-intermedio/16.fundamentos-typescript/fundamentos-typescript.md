@@ -1208,12 +1208,22 @@ Nota: Los nombres de los `type` deben estar en `PascalCase`. Otras notaciones pu
 - 🦄 Consola: `node dist/10-alias.ts` y `npx tsc --watch`
 - 🦄 Quokka: F1: Quokka.js: Start on Current File
 
+### Dato sobre typeof
 
-## 16. Null y Undefined  
+Podemos utilizar el operador `typeof` para obtener el tipo de otra variable en tiempo de compilación. Por ejemplo
+
+```tsx
+let y: string = 'hello';
+let z: typeof y = 'world';
+```
+
+Acá usamos el operador `typeof` para obtener el tipo de la variable `y` y asignarselo a la variable `z`. Esto significa que `z` será de tipo `string`.
+
+## **16.** Null y Undefined  
 
 Estos dos funcionan como dos tipos de datos, al igual que, por ejemplo, `string` o `number`.
 
-El tipo de dato`null` es para indicar un valor nulo y `undefined` para algo indefinido. Son tipos diferentes.
+El tipo de dato `null` es para indicar un valor nulo y `undefined` para algo indefinido. Son tipos diferentes.
 
 ### Null y Undefined como tipo Any
 
@@ -1240,10 +1250,10 @@ let myString: string | undefined = undefined;
 myString = "Hola TypeScript";
 ```
 
-
 ### Código de la clase 
 
 `src > 11-undefined-null.ts`  
+
 ```ts
 (() => {
   let my_null: null = null;
@@ -1286,14 +1296,34 @@ myString = "Hola TypeScript";
 - 🦄 Consola: `node dist/11-undefined-null.ts` y `npx tsc --watch`
 - 🦄 Quokka: F1: Quokka.js: Start on Current File
 
-## 17. Funciones
+### Dato: Nullish coalescing operator (??) VS logical OR operator (||)
+
+La gran diferencia entre estos dos es que el logical OR operator (`||`) toma como valores falsos a `0, NaN, strings vacíos ("", '', ``), false`, a demás de `null` y `undefined`, mientras que nullsh coalescing operator toma como valores falsos solamente a `null` y `undefined`.
+
+En el caso de las funciones se ejecuta la misma, realizan todos los cálculos que tienen que hacer, pero ambos operadores ?? y || únicamente se fijan en lo que retorna dichas funciones.  
+En el caso del ejemplo del profesor veo más factible utilizar nullish coalescing operator en vez de logical OR operator.
+
+```ts
+function hiV2(name: string | null) {
+  let hello = 'Hi!!! ';
+  hello += name?.toLowerCase() ?? 'nobody';
+}
+```
+
+Fuentes:
+
+- [Nullish coalescing operator (??)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Nullish_coalescing_operator)
+- [Logical OR operator (||)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Logical_OR)
+- [Tutorial](https://www.youtube.com/watch?v=UYjZ0MDUkn0)
+
+## **17.** Funciones
 
 Las **funciones** son nativas de JavaScript y esencialmente funcionan igual en TypeScript. Sin embargo, este último, con su sistema de tipado, nos ayudará a llevar a cabo una implementación más segura:
 
 - Podemos definir que los argumentos de la función tengan un determinado tipo de dato (o más de uno si se usa Union Types):
 
 ```ts
-type Sizes = 's' | 'M' | 'L' | 'XL'; //Alias y Tipos Literales
+type Sizes = 'S' | 'M' | 'L' | 'XL'; //Alias y Tipos Literales
 
 function createProductJson(
     title: string,
@@ -1413,7 +1443,7 @@ const createProductToJson2 = (
 - 🦄 Consola: `node dist/11-undefined-null.ts` y `npx tsc --watch`
 - 🦄 Quokka: F1: Quokka.js: Start on Current File
 
-## 18. Retorno de funciones
+## **18.** Retorno de funciones
 
 En TypeScript podemos especificar el tipo de dato del valor que nos retornará una función o indicar si no se devolverá dato alguno:
 
