@@ -1672,7 +1672,8 @@ usersList.push({
 
 ### Código de la clase 
 
-`src > 15-objs.ts`  
+`src > 15-objs.ts`
+
 ```ts
 (() => {
   type Sizes = "S" | "M" | "L" | "XL";
@@ -1707,8 +1708,20 @@ usersList.push({
 - 🦄 Consola: `node dist/15-objs.ts` y `npx tsc --watch`
 - 🦄 Quokka: F1: Quokka.js: Start on Current File
 
+### interface
 
-## 21. Módulos: import y export
+Si es que se quieran agregar más tipos y llevar un mejor orden, es preferible usar `interfaces` para poder extenderlas.
+
+```ts
+interface Product {
+  title: string;
+  createdAt: Date;
+  stock: number;
+  size?: Sizes;
+}
+```
+
+## **21.** Módulos: import y export
 
 Nuestro código puede ser dividido en varios **módulos** (archivos), por lo que para poder usar las funciones o variables que existen en uno y queramos acceder desde otro, utilizamos `import` y `export`.
 
@@ -1747,10 +1760,10 @@ Finalmente, las funciones o variables que queramos utilizar desde otro archivo s
 
 Si es un módulo **TypeScript** lo que estamos importando, es importante que en la **ruta** de los **import** figure la **extensión `.ts`** de dicho archivo. Si es un archivo JavaScript, colocar la **extensión `.js`** es **opcional**.
 
-
 ### Código de la clase 
 
-Creamos la siguiente estructura:  
+Creamos la siguiente estructura: 
+
 ```bash
 ╰─ tree -L 3
 .
@@ -1764,7 +1777,8 @@ Creamos la siguiente estructura:
     └── product.service.ts 
 ```
 
-`src > products > product.model.ts`  
+`src > products > product.model.ts`
+
 ```ts
 export type Sizes = "S" | "M" | "L" | "XL";
 export type Product = {
@@ -1775,7 +1789,8 @@ export type Product = {
 };
 ```
 
-`src > products > product.service.ts`  
+`src > products > product.service.ts`
+
 ```ts
 import { Product } from "./product.model";
 
@@ -1795,7 +1810,8 @@ export const calc_stock = (): number => {
 };
 ```
 
-`src > products > main.ts`  
+`src > products > main.ts`
+
 ```ts
 import { products, add_product, calc_stock } from "./product.service";
 
@@ -1845,7 +1861,7 @@ En caso de llegar a cambiar el nombre de alguna variable o función, te darás c
 1. Clic derecho sobre la palabra a cambiar y seleccionar `Rename Symbol`, se abrirá una ventana donde debes escribir el nuevo nombre y luego dar enter. 
 2. Selecciona la palabra a cambiar y presiona F2, se te abrirá la misma ventana anterior, escribe el nuevo nombre y da enter. 
 
-## 22. Usando librerías que soportan TypeScript
+## **22.** Usando librerías que soportan TypeScript
 
 Las librerías que tienen soporte para TypeScript nos facilitan su uso, y más aún si usas editores de código que se integran bien con este “lenguaje”, pues brindan información muy útil como indicar:
 
@@ -1854,8 +1870,6 @@ Las librerías que tienen soporte para TypeScript nos facilitan su uso, y más a
 - El tipo de dato que retornará la función
 - Autocompletado al usar métodos de un módulo
 - Mejores prácticas
-
-
 
 ### Código de la clase 
 
