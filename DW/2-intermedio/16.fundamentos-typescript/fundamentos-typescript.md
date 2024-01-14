@@ -1533,16 +1533,16 @@ Nuestras funciones pueden recibir objetos como argumentos. En TypeScript tambié
 
 ```ts
 //TypeScript
-function imprimirDatos( data: { username: string, email: string } ): void {
-
-    console.log(`Tu nombre de usuario es ${data.username} y tu email es ${data.email}`)
-    
+function imprimirDatos(data: { username: string; email: string }): void {
+  console.log(
+    `Tu nombre de usuario es ${data.username} y tu email es ${data.email}`
+  );
 }
 
 imprimirDatos({
-      username: 'freddier',
-      email: 'freddy@email.com'
-})
+  username: 'freddier',
+  email: 'freddy@email.com',
+});
 ```
 
 En el ejemplo, el nombre `data` hace referencia al objeto que recibirá la función `imprimirDatos`. Por ello, para acceder al valor de `username` lo definimos en el `console.log` como `data.username` y para el `email` como `data.email`, pues así es como se accede a las propiedades de un objeto.
@@ -1551,7 +1551,8 @@ Finalmente, cuando invocamos `imprimirDatos` y queremos enviar el objeto que n
 
 ### Código de la clase 
 
-`src > 14-functions-objs.ts`  
+`src > 14-functions-objs.ts`
+
 ```ts
 (() => {
   const login = (data: { email: string; password: number }) => {
@@ -1580,22 +1581,63 @@ Finalmente, cuando invocamos `imprimirDatos` y queremos enviar el objeto que n
     created_at: new Date(),
     stock: 12,
   });
-	add_product({
+  
+  add_product({
     title: "Product 02",
     created_at: new Date(),
     stock: 13,
-		size: 'XL'
+	size: 'XL'
   });
 
 	console.log(products);
-	
 })();
 ```
 
 - 🦄 Consola: `node dist/14-functions-objs.ts` y `npx tsc --watch`
 - 🦄 Quokka: F1: Quokka.js: Start on Current File
 
-## 20. Objetos como tipos
+### Destructuring Objects en parametros con tipado
+
+```ts
+const login = ({ email, password }: { email: string; password: string }) => {
+  console.log(email, password);
+};
+
+login({ email: 'aleroses@mail.com', password: 'cracker' });
+```
+
+Otras formas:
+
+```ts
+// Forma 01
+type UserCredentials = {
+  email: string;
+  password: string;
+};
+
+const login = ({ email, password }: UserCredentials) => {
+  console.log(email, password);
+};
+
+login({ email: 'myemail@', password: 'mykey' });
+```
+
+```ts
+// Forma 02
+type Data = {
+  email: string;
+  password: string;
+};
+
+const login = (data: Data) => {
+  const { email, password } = data;
+  console.log(email, password);
+};
+
+login({ email: 'test@test', password: '12131' });
+```
+
+## **20.** Objetos como tipos
 
 En TypeScript también podemos usar los Alias para definir la estructura de tipado que debería tener un objeto:
 
