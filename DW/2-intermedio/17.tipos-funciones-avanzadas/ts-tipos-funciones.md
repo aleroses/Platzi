@@ -71,19 +71,30 @@ En la terminal, ejecutemos `npm init -y` dentro de la ruta de nuestro proyecto
 
 #### Instalación
 
-Lo instalaremos de forma local, es decir, solo para nuestro proyecto: `npm i typescript --save-dev`
+Lo instalaremos de forma local, es decir, solo para nuestro proyecto: 
+
+```bash
+npm i typescript --save-dev
+```
 
 #### Versión Descargada
 
 Podemos verificar la versión instalada de TypeScript:
 
-`npx tsc --version`
+```bash
+npx tsc --version
+```
 
 #### Configuración por defecto
 
 Inicialicemos TypeScript con una configuración básica:
 
-`npx tsc --init`
+```bash
+npx tsc --init
+
+# También
+npx tsc --init --target es2021
+```
 
 #### Ruta del Output
 
@@ -98,14 +109,17 @@ Configuremos la ruta en donde se guardarán nuestros archivos transpilados de Ty
 Para comprobar que esto funciona, vamos a crear una carpeta `src` y dentro generemos un archivo `demo.ts` con el siguiente código de ejemplo:
 
 ```ts
-type UserId = string | number; let userId: UserId;
+type UserId = string | number; 
+let userId: UserId;
 
 userId = 'string'; userId = 1; 
 ```
 
 #### Transpilación
 
-Ahora ejecutemos mediante la terminal el comando `npx tsc` para transpilar el código TypeScript. Automáticamente, se nos creará una carpeta `dist`: ![Indicamos que el output sea guardado en una carpeta llamada dist](https://static.platzi.com/media/articlases/Images/05-archivo-demo-ts-transpilado-a-codigo-javascript-curso-de-typescript-tipos-avanzados-y-funciones.png)
+Ahora ejecutemos mediante la terminal el comando `npx tsc` para transpilar el código TypeScript. Automáticamente, se nos creará una carpeta `dist`: 
+
+![Indicamos que el output sea guardado en una carpeta llamada dist](https://static.platzi.com/media/articlases/Images/05-archivo-demo-ts-transpilado-a-codigo-javascript-curso-de-typescript-tipos-avanzados-y-funciones.png)
 
 Es posible también transpilar de forma constante ante cualquier cambio que hagamos en nuestros archivos TypeScript:
 
@@ -119,7 +133,9 @@ Esta librería nos permite ejecutar directamente TypeScript en NodeJS. Con esto 
 
 Ejecutamos el siguiente comando:
 
-`npm install -D ts-node`
+```bash
+npm install -D ts-node
+```
 
 Antes de pasar a ejecutar nuestro código TypeScript con esta librería, agreguemos `console.log('Hoola!' + userId);` en nuestro archivo `demo.ts`:
 
@@ -135,12 +151,17 @@ console.log('Hoola!' + userId); // 👈
 
 Para ello, en la terminal digitamos `npx ts-node` seguido del nombre del archivo TypeScript a ejecutar o la ruta donde se encuentre dicho archivo dentro de un determinado proyecto:
 
-`npx ts-node src/demo.ts`
+```bash
+npx ts-node src/demo.ts
+```
 
 En nuestro caso, nuestro archivo `demo.ts` se encuentra dentro de la carpeta `src`.
 
 Coméntanos qué otras configuraciones realizas cuando trabajas con proyectos de TypeScript.
 
+### Dato 
+
+Puedes instalar la extensión **Quokka.js** luego pulsar **F1** después seleccionar **Start on Current File** o también de manera rápida puedes presionar CTRL + K y luego Q.
 
 ## Otros apuntes
 
