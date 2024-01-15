@@ -163,6 +163,47 @@ Coméntanos qué otras configuraciones realizas cuando trabajas con proyectos de
 
 Puedes instalar la extensión **Quokka.js** luego pulsar **F1** después seleccionar **Start on Current File** o también de manera rápida puedes presionar CTRL + K y luego Q.
 
+## **3.** Enums
+
+Un enum es un tipo de dato que nos permite **crear un set de opciones**. Estas opciones son almacenadas bajo una estructura llave-valor similar a un objeto.
+
+### Enums en TypeScript
+
+Veamos algunos aspectos de los _enums_ en TypeScript:
+
+- Los declaramos usando la palabra reservada `enum` seguido del nombre que tendrá este.
+- Entre llaves estarán los datos llave-valor.
+- Se recomienda que el nombre del `enum` y de las llaves dentro del mismo estén en mayúscula:
+
+```ts
+// ENUM enum ROLES { ADMIN = "admin", SELLER = "seller", CUSTOMER = "customer", }
+
+// TIPO DE DATO USER type User = { username: string; role: ROLES; }
+
+// CONSTANTE const nicoUser: User = { // `nicoUser` es del tipo de dato User username: 'nicobytes', role: ROLES.ADMIN // Le asignamos el rol ADMIN que es uno de los 3 roles disponibles } 
+```
+
+La ventaja que nos da esto es que disponemos de una lista de valores predeterminados que podemos asignar a una variable o a un atributo de la misma. Por tanto, no podemos asignar otro valor que no este dentro de las opciones que nos brinde el `enum`: ![Los posibles valores que puede tomar el atributo role (ADMIN, SELLER o CUSTOMER) en la constante nicoUser](https://static.platzi.com/media/articlases/Images/06-los-posibles-valores-que-puede-tomar-el-atributo-role-en-la-constante-nicouser-curso-de-typescript-tipos-avanzados-y-funciones.png)
+
+### Analizando una librería con enums
+
+[Capacitor](https://capacitorjs.com/) es una librería que nos ayuda a implementar aplicaciones multiplataformas. Realizaremos un pequeño análisis aparte de su código para observar cómo hacen empleo de los `enums` y cómo estos nos pueden ayudar en nuestros proyectos.
+
+Podemos realizar la instalación con el siguiente comando: `npm install @capacitor/camera`
+
+Ahora veamos el siguiente código que podemos implementar con dicha librería:
+```ts
+import { Camera, CameraResultType } from '@capacitor/camera';
+
+const takePicture = async () => { const image = await Camera.getPhoto({ quality: 90, allowEditing: true, resultType: CameraResultType.Uri }); }; 
+```
+
+Observamos que `CameraResultType` es un `enum` que restringe al atributo `resultType` a tener un valor dentro de las opciones del `enum`. En este caso, dicho atributo recibe el valor de la llave `Uri` del `enum`.
+
+En conclusión, un `enum` nos ayuda a no equivocarnos cuando asignemos valores a una variable reduciendo las posibilidades de asignación a una lista de opciones predefinidas.
+
+Coméntanos: ¿Qué casos de uso encontrarías ideal utilizar los enums?
+
 ## Otros apuntes
 
 [Notin](https://francocarrara.notion.site/Curso-de-TypeScript-Tipos-Avanzados-y-Funciones-19ee4d14e21a41558ac1e04c1fbff870)
