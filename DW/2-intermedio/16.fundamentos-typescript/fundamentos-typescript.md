@@ -1904,7 +1904,7 @@ node dist/16-data-fns.ts
 - [Instalación data-fns](https://date-fns.org/docs/Getting-Started#installation)
 - [Repo data-fns](https://github.com/date-fns/date-fns)
 
-## 23. Usando librerías que NO soportan TypeScript
+## **23.** Usando librerías que NO soportan TypeScript
 
 El ecosistema de TypeScript ha creado unos módulos para agregar manualmente el tipado a las librerías que no tienen soporte de tipos.
 
@@ -1981,7 +1981,7 @@ console.log(rta);
 }
 ```
 
-## 24. Toma el Curso de Tipos Avanzados y Funciones en TypeScript
+## **24.** Toma el Curso de Tipos Avanzados y Funciones en TypeScript
 
 TypeScript será el amigo que analizará el código por ti constantemente indicando cuáles líneas podrían ser vulnerables a tener errores.
 
@@ -1989,217 +1989,77 @@ En el [Curso de TypeScript: Tipos Avanzados y Funciones](https://platzi.com/cur
 
   
 ## Examen 📌
+
 <details>
 	<summary>Haz clic para ver los resultados 👀</summary>
 	<br/>
 
 1. Cuando hay librerías que no tiene  soporte a tipos por ejemplo en el caso de  lodash podemos agregar el soporte a tipos usando el comando...
 
-a
-
-npm i @ts/lodash --save-dev
-
-b 📌
-
-npm i @types/lodash --save-dev
-
-c
-
-npm i @lodash/types --save-dev
+	- 📌 `npm i @types/lodash --save-dev`
 
 2. ¿Cuál es el comando con el cual pueda habilitar el análisis de código de TypeScript en un archivo JavaScript?
 
-a
-
-@check-ts
-
-b
-
-@check-types
-
-c 📌
-
-@ts-check
+	- 📌 `@ts-check`
 
 3. ¿Cuál de estas formas es la manera correcta de definir un objeto como parámetros de una función?
 
-a
+	- 📌 
 
-function login( {email: string, password: string}: data) { console.log(data.email, data.password); }
-
-b
-
-function login(data: (email: string, password: string)) { console.log(data.email, data.password); }
-
-c 📌
-
-function login(data: {email: string, password: string}) { console.log(data.email, data.password); }
+	```ts
+	function login(data: {email: string, password: string}) { console.log(data.email, data.password); }
+	```
 
 4. ¿Cuál es la manera correcta de crear un propio tipo para definir los atributos de un Producto?
 
-a
+	- b 📌
 
-class Product = { title: string, createAt: Date, stock: number, shirtSize?: Sizes };
-
-b 📌
-
-type Product = { title: string, createAt: Date, stock: number, shirtSize?: Sizes };
-
-c
-
-new type Product = { title: string, createAt: Date, stock: number, shirtSize?: Sizes };
+	```ts
+	type Product = { title: string, createAt: Date, stock: number, shirtSize?: Sizes };
+	```
 
 5. Si se define esta variable  let myProductPrice = 100; ¿Cuál es el tipo que infiere TS?
 
-a
-
-Integer
-
-b 📌
-
-number
-
-c
-
-Number
-
-d
-
-int
+	- 📌 number
 
 6. ¿Cuál es la opción correcta para decirle al compilador de TS la versión de JavaScript a la cual debe transpilar?
 
-a
-
-npx tsc src/** --version es6
-
-b
-
-npx tsc src/** --es es6
-
-c 📌
-
-npx tsc src/** --target es6
-
-d
-
-npx tsc src/** --js es6
+	- 📌 `npx tsc src/** --target es6`
 
 7. Teniendo en cuenta este código: `type Sizes = 'S' | 'M' | 'L' | 'XL';  let shirtSize: Sizes; shirtSize = 'xxl';` ¿El valor asignado a  shirtSize es válido?
 
-a 📌
-
-FALSE
-
-b
-
-TRUE
+	- 📌 FALSE
 
 8. Teniendo en cuenta esta instrucción `const rta = 1 + '1';` ¿Cuál sería el tipo de dato que infiere TS de rta?
 
-a 📌
-
-string
-
-b
-
-undefined
-
-c
-
-number
+	- 📌 string
 
 9. ¿Cuál de las siguientes en la manera correcta de definir una parámetro opcional en una función?
 
-a
-
-function sum(a??: number) {}
-
-b
-
-function sum(a!: number) {}
-
-c 📌
-
-function sum(a?: number) {}
+	- 📌 `function sum(a?: number) {}`
 
 10. Una prueba práctica es definir una variable con un valor boolean de esta manera:  const myBoolean: Boolean = true;
 
-a 
-
-Si, esta perfecto.
-
-b 📌
-
-No, ya que se debe evitar el boolean con Mayúscula
+	- 📌 No, ya que se debe evitar el boolean con Mayúscula
 
 11. ¿Cuál sería la forma correcta de definir un array que solo soporte números y booleanos?
 
-a
-
-let mixed: [number | boolean ];
-
-b
-
-let mixed: (Number | Boolean )[];
-
-c 📌
-
-let mixed: (number | boolean )[];
+	- 📌 `let mixed: (number | boolean )[];`
 
 12. ¿Cuál es el tipado correcto para crear una variable que soporte strings y null?
 
-a
-
-let myName: (string ?? null) = null;
-
-b 📌
-
-let myName: (string | null) = null;
-
-c
-
-let myName: (string || null) = null;
+	- 📌 `let myName: (string | null) = null;`
 
 13. ¿Cuál es la forma correcta de definir un hexadecimal en TS?
 
-a
-
-let hex = 0bfff;
-
-b 📌
-
-let hex = 0xfff;
-
-c
-
-let hex = 0fff;
+	- 📌 let hex = 0xfff;
 
 14. Si quiero declarar una función que no tiene retorno ¿cuál de las siguientes palabras reservadas de TS usaría?
 
-a
-
-empty
-
-b 📌
-
-void
-
-c
-
-any
+	- 📌 void
 
 15. ¿Cuál sería la forma correcta de definir una variable que solo soporte números y strings?
 
-a 📌
+	- 📌 `let myVar: number | string;`
 
-let myVar: number | string;
-
-b
-
-let myVar: number ?? string;
-
-c
-
-let myVar: number & string;
 </details>
