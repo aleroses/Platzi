@@ -314,7 +314,11 @@ El _never type_ se usa para **funciones que nunca van a terminar o que detien
 En el siguiente código, TypeScript infiere que el tipo es `never`, ya que su ejecución será infinita. 
 
 ```ts
-const withoutEnd = () => { while (true) { console.log('Nunca parar de aprender'); } }
+const withoutEnd = () => { 
+  while (true) { 
+    console.log('Nunca parar de aprender'); 
+  }
+}
 ```
 
 ### Never vs. Void
@@ -344,11 +348,11 @@ Una función también puede ser del tipo `never` cuando tenemos un `throw` q
 
 ```ts
 const fail = (message: string) => { 
-// TypeScript infiere que esta función se de tipo `never` 
+// TypeScript infiere que esta función es de tipo `never` 
   throw new Error(message) 
 }
 
-const example = (input:unknown) => { 
+const example = (input: unknown) => { 
   if(typeof input === 'string'){ 
     return 'Es un string'; 
   } else if (Array.isArray(input)){ 
@@ -367,6 +371,115 @@ console.log(example(1212))
 // error: Uncaught Error: Not Match
 console.log(example('Hola después del fail')) 
 // NUNCA SE EJECUTA, porque se lanzó un error previamente 
+```
+
+## **7.** Parámetros opcionales y nullish-coalescing
+
+Los **parámetros opcionales** son aquellos que **podemos obviar su envío** cuando mandamos datos en una función que requiere argumentos.
+
+El **_nullish-coalescing_** nos permite **evaluar si una variable está definida**, pero si esta es `null` o `undefined`, retorna un segundo valor diferente.
+
+### Parámetros opcionales en TypeScript
+
+Para denotar que un parámetro será opcional usamos el operador `?` al lado. Siempre debemos colocar los parámetros opcionales al final. 
+
+```ts
+const createProduct = (
+  id: string | number,
+  // Puede ser de tipo `string`o`number`.
+  isNew: boolean,
+  stock?: number
+  // PARÁMETRO OPCINAL.
+) => {
+  return {
+    // Retornamos un objeto con los valores pasados como parámetros.
+    id,
+    stock,
+    isNew,
+  };
+};
+
+console.log(createProduct(1, true));
+// { id: 1, stock: undefined, isNew: true }
+```
+
+#### Valores por defecto con el operador OR
+
+Para evitar tener como retorno valores `undefined` podríamos emplear el operador lógico `||` (OR) para asignar un valor por defecto.
+
+```ts
+const createProduct = (
+  id: string | number,
+  // Puede ser de tipo `string`o`number`.
+  isNew?: boolean,
+  // PARÁMETRO OPCINAL.
+  stock?: number
+  // PARÁMETRO OPCINAL.
+) => {
+  return {
+    // Retornamos un objeto con los valores pasados como parámetros.
+    id,
+    stock: stock || 10,
+    isNew,
+  };
+};
+
+console.log(createProduct(1, true));
+// { id: 1, stock: undefined, isNew: true }
+```
+
+#### El problema de usar valores falsy en JavaScript
+
+El operador `||` evalúa si el primer valor es _falsy_, de serlo retorna un segundo valor, si no es **_falsy_** retorna el primero. Los valores que son considerados _falsy_ en JavaScript son:
+
+- String vacío `“”`
+- Número `0`
+- El valor booleano `false`
+
+Aquí surge un problema: si nosotros deseáramos mandar como argumento un valor que JavaScript considera _falsy_, entonces el operador `||` no tomará en cuenta nuestros valores y los cambiará por los de defecto:
+
+```ts
+const createProduct = ( id: string | number, 
+  // Puede ser de tipo `string`o`number`. 
+  isNew?: boolean, 
+  // PARÁMETRO OPCINAL. 
+  stock?: number, 
+  // PARÁMETRO OPCINAL. 
+  ) => { 
+  return { 
+  // Retornamos un objeto con los valores pasados como parámetros. 
+    id, 
+    stock: stock || 10, 
+    isNew: isNew || true 
+  }
+}
+
+console.log( createProduct(1, false, 0) ) // { id: 1, stock: 10, isNew: true } // 👆 JavaScript retorna los valores por defecto de `isNew` y `stock` // y no los que mandamos en los argumentos. 
+```
+
+Este problema podemos solucionarlo con el _nullish-coalescing._
+
+### Nullish-coalescing para asignar valores por defecto
+
+El _nullish-coalescin_g se representa con el operador `??`. Esto evalúa si el primer valor está definido, si no lo está, retorna el segundo:
+
+```ts
+const createProduct = ( id: string | number, 
+// Puede ser de tipo `string`o`number`. 
+  isNew?: boolean, 
+  // PARÁMETRO OPCINAL. 
+  stock?: number, 
+  // PARÁMETRO OPCINAL. 
+  ) => { return { 
+  // Retornamos un objeto con los valores pasados como parámetros. 
+  id, 
+  stock: stock ?? 10, 
+  isNew: isNew ?? true 
+  }
+}
+
+console.log( createProduct(1, false, 0) ) 
+// { id: 1, stock: 0, isNew: false } 
 ```
 
 ## Otros apuntes

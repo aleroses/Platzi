@@ -22,3 +22,6 @@ console.log(example("Hola"));
 console.log(example([1, 1, 1]));
 console.log(example(1));
 console.log(example("Despues del fail"));
+// No se ejecuta
+
+
