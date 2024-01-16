@@ -425,7 +425,7 @@ const createProduct = (
 };
 
 console.log(createProduct(1, true));
-// { id: 1, stock: undefined, isNew: true }
+// { id: 1, stock: 10, isNew: true }
 ```
 
 #### El problema de usar valores falsy en JavaScript
@@ -439,7 +439,8 @@ El operador `||` evalúa si el primer valor es _falsy_, de serlo retorna un s
 Aquí surge un problema: si nosotros deseáramos mandar como argumento un valor que JavaScript considera _falsy_, entonces el operador `||` no tomará en cuenta nuestros valores y los cambiará por los de defecto:
 
 ```ts
-const createProduct = ( id: string | number, 
+const createProduct = ( 
+  id: string | number, 
   // Puede ser de tipo `string`o`number`. 
   isNew?: boolean, 
   // PARÁMETRO OPCINAL. 
@@ -454,7 +455,10 @@ const createProduct = ( id: string | number,
   }
 }
 
-console.log( createProduct(1, false, 0) ) // { id: 1, stock: 10, isNew: true } // 👆 JavaScript retorna los valores por defecto de `isNew` y `stock` // y no los que mandamos en los argumentos. 
+console.log( createProduct(1, false, 0) ) 
+// { id: 1, stock: 10, isNew: true } 
+// 👆 JavaScript retorna los valores por defecto de `isNew` y `stock` 
+// y no los que mandamos en los argumentos. 
 ```
 
 Este problema podemos solucionarlo con el _nullish-coalescing._
@@ -464,7 +468,8 @@ Este problema podemos solucionarlo con el _nullish-coalescing._
 El _nullish-coalescin_g se representa con el operador `??`. Esto evalúa si el primer valor está definido, si no lo está, retorna el segundo:
 
 ```ts
-const createProduct = ( id: string | number, 
+const createProduct = ( 
+  id: string | number, 
 // Puede ser de tipo `string`o`number`. 
   isNew?: boolean, 
   // PARÁMETRO OPCINAL. 
