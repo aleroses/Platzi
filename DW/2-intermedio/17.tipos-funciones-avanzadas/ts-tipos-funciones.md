@@ -487,6 +487,66 @@ console.log( createProduct(1, false, 0) )
 // { id: 1, stock: 0, isNew: false } 
 ```
 
+### Otra forma 
+
+```ts
+const createProduct2 = (
+  id: string | number, 
+  isNew: boolean = true, 
+  stock: number = 10) => ({
+    id,
+    isNew,
+    stock,
+})
+
+const p1 = createProduct2(1, true, 12)
+console.log(p1)
+const p2 = createProduct2(1)
+console.log(p2)
+const p3 = createProduct2(1, false, 0)
+console.log(p3)
+```
+
+Asignamos por defecto un valor al parámetro como en JS. En caso de que al momento de llamar la función, no pasemos el argumento, usará ese valor por defecto, de lo contrario, si tomará el valor del argumento.
+
+```ts
+{ id: 1, isNew: true, stock: 12 }
+{ id: 1, isNew: true, stock: 10 }
+{ id: 1, isNew: false, stock: 0 }
+```
+
+## **8.** Parámetros por **defecto**
+
+Los parámetros por defecto se usan para **predefinir valores** a los parámetros de una función **en caso de no especificar** un valor al invocarla.
+
+### Parámetros por defecto en TypeScript
+
+En TypeScript, usamos el signo `=` para definir el valor por defecto que cierto parámetro tendrá. Veamos un ejemplo:
+
+```ts
+// Definición de función 
+const createProduct = ( 
+  id: string | number, 
+  isNew: boolean = true, // 👀 
+  stock: number = 10, // 👀 
+  ) => { return { 
+  // Retornamos un objeto con los valores pasados como parámetros. 
+  id, 
+  stock, 
+  isNew 
+  }
+}
+
+// Impresión en consola 
+console.log( createProduct(1) ) 
+// { id: 1, stock: 10, isNew: true } `stock` y `isNew` por defecto
+
+console.log( createProduct(2, false) ) // { id: 1, stock: 10, isNew: false } `stock` por defecto
+
+console.log( createProduct(3, false, 50) ) // { id: 1, stock: 50, isNew: false } ```
+
+Podemos usar esto como alternativa al nullish-coalescing.
+
 ## Otros apuntes
 
 [Notin](https://francocarrara.notion.site/Curso-de-TypeScript-Tipos-Avanzados-y-Funciones-19ee4d14e21a41558ac1e04c1fbff870)
