@@ -5,8 +5,10 @@ const createProduct = (
 ) => {
   return {
     id,
-    isNew: stock || 10,
-    stock: stock || 10,
+    /* isNew: stock || 10,
+    stock: stock || 10, */
+    isNew: stock ?? 10, // Null or Undefined
+    stock: stock ?? 10, // Null or Undefined
   };
 };
 

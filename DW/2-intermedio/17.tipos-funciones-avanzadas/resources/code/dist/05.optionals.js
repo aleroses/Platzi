@@ -4,8 +4,10 @@ exports.createProduct = void 0;
 const createProduct = (id, isNew, stock) => {
     return {
         id,
-        isNew: stock || 10,
-        stock: stock || 10,
+        /* isNew: stock || 10,
+        stock: stock || 10, */
+        isNew: stock ?? 10, // Null or Undefined
+        stock: stock ?? 10, // Null or Undefined
     };
 };
 exports.createProduct = createProduct;
