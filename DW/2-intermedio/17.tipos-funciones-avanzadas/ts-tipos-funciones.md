@@ -866,13 +866,17 @@ function parseStr(input: unknown): unknown {
 
 const rptaStr = parseStr(['N','I','C','O']); 
 // Retorna un string 
-// Usaremos un método propio del tipo de dato "string" rtaStr.toLowerCase(); 
-// ✅ No necesitamos de la validación de datos para usar los métodos de este tipo de dato console.log('rptaStr', "['N','i','c','o'] =>",rptaStr);
+// Usaremos un método propio del tipo de dato "string"
+rtaStr.toLowerCase(); 
+// ✅ No necesitamos de la validación de datos para usar los métodos de este tipo de dato 
+console.log('rptaStr', "['N','i','c','o'] =>",rptaStr);
 
 const rptaArray = parseStr('Nico'); 
 // Retorna un string[] (un array de elementos de tipo string) 
-// Usaremos un método propio del tipo de dato "string[]" rtaArray.reverse(); 
-// ✅ No necesitamos de la validación de datos para usar los métodos de este tipo de dato console.log('rptaArray', 'Nico =>', rptaArray); 
+// Usaremos un método propio del tipo de dato "string[]"
+rtaArray.reverse(); 
+// ✅ No necesitamos de la validación de datos para usar los métodos de este tipo de dato 
+console.log('rptaArray', 'Nico =>', rptaArray); 
 ```
 
 Puesto que en las firmas adicionales (sobrecargas) de la función `parseStr` ya manejamos los tipos de datos `string` y `string[]`, el tipado tanto de los parámetros y como del retorno de la firma que contiene la lógica de la función puede ser del tipo `unknown` o `any`.
