@@ -881,6 +881,10 @@ console.log('rptaArray', 'Nico =>', rptaArray);
 
 Puesto que en las firmas adicionales (sobrecargas) de la función `parseStr` ya manejamos los tipos de datos `string` y `string[]`, el tipado tanto de los parámetros y como del retorno de la firma que contiene la lógica de la función puede ser del tipo `unknown` o `any`.
 
+## **12.** Interfaz 
+
+
+
 ## Otros apuntes
 
 [Notin](https://francocarrara.notion.site/Curso-de-TypeScript-Tipos-Avanzados-y-Funciones-19ee4d14e21a41558ac1e04c1fbff870)
