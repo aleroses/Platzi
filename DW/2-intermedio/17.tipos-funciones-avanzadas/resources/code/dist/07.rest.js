@@ -13,6 +13,8 @@ const checkAdminRoles = () => {
     return false;
 };
 exports.checkAdminRoles = checkAdminRoles;
+const rta = checkAdminRoles();
+console.log(rta);
 const checkRole = (role1, role2) => {
     if (currentUser.role === role1) {
         return true;
@@ -22,26 +24,22 @@ const checkRole = (role1, role2) => {
     }
     return false;
 };
-/* const checkRoleV2 = (roles: string[]): boolean => {
-  if (roles.includes(currentUser.role)) {
-    return true;
-  }
-
-  return false;
+const rta2 = checkRole(_01_enum_1.ROLES.ADMIN, _01_enum_1.ROLES.SELLER);
+console.log(rta2);
+const checkRoleV2 = (roles) => {
+    if (roles.includes(currentUser.role)) {
+        return true;
+    }
+    return false;
 };
-
-const rta = checkAdminRoles();
-const rta2 = checkRole(
-  ROLES.CUSTOMER,
-  ROLES.SELLER
-);
 const rta3 = checkRoleV2([
-  ROLES.CUSTOMER,
-  ROLES.SELLER,
+    _01_enum_1.ROLES.ADMIN,
+    _01_enum_1.ROLES.SELLER,
+    _01_enum_1.ROLES.CUSTOMER,
 ]);
-
-console.log({ rta, rta2, rta3 }); */
+console.log({ rta, rta2, rta3 });
 const checkRoleV3 = (...roles) => {
     return roles.includes(currentUser.role);
 };
-const rta4 = checkRoleV3(_01_enum_1.ROLES.CUSTOMER, _01_enum_1.ROLES.SELLER);
+const rta4 = checkRoleV3(_01_enum_1.ROLES.ADMIN, _01_enum_1.ROLES.CUSTOMER, _01_enum_1.ROLES.SELLER);
+console.log({ rta4 });
