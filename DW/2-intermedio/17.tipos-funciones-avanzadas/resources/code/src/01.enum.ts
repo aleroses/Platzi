@@ -10,8 +10,8 @@ type User = {
 };
 
 const userOne: User = {
-	username: 'Ale Roses',
-	role: ROLES.ADMIN
-}
+  username: "Ale Roses",
+  role: ROLES.ADMIN,
+};
 
-
+export { ROLES, User, userOne };

@@ -532,8 +532,8 @@ const createProduct = (
   ) => { return { 
   // Retornamos un objeto con los valores pasados como parámetros. 
   id, 
+  isNew,
   stock, 
-  isNew 
   }
 }
 
@@ -541,11 +541,52 @@ const createProduct = (
 console.log( createProduct(1) ) 
 // { id: 1, stock: 10, isNew: true } `stock` y `isNew` por defecto
 
-console.log( createProduct(2, false) ) // { id: 1, stock: 10, isNew: false } `stock` por defecto
+console.log( createProduct(2, false) ) 
+// { id: 1, stock: 10, isNew: false } `stock` por defecto
 
-console.log( createProduct(3, false, 50) ) // { id: 1, stock: 50, isNew: false } ```
+console.log( createProduct(3, false, 50) ) 
+// { id: 1, stock: 50, isNew: false } 
+```
 
 Podemos usar esto como alternativa al nullish-coalescing.
+
+## **9.** Parámetros rest
+
+En JavaScript, los parámetros rest nos **permiten enviar la cantidad de parámetros que queramos** a una función. Se denotan con `...` seguido del nombre con el cual identificaremos a estos parámetros:
+
+```ts
+// JavaScript 
+function sum(...args){ 
+// `...args` -> Parámetros rest 
+const suma = args.reduce((acumulador, num) => acumulador + num, 0) return suma }
+
+console.log(sum(1,2)) 
+// 5 
+console.log(sum(1,2,3,4,5)) 
+// 15 
+console.log(sum(1,2,3,4,5,6,7,8,9,10)) 
+// 55 
+```
+
+### Parámetros rest en TypeScript
+
+En TypeScript, lo único que cambia es el tipado de los parámetros.
+
+```ts
+// TypeScript 
+function sum(...args: number[]){ 
+// `...args` -> Parámetros rest 
+const suma = args.reduce((acumulador, num) => acumulador + num, 0) return suma }
+
+console.log(sum(1,2)) 
+// 5 
+console.log(sum(1,2,3,4,5)) 
+// 15 
+console.log(sum(1,2,3,4,5,6,7,8,9,10)) 
+// 55 
+```
+
+El nombre de los parámetros rest pueden ser el que queramos: `...args`, `...params`, `...props`, etc.
 
 ## Otros apuntes
 
