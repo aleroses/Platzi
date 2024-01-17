@@ -741,6 +741,142 @@ rtaStr.toLowerCase();
 console.log('rtaStr', "['N','i','c','o'] =>",rtaStr); 
 ```
 
+## **11.** Sobrecarga de funciones: la solución
+
+Cuando el tipado del **retorno de una función puede ser más de un tipo de dato** (por ejemplo, que el retorno pueda ser `string`, `number` o `boolean`), TypeScript en primera instancia no permite utilizar los métodos propios de un tipo de dato específico a menos que se realice una **validación de tipos previamente**.
+
+### Retorno de funciones con más de un tipo de dato
+
+Supongamos que tenemos una función que puede recibir como parámetro un valor de tipo `string` o `string[]` (un array con elementos de tipo `string`) y retorne lo inverso, osea un `string[]` si se envía un `string` o un `string` si manda un `string[]`:
+
+```ts
+// Nico => [N,i,c,o] || Entrada: string => Salida: string[] 
+// [N,i,c,o] => Nico || Entrada: string[] => Salida: string
+
+function parseStr(
+  input: string | string[]
+  ): string | string[] {   
+    if (Array.isArray(input)) {     
+      return input.join(''); // string   
+    } else {     
+      return input.split(''); // string[]   
+  }
+} 
+```
+
+Invoquemos a la función y guardemos su retorno en una variable:
+
+```ts
+// Nico => [N,i,c,o] || Entrada: string => Salida: string[] 
+// [N,i,c,o] => Nico || Entrada: string[] => Salida: string
+
+function parseStr(
+  input: string | string[]
+  ): string | string[] {   
+    if (Array.isArray(input)) {     
+      return input.join(''); // string   
+    } else {     
+      return input.split(''); // string[]   
+    }
+}
+
+// 👇 
+const rptaStr = parseStr(['N','I','C','O']); 
+// Retorna un string 
+console.log('rptaStr', "['N','i','c','o'] =>", rptaStr);
+```
+
+Como podemos notar a `rptaStr` se le es asignado un valor de tipo `string` el cual es el tipado del retorno de la función en este caso. Sin embargo, si intentamos aplicar un método propio de los `string` como por ejemplo `toLowerCase` (convierte a minúscula los caracteres), TypeScript nos marcará error:
+
+```ts
+// Nico => [N,i,c,o] || Entrada: string => Salida: string[] 
+// [N,i,c,o] => Nico || Entrada: string[] => Salida: string
+
+function parseStr(
+  input: string | string[]
+  ): string | string[] {   
+    if (Array.isArray(input)) {     
+      return input.join(''); // string   
+    } else {     
+      return input.split(''); // string[]   
+    }
+}
+
+const rptaStr = parseStr(['N','I','C','O']); 
+// Retorna un string 
+rptaStr.toLowerCase(); 
+// ⛔ Error 
+console.log('rptaStr', "['N','i','c','o'] =>", rptaStr); 
+```
+
+### Validación de tipos
+
+Ante el problema mostrado anteriormente, podríamos validar el tipo de dato del retorno de la función antes de utilizar el método correspondiente a dicho tipo:
+
+```ts
+// Nico => [N,i,c,o] || Entrada: string => Salida: string[] 
+// [N,i,c,o] => Nico || Entrada: string[] => Salida: string
+
+function parseStr(
+  input: string | string[]
+  ): string | string[] {   
+    if (Array.isArray(input)) {     
+      return input.join(''); // string   
+    } else {     
+      return input.split(''); // string[]   
+    }
+}
+
+const rptaStr = parseStr(['N','I','C','O']); 
+// Retorna un string
+
+// Validación de tipos 
+if (typeof rtaStr === 'string') { 
+// 👈   
+rtaStr.toLowerCase(); 
+// ✅ Ya podemos utilizar los métodos sin problemas }
+
+console.log('rptaStr', "['N','i','c','o'] =>", rptaStr); 
+```
+
+### Sobrecarga de funciones en TypeScript
+
+La sobrecarga de funciones nos permite definir varias declaraciones de una función con el mismo nombre que puedan recibir diferentes parámetros y/o con diferente tipado. A estas declaraciones se les suelen llamar firmas y la última firma en declarar es la que tendrá la implementación de la función, mientras las otras se quedarán solo declaradas sin código dentro.
+
+#### Sobrecarga de funciones en vez de la validación de tipos
+
+Podemos usar esta característica presente en TypeScript para ahorrarnos la validación de tipos, como por ejemplo en el problema que hemos visto más arriba con la función `parseStr`:
+
+```ts
+// Nico => [N,i,c,o] || Entrada: string => Salida: string[] 
+// [N,i,c,o] => Nico || Entrada: string[] => Salida: string
+
+// Sobrecarga de funciones 👇 
+function parseStr(input: string): string[]; // 👀 
+function parseStr(input: string[]): string; // 👀
+
+function parseStr(input: unknown): unknown { 
+// Función principal   
+  if (Array.isArray(input)) {     
+    return input.join(''); // string   
+  } else {     
+    return input.split(''); // string[]   
+  }
+}
+
+const rptaStr = parseStr(['N','I','C','O']); 
+// Retorna un string 
+// Usaremos un método propio del tipo de dato "string" rtaStr.toLowerCase(); 
+// ✅ No necesitamos de la validación de datos para usar los métodos de este tipo de dato console.log('rptaStr', "['N','i','c','o'] =>",rptaStr);
+
+const rptaArray = parseStr('Nico'); 
+// Retorna un string[] (un array de elementos de tipo string) 
+// Usaremos un método propio del tipo de dato "string[]" rtaArray.reverse(); 
+// ✅ No necesitamos de la validación de datos para usar los métodos de este tipo de dato console.log('rptaArray', 'Nico =>', rptaArray); 
+```
+
+Puesto que en las firmas adicionales (sobrecargas) de la función `parseStr` ya manejamos los tipos de datos `string` y `string[]`, el tipado tanto de los parámetros y como del retorno de la firma que contiene la lógica de la función puede ser del tipo `unknown` o `any`.
+
 ## Otros apuntes
 
 [Notin](https://francocarrara.notion.site/Curso-de-TypeScript-Tipos-Avanzados-y-Funciones-19ee4d14e21a41558ac1e04c1fbff870)
