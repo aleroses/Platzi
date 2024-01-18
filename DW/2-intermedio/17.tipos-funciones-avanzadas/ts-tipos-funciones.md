@@ -958,7 +958,166 @@ interface HeroInterface extends HumanInterface {
 }
 ```
 
-## **13.** 
+## **13.** Estructuras complejas
+
+En TypeScript, **puedes combinar** los enums, types e interfaces de varias formas para **crear estructuras** de datos **complejas** y precisas.
+
+### Enums en interfaces
+
+Podríamos asociar el tipado de una de las propiedades de un `interface` con un `enum`:
+
+```ts
+enum Color {
+  Negro,
+  Blanco,
+  Morado,
+}
+
+interface FiguraGeometrica {
+  nombre: string;
+  color: Color;
+}
+
+const rectangulo: FiguraGeometrica = {
+  nombre: "rectángulo",
+  color: Color.Morado,
+}; 
+```
+
+### Types en Interfaces
+
+En los atributos de un `interface` podríamos usar un `type` para dar un tipado customizable:
+
+```ts
+type Coordenadas = [number, number];
+
+interface Punto {
+  ubicacion: Coordenadas;
+  etiqueta: string;
+}
+
+const punto: Punto = {
+  ubicacion: [10, 5],
+  etiqueta: "Punto A",
+};
+```
+
+### Combinación de Enums y Types
+
+En TypeScript, también es posible juntar los _enums_ y _types_. Por ejemplo, podemos declarar un `type` que tenga la estructura de objeto en el que una de sus propiedades es un valor del set de opciones perteneciente a un `enum`:
+
+```ts
+enum Size {
+  Chico = "S",
+  Mediano = "M",
+  Grande = "L",
+}
+
+type Producto = {
+  name: string;
+  size: Size; // 👈 Enum
+};
+
+const camiseta: Producto = {
+  name: "Camiseta",
+  size: Size.Mediano,
+};
+```
+
+### Interfaces, enums y types juntos
+
+Es posible usar enums y types dentro de un `interface` para crear una sola estructura compleja para poder generar objetos con información más detallada y precisa:
+
+```ts
+enum TipoVehiculo {
+  Automóvil,
+  Motocicleta,
+}
+
+type Especificaciones = {
+  marca: string;
+  modelo: string;
+  año: number;
+};
+
+interface Vehiculo {
+  tipo: TipoVehiculo; // 👈 Enum
+  especificaciones: Especificaciones; // 👈 Type
+}
+
+// Objeto
+const vehiculo: Vehiculo = {
+  tipo: TipoVehiculo.Automóvil,
+  especificaciones: {
+    marca: "Toyota",
+    modelo: "Corolla",
+    año: 2020,
+  },
+};
+```
+
+Al combinar estas estructuras, tienes la capacidad de producir estructuras de datos más complejas y establecer tipos más detallados para tus objetos y variables. Esto da como resultado un código más claro, seguro y fácil de mantener.
+
+### Dato
+
+En algunos casos las clases pueden tener el mismo nombre que las interfaces. Por esa razón es recomendable nombrar a las interfaces con el **sufijo** `Interface`. Aquí un ejemplo:
+
+```ts
+class Person {
+  @code...
+}
+
+interface PersonInterface {
+  @code...
+}
+```
+
+Así evitamos esos posibles errores
+
+## **14.** Extender interfaces
+
+En TypeScript, la herencia en interfaces permite **crear una interfaz nueva basada en otra** interfaz existente, heredando sus propiedades y métodos.
+
+### Herencia de interfaces en TypeScript
+
+Utilizamos la palabra clave `extends` para aplicar la herencia en interfaces. Veamos un ejemplo:
+
+```ts
+interface Animal {
+  nombre: string;
+  comer(): void;
+}
+
+interface Mascota extends Animal {
+  // 👈 Herencia de interfaces
+  // Hereda la propiedad `nombre` y el método `comer()` de la interfaz `Animal`
+  jugar(): void;
+}
+
+class Perro implements Mascota {
+  nombre: string;
+
+  constructor(nombre: string) {
+    this.nombre = nombre;
+  }
+
+  comer() {
+    console.log(this.nombre + " está comiendo.");
+  }
+
+  jugar() {
+    console.log(this.nombre + " está jugando.");
+  }
+}
+
+const miPerro = new Perro("Firulais");
+miPerro.comer();
+// "Firulais está comiendo."
+miPerro.jugar();
+// "Firulais está jugando."
+```
+
+En el ejemplo, declaramos una `interface` llamada `Animal` con un atributo `nombre` y un método `comer()`. Después, implementamos otra llamada `Mascota` que extiende la interfaz `Animal` y agrega un nuevo método con el nombre `jugar()`. La clase `Perro` implementa la interfaz `Mascota`, por lo que no solo debe implementar el método `jugar()`, sino también el atributo `nombre` y el método `comer()` que fueron heredados de la interfaz `Animal` en la interfaz `Mascota`.
 
 ## Otros apuntes
 
