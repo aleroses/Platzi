@@ -883,7 +883,82 @@ Puesto que en las firmas adicionales (sobrecargas) de la función `parseStr` y
 
 ## **12.** Interfaz 
 
+Las interfaces nos permiten **crear moldes de objetos** con sus respectivas propiedades y tipado. Para generar interfaces usamos la palabra reservada `interface`.
 
+```ts
+interface Product { 
+  id: number | string; 
+  title: string; 
+  price: number; 
+  stock: number; 
+}
+```
+
+Si bien podemos hacerlo mismo con `type`:
+
+```ts
+type Product = { 
+  id: number | string; 
+  title: string; 
+  price: number; 
+  stock: number; 
+}
+```
+
+Existen algunas diferencias que hacen a `interface` una mejor opción para definir objetos.
+
+### Interfaces vs. Type
+
+Veamos la diferencia entre usar `interface` y `type`:
+
+- Utilizamos `type` para definir principalmente tipos primitivos o directos (declaraciones cortas y puntuales), mientras que con una `interface` definimos una estructura llave-valor de propiedades que describan lo que debe tener un objeto.
+
+```ts
+type Sizes = 'S' | 'M' | 'L' | 'XL';
+
+interface Product { 
+  id: number | string; 
+  title: string; 
+  price: number; stock: 
+  number; size?: 
+  Sizes; 
+}
+```
+
+- Los `interface` se pueden fácilmente extender (realizar herencia), mientras que con los `type` no. Esto los hace más escalables.
+
+### Otra explicación 
+
+Las interfaces funcionan muy similar a como lo hace `type`, pero en las interfaces solo aplica para los objetos.
+
+```ts
+type Size = "S" | "M" | "L";
+type User = {
+  id: string,
+  name: string
+}
+interface UserInterface {
+  id: string,
+  name: string  
+}
+```
+
+#### ¿Entonces, porque usar interfaces si puedo usar `type`?
+
+La razón es sencilla, con las interfaces podemos heredar otras interfaces, y con los `type` no podemos hacer eso.
+
+```ts
+interface HumanInterface {
+  name: string,
+  lastName: string
+}
+
+interface HeroInterface extends HumanInterface {
+  superPower: string
+}
+```
+
+## **13.** 
 
 ## Otros apuntes
 
