@@ -1121,33 +1121,34 @@ En el ejemplo, declaramos una `interface` llamada `Animal` con un atributo 
 
 ### Dato: Configuración path
 
-Para no poner la ruta relativa en el `import` podemos activar la configuración path del `tsconfig.json` y asignarle alias a las carpetas.  
-.  
-Aquí un ejmplo:  
+Para no poner la ruta relativa en el `import` podemos activar la configuración path del `tsconfig.json` y asignarle alias a las carpetas.
+
+Aquí un ejemplo:  
 `tsconfig.json`
 
-```{
-	....
-	"paths": {
-					"@app/*": ["./src/app/*.ts"],
-      		"@categories/*": ["./src/app/categories/*"],
-      		"@products/*": ["./src/app/products/*"],
-      		"@users/*": ["./src/app/users/*"],
-     		  "@orders/*": ["./src/app/Orders/*"]
-  	 },
-	....
+```json
+{
+  ....
+  "paths": {
+    "@app/*": ["./src/app/*.ts"],
+    "@categories/*": ["./src/app/categories/*"],
+    "@products/*": ["./src/app/products/*"],
+    "@users/*": ["./src/app/users/*"],
+    "@orders/*": ["./src/app/Orders/*"]
+  },
+  ....
 }
 ```
 
 Con esa configuración pasamos de importar así:
 
-```
+```ts
 import { Category } from "./../categories/category.model"
 ```
 
 A importar así:
 
-```
+```ts
 import { Category } from "@categories/category.model"
 ```
 
