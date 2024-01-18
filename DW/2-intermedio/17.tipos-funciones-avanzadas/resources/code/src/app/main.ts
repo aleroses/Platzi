@@ -13,5 +13,3 @@ addProduct({
     updatedAt: new Date(),
   },
 });
-
-
