@@ -5,9 +5,12 @@ const product_service_1 = require("./products/product.service");
     id: "1",
     title: "p1",
     createdAt: new Date(),
+    updatedAt: new Date(),
     stock: 90,
     category: {
-        id: 12,
+        id: "12",
         name: "c1",
+        createdAt: new Date(),
+        updatedAt: new Date(),
     },
 });

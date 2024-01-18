@@ -1,7 +1,8 @@
-interface Category {
-  id: string | number;
+import { BaseModel } from "../base.model";
+
+interface Category extends BaseModel {
+  // id: string | number;
   name: string;
 }
 
 export { Category };
-

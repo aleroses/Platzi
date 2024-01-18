@@ -1119,6 +1119,42 @@ miPerro.jugar();
 
 En el ejemplo, declaramos una `interface` llamada `Animal` con un atributo `nombre` y un método `comer()`. Después, implementamos otra llamada `Mascota` que extiende la interfaz `Animal` y agrega un nuevo método con el nombre `jugar()`. La clase `Perro` implementa la interfaz `Mascota`, por lo que no solo debe implementar el método `jugar()`, sino también el atributo `nombre` y el método `comer()` que fueron heredados de la interfaz `Animal` en la interfaz `Mascota`.
 
+### Dato: Configuración path
+
+Para no poner la ruta relativa en el `import` podemos activar la configuración path del `tsconfig.json` y asignarle alias a las carpetas.  
+.  
+Aquí un ejmplo:  
+`tsconfig.json`
+
+```{
+	....
+	"paths": {
+					"@app/*": ["./src/app/*.ts"],
+      		"@categories/*": ["./src/app/categories/*"],
+      		"@products/*": ["./src/app/products/*"],
+      		"@users/*": ["./src/app/users/*"],
+     		  "@orders/*": ["./src/app/Orders/*"]
+  	 },
+	....
+}
+```
+
+Con esa configuración pasamos de importar así:
+
+```
+import { Category } from "./../categories/category.model"
+```
+
+A importar así:
+
+```
+import { Category } from "@categories/category.model"
+```
+
+
+
+
+
 ## Otros apuntes
 
 [Notin](https://francocarrara.notion.site/Curso-de-TypeScript-Tipos-Avanzados-y-Funciones-19ee4d14e21a41558ac1e04c1fbff870)
