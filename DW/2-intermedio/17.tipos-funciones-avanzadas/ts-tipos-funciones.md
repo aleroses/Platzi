@@ -1179,14 +1179,289 @@ class Persona {
 }
 
 const persona = new Persona("Freddy", 35);
-persona.saludar(); // ✅"Hola, mi nombre es Freddy y tengo 35 años."
+persona.saludar(); 
+// ✅"Hola, mi nombre es Freddy y tengo 35 años."
 
 persona.nombre = "Pepe";
 // ⛔Error: La propiedad 'nombre' solo se puede leer persona.edad = 42;
 // ⛔Error: La propiedad 'edad' solo se puede leer
 ```
 
+## **16.** Ejemplo de CRUD
 
+Implementaremos un pequeño programa básico que realice **operaciones CRUD en un conjunto de usuarios**. Este proyecto tocará varios conceptos importantes de TypeScript como enums, interfaces, clases, entre otros.
+
+Recuerda que necesitas tener Node.js instalado. Puedes descargarlo desde el sitio web oficial de [Node.js](https://nodejs.org/).
+
+### Configurando nuestro entorno de trabajo
+
+Haciendo empleo de la terminal y un editor de código (utilizaremos Visual Studio Code) realizaremos las configuraciones básicas para poder ejecutar de manera sencilla nuestro código en TypeScript: 
+
+1. Crea una carpeta para el proyecto 
+2. Abre la carpeta del proyecto en tu editor de código de preferencia. En esta ocasión usaremos Visual Studio Code y para abrirlo usando la consola, nos ubicamos en la ruta de la carpeta y ejecutamos lo siguiente:
+
+```bash
+code .
+```
+
+3. Generaremos 2 archivos con los nombres `.editorconfig` y `.gitignore` dentro de la carpeta de nuestro proyecto.
+4. Para autogenerar el código necesario en el archivo `.gitignore` nos dirigiremos a la web [gitignore.io](https://www.toptal.com/developers/gitignore). Como parámetros colocamos Windows, macOS, Node y Linux. Luego damos en el botón “Crear” o “Create” para generar el código.
+5. El código generado por esta página web lo copiaremos y lo pegaremos en nuestro archivo `.gitignore`
+6. En el archivo `.editorconfig` pega la siguiente configuración:
+
+```
+# Editor configuration, see https://editorconfig.org
+
+root = true [_] charset = utf-8 indent_style = space indent_size = 2 insert_final_newline = true trim_trailing_whitespace = true [_.ts] quote_type = single [*.md] max_line_length = off trim_trailing_whitespace = false> 
+```
+
+7. Ahora, empecemos con la configuración básica de Node. Ejecutamos lo siguiente en la ruta raíz de nuestra carpeta:
+
+```bash
+npm init -y
+```
+
+8. Instalemos TypeScript:
+
+```bash
+npm i typescript --save-dev
+```
+
+9. Generemos la configuración básica para TypeScript en nuestro proyecto:
+
+```bash
+npx tsc --init
+```
+
+10. Instalaremos la librería `ts-node` para ejecutar TypeScript directamente en Node:
+
+```bash
+npm install -D ts-node
+```
+
+11. En la ruta raíz del proyecto, crea un archivo `main.ts`. Este archivo tendrá la lógica de nuestro CRUD 
+12. Para ejecutar el proyecto, una vez implementado, ejecutamos el siguiente comando para probarlo en la consola:
+
+```bash
+npx ts-node main.ts
+```
+
+### Proyecto CRUD de usuarios
+
+Ahora sí, codifiquemos paso a paso este proyecto: 
+
+1. Nuestros usuarios pueden tener los siguientes roles, los cuales los definiremos con un `enum`:
+
+```ts
+// Enum para roles de usuario 
+enum UserRole {
+  Admin = "ADMIN",
+  User = "USER",
+}
+```
+
+2. Definimos qué estructura debería tener un usuario, para ello usaremos una interfaz:
+
+```ts
+// Interfaz para la estructura de los usuarios
+interface User {
+  id: number;
+  name: string;
+  email: string;
+  role: UserRole;
+  phoneNumber?: string; // Opcional
+}
+```
+
+3. Implementamos la clase que tendrá la funcionalidad CRUD y de la cual crearemos nuevos usuarios:
+
+```ts
+class UserCRUD {
+  private users: User[] = [];
+  // Lista de usuarios
+
+  // Crear
+  createUser(
+    id: number,
+    name: string,
+    email: string,
+    role: UserRole,
+    phoneNumber?: string
+  ): User {
+    const newUser: User = {
+      id,
+      name,
+      email,
+      role,
+      phoneNumber,
+    };
+    this.users.push(newUser);
+    return newUser;
+  }
+
+  // Leer
+  getUser(id: number): User | undefined {
+    return this.users.find(user => user.id === id);
+  }
+
+  // Actualizar
+  updateUser(
+    id: number,
+    fieldsToUpdate: Partial
+  ): User | "Usuario no encontrado" {
+    const user = this.users.find(
+      user => user.id === id
+    );
+
+    if (!user) return "Usuario no encontrado";
+
+    Object.assign(user, fieldsToUpdate);
+    return user;
+  }
+
+  // Borrar
+  deleteUser(
+    id: number
+  ): "Usuario eliminado" | "Usuario no encontrado" {
+    const index = this.users.findIndex(
+      user => user.id === id
+    );
+
+    if (index === -1)
+      return "Usuario no encontrado";
+
+    this.users.splice(index, 1);
+    return "Usuario eliminado";
+  }
+}
+```
+
+4. Finalmente, podemos hacer uso de nuestra clase `UserCRUD`:
+
+```ts
+// Uso de la clase UserCRUD const userCRUD = new UserCRUD();
+
+console.log(
+  "Usuario Creado:\n",
+  userCRUD.createUser(
+    1,
+    "Javier Paz",
+    "javier.paz@email.com",
+    UserRole.Admin,
+    "333-111-888"
+  )
+);
+console.log(
+  "Usuario Obtenido:\n",
+  userCRUD.getUser(1)
+);
+console.log(
+  "Usuario Actualizado:\n",
+  userCRUD.updateUser(1, { name: "Elena Díaz" })
+);
+console.log(userCRUD.deleteUser(1));
+```
+
+El código final sería el siguiente:
+
+```ts
+// Enum para roles de usuario
+enum UserRole {
+  Admin = "ADMIN",
+  User = "USER",
+}
+
+// Interfaz para la estructura de los usuarios
+interface User {
+  id: number;
+  name: string;
+  email: string;
+  role: UserRole;
+  phoneNumber?: string; // Opcional
+}
+
+class UserCRUD {
+  private users: User[] = []; // Lista de usuarios
+
+  // Crear
+  createUser(
+    id: number,
+    name: string,
+    email: string,
+    role: UserRole,
+    phoneNumber?: string
+  ): User {
+    const newUser: User = {
+      id,
+      name,
+      email,
+      role,
+      phoneNumber,
+    };
+    this.users.push(newUser);
+    return newUser;
+  }
+
+  // Leer
+  getUser(id: number): User | undefined {
+    return this.users.find(user => user.id === id);
+  }
+
+  // Actualizar
+  updateUser(
+    id: number,
+    fieldsToUpdate: Partial
+  ): User | "Usuario no encontrado" {
+    const user = this.users.find(
+      user => user.id === id
+    );
+
+    if (!user) return "Usuario no encontrado";
+
+    Object.assign(user, fieldsToUpdate);
+    return user;
+  }
+
+  // Borrar
+  deleteUser(
+    id: number
+  ): "Usuario eliminado" | "Usuario no encontrado" {
+    const index = this.users.findIndex(
+      user => user.id === id
+    );
+
+    if (index === -1)
+      return "Usuario no encontrado";
+
+    this.users.splice(index, 1);
+    return "Usuario eliminado";
+  }
+}
+
+// Uso de la clase UserCRUD
+const userCRUD = new UserCRUD();
+
+console.log(
+  "Usuario Creado:\n",
+  userCRUD.createUser(
+    1,
+    "Javier Paz",
+    "javier.paz@email.com",
+    UserRole.Admin,
+    "333-111-888"
+  )
+);
+console.log(
+  "Usuario Obtenido:\n",
+  userCRUD.getUser(1)
+);
+console.log(
+  "Usuario Actualizado:\n",
+  userCRUD.updateUser(1, { name: "Elena Díaz" })
+);
+
+console.log(userCRUD.deleteUser(1));
+```
 
 ## Otros apuntes
 
