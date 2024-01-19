@@ -1,4 +1,4 @@
-import { BaseModel } from "../base.model";
+/* import { BaseModel } from "../base.model";
 
 enum ROLES {
   ADMIN = "admin",
@@ -12,4 +12,6 @@ interface User extends BaseModel {
   role: ROLES;
 }
 
-export { ROLES, User };
+export { ROLES, User }; */
+
+

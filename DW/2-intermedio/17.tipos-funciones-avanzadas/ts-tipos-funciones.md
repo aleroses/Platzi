@@ -1212,7 +1212,13 @@ code .
 ```
 # Editor configuration, see https://editorconfig.org
 
-root = true [_] charset = utf-8 indent_style = space indent_size = 2 insert_final_newline = true trim_trailing_whitespace = true [_.ts] quote_type = single [*.md] max_line_length = off trim_trailing_whitespace = false> 
+root = true 
+
+[_] charset = utf-8 indent_style = space indent_size = 2 insert_final_newline = true trim_trailing_whitespace = true 
+
+[_.ts] quote_type = single 
+
+[*.md] max_line_length = off trim_trailing_whitespace = false> 
 ```
 
 7. Ahora, empecemos con la configuración básica de Node. Ejecutamos lo siguiente en la ruta raíz de nuestra carpeta:
@@ -1462,6 +1468,66 @@ console.log(
 
 console.log(userCRUD.deleteUser(1));
 ```
+
+## **17.** Omit y Pick Type
+
+Los tipos `Omit` y `Pick` en TypeScript son _utility types_ que te permiten **crear un nuevo tipo** basado en un tipo existente, pero **omitiendo o seleccionando** algunas de las propiedades del tipo original.
+
+### Omit en TypeScript
+
+Utilizamos la siguiente expresión para definir un `Omit`: `Omit<T, K>`. Con esto generamos un nuevo tipo que tiene todas las propiedades de `T` excepto las especificadas en `K`. Veamos ejemplo en código:
+
+```ts
+interface User {
+  id: number;
+  name: string;
+  email: string;
+  phoneNumber: string;
+}
+
+// Usando `Omit` para omitir ciertas propiedades de la interfaz User
+type UserWithoutContact = Omit; // 👈 Nuevo tipo
+
+// `UserWithoutContact` es ahora un tipo con las propiedades `id` y `name`, pero sin `email` ni `phoneNumber`.
+
+let user: UserWithoutContact = {
+  id: 1,
+  name: "Carlos Araujo",
+};
+
+console.log(user);
+// { id: 1, name: 'Carlos Araujo' }
+```
+
+En este caso, hemos usado `Omit` para excluir las propiedades `email` y `phoneNumber` de la interfaz `User`. Por lo tanto, el nuevo tipo `UserWithoutContact` solo tiene las propiedades `id` y `name`.
+
+### Pick en TypeScript
+
+Empleamos la siguiente expresión para definir un `Pick`: `Pick<T, K>`. Con esto producimos un nuevo tipo que solo tiene las propiedades de `T` que se especifican en `K`. Veamos ejemplo en código:
+
+```ts
+interface User {
+  id: number;
+  name: string;
+  email: string;
+  phoneNumber: string;
+}
+
+// Usando `Pick` para seleccionar ciertas propiedades de User
+type UserContactInfo = Pick;
+
+// `UserContactInfo` es ahora un tipo con solo las propiedades `email` y `phoneNumber`
+
+let contactInfo: UserContactInfo = {
+  email: "user@email.com",
+  phoneNumber: "653-951-802",
+};
+
+console.log(contactInfo);
+// { email: "user@email.com", phoneNumber: "653-951-802" }
+```
+
+En este caso, hemos empleado `Pick` para seleccionar las propiedades `email` y `phoneNumber` de la interfaz `User`. Por lo tanto, el nuevo tipo `UserContactInfo` solo tiene los atributos `email` y `phoneNumber`.
 
 ## Otros apuntes
 
