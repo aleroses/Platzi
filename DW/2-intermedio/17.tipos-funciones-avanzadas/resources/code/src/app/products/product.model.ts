@@ -18,4 +18,11 @@ interface Product extends BaseModel {
   tags: string[];
 }
 
+/* type CreateProductDto = Omit<
+  Product,
+  "id" | "createdAt" | "updatedAt" | "category"
+>; */
+
+
+
 export { Sizes, Product };
