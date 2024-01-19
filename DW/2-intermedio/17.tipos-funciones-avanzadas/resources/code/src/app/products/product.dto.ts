@@ -1,4 +1,4 @@
-/* import { Product } from "./product.model";
+import { Product } from "./product.model";
 
 interface CreateProductDto
   extends Omit<
@@ -13,6 +13,9 @@ type example = Pick<
   "color" | "description"
 >;
 
-export { CreateProductDto }; */
+interface UpdateProductDto
+  extends Partial<CreateProductDto> {}
 
+type example2 = Required<Product>;
 
+export { CreateProductDto, UpdateProductDto };
