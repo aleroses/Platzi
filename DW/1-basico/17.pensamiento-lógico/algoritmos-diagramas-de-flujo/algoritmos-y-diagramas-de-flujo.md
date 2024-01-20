@@ -89,14 +89,19 @@ Su enunciado nos dice:
 
 Este enunciado puede ser el más confuso, pero la propiedad en realidad es muy fácil de entender. La mejor forma es con un ejemplo. Digamos que tenemos la siguiente operación:
 
-8 * (4 + 15). 
-8 * 19. 152.
+```js
+8 * (4 + 15)
+8 * 19
+152
+```
 
 Lo que nos indica la propiedad, es que podemos realizar esa misma operación de la siguiente forma:
 
-(8 * 4) + (8 * 15). 
-32 + 120. 
-152.
+```js
+(8 * 4) + (8 * 15)
+32 + 120
+152
+```
 
 Dicho de otra forma, en este ejemplo concluimos que lo que nos indica el enunciado, es que multiplicar 8 por la suma de 4 + 15, es lo mismo que sumar las multiplicaciones de 8 * 4 y 8 * 15.
 
@@ -104,7 +109,7 @@ Dicho de otra forma, en este ejemplo concluimos que lo que nos indica el enuncia
 
 La propiedad de identidad es una propiedad matemática que se aplica a las operaciones de adición y multiplicación.
 
-La propiedad de identidad es una propiedad matemática que se aplica a las operaciones de adición y multiplicación.Esta propiedad tiene una particularidad, y es que se subdivide en 2 "sub-propiedades". Una para la suma y otra para multiplicación.
+La propiedad de identidad es una propiedad matemática que se aplica a las operaciones de adición y multiplicación. Esta propiedad tiene una particularidad, y es que se subdivide en 2 "sub-propiedades". Una para la suma y otra para multiplicación.
 
 #### Propiedad de identidad en la Suma
 
@@ -116,7 +121,9 @@ El enunciado de esta propiedad dice:
 
 En realidad esta propiedad la aplicamos sin darnos cuenta. En pocas palabras, nos dice que:
 
-4 + 0 = 4.
+```js
+4 + 0 = 4
+```
 
 Es decir, si sumamos un número con el 0, no cambia nada.
 
@@ -130,7 +137,9 @@ El enunciado de esta propiedad dice:
 
 Al igual que la anterior, la aplicamos sin darnos cuenta. Simplemente nos dice que:
 
-4 * 1 = 4.
+```js
+4 * 1 = 4
+```
 
 Dicho de otra forma, al multiplicar cualquier número con 1, nos dará como resultado ese mismo número.
 
@@ -138,6 +147,6 @@ Dicho de otra forma, al multiplicar cualquier número con 1, nos dará como resu
 
 Para que mejores tu lógica, te invito a que realices ejercicios con todas las propiedades que has aprendido hoy. Utiliza diferentes números, agrupaciones y cuéntanos en los comentarios como te fue, o si tienes cualquier duda.
 
-¡**Nunca** pares de aprender! 💚
-
 ¡Para que complementes la información vista en esta clase te invitamos a visitar el curso de [Fundamentos de Matemáticas](https://platzi.com/cursos/fundamentos-matematicas/)!
+
+## **3.** 
