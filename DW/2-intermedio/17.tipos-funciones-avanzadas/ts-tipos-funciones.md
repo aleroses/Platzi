@@ -1,7 +1,7 @@
 # Curso de TypeScript: Tipos Avanzados y Funciones
 
 > Inicio: `14-01-2024`  
-> Final: `-01-2024`  
+> Final: `19-01-2024`  
 
 ## **1.** ¿Ya tomaste el Curso de Fundamentos de TypeScript?
 

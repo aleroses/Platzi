@@ -1,6 +1,6 @@
-Curso Básico de Algoritmos y Pensamiento Lógico
+# Curso Básico de Algoritmos y Pensamiento Lógico
 
---- Ana Belisa Martínez ---
+> --- Ana Belisa Martínez ---
 
 1. La importancia de entrenar tu pensamiento lógico
 
