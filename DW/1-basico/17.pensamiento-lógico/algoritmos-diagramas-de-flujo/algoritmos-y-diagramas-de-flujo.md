@@ -285,17 +285,22 @@ La **suma** y **resta** de **binarios** se ejecutan aplicando una serie de
 Para sumar números binarios se tienen que seguir las reglas proyectadas en la siguiente tabla:
 
 ```js
-| Reglas  | Resultados    | 
-| ------  | ------------- | 
-| 0 + 0 = | 0             | 
-| 0 + 1   | 1             | 
-| 1 + 0 = | 1             | 
-| 1 + 1 = | 0 y acarreo 1 |
+| Reglas | Resultados    | 
+| ------ | ------------- | 
+| 0 + 0  | 0             | 
+| 0 + 1  | 1             | 
+| 1 + 0  | 1             | 
+| 1 + 1  | 0 y acarreo 1 |
 ```
 
 Una vez se tienen claras estas reglas, se procede de la misma forma en la que se opera cuando se suman números del sistema decimal, es decir, se comienzan a operar los números de derecha a izquierda. Ejemplo:
 
-![suma-de-binarios.png](https://static.platzi.com/media/articlases/Images/suma-de-binarios.png)
+```js
+  1 1 0
++ 0 0 1
+---------
+  1 1 1
+```
 
 El resultado de sumar los números binarios 110 y 001 es 111. Esto se debe a que las reglas nos dicen que 0 +1 = 1 y que 1 + 0 = 1.
 
@@ -303,6 +308,13 @@ El resultado de sumar los números binarios 110 y 001 es 111. Esto se debe a que
 
 Para rectar números binarios se tienen que seguir las reglas proyectadas en la siguiente tabla:
 
-| Reglas | Resultados | | --- | --- | | 0 - 0 = | 0 | | 0 - 1 = | 1 y acarreo 1 | | 1 - 0 = | 0 | | 1 - 1 = | 0 |
+```js
+| Reglas | Resultados    | 
+| ------ | ----------    | 
+| 0 - 0  | 0             | 
+| 0 - 1  | 1 y acarreo 1 | 
+| 1 - 0  | 0             | 
+| 1 - 1  | 0             |
+```
 
 En la resta de número binario, la resta 0 -1 se resuelve de forma a idéntica a como se resuelve en el sistema decimal. Esto concité en tomar una unidad del decimal que sigue: 0 - 1 = 1 y se acarrea 1.
