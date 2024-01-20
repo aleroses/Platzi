@@ -1595,6 +1595,97 @@ Hemos empleado `Required` para hacer que todas las propiedades de `User` sea
 
 ## **19.** Readonly Type
 
+El tipo `Readonly` en TypeScript es un _utility type_ que te permite **crear un nuevo tipo basado en un otro** existente, pero haciendo que todas las **propiedades** de ese tipo sean de **solo lectura**.
+
+### Readonly type en TypeScript
+
+Utilizamos la siguiente expresión para definir un `Readonly` type: `Readonly<T>`. Esto genera un nuevo tipo que tiene todas las propiedades de `T`, pero cada propiedad es de solo lectura, lo que significa que una vez que se asigna un valor a la propiedad, no puede ser cambiado. Veamos un ejemplo:
+
+```ts
+interface User {
+  id: number;
+  name: string;
+  email: string;
+}
+
+// Usando `Readonly` para hacer todas las propiedades de User de solo lectura
+type ReadonlyUser = Readonly<User>;
+
+// `ReadonlyUser` es ahora un tipo con todas las propiedades de `User`, pero cada una de ellas es de solo lectura.
+
+let readonlyUser: ReadonlyUser = {
+  id: 1,
+  name: 'Rosa López',
+  email: 'rosa@email.com'
+};
+
+console.log(readonlyUser); // { id: 1, name: 'Rosa López', email: 'rosa@email.com' }
+
+// Tratar de cambiar una propiedad lanzaría un error
+// readonlyUser.name = 'Jennifer Rodríguez'; // ⛔Error
+```
+
+Hemos usado `Readonly` para hacer que todas las propiedades de `User` sean de solo lectura. Por lo tanto, el nuevo tipo `ReadonlyUser` tiene las propiedades `id`, `name` y `email`, pero todas ellas son de solo lectura y no pueden ser cambiadas después de la asignación inicial.
+
+### Mas info
+
+### Readonly
+
+Con esta propiedad le decimos TypeScript que todos los parámetros solamente sean de lectura, por ende nos pueden ser mutados a lo largo de nuestro programa.
+
+### Sintaxis
+
+```tsx
+interface InterfaceName extends Readonly<Interface> {
+  statements
+}
+
+type TypeName = Readonly<TypeOrInterface>;
+```
+
+### Anidamiento de utility types
+
+Podemos utilizar el anidamiento para poder fusionar las distintas características de los diferentes utility types.
+
+```tsx
+interface InterfaceName extends UtilityType1<UtilityTypeN<Interface>> {
+  statements
+}
+```
+
+#### Ejemplo
+
+```tsx
+export interface FindProductDto extends Readonly<Partial<Product>> {
+  statements
+}
+```
+
+## **20.** Acceder al tipado por indice
+
+Acceder al tipado por índice se hace de una manera muy **similar** a la cual **accedemos a valores en arrays** dentro de JavaScript, **pero** en este caso, aplicado a una `interface`, `enum`, entre otros, para acceder al tipo de dato de una propiedad y que dicho tipado sea asignado en otra parte del código.
+
+### Acceso por índice en una interfaz en TypeScript
+
+Veamos un ejemplo de cómo podríamos acceder al tipado de la propiedad de una interfaz y utilizar este tipado en otra parte del código como en el parámetro en la definición de una función:
+
+```ts
+interface Human {
+  id: string;
+  name: string;
+  age: number;
+  isAlien: boolean;
+}
+
+function createHuman(name: Human["name"]) {
+  // code
+}
+```
+
+En este caso, el parámetro `id` en la función `createHuman` sería un `string`. La ventaja de esto es que si nosotros cambiáramos el tipo de dato de `id` a `number` en la interfaz `Human`, automáticamente el tipo de dato del parámetro `name` de la función `createHuman` sería `number` también, pues, el tipado se sincronizaría.
+
+## **21.** ReadonlyArray
+
 ## Otros apuntes
 
 [Notin](https://francocarrara.notion.site/Curso-de-TypeScript-Tipos-Avanzados-y-Funciones-19ee4d14e21a41558ac1e04c1fbff870)

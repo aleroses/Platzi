@@ -18,4 +18,12 @@ interface UpdateProductDto
 
 type example2 = Required<Product>;
 
-export { CreateProductDto, UpdateProductDto };
+interface FindProductDto extends Partial<Product> {
+  
+}
+
+export {
+  CreateProductDto,
+  UpdateProductDto,
+  FindProductDto,
+};

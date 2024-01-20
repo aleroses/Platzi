@@ -3,6 +3,7 @@ import {
   addProduct,
   products,
   updateProduct,
+  findProducts,
 } from "./products/product.service";
 
 for (let i = 0; i < 50; i++) {
@@ -39,3 +40,9 @@ const product = products[0];
   title: "New title",
   stock: 80,
 }); */
+
+/* findProducts({
+  stock: 10,
+  color: 'red',
+  createdAt: new Date()
+}) */

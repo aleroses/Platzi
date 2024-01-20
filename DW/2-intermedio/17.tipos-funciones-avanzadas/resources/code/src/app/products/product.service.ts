@@ -43,4 +43,13 @@ const updateProduct = (
   return products[index];
 };
 
-export { products, addProduct, updateProduct };
+const findProducts = (dto: Product): Product[] => {
+  return products;
+};
+
+export {
+  products,
+  addProduct,
+  updateProduct,
+  findProducts,
+};
