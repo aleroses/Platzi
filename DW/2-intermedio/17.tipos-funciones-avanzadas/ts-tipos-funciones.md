@@ -1735,6 +1735,105 @@ Enhorabuena por haber llegado al final del [Curso de TypeScript: Tipos Avanzado
   <summary>Haz clic para ver los resultados 👀👇</summary>
   <br/>
 
+1. ¿Es posible dentro de una interface tener elementos anidados?
 
+	- ✅ Verdadero
+
+2. Si tengo la siguiente interface:
+
+	```ts
+	interface Product { id: number; title: string, size?: Sizes; }
+	```
+	
+	Y quiero crear un nuevo tipo con todos los campos opcionales, ¿cuál sería el Utility Type apropiado?
+
+	- ✅ Partial
+
+3. Si tengo la siguiente interface:
+
+	```ts
+	interface Product { id: number; title: string, size?: Sizes; }
+	```
+
+	Y quiero crear un nuevo tipo con todos los campos obligatorios, ¿cuál sería el Utility Type apropiado?
+
+	- ✅ Required
+
+3. ¿Cuál de los siguientes tipos es una tupla?
+
+	- ✅
+
+	```ts
+	let user: [string, number];
+	```
+
+5. Las interfaces y los types cumplen la misma función, solo que las interfaces se pueden extender.
+
+	- ✅ Verdadero
+
+6. Si tienes el siguiente código:
+
+	```ts
+	const num = 0; const valB = num ?? "default";
+	```
+	
+	¿Cuál es el valor asignado a la variable valB?
+
+	- ✅ 0
+
+7. ¿Cuál es la manera correcta definir un atributo de solo lectura?
+
+	- ✅ 
+
+	```ts
+	export interface BaseModel { readonly id: string | number; readonly createdAt: Date; }
+	```
+
+8. Una de las ventajas del unknown type es que me permite el dinamismo de any, pero cuando quiero usar métodos me obliga a verificar el tipo con typeof
+
+	- ✅ Verdadero
+
+9. ¿Cuál es la manera correcta de extender de una interface?
+
+	- ✅ interface MyModel extends BaseModel {}
+
+10. ¿Cuál de los siguientes tipos me deja definir un conjunto de opciones?
+
+	- ✅ enum
+
+11. Si tengo la siguiente interface:
+
+	```ts
+	interface Product { id: number; title: string, size?: Sizes; }
+	```
+	
+	Y quiero crear un nuevo tipo eligiendo ciertos campos, ¿cuál sería el Utility Type apropiado?
+
+	- ✅ Pick
+
+12. ReadonlyArray previene que use métodos de los arrays que puedan crear mutaciones.
+
+	- ✅ Verdadero
+
+13. Si tengo la siguiente interface:
+
+	```ts
+	interface Product { id: number; title: string, size?: Sizes; }
+	```
+	
+	Y quiero crear un nuevo tipo omitiendo ciertos campos, ¿cuál sería el Utility Type apropiado?
+
+	- ✅ Omit
+
+14. Si quisiera diseñar una función que nunca terminará (un ciclo infinito, por ejemplo), ¿cuál tipo es el asociado?
+
+	- ✅ Never
+
+15. ¿Cuál es la manera correcta de definir un valor por defecto en una función?
+
+	- ✅
+	```ts
+	const myFunc = (a = 10) => a;
+	```
 
 </details>
