@@ -149,4 +149,118 @@ Para que mejores tu lógica, te invito a que realices ejercicios con todas las p
 
 ¡Para que complementes la información vista en esta clase te invitamos a visitar el curso de [Fundamentos de Matemáticas](https://platzi.com/cursos/fundamentos-matematicas/)!
 
-## **3.** 
+##  Quiz
+
+1. El orden de los factores NO altera el producto.
+	- Propiedad conmutativa
+2. El producto de cualquier número y 1 siempre da como resultado el mismo número
+	- Propiedad de identidad
+3. ¿Qué propiedad usarías para resolver el siguiente problema: `15 x (2 + 7)` ?
+	- Propiedad distributiva
+
+## **3.** ¿Qué es el sistema binario?
+
+El **sistema binario** es un sistema de numeración distinto al que conocemos, que es el decimal. A diferencia del sistema tradicional o decimal (que se compone por los números 0 - 1 - 2 - 3 - 4 - 5 - 6 - 7 - 8 - 9), el binario únicamente se compone por 1 - 0.
+
+```js
+// Sistema decimal
+0 1 2 3 4 5 6 7 8 9
+
+// Sistema binario
+1 0
+```
+
+### ¿Por qué es importante el sistema binario?
+
+Todas las computadoras (a excepción de las cuánticas), funcionan haciendo uso del sistema binario. Dentro de una computadora, el 1 representa una señal de corriente y el 0 la ausencia de la misma.
+
+Básicamente, el 1 y 0 funcionan como un verdadero y falso. Solo tenemos dos opciones, o hay corriente, o no hay. Por lo tanto, el sistema binario es suficiente para las computadoras.
+
+### ¿Cómo funcionaría en un ejemplo?
+
+A pesar de que el sistema binario solo tiene dos números, las computadoras juntan varios de estos para crear una secuencia. Por ejemplo:
+
+1011101
+
+En este caso, cada 1 representa una señal eléctrica y cada 0 representa cada vez que no hubo una señal eléctrica. A ese grupo de números, le llamamos secuencia. Podemos ver de mejor forma cómo se vería este proceso en un gráfico. 
+
+![senales electricas](https://static.platzi.com/media/articlases/Images/Screenshot%202022-08-07%20000606.jpg)
+
+## **4.** Conversión entre binario y decimal
+
+Los procesos de conversión entre binario y decimal, se hacen utilizando 2 de las [operaciones aritméticas](https://en.wikipedia.org/wiki/Operation_(mathematics)) más utilizadas en el día a día, estas son **multiplicación y división.**
+
+### ¿Como convertir un número decimal a binario?
+
+Para convertir un número **decimal** a **binario**, hay que realizar una serie de divisiones continuas entre 2 y escribir los distintos resultados de las divisiones en orden inverso al que se obtuvieron. Como se puede ver en la siguiente imagen.
+
+![Inkedconversion-de-decimal-a-binario.jpg](https://static.platzi.com/media/articlases/Images/Inkedconversion-de-decimal-a-binario.jpg)
+
+En el proceso de conversión, se debe coger el número decimal que se desea convertir y dividirlo hasta que el divisor (2), sea mayor al dividendo (El número que se desea dividir).
+
+### Convirtiendo un número binario en un número decimal
+
+Una de las formas en la que se puede convertir un número binario a un número decimal es a través de los siguientes pasos:
+
+En este ejemplo vamos a partir del mismo número con el que se hizo la conversión anterior, este es el **11100**. Recordemos que la representación de este número binario en el sistema decimal es el 28.
+
+1. Se cogen los decimales del número binario de derecha a izquierda, se colocan en forma vertical y cada dígito se multiplica x2.
+
+```js
+| Números | Operador | Multiplicador | 
+| --------| -------- | ------------- |
+| 0       | *        | 2             |
+| 0       | *        | 2             |
+| 1       | *        | 2             |
+| 1       | *        | 2             |
+| 1       | *        | 2             |
+```
+
+2. Cada una de las unidades del sistema binario será la potencia del 2 que le pertenece.
+
+```js
+| Números | Operador | Multiplicador | 
+| ------- | -------- | ------------- |
+| 0       | *        | 2 ^ 0         |
+| 0       | *        | 2 ^ 1         |
+| 1       | *        | 2 ^ 2         |
+| 1       | *        | 2 ^ 3         |
+| 1       | *        | 2 ^ 4         |
+```
+
+3. Se hacen las operaciones de las potencias.
+
+```js
+| Números | Operador | Multiplicador | OP |
+| ------- | -------- | ------------- | -- |
+| 0       | *        | 2 ^ 0         | 1  |
+| 0       | *        | 2 ^ 1         | 2  |
+| 1       | *        | 2 ^ 2         | 4  |
+| 1       | *        | 2 ^ 3         | 8  |
+| 1       | *        | 2 ^ 4         | 16 |
+```
+
+4. Los resultados de la potencia se multiplican por el decimal que lo compone
+
+```js
+| Números | Operador | Multiplicador | OP | Productos | 
+| ------- | -------- | ------------- | -- | --------- | 
+| 0       | *        | 2 ^ 0         | 1  | 0         | 
+| 0       | *        | 2 ^ 1         | 2  | 0         | 
+| 1       | *        | 2 ^ 2         | 4  | 4         | 
+| 1       | *        | 2 ^ 3         | 8  | 8         |
+| 1       | *        | 2 ^ 4         | 16 | 16        |
+```
+
+En este caso se están multiplicando las columnas, números y multiplicación.
+
+1. Se suman los productos de las multiplicaciones y el resultado es el número decimal equivalente al binario que se está convirtiendo.
+
+```js
+| Números | Operador | Multiplicador | OP | Productos| | --- | --- | --- | --- | --- | | 0 | * | 2^0 | 1 | 0 | 0 | * | 2^1 | 2 | 0 | 1 | * | 2^2 | 4 | 4 | 1 | * | 2^3 | 8 | 8 | 1 | * | 2^4 | 16 | 16 | | | | |**28**
+```
+
+
+### Reto de la clase
+
+Escoge dos números del sistema decimal y pásalos al sistema binario. Una vez logres hacerlo, escoge dos números del sistema binario y pásalos a decimal.
