@@ -1703,15 +1703,38 @@ Veamos cómo puedes utilizarlo con un ejemplo:
 ```ts
 let numbers: ReadonlyArray<number> = [30, 76, 21, 85, 42];
 
-console.log(numbers[3]); // ✅SÍ está permitido, imprime el valor 85
-console.log(numbers.length); // ✅SÍ está permitido, imprime 5 que es la longitud del array
+console.log(numbers[3]); 
+// ✅SÍ está permitido, imprime el valor 85
 
-//numbers[0] = 10; // ⛔NO permitido porque se intenta modificar un valor en el array
-//numbers.push(6); // ⛔NO permitido porque se intenta agregar un nuevo elemento en el array y con ello aumentar su longitud
+console.log(numbers.length); 
+// ✅SÍ está permitido, imprime 5 que es la longitud del array
+
+//numbers[0] = 10; 
+// ⛔NO permitido porque se intenta modificar un valor en el array
+//numbers.push(6); 
+// ⛔NO permitido porque se intenta agregar un nuevo elemento en el array y con ello aumentar su longitud
 ```
 
 El variable `numbers` es un array de números de solo lectura. Puedes leer los elementos del array y puedes consultar su longitud, pero no puedes modificar los elementos ni cambiar la longitud de este. Si intentas hacerlo, TypeScript lanzará un error en tiempo de compilación.
 
-## Otros apuntes
+## **22.** Toma el Curso de Programación Orientada a Objetos con TypeScript
+
+Enhorabuena por haber llegado al final del [Curso de TypeScript: Tipos Avanzados y Funciones](https://platzi.com/cursos/typescript-tipos-avanzados/). Has adquirido un aprendizaje sólido y avanzado en TypeScript.
+
+### ¿Qué aprender después?
+
+**Lo siguiente que puedes aprender** para profundizar tu conocimiento en TypeScript es sobre [Programación Orientada a Objetos y Asincronismo con TypeScript](https://platzi.com/cursos/typescript-poo/). ¡Nos vemos ahí platzinautas! 👩‍🚀👨‍🚀
+
+### Otros apuntes
 
 [Notin](https://francocarrara.notion.site/Curso-de-TypeScript-Tipos-Avanzados-y-Funciones-19ee4d14e21a41558ac1e04c1fbff870)
+
+## 🔥 Examen
+
+<details>
+  <summary>Haz clic para ver los resultados 👀👇</summary>
+  <br/>
+
+
+
+</details>
