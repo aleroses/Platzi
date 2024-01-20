@@ -1546,7 +1546,7 @@ interface User {
 }
 
 // Usando `Partial` para hacer todas las propiedades de User opcionales 
-type PartialUser = Partial;
+type PartialUser = Partial<User>;
 
 // `PartialUser` es ahora un tipo con todas las propiedades de `User`, pero cada una de ellas es opcional.
 
@@ -1575,7 +1575,7 @@ interface User {
 }
 
 // Usando `Required` para hacer todas las propiedades de User obligatorias
-type RequiredUser = Required;
+type RequiredUser = Required<User>;
 
 // `RequiredUser` es ahora un tipo con todas las propiedades de `User`, pero cada una de ellas es obligatoria.
 
@@ -1592,6 +1592,8 @@ console.log(requiredUser);
 ```
 
 Hemos empleado `Required` para hacer que todas las propiedades de `User` sean obligatorias. Por lo tanto, el nuevo tipo `RequiredUser` tiene las propiedades `id`, `name`, `email` y `phoneNumber`, pero todas ellas son obligatorias.
+
+## **19.** Readonly Type
 
 ## Otros apuntes
 

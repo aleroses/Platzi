@@ -128,7 +128,7 @@ Inicializamos un repositorio de Git en nuestro proyecto.
 - git init 
 - git status
 - git add .
-// Si quieres sacar los cambios de staging puedes usar cualquierda de estos dos comandos
+// Si quieres sacar los cambios de staging puedes usar cualquiera de estos dos comandos
 	- git rm --cached
 	- git reset HEAD
 - git commit -am "Mi primer commit"
