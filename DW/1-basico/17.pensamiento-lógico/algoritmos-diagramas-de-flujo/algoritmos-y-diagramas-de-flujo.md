@@ -30,13 +30,18 @@ Por ejemplo; 3 sumas, 3 multiplicaciones y 3 divisiones.
 
 ## **2.** Propiedades y orden de las operaciones
 
-Las propiedades matemáticas se usan para simplificar expresiones algebraicas. El tener un buen entendimiento de estas propiedades facilita la resolución de los problemas matemáticos. Dentro de las matemáticas existen 4 propiedades, estas son ([Propiedad conmutativa](https://en.wikipedia.org/wiki/Commutative_property), [Propiedad asociativa](https://en.wikipedia.org/wiki/Associative_property),[Propiedad distributiva](https://en.wikipedia.org/wiki/Distributive_property), [Propiedad de identidad](https://es.wikipedia.org/wiki/Identidad_(matem%C3%A1tica)))
+Las propiedades matemáticas se usan para simplificar expresiones algebraicas. El tener un buen entendimiento de estas propiedades facilita la resolución de los problemas matemáticos. Dentro de las matemáticas existen 4 propiedades, estas son:
 
-Las propiedades y el orden de las operaciones son reglas matemáticas que se utilizan para determinar cómo se deben realizar las operaciones en una expresión matemática. Las propiedades matemáticas se usan para simplificar expresiones algebraicas. El tener un buen entendimiento de estas propiedades facilita la resolución de los problemas matemáticos. Dentro de las matemáticas existen 4 propiedades, estas son: Propiedad conmutativa, Propiedad asociativa,Propiedad distributiva, Propiedad de identidad.
+- [Propiedad conmutativa](https://en.wikipedia.org/wiki/Commutative_property)
+- [Propiedad asociativa](https://en.wikipedia.org/wiki/Associative_property)
+- [Propiedad distributiva](https://en.wikipedia.org/wiki/Distributive_property)
+- [Propiedad de identidad](https://es.wikipedia.org/wiki/Identidad_(matem%C3%A1tica))
+
+Las propiedades y el orden de las operaciones son reglas matemáticas que se utilizan para determinar cómo se deben realizar las operaciones en una expresión matemática. Las propiedades matemáticas se usan para simplificar expresiones algebraicas. El tener un buen entendimiento de estas propiedades facilita la resolución de los problemas matemáticos. Dentro de las matemáticas existen 4 propiedades, estas son: Propiedad conmutativa, Propiedad asociativa, Propiedad distributiva y Propiedad de identidad.
 
 ### ¿Qué es la Propiedad Conmutativa?
 
-La propiedad conmutativa es una propiedad matemática que se aplica a las operaciones de adición y multiplicación.Esta propiedad nos enseña que en una suma o multiplicación, el orden de los factores o números, no altera el resultado.
+La propiedad conmutativa es una propiedad matemática que se aplica a las operaciones de adición y multiplicación. Esta propiedad nos enseña que en una suma o multiplicación, el orden de los factores o números, no altera el resultado.
 
 Su enunciado nos dice:
 
@@ -44,9 +49,11 @@ Su enunciado nos dice:
 
 Ejemplo de la Propiedad Conmutativa:
 
-9 + 7 = 16 7 + 9 = 16.
+```js
+9 + 7 = 16 👈👀 7 + 9 = 16
 
-8 * 5 = 40. 5 * 8 = 40.
+8 * 5 = 40 👈👀 5 * 8 = 40
+```
 
 En ambos ejemplos, vemos que aunque invirtamos los números, el resultado siempre será el mismo. Cabe destacar que esto aplicaría igualmente si fuesen más de dos números en la operación. No importa la cantidad.
 
@@ -58,13 +65,19 @@ Su enunciado nos dice:
 
 Debemos tomar en cuenta que en matemáticas llamamos agrupación a números dentro de un paréntesis. Por ejemplo, si fuese:
 
+```js
 (3 + 7) + 5
+```
 
 Los números agrupados son 3 y 7. Al estar agrupados, siempre se debe realizar primero la operación de dentro de los paréntesis y luego el resto. En este caso sumaríamos primero el 3 con el 7, y el resultado que es 10, se sumaría con el 5.
 
 Ahora que sabes esto, puedes entender que sin importar cómo agrupemos los números, siempre el resultado será el mismo siempre y cuando sea suma o multiplicación. Por ejemplo:
 
-3 * 2 * 5 = 30. (3 * 2) * 5 = 30. 3 * (2 * 5) = 30.
+```js
+3 * 2 * 5 = 30
+(3 * 2) * 5 = 30
+3 * (2 * 5) = 30
+```
 
 Es importante tomar en cuenta que esta propiedad también aplica a operaciones con muchos más números, no tienen que ser solo 3 necesariamente.
 
