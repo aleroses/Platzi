@@ -257,10 +257,21 @@ En este caso se están multiplicando las columnas, números y multiplicación.
 1. Se suman los productos de las multiplicaciones y el resultado es el número decimal equivalente al binario que se está convirtiendo.
 
 ```js
-| Números | Operador | Multiplicador | OP | Productos| | --- | --- | --- | --- | --- | | 0 | * | 2^0 | 1 | 0 | 0 | * | 2^1 | 2 | 0 | 1 | * | 2^2 | 4 | 4 | 1 | * | 2^3 | 8 | 8 | 1 | * | 2^4 | 16 | 16 | | | | |**28**
+| Números | Operador | Multiplicador | OP | Productos | 
+| ------- | -------- | ------------- | -- | --------- |
+| 0       | *        | 2 ^ 0         | 1  | 0         |
+| 0       | *        | 2 ^ 1         | 2  | 0         |
+| 1       | *        | 2 ^ 2         | 4  | 4         |
+| 1       | *        | 2 ^ 3         | 8  | 8         |
+| 1       | *        | 2 ^ 4         | 16 | 16        |
+|         |          |               |    | **28**    |
 ```
-
 
 ### Reto de la clase
 
 Escoge dos números del sistema decimal y pásalos al sistema binario. Una vez logres hacerlo, escoge dos números del sistema binario y pásalos a decimal.
+
+### Otra explicación 
+
+- [BINARIO. ¿Cómo pasar de decimal a binario y viceversa?](https://www.youtube.com/watch?v=bScw3CNb_fM)
+- [Sistemas numéricos: Binario, Decimal y Hexadecimal](https://www.youtube.com/watch?v=g9-MRBBcvdg)
