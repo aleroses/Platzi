@@ -435,4 +435,44 @@ Al final del proceso se obtuvo en él cociente el número 010100, por lo que el 
 
 	- 11
 
-## **7.** 
+## **7.** ¿Qué son las tablas de verdad?
+
+Las tablas de verdad son una herramienta que nos ayudan a determinar cuáles son las condiciones necesarias para que sea verdadero o válido un enunciado propuesto. Estas se usan como respaldo para tomar decisiones a partir de un resultado dado.
+
+### Conociendo los tipos de tablas de verdad
+
+Existen 3 tipos de tablas de verdad, estas son; **negación, conjunción y disyunción**, a continuación conoceremos más acerca de su funcionamiento.
+
+#### Tabla de verdad de negación
+
+Esta tabla se caracteriza por ser la más simple de todas, debido a que es la que menos actores tiene.
+
+La forma en la que esta funciona es devolviendo el valor opuesto de la proposición considerada, es decir; si una afirmación es verdadera, la negación de esta va a hacer falsa o viceversa, si se tiene que la condición es falsa al negarse se va a tener un resultado verdadero.
+
+|A  |-A |
+|---|---|
+|V  |F  |
+|F  |V  |
+
+#### Tabla de verdad de conjunción
+
+La conjunción se puede ver como la unión de dos valores. La forma en la que esta funciona es que algo es verdad cuando ambas partes involucradas son verdaderas y cuando las partes son diferentes, el resultado es falso.
+
+|A|B|A^B|
+|---|---|---|
+|V|V|V|
+|V|F|F|
+|F|V|F|
+|F|F|F|
+
+#### Tabla de verdad de disyunción
+
+En la disyunción algo será verdadero cuando por lo menos una de las proposiciones es verdadera, de lo contrario será falsa.
+
+|A|B|A∨B|
+|---|---|---|
+|V|V|V|
+|V|F|V|
+|F|V|V|
+|F|F|F|
+
