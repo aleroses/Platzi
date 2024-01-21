@@ -782,34 +782,98 @@ Nuestro diagrama de flujo va a estar compuesto por un elemento de inicio, un ele
 
 Este elemento es transcendental en nuestro diagrama debido a que marca en que parte comienza el proceso.
 
-1. ¿Estás en el cajero?
+2. ¿Estás en el cajero?
 
 Nuestro segundo elemento es un **elemento de toma de decisión**, este contiene la primera condición que se tiene que cumplir, para que podamos hacer una transacción en un cajero, esta es, estar en uno.
 
 Esta pregunta se puede resolver con un sí o un no, si la respuesta es no, la persona debe ir a un cajero, si la respuesta es sí, podemos seguir con el proceso.
 
-1. Ir a un cajero:
+3. Ir a un cajero:
 
 Cuando la respuesta al primer **elemento de decisión** sea negativa, se crea un **proceso** que nos envía al inicio del flujo, debido a que la condición que indica que la persona debe estar en un cajero es vital para realizar el proceso.
 
-1. Solicitar cantidad de dinero:
+4. Solicitar cantidad de dinero:
 
 Si la respuesta a la primera **toma de decisión** fue positiva, inicia un **proceso** donde debemos insertar o indicar la cantidad de dinero que se desea retirar.
 
-1. ¿Hay esa cantidad ?:
+5. ¿Hay esa cantidad?:
 
 Este es el segundo proceso de **toma de decisión**, debido a que el cajero debe validar que tiene disponible la cantidad de dinero que estamos solicitando.
 
 Si el cajero no cuenta con la cantidad solicitada, nos devuelve al **proceso** donde indicamos la cantidad a retirar, para que insertemos una cantidad válida. Si la respuesta a la pregunta es positiva, se inicia un proceso donde el cajero nos entregara la suma de dinero indicada.
 
-1. Depósito
+6. Depósito
 
 En este **proceso**, el cajero electrónico nos entrega la cantidad de dinero que solicitamos.
 
-1. Fin
+7. Fin
 
 Al igual que indicar el inicio, indicar el final, también es trascendental dentro de los diagramas de flujo, debido a que de esta manera los usuarios de nuestro diagrama de flujo, pueden saber, donde termina todo el proceso.
 
 Hemos construido un diagrama de flujo que representa el proceso que tenemos que hacer para retirar dinero de un cajero. En el proceso de construir este diagrama nos encontramos con que existen dos condiciones trascendentales para poder completar el proceso, la primera, es estar en un cajero y la segunda es que el cajero tenga fondos.
 
 Además, nos encontramos con que se puede crear un bucle entre el proceso de toma de decisión, donde el cajero válida si tiene los fondos solicitados, y el proceso donde como usuarios indicamos el monto a retirar.
+
+### Diagramando con Mermaid 
+
+```mermaid
+graph TD
+A((Inicio))
+B{Estás en el cajero?}
+C[Ir a un cajero]
+D[Solicitar cantidad de dinero]
+E{Hay esa cantidad?}
+F[Depósito]
+G((Fin))
+
+A --> B
+B -- No --> C
+C --> A
+B -- Sí --> D
+D --> E
+E -- No --> D
+E -- Sí --> F
+F --> G
+```
+
+## **15.** Reto 2: buscador de ciudades
+
+Vamos a crear un diagrama de flujo en el cual **evaluaremos que ciudades hacen parte de un país y cuáles no**. Este ejemplo nos llevará a comprender que en ocasiones es necesario que la persona que está creando el diagrama de flujo cree las condiciones para que el flujo nos lleve al resultado deseado.
+
+En este ejemplo, trabajaremos con 4 ciudades **(Bogotá, New York, París y Medellín)**. Vamos a llevar este ejemplo a un diagrama de flujo que nos permita validar, si estas ciudades pertenecen o no pertenecen a nuestro **país de ejemplo que será Colombia.**
+
+### Construyendo el diagrama de flujo del buscador de ciudades
+
+Nuestro diagrama de flujo va a estar compuesto por un elemento de inicio, un elemento de fin, un elemento de toma de decisión y 2 elementos de representación de proceso. A continuación, se mostrarán los pasos para construir nuestro diagrama de flujo.
+
+1. Elemento de inicio:
+
+Este elemento es transcendental en nuestro diagrama debido a que marca en que parte comienza el proceso.
+
+2. Proceso iterativo
+
+El primer elemento del diagrama de flujo, es un elemento que representa un proceso, este recibirás cada uno de los nombres de las ciudades que se quieren evaluar.
+
+3. ¿Está la ciudad en Colombia?
+
+El tercer elemento es un elemento de decisión, este tiene como función llevarnos a la respuesta de sí la ciudad está en Colombia o no, si la respuesta es negativa se finaliza todo el flujo, pero si la respuesta es positiva se sigue avanzando por el flujo.
+
+4. Sí es Colombia
+
+El cuarto elemento es de proceso, a este punto solo llegan las ciudades que son de Colombia. Este punto es muy importante debido a que cuando se esté creando el algoritmo aquí se puede ejecutar alguna acción, como por ejemplo mostrar un mensaje en pantalla confirmando que la ciudad si pertenece a Colombia.
+
+5. Fin
+
+Al igual que indicar el inicio, indicar el final, también es trascendental dentro de los diagramas de flujo, debido a que de esta manera los usuarios de nuestro diagrama de flujo, pueden saber, donde termina todo el proceso.
+
+Hemos construido un diagrama de flujo que representa el proceso donde se confirma si una ciudad pertenece a Colombia o no. **En este ejemplo, descubrimos que en ocasiones los flujos pueden finalizar, cuando una condición no se cumple.**
+
+You can render LaTeX mathematical expressions using [KaTeX](https://khan.github.io/KaTeX/):
+
+The *Gamma function* satisfying $\Gamma(n) = (n-1)!\quad\forall n\in\mathbb N$ is via the Euler integral
+
+$$
+\Gamma(z) = \int_0^\infty t^{z-1}e^{-t}dt\,.
+$$
+
+> You can find more information about **LaTeX** mathematical expressions [here](http://meta.math.stackexchange.com/questions/5020/mathjax-basic-tutorial-and-quick-reference).
