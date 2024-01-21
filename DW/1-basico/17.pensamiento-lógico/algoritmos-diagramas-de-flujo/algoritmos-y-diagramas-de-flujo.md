@@ -707,3 +707,49 @@ En este punto se deben crear los pasos que se van a necesitar para que el algori
 **Veamos un ejemplo siguiendo con la secuencia del algoritmo que estamos creando.**
 
 **¿Qué pasaría, si el paso uno del paso a paso no se cumple?**, Es decir, cuál va a hacer la respuesta de nuestro algoritmo cuando se encuentre que la luz no está apagada. La lógica que el algoritmo debería seguir en este punto es la de finalizar el proceso, debido a que no se necesita encender la luz.
+
+### Usando Mermaid 
+
+
+graph LR
+A(Inicio) --> B[¿Está la luz encendida?]
+B -- No --> C[Buscar interruptor]
+C --> D[Accionar interruptor]
+D --> E[¿Luz enciende?]
+E -- No --> F[Revisar si hay energía eléctrica]
+F --> G[Fin]
+E -- Sí --> G[Fin]
+B -- Sí --> G[Fin]
+
+
+```mermaid
+graph TD
+A((Inicio))
+B{¿Está la luz encendida?}
+C[Buscar interruptor]
+D[Accionar interruptor]
+E{¿Luz enciende?}
+F[Revisar si hay energía eléctrica]
+G[(Fin)]
+
+A --> B
+B -- No --> C
+C --> D
+D --> E
+E -- No --> F
+F --> G
+E -- Sí --> G
+B -- Sí --> G
+```
+
+
+Inicio
+¿Está la luz encendida? 
+Buscar interruptor 
+Accionar interruptor
+¿Luz enciende?
+Revisar si hay energía eléctrica
+Fin
+
+
+En las preguntas podrías añadir el símbolo de decisión al igual como se trabajaría con un diagrama de flujo?
