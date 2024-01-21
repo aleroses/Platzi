@@ -614,7 +614,7 @@ Las expresiones donde los operadores de comparación operan funcionan de la sigu
 
 El operador de comparación menor que <, **devuelve True si el primer valor es menor que el segundo valor**
 
-### Operador de comparación menor o igual que.
+### Operador de comparación menor o igual que
 
 El operador de comparación menor o igual que **devuelve True si el primer valor es menor o igual que el segundo valor.** Y está representada por el símbolo menor que seguido del símbolo de igualdad <=.
 
@@ -637,3 +637,34 @@ Este representado por los símbolos menor que y mayor que <>. **Este operador d
 ### Reto
 
 Toma distintos valores numéricos y utiliza los operadores de comparación, para comparar un lado A con un lado B. Realiza este proceso con cada uno de los operadores mencionados.
+
+## **11.** Reto 0: identifica los operadores
+
+Te invito a que encuentres casos de usos para los [operadores lógicos](https://platzi.com/clases/3221-pensamiento-logico/50677-operadores-logicos/) y de [comparación](https://platzi.com/clases/3221-pensamiento-logico/50679-operadores-de-comparacion/). Intenta resolver ejercicios usando números decimales o mejor aún, **busca casos de la vida cotidiana donde estos operadores estén presente**.
+
+### Ejemplos de casos de usos de los operadores lógicos y de comparación
+
+A continuación se mostrarán algunos ejemplos, donde se podrían usarse los distintos tipos de operadores.
+
+- Para ducharme, necesito agua **AND** jabón (**true**, puesto que ambos elementos son indispensables para ducharme. Si alguno de estos dos elementos no se encuentran presente, el resultado seria **False**, debido a que no se podría cumplir el objetivo).
+    
+- 7 < 10 **AND** 10 => 10 **AND** 12 > 6 (**true**, puesto que todas las condiciones devuelven un valor verdadero).
+    
+- 8 < 4 **OR** 31 <= 10 **OR** 5 > 6 (**false**, puesto que todas las condiciones devuelven un valor falso. Ninguna se cumple).
+    
+- 8 < 4 **XOR** 45 > 43 (**true**, puesto que se cumple una sola condición.).
+
+## Quiz: Operadores 
+
+1. Devuelve el valor opuesto de la proposición considerada.
+
+	- Negación
+2. Es verdadero cuando ambos enunciados son verdaderos.
+
+	- Conjunción
+3. Es verdadero cuando uno o ambos enunciados es verdadero.
+
+	- Disyunción
+
+## **12.** ¿Qué es un algoritmo? ¿Cómo resolver problemas con algoritmos?
+
