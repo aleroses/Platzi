@@ -868,12 +868,23 @@ Al igual que indicar el inicio, indicar el final, también es trascendental dent
 
 Hemos construido un diagrama de flujo que representa el proceso donde se confirma si una ciudad pertenece a Colombia o no. **En este ejemplo, descubrimos que en ocasiones los flujos pueden finalizar, cuando una condición no se cumple.**
 
-You can render LaTeX mathematical expressions using [KaTeX](https://khan.github.io/KaTeX/):
+### Diagramando con Mermaid
 
-The *Gamma function* satisfying $\Gamma(n) = (n-1)!\quad\forall n\in\mathbb N$ is via the Euler integral
+```mermaid
+graph TD
+A((Inicio))
+B[/Digite la ciudad \n a verificar/]
+C{Esta ciudad \n está en Colombia?}
+D{Quiere probar \n con otra ciudad?}
+E[Mensaje: Esta ciudad \n está en Colombia]
+F((Fin))
 
-$$
-\Gamma(z) = \int_0^\infty t^{z-1}e^{-t}dt\,.
-$$
+A --> B
+B --> C
+C -- No --> D
+C -- Sí --> E
+E --> D
+D -- Sí --> B
+D -- No --> F
+```
 
-> You can find more information about **LaTeX** mathematical expressions [here](http://meta.math.stackexchange.com/questions/5020/mathjax-basic-tutorial-and-quick-reference).
