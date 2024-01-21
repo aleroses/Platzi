@@ -313,8 +313,126 @@ Para rectar números binarios se tienen que seguir las reglas proyectadas en la 
 | ------ | ----------    | 
 | 0 - 0  | 0             | 
 | 0 - 1  | 1 y acarreo 1 | 
-| 1 - 0  | 0             | 
+| 1 - 0  | 1             | 
 | 1 - 1  | 0             |
 ```
 
-En la resta de número binario, la resta 0 -1 se resuelve de forma a idéntica a como se resuelve en el sistema decimal. Esto concité en tomar una unidad del decimal que sigue: 0 - 1 = 1 y se acarrea 1.
+En la resta de número binario, la resta 0 - 1 se resuelve de forma idéntica a como se resuelve en el sistema decimal. Esto concité en tomar una unidad del decimal que sigue: 0 - 1 = 1 y se acarrea 1.
+
+![Restar binarios](https://i.postimg.cc/9FxN0DR7/5-restar-binarios.png)
+
+- [Calculadora de binarios](https://es.planetcalc.com/911/)
+- [Sumas y Restas con Binarios](https://sites.google.com/a/educacion.navarra.es/tecnologia-y-tic/home/los-sistemas-de-numeracion-en-informatica/suma-y-resta-binaria)
+
+## **6.** Multiplicación y división de binarios
+
+La multiplicación de binarios se realiza teniendo en cuenta dos reglas, la primera regla dice. **Todo número multiplicado por cero es igual a cero y la segunda, que uno por uno, es igual a uno.**
+
+Las divisiones de números binarios se pueden realizar contestando la siguiente pregunta. **¿Es el divisor menor que el dividendo?**, si la respuesta es que no, se coloca un 0 en el cociente y se baja el siguiente dígito del dividendo. Si la respuesta es que si, se realiza una resta.
+
+### Multiplicación de números binarios
+
+La multiplicación en el sistema binario se puede hacer de la misma forma a la que se hace en el sistema decimal, esto consiste en multiplicar el **multiplicando** por cada uno de los dígitos del **multiplicador** y luego se realiza la suma de los productos.
+
+Al momento de ejecutar la operación, se debe seguir las siguientes reglas:
+
+```js
+| Reglas | Resultados | 
+| ------ | ---------- | 
+| 0 * 0  | 0          | 
+| 0 * 1  | 0          | 
+| 1 * 0  | 0          | 
+| 1 * 1  | 1          |
+```
+
+**Veamos un ejemplo en la siguiente imagen:**
+
+```js
+  1 1 0
+*   1 0
+--------
+  0 0 0
+1 1 0
+--------
+1 1 0 0
+
+
+| 512 | 256 | 128 | 64 | 32 | 16 | 8 | 4 | 2 | 1 |
+| --- | --- | --- | -- | -- | -- | - | - | - | - |
+| 0   | 0   | 0   | 0  | 0  | 0  | 1 | 1 | 0 | 0 |
+
+8 + 4 = 12
+```
+
+En el ejemplo proyectado en la imagen anterior, se realizó una multiplicación de binarios, entre el número 110 y 10, este dio como resultado el número 1100.
+
+### División de números binarios
+
+De las operaciones aritméticas, es en la división es donde encontramos la mayor variación o la mayor diferencia entre como se hace esta operación en el sistema decimal y como se hace en el sistema binario.
+
+**Veamos un ejemplo en la siguiente imagen para comprender esto de mejor manera:**
+
+```js
+     0 1 0 1 1
+   ------------
+10 | 1 0 1 1 0
+     1 0
+     -----
+     0 0 1 1
+         1 0
+         ----
+         0 1 0
+           1 0
+           ----
+           0 0 
+
+Dividendo 10110
+Divisor      10
+Cociente  1 0 1 1
+
+10 <= 1 = No = 0
+10 <= 10 = Si = 1
+10 <= 11 = Si = 1 
+
+| 512 | 256 | 128 | 64 | 32 | 16 | 8 | 4 | 2 | 1 |
+| --- | --- | --- | -- | -- | -- | - | - | - | - |
+| 0   | 0   | 0   | 0  | 0  | 0  | 1 | 0 | 1 | 1 |
+
+8 + 2 + 1 = 11
+```
+
+**El ejercicio proyectado en la imagen anterior se resolvió siguiendo los siguientes pasos:**
+
+1. Se identificó el dividendo y el divisor
+
+**Dividendo:** 10111 **divisor:** 0
+
+2. Se respondió a la pregunta, **¿Es el divisor menor o igual que el dividendo?**, cuando la respuesta fue que no, se colocó un 0 en el cociente y sé bajo el siguiente dígito del dividendo. Cuando la respuesta fue, que es mayor o que es igual, se realizó una resta.
+
+Este segundo paso se realizó de forma **iterativa** hasta terminar de bajar todos los números del **dividendo**.
+
+Al final del proceso se obtuvo en él cociente el número 010100, por lo que el resultado de dividir **10110 entre 10 es 1011**, esto se debe a que el primer cero que aparece en el cociente se ignora.
+
+## Quiz 
+
+1. Multiplica `111` por `101` en sistema binario.
+
+	- 100011
+
+2. ¿A cuál sistema de numeración pertenece el número 3?
+
+	- Al sistema decimal.
+
+3. Las operaciones matemáticas en sistema binario funcionan exactamente igual que en el sistema decimal.
+
+	- Falso
+
+4. Convierte el número 41 a sistema binario:
+
+	- 101001
+
+5. Divide 110 por 10 en sistema binario.
+
+	- 11
+
+## **7.** 
