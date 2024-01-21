@@ -668,3 +668,42 @@ A continuación se mostrarán algunos ejemplos, donde se podrían usarse los dis
 
 ## **12.** ¿Qué es un algoritmo? ¿Cómo resolver problemas con algoritmos?
 
+Un algoritmo es una serie de pasos definidos, que van secuencialmente y logran un objetivo de la mejor forma.
+
+### ¿Cómo construir un algoritmo?
+
+Para poder tener la mejor respuesta posible a esta pregunta, vamos a ir realizando un ejemplo en paralelo a darle respuesta a la pregunta. El ejemplo o el problema es el siguiente:
+
+**“Quiero encender la luz de la habitación donde estoy en este momento”.**
+
+Una forma efectiva para crear cualquier algoritmo es seguir los siguientes pasos **(Analizar el problema, crear un paso a paso y Buscar la forma de optimizar el algoritmo)**.
+
+### Analizando el problema
+
+Analizar el problema, nos lleva a entender el objetivo general del algoritmo y nos permite encontrar los recursos que se tienen disponibles y los que hay que crear.
+
+Al analizar nuestro reto, encontramos que hay una habitación, hay una luz que es posible encender y por último, tenemos que para poder encender la luz se necesita que esta esté apagada.
+
+**Después de haber hecho el análisis, tenemos como resultado que la luz está apagada, que estamos en una habitación que permite encenderla y el objetivo es encender la luz.**
+
+#### Construyendo el paso a paso que permitirá lograr el objetivo
+
+En este punto se debe organizar un poco más la idea, se debe buscar encontrar todos esos detalles que nos permitirán cumplir el objetivo.
+
+**Paso a paso de nuestro ejemplo:**
+
+1. Se necesita validar que la luz está apagada, esta es la condición base para poder encenderla.
+2. Identificar donde se va a encender la luz
+3. Presionar el elemento o hacer la acción que me permita encender la luz en ese momento.
+
+Una vez se establezca el paso a paso, **debemos hacernos una pregunta que permita determinar si hacer esos pasos de manera secuencial permitirán cumplir con el objetivo**. Si la respuesta es si, se puede continuar en el proceso, si la respuesta es no se debe volver analizar el problema.
+
+En el caso de nuestro ejemplo, si realizamos los tres pasos anteriores, podremos cumplir nuestro objetivo.
+
+#### Buscar la forma de optimizar el algoritmo
+
+En este punto se deben crear los pasos que se van a necesitar para que el algoritmo tenga respuesta a los distintos problemas que se pueden presentar. También se debe buscar la forma de llegar al objetivo consumiendo la menor cantidad de recursos posibles.
+
+**Veamos un ejemplo siguiendo con la secuencia del algoritmo que estamos creando.**
+
+**¿Qué pasaría, si el paso uno del paso a paso no se cumple?**, Es decir, cuál va a hacer la respuesta de nuestro algoritmo cuando se encuentre que la luz no está apagada. La lógica que el algoritmo debería seguir en este punto es la de finalizar el proceso, debido a que no se necesita encender la luz.
