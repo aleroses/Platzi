@@ -888,3 +888,38 @@ D -- Sí --> B
 D -- No --> F
 ```
 
+## **16.** Reto 3: login de usuarios
+
+Crearemos el diagrama de flujo de un login de usuario. **En este ejemplo se armará una secuencia lógica que tendrán que suceder para que el acceso a una cuenta de usuario sea correcto.**
+
+Nuestro diagrama de flujo va a estar compuesto por un elemento de inicio, un elemento de fin, dos elementos de toma de decisión y 3 elementos de representación de proceso. A continuación, se mostrarán los pasos para construir nuestro diagrama de flujo.
+
+### Elemento de inicio
+
+Este elemento es transcendental en nuestro diagrama debido a que marca en que parte comienza el proceso.
+
+### Ingresar usuario
+
+El primer elemento representa un proceso, en este se recibe el usuario que quiere acceder al sitio.
+
+### Ingresar contraseña
+
+En este elemento de proceso se recibe la contraseña correspondiente al usuario ingresado en el primer proceso.
+
+### ¿Ingreso los datos?
+
+Este elemento, es el primero de toma de decisión, aquí se busca validar que el usuario haya proporcionado los datos. Si la respuesta es negativa se devolverá al usuario al inicio del flujo, pero si la respuesta es positiva se procederá a validar la información.
+
+### Validación de usuario
+
+En este elemento de toma de decisión, se validan los datos que el usuario ingreso, si los datos coincide con la información existente, recibirá acceso a la plataforma, pero si los datos no son conocidos se devolverá al inicio del flujo.
+
+### Dar acceso
+
+El penúltimo elemento es un elemento de proceso, en este, sele da acceso al usuario a la plataforma, sitio o información que está buscando. A este punto solo se llega, después de haber validado, toda la información.
+
+### Fin
+
+Al igual que indicar el inicio, indicar el final, también es trascendental dentro de los diagramas de flujo, debido a que de esta manera los usuarios de nuestro diagrama de flujo, pueden saber, donde termina todo el proceso.
+
+Hemos construido un diagrama de flujo que representa el proceso de login de usuario. **En este ejemplo, tuvimos que tomar muchas decisiones que no estaban determinadas por la naturaleza del ejercicio, sino que nos tocó elegir que pasaría a nosotros.**
