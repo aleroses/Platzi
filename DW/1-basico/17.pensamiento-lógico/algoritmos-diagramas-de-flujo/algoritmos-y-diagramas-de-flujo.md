@@ -588,3 +588,52 @@ Como ejemplo de la multiplicación, podemos pensar en lo siguiente: Imaginemos q
 El operador aritmético de la división es la barra inclinada /. Este operador aritmético también tiene una ligera variación con respeto a su simbología debido a que nos acostumbramos a ver otro elemento que representa esta operación. **La función de este es dividir el primer número entre el segundo número.** Por ejemplo:
 
 Supongamos que tenemos el total de la compra de diez unidades de un producto y queremos saber cuanto nos costó cada producto. Para llegar a esa respuesta lo que se debe hacer es dividir el total de la compra entre las diez unidades comprada, el resultado de esta operación es el valor unitario.
+
+### Operador aritmético módulo 
+
+Se representa con “%”, este operador divide el primer número por el segundo y da como resultado la parte restante.
+
+```js
+  ---
+75|8
+72 9
+ 3 ---> MOD
+```
+
+## **10.** Operadores de comparación
+
+**Los operadores de comparación se utilizan para comparar valores.** Muestran true o false según si una comparación es verdadera o falsa. Estas comparaciones suceden entre dos partes, un lado A y un lado B.
+
+Las expresiones donde los operadores de comparación operan funcionan de la siguiente manera. El primer valor siempre está al lado izquierdo de la expresión, este se compara con un segundo valor que está al lado derecho de la expresión y en el centro de todo, se encuentra el operador de comparación, este último es el que coloca la regla.
+
+```js
+1 < 2
+```
+
+### Operador de comparación menor que
+
+El operador de comparación menor que <, **devuelve True si el primer valor es menor que el segundo valor**
+
+### Operador de comparación menor o igual que.
+
+El operador de comparación menor o igual que **devuelve True si el primer valor es menor o igual que el segundo valor.** Y está representada por el símbolo menor que seguido del símbolo de igualdad <=.
+
+### Operador de comparación mayor que
+
+**El Operador de comparación mayor que devuelve true si el primer valor es mayor que el segundo valor**. El símbolo que identifica a este operador es >.
+
+### Operador de comparación mayor o igual que
+
+**El Operador de comparación devuelve true si el primer valor es mayor o igual que el segundo valor**. Las comparaciones de tipo mayor o igual que, se representan con el símbolo mayor que, seguido del símbolo de igualdad >=.
+
+### Operador de comparación igual
+
+**El Operador de comparación devuelve True si el primer valor es igual que el segundo valor**. Está representado por el símbolo =.
+
+### Operador de comparación diferente de
+
+Este representado por los símbolos menor que y mayor que <>. **Este operador devuelve True si el primer valor no es igual que el segundo valor**.
+
+### Reto
+
+Toma distintos valores numéricos y utiliza los operadores de comparación, para comparar un lado A con un lado B. Realiza este proceso con cada uno de los operadores mencionados.
