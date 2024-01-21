@@ -730,22 +730,5 @@ E -- Sí --> G
 B -- Sí --> G
 ```
 
+[Probar Markdown + Mermaid](https://stackedit.io/app#)
 
-Inicio
-¿Está la luz encendida? 
-Buscar interruptor 
-Accionar interruptor
-¿Luz enciende?
-Revisar si hay energía eléctrica
-Fin
-
-```mermaid
-graph LR
-A[Square Rect] -- Link text --> B((Circle))
-A --> C(Round Rect)
-B --> D{Rhombus}
-C --> D
-```
-
-
-En las preguntas podrías añadir el símbolo de decisión al igual como se trabajaría con un diagrama de flujo?
