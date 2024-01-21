@@ -923,3 +923,33 @@ El penúltimo elemento es un elemento de proceso, en este, sele da acceso al usu
 Al igual que indicar el inicio, indicar el final, también es trascendental dentro de los diagramas de flujo, debido a que de esta manera los usuarios de nuestro diagrama de flujo, pueden saber, donde termina todo el proceso.
 
 Hemos construido un diagrama de flujo que representa el proceso de login de usuario. **En este ejemplo, tuvimos que tomar muchas decisiones que no estaban determinadas por la naturaleza del ejercicio, sino que nos tocó elegir que pasaría a nosotros.**
+
+### Diagramando con Mermaid
+
+```mermaid
+graph TD
+A((Inicio))
+B[/Ingresar nombre de \n usuario y contraseña/]
+C{Credenciales \n válidas?}
+D{Usuario \n bloqueado?}
+E[Mensaje: Acceso \n concedido]
+F[Mensaje: Credenciales \n inválidas]
+G[Mensaje: Usuario \n bloqueado]
+H{¿Desea \n crear una cuenta?}
+I[/Registrar correo \n y contraseña/]
+J((Fin))
+
+A --> B
+B --> C
+C -- Sí --> D
+D -- Sí --> G
+D -- No --> E
+G --> J
+E --> J
+C -- No --> F
+F --> H
+H -- Sí --> I
+H -- No --> J
+I --> B
+```
+
