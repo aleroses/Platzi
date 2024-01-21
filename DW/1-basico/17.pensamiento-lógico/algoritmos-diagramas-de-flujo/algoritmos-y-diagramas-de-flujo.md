@@ -713,7 +713,7 @@ En este punto se deben crear los pasos que se van a necesitar para que el algori
 ```mermaid
 graph TD
 A((Inicio))
-B{¿Está la luz encendida?}
+B{Está la luz encendida?}
 C[Buscar interruptor]
 D[Accionar interruptor]
 E{¿Luz enciende?}
