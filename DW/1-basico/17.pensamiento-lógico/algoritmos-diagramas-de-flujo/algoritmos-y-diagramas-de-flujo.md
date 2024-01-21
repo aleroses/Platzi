@@ -739,5 +739,13 @@ Accionar interruptor
 Revisar si hay energía eléctrica
 Fin
 
+```mermaid
+graph LR
+A[Square Rect] -- Link text --> B((Circle))
+A --> C(Round Rect)
+B --> D{Rhombus}
+C --> D
+```
+
 
 En las preguntas podrías añadir el símbolo de decisión al igual como se trabajaría con un diagrama de flujo?
