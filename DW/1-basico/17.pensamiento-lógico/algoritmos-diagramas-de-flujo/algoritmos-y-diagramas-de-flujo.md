@@ -716,7 +716,7 @@ A((Inicio))
 B{Está la luz encendida?}
 C[Buscar interruptor]
 D[Accionar interruptor]
-E{¿Luz enciende?}
+E{Luz enciende?}
 F[Revisar si hay energía eléctrica]
 G((Fin))
 
