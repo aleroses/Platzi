@@ -766,4 +766,50 @@ Es importante, que la figura de toma de decisión (Rombo) tenga dos casos, el ca
 
 **El conector, dentro de los diagramas de flujo, está representado por la figura de una flecha**, esta indica cuál es el inicio de un proceso y cuál es el final. Si este conector no está claramente especificado entre un símbolo y otro, no va a existir una conexión entre ellos, lo que llevaría a que el flujo se rompa.
 
-## ****
+## **14.** Reto 1: ¿hay dinero en el cajero electrónico?
+
+Con los elementos que componen un [diagrama de flujo](https://platzi.com/clases/3221-pensamiento-logico/50682-que-es-un-diagrama-de-flujo/), vamos a representar el proceso que nos permite retirar fondos de un cajero electrónico.
+
+### Identificar el proceso que se va a representar
+
+Identificar cuál de todos los proceso que están implicados en el problema a resolver o el [algoritmo](https://platzi.com/clases/3221-pensamiento-logico/50681-que-es-un-algoritmo-como-resolver-problemas-con-al/) a plantear, es el que se va a representar en el diagrama de flujo, nos permitirá tener un mayor nivel de detalle y esto a su vez nos llevará a encontrar posibles errores que estén presente dentro de nuestro flujo de trabajo.
+
+### Construyendo el diagrama de flujo de nuestro cajero electrónico
+
+Nuestro diagrama de flujo va a estar compuesto por un elemento de inicio, un elemento de fin, dos elementos de toma de decisión y 3 elementos de representación de proceso. Cada uno de estos elementos representa una parte vital del proceso. A continuación, se mostrarán los pasos para construir nuestro diagrama de flujo.
+
+1. Elemento de inicio:
+
+Este elemento es transcendental en nuestro diagrama debido a que marca en que parte comienza el proceso.
+
+1. ¿Estás en el cajero?
+
+Nuestro segundo elemento es un **elemento de toma de decisión**, este contiene la primera condición que se tiene que cumplir, para que podamos hacer una transacción en un cajero, esta es, estar en uno.
+
+Esta pregunta se puede resolver con un sí o un no, si la respuesta es no, la persona debe ir a un cajero, si la respuesta es sí, podemos seguir con el proceso.
+
+1. Ir a un cajero:
+
+Cuando la respuesta al primer **elemento de decisión** sea negativa, se crea un **proceso** que nos envía al inicio del flujo, debido a que la condición que indica que la persona debe estar en un cajero es vital para realizar el proceso.
+
+1. Solicitar cantidad de dinero:
+
+Si la respuesta a la primera **toma de decisión** fue positiva, inicia un **proceso** donde debemos insertar o indicar la cantidad de dinero que se desea retirar.
+
+1. ¿Hay esa cantidad ?:
+
+Este es el segundo proceso de **toma de decisión**, debido a que el cajero debe validar que tiene disponible la cantidad de dinero que estamos solicitando.
+
+Si el cajero no cuenta con la cantidad solicitada, nos devuelve al **proceso** donde indicamos la cantidad a retirar, para que insertemos una cantidad válida. Si la respuesta a la pregunta es positiva, se inicia un proceso donde el cajero nos entregara la suma de dinero indicada.
+
+1. Depósito
+
+En este **proceso**, el cajero electrónico nos entrega la cantidad de dinero que solicitamos.
+
+1. Fin
+
+Al igual que indicar el inicio, indicar el final, también es trascendental dentro de los diagramas de flujo, debido a que de esta manera los usuarios de nuestro diagrama de flujo, pueden saber, donde termina todo el proceso.
+
+Hemos construido un diagrama de flujo que representa el proceso que tenemos que hacer para retirar dinero de un cajero. En el proceso de construir este diagrama nos encontramos con que existen dos condiciones trascendentales para poder completar el proceso, la primera, es estar en un cajero y la segunda es que el cajero tenga fondos.
+
+Además, nos encontramos con que se puede crear un bucle entre el proceso de toma de decisión, donde el cajero válida si tiene los fondos solicitados, y el proceso donde como usuarios indicamos el monto a retirar.
