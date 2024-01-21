@@ -548,3 +548,43 @@ Imagínate que en un salón de clase hay dos marcadores, cada marcador lo tiene 
 ### Operador lógico Xor
 
 Este operador lógico **devuelve true si una de las dos expresiones es verdadera**, pero si ambas expresiones son verdaderas devuelve false.
+
+### Operadores lógicos relacionales 
+
+|🚀         |Python |C#  |C++ |C   |JS  |Java |VB.net |Dart |PHP |
+|------------|-------|----|----|----|----|-----|-------|-----|----|
+|Igualdad    |==     |==  |==  |==  |==  |==   |=      |==   |==  |
+|Desigualdad |!=     |!=  |!=  |!=  |!=  |!=   |<>     |!=   |!=  |
+|O           |or     |\|\||\|\||\|\||\|\||\|\| |Or     |\|\| |or  |
+|Y           |and    |&&  |&&  |&&  |&&  |&&   |And    |&&   |and |
+|Negación    |not    |!   |!   |!   |!   |!    |Not    |!    |!   |
+
+## **9.** Operadores aritméticos
+
+Los [operadores aritméticos](https://support.microsoft.com/es-es/office/tabla-de-operadores-e1bc04d5-8b76-429f-a252-e9223117d6bd#:~:text=Los%20operadores%20aritm%C3%A9ticos%20se%20usan,positivo%20a%20negativo%20o%20viceversa.&text=Suma%20dos%20n%C3%BAmeros.&text=Busca%20la%20diferencia%20entre%20dos,valor%20negativo%20de%20un%20n%C3%BAmero.&text=Multiplica%20dos%20n%C3%BAmeros.) son los símbolos que permiten identificar, cuáles son los procesos y cuáles son sus resultados. Estos por lo general se usan para realizar las operaciones aritméticas conocidas que implican el cálculo de valores, dentro de los básicos encontramos (suma +, resta -, multiplicación *, división /).
+
+Es importante comprender cuáles son los operadores aritméticos que mantienen dentro de la programación, los mismos símbolos que los representan en la vida cotidiana o en papel y cuáles cambian sus símbolos a la hora de representarlo en la programación.
+
+### Operador aritmético de la suma
+
+**El operador aritmético de la suma está representado por el símbolo más +. Este tiene como objetivo indicar la unión de dos valores**.
+
+Un ejemplo de uso de este operador, es cuando queremos saber cuanto dinero quedo en la caja del restaurante al final del día, para esto hay que agarrar el total de dinero de las ventas y adicionarles el total de dinero recolectado en las propinas.
+
+### Operador aritmético de la resta
+
+**El operador aritmético de la resta está representado por el símbolo menos -.** Este tiene como objetivo buscar la diferencia entre dos números
+
+Un ejemplo de esto, es cuando se quiere realizar un descuento sobre un precio total. Para lograr esto se toma el valor total del producto y se le resta la cantidad que se desea descontar.
+
+### Operador aritmético de la multiplicación
+
+**Este operador tiene como función multiplicar dos números.** La multiplicación está representada con el símbolo de asterisco *. Aquí surge una ligera variación entre el símbolo que estamos acostumbrados a ver en la vida cotidiana y el símbolo que la representa en la programación, debido a que es normal encontrar a la multiplicación representada con una x.
+
+Como ejemplo de la multiplicación, podemos pensar en lo siguiente: Imaginemos que tenemos diez unidades de un producto y queremos saber cuanto representan esas diez unidades en dinero, para cumplir este objetivo multiplicamos el precio del producto por las unidades que tenemos.
+
+### Operador aritmético de la división
+
+El operador aritmético de la división es la barra inclinada /. Este operador aritmético también tiene una ligera variación con respeto a su simbología debido a que nos acostumbramos a ver otro elemento que representa esta operación. **La función de este es dividir el primer número entre el segundo número.** Por ejemplo:
+
+Supongamos que tenemos el total de la compra de diez unidades de un producto y queremos saber cuanto nos costó cada producto. Para llegar a esa respuesta lo que se debe hacer es dividir el total de la compra entre las diez unidades comprada, el resultado de esta operación es el valor unitario.
