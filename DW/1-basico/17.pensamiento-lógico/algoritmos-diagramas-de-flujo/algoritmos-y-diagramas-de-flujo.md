@@ -464,7 +464,7 @@ Con binarios:
 #### Tabla de verdad de conjunción
 
 La conjunción se puede ver como la unión de dos valores. La forma en la que esta funciona es que algo es verdad cuando ambas partes involucradas son verdaderas y cuando las partes son diferentes, el resultado es falso.
-  
+
 |A  |B  |A^B|
 |---|---|---|
 |V  |V  |V  |
@@ -522,3 +522,29 @@ Con binarios:
 |1  |0  |1  |
 |0  |1  |1  |
 |0  |0  |0  |
+
+## **8.** Operadores lógicos
+
+Los operadores lógicos son herramientas que nos permiten realizar pruebas en [expresiones lógicas](https://www.ibm.com/docs/es/spss-statistics/29.0.0?topic=expressions-logical#:~:text=Las%20expresiones%20l%C3%B3gicas%20pueden%20ser%20simples%20variables%20l%C3%B3gicas%20o%20relaciones,controlar%20el%20orden%20de%20evaluaci%C3%B3n.), estos proporcionan un resultado negativo o positivo a partir de que se cumpla o no una condición.
+
+A la hora de utilizar estos es muy importante tener en cuenta que el resultado siempre va a depender de que las condiciones estén dadas a partir de lo que necesita, en ocasiones vas a necesitar que el resultado sea positivo y en otras vas a necesitar que sea negativo.
+
+### Operador lógico no
+
+El operador lógico no, invierte el valor de una afirmación. Este se usa para crear una **negación lógica** en una expresión.
+
+Ejemplo: Si tenemos que la luz está prendida y usamos el operador lógico no con esta sentencia, estaríamos diciendo que la luz está apagada o que la luz no está prendida.
+
+### Operador lógico Y
+
+**Este operador devuelve true, cuando las dos expresiones que están relacionas son verdaderas**. Por ejemplo: Imagina que tienes dos elementos, el primero es un monitor y el segundo es la energía eléctrica. Si tienes el monitor y no la energía eléctrica no podrás usar el monitor, necesitas de los dos elementos para poder usar el monitor.
+
+### Operador lógico O
+
+**Devuelve true cuando una de las dos expresiones es verdadera**, no necesita que las dos condiciones estén dadas para que el resultado sea positivo o pueda suceder, por ejemplo:
+
+Imagínate que en un salón de clase hay dos marcadores, cada marcador lo tiene guardado un estudiante diferente, pero ninguno de los dos estudiantes se encuentra en el salón y tú necesitas escribir en la pizarra o tablero. Para que tú puedas escribir solo necesitas que uno de los dos estudiantes llegue.
+
+### Operador lógico Xor
+
+Este operador lógico **devuelve true si una de las dos expresiones es verdadera**, pero si ambas expresiones son verdaderas devuelve false.
