@@ -710,18 +710,6 @@ En este punto se deben crear los pasos que se van a necesitar para que el algori
 
 ### Usando Mermaid 
 
-
-graph LR
-A(Inicio) --> B[¿Está la luz encendida?]
-B -- No --> C[Buscar interruptor]
-C --> D[Accionar interruptor]
-D --> E[¿Luz enciende?]
-E -- No --> F[Revisar si hay energía eléctrica]
-F --> G[Fin]
-E -- Sí --> G[Fin]
-B -- Sí --> G[Fin]
-
-
 ```mermaid
 graph TD
 A((Inicio))
