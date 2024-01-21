@@ -454,25 +454,71 @@ La forma en la que esta funciona es devolviendo el valor opuesto de la proposici
 |V  |F  |
 |F  |V  |
 
+Con binarios:
+
+|p  |~p |
+|---|---|
+|1  |0  |
+|0  |1  |
+
 #### Tabla de verdad de conjunción
 
 La conjunción se puede ver como la unión de dos valores. La forma en la que esta funciona es que algo es verdad cuando ambas partes involucradas son verdaderas y cuando las partes son diferentes, el resultado es falso.
-
-|A|B|A^B|
+  
+|A  |B  |A^B|
 |---|---|---|
-|V|V|V|
-|V|F|F|
-|F|V|F|
-|F|F|F|
+|V  |V  |V  |
+|V  |F  |F  |
+|F  |V  |F  |
+|F  |F  |F  |
+
+Con binarios:
+
+|p  |q  |p^q|
+|---|---|---|
+|1  |1  |1  |
+|1  |0  |0  |
+|0  |1  |0  |
+|0  |0  |0  |
 
 #### Tabla de verdad de disyunción
 
+##### Disyunción débil
+
 En la disyunción algo será verdadero cuando por lo menos una de las proposiciones es verdadera, de lo contrario será falsa.
 
-|A|B|A∨B|
+|A  |B  |A∨B|
 |---|---|---|
-|V|V|V|
-|V|F|V|
-|F|V|V|
-|F|F|F|
+|V  |V  |V  |
+|V  |F  |V  |
+|F  |V  |V  |
+|F  |F  |F  |
 
+Con binarios:
+
+|p  |q  |p∨q|
+|---|---|---|
+|1  |1  |1  |
+|1  |0  |1  |
+|0  |1  |1  |
+|0  |0  |0  |
+
+##### Disyunción fuerte
+
+**Una disyunción Fuerte** solamente es verdadera cuando ambas proposiciones tienen valores diferentes y es falsa si las dos proposiciones son ambas verdaderas o ambas falsas.
+
+|A  |B  |A∨B|
+|---|---|---|
+|V  |V  |F  |
+|V  |F  |V  |
+|F  |V  |V  |
+|F  |F  |F  |
+
+Con binarios:
+
+|p  |q  |p🔺q|
+|---|---|---|
+|1  |1  |0  |
+|1  |0  |1  |
+|0  |1  |1  |
+|0  |0  |0  |
