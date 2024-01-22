@@ -1045,21 +1045,7 @@ d
 
 4. ¿Cuál es la propiedad matemática conocida por la afirmación “el orden de los factores no altera el producto”?
 
-a
-
-Identidad
-
-b
-
-Conmutativa
-
-c
-
-Distributiva
-
-d
-
-✅ Asociativa
+	- ✅ Conmutativa
 
 5. ¿Cuál es el propósito del operador lógico Xor?
 
@@ -1191,5 +1177,89 @@ Verdadero
 
 b
 
+✅ Falso
+
+15. El operador aritmético dado por el símbolo `*` se utiliza para:
+
+a
+
+Suma infinita
+
+b
+
+✅ Multiplicación
+
+c
+
+División
+
+d
+
+No existe
+
+16. Un diagrama de flujo siempre debe contar con un inicio.
+
+a
+
+✅ Verdadero
+
+b
+
 Falso
+
+17. ¿Cuál es el resultado de la siguiente multiplicación de binarios: `1001 * 1001`?
+
+a
+
+✅ 1010001
+
+b
+
+100011
+
+c
+
+1010010
+
+d
+
+1010101
+
+18. ¿Cuál es el resultado de la disyunción F `V` V?
+
+a
+
+F
+
+b
+
+✅ V
+
+19. ¿Cuál es el resultado de la siguiente resta de binarios: `1001 - 100` ?
+
+a
+
+100
+
+b
+
+110
+
+c
+
+10
+
+d
+
+✅ 101
+
+20. Verdadero o falso: ¿en programación también se pueden aplicar las operaciones matemáticas básicas?
+
+a
+
+Falso
+
+b
+
+✅ Verdadero
 </details>
