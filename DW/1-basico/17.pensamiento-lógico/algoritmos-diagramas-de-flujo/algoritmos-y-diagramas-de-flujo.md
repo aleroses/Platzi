@@ -999,49 +999,15 @@ Y recuerda, ¡Nunca pares de aprender! 💚
 
 1. Las tablas de verdad nos ayudan a determinar cuáles son las condiciones necesarias para que sea verdadero o falso un enunciado.
 
-a
-
-Falso
-
-b 
-
-✅ Verdadero
+	- ✅ Verdadero
 
 2. ¿Cuál es el resultado de la siguiente división de binarios: 1001 / 1001?
 
-a
-
-10101
-
-b
-
-✅ 1
-
-c
-
-100
-
-d
-
-101
+	- ✅ 1
 
 3. ¿Cuál es el resultado de la siguiente suma de binarios: `1101 + 110` ?
 
-a
-
-✅ 10011
-
-b
-
-11001
-
-c
-
-10101
-
-d
-
-10111
+	- ✅ 10011
 
 4. ¿Cuál es la propiedad matemática conocida por la afirmación “el orden de los factores no altera el producto”?
 
@@ -1049,217 +1015,65 @@ d
 
 5. ¿Cuál es el propósito del operador lógico Xor?
 
-a
-
-✅ Devuelve True si Expresión1 es verdadera o Expresión2 es verdadera, pero no ambas.
-
-b
-
-Devuelve True si Expresión1 es verdadera y Expresión2 es verdadera.
-
-c
-
-Devuelve True si Expresión1 es verdadera y también la Expresión2 es verdadera, deben ser ambas.
+	- ✅ Devuelve True si Expresión1 es verdadera o Expresión2 es verdadera, pero no ambas.
 
 6. Convierte el número binario `1100100` a decimal:
 
-a
-
-1100
-
-b
-
-101
-
-c
-
-10
-
-d
-
-✅ 100
+	- ✅ 100
 
 7. ¿Cuál es el propósito del operador lógico Y (Expresión1 Y Expresión2)?
 
-a ✅
-
-Devuelve `True` cuando `Expresión1` y `Expresión2` son verdaderas.
-
-b
-
-Devuelve `True` cuando `Expresión1` o `Expresión2` son verdaderas.
-
-c
-
-Devuelve `False` cuando `Expresión1` y `Expresión2` son verdaderas.
+	- ✅ Devuelve `True` cuando `Expresión1` y `Expresión2` son verdaderas.
 
 8. ¿Cuántos dígitos tiene el sistema binario?
 
-a
-
-✅ Dos
-
-b
-
-Uno
-
-c
-
-Cero
+	- ✅ Dos
 
 9. ¿Cuál es el propósito del operador de comparación `<>` ( `Número1 <> Número2` )?
 
-a
-
-Devuelve `True` si `Número1` es igual que `Número2.`
-
-b
-
-Devuelve False si `Número1` es diferente que `Número2.`
-
-c
-
-✅ Devuelve `True` si `Número1` es diferente que `Número2`.
+	- ✅ Devuelve `True` si `Número1` es diferente que `Número2`.
 
 10. Para crear un algoritmo es necesario analizar la situación antes de empezar a diseñar o programar.
 
-a
-
-Falso
-
-b
-
-✅ Verdadero
+	- ✅ Verdadero
 
 11. Convierte el número decimal `456` a binario:
 
-a
-
-11001000
-
-b
-
-10100100
-
-c
-
-111001001
-
-d
-
-✅ 111001000
+	- ✅ 111001000
 
 12. La Negación de Falso (!F) da como resultado:
 
-a
-
-F (falso)
-
-b
-
-✅ V (verdadero)
+	- ✅ V (verdadero)
 
 13. ¿Cuál es el resultado de la conjunción F `Ʌ` V?
 
-a
-
-✅ F
-
-b
-
-V
+	- ✅ F
 
 14. Todos los diagramas de flujo siempre deben tener un operador de decisión.
 
-a
-
-Verdadero
-
-b
-
-✅ Falso
+	- ✅ Falso
 
 15. El operador aritmético dado por el símbolo `*` se utiliza para:
 
-a
-
-Suma infinita
-
-b
-
-✅ Multiplicación
-
-c
-
-División
-
-d
-
-No existe
+	- ✅ Multiplicación
 
 16. Un diagrama de flujo siempre debe contar con un inicio.
 
-a
-
-✅ Verdadero
-
-b
-
-Falso
+	- ✅ Verdadero
 
 17. ¿Cuál es el resultado de la siguiente multiplicación de binarios: `1001 * 1001`?
 
-a
-
-✅ 1010001
-
-b
-
-100011
-
-c
-
-1010010
-
-d
-
-1010101
+	- ✅ 1010001
 
 18. ¿Cuál es el resultado de la disyunción F `V` V?
 
-a
-
-F
-
-b
-
-✅ V
+	- ✅ V
 
 19. ¿Cuál es el resultado de la siguiente resta de binarios: `1001 - 100` ?
 
-a
-
-100
-
-b
-
-110
-
-c
-
-10
-
-d
-
-✅ 101
+	- ✅ 101
 
 20. Verdadero o falso: ¿en programación también se pueden aplicar las operaciones matemáticas básicas?
 
-a
-
-Falso
-
-b
-
-✅ Verdadero
+	- ✅ Verdadero
 </details>
