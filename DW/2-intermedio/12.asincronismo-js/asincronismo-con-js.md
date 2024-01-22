@@ -490,7 +490,7 @@ console.log(calc(2, 2, div)); // 1
 
 [Documentación](https://developer.mozilla.org/es/docs/Glossary/Callback_function)
 
-## 7. Playground: Ejecuta un callback con 2s de demora
+## **7.** Playground: Ejecuta un callback con 2s de demora
 
 Tienes la función `execCallback` que recibirá un `callback` es decir una función como parámetro, tu reto es ejecutar esa función con un tiempo de demora de 2 segundos.
 
@@ -555,7 +555,7 @@ Sin embargo, al usar `window.setTimeout`, estamos siendo explícitos sobre el al
 El uso de `window` también puede ser útil en situaciones donde hay ambigüedad en el ámbito, por ejemplo, si una variable local tiene el mismo nombre que una función global, podríamos usar `window` para referirnos explícitamente a la versión global de la función.
 
 
-## 8. XMLHTTPRequest
+## **8.** XMLHTTPRequest
 
 **XMLHttpRequest** (XHR) es un objeto JavaScript que se utiliza para realizar solicitudes HTTP / HTTPS asíncronas desde un navegador web para enviar y recibir datos hacia y desde un servidor web.
 
@@ -1027,7 +1027,7 @@ function fetchData(urlApi, callback) {
 }
 ```
 
-## 9. Fetch data
+## **9.** Fetch data
 
 ```js
 const XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
@@ -1415,7 +1415,7 @@ Estos son solo algunos de los métodos más comunes de consola en JavaScript, pe
 - [Documentación](https://developer.mozilla.org/es/docs/Web/API/Console)
 - [Optional Chaining](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Optional_chaining)
 
-## 10. Callback hell
+## **10.** Callback hell
 
 "Callback hell" (o "infierno de los callbacks") es un término que se utiliza en JavaScript para describir una situación en la que se anidan múltiples funciones de devolución de llamada (callbacks) dentro de otras funciones de devolución de llamada, lo que puede dificultar la legibilidad y el mantenimiento del código.
 
