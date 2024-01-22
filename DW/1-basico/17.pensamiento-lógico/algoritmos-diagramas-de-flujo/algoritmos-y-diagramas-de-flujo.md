@@ -970,3 +970,226 @@ I --> B
 5. ¿Qué figura usarías para representar un proceso en diagramas de flujo?
 
 	- Cuadrado
+
+## **17.** Toma el Curso de Pensamiento Lógico: Tipos de Datos y Estructuras de Control
+
+🎉¡Lo has logrado! 🙌 Completaste todas las clases del Curso de Pensamiento Lógico: Algoritmos y Diagramas de Flujo.
+
+En este curso aprendimos:
+
+- Propiedades y orden de las operaciones
+- Que es el sistema binario
+- Conversiones entre binario y decimal
+- Operaciones aritméticas con binarios
+- Tablas de verdad
+- Operadores de comparación
+- Diagramas de flujo
+- Algoritmos
+
+Lo que sigue en tu camino es tomar el [curso de Pensamiento Lógico: Manejo de Datos, Estructuras y Funciones](https://platzi.com/cursos/pensamiento-logico-estructuras/).
+
+Y recuerda, ¡Nunca pares de aprender! 💚
+
+  
+## Examen 📌
+
+<details>
+	<summary>Haz clic para ver los resultados 👀</summary>
+	<br/>
+
+1. Las tablas de verdad nos ayudan a determinar cuáles son las condiciones necesarias para que sea verdadero o falso un enunciado.
+
+a
+
+Falso
+
+b 
+
+✅ Verdadero
+
+2. ¿Cuál es el resultado de la siguiente división de binarios: 1001 / 1001?
+
+a
+
+10101
+
+b
+
+✅ 1
+
+c
+
+100
+
+d
+
+101
+
+3. ¿Cuál es el resultado de la siguiente suma de binarios: `1101 + 110` ?
+
+a
+
+✅ 10011
+
+b
+
+11001
+
+c
+
+10101
+
+d
+
+10111
+
+4. ¿Cuál es la propiedad matemática conocida por la afirmación “el orden de los factores no altera el producto”?
+
+a
+
+Identidad
+
+b
+
+Conmutativa
+
+c
+
+Distributiva
+
+d
+
+✅ Asociativa
+
+5. ¿Cuál es el propósito del operador lógico Xor?
+
+a
+
+✅ Devuelve True si Expresión1 es verdadera o Expresión2 es verdadera, pero no ambas.
+
+b
+
+Devuelve True si Expresión1 es verdadera y Expresión2 es verdadera.
+
+c
+
+Devuelve True si Expresión1 es verdadera y también la Expresión2 es verdadera, deben ser ambas.
+
+6. Convierte el número binario `1100100` a decimal:
+
+a
+
+1100
+
+b
+
+101
+
+c
+
+10
+
+d
+
+✅ 100
+
+7. ¿Cuál es el propósito del operador lógico Y (Expresión1 Y Expresión2)?
+
+a ✅
+
+Devuelve `True` cuando `Expresión1` y `Expresión2` son verdaderas.
+
+b
+
+Devuelve `True` cuando `Expresión1` o `Expresión2` son verdaderas.
+
+c
+
+Devuelve `False` cuando `Expresión1` y `Expresión2` son verdaderas.
+
+8. ¿Cuántos dígitos tiene el sistema binario?
+
+a
+
+✅ Dos
+
+b
+
+Uno
+
+c
+
+Cero
+
+9. ¿Cuál es el propósito del operador de comparación `<>` ( `Número1 <> Número2` )?
+
+a
+
+Devuelve `True` si `Número1` es igual que `Número2.`
+
+b
+
+Devuelve False si `Número1` es diferente que `Número2.`
+
+c
+
+✅ Devuelve `True` si `Número1` es diferente que `Número2`.
+
+10. Para crear un algoritmo es necesario analizar la situación antes de empezar a diseñar o programar.
+
+a
+
+Falso
+
+b
+
+✅ Verdadero
+
+11. Convierte el número decimal `456` a binario:
+
+a
+
+11001000
+
+b
+
+10100100
+
+c
+
+111001001
+
+d
+
+✅ 111001000
+
+12. La Negación de Falso (!F) da como resultado:
+
+a
+
+F (falso)
+
+b
+
+✅ V (verdadero)
+
+13. ¿Cuál es el resultado de la conjunción F `Ʌ` V?
+
+a
+
+✅ F
+
+b
+
+V
+
+14. Todos los diagramas de flujo siempre deben tener un operador de decisión.
+
+a
+
+Verdadero
+
+b
+
+Falso
+</details>
