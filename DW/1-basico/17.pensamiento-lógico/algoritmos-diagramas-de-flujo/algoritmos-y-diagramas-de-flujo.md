@@ -149,7 +149,7 @@ Para que mejores tu lógica, te invito a que realices ejercicios con todas las p
 
 ¡Para que complementes la información vista en esta clase te invitamos a visitar el curso de [Fundamentos de Matemáticas](https://platzi.com/cursos/fundamentos-matematicas/)!
 
-##  Quiz
+##  Quiz: Introducción
 
 1. El orden de los factores NO altera el producto.
 	- Propiedad conmutativa
@@ -413,7 +413,7 @@ Este segundo paso se realizó de forma **iterativa** hasta terminar de bajar t
 
 Al final del proceso se obtuvo en él cociente el número 010100, por lo que el resultado de dividir **10110 entre 10 es 1011**, esto se debe a que el primer cero que aparece en el cociente se ignora.
 
-## Quiz 
+## Quiz: Sistema binario
 
 1. Multiplica `111` por `101` en sistema binario.
 
