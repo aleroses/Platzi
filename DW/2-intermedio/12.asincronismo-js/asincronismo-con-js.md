@@ -1,6 +1,6 @@
 # Curso de Asincronismo con JavaScript
 
-## 1. Lo que aprenderás en este curso
+## **1.** Lo que aprenderás en este curso
 
 Aprenderemos:  
 - La importancia del uso de este concepto en JS
@@ -22,7 +22,7 @@ Para tener una mejor base sobre la forma de trabajar de JS en el navegador deben
 - [Resumen 01 en Notion](https://luis-ariza.notion.site/Asincronismo-con-JavaScript-7307b668977d416690103a4dbbf2843a)
 - [Resumen 02 en Notion](https://whip-soil-3b5.notion.site/Curso-de-Asincronismo-con-JavaScript-6ec5da50d2644a8aa046bfe23b217c22)
 
-## 2. Qué es el asincronismo
+## **2.** Qué es el asincronismo
 
 JavaScript es síncrono por defecto y tiene un solo subproceso (un solo hilo para trabajar).
 
@@ -120,7 +120,7 @@ Luego de 5 minutos por cada tarea, entregas los tacos a los clientes correspondi
 [JavaScript — Cómo funciona el Runtime Environment — JRE)](https://mauriciogc.medium.com/javascript-c%C3%B3mo-funciona-el-runtime-environment-jre-8ebceafdc938)
 
 
-## 3. Event Loop
+## **3.** Event Loop
 
 [[js-engine-v8+nav#Event Loop]]  
 
@@ -139,12 +139,12 @@ Ver los apuntes del `Curso de JavaScript Engine (V8) y el Navegador`:
 
 [Más info](https://slawinski.dev/blog/javascript-runtime-environment-web-api-task-queue-and-event-loop/)
 
-## 4. Iniciando a programar con JavaScript
+## **4.** Iniciando a programar con JavaScript
 
 > Insistir, persistir, resistir y nunca desistir. ❤️
 
 
-## 5. Configuración
+## **5.** Configuración
 
 Creamos una carpeta para trabajar el proyecto y luego ejecutamos uno de estos dos comandos: 
 
@@ -360,7 +360,7 @@ La diferencia principal radica en que la compilación puede implicar la traducci
 
 En resumen, la compilación y la transpilación son procesos relacionados pero distintos. La compilación implica la traducción completa del código fuente a un formato ejecutable diferente, mientras que la transpilación se refiere a la traducción de un lenguaje de programación a otro lenguaje de nivel similar, generalmente para garantizar la compatibilidad con un entorno de ejecución específico.
 
-## 6. Qué son los Callbacks
+## **6.** Qué son los Callbacks
 
 **Un Callback** es una una función que se pasa como argumento de otra función y que será invocada.
 
