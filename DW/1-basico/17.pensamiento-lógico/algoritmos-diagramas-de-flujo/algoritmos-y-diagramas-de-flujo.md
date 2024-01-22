@@ -953,3 +953,20 @@ H -- No --> J
 I --> B
 ```
 
+## Quiz: Algoritmos y diagramas de flujo
+
+1. ¿Qué figura usarías para representar una decisión en diagramas de flujo?
+
+	- Rombo 
+2. ¿Qué elemento usarías para representar con diagramas de flujo que tu algoritmo debe imprimir un mensaje?
+
+	- Cuadrado
+3. ¿Qué elemento usarías para representar con diagramas de flujo que tu algoritmo debe hacer una pregunta para determinar si tomará un camino u otro?
+
+	- Rombo
+4. ¿Qué figura usarías para representar el inicio o fin de un algoritmo con diagramas de flujo?
+
+	- Óvalo
+5. ¿Qué figura usarías para representar un proceso en diagramas de flujo?
+
+	- Cuadrado
