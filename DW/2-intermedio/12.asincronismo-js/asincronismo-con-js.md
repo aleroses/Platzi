@@ -389,6 +389,7 @@ function greeting(name){ 👈👀
 
 function ask_for_name(callback){
     let name = prompt('Enter your name: ');
+    
     callback(name); 👈👀
 }
 
@@ -412,9 +413,11 @@ function makingOrder(orden) {
 
 function order(orden, callback) {
     console.log(`Taking order ${orden}`);
+    
     setTimeout(() => {
         callback(orden)
     }, 3000)
+    
     console.log(`Doing order ${orden}`,);
 }
 
