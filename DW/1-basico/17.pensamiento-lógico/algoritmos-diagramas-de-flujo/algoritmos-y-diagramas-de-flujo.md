@@ -1,5 +1,8 @@
 # Curso de Pensamiento Lógico: Algoritmos y Diagramas de Flujo
 
+> Inicio: 19/01/2024  
+> Final: 21/01/2024
+
 ## **1.** ¿Qué es una operación matemática?
 
 Una operación matemática es un proceso. El objetivo del proceso es obtener un resultado. Dicho resultado se obtiene con base en entradas, que serían los números a sumar. Por ejemplo; si sumamos 8 + 6, 8 y 6 serían las entradas y 14 sería el resultado.
