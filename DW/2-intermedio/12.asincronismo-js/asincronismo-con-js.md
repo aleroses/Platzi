@@ -995,7 +995,7 @@ function fetchData(urlAPI, callback) {
 }
 ```
 
-🔥 _La nueva forma de hacer peticiones a una API es el_[fetch](https://developer.mozilla.org/es/docs/Web/API/Fetch_API).
+🔥 _La nueva forma de hacer peticiones a una API es_ [fetch](https://developer.mozilla.org/es/docs/Web/API/Fetch_API).
 
 
 - [Métodos y Propiedades del objeto XMLHttpRequest](http://dis.um.es/~lopezquesada/documentos/IES_1314/IAW/curso/UT7/libroswebajax/www.librosweb.es/ajax/capitulo7/metodos_y_propiedades_del_objeto_xmlhttprequest.html)
