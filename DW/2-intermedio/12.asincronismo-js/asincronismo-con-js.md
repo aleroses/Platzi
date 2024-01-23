@@ -1864,7 +1864,7 @@ export function delay(time, message) {
 ```
 
 
-## 13. Fetch 
+## **13.** Fetch 
 
 `fetch` es una función nativa que proporciona una forma fácil de hacer solicitudes HTTP y obtener datos de recursos externos, como APIs web o archivos JSON. `fetch` usa promesas y proporciona una interfaz más simple y flexible que el antiguo objeto `XMLHttpRequest` (XHR).
 
@@ -2073,7 +2073,7 @@ fetchData(`${API}/products`)
   .finally(() => console.log('Finally'));
 ```
 
-## 14. Fetch POST
+## **14.** Fetch POST
 
 🔥 Revisa los apuntes de la clase 8 [[asincronismo-con-js#8. XMLHTTPRequest#Características del protocolo HTTP]]
 
@@ -2252,7 +2252,7 @@ https://picsum.photos/200
 - [Documentación Cors](https://developer.mozilla.org/en-US/docs/Glossary/CORS)
 
 
-## 15. Funciones asíncronas
+## **15.** Funciones asíncronas
 
 `async` y `await` son características que permiten escribir código asíncrono de manera más legible y fácil de entender. `new Promise()` es una forma de crear una promesa en JavaScript que se utiliza comúnmente para manejar tareas asíncronas.
 
@@ -2350,7 +2350,7 @@ console.log('2. Second');
 ![](https://i.postimg.cc/RqxVWb4t/async-await.gif)
 
 
-## 16. Try and catch  
+## **16.** Try and catch  
 
 `try` y `catch` son constructores de JavaScript que se utilizan para manejar errores en el código. 
 
@@ -2432,7 +2432,7 @@ fetchFunction();
 ```
 
 
-## 17. Playground: Captura el error de una petición
+## **17.** Playground: Captura el error de una petición
 
 En este desafío vas a conectarte a una API que no existe, por ende debes capturar el error haciendo uso de try/catch y lanzar un error con el mensaje `API Not Found`.
 
@@ -2507,9 +2507,9 @@ runCode();
 ```
 
 
-## 18. ¿Cómo enfrentar los errores?
+## **18.** ¿Cómo enfrentar los errores?
 
-## 19. Generators
+## **19.** Generators
 
 Los Generators son una característica que permite la creación de funciones especiales que pueden ser pausadas y reanudadas en cualquier momento mientras se ejecutan. 
 
@@ -2794,7 +2794,7 @@ for (const char of str) {
 En resumen, `for...in` se utiliza para iterar sobre las propiedades de un objeto, mientras que `for...of` se utiliza para iterar sobre los valores de elementos en estructuras de datos iterables como matrices y cadenas de caracteres. 
 
 
-## 20. Proyecto del curso
+## **20.** Proyecto del curso
 
 Creamos un repo en GitHub con el nombre async-landing, lo agregamos publico, agregamos un .gitignore template: Node y también agregamos una License: MIT License. 
 
