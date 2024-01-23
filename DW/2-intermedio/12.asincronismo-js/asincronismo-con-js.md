@@ -1474,7 +1474,7 @@ También podemos agregar un `script` en nuestro archivo `package.json` para no t
 
 Ahora ya podemos correr nuestro comando `npm run callback` y ver los resultados en consola.
 
-## 11. Qué son las promesas
+## **11.** Qué son las promesas
 
 Las promesas en JavaScript son objetos que representan la eventual finalización (o falla) de una operación asíncrona y permiten manejar el resultado de dicha operación de manera más eficiente y legible que con **callbacks anidados**, los cuales puedes llegar a ser muy engorrosos (ejemplo clase 9). En lugar de esperar a que una operación asíncrona termine para continuar con el siguiente paso, se puede crear una promesa que se resolverá en el futuro, y luego trabajar con ella en lugar de bloquear el flujo del programa. Las promesas también permiten encadenar varias operaciones asíncronas en secuencia y manejar errores de manera centralizada.
 
@@ -1770,7 +1770,7 @@ En este ejemplo, se define una función `getJSON` que devuelve una promesa que s
 🔥 [Arrow functions: Ejemplos ](https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Functions/Arrow_functions)
 
 
-## 12. Playground: Crea una función de delay que soporte asincronismo
+## **12.** Playground: Crea una función de delay que soporte asincronismo
 
 En este desafío tienes la función `delay` la cual se espera que un tiempo específico retorne un mensaje.
 
