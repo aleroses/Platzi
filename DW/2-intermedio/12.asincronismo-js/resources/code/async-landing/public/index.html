@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fazt</title>
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="./css/tablet.css" media="(min-width: 600px)" />
+    <link
+      rel="stylesheet"
+      href="./css/desktop.css"
+      media="(min-width: 750px)"
+    />
+    <link rel="stylesheet" href="./css/light-mode.css" disabled />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body data-theme="dark">
+    <header class="header">
+      <section class="header__logo item-1">
+        <a href="#">
+          <img src="./svg/purple-logo-01.svg" alt="" />
+        </a>
+      </section>
+
+      <nav class="header__nav item-2">
+        <!-- show -->
+        <ul class="menu">
+          <li><a href="#">About</a></li>
+          <li><a href="#">Projects</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+        <section class="burger item-3" onclick="toggleMenu()">
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+        </section>
+      </nav>
+
+      <section class="mode item-4">
+        <figure class="dark-mode" onclick="toggleLight()">
+          <!-- light-mode -->
+          <button></button>
+        </figure>
+      </section>
+    </header>
+
+    <main class="main">
+      <figure>
+        <img src="./img/hero.jpg" alt="" />
+      </figure>
+      <article class="main__article">
+        <h1>Fazt <span>@FaztTech</span></h1>
+        <p>
+          Fazt es un canal en donde podrás encontrar una variedad de videos de
+          programación, desarrollo Web y muchos otros temas relacionados al
+          mundo de la informática en general. Desde aprender las bases de un
+          lenguaje de programacion hasta subir tu sitio o aplicación Web.
+          Bienvenido al mundo de la web, un mundo en el que la información es
+          libre, al igual que la información de este canal.
+        </p>
+      </article>
+    </main>
+
+    <section class="content">
+      <h2>Last YouTube Videos</h2>
+      <div class="content__show">
+        <!-- Content API-->
+        <!-- <article class="content__video">
+          <figure>
+            <img src="./img/x.jpg" alt="" />
+          </figure>
+          <div>
+            <p>
+              Twitter y AWS entrando al juego de los servicios basados en
+              Inteligencia Artificial
+            </p>
+          </div>
+        </article> -->
+      </div>
+    </section>
+
+    <footer>
+      <h2>Contact <br /><span>keep in touch.</span></h2>
+      <div>
+        <a href=""><img src="./svg/facebook.svg" alt="x" /></a>
+        <a href=""><img src="./svg/twitter.svg" alt="x" /></a>
+      </div>
+    </footer>
+
+    <script defer src="./light-mode.js"></script>
+    <script defer src="./main.js"></script>
+    <script>
+      /* Burger Menu */
+      function toggleMenu() {
+        let menu = document.querySelector(".menu");
+        menu.classList.toggle("show");
+      }
+
+      /* Dark mode Icon */
+      /* function toggleLight() {
+        let btn = document.querySelector(".dark-mode");
+        btn.classList.toggle("light-mode");
+      } */
+    </script>
+  </body>
+</html>
