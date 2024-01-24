@@ -2597,7 +2597,7 @@ async function* fetchData(url) {
   yield await response.json();
 };
 
-fetchData(`${API}/product`)
+fetchData(`${API}/products`)
   .next()
   .then(({ value, done }) => {
     //Imprime la lista de los Productos de la API
