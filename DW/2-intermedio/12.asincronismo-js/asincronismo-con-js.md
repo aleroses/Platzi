@@ -2976,7 +2976,7 @@ Estructura de carpetas:
 🔥 [Repositorio del código de la clase](https://gist.github.com/gndx/2946ab4ac16597883dda5fb4de15e07a)
 🔥 [Repositorio del proyecto de la clase](https://github.com/platzi/async-landing/tree/main)
 
-## 21. Consumiendo API
+## **21.** Consumiendo API
 
 Para obtener un script con async y await que podamos adaptar, nos debemos crear una cuenta en [✨RapidApi](https://rapidapi.com/hub). Esta es una colección de API's que se pueden implementar en nuestros proyectos de manera sencilla. 
 
@@ -3172,7 +3172,7 @@ async function fetchData(urlApi) {
 - [Modo oscuro en tu aplicación de react! 🌙](https://dev.to/franklin030601/usando-modo-oscuro-en-tu-aplicacion-de-react-m48)
 
 
-## 22. Desplegando el proyecto
+## **22.** Desplegando el proyecto
 
 Para desplegar nuestro proyecto dentro de GitHub Pages debemos instalar un paquete que nos permitirá agregar todo el proyecto en una rama llamada gh-pages, permitiendo habilitar automáticamente la opción de mostrar nuestra página web, esto en lugar de hacerlo manualmente.   
 
@@ -3264,7 +3264,7 @@ En resumen, el uso de `defer` te permite cargar y ejecutar scripts de forma así
 
 ✨ Indentar hacia atrás: `Ctrl` + `?`
 
-## 23. Playground: Crea una utilidad para hacer peticiones
+## **23.** Playground: Crea una utilidad para hacer peticiones
 
 En este desafío debes crear una función que usando `fetch` haga llamadas a una API y esta función debe contar las siguientes características:
 
@@ -3436,7 +3436,7 @@ Esta forma de trabajar con objetos URL puede ser útil para analizar y manipular
 
 Es importante tener en cuenta que la clase `URL` está disponible en los navegadores modernos y en el entorno de ejecución de Node.js a partir de la versión 10. Si estás utilizando un entorno más antiguo, es posible que `URL` no esté disponible o requiera de un polyfill o una librería adicional para su uso.
 
-## 24. Conclusión 
+## **24.** Conclusión 
 
 ## Examen 📌
 
