@@ -243,6 +243,18 @@ Los query parameters son opcionales y pueden ser utilizados según las necesidad
 
 En resumen, los endpoints son las URL específicas de un servidor que representan funcionalidades particulares de una API, mientras que los query parameters son parámetros opcionales que se agregan a una URL para personalizar las solicitudes y obtener resultados específicos.
 
+### Diferencias entre Endpoint y Query Parameter
+
+Un query parameter (parámetro de consulta) y un endpoint son dos conceptos diferentes pero relacionados en el contexto de las API web. 
+
+Un endpoint es una URL específica a la que se envía una solicitud HTTP para acceder a un recurso o realizar una acción en un servidor. Por ejemplo, una API de usuarios puede tener un endpoint como "https://api.example.com/users" para obtener la lista de usuarios. Los endpoints representan el punto de acceso a diferentes recursos o funcionalidades proporcionados por una API.
+
+Por otro lado, un query parameter es una parte de la URL que se utiliza para enviar información adicional en una solicitud HTTP GET. Los query parameters se agregan a la URL después del símbolo de interrogación "?" y se componen de una clave y un valor separados por el símbolo de igual "=" (por ejemplo, "?clave=valor"). Estos parámetros son opcionales y se utilizan para filtrar, ordenar o controlar la respuesta de la solicitud.
+
+La diferencia principal entre un query parameter y un endpoint radica en su función y ubicación dentro de una URL. Mientras que el endpoint representa la ruta general para acceder a un recurso o realizar una acción, los query parameters proporcionan una forma de enviar información adicional junto con una solicitud HTTP GET para modificar o filtrar la respuesta del servidor.
+
+En resumen, un endpoint es una URL que representa una funcionalidad o recurso específico, mientras que los query parameters son parámetros opcionales que se utilizan para enviar información adicional en una solicitud HTTP GET. Ambos son elementos importantes en el diseño y desarrollo de API web.
+
 ### Solución PLATZI  
 
 ```html
@@ -609,7 +621,7 @@ Esto nos mostrará 3 imágenes, aunque ya no se actualiza al recargar ni al pica
 
 - [4 Most Used REST API Authentication Methods](https://blog.restcase.com/4-most-used-rest-api-authentication-methods/)
 
-## 7. Maquetación del proyecto
+## **7.** Maquetación del proyecto
 
 Mi código...  
 
