@@ -3441,7 +3441,7 @@ Es importante tener en cuenta que la clase `URL` está disponible en los navegad
 ## Examen 📌
 
 <details>
-	<summary>Haz clic para ver los resultados 👀</summary>
+	<summary>Haz clic para ver los resultados 👀👇</summary>
 	<br/>
 
 1. ¿Para qué nos sirve el método "catch()"?
