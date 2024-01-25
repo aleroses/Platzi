@@ -11,7 +11,8 @@ Una API (Application Programming Interface) es un conjunto de reglas y protocolo
 
 En JavaScript, una API se utiliza para acceder a funcionalidades y servicios externos. Puedes utilizar una API para obtener datos de un servidor, enviar datos a un servidor, interactuar con servicios web, acceder a bases de datos y mucho más. En JavaScript, generalmente se utilizan las funciones proporcionadas por el lenguaje o las bibliotecas específicas para interactuar con una API.
 
-### API REST 
+### API REST
+
 Una API REST (Representational State Transfer) es un tipo de API que se basa en los principios de la arquitectura REST. REST es un estilo arquitectónico que define un conjunto de restricciones y principios para el diseño de servicios web. 
 
 Una API REST utiliza los métodos HTTP estándar, como GET, POST, PUT y DELETE, para realizar operaciones en los recursos disponibles en el servidor. Se utiliza el formato de intercambio de datos JSON para representar los datos que se envían y reciben.
@@ -30,6 +31,22 @@ Aquí tienes algunos ejemplos de API y API REST:
 
 Estos son solo algunos ejemplos, pero existen innumerables API y API REST disponibles para una amplia variedad de servicios y plataformas.
 
+#### Principios de la arquitectura REST
+
+Los principios fundamentales de la arquitectura REST son los siguientes:
+
+1. **Cliente-servidor**: Existe una separación clara entre el cliente (que solicita recursos) y el servidor (que proporciona los recursos). Esta separación permite que ambos componentes evolucionen de forma independiente.
+    
+2. **Sin estado (stateless)**: Cada solicitud del cliente al servidor debe contener toda la información necesaria para entender y procesar la solicitud. El servidor no mantiene ningún estado relacionado con el cliente entre solicitudes. Cada solicitud se trata de forma aislada, lo que facilita la escalabilidad y la tolerancia a fallos.
+    
+3. **Interfaz uniforme**: La arquitectura REST define un conjunto de restricciones para la interfaz de comunicación entre el cliente y el servidor. Esto incluye el uso de métodos HTTP estándar, como GET, POST, PUT y DELETE, para realizar operaciones sobre los recursos. Además, se promueve el uso de URIs (Identificadores de Recursos Uniformes) para identificar los recursos y el uso de hipertexto para la navegación entre los recursos.
+    
+4. **Sistema en capas**: El sistema puede estar compuesto por varias capas, donde cada capa tiene una funcionalidad específica. Cada capa solo puede comunicarse directamente con la capa adyacente, lo que permite una mayor flexibilidad y escalabilidad.
+    
+5. **Cacheable (almacenamiento en caché)**: Las respuestas del servidor pueden ser almacenadas en caché en el cliente o en capas intermedias, como servidores proxy. Esto mejora la eficiencia y la capacidad de respuesta del sistema, reduciendo la carga en el servidor.
+    
+
+Estos principios de la arquitectura REST se centran en la simplicidad, la escalabilidad, la interoperabilidad y la capacidad de evolución de los sistemas, lo que los hace adecuados para el desarrollo de APIs y servicios web.
 
 ## 2. Flujo de comunicación entre usuarios, frontend y backend
 
