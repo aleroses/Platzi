@@ -4,7 +4,7 @@
 > Inicio: `25-08-2023`
 > Finalización: `01-09-2023`
 
-## 1. ¿Qué es una API REST?
+## **1.** ¿Qué es una API REST?
 
 ### API 
 Una API (Application Programming Interface) es un conjunto de reglas y protocolos que permite que dos aplicaciones se comuniquen entre sí. Es una interfaz que define cómo los componentes de software deben interactuar y qué operaciones pueden realizar. En resumen, una API define los métodos y formatos de datos que se pueden utilizar para solicitar y enviar información entre aplicaciones.
@@ -48,7 +48,7 @@ Los principios fundamentales de la arquitectura REST son los siguientes:
 
 Estos principios de la arquitectura REST se centran en la simplicidad, la escalabilidad, la interoperabilidad y la capacidad de evolución de los sistemas, lo que los hace adecuados para el desarrollo de APIs y servicios web.
 
-## 2. Flujo de comunicación entre usuarios, frontend y backend
+## **2.** Flujo de comunicación entre usuarios, frontend y backend
 
 El flujo de comunicación entre usuarios, frontend y backend en una aplicación web típica sigue generalmente los siguientes pasos:
 
@@ -86,7 +86,7 @@ Isomorfismo (también conocido como renderizado universal o aplicaciones univers
 
 En resumen, SSR se refiere a la técnica de renderizar el contenido en el servidor antes de enviarlo al cliente, SPA se refiere a una aplicación web que carga una sola página HTML inicial y luego actualiza el contenido dinámicamente en el cliente, y el isomorfismo combina elementos de ambos enfoques para aprovechar los beneficios de rendimiento y experiencia de usuario.
 
-## 3. Consume tu primera API REST
+## **3.** Consume tu primera API REST
 
 Web que nos muestra una fotografía de un gato diferente, cada vez que le damos al botón random. 
 
@@ -215,7 +215,7 @@ button {
 - [The cat api Documentation](https://developers.thecatapi.com/view-account/ylX4blBYT9FaoVd6OhvR?report=gpN-ReBkp)
 - [JSON Formatter](https://chrome.google.com/webstore/detail/json-formatter/bcjindcccaagfpapjjmafapmmgkkhgoa)
 
-## 4. Endpoints y query parameters
+## **4.** Endpoints y query parameters
 
 ### Endpoints  
 
@@ -394,7 +394,7 @@ const URL = [
 ].join("");
 ```
 
-## 5. ¿Qué son los HTTP Status Codes?
+## **5.** ¿Qué son los HTTP Status Codes?
 
 Ver: [[asincronismo-con-js#8. XMLHTTPRequest#Códigos de estados del servidor]]  
 
@@ -472,7 +472,7 @@ Es importante tener en cuenta que el código de estado 418 no debe ser utilizado
 
 
 
-## 6. ¿Qué es una API KEY?
+## **6.** ¿Qué es una API KEY?
 
 Una API KEY, es un código alfanumérico único que se utiliza para **autenticar** y **autorizar** el acceso a una API. 
 
