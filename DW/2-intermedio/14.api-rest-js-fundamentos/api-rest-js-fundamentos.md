@@ -779,7 +779,7 @@ button {
 [Código de la clase](https://github.com/platzi/consumo-api-rest-javascript/tree/b67034778148ecbec54241e476cec9b74427ce21)
 
 
-## 8. ¿Qué son los Métodos HTTP?
+## **8.** ¿Qué son los Métodos HTTP?
 
 **Verbos**: También conocidos como métodos HTTP, indican acciones que están asociadas a peticiones y recursos, es decir, sirven para la manipulación de recursos cliente/servidor. 
 
@@ -805,7 +805,7 @@ Estos son los verbos HTTP más comunes, pero también existen otros menos utiliz
 - Verbos [[asincronismo-con-js#8. XMLHTTPRequest#Características del protocolo HTTP#Los Verbos HTTP mas comunes son]] 
 - Uso de Get, Post, Put y Delete [[get-post-put-delete]]
 
-## 9. GET: leyendo kittens favoritos
+## **9.** GET: leyendo kittens favoritos
 
 ```js
 const query_string = ["?", "limit=2"].join("");
@@ -883,7 +883,7 @@ span {
 
 [Documentación](https://developers.thecatapi.com/view-account/ylX4blBYT9FaoVd6OhvR?report=mkzf_eYzV)
 
-## 10. POST: guardando kittens favoritos
+## **10.** POST: guardando kittens favoritos
 
 Mi código...   
 ```js
@@ -1028,7 +1028,7 @@ save_favorites();
 
 [Código de la clase](https://github.com/platzi/consumo-api-rest-javascript/blob/4b9b69002c84dfd0a4e3dd1a9b543f22b0398eb3/main.js)
 
-## 11. Consultas a la API para escribir HTML dinámico
+## **11.** Consultas a la API para escribir HTML dinámico
 
 Usando mi propia API KEY nos muestra una lista de 100 imágenes como favoritos, pero usando la API KEY de la clase funciona bien. 
 
@@ -1181,7 +1181,7 @@ En este ejemplo, el método `appendChild()` agrega `childElement` al final del e
 
 En resumen, la principal diferencia entre `append()` y `appendChild()` radica en su capacidad para aceptar múltiples argumentos y tipos de datos. `append()` es más flexible y puede agregar varios elementos y tipos de datos al final del elemento padre, mientras que `appendChild()` solo puede agregar un objeto DOM al final del elemento padre.
 
-## 12. DELETE: borrando kittens favoritos
+## **12.** DELETE: borrando kittens favoritos
 
 Si logras borrar las imágenes házmelo saber en este [comentario](https://platzi.com/discusiones/2985-api/332494-nuevas-api_key-al-usar-una-api_key-creada-por-estos-dias-no-funciona-lo-de-anadir-favoritos-pero-si-uso-la-api_key-del-profe-magicame/), de todas maneras dejo mi código para que lo veas. 
 
@@ -1331,7 +1331,7 @@ load_favorites();
 - [Código de la clase](https://github.com/platzi/consumo-api-rest-javascript/tree/059992c2290a96254fc8ed53c7668debe6aef1a7)
 - [Documentación](https://developers.thecatapi.com/view-account/ylX4blBYT9FaoVd6OhvR?report=mkzf_eYzV)
 
-## 13. ¿Qué son los Headers HTTP?
+## **13.** ¿Qué son los Headers HTTP?
 
 En JavaScript, los encabezados (headers) se utilizan para comunicarse con una API (Application Programming Interface) y enviar información adicional junto con una solicitud HTTP. Los encabezados son pares clave-valor que se incluyen en la solicitud para proporcionar detalles sobre la solicitud o para controlar el comportamiento de la API.
 
@@ -1458,7 +1458,7 @@ Es importante tener en cuenta que los encabezados de representación pueden vari
 - [Headers](https://apipheny.io/api-headers/)
 - [Documentación](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers)  
 
-## 14. Header de autorización
+## **14.** Header de autorización
 
 Usar la siguiente forma para proporcionar nuestra API KEY es igual de inseguro. 
 
@@ -1481,7 +1481,7 @@ Para ver la API KEY utilizada en alguna web solo te vas al inspector de elemento
 - [Rest Client | Extension de Visual Studio Code](https://www.youtube.com/watch?v=3QLcHjNp-08)
 - [Extensión Rest Client](https://blog.bitsrc.io/vs-codes-rest-client-plugin-is-all-you-need-to-make-api-calls-e9e95fcfd85a)
 
-## 15. Header de Content-Type
+## **15.** Header de Content-Type
 
 El encabezado `Content-Type` es uno de los encabezados de representación más importantes en HTTP. Indica el tipo de contenido o formato de archivo que se envía en el cuerpo de una solicitud o respuesta. El valor del encabezado `Content-Type` especifica la naturaleza del contenido y permite que los agentes de usuario interpreten y procesen adecuadamente los datos.
 
@@ -1504,7 +1504,7 @@ Es importante establecer correctamente el `Content-Type` para que el receptor pu
 Siempre es recomendable consultar la documentación de la API o el servicio que estés utilizando para determinar los tipos de medios y subtipos específicos que admite en su implementación.
 
 
-## 16. FormData: publicando imágenes de kittens
+## **16.** FormData: publicando imágenes de kittens
 
 `FormData` es una interfaz de JavaScript que proporciona una forma sencilla de construir y enviar datos de formulario HTML mediante una solicitud HTTP. Se utiliza para recopilar datos de entrada de formularios, como campos de texto, campos de archivo, casillas de verificación y botones de opción, y enviarlos de manera eficiente a un servidor.
 
@@ -1539,7 +1539,7 @@ En resumen, `FormData` es una interfaz de JavaScript que facilita la recopilaci�
 - [Colores random](https://colorhunt.co/palettes/random)
 
 
-## 17. Axios: librerías de JavaScript para consumir APIs
+## **17.** Axios: librerías de JavaScript para consumir APIs
 
 - Axios
 - Trae.js
@@ -1580,7 +1580,7 @@ Este es solo un ejemplo básico de cómo utilizar Axios para realizar una solici
 
 [Documentación Axios](https://axios-http.com/docs/intro)
 
-## 18. CORS, caché, redirect y tu propio clon de fetch
+## **18.** CORS, caché, redirect y tu propio clon de fetch
 
 CORS (Cross-Origin Resource Sharing) es un mecanismo de seguridad utilizado por los navegadores web para restringir las solicitudes de recursos (como archivos JavaScript, imágenes, estilos, etc.) que se realizan desde un origen (dominio, protocolo y puerto) diferente al del propio documento que realiza la solicitud. CORS permite que los servidores especifiquen qué dominios tienen permiso para acceder a los recursos y qué tipos de solicitudes están permitidas.
 
@@ -1653,7 +1653,7 @@ myFetch('https://api.example.com/data', {
   });
 ```
 
-## 19. GraphQL, Web Sockets y Web 3.0: el mundo más allá de REST
+## **19.** GraphQL, Web Sockets y Web 3.0: el mundo más allá de REST
 
 1. `sendBeacon`: es una API proporcionada por los navegadores web que permite enviar datos al servidor de forma asíncrona antes de que el usuario abandone la página. Se utiliza principalmente para enviar datos de análisis, registros de errores u otra información importante que no debe perderse incluso si el usuario cierra la página. A diferencia de las solicitudes HTTP tradicionales, `sendBeacon` garantiza que los datos se envíen de manera confiable antes de que se descargue la página.
 
@@ -1675,7 +1675,7 @@ El ENS utiliza contratos inteligentes en Ethereum para almacenar y mantener los 
 
 En resumen, DNS es un sistema utilizado en Internet para traducir nombres de dominio en direcciones IP, mientras que ENS es un sistema similar pero basado en blockchain que permite asociar nombres legibles para los humanos con direcciones Ethereum y otros recursos relacionados con Ethereum.
 
-## 20. Toma el Curso Práctico de Consumo de API REST con JavaScript
+## **20.** Toma el Curso Práctico de Consumo de API REST con JavaScript
 
 ## Examen 📌
 <details>
