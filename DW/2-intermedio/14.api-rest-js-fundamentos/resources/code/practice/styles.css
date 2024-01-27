@@ -14,27 +14,39 @@ h1 {
 }
 
 main {
-  display: grid;
   width: 80vw;
-  height: 40vh;
+  height: 80vh;
   margin: 0 auto;
 }
 
-figure {
+section.container {
+  width: 80vw;
+  height: 40vh;
+}
+
+.random-cats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+  position: relative;
+}
+
+.cat-image {
   width: 100%;
-  height: 92%;
-  display: flex;
-  justify-content: space-between;
-  gap: 20px;
-  margin-bottom: 0px;
+  height: 100%;
 }
 
-img {
-  width: 200px;
-  height: 200px;
+.like-button {
+  width: 45px;
+  height: 45px;
+  background-color: blueviolet;
+
+  position: absolute;
+  top: 5px;
+  right: 300px;
 }
 
-button {
+.random-button {
   width: 85px;
   height: 45px;
   justify-self: center;

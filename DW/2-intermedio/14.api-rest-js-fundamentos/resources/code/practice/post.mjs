@@ -1,10 +1,10 @@
 import {
   KEY,
-  queryParameters,
+  queryRandom,
 } from "./parameters.mjs";
 
 const favorites = async id => {
-  const response = await fetch(queryParameters, {
+  const response = await fetch(queryRandom, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
