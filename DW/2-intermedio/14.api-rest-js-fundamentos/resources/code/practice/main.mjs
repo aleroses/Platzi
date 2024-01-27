@@ -7,11 +7,12 @@ const showImages = async () => {
 
   const container =
     document.querySelector(".container");
-  //container.innerHTML = "";
+  container.innerHTML = "";
+  let content = "";
 
   data.map(img => {
     console.log(img);
-    const content = `
+    content += `
 			<figure class="random-cats">
 				<img src="${img.url}" class="cat-image" alt="" />
 				<button type="button" class="like-button">💙</button>
