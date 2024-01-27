@@ -14,6 +14,10 @@ h1 {
 }
 
 main {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 2fr 1fr;
+  justify-items: center;
   width: 80vw;
   height: 80vh;
   margin: 0 auto;
@@ -23,6 +27,9 @@ section.container {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr;
+  gap: 20px;
+
+  
 }
 
 .random-cats {
@@ -34,7 +41,7 @@ section.container {
 
 .cat-image {
   width: 100%;
-  max-width: 300px;
+  /* max-width: 300px; */
   height: 100%;
   max-height: 300px;
 }
@@ -52,7 +59,7 @@ section.container {
 .random-button {
   width: 85px;
   height: 45px;
-  justify-self: center;
+
   background-color: aqua;
   border: 0;
   border-radius: 18px;
