@@ -1,4 +1,4 @@
-import { fetchData } from "./fetch.mjs";
+import { fetchData } from "./get.mjs";
 import { randomImg } from "./random.mjs";
 
 const showImages = async () => {
