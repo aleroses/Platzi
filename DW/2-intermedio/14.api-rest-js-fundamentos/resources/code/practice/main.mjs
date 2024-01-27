@@ -1,4 +1,5 @@
 import { fetchData } from "./fetch.mjs";
+import { randomImg } from "./random.mjs";
 
 const showImages = async () => {
   const data = await fetchData();
@@ -6,6 +7,7 @@ const showImages = async () => {
   const container = document.querySelector(
     ".random-cats"
   );
+  container.innerHTML = "";
 
   data.map(img => {
     const content = document.createElement("img");
@@ -15,4 +17,8 @@ const showImages = async () => {
   });
 };
 
+// window.addEventListener("load", showImages);
 showImages();
+randomImg();
+
+export { showImages };
