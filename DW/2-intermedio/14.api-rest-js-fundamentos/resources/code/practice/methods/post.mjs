@@ -20,7 +20,7 @@ const favorites = async id => {
     const data = await response.json();
     console.log("Save: Post ❤💜💙", response);
     console.log("Data: Post ❤💜💙", data);
-    return data;
+    //return data;
 
     // función cargar favoritos()
   } else {
