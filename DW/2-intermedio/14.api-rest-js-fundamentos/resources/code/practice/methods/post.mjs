@@ -13,14 +13,14 @@ const favorites = async id => {
     },
     body: JSON.stringify({
       image_id: id,
-      //sub_id, subId
+      sub_id: "user-123",
     }),
   });
 
   if (response.status === 200) {
     const data = await response.json();
-    console.log("Save: Post ❤💜💙", response);
-    console.log("Data: Post ❤💜💙", data);
+    /* console.log("Save: Post ❤💜💙", response);
+    console.log("Data: Post ❤💜💙", data); */
     //return data;
 
     // función cargar favoritos()

@@ -19,7 +19,7 @@ main {
   grid-template-rows: 2fr 1fr;
   justify-items: center;
   width: 80vw;
-  height: 80vh;
+  height: 56vh;
   margin: 0 auto;
 }
 
@@ -28,8 +28,6 @@ section.container {
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr;
   gap: 20px;
-
-  
 }
 
 .random-cats {
@@ -65,4 +63,31 @@ section.container {
   border-radius: 18px;
   padding: 10px;
   cursor: pointer;
+  margin: 12px;
+}
+
+.favorite-cats {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+}
+
+.delete {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.favorite-cat {
+  width: 85px;
+  display: flex;
+}
+
+.delete-button {
+  width: 25px;
+  height: 25px;
+  background-color: crimson;
+
+  position: absolute;
+  top: 2px;
+  right: 2px;
 }

@@ -9,8 +9,8 @@ const getFavorites = async () => {
   if (response.status === 200) {
     const data = await response.json();
 
-    console.log("Favorites");
-    console.log(data);
+    /* console.log("Favorites");
+    console.log(data); */
     return data;
   }
 };
