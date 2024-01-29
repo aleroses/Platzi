@@ -19,12 +19,12 @@ const favorites = async id => {
 
   if (response.status === 200) {
     const data = await response.json();
-    /* console.log("Save: Post ❤💜💙", response);
-    console.log("Data: Post ❤💜💙", data); */
+    console.log("Save: Post ❤💜💙", response);
+    console.log("Data: Post ❤💜💙", data);
     //return data;
 
     // función cargar favoritos()
-    //loadFavorites();
+    loadFavorites();
   } else {
     console.log("xd", response.status);
   }

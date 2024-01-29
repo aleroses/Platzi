@@ -3,7 +3,7 @@ const URLRANDOM =
 const URLFAVORITES =
   "https://api.thecatapi.com/v1/favourites";
 const URLDELETE = id => {
-  `https://api.thecatapi.com/v1/favourites/:${id}`;
+  return `https://api.thecatapi.com/v1/favourites/:${id}`;
 };
 const APIKEY =
   "live_W59yADfCl0zz50jHsAElmhFZEyJV6jC9RT3YY5Q43cP78HvD8XNGH80daxZBiTzY";
@@ -25,7 +25,7 @@ const queryFavorites = [
   "?",
   KEY,
 ].join("");
-console.log(queryFavorites);
+//console.log(queryFavorites);
 
 /* const queryDelete = [
   URLDELETE, 

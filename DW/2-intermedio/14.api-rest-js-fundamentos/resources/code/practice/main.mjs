@@ -43,7 +43,11 @@ const loadFavorites = async () => {
   );
   container.innerHTML = "";
 
-  data &&
+  if (data.length === 0) {
+    // Mostrar un mensaje u otra acción cuando no hay favoritos disponibles
+    container.innerHTML =
+      "No hay favoritos disponibles.";
+  } else {
     data.map(favorite => {
       //console.log(favorite.id);
       const figure =
@@ -65,6 +69,7 @@ const loadFavorites = async () => {
       figure.append(button);
       container.append(figure);
     });
+  }
 };
 
 // window.addEventListener("load", showImages);
