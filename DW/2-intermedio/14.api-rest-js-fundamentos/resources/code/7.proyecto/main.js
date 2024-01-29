@@ -10,12 +10,16 @@ const API_KEY = [
 const API_URL_RANDOM = `https://api.thecatapi.com/v1/images/search${query_string}&${API_KEY}`;
 const API_URL_FAVORITES = `https://api.thecatapi.com/v1/favourites?${API_KEY}`;
 //const API_URL_IMAGES = `https://api.thecatapi.com/v1/images?${API_KEY}`;
-const API_URL_FAVORITES_DELETE = (id) =>
+const API_URL_FAVORITES_DELETE = id =>
   `https://api.thecatapi.com/v1/favourites/:${id}?${API_KEY}`;
 
-const request_failed = document.createElement("span");
-const container = document.querySelector(".container");
-const favorite_cat = document.querySelector(".favorite__cat");
+const request_failed =
+  document.createElement("span");
+const container =
+  document.querySelector(".container");
+const favorite_cat = document.querySelector(
+  ".favorite__cat"
+);
 
 async function load_random() {
   try {
@@ -29,10 +33,13 @@ async function load_random() {
       container.innerHTML = "";
       let n = 0;
 
-      data.map((img) => {
-        const content = document.createElement("figure");
+      data.map(img => {
+        const content =
+          document.createElement("figure");
         content.innerHTML = `
-        <img class="img${n++}" src="${img.url}" alt="Kitten pictures">
+        <img class="img${n++}" src="${
+          img.url
+        }" alt="Kitten pictures">
         <img class="save btn${n}" onclick="save_favorites('${
           img.id
         }')" src="./svg/heart.svg" alt="Heart icon"> 
@@ -49,7 +56,7 @@ async function load_random() {
   }
 }
 
-async function load_favorites() {
+async function load_favorites() { //getFavorites
   try {
     const response = await fetch(API_URL_FAVORITES);
 
@@ -61,12 +68,15 @@ async function load_favorites() {
 
       let n = 0;
 
-      const content = document.createElement("figure");
+      const content =
+        document.createElement("figure");
       content.innerHTML = "";
 
-      data.forEach((kitten) => {
+      data.forEach(kitten => {
         content.innerHTML = `
-        <img class="img${n++}" src="${kitten.image.url}" alt="Kitten pictures">
+        <img class="img${n++}" src="${
+          kitten.image.url
+        }" alt="Kitten pictures">
         <img class="delete btn${n}" onclick="delete_favorites(${kitten.id.toString()})" src="./svg/delete.svg" alt="Delete icon">
         `;
         //console.log(kitten.id);
@@ -84,16 +94,19 @@ async function load_favorites() {
 
 async function save_favorites(id) {
   try {
-    const response = await fetch(API_URL_FAVORITES, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "x-api-key": API_KEY,
-      },
-      body: JSON.stringify({
-        image_id: id, //cma.jpg
-      }),
-    });
+    const response = await fetch(
+      API_URL_FAVORITES,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "x-api-key": API_KEY,
+        },
+        body: JSON.stringify({
+          image_id: id, //cma.jpg
+        }),
+      }
+    );
 
     if (response.status === 200) {
       const data = await response.json();
@@ -114,9 +127,12 @@ async function save_favorites(id) {
 
 async function delete_favorites(id) {
   try {
-    const response = await fetch(API_URL_FAVORITES_DELETE(id), {
-      method: "DELETE",
-    });
+    const response = await fetch(
+      API_URL_FAVORITES_DELETE(id),
+      {
+        method: "DELETE",
+      }
+    );
 
     if (response.status === 200) {
       const data = await response.json();
