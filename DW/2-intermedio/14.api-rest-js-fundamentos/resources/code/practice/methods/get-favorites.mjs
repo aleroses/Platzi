@@ -1,7 +1,10 @@
-import { URLFAVORITES } from "./parameters.mjs";
+import {
+  URLFAVORITES,
+  queryFavorites,
+} from "./parameters.mjs";
 
 const getFavorites = async () => {
-  const response = await fetch(URLFAVORITES);
+  const response = await fetch(queryFavorites);
 
   if (response.status === 200) {
     const data = await response.json();

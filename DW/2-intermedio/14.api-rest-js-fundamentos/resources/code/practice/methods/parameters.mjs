@@ -4,17 +4,19 @@ const URLFAVORITES =
   "https://api.thecatapi.com/v1/favourites";
 const APIKEY =
   "live_W59yADfCl0zz50jHsAElmhFZEyJV6jC9RT3YY5Q43cP78HvD8XNGH80daxZBiTzY";
-const KEY = ["&", "api_key=", APIKEY].join("");
+const KEY = [/* "&", */ "api_key=", APIKEY].join("");
 
 const queryRandom = [
   URLRANDOM,
   "?",
   "limit=",
   3,
+  "&",
   KEY,
 ].join("");
 
-//const queryFavorites = URLFAVORITES;
+const queryFavorites = [URLFAVORITES, "?", KEY].join("");
+console.log(queryFavorites);
 
 // ?limit=10
 
@@ -24,4 +26,5 @@ export {
   APIKEY,
   KEY,
   queryRandom,
+  queryFavorites,
 };

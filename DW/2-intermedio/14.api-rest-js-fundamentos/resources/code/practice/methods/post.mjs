@@ -2,6 +2,7 @@ import {
   APIKEY,
   URLFAVORITES,
 } from "./parameters.mjs";
+import { loadFavorites } from "../main.mjs";
 
 const favorites = async id => {
   const response = await fetch(URLFAVORITES, {
@@ -23,6 +24,7 @@ const favorites = async id => {
     //return data;
 
     // función cargar favoritos()
+    //loadFavorites();
   } else {
     console.log("xd", response.status);
   }

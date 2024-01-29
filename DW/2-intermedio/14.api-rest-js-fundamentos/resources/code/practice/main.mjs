@@ -1,6 +1,7 @@
 import { randomImg } from "./random.mjs";
 import { fetchData } from "./methods/get.mjs";
 import { favorites } from "./methods/post.mjs";
+import { getFavorites } from "./methods/get-favorites.mjs";
 
 const showImages = async () => {
   const data = await fetchData();
@@ -25,6 +26,7 @@ const showImages = async () => {
     button.innerHTML = "💙";
     button.addEventListener("click", () => {
       favorites(img.id);
+      loadFavorites();
     });
     figure.appendChild(button);
 
@@ -32,13 +34,29 @@ const showImages = async () => {
   });
 };
 
-/* const saveFavorites = async id => {
-  const data = await favorites(id);
-  return data;
-}; */
+const loadFavorites = async () => {
+  const data = await getFavorites();
+
+  const container = document.querySelector(
+    ".favorite-cats"
+  );
+  container.innerHTML = "";
+
+  data &&
+    data.map(favorite => {
+      const figure =
+        document.createElement("figure");
+      const image = document.createElement("img");
+      image.src = favorite.image.url;
+
+      figure.append(image);
+      container.append(figure);
+    });
+};
 
 // window.addEventListener("load", showImages);
 showImages();
 randomImg();
+loadFavorites();
 
-export { showImages };
+export { showImages, loadFavorites };
