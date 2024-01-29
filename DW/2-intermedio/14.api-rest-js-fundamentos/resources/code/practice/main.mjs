@@ -11,19 +11,11 @@ const showImages = async () => {
   // let content = "";
 
   data.map(img => {
-    /* content += `
-			<figure class="random-cats">
-				<img src="${img.url}" class="cat-image" alt="" />
-        <button class="like-button">💙</button>
-			</figure>
-		`;
-
-    container.innerHTML = content; */
-
     const figure = document.createElement("figure");
     figure.className = "random-cats";
 
     const image = document.createElement("img");
+    image.className = "cat-image";
     image.src = img.url;
     image.alt = "";
     figure.appendChild(image);
@@ -32,7 +24,7 @@ const showImages = async () => {
     button.className = "like-button";
     button.innerHTML = "💙";
     button.addEventListener("click", () => {
-      saveFavorites(img.id);
+      favorites(img.id);
     });
     figure.appendChild(button);
 
@@ -40,10 +32,10 @@ const showImages = async () => {
   });
 };
 
-const saveFavorites = async id => {
+/* const saveFavorites = async id => {
   const data = await favorites(id);
   return data;
-};
+}; */
 
 // window.addEventListener("load", showImages);
 showImages();
