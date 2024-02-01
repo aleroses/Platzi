@@ -20,7 +20,12 @@ Crea tu prototipo en Figma o donde desees. También puedes buscar diseños ya re
 
 ## **3.** Configuración del entorno de desarrollo
 
+- Crea un nuevo repo en GitHub y clónalo
 
+```bash
+code ./ -r
+npm init -y
+```
 
 ## Otros apuntes
 
