@@ -9,7 +9,13 @@ Debes crearte una cuenta en [The Movie DB](https://www.themoviedb.org/) para obt
 
 ## **2.** Bocetos en papel y diseño en Figma
 
+Crea tu prototipo en Figma o donde desees. También puedes buscar diseños ya realizados en Pinterest, Dribbble o Behance. 
 
+### Recomendaciones
+
+- [Curso de Figma: Prototipado e Interfaces](https://platzi.com/cursos/figma-basico/)
+- [Curso de Figma: Técnicas Avanzadas de Diseño](https://platzi.com/cursos/figma-tecnicas-avanzadas/)
+  - [Prototipo propuesto en el curso](https://www.figma.com/proto/0xoaBRUNgYu9Uot6eUVUws/PlatziMovies?node-id=1-2&amp%3Bscaling=scale-down&amp%3Bpage-id=0%3A1)
 
 ## Otros apuntes
 
