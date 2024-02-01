@@ -16,6 +16,11 @@ Crea tu prototipo en Figma o donde desees. También puedes buscar diseños ya re
 - [Curso de Figma: Prototipado e Interfaces](https://platzi.com/cursos/figma-basico/)
 - [Curso de Figma: Técnicas Avanzadas de Diseño](https://platzi.com/cursos/figma-tecnicas-avanzadas/)
   - [Prototipo propuesto en el curso](https://www.figma.com/proto/0xoaBRUNgYu9Uot6eUVUws/PlatziMovies?node-id=1-2&amp%3Bscaling=scale-down&amp%3Bpage-id=0%3A1)
+  - [Paleta de colores](https://colorhunt.co/)
+
+## **3.** Configuración del entorno de desarrollo
+
+
 
 ## Otros apuntes
 
