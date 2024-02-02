@@ -88,7 +88,7 @@ En resumen, SSR se refiere a la técnica de renderizar el contenido en el servid
 
 ## **3.** Consume tu primera API REST
 
-Web que nos muestra una fotografía de un gato diferente, cada vez que le damos al botón random. 
+Web que nos muestra una fotografía de un gato diferente, cada vez que le damos al botón random. Revisa el [proyecto actualizado](https://github.com/alevroses/api_get-post-delete-cats) 👈👀
 
 Usando `fetch`:  
 
