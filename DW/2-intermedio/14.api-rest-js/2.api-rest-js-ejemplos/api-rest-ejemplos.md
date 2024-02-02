@@ -17,6 +17,7 @@ Crea tu prototipo en Figma o donde desees. También puedes buscar diseños ya re
 - [Curso de Figma: Técnicas Avanzadas de Diseño](https://platzi.com/cursos/figma-tecnicas-avanzadas/)
   - [Prototipo propuesto en el curso](https://www.figma.com/proto/0xoaBRUNgYu9Uot6eUVUws/PlatziMovies?node-id=1-2&amp%3Bscaling=scale-down&amp%3Bpage-id=0%3A1)
   - [Paleta de colores](https://colorhunt.co/)
+  - [Generador de Paleta de colores](https://mybrandnewlogo.com/es/generador-de-paleta-de-colores)
 
 ## **3.** Configuración del entorno de desarrollo
 
@@ -176,6 +177,56 @@ Al cargar el archivo `.env` con `require('dotenv').config()`, las variables d
 
 Recuerda que el archivo `.env` debe mantenerse fuera del control de versiones, ya que contiene información sensible. Asegúrate de agregarlo al archivo `.gitignore` para evitar que se suba a un repositorio público.
 
+### 📒 Agregando variables de entorno para trabajar en React
+
+1. Agrega un archivo .env en el nivel donde se encuentra tu .gitignore.
+
+2. Declara tu(s) variable(s) de entorno dentro de tu archivo .env, dichas variables siempre deben comenzar por “REACT_APP_”, sin las comillas y agregando el nombre de tu variable en mayúsculas espaciada por guiones bajos, posteriormente asígnale un valor a esta variable usando un “=”.
+
+Ejemplo de una variable de entorno:  
+
+```
+REACT_APP_API_KEY=abcd1726gy57
+```
+
+3. Para usar tu variable de entorno simplemente declara: “process.env.” Sin las comillas y seguido del nombre de tu variable.
+
+Ejemplo de uso:
+
+```js
+console.log(process.env.REACT_APP_API_KEY)
+```
+
+4. Ahora en tu archivo .gitignore agrega: “.env”, sin comillas y en cualquier parte del documento, eso ignorará los archivos .env y mantendrá a salvo tus secretos.
+
+### Nota:
+
+Ten en cuenta que las variables de entorno se ejecutan al iniciar el servidor, así que no te alteres si tu variable no se muestra a la primera, esto puede pasar porque ya te encontrabas trabajando dentro de tu servidor antes de agregar las variables de entorno, la solución es detener el servidor y volverlo a iniciar con el clásico “npm start”.
+
+Si quieres saber más sobre este tema, consulta [la documentación aquí.](https://create-react-app.dev/docs/adding-custom-environment-variables/) 👈
+
+## **4.** Maquetación del proyecto: HTML y CSS
+
+## **5.** Lista de películas en tendencia
+
+[Trending: All](https://developer.themoviedb.org/reference/trending-all)
+
+Elige el lenguaje y usa el código mostrado en la misma web.
+
+```js
+const options = {
+  method: 'GET',
+  headers: {
+    accept: 'application/json',
+    Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI5MTRjZWZhYzNhM2QyMzRjNThlZjQ2OTAzY2U3ZWJkMyIsInN1YiI6IjY1NjIxMjMyYTZjMTA0MDBmZWIwYjc2MiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.w49IQG4OZJuFx_It37mXvTWZtbyWPFHotHB0yEA2dP0'
+  }
+};
+
+fetch('https://api.themoviedb.org/3/trending/all/day?language=en-US', options)
+  .then(response => response.json())
+  .then(response => console.log(response))
+  .catch(err => console.error(err));
+```
 
 ## Otros apuntes
 
