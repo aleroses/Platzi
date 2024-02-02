@@ -1,19 +1,20 @@
-import { authorization } from "./parameters.mjs";
+import { getTrendingMovies } from "./API/get-trending-movies.mjs";
 
-const getTrendingMoviesPreview = async () => {
-  const response = await fetch(
-    "https://api.themoviedb.org/3/trending/all/day?language=en-US",
-    {
-      method: "GET",
-      headers: {
-        accept: "application/json",
-        authorization,
-      },
-    }
-  );
+const showTrendingMovies = async () => {
+  const data = await getTrendingMovies();
 
-  const data = await response.json();
-  console.log(data);
+  //console.log(data);
+
+  data.results.map(movie => {
+    console.log(movie);
+    const container = document.createElement("div");
+    container.classList.add("movie-container");
+
+    const img = document.createElement("img");
+    img.classList.add("movie-img");
+    img.setAttribute("alt", movie.title);
+    //movie.setAttribute('src', )
+  });
 };
 
-getTrendingMoviesPreview();
+showTrendingMovies();

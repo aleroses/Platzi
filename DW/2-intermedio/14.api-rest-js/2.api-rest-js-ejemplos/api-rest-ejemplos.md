@@ -228,6 +228,10 @@ fetch('https://api.themoviedb.org/3/trending/all/day?language=en-US', options)
   .catch(err => console.error(err));
 ```
 
+Para obtener imagenes revisa:
+
+[Images Basics](https://developer.themoviedb.org/docs/image-basics)
+
 ## Otros apuntes
 
 [Notion](https://www.notion.so/Curso-Pr-ctico-de-Consumo-de-API-REST-con-JavaScript-e98bd628bc0e4af481f47e839bc82692)
