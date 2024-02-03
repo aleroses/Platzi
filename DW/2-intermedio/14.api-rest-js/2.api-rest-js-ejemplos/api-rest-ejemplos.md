@@ -306,6 +306,8 @@ console.log(location.hash)
 location.hash = "new hash";
 ```
 
+location.hash = "#home"
+
 - [Documentación]()
 
 ## Otros apuntes

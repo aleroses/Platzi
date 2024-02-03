@@ -1,5 +1,6 @@
 import { getTrendingMovies } from "./API/get-trending-movies.mjs";
 import { getCategories } from "./API/get-categories.mjs";
+import { navigator } from "./navigation.mjs";
 
 const showTrendingMovies = async () => {
   const data = await getTrendingMovies();
@@ -51,5 +52,8 @@ const showCategories = async () => {
   });
 };
 
-showTrendingMovies();
+/* showTrendingMovies();
 showCategories();
+navigator(); */
+
+export { showCategories, showTrendingMovies };
