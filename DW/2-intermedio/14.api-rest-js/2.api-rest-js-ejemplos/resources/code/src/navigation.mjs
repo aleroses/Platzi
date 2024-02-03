@@ -3,7 +3,7 @@ import {
   showTrendingMovies,
 } from "./main.mjs";
 
-const navigator = () => {
+/* const navigator = () => {
   console.log({ location });
 
   if (location.hash.startsWith("#trends")) {
@@ -21,6 +21,18 @@ const navigator = () => {
   }
 
   location.hash;
+}; */
+
+const navigator = () => {
+  const hash = {
+    "#trends": () => trendsPage(),
+    "#search": () => searchPage(),
+    "#movie": () => moviePage(),
+    "#category": () => categoryPage(),
+    "#home": () => homePage(),
+  };
+
+  hash[location.hash]();
 };
 
 window.addEventListener("load", navigator, false);
@@ -36,6 +48,7 @@ const homePage = () => {
   showTrendingMovies();
   showCategories();
 };
+
 const categoriesPage = () => {
   console.log("category!!!");
 };
@@ -50,3 +63,15 @@ const trendsPage = () => {
 };
 
 export { navigator };
+
+/* const navigate = () => {
+  const hash = {
+    "#trends": () => trendsPage(),
+    "#search": () => searchPage(),
+    "#movie": () => moviePage(),
+    "#category": () => categoryPage(),
+    "#home": () => homePage(),
+  };
+
+  hash[location.hash]();
+}; */

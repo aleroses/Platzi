@@ -369,7 +369,8 @@ location.hash = "new hash";
 location.hash = "#home"
 ```
 
-- [Documentación]()
+- [Documentación: location](https://developer.mozilla.org/es/docs/Web/API/Location)
+- [Documentación: hashchange](https://developer.mozilla.org/es/docs/Web/API/Window/hashchange_event)
 
 ## Otros apuntes
 
