@@ -30,6 +30,25 @@ const showTrendingMovies = async () => {
 const showCategories = async () => {
   const data = await getCategories();
   console.log(data);
+
+  data.genres.map(genre => {
+    const preview = document.querySelector(
+      "#categoriesPreview .categoriesPreview-list"
+    );
+    const container = document.createElement("div");
+    container.classList.add("category-container");
+
+    const title = document.createElement("h3");
+    title.classList.add("category-title");
+    title.setAttribute("id", `id${genre.id}`);
+    const titleText = document.createTextNode(
+      genre.name
+    );
+
+    title.appendChild(titleText);
+    container.appendChild(title);
+    preview.appendChild(container);
+  });
 };
 
 showTrendingMovies();
