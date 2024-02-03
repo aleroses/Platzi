@@ -451,13 +451,12 @@ div3.addEventListener("click", event => {
 
 De esta forma, el evento de `div2` y `div1` no serán ejecutados.
 
-Dato curioso, cuando defines un elemento con un ID en HTML, en JavaScript se crea automáticamente una variable con ese id que creaste, por eso es completamente posible que yo pueda usar la variable `div3` sin tener que seleccionar el elemento.
+📌 Dato curioso, cuando defines un elemento con un ID en HTML, en JavaScript se crea automáticamente una variable con ese id que creaste, por eso es completamente posible que yo pueda usar la variable `div3` sin tener que seleccionar el elemento.
 
-En la definición de la escucha de un evento este tiene tres parametros, el evento, la función que ejecutara cuando se detecte el evento y el modo **burbble (false)** que es el modo por defecto o el modo **capturing (true).**
+En la definición de la escucha de un evento, este tiene tres parámetros, el evento, la función que ejecutara cuando se detecte el evento y el modo **burbble (false)** que es el modo por defecto o el modo **capturing (true).**
 
-```
+```js
 div3.addEventListener("click",funcion, false);
-
 ```
 
 ### Capturing
@@ -468,7 +467,7 @@ Los eventos del DOM estándar describen 3 fases de propagación de eventos:
 
 1. Fase de captura: el evento se reduce al elemento.
 2. Fase objetivo: el evento alcanzó el elemento objetivo.
-3. Fase burbujeante: el evento emerge del elemento hacia todos sus padre.
+3. Fase burbujeante: el evento emerge del elemento hacia todos sus padres.
 
 Podemos decir que el evento en modo **captura,** es la contra parte del burbujeante, de tal manera que también se le denomina **goteo.** En este caso el evento se captura en el elemento padre y este lo desencadena los eventos en los elementos hijos.
 
@@ -480,15 +479,15 @@ div1.addEventListener("click",funcion, false);
 
 ```jsx
 <div id="div1">
-    <div id="div2">
-        <div id="div3">
-            Hola
-        </div>
+  <div id="div2">
+    <div id="div3">
+      Hola
     </div>
+  </div>
 </div>
 ```
 
-En este caso el evento se detecta en el elemento **div1** y después se ejecutará en los elementos **div2 y div1**
+En este caso el evento se detecta en el elemento `div1` y después se ejecutará en los elementos `div2` y `div1`.
 
 [Apuntes del dominio del DOM](https://denim-roll-f1a.notion.site/Manipulaci-n-del-DOM-con-JS-fdd3de3e7b444d19bf61b39d1bacb1e0)
 
