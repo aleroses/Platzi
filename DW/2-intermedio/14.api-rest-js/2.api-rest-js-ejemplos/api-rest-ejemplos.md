@@ -425,32 +425,33 @@ En resumen, el tercer argumento `false` en `addEventListener` indica que el even
 
 La propagación de eventos burbujeante, ascendente o Bubble, se produce cuando se define un evento en un elemento (padre) que contiene otros elementos (hijos). Por ejemplo:
 
-```
+```html
 <div id="div1">
-    <div id="div2">
-        <div id="div3">
-            Hola
-        </div>
+  <div id="div2">
+    <div id="div3">
+      Hola
     </div>
+  </div>
 </div>
 ```
 
-Si definimos un event listener en **div3** y le das click aparentemente estas dando click a los elementos **div2** y **div1**. Esto se debe a que JS esta pensado para que el evento interno se propague hacia arriba hasta llegar a su máximo contenedor DOM. Similar a una burbuja que asciende desde el fondo hasta el tope del liquido.
+Si definimos un `eventListener` en `div3` y le das clic, aparentemente estás dando clic a los elementos  `div2` y  `div1`. Esto se debe a que JS está pensado para que el evento interno se propague hacia arriba hasta llegar a su máximo contenedor DOM. Similar a una burbuja que asciende desde el fondo hasta el tope del líquido.
 
-La forma de detener el ascenso de eventos, es usando el método `stopPropagation()`. Que viene dentro del argumento `event` que cualquier evento nos provee, por tanto, yo puedo decirle al div3: “Oiga, yo solo lo quiero clickar a usted, no a los demás, sí, ya se que usted está dentro de los demás, pero yo solo lo quiero a usted”, de tal forma que al event listener del programation le puedo declarar como:
+La forma de detener el ascenso de eventos, es usando el método `stopPropagation()`. Que viene dentro del argumento `event` que cualquier evento nos provee, por tanto, yo puedo decirle al `div3`: 
 
-```
-div3.addEventListener("click",event => {
+> “Oiga, yo solo lo quiero clicar a usted, no a los demás, sí, ya sé que usted está dentro de los demás, pero yo solo lo quiero a usted”, 
 
-event.stopPropagation()
+De tal forma que al `eventListener` del `programation` le puedo declarar como:
 
+```js
+div3.addEventListener("click", event => {
+  event.stopPropagation()
 });
-
 ```
 
-De esta forma, el evento de div2 y div1 no serán ejecutados.
+De esta forma, el evento de `div2` y `div1` no serán ejecutados.
 
-Dato curioso, cuando tu defines un elemento con un ID en HTML, en JavaScript se crea automáticamente una variable con ese id que creaste, por eso es completamente posible que yo pueda usar la variable `div3` sin tener que seleccionar el elemento.
+Dato curioso, cuando defines un elemento con un ID en HTML, en JavaScript se crea automáticamente una variable con ese id que creaste, por eso es completamente posible que yo pueda usar la variable `div3` sin tener que seleccionar el elemento.
 
 En la definición de la escucha de un evento este tiene tres parametros, el evento, la función que ejecutara cuando se detecte el evento y el modo **burbble (false)** que es el modo por defecto o el modo **capturing (true).**
 
