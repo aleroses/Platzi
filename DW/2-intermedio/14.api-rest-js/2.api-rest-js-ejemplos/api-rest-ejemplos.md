@@ -358,7 +358,10 @@ En resumen, `location.hash.startsWith("#example=")` devuelve `true` si la parte 
 
 Por ejemplo, si la URL actual es `https://www.example.com/#example=123`, entonces `location.hash.startsWith("#example=")` será `true` porque la parte de la hash comienza con `#example=`.
 
+### Pruebas en consola 
+
 ```js
+// Agrega a la url un #algo luego prueba lo siguiene en consola:
 location
 location.hash
 location.hash = "lolcat";
