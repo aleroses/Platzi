@@ -247,8 +247,51 @@ Para obtener la lista de géneros o categorías entra a [Movie List](https://dev
 
 Copia el cdn del repo de GitHub: [CDN jsDelivr](https://github.com/axios/axios?tab=readme-ov-file#cdn)
 
+Agregar encima de las otras llamadas de archivos JS. 
+
 ```html
 <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
+```
+
+La sintaxis es la siguiente:
+
+```js
+const apiaxios = axios.create({
+  baseURL: "https://api.themoviedb.org/3/",
+  /* 
+	headers: {
+    "Content-Type": "application/json",
+  },
+  params: {
+    api_key: authorization,
+  }, */
+});
+
+export { apiaxios };
+```
+
+Reemplazamos el `fech` por `apiaxios`.
+
+```js
+import { authorization } from "../parameters.mjs";
+import { apiaxios } from "./axios.mjs";
+
+const getCategories = async () => {
+  const { data } = await apiaxios( 👈👀
+    "genre/movie/list?language=en",
+    {
+      method: "GET",
+      headers: {
+        accept: "application/json",
+        authorization,
+      },
+    }
+  );
+
+  return data;
+};
+
+export { getCategories };
 ```
 
 
