@@ -296,6 +296,52 @@ export { getCategories };
 
 ## **8.** Location y hash navigation
 
+En JavaScript, `Location` es un objeto que representa la información sobre la ubicación actual del documento cargado en el navegador. Proporciona una interfaz para acceder y manipular diversas partes de la URL, como el dominio, el protocolo, el puerto, la ruta y los parámetros de consulta.
+
+El objeto `Location` se puede acceder a través de la propiedad `window.location` en los navegadores web. Aquí tienes algunos ejemplos de cómo se puede utilizar:
+
+1. Obtener la URL completa:
+```javascript
+console.log(window.location.href);
+```
+
+2. Obtener el dominio:
+```javascript
+console.log(window.location.hostname);
+```
+
+3. Obtener la ruta:
+```javascript
+console.log(window.location.pathname);
+```
+
+4. Obtener los parámetros de consulta:
+```javascript
+console.log(window.location.search);
+```
+
+El objeto `Location` también proporciona métodos para redirigir la página a una nueva URL. Por ejemplo, puedes utilizar el método `assign()` para cargar una nueva página:
+
+```javascript
+window.location.assign('https://www.example.com');
+```
+
+Ahora, en cuanto a la "hash navigation", se refiere al uso del fragmento de URL conocido como "hash" (#) para realizar cambios en la página sin tener que recargarla por completo. Cuando se utiliza la navegación basada en hash, los cambios en la parte de hash de la URL no provocan una solicitud al servidor, lo que permite actualizar solo una parte específica de la página.
+
+Por ejemplo, supongamos que tienes una página con una lista de elementos y deseas permitir que los usuarios naveguen entre ellos sin recargar la página. Puedes usar la hash navigation para lograrlo. Al hacer clic en un enlace, puedes cambiar el valor de la hash en la URL y luego detectar ese cambio utilizando el evento `hashchange` en JavaScript. Aquí tienes un ejemplo:
+
+```javascript
+window.addEventListener('hashchange', function() {
+  var hash = window.location.hash;
+  // Realizar acciones basadas en el valor de la hash
+});
+
+// Cambiar la hash en la URL
+window.location.hash = 'item1';
+```
+
+En este ejemplo, cuando se cambia la hash en la URL (por ejemplo, al hacer clic en un enlace que apunta a `#item1`), se activará el evento `hashchange` y puedes realizar las acciones necesarias en respuesta al cambio. Esto te permite actualizar dinámicamente el contenido de la página según el valor de la hash sin tener que recargarla por completo.
+
 ```js
 location
 location.hash
