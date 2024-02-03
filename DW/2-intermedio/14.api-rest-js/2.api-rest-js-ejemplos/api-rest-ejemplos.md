@@ -294,6 +294,19 @@ const getCategories = async () => {
 export { getCategories };
 ```
 
+## **8.** Location y hash navigation
+
+```js
+location
+location.hash
+location.hash = "lolcat";
+window.addEventListener("hashchange", () => {
+console.log(location.hash)
+});
+location.hash = "new hash";
+```
+
+- [Documentación]()
 
 ## Otros apuntes
 
