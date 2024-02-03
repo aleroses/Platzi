@@ -296,9 +296,9 @@ export { getCategories };
 
 ## **8.** Location y hash navigation
 
-En JavaScript, `Location` es un objeto que representa la información sobre la ubicación actual del documento cargado en el navegador. Proporciona una interfaz para acceder y manipular diversas partes de la URL, como el dominio, el protocolo, el puerto, la ruta y los parámetros de consulta.
+En JavaScript, `location` es un objeto que representa la información sobre la ubicación actual del documento cargado en el navegador. Proporciona una interfaz para acceder y manipular diversas partes de la URL, como el dominio, el protocolo, el puerto, la ruta y los parámetros de consulta.
 
-El objeto `Location` se puede acceder a través de la propiedad `window.location` en los navegadores web. Aquí tienes algunos ejemplos de cómo se puede utilizar:
+El objeto `location` se puede acceder a través de la propiedad `window.location` en los navegadores web. Aquí tienes algunos ejemplos de cómo se puede utilizar:
 
 1. Obtener la URL completa:
 ```javascript
@@ -320,7 +320,7 @@ console.log(window.location.pathname);
 console.log(window.location.search);
 ```
 
-El objeto `Location` también proporciona métodos para redirigir la página a una nueva URL. Por ejemplo, puedes utilizar el método `assign()` para cargar una nueva página:
+El objeto `location` también proporciona métodos para redirigir la página a una nueva URL. Por ejemplo, puedes utilizar el método `assign()` para cargar una nueva página:
 
 ```javascript
 window.location.assign('https://www.example.com');
