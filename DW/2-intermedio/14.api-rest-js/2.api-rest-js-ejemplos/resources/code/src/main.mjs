@@ -1,4 +1,5 @@
 import { getTrendingMovies } from "./API/get-trending-movies.mjs";
+import { getCategories } from "./API/get-categories.mjs";
 
 const showTrendingMovies = async () => {
   const data = await getTrendingMovies();
@@ -26,4 +27,10 @@ const showTrendingMovies = async () => {
   });
 };
 
+const showCategories = async () => {
+  const data = await getCategories();
+  console.log(data);
+};
+
 showTrendingMovies();
+showCategories();
