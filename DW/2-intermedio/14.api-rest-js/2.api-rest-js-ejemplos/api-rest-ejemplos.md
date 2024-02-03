@@ -366,7 +366,7 @@ location
 location.hash
 location.hash = "lolcat";
 window.addEventListener("hashchange", () => {
-console.log(location.hash)
+  console.log(location.hash)
 });
 location.hash = "new hash";
 location.hash = "#home"

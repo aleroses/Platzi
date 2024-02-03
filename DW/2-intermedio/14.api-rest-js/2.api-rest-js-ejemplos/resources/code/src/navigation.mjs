@@ -25,11 +25,11 @@ import {
 
 const navigator = () => {
   const hash = {
-    "#trends": () => trendsPage(),
-    "#search": () => searchPage(),
-    "#movie": () => moviePage(),
-    "#category": () => categoryPage(),
     "#home": () => homePage(),
+    "#category": () => categoriesPage(),
+    "#movie": () => moviesPage(),
+    "#search": () => searchPage(),
+    "#trends": () => trendsPage(),
   };
 
   hash[location.hash]();
@@ -42,6 +42,9 @@ window.addEventListener(
   false
 );
 
+// DOMContentLoaded
+// load
+
 const homePage = () => {
   console.log("Home!!!");
 
@@ -52,7 +55,7 @@ const homePage = () => {
 const categoriesPage = () => {
   console.log("category!!!");
 };
-const movieDetailsPage = () => {
+const moviesPage = () => {
   console.log("Movie!!!");
 };
 const searchPage = () => {
