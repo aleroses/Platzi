@@ -241,6 +241,15 @@ https://image.tmdb.org/t/p/w500/1E5baAaEse26fej7uHcjOgEE2t2.jpg
 
 ## **6.** Lista de categorías
 
+Para obtener la lista de géneros o categorías entra a [Movie List](https://developer.themoviedb.org/reference/genre-movie-list) copia el código que te dan y adáptalo.
+
+## **7.** Migración a Axios
+
+Copia el cdn del repo de GitHub: [CDN jsDelivr](https://github.com/axios/axios?tab=readme-ov-file#cdn)
+
+```html
+<script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
+```
 
 
 ## Otros apuntes
