@@ -66,15 +66,3 @@ const trendsPage = () => {
 };
 
 export { navigator };
-
-/* const navigate = () => {
-  const hash = {
-    "#trends": () => trendsPage(),
-    "#search": () => searchPage(),
-    "#movie": () => moviePage(),
-    "#category": () => categoryPage(),
-    "#home": () => homePage(),
-  };
-
-  hash[location.hash]();
-}; */

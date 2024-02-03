@@ -358,6 +358,139 @@ En resumen, `location.hash.startsWith("#example=")` devuelve `true` si la parte 
 
 Por ejemplo, si la URL actual es `https://www.example.com/#example=123`, entonces `location.hash.startsWith("#example=")` será `true` porque la parte de la hash comienza con `#example=`.
 
+### load vs DOMContentLoaded
+
+En JavaScript, tanto `DOMContentLoaded` como `load` son eventos que se utilizan para controlar el momento en el que se ha cargado completamente el contenido de una página web. Sin embargo, existen diferencias importantes entre ellos.
+
+1. DOMContentLoaded:
+`DOMContentLoaded` es un evento que se dispara cuando el documento HTML ha sido completamente cargado y analizado por el navegador, lo que significa que el árbol DOM (Document Object Model) ha sido construido. Esto ocurre antes de que se hayan cargado y renderizado los recursos externos adicionales, como imágenes, hojas de estilo CSS o scripts externos.
+
+Este evento es útil cuando deseas ejecutar código JavaScript que interactúa con el DOM, como manipulación de elementos o asignación de eventos, antes de que se hayan cargado todos los recursos externos de la página. Puedes utilizar el evento `DOMContentLoaded` de la siguiente manera:
+
+```javascript
+document.addEventListener('DOMContentLoaded', function() {
+  // Código a ejecutar cuando el DOM esté completamente cargado
+});
+```
+
+2. load:
+`load` es un evento que se dispara cuando todos los recursos externos de la página, incluyendo imágenes, hojas de estilo CSS, scripts externos y otros elementos, se han cargado por completo. Esto significa que tanto el árbol DOM como los recursos externos están disponibles y listos para ser utilizados.
+
+Este evento es útil cuando necesitas asegurarte de que todos los recursos de la página se han cargado antes de ejecutar cierto código JavaScript. Puedes utilizar el evento `load` de la siguiente manera:
+
+```javascript
+window.addEventListener('load', function() {
+  // Código a ejecutar cuando todos los recursos estén cargados
+});
+```
+
+Es importante tener en cuenta que el evento `load` se dispara después de que `DOMContentLoaded` haya ocurrido. Por lo tanto, si solo necesitas acceder al DOM, puedes utilizar `DOMContentLoaded` para mejorar el rendimiento, ya que se dispara antes.
+
+En resumen, `DOMContentLoaded` se dispara cuando el DOM ha sido construido, mientras que `load` se dispara cuando todos los recursos externos se han cargado. Puedes elegir el evento adecuado dependiendo de tus necesidades específicas en relación con la carga de recursos y la interacción con el DOM.
+
+### Modo de propagación del evento
+
+Considerando los siguientes ejemplos: 
+
+```js
+window.addEventListener("load", navigator, false);
+window.addEventListener(
+  "hashchange",
+  navigator,
+  false
+);
+```
+
+El tercer argumento en la función `addEventListener` en JavaScript se refiere a las opciones de configuración del evento. Puede ser `true` o `false` y afecta al comportamiento de cómo se maneja el evento.
+
+En el contexto de los ejemplos proporcionados, aquí está la explicación:
+
+1. `window.addEventListener("load", navigator, false);`
+
+El evento `"load"` se dispara cuando se han cargado completamente todos los recursos de una página, como imágenes, hojas de estilo CSS y scripts externos. En este caso, se está utilizando `addEventListener` en el objeto `window` para escuchar el evento `"load"` y ejecutar la función `navigator` cuando ocurra.
+
+El tercer argumento, `false`, indica que el evento se manejará en el modo de propagación normal, es decir, el evento se propagará desde el elemento objetivo hacia los elementos padre. Esto significa que el evento se ejecutará primero en el elemento objetivo y luego se propagará hacia los elementos padre del DOM. Esta es la opción por defecto si no se especifica ningún valor.
+
+2. `window.addEventListener("hashchange", navigator, false);`
+
+El evento `"hashchange"` se dispara cuando cambia la parte de hash de la URL. En este caso, se está utilizando `addEventListener` en el objeto `window` para escuchar el evento `"hashchange"` y ejecutar la función `navigator` cuando ocurra.
+
+Nuevamente, el tercer argumento, `false`, indica que el evento se manejará en el modo de propagación normal, donde el evento se propaga desde el elemento objetivo hacia los elementos padre.
+
+El tercer argumento también puede ser `true`, lo que indica que el evento se manejará en el modo de captura, donde el evento se propaga desde el elemento padre hacia el elemento objetivo. Sin embargo, en estos ejemplos, se ha utilizado el valor `false`, lo que significa que se utiliza el modo de propagación normal.
+
+En resumen, el tercer argumento `false` en `addEventListener` indica que el evento se manejará en el modo de propagación normal, donde el evento se propaga desde el elemento objetivo hacia los elementos padre.
+
+### Bubble: Propagación de eventos
+
+La propagación de eventos burbujeante, ascendente o Bubble, se produce cuando se define un evento en un elemento (padre) que contiene otros elementos (hijos). Por ejemplo:
+
+```
+<div id="div1">
+    <div id="div2">
+        <div id="div3">
+            Hola
+        </div>
+    </div>
+</div>
+```
+
+Si definimos un event listener en **div3** y le das click aparentemente estas dando click a los elementos **div2** y **div1**. Esto se debe a que JS esta pensado para que el evento interno se propague hacia arriba hasta llegar a su máximo contenedor DOM. Similar a una burbuja que asciende desde el fondo hasta el tope del liquido.
+
+La forma de detener el ascenso de eventos, es usando el método `stopPropagation()`. Que viene dentro del argumento `event` que cualquier evento nos provee, por tanto, yo puedo decirle al div3: “Oiga, yo solo lo quiero clickar a usted, no a los demás, sí, ya se que usted está dentro de los demás, pero yo solo lo quiero a usted”, de tal forma que al event listener del programation le puedo declarar como:
+
+```
+div3.addEventListener("click",event => {
+
+event.stopPropagation()
+
+});
+
+```
+
+De esta forma, el evento de div2 y div1 no serán ejecutados.
+
+Dato curioso, cuando tu defines un elemento con un ID en HTML, en JavaScript se crea automáticamente una variable con ese id que creaste, por eso es completamente posible que yo pueda usar la variable `div3` sin tener que seleccionar el elemento.
+
+En la definición de la escucha de un evento este tiene tres parametros, el evento, la función que ejecutara cuando se detecte el evento y el modo **burbble (false)** que es el modo por defecto o el modo **capturing (true).**
+
+```
+div3.addEventListener("click",funcion, false);
+
+```
+
+### Capturing
+
+Hay otra fase del procesamiento de eventos llamada “captura”. Rara vez se usa en código real, pero a veces puede ser útil.
+
+Los eventos del DOM estándar describen 3 fases de propagación de eventos:
+
+1. Fase de captura: el evento se reduce al elemento.
+2. Fase objetivo: el evento alcanzó el elemento objetivo.
+3. Fase burbujeante: el evento emerge del elemento hacia todos sus padre.
+
+Podemos decir que el evento en modo **captura,** es la contra parte del burbujeante, de tal manera que también se le denomina **goteo.** En este caso el evento se captura en el elemento padre y este lo desencadena los eventos en los elementos hijos.
+
+Para verlo en nuestro ejemplo, para activar este modo de trabajo definimos:
+
+```jsx
+div1.addEventListener("click",funcion, false);
+```
+
+```jsx
+<div id="div1">
+    <div id="div2">
+        <div id="div3">
+            Hola
+        </div>
+    </div>
+</div>
+```
+
+En este caso el evento se detecta en el elemento **div1** y después se ejecutará en los elementos **div2 y div1**
+
+[Apuntes del dominio del DOM](https://denim-roll-f1a.notion.site/Manipulaci-n-del-DOM-con-JS-fdd3de3e7b444d19bf61b39d1bacb1e0)
+
 ### Pruebas en consola 
 
 ```js
