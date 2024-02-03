@@ -342,6 +342,22 @@ window.location.hash = 'item1';
 
 En este ejemplo, cuando se cambia la hash en la URL (por ejemplo, al hacer clic en un enlace que apunta a `#item1`), se activará el evento `hashchange` y puedes realizar las acciones necesarias en respuesta al cambio. Esto te permite actualizar dinámicamente el contenido de la página según el valor de la hash sin tener que recargarla por completo.
 
+### startsWith()
+
+La expresión `location.hash.startsWith("#example=")` es una condición en JavaScript que verifica si la parte de la hash de la URL actual comienza con el texto `#example=`.
+
+Aquí está la explicación de cada componente de la expresión:
+
+- `location.hash`: Es una propiedad del objeto `Location` que devuelve la parte de la URL que sigue al símbolo de almohadilla (#). Esto incluye cualquier texto después del # en la URL actual.
+
+- `startsWith()`: Es un método de la clase `String` en JavaScript que verifica si una cadena comienza con un determinado texto. Recibe como argumento la cadena que se desea verificar.
+
+- `#example=`: Es el texto que se está buscando en la parte de la hash de la URL.
+
+En resumen, `location.hash.startsWith("#example=")` devuelve `true` si la parte de la hash de la URL actual comienza con `#example=`, y devuelve `false` en caso contrario.
+
+Por ejemplo, si la URL actual es `https://www.example.com/#example=123`, entonces `location.hash.startsWith("#example=")` será `true` porque la parte de la hash comienza con `#example=`.
+
 ```js
 location
 location.hash
@@ -350,9 +366,8 @@ window.addEventListener("hashchange", () => {
 console.log(location.hash)
 });
 location.hash = "new hash";
-```
-
 location.hash = "#home"
+```
 
 - [Documentación]()
 
