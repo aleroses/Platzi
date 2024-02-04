@@ -508,6 +508,14 @@ location.hash = "#home"
 - [Documentación: location](https://developer.mozilla.org/es/docs/Web/API/Location)
 - [Documentación: hashchange](https://developer.mozilla.org/es/docs/Web/API/Window/hashchange_event)
 
+## **9.** Mostrando y ocultando secciones
+
+```js
+location.hash = "#category"
+location.hash = "#home"
+```
+
+
 ## Otros apuntes
 
 [Notion](https://www.notion.so/Curso-Pr-ctico-de-Consumo-de-API-REST-con-JavaScript-e98bd628bc0e4af481f47e839bc82692)

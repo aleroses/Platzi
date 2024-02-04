@@ -1,16 +1,16 @@
 import { getTrendingMovies } from "./API/get-trending-movies.mjs";
 import { getCategories } from "./API/get-categories.mjs";
+import { preview, previewCat } from "./nodes.mjs";
 
 const showTrendingMovies = async () => {
   const data = await getTrendingMovies();
 
-  //console.log(data);
+  preview.innerHTML = "";
 
   data.results.map(movie => {
-    //console.log(movie);
-    const preview = document.querySelector(
+    /* const preview = document.querySelector(
       "#trendingPreview .trendingPreview-movieList"
-    );
+    ); */
     const container = document.createElement("div");
     container.classList.add("movie-container");
 
@@ -22,8 +22,8 @@ const showTrendingMovies = async () => {
       `https://image.tmdb.org/t/p/w500${movie.poster_path}`
     );
 
-    preview.append(container);
     container.append(img);
+    preview.append(container);
   });
 };
 
@@ -31,10 +31,12 @@ const showCategories = async () => {
   const data = await getCategories();
   console.log(data);
 
+  previewCat.innerHTML = "";
+  
   data.genres.map(genre => {
-    const preview = document.querySelector(
+    /* const previewCat = document.querySelector(
       "#categoriesPreview .categoriesPreview-list"
-    );
+    ); */
     const container = document.createElement("div");
     container.classList.add("category-container");
 
@@ -47,12 +49,8 @@ const showCategories = async () => {
 
     title.appendChild(titleText);
     container.appendChild(title);
-    preview.appendChild(container);
+    previewCat.appendChild(container);
   });
 };
-
-/* showTrendingMovies();
-showCategories();
-navigator(); */
 
 export { showCategories, showTrendingMovies };
