@@ -20,7 +20,7 @@ import { authorization } from "../parameters.mjs";
 const movies = ["?", "with_genres="].join("");
 
 const getByCategory = async id => {
-  const response = fetch(
+  const response = await fetch(
     `https://api.themoviedb.org/3/discover/movie${movies}${id}`,
     {
       method: "GET",

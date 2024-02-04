@@ -1,6 +1,10 @@
 import { getTrendingMovies } from "./API/get-trending-movies.mjs";
 import { getCategories } from "./API/get-categories.mjs";
-import { preview, previewCat } from "./nodes.mjs";
+import {
+  genericSection,
+  preview,
+  previewCat,
+} from "./nodes.mjs";
 import { getByCategory } from "./API/get-by-category.mjs";
 
 const showTrendingMovies = async () => {
@@ -9,9 +13,6 @@ const showTrendingMovies = async () => {
   preview.innerHTML = "";
 
   data.results.map(movie => {
-    /* const preview = document.querySelector(
-      "#trendingPreview .trendingPreview-movieList"
-    ); */
     const container = document.createElement("div");
     container.classList.add("movie-container");
 
@@ -30,20 +31,17 @@ const showTrendingMovies = async () => {
 
 const showCategories = async () => {
   const data = await getCategories();
-  console.log(data);
 
   previewCat.innerHTML = "";
 
   data.genres.map(genre => {
-    /* const previewCat = document.querySelector(
-      "#categoriesPreview .categoriesPreview-list"
-    ); */
     const container = document.createElement("div");
     container.classList.add("category-container");
 
     const title = document.createElement("h3");
     title.classList.add("category-title");
     title.setAttribute("id", `id${genre.id}`);
+
     title.addEventListener("click", () => {
       location.hash = `#category=${genre.id}-${genre.name}`;
     });
@@ -59,6 +57,7 @@ const showCategories = async () => {
 
 const showByCategory = async id => {
   const data = await getByCategory(id);
+  console.log(data);
 
   genericSection.innerHTML = "";
 
@@ -81,4 +80,8 @@ const showByCategory = async id => {
   });
 };
 
-export { showCategories, showTrendingMovies };
+export {
+  showCategories,
+  showTrendingMovies,
+  showByCategory,
+};

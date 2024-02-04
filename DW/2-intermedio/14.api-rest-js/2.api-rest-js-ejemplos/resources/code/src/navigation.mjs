@@ -1,5 +1,6 @@
 import { getByCategory } from "./API/get-by-category.mjs";
 import {
+  showByCategory,
   showCategories,
   showTrendingMovies,
 } from "./main.mjs";
@@ -116,14 +117,12 @@ const categoriesPage = () => {
   movieDetailSection.classList.add("inactive");
 
   // ['#category', 'id-name']
-  const [_, categoryData] =
-    location.hash.split("=");
-  const [categoryId, categoryName] =
-    categoryData.split("-");
+  const [_, categoryData] = location.hash.split("=");
+  const [categoryId, categoryName] = categoryData.split("-");
 
   headerCategoryTitle.innerHTML = categoryName;
 
-  getByCategory(categoryId);
+  showByCategory(categoryId);
 };
 
 const moviesPage = () => {
