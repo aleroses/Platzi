@@ -519,6 +519,8 @@ location.hash = "#home"
 
 ## **11.** Filtrando películas por categoría
 
+[Filtrar](https://developer.themoviedb.org/reference/discover-movie)
+
 ## Otros apuntes
 
 [Notion](https://www.notion.so/Curso-Pr-ctico-de-Consumo-de-API-REST-con-JavaScript-e98bd628bc0e4af481f47e839bc82692)
