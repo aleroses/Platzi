@@ -32,7 +32,7 @@ const showCategories = async () => {
   console.log(data);
 
   previewCat.innerHTML = "";
-  
+
   data.genres.map(genre => {
     /* const previewCat = document.querySelector(
       "#categoriesPreview .categoriesPreview-list"
@@ -43,6 +43,9 @@ const showCategories = async () => {
     const title = document.createElement("h3");
     title.classList.add("category-title");
     title.setAttribute("id", `id${genre.id}`);
+    title.addEventListener("click", () => {
+      location.hash = `#category=${genre.id}-${genre.name}`;
+    });
     const titleText = document.createTextNode(
       genre.name
     );

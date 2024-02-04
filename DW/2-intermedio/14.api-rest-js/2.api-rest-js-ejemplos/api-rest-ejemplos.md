@@ -517,7 +517,7 @@ location.hash = "#home"
 
 ## **10.** Error: carga duplicada de datos
 
-
+## **11.** Filtrando películas por categoría
 
 ## Otros apuntes
 

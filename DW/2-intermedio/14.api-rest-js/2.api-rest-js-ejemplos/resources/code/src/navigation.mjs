@@ -16,7 +16,7 @@ import {
   trendingPreviewSection,
 } from "./nodes.mjs";
 
-/* const navigator = () => {
+const navigator = () => {
   console.log({ location });
 
   if (location.hash.startsWith("#trends")) {
@@ -32,9 +32,7 @@ import {
   } else {
     homePage();
   }
-
-  location.hash;
-}; */
+};
 
 searchFormBtn.addEventListener("click", () => {
   location.hash = "#search=";
@@ -48,7 +46,7 @@ arrowBtn.addEventListener("click", () => {
   location.hash = "#home";
 });
 
-const navigator = () => {
+/* const navigator = () => {
   const hash = {
     "#home": () => homePage(),
     "#category=": () => categoriesPage(),
@@ -58,7 +56,7 @@ const navigator = () => {
   };
 
   hash[location.hash]();
-};
+}; */
 
 window.addEventListener("load", navigator, false);
 window.addEventListener(
