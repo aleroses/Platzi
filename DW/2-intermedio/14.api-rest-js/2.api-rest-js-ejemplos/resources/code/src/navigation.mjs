@@ -1,3 +1,4 @@
+import { getByCategory } from "./API/get-by-category.mjs";
 import {
   showCategories,
   showTrendingMovies,
@@ -113,6 +114,16 @@ const categoriesPage = () => {
   );
   genericSection.classList.remove("inactive");
   movieDetailSection.classList.add("inactive");
+
+  // ['#category', 'id-name']
+  const [_, categoryData] =
+    location.hash.split("=");
+  const [categoryId, categoryName] =
+    categoryData.split("-");
+
+  headerCategoryTitle.innerHTML = categoryName;
+
+  getByCategory(categoryId);
 };
 
 const moviesPage = () => {

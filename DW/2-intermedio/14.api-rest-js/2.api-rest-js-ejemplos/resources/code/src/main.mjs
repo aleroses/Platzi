@@ -1,6 +1,7 @@
 import { getTrendingMovies } from "./API/get-trending-movies.mjs";
 import { getCategories } from "./API/get-categories.mjs";
 import { preview, previewCat } from "./nodes.mjs";
+import { getByCategory } from "./API/get-by-category.mjs";
 
 const showTrendingMovies = async () => {
   const data = await getTrendingMovies();
@@ -53,6 +54,30 @@ const showCategories = async () => {
     title.appendChild(titleText);
     container.appendChild(title);
     previewCat.appendChild(container);
+  });
+};
+
+const showByCategory = async id => {
+  const data = await getByCategory(id);
+
+  genericSection.innerHTML = "";
+
+  data.results.map(movie => {
+    const movieContainer =
+      document.createElement("div");
+    movieContainer.classList.add("movie-container");
+
+    const movieImg = document.createElement("img");
+    movieImg.classList.add("movie-img");
+    movieImg.setAttribute("alt", movie.title);
+    movieImg.setAttribute(
+      "src",
+      "https://image.tmdb.org/t/p/w300" +
+        movie.poster_path
+    );
+
+    movieContainer.appendChild(movieImg);
+    genericSection.appendChild(movieContainer);
   });
 };
 
