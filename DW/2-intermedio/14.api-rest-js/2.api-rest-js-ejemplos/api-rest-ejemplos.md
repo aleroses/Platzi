@@ -515,6 +515,9 @@ location.hash = "#category"
 location.hash = "#home"
 ```
 
+## **10.** Error: carga duplicada de datos
+
+
 
 ## Otros apuntes
 
