@@ -7,6 +7,10 @@ import {
 } from "./nodes.mjs";
 import { getByCategory } from "./API/get-by-category.mjs";
 
+window.onbeforeunload = () => {
+  scrollTo(0, 0);
+};
+
 const showTrendingMovies = async () => {
   const data = await getTrendingMovies();
 

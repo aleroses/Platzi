@@ -99,6 +99,12 @@ const homePage = () => {
 const categoriesPage = () => {
   console.log("category!!!");
 
+  /*  window.onbeforeunload = () => {
+    scrollTo(0,0);
+  } */
+
+  window.scrollTo(0, 0);
+
   headerSection.classList.remove(
     "header-container--long"
   );
@@ -117,8 +123,10 @@ const categoriesPage = () => {
   movieDetailSection.classList.add("inactive");
 
   // ['#category', 'id-name']
-  const [_, categoryData] = location.hash.split("=");
-  const [categoryId, categoryName] = categoryData.split("-");
+  const [_, categoryData] =
+    location.hash.split("=");
+  const [categoryId, categoryName] =
+    categoryData.split("-");
 
   headerCategoryTitle.innerHTML = categoryName;
 
