@@ -4,6 +4,7 @@ import {
   showByCategory,
   showCategories,
   showSearch,
+  showTrending,
   showTrendingMovies,
 } from "./main.mjs";
 import {
@@ -70,8 +71,6 @@ arrowBtn.addEventListener("click", () => {
   location.hash = window.history.back();
   //location.hash = window.history.back(); //para guardar las URL que visita el usuario se usa window.history y par regresar al anterior el método back()
 });
-
-/* arrowBtn.onclick = () => window.history.back(); */
 
 /* const navigator = () => {
   const hash = {
@@ -228,6 +227,10 @@ const trendsPage = () => {
   );
   genericSection.classList.remove("inactive");
   movieDetailSection.classList.add("inactive");
+
+  headerCategoryTitle.innerHTML = "Trends";
+
+  showTrending();
 };
 
 export { navigator };
