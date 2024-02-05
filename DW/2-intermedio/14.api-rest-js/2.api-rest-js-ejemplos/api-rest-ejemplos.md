@@ -523,6 +523,10 @@ location.hash = "#home"
 
 ## **12.** Retos: scrollTop y DRY
 
+[scrollTop property](https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollTop)
+
+## **13.** Buscador de películas
+
 
 
 ## Otros apuntes
