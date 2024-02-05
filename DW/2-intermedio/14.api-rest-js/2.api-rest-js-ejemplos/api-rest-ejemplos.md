@@ -534,6 +534,10 @@ location.hash = "#home"
 
 ## **15.** Endpoint de detalles de una película
 
+## **16.** Lista de películas recomendadas
+
+[Recomendaciones](https://developer.themoviedb.org/reference/movie-recommendations)
+
 ## Otros apuntes
 
 [Notion](https://www.notion.so/Curso-Pr-ctico-de-Consumo-de-API-REST-con-JavaScript-e98bd628bc0e4af481f47e839bc82692)
