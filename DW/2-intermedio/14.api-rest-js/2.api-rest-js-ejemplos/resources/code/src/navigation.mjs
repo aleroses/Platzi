@@ -3,6 +3,7 @@ import { getSearch } from "./API/get-search.mjs";
 import {
   showByCategory,
   showCategories,
+  showSearch,
   showTrendingMovies,
 } from "./main.mjs";
 import {
@@ -19,11 +20,6 @@ import {
   trendingBtn,
   trendingPreviewSection,
 } from "./nodes.mjs";
-
-searchFormBtn.addEventListener("click", () => {
-  location.hash =
-    "#search=" + searchFormInput.value;
-});
 
 const navigator = () => {
   console.log({ location });
@@ -47,7 +43,7 @@ const navigator = () => {
 };
 
 searchFormBtn.addEventListener("click", () => {
-  location.hash = "#search=";
+  location.hash = `#search=${searchFormInput.value}`;
 });
 
 trendingBtn.addEventListener("click", () => {
@@ -186,7 +182,8 @@ const searchPage = () => {
 
   // ['#search', 'platzi']
   const [_, query] = location.hash.split("=");
-  getSearch(query);
+  console.log(query);
+  showSearch(query);
 };
 
 const trendsPage = () => {

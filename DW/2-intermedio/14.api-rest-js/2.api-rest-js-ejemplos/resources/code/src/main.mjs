@@ -68,7 +68,7 @@ const showCategories = async () => {
 
 const showByCategory = async id => {
   const data = await getByCategory(id);
-  console.log(data);
+  //console.log(data);
 
   genericSection.innerHTML = "";
 
@@ -95,6 +95,7 @@ const showByCategory = async id => {
 
 const showSearch = async query => {
   const data = await getSearch(query);
+  console.log("Show search: ", data);
 
   createMovies(data, genericSection);
 };

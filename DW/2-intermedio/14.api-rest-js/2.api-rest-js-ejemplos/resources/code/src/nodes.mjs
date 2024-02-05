@@ -22,8 +22,9 @@ const preview = document.querySelector(
 );
 
 // previewCat : categoriesPreviewList
-const previewCat =
-  document.querySelector(".categoriesPreview-list");
+const previewCat = document.querySelector(
+  ".categoriesPreview-list"
+);
 const movieDetailCategoriesList =
   document.querySelector(
     "#movieDetail .categories-list"
@@ -44,9 +45,12 @@ const headerCategoryTitle = document.querySelector(
   ".header-title--categoryView"
 );
 
+// xd
 const searchFormInput = document.querySelector(
   "#searchForm input"
 );
+
+//xd
 const searchFormBtn =
   document.querySelector("#searchBtn");
 
