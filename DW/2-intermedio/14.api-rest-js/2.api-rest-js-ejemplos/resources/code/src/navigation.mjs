@@ -3,6 +3,7 @@ import { getSearch } from "./API/get-search.mjs";
 import {
   showByCategory,
   showCategories,
+  showMovieById,
   showSearch,
   showTrending,
   showTrendingMovies,
@@ -30,7 +31,7 @@ const navigator = () => {
   } else if (location.hash.startsWith("#search=")) {
     searchPage();
   } else if (location.hash.startsWith("#movie=")) {
-    movieDetailsPage();
+    moviesPage();
   } else if (
     location.hash.startsWith("#category=")
   ) {
@@ -176,6 +177,10 @@ const moviesPage = () => {
   );
   genericSection.classList.add("inactive");
   movieDetailSection.classList.remove("inactive");
+
+  // ['#movie', '234567']
+  const [_, movieId] = location.hash.split("=");
+  showMovieById(movieId);
 };
 
 const searchPage = () => {

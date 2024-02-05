@@ -6,6 +6,9 @@ const createMovies = (data, preview) => {
   data.results.map(movie => {
     const container = document.createElement("div");
     container.classList.add("movie-container");
+    container.addEventListener("click", () => {
+      location.hash = `#movie=${movie.id}`;
+    });
 
     const img = document.createElement("img");
     img.classList.add("movie-img");
