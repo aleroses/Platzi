@@ -527,7 +527,11 @@ location.hash = "#home"
 
 ## **13.** Buscador de películas
 
-[Buscar películas]()
+[Buscar películas](https://developer.themoviedb.org/reference/search-movie)
+
+## **14.** Retos: historial de navegación y página de tendencias
+
+
 
 ## Otros apuntes
 
