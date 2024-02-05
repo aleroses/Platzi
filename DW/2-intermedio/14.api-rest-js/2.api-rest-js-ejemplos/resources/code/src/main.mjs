@@ -8,6 +8,7 @@ import {
 import { getByCategory } from "./API/get-by-category.mjs";
 import { createMovies } from "./utils/create-movies.mjs";
 import { createCategories } from "./utils/create-categories.mjs";
+import { getSearch } from "./API/get-search.mjs";
 
 window.onbeforeunload = () => {
   scrollTo(0, 0);
@@ -92,8 +93,15 @@ const showByCategory = async id => {
   createMovies(data, genericSection);
 };
 
+const showSearch = async query => {
+  const data = await getSearch(query);
+
+  createMovies(data, genericSection);
+};
+
 export {
   showCategories,
   showTrendingMovies,
   showByCategory,
+  showSearch,
 };

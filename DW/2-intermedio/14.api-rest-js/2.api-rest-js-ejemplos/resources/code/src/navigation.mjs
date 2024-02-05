@@ -1,4 +1,5 @@
 import { getByCategory } from "./API/get-by-category.mjs";
+import { getSearch } from "./API/get-search.mjs";
 import {
   showByCategory,
   showCategories,
@@ -14,9 +15,15 @@ import {
   movieDetailSection,
   searchForm,
   searchFormBtn,
+  searchFormInput,
   trendingBtn,
   trendingPreviewSection,
 } from "./nodes.mjs";
+
+searchFormBtn.addEventListener("click", () => {
+  location.hash =
+    "#search=" + searchFormInput.value;
+});
 
 const navigator = () => {
   console.log({ location });
@@ -167,7 +174,7 @@ const searchPage = () => {
   arrowBtn.classList.remove("inactive");
   arrowBtn.classList.remove("header-arrow--white");
   headerTitle.classList.add("inactive");
-  headerCategoryTitle.classList.remove("inactive");
+  headerCategoryTitle.classList.add("inactive");
   searchForm.classList.remove("inactive");
 
   trendingPreviewSection.classList.add("inactive");
@@ -176,6 +183,10 @@ const searchPage = () => {
   );
   genericSection.classList.remove("inactive");
   movieDetailSection.classList.add("inactive");
+
+  // ['#search', 'platzi']
+  const [_, query] = location.hash.split("=");
+  getSearch(query);
 };
 
 const trendsPage = () => {
