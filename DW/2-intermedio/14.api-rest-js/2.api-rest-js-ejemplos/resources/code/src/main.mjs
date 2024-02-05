@@ -71,7 +71,7 @@ const showByCategory = async id => {
 
   genericSection.innerHTML = "";
 
-  data.results.map(movie => {
+  /* data.results.map(movie => {
     const movieContainer =
       document.createElement("div");
     movieContainer.classList.add("movie-container");
@@ -87,7 +87,9 @@ const showByCategory = async id => {
 
     movieContainer.appendChild(movieImg);
     genericSection.appendChild(movieContainer);
-  });
+  }); */
+
+  createMovies(data, genericSection);
 };
 
 export {
