@@ -532,6 +532,7 @@ location.hash = "#home"
 ## **14.** Retos: historial de navegación y página de tendencias
 
 
+## **15.** Endpoint de detalles de una película
 
 ## Otros apuntes
 
