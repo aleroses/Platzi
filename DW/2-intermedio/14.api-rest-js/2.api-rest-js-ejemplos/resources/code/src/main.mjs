@@ -6,6 +6,8 @@ import {
   previewCat,
 } from "./nodes.mjs";
 import { getByCategory } from "./API/get-by-category.mjs";
+import { createMovies } from "./utils/create-movies.mjs";
+import { createCategories } from "./utils/create-categories.mjs";
 
 window.onbeforeunload = () => {
   scrollTo(0, 0);
@@ -16,7 +18,7 @@ const showTrendingMovies = async () => {
 
   preview.innerHTML = "";
 
-  data.results.map(movie => {
+  /* data.results.map(movie => {
     const container = document.createElement("div");
     container.classList.add("movie-container");
 
@@ -30,7 +32,9 @@ const showTrendingMovies = async () => {
 
     container.append(img);
     preview.append(container);
-  });
+  }); */
+
+  createMovies(data, preview);
 };
 
 const showCategories = async () => {
@@ -38,7 +42,7 @@ const showCategories = async () => {
 
   previewCat.innerHTML = "";
 
-  data.genres.map(genre => {
+  /* data.genres.map(genre => {
     const container = document.createElement("div");
     container.classList.add("category-container");
 
@@ -56,7 +60,9 @@ const showCategories = async () => {
     title.appendChild(titleText);
     container.appendChild(title);
     previewCat.appendChild(container);
-  });
+  }); */
+
+  createCategories(data, previewCat);
 };
 
 const showByCategory = async id => {
