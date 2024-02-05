@@ -3,8 +3,6 @@ import { authorization } from "../parameters.mjs";
 const query = ["?", "query="].join("");
 
 const getSearch = async name => {
-  console.log("Peli buscar: ", name);
-
   const response = await fetch(
     `https://api.themoviedb.org/3/search/movie${query}${name}`,
     {

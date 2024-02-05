@@ -42,8 +42,22 @@ const navigator = () => {
   document.documentElement.scrollTop = 0; */
 };
 
-searchFormBtn.addEventListener("click", () => {
-  location.hash = `#search=${searchFormInput.value}`;
+/* searchFormBtn.addEventListener("click", () => {
+  // const [name] = searchFormInput.value.match(/[A-Za-z]+/g);
+
+  // location.hash = `#search=${name}`;
+
+  location.hash =
+    "#search=" +
+    searchFormInput.value.split(" ").join(" ");
+}); */
+
+searchFormBtn.addEventListener("click", e => {
+  if (searchFormInput.value.length > 0) {
+    location.hash = `#search=${searchFormInput.value}`;
+  }
+
+  e.preventDefault(); // Fix para que funcione correctamente el history.back()
 });
 
 trendingBtn.addEventListener("click", () => {
@@ -51,8 +65,13 @@ trendingBtn.addEventListener("click", () => {
 });
 
 arrowBtn.addEventListener("click", () => {
-  location.hash = "#home";
+  //location.hash = "#home";
+  // history.back();
+  location.hash = window.history.back();
+  //location.hash = window.history.back(); //para guardar las URL que visita el usuario se usa window.history y par regresar al anterior el método back()
 });
+
+/* arrowBtn.onclick = () => window.history.back(); */
 
 /* const navigator = () => {
   const hash = {
@@ -182,8 +201,12 @@ const searchPage = () => {
 
   // ['#search', 'platzi']
   const [_, query] = location.hash.split("=");
-  console.log(query);
-  showSearch(query);
+  // %20%20%20fury%20%20
+
+  // En caso de hacer consultas con espacios vacios
+  const [x] = query.match(/[A-Za-z]+/g);
+  console.log(x);
+  showSearch(x);
 };
 
 const trendsPage = () => {
