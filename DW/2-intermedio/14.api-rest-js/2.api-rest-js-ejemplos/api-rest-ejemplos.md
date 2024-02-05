@@ -521,6 +521,10 @@ location.hash = "#home"
 
 [Filtrar](https://developer.themoviedb.org/reference/discover-movie)
 
+## **12.** Retos: scrollTop y DRY
+
+
+
 ## Otros apuntes
 
 [Notion](https://www.notion.so/Curso-Pr-ctico-de-Consumo-de-API-REST-con-JavaScript-e98bd628bc0e4af481f47e839bc82692)
