@@ -63,4 +63,85 @@ Son todos los diferentes objetos que van a componer mi interfaz como los son los
 
 ### Punto de partida
 
-Nuestro punto de partida será siempre crear un frame o espacio de trabajo y lo podemos crear únicamente pulsando “F” o “A” directamente en la interfaz desktop de Figma. Una vez presiones alguna de las dos teclas, figma pregunta por el tamaño del dispositivo.
+Nuestro punto de partida será siempre crear un frame o espacio de trabajo y lo podemos crear únicamente pulsando `F` o `A` directamente en la interfaz desktop de Figma. Una vez presiones alguna de las dos teclas, figma pregunta por el tamaño del dispositivo.
+
+## Quiz: Introducción 
+
+1. ¿Dónde se puede usar Figma?
+
+	- En Chrome y otros navegadores
+
+2. ¿Se puede colaborar con varios diseñadores en tiempo real en Figma?
+
+	- Sí
+
+3. ¿Cuál es el principal enfoque de Figma?
+
+	- Diseño de interfaces
+
+## **3.** Configuración de guías y retículas
+
+### Creando retículas (grids)
+
+Son artefactos muy poderosos porque nos van a permitir ser consistentes a lo largo de nuestro diseño.
+
+Retícula recomendada para este proyecto y para Android es:  
+
+* 4 columnas 
+* 16 puntos de densidad (dp) gutter (canaleta) es decir de espacio entre columnas  
+* 16 puntos de densidad (dp) margen a la derecha e izquierda.
+
+### Creando guías
+
+Las guías no son espacios que se aplican sobre todo el frame en particular. Es una  
+sola línea que se puede sacar desde los bordes de la interfaz o también podemos usar  
+el shortcut del teclado `shift + r` la cual podemos deslizar con el mouse hasta la zona en el frame donde queremos usarla
+
+Vamos a crear nuestro primer espacio de trabajo  
+
+**_Debe contener:_**
+
+- Un frame
+- Una retícula en columnas aplicadas
+- Dos guías para ubicar un texto
+
+## **4.** Creación de textos y estilos
+
+Bloque fundamental de cualquier interfaz es el texto
+
+Un objeto de texto tiene diferentes propiedades
+
+- Texto
+    - Fuente
+    - Espaciado
+    - Alineacion
+- Color
+
+**Atajos para la creacion y de edicion de texto**  
+ctrl ó cmd + B: Bold ó Negrita  
+ctrl ó cmd + I: Italic ó cursiva  
+ctrl ó cmd + U: Underline ó subrayado
+
+**Que es un estilo?**  
+Son propiedades globales de los elementos que pueden  
+ser reutilizables a lo largo de varios archivos o proyectos.
+
+alt
+
+## Shortcut
+
+- F / A
+- Shift + R
+
+
+**apuntes de comandos básicos de Figma**
+
+- F: para entrar a la herramienta Frame
+- V: para entrar a la herramienta Move
+- T: para entrar a la herramienta Text
+- ctrl ó cmd + B: Bold ó Negrita
+- ctrl ó cmd + I: Italic ó cursiva
+- ctrl ó cmd + U: Underline ó subrayado
+- scroll: mover hacia arriba o abajo
+- shift + scroll: mover a izquierda o derecha
+- ctrl ó cmd + scroll: acercar o alejar
