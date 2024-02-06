@@ -209,54 +209,63 @@ la nota.
 
 ## **8.** Colores en Figma
 
-**_Seleccion de colores_**  
-Como estamos trabajando sobre un espacio de digital, en lo que estamos  
-trabajando realmente es sobre luz, y la luz esta compuesta solamente  
-sobre tres colores: Rojo, azul y verde. Todos los colores que vemos son  
-una combinacion de esos tres colores, el negro es la ausencia de esos  
-colores y el blanco son todos los colores al mismo tiempo.
+### Seleccion de colores
 
-**_Seleccionar un color_**  
-La manera mas facil de seleccionar un color, es tomar una figura, un texto  
-o un objeto que tenga una propiedad de relleno y oprimir la tecla (i) y  
-desplazarnos hasta el menu de herramientas y seleccionar el color que se  
-desea, en algunos casos el conocido fill.
+Al trabajar sobre un espacio digital, en lo que estamos trabajando realmente es sobre luz, y la luz está compuesta solamente sobre tres colores: Rojo, azul y verde. 
+
+Todos los colores que vemos son una combinación de esos tres colores, el negro es la ausencia de esos colores y el blanco son todos los colores al mismo tiempo.
+
+### Seleccionar un color
+
+La manera más fácil de seleccionar un color, es tomar una figura, un texto o un objeto que tenga una propiedad de relleno y oprimir la tecla (i) y desplazarnos hasta el menú de herramientas y seleccionar el color que se desea, en algunos casos el conocido fill.
 
 - Objeto seleccionado
 - Panel de propiedades
     - Fill
-    - Stroke
-    - Effects
-        - Detalle
-- Herramienta “eye dropper”(i)
+    - Colores hexadecimales (Seleccionar el color de muestra)
+    - Elegir el nuevo color o
+    - Herramienta “eye dropper”(i) para elegir un color en el entorno
 
-**_Gradientes_**  
-Es un espacio de trabajo de trabajo que no tiene un solo colo solido sino que  
-tiene diferentes puntos en los que varia el color en transicion de colores.  
-Esto es mucho mas natural para el ojo humano ya que este tipo de tranciosiones  
-se pueden apreciar en la naturaleza, como por ejemplo un atardecer o tambien en  
-alguna obra de arte que contenga este tipo de gradientes.
+### Gradientes
 
-**_Creando un gradiente_**
+Es un espacio de trabajo que no tiene un solo color sólido, sino que tiene diferentes puntos en los que varía el color en transición de colores.  
+
+Esto es mucho más natural para el ojo humano, ya que este tipo de transiciones se pueden apreciar en la naturaleza, como por ejemplo un atardecer o también en alguna obra de arte que contenga este tipo de gradientes.
+
+### Creando un gradiente
 
 - Objeto seleccionado
-- Panel de proiedades
+- Panel de propiedades
     - Fill
-    - Stroke
-- Seleccionar gradiente
-    - Linear
-    - Radial
-    - Angular
-    - Diamond
+	- Seleccionar icono gradiente
+	    - Linear
+	    - Radial
+	    - Angular
+	    - Diamond
 
-Crearemos la paleta de colores de nuestra aplicacion de notas, que si esta muy basada  
-en tonos grises ya que no queremos llamar demasiado la atencion pero si deberia tener  
-algunas caracteristicas:
+Crearemos la paleta de colores de nuestra aplicación de notas, que está muy basada en tonos grises, ya que no queremos llamar demasiado la atención pero sí debería tener algunas características:
 
-- 3 grises para informacion
-- 4 colores de resalte para diferentes estados (informacion, advertencia y exito).
+- 3 grises para información
+- 4 colores de resalte para diferentes estados (información, advertencia y éxito).
 - Todos organizados como estilos en nuestro archivo y aplicados a la nota creada.
 
+📌 Recuerda que puedes asignar un nombre a cada color creado y luego agrupar todos estos colores.
+
+![Agrupar colores](https://i.postimg.cc/W3Z8tPnH/8-agrupar-colores.png)
+
+## Quiz: Básicos
+
+1. ¿Qué son las operaciones booleanas en Figma?
+
+	- Agregar o restar figuras entre sí dependiendo de sus movimientos relativos
+
+2. ¿Cuál es la ventaja de trabajar con vectores en lugar de píxeles?
+
+	- Evitar la pérdida de resolución en las imágenes
+
+3. ¿Cuál es el propósito de crear un estilo en diseño gráfico?
+
+	- Para hacer el texto reutilizable y evitar ediciones accidentales
 
 
 ## Shortcut
@@ -278,7 +287,9 @@ algunas caracteristicas:
 - Shift + G: Pasar de modo edición al modo vista 
 - P: Crear vectores
 - Alt + Arrastrar: Duplicar objetos 
-- Ctrl + D: Duplicar el ultimo objeto duplicado
+- Ctrl + D: Duplicar el último objeto duplicado
+- Seleccionar un objeto + i: Copiar un color y rellenarlo en el objeto seleccionado
+- Seleccionar color creado + Shift: Agrupar Estilos de colores + click derecho: Add new folder
 
 quiza Alt en lugar de ctrl
 Ctrl + Shift: Ajustar al centro
