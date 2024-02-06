@@ -167,6 +167,98 @@ Las propiedades de una figura afectan el estado y forma. Todas las figuras tiene
 
 Todos los elementos contenidos dentro de un frame son objetos “hijos” del contenedor que los soporta. Así pues, sus restricciones funcionan con base en el comportamiento de su “padre”.
 
+## **6.** Efectos en Figma
+
+Cuando hablamos de los efectos dentro de las capas de figma, hacemos referencia a la visibilidad de las capas y los objetos que ya tenemos. Algunos efectos muy comunes son las sombras y el desenfoque, y hay maneras muy creativas de crear y combinar estos efectos para lograr interacciones mucho más interesantes.
+
+### Creando Efecto
+
+- Selecciona elemento
+- Panel de propiedades
+    - Effects
+        - Inner Shadow
+        - Drop Shadow (por defecto)
+        - Layer Blur
+        - Backgroud Blur
+
+Crearemos una imagen tipo polaroid, para lo cual debemos tener:
+
+- Un rectángulo con relleno blanco
+- Otro rectángulo con la imagen
+- Una sombra aplicada
+- Todo lo anterior sobre el frame de la nota que ya hemos avanzado en las clases pasadas
+
+## **7.** Redes de Vectores
+
+Cuando hablamos de redes de vectores, hablamos de un concepto muy importante en el mundo digital en general, ya que lo común es diseñar en píxeles, pero esto produce piezas digitales en baja resolución. Pero figma está diseñado en vectores los que significa que aunque se modifique el tamaño de la pieza, esta no perderá su resolución, son operaciones no destructivas.
+
+### Construyendo vectores
+
+- Tecla p (pen) para crear un vector libre
+- Clic en cualquier lugar del frame o área de trabajo y empezará a crear vectores unidos por puntos
+- Tecla Esc para salir del modo de creación de vectores
+- En figma, un punto puede alojar una cantidad infinita de trazos que salgan desde ese punto
+- Cuando seleccionas y mueves dicho punto, todos los trazos se mueven con él
+
+### Operaciones booleanas
+
+Son las operaciones en las que tomamos figuras en las que mezclamos o restamos una figura o un segmento y dependiendo de los movimientos que se hagan entre forma y fondo.
+
+Con los vectores, vamos a crear los iconos que permiten navegar desde y hacia  
+la nota.
+
+## **8.** Colores en Figma
+
+**_Seleccion de colores_**  
+Como estamos trabajando sobre un espacio de digital, en lo que estamos  
+trabajando realmente es sobre luz, y la luz esta compuesta solamente  
+sobre tres colores: Rojo, azul y verde. Todos los colores que vemos son  
+una combinacion de esos tres colores, el negro es la ausencia de esos  
+colores y el blanco son todos los colores al mismo tiempo.
+
+**_Seleccionar un color_**  
+La manera mas facil de seleccionar un color, es tomar una figura, un texto  
+o un objeto que tenga una propiedad de relleno y oprimir la tecla (i) y  
+desplazarnos hasta el menu de herramientas y seleccionar el color que se  
+desea, en algunos casos el conocido fill.
+
+- Objeto seleccionado
+- Panel de propiedades
+    - Fill
+    - Stroke
+    - Effects
+        - Detalle
+- Herramienta “eye dropper”(i)
+
+**_Gradientes_**  
+Es un espacio de trabajo de trabajo que no tiene un solo colo solido sino que  
+tiene diferentes puntos en los que varia el color en transicion de colores.  
+Esto es mucho mas natural para el ojo humano ya que este tipo de tranciosiones  
+se pueden apreciar en la naturaleza, como por ejemplo un atardecer o tambien en  
+alguna obra de arte que contenga este tipo de gradientes.
+
+**_Creando un gradiente_**
+
+- Objeto seleccionado
+- Panel de proiedades
+    - Fill
+    - Stroke
+- Seleccionar gradiente
+    - Linear
+    - Radial
+    - Angular
+    - Diamond
+
+Crearemos la paleta de colores de nuestra aplicacion de notas, que si esta muy basada  
+en tonos grises ya que no queremos llamar demasiado la atencion pero si deberia tener  
+algunas caracteristicas:
+
+- 3 grises para informacion
+- 4 colores de resalte para diferentes estados (informacion, advertencia y exito).
+- Todos organizados como estilos en nuestro archivo y aplicados a la nota creada.
+
+
+
 ## Shortcut
 
 **apuntes de comandos básicos de Figma**
@@ -182,3 +274,11 @@ Todos los elementos contenidos dentro de un frame son objetos “hijos” del co
 - ctrl o cmd + scroll: acercar o alejar
 - Shift + R: Activar y desactivar la regla
 - Seleccionar + Alt: Ver espacios entre elementos
+- Ctrl + Alt + G: Agrupa como un nuevo frame
+- Shift + G: Pasar de modo edición al modo vista 
+- P: Crear vectores
+- Alt + Arrastrar: Duplicar objetos 
+- Ctrl + D: Duplicar el ultimo objeto duplicado
+
+quiza Alt en lugar de ctrl
+Ctrl + Shift: Ajustar al centro
