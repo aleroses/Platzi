@@ -309,7 +309,9 @@ Existen dos tipos de permisos:
 - Vista solo de prototipo
 
 - [Imagenes](https://unsplash.com/es)
-- Plugin para imágenes: unsplash
+- [Plugin para imágenes: Unsplash](https://www.figma.com/community/plugin/738454987945972471)
+- [Plugin: Figma to HTML and CSS](https://www.figma.com/community/plugin/1128731099343788397)
+- [Plugin: Figma to Code](https://www.figma.com/community/plugin/857346721138427857)
 
 ## Shortcut
 
