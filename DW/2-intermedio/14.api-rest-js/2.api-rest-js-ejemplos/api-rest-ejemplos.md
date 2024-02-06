@@ -549,5 +549,245 @@ location.hash = "#home"
 	<summary>Haz clic para ver los resultados 👀</summary>
 	<br/>
 
+1. ¿Cuál es la principal ventaja de usar Axios?
 
+a
+
+Reduce el peso de nuestro código JavaScript.
+
+b
+
+Reduce el tiempo de nuestras consultas HTTP.
+
+c 
+
+✅ Reduce las líneas de código repetitivas para hacer consultas HTTP (baseURL, headers, params, etc.).
+
+2. ¿Cómo escuchamos el evento de cambio de hash en la URL de nuestra aplicación?
+
+a
+
+window.addEventListener(‘hash’, navigationFunction)
+
+b
+
+location.addEventListener(‘onhash’, navigationFunction)
+
+c
+
+<body onHashChange=“navigationFunction()”>
+
+d 
+
+location.addEventListener(‘hashchange’, navigationFunction)
+
+e ✅
+
+window.addEventListener(‘hashchange’, navigationFunction)
+
+3. ¿Cuál de los siguientes es un ejemplo de manipulación del DOM?
+
+a
+
+fetch(URL).then(res => res.json()).then(data => consula.log(data))
+
+b
+
+“const res = await fetch(URL)  
+const data = await res.json()  
+console.log(data)”
+
+c ✅
+
+const container = document.querySelector(‘container’)  
+const child = document.createElement(‘div’)  
+child.innerHTML = childContent  
+container.append(child)
+
+4. En ciertas vistas de tu aplicación aparece una flecha de ir atrás que nos lleva a la vista principal.
+
+Pero el equipo de QA reporta que al navegar entre vistas que no sean la principal (por ejemplo, de tendencias a detalles de una película) y luego usar el botón de ir atrás, el resultado no es el adecuado porque los usuarios terminan en el home y no en la vista anterior.
+
+¿Cómo lo solucionas?
+
+a
+
+location.hash = window.back()
+
+b
+
+history.back(location.hash - 1)
+
+c
+
+location.back()
+
+d
+
+✅ history.back()
+
+5. Al entrar a una URL específica de tu aplicación se hace una consulta a la API y renderiza información en el DOM.
+
+Pero el equipo de QA reporta que al navegar a otra sección y luego volver a la vista original, se repite el mismo proceso (consulta a la API + renderizado de información) y el usuario está viendo información duplicada.
+
+¿Cómo lo solucionas?
+
+a
+
+Limpiando el caché del navegador antes de cada consulta a la API
+
+b
+
+Recargando la página en cada navegación.
+
+c
+
+✅ Limpiando el contenedor HTML donde se renderiza la información antes de cada consulta a la API.
+
+6. ¿Por qué algunas APIs tienen versionamiento (v1, v2, etc.)?
+
+a
+
+Cada versión siempre representa una rama o tag en el repositorio de Git. Facilita el mantenimiento de una API REST, aunque le dificulta bastante el trabajo al frontend.
+
+b 
+
+✅ Para evitar que el frontend u otras aplicaciones se rompan con el cambio de endpoints, pero permitiendo la migración a la versión más moderna.
+
+c
+
+Para evitar que distintos equipos entren en conflicto al desarrollar el backend de una aplicación.
+
+d
+
+Para agregar varios repositorios de GitHub a una misma API.
+
+6. ¿Es posible consumir más de una API REST (o hacer consultas a distintos endpoints de una misma API) en la misma ruta o vista frontend?
+
+a
+
+✅ Verdadero
+
+b
+
+Falso
+
+8. ¿Cómo ejecutamos un mismo código para distintas URLs cuando todas ellas empiezan con #search=?
+
+a
+
+Con un condicional if / else if por cada distinta URL que pueda hacer match.
+
+b
+
+Con un condicional switch agregando un case por cada distinta URL que pueda hacer match.
+
+c
+
+No se puede, las Single Page Applications solo soportan URLs estáticas.
+
+d
+
+✅ location.hash.startsWith(’#search’)
+
+9. ¿Qué es primero: frontend, backend o diseño?
+
+a
+
+Backend
+
+b
+
+✅ Diseño
+
+c
+
+Frontend
+
+10. ¿Cómo evitamos que información sensible (como una API KEY) aparezca en nuestro repositorio de GitHub (aún siendo público)?
+
+a
+
+Usando GitLab o BitBucket en vez de GitHub.
+
+b
+
+No se puede. Toda la información de un repositorio es pública.
+
+c 
+
+✅ Separando la información sensible a un nuevo archivo y ese agregarlo al .gitignore.
+
+d
+
+No se puede en repositorios públicos, tiene que ser uno privado.
+
+11. "Dado el siguiente contenido HTML:
+
+```html
+<script src=""./secrets.js""></script>
+<script src=""./main.js""></script>
+```
+
+¿Puede el archivo main.js leer las variables ““globales”” del archivo secrets.js?"
+
+a
+
+✅ Verdadero
+
+b
+
+Falso
+
+12. ¿Es posible ejecutar cierto código de JavaScript SOLO cuando el hash de nuestra aplicación es #trends?
+
+a
+
+✅ Verdadero
+
+b
+
+Falso
+
+13. ¿Cómo modificamos el hash de la URL de nuestra aplicación?
+
+a
+
+✅ location.hash = “nuevoHash”
+
+b
+
+window.URLSearchParams(“nuevoHash”, { hash: true, params: false })
+
+c
+
+window.hash(“nuevoHash”, true)
+
+d
+
+location.newHash(“nuevoHash”)
+
+14. ¿Por qué crear un archivo package.json si no utilizaremos dependencias de NPM?
+
+a
+
+Porque es obligatorio en cualquier proyecto de JavaScript.
+
+b
+
+✅ Para agregar la información (para humanos) de nuestro proyecto.
+
+c
+
+No sirve para nada, es una mala práctica.
+
+15. ¿Es posible implementar flujos de navegación y distintas vistas en un solo archivo HTML?
+
+a
+
+✅ Verdadero: es lo que llamamos Single Page Applications (SPA).
+
+b
+
+Falso
 </details>
