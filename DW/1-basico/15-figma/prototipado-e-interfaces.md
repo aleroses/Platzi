@@ -275,23 +275,21 @@ Crearemos la paleta de colores de nuestra aplicación de notas, que está muy ba
 
 ## **9.** Importar y exportar
 
-Algo muy importante al momento de trabajar en proyectos digitales y con archivos que quedan  
-disponibles en linea, es la capacidad que tenemos de importar y exportar diferentes elementos  
-sobre nuestra interfaz, ya sea porque queremos agregar fotografias o porque queremos exportar  
-elementos independientes o frames particulares a otros espacios de trabajo.
+Algo muy importante al momento de trabajar en proyectos digitales y con archivos que quedan disponibles en línea, es la capacidad que tenemos de importar y exportar diferentes elementos sobre nuestra interfaz, ya sea porque queremos agregar fotografías o porque queremos exportar elementos independientes o frames particulares a otros espacios de trabajo.
 
-**_Como importar?_**
+### ¿Como importar?
 
 - Drag and drop
     - En archivos
     - En proyectos
-- cmd + shift + k - Abre el explorados para seleccionar multiples archivos
+- cmd + shift + k - Abre el explorador para seleccionar múltiples archivos
 - Copy / Paste desde:
     - Sketch
     - Illustrator
     - Otros archivos de figma
 
-**_Que se puede exportar?_**  
+### ¿Que se puede exportar?
+
 Al momento de exportar, Figma permite exportar en tres formatos principales:
 
 - PNG
@@ -299,19 +297,19 @@ Al momento de exportar, Figma permite exportar en tres formatos principales:
 - SVG
 - PDF - Pero no es muy recomendado
 
-**_Compartir un archivo_**  
-Para compartir un archivo, siempre debemos tener claro a quien vamos a compartir y a quien  
-le estamos compartiendo nuestro proyecto y tambien cual es el nivel de permisos que le vamos a  
-otorgar a esa persona o personas para que acceda a toda la informacion que existe sobre el  
-espacio de trabajo. Existen dos tipos de permisos:
+### Compartir un archivo
 
-- Permisos de edicion
+Para compartir un archivo, siempre debemos tener claro a quien vamos a compartir y a quien le estamos compartiendo nuestro proyecto y también cual es el nivel de permisos que le vamos a otorgar a esa persona o personas para que acceda a toda la información que existe sobre el espacio de trabajo. 
+
+Existen dos tipos de permisos:
+
+- Permisos de edición
     - Solo vista
-    - Edicion total
+    - Edición total
 - Vista solo de prototipo
 
-**_Pagina para encontrar referencias de fotografias_**  
-[https://unsplash.com/es](https://unsplash.com/es)
+- [Imagenes](https://unsplash.com/es)
+- Plugin para imágenes: unsplash
 
 ## Shortcut
 
@@ -335,6 +333,7 @@ espacio de trabajo. Existen dos tipos de permisos:
 - Ctrl + D: Duplicar el último objeto duplicado
 - Seleccionar un objeto + i: Copiar un color y rellenarlo en el objeto seleccionado
 - Seleccionar color creado + Shift: Agrupar Estilos de colores + click derecho: Add new folder
+- Ctrl + Shift + K: abrir administrador de archivos
 
 quiza Alt en lugar de ctrl
 Ctrl + Shift: Ajustar al centro
