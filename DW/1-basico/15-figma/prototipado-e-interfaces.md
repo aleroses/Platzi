@@ -107,41 +107,82 @@ Vamos a crear nuestro primer espacio de trabajo
 
 ## **4.** Creación de textos y estilos
 
-Bloque fundamental de cualquier interfaz es el texto
-
 Un objeto de texto tiene diferentes propiedades
 
 - Texto
     - Fuente
     - Espaciado
-    - Alineacion
+    - Alineación
 - Color
 
-**Atajos para la creacion y de edicion de texto**  
-ctrl ó cmd + B: Bold ó Negrita  
-ctrl ó cmd + I: Italic ó cursiva  
-ctrl ó cmd + U: Underline ó subrayado
+**Atajos para la creación y de edición de texto**
 
-**Que es un estilo?**  
+- `ctrl o cmd + B`: Bold o negrita
+- `ctrl o cmd + I`: Italic o cursiva
+- `ctrl o cmd + U`: Underline o subrayado
+
+**¿Qué es un estilo?**
+
 Son propiedades globales de los elementos que pueden  
 ser reutilizables a lo largo de varios archivos o proyectos.
 
-alt
+- [Texto Lorem ipsum](https://www.lipsum.com/)
+- [Plugin Lorem ipsum](https://www.figma.com/community/plugin/736000994034548392/lorem-ipsum)
+
+## **5.** Figuras e imágenes en Figma
+
+Las figuras, efectos e imágenes son otros elementos que son complementarios al texto para que la interfaz cobre vida. Estos elementos nos ayudan a complementar el mensaje y la experiencia que se está creando.
+
+### Crear tu primera figura
+
+Para crear nuestra primera figura podemos acceder a los siguientes atajos del teclado:
+
+- r - Rectángulo
+- o - Óvalo
+- i - Línea
+
+Cada uno de esos elementos tiene sus propiedades.
+
+### Propiedades de una figura
+
+Las propiedades de una figura afectan el estado y forma. Todas las figuras tienen:
+
+- Alineación
+- Tamaño
+- Posición
+- Rotación
+- Radio de bordes
+- Constraints
+- Opacidad
+- Relleno (Color, Gradient, Imagen)
+
+Organizar los objetos
+
+- (alt / option) Calcular la distancia de un objeto
+- Guías inteligentes
+- Smart selection
+- Padding entre elementos
+- Mostrar / Ocultar
+- Escalar con v o con k
+
+> Restricciones - Constraints
+
+Todos los elementos contenidos dentro de un frame son objetos “hijos” del contenedor  
+que los soporta. Asi pues, sus restricciones funcionan con base en el comportamiento de  
+su “padre”.
 
 ## Shortcut
 
-- F / A
-- Shift + R
-
-
 **apuntes de comandos básicos de Figma**
 
-- F: para entrar a la herramienta Frame
+- F/A: para entrar a la herramienta Frame
 - V: para entrar a la herramienta Move
 - T: para entrar a la herramienta Text
-- ctrl ó cmd + B: Bold ó Negrita
-- ctrl ó cmd + I: Italic ó cursiva
-- ctrl ó cmd + U: Underline ó subrayado
+- ctrl o cmd + B: Bold o Negrita
+- ctrl o cmd + I: Italic o cursiva
+- ctrl o cmd + U: Underline o subrayado
 - scroll: mover hacia arriba o abajo
 - shift + scroll: mover a izquierda o derecha
-- ctrl ó cmd + scroll: acercar o alejar
+- ctrl o cmd + scroll: acercar o alejar
+- Shift + R: Activar y desactivar la regla
+- Seleccionar + Alt: Ver espacios entre elementos
