@@ -9,12 +9,14 @@ import {
   movieDetailTitle,
   preview,
   previewCat,
+  relatedMoviesContainer,
 } from "./nodes.mjs";
 import { getByCategory } from "./API/get-by-category.mjs";
 import { createMovies } from "./utils/create-movies.mjs";
 import { createCategories } from "./utils/create-categories.mjs";
 import { getSearch } from "./API/get-search.mjs";
 import { getMovieById } from "./API/get-movie-by-id.mjs";
+import { getSimilar } from "./API/get-similar.mjs";
 
 window.onbeforeunload = () => {
   scrollTo(0, 0);
@@ -78,6 +80,13 @@ const showMovieById = async id => {
   movieDetailScore.textContent = data.vote_average;
 
   createCategories(data, movieDetailCategoriesList);
+  showSimilar(id);
+};
+
+const showSimilar = async id => {
+  const data = await getSimilar(id);
+
+  createMovies(data, relatedMoviesContainer);
 };
 
 export {

@@ -538,6 +538,16 @@ location.hash = "#home"
 
 [Recomendaciones](https://developer.themoviedb.org/reference/movie-recommendations)
 
+## **17.** Toma el Curso Profesional de Consumo de API REST con JavaScript
+
 ## Otros apuntes
 
 [Notion](https://www.notion.so/Curso-Pr-ctico-de-Consumo-de-API-REST-con-JavaScript-e98bd628bc0e4af481f47e839bc82692)
+
+## Examen 📌
+<details>
+	<summary>Haz clic para ver los resultados 👀</summary>
+	<br/>
+
+
+</details>
