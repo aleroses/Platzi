@@ -253,6 +253,12 @@ Crearemos la paleta de colores de nuestra aplicación de notas, que está muy ba
 
 ![Agrupar colores](https://i.postimg.cc/W3Z8tPnH/8-agrupar-colores.png)
 
+### Páginas para buscar colores 
+
+- [Color Hunt](https://colorhunt.co/)
+- [coolors](https://coolors.co/)
+- [Adobe color](https://color.adobe.com/pt/create/color-wheel)
+
 ## Quiz: Básicos
 
 1. ¿Qué son las operaciones booleanas en Figma?
@@ -267,6 +273,45 @@ Crearemos la paleta de colores de nuestra aplicación de notas, que está muy ba
 
 	- Para hacer el texto reutilizable y evitar ediciones accidentales
 
+## **9.** Importar y exportar
+
+Algo muy importante al momento de trabajar en proyectos digitales y con archivos que quedan  
+disponibles en linea, es la capacidad que tenemos de importar y exportar diferentes elementos  
+sobre nuestra interfaz, ya sea porque queremos agregar fotografias o porque queremos exportar  
+elementos independientes o frames particulares a otros espacios de trabajo.
+
+**_Como importar?_**
+
+- Drag and drop
+    - En archivos
+    - En proyectos
+- cmd + shift + k - Abre el explorados para seleccionar multiples archivos
+- Copy / Paste desde:
+    - Sketch
+    - Illustrator
+    - Otros archivos de figma
+
+**_Que se puede exportar?_**  
+Al momento de exportar, Figma permite exportar en tres formatos principales:
+
+- PNG
+- JPEG
+- SVG
+- PDF - Pero no es muy recomendado
+
+**_Compartir un archivo_**  
+Para compartir un archivo, siempre debemos tener claro a quien vamos a compartir y a quien  
+le estamos compartiendo nuestro proyecto y tambien cual es el nivel de permisos que le vamos a  
+otorgar a esa persona o personas para que acceda a toda la informacion que existe sobre el  
+espacio de trabajo. Existen dos tipos de permisos:
+
+- Permisos de edicion
+    - Solo vista
+    - Edicion total
+- Vista solo de prototipo
+
+**_Pagina para encontrar referencias de fotografias_**  
+[https://unsplash.com/es](https://unsplash.com/es)
 
 ## Shortcut
 
