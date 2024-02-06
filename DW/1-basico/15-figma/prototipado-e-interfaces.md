@@ -152,11 +152,11 @@ Las propiedades de una figura afectan el estado y forma. Todas las figuras tiene
 - Posición
 - Rotación
 - Radio de bordes
-- Constraints
+- Constraints (Restricciones)
 - Opacidad
 - Relleno (Color, Gradient, Imagen)
 
-Organizar los objetos
+### Organizar los objetos
 
 - (alt / option) Calcular la distancia de un objeto
 - Guías inteligentes
@@ -165,11 +165,7 @@ Organizar los objetos
 - Mostrar / Ocultar
 - Escalar con v o con k
 
-> Restricciones - Constraints
-
-Todos los elementos contenidos dentro de un frame son objetos “hijos” del contenedor  
-que los soporta. Asi pues, sus restricciones funcionan con base en el comportamiento de  
-su “padre”.
+Todos los elementos contenidos dentro de un frame son objetos “hijos” del contenedor que los soporta. Así pues, sus restricciones funcionan con base en el comportamiento de su “padre”.
 
 ## Shortcut
 
