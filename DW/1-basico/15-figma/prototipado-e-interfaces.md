@@ -326,6 +326,22 @@ Creando estilos
     - Nombrar estilo
     - “Crear estilo”
 
+### Tamaños de fuentes
+
+Los tamaños de texto recomendados pueden variar dependiendo del diseño y la plataforma en la que se utilice el texto. Sin embargo, a continuación te proporcionaré algunos tamaños de texto comúnmente utilizados para diferentes elementos:
+
+1. Títulos principales (H1): 24px a 48px o más, dependiendo del diseño y la legibilidad deseada. Los títulos principales suelen ser grandes y llamativos para captar la atención del lector.
+
+2. Subtítulos (H2): 18px a 30px. Los subtítulos son utilizados para separar secciones o subtemas dentro del contenido y suelen ser un poco más pequeños que los títulos principales.
+
+3. Encabezados (H3-H6): 14px a 24px. Los encabezados se utilizan para organizar y jerarquizar el contenido en secciones más pequeñas. A medida que se disminuye el número (H4, H5, H6), el tamaño del texto suele ser más pequeño.
+
+4. Párrafos de texto principal: 14px a 18px. Este tamaño de texto es adecuado para el contenido principal del cuerpo de texto, como párrafos descriptivos o informativos.
+
+5. Texto en cajas de destacado o citas: 12px a 16px. Si tienes elementos destacados o citas dentro de tu contenido, puedes optar por un tamaño de texto ligeramente más pequeño para diferenciarlo del texto principal.
+
+Es importante recordar que estos son solo rangos generales y que puedes ajustar los tamaños de texto según tus necesidades y preferencias específicas. Además, debes considerar la legibilidad en diferentes dispositivos y pantallas, así como el contraste entre el texto y el fondo para garantizar una buena experiencia de lectura. Por lo tanto, siempre es recomendable probar y ajustar el tamaño del texto en función del diseño y la retroalimentación de los usuarios.
+
 [Obtén iconos](https://fonts.google.com/icons?selected=Material+Icons+Round:cancel:&icon.query=x&icon.platform=web&icon.style=Rounded)
 
 [Figma diseñado por Platzi](https://www.figma.com/file/bt4PeoSUlwjOop6LtltoxS/Platzi?type=design&node-id=0-1&mode=design&t=6HDZNb2els5JQwvI-0)
