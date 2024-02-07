@@ -350,11 +350,10 @@ Es importante recordar que estos son solo rangos generales y que puedes ajustar 
 
 ## **11.** Auto-Layout
 
-Esta heramienta no solo permite estanadarizar nuestros objetos, tambien permite ver como van  
-a escalar en diferentes intefaces manteniendo consistencia entre los elementos mismos, esto  
-se llama Auto Layout.
+Esta herramienta no solo permite estandarizar nuestros objetos, también permite ver como van a escalar en diferentes interfaces manteniendo consistencia entre los elementos mismos, esto se llama Auto Layout.
 
-**_Box model_**  
+### Box model
+
 El box model esta compuesto por:
 
 - Content: Es el contenido de nuestro objeto (texto, figura, imagen)
@@ -362,9 +361,9 @@ El box model esta compuesto por:
 - Border: La propiedad border permite definir en una única regla todos los bordes de los elementos seleccionados.
 - Margin: La propiedad margin establece el margen para los cuatro lados desde el borde.
 
-![boxmodel.png](https://static.platzi.com/media/user_upload/boxmodel-ccdfe628-a70d-4b0d-ac2f-440a9068e0a6.jpg)
+![boxmodel](https://i.postimg.cc/s2Nwmp5m/11-box-model.jpg)
 
-**_Propiedades del Auto-layout_**
+### Propiedades del Auto-layout
 
 - Mantiene patrones de distancia simetricos entre sus elementos
 - Son frames, no grupos
@@ -395,6 +394,7 @@ El box model esta compuesto por:
     independiente de la tecnologia que se use para codificarlos
 - Replica dicho “Box model” sobre una interfaz es un gran lugar para  
     empezar a comunicarse mejor con los programadores
+
 
 ## Shortcut
 
