@@ -342,9 +342,59 @@ Los tamaños de texto recomendados pueden variar dependiendo del diseño y la pl
 
 Es importante recordar que estos son solo rangos generales y que puedes ajustar los tamaños de texto según tus necesidades y preferencias específicas. Además, debes considerar la legibilidad en diferentes dispositivos y pantallas, así como el contraste entre el texto y el fondo para garantizar una buena experiencia de lectura. Por lo tanto, siempre es recomendable probar y ajustar el tamaño del texto en función del diseño y la retroalimentación de los usuarios.
 
+![Guide](https://i.postimg.cc/bJhY3HGP/10-my-guide.png)
+
 [Obtén iconos](https://fonts.google.com/icons?selected=Material+Icons+Round:cancel:&icon.query=x&icon.platform=web&icon.style=Rounded)
 
 [Figma diseñado por Platzi](https://www.figma.com/file/bt4PeoSUlwjOop6LtltoxS/Platzi?type=design&node-id=0-1&mode=design&t=6HDZNb2els5JQwvI-0)
+
+## **11.** Auto-Layout
+
+Esta heramienta no solo permite estanadarizar nuestros objetos, tambien permite ver como van  
+a escalar en diferentes intefaces manteniendo consistencia entre los elementos mismos, esto  
+se llama Auto Layout.
+
+**_Box model_**  
+El box model esta compuesto por:
+
+- Content: Es el contenido de nuestro objeto (texto, figura, imagen)
+- Padding: El área de padding es el espacio entre el contenido del elemento y su borde (border).
+- Border: La propiedad border permite definir en una única regla todos los bordes de los elementos seleccionados.
+- Margin: La propiedad margin establece el margen para los cuatro lados desde el borde.
+
+![boxmodel.png](https://static.platzi.com/media/user_upload/boxmodel-ccdfe628-a70d-4b0d-ac2f-440a9068e0a6.jpg)
+
+**_Propiedades del Auto-layout_**
+
+- Mantiene patrones de distancia simetricos entre sus elementos
+- Son frames, no grupos
+    - Tienen una alineacion vertical u horizontal
+- Las propiedades de los elementos se modifican desde adentro,  
+    pero tienen comportamientos globales
+
+**_Creando Auto-layout_**
+
+- Seleccionar los elementos
+- Shift + a
+- Definir alineacion del frame
+- Default depende de los elementos existentes
+
+**_Editando Auto-layout_**
+
+- Ocultar / mostrar elementos
+    - Esto los “elimina” de la alineacion
+- Re-organizacion con:
+    - Drag
+    - Flechas
+    - Iconos
+
+**_Para que sirve el Auto-layout?_**  
+**Consistencia**
+
+- Los componentes de una interfaz van a existir dentro de un box model,  
+    independiente de la tecnologia que se use para codificarlos
+- Replica dicho “Box model” sobre una interfaz es un gran lugar para  
+    empezar a comunicarse mejor con los programadores
 
 ## Shortcut
 
@@ -369,6 +419,7 @@ Es importante recordar que estos son solo rangos generales y que puedes ajustar 
 - Seleccionar un objeto + i: Copiar un color y rellenarlo en el objeto seleccionado
 - Seleccionar color creado + Shift: Agrupar Estilos de colores + click derecho: Add new folder
 - Ctrl + Shift + K: abrir administrador de archivos
+- Shift + A: Agrupar como frame
 
 quiza Alt en lugar de ctrl
 Ctrl + Shift: Ajustar al centro
