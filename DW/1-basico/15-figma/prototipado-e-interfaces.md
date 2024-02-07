@@ -365,35 +365,33 @@ El box model esta compuesto por:
 
 ### Propiedades del Auto-layout
 
-- Mantiene patrones de distancia simetricos entre sus elementos
+- Mantiene patrones de distancia simétricos entre sus elementos
 - Son frames, no grupos
-    - Tienen una alineacion vertical u horizontal
-- Las propiedades de los elementos se modifican desde adentro,  
-    pero tienen comportamientos globales
+    - Tienen una alineación vertical u horizontal
+- Las propiedades de los elementos se modifican desde adentro, pero tienen comportamientos globales
 
-**_Creando Auto-layout_**
+### Creando Auto-layout
 
 - Seleccionar los elementos
-- Shift + a
-- Definir alineacion del frame
+- `Shift + a`
+- Definir alineación del frame
 - Default depende de los elementos existentes
 
-**_Editando Auto-layout_**
+### Editando Auto-layout
 
 - Ocultar / mostrar elementos
-    - Esto los “elimina” de la alineacion
-- Re-organizacion con:
+    - Esto los “elimina” de la alineación
+- Re-organización con:
     - Drag
     - Flechas
     - Iconos
 
-**_Para que sirve el Auto-layout?_**  
+### Para qué sirve el Auto-layout?
+
 **Consistencia**
 
-- Los componentes de una interfaz van a existir dentro de un box model,  
-    independiente de la tecnologia que se use para codificarlos
-- Replica dicho “Box model” sobre una interfaz es un gran lugar para  
-    empezar a comunicarse mejor con los programadores
+- Los componentes de una interfaz van a existir dentro de un box model, independiente de la tecnología que se use para codificarlos
+- Replica dicho “Box model” sobre una interfaz es un gran lugar para empezar a comunicarse mejor con los programadores
 
 
 ## Shortcut
