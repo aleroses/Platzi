@@ -313,6 +313,22 @@ Existen dos tipos de permisos:
 - [Plugin: Figma to HTML and CSS](https://www.figma.com/community/plugin/1128731099343788397)
 - [Plugin: Figma to Code](https://www.figma.com/community/plugin/857346721138427857)
 
+## **10.** Cómo crear guías de estilo
+
+Las guías de estilo son propiedades reutilizables que nos permiten estandarizar todas las decisiones de diseño que hemos tomado a lo largo de la creación de la interfaz.
+
+Creando estilos
+
+- Seleccionar elemento
+    - Dentro de fill / propiedades
+    - Seleccionar los 4 puntos
+    - Simbolon +
+    - Nombrar estilo
+    - “Crear estilo”
+
+[Obtén iconos](https://fonts.google.com/icons?selected=Material+Icons+Round:cancel:&icon.query=x&icon.platform=web&icon.style=Rounded)
+
+
 ## Shortcut
 
 **apuntes de comandos básicos de Figma**
