@@ -503,11 +503,42 @@ Figma ha agregado una funcionalidad muy importante, las variantes, que básicame
 
 ### Propiedades de componentes
 
-Son características de los componentes que nos permiten su manipulación y personalización sea mucho mas fácil desde el panel de propiedades
+Son características de los componentes que nos permiten su manipulación y personalización sea mucho más fácil desde el panel de propiedades
 
 ## **14.** Creación de componentes reutilizables: clase práctica
 
-Ctrl + Shift + K
+Crear los componentes base de un checklist:
+
+
+```
+(ctrl + Alt + k) 👈👀 En windows
+```
+
+Cuando se quiere crear un componente que tiene más de 1 opción debes seleccionar los elementos e irte al icono:
+
+💠 `Create component set`
+
+## Crear un componente grupal
+
+Una vez creado el componente que tiene más de una opción (ver ejemplo) debes seleccionarlos: 
+
+![group](https://i.postimg.cc/c4X1Cz0j/14-group.png)
+
+Una vez seleccionados, debes dar clic en icono 💠 en la parte superior justo en el centro y elegir `create component set`
+
+
+
+podemos irnos a Properties y **cambiar los nombres** tanto del componente general como de cada variante, en el caso de la imagen de abajo le coloqué `false` y `true`.
+
+![14.component-1.png](https://static.platzi.com/media/user_upload/14.component-1-277f682c-a0e8-4f5b-9b53-945672f498fb.jpg)
+
+Una vez hecho esto, si se quiere usar ese componente, se debe seleccionar una de las dos variantes a usar.
+
+![14.component+alt.png](https://static.platzi.com/media/user_upload/14.component%2Balt-85f6bcd6-f428-4118-bf0e-804021286503.jpg)
+
+ Luego debes usar Alt y arrastrar el elemento seleccionado. Con esto ya aparece el botón de activar o desactivar (true o false)
+
+![14.completed.png](https://static.platzi.com/media/user_upload/14.completed-b79ada4f-5a6b-45c3-ae5d-f30be8a80baf.jpg)
 
 ## Shortcut
 
