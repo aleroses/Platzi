@@ -395,17 +395,33 @@ El box model esta compuesto por:
 
 ## **12.** Los 15 mejores atajos para trabajar en Figma
 
-- Shift 0: Visualización 100%
-- Shift 1: Una visualización global
-- Shift 2: Visualizar frame seleccionado
-- n: Mostrar siguiente frame 
-- Shift + P: Lapiz
-- Alt + L: Colapsar capas 
-- Shift + R: Ocultar reglas o guías
-- Ctrl + \\: Quitar columnas de los lados (no me funciona :v)
-- Ctrl + /: 
-- K: Ajustar el frame y el contenido según el frame vaya creciendo.
-- 
+- Shift + 0: Visualización 100%
+- Shift + 1: Visualización global
+- Shift + 2: Visualizar frame seleccionado
+- N: Mostrar siguiente frame 
+- Shift + N: Navegar en reversa sobre los frames
+- O: Crear un óvalo libremente
+- R: Crear un rectángulo
+- P: Crear vectores lineales de forma libre
+- T: Insertar texto después de hacer clic sobre el area de trabajo
+- L: Crear una línea
+- Shift + P: Lápiz para dibujar vectores
+- Alt + L: Colapsar capas (panel izquierdo)
+- Shift + R: Mostrar u ocultar reglas o guías
+- Ctrl + \\: Oculta o muestra los menus de herramientas y frames (no me funcionó)
+- Ctrl +  \|: Ocultar o mostrar los menus de herramientas (teclado latino)
+- Ctrl + /: Abrir buscador para recordar cualquier opción de figma
+- V: Permite escalar libremente el frame
+- K: Ajustar o escalar el contenido según el frame vaya creciendo.
+
+![Shortcuts](https://i.postimg.cc/Vst1xdx6/13-shortcuts.png)
+
+Si algún comando no te funciona, revisa dentro de figma la configuración del teclado. Puedes cambiarlo a latinoamericano y revisar los comandos que podemos usar.
+
+![Keyboard](https://i.postimg.cc/wMRhVhMD/13-change-keyboard.png)
+
+## **13.** # Creación de componentes reutilizables: clase teórica
+
 
 
 ## Shortcut
