@@ -393,6 +393,20 @@ El box model esta compuesto por:
 - Los componentes de una interfaz van a existir dentro de un box model, independiente de la tecnología que se use para codificarlos
 - Replica dicho “Box model” sobre una interfaz es un gran lugar para empezar a comunicarse mejor con los programadores
 
+## **12.** Los 15 mejores atajos para trabajar en Figma
+
+- Shift 0: Visualización 100%
+- Shift 1: Una visualización global
+- Shift 2: Visualizar frame seleccionado
+- n: Mostrar siguiente frame 
+- Shift + P: Lapiz
+- Alt + L: Colapsar capas 
+- Shift + R: Ocultar reglas o guías
+- Ctrl + \\: Quitar columnas de los lados (no me funciona :v)
+- Ctrl + /: 
+- K: Ajustar el frame y el contenido según el frame vaya creciendo.
+- 
+
 
 ## Shortcut
 
