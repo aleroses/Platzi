@@ -418,6 +418,7 @@ El box model esta compuesto por:
 - Seleccionar color creado + Shift: Agrupar Estilos de colores + click derecho: Add new folder
 - Ctrl + Shift + K: abrir administrador de archivos
 - Shift + A: Agrupar como frame
+- Ctrl + Click: padding global
 
 quiza Alt en lugar de ctrl
 Ctrl + Shift: Ajustar al centro
