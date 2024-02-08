@@ -577,6 +577,10 @@ Ahora podemos cambiar el texto desde las propiedades.
 
 ![sample](https://i.postimg.cc/gJ7XcKF1/14-sample.png)
 
+## Quiz: Combo
+
+
+
 ## Shortcut
 
 **apuntes de comandos básicos de Figma**
