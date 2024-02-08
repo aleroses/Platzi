@@ -518,7 +518,7 @@ Cuando se quiere crear un componente que tiene más de 1 opción debes seleccion
 
 💠 `Create component set`
 
-## Crear un componente grupal
+### Crear un componente grupal
 
 Una vez creado el componente que tiene más de una opción (ver ejemplo) debes seleccionarlos: 
 
@@ -554,7 +554,7 @@ Ahora podemos reemplazarlo con cualquier otro icono que hayamos creado o definid
 
 ![14-swap-property-change.png](https://i.postimg.cc/sgqLz1VT/14-swap-property-change.png)
 
-### Cambio automatizado de texto
+### Cambiar texto
 
 Volvamos el contenido del texto en una propiedad. Para esto seleccionamos el texto de interés.
 
@@ -632,18 +632,19 @@ Necesitamos:
 
 Se utiliza para delimitar elementos “Pegajosos” dentro de una interfaz, como un top bar o un fab button. (Menu fixed por ejemplo)
 
-## 17. Prototipado simple: conexión de diferentes frames
+## **17.** Prototipado simple: conexión de diferentes frames
 
-**Conectando frames**  
-_Posicion Inicial_
+### Conectando frames
+
+_Posición Inicial_
 
 - Seleccionar modo “Prototype”
 - Seleccionar el elemento de origen
-    - El objeto desde el que va a empezar la interaccion: Ejemplo,  
-        el boton que se va a presionar o el carrusel que se va a desplazar
+    - El objeto desde el que va a empezar la interacción: Ejemplo,  
+        el botón que se va a presionar o el carrusel que se va a desplazar
 - Arrastrar hasta el frame de destino
 
-_Parametros de trigger_
+### Parámetros de trigger
 
 - None
 - On tap
@@ -651,7 +652,7 @@ _Parametros de trigger_
 - Mouse enter / Leave
 - Touch down / Up
 
-_Parametros de acciones_
+### Parámetros de acciones
 
 - None
 - Navigate to
@@ -661,7 +662,7 @@ _Parametros de acciones_
 - Close overlay
 - Open link
 
-_Parametros de animacion_
+### Parámetros de animación
 
 - Instant
 - Dissolve
@@ -674,25 +675,26 @@ _Parametros de animacion_
     - Ease In / Out
     - Ease In and Out
     - Lineal
-- Duracion en milisegundos
+- Duración en milisegundos
 - Overflow Behavior (Scrolling)
 
-_Configuracion de prototipo_
+### Configuracion de prototipo
 
 - Dispositivo
 - Modelo
 - Fondo
 - Frame inicial
 
-> “Si una imagen vale mas que mil palabras, un prototipo vale mas de  
-> mil reuniones”
+> “Si una imagen vale más que mil palabras, un prototipo vale más de mil reuniones”
 
-_Tipos de prototipos mas utilizados_
+### Tipos de prototipos más utilizados
 
 - Carruseles horizontales
 - Interacciones con hover
 - Bottom sheets
 - Confirmaciones
+
+## **18.** 
 
 ## Shortcut
 
@@ -719,6 +721,7 @@ _Tipos de prototipos mas utilizados_
 - Ctrl + Shift + K: abrir administrador de archivos
 - Shift + A: Agrupar como frame
 - Ctrl + Click: padding global
+- Shift + O: 
 
 quiza Alt en lugar de ctrl
 Ctrl + Shift: Ajustar al centro
