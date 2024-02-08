@@ -524,21 +524,54 @@ Una vez creado el componente que tiene más de una opción (ver ejemplo) debes s
 
 ![group](https://i.postimg.cc/c4X1Cz0j/14-group.png)
 
-Una vez seleccionados, debes dar clic en icono 💠 en la parte superior justo en el centro y elegir `create component set`
+Una vez seleccionados, debes dar clic en icono 💠 en la parte superior justo en el centro y elegir `create component set`.
 
+![create component](https://i.postimg.cc/kMF9BH7C/14-create-component.png)
 
+Ahora podemos irnos a `Properties` (panel derecho) y **cambiar los nombres** tanto del componente general como de cada variante, en el caso de la imagen de abajo le coloqué `false` y `true`.
 
-podemos irnos a Properties y **cambiar los nombres** tanto del componente general como de cada variante, en el caso de la imagen de abajo le coloqué `false` y `true`.
+![14.component-1.png](https://i.postimg.cc/439v5V36/14-component-1.png)
 
-![14.component-1.png](https://static.platzi.com/media/user_upload/14.component-1-277f682c-a0e8-4f5b-9b53-945672f498fb.jpg)
+Una vez hecho esto, si se quiere usar ese componente, se debe seleccionar una de las dos variantes.
 
-Una vez hecho esto, si se quiere usar ese componente, se debe seleccionar una de las dos variantes a usar.
+![14.component+alt.png](https://i.postimg.cc/Fsv9s4cN/14-component-alt.png)
 
-![14.component+alt.png](https://static.platzi.com/media/user_upload/14.component%2Balt-85f6bcd6-f428-4118-bf0e-804021286503.jpg)
+ Luego debes usar `Alt` y arrastrar el elemento seleccionado. Con esto ya aparece el botón de activar o desactivar (true o false)
 
- Luego debes usar Alt y arrastrar el elemento seleccionado. Con esto ya aparece el botón de activar o desactivar (true o false)
+![14.completed.png](https://i.postimg.cc/HxpG5Q0x/14-completed.png)
 
-![14.completed.png](https://static.platzi.com/media/user_upload/14.completed-b79ada4f-5a6b-45c3-ae5d-f30be8a80baf.jpg)
+### Cambio automatizado de iconos (emojis)
+
+Si tenemos un componente el cual cambia constante de iconos, es mejor definir esto como una propiedad de ese componente para hacerlos fácilmente manipulables:
+
+![](https://i.postimg.cc/kG5WVXTZ/14-swap-property-1.png)
+
+Le damos un nombre:
+
+![](https://i.postimg.cc/JzwVQyjb/14-swap-property-name.png)
+
+Ahora podemos reemplazarlo con cualquier otro icono que hayamos creado o definido. En este caso pasamos de False a True.
+
+![14-swap-property-change.png](https://i.postimg.cc/sgqLz1VT/14-swap-property-change.png)
+
+### Cambio automatizado de texto
+
+Volvamos el contenido del texto en una propiedad. Para esto seleccionamos el texto de interés.
+
+![](https://i.postimg.cc/bN9hTx91/14-sp-text-1.png)
+
+Le damos un nombre.
+
+![](https://i.postimg.cc/5tChG8M4/14-sw-text-2.png)
+
+Ahora podemos cambiar el texto desde las propiedades.
+
+![](https://i.postimg.cc/VvWzdpfH/14-sp-text-3.png)
+
+### Añadir o quitar iconos
+
+![](https://i.postimg.cc/1tjR0Yf3/14-sp-check-show.png)
+![](https://i.postimg.cc/V66nLTxf/14-sp-show-2.png)
 
 ## Shortcut
 
