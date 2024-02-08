@@ -573,6 +573,10 @@ Ahora podemos cambiar el texto desde las propiedades.
 ![](https://i.postimg.cc/1tjR0Yf3/14-sp-check-show.png)
 ![](https://i.postimg.cc/V66nLTxf/14-sp-show-2.png)
 
+## Muestra
+
+![sample](https://i.postimg.cc/gJ7XcKF1/14-sample.png)
+
 ## Shortcut
 
 **apuntes de comandos básicos de Figma**
