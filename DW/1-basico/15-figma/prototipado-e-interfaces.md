@@ -573,13 +573,126 @@ Ahora podemos cambiar el texto desde las propiedades.
 ![](https://i.postimg.cc/1tjR0Yf3/14-sp-check-show.png)
 ![](https://i.postimg.cc/V66nLTxf/14-sp-show-2.png)
 
-## Muestra
+### Muestra
 
 ![sample](https://i.postimg.cc/gJ7XcKF1/14-sample.png)
 
+## **15.** Playground: Practica la creación de componentes reutilizables
+
+Imagen de lo que se hizo hasta ahora...
+
 ## Quiz: Combo
 
+1. ¿Cuáles son los dos tipos de permisos que Figma ofrece para compartir archivos?
 
+	- Solo visualización y Edición total
+
+2. ¿Cuáles son los elementos del Box Model en programación de interfaces?
+
+	- Contenido, Padding, Borde y Margen
+
+3. ¿Cuál es el propósito principal de Auto Layout en el diseño de interfaces?
+
+	- Mantener automáticamente las proporciones y la consistencia visual al agregar o modificar elementos
+
+4. ¿Qué función tiene la tecla P en Figma?
+
+	- Permite crear vectores en cualquier parte de la pantalla.
+
+5. ¿Qué permite la opción de compartir solo la vista de prototipo en Figma?
+
+	- Mostrar la interacción y movimiento de la interfaz sin revelar todos los artboards, frames y espacios de trabajo
+
+## **16.** Prototipado simple: interacción de scroll
+
+En esta clase veremos como prototipar con Figma y como plasmar nuestras ideas de las pantallas estáticas a una realidad un poco más tangible para los usuarios.
+
+### Para que prototipamos?
+
+- Para alcanzar una versión más real de nuestra intención de código
+- Para probar conceptos y experimentar ideas nuevas
+- Para aprender sobre las decisiones que hemos tomado
+
+### ¿Que necesitamos para prototipar?
+
+Crear los parámetros de la interacción:
+
+- Como se visualiza
+- Cuando empieza
+- Cuando termina
+
+### Interacciones de scroll (Desplazamiento)
+
+Necesitamos:
+
+- Un frame con algo de contenido más alto que el dispositivo original.
+- Un frame con algo de contenido más largo que su contenedor.
+
+### Posiciones fijas en el scroll
+
+Se utiliza para delimitar elementos “Pegajosos” dentro de una interfaz, como un top bar o un fab button. (Menu fixed por ejemplo)
+
+## 17. Prototipado simple: conexión de diferentes frames
+
+**Conectando frames**  
+_Posicion Inicial_
+
+- Seleccionar modo “Prototype”
+- Seleccionar el elemento de origen
+    - El objeto desde el que va a empezar la interaccion: Ejemplo,  
+        el boton que se va a presionar o el carrusel que se va a desplazar
+- Arrastrar hasta el frame de destino
+
+_Parametros de trigger_
+
+- None
+- On tap
+- While hovering / Pressing
+- Mouse enter / Leave
+- Touch down / Up
+
+_Parametros de acciones_
+
+- None
+- Navigate to
+- Open overlay
+- Swap with
+- Back
+- Close overlay
+- Open link
+
+_Parametros de animacion_
+
+- Instant
+- Dissolve
+- Smart animate
+- Move in / Out
+- Push
+- Slide in / Out
+- Direccion
+- Tipo de animacion
+    - Ease In / Out
+    - Ease In and Out
+    - Lineal
+- Duracion en milisegundos
+- Overflow Behavior (Scrolling)
+
+_Configuracion de prototipo_
+
+- Dispositivo
+- Modelo
+- Fondo
+- Frame inicial
+
+> “Si una imagen vale mas que mil palabras, un prototipo vale mas de  
+> mil reuniones”
+
+_Tipos de prototipos mas utilizados_
+
+- Carruseles horizontales
+- Interacciones con hover
+- Bottom sheets
+- Confirmaciones
 
 ## Shortcut
 
