@@ -420,9 +420,92 @@ Si algún comando no te funciona, revisa dentro de figma la configuración del t
 
 ![Keyboard](https://i.postimg.cc/wMRhVhMD/13-change-keyboard.png)
 
-## **13.** # Creación de componentes reutilizables: clase teórica
+## **13.** Creación de componentes reutilizables: clase teórica
 
+Los componentes en Figma son elementos reutilizables que ayudan a:
 
+- Estandarizar patrones de diseño
+- Reducir errores y tiempo de ajustes
+
+### Creando componentes
+
+Pueden crearse a partir de:
+
+- Frames
+- Grupos
+- Capas
+
+```
+(cmd + shift + k)
+(ctrl + alt + k) 👈👀 En windows
+```
+
+### Creando instancias
+
+Para crear una instancia podemos usar:
+
+- option + arrastrar componente
+- (cmd c) + (cmd v)
+- Drag desde vista de “Assets”
+
+### Relación padre hijo
+
+- Propiedades del master component se traducen en todas las instancias
+- Cambios sobre las instancias se llaman “overrides” y existen para:
+    - Texto
+    - Fill
+    - Stroke
+    - Effectos
+
+### No se pueden cambiar:
+
+- Tamaño
+- Posición
+- Rotación
+- Constrains
+- Jerarquía de capas
+
+_Pero las instancias pueden rebelarse_
+
+- (cmd + option + B) para separar una instancia de su maestro
+- Click derecho y “Reset Instance” para cancelar todos los  
+    overrides que tiene una instancia y revertir al maestro.
+
+### Nombrando y organizando componentes
+
+Al momento de organizar tus componentes es muy importante tener en cuenta donde se están posicionando dentro del espacio de trabajo y como se están nombrando para encontrarlos más fácilmente.
+
+### Organizando los componentes
+
+- Para menos de 7 componentes, nombres independientes funcionan
+- Para mas, es importante crear frames y/o paginas para ordenarlos
+
+### Nombrar los componentes
+
+- Podemos usar “/” para crear jerarquias internas
+    - Esto nos permite usar el swap entre instancias desde las  
+        propiedades:
+
+```
+        Boton/alerta
+        Boton/carga
+```
+
+**_Componentes compuestos (Componentes que existen dentro de otros componentes)_**  
+Las interfaces mas complejas utilizan componentes dentro de otros componentes  
+para replicar la consistencia a lo largo de todo un mismo sistema.
+
+Las instancias permiten darle flexibilidad a los componentes mas complejos,  
+por lo que es clave diferenciar sus diferentes estados.
+
+**_Variantes_**  
+Figma ha agregado una funcionalidad muy importante, las variantes, que basicamente  
+son difentes versiones del mismo componente que aplica bajo parametros similares  
+pero que visualmente tienen un cambion significativo
+
+**_Propiedades de componentes_**  
+Son caracteristicas de los componentes que nos permiten su manipulacion y personalizacion  
+sea mucho mas facil desde el panel de propiedades
 
 ## Shortcut
 
