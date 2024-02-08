@@ -493,20 +493,21 @@ Boton/carga
 
 ### Componentes compuestos (Componentes que existen dentro de otros componentes)
 
-Las interfaces mas complejas utilizan componentes dentro de otros componentes  
-para replicar la consistencia a lo largo de todo un mismo sistema.
+Las interfaces más complejas utilizan componentes dentro de otros componentes para replicar la consistencia a lo largo de todo un mismo sistema.
 
-Las instancias permiten darle flexibilidad a los componentes mas complejos,  
-por lo que es clave diferenciar sus diferentes estados.
+Las instancias permiten darle flexibilidad a los componentes más complejos, por lo que es clave diferenciar sus diferentes estados.
 
-**_Variantes_**  
-Figma ha agregado una funcionalidad muy importante, las variantes, que basicamente  
-son difentes versiones del mismo componente que aplica bajo parametros similares  
-pero que visualmente tienen un cambion significativo
+### Variantes
 
-**_Propiedades de componentes_**  
-Son caracteristicas de los componentes que nos permiten su manipulacion y personalizacion  
-sea mucho mas facil desde el panel de propiedades
+Figma ha agregado una funcionalidad muy importante, las variantes, que básicamente son diferentes versiones del mismo componente que aplica bajo parámetros similares pero que visualmente tienen un cambio significativo.
+
+### Propiedades de componentes
+
+Son características de los componentes que nos permiten su manipulación y personalización sea mucho mas fácil desde el panel de propiedades
+
+## **14.** Creación de componentes reutilizables: clase práctica
+
+Ctrl + Shift + K
 
 ## Shortcut
 
