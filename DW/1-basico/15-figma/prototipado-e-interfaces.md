@@ -478,20 +478,21 @@ Al momento de organizar tus componentes es muy importante tener en cuenta donde 
 ### Organizando los componentes
 
 - Para menos de 7 componentes, nombres independientes funcionan
-- Para mas, es importante crear frames y/o paginas para ordenarlos
+- Para más, es importante crear frames y/o páginas para ordenarlos
 
 ### Nombrar los componentes
 
-- Podemos usar “/” para crear jerarquias internas
+- Podemos usar “/” para crear jerarquías internas
     - Esto nos permite usar el swap entre instancias desde las  
         propiedades:
 
 ```
-        Boton/alerta
-        Boton/carga
+Boton/alerta
+Boton/carga
 ```
 
-**_Componentes compuestos (Componentes que existen dentro de otros componentes)_**  
+### Componentes compuestos (Componentes que existen dentro de otros componentes)
+
 Las interfaces mas complejas utilizan componentes dentro de otros componentes  
 para replicar la consistencia a lo largo de todo un mismo sistema.
 
