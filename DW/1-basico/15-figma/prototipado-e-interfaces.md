@@ -474,6 +474,12 @@ Ahora, para aplicar los estilos creados, primero seleccionamos la parte donde ap
 
 ![](https://i.postimg.cc/25vykYxq/8-change-color.png)
 
+### Resultados 
+
+Debería mostrar solo colores previamente almacenados.
+
+![](https://i.postimg.cc/43ZyxM2B/8-result.png)
+
 ### Páginas para buscar colores 
 
 - [Color Hunt](https://colorhunt.co/)
@@ -483,15 +489,6 @@ Ahora, para aplicar los estilos creados, primero seleccionamos la parte donde ap
 - [Colores elegidos](https://colorhunt.co/palette/1f2544474f7a81689dffd0ec)
 
 ![](https://i.postimg.cc/vBqLYPc4/8-my-colors.png)
-
-
-### Atajos vistos
-
-```bash
-
-```
-
-#bcb3ff
 
 ## Quiz: Básicos
 
@@ -546,6 +543,14 @@ Existen dos tipos de permisos:
 - [Plugin para imágenes: Unsplash](https://www.figma.com/community/plugin/738454987945972471)
 - [Plugin: Figma to HTML and CSS](https://www.figma.com/community/plugin/1128731099343788397)
 - [Plugin: Figma to Code](https://www.figma.com/community/plugin/857346721138427857)
+
+### Atajos vistos
+
+```bash
+
+```
+
+#bcb3ff
 
 ## **10.** Cómo crear guías de estilo
 
