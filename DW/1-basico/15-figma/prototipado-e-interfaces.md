@@ -43,6 +43,10 @@ Es un espacio detrabajo vectorial, pensado para la creación de interfaces como 
 Es un tablero digital interactivo que permite crear sesiones de co-creacion con otras personas y esta enfocado al proceso de ideacion.
 ```
 
+Actualmente puedes crear un nuevo proyecto desde el siguiente icono:
+
+![](https://i.postimg.cc/YCcyg19J/2-create-new-design.png)
+
 En este curso trabajaremos la creación de “Archivos de diseño / Design Files”.
 
 La estructura de los archivos en figma va asociado a un proyecto y a un equipo. Lo que podemos traducir en que necesariamente, debemos crear un Equipo y un proyecto.
@@ -63,6 +67,8 @@ Son básicamente todo el espacio en dos dimensiones que existe y que captura tod
 ### ¿Que son los layers / capas?
 
 Son todos los diferentes objetos que van a componer mi interfaz como los son los bloques que contienen texto, vectores, imágenes, y también pueden tener grupos o frames y todo dentro de una página.
+
+![](https://i.postimg.cc/bY5q7FCk/2-frames.png)
 
 ### Punto de partida
 
