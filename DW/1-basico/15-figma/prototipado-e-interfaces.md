@@ -76,6 +76,13 @@ Nuestro punto de partida será siempre crear un frame o espacio de trabajo y lo 
 
 ![](https://i.postimg.cc/s27ngbmq/2-device-size.png)
 
+### Atajos vistos
+
+```bash
+# Crear Frame
+F
+```
+
 ## Quiz: Introducción 
 
 1. ¿Dónde se puede usar Figma?
@@ -118,6 +125,13 @@ Vamos a crear nuestro primer espacio de trabajo
 
 ![](https://i.postimg.cc/3xRkHb2T/3-frame-grid.png)
 
+### Atajos vistos
+
+```bash
+# Mostrar u ocultar grías
+Shift + R
+```
+
 ## **4.** Creación de textos y estilos
 
 Un objeto de texto tiene diferentes propiedades
@@ -141,6 +155,19 @@ ser reutilizables a lo largo de varios archivos o proyectos.
 
 - [Texto Lorem ipsum](https://www.lipsum.com/)
 - [Plugin Lorem ipsum](https://www.figma.com/community/plugin/736000994034548392/lorem-ipsum)
+
+### Atajos vistos
+
+```bash
+# Bold o negrita
+Ctrl + B
+
+# Italic o cursiva
+Ctrl + I
+
+# Underline o subrayado
+Ctrl + U
+```
 
 ## **5.** Figuras e imágenes en Figma
 
