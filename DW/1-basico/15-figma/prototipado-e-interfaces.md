@@ -733,7 +733,49 @@ Se desplaza desde un punto A un punto B, tomando velocidad al principio y desace
 
 ## Quiz: Prototipado
 
+1. ¿Cuál es el objetivo de conectar frames en Figma al crear prototipos?
 
+	- Permitir variar el contenido en distintas pantallas
+
+2. ¿Cuál es la función utilizada para realizar la transición entre pantallas?
+
+	- afterDelay
+
+3. ¿Qué debemos hacer para comenzar a conectar frames en Figma?
+
+	- Identificar el origen y fin de las interacciones, seleccionar el modo Prototype y elegir el elemento de origen
+
+4. ¿Cuáles son las dos formas de crear prototipos en Figma?
+
+	- Usar scroll y conectar frames
+
+## **19.** Cómo agregar comentarios a los diseños
+
+### Comentarios en Figma
+
+Es la manera como pediremos retroalimentación de otras personas sobre nuestro espacio de trabajo.
+
+Esto ayuda a incentivar la co-creación de productos con diferentes actores, sin necesidad de que todos editen, pero si permitiendo sus puntos de vista en hilos.
+
+### Agregar un comentario
+
+- Presionamos la tecla c ©
+- Clic sobre el lugar donde queremos dejar el comentario
+- Escribimos el comentario
+- Clic en “Post”
+
+### Involucrando a tu equipo
+
+- @ + nombre
+- @ + correo
+- Replicas
+- Marcar como resueltos
+
+### ¿Por qué involucrar al resto del equipo en el proceso?
+
+No tenemos todas las respuestas, por eso es importante involucrar a personas que tiene criterio para dar feedback.
+
+## **20.** 
 
 ## Shortcut
 
