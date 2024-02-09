@@ -401,19 +401,18 @@ Creamos 3 círculos y los seleccionamos para darles la propiedad booleana `Union
 
 ![](https://i.postimg.cc/d07c5thh/7-result.png)
 
-[Practicar el uso de la Pluma](https://bezier.method.ac/)
-
 ### Atajos vistos
 
 ```bash
-
+# Dibujar Verctores
+P
 ```
-
-#bcb3ff
+- [Practicar el uso de la Pluma](https://bezier.method.ac/)
+-  [Boolean method](https://boolean.method.ac/)
 
 ## **8.** Colores en Figma
 
-### Seleccion de colores
+### Selección de colores
 
 Al trabajar sobre un espacio digital, en lo que estamos trabajando realmente es sobre luz, y la luz está compuesta solamente sobre tres colores: Rojo, azul y verde. 
 
@@ -429,6 +428,18 @@ La manera más fácil de seleccionar un color, es tomar una figura, un texto o u
     - Colores hexadecimales (Seleccionar el color de muestra)
     - Elegir el nuevo color o
     - Herramienta “eye dropper”(i) para elegir un color en el entorno
+
+Si quieres extraer un color de alguna imagen, debes seleccionar el objeto a ser rellenado, presionar `i` luego pincha en el color elegido.
+
+![](https://i.postimg.cc/2jQt4WV3/8-select-color.png)
+
+Luego de seleccionar los colores, puedes darles un nombre.
+
+![](https://i.postimg.cc/jSvFnY35/8-name-colors.png)
+
+También puedes agruparlos.
+
+![](https://i.postimg.cc/rF6QYwR3/8-add-new-folder.png)
 
 ### Gradientes
 
@@ -462,6 +473,19 @@ Crearemos la paleta de colores de nuestra aplicación de notas, que está muy ba
 - [Color Hunt](https://colorhunt.co/)
 - [coolors](https://coolors.co/)
 - [Adobe color](https://color.adobe.com/pt/create/color-wheel)
+
+- [Colores elegidos](https://colorhunt.co/palette/1f2544474f7a81689dffd0ec)
+
+![](https://i.postimg.cc/vBqLYPc4/8-my-colors.png)
+
+
+### Atajos vistos
+
+```bash
+
+```
+
+#bcb3ff
 
 ## Quiz: Básicos
 
