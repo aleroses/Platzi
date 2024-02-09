@@ -264,6 +264,16 @@ Esto se puede modificar si cambiamos las restricciones o contraints. Ahora le de
 
 ![](https://i.postimg.cc/s27Pg042/5-constraint-modified.png)
 
+### Rellenar figuras con imágenes
+
+Las figuras o formas no solo pueden ser rellenadas con algún color, también se les puede agregar imágenes
+
+![](https://i.postimg.cc/P53FBMWx/5-image-filler.png)
+
+Una vez tenemos la figura como la imagen de arriba, buscamos alguna imagen en internet y la copiamos, luego sobre la figura pegamos usando `Ctrl + V`.
+
+![](https://i.postimg.cc/SR1CKfWK/5-image-beatles.png)
+
 ### Atajos vistos
 
 ```bash
@@ -275,8 +285,11 @@ O + Clic + Arrastrar + Shift
 
 # Crear líneas perfectos (45°)
 L + Clic + Arrastrar + Shift
+
+# Pegar imagenes sobre figuras
+Ctrl + V
 ```
-líneas
+
 #bcb3ff
 
 ## **6.** Efectos en Figma
