@@ -20,15 +20,14 @@
 
 ## **2.** Interfaz en Figma
 
-Lo primero que debemos hacer es descargar la aplicación desktop de Figma desde la página oficial, allí podremos encontrar los instaladores de la aplicación para los sistemas operativos  
-MacOSX y Windows.
+Lo primero que debemos hacer es descargar la aplicación desktop de Figma desde la página oficial, allí podremos encontrar los instaladores de la aplicación para los sistemas operativos MacOSX y Windows.
 
 **Podemos descargar Figma desde su página oficial:**  
 [Figma downloads](https://www.figma.com/downloads/)
 
 Figma funciona en web, pero es recomendable usar la versión Desktop, ya que está optimizada para el desarrollo eficaz de nuestras interfaces y para que siempre tengamos la última versión actualizada.
 
-**¿Como empezar a usar Figma?**
+### ¿Como empezar a usar Figma?
 
 - Crear una cuenta asociada a la cuenta de google
 - Nombre de equipo (Si no tienes un equipo, entonces tu nombre o un nombre de pruebas)
@@ -38,11 +37,10 @@ Al crear un nuevo archivo, Figma nos despliega 2 opciones para crear nuestro pro
 
 ```
 * Archivos de diseño / Design Files: 👈👀
-Es un espacio detrabajo vectorial, pensado para la creacion de interfaces como tal.
+Es un espacio detrabajo vectorial, pensado para la creación de interfaces como tal.
 
 * Archivos de Figjam / Figjam Files: 👈👀
-Es un tablero digital interactivo que permite 
-crear sesiones de co-creacion con otras personas y esta enfocado al proceso de ideacion.
+Es un tablero digital interactivo que permite crear sesiones de co-creacion con otras personas y esta enfocado al proceso de ideacion.
 ```
 
 En este curso trabajaremos la creación de “Archivos de diseño / Design Files”.
@@ -50,12 +48,17 @@ En este curso trabajaremos la creación de “Archivos de diseño / Design Files
 La estructura de los archivos en figma va asociado a un proyecto y a un equipo. Lo que podemos traducir en que necesariamente, debemos crear un Equipo y un proyecto.
 
 ```
-[Equipo] -> [Proyecto] -> [Archivos del proyecto]
+[Equipo]
+[Proyecto] 
+[Archivos]
+[Páginas]
 ```
 
 ### Páginas en Figma
 
 Son básicamente todo el espacio en dos dimensiones que existe y que captura todas las capas de tu espacio de trabajo.
+
+![](https://i.postimg.cc/yN4gsGkD/2-pages.png)
 
 ### ¿Que son los layers / capas?
 
@@ -64,6 +67,8 @@ Son todos los diferentes objetos que van a componer mi interfaz como los son los
 ### Punto de partida
 
 Nuestro punto de partida será siempre crear un frame o espacio de trabajo y lo podemos crear únicamente pulsando `F` o `A` directamente en la interfaz desktop de Figma. Una vez presiones alguna de las dos teclas, figma pregunta por el tamaño del dispositivo.
+
+![](https://i.postimg.cc/s27ngbmq/2-device-size.png)
 
 ## Quiz: Introducción 
 
