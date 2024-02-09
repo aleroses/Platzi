@@ -250,6 +250,20 @@ Nota que dentro de cada figura hay unos pequeños círculos que permiten cambiar
 
 ![](https://i.postimg.cc/QdWfWBnM/5-circle.png)
 
+#### Definiendo constraints
+
+Creamos un nuevo frame y dentro un rectángulo, al hacer esto podemos notar que en la sección de Constraints tenemos que la posición de ese objeto creado siempre será a la izquierda y arriba.
+
+![](https://i.postimg.cc/ZK696cm2/5-constraint-1.png)
+
+Eso quiere decir que si el frame contenedor cambia de tamaño, el objeto hijo (rectángulo) siempre mantendrá esa misma posición. 
+
+![](https://i.postimg.cc/ydhyNSjS/5-constraint-2.png)
+
+Esto se puede modificar si cambiamos las restricciones o contraints. Ahora le decimos que se ajuste a la izquierda y derecha, por último dejamos que se ajuste en la parte superior como venía por defecto.
+
+![](https://i.postimg.cc/s27Pg042/5-constraint-modified.png)
+
 ### Atajos vistos
 
 ```bash
