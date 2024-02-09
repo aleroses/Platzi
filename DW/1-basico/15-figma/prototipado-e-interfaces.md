@@ -169,10 +169,13 @@ Esto permitirá dar estilos de manera estandarizada a nuevos textos.
 
 Creamos un texto, pero este tiene un estilo totalmente diferente al que queremos. En este caso queremos un texto que tenga las mismas características que nuestro estilo de texto creado previamente.
 
+Para que aparezcan todas las opciones de texto le das al icono Detach style.
+
+![](https://i.postimg.cc/2SFrWVWY/4-detach-style.png)
+
+Puedes probar con algunos estilos nuevos y al final dejarlo con el estilo predefinido.
+
 ![](https://i.postimg.cc/jS4jtWgm/4-apply-text-style.png)
-
-#bcb3ff
-
 
 ### Atajos vistos
 
@@ -194,6 +197,9 @@ Shift + G
 
 # Mostrar espacio entre objetos
 Clic en objeto + Alt + Mover mouse
+
+# Cerrar Figma
+Ctrl + Q
 ```
 
 ## **5.** Figuras e imágenes en Figma
@@ -233,6 +239,30 @@ Las propiedades de una figura afectan el estado y forma. Todas las figuras tiene
 - Escalar con v o con k
 
 Todos los elementos contenidos dentro de un frame son objetos “hijos” del contenedor que los soporta. Así pues, sus restricciones funcionan con base en el comportamiento de su “padre”.
+
+### Atajos vistos
+
+```bash
+# Crear un Texto
+T + Clic
+
+# Bold o negrita
+Ctrl + B
+
+# Italic o cursiva
+Ctrl + I
+
+# Underline o subrayado
+Ctrl + U
+
+# Mostrar u Ocultar el Layout Grid
+Shift + G
+
+# Mostrar espacio entre objetos
+Clic en objeto + Alt + Mover mouse
+```
+
+#bcb3ff
 
 ## **6.** Efectos en Figma
 
