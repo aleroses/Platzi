@@ -873,7 +873,28 @@ Crear un “FigJam File”
 
 ## **23.** Uso de plugins en Figma
 
+Los plugins son básicamente, pequeños segmentos de código que cualquier persona puede desarrollar y publicar para la comunidad de Figma, y que nos permiten extender las habilidades de diseño y prototipado para obtener resultados más profesionales y/o diseñar de forma más eficiente.
 
+### Tipos de plugins
+
+- Eficiencia
+- Organización
+- Manipulación de vectores
+- Animación
+- & muchas más …
+
+### 5 plugins recomendados:
+
+- _Autoflow_: Es un plugin que permite conectar mis frames con flechas  
+    para mostrarle a otras personas donde empieza mi flujo y donde termina.
+    
+- _Magial graphics_: Es un plugin que permite crear diferentes figuras y diseñar casi que ilustraciones desde cero.
+    
+- _Feather Icons_: Es una librería de Iconos y es un repositorio de iconos minimalistas
+    
+- _Mapsicle_: Es un generador de mapas en línea en la cual podemos tomar un mapa de un lugar en especial y agregarlo a nuestro diseño
+    
+- _Stark_: Es una plugin que nos ayuda a la accesibilidad y las reglas de diseño para crear parámetros de accesibilidad.
 
 
 ## Shortcut
