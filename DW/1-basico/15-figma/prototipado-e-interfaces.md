@@ -775,7 +775,34 @@ Esto ayuda a incentivar la co-creación de productos con diferentes actores, sin
 
 No tenemos todas las respuestas, por eso es importante involucrar a personas que tiene criterio para dar feedback.
 
-## **20.** 
+## **20.** Historial de versiones en Figma
+
+Figma mantiene un historial de versiones en la cual se crea cuando se inicia un nuevo proyecto, y guarda automáticamente una nueva versión desde el primer momento en que se crea hasta la última edición.
+
+_En cualquier momento podemos volver a un punto, por medio de:_
+
+- Autoguardado que hace Figma
+- Versiones manuales que el usuario puede documentar
+
+### ¿Cómo guardar una versión específica de mi trabajo?
+
+- (cmd + Option + s)
+- Agregar un título
+- Agregar una descripción
+- “Save”
+
+### ¿Cómo restaurar una versión del archivo?
+
+- “Show version history”
+- Seleccionar versión
+- “Restore this version”
+
+### ¿Esto para qué sirve?
+
+- Identificar en donde se cometieron errores en el sistema
+- Recuperar contexto o versiones previamente exploradas
+
+## **21.** 
 
 ## Shortcut
 
