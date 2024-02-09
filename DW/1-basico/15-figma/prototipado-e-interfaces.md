@@ -387,11 +387,15 @@ Esto permite mostrar solo el texto que está dentro del tamaño de su contenedor
 
 ### Crear vectores
 
-Primero creemos el icono de volver usando la herramienta Pen (P), para esto creamos un frame de w24 y h32 y creamos un Layout Grid de 4 (grid)
+Primero creemos el icono de volver usando la herramienta Pen (P), para esto creamos un frame de w24 x h32 y creamos un Layout Grid de 4 (grid).
  
 ![](https://i.postimg.cc/3xVD28fJ/7-icon-back.png)
 
+Ahora crearemos el botón de opciones, en este casó creamos un frame de w32 x h32, además de un Layout Grid de 4 (grid).
 
+Creamos 3 círculos y los seleccionamos para darles la propiedad booleana `Union Selection`, luego alineamos los círculos en el centro del frame y por último los envolvemos en un círculo más grande. Como esto queda encima de los otros elementos podemos usar Clic derecho y enviarlo al fondo.
+
+![](https://i.postimg.cc/8zYpzDTR/7-icon-options.png)
 
 
 
