@@ -694,7 +694,46 @@ _Posición Inicial_
 - Bottom sheets
 - Confirmaciones
 
-## **18.** 
+## **18.** Prototipado avanzado: smart animate y componentes Interactivos
+
+### Prototipado con Smart animate
+
+¿Cómo se mueve un elemento en la vida real?
+
+Se desplaza desde un punto A un punto B, tomando velocidad al principio y desacelerando al final.
+
+¿Qué necesitamos para hacer un smart animate?
+
+- Dos frames con la misma cantidad de frames y sus nombres correspondientes.
+    - Uno será el punto A
+    - Y el otro será el punto B
+- Definir una interacción que cause el trigger de la animación
+
+### Parametros del trigger
+
+- None
+- On tap / drag
+- While hovering / pressing
+- key / Gamepad
+- Mouse enter / Leave
+- Touch down / Up
+
+### La clave está en el ritmo
+
+¿Cómo quitamos elementos de una interfaz?
+
+- Un elemento desaparece cuando su opacidad se mueve desde 100% a 0%
+- También puede desaparecer con movimiento, sacándolo del frame
+- Combinando ambos
+
+### Recomendaciones
+
+- Nombra muy bien tus capas: Esto te ayudará a identificar fácilmente los diferentes objetos que se están moviendo a lo largo de los frames
+- El tiempo máximo de respuesta a una acción / trigger debe ser de 400 milisegundos “Doherty Threshold”
+
+## Quiz: Prototipado
+
+
 
 ## Shortcut
 
