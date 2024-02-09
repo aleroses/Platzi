@@ -802,7 +802,79 @@ _En cualquier momento podemos volver a un punto, por medio de:_
 - Identificar en donde se cometieron errores en el sistema
 - Recuperar contexto o versiones previamente exploradas
 
-## **21.** 
+## **21.** Librerías de estilos y componentes
+
+### ¿Por qué trabajar con estilos y componentes?
+
+- Estilos: Hacen referencia a parámetros versátiles de una marca
+- Componentes: Hacen referencia a las diferentes partes que componen el sistema de una interfaz
+
+### Repasando: estilos
+
+Una librería de estilos contiene:
+
+- Colores
+- Textos
+- Efectos
+- Grillas
+
+### Repasando: Componentes
+
+Una librería de componentes contiene:
+
+- Componentes
+- Átomos
+- Moléculas
+- Organismos
+
+### ¿Cómo publicar una libreria?
+
+> Dropdown -> Publish styles and components
+
+### ¿Cómo publicar cambios en una librería?
+
+Cada vez que hagas cambios en los estilos o componentes maestros, Figma te pedirá que publiques una nueva versión que actualice estos cambios
+
+### ¿Cómo actualizar una librería?
+
+- Hacer click en “Review”
+- Luego en “Update”
+
+## Quiz: Co-Creando
+
+1. ¿Cuáles son los niveles de una librería de componentes?
+
+	- Átomos, moléculas y organismos
+
+2. ¿Qué función proporcionan los comentarios dinámicos en Figma?
+
+	- Se vinculan a los frames y los acompañan al moverse
+
+3. ¿Cómo se pueden gestionar y restaurar versiones anteriores de un archivo en Figma?
+
+	- Mediante la opción 'Show version history', seleccionando la versión deseada y eligiendo entre nombrar, restaurar o duplicar la versión.
+
+## **22.** FigJam
+
+Es un tablero en línea que permite a un grupo de personas alinearce en un solo espacio, y esa es su característica principal: Alineción interactiva.
+
+Cualquier miembro del equipo de trabajo puede acceder sobre un solo link y dejar comentarios sobre el tema en particular que se está trabajando. Es un excelente lugar para tener discusiones que pueden persistir en el tiempo.
+
+FigJam tiene plantillas para casi todo, desde plantillas para visualizar flujos de trabajo, expresiones regulares o manera de compartir la información con tu equipo de trabajo.
+
+### Grandes Features
+
+- Emotes
+- Stamps & Stickers
+- Cursor chat
+- Llamadas por audio
+
+Crear un “FigJam File”
+
+## **23.** Uso de plugins en Figma
+
+
+
 
 ## Shortcut
 
