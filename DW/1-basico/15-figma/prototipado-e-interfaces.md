@@ -128,7 +128,7 @@ Vamos a crear nuestro primer espacio de trabajo
 ### Atajos vistos
 
 ```bash
-# Mostrar u ocultar grías
+# Mostrar u ocultar guías
 Shift + R
 ```
 
@@ -148,17 +148,38 @@ Un objeto de texto tiene diferentes propiedades
 - `ctrl o cmd + I`: Italic o cursiva
 - `ctrl o cmd + U`: Underline o subrayado
 
-**¿Qué es un estilo?**
+### ¿Qué es un estilo?
 
-Son propiedades globales de los elementos que pueden  
-ser reutilizables a lo largo de varios archivos o proyectos.
+Son propiedades globales de los elementos que pueden ser reutilizables a lo largo de varios archivos o proyectos.
 
 - [Texto Lorem ipsum](https://www.lipsum.com/)
 - [Plugin Lorem ipsum](https://www.figma.com/community/plugin/736000994034548392/lorem-ipsum)
 
+Podemos definir la fuente, tamaño, alineación, espaciado, etc desde la sección texto:
+
+![](https://i.postimg.cc/T3mvF7Yc/4-text-settings.png)
+
+### Crear estilo de texto
+
+Esto permitirá dar estilos de manera estandarizada a nuevos textos.
+
+![](https://i.postimg.cc/wT8q5qRw/4-create-text-style.png)
+
+#### Ejemplo de uso: 
+
+Creamos un texto, pero este tiene un estilo totalmente diferente al que queremos. En este caso queremos un texto que tenga las mismas características que nuestro estilo de texto creado previamente.
+
+![](https://i.postimg.cc/jS4jtWgm/4-apply-text-style.png)
+
+#bcb3ff
+
+
 ### Atajos vistos
 
 ```bash
+# Crear un Texto
+T + Clic
+
 # Bold o negrita
 Ctrl + B
 
@@ -167,6 +188,12 @@ Ctrl + I
 
 # Underline o subrayado
 Ctrl + U
+
+# Mostrar u Ocultar el Layout Grid
+Shift + G
+
+# Mostrar espacio entre objetos
+Clic en objeto + Alt + Mover mouse
 ```
 
 ## **5.** Figuras e imágenes en Figma
