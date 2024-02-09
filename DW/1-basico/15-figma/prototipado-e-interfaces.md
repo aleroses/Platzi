@@ -116,6 +116,8 @@ Vamos a crear nuestro primer espacio de trabajo
 - Una retícula en columnas aplicadas
 - Dos guías para ubicar un texto
 
+![](https://i.postimg.cc/3xRkHb2T/3-frame-grid.png)
+
 ## **4.** Creación de textos y estilos
 
 Un objeto de texto tiene diferentes propiedades
