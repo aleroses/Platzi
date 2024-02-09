@@ -321,34 +321,29 @@ Le damos algunos efectos para lograr un estilo polaroid.
 
 ![](https://i.postimg.cc/hjZYNrg0/6-effect.png)
 
-Luego sobreponemos las dos figuras, seleccionamos la fotografía, presionamos `Shift` arrastramos hacia abajo para disminuir el tamaño de la imagen y al mismo tiempo que se centre:
+Luego sobreponemos las dos figuras, seleccionamos la fotografía, presionamos `Shift` y desde una de sus esquinas, arrastramos hacia abajo para disminuir el tamaño de la imagen y al mismo tiempo lograr centrarla:
 
 ![](https://i.postimg.cc/3JpZ5THq/6-polaroid-effect.png)
 
 Si la imagen te queda por debajo, puedes re-posicionarla desde la sección Layers del lado izquierdo, solo debes arrastrar y colocarla en la posición deseada (ve imagen arriba).
 
+##### Agrupando elementos
 
+Ahora los dos objetos sobrepuestos deberían comportarse como uno solo, podríamos usar `Ctrl + G` para crear un grupo, pero se recomienda crear un nuevo frame que los contenga, para eso seleccionamos ambos elementos y usamos `Ctrl + Alt + G`.
 
+Una vez aquí podemos hacer doble clic sobre el nuevo frame y renombrarlo.
 
-
+![](https://i.postimg.cc/MKbBx097/6-creating-frames.png)
 
 ### Atajos vistos
 
 ```bash
-# Crear cuadros perfectos
-R + Clic + Arrastrar + Shift
+# Crear un Grupo
+Ctrl + G
 
-# Crear circulos perfectos
-O + Clic + Arrastrar + Shift
-
-# Crear líneas perfectos (45°)
-L + Clic + Arrastrar + Shift
-
-# Pegar imagenes sobre figuras
-Ctrl + V
+# Crear un Frame
+Ctrl + Alt + G
 ```
-option o shift
-#bcb3ff
 
 ## **7.** Redes de Vectores
 
@@ -368,6 +363,14 @@ Son las operaciones en las que tomamos figuras en las que mezclamos o restamos u
 
 Con los vectores, vamos a crear los iconos que permiten navegar desde y hacia  
 la nota.
+
+### Atajos vistos
+
+```bash
+
+```
+
+#bcb3ff
 
 ## **8.** Colores en Figma
 
