@@ -931,6 +931,24 @@ Tienes acceso a un repositorio de archivos y proyectos reutilizables y co-creado
 - [Marvie✨ IOS UI Kit Dark theme | Figma Community:](https://www.figma.com/community/file/827876058453173134)  
 - [Sitemap | Figma:](https://www.figma.com/templates/sitemap-generator/)
 
+## Quiz: Superpoderes
+
+1. ¿Qué se puede hacer en Figma si tienes habilidades de programación?
+
+	- Crear tus propios plugins y enviarlos al programa abierto de Figma para su aprobación
+
+2. ¿Qué es FigJam?
+
+	- Una plataforma colaborativa para la creación de tableros y diseño de ideas. 
+
+3. ¿Cuál es el objetivo principal de la utilización de plugins en Figma para mejorar la accesibilidad?
+
+	- Revisar el contraste de los colores en su diseño.
+
+## **25.** Proyecto final del curso de Figma
+
+Prototipo de [Web movies](https://www.figma.com/proto/L7ObBBXcFj9cFHGMAflE4E/Cine-experience?page-id=101%3A4405&node-id=101-4525&starting-point-node-id=103%3A5003&scaling=scale-down)
+
 ## Shortcut
 
 **apuntes de comandos básicos de Figma**
@@ -960,3 +978,136 @@ Tienes acceso a un repositorio de archivos y proyectos reutilizables y co-creado
 
 quiza Alt en lugar de ctrl
 Ctrl + Shift: Ajustar al centro
+
+## Examen 📌
+<details>
+	<summary>Haz clic para ver los resultados 👀</summary>
+	<br/>
+
+1. La diferencia entre un prototipo hecho con dissolve y uno hecho con Smart Animate consiste en que:
+
+	- ✅ Smart Animate toma en cuenta el cambio de propiedades entre pantallas y las anima
+
+2. Las librerías en Figma están compuestas por:
+
+	- ✅ Componentes y Estilos
+
+3. ¿Cuál de estas NO es una modalidad de color?
+
+	- ✅ PSA
+
+4. La siguiente acción NO puede realizarse con los comentarios en Figma:
+
+a
+
+Marcar como "resuelto"
+
+b
+
+✅ Duplicar el comentario
+
+c
+
+❌ Marcar como "no leído"
+
+d
+
+Borrar el comentario
+
+e
+
+Copiar link al comentario
+
+5. ¿Qué atajo se usa para crear una figura de círculo?
+
+	- ✅ Pulsando la tecla "O"
+
+6. Para crear un prototipo que haga scroll, es necesario que:
+
+	- ✅ Existan elementos dentro del frame cuya posición se encuentre por fuera de los límites visibles del mismo
+
+7. Cuando se aplica un estilo de texto sobre una capa de texto sin estilo asignado, ¿qué parámetros se modificarán?
+
+	- ✅ Solo las propiedades del texto
+
+8. La siguiente funcionalidad no hace parte de FigJam
+
+	- ✅ Rellenar objetos con imágenes
+
+9. Para publicar un archivo a la comunidad de Figma, debo hacerlo desde:
+
+	- ✅ El botón de "Share" dentro del archivo
+
+10. Este es el plugin utilizado para revisar contrastes y accesibilidad de los elementos diseñado en Figma
+
+	- ✅ Stark
+
+11. ¿Cuál es la herramienta que se usa para crear vectores libres con diferentes puntos de anclaje?
+
+	- ✅ Pen (P)
+
+12. ¿Cuáles son los 3 modos de Figma?
+
+	- ✅ Diseño, prototipado y código.
+
+13. El comando para seleccionar un color de manera rápida es:
+
+	- ✅ I (i)
+
+14. El comando: command + shift + K, se usa para:
+
+a
+
+Alinear un componente.
+
+b
+
+✅ Importar una imagen.
+
+c
+
+Exportar una imagen.
+
+d
+
+❌ Crear un componente.
+
+15. Un componente se define como:
+
+	- ✅ Una estructura reutilizable que permite replicarse en instancias.
+
+16. Cuando agrego una grilla dentro de un frame, automáticamente Figma creará:
+
+	- ✅ Una grilla de 8 puntos
+
+17. Cuando varios objetos se organizan usando Auto-Layout, todos ellos ahora componen un nuevo:
+
+	- ✅ Frame
+
+18. Para crear o aplicar un estilo re-utilizable deben seleccionarse:
+
+a
+
+❌ Todas las capas con el estilo que se está re-utilizando
+
+b
+
+Todos los vértices de un frame
+
+c
+
+Las 3 propiedades de la capa (modo, opacidad y visualización)
+
+d
+
+Los 4 puntos sobre la propiedad que deseamos re-utilizar
+
+19. ¿Qué comando se utiliza para guardar una versión manual sobre el historial de un archivo en Figma?
+
+	- ✅ Command (CTRL) + Option (ALT) + S
+
+20. Cuando se agrega un efecto sobre una figura plana, automáticamente Figma creará:
+
+	- ✅ Una sombra tipo "Drop shadow"
+
+<details>
