@@ -347,11 +347,13 @@ Ctrl + Alt + G
 
 ## **7.** Redes de Vectores
 
-Cuando hablamos de redes de vectores, hablamos de un concepto muy importante en el mundo digital en general, ya que lo común es diseñar en píxeles, pero esto produce piezas digitales en baja resolución. Pero figma está diseñado en vectores los que significa que aunque se modifique el tamaño de la pieza, esta no perderá su resolución, son operaciones no destructivas.
+Cuando hablamos de redes de vectores, hablamos de un concepto muy importante en el mundo digital en general, ya que lo común es diseñar en píxeles, pero esto produce piezas digitales en baja resolución. 
+
+Figma está diseñado en vectores los que significa que aunque se modifique el tamaño de la pieza, esta no perderá su resolución, son operaciones no destructivas.
 
 ### Construyendo vectores
 
-- Tecla p (pen) para crear un vector libre
+- Tecla `P` (pen) para crear un vector libre
 - Clic en cualquier lugar del frame o área de trabajo y empezará a crear vectores unidos por puntos
 - Tecla Esc para salir del modo de creación de vectores
 - En figma, un punto puede alojar una cantidad infinita de trazos que salgan desde ese punto
@@ -363,6 +365,37 @@ Son las operaciones en las que tomamos figuras en las que mezclamos o restamos u
 
 Con los vectores, vamos a crear los iconos que permiten navegar desde y hacia  
 la nota.
+
+### Interfaz de Notas
+
+Primero estandaricemos la grilla de columnas que usaremos el resto del curso.
+
+Aplicamos los mismos parámetros vistos en la clase 3 y creamos el nuevo estilo de grillas.
+
+![](https://i.postimg.cc/qv8wSrxM/7-standardize-grids.png)
+
+Ahora hacemos lo mismo con la sombra creada clases atrás.
+
+![](https://i.postimg.cc/Dz24x3zG/7-standardize-shade.png)
+
+#### Truncar texto
+
+Esto permite mostrar solo el texto que está dentro del tamaño de su contenedor, en caso de haber demasiado texto, este se oculta. Puedes mostrar más o menos texto aumentando la altura del contenedor.
+
+![](https://i.postimg.cc/L60Myr3W/7-truncate-text.png)
+
+
+### Crear vectores
+
+Primero creemos el icono de volver usando la herramienta Pen (P), para esto creamos un frame de w24 y h32 y creamos un Layout Grid de 4 (grid)
+ 
+![](https://i.postimg.cc/3xVD28fJ/7-icon-back.png)
+
+
+
+
+
+[Practicar el uso de la Pluma](https://bezier.method.ac/)
 
 ### Atajos vistos
 
