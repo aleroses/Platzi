@@ -397,7 +397,9 @@ Creamos 3 círculos y los seleccionamos para darles la propiedad booleana `Union
 
 ![](https://i.postimg.cc/8zYpzDTR/7-icon-options.png)
 
+### Resultado
 
+![](https://i.postimg.cc/d07c5thh/7-result.png)
 
 [Practicar el uso de la Pluma](https://bezier.method.ac/)
 
