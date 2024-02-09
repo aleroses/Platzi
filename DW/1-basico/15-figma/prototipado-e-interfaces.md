@@ -240,28 +240,29 @@ Las propiedades de una figura afectan el estado y forma. Todas las figuras tiene
 
 Todos los elementos contenidos dentro de un frame son objetos “hijos” del contenedor que los soporta. Así pues, sus restricciones funcionan con base en el comportamiento de su “padre”.
 
+### Creando figuras
+
+En el panel derecho tenemos opciones para cambiar la posición en X y en Y de los objetos, cambiar su ancho y alto, cambiar el ángulo y cambiar los bordes de estos.
+
+![](https://i.postimg.cc/W19WmbWC/5-rectangle.png)
+
+Nota que dentro de cada figura hay unos pequeños círculos que permiten cambiar los bordes y crear nuevas figuras.
+
+![](https://i.postimg.cc/QdWfWBnM/5-circle.png)
+
 ### Atajos vistos
 
 ```bash
-# Crear un Texto
-T + Clic
+# Crear cuadros perfectos
+R + Clic + Arrastrar + Shift
 
-# Bold o negrita
-Ctrl + B
+# Crear circulos perfectos
+O + Clic + Arrastrar + Shift
 
-# Italic o cursiva
-Ctrl + I
-
-# Underline o subrayado
-Ctrl + U
-
-# Mostrar u Ocultar el Layout Grid
-Shift + G
-
-# Mostrar espacio entre objetos
-Clic en objeto + Alt + Mover mouse
+# Crear líneas perfectos (45°)
+L + Clic + Arrastrar + Shift
 ```
-
+líneas
 #bcb3ff
 
 ## **6.** Efectos en Figma
