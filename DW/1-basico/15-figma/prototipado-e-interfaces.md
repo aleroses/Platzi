@@ -458,7 +458,7 @@ Esto es mucho más natural para el ojo humano, ya que este tipo de transiciones 
 	    - Angular
 	    - Diamond
 
-Crearemos la paleta de colores de nuestra aplicación de notas, que está muy basada en tonos grises, ya que no queremos llamar demasiado la atención pero sí debería tener algunas características:
+Crearemos la paleta de colores de nuestra aplicación de notas, que está muy basada en tonos grises, ya que no queremos llamar demasiado la atención, pero sí debería tener algunas características:
 
 - 3 grises para información
 - 4 colores de resalte para diferentes estados (información, advertencia y éxito).
@@ -466,7 +466,13 @@ Crearemos la paleta de colores de nuestra aplicación de notas, que está muy ba
 
 📌 Recuerda que puedes asignar un nombre a cada color creado y luego agrupar todos estos colores.
 
-![Agrupar colores](https://i.postimg.cc/W3Z8tPnH/8-agrupar-colores.png)
+![Agrupar colores](https://i.postimg.cc/sg6JRYg6/8-grouping-colors.png)
+
+### Aplicando estilos de colores
+
+Ahora, para aplicar los estilos creados, primero seleccionamos la parte donde aplicaremos cambios...
+
+![](https://i.postimg.cc/25vykYxq/8-change-color.png)
 
 ### Páginas para buscar colores 
 
