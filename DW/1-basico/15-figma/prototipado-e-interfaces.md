@@ -896,6 +896,40 @@ Los plugins son básicamente, pequeños segmentos de código que cualquier perso
     
 - _Stark_: Es una plugin que nos ayuda a la accesibilidad y las reglas de diseño para crear parámetros de accesibilidad.
 
+## **24.** Community: proyectos open-source y perfiles
+
+Es la comunidad de diseñadores que comparten sus ideas, creaciones y todo lo que están desarrollando.
+
+Tienes acceso a un repositorio de archivos y proyectos reutilizables y co-creados por la comunidad.
+
+### Tipos de plantillas
+
+- Plantillas de interfaz
+- Sistemas de diseño
+- Presentaciones
+- Recursos para workshop
+- Mockups de dispositivos
+- Juegos de mesa
+- y mucho mas …
+
+### Proyectos favoritos
+
+- Ant Design System
+- Base Gallery
+- Contra Wireframe Kit
+- Figma Design Principles
+- Figma for Education: Beca
+- Marvie
+- Modern Device Mockup Kit
+- Sitemap
+
+- [Friends of Figma | Figma:](https://friends.figma.com/)  
+- [Ant Design Open Source | Figma Community:](https://www.figma.com/community/file/831698976089873405)  
+- [Base Gallery | Figma Community:](https://www.figma.com/community/file/805195278314519508)
+- [Contra wireframe kit | Figma Community:](https://www.figma.com/community/file/833515051385038928)  
+- [Figma Design Principles | Figma Community:](https://www.figma.com/community/file/817913152610525667)  
+- [Marvie✨ IOS UI Kit Dark theme | Figma Community:](https://www.figma.com/community/file/827876058453173134)  
+- [Sitemap | Figma:](https://www.figma.com/templates/sitemap-generator/)
 
 ## Shortcut
 
