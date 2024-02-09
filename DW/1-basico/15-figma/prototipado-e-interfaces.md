@@ -313,6 +313,43 @@ Crearemos una imagen tipo polaroid, para lo cual debemos tener:
 - Una sombra aplicada
 - Todo lo anterior sobre el frame de la nota que ya hemos avanzado en las clases pasadas
 
+#### Ejemplo
+
+Usando la imagen que rellenamos dentro de una figura en la clase anterior, creamos un rectángulo de las mismas medidas.
+
+Le damos algunos efectos para lograr un estilo polaroid.
+
+![](https://i.postimg.cc/hjZYNrg0/6-effect.png)
+
+Luego sobreponemos las dos figuras, seleccionamos la fotografía, presionamos `Shift` arrastramos hacia abajo para disminuir el tamaño de la imagen y al mismo tiempo que se centre:
+
+![](https://i.postimg.cc/3JpZ5THq/6-polaroid-effect.png)
+
+Si la imagen te queda por debajo, puedes re-posicionarla desde la sección Layers del lado izquierdo, solo debes arrastrar y colocarla en la posición deseada (ve imagen arriba).
+
+
+
+
+
+
+### Atajos vistos
+
+```bash
+# Crear cuadros perfectos
+R + Clic + Arrastrar + Shift
+
+# Crear circulos perfectos
+O + Clic + Arrastrar + Shift
+
+# Crear líneas perfectos (45°)
+L + Clic + Arrastrar + Shift
+
+# Pegar imagenes sobre figuras
+Ctrl + V
+```
+option o shift
+#bcb3ff
+
 ## **7.** Redes de Vectores
 
 Cuando hablamos de redes de vectores, hablamos de un concepto muy importante en el mundo digital en general, ya que lo común es diseñar en píxeles, pero esto produce piezas digitales en baja resolución. Pero figma está diseñado en vectores los que significa que aunque se modifique el tamaño de la pieza, esta no perderá su resolución, son operaciones no destructivas.
