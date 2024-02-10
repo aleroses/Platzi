@@ -701,24 +701,60 @@ Ctrl + Clic
 
 ## **12.** Los 15 mejores atajos para trabajar en Figma
 
-- Shift + 0: Visualización 100%
-- Shift + 1: Visualización global
-- Shift + 2: Visualizar frame seleccionado
-- N: Mostrar siguiente frame 
-- Shift + N: Navegar en reversa sobre los frames
-- O: Crear un óvalo libremente
-- R: Crear un rectángulo
-- P: Crear vectores lineales de forma libre
-- T: Insertar texto después de hacer clic sobre el area de trabajo
-- L: Crear una línea
-- Shift + P: Lápiz para dibujar vectores
-- Alt + L: Colapsar capas (panel izquierdo)
-- Shift + R: Mostrar u ocultar reglas o guías
-- Ctrl + \\: Oculta o muestra los menus de herramientas y frames (no me funcionó)
-- Ctrl +  \|: Ocultar o mostrar los menus de herramientas (teclado latino)
-- Ctrl + /: Abrir buscador para recordar cualquier opción de figma
-- V: Permite escalar libremente el frame
-- K: Ajustar o escalar el contenido según el frame vaya creciendo.
+```bash
+# Visualización
+# Visualización 100%
+Shift + 0
+
+# Visualización global
+Shift + 1
+
+# Visualizar frame seleccionado
+Shift + 2
+
+# Mostrar siguiente frame
+N
+
+# Navegar en reversa sobre los frames
+Shift + N
+
+# Figuras + Shift
+# Crear un óvalo libremente
+O
+
+# Crear un rectángulo
+R
+
+# Insertar texto después de hacer clic sobre el area de trabajo
+T
+
+# Crear una línea
+L
+
+# Crear vectores lineales de forma libre
+P
+
+# Lápiz para dibujar vectores
+Shift + P
+
+# Colapsar capas (panel izquierdo)
+Alt + L
+
+# Mostrar u ocultar reglas o guías
+Shift + R
+
+# Oculta o muestra los menus de herramientas y frames (teclado español)
+Ctrl + |
+
+# Abrir buscador para recordar cualquier opción de figma
+Ctrl + /
+
+# Permite escalar libremente el frame
+V
+
+# Ajustar o escalar el contenido según el frame vaya creciendo
+K
+```
 
 ![Shortcuts](https://i.postimg.cc/Vst1xdx6/13-shortcuts.png)
 
