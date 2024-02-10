@@ -718,7 +718,7 @@ N
 # Navegar en reversa sobre los frames
 Shift + N
 
-# Figuras + Shift
+# Figuras
 # Crear un óvalo libremente
 O
 
@@ -747,7 +747,7 @@ Shift + R
 Ctrl + |
 
 # Abrir buscador para recordar cualquier opción de figma
-Ctrl + /
+Ctrl + ,
 
 # Permite escalar libremente el frame
 V
@@ -756,7 +756,7 @@ V
 K
 ```
 
-![Shortcuts](https://i.postimg.cc/Vst1xdx6/13-shortcuts.png)
+![Shortcuts](https://i.postimg.cc/zf3Q42R7/13-shortcuts.png)
 
 Si algún comando no te funciona, revisa dentro de figma la configuración del teclado. Puedes cambiarlo a latinoamericano y revisar los comandos que podemos usar.
 
