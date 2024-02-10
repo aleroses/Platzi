@@ -519,7 +519,14 @@ Algo muy importante al momento de trabajar en proyectos digitales y con archivos
     - Illustrator
     - Otros archivos de figma
 
-### ¿Que se puede exportar?
+Una forma interesante de importar una imagen y a la vez rellenar una figura es la siguiente:
+
+- Crea la figura a rellenar (círculo, cuadrado)
+- Presiona `Ctrl + Shift + K`
+- Selecciona la imagen a usar
+- Pincha dentro del objeto a rellenar
+
+### ¿Qué se puede exportar?
 
 Al momento de exportar, Figma permite exportar en tres formatos principales:
 
@@ -528,9 +535,11 @@ Al momento de exportar, Figma permite exportar en tres formatos principales:
 - SVG
 - PDF - Pero no es muy recomendado
 
+![](https://i.postimg.cc/7hh0NNd8/9-export.png)
+
 ### Compartir un archivo
 
-Para compartir un archivo, siempre debemos tener claro a quien vamos a compartir y a quien le estamos compartiendo nuestro proyecto y también cual es el nivel de permisos que le vamos a otorgar a esa persona o personas para que acceda a toda la información que existe sobre el espacio de trabajo. 
+Para compartir un archivo, siempre debemos tener claro a quién vamos a compartir y a quién le estamos compartiendo nuestro proyecto y también cuál es el nivel de permisos que le vamos a otorgar a esa persona o personas para que acceda a toda la información que existe sobre el espacio de trabajo. 
 
 Existen dos tipos de permisos:
 
@@ -538,6 +547,8 @@ Existen dos tipos de permisos:
     - Solo vista
     - Edición total
 - Vista solo de prototipo
+
+![](https://i.postimg.cc/tChCM6jL/9-share.png)
 
 - [Imagenes](https://unsplash.com/es)
 - [Plugin para imágenes: Unsplash](https://www.figma.com/community/plugin/738454987945972471)
@@ -547,10 +558,9 @@ Existen dos tipos de permisos:
 ### Atajos vistos
 
 ```bash
-
+# Abrir explorador de archivos
+Ctrl + Shift + K
 ```
-
-#bcb3ff
 
 ## **10.** Cómo crear guías de estilo
 
@@ -586,6 +596,14 @@ Es importante recordar que estos son solo rangos generales y que puedes ajustar 
 [Obtén iconos](https://fonts.google.com/icons?selected=Material+Icons+Round:cancel:&icon.query=x&icon.platform=web&icon.style=Rounded)
 
 [Figma diseñado por Platzi](https://www.figma.com/file/bt4PeoSUlwjOop6LtltoxS/Platzi?type=design&node-id=0-1&mode=design&t=6HDZNb2els5JQwvI-0)
+
+### Atajos vistos
+
+```bash
+
+```
+
+#bcb3ff
 
 ## **11.** Auto-Layout
 
