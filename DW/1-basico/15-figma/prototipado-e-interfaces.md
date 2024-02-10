@@ -807,7 +807,7 @@ Para crear una instancia podemos usar:
 - Constrains
 - Jerarquía de capas
 
-_Pero las instancias pueden rebelarse_
+_Pero las instancias pueden rebelarse_ 👈👀
 
 - (cmd + option + B) para separar una instancia de su maestro
 - Click derecho y “Reset Instance” para cancelar todos los  
@@ -851,7 +851,6 @@ Son características de los componentes que nos permiten su manipulación y pers
 
 Crear los componentes base de un checklist:
 
-
 ```
 (ctrl + Alt + k) 👈👀 En windows
 ```
@@ -859,6 +858,25 @@ Crear los componentes base de un checklist:
 Cuando se quiere crear un componente que tiene más de 1 opción debes seleccionar los elementos e irte al icono:
 
 💠 `Create component set`
+
+### Trabajemos sobre nuestro proyecto
+
+Para esta clase trabajaremos con algunos emojis que podemos usar libremente, para esto entra al siguiente enlace:
+
+[Platzi Notas](https://www.figma.com/community/file/1156912716415678519)
+
+Dale clic a `Open in Figma`, una vez aquí selecciona el que dice Emoji. Selecciona todo el contenido (emojis) usando `Ctrl + A` y luego copia usando `Ctrl + C`.
+
+![](https://i.postimg.cc/Ls3Zvddn/14-emoji.png)
+
+Ahora ve a tu proyecto y crea una nueva página con el mismo nombre (Emoji) y pega el contenido.
+
+![](https://i.postimg.cc/jd1mkkVX/14-emoji-copy.png)
+
+Hecho esto, ya puedes usar los emojis, solo ve al apartado `Assets`, busca el nombre del emoji que deseas usar y arrástralo a tu área de trabajo.
+
+![](https://i.postimg.cc/Dyb0NHJf/14-emoji-assets.png)
+
 
 ### Crear un componente grupal
 
