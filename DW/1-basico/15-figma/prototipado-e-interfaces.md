@@ -963,12 +963,11 @@ Nos dirigimos al lugar donde usamos ese icono.
 
 Seleccionamos lo necesario hasta llegar a los iconos que necesitamos:
 
-![](https://i.postimg.cc/BnvNVRDw/14-sp-apply-2.png)
+![](https://i.postimg.cc/sgD3xPGZ/14-sp-apply-2.png)
 
 Aplicamos el icono que deseemos. 
 
 ![](https://i.postimg.cc/0Q9zt1Kz/14-sp-select.png)
-
 
 #### Cambiar texto
 
@@ -980,18 +979,27 @@ Le damos un nombre.
 
 ![](https://i.postimg.cc/5tChG8M4/14-sw-text-2.png)
 
-Ahora podemos cambiar el texto desde las propiedades.
+Ahora podemos cambiar el texto desde las propiedades. Solo dirígete al lugar en donde usaste una instancia del texto original.
 
 ![](https://i.postimg.cc/VvWzdpfH/14-sp-text-3.png)
 
 #### Añadir o quitar iconos
 
 ![](https://i.postimg.cc/1tjR0Yf3/14-sp-check-show.png)
+
+Dirígete al lugar donde usaste ese icono, crea más contenido y quítale iconos desde el panel derecho.
+
 ![](https://i.postimg.cc/V66nLTxf/14-sp-show-2.png)
 
-### Muestra
+### Muestras
+
+Antes:
 
 ![sample](https://i.postimg.cc/gJ7XcKF1/14-sample.png)
+
+Después:
+
+![sample 2](https://i.postimg.cc/YqD0YqK9/14-sample2.png)
 
 ### Atajos vistos
 
