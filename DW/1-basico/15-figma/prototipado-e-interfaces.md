@@ -935,21 +935,42 @@ Usando el comando `Shift + O` podemos mostrar nuestro trabajo en un esquema.
 
 ![](https://i.postimg.cc/rFzb3dSk/14-outlines.png)
 
-### Cambio automatizado de iconos (emojis)
+#### Cambio automatizado de iconos (emojis)
 
 Si tenemos un componente el cual cambia constante de iconos, es mejor definir esto como una propiedad de ese componente para hacerlos fácilmente manipulables:
 
 ![](https://i.postimg.cc/kG5WVXTZ/14-swap-property-1.png)
 
-Le damos un nombre:
+Le damos un nombre`\`:
 
 ![](https://i.postimg.cc/JzwVQyjb/14-swap-property-name.png)
 
-Ahora podemos reemplazarlo con cualquier otro icono que hayamos creado o definido. En este caso pasamos de False a True.
+Ahora podemos reemplazarlo con cualquier otro icono que hayamos creado o definido. En este caso pasamos de False a True. Nota que no necesitamos entrar y seleccionar el icono. Podemos hacer el cambio desde fuera.
 
 ![14-swap-property-change.png](https://i.postimg.cc/sgqLz1VT/14-swap-property-change.png)
 
-### Cambiar texto
+Volvamos a practicar usando los iconos usados en clase:
+
+![](https://i.postimg.cc/wvqyjYVh/14-sp-select-icon.png)
+
+Le damos un nombre: `Emoji\`
+
+![](https://i.postimg.cc/vZy6NnVq/14-sp-name.png)
+
+Nos dirigimos al lugar donde usamos ese icono.
+
+![](https://i.postimg.cc/zXFf3cy7/14-sp-apply.png)
+
+Seleccionamos lo necesario hasta llegar a los iconos que necesitamos:
+
+![](https://i.postimg.cc/BnvNVRDw/14-sp-apply-2.png)
+
+Aplicamos el icono que deseemos. 
+
+![](https://i.postimg.cc/0Q9zt1Kz/14-sp-select.png)
+
+
+#### Cambiar texto
 
 Volvamos el contenido del texto en una propiedad. Para esto seleccionamos el texto de interés.
 
@@ -963,7 +984,7 @@ Ahora podemos cambiar el texto desde las propiedades.
 
 ![](https://i.postimg.cc/VvWzdpfH/14-sp-text-3.png)
 
-### Añadir o quitar iconos
+#### Añadir o quitar iconos
 
 ![](https://i.postimg.cc/1tjR0Yf3/14-sp-check-show.png)
 ![](https://i.postimg.cc/V66nLTxf/14-sp-show-2.png)
