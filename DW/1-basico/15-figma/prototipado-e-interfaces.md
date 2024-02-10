@@ -907,13 +907,13 @@ Creamos una línea vertical y un texto. En caso de que el texto aumente de tama�
 ![](https://i.postimg.cc/Zq4v2HPC/14-text-line-solution.png)
 
 
-### Crear un componente grupal
+#### Crear un componente con variante (true - false)
 
-Una vez creado el componente que tiene más de una opción (ver ejemplo) debes seleccionarlos: 
+Una vez creado el componente que tiene más de una opción (dos versiones del mismo componente) debes seleccionarlos: 
 
 ![group](https://i.postimg.cc/c4X1Cz0j/14-group.png)
 
-Una vez seleccionados, debes dar clic en icono 💠 en la parte superior justo en el centro y elegir `create component set`.
+Una vez seleccionados, debes dar clic en el icono 💠 en la parte superior justo en el centro y elegir `create component set`.
 
 ![create component](https://i.postimg.cc/kMF9BH7C/14-create-component.png)
 
