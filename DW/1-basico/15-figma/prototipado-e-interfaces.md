@@ -605,14 +605,6 @@ Estos son los datos:
 
 [Figma diseñado por Platzi](https://www.figma.com/file/bt4PeoSUlwjOop6LtltoxS/Platzi?type=design&node-id=0-1&mode=design&t=6HDZNb2els5JQwvI-0)
 
-### Atajos vistos
-
-```bash
-
-```
-
-#bcb3ff
-
 ## **11.** Auto-Layout
 
 Esta herramienta no solo permite estandarizar nuestros objetos, también permite ver como van a escalar en diferentes interfaces manteniendo consistencia entre los elementos mismos, esto se llama Auto Layout.
@@ -638,7 +630,7 @@ El box model esta compuesto por:
 ### Creando Auto-layout
 
 - Seleccionar los elementos
-- `Shift + a`
+- `Shift + A`
 - Definir alineación del frame
 - Default depende de los elementos existentes
 
@@ -651,12 +643,48 @@ El box model esta compuesto por:
     - Flechas
     - Iconos
 
-### Para qué sirve el Auto-layout?
+### ¿Para qué sirve el Auto-layout?
 
 **Consistencia**
 
 - Los componentes de una interfaz van a existir dentro de un box model, independiente de la tecnología que se use para codificarlos
 - Replica dicho “Box model” sobre una interfaz es un gran lugar para empezar a comunicarse mejor con los programadores
+
+### Hagamos un ejemplo
+
+Dato importante: Debes fijarte que tanto el Frame y los objetos dentro de él, tengan `Layer` como `Normal` de lo contrario no podrás aplicar los cambios deseados a los objetos internos.
+
+![](https://i.postimg.cc/wTj3JxPC/11-layer-normal.png)
+
+Ahora, desde el apartado Frame puedes cambiar el comportamiento de cada elemento interno del frame para que cuando el Frame crezca este se adapte a las necesidades requeridas.
+
+![](https://i.postimg.cc/FRWFV8Y9/11-frame.png)
+
+Recuerda que para hacer cambios debes elegir cada elemento y aplicar los cambios por separado.
+
+En el ejemplo visto en clase:
+
+- Elemento 1:
+	- Ancho: Fill
+	- Alto: Fixed
+- Elemento 2:
+	- Ancho: Fixed
+	- Alto: Fill
+- Elemento 3:
+	- Ancho: Fixed
+	- Alto: Fixed
+- Elemento 4:
+	- Ancho: Fill
+	- Alto: Fill
+
+### Atajos vistos
+
+```bash
+# Crear un Auto Layout
+Shift + A
+```
+
+#bcb3ff 
 
 ## **12.** Los 15 mejores atajos para trabajar en Figma
 
