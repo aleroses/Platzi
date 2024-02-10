@@ -648,7 +648,7 @@ El box model esta compuesto por:
 **Consistencia**
 
 - Los componentes de una interfaz van a existir dentro de un box model, independiente de la tecnología que se use para codificarlos
-- Replica dicho “Box model” sobre una interfaz es un gran lugar para empezar a comunicarse mejor con los programadores
+- Replicar dicho “Box model” sobre una interfaz es un gran lugar para empezar a comunicarse mejor con los programadores
 
 ### Hagamos un ejemplo
 
@@ -660,7 +660,7 @@ Ahora, desde el apartado Frame puedes cambiar el comportamiento de cada elemento
 
 ![](https://i.postimg.cc/FRWFV8Y9/11-frame.png)
 
-Recuerda que para hacer cambios debes elegir cada elemento y aplicar los cambios por separado.
+Recuerda que para hacer cambios debes seleccionar cada elemento y aplicar los cambios por separado.
 
 En el ejemplo visto en clase:
 
@@ -677,11 +677,24 @@ En el ejemplo visto en clase:
 	- Ancho: Fill
 	- Alto: Fill
 
+### Aplicado a nuestro proyecto
+
+Para este ejemplo se le aplicó al texto central un `Fill Container` para que se ajuste a los costados en caso de que el Frame crezca. 
+
+![](https://i.postimg.cc/Ls9LnXfX/11-auto-layout-header.png)
+
+También aplicamos un Auto layout al resto del contenido. Puedes ajustarlo para que cada vez que la información de este aumente, todo el contenido se ajuste adecuadamente.
+
+![](https://i.postimg.cc/HWthvS48/11-auto-layout-body.png)
+
 ### Atajos vistos
 
 ```bash
 # Crear un Auto Layout
 Shift + A
+
+# Añadir padding en los 4 lados
+Ctrl + Clic
 ```
 
 #bcb3ff 
