@@ -877,6 +877,35 @@ Hecho esto, ya puedes usar los emojis, solo ve al apartado `Assets`, busca el no
 
 ![](https://i.postimg.cc/Dyb0NHJf/14-emoji-assets.png)
 
+#### Crea componentes
+
+Creamos un frame usando `Shift + A` le damos las propiedades requeridas y luego lo convertimos en un componente usando `Ctrl + Alt + K`.
+
+![](https://i.postimg.cc/Pf1FMzTL/14-first-component.png)
+
+Ahora, para probar este componente, solo selecciónalo y presiona `Alt` y arrastra a la posición deseada.
+
+Si quieres cambiar el icono, solo selecciónalo, despliega `Objects 100` y selecciona el icono deseado.
+
+![](https://i.postimg.cc/BQKbJfXz/14-change-emoji.png)
+
+![](https://i.postimg.cc/L88B8VZw/14-change-icon.png)
+
+Si cambias algo del componente original, todas las instancias se verán afectadas.
+
+📌 Las copias de cualquier componente original se les conoce como instancias, una referencia a la Programación Orientada a Objetos.
+
+Otro componente:
+
+Creamos una línea vertical y un texto. En caso de que el texto aumente de tamaño, la línea debe ajustarse.
+
+![](https://i.postimg.cc/Hk8SZYY6/14-component-with-line.png)
+
+**Posibles errores al crear este componente:** Es probable que al querer crear un frame que contenga una línea y un texto, estos no te permitan darles gap, por lo que puedes probar primero creando el texto, luego la línea y después creas el frame, por último inviertes el orden desde la sección izquierda (Layers) 👈👀
+
+![](https://i.postimg.cc/tCkKFCrw/14-text-line-error.png)
+![](https://i.postimg.cc/Zq4v2HPC/14-text-line-solution.png)
+
 
 ### Crear un componente grupal
 
