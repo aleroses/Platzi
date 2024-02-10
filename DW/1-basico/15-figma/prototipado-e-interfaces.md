@@ -591,7 +591,15 @@ Los tamaños de texto recomendados pueden variar dependiendo del diseño y la pl
 
 Es importante recordar que estos son solo rangos generales y que puedes ajustar los tamaños de texto según tus necesidades y preferencias específicas. Además, debes considerar la legibilidad en diferentes dispositivos y pantallas, así como el contraste entre el texto y el fondo para garantizar una buena experiencia de lectura. Por lo tanto, siempre es recomendable probar y ajustar el tamaño del texto en función del diseño y la retroalimentación de los usuarios.
 
+### Mi guía de estilos 
+
+Para la creación de esta guía, se nombraron todos los colores, grillas, textos, etc.
+
 ![Guide](https://i.postimg.cc/bJhY3HGP/10-my-guide.png)
+
+Estos son los datos:
+
+![](https://i.postimg.cc/hGBbrBc9/10-name-of-styles.png)
 
 [Obtén iconos](https://fonts.google.com/icons?selected=Material+Icons+Round:cancel:&icon.query=x&icon.platform=web&icon.style=Rounded)
 
