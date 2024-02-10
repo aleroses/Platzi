@@ -697,8 +697,6 @@ Shift + A
 Ctrl + Clic
 ```
 
-#bcb3ff 
-
 ## **12.** Los 15 mejores atajos para trabajar en Figma
 
 ```bash
@@ -915,7 +913,7 @@ Una vez creado el componente que tiene más de una opción (dos versiones del mi
 
 Una vez seleccionados, debes dar clic en el icono 💠 en la parte superior justo en el centro y elegir `create component set`.
 
-![create component](https://i.postimg.cc/kMF9BH7C/14-create-component.png)
+![create component set](https://i.postimg.cc/J7d944hQ/14-create-component-set.png)
 
 Ahora podemos irnos a `Properties` (panel derecho) y **cambiar los nombres** tanto del componente general como de cada variante, en el caso de la imagen de abajo le coloqué `false` y `true`.
 
@@ -928,6 +926,14 @@ Una vez hecho esto, si se quiere usar ese componente, se debe seleccionar una de
  Luego debes usar `Alt` y arrastrar el elemento seleccionado. Con esto ya aparece el botón de activar o desactivar (true o false)
 
 ![14.completed.png](https://i.postimg.cc/HxpG5Q0x/14-completed.png)
+
+📌 Recuerda que puedes hacer Auto Layout dentro de otro Auto Layout
+
+![](https://i.postimg.cc/9M3Nq1SX/14-layout-within-autolayout.png)
+
+Usando el comando `Shift + O` podemos mostrar nuestro trabajo en un esquema.
+
+![](https://i.postimg.cc/rFzb3dSk/14-outlines.png)
 
 ### Cambio automatizado de iconos (emojis)
 
@@ -965,6 +971,21 @@ Ahora podemos cambiar el texto desde las propiedades.
 ### Muestra
 
 ![sample](https://i.postimg.cc/gJ7XcKF1/14-sample.png)
+
+### Atajos vistos
+
+```bash
+# Crear Componente
+Ctrl + Shift + K
+
+# Duplicar selección
+Ctrl + D
+
+# Ver un Outline
+Shift + O
+```
+
+#bcb3ff 
 
 ## **15.** Playground: Practica la creación de componentes reutilizables
 
