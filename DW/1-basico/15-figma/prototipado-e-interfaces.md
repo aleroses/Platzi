@@ -1173,6 +1173,10 @@ _Posición Inicial_
 
 ### Trabajemos sobre nuestro proyecto
 
+Para crear una conexión, primero posiciónate en el apartado `Prototype`, estando aquí selecciona el objeto que al hacerle `Tap` te va a llevar hacia otra ventana o página. Esto te mostrará un icono ➕ que te permitirá hacer la conexión entre dos ventanas.
+
+![](https://i.postimg.cc/ryDt8B0Z/17-connection.png)
+
 
 
 
