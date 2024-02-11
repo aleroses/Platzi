@@ -1109,8 +1109,6 @@ Nuevamente, seleccionamos el Frame padre `Android Small 2` y le picamos al icono
 Ctrl + Shift + R
 ```
 
-#bcb3ff 
-
 ## **17.** Prototipado simple: conexión de diferentes frames
 
 ### Conectando frames
@@ -1172,6 +1170,28 @@ _Posición Inicial_
 - Interacciones con hover
 - Bottom sheets
 - Confirmaciones
+
+### Trabajemos sobre nuestro proyecto
+
+
+
+
+
+
+
+
+
+
+
+
+
+### Atajos vistos
+
+```bash
+
+```
+
+#bcb3ff 
 
 ## **18.** Prototipado avanzado: smart animate y componentes Interactivos
 
