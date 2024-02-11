@@ -1014,8 +1014,6 @@ Ctrl + D
 Shift + O
 ```
 
-#bcb3ff 
-
 ## **15.** Playground: Practica la creación de componentes reutilizables
 
 Imagen de lo que se hizo hasta ahora...
@@ -1070,6 +1068,48 @@ Necesitamos:
 ### Posiciones fijas en el scroll
 
 Se utiliza para delimitar elementos “Pegajosos” dentro de una interfaz, como un top bar o un fab button. (Menu fixed por ejemplo)
+
+### Trabajemos sobre nuestro proyecto
+
+Añadimos más contenido, pero dejamos el 640 de height, la misma altura de siempre, con el fin de poder hacer scroll vertical.
+
+![](https://i.postimg.cc/7hG5VCgV/16-scroll-vertical.png)
+
+📌 `Clic content`, oculta el contenido que está por fuera de un frame padre.
+
+Ahora, para visualizar como se vería en un dispositivo real, seleccionamos el frame y hacemos lo siguiente:
+
+![](https://i.postimg.cc/fL62zrff/16-present.png)
+
+Esto muestra...
+
+![](https://i.postimg.cc/DZSPHPLk/16-mobile-view.png)
+
+Ahora hagamos un scroll horizontal:
+
+Para hacer esto, crea un frame con varias imágenes y posiciónalo justo donde está la única imagen que tenemos. 
+
+La estructura que seguí es la siguiente:
+
+![](https://i.postimg.cc/T2qVZwnd/16-structure.png)
+
+Luego nos vamos al `Prototype` y seleccionamos `Overflow: Horizontal`
+
+![](https://i.postimg.cc/rFyjG1x5/16-scroll-horizontal.png)
+
+Nuevamente, seleccionamos el Frame padre `Android Small 2` y le picamos al icono ▶ Present.
+
+![](https://i.postimg.cc/GhCtgqSB/16-mobile-result.png)
+
+
+### Atajos vistos
+
+```bash
+# Reemplazar contenido
+Ctrl + Shift + R
+```
+
+#bcb3ff 
 
 ## **17.** Prototipado simple: conexión de diferentes frames
 
