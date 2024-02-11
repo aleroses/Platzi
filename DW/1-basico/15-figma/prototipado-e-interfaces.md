@@ -1177,10 +1177,19 @@ Para crear una conexión, primero posiciónate en el apartado `Prototype`, estan
 
 ![](https://i.postimg.cc/ryDt8B0Z/17-connection.png)
 
+Una vez conectes el objeto al que se le va a hacer `Tap` con la siguiente página, se te abrirá una ventana donde podrás configurar algunas opciones de animación.
 
+![](https://i.postimg.cc/cLDKY3Hh/17-configuration.png)
 
+Ahora conectemos el icono de volver con el Frame `Android Small 1`.
 
+![](https://i.postimg.cc/NjF4mrT4/17-configuration-back.png)
 
+Para ver como se ve, pincha en el icono de la izquierda superior.
+
+Ahora conectemos los tres puntos de `más opciones`.
+
+![](https://i.postimg.cc/x1ZJX6K0/17-bottom-sheet.png)
 
 
 
