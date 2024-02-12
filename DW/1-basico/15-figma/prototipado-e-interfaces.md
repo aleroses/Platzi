@@ -1014,7 +1014,10 @@ Después:
 
 ```bash
 # Crear Componente
-Ctrl + Shift + K
+Ctrl + Alt + K
+
+# Separar Componente
+Ctrl + Alt + B
 
 # Duplicar selección
 Ctrl + D
