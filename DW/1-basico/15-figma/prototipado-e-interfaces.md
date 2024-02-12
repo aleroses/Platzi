@@ -1452,6 +1452,10 @@ Crear un “FigJam File”
 
 ### Trabajemos sobre nuestro proyecto
 
+![](https://i.postimg.cc/CMb75hsP/22-figjam.png)
+![](https://i.postimg.cc/CMb75hsP/22-figjam.png)
+
+
 ### Atajos vistos
 
 ```bash
