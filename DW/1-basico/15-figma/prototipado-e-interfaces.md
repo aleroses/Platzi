@@ -1680,7 +1680,7 @@ a
 
 b
 
-✅ Todos los vértices de un frame
+❌ Todos los vértices de un frame
 
 c
 
