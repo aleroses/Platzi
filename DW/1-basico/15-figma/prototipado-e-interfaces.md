@@ -1360,22 +1360,22 @@ _En cualquier momento podemos volver a un punto, por medio de:_
 
 ![](https://i.postimg.cc/dVYKCx8w/20-version.png)
 
+Esto te muestra el historial.
+
+![](https://i.postimg.cc/C1x9FybL/20-history.png)
+
+Para crear una nueva versión de tu proyecto presiona `Ctrl + Alt + S` 
+
+![](https://i.postimg.cc/nz1VWtpF/20-create-version.png)
+
+📌 Si le das clic a alguna de esas versiones, te llevará a la versión exacta de ese momento, también te permitirá cambiarle de nombre, editar, duplicar o copiar el link.
+
 ### Atajos vistos
 
 ```bash
-
+# Crear una nueva versión
+Ctrl + Alt + S
 ```
-
-
-
-### Trabajemos sobre nuestro proyecto
-### Atajos vistos
-
-```bash
-
-```
-
-#bcb3ff 
 
 ## **21.** Librerías de estilos y componentes
 
@@ -1402,7 +1402,7 @@ Una librería de componentes contiene:
 - Moléculas
 - Organismos
 
-### ¿Cómo publicar una libreria?
+### ¿Cómo publicar una librería?
 
 > Dropdown -> Publish styles and components
 
@@ -1414,6 +1414,10 @@ Cada vez que hagas cambios en los estilos o componentes maestros, Figma te pedir
 
 - Hacer click en “Review”
 - Luego en “Update”
+
+### Trabajemos sobre nuestro proyecto
+
+![](https://i.postimg.cc/QdtBWm14/21-publish.png)
 
 ## Quiz: Co-Creando
 
@@ -1431,7 +1435,7 @@ Cada vez que hagas cambios en los estilos o componentes maestros, Figma te pedir
 
 ## **22.** FigJam
 
-Es un tablero en línea que permite a un grupo de personas alinearce en un solo espacio, y esa es su característica principal: Alineción interactiva.
+Es un tablero en línea que permite a un grupo de personas alinearse en un solo espacio, y esa es su característica principal: Alineación interactiva.
 
 Cualquier miembro del equipo de trabajo puede acceder sobre un solo link y dejar comentarios sobre el tema en particular que se está trabajando. Es un excelente lugar para tener discusiones que pueden persistir en el tiempo.
 
@@ -1445,6 +1449,16 @@ FigJam tiene plantillas para casi todo, desde plantillas para visualizar flujos 
 - Llamadas por audio
 
 Crear un “FigJam File”
+
+### Trabajemos sobre nuestro proyecto
+
+### Atajos vistos
+
+```bash
+
+```
+
+#bcb3ff 
 
 ## **23.** Uso de plugins en Figma
 
