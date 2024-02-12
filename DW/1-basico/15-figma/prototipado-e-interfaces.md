@@ -1306,10 +1306,16 @@ No tenemos todas las respuestas, por eso es importante involucrar a personas que
 
 
 ### Trabajemos sobre nuestro proyecto
+
+Solo presiona `C` y da clic sobre el área en la que quieres dejar un comentario. Si agregas `@ejemplo@mail.com` el propietario recibirá un correo donde podrá ver el comentario que le dejaste en figma.
+
+![](https://i.postimg.cc/2ys12Mqw/19-comment.png)
+
 ### Atajos vistos
 
 ```bash
-
+# Crear un comentario
+C + Click
 ```
 
 
