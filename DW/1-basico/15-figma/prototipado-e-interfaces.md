@@ -1537,6 +1537,8 @@ Tienes acceso a un repositorio de archivos y proyectos reutilizables y co-creado
 
 Prototipo de [Web movies](https://www.figma.com/proto/L7ObBBXcFj9cFHGMAflE4E/Cine-experience?page-id=101%3A4405&node-id=101-4525&starting-point-node-id=103%3A5003&scaling=scale-down)
 
+[Mi proyecto](https://www.figma.com/file/NEvEof2jD3tMiwu4m2grXl/Practice?type=design&node-id=0%3A1&mode=design&t=F62hE7jPrGutF8Vo-1)
+
 ## Shortcut
 
 **apuntes de comandos básicos de Figma**
@@ -1586,25 +1588,7 @@ Ctrl + Shift: Ajustar al centro
 
 4. La siguiente acción NO puede realizarse con los comentarios en Figma:
 
-a
-
-Marcar como "resuelto"
-
-b
-
-✅ Duplicar el comentario
-
-c
-
-❌ Marcar como "no leído"
-
-d
-
-Borrar el comentario
-
-e
-
-Copiar link al comentario
+	- ✅ Duplicar el comentario
 
 5. ¿Qué atajo se usa para crear una figura de círculo?
 
@@ -1644,21 +1628,7 @@ Copiar link al comentario
 
 14. El comando: command + shift + K, se usa para:
 
-a
-
-Alinear un componente.
-
-b
-
-✅ Importar una imagen.
-
-c
-
-Exportar una imagen.
-
-d
-
-❌ Crear un componente.
+	- ✅ Importar una imagen.
 
 15. Un componente se define como:
 
