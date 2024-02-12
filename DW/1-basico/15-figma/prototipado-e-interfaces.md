@@ -752,6 +752,12 @@ V
 
 # Ajustar o escalar el contenido según el frame vaya creciendo
 K
+
+# Copiar propiedades 👈👀🔥
+Ctrl + Alt + C
+
+# Pegar propiedades 👈👀🔥
+Ctrl + Alt + V
 ```
 
 ![Shortcuts](https://i.postimg.cc/zf3Q42R7/13-shortcuts.png)
@@ -1304,7 +1310,6 @@ Esto ayuda a incentivar la co-creación de productos con diferentes actores, sin
 
 No tenemos todas las respuestas, por eso es importante involucrar a personas que tiene criterio para dar feedback.
 
-
 ### Trabajemos sobre nuestro proyecto
 
 Solo presiona `C` y da clic sobre el área en la que quieres dejar un comentario. Si agregas `@ejemplo@mail.com` el propietario recibirá un correo donde podrá ver el comentario que le dejaste en figma.
@@ -1317,18 +1322,6 @@ Solo presiona `C` y da clic sobre el área en la que quieres dejar un comentario
 # Crear un comentario
 C + Click
 ```
-
-
-
-
-### Trabajemos sobre nuestro proyecto
-### Atajos vistos
-
-```bash
-
-```
-
-#bcb3ff 
 
 ## **20.** Historial de versiones en Figma
 
@@ -1356,6 +1349,27 @@ _En cualquier momento podemos volver a un punto, por medio de:_
 
 - Identificar en donde se cometieron errores en el sistema
 - Recuperar contexto o versiones previamente exploradas
+
+### Trabajemos sobre nuestro proyecto
+
+![](https://i.postimg.cc/dVYKCx8w/20-version.png)
+
+### Atajos vistos
+
+```bash
+
+```
+
+
+
+### Trabajemos sobre nuestro proyecto
+### Atajos vistos
+
+```bash
+
+```
+
+#bcb3ff 
 
 ## **21.** Librerías de estilos y componentes
 
