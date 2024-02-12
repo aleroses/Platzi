@@ -1236,15 +1236,15 @@ Para hacer un smart anime necesitamos los siguientes componentes.
 
 ![](https://i.postimg.cc/xTSLX5zS/18-smart-anime.png)
 
-Esto lo configuraremos de tal manera que parezca una barra que va desapareciendo.
+Esto lo configuraremos de tal manera que parezca una barra que va desapareciendo, recuerda colocarle 400 ms. 👈👀
 
 ![](https://i.postimg.cc/tC7r9y8M/18-configuration-copy.png)
 
-Ahora conectaremos la pantalla que dará interactividad y la configuramos como `After delay`.
+Ahora conectaremos la pantalla que dará interactividad y la configuramos como `After delay`, recuerda colocarle 1 ms. 👈👀
 
 ![](https://i.postimg.cc/BbLfxPQ1/18-after-delay.png)
 
-Ahora haremos que esta última pantalla se disuelva sobre la segunda.
+Ahora haremos que esta última pantalla se disuelva sobre la segunda. Recuerda que al usar `After delay` debes colocarle 1 ms y no 100 ms como en la imagen. 👈👀
 
 ![](https://i.postimg.cc/jd7qJ257/18-after-delay-back.png)
 
@@ -1253,18 +1253,12 @@ Ahora haremos que esta última pantalla se disuelva sobre la segunda.
 ```bash
 # Vista prototipada: Actualizar
 R
+
+# Separar Componentes
+Ctrl + Alt + B
 ```
 
 #bcb3ff 
-
-
-
-
-
-
-
-
-
 
 ## Quiz: Prototipado
 
@@ -1309,6 +1303,26 @@ Esto ayuda a incentivar la co-creación de productos con diferentes actores, sin
 ### ¿Por qué involucrar al resto del equipo en el proceso?
 
 No tenemos todas las respuestas, por eso es importante involucrar a personas que tiene criterio para dar feedback.
+
+
+### Trabajemos sobre nuestro proyecto
+### Atajos vistos
+
+```bash
+
+```
+
+
+
+
+### Trabajemos sobre nuestro proyecto
+### Atajos vistos
+
+```bash
+
+```
+
+#bcb3ff 
 
 ## **20.** Historial de versiones en Figma
 
