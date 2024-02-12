@@ -1191,20 +1191,7 @@ Ahora conectemos los tres puntos de `más opciones`.
 
 ![](https://i.postimg.cc/x1ZJX6K0/17-bottom-sheet.png)
 
-
-
-
-
-
-
-
-### Atajos vistos
-
-```bash
-
-```
-
-#bcb3ff 
+📌 Para cambiar alguna configuración solo pincha en ⤵ la flecha que conecta la ventana de la que quieres modificar su interacción.
 
 ## **18.** Prototipado avanzado: smart animate y componentes Interactivos
 
@@ -1221,7 +1208,7 @@ Se desplaza desde un punto A un punto B, tomando velocidad al principio y desace
     - Y el otro será el punto B
 - Definir una interacción que cause el trigger de la animación
 
-### Parametros del trigger
+### Parámetros del trigger
 
 - None
 - On tap / drag
@@ -1242,6 +1229,42 @@ Se desplaza desde un punto A un punto B, tomando velocidad al principio y desace
 
 - Nombra muy bien tus capas: Esto te ayudará a identificar fácilmente los diferentes objetos que se están moviendo a lo largo de los frames
 - El tiempo máximo de respuesta a una acción / trigger debe ser de 400 milisegundos “Doherty Threshold”
+
+### Trabajemos sobre nuestro proyecto
+
+Para hacer un smart anime necesitamos los siguientes componentes.
+
+![](https://i.postimg.cc/xTSLX5zS/18-smart-anime.png)
+
+Esto lo configuraremos de tal manera que parezca una barra que va desapareciendo.
+
+![](https://i.postimg.cc/tC7r9y8M/18-configuration-copy.png)
+
+Ahora conectaremos la pantalla que dará interactividad y la configuramos como `After delay`.
+
+![](https://i.postimg.cc/BbLfxPQ1/18-after-delay.png)
+
+Ahora haremos que esta última pantalla se disuelva sobre la segunda.
+
+![](https://i.postimg.cc/jd7qJ257/18-after-delay-back.png)
+
+### Atajos vistos
+
+```bash
+# Vista prototipada: Actualizar
+R
+```
+
+#bcb3ff 
+
+
+
+
+
+
+
+
+
 
 ## Quiz: Prototipado
 
