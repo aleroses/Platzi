@@ -1455,15 +1455,6 @@ Crear un “FigJam File”
 ![](https://i.postimg.cc/CMb75hsP/22-figjam.png)
 ![](https://i.postimg.cc/CMb75hsP/22-figjam.png)
 
-
-### Atajos vistos
-
-```bash
-
-```
-
-#bcb3ff 
-
 ## **23.** Uso de plugins en Figma
 
 Los plugins son básicamente, pequeños segmentos de código que cualquier persona puede desarrollar y publicar para la comunidad de Figma, y que nos permiten extender las habilidades de diseño y prototipado para obtener resultados más profesionales y/o diseñar de forma más eficiente.
@@ -1488,6 +1479,10 @@ Los plugins son básicamente, pequeños segmentos de código que cualquier perso
 - _Mapsicle_: Es un generador de mapas en línea en la cual podemos tomar un mapa de un lugar en especial y agregarlo a nuestro diseño
     
 - _Stark_: Es una plugin que nos ayuda a la accesibilidad y las reglas de diseño para crear parámetros de accesibilidad.
+
+### Trabajemos sobre nuestro proyecto
+
+![](https://i.postimg.cc/8C0G7BNS/23-plugins.png)
 
 ## **24.** Community: proyectos open-source y perfiles
 
