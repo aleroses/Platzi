@@ -693,6 +693,9 @@ También aplicamos un Auto layout al resto del contenido. Puedes ajustarlo para 
 # Crear un Auto Layout
 Shift + A
 
+# Remove auto Layout
+Shift + Alt + A
+
 # Añadir padding en los 4 lados
 Ctrl + Clic
 ```
