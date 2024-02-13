@@ -1,7 +1,7 @@
 # Curso de Figma: Prototipado e Interfaces 
 
 > Inicio: 05/02/2024  
-> Final: 02/2024
+> Final: 11/02/2024
 
 ## **1.** ¿Para qué sirve Figma y por qué elegirlo?
 
