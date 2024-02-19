@@ -768,6 +768,7 @@ En el entorno local vamos a crear una llave privada y una publica y una vez crea
 - `C:/users/oneuser/.ssh`
 
 🔥 **Configurar S.O Windows - Linux**    
+
 1. Revisar encender el servidor de llaves SSH de tu computadora
 	- `eval $(ssh-agent -s)`
 - [x] Evalúa que un comando se dispare
@@ -778,9 +779,13 @@ En el entorno local vamos a crear una llave privada y una publica y una vez crea
 > Esto básicamente es un programa que revisa que las llaves estén corriendo y que las conecta para hacer la **conexión doble** cuando nos conectemos a un servidor remoto, en este caso a GitHub.
 
 2.  Agregar llave privada al servidor
+	Dependiendo del comando que usaste para crear tus llaves elige uno de los dos comando:
+	
 	- `ssh-add ~/.ssh/id_rsa`
+	- `ssh-add ~/.ssh/id_ed25519`
 
 📌 ~ alt + 126:   
+
 Símbolo llamado virgulilla que **en los sistemas operativos UNIX se refiere al valor de la variable $HOME , esto es, el directorio del usuario que está logueado**. Permite de esta forma referenciar ese directorio directamente, sin tener que escribir /home/usuario/ cada vez.
 
 🔥 **Configurar S.O MAC**    

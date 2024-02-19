@@ -1,5 +1,4 @@
 # Personalize Git Bash 
-
 1. Descargar PowerShell de Microsoft store 
 
 > Para evitar conflictos debe desactivar el antivirus  
