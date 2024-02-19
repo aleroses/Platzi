@@ -1,0 +1,43 @@
+/* .header {
+  width: 92vw;
+  height: 10vh;
+} */
+
+.header__nav {
+  display: flex;
+}
+
+.show {
+  display: none;
+}
+
+.burger {
+  display: none;
+}
+
+.menu {
+  width: 60vw;
+  height: 100%;
+  display: flex;
+  position: static;
+  flex-direction: row;
+  gap: 20px;
+  padding: 15px;
+  justify-content: center;
+  background-color: var(--second-color);
+}
+
+.mode {
+  width: 40px;
+  height: 40px;
+  order: 1;
+}
+
+.mode figure {
+  padding: 0px;
+}
+
+.dark-mode button {
+  width: 100%;
+  height: 100%;
+}

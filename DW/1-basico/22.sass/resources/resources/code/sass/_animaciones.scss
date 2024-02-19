@@ -1,0 +1,29 @@
+/* For */
+.circle {
+    width: 100px;
+    height: 100px;
+    background-color: #000;
+    border-radius: 50%;
+
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+@for $iterador from 1 through 100 {
+    /* También podemos crear selector */
+    .circle-#{$iterador} {
+        animation-name: animacion#{$iterador};
+
+        @keyframes animacion#{$iterador} {
+            100% {
+                transform: translate(50% * $iterador);
+            }
+        }
+
+        /* If */
+        @if $iterador == 5 {
+            animation-direction: alternate-reverse;
+        }
+    }
+}

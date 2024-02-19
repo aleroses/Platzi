@@ -1,0 +1,4 @@
+const authorization =
+  "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI5MTRjZWZhYzNhM2QyMzRjNThlZjQ2OTAzY2U3ZWJkMyIsInN1YiI6IjY1NjIxMjMyYTZjMTA0MDBmZWIwYjc2MiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.w49IQG4OZJuFx_It37mXvTWZtbyWPFHotHB0yEA2dP0";
+
+export { authorization };

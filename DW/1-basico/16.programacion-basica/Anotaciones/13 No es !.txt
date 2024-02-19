@@ -1,0 +1,97 @@
+!divisible: Al inicio este es falso pero al entrar a algún if este cambia a verdadero, por lo que en el ultimo if decimos no es verdadero o sea es falso, y como ya sabemos los if solo aceptan datos verdaderos por lo que el número no se imprime, pero en el caso de que no entró a ningún if el dato sigue siendo falso por lo que se dice !falso, no es falso o sea verdaderos imprimiendo el numero.
+
+!true = No es verdadero, no hace nada.
+!false = No es falso, ingresa al if y hace algo.
+
+
+EJEMPLO 1:
+
+var numeros = 100;
+var divisible = false;
+for(var i = 1; i <= 10; i++)
+{
+  divisible = false;
+  if(i % 3 == 0)
+  {
+    document.write("Fizz");
+    divisible = true;
+  }
+
+  if(i % 5 == 0)
+  {
+    document.write("Buzz");
+    divisible = true;
+  }
+
+  if (!divisible) // No es divisible o sea no falso
+  {
+    document.write(i);
+  }
+  document.write("<br/>");
+}
+
+
+EJEMPLO 2:
+
+var numeros = 100;
+
+for(var i = 1; i <= numeros; i++)
+{
+
+  if(i % 3 == 0)
+  {
+    document.write("Fizz");
+
+  }
+
+  if(i % 5 == 0)
+  {
+    document.write("Buzz");
+
+  }
+
+  if (i % 3 != 0 && i % 5 != 0)
+  {
+    document.write(i);
+  }
+  document.write("<br/>");
+}
+
+
+EJEMPLO 3:
+
+var numeros = 100;
+
+for(var i = 1; i <= numeros; i++)
+{
+
+  if(esDivisible(i, 3))
+  {
+    document.write("Fizz");
+
+  }
+
+  if(esDivisible(i, 5))
+  {
+    document.write("Buzz");
+
+  }
+
+  if (!esDivisible(i, 3) && !esDivisible(i, 5))
+  {
+    document.write(i);
+  }
+  document.write("<br/>");
+}
+
+function esDivisible(num, divisor)
+{
+  if(num % divisor == 0)
+  {
+    return true;
+  }
+  else
+  {
+    return false;
+  }
+}

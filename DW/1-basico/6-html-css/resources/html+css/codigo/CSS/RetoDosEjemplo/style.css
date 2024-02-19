@@ -1,0 +1,58 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+html {
+    font-size: 62.5%;
+}
+body {
+    font-size: 1.6rem;
+}
+header {
+    display: flex;
+    background-color: rgb(213, 195, 230);
+    justify-content: space-between;
+}
+.Logo {
+    padding: 1rem;
+}
+.container {
+    display: flex;
+    
+}
+
+.container__nav {
+    display: flex;
+    width: 20vw;
+    list-style: none;
+    padding: 1rem;
+    justify-content: space-evenly;
+}          
+
+
+main {
+    display: flex;
+    background-color: rgb(184, 179, 179);
+    width: 100%;
+    height: 100%;
+}
+.Main__aside {
+    background-color: salmon;
+}
+.box {
+    background-color: rgb(231, 175, 231);
+    width: 20rem;
+    height: 12.2rem;
+    margin: 2rem;
+}
+
+footer {
+    background-color:rgb(250, 157, 146);
+    display: flex;
+    justify-content: center;
+    height: 6vh;
+}
+.Footer__div {
+    padding: 1rem 1rem;
+} 

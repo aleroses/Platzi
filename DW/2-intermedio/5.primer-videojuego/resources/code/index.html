@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Game</title>
+    <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+    <div class="game-container">
+        <canvas id="game"></canvas>
+
+        <div class="btns">
+            <button id="up">Up</button>
+            <button id="left">Left</button>
+            <button id="right">Right</button>
+            <button id="down">Down</button>
+        </div>
+
+        <section class="grid-footer">
+            <div class="messages">
+                <p>Lives: <span id="lives"></span></p>
+                <p>Time: ⏰<span id="time">...</span></p>
+                <p>Record: <span id="record"></span></p>
+                
+            </div>
+            <div class="play-again">
+                <button id="reset">Play again</button>  
+            </div>
+        </section>
+        <p id="result"></p>
+    </div>
+    <script src="./maps.js"></script>
+    <script src="./game.js"></script>
+    <!-- <script src="./other_solution.js"></script> -->
+</body>
+</html>

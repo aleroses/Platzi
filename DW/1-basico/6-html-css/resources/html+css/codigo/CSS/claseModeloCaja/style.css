@@ -1,0 +1,15 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+main {
+    width: 100%;
+    height: 500px;
+    border: 10px solid grey;
+    padding: 20px 35px; /*De arriba hacia abajo y de derecha a izqu*/    
+}
+/*Si solo colocamos 20px el navegador entiendo que debe
+  colocar 20px arriba abajo y a los costados
+*/

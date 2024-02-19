@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kittens</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <h1>Kittens App</h1>
+    <span id="error"></span>
+
+    <section id="random">
+      <h2>Kittens Random</h2>
+      <article>
+        <img id="img1" width="150" alt="Random kitten" />
+        <button id="btn1">Add</button>
+      </article>
+
+      <article>
+        <img id="img2" width="150" alt="Random kitten" />
+        <button id="btn2">Add</button>
+      </article>
+
+      <button onclick="load_random"></button>
+    </section>
+
+    <section id="favorite">
+      <h2>Kittens favorites</h2>
+
+      <article>
+        <img id="img1" src="" width="150" alt="Favorite kitten" />
+        <button>Delete</button>
+      </article>
+    </section>
+    <script src="./main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,61 @@
+.contenedor {
+    display: grid;
+    grid-template-columns: 150px 150px 150px;
+    grid-template-rows: 75px 75px 75px;
+    place-content: center;
+
+    border: 5px solid #e1bee7;
+    background-color: white;
+}
+
+.item {   
+    font-size: 4rem;
+}
+
+.item-1 {
+    grid-column-start: 1;
+    grid-column-end: 4;
+
+    border: 5px solid #f8bbd0;
+    background-color: #ffeeff;
+}
+
+.item-2 {
+    grid-row: 2 / 4;
+
+    border: 5px solid #e1bee7;
+    background-color: #fff1ff;
+}
+
+.item-3 {
+    grid-area: 2 / 2 / 4 / 4; 
+    /* 2 fila inicio / 2 columna inicio */
+    /* 4 final de la grilla / 4 igual */
+    border: 5px solid #b2ebf2;
+    background-color: #e5ffff;
+}
+
+/* 
+Segundo Método 
+
+contenedor
+grid-template-areas: 
+    "header header header"
+    "side main main"
+    "side main main";
+
+
+item-1 
+grid-area: header;
+
+
+item-2
+grid-area: side;
+
+
+item-3
+grid-area: main;
+
+
+
+*/

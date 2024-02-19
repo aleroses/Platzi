@@ -1,0 +1,23 @@
+.contenedor {
+    display: grid;
+    gap: 15px;
+    grid-template-columns: 150px 150px;
+    grid-auto-rows: 150px;
+
+    place-content: center;
+    place-items: end;
+
+    border: 5px solid #e1bee7;
+    background-color: #fff1ff;
+}
+
+.item {   
+    width: 40px;
+    height: 70px;
+
+    border: 5px solid #00bcd4;
+    font-size: 4rem;
+    background-color: #00bcd4;
+}
+
+

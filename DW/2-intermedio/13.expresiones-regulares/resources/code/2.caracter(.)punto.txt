@@ -1,0 +1,105 @@
+/* --------------- Ejemplo ---------------- */
+
+1
+12
+123
+1234
+12345     
+123456
+1234567
+12345678
+123456789
+12345678910
+12345678910a
+12345 678910a
+123453243
+hola
+palabra 
+
+Hola mundo.
+Hola amigos.
+Hola a todos.
+ejemplos
+
+
+// Usando Ctrl + F en VSC
+.: cualquier caracter
+. :(.espacio)
+..........
+...: Encuentra multiplos de 3
+
+// 6. 
+\d
+\d\d\d
+\w
+\s para espacios
+\d\s\w
+\w\w\w\w
+[0-9] Equivalente a \d
+[6-9]
+[a-z]
+[a-zA-Z]
+[a-zA-Z0-9]
+[a-zA-Z0-9_]
+[a-fA-F0-9_]
+[a-fA-F0-9_\.]
+[a-tA-F0-5_\.]
+
+// 7. 
+.* 0 o todos 
+\d* 
+\d+ 1 o más 
+\d? 0 o 1 
+\d+[a-z]
+\d*[a-z]
+\d*[a-z][a-z]?
+\d*[a-z]s
+\d*[a-z]s?
+\d*[a-z]?s\d*
+\d*[a-z]?s\d+
+
+
+Explicame que significa el * el + y el ? en expresiones regulares, explicame sus diferencias y dame ejemplos interesantes. Te dejo algunos ejemplos basicos: .* 0 o todos 
+\d* 
+\d+ 1 o más 
+\d? 0 o 1 
+\d+[a-z]
+\d*[a-z]
+\d*[a-z][a-z]?
+\d*[a-z]s
+\d*[a-z]s?
+\d*[a-z]?s\d*
+\d*[a-z]?s\d+
+
+// 8. Los contadores {1,4}
+\d\d
+\d{2, 5} {min, max}
+\w{4,} {min, infinito}
+(\d{2}\.?-? ?){5} // Busca numero telefonico de 10 dígitos
+(\d{2}[\-\. ]?){5} 
+
+
+1234324289
+12-34.32-42.89
+12-34.32-42.89
+12-34.32-42.89
+12-34.32-42.89
+
+csv1,csv2,csv3,csv4,csv5
+1234,543,234,567,567
+123,543,234,567,567
+
+/.+?,?/
+
+10. Not (^) alt + 94
+
+\D 
+\W
+\S
+\^ 
+[^0-5a-c]
+\d\d\D?\d\d\D?\d\d
+
+
+^\+?\d+[#pe]?\d*$
+

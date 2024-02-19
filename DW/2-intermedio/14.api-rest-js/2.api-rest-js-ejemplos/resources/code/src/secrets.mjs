@@ -1,0 +1,3 @@
+const APIKEY = "";
+
+export { APIKEY };

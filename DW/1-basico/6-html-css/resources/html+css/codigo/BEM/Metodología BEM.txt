@@ -1,0 +1,168 @@
+Metodología BEM: https://www.youtube.com/watch?v=YaAkV--25fg
+
+1. Qué es BEM?
+BEM (Block, Element, Modifier)
+Es una metodología de CSS, que nos ayuda a crear componentes reutilizables, código claro y mantener la especificidad al mínimo.
+Esto gracias a su nomenclatura. 
+
+-> Mantener la especificidad al mínimo.
+-> Código modular.
+-> Código limpio.
+-> Nomenclatura (Bloque, Elemento, Modificador)
+
+
+2. Qué es un Block?
+Un bloque en BEM, es una entidad independiente, no necesita de nadie más para existir. (Header, Nav, Formulario, Footer, Contenedor)
+
+
+3. Cómo nombramos a los bloques?
+Se les nombra con la funcionalidad del bloque.
+
+<nav class="nav"></nav>
+
+<header class="header"></header>
+
+<section class="container"></section>
+
+
+4. Que es un Element?
+Un elemento en BEM, depende directamente de un Bloque, por lo que este debe estar dentro de un bloque. (Es dependiente a un bloque y está ligado a él.)
+
+5. Cómo nombramos a los elementos?
+Se les nombra con el nombre de su bloque contenedor, dos guiones bajos y la descripción (funcionalidad) del elemento.
+
+<form class="form">
+	<input type="text" class="form__input">
+	<input type="submit> class="form__send">
+</form>
+
+<nav class="nav">
+	<a href="#" class="nav__item">Inicio</a>
+	<a href="#" class="nav__item">Inicio</a>
+</nav>
+
+
+6. Qué es un Modifier?
+Un modificador en BEM, puede ser un bloque o un elemento, estos indican una modificación a dicho elemento o bloque.
+
+
+7. Cómo nombrar a los modificadores?
+Se les nombra, con el nombre que tenían anteriormente (bloque o elemento) se le agrega dos guiones medios y la descripción de la modificación. 
+
+<nav class="nav">
+	<a href="#" class="nav__link"></a>
+	<a href="#" class="nav__link nav__link--disabled"></a>
+</nav>
+
+<header class="header header--blue></header>
+
+<input type="text" class="form__input form__input--color-gray">
+
+
+8. Curiosidades BEM
+8.1 Qué pasa si tengo un hijo dentro de un elemento?
+Se nombran como un elemento
+
+<header class="block">
+	<section class="block__elem1">
+		<div class="block__elem2">
+		</div>
+	</section>
+	<div class="block__elem3">
+	</div>
+</header>
+
+
+8.2 Una etiqueta puede tener 2 clases de un bloque?
+Se le llama mix en BEM y si se puede.
+
+<div class="block1 block2">
+</div>
+
+8.3 Podemos usar modificadores globales?
+No se recomienda porque puede generar especificidad extra.
+<button class="button disabled"></button>
+
+Documentación:
+http://getbem.com/naming
+
+
+
+
+Ejemplo:
+
+index.html
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BEM</title>
+    <link rel="stylesheet" href="./estilos.css">
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <div class="nav__logo">
+                <img src="./logo-spotify.png" class="nav__img">
+            </div>
+            <div class="nav__links">
+                <a href="#" class="nav__link nav__link--color">Inicio</a>
+                <a href="#" class="nav__link">Acerca de</a>
+                <a href="#" class="nav__link">Contacto</a>
+            </div>
+        </nav>
+    </header>
+    <nav class="nav">
+        <div class="nav__logo">
+            <img src="./logo-spotify.png" class="nav__img">
+        </div>
+        <div class="nav__links">
+            <a href="#" class="nav__link nav__link--color">Inicio</a>
+            <a href="#" class="nav__link">Acerca de</a>
+            <a href="#" class="nav__link">Contacto</a>
+        </div>
+    </nav>
+</body>
+</html>
+
+
+
+
+estilos.css
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: Arial, Helvetica, sans-serif;    
+}
+.nav{
+    background: slateblue;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.nav__logo {
+    height: 100%;
+    background: #fff;
+}
+
+.nav__img {
+    height: 100%;
+}   
+
+.nav__link{
+    color: #fff;
+}
+
+.nav__link--color{
+    color: #000;
+}

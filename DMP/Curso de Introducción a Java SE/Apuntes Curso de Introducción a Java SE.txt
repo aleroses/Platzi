@@ -1,0 +1,69 @@
+Curso de Introducción a Java SE
+Anahí Salgado Díaz de la Vega
+
+1. ¿Qué es Java?
+
+Java es un lenguaje de programación, creado en 1991 por James Gosling. Java fue desarrollado por Sun Microsystems. Posteriormente, Sun Microsystems fue adquirida por Oracle en 2009. Tales acontecimientos dieron paso a que Gosling dejara la compañía.
+
+Java se divide en Java ME, Java SE y Java EE. A continuación, unas breves definiciones
+
+• Java ME. Conocido como Java Micro Edition, es empleado es dispositivos pequeños como dispositivos electrónicos y teléfonos móviles.
+
+• Java SE. Conocido como Java Standard Edition, es empleado para el desarrollo de aplicaciones de escritorio.
+
+• Java EE. Conocido como Java Enterprise Edition, es un nivel más alto en donde las aplicaciones trabajan en la nube.
+
+En adición, el lema de Java es WORA, que significa "Write Once, Run Anywhere". Esto se debe a que Java es un lenguaje multiplataforma, el mismo código escrito puede ser ejecutado en cualquier sistema operativo, entre otras características.
+
+💡 Cuando nos referimos a que un lenguaje es de alto nivel no hablamos del nivel de complejidad.
+
+Nos referimos a que tan cerca de lo humano está y que tan alejado está de la máquina en el sentido de que Java es más amigable, más entendible y más fácil de aprender que C++ por ejemplo 😛
+
+También se refiere a que tanto “toca” el lenguaje a la maquina, así pues en algunos lenguajes podemos elegir cuanto espacio en memoria puede ocupar un lenguaje, en otros esto no importa
+
+
+2. Versiones de Java y JDK
+
+El JDK o Java Development Kit se compone de los siguientes elementos:
+
+- Java Runtime Environment (JRE): La máquina virtual de Java, lo que nos permite que al escribir el mismo código funcione igual en todos los dispositivos y sistemas operativos.
+- Compilador de Java: El encargado de traducir nuestro código en Java a un lenguaje que puede entender e interpretar nuestra máquina virtual.
+- APIs de desarrollo: Una base de código lista para ayudarnos a desarrollar.
+
+Las APIs de desarrollo con Java han evolucionado con el tiempo, por lo que existen diferentes versiones de java que puedes utilizar. La versión que más elevo la popularidad y las ofertas de trabajo con Java fue Java SE 6.
+
+En Java SE 9 anunciaron que las actualizaciones ocurrirían cada 6 meses, pero las versiones LTS (Long Time Support) tendrán mantenimiento por 3 años, así que las actualizaciones son necesarias, pero no urgentes.
+
+En este curso vamos a trabajar con la versión Java SE 11 LTS, la primera versión de Java con licencia. Solo podremos usarlo gratis cuando trabajemos en ambientes de desarrollo y testing. De otra forma, debemos pagar 2.5 USD al mes por usuario de escritorio y 25 USD por procesador para aplicaciones de servidor.
+
+Afortunadamente, OpenJDK es una versión gratis y open source de usar Java SE Platform Edition.
+
+https://openjdk.java.net/
+https://www.oracle.com/us/corporate/pricing/price-lists/java-se-subscription-pricelist-5028356.pdf
+https://education.oracle.com/es/oracle-certification-path/product_267
+
+
+3. Las herramientas más usadas de Java
+
+Java 8 (LTS) es la versión más usada de Java hasta inicios del 2019, pero solo tendrá soporte hasta diciembre del 2020, luego de esta fecha tendremos que pagar una licencia para continuar con su soporte.
+
+Java 10 introdujo algunos cambios en la forma de declarar variables, así que en este curso vamos a trabajar con las versiones 8 y 11 de Java.
+
+La herramienta más usada para construir proyectos web con Java es Maven, pero también existen otras alternativas como Gradle. También existen frameworks como Spring para trabajar con Java EE y ORMs como Hibernate para trabajar con bases de datos.
+
+Los IDEs son entornos de desarrollo integrados, herramientas (aplicaciones, seguramente de escritorio) que nos ayudan a escribir nuestro código con editores, compiladores, depuradores y constructores de interfaces gráficas, todo en un mismo lugar.
+
+El IDE recomendado por Oracle es NetBeans, pero también están Eclipse e IntelliJ IDEA, este último es el que más fuerza ha tomado gracias a Kotlin. Las tres herramientas son gratuitas, pero IntelliJ IDEA también tiene una versión de pago.
+
+https://www.eclipse.org/downloads/
+https://netbeans.apache.org/download/nb110/nb110.html
+https://www.jetbrains.com/idea/
+
+
+
+
+
+
+ppandrade
+
+Daniel Eduardo Salmerón Alvarado

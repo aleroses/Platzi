@@ -1,0 +1,23 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.container-big {
+    width: 100%;
+    height: 80px;
+    background-color: blueviolet;
+}
+
+.container-medium {
+    width: 50%;
+    height: 40px;
+    background-color: pink;
+}
+
+.container-small {
+    width: 50%;
+    height: 20px;
+    background-color: aqua;
+}

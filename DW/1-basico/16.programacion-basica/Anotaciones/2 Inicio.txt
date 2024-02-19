@@ -1,0 +1,5 @@
+Dentro de consola del Navegador:
+
+alert("Mi nombre es Freddy");
+
+nombre = prompt("Cuál es tu nombre?");

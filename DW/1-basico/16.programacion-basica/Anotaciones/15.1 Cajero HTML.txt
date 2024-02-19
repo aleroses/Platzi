@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Cajero Automatico</title>
+  </head>
+  <body>
+    <h1>Bienvenido "Cajero Automatico"</h1>
+    <p>
+      <img src="cajero.gif">
+    </p>
+    <p>
+      <input type="number" id="dineroRetirar">
+      <input type="button" value="Enviar" id="boton">
+    </p>
+    <p id="resultado"></p>
+    <script src="classBillete.js">
+    </script>
+  </body>
+</html>

@@ -1,0 +1,72 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    margin: 2.5vh auto 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-auto-rows: 50%;
+    width: 95vw;
+    height: 95vh;
+    
+    background-image: linear-gradient(to top, #008fa9, #2e88bb, #677dbf, #976db1, #b95c91);
+}
+
+.container .old-box {
+    padding: 5px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column: 1 / 3;
+    gap: 10px;
+    width: 100%;
+    text-align: center;
+}
+
+.container .old-box .one-box {
+    grid-row: 1 / 3;
+
+    border-radius: 30px;
+    background-color: #00ad6e;
+}
+
+.container .old-box .two-box {
+    border-radius: 30px;
+    background-color: #019f90;
+}
+
+.container .old-box .three-box {
+    border-radius: 30px;
+    background-color: #008fa9;
+}
+
+
+
+.container .new-box {
+    padding: 5px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column: 1 / 3;
+    gap: 10px;
+    text-align: center;
+}
+
+.container .new-box .one-box {
+    border-radius: 30px;
+    background-color: #ea6077;
+}
+
+.container .new-box .two-box{
+    border-radius: 30px;
+    background-color: #b95c91;
+}
+
+.container .new-box .three-box{
+    grid-column: 1 / 3;
+    border-radius: 30px;
+    background-color: #ff7d4b;
+}
+
+

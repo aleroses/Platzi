@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+</head>
+<body>
+    <header>
+        <h1>Calculator</h1>
+    </header>
+    <main class="square">
+        <h2>Square</h2>
+        <section>
+            <label for="side">Enter a side</label><br>
+            <input type="number" id="side" class="side"><br>
+            <button class="send-one">Send</button>
+        </section>
+        <section>
+            <h3>Perimeter of the square</h3>
+            <p class="result-one"></p>  
+        </section>
+        <section>
+            <h3>Area of the square</h3>
+            <p class="result-two"></p>
+        </section>
+    </main>
+
+    <main class="isosceles">
+        <h2>Triangle: Isosceles</h2>
+        <section>
+            <label for="side-triangle">Enter the sides (a, b) and the base</label><br>
+            <input type="number" placeholder="side a, b" id="side-triangle" class="sides"><br>
+            <input type="number" placeholder="base" id="side-triangle" class="base"><br>
+            <button class="send-three">Send</button>
+        </section>
+        <section>
+            <h3>Perimeter of the triangle</h3>
+            <p class="result-tri-one"></p>
+        </section>
+        <section>
+            <h3>Area of the triangle</h3>
+            <p class="result-tri-two"></p>
+        </section>
+    </main>
+
+    <script src="./square_triangle.js"></script>
+</body>
+</html>

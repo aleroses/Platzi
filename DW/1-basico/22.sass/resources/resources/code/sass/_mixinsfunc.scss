@@ -1,0 +1,17 @@
+@use 'sass:math';
+
+/* Podemos usarlos con o sin argumentos */
+@mixin crear-flexbox($justify) {
+    display: flex;
+    align-items: center;
+    justify-content: $justify;
+}
+
+/* Funciones */
+
+@function pixeles-rem($pixeles){
+    // 32/16 = 2 * 1rem = 2rem
+    $resultado: math.div($pixeles, 16) * 1rem;
+
+    @return $resultado;
+}

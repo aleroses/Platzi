@@ -1,0 +1,143 @@
+main {
+    width: 100%;
+    min-width: 800;
+    max-width: 1200px;
+    height: auto;
+}
+
+/* ------ HEADER ------ */
+.hero {
+    margin-top: 20px;
+    width: 95%;
+    min-width: 700px;
+    max-width: 1100px;
+    height: auto;   
+    display: grid;
+    grid-template-columns: 2fr 1.5fr;
+    grid-template-rows: 550px;
+    text-align: center;
+    gap: 50px;
+}
+
+.info {
+    align-self: center;
+}
+
+.info-title {
+    margin-bottom: 24px;
+    width: 380px;
+    text-align: start;
+
+    font-size: 7rem;
+    font-weight: bolder;
+    color: #333;
+}
+
+.info-subtitle {
+    margin-bottom: 24px;
+
+    font-size: 3rem;
+    color: #333;
+}
+
+.info-button {
+    padding: 12px 24px;
+    width: 250px;
+
+    font-size: 2.5rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    
+    color: #333;
+    background-color: #fb8c00;
+}
+
+.hero-image {
+    width: 100%;
+    min-width: 320px;
+    height: 100%;
+    object-fit: contain;
+}
+
+
+/* ------ MAIN ------ */
+
+.dishes {
+    margin-top: 50px;
+    width: 90%;
+    height: auto;
+}
+
+.dishes-title {
+    color: #333;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 50px;
+    font-size: 3rem;
+}
+
+.dishes-grid {
+    width: 100%;
+    min-width: 700px;
+    max-width: 1100px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: 2fr;
+    gap: 30px;
+    justify-content: center;
+}
+
+.dishes-item {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.dishes-item__big {
+    grid-area: 1 / 1 / 3 / 3;
+}
+
+
+/* ------ FOOTER ------ */
+
+.menu {
+    margin: 50px auto;
+    width: 90%;
+    height: auto;
+}
+
+.menu-title {
+    margin-bottom: 50px;
+
+    font-size: 3rem;
+    color: #333;
+    font-weight: bolder;
+    text-align: center;
+}
+
+.menu-grid {
+    width: 100%;
+    min-width: 700px;
+    max-width: 1100px;
+    display: grid;
+    justify-content: center;
+    grid-template-columns: repeat(5, 1fr);
+    grid-auto-rows: 1fr;
+}
+
+.menu-grid-item {
+    width: 90%;
+    min-width: 100px;
+    max-width: 150px;
+
+    background-color: #dd5228;
+    border-radius: 40px 0 0 0;
+}
+
+.menu-grid-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}

@@ -1,0 +1,257 @@
+APUNTES
+1. Cargar una imagen:
+var vp = document.getElementById("villaplatzi");
+var papel = vp.getContext("2d");
+var mapa = "tile.png";
+
+var imagen = new Image();
+imagen.src = mapa;
+imagen.addEventListener("load", dibujar);
+
+function dibujar()
+{
+  papel.drawImage(imagen, 0, 0);
+}
+
+
+2. Cargar imágenes en un orden definido:
+// Primero cargaremos el fondo y luego la vaca :)
+
+var vp = document.getElementById("villaplatzi");
+var papel = vp.getContext("2d");
+
+var fondo = {
+  url: "tile.png",
+  cargaOK: false
+}
+
+var vaca = {
+  url: "vaca.png",
+  cargarOK: false
+};
+
+fondo.imagen = new Image();
+fondo.imagen.src = fondo.url;
+fondo.imagen.addEventListener("load", cargarFondo);
+
+vaca.imagen = new Image();
+vaca.imagen.src = vaca.url ;
+vaca.imagen.addEventListener("load", cargarVacas);
+
+function cargarFondo()
+{
+  fondo.cargaOK = true;
+  dibujar();
+}
+
+function cargarVacas()
+{
+  vaca.cargaOK = true;
+  dibujar();
+}
+
+function dibujar()
+{
+  if(fondo.cargaOK)
+  {
+    papel.drawImage(fondo.imagen, 0, 0);
+  }
+
+  if(vaca.cargaOK)
+  {
+    papel.drawImage(vaca.imagen, 100, 100);
+  }
+}
+
+
+3. Dibujar múltiples imágenes de manera aleatoria:
+
+var vp = document.getElementById("villaplatzi");
+var papel = vp.getContext("2d");
+
+var fondo = {
+  url: "tile.png",
+  cargaOK: false
+}
+
+var vaca = {
+  url: "vaca.png",
+  cargarOK: false
+};
+
+fondo.imagen = new Image();
+fondo.imagen.src = fondo.url;
+fondo.imagen.addEventListener("load", cargarFondo);
+
+vaca.imagen = new Image();
+vaca.imagen.src = vaca.url ;
+vaca.imagen.addEventListener("load", cargarVacas);
+
+function cargarFondo()
+{
+  fondo.cargaOK = true;
+  dibujar();
+}
+
+function cargarVacas()
+{
+  vaca.cargaOK = true;
+  dibujar();
+}
+
+function dibujar()
+{
+  if(fondo.cargaOK)
+  {
+    papel.drawImage(fondo.imagen, 0, 0);
+  }
+
+  if(vaca.cargaOK)
+  {
+    var cantidad = aleatorio(5, 25);
+    console.log(cantidad);
+    for(var v = 0; v < cantidad; v++)
+    {
+      var x = aleatorio(0, 420);
+      var y = aleatorio(0, 420);
+      papel.drawImage(vaca.imagen, x, y);
+    }
+  }
+}
+
+function aleatorio(min, max)
+{
+  var resultado = Math.floor(Math.random() * (max - min + 1)) + min;
+  return resultado;
+}
+
+
+4. Dibujar múltiples imágenes de manera ordenada:
+Datos:
+Imagen = 80 px
+AnchoFondo = 500 px
+
+500 / 80 = 6.25 imagenes
+6 * 80 = 480 -> lo cual hará que algunas imágenes se salgan del recuadro.
+
+Anteriormente colocábamos 420 porque se restaba 500 de ancho - 80 de cada imagen para que no se salga del recuadro, pero ahora al colocar 6 y multiplicar por 80 algunas imágenes se están saliendo por lo que cambiaremos a 5. Estos cambios se hacen en la función dibujar -> if vaca.
+
+function dibujar()
+{
+  if(fondo.cargaOK)
+  {
+    papel.drawImage(fondo.imagen, 0, 0);
+  }
+
+  if(vaca.cargaOK)
+  {
+    var cantidad = aleatorio(5, 25);
+    console.log(cantidad);
+    for(var v = 0; v < cantidad; v++)
+    {
+      var x = aleatorio(0, 5); //antes 420
+      var y = aleatorio(0, 5); //antes 420
+      var x = x * 80;
+      var y = y * 80;
+      papel.drawImage(vaca.imagen, x, y);
+    }
+  }
+}
+
+
+5. Agregar todas las imágenes:
+
+
+6. Mover imagen con el teclado:
+
+
+
+
+
+var vp = document.getElementById("villaplatzi");
+var papel = vp.getContext("2d");
+
+var fondo = {
+  url: "tile.png",
+  cargaOK: false
+};
+
+var vaca = {
+  url: "vaca.png",
+  cargarOK: false
+};
+
+fondo.imagen = new Image();
+fondo.imagen.src = fondo.url;
+fondo.imagen.addEventListener("load", cargarFondo);
+
+vaca.imagen = new Image();
+vaca.imagen.src = vaca.url ;
+vaca.imagen.addEventListener("load", cargarVacas);
+
+function cargarFondo()
+{
+  fondo.cargaOK = true;
+  dibujar();
+}
+
+function cargarVacas()
+{
+  vaca.cargaOK = true;
+  dibujar();
+}
+
+function dibujar()
+{
+  if(fondo.cargaOK)
+  {
+    papel.drawImage(fondo.imagen, 0, 0);
+  }
+
+  if(vaca.cargaOK)
+  {
+    var cantidad = aleatorio(5, 25);
+    console.log(cantidad);
+    for(var v = 0; v < cantidad; v++)
+    {
+      var x = aleatorio(0, 5); //antes 420
+      var y = aleatorio(0, 5); //antes 420
+      var x = x * 80;
+      var y = y * 80;
+      papel.drawImage(vaca.imagen, x, y);
+    }
+  }
+}
+
+function aleatorio(min, max)
+{
+  var resultado = Math.floor(Math.random() * (max - min + 1)) + min;
+  return resultado;
+}
+
+
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <canvas width="500" height="500" id="villaplatzi"></canvas>
+    <script src="platzi.js">
+
+    </script>
+  </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+

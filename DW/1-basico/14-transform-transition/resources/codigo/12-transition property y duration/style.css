@@ -1,0 +1,36 @@
+.container {
+    margin: 30px;
+    width: 400px;
+    height: 100px;
+    display: flex;
+    justify-content: space-between;
+
+    background-color: aqua;
+}
+
+.container:hover .box {
+    transform: scale(1.2);
+}
+
+.box {
+    width: 100px;
+    height: 100px;
+}
+
+.box1 {
+    transition: transform 500ms;
+
+    background-color: darkslategrey;
+}
+
+.box2 {
+    transition: transform 1s;
+
+    background-color: hotpink;
+}
+
+.box3 {
+    transition: transform 1.5s;
+
+    background-color: springgreen;
+}

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app"></div>
+    <script>
+        const products = [
+            { 
+                title: 'Burger', 
+                price: 12, 
+                stock: 50, 
+                junk: true 
+            },
+            { 
+                title: 'Pizza', 
+                price: 20, 
+                stock: 28, 
+                junk: false 
+            },
+        ];
+
+        const app = document.getElementById('app');
+        
+        /* products.forEach(product => {
+            app.innerHTML += `
+                <li>${product.title} - Price $${product.price}.00 - Stock ${product.stock} und</li>
+            `;
+        }) */
+        products.forEach(product => {
+            app.innerHTML += `
+                <li>
+                    Name: ${product.title} ||
+                    Description: ${product.price} -
+                    <input type="checkbox" ${product.junk ? 'checked' : ''}/>
+                </li>`
+        });
+    </script>
+    <!-- <input type="checkbox", checked> -->
+</body>
+</html>
