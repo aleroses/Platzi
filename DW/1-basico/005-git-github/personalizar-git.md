@@ -157,7 +157,7 @@ eval "$(oh-my-posh init bash --config ~/AppData/Local/Programs/oh-my-posh/themes
 exec bash 
 ```
 
-Otras opciones a clean-detailed pueden ser:
+Otras opciones a `clean-detailed` pueden ser:
 
 - bubbles
 - bubblesextra
