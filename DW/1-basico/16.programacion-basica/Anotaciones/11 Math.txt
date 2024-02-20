@@ -1,0 +1,5 @@
+Math: Colección de funciones
+Math.ceil(): Redondea hacia arriba.
+Math.floor(): Redondea hacia abajo
+Math.random(): numero aleatorios entre 0.1 y 0.9
+

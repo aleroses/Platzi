@@ -1,0 +1,64 @@
+body {
+    margin: 0;
+}
+
+.parallax-container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    perspective: 8px;
+    perspective-origin: 50%;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+.image {
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    transform: 0 50%;
+}
+
+.image__background {
+    height: auto;
+    width: 100%;
+    transform: translateZ(0px) scale(1);
+    transform-origin: 0 50%;
+}
+
+.image__middle {
+    height: 100%;
+    width: 100%;
+    transform: translateZ(5px) scale(0.375);
+    transform-origin: 50%;
+}
+
+.image__foreground {
+    transform: translateZ(2px) scale(0.75);
+    transform-origin: top;
+}
+
+.card {
+    position: absolute;
+    background: white;
+    border-radius: 8px;
+    width: 80px;
+    height: 100px;
+    transform: rotate(-20px);
+}
+
+.one {
+    left: 30%;
+    top: 200px;
+}
+
+.two {
+    right: 20%;
+    top: 400px;
+}
+
+.three {
+    right: 20%;
+    bottom: -1000px;
+}

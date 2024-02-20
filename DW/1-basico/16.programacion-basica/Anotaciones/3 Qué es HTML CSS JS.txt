@@ -1,0 +1,8 @@
+ HTML -> info
+ 	CSS -> diseño
+ 	JS -> interactividad
+ 	
+-> Interpretado por el navegador
+ 	
+ 	
+CURSO: Diseño web online

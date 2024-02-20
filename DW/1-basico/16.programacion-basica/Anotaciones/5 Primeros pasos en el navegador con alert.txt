@@ -1,0 +1,18 @@
+	 string---
+alert("un mensaje");
+
+alert: Metodo que dispara algo.
+var: declara la existencia de una variable en memoria
+
+var z = x + y
+
+La suma de x + y ocurre primero, luego esta se almacena en z
+
+Concatenación: + z
+alert("El valor de z es: " + z);
+
+
+Skills: Habilidades
+
+
+

@@ -1,0 +1,11 @@
+div {
+    width: 150px;
+    height: 100px;
+    transform-origin: left top;
+    
+    background-color: aqua;
+}
+
+div:hover {
+    transform: rotate(30deg);
+}

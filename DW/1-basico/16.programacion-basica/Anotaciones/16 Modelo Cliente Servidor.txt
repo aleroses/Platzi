@@ -1,0 +1,36 @@
+CARRERA:
+Base de Datos
+Platzi.com/db
+
+Backend
+PHP PYTHON NODE JS
+Platzi.com/backend
+
+Servidor
+http://direccion.com:puerto
+
+Frontend
+HTML CSS JS ANGULAR
+
+Stack
+Grupo de tecnologías, colección de tecnología
+-> El stack mas popular para desarrollo web es:
+LAMP: Linux Apache MySQL PHP
+
+Metodo de comunicación entre Frontend y Backend
+GET
+POST
+AJAX
+SOCKETS
+
+Protocolo HTTP
+
+Curso Definitivo de JavaScript
+Curso Desarrollo Web
+Curso Responsive Design
+
+Platzi.com/js
+
+Curso de terminal
+Para usar la linea de comandos del cmd
+Platzi.com/terminal

@@ -904,6 +904,44 @@ La única manera de enviar proyectos a una nueva cuenta de GitHub es usando HTTP
 
 📌 Nota: Usamos `--local` porque `--global` ya lo tiene la cuenta principal.
 
+#### ⚠☢ Posible error ☣
+
+Actualmente al querer usar un correo local para enviar proyectos a otra cuenta de GitHub me aparecía el siguiente error:
+
+```bash
+$ git push origin master 👈👀👇
+remote: Permission to alevroses/delete.git denied to aleroses.
+fatal: unable to access 'https://github.com/alevroses/delete.git/': The requested URL returned error: 403 🔥👈👀
+```
+
+Tambien me llego a aparecer una ventana para agregar autenticación, y al querer ingresar el código que la misma ventana de Git te ofrece me daba error, incluso al querer ingresar mi contraseña de GitHub.
+
+```bash
+$ git push origin master 👈👀👇
+fatal: access_denied: The authorization request was denied. [https://docs.github.com/developers/apps/authorizing-oauth-apps#error-codes-for-the-device-flow]
+remote: Support for password authentication was removed on August 13, 2021.
+remote: Please see https://docs.github.com/en/get-started/getting-started-with-git/about-remote-repositories#cloning-with-https-urls for information on currently recommended modes of authentication.
+fatal: Authentication failed for 'https://github.com/alevroses/delete.git/' 🔥👈👀
+```
+
+##### Solución 🐉
+
+Buscando información llegue a eliminar las `Generic Credentials` dentro de las `Windows Credentials` también probe con estas sugerencias:
+
+[How to solve the requested URL returned error: 403 in git repository](https://stackoverflow.com/questions/52533318/how-to-solve-the-requested-url-returned-error-403-in-git-repository)
+
+Pero lo que funciono de verdad fue crear un token desde la cuenta de GitHub que estoy usando de manera local: 👈👀👇
+
+[Settings - Tokens](https://github.com/settings/tokens)
+
+Mas o menos como muestra este video, con la única diferencia que marqué todas las casillas que aparecieron solo por si acaso 😁👌.
+
+[Resolved Git push fatal unable to access the requested url returned error 403](https://www.youtube.com/watch?v=dtZlEQc0J1w)
+
+📌 Copia ese token y guárdalo en un lugar seguro.
+
+Nuevamente hice `git push origin master`, se abrió la ventana para añadir las credenciales y esta vez elegí añadir **Token** y ahora todo se envió sin problema.
+
 🎲
 
 ## 23. Tags y versiones en Git y GitHub
