@@ -4,17 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "750f6bcd99535a20",
+        "id": "12ee202a12d9b5fb",
         "type": "tabs",
         "children": [
           {
-            "id": "c820947cdcd43cde",
+            "id": "4973bf64c7e48c8e",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "DW/1-basico/005-git-github/git-github.md",
-                "mode": "source",
+                "file": "DW/1-basico/003-prework/entorno-windows/vsc/setting.md",
+                "mode": "preview",
                 "source": true
               }
             }
@@ -48,7 +48,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "quitar scroll",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -65,11 +65,12 @@
               "state": {}
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
-    "width": 236.5,
+    "width": 265.5,
     "collapsed": true
   },
   "right": {
@@ -86,7 +87,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "DW/1-basico/005-git-github/git-github.md",
+                "file": "DW/1-basico/003-prework/entorno-windows/vsc/setting.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +104,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "DW/1-basico/005-git-github/git-github.md",
+                "file": "DW/1-basico/003-prework/entorno-windows/vsc/setting.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -126,11 +127,12 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "DW/1-basico/005-git-github/git-github.md"
+                "file": "DW/1-basico/003-prework/entorno-windows/vsc/setting.md"
               }
             }
           }
-        ]
+        ],
+        "currentTab": 3
       }
     ],
     "direction": "horizontal",
@@ -147,8 +149,17 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "c820947cdcd43cde",
+  "active": "4973bf64c7e48c8e",
   "lastOpenFiles": [
+    "DW/2-intermedio/8.poo-js-intermedio/poo-js-intermedio.md",
+    "DW/2-intermedio/1-js-basico/js-basico.md",
+    "DW/1-basico/17.pensamiento-lógico/17.algoritmos-y-pensamiento-logico/algoritmos-y-pensamiento-logico.md",
+    "DW/2-intermedio/12.asincronismo-js/asincronismo-con-js.md",
+    "DW/2-intermedio/11.js-engine-v8/js-engine-v8+nav.md",
+    "DW/2-intermedio/6.closures_scope-en-js/closures_scope-en-js.md",
+    "DW/2-intermedio/3-ECMAScript/ECMAScript-historia-y-versiones-de-javascript.md",
+    "DW/1-basico/005-git-github/git-github.md",
+    "DW/1-basico/005-git-github/personalizar-git.md",
     "others/token-github.txt",
     "DW/1-basico/5-git-github/git-github.md",
     "others/CheatSheets-HTML-CSS-JavaScript~aafcfc46c56972da99a8bf06185b43883f4a4ea4",

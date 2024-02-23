@@ -199,3 +199,37 @@ exec bash
 ![](https://i.postimg.cc/C5LLdqSJ/theme-clean-detailed.png)
 
 [Ver Tutorial](https://www.youtube.com/watch?v=Bkaox81ppds)
+
+## Extra
+
+Puedes personalizar Powershell con el siguiente tutorial:
+
+[Cómo configurar tu terminal para que sea asombrosa en Windows 11](https://youtube.com/watch?v=6SGIFVJ5Izs)
+
+Colores:
+
+```json
+{
+	"name": "Snazzy",
+	"foreground": "#eff0eb",
+	"background": "#282a36",
+	"selectionBackground": "#3e404a",
+	"cursorColor": "#97979b",
+	"black": "#282a36",
+	"red": "#ff5c57",
+	"green": "#5af78e",
+	"yellow": "#f3f99d",
+	"blue": "#57c7ff",
+	"purple": "#ff6ac1",
+	"cyan": "#9aedfe",
+	"white": "#f1f1f0",
+	"brightBlack": "#686868",
+	"brightRed": "#ff5c57",
+	"brightGreen": "#5af78e",
+	"brightYellow": "#f3f99d",
+	"brightBlue": "#57c7ff",
+	"brightPurple": "#ff6ac1",
+	"brightCyan": "#9aedfe",
+	"brightWhite": "#eff0eb"
+}
+```

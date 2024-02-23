@@ -95,6 +95,20 @@ También:
 }
 ```
 
+## Ocultar Documentación Emergente MDN
+
+```json
+{
+  "editor.parameterHints.enabled": false //👈👀
+}
+```
+
+Tambien puedes buscar `pop-up` dentro de la configuración y desactivar la casilla:
+
+⚙ `Editor > Parameter Hints: Enabled`
+
+- [ ] Enables a pop-up that shows parameter documentation and type information as you type. 
+
 ## Ocultar Barra de Actividades 
 
 ```json
