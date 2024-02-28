@@ -4,16 +4,16 @@
     "type": "split",
     "children": [
       {
-        "id": "12ee202a12d9b5fb",
+        "id": "8dc6e77ec77cf7d7",
         "type": "tabs",
         "children": [
           {
-            "id": "4973bf64c7e48c8e",
+            "id": "a6b96260c2457223",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "DW/1-basico/003-prework/entorno-windows/vsc/setting.md",
+                "file": "DW/1-basico/006-html-css/1-html/1.html-css.md",
                 "mode": "preview",
                 "source": true
               }
@@ -48,7 +48,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "quitar scroll",
+                "query": "",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -65,8 +65,7 @@
               "state": {}
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -87,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "DW/1-basico/003-prework/entorno-windows/vsc/setting.md",
+                "file": "DW/1-basico/006-html-css/1-html/1.html-css.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -104,7 +103,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "DW/1-basico/003-prework/entorno-windows/vsc/setting.md",
+                "file": "DW/1-basico/006-html-css/1-html/1.html-css.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -127,7 +126,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "DW/1-basico/003-prework/entorno-windows/vsc/setting.md"
+                "file": "DW/1-basico/006-html-css/1-html/1.html-css.md"
               }
             }
           }
@@ -149,20 +148,53 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "4973bf64c7e48c8e",
+  "active": "a6b96260c2457223",
   "lastOpenFiles": [
-    "DW/2-intermedio/8.poo-js-intermedio/poo-js-intermedio.md",
-    "DW/2-intermedio/1-js-basico/js-basico.md",
-    "DW/1-basico/17.pensamiento-lógico/17.algoritmos-y-pensamiento-logico/algoritmos-y-pensamiento-logico.md",
-    "DW/2-intermedio/12.asincronismo-js/asincronismo-con-js.md",
-    "DW/2-intermedio/11.js-engine-v8/js-engine-v8+nav.md",
-    "DW/2-intermedio/6.closures_scope-en-js/closures_scope-en-js.md",
-    "DW/2-intermedio/3-ECMAScript/ECMAScript-historia-y-versiones-de-javascript.md",
-    "DW/1-basico/005-git-github/git-github.md",
-    "DW/1-basico/005-git-github/personalizar-git.md",
-    "others/token-github.txt",
-    "DW/1-basico/5-git-github/git-github.md",
-    "others/CheatSheets-HTML-CSS-JavaScript~aafcfc46c56972da99a8bf06185b43883f4a4ea4",
-    "DW/1-basico/5-git-github/personalizar-git.md"
+    "DW/1-basico/011-maquetacion-en-css/maquetacion-grid.md",
+    "DW/1-basico/010-css-grid-basico/css-grid-basico.md",
+    "DW/1-basico/007-frontend-developer-practico/frontend-developer.md",
+    "DW/1-basico/006-html-css/1-html/1.html-css.md",
+    "DW/2-intermedio/016.fundamentos-typescript/resources/code/ts-project/node_modules/typescript/lib/pt-br",
+    "DW/2-intermedio/016.fundamentos-typescript/resources/code/ts-project/node_modules/typescript/lib/pl",
+    "DW/2-intermedio/016.fundamentos-typescript/resources/code/ts-project/node_modules/typescript/lib/lib.webworker.iterable.d.ts",
+    "DW/2-intermedio/016.fundamentos-typescript/resources/code/ts-project/node_modules/typescript/lib/lib.webworker.importscripts.d.ts",
+    "DW/2-intermedio/016.fundamentos-typescript/resources/code/ts-project/node_modules/typescript/lib/lib.webworker.d.ts",
+    "DW/2-intermedio/016.fundamentos-typescript/resources/code/ts-project/node_modules/typescript/lib/lib.scripthost.d.ts",
+    "DW/2-intermedio/016.fundamentos-typescript/resources/code/ts-project/node_modules/typescript/lib/lib.esnext.intl.d.ts",
+    "DW/2-intermedio/016.fundamentos-typescript/resources/code/ts-project/node_modules/typescript/lib/lib.esnext.full.d.ts",
+    "DW/2-intermedio/016.fundamentos-typescript/resources/code/ts-project/node_modules/typescript/lib/lib.esnext.decorators.d.ts",
+    "DW/2-intermedio/016.fundamentos-typescript/resources/code/ts-project/node_modules/typescript/lib/lib.esnext.disposable.d.ts",
+    "DW/2-intermedio/016.fundamentos-typescript/resources/code/ts-project/node_modules/typescript/SECURITY.md",
+    "DW/2-intermedio/016.fundamentos-typescript/resources/code/ts-project/node_modules/typescript/README.md",
+    "DW/2-intermedio/016.fundamentos-typescript/fundamentos-typescript.md",
+    "DW/2-intermedio/014.api-rest-js/1.api-rest-js-fundamentos/resources/code/practice/svg/heart.svg",
+    "DW/2-intermedio/014.api-rest-js/1.api-rest-js-fundamentos/resources/code/practice/svg/delete.svg",
+    "DW/2-intermedio/014.api-rest-js/1.api-rest-js-fundamentos/resources/code/node_modules/node-domexception/README.md",
+    "DW/2-intermedio/014.api-rest-js/1.api-rest-js-fundamentos/resources/code/node_modules/web-streams-polyfill/README.md",
+    "DW/2-intermedio/014.api-rest-js/1.api-rest-js-fundamentos/resources/code/node_modules/node-fetch/LICENSE.md",
+    "DW/2-intermedio/014.api-rest-js/1.api-rest-js-fundamentos/resources/code/node_modules/node-fetch/README.md",
+    "DW/2-intermedio/014.api-rest-js/1.api-rest-js-fundamentos/resources/code/node_modules/formdata-polyfill/README.md",
+    "DW/2-intermedio/014.api-rest-js/1.api-rest-js-fundamentos/resources/code/node_modules/data-uri-to-buffer/README.md",
+    "DW/2-intermedio/014.api-rest-js/1.api-rest-js-fundamentos/resources/code/node_modules/fetch-blob/README.md",
+    "DW/2-intermedio/014.api-rest-js/1.api-rest-js-fundamentos/resources/code/7.proyecto/svg/heart.svg",
+    "DW/2-intermedio/014.api-rest-js/1.api-rest-js-fundamentos/resources/code/7.proyecto/svg/delete.svg",
+    "DW/2-intermedio/014.api-rest-js/1.api-rest-js-fundamentos/resources/code/test/test.md",
+    "DW/2-intermedio/014.api-rest-js/1.api-rest-js-fundamentos/resources/img/random-kittens.png",
+    "DW/2-intermedio/014.api-rest-js/1.api-rest-js-fundamentos/resources/img/paginating.png",
+    "DW/2-intermedio/014.api-rest-js/1.api-rest-js-fundamentos/resources/img/evidencia02.png",
+    "DW/2-intermedio/014.api-rest-js/1.api-rest-js-fundamentos/resources/img/evidencia01.png",
+    "DW/2-intermedio/014.api-rest-js/1.api-rest-js-fundamentos/resources/img/nota.png",
+    "DW/2-intermedio/014.api-rest-js/1.api-rest-js-fundamentos/resources/img/14.ver-api-key.png",
+    "DW/2-intermedio/014.api-rest-js/2.api-rest-js-ejemplos/api-rest-ejemplos.md",
+    "DW/2-intermedio/014.api-rest-js/1.api-rest-js-fundamentos/api-rest-js-fundamentos.md",
+    "DW/2-intermedio/013.expresiones-regulares/RegExp.md",
+    "DW/2-intermedio/012.asincronismo-js/resources/code/asincronismo/node_modules/xmlhttprequest/README.md",
+    "DW/2-intermedio/012.asincronismo-js/resources/code/asincronismo/node_modules/node-fetch/README.md",
+    "DW/2-intermedio/012.asincronismo-js/resources/code/asincronismo/node_modules/node-fetch/LICENSE.md",
+    "DW/2-intermedio/012.asincronismo-js/resources/code/asincronismo/node_modules/web-streams-polyfill/README.md",
+    "DW/2-intermedio/012.asincronismo-js/resources/code/asincronismo/node_modules/node-domexception/README.md",
+    "DW/2-intermedio/012.asincronismo-js/resources/code/asincronismo/node_modules/fetch-blob/README.md",
+    "DW/2-intermedio/012.asincronismo-js/resources/code/asincronismo/node_modules/data-uri-to-buffer/README.md",
+    "DW/2-intermedio/012.asincronismo-js/resources/code/asincronismo/node_modules/formdata-polyfill/README.md"
   ]
 }
