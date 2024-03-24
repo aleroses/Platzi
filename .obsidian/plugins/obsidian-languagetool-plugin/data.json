@@ -2,9 +2,9 @@
   "serverUrl": "https://api.languagetool.org",
   "urlMode": "standard",
   "glassBg": false,
-  "shouldAutoCheck": false,
+  "shouldAutoCheck": true,
   "autoCheckDelay": 3000,
   "pickyMode": false,
-  "motherTongue": "es",
+  "motherTongue": "es-ES",
   "staticLanguage": "es-ES"
 }

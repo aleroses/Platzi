@@ -4,16 +4,16 @@
     "type": "split",
     "children": [
       {
-        "id": "8dc6e77ec77cf7d7",
+        "id": "2239b1cf44da54fd",
         "type": "tabs",
         "children": [
           {
-            "id": "a6b96260c2457223",
+            "id": "d296c909b1b3294e",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "DW/1-basico/006-html-css/1-html/1.html-css.md",
+                "file": "DW/1-basico/003-prework/entorno-windows/remove-linux-dualboot.md",
                 "mode": "preview",
                 "source": true
               }
@@ -86,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "DW/1-basico/006-html-css/1-html/1.html-css.md",
+                "file": "DW/1-basico/003-prework/entorno-windows/remove-linux-dualboot.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +103,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "DW/1-basico/006-html-css/1-html/1.html-css.md",
+                "file": "DW/1-basico/003-prework/entorno-windows/remove-linux-dualboot.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -126,7 +126,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "DW/1-basico/006-html-css/1-html/1.html-css.md"
+                "file": "DW/1-basico/003-prework/entorno-windows/remove-linux-dualboot.md"
               }
             }
           }
@@ -148,12 +148,13 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "a6b96260c2457223",
+  "active": "d296c909b1b3294e",
   "lastOpenFiles": [
+    "DW/1-basico/003-prework/entorno-windows/vsc/setting.md",
+    "DW/1-basico/006-html-css/1-html/1.html-css.md",
     "DW/1-basico/011-maquetacion-en-css/maquetacion-grid.md",
     "DW/1-basico/010-css-grid-basico/css-grid-basico.md",
     "DW/1-basico/007-frontend-developer-practico/frontend-developer.md",
-    "DW/1-basico/006-html-css/1-html/1.html-css.md",
     "DW/2-intermedio/016.fundamentos-typescript/resources/code/ts-project/node_modules/typescript/lib/pt-br",
     "DW/2-intermedio/016.fundamentos-typescript/resources/code/ts-project/node_modules/typescript/lib/pl",
     "DW/2-intermedio/016.fundamentos-typescript/resources/code/ts-project/node_modules/typescript/lib/lib.webworker.iterable.d.ts",
@@ -194,7 +195,6 @@
     "DW/2-intermedio/012.asincronismo-js/resources/code/asincronismo/node_modules/web-streams-polyfill/README.md",
     "DW/2-intermedio/012.asincronismo-js/resources/code/asincronismo/node_modules/node-domexception/README.md",
     "DW/2-intermedio/012.asincronismo-js/resources/code/asincronismo/node_modules/fetch-blob/README.md",
-    "DW/2-intermedio/012.asincronismo-js/resources/code/asincronismo/node_modules/data-uri-to-buffer/README.md",
-    "DW/2-intermedio/012.asincronismo-js/resources/code/asincronismo/node_modules/formdata-polyfill/README.md"
+    "DW/2-intermedio/012.asincronismo-js/resources/code/asincronismo/node_modules/data-uri-to-buffer/README.md"
   ]
 }
