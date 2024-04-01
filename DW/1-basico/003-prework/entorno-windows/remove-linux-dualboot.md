@@ -181,6 +181,21 @@ C:\Windows\system32>bcdedit.exe /delete {324bc8ad-e954-11ee-982c-806e6f6e6963}
 The operation completed successfully.
 ```
 
+## shutdown /r
+
+El comando "shutdown /r" se utiliza para reiniciar el sistema operativo, en este caso Windows 10. Aquí está la explicación de cada parte del comando:
+
+- "shutdown": es el comando principal que se utiliza para administrar el apagado del sistema en Windows.
+- "/r": es un argumento o parámetro que se agrega al comando "shutdown" para indicarle al sistema que se debe reiniciar en lugar de apagar.
+
+```bash
+# Ejecutamos
+shutdown /r
+
+# Si solo quieres apagar el sistema puedes usar:
+shutdown /s
+```
+
 ## Partición M
 
 [Tutorial: Borrar LINUX *SIN PERDER WINDOWS 10* | UEFI o BIOS](https://www.youtube.com/watch?v=vOS4w0Fo34g)
