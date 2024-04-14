@@ -11,8 +11,12 @@
             "id": "18379cb9fc83d6b2",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {}
+              "type": "markdown",
+              "state": {
+                "file": "DW/1-basico/003-prework/entorno-linux/commands.md",
+                "mode": "source",
+                "source": true
+              }
             }
           }
         ]
@@ -81,6 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "DW/1-basico/003-prework/entorno-linux/commands.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -97,6 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "DW/1-basico/003-prework/entorno-linux/commands.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -118,7 +124,9 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {}
+              "state": {
+                "file": "DW/1-basico/003-prework/entorno-linux/commands.md"
+              }
             }
           }
         ],
@@ -141,6 +149,10 @@
   },
   "active": "18379cb9fc83d6b2",
   "lastOpenFiles": [
+    "DW/1-basico/003-prework/entorno-linux/visual-studio-code.md",
+    "DW/1-basico/003-prework/entorno-linux/commands.md",
+    "DW/1-basico/003-prework/entorno-linux/prework-linux.md",
+    "DW/1-basico/003-prework/entorno-linux/entorno-linux.md",
     "DW/1-basico/003-prework/entorno-windows/remove-linux-dualboot.md",
     "DW/1-basico/003-prework/entorno-windows/vsc/setting.md",
     "DW/1-basico/006-html-css/1-html/1.html-css.md",
@@ -182,10 +194,6 @@
     "DW/2-intermedio/014.api-rest-js/1.api-rest-js-fundamentos/api-rest-js-fundamentos.md",
     "DW/2-intermedio/013.expresiones-regulares/RegExp.md",
     "DW/2-intermedio/012.asincronismo-js/resources/code/asincronismo/node_modules/xmlhttprequest/README.md",
-    "DW/2-intermedio/012.asincronismo-js/resources/code/asincronismo/node_modules/node-fetch/README.md",
-    "DW/2-intermedio/012.asincronismo-js/resources/code/asincronismo/node_modules/node-fetch/LICENSE.md",
-    "DW/2-intermedio/012.asincronismo-js/resources/code/asincronismo/node_modules/web-streams-polyfill/README.md",
-    "DW/2-intermedio/012.asincronismo-js/resources/code/asincronismo/node_modules/node-domexception/README.md",
-    "DW/2-intermedio/012.asincronismo-js/resources/code/asincronismo/node_modules/fetch-blob/README.md"
+    "DW/2-intermedio/012.asincronismo-js/resources/code/asincronismo/node_modules/node-fetch/README.md"
   ]
 }
