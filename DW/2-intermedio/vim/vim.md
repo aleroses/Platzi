@@ -1,5 +1,97 @@
 # Vim
 
+## Practical Vim
+
+```lua
+# Abrir un archivo
+❯ vim something.md
+
+# Insetar
+i
+
+# Insetar y saltar un caracter si lo hay
+a
+
+# Ir al final de la línea + insertar
+A
+
+# Ir al final de la línea
+$
+GA
+
+# Ir al inicio de la línea
+0
+
+# Salir del modo insertar
+Esc
+
+# Moverte
+## Subir
+k
+
+## Bajar
+j
+
+## Derecha
+l
+
+## Izquierda
+h
+
+# Eliminar de izquierda a derecha
+x 
+
+# Deshacer cambios
+u
+
+# Eliminar una línea entera
+dd
+
+# Repetir el comando anterior
+.
+
+# Guardar cambios
+Esc + :w
+
+# Salir
+Esc + :q
+
+# Salir guardando
+Esc + :wq
+
+# Indentar
+>>
+<<
+
+
+```
+
+## Configurar Vim
+
+```lua
+❯ vim ~/.vimrc
+
+# Cursor al final de la línea
+set virtualedit=onemore
+nnoremap $ $l
+
+# Tabulación o Indentación
+## Número de espacios para una tabulación
+set tabstop=2
+
+## Número de espacios para el desplazamiento
+set shiftwidth=2
+
+## Utilizar espacios en lugar de tabulaciones
+set expandtab
+```
+
+$ + a + ; Esc
+j + $ + .
+
+
+Shift + k
+
 :q enter
 
 vim file-name
