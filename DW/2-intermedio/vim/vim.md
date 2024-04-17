@@ -69,6 +69,20 @@ El método anterior funciona, pero existe una forma de hacer lo mismo con una so
 A
 ```
 
+Para agregar una fila en blanco y activar el modo insertar:
+
+```lua
+# Insertar una fila abajo
+o
+
+# Insertar una fila arriba 
+O
+
+> Para este último también se puede usar ko
+```
+
+
+
 > Nota: Es importante mencionar que cuando dejamos de editar o insertar texto en algún archivo y presionamos `Esc`, el cursor se posiciona un caracter antes (hace un desplazamiento a la izquierda). Al parecer esto es normal en Vim.
 
 ### Moverse 
@@ -151,8 +165,48 @@ X
 Borrar líneas enteras:
 
 ```lua
-# Eliminar una línea entera
+# Eliminar/cortar una línea entera
 dd
+
+## Pegar
+p
+
+## Duplicar una línea
+yyp
+```
+
+Borrar todo a la derecha partiendo desde la posición del cursor:
+
+```lua
+c$
+
+# Lo mismo pero en su versión corta
+C
+
+> Estos atajos también cambian al modo insertar
+```
+
+Ejemplo:
+
+```js
+// Antes de la C:
+const| one = 1; 
+const two = 2;
+const three = 3;
+
+// Después de usar la C:
+const 👈👀
+const two = 2;
+const three = 3;
+```
+
+Borrar un caracter a la derecha y pasar al modo insertar:
+
+```lua
+cl
+
+# Lo mismo
+s
 ```
 
 ### Deshacer 
@@ -171,6 +225,106 @@ u
 .
 
 > Si usamos un atajo repetidas veces sería mejor por ejemplo ejecutar dd para eliminar toda una línea y luego usar . para repetir esa acción las veces que se necesiten.
+```
+
+```lua
+# Pepetir el último cambio realizado
+;
+
+> Después de realizar una acción, como una búsqueda o un reemplazo, el comando `;` repite esa acción en la siguiente ubicación donde se encuentre el cursor.
+```
+
+En Vim, tanto el comando `.` (punto) como el comando `;` (punto y coma) se utilizan para repetir el último cambio realizado, pero tienen diferencias clave:
+
+1. `.` (punto): El comando `.` en Vim repite el último cambio exactamente como se realizó. Esto significa que repite el mismo comando o secuencia de comandos con los mismos argumentos y opciones. Por ejemplo, si utilizaste `s/foo/bar/` para reemplazar la primera aparición de "foo" por "bar", al presionar `.` repetirá ese mismo reemplazo en la siguiente aparición de "foo" sin cambios en el patrón o la sustitución.
+
+2. `;` (punto y coma): El comando `;` en Vim también repite el último cambio realizado, pero realiza una búsqueda adicional en lugar de repetir exactamente el último comando. Después de presionar `;`, Vim busca la siguiente aparición del patrón utilizado en el último cambio y realiza el mismo cambio en esa ubicación. Esto significa que `;` es útil cuando deseas repetir el mismo tipo de cambio en diferentes lugares sin tener que especificar el patrón nuevamente.
+
+```lua
+# Pepetir el último cambio realizado pero en reversa
+,
+```
+
+### Buscar
+
+Buscar coincidencia en el código. 
+
+```lua
+# Buscar un caracter
+f
+
+> Presionar f y luego el carácter a buscar: f+ 
+> Encontrando el carácter +
+```
+
+En este caso, la `f` busca en la línea donde está posicionado el cursor y no buscara en otras líneas. Además, siempre buscará coincidencias solo a la derecha de esa línea.
+
+Este atajo se puedo combinar con `s` y `;` para reemplazar coincidencias más rápido.
+
+Ejemplo:
+
+```js
+// Antes
+const something = () => {
+  |return "+argument1+", "+argumento2+";
+}
+
+// Después de usar: f+s␣+␣Esc;.
+// El ;. lo usamos cuantas veces sean necesarias
+const something = () => {
+  return " + argument1 + ", " + argumento2 + ";
+}
+```
+
+En este ejemplo usamos `;` que se utiliza para repetir el último cambio realizado. Después de realizar una acción, como una búsqueda o un reemplazo, el comando `;` repite esa acción en la siguiente ubicación donde se encuentre el cursor.
+
+Buscar de derecha a izquierda.
+
+```lua
+F
+
+> F mas el carácter a buscar.
+```
+
+También podemos usar `t` para hacer búsquedas de izquierda a derecha dejando el cursor un carácter atrás, además podemos usar T para hacer lo mismo pero de derecha a izquierda.
+
+```lua
+# Buscar dejando el cursor un carácter antes
+t 
+T
+```
+
+Para realizar búsquedas más avanzadas:
+
+```lua
+/palabra-a-buscar + enter
+```
+
+Podemos usar `n` o `N` para navegar entre los resultados de la búsqueda. 
+
+```lua
+# Navegar entre las busquedas
+n
+N
+```
+
+Para realizar búsquedas hacia atrás:
+
+```lua
+?palabra-a-buscar + enter
+```
+
+Buscar y sustituir: Para esto necesitas posicionarte en una línea que tenga alguna de las coincidencias a entrar:
+
+```lua
+:s/palabra-a-buscar/palabra-a-reemplazar + enter
+```
+
+Una vez encuentra la coincidencia puedes usar `n` o `N` para ir a la siguiente y usar `&` para hacer él reemplaza o usar `u` para retroceder.
+
+```lua
+# Para reemplazar
+&
 ```
 
 ### Modificaciones
