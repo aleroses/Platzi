@@ -200,7 +200,7 @@ const two = 2;
 const three = 3;
 ```
 
-Borrar un caracter a la derecha y pasar al modo insertar:
+Borrar un carácter a la derecha y pasar al modo insertar:
 
 ```lua
 cl
@@ -208,6 +208,23 @@ cl
 # Lo mismo
 s
 ```
+
+Borrar y cambiar una palabra (change):
+
+```lua
+cw
+```
+
+1. Posiciona el cursor en cualquier parte de la palabra que deseas cambiar.
+2. Presiona `cw`. Esto borra la palabra desde la posición actual del cursor hasta el final de la palabra y te coloca en el modo de inserción.
+3. Ahora puedes escribir la nueva palabra que deseas reemplazar.
+4. Una vez que hayas terminado de escribir la nueva palabra, presiona la tecla `Esc` para salir del modo de inserción.
+
+Vim también ofrece variantes del comando `cw` para cambiar palabras específicas:
+
+- `caw` cambia la palabra completa, incluyendo cualquier espacio en blanco adyacente.
+- `ciw` cambia solo la palabra, sin incluir espacios en blanco adyacentes.
+- `c$` cambia desde la posición actual del cursor hasta el final de la línea.
 
 ### Deshacer 
 
@@ -327,6 +344,34 @@ Una vez encuentra la coincidencia puedes usar `n` o `N` para ir a la siguiente y
 &
 ```
 
+#### Resaltado de coincidencias
+
+Una forma de buscar coincidencias es usando el `*`. Para usarlo solo debes posicionarte sobre la palabra a buscar coincidencias y presionar `*`.
+
+```lua
+# Busca coincidencias en todo el archivo
+*
+```
+
+Esto debería resaltar todas las coincidencias, pero de no ser así debes activarlo.
+
+```lua
+# Ingresa esto dentro de vim
+:set hlsearch
+
+> Estando en el modo normal presiona : y escribe todo lo demás.
+```
+
+Ahora, para reemplazar todas las coincidencias:
+1. Muévete con `n` hasta la primera coincidencia 
+2. Usa `cw` que borrar toda la palabra escribe la palabra que necesitas. 
+3. Presiona escape y ya lo tienes. 
+4. Para hacerlo con todas las demás palabras solo presiona `n.`
+
+```lua
+cw + nueva-palabra + Esc + n.
+```
+
 ### Modificaciones
 
 ```lua
@@ -362,6 +407,8 @@ Indentar código.
 ```
 
 > La indentación se puede configurar. En mi caso uso 2 espacios en lugar de una tabulación. Para esto ver las configuraciones de abajo.
+
+
 
 ## Configurar Vim
 
