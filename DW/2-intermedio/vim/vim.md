@@ -53,7 +53,7 @@ a
 Ejemplo: `|` representa al cursor.
 
 ```js
-// Antes de usar $
+// Antes de usar $a
 const so|mething = 1; 👈👀
 
 // Después
@@ -69,7 +69,7 @@ El método anterior funciona, pero existe una forma de hacer lo mismo con una so
 A
 ```
 
-Para agregar una fila en blanco y activar el modo insertar:
+Para agregar filas en blanco y activar el modo insertar:
 
 ```lua
 # Insertar una fila abajo
@@ -83,7 +83,7 @@ O
 
 
 
-> Nota: Es importante mencionar que cuando dejamos de editar o insertar texto en algún archivo y presionamos `Esc`, el cursor se posiciona un caracter antes (hace un desplazamiento a la izquierda). Al parecer esto es normal en Vim.
+> Nota: Es importante mencionar que cuando dejamos de editar o insertar texto en algún archivo y presionamos `Esc`, el cursor se posiciona un carácter antes (hace un desplazamiento a la izquierda). Al parecer esto es normal en Vim.
 
 ### Moverse 
 
@@ -111,10 +111,18 @@ Para moverme al inicio de una fila puedo usar:
 0
 ```
 
+Para moverme a la primera fila justo al inicio:
+
+```lua
+gg
+
+> Si estás posicionado en cualquier otra línea y te quieres posicionar rápidamente al inicio de todo el contenido.
+```
+
 Para moverme a la última fila y quedarme al inicio de esa fila:
 
 ```lua
-# Ir al final de la línea
+# Ir al final de todas las líneas
 G
 ```
 
@@ -171,11 +179,18 @@ dd
 ## Pegar
 p
 
-## Duplicar una línea
-yyp
+# Copiar una línea
+yy
+
+# Copiar 3 líneas
+3yy
+
+# Pegar
+p
+P
 ```
 
-Borrar todo a la derecha partiendo desde la posición del cursor:
+Borrar todo a la derecha partiendo desde la posición del cursor, luego activar el insertar:
 
 ```lua
 c$
@@ -409,7 +424,6 @@ Indentar código.
 > La indentación se puede configurar. En mi caso uso 2 espacios en lugar de una tabulación. Para esto ver las configuraciones de abajo.
 
 
-
 ## Configurar Vim
 
 Ejecutamos el siguiente comando para abrir el archivo de las configuraciones de Vim:
@@ -434,7 +448,130 @@ set shiftwidth=2
 
 ## Utilizar espacios en lugar de tabulaciones
 set expandtab
+
+# Activar la numeración / numeración relativa
+set number
+set relativenumber
+
+# Activar resaltado de sintaxis
+syntax enable
 ```
+
+#### Otros
+
+```lua
+# Resaltado de coincidencias
+:set hlsearch
+
+# Activar la numeración
+:set number
+
+# Activar la numeración relativa
+:set relativenumber
+
+# Desactivar la numeración
+:set nonumber4k
+:set nornu
+```
+
+### Gestores de Plugins
+
+#### 1. Manual
+
+> No recomendado...
+
+```bash
+cd ~
+mkdir .vim
+cd .vim 
+vim vimrc
+```
+
+En `vimrc` tendremos la configuración principal.
+
+Para el ejemplo usaremos el siguiente plugin que permite seleccionar `"" {} []` para poder modificarlos rápidamente.
+
+En el navegador buscamos [vim-surround](https://github.com/tpope/vim-surround), entramos en `plugin` y abrimos `surround.vim`. Copiamos su contenido.
+
+```bash
+mkdir plugin
+cd plugin
+vim surround.vim
+# Pegar contenido copiado 👈👀
+```
+
+Ahora ya podemos probar el plugin.
+
+##### Paquetes
+
+Si quieres usar el método manual es mejor usar paquetes (directorios de plugins)
+
+En este caso eliminamos el directorio anterior `plugin`.
+
+```bash
+rm -rf plugin
+mkdir pack
+cd pack
+# Directorio con el nombre del paquete a instalar
+mkdir -p tpope/start
+cd tpope/start
+git clone https://github.com/tpope/vim-surround
+```
+
+Ahora ya podemos probar el plugin.
+
+#### 2. Vim-Plug
+
+Este gestor de paquetes facilita la instalación, gestión y actualización de paquetes.
+
+Buscar [junegunn vim-plug](https://github.com/junegunn/vim-plug) y buscamos **Installation**.
+
+En mi caso estoy usando Linux, así que usaré el siguiente comando:
+
+```bash
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+```
+
+```bash
+mkdir .vim
+cd .vim 
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+```
+
+Entramos a `vimrc` para configurarlo.
+
+```bash
+"Config Principal
+
+call plug#begin()
+	Plug 'jonegunn/goyo.vim'
+call plug#end()
+```
+
+Ahora para instalar el plugin solo ejecutar dentro de Vim:
+
+```lua
+:PlugInstall
+```
+
+#### 3. Vundle
+
+Buscar y clonar vundle.vim
+
+```
+set cocompatible
+filetype off
+```
+
+#### Pathogen
+
+
+vim-pathogen
+
+https://www.youtube.com/watch?v=vEuPg_XEsak
+vimscript
 
 $ + a + ; Esc
 j + $ + .
@@ -453,10 +590,7 @@ e
 
 10 j 
 
-f + letra a buscar en la misma línea
 
-0 principio de linea
-$ final de la linea
 
 * Debes posicionarte en la pabra a buscar encontras palabras iguales
 
@@ -470,9 +604,7 @@ GG al final
 
 15 G ir a la linea 15
 
-o nueva linea vacia
 
-O nueva linea antes de la posición actual
 
 x borrar letra delantera
 X borrar a la izquierda
@@ -499,6 +631,11 @@ N: retrocede en las coincidencias encontradas
 
 u: deshacer el ultimo cambio hecho
 
+
+renombrar un archivo en la terminal
+```
+mv nombre_actual nuevo_nombre
+```
 ## Practicar
 
 vim-adventures.com
