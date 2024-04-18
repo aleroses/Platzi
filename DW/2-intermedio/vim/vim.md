@@ -623,20 +623,76 @@ Ahora ya podemos probar el plugin.
 
 [Tutorial](https://www.youtube.com/watch?v=vEuPg_XEsak)
 
+## Instalar Vim
+
+Para Linux seguir estos pasos:
+
+```bash
+git clone https://github.com/vim/vim.git
+cd vim/src
+make
+sudo make install
+```
+
+## Eliminar Vim
+
+1. Desinstalar Vim:
+
+```bash
+sudo apt-get remove vim
+```
+
+Si instalaste Vim desde las fuentes, deberás eliminar los archivos manualmente. Normalmente, esto implica eliminar el directorio donde se encuentra Vim y sus archivos asociados. Puedes verificar la ubicación de los archivos de Vim ejecutando el siguiente comando:
+
+```bash
+which vim
+```
+
+2. Eliminar configuraciones y archivos de Vim:
+
+```bash
+rm ~/.vimrc
+rm -rf ~/.vim
+rm ~/.viminfo
+```
+
+3. Eliminar Vim y sus dependencias no utilizadas:
+
+```bash
+sudo apt autoremove
+```
 
 
-vimscript
+## vimscript
+
+Vimscript es el lenguaje de scripting utilizado en el editor de texto Vim. Es un lenguaje específico de dominio diseñado para extender y personalizar Vim de acuerdo a las necesidades de cada usuario. Vimscript permite automatizar tareas, crear nuevas funcionalidades, definir comandos personalizados, mapear teclas, entre otras cosas.
+
+Vimscript tiene una sintaxis similar a otros lenguajes de scripting, pero con algunas características distintivas propias de Vim. Algunas de las características clave de Vimscript son:
+
+1. Manipulación de texto: Vimscript proporciona una amplia gama de funciones y comandos para manipular y transformar texto. Permite realizar operaciones como buscar y reemplazar, dividir y unir líneas, ordenar texto, entre otras.
+
+2. Mapeo de teclas: Con Vimscript, puedes asignar combinaciones de teclas personalizadas para ejecutar comandos o secuencias de comandos específicas. Esto te permite crear atajos o accesos rápidos para acciones frecuentes.
+
+3. Definición de comandos y funciones: Puedes definir tus propios comandos y funciones en Vimscript. Esto te permite crear nuevas funcionalidades y automatizar tareas complejas.
+
+4. Variables y estructuras de control: Vimscript admite variables para almacenar y manipular datos. También cuenta con estructuras de control como condicionales (if-else), bucles (for, while) y manejo de excepciones.
+
+5. Interacción con el entorno de Vim: Vimscript proporciona funciones para interactuar con el entorno de Vim, como acceder a las opciones de configuración, leer y escribir archivos, gestionar ventanas y pestañas, entre otros.
+
+Vimscript es altamente personalizable y flexible, lo que permite a los usuarios adaptar Vim a sus necesidades y preferencias específicas. Además, Vimscript es compatible con complementos y scripts de terceros, lo que amplía aún más las capacidades de Vim.
+
+Es importante destacar que Vimscript es específico de Vim y no se puede utilizar fuera del contexto del editor.
+
+
+
+
+
+```lua
 
 $ + a + ; Esc
 j + $ + .
 
-
 Shift + k
-
-
-
-
-
 
 w
 
@@ -644,11 +700,7 @@ e
 
 10 j 
 
-
-
 * Debes posicionarte en la pabra a buscar encontras palabras iguales
-
-
 
 buscar el cierre de un parentesis
 
@@ -657,7 +709,6 @@ gg al inicio
 GG al final
 
 15 G ir a la linea 15
-
 
 
 x borrar letra delantera
@@ -682,13 +733,15 @@ N: retrocede en las coincidencias encontradas
 
 /o$ : Buscar con expresiones regulares
 :%s/que/con/g : s de sustituir
-
-
-
-renombrar un archivo en la terminal
 ```
+
+
+Renombrar un archivo en la terminal
+
+```bash
 mv nombre_actual nuevo_nombre
 ```
+
 ## Practicar
 
 vim-adventures.com
