@@ -556,21 +556,75 @@ Ahora para instalar el plugin solo ejecutar dentro de Vim:
 :PlugInstall
 ```
 
+Este gestor nos permite actualizar, limpiar archivos innecesarios, etc.
+
 #### 3. Vundle
 
-Buscar y clonar vundle.vim
+Este gestor de plugin se parece a Vim-Plug aun que es algo mas engorroso.
 
+Buscar [Vundle.vim](https://github.com/VundleVim/Vundle.vim) y clonamos lo siguiente dentro de `.vim`:
+
+```bash
+git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 ```
-set cocompatible
+
+Ahora debemos configurarlo:
+
+```bash
+vim vimrc
+```
+
+```lua
+set nocompatible
 filetype off
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'tpope/vim-fugitive'
+call vundle#end()
+filetype plugin indent on
 ```
 
-#### Pathogen
+Salimos y volvemos a entrar para cargar la nueva configuración y poder instalar los plugins.
+
+```lua
+:PluginInstall
+```
+
+#### 4. Pathogen
+
+Este método es más avanzado que usar los gestores de paquetes. Este no es un gestor de plugins sino un programa para manejar el runtime path de vim con facilidad.
+
+Buscamos [vim-pathogen](https://github.com/tpope/vim-pathogen) y buscamos la **installation**:
+
+Ejecutamos el comando dentro de `.vim`.
+
+```bash
+mkdir -p ~/.vim/autoload ~/.vim/bundle && \
+curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
+```
+
+Ahora en la configuración en `vimrc`:
+
+```lua
+execute pathogen#infect()
+```
+
+Para instalar paquetes solo debemos clonar los repositorios con el plugin en el directorio `bundle` que ha creado antes.
+
+Para el ejemplo usaremos el plugin [vim-sensible](https://github.com/tpope/vim-sensible) que permite tener una configuración básica que todo un equipo puede usar.
+
+```bash
+cd ~/.vim/bundle && \
+git clone https://github.com/tpope/vim-sensible.git
+```
+
+Ahora ya podemos probar el plugin.
+
+[Tutorial](https://www.youtube.com/watch?v=vEuPg_XEsak)
 
 
-vim-pathogen
 
-https://www.youtube.com/watch?v=vEuPg_XEsak
 vimscript
 
 $ + a + ; Esc
@@ -629,7 +683,6 @@ N: retrocede en las coincidencias encontradas
 /o$ : Buscar con expresiones regulares
 :%s/que/con/g : s de sustituir
 
-u: deshacer el ultimo cambio hecho
 
 
 renombrar un archivo en la terminal
