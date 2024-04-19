@@ -435,9 +435,21 @@ Ejecutamos el siguiente comando para abrir el archivo de las configuraciones de 
 Según tus preferencias puedes ver qué configuraciones te convienen:
 
 ```lua
-# Cursor al final de la línea
-set virtualedit=onemore
-nnoremap $ $l
+# Desactivar el modo de compatibilidad con vi
+set nocompatible
+
+# Ajuste automático del texto que sobrepasa la longitud de la pantalla
+set wrap
+
+# Especificar el conjunto de caracteres
+set encoding=utf-8
+
+# Activar la numeración / numeración relativa
+set number
+set relativenumber
+
+# Barra de estado
+set laststatus=2
 
 # Tabulación o Indentación
 ## Número de espacios para una tabulación
@@ -449,12 +461,13 @@ set shiftwidth=2
 ## Utilizar espacios en lugar de tabulaciones
 set expandtab
 
-# Activar la numeración / numeración relativa
-set number
-set relativenumber
-
 # Activar resaltado de sintaxis
 syntax enable
+syntax on
+
+# Cursor al final de la línea (no recomendado)
+set virtualedit=onemore
+nnoremap $ $l
 ```
 
 #### Otros
@@ -558,9 +571,109 @@ Ahora para instalar el plugin solo ejecutar dentro de Vim:
 
 Este gestor nos permite actualizar, limpiar archivos innecesarios, etc.
 
+##### Otra forma
+
+> En caso de algún error o problemas con este gestor, intenta con este otro tutorial:
+> [Intro to Vim Customization | Configuration and Plugins](https://www.youtube.com/watch?v=zE0hno3vV9M)
+
+```bash
+which vim
+vim ~/.vimrc
+```
+
+El archivo `.vimrc` debe tener esto: 
+
+```lua
+1   " Set compatibility to Vim only
+  1 set nocompatible
+  2 
+  3 " Automatically wrap text that extendes beyond the screen length
+  4 set wrap
+  5 
+  6 " Encoding
+  7 set encoding=utf-8
+  8 
+  9 " Show line numbers / Relative numbering
+ 10 set number
+ 11 set relativenumber
+ 12 
+ 13 " Status bar
+ 14 set laststatus=2
+ 15 
+ 16 " Indentation
+ 17 set tabstop=2
+ 18 set shiftwidth=2
+ 19 set expandtab
+ 20 
+ 21 " Set syntax highlighting
+ 22 syntax enable
+ 23 syntax on
+ 24 
+ 25 " Match Highlighting
+ 26 set hlsearch
+ 27 
+ 28 " Incremental search
+ 29 set incsearch
+ 30 
+ 31 " set cursorline
+```
+
+Guarda, cierra el archivo y ejecuta lo siguiente:
+
+```bash
+which curl
+touch ~/.vimrc.plug
+mkdir -p .vim/plug
+vim ~/.vimrc
+```
+
+Ahora añade esto:
+
+```lua
+ 33 " Call the .vimrc.plug file
+ 34 if filereadable(expand("~/.vimrc.plug"))
+ 35   source ~/.vimrc.plug
+ 36 endif
+```
+
+Guarda, cierra el archivo y ejecuta lo siguiente:
+
+```bash
+vim .vimrc.plug
+```
+
+Aquí podrás agregar los plugins que necesites:
+
+```lua
+1   call plug#begin('~/.vim/plugged')
+  1 
+  2   " Fugitive Vim GitHub Wrapper
+  3   Plug 'tpope/vim-fugitive'
+  4 
+  5 call plug#end()
+```
+
+Guarda, cierra el archivo y ejecuta lo siguiente. Ahora debemos instalar el gestor **vim-plug** para lo cual necesitas tener instalado previamente **Git**.
+
+```bash
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
+vim
+
+# Si no tienes instalado Git puedes usar:
+apt install git
+vim
+```
+
+Por último:
+
+```lua
+:PlugInstall
+```
+
 #### 3. Vundle
 
-Este gestor de plugin se parece a Vim-Plug aun que es algo mas engorroso.
+Este gestor de plugin se parece a Vim-Plug aunque es algo más engorroso.
 
 Buscar [Vundle.vim](https://github.com/VundleVim/Vundle.vim) y clonamos lo siguiente dentro de `.vim`:
 
@@ -593,7 +706,7 @@ Salimos y volvemos a entrar para cargar la nueva configuración y poder instalar
 
 #### 4. Pathogen
 
-Este método es más avanzado que usar los gestores de paquetes. Este no es un gestor de plugins sino un programa para manejar el runtime path de vim con facilidad.
+Este método es más avanzado que usar los gestores de paquetes. Este no es un gestor de plugins, sino un programa para manejar el runtime path de Vim con facilidad.
 
 Buscamos [vim-pathogen](https://github.com/tpope/vim-pathogen) y buscamos la **installation**:
 
@@ -661,7 +774,6 @@ rm ~/.viminfo
 ```bash
 sudo apt autoremove
 ```
-
 
 ## vimscript
 
@@ -740,6 +852,12 @@ Renombrar un archivo en la terminal
 
 ```bash
 mv nombre_actual nuevo_nombre
+```
+
+Copiar un archivo a otro lado:
+
+```bash
+cp ruta_origen ruta_destino
 ```
 
 ## Practicar
