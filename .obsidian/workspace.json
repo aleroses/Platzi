@@ -14,7 +14,7 @@
               "type": "markdown",
               "state": {
                 "file": "DW/2-intermedio/vim/vim.md",
-                "mode": "source",
+                "mode": "preview",
                 "source": true
               }
             }
@@ -69,8 +69,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 265.5,
-    "collapsed": true
+    "width": 265.5
   },
   "right": {
     "id": "9d672530b5364132",
@@ -150,6 +149,8 @@
   },
   "active": "511a3c9688a1e813",
   "lastOpenFiles": [
+    "DW/2-intermedio/vim/configs/karabiner.json",
+    "DW/2-intermedio/vim/configs",
     "others/git.md",
     "DW/1-basico/003-prework/entorno-linux/commands.md",
     "DW/1-basico/003-prework/entorno-linux/visual-studio-code.md",
@@ -170,7 +171,6 @@
     "DW/2-intermedio/016.fundamentos-typescript/resources/code/ts-project/node_modules/typescript/lib/lib.esnext.intl.d.ts",
     "DW/2-intermedio/016.fundamentos-typescript/resources/code/ts-project/node_modules/typescript/lib/lib.esnext.full.d.ts",
     "DW/2-intermedio/016.fundamentos-typescript/resources/code/ts-project/node_modules/typescript/lib/lib.esnext.decorators.d.ts",
-    "DW/2-intermedio/016.fundamentos-typescript/resources/code/ts-project/node_modules/typescript/lib/lib.esnext.disposable.d.ts",
     "DW/2-intermedio/016.fundamentos-typescript/resources/code/ts-project/node_modules/typescript/SECURITY.md",
     "DW/2-intermedio/016.fundamentos-typescript/resources/code/ts-project/node_modules/typescript/README.md",
     "DW/2-intermedio/016.fundamentos-typescript/fundamentos-typescript.md",
@@ -194,7 +194,6 @@
     "DW/2-intermedio/014.api-rest-js/1.api-rest-js-fundamentos/resources/img/14.ver-api-key.png",
     "DW/2-intermedio/014.api-rest-js/2.api-rest-js-ejemplos/api-rest-ejemplos.md",
     "DW/2-intermedio/014.api-rest-js/1.api-rest-js-fundamentos/api-rest-js-fundamentos.md",
-    "DW/2-intermedio/013.expresiones-regulares/RegExp.md",
-    "DW/2-intermedio/012.asincronismo-js/resources/code/asincronismo/node_modules/xmlhttprequest/README.md"
+    "DW/2-intermedio/013.expresiones-regulares/RegExp.md"
   ]
 }
