@@ -241,6 +241,15 @@ Vim también ofrece variantes del comando `cw` para cambiar palabras específica
 - `ciw` cambia solo la palabra, sin incluir espacios en blanco adyacentes.
 - `c$` cambia desde la posición actual del cursor hasta el final de la línea.
 
+Borrar todo el contenido:
+
+```lua
+gg + V + G + d
+
+# También puedes copiarlo
+gg + V + G + y
+```
+
 ### Deshacer 
 
 Si por error borramos algo podemos deshacer esos cambios:
@@ -735,6 +744,23 @@ git clone https://github.com/tpope/vim-sensible.git
 Ahora ya podemos probar el plugin.
 
 [Tutorial](https://www.youtube.com/watch?v=vEuPg_XEsak)
+
+## Plugins que uso
+
+```lua
+call plug#begin('~/.vim/plugged')
+
+  " Fugitive Vim GitHub Wrapper
+  Plug 'tpope/vim-fugitive'
+ 
+  " Syntax
+  Plug 'sheerun/vim-polyglot'
+
+  " Tree
+  Plug 'preservim/nerdtree'
+
+call plug#end()
+```
 
 ## Instalar Vim
 
