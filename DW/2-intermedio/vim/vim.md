@@ -104,6 +104,15 @@ h
 > En lugar de usar las flechas del teclado Vim usa las teclas h, j, k y l para navegar por el código o texto.
 ```
 
+Para saltar entre palabras:
+```lua
+# Adelantar
+w
+
+# Retroceder
+b
+```
+
 Para moverme al inicio de una fila puedo usar:
 
 ```lua
@@ -175,6 +184,11 @@ Borrar líneas enteras:
 ```lua
 # Eliminar/cortar una línea entera
 dd
+
+## Eliminar una palabra
+b + dw
+db + x
+daw 👈👀 Delete a word
 
 ## Pegar
 p
@@ -285,6 +299,34 @@ En Vim, tanto el comando `.` (punto) como el comando `;` (punto y coma) se utili
 # Pepetir el último cambio realizado pero en reversa
 ,
 ```
+
+### Incrementar y decrementar
+
+Si tienes un número y quieres incrementarlo, solo presiona `Ctrl + a` estando en el modo normal. Esto hará un incremento de uno en uno.
+
+Ejemplo:
+
+```js
+const number = |2;
+
+# Despues de presionar Ctrl + a
+const number = |3;
+```
+
+Para incrementar en un número dado, debes presionar previamente, por ejemplo 10 seguido de `Ctrl + a`.
+
+Ejemplo:
+
+```js
+const number = |2;
+
+# Despues de presionar 10 + Ctrl + a
+const number = |12;
+```
+
+Para disminuir un número usar `Ctrl + x`.
+
+> En caso el cursor no esté situado sobre algún número, el atajo `Ctrl + a or Ctrl + x` saltará hasta el siguiente número existente en esa línea y hará el incremento o decremento.
 
 ### Buscar
 
@@ -761,6 +803,9 @@ call plug#begin('~/.vim/plugged')
 
 call plug#end()
 ```
+
+Revisar [nschurmann/configs](https://github.com/nschurmann/configs)
+
 
 ## Instalar Vim
 
