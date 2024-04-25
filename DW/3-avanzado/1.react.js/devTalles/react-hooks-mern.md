@@ -90,7 +90,7 @@ Ahora en el fichero **settings.json** añade la siguiente propiedad al objeto 
 	"editorBracketHighlight.foreground3": "#F7C244",
 	"editorBracketHighlight.foreground4": "#F07850",
 	"editorBracketHighlight.foreground5": "#97c26c",
-	 "editorBracketHighlight.foreground6": "#C497D4",
+	"editorBracketHighlight.foreground6": "#C497D4",
 	"editorBracketHighlight.unexpectedBracket.foreground": "#fb6165"
 },
 ```
@@ -113,4 +113,30 @@ Ahora en el fichero **settings.json** añade la siguiente propiedad al objeto 
 
 [Instalaciones recomendadas](https://gist.github.com/Klerith/4a4abfd88a88b2d1f16efd95fea41362)
 
-### 
+### 🟣 ¡Únete a Nuestra Comunidad de DevTalles en Discord!
+
+**¿Cómo unirse?**
+
+- Haz clic en el siguiente enlace de invitación: [Comunidad DevTalles](https://discord.gg/pBjEVYTC7t)
+
+## 2. Introducción a React y conceptos generales
+
+### 🟣 Introducción a la sección
+
+### 🟣 Temas puntuales de la sección
+
+**¿Qué aprenderemos en esta sección?**
+
+- ¿Qué es React?
+- Conceptos generales
+- Babel
+- JSX
+
+Daremos nuestros primeros pasos y una pequeña aplicación que nos ayudará a perderle el miedo a React rápidamente
+
+### 🟣
+
+
+### 🟣
+
+### 🟣
