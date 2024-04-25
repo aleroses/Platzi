@@ -4,16 +4,16 @@
     "type": "split",
     "children": [
       {
-        "id": "fb3e695af300a1b2",
+        "id": "cc9be1314217e8df",
         "type": "tabs",
         "children": [
           {
-            "id": "511a3c9688a1e813",
+            "id": "2b4915c51d264741",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "DW/2-intermedio/vim/vim.md",
+                "file": "DW/3-avanzado/1.react.js/devTalles/react-hooks-mern.md",
                 "mode": "source",
                 "source": true
               }
@@ -69,7 +69,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 265.5
+    "width": 265.5,
+    "collapsed": true
   },
   "right": {
     "id": "9d672530b5364132",
@@ -85,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "DW/2-intermedio/vim/vim.md",
+                "file": "DW/3-avanzado/1.react.js/devTalles/react-hooks-mern.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +103,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "DW/2-intermedio/vim/vim.md",
+                "file": "DW/3-avanzado/1.react.js/devTalles/react-hooks-mern.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +126,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "DW/2-intermedio/vim/vim.md"
+                "file": "DW/3-avanzado/1.react.js/devTalles/react-hooks-mern.md"
               }
             }
           }
@@ -147,8 +148,9 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "c088c299f43625c6",
+  "active": "2b4915c51d264741",
   "lastOpenFiles": [
+    "DW/2-intermedio/vim/vim.md",
     "DW/2-intermedio/vim/Personal-configuration/vimrc-plug.md",
     "DW/2-intermedio/vim/Personal-configuration/vimrc.md",
     "DW/2-intermedio/vim/Personal-configuration",
@@ -193,7 +195,6 @@
     "DW/2-intermedio/014.api-rest-js/1.api-rest-js-fundamentos/resources/img/evidencia01.png",
     "DW/2-intermedio/014.api-rest-js/1.api-rest-js-fundamentos/resources/img/nota.png",
     "DW/2-intermedio/014.api-rest-js/1.api-rest-js-fundamentos/resources/img/14.ver-api-key.png",
-    "DW/2-intermedio/014.api-rest-js/2.api-rest-js-ejemplos/api-rest-ejemplos.md",
-    "DW/2-intermedio/014.api-rest-js/1.api-rest-js-fundamentos/api-rest-js-fundamentos.md"
+    "DW/2-intermedio/014.api-rest-js/2.api-rest-js-ejemplos/api-rest-ejemplos.md"
   ]
 }
