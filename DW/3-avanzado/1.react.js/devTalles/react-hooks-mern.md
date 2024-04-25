@@ -85,17 +85,15 @@ Ahora en el fichero **settings.json** añade la siguiente propiedad al objeto 
 
 ```json
 "workbench.colorCustomizations": {
-  "editorBracketHighlight.foreground1": "#fafafa",
-  "editorBracketHighlight.foreground2": "#9F51B6",
-  "editorBracketHighlight.foreground3": "#F7C244",
-  "editorBracketHighlight.foreground4": "#F07850",
-  "editorBracketHighlight.foreground5": "#97c26c",
-  "editorBracketHighlight.foreground6": "#C497D4",
-  "editorBracketHighlight.unexpectedBracket.foreground": "#fb6165"
+	"editorBracketHighlight.foreground1": "#fafafa",
+	"editorBracketHighlight.foreground2": "#9F51B6",
+	"editorBracketHighlight.foreground3": "#F7C244",
+	"editorBracketHighlight.foreground4": "#F07850",
+	"editorBracketHighlight.foreground5": "#97c26c",
+	 "editorBracketHighlight.foreground6": "#C497D4",
+	"editorBracketHighlight.unexpectedBracket.foreground": "#fb6165"
 },
 ```
-
-
 
 #### Temas que estoy usando en VSCode:
 
