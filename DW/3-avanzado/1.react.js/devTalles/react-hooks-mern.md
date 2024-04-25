@@ -2,19 +2,21 @@
 
 ## 1. Introducción
 
-### Introducción al curso
+### 🟣 Introducción al curso
 
 Se recomienda hacer las tareas de cada sección.
 
-### ¿Cómo funcionará el curso?
+### 🟣 ¿Cómo funcionará el curso?
 
 Trata de ver el curso en secuencia.
 
-### ¿Cómo hacer preguntas?
+### 🟣 ¿Cómo hacer preguntas?
 
-Revisa la sección de Discusión y crea un Post (trata de agregar toda la información de una sola vez).
+Revisa la sección de **Discusión** y crea un **Post**.
 
-### Instalaciones necesarias y recomendadas
+> Trata de agregar toda la información de una sola vez y de ser necesario deja tu código en un repositorio alojado en GitHub para que pueda ser revisado por los instructores y así puedan darte mucho mejor soporte.
+
+### 🟣 Instalaciones necesarias y recomendadas
 
 #### Instalaciones Necesarias
 
