@@ -134,8 +134,44 @@ Ahora en el fichero **settings.json** añade la siguiente propiedad al objeto 
 
 Daremos nuestros primeros pasos y una pequeña aplicación que nos ayudará a perderle el miedo a React rápidamente
 
-### 🟣
+### 🟣 ¿Qué es React?
 
+- Librería: Para aplicaciones sencillas, intermedias y robustas.
+- Declarativa: Es fácil de seguir patrones de diseño y crear UI interactivas.
+- Eficiente: Los cambios se hacen solo en el elemento que se modificó.
+- Predecible:
+- Componentes: Pequeñas piezas encapsuladas fáciles de mantener.
+- Server-side con Node
+- Aplicaciones móviles con React Native.
+
+¿Cómo luce el código de React?
+
+```html
+<div id="root"></div>
+```
+
+```jsx
+const root = document.querySelector("#root");
+ReactDOM.render(<h1>Hola mundo cruel</h1>, root);
+```
+
+También:
+
+```html
+<div id="root"></div>
+```
+
+```jsx
+const root = document.querySelector("#root");
+const tag = <h1>Hola mundo cruel</h1> // JSX
+ReactDOM.render(tag, root);
+```
+
+El código JSX se podría crear de la siguiente manera:
+
+```jsx
+const tag = document.createElement('h1', null, `Hola, soy ${nombre}`)
+```
 
 ### 🟣
 
