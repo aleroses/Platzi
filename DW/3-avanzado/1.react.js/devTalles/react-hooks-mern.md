@@ -173,6 +173,63 @@ El código JSX se podría crear de la siguiente manera:
 const tag = document.createElement('h1', null, `Hola, soy ${nombre}`)
 ```
 
-### 🟣
+### 🟣 Primeros pasos en React
+
+Creamos una carpeta para empezar a trabajar:
+
+```bash
+.
+├── 01-intro-react 👈👀
+├── 02-intro-js
+└── 03-counter-app
+```
+
+Abrimos el primer archivo usando Visual Studio Code y añadimos lo siguiente:
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+
+    <!-- Cargar React -->
+    <script
+      crossorigin
+      src="https://unpkg.com/react@16/umd/react.production.min.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"
+    ></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+    <title>React</title>
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+      const divRoot = document.querySelector("#root");
+      const name = "Ale Roses";
+      const h1Tag = <h1>Hi {name}</h1>;
+
+      ReactDOM.render(h1Tag, divRoot);
+    </script>
+  </body>
+</html>
+```
+
+Primero cargamos las bibliotecas de React y Babel. Añadimos algo de código para empezar a trabajar como se hace con React.
+
+Para que el código no nos dé ningún error debemos agregar `type="text/babel"` dentro de la etiqueta `script`.
+
+Si tienes la extensión `Live Server` solo das clic derecho **Open with live Server**.
+
+Ahora puedes abrir los dev tools con `Ctrl + Shift + i`
+
 
 ### 🟣
