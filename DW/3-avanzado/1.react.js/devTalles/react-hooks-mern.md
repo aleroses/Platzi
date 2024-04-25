@@ -56,19 +56,46 @@ git config --global user.email "john.l@mail.com"
 
 #### Configuración del Bracket Pair Colorizer 2
 
-Brakcet Pair está obsoleto, pero lo pueden seguir usando si quieren
+Brakcet Pair está obsoleto.
 [Obsoleto - Bracket Pair Colorizer 2](https://marketplace.visualstudio.com/items?itemName=CoenraadS.bracket-pair-colorizer-2)
 
-```json
-"bracket-pair-colorizer-2.colors": [
-    "#fafafa",
-    "#9F51B6",
-    "#F7C244",
-    "#F07850",
-    "#9CDD29",
-    "#C497D4"
-],
+Solución:
+
+- Presiona F1 para abrir búsqueda en VS Code.
+- Busca Open Settings (UI)
+- En Search settings copia y pega esto: 
+
 ```
+"@id:editor.bracketPairColorization.enabled [@id:editor.guides.bracketPairs](https://id:editor.guides.bracketPairs/)"
+```
+
+También puedes usar el atajo `Ctrl + ,` y pegas en el buscador lo mostrado arriba.
+  
+Ahora asegúrate de que: 
+
+> Editor > Bracket Pair Colorization: Enabled está marcado con un tick mark (activo)
+
+---
+
+> Editor > Guides. Bracket Pairs tiene la opción de "active" seleccionada.
+
+A continuación haz de nuevo F1 y busca Open User Settings (JSON) o usa el atajo `Ctrl + ,` y busca el icono 📄 Open Settings (JSON)
+
+Ahora en el fichero **settings.json** añade la siguiente propiedad al objeto json:
+
+```json
+"workbench.colorCustomizations": {
+  "editorBracketHighlight.foreground1": "#fafafa",
+  "editorBracketHighlight.foreground2": "#9F51B6",
+  "editorBracketHighlight.foreground3": "#F7C244",
+  "editorBracketHighlight.foreground4": "#F07850",
+  "editorBracketHighlight.foreground5": "#97c26c",
+  "editorBracketHighlight.foreground6": "#C497D4",
+  "editorBracketHighlight.unexpectedBracket.foreground": "#fb6165"
+},
+```
+
+
 
 #### Temas que estoy usando en VSCode:
 
