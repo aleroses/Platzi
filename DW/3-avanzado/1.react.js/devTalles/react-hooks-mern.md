@@ -231,5 +231,99 @@ Si tienes la extensión `Live Server` solo das clic derecho **Open with live Ser
 
 Ahora puedes abrir los dev tools con `Ctrl + Shift + i`
 
+[**React-index.html - Demo**](https://gist.github.com/Klerith/b0111f52ba16451d095f38d4c995605b)
 
-### 🟣
+### 🟣 Introducción a Babel
+
+#### Babel
+
+Babel es un "compilador" (o transpilador) para JavaScript. Básicamente permite transformar código escrito con las últimas y novedosas características de JavaScript y transformarlo en un código que sea entendido por navegadores más antiguos.
+
+[Babel](https://babeljs.io/)
+
+#### Dato sobre Babel y Vite
+
+Vite reemplaza a Babel o a Webpack en cierto modo. Al contrario que Babel o Webpack, Vite no compila el código de JavaScript durante el desarrollo, sino que realiza la transpilación del código en tiempo real durante el proceso de desarrollo.
+
+Esto se conoce como desarrollo en tiempo real o HMR (Hot Module Replacement). Aunque no reemplaza por completo a Babel o Webpack, Vite sigue siendo una herramienta muy poderosa y rápida para el desarrollo de aplicaciones web modernas.
+
+[**Babeljs.io - Sitio oficial**](https://babeljs.io/)
+
+## 3. Introducción a JavaScript moderno
+
+### 🟣 Introducción a la sección
+
+Sigan los videos al pie de la letra...
+
+### 🟣 Temas puntuales de la sección
+
+**¿Qué aprenderemos en esta sección?**
+
+- Generar la base sobre JavaScript
+- Constantes y variables Let
+- Template String
+- Objetos literales
+- Arreglos
+- Desestructruación * (sumamente importante)
+- Promesas
+- Fetch API
+- Ternarios
+- Async - Await
+
+Mi objetivo aquí es que tengamos las bases que nos ayuden a que podamos diferenciar fácilmente qué es propio de React y qué es propio de JavaScript. Estos conceptos y ejercicios nos ayudarán a suavizar la curva de aprendizaje de React.
+
+### 🟣 Inicio de proyecto - Bases de JavaScript
+
+Entramos a la carpeta para empezar a trabajar, en este caso con Create React App (CRA):
+
+```bash
+.
+├── 01-intro-react
+├── 02-intro-js 👈👀
+└── 03-counter-app
+```
+
+Para crear un proyecto de React con CRA debemos usar el siguiente comando:
+
+```bash
+npx create-react-app 02-intro-js 👈👀
+cd 02-intro-js
+code .
+npm start
+```
+
+La estructura de CRA se ve así:
+
+```bash
+❯ tree -L 2
+.
+├── node_modules 👈👀 # Muchos archivos
+│   ├── @aashutoshrathi
+│   ├── abab
+│   ├── accepts 
+├── package.json
+├── package-lock.json
+├── public
+│   ├── favicon.ico
+│   ├── index.html
+│   ├── logo192.png
+│   ├── logo512.png
+│   ├── manifest.json
+│   └── robots.txt
+├── README.md
+└── src 👈👀
+    ├── App.css
+    ├── App.js
+    ├── App.test.js
+    ├── index.css
+    ├── index.js
+    ├── logo.svg
+    ├── reportWebVitals.js
+    └── setupTests.js
+
+871 directories, 17 files
+```
+
+Para el ejemplo borramos todo el contenido de la carpeta `src` y dentro creamos el archivo `index.js`.
+
+[**create-react-app - Official Website**](https://create-react-app.dev/)
