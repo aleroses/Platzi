@@ -410,10 +410,80 @@ Recomiendo usar la extensión **JavaScript Auto Backticks** que nos permite aña
 
 Si escribimos `"${}"` automáticamente los genera `${name}`
 
-### 🟣 
+### 🟣 Objetos literales
 
 ```js
+const person = {
+  name: "Ale",
+  lastName: "Roses",
+  age: 28,
+  address: {
+    city: "New York",
+    zip: 1234,
+    lat: 14.2324,
+    lng: 34.3003,
+  },
+};
+
+const human = { ...person };
+
+console.log(person);
+console.log(human);
+console.log({ person, human });
 ```
+
+**Recursividad** par hacer una copia profunda:
+
+```js
+const person = {
+  name: "Ale",
+  lastName: "Roses",
+  age: 28,
+  address: {
+    city: "New York",
+    zip: 1234,
+    lat: 14.2324,
+    lng: 34.3003,
+    x: {
+      city: "New York",
+      zip: 1234,
+      lat: 14.2324,
+      lng: 34.3003,
+    },
+    y: [
+      "city",
+      "New York",
+      "zip",
+      1234,
+      "lat",
+      14.2324,
+      "lng",
+      34.3003,
+    ],
+  },
+};
+
+/* En JS todo es un objeto: {} / []  */
+const deepCopy = (obj) => {
+  if (typeof obj !== "object" || obj === null) {
+    return obj;
+  }
+
+  const newObj = Array.isArray(obj) ? [] : {};
+
+  for (const key in obj) {
+    if (obj.hasOwnProperty(key)) {
+      newObj[key] = deepCopy(obj[key]);
+    }
+  }
+
+  console.log(newObj);
+  return newObj;
+};
+
+deepCopy(person);
+```
+
 
 ### 🟣 
 
