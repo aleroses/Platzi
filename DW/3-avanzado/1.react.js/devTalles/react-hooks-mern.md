@@ -688,10 +688,17 @@ export { heroes };
 
 [**Mozilla Mdn: Find**](https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Array/find)|
 
-### 🟣 
+### 🟣 Múltiples exportaciones y exportaciones por defecto
 
 ```js
+// En lo personal no me gusta esta forma
+import heroes, { owner } from "../data/heroes.js";
+
+// Prefiero esto
+import { heroes, owner } from "../data/heroes.js";
 ```
+
+En el primer ejemplo, `heroes` es una exportación por defecto y la `owner` no.
 
 ### 🟣 
 
