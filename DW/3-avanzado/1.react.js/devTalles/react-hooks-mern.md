@@ -645,7 +645,7 @@ const getHeroesByOwner = (owner) => {
   return heroes.filter((hero) => hero.owner === owner);
 };
 
-// console.log(getHeroesByOwner("DC"));
+console.log(getHeroesByOwner("DC"));
 
 export { getHeroById, getHeroesByOwner };
 ```
