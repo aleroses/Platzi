@@ -516,7 +516,7 @@ function gretting(name) {
 console.log(gretting("Goku"));
 ```
 
-Otra forma mas moderna:
+Otros ejemplos:
 
 ```js
 const gretting = (name) => {
@@ -542,9 +542,51 @@ const activeUser = getActiveUser("Ale");
 console.log(activeUser);
 ```
 
-### 🟣 
+### 🟣 Desestructuración de Objetos
 
 ```js
+// Desestructuración
+// Asignación Desestructurante
+
+const person = {
+  name: "Ale",
+  year: 45,
+  key: "Ironman",
+  rank: "Soldier",
+};
+
+const { year, key, name: nameTwo } = person;
+
+// console.log(nameTwo, year, key);
+
+const useContext = ({
+  name,
+  key,
+  year,
+  rank = "Captain",
+}) => {
+  // const { year, key, name: nameTwo } = user;
+  // console.log(name, year, rank);
+
+  return {
+    name: key,
+    anios: year,
+    latlng: {
+      lat: 14.1234,
+      lng: -12.2323,
+    },
+  };
+};
+
+const {
+  name,
+  anios,
+  latlng: { lat, lng },
+} = useContext(person);
+
+// const { lat, lng } = latlng;
+
+console.log(name, anios, lat, lng);
 ```
 
 ### 🟣 
