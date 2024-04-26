@@ -502,9 +502,44 @@ let newArray3 = newArray2.map((n) => n * 2);
 console.log(newArray, newArray2, newArray3);
 ```
 
-### 🟣 
+[**Mozilla MDN: Array.map()**](https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Array/map)
+
+### 🟣 Funciones
 
 ```js
+// Functions en Js
+
+function gretting(name) {
+  return `Hello, ${name}`;
+}
+
+console.log(gretting("Goku"));
+```
+
+Otra forma mas moderna:
+
+```js
+const gretting = (name) => {
+  return `Hello, ${name}`;
+};
+
+console.log(gretting("Goku"));
+
+const getUser = () => ({
+  uid: "ABC123",
+  username: "The-crazy-man",
+});
+
+const user = getUser();
+console.log(user);
+
+const getActiveUser = (name) => ({
+  uid: "ABC567",
+  username: name,
+});
+
+const activeUser = getActiveUser("Ale");
+console.log(activeUser);
 ```
 
 ### 🟣 
