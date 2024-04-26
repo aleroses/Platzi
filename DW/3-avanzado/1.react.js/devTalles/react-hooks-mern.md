@@ -632,10 +632,61 @@ Para seleccionar todas las coincidencias de una palabra, solo debes posar el cur
 
 Otra opción sería presionar `F2` y darle el nuevo nombre a la variable o fracción de código que se desea modificar.
 
-### 🟣 
+### 🟣 Import, export y funciones comunes de arreglos
 
 ```js
+import { heroes } from "../data/heroes.js";
+
+const getHeroById = (id) => {
+  return heroes.find((value) => value.id === id);
+};
+
+const getHeroesByOwner = (owner) => {
+  return heroes.filter((hero) => hero.owner === owner);
+};
+
+// console.log(getHeroesByOwner("DC"));
+
+export { getHeroById, getHeroesByOwner };
 ```
+
+`data > heroes.js`
+
+```js
+const heroes = [
+  {
+    id: 1,
+    name: "Batman",
+    owner: "DC",
+  },
+  {
+    id: 2,
+    name: "Spiderman",
+    owner: "Marvel",
+  },
+  {
+    id: 3,
+    name: "Superman",
+    owner: "DC",
+  },
+  {
+    id: 4,
+    name: "Flash",
+    owner: "DC",
+  },
+  {
+    id: 5,
+    name: "Wolverine",
+    owner: "Marvel",
+  },
+];
+
+export { heroes };
+```
+
+**[Heroes.js](https://gist.github.com/Klerith/4aeb99d31aedbc29ff4d54bbb77d2d7f)**
+
+[**Mozilla Mdn: Find**](https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Array/find)|
 
 ### 🟣 
 
