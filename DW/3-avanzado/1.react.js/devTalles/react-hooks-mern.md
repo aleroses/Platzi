@@ -700,6 +700,64 @@ import { heroes, owner } from "../data/heroes.js";
 
 En el primer ejemplo, `heroes` es una exportación por defecto y la `owner` no.
 
+### 🟣 Promesas
+
+```js
+import { getHeroById } from "./08-imp-exp.mjs";
+
+const promise = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    const data = getHeroById(2);
+
+    resolve(data);
+    reject("Id not found");
+  }, 2000);
+});
+
+promise
+  .then((response) => console.log(response))
+  .catch((err) => console.warn(err));
+```
+
+Otro ejemplo:
+
+```js
+import { getHeroById } from "./08-imp-exp.mjs";
+
+const getHeroByIdAsync = (id) => {
+  const promise = new Promise((resolve, reject) => {
+    setTimeout(() => {
+      const data = getHeroById(id);
+
+      data ? resolve(data) : reject("Id not found");
+    }, 2000);
+  });
+
+  return promise;
+};
+
+getHeroByIdAsync(14).then(console.log).catch(console.warn);
+```
+
+📌 Si no te sale el `import` automáticamente sitúate en la parte superior y escribe el nombre, en este caso `getHeroeById` y verás como te sale para importar automáticamente. En caso escribas el nombre de la función a importar y no te la importe, puedes abrir el archivo donde está esa función, esto hará que importe y autocomplete la ubicación exacta de esa función.
+
+[**Mozilla MDN: Promesas**](https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Promise)
+
+### 🟣 
+
+```js
+```
+
+### 🟣 
+
+```js
+```
+
+### 🟣 
+
+```js
+```
+
 ### 🟣 
 
 ```js
