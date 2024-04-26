@@ -385,7 +385,7 @@ Creamos un respaldo con la siguiente estructura.
 
 Al final de esta sección tendremos dentro de la carpeta `bases` todos nuestros respaldos.
 
-Para mas detalles sobre variables ver los [Apuntes js-básico](https://github.com/aleroses/Platzi/blob/master/DW/2-intermedio/001-js-basico/js-basico.md#4-variables-en-javascript)
+Para más detalles sobre variables ver los [Apuntes js-básico](https://github.com/aleroses/Platzi/blob/master/DW/2-intermedio/001-js-basico/js-basico.md#4-variables-en-javascript)
 
 ### 🟣 Template String
 
@@ -483,6 +483,8 @@ const deepCopy = (obj) => {
 
 deepCopy(person);
 ```
+
+Si quieres probar el código sin salir de VSC puedes usar la extensión **Code Runner**.
 
 ### 🟣 Arreglos
 
@@ -589,10 +591,46 @@ const {
 console.log(name, anios, lat, lng);
 ```
 
-### 🟣 
+[**Mozilla MDN: Asignación Desestructurante**](https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment)
+
+### 🟣 Desestructuración de Arreglos
 
 ```js
+const characters = ["Goku", "Vegeta", "Trunks"];
+
+const [, , c3] = characters;
+
+console.log(c3);
+
+const showArray = () => {
+  return ["ABC", 123];
+};
+
+const [one, two] = showArray();
+
+console.log(one, two);
+
+const useState = (value) => {
+  return [
+    value,
+    () => {
+      console.log("Hello world");
+    },
+  ];
+};
+
+const [name, setNumber] = useState("Goku");
+// arr[1]();
+
+console.log(name);
+setNumber();
 ```
+
+Para seleccionar todas las coincidencias de una palabra, solo debes posar el cursor sobre la palabra en cuestión y presionar:
+
+`Ctrl + Shift + l` o también `Ctrl + d`
+
+Otra opción sería presionar `F2` y darle el nuevo nombre a la variable o fracción de código que se desea modificar.
 
 ### 🟣 
 
