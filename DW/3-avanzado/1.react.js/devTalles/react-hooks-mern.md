@@ -386,3 +386,45 @@ Creamos un respaldo con la siguiente estructura.
 Al final de esta sección tendremos dentro de la carpeta `bases` todos nuestros respaldos.
 
 Para mas detalles sobre variables ver los [Apuntes js-básico](https://github.com/aleroses/Platzi/blob/master/DW/2-intermedio/001-js-basico/js-basico.md#4-variables-en-javascript)
+
+### 🟣 Template String
+
+```js
+const name = "Ale";
+const lastName = "Roses";
+
+const fullName = `${name} ${lastName}`;
+
+console.log(fullName);
+
+function getGreeting(name) {
+  return "He " + name;
+}
+
+console.log(`This a text: ${getGreeting("Ghost")}`);
+```
+
+> Para obtener sugerencias usar `Ctrl + Barra espaciadora`
+
+Recomiendo usar la extensión **JavaScript Auto Backticks** que nos permite añadir Backticks rápidamente.
+
+Si escribimos `"${}"` automáticamente los genera `${name}`
+
+### 🟣 
+
+```js
+```
+
+### 🟣 
+
+```js
+```
+
+### 🟣 
+
+```js
+```
+
+### 🟣 
+
+### 🟣 
