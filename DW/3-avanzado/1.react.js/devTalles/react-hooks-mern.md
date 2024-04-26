@@ -327,3 +327,62 @@ La estructura de CRA se ve así:
 Para el ejemplo borramos todo el contenido de la carpeta `src` y dentro creamos el archivo `index.js`.
 
 [**create-react-app - Official Website**](https://create-react-app.dev/)
+
+### 🟣 Variables y constantes
+
+```js
+// Variables y Constantes
+
+const name = "Ale";
+const lastName = "Roses";
+
+let value = 5;
+value = 4;
+
+console.log(name, lastName, value);
+
+if (true) {
+  let value = 10;
+  console.log(value);
+}
+
+console.log(value);
+```
+
+Creamos un respaldo con la siguiente estructura.
+
+```bash
+.
+├── node_modules
+├── package.json
+├── package-lock.json
+├── public
+│   ├── favicon.ico
+│   ├── index.html
+│   ├── logo192.png
+│   ├── logo512.png
+│   ├── manifest.json
+│   └── robots.txt
+├── README.md
+└── src
+    ├── bases 👈👀
+    │   ├── 01-const-let.js
+    │   ├── 02-backticks.js
+    │   ├── 03-obj-literal.js
+    │   ├── 04-array.js
+    │   ├── 05-functions.js
+    │   ├── 06-desest-obj.js
+    │   ├── 07-desest-arr.js
+    │   ├── 08-imp-exp.mjs
+    │   ├── 09-promises.js
+    │   ├── 10-fetch.js
+    │   ├── 11-async-await.js
+    │   └── 12-conditional-ternary.js
+    ├── data
+    │   └── heroes.js
+    └── index.js
+```
+
+Al final de esta sección tendremos dentro de la carpeta `bases` todos nuestros respaldos.
+
+Para mas detalles sobre variables ver los [Apuntes js-básico](https://github.com/aleroses/Platzi/blob/master/DW/2-intermedio/001-js-basico/js-basico.md#4-variables-en-javascript)
