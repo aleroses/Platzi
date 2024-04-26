@@ -484,6 +484,28 @@ const deepCopy = (obj) => {
 deepCopy(person);
 ```
 
+### 🟣 Arreglos
+
+```js
+// Arreglos en JS
+// const newArray = new Array();
+const newArray = [1, 2, 3];
+
+// NO recomendado (push)
+// newArray.push(1);
+// newArray.push(2);
+// newArray.push(3);
+
+let newArray2 = [...newArray, 4, 5];
+let newArray3 = newArray2.map((n) => n * 2);
+
+console.log(newArray, newArray2, newArray3);
+```
+
+### 🟣 
+
+```js
+```
 
 ### 🟣 
 
@@ -497,4 +519,20 @@ deepCopy(person);
 
 ### 🟣 
 
+```js
+```
+
 ### 🟣 
+
+```js
+```
+
+### 🟣 
+
+```js
+```
+
+### 🟣 
+
+```js
+```
