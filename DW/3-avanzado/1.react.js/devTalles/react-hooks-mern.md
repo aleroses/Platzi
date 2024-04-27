@@ -743,10 +743,47 @@ getHeroByIdAsync(14).then(console.log).catch(console.warn);
 
 [**Mozilla MDN: Promesas**](https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Promise)
 
-### 🟣 
+### 🟣 Fetch API
+
+Crea una cuenta en Giphy API y crea un `api key` con los siguientes pasos:
+
+- Entra en **Create an App**
+- Selecciona **API Selected**
+- **Next** 
+- Dale un nombre a la app con su respectiva descripción.
+- Por último dale a **Create App**.
+
+Para el ejemplo usaremos [Random Endpoint](https://developers.giphy.com/docs/api/endpoint/#random) que mostrara una imagen de manera aleatoria.
 
 ```js
+// Ingresa tu Api key en la url antes de pegarla en un navegador
+api.giphy.com/v1/gifs/random?api_key=xdCnnfEOEkSz4TEgLmMc09dBClFt99Ou
 ```
+
+Esto mostrará un objeto con mucha información.
+
+```js
+const apiKey = "xdCnnfEOEkSz4TEgLmMc09dBClFt99Ou";
+const getGiphy = fetch(
+  `https://api.giphy.com/v1/gifs/random?api_key=${apiKey}`
+);
+
+getGiphy
+  .then((response) => response.json())
+  .then(({ data }) => {
+    const { url } = data.images.original;
+
+    const img = document.createElement("img");
+    img.src = url;
+
+    document.body.append(img);
+  })
+  .catch(console.warn);
+```
+
+[**Giphy API**](https://developers.giphy.com/)
+
+[**Mozilla MDN: Fetch**](https://developer.mozilla.org/es/docs/Web/API/Fetch_API)
 
 ### 🟣 
 
