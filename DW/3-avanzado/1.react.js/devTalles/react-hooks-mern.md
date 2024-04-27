@@ -953,6 +953,39 @@ Si quieres ver como se hace con CRA puedes revisar la sección 3.
 
 [**Vite documentation**](https://vitejs.dev/)|
 
+### 🟣 Estructura de directorios - CRA
+
+En los proyectos creados con **NPM** se puede observar que tenemos el archivo `package-lock.json` que nos dice como fueron construidas las dependencias de los módulos de Node.
+
+```js
+```
+
+**[Referencia: Robots.txt](https://developers.google.com/search/docs/advanced/robots/intro?hl=es&visit_id=637909934831052162-4097033822&rd=1)**
+
+**[Google Developers - PWA](https://web.dev/learn/pwa/)**
+
+**[React-Scripts](https://create-react-app.dev/docs/available-scripts/)**
+
+### 🟣
+
+```js
+```
+
+### 🟣
+
+```js
+```
+
+### 🟣
+
+```js
+```
+
+### 🟣
+
+```js
+```
+
 ### 🟣
 
 ```js
