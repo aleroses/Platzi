@@ -827,9 +827,14 @@ const getImage = async () => {
 getImage();
 ```
 
-### 🟣 
+### 🟣 Operador condicional ternario
 
 ```js
+const active = true;
+// let message = active ? "Active" : "Inactive"
+let message = !active && "Active";
+
+console.log(message);
 ```
 
 ### 🟣 
