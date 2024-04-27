@@ -785,9 +785,46 @@ getGiphy
 
 [**Mozilla MDN: Fetch**](https://developer.mozilla.org/es/docs/Web/API/Fetch_API)
 
-### 🟣 
+### 🟣 Async - Await
+
+Primera forma:
 
 ```js
+const getImage = () => {
+  const promise = new Promise((resolve, reject) => {
+    resolve("c");
+  });
+
+  return promise;
+};
+
+getImage().then(console.log);
+```
+
+Otra forma:
+
+```js
+const getImage = async () => {
+  try {
+    const apiKey = "xdCnnfEOEkSz4TEgLmMc09dBClFt99Ou";
+    const response = await fetch(
+      `https://api.giphy.com/v1/gifs/random?api_key=${apiKey}`
+    );
+    const { data } = await response.json();
+
+    const img = document.createElement("img");
+    // img.src = data.data.images.original.url;
+    img.src = data.images.original.url;
+
+    document.body.append(img);
+
+    return data;
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+getImage();
 ```
 
 ### 🟣 
