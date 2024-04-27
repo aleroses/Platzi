@@ -837,12 +837,128 @@ let message = !active && "Active";
 console.log(message);
 ```
 
-### 🟣 
+### 🟣 Nota sobre JavaScript
+
+#### **Terminamos la sección de reforzamiento de JavaScript**
+
+Pero recuerden que esto es para entrar en calor y que lo temas principales de JavaScript que necesito que conozcan estén cubiertos, pero les recomiendo que cualquier duda adicional sobre el lenguaje, sobre métodos y demás, la consulten aquí
+
+[**https://developer.mozilla.org/es/**](https://developer.mozilla.org/es/)
+
+Como ya les había mencionado, considero esa página la mejor en cuanto a documentación sobre JavaScript.
+
+También si sienten que necesitan más sobre JavaScript en video, mi curso de JavaScript Moderno es el indicado para eso.
+
+En fin!, es momento de empezar con React!
+
+Recursos de la lección:
+
+[**Repositorio de GitHub del proyecto**](https://github.com/Klerith/react-intro-javascript)
+
+## 4. Primeros pasos en React
+
+### 🟣 Introducción a la sección
+
+### 🟣 Temas puntuales de la sección
+
+**¿Qué veremos en esta sección?**
+
+- Nuestra primera aplicación - Hola Mundo
+- Exposiciones sobre los componentes
+- Creación de componentes (Functional Components)
+- Propiedades - Props
+- Impresiones en el HTML 
+- PropTypes  
+- DefaultProps 
+- Introducción general a los Hooks  
+- useState
+
+Es una sección importante, especialmente para todos los que están empezando de cero en React, ya que dará las bases de cómo segmentar la lógica de nuestra aplicación en pequeñas piezas más fáciles de mantener.
+
+### 🟣 ¿Qué son los componentes?
+
+Pequeña pieza de código encapsulada reutilizable que puede tener estado o no.
+
+Es buena práctica que los componentes se nombren usando `PascalCase`.
+
+- camelCase
+- snake_case
+- PascalCase
+
+```js
+TwitterApp > Router > Screen/Página > Menú > MenuItem
+```
+
+El estado es como se encuentra la información del componente en un punto determinado del tiempo.
+
+### 🟣 Primera aplicación de React
+
+```bash
+yarn create vite
+
+# Nombrar proyecto
+03-counter-app
+# Seleccionar un framework
+React
+# Seleccionar variante
+JavaScript
+```
+
+Si deseas renombrar una carpeta y estás en Linux lo puedes hacer con la CLI.
+
+```bash
+# Renombrar una carpeta:
+mv nombre_actual nuevo_nombre
+```
+
+Ahora nos movemos al proyecto creado
+
+```bash
+cd 03-counter-app
+yarn install
+code .
+yarn dev
+```
+
+La estructura del proyecto es la siguiente:
+
+```bash
+.
+├── index.html
+├── node_modules 👈👀 # Muchos archivos
+├── package.json
+├── public
+│   └── vite.svg
+├── README.md
+├── src
+│   ├── App.css
+│   ├── App.jsx
+│   ├── assets
+│   │   └── react.svg
+│   ├── index.css
+│   └── main.jsx
+├── vite.config.js
+└── yarn.lock
+
+522 directories, 1281 files
+```
+
+Si quieres ver como se hace con CRA puedes revisar la sección 3.
+
+[[react-hooks-mern#3. Introducción a JavaScript moderno#🟣 Inicio de proyecto - Bases de JavaScript]]
+
+[Inicio de proyecto - Bases de JavaScript](https://github.com/aleroses/Platzi/blob/master/DW/3-avanzado/1.react.js/devTalles/react-hooks-mern.md#-inicio-de-proyecto---bases-de-javascript)
+
+[**Create-React-App - Documentación**](https://create-react-app.dev/)
+
+[**Vite documentation**](https://vitejs.dev/)|
+
+### 🟣
 
 ```js
 ```
 
-### 🟣 
+### 🟣
 
 ```js
 ```
