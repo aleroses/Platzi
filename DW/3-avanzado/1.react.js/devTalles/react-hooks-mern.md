@@ -1117,19 +1117,96 @@ const FirstTest = () => {
 export { FirstTest };
 ```
 
-### 🟣 
+### 🟣 Colocar estilos de CSS
+
+Dentro del `src` creamos un archivo `styles.css` donde podremos agregar los estilos que necesitemos.
+
+`src > styles.css`
+
+```css
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  background-color: #21232a;
+  color: white;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 1.3rem;
+  padding: 70px;
+}
+
+button {
+  padding: 5px;
+  font-size: 1rem;
+  margin: 0.2rem;
+}
+```
 
 `src > main.jsx`
 
 ```jsx
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { App } from "./App";
+import { FirstTest } from "./FirstTest";
+
+import "./styles.css"; 👈👀
+
+ReactDOM.createRoot(document.getElementById("root")).render(
+  <React.StrictMode>
+    <App />
+    <FirstTest />
+  </React.StrictMode>
+);
 ```
 
-### 🟣 
+### 🟣 Comunicación entre componentes - Props
+
+`src > FirstTest.jsx`
+
+```jsx
+const FirstTest = ({
+  title,
+  subTitle,
+  name,
+}) => {
+  return (
+    <>
+      <h1>{title}</h1>
+      <p>{subTitle}</p>
+      <p>{name}</p>
+    </>
+  );
+};
+
+export { FirstTest };
+```
 
 `src > main.jsx`
 
 ```jsx
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { App } from "./App";
+import { FirstTest } from "./FirstTest";
+
+import "./styles.css"; 👈👀
+
+ReactDOM.createRoot(document.getElementById("root")).render(
+  <React.StrictMode>
+    <App />
+    <FirstTest title={"This is a title"} />
+  </React.StrictMode>
+);
 ```
+
+En los **dev tools** podremos encontrar ⚛️ Components, aquí veremos los nombres de los componentes (árbol de componentes / contexto)
+
+![[Pasted image 20240428080526.png]]
 
 ### 🟣 
 
