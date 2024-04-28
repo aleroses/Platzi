@@ -983,7 +983,7 @@ yarn dev
 
 Borramos todos los archivos del folder `src` y creamos un archivo `main.jsx`.
 
-```js
+```jsx
 import React from "react";
 import ReactDOM from "react-dom/client";
 
@@ -1006,29 +1006,51 @@ ReactDOM.createRoot(document.getElementById("root")).render(
 </body>
 ```
 
+### 🟣 Nuestro primer Componente
+
+Creamos el archivo `App.jsx` dentro del `src`.
+
+`src > main.jsx`
+
+```jsx
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { App } from "./App";
+
+ReactDOM.createRoot(document.getElementById("root")).render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);
+```
+
+`src > App.jsx`
+
+```jsx
+import React from "react";
+
+// rafc
+const App = () => {
+  return <h1>App</h1>;
+};
+
+export { App };
+```
+
 ### 🟣 
 
-```js
+```jsx
 ```
 
-```js
-```
-
-
-```js
-```
-
-### 🟣 
-
-```js
+```jsx
 ```
 
 ### 🟣
 
-```js
+```jsx
 ```
 
 ### 🟣
 
-```js
+```jsx
 ```
