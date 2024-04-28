@@ -1448,40 +1448,38 @@ Aquí tienes algunos ejemplos de pruebas de ruta crítica para diferentes tipos 
 
 Esta sección de pruebas es sumamente importante porque nos dará la base de las pruebas que estaremos haciendo durante el curso, las pruebas irán creciendo en complejidad, por lo que les recomiendo que nos aseguremos de comprender bien todos estos conceptos para que nos sea más fácil las siguientes secciones de pruebas.
 
-### 🟣 
+### 🟣 Introducción a las pruebas unitarias y de integración
 
-`src > main.jsx`
+Unitarias: Enfocadas en pequeñas funcionalidades.
 
-```jsx
-```
-`src > main.jsx`
+Integración: Enfocadas en cómo reaccionan varias piezas en conjunto.
 
-```jsx
-```
-`src > main.jsx`
+**Características de las pruebas:**
 
-```jsx
-```
-`src > main.jsx`
+1. Fáciles de escribir
+2. Fáciles de leer
+3. Confiables
+4. Rápidas
+5. Principalmente unitarias
 
-```jsx
-```
+Pasos para enfocarnos en que todo trabaje bien entre sí (AAA):
+1. Arrange (Arreglar)
+2. Act (Actuar)
+3. Assert (Afirmar)
 
+Arrange: Preparamos el estado inicial.
+- Inicializamos variables
+- Importaciones necesarias
 
-`src > main.jsx`
+Act: Aplicamos acciones o estímulos.
+- Llamar métodos
+- Simular clicks
+- Realizar acciones sobre el paso anterior
 
-```jsx
-```
-`src > main.jsx`
+Assert: Observar el comportamiento resultante.
+- Son los resultados esperados.
+- Ej: Que algo cambie, algo incremente o bien que nada suceda.
 
-```jsx
-```
-
-👈👀
-
-👈👀
-
-👈👀
 
 ### 🟣 
 
@@ -1493,6 +1491,21 @@ Esta sección de pruebas es sumamente importante porque nos dará la base de las
 
 ```jsx
 ```
+
+`src > main.jsx`
+
+```jsx
+```
+`src > main.jsx`
+
+```jsx
+```
+
+👈👀
+
+👈👀
+
+👈👀
 
 ### 🟣 
 
