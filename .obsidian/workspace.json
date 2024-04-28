@@ -14,7 +14,7 @@
               "type": "markdown",
               "state": {
                 "file": "DW/3-avanzado/1.react.js/devTalles/react-hooks-mern.md",
-                "mode": "source",
+                "mode": "preview",
                 "source": true
               }
             }
@@ -150,8 +150,8 @@
   },
   "active": "fb7d303a679a5111",
   "lastOpenFiles": [
-    "Pasted image 20240428080526.png",
     "DW/3-avanzado/1.react.js/devTalles/react-hooks-mern.md",
+    "Pasted image 20240428080526.png",
     "2024-04-28.md",
     "DW/1-basico/003-prework/entorno-linux/commands.md",
     "DW/2-intermedio/vim/vim.md",
@@ -194,7 +194,6 @@
     "DW/2-intermedio/014.api-rest-js/1.api-rest-js-fundamentos/resources/img/paginating.png",
     "DW/2-intermedio/014.api-rest-js/1.api-rest-js-fundamentos/resources/img/evidencia02.png",
     "DW/2-intermedio/014.api-rest-js/1.api-rest-js-fundamentos/resources/img/evidencia01.png",
-    "DW/2-intermedio/014.api-rest-js/1.api-rest-js-fundamentos/resources/img/nota.png",
-    "DW/2-intermedio/014.api-rest-js/1.api-rest-js-fundamentos/resources/img/14.ver-api-key.png"
+    "DW/2-intermedio/014.api-rest-js/1.api-rest-js-fundamentos/resources/img/nota.png"
   ]
 }

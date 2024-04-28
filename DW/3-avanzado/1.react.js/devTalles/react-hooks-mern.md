@@ -1206,7 +1206,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
 
 En los **dev tools** podremos encontrar ⚛️ Components, aquí veremos los nombres de los componentes (árbol de componentes / contexto)
 
-![[Pasted image 20240428080526.png]]
+![React dev tools](https://i.postimg.cc/9FhNVk3M/react-dev-tools.png)
 
 ### 🟣 
 
