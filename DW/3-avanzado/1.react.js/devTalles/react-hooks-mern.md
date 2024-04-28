@@ -1480,6 +1480,11 @@ Assert: Observar el comportamiento resultante.
 - Son los resultados esperados.
 - Ej: Que algo cambie, algo incremente o bien que nada suceda.
 
+### 🟣 Inicio de la sección - Pruebas sobre lo aprendido anteriormente
+
+Para las pruebas usaremos varios ejercicios que vimos en la parte de la introducción a JavaScript. Puedes copiar y pegar la carpeta `bases` del proyecto `02-intro-js` o descargar la carpeta comprimida desde la parte inferior del video. 
+
+Estos archivos los pegamos dentro del `src` del proyecto `03-counter-app`, pero también pueden crear un proyecto totalmente nuevo.
 
 ### 🟣 
 
@@ -1492,31 +1497,11 @@ Assert: Observar el comportamiento resultante.
 ```jsx
 ```
 
-`src > main.jsx`
-
-```jsx
-```
-`src > main.jsx`
-
-```jsx
-```
-
 👈👀
 
 👈👀
 
 👈👀
-
-### 🟣 
-
-`src > main.jsx`
-
-```jsx
-```
-`src > main.jsx`
-
-```jsx
-```
 
 ### 🟣 
 
