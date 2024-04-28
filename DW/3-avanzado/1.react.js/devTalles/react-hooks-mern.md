@@ -1199,20 +1199,70 @@ import "./styles.css"; 👈👀
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <App />
-    <FirstTest title={"This is a title"} />
+    <FirstTest
+      title="Hi, I'm a bot"
+      subTitle={"Subject subtitle"}
+    />
   </React.StrictMode>
 );
 ```
 
-En los **dev tools** podremos encontrar ⚛️ Components, aquí veremos los nombres de los componentes (árbol de componentes / contexto)
+**Dev tools** ⚛️ Components: Veremos los nombres de los componentes (árbol de componentes / contexto)
 
 ![React dev tools](https://i.postimg.cc/9FhNVk3M/react-dev-tools.png)
 
-### 🟣 
+### 🟣 PropTypes
+
+En Vite no viene instalado por defecto:
+
+```bash
+yarn add prop-types 
+```
+
+`src > FirstTest.jsx`
+
+```jsx
+import PropTypes from "prop-types"; 👈👀
+
+const FirstTest = ({
+  title,
+  subTitle,
+  name,
+}) => {
+  return (
+    <>
+      <h1 data-testid="test-title">{title}</h1>
+      <p>{subTitle}</p>
+      <p>{name}</p>
+    </>
+  );
+};
+
+FirstTest.propTypes = { 👈👀👇
+  title: PropTypes.string.isRequired,
+  subTitle: PropTypes.string,
+};
+```
 
 `src > main.jsx`
 
 ```jsx
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { App } from "./App";
+import { FirstTest } from "./FirstTest";
+
+import "./styles.css"; 👈👀
+
+ReactDOM.createRoot(document.getElementById("root")).render(
+  <React.StrictMode>
+    <App />
+    <FirstTest
+      title 👈👀 // True (valor booleano)
+      subTitle={"Subject subtitle"}
+    />
+  </React.StrictMode>
+);
 ```
 
 ### 🟣 
