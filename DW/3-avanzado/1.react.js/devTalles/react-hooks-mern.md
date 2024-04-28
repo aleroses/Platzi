@@ -1397,6 +1397,10 @@ Esta funcionalidad está disponible en Obsidian:
 
 [**Ejemplo - Tarea de desestructuración de arreglos**](https://github.com/Klerith/react-intro-javascript/blob/master/src/bases/07-deses-arr.js)
 
+### 🟣 Código fuente de la sección
+
+[**Github - fin-seccion-4**](https://github.com/Klerith/react-vite-counter-app/tree/fin-seccion-4)
+
 ### 🟣 
 
 `src > main.jsx`
@@ -1421,16 +1425,7 @@ Esta funcionalidad está disponible en Obsidian:
 ```jsx
 ```
 
-### 🟣 
-
-`src > main.jsx`
-
-```jsx
-```
-`src > main.jsx`
-
-```jsx
-```
+👈👀
 
 ### 🟣 
 
@@ -1442,6 +1437,8 @@ Esta funcionalidad está disponible en Obsidian:
 
 ```jsx
 ```
+
+👈👀
 
 ### 🟣 
 
