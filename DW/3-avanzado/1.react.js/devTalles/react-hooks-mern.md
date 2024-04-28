@@ -1037,12 +1037,36 @@ const App = () => {
 export { App };
 ```
 
-### 🟣 
+### 🟣 Tarea - Crear un nuevo componente
+
+`src > main.jsx`
 
 ```jsx
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { App } from "./App";
+import { FirstTest } from "./FirstTest";
+
+ReactDOM.createRoot(document.getElementById("root")).render(
+  <React.StrictMode>
+    <App />
+    <FirstTest />
+  </React.StrictMode>
+);
 ```
 
+`src > FirstTest.jsx`
+
 ```jsx
+const FirstTest = () => {
+  return (
+    <>
+      <h1>Ale Roses</h1>
+    </>
+  );
+};
+
+export { FirstTest };
 ```
 
 ### 🟣
