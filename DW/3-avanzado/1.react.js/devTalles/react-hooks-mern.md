@@ -1265,6 +1265,52 @@ ReactDOM.createRoot(document.getElementById("root")).render(
 );
 ```
 
+### 🟣 DefaultProps
+
+`src > FirstTest.jsx`
+
+```jsx
+import PropTypes from "prop-types";
+
+const FirstTest = ({
+  title = "No title", 👈👀
+  subTitle,
+  name,
+}) => {
+  return (
+    <>
+      <h1 data-testid="test-title">{title}</h1>
+      <p>{subTitle}</p>
+      <p>{name}</p>
+    </>
+  );
+};
+
+FirstTest.propTypes = {
+  title: PropTypes.string.isRequired,
+  subTitle: PropTypes.string,
+};
+
+FirstTest.defaultProps = {
+  subTitle: "New Text", 👈👀
+  name: "Ale Roses",
+};
+
+export { FirstTest };
+```
+
+### 🟣 
+
+`src > main.jsx`
+
+```jsx
+```
+
+`src > main.jsx`
+
+```jsx
+```
+
 ### 🟣 
 
 `src > main.jsx`
