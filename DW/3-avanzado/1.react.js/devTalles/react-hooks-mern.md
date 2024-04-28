@@ -1299,17 +1299,46 @@ FirstTest.defaultProps = {
 export { FirstTest };
 ```
 
-### 🟣 
+### 🟣 Tarea - Componente CounterApp
 
 `src > main.jsx`
 
 ```jsx
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { CounterApp } from "./CounterApp";
+
+import "./styles.css";
+
+ReactDOM.createRoot(document.getElementById("root")).render(
+  <React.StrictMode>
+    <CounterApp value={1} />
+  </React.StrictMode>
+);
 ```
 
-`src > main.jsx`
+`src > CounterApp.jsx`
 
 ```jsx
+import PropTypes from "prop-types";
+
+const CounterApp = ({ value }) => {
+  return (
+    <>
+      <h1>Counter App</h1>
+      <h2>{value}</h2>
+    </>
+  );
+};
+
+CounterApp.propTypes = {
+  value: PropTypes.number.isRequired,
+};
+
+export { CounterApp };
 ```
+
+[**Tarea - Referencia**](https://gist.github.com/Klerith/e1a731cc595c00a9794a709062eae757)
 
 ### 🟣 
 
