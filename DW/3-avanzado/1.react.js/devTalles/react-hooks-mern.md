@@ -987,6 +987,7 @@ Borramos todos los archivos del folder `src` y creamos un archivo `main.jsx`.
 import React from "react";
 import ReactDOM from "react-dom/client";
 
+// Mala practica
 const App = () => {
   return <h1>App</h1>;
 };
