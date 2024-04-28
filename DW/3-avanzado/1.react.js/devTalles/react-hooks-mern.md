@@ -977,8 +977,32 @@ El archivo `vite.config.js` sirve para hacer configuraciones propias de vite.
 
 Abrimos el proyecto `03-counter-app-vite`.
 
-```js
+```bash
+yarn dev
+```
 
+Borramos todos los archivos del folder `src` y creamos un archivo `main.jsx`.
+
+```js
+import React from "react";
+import ReactDOM from "react-dom/client";
+
+const App = () => {
+  return <h1>App</h1>;
+};
+
+ReactDOM.createRoot(document.getElementById("root")).render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);
+```
+
+```html
+<body>
+  <div id="root"></div> 👈👀
+  <script type="module" src="/src/main.jsx"></script>
+</body>
 ```
 
 ### 🟣 
