@@ -1069,12 +1069,85 @@ const FirstTest = () => {
 export { FirstTest };
 ```
 
-### 🟣
+### 🟣 Retornar elementos en el Componente - Fragment
+
+`src > FirstTest.jsx`
+
+```jsx
+const FirstTest = () => {
+  return (
+    <> 👈👀
+      <h1>Ale Roses</h1>
+      <p>First course with Fernando Herrera.</p>
+    </>
+  );
+};
+
+export { FirstTest };
+```
+
+### 🟣 Impresión de variables en el HTML
+
+`src > FirstTest.jsx`
+
+```jsx
+const newObject = {
+  name: "Ale Roses",
+  nickname: "Ghost"
+}
+
+const newArray = [0, 1, 2, 3, 4];
+
+const getResult = () => {
+  return 4 + 4;
+}
+
+const FirstTest = () => {
+  return (
+    <>
+      <h1>{newObject.name}</h1>
+      <p>{newObject.nickname}</p>
+      <p>{newArray}</p>
+      <p>{getResult()}</p>
+      <code>{JSON.stringify(newMessage)}</code>
+    </>
+  );
+};
+
+export { FirstTest };
+```
+
+### 🟣 
+
+`src > main.jsx`
 
 ```jsx
 ```
 
-### 🟣
+### 🟣 
+
+`src > main.jsx`
+
+```jsx
+```
+
+### 🟣 
+
+`src > main.jsx`
+
+```jsx
+```
+
+### 🟣 
+
+`src > main.jsx`
+
+```jsx
+```
+
+### 🟣 
+
+`src > main.jsx`
 
 ```jsx
 ```
