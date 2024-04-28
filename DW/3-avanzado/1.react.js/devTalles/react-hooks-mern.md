@@ -1340,7 +1340,7 @@ export { CounterApp };
 
 [**Tarea - Referencia**](https://gist.github.com/Klerith/e1a731cc595c00a9794a709062eae757)
 
-### 🟣 Evento click (Eventos en general)
+### 🟣 Evento click (Eventos en general) + useState - Hook
 
 `src > CounterApp.jsx`
 
@@ -1370,7 +1370,7 @@ const CounterApp = ({ value }) => {
 
       <button onClick={handleAdd}>+1</button>
       <button onClick={handleRest}>-1</button>
-      <button aria-label="btn-reset" onClick={handleReset}>
+      <button onClick={handleReset}>
         Reset
       </button>
       <h2>{counter}</h2>
@@ -1385,7 +1385,17 @@ CounterApp.propTypes = {
 export { CounterApp };
 ```
 
+Esta funcionalidad está disponible en Obsidian:
+
+[[react-js-desde-cero#**12.** Hooks]] 👈👀
+
+![](https://i.postimg.cc/V6tSbM1f/obsidian.png)
+
 [**Reactjs.org - Eventos**](https://es.reactjs.org/docs/events.html)
+
+[**Reactjs.org - Hooks**](https://es.reactjs.org/docs/hooks-intro.html)
+
+[**Ejemplo - Tarea de desestructuración de arreglos**](https://github.com/Klerith/react-intro-javascript/blob/master/src/bases/07-deses-arr.js)
 
 ### 🟣 
 
@@ -1397,6 +1407,8 @@ export { CounterApp };
 
 ```jsx
 ```
+
+👈👀
 
 ### 🟣 
 

@@ -18,6 +18,18 @@
                 "source": true
               }
             }
+          },
+          {
+            "id": "056de50858771ae8",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "DW/3-avanzado/1.react.js/YouTube/react-js-desde-cero.md",
+                "mode": "preview",
+                "source": true
+              }
+            }
           }
         ]
       }
@@ -150,6 +162,7 @@
   },
   "active": "fb7d303a679a5111",
   "lastOpenFiles": [
+    "DW/3-avanzado/1.react.js/YouTube/react-js-desde-cero.md",
     "DW/3-avanzado/1.react.js/devTalles/react-hooks-mern.md",
     "Pasted image 20240428080526.png",
     "2024-04-28.md",
