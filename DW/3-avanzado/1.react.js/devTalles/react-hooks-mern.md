@@ -957,31 +957,43 @@ Si quieres ver como se hace con CRA puedes revisar la sección 3.
 
 En los proyectos creados con **NPM** se puede observar que tenemos el archivo `package-lock.json` que nos dice como fueron construidas las dependencias de los módulos de Node.
 
-```js
-```
-
 **[Referencia: Robots.txt](https://developers.google.com/search/docs/advanced/robots/intro?hl=es&visit_id=637909934831052162-4097033822&rd=1)**
 
 **[Google Developers - PWA](https://web.dev/learn/pwa/)**
 
 **[React-Scripts](https://create-react-app.dev/docs/available-scripts/)**
 
-### 🟣
+### 🟣 Estructura de directorios - Vite
+
+Ver estructura en [[react-hooks-mern#4. Primeros pasos en React#🟣 Primera aplicación de React]]
+
+Si se creó el proyecto con **Yarn** no se recomienda mezclarlo con **NPM**.
+
+En caso desees cambiar debes borrar el archivo `package-lock.json` o `yarn.lock` y volver a hacer `npm install` o `yarn install`.
+
+El archivo `vite.config.js` sirve para hacer configuraciones propias de vite.
+
+### 🟣 Hola Mundo en React
+
+Abrimos el proyecto `03-counter-app-vite`.
+
+```js
+
+```
+
+### 🟣 
 
 ```js
 ```
 
-### 🟣
+```js
+```
+
 
 ```js
 ```
 
-### 🟣
-
-```js
-```
-
-### 🟣
+### 🟣 
 
 ```js
 ```
