@@ -1486,22 +1486,103 @@ Para las pruebas usaremos varios ejercicios que vimos en la parte de la introduc
 
 Estos archivos los pegamos dentro del `src` del proyecto `03-counter-app`, pero también pueden crear un proyecto totalmente nuevo.
 
-### 🟣 
+### 🟣 Mi primera prueba y configuraciones iniciales
 
-`src > main.jsx`
+Para las pruebas usaremos **Jest** y **React Testing Library**, pero primero debemos configurarlo, ya que en Vite no vienen configurados por defecto.
 
-```jsx
+Esta configuración solo se hace una vez por todo el proyecto. 
+
+```bash
+yarn add --dev jest
 ```
-`src > main.jsx`
 
-```jsx
+Añadimos un script dentro del archivo `package.json`.
+
+```json
+"scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
+    "preview": "vite preview",
+    "test": "jest" 👈👀
+  },
 ```
 
-👈👀
+Para correr las pruebas ejecutamos: 
+
+```bash
+yarn test
+```
+
+Dentro de la carpeta de nuestro proyecto creamos una carpeta llamada `tests`. Este será como un espejo del `src`.
+
+`tests > demo.test.js`
+
+```js
+test("Esta prueba no debe de fallar", () => {
+  if (0 === 1) {
+    throw new Error("No puede dividir entre cero");
+  }
+});
+```
+
+Si no queremos cada vez ingresar `yarn test` solo debemos agregar lo siguiente en el archivo `package.json`
+
+```json
+"scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
+    "preview": "vite preview",
+    "test": "jest --watchAll" 👈👀
+  },
+```
+
+Ahora, al ejecutar `yarn test` se quedará escuchando cuando hagamos un cambio.
+
+Mi estructura quedó algo así (cree un proyecto desde cero):
+
+```bash
+.
+├── index.html
+├── node_modules
+├── package.json
+├── public
+│   └── vite.svg
+├── README.md
+├── src
+│   ├── App.css
+│   ├── App.jsx
+│   ├── bases 👈👀
+│   │   ├── 01-const-let.js
+│   │   ├── 02-backticks.js
+│   │   ├── 03-obj-literal.js
+│   │   ├── 04-array.js
+│   │   ├── 05-functions.js
+│   │   ├── 06-desest-obj.js
+│   │   ├── 07-desest-arr.js
+│   │   ├── 08-imp-exp.mjs
+│   │   ├── 09-promises.js
+│   │   ├── 10-fetch.js
+│   │   ├── 11-async-await.js
+│   │   └── 12-conditional-ternary.js
+│   ├── index.css
+│   └── main.jsx
+├── tests 👈👀👇
+│   └── demo.test.js
+├── vite.config.js
+└── yarn.lock
+```
+
+[jestjs](https://jestjs.io/)
+
+https://jestjs.io/docs/getting-started
 
 👈👀
 
 👈👀
+
+👈👀👇
 
 ### 🟣 
 
