@@ -1401,7 +1401,44 @@ Esta funcionalidad está disponible en Obsidian:
 
 [**Github - fin-seccion-4**](https://github.com/Klerith/react-vite-counter-app/tree/fin-seccion-4)
 
+## 5. Pruebas unitarias y de integración - Probando las secciones anteriores
+
+### 🟣 Introducción a la sección
+
+Probar la ruta crítica:
+
+Probar la ruta crítica de una aplicación se refiere a realizar pruebas exhaustivas y enfocadas en las funciones o flujos de trabajo más críticos o prioritarios dentro de la aplicación. La ruta crítica representa aquellos caminos o secuencias de acciones que deben funcionar correctamente para que la aplicación cumpla con sus objetivos principales.
+
+La idea detrás de probar la ruta crítica es asegurarse de que las funciones esenciales de la aplicación estén correctamente implementadas y sean confiables. Al enfocarse en estos aspectos clave, se puede identificar y solucionar problemas críticos antes de que afecten la experiencia del usuario o el funcionamiento general de la aplicación.
+
+Aquí tienes algunos ejemplos de pruebas de ruta crítica para diferentes tipos de aplicaciones:
+
+1. Aplicación de comercio electrónico:
+   - Probar el proceso de inicio de sesión y registro de usuarios.
+   - Verificar la funcionalidad del carrito de compras, desde la adición de productos hasta el pago y la generación de una orden.
+   - Comprobar la correcta visualización y actualización del inventario de productos.
+
+2. Aplicación bancaria en línea:
+   - Realizar pruebas de inicio de sesión y autenticación de usuarios.
+   - Probar las funciones de transferencia de fondos, asegurándose de que los saldos se actualicen correctamente.
+   - Verificar la visualización precisa del historial de transacciones y la generación de estados de cuenta.
+
+3. Aplicación de reserva de vuelos:
+   - Probar la búsqueda y filtrado de vuelos según diferentes criterios, como origen, destino y fechas.
+   - Verificar la correcta selección de asientos y opciones de personalización durante el proceso de reserva.
+   - Comprobar el flujo de pago, asegurándose de que la transacción se realice correctamente.
+
 ### 🟣 
+
+`src > main.jsx`
+
+```jsx
+```
+`src > main.jsx`
+
+```jsx
+```
+
 
 `src > main.jsx`
 
@@ -1413,17 +1450,6 @@ Esta funcionalidad está disponible en Obsidian:
 ```
 
 👈👀
-
-### 🟣 
-
-`src > main.jsx`
-
-```jsx
-```
-`src > main.jsx`
-
-```jsx
-```
 
 👈👀
 
