@@ -1490,7 +1490,7 @@ Estos archivos los pegamos dentro del `src` del proyecto `03-counter-app`, pero 
 
 Para las pruebas usaremos **Jest** y **React Testing Library**, pero primero debemos configurarlo, ya que en Vite no vienen configurados por defecto.
 
-Esta configuración solo se hace una vez por todo el proyecto. 
+Esta configuración solo se hace una vez en cada proyecto. 
 
 ```bash
 yarn add --dev jest
@@ -1508,13 +1508,9 @@ Añadimos un script dentro del archivo `package.json`.
   },
 ```
 
-Para correr las pruebas ejecutamos: 
-
-```bash
-yarn test
-```
-
 Dentro de la carpeta de nuestro proyecto creamos una carpeta llamada `tests`. Este será como un espejo del `src`.
+
+Ahora podemos hacer una demostración de como funcionan los test.
 
 `tests > demo.test.js`
 
@@ -1526,7 +1522,13 @@ test("Esta prueba no debe de fallar", () => {
 });
 ```
 
-Si no queremos cada vez ingresar `yarn test` solo debemos agregar lo siguiente en el archivo `package.json`
+Para correr las pruebas ejecutamos: 
+
+```bash
+yarn test
+```
+
+Si no queremos ingresar `yarn test` cada vez que queramos ejecutar las pruebas, solo debemos agregar lo siguiente en el archivo `package.json`.
 
 ```json
 "scripts": {
@@ -1576,7 +1578,8 @@ Mi estructura quedó algo así (cree un proyecto desde cero):
 
 [jestjs](https://jestjs.io/)
 
-https://jestjs.io/docs/getting-started
+[Jestjs getting-started](https://jestjs.io/docs/getting-started)
+
 
 👈👀
 
