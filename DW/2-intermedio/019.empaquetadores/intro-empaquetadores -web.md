@@ -388,13 +388,156 @@ const data = {
 };
 ```
 
-```js
+## 8. Lógica del árbol de links tipo linktree
 
+Dentro del `index.html` buscamos usando `Ctrl + f` la clase `bg-yellow` y comentamos todo ese `div` y creamos una etiqueta `main`.
+
+`index.html`
+
+```html
+<main id="links"></main>
+<!-- 
+<div
+  class="bg-yellow-200 px-4 py-5 w-full flex justify-between"
+>
+  <a
+    class="text-sm font-bold text-yellow-600 text-center hover:text-yellow-800 cursor-pointer"
+    href="https://gndx.dev/"
+    target="_blank"
+  >
+    BLOG
+  </a>
+  <span>📖</span>
+</div> 
+-->
 ```
 
-```js
+`index.js`
 
+```js
+const $links = document.getElementById("links");
+const $name = document.querySelector("h1");
+
+const data = {
+  name: "Oscar Barajas",
+  nickname: "gndx",
+  description: "...",
+  avatar: "...",
+  social: [
+    {
+      name: "twitter",
+      url: "https://twitter.com/",
+      username: "",
+    },
+    {
+      name: "instagram",
+      url: "https://instagram.com/",
+      username: "",
+    },
+  ],
+
+  links: [
+    {
+      name: "blog",
+      url: "https://example.com/",
+      color: "red",
+      emoji: "📖",
+    },
+    {
+      name: "podcast",
+      url: "https://example.com/",
+      color: "yellow",
+      emoji: "💬",
+    },
+  ],
+  footer: "Made with Love on Colombia",
+};
+
+const main = () => {
+  let name = document.createTextNode(data?.name);
+  let links = data?.links
+    ?.map((link) => {
+      return `
+    <div
+      class="bg-${link.color}-200 px-4 py-5 w-full flex justify-between"
+    >
+      <a
+        class="text-sm font-bold text-${link.color}-600 text-center hover:text-${link.color}-800 cursor-pointer"
+        href="${link.url}"
+        target="_blank"
+      >
+        ${link.name}
+      </a>
+      <span>${link.emoji}</span>
+    </div>
+    `;
+    })
+    .join("");
+
+  let newItem = document.createElement("section");
+  newItem.innerHTML = links;
+  $links.append(newItem);
+  $name.append(name);
+};
+
+main();
 ```
+
+### Método `createTextNode`
+
+En JavaScript, el método `createTextNode` se utiliza para crear un nuevo nodo de texto en el DOM (Document Object Model). Toma como parámetro una cadena de texto y devuelve un nuevo nodo de texto.
+
+Aquí tienes un ejemplo de cómo se utiliza `createTextNode`:
+
+```javascript
+const texto = "Hola, mundo!";
+const nodoDeTexto = document.createTextNode(texto);
+```
+
+En este ejemplo, se crea un nuevo nodo de texto utilizando el método `createTextNode`. El contenido del nodo de texto será la cadena de texto "Hola, mundo!". Este nodo de texto se puede utilizar posteriormente para agregarlo a algún elemento del DOM, como un párrafo, un encabezado o cualquier otro elemento que pueda contener contenido de texto.
+
+Una vez que se ha creado el nodo de texto, se puede agregar al DOM utilizando métodos como `appendChild` o `insertBefore` en el elemento deseado.
+
+```js
+const parrafo = document.createElement("p");
+parrafo.appendChild(nodoDeTexto);
+```
+
+En este ejemplo, se crea un nuevo elemento de párrafo utilizando `createElement` y luego se agrega el nodo de texto creado previamente al párrafo utilizando `appendChild`.
+
+En resumen, `createTextNode` se utiliza para crear nodos de texto en el DOM que contengan contenido de texto específico y luego se pueden agregar a elementos existentes en el documento.
+
+## 9. Empaquetando un proyecto con webpack
+
+
+```bash
+npm install webpack-dev-server -D
+
+# No es necesario descargar ese paquete, solo con:
+"start": "webpack serve --mode development --open"
+```
+
+`package.json`
+
+```json
+"build": "webpack --mode production",
+"start": "webpack-dev-server --open --mode development"
+
+"deploy": "gh-pages -d dist"
+```
+
+```bash
+npm run build
+npm run start
+
+# Desplegar
+npm install gh -pages -D
+npm run deploy
+```
+
+dist no debe subirse a GitHub 
+
+[[gh-pages#3. Modulo gh-pages de NPM]]
 
 ```js
 
