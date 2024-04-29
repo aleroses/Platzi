@@ -13,8 +13,8 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "DW/3-avanzado/1.react.js/devTalles/react-hooks-mern.md",
-                "mode": "source",
+                "file": "DW/2-intermedio/019.empaquetadores/intro-empaquetadores -web.md",
+                "mode": "preview",
                 "source": true
               }
             }
@@ -81,7 +81,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 265.5,
+    "width": 342.5,
     "collapsed": true
   },
   "right": {
@@ -98,7 +98,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "DW/3-avanzado/1.react.js/devTalles/react-hooks-mern.md",
+                "file": "DW/2-intermedio/019.empaquetadores/intro-empaquetadores -web.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -115,7 +115,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "DW/3-avanzado/1.react.js/devTalles/react-hooks-mern.md",
+                "file": "DW/2-intermedio/019.empaquetadores/intro-empaquetadores -web.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -138,7 +138,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "DW/3-avanzado/1.react.js/devTalles/react-hooks-mern.md"
+                "file": "DW/2-intermedio/019.empaquetadores/intro-empaquetadores -web.md"
               }
             }
           }
@@ -162,8 +162,10 @@
   },
   "active": "fb7d303a679a5111",
   "lastOpenFiles": [
-    "DW/3-avanzado/1.react.js/YouTube/react-js-desde-cero.md",
     "DW/3-avanzado/1.react.js/devTalles/react-hooks-mern.md",
+    "DW/2-intermedio/019.empaquetadores/intro-empaquetadores -web.md",
+    "DW/2-intermedio/019.empaquetadores",
+    "DW/3-avanzado/1.react.js/YouTube/react-js-desde-cero.md",
     "Pasted image 20240428080526.png",
     "2024-04-28.md",
     "DW/1-basico/003-prework/entorno-linux/commands.md",
@@ -189,7 +191,6 @@
     "DW/2-intermedio/016.fundamentos-typescript/resources/code/ts-project/node_modules/typescript/lib/lib.webworker.importscripts.d.ts",
     "DW/2-intermedio/016.fundamentos-typescript/resources/code/ts-project/node_modules/typescript/lib/lib.webworker.d.ts",
     "DW/2-intermedio/016.fundamentos-typescript/resources/code/ts-project/node_modules/typescript/lib/lib.scripthost.d.ts",
-    "DW/2-intermedio/016.fundamentos-typescript/resources/code/ts-project/node_modules/typescript/lib/lib.esnext.intl.d.ts",
     "DW/2-intermedio/016.fundamentos-typescript/resources/code/ts-project/node_modules/typescript/SECURITY.md",
     "DW/2-intermedio/016.fundamentos-typescript/resources/code/ts-project/node_modules/typescript/README.md",
     "DW/2-intermedio/016.fundamentos-typescript/fundamentos-typescript.md",
@@ -200,7 +201,6 @@
     "DW/2-intermedio/014.api-rest-js/1.api-rest-js-fundamentos/resources/code/node_modules/node-fetch/LICENSE.md",
     "DW/2-intermedio/014.api-rest-js/1.api-rest-js-fundamentos/resources/code/node_modules/node-fetch/README.md",
     "DW/2-intermedio/014.api-rest-js/1.api-rest-js-fundamentos/resources/code/node_modules/formdata-polyfill/README.md",
-    "DW/2-intermedio/014.api-rest-js/1.api-rest-js-fundamentos/resources/code/node_modules/data-uri-to-buffer/README.md",
     "DW/2-intermedio/014.api-rest-js/1.api-rest-js-fundamentos/resources/code/7.proyecto/svg/heart.svg",
     "DW/2-intermedio/014.api-rest-js/1.api-rest-js-fundamentos/resources/code/7.proyecto/svg/delete.svg",
     "DW/2-intermedio/014.api-rest-js/1.api-rest-js-fundamentos/resources/img/random-kittens.png",
