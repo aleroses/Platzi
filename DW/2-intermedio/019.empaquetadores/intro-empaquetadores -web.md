@@ -318,7 +318,7 @@ module.exports = {
     ],
   },
   plugins: [
-    new HtmlWebpackPlugin({ template: "./src/index.html" }),
+    new HtmlWebpackPlugin({ template: "./public/index.html" }),
   ],
 };
 ```
@@ -338,3 +338,64 @@ Extra:
 ```
 
 Coloca esa línea encima de tu `module.exports` y te va a autocompletar las props de la configuración.
+
+## 7. Proyecto a empaquetar: Tu propio árbol de links
+
+Debemos copiar el contenido del `index` de este repositorio
+[gndx.io](https://github.com/gndx/gndx.io) dentro del `index.html`.
+
+Además, necesitamos añadir esto en el archivo `index.js` [webpack-data.json](https://gist.github.com/gndx/304bb80d7d4cc10e1d9faddd6eeb2fac)
+
+Queda algo así:
+
+```js
+const $links = document.getElementById("links");
+const $name = document.querySelector("h1");
+
+const data = {
+  name: "Oscar Barajas",
+  nickname: "gndx",
+  description: "...",
+  avatar: "...",
+  social: [
+    {
+      name: "twitter",
+      url: "https://twitter.com/",
+      username: "",
+    },
+    {
+      name: "instagram",
+      url: "https://instagram.com/",
+      username: "",
+    },
+  ],
+
+  links: [
+    {
+      name: "blog",
+      url: "https://example.com/",
+      color: "red",
+      emoji: "📖",
+    },
+    {
+      name: "podcast",
+      url: "https://example.com/",
+      color: "yellow",
+      emoji: "💬",
+    },
+  ],
+  footer: "Made with Love on Colombia",
+};
+```
+
+```js
+
+```
+
+```js
+
+```
+
+```js
+
+```
