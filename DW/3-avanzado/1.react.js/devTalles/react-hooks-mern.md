@@ -1580,12 +1580,46 @@ Mi estructura quedó algo así (cree un proyecto desde cero):
 
 [Jestjs getting-started](https://jestjs.io/docs/getting-started)
 
+### 🟣 Jest - Expect - toBe
 
-👈👀
+Añadir ayudas o intelligent a Visual Studio Code.
 
-👈👀
+```bash
+yarn add -D @types/jest
+```
 
-👈👀👇
+`tests > demo.test.js`
+
+```jsx
+describe("Tests on the <DemoComponent/>", () => {
+  test("This test must not fail", () => {
+    // 1. Initialization
+    const message1 = "Hi world";
+
+    // 2. Stimulus
+    const message2 = message1.trim();
+
+    // 3. Observe expected behavior
+    expect(message1).toBe(message2); 👈👀
+  });
+});
+```
+
+[Jest Expect](https://jestjs.io/docs/expect#reference)
+
+### 🟣 
+
+
+`tests > demo.test.js`
+
+`src > main.jsx`
+
+```jsx
+```
+`src > main.jsx`
+
+```jsx
+```
 
 ### 🟣 
 
@@ -1597,3 +1631,48 @@ Mi estructura quedó algo así (cree un proyecto desde cero):
 
 ```jsx
 ```
+
+`src > main.jsx`
+
+```jsx
+```
+
+### 🟣 
+
+`src > main.jsx`
+
+```jsx
+```
+`src > main.jsx`
+
+```jsx
+```
+
+### 🟣 
+
+`src > main.jsx`
+
+```jsx
+```
+`src > main.jsx`
+
+```jsx
+```
+
+### 🟣 
+
+`src > main.jsx`
+
+```jsx
+```
+`src > main.jsx`
+
+```jsx
+```
+
+
+👈👀
+
+👈👀
+
+👈👀👇
