@@ -293,18 +293,48 @@ module.exports = {
 
 #### Plugins
 
-. Los `plugins` son similares a los `loaders` pero nos permiten hacer cosas que no podríamos con los `loaders`, como optimización de los paquetes, inyección de variables y manejo de activos.
+Los `plugins` son similares a los `loaders`, pero nos permiten hacer cosas que no podríamos con los `loaders`, como optimización de los paquetes, inyección de variables y manejo de activos.
 
 Para usar plugins, necesitamos traerlos con `require()` para agregarlos al array de `plugins`. Como podemos usar un mismo plugin con diferentes configuraciones para distintos propósitos, necesitamos crear instancias de los plugins utilizando el operador `new`.
 
-`//webpack.config.js const path = require('path'); const HtmlWebpackPlugin = require('html-webpack-plugin'); module.exports = { 	entry: './src/index.js', 	output: { 		path: path.resolve(__dirname, 'dist'), 		filename: 'main.js' 	}, 	modules: { 		rules: [{test: /\.ts?$/, use: 'ts-loader', exclude: /node_modules/}] 	}, 	plugins: [new HtmlWebpackPlugin({ template: './src/index.html'})] }`
+```js
+//webpack.config.js
+const path = require("path");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+
+module.exports = {
+  entry: "./src/index.js",
+  output: {
+    path: path.resolve(__dirname, "dist"),
+    filename: "main.js",
+  },
+  modules: {
+    rules: [
+      {
+        test: /\.ts?$/,
+        use: "ts-loader",
+        exclude: /node_modules/,
+      },
+    ],
+  },
+  plugins: [
+    new HtmlWebpackPlugin({ template: "./src/index.html" }),
+  ],
+};
+```
 
 Existe una gran cantidad de plugins que webpack nos provee. [Acá una lista de plugins](https://webpack.js.org/plugins) .
 
 #### Mode
 
-. Al colocar la propiedad `mode` en `development`, `production` o `none`, podemos activar las optimizaciones internas de webpack dependiendo del valor de `mode` que hayamos especificado. El valor por defecto es `production`.
+Al colocar la propiedad `mode` en `development`, `production` o `none`, podemos activar las optimizaciones internas de Webpack dependiendo del valor de `mode` que hayamos especificado. El valor por defecto es `production`.
 
 Extra:
 
-/**@type {import('webpack').Configuration} */ ```Coloca esa linea encima de tu module.exports y te va a autocompletar las props de la configuracion. Saludos.
+```js
+/**@type 
+{import('webpack').Configuration} 
+*/ 
+```
+
+Coloca esa línea encima de tu `module.exports` y te va a autocompletar las props de la configuración.
