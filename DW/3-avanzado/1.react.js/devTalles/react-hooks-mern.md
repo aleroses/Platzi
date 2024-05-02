@@ -1607,34 +1607,78 @@ describe("Tests on the <DemoComponent/>", () => {
 
 [Jest Expect](https://jestjs.io/docs/expect#reference)
 
-### 🟣 
+### 🟣 Nota de Actualización - Extensión de archivos
 
+En la siguiente clase se hace la configuración para las pruebas de nuestros distintos archivos, en caso de ver el error:
 
-`tests > demo.test.js`
-
-`src > main.jsx`
-
-```jsx
+```bash
+You appear to be using a native ECMAScript module configuration file, which is only supported when running Babel asynchronously.
 ```
-`src > main.jsx`
+  
+Cambiar extensión de los archivos `jest.config.js` y `babel.config.js` a `.cjs`
+  
+Para ver mas detalles al respecto pueden ir a [https://nodejs.org/docs/latest/api/modules.html#enabling](https://nodejs.org/docs/latest/api/modules.html#enabling "https://nodejs.org/docs/latest/api/modules.html#enabling").
 
-```jsx
-```
+### 🟣 Pruebas en el archivo `02-template-string.js`
 
-### 🟣 
+Configuración de Babel:
 
-`src > main.jsx`
-
-```jsx
-```
-`src > main.jsx`
-
-```jsx
+```bash
+yarn add --dev babel-jest @babel/core @babel/preset-env
 ```
 
-`src > main.jsx`
+Creamos el archivo `babel.config.cjs`
+
+```js
+module.exports = {
+  presets: [
+    ["@babel/preset-env", { targets: { node: "current" } }],
+  ],
+};
+```
+
+[Using Babel](https://jestjs.io/docs/getting-started#using-babel)
+
+`src > bases > 02-backticks.js`
 
 ```jsx
+function getGreeting(name) {
+  return "Hi " + name;
+}
+
+export { getGreeting };
+```
+
+`test > base-pruebas > 02-template-string.test.js`
+
+```jsx
+import { getGreeting } from "../../src/bases/02-backticks";
+
+describe("Test on 02-template-string", () => {
+  test("getGreeting should return a greeting. ", () => {
+    const name = "Ale Roses";
+    const message = getGreeting(name);
+
+    expect(message).toBe(`Hi ${name}`);
+  });
+});
+```
+
+En la terminal podremos usar `w` para mostrar más opciones y `p` para buscar el nombre del archivo a probar.
+
+```bash
+Watch Usage: Press w to show more.
+```
+
+```bash
+Watch Usage
+ › Press a to run all tests.
+ › Press f to run only failed tests.
+ › Press o to only run tests related to changed files.
+ › Press p to filter by a filename regex pattern.
+ › Press t to filter by a test name regex pattern.
+ › Press q to quit watch mode.
+ › Press Enter to trigger a test run.
 ```
 
 ### 🟣 
