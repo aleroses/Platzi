@@ -1681,24 +1681,67 @@ Watch Usage
  › Press Enter to trigger a test run.
 ```
 
+### 🟣 toEqual
+
+`toEqual` Sirve para comparar objetos. También sirve el `toStrictEqual`.
+
+`src > bases > 05-functions.js`
+
+```js
+const getUser = () => ({
+  uid: "ABC123",
+  username: "The-crazy-man",
+});
+
+const getActiveUser = (name) => ({
+  uid: "ABC567",
+  username: name,
+});
+
+export { getUser, getActiveUser };
+```
+
+`test > bases > 05-functions.test.js`
+
+```js
+import {
+  getActiveUser,
+  getUser,
+} from "../../src/bases/05-functions";
+
+describe("Test on 05-functions", () => {
+  test("getUser should return a object", () => {
+    const testUser = {
+      uid: "ABC123",
+      username: "The-crazy-man",
+    };
+
+    const user = getUser();
+
+    expect(user).toEqual(testUser);
+  });
+
+  test("getActiveUser should return an object", () => {
+    const data = "Ale Roses";
+    const activeUser = (name) => ({
+      uid: "ABC567",
+      username: name,
+    });
+    const testUser = getActiveUser(data);
+
+    expect(activeUser(data)).toEqual(testUser);
+  });
+});
+```
+
 ### 🟣 
 
-`src > main.jsx`
-
-```jsx
-```
-`src > main.jsx`
+`src > bases > 05-functions.js`
 
 ```jsx
 ```
 
-### 🟣 
-
-`src > main.jsx`
-
-```jsx
-```
-`src > main.jsx`
+`test > bases > 05-functions.test.js`
 
 ```jsx
 ```
