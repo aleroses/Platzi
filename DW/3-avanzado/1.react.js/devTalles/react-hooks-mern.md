@@ -1617,7 +1617,7 @@ You appear to be using a native ECMAScript module configuration file, which is o
   
 Cambiar extensión de los archivos `jest.config.js` y `babel.config.js` a `.cjs`
   
-Para ver mas detalles al respecto pueden ir a [https://nodejs.org/docs/latest/api/modules.html#enabling](https://nodejs.org/docs/latest/api/modules.html#enabling "https://nodejs.org/docs/latest/api/modules.html#enabling").
+Para ver más detalles al respecto pueden ir a [https://nodejs.org/docs/latest/api/modules.html#enabling](https://nodejs.org/docs/latest/api/modules.html#enabling "https://nodejs.org/docs/latest/api/modules.html#enabling").
 
 ### 🟣 Pruebas en el archivo `02-template-string.js`
 
@@ -1765,6 +1765,207 @@ describe("Test on 07-desest-arr", () => {
   });
 });
 ```
+
+### 🟣 Pruebas en `08-imp-exp.js - Arreglos`
+
+`src > bases > 08-imp-exp.js`
+
+```jsx
+import { heroes } from "../data/heroes.js";
+
+const getHeroById = (id) => {
+  return heroes.find((value) => value.id === id);
+};
+
+const getHeroesByOwner = (owner) => {
+  return heroes.filter((hero) => hero.owner === owner);
+};
+
+export { getHeroById, getHeroesByOwner };
+```
+
+`test > bases > 08-imp-exp.test.js`
+
+```jsx
+import {
+  getHeroById,
+  getHeroesByOwner,
+} from "../../src/bases/08-imp-exp.js";
+import { heroes } from "../../src/data/heroes.js";
+
+describe("Test on 08-imp-exp", () => {
+  test("getHeroById should return a hero by Id", () => {
+    const id = 1;
+    const hero = getHeroById(id);
+
+    expect(hero).toEqual({
+      id: 1,
+      name: "Batman",
+      owner: "DC",
+    });
+  });
+
+  test("getHeroById should return undefinded if the id doesn't exist", () => {
+    const id = 11;
+    const hero = getHeroById(id);
+
+    expect(hero).toBe(undefined);
+    expect(hero).toBeFalsy();
+
+    // false is considered a false value
+    expect(false).toBeFalsy();
+  });
+
+  // Task
+  test("getHeroesByOwner should return an array of DC heroes", () => {
+    const owner = "DC";
+    const newHeroes = getHeroesByOwner(owner);
+    const dcHeroes = [
+      {
+        id: 1,
+        name: "Batman",
+        owner: "DC",
+      },
+      {
+        id: 3,
+        name: "Superman",
+        owner: "DC",
+      },
+      {
+        id: 4,
+        name: "Flash",
+        owner: "DC",
+      },
+    ];
+
+    expect(newHeroes.length).toBe(3);
+    expect(newHeroes).toStrictEqual(dcHeroes);
+
+    // Actual method
+    expect(newHeroes).toEqual(
+      heroes.filter((hero) => hero.owner === owner)
+    );
+  });
+});
+```
+
+> En caso trabajaste con la extensión `.mjs` tener cuidado porque para las pruebas debe estar en `.js` de lo contrario fallará.
+
+[**heroes.js - Gist**](https://gist.github.com/Klerith/4aeb99d31aedbc29ff4d54bbb77d2d7f)
+
+👈👀
+
+👈👀
+
+👈👀👇
+
+### 🟣 
+
+`src > main.jsx`
+
+```jsx
+```
+`src > main.jsx`
+
+```jsx
+```
+
+
+👈👀
+
+👈👀
+
+👈👀👇
+
+### 🟣 
+
+`src > main.jsx`
+
+```jsx
+```
+`src > main.jsx`
+
+```jsx
+```
+
+
+👈👀
+
+👈👀
+
+👈👀👇
+
+### 🟣 
+
+`src > main.jsx`
+
+```jsx
+```
+`src > main.jsx`
+
+```jsx
+```
+
+
+👈👀
+
+👈👀
+
+👈👀👇
+
+### 🟣 
+
+`src > main.jsx`
+
+```jsx
+```
+`src > main.jsx`
+
+```jsx
+```
+
+
+👈👀
+
+👈👀
+
+👈👀👇
+
+### 🟣 
+
+`src > main.jsx`
+
+```jsx
+```
+`src > main.jsx`
+
+```jsx
+```
+
+
+👈👀
+
+👈👀
+
+👈👀👇
+
+### 🟣 
+
+`src > main.jsx`
+
+```jsx
+```
+`src > main.jsx`
+
+```jsx
+```
+
+
+👈👀
+
+👈👀
+
+👈👀👇
 
 ### 🟣 
 
