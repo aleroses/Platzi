@@ -1919,30 +1919,70 @@ describe("Test on 09-promises", () => {
 });
 ```
 
+### 🟣 Pruebas con async-await
 
-👈👀
+Instalamos:
 
-👈👀
-
-👈👀👇
-
-### 🟣 
-
-`src > main.jsx`
-
-```jsx
-```
-`src > main.jsx`
-
-```jsx
+```bash
+yarn add -D whatwg-fetch
 ```
 
+Creamos el archivo `jest.config.cjs` y el archivo `jest.setup.js` todo en la raíz del proyecto.
 
-👈👀
+`jest.config.cjs` 
 
-👈👀
+```jsx
+module.exports = {
+  // TODO: jsdom,
+  setupFiles: ["./jest.setup.js"],
+};
+```
 
-👈👀👇
+`jest.setup.js`
+
+```js
+import "whatwg-fetch";
+```
+
+Para este ejemplo usaremos al APIKEY de GIPHY que generamos en clases pasadas.
+
+`src > bases > 11-async-await.js`
+
+```jsx
+const getImage = async () => {
+  try {
+    const apiKey = "fEOnnEkSzI8fEOmMc09dfEOFt9fEO";
+    const response = await fetch(
+      `https://api.giphy.com/v1/gifs/random?api_key=${apiKey}`
+    );
+    const { data } = await response.json();
+    const { url } = data.images.original;
+
+    return url;
+  } catch (error) {
+    console.error(error);
+    return "Image not found";
+  }
+};
+
+// getImage();
+
+export { getImage };
+```
+
+`src > bases > 11-async-await.test.js`
+
+```jsx
+import { getImage } from "../../src/bases/11-async-await";
+
+describe("Test on 11-async-await", () => {
+  test("getImage should return an image Url", async () => {
+    const url = await getImage();
+
+    expect(typeof url).toBe("string");
+  });
+});
+```
 
 ### 🟣 
 
