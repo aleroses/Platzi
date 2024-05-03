@@ -1867,7 +1867,7 @@ const getHeroByIdAsync = (id) => {
     setTimeout(() => {
       const data = getHeroById(id);
 
-      data ? resolve(data) : reject("Id not found" + id);
+      data ? resolve(data) : reject("Id not found " + id);
     }, 1000);
   });
 
@@ -1911,7 +1911,9 @@ describe("Test on 09-promises", () => {
         done();
       })
       .catch((error) => {
-        expect(error).toBe(`Couldn't find the hero`);
+        expect(error).toBe(`Id not found ${id}`);
+
+        done();
       });
   });
 });
