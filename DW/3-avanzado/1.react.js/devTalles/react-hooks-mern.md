@@ -1849,25 +1849,72 @@ describe("Test on 08-imp-exp", () => {
 });
 ```
 
+Creamos una carpeta data y añadimos el archivo `heroes.js`.
+
 > En caso trabajaste con la extensión `.mjs` tener cuidado porque para las pruebas debe estar en `.js` de lo contrario fallará.
 
 [**heroes.js - Gist**](https://gist.github.com/Klerith/4aeb99d31aedbc29ff4d54bbb77d2d7f)
 
-👈👀
+### 🟣 Pruebas con tareas asíncronas
 
-👈👀
-
-👈👀👇
-
-### 🟣 
-
-`src > main.jsx`
+`src > bases > 09-promises.js`
 
 ```jsx
+import { getHeroById } from "./08-imp-exp.js";
+
+const getHeroByIdAsync = (id) => {
+  const promise = new Promise((resolve, reject) => {
+    setTimeout(() => {
+      const data = getHeroById(id);
+
+      data ? resolve(data) : reject("Id not found" + id);
+    }, 1000);
+  });
+
+  return promise;
+};
+
+export { getHeroByIdAsync };
 ```
-`src > main.jsx`
+
+`src > bases > 09-promises.test.js`
 
 ```jsx
+import { getHeroByIdAsync } from "../../src/bases/09-promises";
+
+describe("Test on 09-promises", () => {
+  test("09-promises should return a hero", (done) => {
+    const id = 1;
+
+    getHeroByIdAsync(id).then((hero) => {
+      // expect(true).toBe(false);
+
+      expect(hero).toEqual({
+        id: 1,
+        name: "Batman",
+        owner: "DC",
+      });
+
+      done();
+    });
+  });
+
+  test("09-promises should return an error if Hero doesn't exist", (done) => {
+    const id = 12;
+
+    getHeroByIdAsync(id)
+      .then((hero) => {
+        // expect(true).toBe(false);
+
+        expect(hero).toBeFalsy();
+
+        done();
+      })
+      .catch((error) => {
+        expect(error).toBe(`Couldn't find the hero`);
+      });
+  });
+});
 ```
 
 
