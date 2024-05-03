@@ -1734,16 +1734,36 @@ describe("Test on 05-functions", () => {
 });
 ```
 
-### 🟣 
+### 🟣 Pruebas en el archivo `07-deses-arr.js`
 
-`src > bases > 05-functions.js`
+`src > bases > 07-desest-arr.js`
 
 ```jsx
+const showArray = () => {
+  return ["ABC", 123];
+};
+
+export { showArray };
 ```
 
-`test > bases > 05-functions.test.js`
+`test > bases > 07-desest-arr.test.js`
 
 ```jsx
+import { showArray } from "../../src/bases/07-desest-arr";
+
+describe("Test on 07-desest-arr", () => {
+  test("showArray should return a string and a number", () => {
+    const [letters, numbers] = showArray();
+
+    expect(letters).toBe("ABC");
+    expect(numbers).toBe(123);
+
+    expect(typeof letters).toBe("string");
+    expect(typeof numbers).toBe("number");
+
+    expect(letters).toEqual(expect.any(String));
+  });
+});
 ```
 
 ### 🟣 
