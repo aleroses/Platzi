@@ -1984,59 +1984,124 @@ describe("Test on 11-async-await", () => {
 });
 ```
 
-### 🟣 
+### 🟣 Evaluar el Catch en el async-await
 
-`src > main.jsx`
-
-```jsx
-```
-`src > main.jsx`
+`src > bases > 11-async-await.js`
 
 ```jsx
 ```
 
-
-👈👀
-
-👈👀
-
-👈👀👇
-
-### 🟣 
-
-`src > main.jsx`
-
-```jsx
-```
-`src > main.jsx`
+`src > bases > 11-async-await.test.js`
 
 ```jsx
 ```
 
+### 🟣 Pruebas sobre componentes de React
 
-👈👀
+Usaremos **Testing Library / React Testing Library** para hacer pruebas con componentes propios de React.
 
-👈👀
+```bash
+yarn add --dev @testing-library/react
+yarn add --dev @testing-library/react
+```
 
-👈👀👇
-
-### 🟣 
+Para el siguiente ejemplo usaremos el componente `FirstApp.jsx`.
 
 `src > main.jsx`
 
 ```jsx
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { FirstTest } from "./FirstTest.jsx";
+
+import "./index.css";
+
+ReactDOM.createRoot(document.getElementById("root")).render(
+  <React.StrictMode>
+    <FirstTest />
+  </React.StrictMode>
+);
 ```
-`src > main.jsx`
+
+[React Testing Library](https://testing-library.com/docs/react-testing-library/intro)
+
+[Testing React Apps: DOM Testing](https://jestjs.io/docs/tutorial-react#dom-testing)
+
+### 🟣 Pruebas en FirstApp - Componentes de React
+
+```bash
+yarn add -D jest-environment-jsdom
+yarn add -D @babel/preset-react
+```
+
+`jest.config.cjs`
 
 ```jsx
+module.exports = {
+  testEnvironment: "jest-environment-jsdom",
+  setupFiles: ["./jest.setup.js"],
+};
 ```
 
+`babel.config.cjs`
 
-👈👀
+```jsx
+module.exports = {
+  presets: [
+    ["@babel/preset-env", { targets: { esmodules: true } }],
+    ["@babel/preset-react", { runtime: "automatic" }],
+  ],
+};
+```
 
-👈👀
+`src > FirstTest.jsx`
 
-👈👀👇
+```jsx
+import PropTypes from "prop-types";
+
+const FirstTest = ({
+  title = "No title",
+  subTitle,
+  name,
+}) => {
+  return (
+    <>
+      <h1 data-testid="test-title">{title}</h1>
+      <p>{subTitle}</p>
+      <p>{name}</p>
+      {/* <code>{JSON.stringify(newMessage)}</code> */}
+    </>
+  );
+};
+
+FirstTest.propTypes = {
+  title: PropTypes.string.isRequired,
+  subTitle: PropTypes.string,
+};
+
+FirstTest.defaultProps = {
+  // title: "No title",
+  subTitle: "New Text",
+  name: "Ale Roses",
+};
+
+export { FirstTest };
+```
+
+`test > FirstTest.test.jsx`
+
+```jsx
+import { render } from "@testing-library/react";
+import { FirstTest } from "../src/FirstTest.jsx";
+
+describe("Testing FirstTest", () => {
+  test("Should match the snapshot", () => {
+    // snapshot: instantánea captura
+
+    render(<FirstTest title={"Hi i'm Ale Roses"} />);
+  });
+});
+```
 
 ### 🟣 
 
