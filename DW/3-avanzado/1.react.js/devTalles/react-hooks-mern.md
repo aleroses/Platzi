@@ -2182,33 +2182,87 @@ describe("Testing FirstTest", () => {
 });
 ```
 
+### 🟣 getByTestId y otras props
+
+`src > FirstTest.jsx`
+
+```jsx
+import PropTypes from "prop-types";
+
+const FirstTest = ({
+  title = "No title",
+  subTitle = "New Text",
+  name = "Ale Roses",
+}) => {
+  return (
+    <>
+      <h1 data-testid="test-title">{title}</h1>
+      <p>{subTitle}</p>
+      <p>{subTitle}</p>
+      <p>{name}</p>
+    </>
+  );
+};
+
+FirstTest.propTypes = {
+  title: PropTypes.string.isRequired,
+  subTitle: PropTypes.string,
+};
+
+export { FirstTest };
+```
+
+`test > FirstTest.test.jsx`
+
+```jsx
+import { render } from "@testing-library/react";
+import { FirstTest } from "../src/FirstTest.jsx";
+
+describe("Testing FirstTest", () => {
+  test("Should show the title in a h1", () => {
+    const message = "Hi i'm Ale Roses";
+
+    const { container, getByText, getByTestId } = render(
+      <FirstTest title={message} />
+    );
+
+    expect(getByText(message)).toBeTruthy();
+
+    expect(getByTestId("test-title")).toBeTruthy();
+    expect(getByTestId("test-title").innerHTML).toBe(
+      message
+    );
+
+    expect(getByTestId("test-title").innerHTML).toContain(
+      message
+    );
+  });
+
+  test("should show the subtitle send by props", () => {
+    const message = "Hi i'm Ale Roses";
+    const subTitle = "I'm a subtitle";
+
+    const { getByText, getAllByText } = render(
+      <FirstTest title={message} subTitle={subTitle} />
+    );
+
+    // expect(getByText(subTitle)).toBeTruthy();
+    expect(getAllByText(subTitle)).toBeTruthy();
+    expect(getAllByText(subTitle).length).toBe(2);
+  });
+});
+```
+
 ### 🟣 
 
-`src > main.jsx`
+`src > FirstTest.jsx`
 
 ```jsx
 
 ```
-`src > main.jsx`
 
-```jsx
-```
+`test > FirstTest.test.jsx`
 
-
-👈👀
-
-👈👀
-
-👈👀👇
-
-### 🟣 
-
-`src > main.jsx`
-
-```jsx
-
-```
-`src > main.jsx`
 
 ```jsx
 ```
