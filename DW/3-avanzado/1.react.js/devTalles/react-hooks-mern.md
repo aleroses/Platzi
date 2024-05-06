@@ -2079,7 +2079,8 @@ FirstTest.propTypes = {
   subTitle: PropTypes.string,
 };
 
-FirstTest.defaultProps = {
+// defaultProps throws an error
+FirstTest.defaultProps = { 👈👀
   // title: "No title",
   subTitle: "New Text",
   name: "Ale Roses",
@@ -2103,11 +2104,90 @@ describe("Testing FirstTest", () => {
 });
 ```
 
+En la actualidad aparece el siguiente **Warning** al tratar de usar `defaultProps`:
+
+```bash
+Warning: FirstTest: Support for defaultProps will be removed from function components in a future major release. Use JavaScript default parameters instead.
+        at title (/home/ghost/Desktop/FH/x-test/src/FirstTest.jsx:4:3)
+```
+
+Para evitar esto solo agrega los `defaultProps` de la siguiente manera:
+
+```jsx
+import PropTypes from "prop-types";
+
+const FirstTest = ({ 👈👀👇
+  title = "No title",
+  subTitle = "New Text",
+  name = "Ale Roses",
+}) => {
+  return (
+    <>
+      <h1 data-testid="test-title">{title}</h1>
+      <p>{subTitle}</p>
+      <p>{name}</p>
+    </>
+  );
+};
+
+FirstTest.propTypes = {
+  title: PropTypes.string.isRequired,
+  subTitle: PropTypes.string,
+};
+
+export { FirstTest };
+```
+
+### 🟣 Probar FirstApp
+
+Al usar `toMatchSnapshot` se crea una carpeta llamada `__snapshots__` con las instantáneas o capturas del componente asociado.
+
+Esto permite verificar que el código está tal cual como lo creamos y que no se eliminaron líneas. Si eliminas algunas, verás que esto se refleja en la consola.
+
+En caso el cambio hecho en el código sea intensional, puedes presionar `u` en la consola para actualizar los cambios en el `__snapshots__`.
+
+`test > FirstTest.test.jsx`
+
+```jsx
+import { render } from "@testing-library/react";
+import { FirstTest } from "../src/FirstTest.jsx";
+
+describe("Testing FirstTest", () => {
+  test("Should match the snapshot", () => {
+    // snapshot: instantánea, captura
+
+    const message = "Hi i'm Ale Roses";
+    const { container } = render(
+      <FirstTest title={message} />
+    );
+
+    expect(container).toMatchSnapshot();
+  });
+
+  test("Should show the title in a h1", () => {
+    const message = "Hi i'm Ale Roses";
+    const { container, getByText } = render(
+      <FirstTest title={message} />
+    );
+
+    expect(getByText(message)).toBeTruthy();
+
+    const h1 = container.querySelector("h1");
+
+    expect(h1.innerHTML).toBe(message);
+    
+    // Work with spaces at the beginning and at the end.
+    expect(h1.innerHTML).toContain(message); 👈👀
+  });
+});
+```
+
 ### 🟣 
 
 `src > main.jsx`
 
 ```jsx
+
 ```
 `src > main.jsx`
 
@@ -2126,6 +2206,26 @@ describe("Testing FirstTest", () => {
 `src > main.jsx`
 
 ```jsx
+
+```
+`src > main.jsx`
+
+```jsx
+```
+
+
+👈👀
+
+👈👀
+
+👈👀👇
+
+### 🟣 
+
+`src > main.jsx`
+
+```jsx
+
 ```
 `src > main.jsx`
 
