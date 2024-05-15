@@ -2253,16 +2253,225 @@ describe("Testing FirstTest", () => {
 });
 ```
 
+### 🟣 Screen - Testing Library
+
+`test > FirstTest2.test.jsx`
+
+```jsx
+import { render, screen } from "@testing-library/react";
+import { FirstTest } from "../src/FirstTest.jsx";
+
+describe("Testing FirstTest", () => {
+  const message = "Hi i'm Ale Roses";
+  const subTitle = "I'm a subtitle";
+
+  test("Should match the snapshot", () => {
+    // snapshot: instantánea, captura
+
+    const { container } = render(
+      <FirstTest title={message} />
+    );
+
+    expect(container).toMatchSnapshot();
+  });
+
+  test("Should show the message 'Hi, i'm Ale Roses'", () => {
+    // screen.debug()
+    render(<FirstTest title={message} />);
+
+    // expect(screen.getByText(title)).not.toBeTruthy();
+    expect(screen.getByText(message)).toBeTruthy();
+  });
+
+  test("should show the title in an h1", () => {
+    render(<FirstTest title={message} />);
+    expect(
+      screen.getByRole("heading", { level: 1 }).innerHTML
+    ).toContain(message);
+  });
+
+  test("should show the subtitle send by props", () => {
+    render(
+      <FirstTest title={message} subTitle={subTitle} />
+    );
+
+    expect(screen.getAllByText(subTitle).length).toBe(2);
+  });
+});
+```
+
+### 🟣 Pruebas básicas del CounterApp
+
+`src > main.jsx`
+
+```jsx
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { CounterApp } from "./CounterApp.jsx";
+
+import "./styles.css";
+
+ReactDOM.createRoot(document.getElementById("root")).render(
+  <React.StrictMode>
+    <CounterApp value={0} />
+  </React.StrictMode>
+);
+```
+
+`src > CounterApp.jsx`
+
+```jsx
+import React, { useState } from "react";
+import PropTypes from "prop-types";
+
+const CounterApp = ({ value }) => {
+  const [counter, setCounter] = useState(value);
+
+  const handleAdd = () => {
+    // setCounter(counter + 1);
+    setCounter((c) => c + 1);
+  };
+
+  const handleRest = () => {
+    setCounter((c) => c - 1);
+  };
+
+  const handleReset = () => {
+    setCounter(value);
+  };
+
+  return (
+    <>
+      <h1>Counter App</h1>
+
+      <button onClick={handleAdd}>+1</button>
+      <button onClick={handleRest}>-1</button>
+      <button aria-label="btn-reset" onClick={handleReset}>
+        Reset
+      </button>
+      <h2>{counter}</h2>
+    </>
+  );
+};
+
+CounterApp.propTypes = {
+  value: PropTypes.number.isRequired,
+};
+
+export { CounterApp };
+```
+
+`tests > CounterApp.test.jsx`
+
+```jsx
+import { render, screen } from "@testing-library/react";
+import { CounterApp } from "../src/CounterApp";
+
+describe("Test in the CounterApp", () => {
+  const value = 0;
+
+  test("Should match the snapshott", () => {
+    const { container } = render(
+      <CounterApp value={value} />
+    );
+    expect(CounterApp).toMatchSnapshot();
+  });
+
+  test("should show the inicial value of 0", () => {
+    render(<CounterApp value={value} />);
+
+    expect(screen.getByText(value)).toBeTruthy();
+    expect(
+      screen.getByRole("heading", { level: 2 }).innerHTML
+    ).toContain("0");
+  });
+});
+```
+
 ### 🟣 
 
-`src > FirstTest.jsx`
+`src > main.jsx`
 
 ```jsx
 
 ```
+`src > main.jsx`
 
-`test > FirstTest.test.jsx`
+```jsx
+```
 
+
+👈👀
+
+👈👀
+
+👈👀👇
+
+### 🟣 
+
+`src > main.jsx`
+
+```jsx
+
+```
+`src > main.jsx`
+
+```jsx
+```
+
+
+👈👀
+
+👈👀
+
+👈👀👇
+
+### 🟣 
+
+`src > main.jsx`
+
+```jsx
+
+```
+`src > main.jsx`
+
+```jsx
+```
+
+
+👈👀
+
+👈👀
+
+👈👀👇
+
+### 🟣 
+
+`src > main.jsx`
+
+```jsx
+
+```
+`src > main.jsx`
+
+```jsx
+```
+
+
+👈👀
+
+👈👀
+
+👈👀👇
+
+### 🟣 
+
+`src > main.jsx`
+
+```jsx
+
+```
+`src > main.jsx`
 
 ```jsx
 ```
