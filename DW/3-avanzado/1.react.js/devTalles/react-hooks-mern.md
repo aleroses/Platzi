@@ -2388,24 +2388,69 @@ describe("Test in the CounterApp", () => {
 });
 ```
 
-### 🟣 
+### 🟣 Simular eventos - Click
 
-`src > main.jsx`
-
-```jsx
-
-```
-`src > main.jsx`
+`tests > CounterApp.test.jsx`
 
 ```jsx
+import {
+  fireEvent,
+  render,
+  screen,
+} from "@testing-library/react";
+import { CounterApp } from "../src/CounterApp";
+
+describe("Test in the CounterApp", () => {
+  const value = 0;
+
+  test("Should match the snapshott", () => {
+    const { container } = render(
+      <CounterApp value={value} />
+    );
+    expect(CounterApp).toMatchSnapshot();
+  });
+
+  test("should show the inicial value of 0", () => {
+    render(<CounterApp value={value} />);
+
+    expect(screen.getByText(value)).toBeTruthy();
+    expect(
+      screen.getByRole("heading", { level: 2 }).innerHTML
+    ).toContain("0");
+  });
+
+  test("Should increase with the +1 button", () => {
+    render(<CounterApp value={value} />);
+    fireEvent.click(screen.getByText("+1"));
+
+    expect(screen.getByText("1")).toBeTruthy();
+  });
+
+  // test("Should decrease with the -1 button", () => {
+  //   render(<CounterApp value={value} />);
+  //   fireEvent.click(screen.getByText("-1"));
+
+  //   // screen.debug();
+  //   expect(screen.getByText("-1")).toBeTruthy();
+  // });
+
+  test("The reset button should work", () => {
+    render(<CounterApp value={value} />);
+    fireEvent.click(screen.getByText("+1"));
+    fireEvent.click(screen.getByText("+1"));
+    fireEvent.click(screen.getByText("+1"));
+
+    // Returns the value to 0
+    // fireEvent.click(screen.getByText("Reset"));
+    fireEvent.click(
+      screen.getByRole("button", { name: "btn-reset" })
+    );
+
+    // screen.debug();
+    expect(screen.getByText(value)).toBeTruthy();
+  });
+});
 ```
-
-
-👈👀
-
-👈👀
-
-👈👀👇
 
 ### 🟣 
 
