@@ -2452,62 +2452,113 @@ describe("Test in the CounterApp", () => {
 });
 ```
 
-### 🟣 
+### 🟣 Código fuente de la sección
+
+Aquí les dejo el código fuente de la sección por si lo llegan a necesitar y comparar contra el suyo:
+
+- [**Github - Fin sección 5**](https://github.com/Klerith/react-vite-counter-app/tree/fin-seccion-5)
+- [Apuntes](https://github.com/aleroses/Platzi/blob/master/DW/3-avanzado/1.react.js/devTalles/react-hooks-mern.md)
+
+## 6. GifExpertApp - Aplicación
+
+### 🟣 Introducción a la sección
+
+### 🟣 Temas puntuales de la sección
+
+**¿Qué veremos en esta sección?**
+
+- Custom Hooks
+- Fetch hacia un API
+- Comunicación entre componentes
+- Clases de CSS
+- Animaciones
+- Enviar métodos como argumentos
+- Crear listados
+- keys
+- Giphy
+
+Esta es una aplicación pequeña pero muy ilustrativa que explica cómo utilizar React + customHooks para poder resolver necesidades en específico que podremos re-utilizar después.
+
+### 🟣 Resultado al final de la sección
+
+![Project 01](https://i.postimg.cc/zD2R0NnK/1-project.png)
+`src > main.jsx`
+
+### 🟣 Inicio de proyecto - GifExpertApp
+
+```bash
+yarn create vite
+	04-gif-expert-app
+	react
+	JavaScript
+cd 04-gif-expert-app
+
+# Instalar Módulos de Node: yarn
+yarn install 
+code-insiders .
+
+# Corremos la app
+yarn dev
+```
+
+Limpiamos el contenido de la carpeta `src`, solo dejamos el archivo `main.jsx`.
+
+En esta clase dejamos la siguiente estructura:
+
+```bash
+.
+├── index.html
+├── node_modules
+├── package.json
+├── public
+│   └── vite.svg
+├── README.md
+├── src 👈👀👇
+│   ├── GifExpertApp.jsx
+│   └── main.jsx
+├── vite.config.js
+└── yarn.lock
+
+3 directories, 5 files
+```
+
+También debemos tener ya creada una API KEY en [GiphY Devs](https://developers.giphy.com/)
+
+### 🟣 GifExpertApp - Component
 
 `src > main.jsx`
 
 ```jsx
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { GifExpertApp } from "./GifExpertApp";
 
+import "./styles.css";
+
+ReactDOM.createRoot(document.getElementById("root")).render(
+  <React.StrictMode>
+    <GifExpertApp />
+  </React.StrictMode>
+);
 ```
-`src > main.jsx`
+
+`src > GifExpertApp.jsx`
 
 ```jsx
+export const GifExpertApp = () => {
+  return (
+    <>
+      <h1>GifExpertApp</h1>
+    </>
+  );
+};
 ```
 
+Los estilos puedes agregarlos según tu criterio o también puedes usar los que se usaron para crear esta aplicación. Solo asegúrate de crearlos dentro de la carpeta `src`.
 
-👈👀
-
-👈👀
-
-👈👀👇
-
-### 🟣 
-
-`src > main.jsx`
-
-```jsx
-
-```
-`src > main.jsx`
-
-```jsx
-```
-
-
-👈👀
-
-👈👀
-
-👈👀👇
-
-### 🟣 
-
-`src > main.jsx`
-
-```jsx
-
-```
-`src > main.jsx`
-
-```jsx
-```
-
-
-👈👀
-
-👈👀
-
-👈👀👇
+- [**Reactjs.org - Estructura de directorios**](https://es.reactjs.org/docs/faq-structure.html)
+- [**Estructura, nombres de folders y componentes en React - Hackernoon.com**](https://hackernoon.com/structuring-projects-and-naming-components-in-react-1261b6e18d76)
+- [**Estilos GifExpertApp**](https://gist.github.com/Klerith/e4fca6ac127ccb9abd1e8ad77fcd52f1)
 
 ### 🟣 
 
