@@ -55,7 +55,8 @@
               }
             }
           }
-        ]
+        ],
+        "currentTab": 3
       }
     ],
     "direction": "vertical"
@@ -122,7 +123,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "DW/3-avanzado/1.react.js/devTalles/react-hooks-mern.md",
+                "file": "DW/2-intermedio/026.manipulacion-dom/manipulacion-dom.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -139,7 +140,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "DW/3-avanzado/1.react.js/devTalles/react-hooks-mern.md",
+                "file": "DW/2-intermedio/026.manipulacion-dom/manipulacion-dom.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -162,7 +163,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "DW/3-avanzado/1.react.js/devTalles/react-hooks-mern.md"
+                "file": "DW/2-intermedio/026.manipulacion-dom/manipulacion-dom.md"
               }
             }
           }
@@ -184,12 +185,13 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "9d6fe1dbbb51c86c",
+  "active": "d20eaf0f1351e2ea",
   "lastOpenFiles": [
-    "DW/2-intermedio/019.empaquetadores/intro-empaquetadores -web.md",
-    "DW/3-avanzado/1.react.js/YouTube/react-js-desde-cero.md",
+    "Untitled.md",
     "DW/2-intermedio/026.manipulacion-dom/manipulacion-dom.md",
     "DW/3-avanzado/1.react.js/devTalles/react-hooks-mern.md",
+    "DW/2-intermedio/019.empaquetadores/intro-empaquetadores -web.md",
+    "DW/3-avanzado/1.react.js/YouTube/react-js-desde-cero.md",
     "DW/2-intermedio/026.manipulacion-dom",
     "DW/3-avanzado/1.react.js/devTalles/img/1.project.png",
     "DW/3-avanzado/1.react.js/devTalles/img/1.project.png.crdownload",
@@ -226,7 +228,6 @@
     "DW/2-intermedio/019.empaquetadores/resources/code/webpack/node_modules/json5/LICENSE.md",
     "DW/2-intermedio/019.empaquetadores/resources/code/webpack/node_modules/nth-check/README.md",
     "DW/2-intermedio/019.empaquetadores/resources/code/webpack/node_modules/@nodelib/fs.walk/README.md",
-    "DW/2-intermedio/019.empaquetadores/resources/code/webpack/node_modules/pretty-error/README.md",
     "DW/2-intermedio/019.empaquetadores/resources/img/webpack.png",
     "DW/2-intermedio/019.empaquetadores/img/webpack.png",
     "Pasted image 20240428080526.png",
