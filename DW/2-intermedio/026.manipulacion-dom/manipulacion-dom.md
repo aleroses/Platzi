@@ -396,7 +396,99 @@ Esto es muy útil cuando tenemos demasiados valores, recuerda, mientras menos mo
 
 [Documentación de operador de propagación](https://developer.mozilla.org/es/docs/conflicting/Web/JavaScript/Reference/Operators/Spread_syntax)
 
-## 11.
+## 11. Presentación del proyecto
+
+Avocados (paltas), la tiendita.
+
+## 12. Descargando información y creando nodos
+
+Usaremos un template generator llamado Snowpack y Tailwind:
+
+```bash
+# Bootstrap the template into a new folder called `my-app`
+npx create-snowpack-app my-app --template snowpack-template-tailwind
+```
+
+La consola muestra los comandos que podemos usar:
+
+```bash
+Quickstart:
+
+  cd my-dom 👈👀 Nombre que yo le dí
+  npm start
+
+All Commands:
+
+  npm install      Install your dependencies. (We already ran this one for you!)
+  npm start        Start your development server.
+  npm run build    Build your website for production.
+  npm test         Run your tests.
+```
+
+Ahora veamos el proyecto en el navegador:
+
+```bash
+cd my-app
+npm start
+```
+
+Puedes cambiar `my-app` por el nombre que desees.
+
+La estructura del proyecto se ve así:
+
+```bash
+.
+├── LICENSE
+├── node_modules
+├── package.json
+├── package-lock.json
+├── public
+│   ├── favicon.ico
+│   ├── index.html
+│   └── robots.txt
+├── README.md
+├── snowpack.config.js
+├── src
+│   ├── index.css
+│   └── index.js
+└── yarn.lock
+```
+
+`src > index.js`
+
+```js
+const url = "https://platzi-avo.vercel.app/api/avo";
+
+// web api
+// Conectarnos al server
+window
+  .fetch(url)
+  .then((response) => response.json())
+  .then(({ data }) => {
+    console.log(data);
+
+    data.forEach((item) => {
+      console.log(item.name);
+
+      const items = [];
+      const container = document.createElement("div");
+
+      // Crear imagen, titulo y precio
+      const imagen = document.createElement("img");
+      const title = document.createElement("h2");
+      const price = document.createElement("div");
+
+      container.append(imagen, title, price);
+      // document.body.append(container);
+
+      items.push(container);
+      document.body.append(...items);
+    });
+  });
+```
+
+[Data de Paltas](https://platzi-avo.vercel.app/api/avo)
+
 
 👈👀
 👇
@@ -406,15 +498,7 @@ Esto es muy útil cuando tenemos demasiados valores, recuerda, mientras menos mo
 
 ```
 
-## 12.
-
-👈👀
-👇
-📌
-
-```js
-
-```
+https://github.com/jonalvarezz/snowpack-template-tailwind
 
 ## 13.
 
