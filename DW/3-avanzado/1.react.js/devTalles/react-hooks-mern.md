@@ -2560,39 +2560,208 @@ Los estilos puedes agregarlos según tu criterio o también puedes usar los que 
 - [**Estructura, nombres de folders y componentes en React - Hackernoon.com**](https://hackernoon.com/structuring-projects-and-naming-components-in-react-1261b6e18d76)
 - [**Estilos GifExpertApp**](https://gist.github.com/Klerith/e4fca6ac127ccb9abd1e8ad77fcd52f1)
 
+### 🟣 Creando una lista de categorías
+
+`src > GifExpertApp.jsx`
+
+```jsx
+import { useState } from "react";
+
+export const GifExpertApp = () => {
+  const [categories, setCategories] = useState([
+    "One Punch",
+    "Dragon Ball",
+  ]);
+
+  return (
+    <>
+      <h1>GifExpertApp</h1>
+
+      <ol>
+        {categories.map((item, id) => {
+          return <li key={id}>{item}</li>;
+        })}
+      </ol>
+    </>
+  );
+};
+```
+
+### 🟣 Agregar una nueva categoría
+
+`src > GifExpertApp.jsx`
+
+```jsx
+import { useState } from "react";
+
+export const GifExpertApp = () => {
+  const [categories, setCategories] = useState([
+    "One Punch",
+    "Dragon Ball",
+  ]);
+
+  const onAddCategory = () => {
+    // setCategories((item) => [...item, "New Item!!!"]);
+    setCategories([...categories, "New Item!!!"]);
+  };
+
+  return (
+    <>
+      <h1>GifExpertApp</h1>
+
+      <button onClick={onAddCategory}>Add</button>
+      <ol>
+        {categories.map((item, id) => {
+          return <li key={id}>{item}</li>;
+        })}
+      </ol>
+    </>
+  );
+};
+```
+
+### 🟣 Componente AddCategory
+
+`src > GifExpertApp.jsx`
+
+```jsx
+import { useState } from "react";
+
+const AddCategory = () => {
+  const [inputValue, setInputValue] = useState("One Punch");
+
+  const onInputChange = (event) => {
+    setInputValue(event.target.value);
+  };
+
+  const onSubmit = (event) => {
+    event.preventDefault();
+
+    console.log(inputValue);
+  };
+
+  return (
+    <form action="" onSubmit={onSubmit}>
+      <input
+        type="text"
+        placeholder="Search gifts"
+        value={inputValue}
+        onChange={onInputChange}
+      />
+    </form>
+  );
+};
+
+export { AddCategory };
+```
+
 ### 🟣 
 
-`src > main.jsx`
+`src > GifExpertApp.jsx`
 
 ```jsx
 
 ```
-`src > main.jsx`
+
+`src > GifExpertApp.jsx`
 
 ```jsx
 ```
 
-
-👈👀
 
 👈👀
 
 👈👀👇
 
+
 ### 🟣 
 
-`src > main.jsx`
+`src > GifExpertApp.jsx`
 
 ```jsx
 
 ```
-`src > main.jsx`
+
+`src > GifExpertApp.jsx`
 
 ```jsx
 ```
 
 
 👈👀
+
+👈👀👇
+
+
+### 🟣 Agregar una nueva categoría
+
+`src > GifExpertApp.jsx`
+
+```jsx
+
+```
+
+`src > GifExpertApp.jsx`
+
+```jsx
+```
+
+
+👈👀
+
+👈👀👇
+
+
+### 🟣 Agregar una nueva categoría
+
+`src > GifExpertApp.jsx`
+
+```jsx
+
+```
+
+`src > GifExpertApp.jsx`
+
+```jsx
+```
+
+
+👈👀
+
+👈👀👇
+
+
+### 🟣 Agregar una nueva categoría
+
+`src > GifExpertApp.jsx`
+
+```jsx
+
+```
+
+`src > GifExpertApp.jsx`
+
+```jsx
+```
+
+
+👈👀
+
+👈👀👇
+
+### 🟣 Agregar una nueva categoría
+
+`src > GifExpertApp.jsx`
+
+```jsx
+
+```
+
+`src > GifExpertApp.jsx`
+
+```jsx
+```
+
 
 👈👀
 
