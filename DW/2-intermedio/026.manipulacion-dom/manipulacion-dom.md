@@ -414,7 +414,7 @@ La consola muestra los comandos que podemos usar:
 ```bash
 Quickstart:
 
-  cd my-dom 👈👀 Nombre que yo le dí
+  cd my-dom #👈👀 Nombre que yo le dí
   npm start
 
 All Commands:
@@ -487,9 +487,191 @@ window
   });
 ```
 
-[Data de Paltas](https://platzi-avo.vercel.app/api/avo)
+Usando `async` y `await` queda así:
 
+```js
+const url = "https://platzi-avo.vercel.app/api/avo";
 
+const avocados = async () => {
+  const response = await fetch(url);
+  const { data } = await response.json();
+  console.log(data);
+
+  data.map((item) => {
+    const container = document.createElement("div");
+    const imagen = document.createElement("img");
+    const title = document.createElement("h2");
+    const price = document.createElement("div");
+
+    container.append(imagen, title, price);
+    document.body.append(container);
+  });
+};
+
+avocados();
+```
+
+- [Data: Json de Paltas](https://platzi-avo.vercel.app/api/avo)
+- [Template info](https://github.com/jonalvarezz/snowpack-template-tailwind)
+
+## 13. Enriqueciendo la información
+
+Adapta el `index.html` según tus gustos y necesidades. Solo añade lo siguiente dentro del `body`:
+
+```html
+<div id="app"></div>
+```
+
+Aquí añadiremos lo que creamos con JavaScript.
+
+```js
+const baseUrl = "https://platzi-avo.vercel.app";
+const appNode = document.querySelector("div#app");
+
+// web api
+// Conectarnos al server
+window
+  .fetch(`${baseUrl}/api/avo`)
+  .then((response) => response.json())
+  .then(({ data }) => {
+    console.log(data);
+
+    data.forEach((item) => {
+      console.log(item.name);
+
+      const items = [];
+      const container = document.createElement("div");
+
+      // Crear imagen, titulo y precio
+      const imagen = document.createElement("img");
+      const title = document.createElement("h2");
+      const price = document.createElement("div");
+
+      imagen.src = `${baseUrl + item.image}`;
+      title.textContent = item.name;
+      price.textContent = item.price;
+
+      container.append(imagen, title, price);
+
+      items.push(container);
+      appNode.append(...items); 👈👀
+    });
+  });
+```
+
+## 14. Usando la API de internacionalización del browser
+
+```js
+const baseUrl = "https://platzi-avo.vercel.app";
+const appNode = document.querySelector("div#app");
+
+// Inl: date, coin
+const formatPrice = (price) => { 👈👀👇
+  const newPrice = new window.Intl.NumberFormat("en-En", {
+    style: "currency",
+    currency: "USD",
+  }).format(price);
+
+  return newPrice;
+};
+
+// web api
+// Conectarnos al server
+window
+  .fetch(`${baseUrl}/api/avo`)
+  .then((response) => response.json())
+  .then(({ data }) => {
+    console.log(data);
+
+    data.forEach((item) => {
+      console.log(item.name);
+
+      const items = [];
+      const container = document.createElement("div");
+
+      // Create image, title and price
+      const imagen = document.createElement("img");
+      const title = document.createElement("h2");
+      const price = document.createElement("div");
+
+      imagen.src = `${baseUrl + item.image}`;
+      title.textContent = item.name;
+      price.textContent = formatPrice(item.price);
+
+      // Styles 👈👀👇
+      title.style = "font-size: 2rem";
+      title.style.fontWeight = "800";
+      title.className = "new-class text-2xl text-red-600";
+
+      container.append(imagen, title, price);
+
+      items.push(container);
+      appNode.append(...items);
+    });
+  });
+```
+
+Como este curso no es de CSS y menos de Tailwind, los estilos quedan a tu propio criterio.
+
+Algunos estilos sugeridos:
+
+```css
+#app{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+    margin-left: 25px;
+    margin-top: 25px;
+}
+
+.palta-container{
+    position: relative;
+    display: flex;
+    width: 350px;
+    height: 120px;
+    flex-wrap: wrap;
+}
+
+.palta-container:hover{
+    background-color: rgb(230, 240, 228);
+    border-radius: 15px;
+}
+
+.img{
+    width: 75px;
+    height: 75px;
+    border-radius: 75px;
+    margin: auto 0;
+    margin-top: 20px;
+    margin-left: 20px;
+}
+
+.prize{
+    position: absolute;
+    top: 35px;
+    left: 104px;
+    color: gray;
+}
+
+.title{
+    margin-top: 17px;
+    margin-left: 10px;
+    font-weight: 500;
+}
+```
+
+[Intl.NumberFormat](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat)
+
+## 15.
+
+👈👀
+👈👀👇
+📌
+
+```js
+
+```
 👈👀
 👇
 📌
@@ -498,9 +680,7 @@ window
 
 ```
 
-https://github.com/jonalvarezz/snowpack-template-tailwind
-
-## 13.
+## 16.
 
 👈👀
 👇
@@ -509,9 +689,6 @@ https://github.com/jonalvarezz/snowpack-template-tailwind
 ```js
 
 ```
-
-## 12.
-
 👈👀
 👇
 📌
@@ -520,7 +697,7 @@ https://github.com/jonalvarezz/snowpack-template-tailwind
 
 ```
 
-## 12.
+## 17.
 
 👈👀
 👇
