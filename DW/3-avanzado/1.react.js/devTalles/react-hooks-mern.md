@@ -2622,7 +2622,7 @@ export const GifExpertApp = () => {
 
 ### 🟣 Componente AddCategory
 
-`src > GifExpertApp.jsx`
+`src > AddCategory.jsx`
 
 ```jsx
 import { useState } from "react";
@@ -2655,6 +2655,249 @@ const AddCategory = () => {
 export { AddCategory };
 ```
 
+### 🟣 Comunicación entre componentes
+
+`src > GifExpertApp.jsx`
+
+```jsx
+import { useState } from "react";
+import { AddCategory } from "./components/AddCategory";
+
+export const GifExpertApp = () => {
+  const [categories, setCategories] = useState([
+    "One Punch",
+    "Dragon Ball",
+  ]);
+
+  const onAddCategory = () => {
+    // setCategories((item) => [...item, "New Item!!!"]);
+    setCategories([...categories, "New Item!!!"]);
+  };
+
+  return (
+    <>
+      <h1>GifExpertApp</h1>
+
+      <AddCategory setCategories={setCategories} /> 👈👀
+
+      <ol>
+        {categories.map((item, id) => {
+          return <li key={id}>{item}</li>;
+        })}
+      </ol>
+    </>
+  );
+};
+```
+
+`src > AddCategory.jsx`
+
+```jsx
+import { useState } from "react";
+
+const AddCategory = ({ setCategories }) => {
+  const [inputValue, setInputValue] = useState("One Punch");
+
+  const onInputChange = (event) => {
+    setInputValue(event.target.value);
+  };
+
+  const onSubmit = (event) => {
+    event.preventDefault();
+
+    if (inputValue.trim().length <= 1) return;
+
+    setCategories((categories) => [
+      inputValue,
+      ...categories,
+    ]);
+    setInputValue("");
+  };
+
+  return (
+    <form action="" onSubmit={onSubmit}>
+      <input
+        type="text"
+        placeholder="Search gifts"
+        value={inputValue}
+        onChange={onInputChange}
+      />
+    </form>
+  );
+};
+
+export { AddCategory };
+```
+
+### 🟣 Emitir un evento al padre
+
+`src > GifExpertApp.jsx`
+
+```jsx
+import { useState } from "react";
+import { AddCategory } from "./components/AddCategory";
+
+const GifExpertApp = () => {
+  const [categories, setCategories] = useState([
+    "One Punch",
+    "Dragon Ball",
+  ]);
+
+  const onAddCategory = (newCategory) => { 👈👀
+    setCategories([newCategory, ...categories]);
+  };
+
+  return (
+    <>
+      <h1>GifExpertApp</h1>
+
+      <AddCategory 👈👀👇
+        onNewCategory={onAddCategory}
+      />
+
+      <ol>
+        {categories.map((item, id) => {
+          return <li key={id}>{item}</li>;
+        })}
+      </ol>
+    </>
+  );
+};
+
+export { GifExpertApp };
+```
+
+`src > components > AddCategory.jsx`
+
+```jsx
+import React, { useState } from "react";
+
+const AddCategory = ({ onNewCategory }) => { 👈👀
+  const [inputValue, setInputValue] = useState("Something");
+
+  const onInputChange = ({ target }) => {
+    setInputValue(target.value);
+  };
+
+  const onSubmit = (event) => {
+    event.preventDefault();
+
+    if (inputValue.trim().length <= 1) return;
+
+    onNewCategory(inputValue.trim()); 👈👀
+
+    setInputValue("");
+  };
+
+  return (
+    <form onSubmit={onSubmit}>
+      <input
+        type="text"
+        placeholder="Search gifts"
+        value={inputValue}
+        onChange={onInputChange}
+      />
+    </form>
+  );
+};
+
+export { AddCategory };
+```
+
+### 🟣 Validar que sean únicos los nombres
+
+`src > GifExpertApp.jsx`
+
+```jsx
+import { useState } from "react";
+import { AddCategory } from "./components/AddCategory";
+
+const GifExpertApp = () => {
+  const [categories, setCategories] = useState([
+    "One Punch",
+    "Dragon Ball",
+  ]);
+
+  const onAddCategory = (newCategory) => {
+    if (categories.includes(newCategory)) return; 👈👀
+
+    setCategories([newCategory, ...categories]);
+  };
+
+  return (
+    <>
+      <h1>GifExpertApp</h1>
+
+      <AddCategory onNewCategory={onAddCategory} />
+
+      <ol>
+        {categories.map((item, id) => {
+          return <li key={id}>{item}</li>;
+        })}
+      </ol>
+    </>
+  );
+};
+
+export { GifExpertApp };
+```
+
+### 🟣 GifGrid - Nuevo componente
+
+`src > GifExpertApp.jsx`
+
+```jsx
+import { useState } from "react";
+import { AddCategory } from "./components/AddCategory";
+import { GifGrid } from "./components/GifGrid";
+
+const GifExpertApp = () => {
+  const [categories, setCategories] = useState([
+    "One Punch",
+    "Dragon Ball",
+  ]);
+
+  const onAddCategory = (newCategory) => {
+    if (categories.includes(newCategory)) return;
+
+    setCategories([newCategory, ...categories]);
+  };
+
+  return (
+    <>
+      <h1>GifExpertApp</h1>
+
+      <AddCategory onNewCategory={onAddCategory} />
+
+      {categories.map((item) => ( 👈👀👇
+        <GifGrid key={item} category={item} />
+      ))}
+    </>
+  );
+};
+
+export { GifExpertApp };
+```
+
+`src > components > GifGrid.jsx`
+
+```jsx
+const GifGrid = ({ category }) => {
+  const gifs = [0, 1, 2, 3, 4];
+
+  return (
+    <>
+      <h3>{category}</h3>
+      {gifs.map((gif) => (
+        <p>{gif}</p>
+      ))}
+    </>
+  );
+};
+
+export { GifGrid };
+```
+
 ### 🟣 
 
 `src > GifExpertApp.jsx`
@@ -2673,6 +2916,23 @@ export { AddCategory };
 
 👈👀👇
 
+### 🟣 
+
+`src > GifExpertApp.jsx`
+
+```jsx
+
+```
+
+`src > GifExpertApp.jsx`
+
+```jsx
+```
+
+
+👈👀
+
+👈👀👇
 
 ### 🟣 
 
@@ -2692,27 +2952,7 @@ export { AddCategory };
 
 👈👀👇
 
-
-### 🟣 Agregar una nueva categoría
-
-`src > GifExpertApp.jsx`
-
-```jsx
-
-```
-
-`src > GifExpertApp.jsx`
-
-```jsx
-```
-
-
-👈👀
-
-👈👀👇
-
-
-### 🟣 Agregar una nueva categoría
+### 🟣 
 
 `src > GifExpertApp.jsx`
 
@@ -2730,26 +2970,7 @@ export { AddCategory };
 
 👈👀👇
 
-
-### 🟣 Agregar una nueva categoría
-
-`src > GifExpertApp.jsx`
-
-```jsx
-
-```
-
-`src > GifExpertApp.jsx`
-
-```jsx
-```
-
-
-👈👀
-
-👈👀👇
-
-### 🟣 Agregar una nueva categoría
+### 🟣 
 
 `src > GifExpertApp.jsx`
 
