@@ -55,8 +55,7 @@
               }
             }
           }
-        ],
-        "currentTab": 3
+        ]
       }
     ],
     "direction": "vertical"
@@ -123,7 +122,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "DW/2-intermedio/026.manipulacion-dom/manipulacion-dom.md",
+                "file": "DW/3-avanzado/1.react.js/devTalles/react-hooks-mern.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -140,7 +139,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "DW/2-intermedio/026.manipulacion-dom/manipulacion-dom.md",
+                "file": "DW/3-avanzado/1.react.js/devTalles/react-hooks-mern.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -163,7 +162,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "DW/2-intermedio/026.manipulacion-dom/manipulacion-dom.md"
+                "file": "DW/3-avanzado/1.react.js/devTalles/react-hooks-mern.md"
               }
             }
           }
@@ -185,10 +184,10 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "d20eaf0f1351e2ea",
+  "active": "9d6fe1dbbb51c86c",
   "lastOpenFiles": [
-    "DW/3-avanzado/1.react.js/devTalles/react-hooks-mern.md",
     "DW/2-intermedio/026.manipulacion-dom/manipulacion-dom.md",
+    "DW/3-avanzado/1.react.js/devTalles/react-hooks-mern.md",
     "Untitled.md",
     "DW/2-intermedio/019.empaquetadores/intro-empaquetadores -web.md",
     "DW/3-avanzado/1.react.js/YouTube/react-js-desde-cero.md",

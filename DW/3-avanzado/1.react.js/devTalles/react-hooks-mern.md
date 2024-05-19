@@ -2898,59 +2898,175 @@ const GifGrid = ({ category }) => {
 export { GifGrid };
 ```
 
-### 🟣 
+### 🟣 Fetch API - Obtener las imágenes deseadas
 
-`src > GifExpertApp.jsx`
-
-```jsx
-
+```bash
+# Instalar en Linux
+snap install postman
 ```
 
-`src > GifExpertApp.jsx`
+`src > components > GifGrid.jsx`
 
 ```jsx
+import { getGifs } from "../helpers/getGifs";
+
+const GifGrid = ({ category }) => {
+  getGifs(category); // 👈👀 Mala práctica
+
+  return (
+    <>
+      <h3>{category}</h3>
+    </>
+  );
+};
+
+export { GifGrid };
 ```
 
+`src > helpers > getGifs.js`
 
-👈👀
+```js
+const getGifs = async (category) => {
+  const url = `https://api.giphy.com/v1/gifs/search?api_key=NhCnnfEOEkSzI8EgLmMc09dBClFt99Ou&q=${category}&limit=20`;
+  const response = await fetch(url);
+  const { data } = await response.json();
 
-👈👀👇
+  const gifs = data.map((img) => {
+    return {
+      id: img.id,
+      title: img.title,
+      url: img.images.downsized_medium.url,
+    };
+  });
 
-### 🟣 
+  console.log(gifs);
+  return gifs;
+};
 
-`src > GifExpertApp.jsx`
+export { getGifs };
+```
+
+- [**Giphy Developers - Search Endpoint**](https://developers.giphy.com/branch/master/docs/api/endpoint/#search)
+- [Intalar Postman](https://learning.postman.com/docs/getting-started/installation/installation-and-updates/)
+- [Postman en la web](https://web.postman.co/home)
+
+### 🟣 useEffect
+
+`src > components > GifGrid.jsx`
 
 ```jsx
+import { useEffect, useState } from "react";
+import { getGifs } from "../helpers/getGifs";
 
+const GifGrid = ({ category }) => {
+  const [counter, setCounter] = useState(10);
+
+  useEffect(() => { 👈👀
+  // Lógica para cargar los datos desde una API
+    getGifs(category);
+  }, []);
+
+  return (
+    <>
+      <h3>{category}</h3>
+      <h5>{counter}</h5>
+      <button onClick={() => setCounter(counter + 1)}>
+        +1
+      </button>
+    </>
+  );
+};
+
+export { GifGrid };
 ```
 
-`src > GifExpertApp.jsx`
+[Hook useEffect()](https://github.com/aleroses/Platzi/blob/master/DW/3-avanzado/1.react.js/Platzi/reactjs.md#18-qu%C3%A9-son-los-efectos-en-react-useeffect)
+
+### 🟣 Demostración de producción rápido
+
+```bash
+yarn build
+```
+
+`yarn build` crea una carpeta llamada `dist` que contendrá nuestra aplicación de producción optimizada.
+
+```bash
+.
+├── dist 👈👀
+│   ├── assets
+│   └── index.html
+├── index.html
+├── node_modules
+├── package.json
+├── README.md
+├── src
+├── vite.config.js
+└── yarn.lock
+```
+
+Luego de hacer `build` podemos usar también en script `preview` para servir localmente nuestra aplicación en un entorno de producción.  Este comando utiliza los archivos generados durante el proceso de producción para ejecutar la aplicación.
+
+```bash
+yarn preview
+```
+
+`src > components > GifGrid.jsx`
 
 ```jsx
+import { useEffect } from "react";
+import { getGifs } from "../helpers/getGifs";
+
+const GifGrid = ({ category }) => {
+  useEffect(() => {
+    getGifs(category);
+  }, []);
+
+  return (
+    <>
+      <h3>{category}</h3>
+    </>
+  );
+};
+
+export { GifGrid };
 ```
 
-
-👈👀
-
-👈👀👇
-
-### 🟣 
-
-`src > GifExpertApp.jsx`
+`src > helpers > getGifs.js`
 
 ```jsx
+const getGifs = async (category) => {
+  const url = `https://api.giphy.com/v1/gifs/search?api_key=NhCnnfEOEkSzI8EgLmMc09dBClFt99Ou&q=${category}&limit=10`;
+  const response = await fetch(url);
+  const { data } = await response.json();
 
+  const gifs = data.map((img) => {
+    return {
+      id: img.id,
+      title: img.title,
+      url: img.images.downsized_medium.url,
+    };
+  });
+
+  return gifs;
+};
+
+export { getGifs };
 ```
 
-`src > GifExpertApp.jsx`
+#### http-server
 
-```jsx
+http-server es un software que permite crear un servidor web básico para servir archivos estáticos a través del protocolo HTTP. Es una herramienta de línea de comandos que facilita la creación rápida de un servidor web local para el desarrollo y la visualización de sitios web estáticos.
+
+Al utilizar http-server, puedes especificar una carpeta en tu sistema de archivos y el software creará un servidor web en tu máquina local que servirá los archivos estáticos contenidos en esa carpeta. Esto es útil cuando estás trabajando en el desarrollo de un sitio web y deseas ver cómo se ve y se comporta en un entorno de servidor web.
+
+```bash
+# Esto es opcional
+npm install --global http-server
+cd dist
+http-server -o
 ```
 
-
-👈👀
-
-👈👀👇
+[http-server](https://www.npmjs.com/package/http-server)
 
 ### 🟣 
 
