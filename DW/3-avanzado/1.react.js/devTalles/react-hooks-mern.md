@@ -3068,38 +3068,298 @@ http-server -o
 
 [http-server](https://www.npmjs.com/package/http-server)
 
+### 🟣 Mostrar los títulos de las imágenes
+
+`src > components > GifGrid.jsx`
+
+```jsx
+import { useEffect, useState } from "react";
+import { getGifs } from "../helpers/getGifs";
+
+const GifGrid = ({ category }) => {
+  const [images, setImages] = useState([]);
+
+  const getImages = async () => { 👈👀
+    const newImages = await getGifs(category);
+
+    setImages(newImages);
+  };
+
+  useEffect(() => {
+    // getGifs(category).then((newImages) =>
+    //   setImages(newImages)
+    // );
+    getImages(); 👈👀
+  }, []);
+
+  return (
+    <>
+      <h3>{category}</h3>
+      <ol>
+        {images.map(({ id, title 👈👀}) => (
+          <li key={id}>{title}</li>
+        ))}
+      </ol>
+    </>
+  );
+};
+
+export { GifGrid };
+```
+
+### 🟣 className - Clases de css
+
+`src > components > GifGrid.jsx`
+
+```jsx
+import { useEffect, useState } from "react";
+import { getGifs } from "../helpers/getGifs";
+import { GifItem } from "./GifItem";
+
+const GifGrid = ({ category }) => {
+  const [images, setImages] = useState([]);
+
+  const getImages = async () => {
+    const newImages = await getGifs(category);
+
+    setImages(newImages);
+  };
+
+  useEffect(() => {
+    getImages();
+  }, []);
+
+  return (
+    <>
+      <h3>{category}</h3>
+      <div className="card-grid"> 👈👀
+        {images.map((img) => (
+          <GifItem key={img.id} {...img} 👈👀 />
+        ))}
+      </div>
+    </>
+  );
+};
+
+export { GifGrid };
+```
+
+`src > components > GifItem.jsx`
+
+```jsx
+const GifItem = ({ title, url, id }) => {
+  return (
+    <div className="card">
+      <img src={url} alt={title} />
+      <p>{title}</p>
+    </div>
+  );
+};
+
+export { GifItem };
+```
+
+### 🟣 Custom Hook - useFetchGifs
+
+`src > components > GifGrid.jsx`
+
+```jsx
+import { GifItem } from "./GifItem";
+import { useFetchGifs } from "../hooks/useFetchGifs";
+
+const GifGrid = ({ category }) => {👈👀👇
+  const { images, isLoading } = useFetchGifs(category);
+
+  return (
+    <>
+      <h3>{category}</h3>
+      <div className="card-grid">
+        {images.map((img) => (
+          <GifItem key={img.id} {...img} />
+        ))}
+      </div>
+    </>
+  );
+};
+
+export { GifGrid };
+```
+
+`src > hooks > useFetchGifs.js`
+
+```js
+import { useEffect, useState } from "react";
+import { getGifs } from "../helpers/getGifs";
+
+const useFetchGifs = (category) => {
+  const [images, setImages] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  const getImages = async () => {
+    const newImages = await getGifs(category);
+
+    setImages(newImages);
+  };
+
+  useEffect(() => {
+    getImages();
+    setIsLoading(false);
+  }, []);
+
+  return {
+    images,
+    isLoading,
+  };
+};
+
+export { useFetchGifs };
+```
+
+### 🟣 Mostrar mensaje de carga
+
+
+`src > components > GifGrid.jsx`
+
+```jsx
+import { GifItem } from "./GifItem";
+import { useFetchGifs } from "../hooks/useFetchGifs";
+
+const GifGrid = ({ category }) => {
+  const { images, isLoading } = useFetchGifs(category);
+
+  console.log({ images, isLoading });
+
+  return (
+    <>
+      <h3>{category}</h3>👈👀👇
+      {isLoading && <h2>Loading...</h2>}
+
+      <div className="card-grid">
+        {images.map((img) => (
+          <GifItem key={img.id} {...img} />
+        ))}
+      </div>
+    </>
+  );
+};
+
+export { GifGrid };
+```
+
+### 🟣 Archivos de barril
+
+En el contexto de JavaScript y React, los "Archivos de barril" (también conocidos como "Archivos de índice" o "Archivos de barril de exportación") son archivos utilizados para exportar múltiples módulos desde una carpeta o directorio en un solo punto de acceso. En lugar de tener que importar cada módulo individualmente desde su ubicación específica, puedes importarlos todos a través del archivo de barril.
+
+La idea detrás de los archivos de barril es simplificar y centralizar la importación de módulos dentro de una carpeta o directorio. Imagina una situación en la que tienes una carpeta llamada "componentes" que contiene varios componentes de React. En lugar de importar cada componente individualmente al utilizarlos en otros archivos, puedes crear un archivo de barril en la carpeta "componentes" que exporte todos los componentes desde un solo lugar.
+
+Aquí hay un ejemplo de cómo se podría estructurar un archivo de barril en una carpeta de componentes:
+
+```javascript
+// components/index.js
+
+export { default as Componente1 } from './Componente1';
+export { default as Componente2 } from './Componente2';
+export { default as Componente3 } from './Componente3';
+// ... y así sucesivamente
+```
+
+En este caso, el archivo de barril `index.js` exporta los componentes `Componente1`, `Componente2` y `Componente3` desde sus respectivos archivos. Luego, en otros archivos de tu proyecto, puedes importar todos los componentes utilizando una sola línea de código:
+
+```javascript
+import { Componente1, Componente2, Componente3 } from './components';
+```
+
+Esto simplifica la estructura de importación y hace que tu código sea más legible y mantenible, especialmente cuando tienes una gran cantidad de módulos en una carpeta.
+
+Los archivos de barril no son exclusivos de React, sino que se pueden utilizar en cualquier proyecto de JavaScript para exportar varios módulos desde una ubicación centralizada. Ayudan a organizar y simplificar la importación de código en proyectos más grandes, evitando la necesidad de especificar rutas de archivo largas y repetitivas en cada importación.
+
+En nuestro proyecto:
+
+`src > components > index.js`
+
+```jsx
+export * from "./AddCategory";
+export * from "./GifGrid";
+export * from "./GifItem";
+```
+
+`src > hooks > GifExpertApp.jsx`
+
+```jsx
+import { useState } from "react"; 👈👀👇
+import { AddCategory, GifGrid } from "./components";
+
+const GifExpertApp = () => {
+  const [categories, setCategories] = useState([
+    "One Punch",
+  ]);
+
+  const onAddCategory = (newCategory) => {
+    if (categories.includes(newCategory)) return;
+
+    setCategories([newCategory, ...categories]);
+  };
+
+  return (
+    <>
+      <h1>GifExpertApp</h1>
+
+      <AddCategory onNewCategory={onAddCategory} />
+
+      {categories.map((item) => (
+        <GifGrid key={item} category={item} />
+      ))}
+    </>
+  );
+};
+
+export { GifExpertApp };
+```
+
+La estructura del proyecto queda así:
+
+```bash
+.
+├── dist
+├── index.html
+├── node_modules
+├── package.json
+├── README.md
+├── src 👈👀👇
+│   ├── components
+│   │   ├── AddCategory.jsx
+│   │   ├── GifGrid.jsx
+│   │   ├── GifItem.jsx
+│   │   └── index.js
+│   ├── GifExpertApp.jsx
+│   ├── helpers
+│   │   └── getGifs.js
+│   ├── hooks
+│   │   └── useFetchGifs.js
+│   ├── main.jsx
+│   └── styles.css
+├── vite.config.js
+└── yarn.lock
+```
+
 ### 🟣 
 
-`src > GifExpertApp.jsx`
+`src > components > GifGrid.jsx`
 
 ```jsx
 
 ```
-
-`src > GifExpertApp.jsx`
-
-```jsx
-```
-
-
 👈👀
 
 👈👀👇
 
 ### 🟣 
 
-`src > GifExpertApp.jsx`
+`src > components > GifGrid.jsx`
 
 ```jsx
 
 ```
-
-`src > GifExpertApp.jsx`
-
-```jsx
-```
-
-
 👈👀
 
 👈👀👇
