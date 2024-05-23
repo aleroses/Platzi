@@ -25,3 +25,17 @@ dpkg -l | grep <nombre_del_programa>
 sudo apt remove --purge <nombre_del_programa>
 sudo apt autoremove --purge <nombre_del_programa>
 ```
+
+## Abrir el administrador de archivos
+
+```bash
+# Instalar nemo
+sudo apt-get install nemo
+
+# Abrir derectorio actual
+nemo
+
+# Abrir directorio de inicio
+nemo ~
+```
+

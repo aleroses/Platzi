@@ -3342,24 +3342,139 @@ La estructura del proyecto queda así:
 └── yarn.lock
 ```
 
-### 🟣 
+### 🟣 Código fuente de la sección
+
+Aquí les dejo el código fuente de la sección, tal cual lo dejé en el último video para que puedan compararlo contra el suyo si fuera necesario.
+
+[**Github - Fin Seccion 6**](https://github.com/Klerith/react-vite-gif-expert/tree/fin-seccion-6) 
+
+
+## 7. Generando el build de producción y despliegues
+
+### 🟣 Introducción a la sección
+
+El despliegue se hará en GitHub.
+
+### 🟣 Temas puntuales de la sección
+
+**¿Qué veremos en esta sección?**
+
+- Aprender cómo realizar backups a repositorios de Git
+- Subir nuestro repositorio a GitHub
+- Uso de GitHub Pages
+- Desplegar nuestra aplicación de React
+- Generar build de producción de nuestra aplicación
+
+Aunque es una sección pequeña, les puede servir para desplegar infinidad de proyectos de React de forma gratuita, sin contar que tendrán respaldos de sus proyectos por si llegan a perder su trabajo que tenían localmente en su computadora.
+
+### 🟣 Desplegar en Netlify
+
+`src > components > GifGrid.jsx`
+
+```bash
+yarn
+yarn dev
+code-insiders .
+yarn build
+```
+
+https://app.netlify.com/teams/alevroses/overview
+
+Una vez dentro de Netlify nos vamos a **Sites** donde aparece un mensaje dentro de un recuadro igual al siguiente:
+
+```bash
+Want to deploy a new site without connecting to Git?
+Drag and drop your site output folder here
+
+Or, browse to upload.
+```
+
+Arrastra la carpeta **dist** dentro de ese recuadro y espera a que termine de cargar.
+
+Si el nombre del proyecto no te gusta puedes cambiarlo yendo a **Site Configuration** y busca **Change site name**.
+
+De `luxury-buttercream-ed1988` a `search-tests`.
+
+### 🟣 Preparación del proyecto - Github Pages
+
+Asegúrate de tener un `.gitignore` con todos los archivos y carpetas a ignorar en el repositorio de GitHub.
+
+```bash
+git init
+git add .
+git commit -am "First commit"
+```
+
+En caso de borrar archivos importantes del proyecto puedes reconstruirlos con: 
+
+```bash
+git checkout -- .
+```
+
+[[gh-pages]] 👈👀
+
+[Apuntes GitHub Pages](https://github.com/aleroses/Platzi/blob/master/DW/1-basico/005-git-github/gh-pages.md)
+
+### 🟣 Subir a GitHub
+
+Crea un repositorio en GitHub y enlazalo con tu repositorio local.
+
+Actualmente he visto que siempre pide una `key` cuando es la primera vez que usamos Git y GitHub o cuando es una Sistema Operativo o Computador nuevo.
+
+Dejo los apuntes donde se toca ese tema:
+
+[⚠☢ Posible error ☣](https://github.com/aleroses/Platzi/blob/master/DW/1-basico/005-git-github/git-github.md#-posible-error-)
+
+### 🟣 Desplegando aplicación en Github Pages
+
+Puedes renombrar `dist` por `docs`.
+
+```bash
+git add . && git commit -am "Update" && git push origin master
+```
+
+En el repositorio en GitHub te vas a Settings/Pages y en el apartado de Branch selecciona la rama, luego `/docs` y dale a `Save`.
+
+Personalmente el método que uso para subir y desplegar mis pequeños proyectos es el que se detalla en los enlaces abajo.
+
+[[gh-pages]] 👈👀
+
+[Apuntes GitHub Pages](https://github.com/aleroses/Platzi/blob/master/DW/1-basico/005-git-github/gh-pages.md)
+
+### 🟣 Actualizar GitHub pages
+
+En caso de un error como el mostrado en clase debes ir a `docs/index.html` y dejar los links de la siguiente manera:
+
+```html
+href="./assets/index.df2abcea.css"
+```
+
+En caso de persistir el error también modifica el link en la raíz principal en el `index.html` en la parte del `main`.
+
+El link del **favicon** no hace falta cambiarlo.
+
+Ahora envía los cambios a GitHub, espera y listo.
+
+## 8. Testing - Probando la aplicación de GifExpert
 
 `src > components > GifGrid.jsx`
 
 ```jsx
 
 ```
+
 👈👀
 
 👈👀👇
 
-### 🟣 
 
+### 🟣 
 `src > components > GifGrid.jsx`
 
 ```jsx
 
 ```
+
 👈👀
 
 👈👀👇
