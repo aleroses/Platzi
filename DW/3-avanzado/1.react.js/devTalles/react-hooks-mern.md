@@ -3457,6 +3457,24 @@ Ahora envía los cambios a GitHub, espera y listo.
 
 ## 8. Testing - Probando la aplicación de GifExpert
 
+### 🟣 Introducción a la sección
+
+### 🟣 Temas puntuales de la sección
+
+**¿Qué veremos en esta sección?**
+
+- Seguir el camino de las pruebas
+- Pruebas en componentes específicos
+- Pruebas en componentes de forma individual
+- Pruebas con customHooks 
+- Esperar cambios en un customHook
+- Simular eventos en inputs y formularios
+- Simular llamadas a funciones
+- Evaluar si existen elementos en el componente
+
+En esta sección seguiremos expandiendo todo lo que habíamos visto anteriormente en otras secciones de pruebas, pero ahora veremos más a detalle los temas y adicionalmente introduciremos nuevos conceptos y nuevos tipos de pruebas.
+
+### 🟣 
 `src > components > GifGrid.jsx`
 
 ```jsx
@@ -3467,6 +3485,84 @@ Ahora envía los cambios a GitHub, espera y listo.
 
 👈👀👇
 
+### 🟣 
+`src > components > GifGrid.jsx`
+
+```jsx
+
+```
+
+👈👀
+
+👈👀👇
+
+### 🟣 
+`src > components > GifGrid.jsx`
+
+```jsx
+
+```
+
+👈👀
+
+👈👀👇
+
+### 🟣 
+`src > components > GifGrid.jsx`
+
+```jsx
+
+```
+
+👈👀
+
+👈👀👇
+
+
+### 🟣 
+`src > components > GifGrid.jsx`
+
+```jsx
+
+```
+
+👈👀
+
+👈👀👇
+
+### 🟣 
+`src > components > GifGrid.jsx`
+
+```jsx
+
+```
+
+👈👀
+
+👈👀👇
+
+### 🟣 
+`src > components > GifGrid.jsx`
+
+```jsx
+
+```
+
+👈👀
+
+👈👀👇
+
+
+### 🟣 
+`src > components > GifGrid.jsx`
+
+```jsx
+
+```
+
+👈👀
+
+👈👀👇
 
 ### 🟣 
 `src > components > GifGrid.jsx`

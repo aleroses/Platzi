@@ -663,7 +663,137 @@ Algunos estilos sugeridos:
 
 [Intl.NumberFormat](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat)
 
-## 15.
+## 15. Comparte el resultado
+
+Para publicar en GitHub, modifique el archivo de configuración de `snowkpack.config` :
+
+```js
+/** @type {import("snowpack").SnowpackUserConfig } */
+
+module.exports = {
+  mount: { public: "/", src: "/_dist_" },
+  buildOptions: {
+    baseUrl: "https:// robmvsk.github.io/workshop-1-fetch",
+  },
+};
+```
+
+
+## 16. Reaccionar a lo que sucede en el DOM
+
+La función `addEventListener()` nos permite añadir eventos a nuestros elementos, la podemos usar de la siguiente manera:
+
+```js
+miElemento.addEventListener("evento", manejador)
+```
+
+En este caso, el manejador debe ser una función callback que se ejecutará cuando el evento sea disparado. Es muy común verlo como una función anónima:
+
+```js
+button.addEventListener("click", () => {
+  alert("Me has clickado 😄");
+});
+```
+
+Sin embargo, la mejor práctica es crear funciones por separado, así siempre tendremos una referencia a dicha función (con una función anónima no tenemos nada que la identifique, de ahí su nombre)
+
+```js
+const miFuncionManejadora = () => {
+  alert("Me has clickado 😄");
+};
+
+button.addEventListener("click", miFuncionManejadora);
+// Presta atención como la estamos mandando sin paréntesis, porque de esa forma solo le pasamos la referencia de la función, si le pusieramos paréntesis entonces la estaríamos ejecutando
+```
+
+Y esto tiene la ventaja de que podemos remover los eventos cuando queramos, ya que tenemos la referencia de la función manejadora.
+
+```js
+const miFuncionManejadora = () => {
+  alert("Me has clickado 😄");
+};
+
+// Agrego el evento
+button.addEventListener("click", miFuncionManejadora);
+
+// Quito el evento
+button.removeEventListener("click", miFuncionManejadora);
+```
+
+También podemos definir funciones de esta otra manera 👀
+
+```js
+button.onClick = () => {
+  alert("Me has clickado 😄");
+};
+```
+
+Esta sintaxis es `onEvento`, pero no es muy común. Como dato adicional, esta es otra forma de añadir eventos desde HTML:
+
+**HTML**
+
+```html
+<button onclick="miFuncionManejadora">Clicame</button>
+```
+
+**JavaScript**
+
+```js
+const miFuncionManejadora = () => {
+  alert("Me has clickado 😄");
+};
+```
+
+De esta forma, el botón, mediante un atributo estaría llamando a la función.
+
+### Código de la clase
+
+```js
+// Seleccionar nodo
+const input = document.querySelector("#firstName");
+
+// Acción al capturar evento
+const action = () => {
+  console.log("Ha sucedido un click");
+};
+
+// Detectar evento click
+input.addEventListener("click", action);
+
+// Detectar cambio en un input
+input.addEventListener("input", (event) => {
+  // event: argumento por defecto que nos da información de lso eventos
+  console.log(`Hey!: ${event}`);
+});
+
+// Imprimir el taget al hacer click
+input.addEventListener("click", (event) => {
+  console.log(event.target);
+});
+
+// Otra forma de imprimir el taget al hacer click
+input.addEventListener("click", function () {
+  console.log(this.target);
+  // El this dentro de este scope captura las informaciones de event
+  // sin embargo el this no es compatible con arrow functions
+  // por eso en arrow function se usa el argumento (event)
+});
+
+// Seleccionar nodo
+const email = document.querySelector("#email");
+
+const action1 = () => console.log("Acción 1");
+const action2 = () => console.log("Acción 2");
+
+// Detectar evento click
+email.addEventListener("click", action1);
+email.addEventListener("click", action2);
+
+// Eliminar evento, debemos siempre colocar la acción en una función aparte para que en un futuro podamos eliminarla
+email.removeEventListener("click", action1);
+```
+
+[Lista con todos los eventos disponibles en JavaScript y a qué API pertenece](https://developer.mozilla.org/es/docs/Web/Events) :D . 
 
 👈👀
 👈👀👇
