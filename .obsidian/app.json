@@ -1,5 +1,10 @@
 {
   "defaultViewMode": "preview",
   "showLineNumber": false,
-  "livePreview": false
+  "livePreview": false,
+  "spellcheckDictionary": [
+    "atrás",
+    "Pair"
+  ],
+  "vimMode": true
 }
