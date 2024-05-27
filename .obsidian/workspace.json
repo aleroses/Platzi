@@ -4,33 +4,22 @@
     "type": "split",
     "children": [
       {
-        "id": "860f75abf54815c0",
+        "id": "e5350b6bd3d3d6dd",
         "type": "tabs",
         "children": [
           {
-            "id": "18379cb9fc83d6b2",
+            "id": "b00b8bb4f226d891",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "DW/1-basico/015-figma/figma.md",
-                "mode": "preview",
+                "file": "DW/2-intermedio/026.manipulacion-dom/manipulacion-dom.md",
+                "mode": "source",
                 "source": true
               }
             }
-          },
-          {
-            "id": "6d35eafa0e6deeb8",
-            "type": "leaf",
-            "state": {
-              "type": "release-notes",
-              "state": {
-                "currentVersion": "1.5.12"
-              }
-            }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -76,8 +65,7 @@
               "state": {}
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -98,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "DW/1-basico/015-figma/figma.md",
+                "file": "DW/2-intermedio/026.manipulacion-dom/manipulacion-dom.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -115,7 +103,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "DW/1-basico/015-figma/figma.md",
+                "file": "DW/2-intermedio/026.manipulacion-dom/manipulacion-dom.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -138,7 +126,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "DW/1-basico/015-figma/figma.md"
+                "file": "DW/2-intermedio/026.manipulacion-dom/manipulacion-dom.md"
               }
             }
           }
@@ -160,8 +148,9 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "6d35eafa0e6deeb8",
+  "active": "b00b8bb4f226d891",
   "lastOpenFiles": [
+    "DW/1-basico/015-figma/figma.md",
     "DW/2-intermedio/vim/Personal-configuration/vimrc.md",
     "DW/2-intermedio/vim/Personal-configuration/vimrc-plug.md",
     "DW/2-intermedio/vim/Personal-configuration",
@@ -199,7 +188,6 @@
     "DW/2-intermedio/014.api-rest-js/1.api-rest-js-fundamentos/resources/code/node_modules/node-fetch/LICENSE.md",
     "DW/2-intermedio/014.api-rest-js/1.api-rest-js-fundamentos/resources/code/node_modules/node-fetch/README.md",
     "DW/2-intermedio/014.api-rest-js/1.api-rest-js-fundamentos/resources/code/node_modules/formdata-polyfill/README.md",
-    "DW/2-intermedio/014.api-rest-js/1.api-rest-js-fundamentos/resources/code/node_modules/data-uri-to-buffer/README.md",
     "DW/2-intermedio/014.api-rest-js/1.api-rest-js-fundamentos/resources/code/7.proyecto/svg/heart.svg",
     "DW/2-intermedio/014.api-rest-js/1.api-rest-js-fundamentos/resources/code/7.proyecto/svg/delete.svg",
     "DW/2-intermedio/014.api-rest-js/1.api-rest-js-fundamentos/resources/img/random-kittens.png",

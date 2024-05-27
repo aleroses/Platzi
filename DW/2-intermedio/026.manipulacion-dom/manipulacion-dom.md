@@ -795,22 +795,29 @@ email.removeEventListener("click", action1);
 
 [Lista con todos los eventos disponibles en JavaScript y a qué API pertenece](https://developer.mozilla.org/es/docs/Web/Events) :D . 
 
-👈👀
-👈👀👇
-📌
+## 17. Event propagation
 
-```js
+Básicamente, la propagación de eventos se produce cuando tienes puestos algunos eventos en contenedores que son hijos de otro, por ejemplo:
 
-```
-👈👀
-👇
-📌
-
-```js
-
+```html
+<div id="div1">
+  <div id="div2">
+    <div id="div3">Hola</div>
+  </div>
+</div>
 ```
 
-## 16.
+Si le ponemos un event listener a los 3 divs, y clicas dentro del div 3, también estás clicando el div2 (porque el div3 está dentro del div2), y a su vez estás clicando el div1 (porque estos 2 divs están dentro de div1), por tanto, el evento se va a propagar hacia los 3 divs. . La forma de detenerlo es usando el método stopPropagation() que viene dentro del argumento event que cualquier evento nos provee, por tanto, yo puedo decirle al div3: "Oiga, yo solo lo quiero clicar a usted, no a los demás, sí, ya se que usted está dentro de los demás, pero yo solo lo quiero a usted", de tal forma que al event listener del programation le puedo poner:
+
+
+```js
+div3.addEventListener("click", event => {
+
+    event.stopPropagation()
+
+});
+```
+De esta forma, el evento de div2 y div1 no serán ejecutados . Dato curioso, cuando tu defines un elemento con un ID en HTML, en JavaScript se crea automágicamente una variable con ese id que creaste, por eso es completamente posible que yo pueda usar la variable div3 sin tener que seleccionar el elemento 👀
 
 👈👀
 👇
