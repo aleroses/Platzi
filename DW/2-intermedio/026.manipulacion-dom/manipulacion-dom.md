@@ -795,22 +795,7 @@ email.removeEventListener("click", action1);
 
 [Lista con todos los eventos disponibles en JavaScript y a qué API pertenece](https://developer.mozilla.org/es/docs/Web/Events) :D . 
 
-👈👀
-👈👀👇
-📌
-
-```js
-
-```
-👈👀
-👇
-📌
-
-```js
-
-```
-
-## 16.
+## 17. Event propagation
 
 👈👀
 👇
