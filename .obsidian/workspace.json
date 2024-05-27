@@ -11,11 +11,26 @@
             "id": "18379cb9fc83d6b2",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {}
+              "type": "markdown",
+              "state": {
+                "file": "DW/1-basico/015-figma/figma.md",
+                "mode": "preview",
+                "source": true
+              }
+            }
+          },
+          {
+            "id": "6d35eafa0e6deeb8",
+            "type": "leaf",
+            "state": {
+              "type": "release-notes",
+              "state": {
+                "currentVersion": "1.5.12"
+              }
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -44,7 +59,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "figma",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -61,11 +76,13 @@
               "state": {}
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
-    "width": 265.5
+    "width": 265.5,
+    "collapsed": true
   },
   "right": {
     "id": "9d672530b5364132",
@@ -81,6 +98,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "DW/1-basico/015-figma/figma.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -97,6 +115,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "DW/1-basico/015-figma/figma.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -118,7 +137,9 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {}
+              "state": {
+                "file": "DW/1-basico/015-figma/figma.md"
+              }
             }
           }
         ],
@@ -139,8 +160,13 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "18379cb9fc83d6b2",
+  "active": "6d35eafa0e6deeb8",
   "lastOpenFiles": [
+    "DW/2-intermedio/014.api-rest-js/2.api-rest-js-ejemplos/api-rest-ejemplos.md",
+    "DW/1-basico/023.tailwind-2-y-3-basico/tailwind-basico.md",
+    "DW/1-basico/012-css-grid-layout/grid-layout.md",
+    "DW/1-basico/008-disenio-developers/disenio-developers.md",
+    "DW/2-intermedio/012.asincronismo-js/asincronismo-con-js.md",
     "DW/1-basico/003-prework/entorno-windows/remove-linux-dualboot.md",
     "DW/1-basico/003-prework/entorno-windows/vsc/setting.md",
     "DW/1-basico/006-html-css/1-html/1.html-css.md",
@@ -178,14 +204,9 @@
     "DW/2-intermedio/014.api-rest-js/1.api-rest-js-fundamentos/resources/img/evidencia01.png",
     "DW/2-intermedio/014.api-rest-js/1.api-rest-js-fundamentos/resources/img/nota.png",
     "DW/2-intermedio/014.api-rest-js/1.api-rest-js-fundamentos/resources/img/14.ver-api-key.png",
-    "DW/2-intermedio/014.api-rest-js/2.api-rest-js-ejemplos/api-rest-ejemplos.md",
     "DW/2-intermedio/014.api-rest-js/1.api-rest-js-fundamentos/api-rest-js-fundamentos.md",
     "DW/2-intermedio/013.expresiones-regulares/RegExp.md",
     "DW/2-intermedio/012.asincronismo-js/resources/code/asincronismo/node_modules/xmlhttprequest/README.md",
-    "DW/2-intermedio/012.asincronismo-js/resources/code/asincronismo/node_modules/node-fetch/README.md",
-    "DW/2-intermedio/012.asincronismo-js/resources/code/asincronismo/node_modules/node-fetch/LICENSE.md",
-    "DW/2-intermedio/012.asincronismo-js/resources/code/asincronismo/node_modules/web-streams-polyfill/README.md",
-    "DW/2-intermedio/012.asincronismo-js/resources/code/asincronismo/node_modules/node-domexception/README.md",
-    "DW/2-intermedio/012.asincronismo-js/resources/code/asincronismo/node_modules/fetch-blob/README.md"
+    "DW/2-intermedio/012.asincronismo-js/resources/code/asincronismo/node_modules/node-fetch/README.md"
   ]
 }
