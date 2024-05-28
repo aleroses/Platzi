@@ -807,17 +807,258 @@ Básicamente, la propagación de eventos se produce cuando tienes puestos alguno
 </div>
 ```
 
-Si le ponemos un event listener a los 3 divs, y clicas dentro del div 3, también estás clicando el div2 (porque el div3 está dentro del div2), y a su vez estás clicando el div1 (porque estos 2 divs están dentro de div1), por tanto, el evento se va a propagar hacia los 3 divs. . La forma de detenerlo es usando el método stopPropagation() que viene dentro del argumento event que cualquier evento nos provee, por tanto, yo puedo decirle al div3: "Oiga, yo solo lo quiero clicar a usted, no a los demás, sí, ya se que usted está dentro de los demás, pero yo solo lo quiero a usted", de tal forma que al event listener del programation le puedo poner:
+Si le ponemos un event listener a los 3 divs, y clicas dentro del `div3`, también estás clicando el `div2` (porque el `div3` está dentro del `div2`), y a su vez estás clicando el `div1` (porque estos 2 divs están dentro de `div1`), por tanto, el evento se va a propagar hacia los 3 divs. 
 
+La forma de detenerlo es usando el método `stopPropagation()` que viene dentro del argumento event que cualquier evento nos provee, por tanto, yo puedo decirle al `div3`: "Oiga, yo solo lo quiero clicar a usted, no a los demás, sí, ya se que usted está dentro de los demás, pero yo solo lo quiero a usted", de tal forma que al event listener del programation le puedo poner:
 
 ```js
-div3.addEventListener("click", event => {
-
-    event.stopPropagation()
-
+div3.addEventListener("click", (event) => {
+  event.stopPropagation();
 });
 ```
-De esta forma, el evento de div2 y div1 no serán ejecutados . Dato curioso, cuando tu defines un elemento con un ID en HTML, en JavaScript se crea automágicamente una variable con ese id que creaste, por eso es completamente posible que yo pueda usar la variable div3 sin tener que seleccionar el elemento 👀
+
+De esta forma, el evento de `div2` y `div1` no serán ejecutados.
+
+Dato curioso, cuando defines un elemento con un ID en HTML, en JavaScript se crea automáticamente una variable con ese ID que creaste, por eso es completamente posible que yo pueda usar la variable `div3` sin tener que seleccionar el elemento.
+
+### Código de la clase
+
+```js
+// imprimiremos el evento click para ver toda su informacion 
+const accion = (event) => console.log(event) $0.addEventListener('click', accion) 
+
+/* Bucamos la propiedad llamada target que es la que nos dice cual elemento  se esta ejecutando, target representa un nodo cuando utilizamos createElement es igual a lo que esta dentro del target  Dentro del target hay una propiedad que se llama nodeName que contiene el nombre del nodo */ 
+const accion = (event) => {
+  console.log(`Hola desde ${event.currentTarget.nodeName}`)
+}
+
+//obtenemos el elemento al cual le agregaremos el evento 
+const avocado = document.querySelector('id');
+
+//obtenemos el padre del elemento 
+const card = document.querySelector('id'); 
+
+//obtenos el body 
+const body = document.querySelector('body') 
+
+//agregamos el mismo evento a cada nodo
+avocado.addEventListener('click', accion); card.addEventListener('click', accion); body.addEventListener('click', accion) 
+
+/* cuando damos click en el elemento hijo vemos que aunque el evento sucedio en el primer elemento este se propago hasta el elemento padre que seria hasta el elemento mas externo que tambien esta escuchando el mismo evento que en este caso es el body Hola desde + H2    Hola desde + DIV    Hola desde + BODY    Y si unicamente damos click en un elemento padre del que anteriormente   le dimos click vemos como el evento propaga desde ahi hasta   el elemento mas externo en este caso el body    Hola desde + DIV   Hola desde + BODY     Entonces sabremos que desde el elemento que inicia hacia arriba    el evento se propagara */ 
+
+/* La propagacion de eventos se puede detener usando la misma web API     La forma de deterlo es usando el método stopPropagation() que viene    dentro del argumento event que cualquier evento nos provee */   
+const accion = (event) =>{
+  console.log(`Hola desde ${event.currentTarget.nodeName}`)
+}  
+
+//obtenemos los elementos y le aplicamos los eventos
+const body = document.querySelector('body');
+body.addEventListener('click', accion);
+
+const h3 = document.querySelector('h3');  
+h3.addEventListener('click', (evento) =>{  
+  //utilizamos el metodo stopPropagation y con esto pararemos la propagacion  
+	
+  // es como decirle al elemento que solo queremos ejecutarlo a el y a los demas no     
+  evento.stopPropagation()     
+  console.log(`Hola desde: + ${evento.currentTarget.nodeName}`)  
+})
+```
+
+### ¿Por qué no usar el stopPropagation?
+
+Al usar el `stopPropagation` estamos impidiendo que elementos padre conozcan determinado evento de algún hijo, ejemplo: Al hacer clic en un botón con `stopPropagation`. El body nunca sabrá qué hice clic en él.
+
+Esto es una fuente de "sideEffects" que son el tipo de bugs más difíciles de notar. ¿Qué pasa si otro desarrollador desea que el body escuche el clic del botón? Programará confiado en que hay propagación. Como en este caso se detuvo, la única solución es eliminar el `stopPropagation` rompiendo el código que nosotros hicimos. 
+
+En prácticamente todos los escenarios se puede sustituir el `stopPropagation` por una solución que no altere el comportamiento global de los eventos, evitando así side effects.
+
+Más info: [https://css-tricks.com/dangers-stopping-event-propagation/](https://css-tricks.com/dangers-stopping-event-propagation/)
+
+[Fuente](https://dmitripavlutin.com/javascript-event-delegation/)
+
+## 18. Event delegation
+
+La delegación de eventos es básicamente un contenedor padre que le pasa el evento a todos sus hijos (en realidad no se los está pasando, sino que el contenedor padre sigue estando presente en todos los hijos, es por eso que cuando clicamos a un hijo el evento es disparado).
+
+Entendiendo esto, cuando obtenemos el target podemos saber cuál elemento hijo del padre fue clicado, por tanto, con una simple condicional puede ver si el elemento clicado es el que yo quiero.
+
+**Ojo:** Eso no significa que el evento se quite de los demás elementos hijos, si tú clicas cualquier otro elemento hijo el evento se va a disparar sí o sí, pero lo que sucede es que la condición del target no se cumple, por eso no hace nada.
+
+Y sabiendo esto, puedes crear funciones que escuchen eventos dinámicamente, una característica de los eventos es que solo se le aplican a los elementos que están desde el inicio, pero si tú agregas otro nodo desde JavaScript **los eventos no se van a escuchar para ese nuevo nodo**. 
+
+Entonces, una técnica que se suele usar es escuchar al padre (o en ocasiones a todo el document) y cada vez que el evento ocurra buscar a todos sus hijos que coincidan con el selector al que queremos aplicarle el evento, de esta forma no importa si los nodos se añaden posteriormente desde JavaScript, el evento será escuchado, pues JavaScript directamente irá a buscar todos los nodos hijos que cumplan con dicho selector, por ejemplo: 
+
+**HTML**
+
+```html
+<div id="divPadre">
+  <div class="div">Hola</div>
+</div>
+```
+
+**JavaScript**
+
+```js
+document
+  .querySelector(".div")
+  .addEventListener("click", () => {
+    // Hace algo
+  });
+```
+
+En este caso, si al div padre yo le añadiera desde JavaScript otro elemento con la clase div, el evento **NO** funcionaría:
+
+```js
+const nuevoDiv = document.createElement("div");
+nuevoDiv.className = "div";
+nuevoDiv.textContent = "Nuevo div";
+divPadre.append(nuevoDiv);
+```
+
+Sin embargo, al usar la delegación de eventos, puedo escuchar al padre y buscar al hijo que me interesa:
+
+```js
+nuevoDiv.addEventListener("click", (event) => {
+  if (event.target.classList.contains("div")) {
+    // Código
+  }
+});
+```
+
+De esta forma, no importa cuantos elementos nuevos agregues al padre desde JavaScript, esto siempre va a funcionar. 
+
+Ahora, si quieres hacer algo más pro, puedes crear una función en el cual tú le pases un selector en específico para usar dentro del div, así solo tienes que llamar a esa función y pasarle el selector de tal manera que se quede escuchando por cualquier elemento nuevo que sea agregado, algo así:
+
+```js
+eventAll("click", parentElement, elementToListen, () => {
+  // Has algo
+});
+```
+
+Una función de ese tipo sería muy útil, porque así puedo mantener escuchando cada elemento, no importa que se agregue después con JavaScript.
+
+[Librería para escuchar eventos](https://github.com/RetaxMaster/Funciones-para-JavaScript/blob/master/js/events.js) 👈👀 Código
+
+Este código está desactualizado porque tiene un pequeño bug y hay ciertos elementos con los que no funciona, pero para eso podemos usar un `MutationObserver` que mire cuando el padre haya sido modificado (se le haya agregado un hijo nuevo) y a ese hijo aplicarle el evento.
+
+📌 Como dato, la diferencia entre `target` y `currentTarget` radica en que el primero hacer referencia al disparador del evento, donde debemos de interactuar para que este se ejecute. Por otro lado, el `currentTarget` es el nodo padre en el que está el disparador.
+
+### Código de la clase
+
+Utilizaremos nuestro proyecto anterior para que cuando le demos clic a cada uno de los elementos `H2` me salga una alerta distinta.
+
+```js
+const baseUrl = "https://platzi-avo.vercel.app";
+const appNode = document.querySelector("div#app");
+
+appNode.addEventListener("click", (event) => {
+  if (event.target.nodeName === "H2") { 👈👀
+    window.alert("lolcat");
+  }
+});
+
+// Inl: date, coin
+
+const formatPrice = (price) => {
+  const newPrice = new window.Intl.NumberFormat("en-En", {
+    style: "currency",
+    currency: "USD",
+  }).format(price);
+
+  return newPrice;
+};
+
+// web api
+// Conectarnos al server
+window
+  .fetch(`${baseUrl}/api/avo`)
+  .then((response) => response.json())
+  .then(({ data }) => {
+    console.log(data);
+
+    data.forEach((item) => {
+      console.log(item.name);
+
+      const items = [];
+      const container = document.createElement("div");
+
+      // Crear imagen, titulo y precio
+      const imagen = document.createElement("img");
+      const title = document.createElement("h2");
+      const price = document.createElement("div");
+
+      imagen.src = `${baseUrl + item.image}`;
+      title.textContent = item.name;
+      price.textContent = formatPrice(item.price);
+
+      title.style = "font-size: 2rem";
+      title.style.fontWeight = "800";
+      title.className = "new-class text-2xl text-red-600";
+
+      container.append(imagen, title, price);
+      // document.body.append(container);
+
+      items.push(container);
+      // document.body.append(...items);
+      appNode.append(...items);
+    });
+  });
+```
+
+## 19. Presentación del proyecto
+
+Lazy loading
+
+Es importante mencionar que hoy en día el navegador ya tiene implementada una api nativa en HTML de Lazy Loading: 
+
+[Lazy_loading](https://developer.mozilla.org/en-US/docs/Web/Performance/Lazy_loading)
+
+Sin embargo, no olvides verificar la compatibilidad con todos los navegadores:
+
+[caniuse](https://www.caniuse.com/?search=lazy%20loading)
+
+El motivo de usar Lazy Loading es la optimización de la página, es decir, es mejor que de inicio un usuario cargue pocos recursos de la página, de esta forma se acelera la carga de la misma, porque no tiene que cargar 100 imágenes de golpe, sino que de poquito a poquito va cargando las imágenes.
+
+[Workshop Lazy loading](https://github.com/jonalvarezz/platzi-dom/tree/main/workshop-lazy-loading)
+
+## 20. Nuestro propio plugin Lazy Loading
+
+
+```bash
+# Bootstrap the template into a new folder called `my-app`
+npx create-snowpack-app my-app --template snowpack-template-tailwind
+
+# Enable Prettier on git-commit
+cd my-app
+npm run install:husky
+
+# Start the development server
+npm start
+```
+
+En primera instancia añadimos todo con HTML:
+
+```html
+<div id="images">
+  <div class="p-4">
+    <img
+      class="mx-auto"
+      width="320"
+      src="https://randomfox.ca/images/2.jpg"
+      alt=""
+    />
+  </div>
+</div>
+```
+
+Recuerda eliminar y añadir la estructura que mejor te parezca. Para este caso solo añade varias veces el `div` mostrado arriba para tener varias images en la web.
+
+- [Random Fox](https://randomfox.ca/)
+- [Random Fox](https://randomfox.ca/images/2.jpg)
+- [Template](https://github.com/jonalvarezz/snowpack-template-tailwind)
+
+## 2 
 
 👈👀
 👇
@@ -834,7 +1075,113 @@ De esta forma, el evento de div2 y div1 no serán ejecutados . Dato curioso, cua
 
 ```
 
-## 17.
+## 2 
+
+👈👀
+👇
+📌
+
+```js
+
+```
+👈👀
+👇
+📌
+
+```js
+
+```
+
+
+## 2 
+
+👈👀
+👇
+📌
+
+```js
+
+```
+👈👀
+👇
+📌
+
+```js
+
+```
+
+
+## 2 
+
+👈👀
+👇
+📌
+
+```js
+
+```
+👈👀
+👇
+📌
+
+```js
+
+```
+
+
+## 2 
+
+👈👀
+👇
+📌
+
+```js
+
+```
+👈👀
+👇
+📌
+
+```js
+
+```
+
+
+## 2 
+
+👈👀
+👇
+📌
+
+```js
+
+```
+👈👀
+👇
+📌
+
+```js
+
+```
+
+## 2 
+
+👈👀
+👇
+📌
+
+```js
+
+```
+👈👀
+👇
+📌
+
+```js
+
+```
+
+## 2 
 
 👈👀
 👇
