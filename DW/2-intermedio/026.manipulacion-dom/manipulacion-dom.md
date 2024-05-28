@@ -1024,7 +1024,6 @@ El motivo de usar Lazy Loading es la optimización de la página, es decir, es m
 
 ## 20. Nuestro propio plugin Lazy Loading
 
-
 ```bash
 # Bootstrap the template into a new folder called `my-app`
 npx create-snowpack-app my-app --template snowpack-template-tailwind
@@ -1055,10 +1054,10 @@ En primera instancia añadimos todo con HTML:
 Recuerda eliminar y añadir la estructura que mejor te parezca. Para este caso solo añade varias veces el `div` mostrado arriba para tener varias images en la web.
 
 - [Random Fox](https://randomfox.ca/)
-- [Random Fox](https://randomfox.ca/images/2.jpg)
+- [Random Fox Images](https://randomfox.ca/images/2.jpg)
 - [Template](https://github.com/jonalvarezz/snowpack-template-tailwind)
 
-## 2 
+## 21. Creando las imagenes con JavaScript
 
 👈👀
 👇
