@@ -158,10 +158,192 @@ Probar v-once:
 vm.text = "Insane text";
 ```
 
+Mas específicamente, en términos de HTML son atributos.
+
+Por ejemplo, en HTML
+
+`<img src="imagen.png" />`
+
+El tag es todo lo que está entre < y > El nombre del tag es "img" El atributo es "src" El valor del atributo es "imagen.png"
+
+Para un componente de Vue.js:
+
+`<div v-html="content">`
+
+El nombre del tag es "div" El atributo es "v-html" El valor es "content"
+
 - [Directivas en Vue: ](https://vuejs.org/api/built-in-directives.html)
 
-## 
+## 7. Atributos reactivos
 
+```html
+<body>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+  <div id="app"></div>
+
+  <script>
+    const vm = Vue.createApp({
+      data() {
+        return {
+          attr: "src", 👈👀👇
+          img: "https://static.wikia.nocookie.net/dei8941/images/f/fa/Vicky_MetalFamily.png/revision/latest?cb=20220117194507&path-prefix=es",
+        };
+      },
+      // template: `<img v-bind:src="img" v-bind:alt="img"/>`,
+      // template: `<img v-bind:["src"]="img"/>`,
+      template: `<img v-bind:[attr]="img"/>`,
+    }).mount("#app");
+
+    console.log(vm);
+  </script>
+</body>
+```
+
+Probamos en la consola:
+
+```js
+vm.img = "https://static.wikia.nocookie.net/dei8941/images/b/b1/Heavy_MetalFamily.png/revision/latest?cb=20220117194929&path-prefix=es";
+```
+
+## 8. Eventos de usuario
+
+Primer uso:
+
+```html
+<body>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+  <div id="app"></div>
+
+  <script>
+    const vm = Vue.createApp({
+      data() {
+        return { 👈👀👇
+          counter: 0,
+        };
+      },
+      methods: {
+        increment() { 👈👀👇
+          this.counter++;
+        },
+      },
+      template: `<button v-on:click="increment">{{counter}}</button>`,
+    }).mount("#app");
+  </script>
+</body>
+```
+
+Segundo uso:
+
+```html
+<body>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+  <div id="app"></div>
+
+  <script>
+    const vm = Vue.createApp({
+      data() {
+        return { 👈👀👇
+          evt: "submit",
+          counter: 0,
+        };
+      },
+      methods: {
+        submit(e) { 👈👀👇
+          // e.preventDefault()
+          this.counter++;
+        },
+      },
+      // template: `
+      //   <form v-on:submit.prevent.stop="submit">
+      //     <button>{{counter}}</button>
+      //   </form>`,
+      template: ` 👈👀👇
+        <form v-on:[evt].prevent="submit">
+          <button>{{counter}}</button>
+        </form>`,
+    }).mount("#app");
+  </script>
+</body>
+```
+
+Para ver lo que arroja la consola:
+
+- Console settings: Preserve log
+
+### Reto: Incrementar y disminuir contador
+
+```html
+<body>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+  <div id="app"></div>
+
+  <script>
+    const vm = Vue.createApp({
+      data() {
+        return {
+          counter: 0,
+        };
+      },
+      methods: {
+        increment() {
+          this.counter++;
+        },
+        decrement() {
+          this.counter--;
+        },
+      },
+      template: `
+          <h2>{{counter}}</h2>
+          <button v-on:click="increment">+1</button>
+          <button v-on:click="decrement">-1</button>
+        `,
+    }).mount("#app");
+  </script>
+</body>
+```
+
+## 9. 
+
+```html
+
+```
+
+```js
+
+```
+
+
+
+👈👀
+👈👀👇
+
+## 10. 
+
+```js
+
+```
+
+👈👀
+👈👀👇
+
+## 9. 
+
+```js
+
+```
+
+👈👀
+👈👀👇
+
+## 9. 
+
+```js
+
+```
 
 👈👀
 👈👀👇
