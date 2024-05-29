@@ -306,20 +306,115 @@ Para ver lo que arroja la consola:
 </body>
 ```
 
-## 9. 
+## 9. Inputs reactivos
+
+Primer método:
 
 ```html
+<body>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 
+  <div id="app"></div>
+
+  <script>
+    const vm = Vue.createApp({
+      data() {
+        return {
+          text: "Hi Vue",
+        };
+      },
+      methods: {
+        input(e) {
+          e.preventDefault();
+          this.text = e.target.value;
+        },
+      },
+      template: `
+      <p>{{text}}</p>
+      <input 
+        type="text" 👀👇 :change
+        v-on:input="input" 
+        v-bind:value="text"
+        >
+      `,
+    }).mount("#app");
+  </script>
+  <!-- <input type="text" v-on:change="input"> -->
+</body>
 ```
 
-```js
+Segundo método:
 
+```html
+<body>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+  <div id="app"></div>
+
+  <script>
+    const vm = Vue.createApp({
+      data() {
+        return {
+          text: "Hi Vue",
+        };
+      },
+      methods: {
+        input(e) {
+          e.preventDefault();
+          this.text = e.target.value;
+        },
+      },
+      template: `
+      <p>{{text}}</p>
+      <input 
+        type="text" 
+        @input="input" 👈👀
+        :value="text" 👈👀
+        >
+      `,
+    }).mount("#app");
+  </script>
+  <!-- <input type="text" v-on:change="input"> -->
+</body>
 ```
 
+Atributos -> `:`
 
+Eventos -> `@`
 
-👈👀
-👈👀👇
+Tercer método y el más corto:
+
+```html
+<body>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+  <div id="app"></div>
+
+  <script>
+    const vm = Vue.createApp({
+      data() {
+        return {
+          text: "Hi Vue",
+        };
+      },
+      template: `
+        <p>{{text}}</p>
+        <input 
+          type="text" 
+          v-model="text" 👈👀
+          >
+      `,
+    }).mount("#app");
+  </script>
+  <!-- <input type="text" v-on:change="input"> -->
+</body>
+```
+
+Para mantener sincronizada la vista con el modelo se asigna el value de target a la variable correspondiente. Ej: this.text = e.target.value; donde **e** se refiere a la instancia del evento.
+
+`v-on` y `v-bind` suelen aplicarse juntos por lo que para simplificar aún más el código tenemos la directiva **v-model** (ej: `<input v-model="text" />`). No se necesitan métodos del tipo event handler para mantener sincronizado el estado del componente con el modelo.
+
+Puedes usar la directiva **_v-model_** para crear bindings de datos bidireccionales (**two-way binding**) en elementos `input`, `textarea` y `select` de un formulario. **_v-model_** es esencialmente syntax sugar para actualización de datos a través de eventos de entradas del usuario.
 
 ## 10. 
 
