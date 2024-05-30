@@ -1205,8 +1205,13 @@ const accion = (entry) => {
   observer.unobserve(nodo);
 };
 
+// Valida si la imagen se ve o no
 const observer = new IntersectionObserver((entries) => {
+  console.log(entries); // Array de la imagen
   entries.filter(isIntersecting).forEach(accion);
+
+  // IntersectionObserverEntry.isIntersecting
+  // IntersectionObserverEntry.target
 });
 
 const registerImage = (image) => {
@@ -1219,7 +1224,7 @@ export { registerImage };
 `src/index.js`
 
 ```js
-import { registerImage } from "./lazy";
+import { registerImage } from "./lazy"; 👈👀
 
 const addButton = document.querySelector("button");
 const mountNode = document.querySelector("#images");
@@ -1247,11 +1252,37 @@ const addImage = () => {
   const newImage = createImageNode();
   mountNode.append(newImage);
 
-  registerImage(newImage);
+  registerImage(newImage); 👈👀
 };
 
 addButton.addEventListener("click", addImage);
 ```
+
+Experimentando con la API vale la pena aclarar algunos puntos de la clase:
+
+1. Cuando se crea el observer de la forma que lo hace el profesor, se define por defecto un umbral = 0 para ejecutar el callback. Es decir, el observer va a validar si la imagen se ve o no se ve (así sea un poquito). Para este ejercicio está perfecto, pero ese umbral es parametrizable si queremos que se ejecute el callback por ejemplo si la imagen se ve en un 50% o más. Para eso hay que pasar un segundo parámetro (un objeto) llamado option: 
+	```js
+	const observer = new IntersectionObserver(callback, option)
+	```
+
+2. Cuando se ejecuta el callback (que el profesor pasa como arrow function), esta función recibe como parámetro un array que aquí llamamos _entries_. El profesor dice que en ese array van TODOS los target que el observer está vigilando y no es así. Si hacen la prueba en la consola y en ese callback solo hacen un `console.log(entries)`, van a ver que siempre imprime un array de 1 posición y esa posición obecede solamente al target que desencadenó el callback (es decir, la imagen que ahora es visible o que dejó de ser visible en la pantalla).
+	![](https://i.postimg.cc/90CnhjKh/22-target-array-entry.png)
+
+3. Dado esto, cuando el profesor hace un _filter_ y un _forEach_ dentro del callback, realmente está usando estos métodos sobre un array de 1 posición.
+4. Ese array de 1 posición tiene en esa posición un objeto. Este objeto describe el evento que interceptó el observer. Este objeto tiene dos propiedades muy relevantes aquí: 
+	- _isIntersecting_: que si es false indica que ya no está en el viewport y si es true indica que ya es visible en el viewport (aunque sea un poquitico).
+	- _target_: que indica específicamente cuál elemento (cuál imágen) es la que generó la ejecución del callback.
+5. Entonces, ejecutar el _filter_ realmente válida si ese único objeto en el array está o no está en el viewport. Si lo está seguimos…
+6. El _forEach_ accede a ese único objeto (un recorrido bieeen cortico jeje), y con él ejecuta la función que imprime el 'holis' en consola. Bien podría haber impreso la imagen que desencadenó el callback si en vez de llamar la función 'accion' hiciera: 
+	```js
+	entries.filter(isIntersecting).forEach(entry => console.log(entry.target))
+	```
+
+7. Finalmente, uno pensaría que el callback del observer se ejecuta solo cuando se genera el evento que definimos (que la imagen aparezca en el viewport), pero no. El callback se ejecuta siempre que ejecutemos la función `observer.observe(target)` para cada target más las veces que ese target desencadene el callback después. En el ejercicio del curso no se nota porque el profesor hace un filter, pero si dentro del callback solamente colocan un `console.log('hola')`, van a ver que cada vez que agregen una imagen se imprime el saludo, así la foto aún no sea visible en el viewport.
+
+- [Aprende a usar Intersection Observer API](https://www.youtube.com/watch?v=CvXHedd3Z7w)
+- [Detecta cuando un elemento es visible con Intersection Observer y JavaScript](https://www.youtube.com/watch?v=X1eCDd3ngKw)
+
 
 👈👀
 👇
