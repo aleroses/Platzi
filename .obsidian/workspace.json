@@ -30,8 +30,21 @@
                 "source": true
               }
             }
+          },
+          {
+            "id": "d6ddf4e2a3f6aee9",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "DW/2-intermedio/026.manipulacion-dom/manipulacion-dom.md",
+                "mode": "preview",
+                "source": true
+              }
+            }
           }
-        ]
+        ],
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -98,7 +111,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "DW/3-avanzado/2.vue.js/vue.js-intro/vue.js-intro.md",
+                "file": "DW/2-intermedio/026.manipulacion-dom/manipulacion-dom.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -115,7 +128,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "DW/3-avanzado/2.vue.js/vue.js-intro/vue.js-intro.md",
+                "file": "DW/2-intermedio/026.manipulacion-dom/manipulacion-dom.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -138,7 +151,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "DW/3-avanzado/2.vue.js/vue.js-intro/vue.js-intro.md"
+                "file": "DW/2-intermedio/026.manipulacion-dom/manipulacion-dom.md"
               }
             }
           }
@@ -160,8 +173,12 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "b00b8bb4f226d891",
+  "active": "d6ddf4e2a3f6aee9",
   "lastOpenFiles": [
+    "DW/2-intermedio/026.manipulacion-dom/img/22.intersection-observer.png",
+    "DW/2-intermedio/026.manipulacion-dom/img/22.intersection-observer.webp",
+    "DW/2-intermedio/026.manipulacion-dom/img/22.intersection-observer.webp.crdownload",
+    "DW/2-intermedio/026.manipulacion-dom/img",
     "DW/3-avanzado/1.react.js/devTalles/react-hooks-mern.md",
     "DW/3-avanzado/2.vue.js/vue.js-intro/vue.js-intro.md",
     "DW/2-intermedio/026.manipulacion-dom/manipulacion-dom.md",
@@ -176,8 +193,6 @@
     "DW/2-intermedio/019.empaquetadores/resources/code/webpack/public/index.html",
     "DW/2-intermedio/019.empaquetadores/resources/code/webpack/src",
     "DW/2-intermedio/019.empaquetadores/resources/code/webpack/webpack.config.js",
-    "DW/2-intermedio/019.empaquetadores/resources/code/webpack/public",
-    "DW/2-intermedio/019.empaquetadores/resources/code/webpack/package.json",
     "DW/2-intermedio/019.empaquetadores/intro-empaquetadores -web.md",
     "others/anki/add-ons.md",
     "DW/2-intermedio/014.api-rest-js/2.api-rest-js-ejemplos/api-rest-ejemplos.md",
@@ -199,14 +214,12 @@
     "DW/2-intermedio/014.api-rest-js/1.api-rest-js-fundamentos/resources/code/node_modules/node-domexception/README.md",
     "DW/2-intermedio/014.api-rest-js/1.api-rest-js-fundamentos/resources/code/node_modules/web-streams-polyfill/README.md",
     "DW/2-intermedio/014.api-rest-js/1.api-rest-js-fundamentos/resources/code/node_modules/node-fetch/LICENSE.md",
-    "DW/2-intermedio/014.api-rest-js/1.api-rest-js-fundamentos/resources/code/node_modules/node-fetch/README.md",
     "DW/2-intermedio/014.api-rest-js/1.api-rest-js-fundamentos/resources/code/7.proyecto/svg/heart.svg",
     "DW/2-intermedio/014.api-rest-js/1.api-rest-js-fundamentos/resources/code/7.proyecto/svg/delete.svg",
     "DW/2-intermedio/014.api-rest-js/1.api-rest-js-fundamentos/resources/img/random-kittens.png",
     "DW/2-intermedio/014.api-rest-js/1.api-rest-js-fundamentos/resources/img/paginating.png",
     "DW/2-intermedio/014.api-rest-js/1.api-rest-js-fundamentos/resources/img/evidencia02.png",
     "DW/2-intermedio/014.api-rest-js/1.api-rest-js-fundamentos/resources/img/evidencia01.png",
-    "DW/2-intermedio/014.api-rest-js/1.api-rest-js-fundamentos/resources/img/nota.png",
-    "DW/2-intermedio/014.api-rest-js/1.api-rest-js-fundamentos/resources/img/14.ver-api-key.png"
+    "DW/2-intermedio/014.api-rest-js/1.api-rest-js-fundamentos/resources/img/nota.png"
   ]
 }

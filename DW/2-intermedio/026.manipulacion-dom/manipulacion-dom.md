@@ -1057,24 +1057,201 @@ Recuerda eliminar y añadir la estructura que mejor te parezca. Para este caso s
 - [Random Fox Images](https://randomfox.ca/images/2.jpg)
 - [Template](https://github.com/jonalvarezz/snowpack-template-tailwind)
 
-## 21. Creando las imagenes con JavaScript
+## 21. Creando las imágenes con JavaScript
 
-👈👀
-👇
-📌
+```html
+<button class="p-3">Add Images</button>
 
-```js
-
-```
-👈👀
-👇
-📌
-
-```js
-
+<div id="images">      
+</div>
 ```
 
-## 2 
+Añadimos imágenes de manera aleatoria con un rango de 1 al 122.
+
+```js
+const addButton = document.querySelector("button");
+const mountNode = document.querySelector("#images");
+
+const minimum = 1;
+const maximum = 122;
+
+const random = () =>
+  Math.floor(Math.random() * (maximum - minimum));
+
+const createImageNode = () => {
+  const container = document.createElement("div");
+  container.className = "p-4";
+
+  const imagen = document.createElement("img");
+  imagen.className = "mx-auto";
+  imagen.width = "320";
+  imagen.src = `https://randomfox.ca/images/${random()}.jpg`;
+
+  container.append(imagen);
+  return container;
+};
+
+const addImage = () => {
+  const newImage = createImageNode();
+  mountNode.append(newImage);
+};
+
+addButton.addEventListener("click", addImage);
+```
+
+Otra forma de obtener números aleatorios:
+
+Nuevamente, usaremos la función `Math.random()` para generar un número aleatorio entre 0 y 1. Luego, puedes multiplicar ese número por 122 y redondearlo hacia abajo utilizando `Math.floor()` para obtener un número aleatorio entre 0 y 121. Finalmente, puedes sumar 1 al resultado para obtener un número aleatorio entre 1 y 122. Aquí tienes un ejemplo de cómo hacerlo:
+
+```js
+var numeroAleatorio = Math.floor(Math.random() * 122) + 1;
+console.log(numeroAleatorio);
+```
+
+En este ejemplo, `Math.random()` genera un número aleatorio entre 0 (incluido) y 1 (excluido). Luego, al multiplicarlo por 122, obtienes un número entre 0 (incluido) y 122 (excluido). Al utilizar `Math.floor()`, redondeas ese número hacia abajo al entero más cercano. Finalmente, al sumar 1, obtienes un número entre 1 y 122.
+
+Ahora, para usar esta API no necesitamos generar números aleatorios, ya que la misma API nos da esta funcionalidad:
+
+```js
+const API = "https://randomfox.ca/floof/";
+const addButton = document.querySelector("button");
+const mountNode = document.querySelector("#images");
+
+const fetchImage = async () => {
+  const response = await fetch(API);
+  const { image } = await response.json();
+
+  const container = document.createElement("div");
+  container.className = "p-4";
+
+  const picture = document.createElement("img");
+  picture.src = image;
+  picture.className = "mx-auto";
+  picture.width = "320";
+
+  container.appendChild(picture);
+  mountNode.appendChild(container);
+};
+
+addButton.addEventListener("click", fetchImage);
+```
+
+## 22. Intersection Observer
+
+El `IntersectionObserver` es una API de JavaScript que permite detectar cuando un elemento (como una imagen) entra o sale de la vista (viewport) del usuario. Esta API es útil para implementar técnicas como el "lazy loading" (carga perezosa) de imágenes, paginación infinita y otras interacciones basadas en la visibilidad de los elementos en una página web.
+
+El `IntersectionObserver` funciona mediante la creación de una instancia de este objeto, que recibe una función de callback y opciones de configuración. La función de callback se ejecuta cada vez que uno o más elementos observados cambian su estado de intersección con el viewport.
+
+Aquí hay una explicación paso a paso de cómo funciona el `IntersectionObserver`:
+
+1. Creación del objeto `IntersectionObserver`:
+   ```javascript
+   const observer = new IntersectionObserver(callback, options);
+   ```
+
+   El parámetro `callback` es una función que se ejecuta cada vez que un elemento observado cambia su estado de intersección. El parámetro `options` es un objeto que contiene opciones de configuración para el observador, como el umbral de visibilidad y el elemento raíz de referencia.
+
+2. Observación de elementos:
+   ```javascript
+   const targetElement = document.querySelector('.elemento-a-observar');
+   observer.observe(targetElement);
+   ```
+
+   Utilizando el método `observe()`, se puede indicar al `IntersectionObserver` que observe un elemento específico (`targetElement`). Puedes observar múltiples elementos llamando a `observe()` para cada uno de ellos.
+
+3. Ejecución de la función de callback:
+   ```javascript
+   const callback = function(entries, observer) {
+     entries.forEach(function(entry) {
+       // Manipular el estado de intersección del elemento
+       if (entry.isIntersecting) {
+         // El elemento está dentro del viewport
+       } else {
+         // El elemento está fuera del viewport
+       }
+     });
+   };
+   ```
+
+   La función de callback recibe dos parámetros: `entries` y `observer`. `entries` es una lista de objetos `IntersectionObserverEntry` que contienen información sobre los elementos observados y su estado de intersección. En el ejemplo anterior, utilizamos un bucle `forEach` para iterar sobre las entradas y realizar acciones específicas según el estado de intersección.
+
+4. Detener la observación de elementos:
+   ```javascript
+   observer.unobserve(targetElement);
+   ```
+
+   Si ya no deseas observar un elemento en particular, puedes utilizar el método `unobserve()` para dejar de observarlo. Esto puede ser útil cuando un elemento ha sido cargado o ya no está visible en la página.
+
+El `IntersectionObserver` simplifica la detección de cambios en la visibilidad de los elementos y permite tomar acciones adecuadas en función de esos cambios. Esto es especialmente útil cuando se trabaja con elementos que pueden ser agregados o eliminados dinámicamente en la página, como en el caso del "lazy loading" de imágenes.
+
+Espero que esta explicación te haya ayudado a comprender qué es y cómo funciona el `IntersectionObserver` en JavaScript.
+
+![](https://i.postimg.cc/sxLfQv3y/22-intersection-observer.png)
+
+Creamos el archivo `lazy.js` dentro del `src`.
+
+`src/lazy.js`
+
+```js
+const isIntersecting = (entry) => {
+  return entry.isIntersecting;
+};
+
+const accion = (entry) => {
+  const nodo = entry.target;
+  console.log("Hi XD");
+
+  // Deja de escuchar las img
+  observer.unobserve(nodo);
+};
+
+const observer = new IntersectionObserver((entries) => {
+  entries.filter(isIntersecting).forEach(accion);
+});
+
+const registerImage = (image) => {
+  observer.observe(image);
+};
+
+export { registerImage };
+```
+
+`src/index.js`
+
+```js
+import { registerImage } from "./lazy";
+
+const addButton = document.querySelector("button");
+const mountNode = document.querySelector("#images");
+
+const minimum = 1;
+const maximum = 122;
+
+const random = () =>
+  Math.floor(Math.random() * (maximum - minimum));
+
+const createImageNode = () => {
+  const container = document.createElement("div");
+  container.className = "p-4";
+
+  const imagen = document.createElement("img");
+  imagen.className = "mx-auto";
+  imagen.width = "320";
+  imagen.src = `https://randomfox.ca/images/${random()}.jpg`;
+
+  container.append(imagen);
+  return container;
+};
+
+const addImage = () => {
+  const newImage = createImageNode();
+  mountNode.append(newImage);
+
+  registerImage(newImage);
+};
+
+addButton.addEventListener("click", addImage);
+```
 
 👈👀
 👇
