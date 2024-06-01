@@ -1283,34 +1283,183 @@ Experimentando con la API vale la pena aclarar algunos puntos de la clase:
 - [Aprende a usar Intersection Observer API](https://www.youtube.com/watch?v=CvXHedd3Z7w)
 - [Detecta cuando un elemento es visible con Intersection Observer y JavaScript](https://www.youtube.com/watch?v=X1eCDd3ngKw)
 
+## 23. Aplicando Lazy loading
+
+### Atributos data*
+
+Los atributos `data-*` en HTML son atributos personalizados que se pueden añadir a cualquier elemento HTML. Estos atributos permiten almacenar datos adicionales en los elementos HTML, sin necesidad de utilizarlos como atributos estándar. Los atributos `data-*` pueden ser muy útiles para almacenar información que no se muestra directamente en la interfaz de usuario, pero que es necesaria para la lógica de la aplicación, especialmente cuando se trabaja con JavaScript.
+
+#### Sintaxis
+
+Los atributos `data-*` deben comenzar con el prefijo `data-` seguido de un nombre que puede contener letras, números, guiones y puntos. Por ejemplo: `data-id`, `data-user-name`, `data-info`.
+
+#### Ejemplos de Uso
+
+##### Ejemplo HTML
+
+```html
+<div
+  id="user"
+  data-user-id="12345"
+  data-user-name="Juan Pérez"
+  data-user-role="admin"
+>
+  Usuario: Juan Pérez
+</div>
+```
+
+En este ejemplo, se tienen tres atributos `data-*` en un elemento `div`: `data-user-id`, `data-user-name`, y `data-user-role`.
+
+##### Acceder a los atributos `data-*` en JavaScript
+
+Puedes acceder a los atributos `data-*` en JavaScript utilizando la propiedad `dataset` del elemento.
+
+###### Ejemplo JavaScript
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Data Attributes Example</title>
+  </head>
+  <body>
+    <div
+      id="user"
+      data-user-id="12345"
+      data-user-name="Juan Pérez"
+      data-user-role="admin"
+    >
+      Usuario: Juan Pérez
+    </div>
+
+    <script>
+      // Obtener el elemento por su ID
+      const userElement = document.getElementById("user");
+
+      // Acceder a los atributos data-* usando dataset
+      const userId = userElement.dataset.userId;
+      const userName = userElement.dataset.userName;
+      const userRole = userElement.dataset.userRole;
+
+      // Imprimir los valores en la consola
+      console.log(`User ID: ${userId}`);
+      console.log(`User Name: ${userName}`);
+      console.log(`User Role: ${userRole}`);
+    </script>
+  </body>
+</html>
+```
+
+En este ejemplo, se accede a los valores de los atributos `data-user-id`, `data-user-name` y `data-user-role` utilizando `userElement.dataset.userId`, `userElement.dataset.userName` y `userElement.dataset.userRole`, respectivamente. Estos valores luego se imprimen en la consola.
+
+#### Ventajas de usar `data-*`
+
+1. **Flexibilidad**: Puedes agregar cualquier dato que necesites sin tener que modificar la estructura de tu HTML o depender de atributos estándar que podrían no ser adecuados.
+2. **Accesibilidad desde JavaScript**: Los datos son fácilmente accesibles y manipulables desde JavaScript.
+3. **Compatibilidad**: Son compatibles con todos los navegadores modernos.
+
+#### Consideraciones
+
+- Los atributos `data-*` no deben utilizarse para almacenar datos críticos o sensibles, ya que son accesibles a través del HTML y pueden ser manipulados por el usuario.
+- Es importante mantener una convención de nombres clara y coherente para evitar confusiones y asegurar que los datos sean fácilmente comprensibles.
+
+#### Resumen
+
+Los atributos `data-*` proporcionan una manera poderosa y flexible de almacenar datos adicionales en elementos HTML, facilitando la manipulación y acceso de estos datos mediante JavaScript. Esto permite agregar y manejar información específica del elemento de una manera estructurada y limpia.
+
+### Código de la clase
+
+`src/index.js`
+
+```js
+import { registerImage } from "./lazy";
+
+const addButton = document.querySelector("button");
+const mountNode = document.querySelector("#images");
+
+const minimum = 1;
+const maximum = 122;
+
+const random = () =>
+  Math.floor(Math.random() * (maximum - minimum));
+
+const createImageNode = () => {
+  const container = document.createElement("div");
+  container.className = "p-4";
+
+  const imagen = document.createElement("img");
+  imagen.className = "mx-auto";
+  imagen.width = "320";
+  
+  // data-src en el html 👈👀👇
+  imagen.dataset.src = `https://randomfox.ca/images/${random()}.jpg`;
+
+  container.append(imagen);
+  return container;
+};
+
+const addImage = () => {
+  const newImage = createImageNode();
+  mountNode.append(newImage);
+
+  registerImage(newImage);
+};
+
+addButton.addEventListener("click", addImage);
+```
+
+`src/lazy.js`
+
+```js
+const isIntersecting = (entry) => {
+  return entry.isIntersecting;
+};
+
+const loadImage = (entry) => {
+  const container = entry.target; 👈👀👇
+  const imagen = container.firstChild;
+  const url = imagen.dataset.src;
+
+  imagen.src = url;
+
+  // debugger;
+  // console.log(container.nodeName);
+  observer.unobserve(container);
+};
+
+const observer = new IntersectionObserver((entries) => {
+  entries.filter(isIntersecting).forEach(loadImage);
+  console.log(entries);
+});
+
+const registerImage = (image) => {
+  observer.observe(image);
+};
+
+export { registerImage };
+```
+
+📌 Actualmente Lazy Loading es nativo en HTML:
+
+```html
+<img src="imagen.png" loading="lazy">
+```
+
+Pero todavía no está 100% soportado por los navegadores. Referencia: [can i use](https://caniuse.com/loading-lazy-attr)
+
+[Lazy loading Nativo en html](https://www.youtube.com/shorts/u_iWpYEDSdc)
+
+## 24. 
 
 👈👀
-👇
+👈👀👇
 📌
 
 ```js
 
 ```
-👈👀
-👇
-📌
-
-```js
-
-```
-
-
-## 2 
-
-👈👀
-👇
-📌
-
-```js
-
-```
-👈👀
-👇
+👈👀👇
 📌
 
 ```js
