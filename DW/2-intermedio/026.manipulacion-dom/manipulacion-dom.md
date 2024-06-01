@@ -1543,107 +1543,201 @@ const loadImage = (entry) => {
 };
 ```
 
-Y listo. El código completo está aquí por si quieren darle un vistazo: . [Resolución del reto](https://github.com/RetaxMaster/curso-manipulacion-dom/tree/b9340045038e16f31d9126c8eeaf75df2ff8eeac/workshop-2)
+Y listo. El código completo está aquí por si quieren darle un vistazo:
+[Resolución del reto](https://github.com/RetaxMaster/curso-manipulacion-dom/tree/b9340045038e16f31d9126c8eeaf75df2ff8eeac/workshop-2)
 
-👈👀
-👈👀👇
-📌
+[Otro ejemplo de solución](https://josegarcia2001.github.io/learning-lazy-loading-withJS/)
+
+## 25. Proyectos propuestos
+
+- Reproductor de vídeo
+- Aplicación del Clima
+	- API: openweathemap.org
+	- Eventos: submit, input, click
+
+📌 En [Frontend Mentor](https://www.frontendmentor.io/challenges) también pueden encontrar retos interesantes para hacer.
+
+### Propuestas de estudiantes
+
+Reproductor:
+
+- [Proyecto](https://wfercanas.github.io/Mediaplayer/)
+- [Repo](https://github.com/wfercanas/Mediaplayer)
+
+Weather:
+
+- [Proyecto](https://wfercanas.github.io/Weather/)
+- [Repo](https://github.com/wfercanas/Weather)
+
+- [HTML Audio/Video DOM Reference](https://www.w3schools.com/tags/ref_av_dom.asp)
+- [Envato tutorials](https://tutsplus.com/)
+
+## 26. ¿Y jQuery?
+
+- Fue popular porque no era fácil manipular el DOM.
+- No todos los navegadores tenían las mismas API.
+- Solucionaba errores e inconsistencias entre navegadores.
+- Hoy en día no es necesario, pues los navegadores se mantienen al día con los estándares de HTML y JS.
+- Sería útil si los usuarios de tus sitios web utilizan navegadores muy antiguos.
+- JQuery no murió, cambio tanto la forma de hacer front-end que se integró con la web.
+- Muchas de las webs apis usadas hoy fueron inspirados en jQuery.
+
+## 27. ¿Y JSX?
+
+### Hyperscript
+
+Es una dependencia que nos permite crear elementos, agregar propiedades y agregar elementos en el DOM de una forma más sencilla y amigable.
+
+**npm**
+
+```bash
+npm install hyperscript
+```
+
+**yarn**
+
+```bash
+yarn add hyperscript
+```
+
+**Agregando nodos de la forma tradicional**
 
 ```js
-
+// Imagen 
+const imagen = document.createElement("img"); 
+imagen.className = "mx-auto"; 
+imagen.width = "320"; 
+imagen.dataset.src = `https://randomfox.ca/images/${random()}.jpg`;
 ```
-👈👀👇
-📌
+
+**Con hyperscript**
 
 ```js
-
+const imagen = h("img.mx-auto", {
+  width: "320",
+  "data-src": `https://randomfox.ca/images/${random()}.jpg`,
+});
 ```
 
+📌 Para quienes lo están haciendo en mayo del 2022 o adelante, para cargar la imagen ya no se usa `"data-src"`, si no, simplemente `"src"`:
 
-## 2 
+```js
+const image = h("img.mx-auto", {
+  width: "300",
+  src: `https://randomfox.ca/images/${randomer()}.jpg`,
+});
+```
+
+**más información sobre hyperscript:** [https://github.com/hyperhype/hyperscript](https://github.com/hyperhype/hyperscript)
+
+### JSX
+
+Gracias a jsx, en React la implementación es mucho más sencilla porque ellos agregaron un decorador que permite la inclusión de clases y propiedades en el DOM dentro de etiquetas parecidas a las etiquetas de html ejemplo:
+
+```jsx
+const container = <div className="p-4 mt-3"><imagen /></div>
+```
+
+## 28. Conclusiones
+
+
+## 🔥 Examen
+
+<details>
+  <summary>Haz clic para ver los resultados 👀👇</summary>
+  <br/>
+
+1. ¿En qué momento se construye el DOM?
+
+	- ✅ Critical Rendering Path.
+
+2. Lo siguiente es FALSO sobre Eventos
+
+	- ✅ Solo los `<button>` pueden tener Eventos.
+
+3. ¿Cuál es la diferencia entre el tipo de dato NodeList y Array?
+
+	- ✅ NodeList no tiene métodos como map, filter o some.
+
+4. La Web API de Intl (internationalization) nos permite:
+
+	- ✅ Dar formato a fechas y monedas
+
+5. El siguiente NO es un selector de nodos
+
+	- ✅ getElementByDataset
+
+6. La técnica de Delegar Eventos consiste en:
+
+	- ✅ Utilizar un solo evento en el nodo padre para reaccionar a lo que sucede en los hijos.
+
+7. El siguiente NO es un método para agregar nodos
+
+	- ✅ appendBefore
+
+8. Una Web API nos permite…
+
+	- ✅ Utilizar JS para manipular el DOM.
+
+9. Cuando hablamos de manipulación del DOM, la siguiente afirmación es FALSA
+
+	- ✅ Necesito librerias externas como jQuery para hacerlo.
+
+10. ¿Cómo se evita que un Evento se siga propagando?
+
+	- ✅ Ejecutando event.stopPropagation() en el elemento.
+
+11. La mejor forma de agregar un nodo es:
+
+	- ✅ Ninguna es mejor que otra. Cada cual tiene su caso de uso.
+
+12. Para el DOM, la diferencia entre un atributo y una propiedad es
+
+	- ✅ Los atributos se usan solo como valores iniciales. Luego son todas propiedades.
+
+12. La forma en que JavaScript reacciona a lo que sucede en el navegador se realiza por
+
+	- ✅ Eventos
+
+13. Cuál es la diferencia entre append() y appendChild()?
+
+	- ✅ append permite agregar más de un solo nodo.
+
+15. ¿Qué tipo de dato retorna el selector querySelectorAll?
+
+	- ✅ NodeList
+
+16. La siguiente línea de código, asumiendo que node ni ninguno de sus padres es null:
+
+	```js
+	const node = document.querySelector("div"); 
+	node.parentElement.parentElement.removeChild(node); 
+	Da como resultado:
+	```
+
+	- ✅ Error, solo se puede eliminar un hijo directo.
+
+17. Al hablar sobre Eventos, la siguiente afirmación es FALSA:
+
+	- ✅ Solo se puede agregar un evento por nodo.
+
+18. La Web API de Intersection Observer permite:
+
+	- ✅ Conocer cuándo un elemento es visible en el viewport.
+
+19. El método correcto para crear un nuevo nodo es:
+
+	- ✅ document.createElement
+
+20. El método appendChild() se utiliza para:
+
+	- ✅ Agregar un nodo al final de un contenedor padre.
+
+</details>
+
 
 👈👀
 👇
 📌
-
-```js
-
-```
-👈👀
-👇
-📌
-
-```js
-
-```
-
-
-## 2 
-
-👈👀
-👇
-📌
-
-```js
-
-```
-👈👀
-👇
-📌
-
-```js
-
-```
-
-
-## 2 
-
-👈👀
-👇
-📌
-
-```js
-
-```
-👈👀
-👇
-📌
-
-```js
-
-```
-
-## 2 
-
-👈👀
-👇
-📌
-
-```js
-
-```
-👈👀
-👇
-📌
-
-```js
-
-```
-
-## 2 
-
-👈👀
-👇
-📌
-
-```js
-
-```
-👈👀
-👇
-📌
-
-```js
-
-```
+✅
 

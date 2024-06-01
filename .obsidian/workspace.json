@@ -38,7 +38,7 @@
               "type": "markdown",
               "state": {
                 "file": "DW/2-intermedio/026.manipulacion-dom/manipulacion-dom.md",
-                "mode": "source",
+                "mode": "preview",
                 "source": true
               }
             }
@@ -175,14 +175,15 @@
   },
   "active": "d6ddf4e2a3f6aee9",
   "lastOpenFiles": [
+    "DW/2-intermedio/017.tipos-funciones-avanzadas/ts-tipos-funciones.md",
+    "DW/2-intermedio/026.manipulacion-dom/manipulacion-dom.md",
+    "DW/3-avanzado/1.react.js/devTalles/react-hooks-mern.md",
     "DW/2-intermedio/026.manipulacion-dom/img/22.target-array-entry.png",
     "DW/2-intermedio/026.manipulacion-dom/img/22.intersection-observer.png",
     "DW/2-intermedio/026.manipulacion-dom/img/22.intersection-observer.webp",
     "DW/2-intermedio/026.manipulacion-dom/img/22.intersection-observer.webp.crdownload",
     "DW/2-intermedio/026.manipulacion-dom/img",
-    "DW/3-avanzado/1.react.js/devTalles/react-hooks-mern.md",
     "DW/3-avanzado/2.vue.js/vue.js-intro/vue.js-intro.md",
-    "DW/2-intermedio/026.manipulacion-dom/manipulacion-dom.md",
     "DW/3-avanzado/2.vue.js/vue.js-intro",
     "DW/3-avanzado/2.vue.js",
     "DW/1-basico/015-figma/figma.md",
@@ -219,7 +220,6 @@
     "DW/2-intermedio/014.api-rest-js/1.api-rest-js-fundamentos/resources/code/7.proyecto/svg/delete.svg",
     "DW/2-intermedio/014.api-rest-js/1.api-rest-js-fundamentos/resources/img/random-kittens.png",
     "DW/2-intermedio/014.api-rest-js/1.api-rest-js-fundamentos/resources/img/paginating.png",
-    "DW/2-intermedio/014.api-rest-js/1.api-rest-js-fundamentos/resources/img/evidencia02.png",
-    "DW/2-intermedio/014.api-rest-js/1.api-rest-js-fundamentos/resources/img/evidencia01.png"
+    "DW/2-intermedio/014.api-rest-js/1.api-rest-js-fundamentos/resources/img/evidencia02.png"
   ]
 }
