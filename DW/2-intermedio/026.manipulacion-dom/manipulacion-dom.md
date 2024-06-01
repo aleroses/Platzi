@@ -1450,7 +1450,100 @@ Pero todavía no está 100% soportado por los navegadores. Referencia: [can i u
 
 [Lazy loading Nativo en html](https://www.youtube.com/shorts/u_iWpYEDSdc)
 
-## 24. 
+## 24. Comparte el resultado
+
+1. Recuadro de carga
+2. Botón de eliminar
+3. Contador de imágenes agregadas y cargadas
+
+### Código propuesto por un estudiante
+
+Para agregar el fondo gris lo que hice fue crear un wrapper que encerrara a la imagen y que se adaptara al tamaño de la misma con un mínimo de 100px, y este wrapper tiene el fondo gris, así cuando se inserta sale con fondo gris:
+
+```js
+... 
+imagen.width = "320";
+imagen.dataset.src = `https://randomfox.ca/images/${random()}.jpg`;
+
+const imageWrapper = document.createElement("div");
+imageWrapper.className = "bg-gray-300";
+imageWrapper.style.minHeight = "100px";
+imageWrapper.style.display = "inline-block";
+imageWrapper.appendChild(imagen);
+container.appendChild(imageWrapper);
+...
+```
+
+Para eliminar las imágenes, le puse id a los botones:
+
+```js
+<button class="p-3" id="add">Agregar Imagen</button>
+<button class="p-3" id="clean">Limpiar</button>
+```
+
+En JavaScript los selecciono y les pongo sus eventos, para eliminarlos simplemente recorro todos los nodos hijos de `mountNode`, los recorro y los elimino:
+
+```js
+const cleanImages = () => {
+  console.log(mountNode.childNodes);
+  [...mountNode.childNodes].forEach((child) => {
+    child.remove();
+  });
+};
+addButton.addEventListener("click", addImage);
+cleanButton.addEventListener("click", cleanImages);
+```
+
+Y para imprimir la cantidad de imágenes agregadas y cargadas, en el HTML agregué variables y una función super globales para tener acceso desde `index.js` y desde `lazy.js`:
+
+```js
+<script>
+  let appendedImages = 0;
+  let loadedImages = 0;
+  const printLog = () => {
+    console.log(
+      `⚪ Se han agregado ${appendedImages} imágenes`
+    );
+    console.log(
+      `🟣 Se han cargado ${loadedImages} imágenes`
+    );
+    console.log("---------------------------------------");
+  };
+</script>
+<script
+  type="module"
+  src="%PUBLIC_URL%/_dist_/index.js"
+></script>
+```
+
+Entonces, en la función `createImageNode` antes de retornar el container, aumento uno a las imágenes que se han agregado y llamo a la función:
+
+```js
+... 
+imageWrapper.appendChild(imagen);
+container.appendChild(imageWrapper);
+appendedImages++;
+printLog();
+return container;
+...
+```
+
+Y dentro de `lazy.js` en `loadImage` antes de dejar de observar hago lo mismo, pero aquí incremento las imágenes cargadas:
+
+```js
+const loadImage = (entry) => {
+  const container = entry.target;
+  const imagen = container.firstChild;
+  const imagen = container.querySelector("img");
+  const url = imagen.dataset.src;
+  imagen.src = url;
+  loadedImages++;
+  printLog();
+  observer.unobserve(container);
+};
+```
+
+Y listo. El código completo está aquí por si quieren darle un vistazo: . [Resolución del reto](https://github.com/RetaxMaster/curso-manipulacion-dom/tree/b9340045038e16f31d9126c8eeaf75df2ff8eeac/workshop-2)
 
 👈👀
 👈👀👇
