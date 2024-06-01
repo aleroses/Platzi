@@ -8,43 +8,18 @@
         "type": "tabs",
         "children": [
           {
-            "id": "b00b8bb4f226d891",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "DW/3-avanzado/2.vue.js/vue.js-intro/vue.js-intro.md",
-                "mode": "source",
-                "source": true
-              }
-            }
-          },
-          {
             "id": "432ad2205dfcfd59",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "DW/3-avanzado/1.react.js/devTalles/react-hooks-mern.md",
-                "mode": "preview",
-                "source": true
-              }
-            }
-          },
-          {
-            "id": "d6ddf4e2a3f6aee9",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "DW/2-intermedio/026.manipulacion-dom/manipulacion-dom.md",
-                "mode": "preview",
+                "file": "DW/2-intermedio/025.debugging-devtools/debugging-devtools.md",
+                "mode": "source",
                 "source": true
               }
             }
           }
-        ],
-        "currentTab": 2
+        ]
       }
     ],
     "direction": "vertical"
@@ -111,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "DW/2-intermedio/026.manipulacion-dom/manipulacion-dom.md",
+                "file": "DW/2-intermedio/025.debugging-devtools/debugging-devtools.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -128,7 +103,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "DW/2-intermedio/026.manipulacion-dom/manipulacion-dom.md",
+                "file": "DW/2-intermedio/025.debugging-devtools/debugging-devtools.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -151,7 +126,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "DW/2-intermedio/026.manipulacion-dom/manipulacion-dom.md"
+                "file": "DW/2-intermedio/025.debugging-devtools/debugging-devtools.md"
               }
             }
           }
@@ -173,11 +148,13 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "d6ddf4e2a3f6aee9",
+  "active": "432ad2205dfcfd59",
   "lastOpenFiles": [
-    "DW/2-intermedio/017.tipos-funciones-avanzadas/ts-tipos-funciones.md",
-    "DW/2-intermedio/026.manipulacion-dom/manipulacion-dom.md",
     "DW/3-avanzado/1.react.js/devTalles/react-hooks-mern.md",
+    "DW/2-intermedio/025.debugging-devtools/debugging-devtools.md",
+    "DW/2-intermedio/025.debugging-devtools",
+    "DW/2-intermedio/026.manipulacion-dom/manipulacion-dom.md",
+    "DW/2-intermedio/017.tipos-funciones-avanzadas/ts-tipos-funciones.md",
     "DW/2-intermedio/026.manipulacion-dom/img/22.target-array-entry.png",
     "DW/2-intermedio/026.manipulacion-dom/img/22.intersection-observer.png",
     "DW/2-intermedio/026.manipulacion-dom/img/22.intersection-observer.webp",
@@ -194,7 +171,6 @@
     "DW/2-intermedio/019.empaquetadores/resources/code/webpack/src/index.js",
     "DW/2-intermedio/019.empaquetadores/resources/code/webpack/public/index.html",
     "DW/2-intermedio/019.empaquetadores/resources/code/webpack/src",
-    "DW/2-intermedio/019.empaquetadores/resources/code/webpack/webpack.config.js",
     "DW/2-intermedio/019.empaquetadores/intro-empaquetadores -web.md",
     "others/anki/add-ons.md",
     "DW/2-intermedio/014.api-rest-js/2.api-rest-js-ejemplos/api-rest-ejemplos.md",
@@ -215,7 +191,6 @@
     "DW/2-intermedio/014.api-rest-js/1.api-rest-js-fundamentos/resources/code/practice/svg/delete.svg",
     "DW/2-intermedio/014.api-rest-js/1.api-rest-js-fundamentos/resources/code/node_modules/node-domexception/README.md",
     "DW/2-intermedio/014.api-rest-js/1.api-rest-js-fundamentos/resources/code/node_modules/web-streams-polyfill/README.md",
-    "DW/2-intermedio/014.api-rest-js/1.api-rest-js-fundamentos/resources/code/node_modules/node-fetch/LICENSE.md",
     "DW/2-intermedio/014.api-rest-js/1.api-rest-js-fundamentos/resources/code/7.proyecto/svg/heart.svg",
     "DW/2-intermedio/014.api-rest-js/1.api-rest-js-fundamentos/resources/code/7.proyecto/svg/delete.svg",
     "DW/2-intermedio/014.api-rest-js/1.api-rest-js-fundamentos/resources/img/random-kittens.png",
