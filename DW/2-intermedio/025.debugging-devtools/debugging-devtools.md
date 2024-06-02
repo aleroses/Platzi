@@ -105,7 +105,7 @@ Para agregar una declaración CSS a un elemento, use la pestaña Estilos cuando 
 - Escribe `background-color` o el estilo deseado y presiona Enter.
 - Escribe en este caso como ejemplo `honeydewy` presiona Enter, te debe quedar algo así `background-color: honeydewy`. En el Árbol DOM, puede ver que se aplicó una declaración de estilo en línea al elemento.
 
-Se puede dar doble click sobre un elemento numérico y con las flechas subir y bajar el numero.
+Se puede dar doble clic sobre un elemento numérico y con las flechas subir y bajar el número.
 
 También podemos ver cómo se comporta un elemento cuando se activa una _pseudo-class_ desde el apartado `:hov` y también modificarla.
 
@@ -138,19 +138,29 @@ element.style {👇
 
 Recordar:
 
-Respecto a los colores de Material Design , para poder ver la combinación de colores que se pueden aplicar a una pagina, en la sección mencionada de Material Design recordar dar un click sostenido a cada uno para visualizar la linea de colores de esta forma :
+Respecto a los colores de Material Design , para poder ver la combinación de colores que se pueden aplicar a una página, en la sección mencionada de Material Design recordar dar un clic sostenido a cada uno para visualizar la línea de colores de esta forma:
 
 Entrar a la paleta de colores y dirigirse a la sección de Material Design
 
 ![](https://i.postimg.cc/sxpFcqdq/5-material-design1.png)
 
-Click sostenido sobre la linea de colores que desee visualizar
+Clic sostenido sobre la línea de colores que desee visualizar
 
 ![](https://i.postimg.cc/VvPpdgrR/5-material-design2.png)
 
+## 6. Manejo de sombras en DevTools
 
+A quienes no les aparezcan los tres puntitos para editar las sombras hagan esto:
 
+1. Agreguen el estilo **box-shadow**.
+2. Seleccionen la opción: **0 0 black**
+3. Les aparecerán dos cuadritos superpuestos los cuales sacan un diálogo que dice: **"Open shadow editor"**
+4. Hacen clic ahí y listo.
+5. Aplica lo mismo para: text-shadow
 
+![open shadow editor](https://i.postimg.cc/xjz8b17p/6-open-shadow.png)
+
+## 7. Animaciones en DevTools
 
 
 Bikatti
