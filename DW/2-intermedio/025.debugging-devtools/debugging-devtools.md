@@ -93,8 +93,64 @@ Elements
 
 ### Shortcuts
 
-- **Ctrl + Shift + c**, para activar el selector
-- **Ctrl + f**, para hacer búsquedas dentro de **Elements**, este comando también sirve para buscar palabras dentro de una página web
+- **Ctrl + Shift + C**, para activar el selector
+- **Ctrl + F**, para hacer búsquedas dentro de **Elements**, este comando también sirve para buscar palabras dentro de una página web
+
+## 4. Editando CSS
+
+Para agregar una declaración CSS a un elemento, use la pestaña Estilos cuando desee cambiar o agregar declaraciones CSS a un elemento.
+
+- Haga clic derecho en el elemento a modificar a continuación y seleccione Inspeccionar.
+- Haga clic en la etiqueta, clase o Id cerca de la parte superior de la pestaña Estilos.
+- Escribe `background-color` o el estilo deseado y presiona Enter.
+- Escribe en este caso como ejemplo `honeydewy` presiona Enter, te debe quedar algo así `background-color: honeydewy`. En el Árbol DOM, puede ver que se aplicó una declaración de estilo en línea al elemento.
+
+Se puede dar doble click sobre un elemento numérico y con las flechas subir y bajar el numero.
+
+También podemos ver cómo se comporta un elemento cuando se activa una _pseudo-class_ desde el apartado `:hov` y también modificarla.
+
+En la sub-sección **Computed** podemos ver todos los estilos que estrictamente solo se está aplicando a ese elemento seleccionado y podemos ver el modelo de caja también.
+
+### Dato
+
+Una vez que realizamos los cambios en los estilos para depurar, es común olvidar cuáles fueron todos los cambios que se realizaron en los estilos, para ello podemos acceder a la herramienta **changes** y observar estos cambios:
+
+- Customize and control DevTools (3 puntos)
+- More tools / Changes
+
+### Shortcuts
+
+También tenemos shortcuts para aumentar o disminuir el tamaño de los elementos:
+
+- **Shift + flecha arriba o flecha abajo** = modificas 10px el tamaño. 
+- **Ctrl + flecha arriba o flecha abajo** = modificas 100px el tamaño. 
+- **Alt + flecha arriba o flecha abajo** = modificas 0.1px el tamaño.
+
+## 5. Colores en DevTools
+
+Para abrir el Selector de colores, encuentra una declaración de CSS en el panel Styles que defina un color (como color: blue). A la derecha del valor de la declaración se encuentra un cuadrado pequeño de color. El color del cuadrado coincide con el valor de la declaración. Haz clic en este pequeño cuadrado para abrir el Selector de colores.
+
+```css
+element.style {👇
+  background: 🟪 darkslateblue;
+}
+```
+
+Recordar:
+
+Respecto a los colores de Material Design , para poder ver la combinación de colores que se pueden aplicar a una pagina, en la sección mencionada de Material Design recordar dar un click sostenido a cada uno para visualizar la linea de colores de esta forma :
+
+Entrar a la paleta de colores y dirigirse a la sección de Material Design
+
+![](https://i.postimg.cc/sxpFcqdq/5-material-design1.png)
+
+Click sostenido sobre la linea de colores que desee visualizar
+
+![](https://i.postimg.cc/VvPpdgrR/5-material-design2.png)
+
+
+
+
 
 
 Bikatti

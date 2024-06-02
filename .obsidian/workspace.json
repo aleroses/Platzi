@@ -150,6 +150,11 @@
   },
   "active": "432ad2205dfcfd59",
   "lastOpenFiles": [
+    "DW/2-intermedio/025.debugging-devtools/img/5.material-design2.png",
+    "DW/2-intermedio/025.debugging-devtools/img/5.material-design2.png.crdownload",
+    "DW/2-intermedio/025.debugging-devtools/img/5.material-design1.png",
+    "DW/2-intermedio/025.debugging-devtools/img/5.material-design1.png.crdownload",
+    "DW/2-intermedio/025.debugging-devtools/img",
     "DW/3-avanzado/1.react.js/devTalles/react-hooks-mern.md",
     "DW/2-intermedio/025.debugging-devtools/debugging-devtools.md",
     "DW/2-intermedio/025.debugging-devtools",
@@ -168,9 +173,6 @@
     "DW/2-intermedio/vim/Personal-configuration/vimrc-plug.md",
     "DW/2-intermedio/vim/Personal-configuration",
     "DW/2-intermedio/026.manipulacion-dom",
-    "DW/2-intermedio/019.empaquetadores/resources/code/webpack/src/index.js",
-    "DW/2-intermedio/019.empaquetadores/resources/code/webpack/public/index.html",
-    "DW/2-intermedio/019.empaquetadores/resources/code/webpack/src",
     "DW/2-intermedio/019.empaquetadores/intro-empaquetadores -web.md",
     "others/anki/add-ons.md",
     "DW/2-intermedio/014.api-rest-js/2.api-rest-js-ejemplos/api-rest-ejemplos.md",
@@ -190,11 +192,9 @@
     "DW/2-intermedio/014.api-rest-js/1.api-rest-js-fundamentos/resources/code/practice/svg/heart.svg",
     "DW/2-intermedio/014.api-rest-js/1.api-rest-js-fundamentos/resources/code/practice/svg/delete.svg",
     "DW/2-intermedio/014.api-rest-js/1.api-rest-js-fundamentos/resources/code/node_modules/node-domexception/README.md",
-    "DW/2-intermedio/014.api-rest-js/1.api-rest-js-fundamentos/resources/code/node_modules/web-streams-polyfill/README.md",
     "DW/2-intermedio/014.api-rest-js/1.api-rest-js-fundamentos/resources/code/7.proyecto/svg/heart.svg",
     "DW/2-intermedio/014.api-rest-js/1.api-rest-js-fundamentos/resources/code/7.proyecto/svg/delete.svg",
     "DW/2-intermedio/014.api-rest-js/1.api-rest-js-fundamentos/resources/img/random-kittens.png",
-    "DW/2-intermedio/014.api-rest-js/1.api-rest-js-fundamentos/resources/img/paginating.png",
-    "DW/2-intermedio/014.api-rest-js/1.api-rest-js-fundamentos/resources/img/evidencia02.png"
+    "DW/2-intermedio/014.api-rest-js/1.api-rest-js-fundamentos/resources/img/paginating.png"
   ]
 }
