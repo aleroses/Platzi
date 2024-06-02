@@ -162,6 +162,31 @@ A quienes no les aparezcan los tres puntitos para editar las sombras hagan esto:
 
 ## 7. Animaciones en DevTools
 
+- Customize and control DevTools (3 puntos)
+- More tools / Animations
+
+[Página para probar animaciones](https://animate.style/)
+
+Enlaces de bibliotecas de animaciones y efectos CSS:
+
+- [Hover](https://ianlunn.github.io/Hover/)
+- [CSShake](https://elrumordelaluz.github.io/csshake/)
+- [Anijs](https://anijs.github.io/)
+- [CSS Wand](https://www.csswand.dev/?ref=producthunt)
+- [Animate Components](https://animate-components.surge.sh/)
+- [Keyframes](https://keyframes.app/)
+- [AniCollection](https://anicollection.github.io/#/)
+- [SpinKit Loader](https://tobiasahlin.com/spinkit/)
+- [Animejs](https://animejs.com/)
+
+### Dato
+
+Si cuando ingresan a **animate.css** y les aparece que no están habilitadas las animaciones en su sistema operativo, solo tienen que ir a Configuración de accesibilidad y Activar las animaciones.
+
+## 8. ¿Cómo medir el código que no ocupamos?
+
+
+
 
 Bikatti
 👈👀
