@@ -185,10 +185,38 @@ Si cuando ingresan a **animate.css** y les aparece que no están habilitadas las
 
 ## 8. ¿Cómo medir el código que no ocupamos?
 
+- Customize and control DevTools (3 puntos)
+- More tools / Coverage
+
+![Coverage](https://i.postimg.cc/tCk9458V/8-coverage1.png)
+
+Para empezar a usar esta herramienta solo das **Click the record button ⚫...**
+
+En esta parte puedes limpiar todo o recargar la página para ver más detalles de los archivos cargados.
+
+En la parte de **Usage Visualization** tenemos barras de carga en rojo y blanco, lo cual indica el **porcentaje de código no utilizado**, también expresado en bytes, de cada uno de los archivos, respecto del peso total de los mismos que está justamente en la columna que está a la izquierda, cuyo nombre es **Total Bytes**.
+
+![](https://i.postimg.cc/c4C8ZrbZ/8-coverage2.png)
+
+Para ver el código solo basta dar clic en alguno de los elementos en el apartado **URL**.
+
+## 9. JavaScript y el DOM
+
+Para obtener un elemento del DOM lo seleccionamos desde **Elements** en los DevTools de navegador y después vamos a la consola y escribimos `$0` esto nos traerá ese elemento previamente seleccionado.
+
+Para empezar a manipular elementos y para agregarles JavaScript podemos usar estas dos formas:
+
+1. `getElementById()` = para llamar a un ID.
+2. Vamos al elemento, damos clic derecho, nos saldrá un menú vamos a donde dice (copy) y después donde dice **Copy JS-PATH**
+    Obtendremos algo parecido:
+    `document.querySelector("Body > header")`    
+
+![Copy JS path](https://i.postimg.cc/k5rgzyZ6/9-copy-js-path.png)
+
+Posteriormente con el elemento que obtengamos le podremos añadir funciones con JavaScript.
 
 
 
-Bikatti
 👈👀
 👇
 📌
