@@ -215,7 +215,38 @@ Para empezar a manipular elementos y para agregarles JavaScript podemos usar est
 
 Posteriormente, con el elemento que obtengamos le podremos añadir funciones con JavaScript.
 
-## 10. 
+## 10. DevTools como editor (IDE)
+
+- Sources
+- Workspace: Add folder
+- Seleccionar toda la carpeta
+- Allow
+
+También puedes agregar la carpeta desde tu explorador de archivos, arrastrándola hasta **Workspace**. Además puedes usar Ctrl + P para hacer busquedas rapidas de tus archivos.
+
+![Workspace](https://i.postimg.cc/65jBk4YX/10-workspace.png)
+
+**OJO:** El css permite ser modificado desde el inspector de elementos también, mientras que el HTML y el JavaScript, solo permite ser modificado desde la pestaña **Sources**. Los cambios que hagas en el CSS del lado del inspector de elementos, se guardarán automáticamente en el archivo CSS local. Los cambios que hagas y guardes desde la pestaña **Sources**, se guardarán automáticamente en los archivos locales.
+
+⚠️ Es importante tener cuidado al modificar archivos locales importantes, ya que los cambios se guardarán automáticamente y podrían afectar el funcionamiento de tu aplicación web. Siempre es recomendable hacer una copia de seguridad de tus archivos antes de realizar cambios importantes.
+
+[Edit and save files in a workspace](https://developer.chrome.com/docs/devtools/workspaces)
+
+## 11. Simular una ventana móvil
+
+El **Device Mode** es útil para saber de manera aproximada cuál será el aspecto y el rendimiento de tu página en un dispositivo móvil.
+
+Device Mode es el nombre de un conjunto variado de funciones en Chrome DevTools que te ayudan a simular dispositivos móviles. Estas funciones incluyen:
+
+- Simulación del viewport de un dispositivo móvil
+- Limitación de la red
+- Limitación de la CPU
+- Simulación de la ubicación geográfica
+- Configuración de la orientación
+
+![device-toolbar.png](https://i.postimg.cc/gcHnSK5t/11-device-mode.png)
+
+## 12. 
 
 
 ## Funcionalidades útiles de Chrome devtools no cubiertas en el curso
