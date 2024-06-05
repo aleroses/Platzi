@@ -150,6 +150,10 @@
   },
   "active": "432ad2205dfcfd59",
   "lastOpenFiles": [
+    "DW/2-intermedio/025.debugging-devtools/img/devtools-capture-screenshot.gif",
+    "DW/2-intermedio/025.debugging-devtools/img/devtools-capture-screenshot.gif.crdownload",
+    "DW/2-intermedio/025.debugging-devtools/img/capture-node-screenshot.png",
+    "DW/2-intermedio/025.debugging-devtools/img/$$-vs-querySelectorAll.png",
     "DW/2-intermedio/025.debugging-devtools/img/9.copy-js-path.png",
     "DW/2-intermedio/025.debugging-devtools/img/8.coverage2.png",
     "DW/2-intermedio/025.debugging-devtools/img/8.coverage1.png",
@@ -167,8 +171,6 @@
     "DW/2-intermedio/026.manipulacion-dom/manipulacion-dom.md",
     "DW/2-intermedio/017.tipos-funciones-avanzadas/ts-tipos-funciones.md",
     "DW/2-intermedio/026.manipulacion-dom/img/22.target-array-entry.png",
-    "DW/2-intermedio/026.manipulacion-dom/img/22.intersection-observer.png",
-    "DW/2-intermedio/026.manipulacion-dom/img/22.intersection-observer.webp",
     "DW/2-intermedio/026.manipulacion-dom/img/22.intersection-observer.webp.crdownload",
     "DW/2-intermedio/026.manipulacion-dom/img",
     "DW/3-avanzado/2.vue.js/vue.js-intro/vue.js-intro.md",
@@ -177,7 +179,6 @@
     "DW/1-basico/015-figma/figma.md",
     "DW/2-intermedio/vim/Personal-configuration/vimrc.md",
     "DW/2-intermedio/vim/Personal-configuration/vimrc-plug.md",
-    "DW/2-intermedio/vim/Personal-configuration",
     "DW/2-intermedio/019.empaquetadores/intro-empaquetadores -web.md",
     "others/anki/add-ons.md",
     "DW/2-intermedio/014.api-rest-js/2.api-rest-js-ejemplos/api-rest-ejemplos.md",
@@ -194,7 +195,6 @@
     "DW/2-intermedio/016.fundamentos-typescript/resources/code/ts-project/node_modules/typescript/SECURITY.md",
     "DW/2-intermedio/016.fundamentos-typescript/resources/code/ts-project/node_modules/typescript/README.md",
     "DW/2-intermedio/016.fundamentos-typescript/fundamentos-typescript.md",
-    "DW/2-intermedio/014.api-rest-js/1.api-rest-js-fundamentos/resources/code/practice/svg/heart.svg",
     "DW/2-intermedio/014.api-rest-js/1.api-rest-js-fundamentos/resources/code/node_modules/node-domexception/README.md"
   ]
 }
