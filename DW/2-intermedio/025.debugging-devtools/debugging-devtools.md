@@ -246,8 +246,29 @@ Device Mode es el nombre de un conjunto variado de funciones en Chrome DevTools 
 
 ![device-toolbar.png](https://i.postimg.cc/gcHnSK5t/11-device-mode.png)
 
-## 12. 
+- [Responsive](https://responsively.app/)
+- [Polypane](https://polypane.app/)
 
+## 12. Manejo de sensores
+
+ **Performance ⚙️** nos da algunas opciones como:
+ - **Network** que permiten manipular la velocidad del internet.
+ - **CPU** nos permite hacer pruebas simulando diferentes dispositivos con poder de cómputo más o menos potentes.
+
+![](https://i.postimg.cc/sXyh6fYb/12-performance-network.png)
+
+A pesar de que Dev Tools nos da estas herramientas, se recomienda comprar dispositivos no tan caros para poder probar nuestras páginas.
+
+Otra herramienta que nos ofrece Dev Tools es emular los sensores del dispositivo(geolocation, orietation, touch). Puedes acceder en la siguiente ruta:
+
+- Customize and control DevTools (3 puntos)
+- More tools / Sensors
+
+![](https://i.postimg.cc/x1Y9hkJf/12-sensors.png)
+
+Para saber las posiciones de orientación de un celular necesitamos escuchar el evento [DeviceOrientationEvent](https://developer.mozilla.org/en-US/docs/Web/API/DeviceOrientationEvent).
+
+Usa la [API](https://developer.mozilla.org/es/docs/WebAPI/Using_geolocation#:~:text=La%20API%20de%20geolocalizaci%C3%B3n%20permite,para%20proporcionar%20informaci%C3%B3n%20de%20ubicaci%C3%B3n) de Geolocalización que tiene HTML5
 
 ## Funcionalidades útiles de Chrome devtools no cubiertas en el curso
 

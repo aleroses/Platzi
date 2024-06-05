@@ -14,7 +14,7 @@
               "type": "markdown",
               "state": {
                 "file": "DW/2-intermedio/025.debugging-devtools/debugging-devtools.md",
-                "mode": "source",
+                "mode": "preview",
                 "source": true
               }
             }
@@ -150,6 +150,10 @@
   },
   "active": "432ad2205dfcfd59",
   "lastOpenFiles": [
+    "DW/2-intermedio/025.debugging-devtools/img/12.sensors.png",
+    "DW/2-intermedio/025.debugging-devtools/img/12.performance-network.png",
+    "DW/2-intermedio/025.debugging-devtools/img/Selection_024.png",
+    "DW/2-intermedio/025.debugging-devtools/img/Selection_022.png",
     "DW/2-intermedio/025.debugging-devtools/img/11.device-mode.png",
     "DW/2-intermedio/025.debugging-devtools/img/10.workspace.png",
     "DW/2-intermedio/025.debugging-devtools/img/devtools-capture-screenshot.gif",
@@ -158,11 +162,7 @@
     "DW/2-intermedio/025.debugging-devtools/img/$$-vs-querySelectorAll.png",
     "DW/2-intermedio/025.debugging-devtools/img/9.copy-js-path.png",
     "DW/2-intermedio/025.debugging-devtools/img/8.coverage2.png",
-    "DW/2-intermedio/025.debugging-devtools/img/8.coverage1.png",
-    "DW/2-intermedio/025.debugging-devtools/img/8.coverage.jpg",
     "DW/2-intermedio/025.debugging-devtools/img/8.coverage.jpg.crdownload",
-    "DW/2-intermedio/025.debugging-devtools/img/6.open-shadow.png",
-    "DW/2-intermedio/025.debugging-devtools/img/5.material-design2.png",
     "DW/2-intermedio/025.debugging-devtools/img/5.material-design2.png.crdownload",
     "DW/2-intermedio/025.debugging-devtools/img/5.material-design1.png.crdownload",
     "DW/2-intermedio/025.debugging-devtools/img",
