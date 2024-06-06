@@ -270,6 +270,105 @@ Para saber las posiciones de orientación de un celular necesitamos escuchar el 
 
 Usa la [API](https://developer.mozilla.org/es/docs/WebAPI/Using_geolocation#:~:text=La%20API%20de%20geolocalizaci%C3%B3n%20permite,para%20proporcionar%20informaci%C3%B3n%20de%20ubicaci%C3%B3n) de Geolocalización que tiene HTML5
 
+## 13. Debugging JS con DevTools
+
+Desde **Sources** activamos y escuchamos al evento **Click** desde **Event Listener Breakpoints > Mouse**. 
+
+Esto lo que hace es generar un breakpoint que detiene la ejecución del código en la línea de la función asociada al evento que estamos "escuchando".
+
+![](https://i.postimg.cc/HW2SrRB2/13-event-listener.png)
+
+Podemos hacer pruebas con esta [Demo :3](https://googlechrome.github.io/devtools-samples/debug-js/get-started)
+
+## 14. Reproduciendo y reparando un bug
+
+En JavaScript **typeof** retorna el tipo de dato que tiene una variable.
+
+El panel **Scope** te muestra las variables locales y globales actualmente definidas, junto con el valor de cada variable.
+
+![](https://i.postimg.cc/g04JX3Br/14-bug-fix.png)
+
+Otro ejemplo de uso: [[closures_scope-en-js#**7.** ¿Qué es un Closure?#Ámbito léxico]]
+
+📌 Para los que usan Visual Studio Code, dejo un artículo que nos muestra una extensión oficial (creada por Microsoft), para instalar **Debugger for Chrome**, para implementar mucha de la funcionalidad del browser dentro de nuestro editor de texto.
+
+[Debugger for Chrome](https://code.visualstudio.com/blogs/2016/02/23/introducing-chrome-debugger-for-vs-code)
+
+## 15. Nota: proyecto de la clase siguiente
+
+El proyecto que se utiliza en la siguiente clase, **¡ya está disponible!**  
+Lo puedes encontrar 👉 [aquí](https://devtools.glitch.me/network/getstarted.html)
+
+## 16. ¿Cuándo utilizar Network en DevTools?
+
+El panel Network es utilizado para asegurarse de que los recursos (HTML, imágenes, CSS, JS, entre otros) se descarguen o carguen como se esperaba.
+
+Los casos de uso más comunes para el panel Network son:
+
+- Asegurarse de que los recursos se estén cargando o descargando.
+- Inspeccionar las propiedades de un recurso individual, como sus encabezados HTTP, contenido, tamaño, etc.
+
+**Secciones de Network**:
+
+1. **Name**: Nombre del archivo
+2. **Status**: Estatus del HTTP. En este caso 200 significa OK (Todo bien)
+3. **Type**: Tipo de archivo. Por ejemplo: document (HTML), stylesheet(CSS), JS, PNG, etc.
+4. **Inialitator**: Cuál archivo solicitó a otro archivo. En este caso, el documento HTML solicitó a todos los demás archivos.
+5. **Size**: Tamaño del archivo. Se muestra el tamaño no optimizado y optimizado por el navegador.
+6. **Time**: Tiempo total que tarda en descargarse el archivo.
+7. **Waterfall**: Tiempo (sección por sección) que le tomó al archivo descargarse.
+
+Se muestra de la siguiente manera:
+
+![](https://i.postimg.cc/mgxbpmF0/15-network.png)
+
+**NOTA**: Los códigos de estado de respuesta HTTP indican si se ha completado satisfactoriamente una solicitud HTTP específica. Las respuestas se agrupan en cinco clases:
+
+- Respuestas informativas (100–199),
+- Respuestas satisfactorias (200–299),
+- Redirecciones (300–399),
+- Errores de los clientes (400–499),
+- y errores de los servidores (500–599).
+
+**Referencias**:
+
+- [Códigos de estado de respuesta HTTP | MDN](https://developer.mozilla.org/es/docs/Web/HTTP/Status).
+- [Inspect Network Activity In Chrome DevTools](https://developers.google.com/web/tools/chrome-devtools/network/).
+
+## 17. Revisando detalles con Network
+
+📌 Para ver más detalles como por ejemplo **Waterfall** solo dale clic derecho sobre **Name** y selecciona lo que necesites. Si eliges el icono ⚙️ **Network settings** podrás tener mas opciones.
+
+![](https://i.postimg.cc/6qPGmgkk/17-network-details.png)
+
+En este apartado podemos simulando conexiones de red:
+
+- **Online** (Normal) 
+- **Fast 3G**
+- **Slow 3G**
+- **Offline**
+- **Custom**
+
+Si mantenemos presionado el icono de **recargar página** en el navegador podremos elegir la opción **Vaciar caché y volver a cargar de manera forzada** para simular que se está abriendo la web por primera vez.
+
+![](https://i.postimg.cc/xdq8WtRY/17-network-details2.png)
+
+También podemos filtrar o bloquear archivos para que no se descarguen en el navegador.
+
+**Ctrl + Shift + P** y escribimos **Show Request blocking** luego en el icono **+** y añadimos los archivos a bloquear `main.css`
+
+![](https://i.postimg.cc/8kmzy7QT/17-lock-files.png)
+
+Al recargar la página veremos que ese archivo no se cargó.
+
+## 18. ¿Cuando utilizar la sección de Performance?
+
+Empezamos a grabar.
+
+[Janky Animation](https://googlechrome.github.io/devtools-samples/jank/)
+
+📌
+
 ## Funcionalidades útiles de Chrome devtools no cubiertas en el curso
 
 En este post te voy a mostrar algunas funcionalidades que posee Chrome DevTools y que no fueron cubiertas en el curso.
