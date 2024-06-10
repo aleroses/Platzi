@@ -532,9 +532,45 @@ En el icono de refrescar página, lo mantenemos seleccionado y elegimos **Vaciar
 
 Ahora en los **Lighthouse** elegimos **Desktop**
 
-## 21. 
+## 21. Cierre de curso
 
-📌 18.reto-img1
+Tomar examen…
+
+## 22. Contenido Bonus: PWA
+
+Las Progressive Web Apps (PWAs) son aplicaciones web que combinan lo mejor de las páginas web y las aplicaciones móviles. La idea principal detrás de las PWAs es ofrecer una experiencia similar a la de una aplicación nativa, pero utilizando tecnologías web. 
+
+A continuación, te explico de manera sencilla qué son y cómo funcionan:
+
+### Qué son las Progressive Web Apps
+
+1. **Aplicaciones Web Mejoradas**: Son sitios web o páginas web que se comportan como aplicaciones móviles.
+2. **Experiencia de Usuario**: Ofrecen una experiencia rápida, fiable y atractiva, similar a las aplicaciones nativas.
+3. **Instalación Opcional**: Pueden instalarse en el dispositivo del usuario sin necesidad de pasar por una tienda de aplicaciones como Google Play o App Store.
+4. **Multiplataforma**: Funcionan en cualquier dispositivo con un navegador moderno, sin importar el sistema operativo.
+
+### Cómo Funcionan las Progressive Web Apps
+
+1. **Service Workers**: Este es un componente clave que permite que las PWAs funcionen offline o con conexiones inestables. Los Service Workers son scripts que el navegador ejecuta en segundo plano para manejar caché y solicitudes de red, mejorando la velocidad y la capacidad de trabajo sin conexión.
+2. **Manifiesto Web (Web App Manifest)**: Es un archivo JSON que proporciona información sobre la aplicación (nombre, iconos, tema de color, etc.) y cómo debería comportarse cuando se "instala" en el dispositivo del usuario.
+3. **HTTPS**: Las PWAs deben ser servidas a través de HTTPS para garantizar que la comunicación entre el servidor y el cliente sea segura.
+4. **Aplicación Progresiva**: La "progresividad" significa que las PWAs funcionan para todos los usuarios, sin importar el navegador, ya que están construidas con principios de mejora progresiva. Esto significa que utilizan funciones del navegador que son soportadas por todos y luego añaden funcionalidades adicionales para los navegadores más avanzados.
+
+### Para Qué Sirven las Progressive Web Apps
+
+1. **Accesibilidad Sin Conexión**: Permiten a los usuarios acceder a contenido incluso cuando no tienen conexión a Internet, gracias a los Service Workers.
+2. **Rendimiento Mejorado**: Las PWAs suelen ser más rápidas porque cargan desde la caché en lugar de depender completamente de la red.
+3. **Experiencia de Usuario Enriquecida**: Ofrecen notificaciones push, pantalla completa, y pueden ser agregadas al inicio del dispositivo, mejorando la interacción del usuario.
+4. **Menor Consumo de Recursos**: Ocupan menos espacio y consumen menos recursos del dispositivo comparado con las aplicaciones nativas.
+5. **Desarrollo Simplificado**: Los desarrolladores pueden crear una única aplicación que funciona en múltiples plataformas sin necesidad de desarrollar versiones separadas para iOS, Android, etc.
+
+### Ejemplos de Uso
+
+- **E-commerce**: Tiendas online como AliExpress y Flipkart han implementado PWAs para mejorar la experiencia de compra.
+- **Medios y Noticias**: Periódicos y sitios de noticias como The Washington Post y Financial Times usan PWAs para ofrecer acceso rápido y offline a sus artículos.
+- **Redes Sociales**: Twitter Lite es una versión PWA que ofrece una experiencia de usuario rápida y que consume menos datos.
+
+En resumen, las Progressive Web Apps son una forma moderna y eficiente de ofrecer aplicaciones web con todas las ventajas de las aplicaciones nativas, sin los inconvenientes de instalación y actualización a través de las tiendas de aplicaciones tradicionales.
 
 ## Funcionalidades útiles de Chrome devtools no cubiertas en el curso
 
@@ -670,7 +706,99 @@ Algo así:
 
 ![](https://i.postimg.cc/J7BBhPVn/devtools-capture-screenshot.gif)
 
+## 🔥 Examen
+
+<details>
+  <summary>Haz clic para ver los resultados 👀👇</summary>
+  <br/>
+
+1. ¿Qué tipo de interacción podemos tener en la sección de Elements?
+
+	- ✅ Manipulación de nuestro HTML.
+
+2. ¿Cuáles son los navegadores que tienen herramientas para desarrolladores?
+
+	- ✅ Todos los navegadores tienen herramientas para desarrolladores.
+
+3. ¿Cómo podría visualizar la paleta de colores que mi proyecto está utilizando?
+
+	- ✅ Desde la sección de estilos, al tener un elemento que tenga aplicado algún color, dándole clic al cuadro de color que aparece ahí, tendremos la opción de Page colors que hace referencia a la paleta de colores del proyecto.
+
+4. Si tengo un error en mi código que se dispara al momento de mandar llamar una función que está ligada a un botón, ¿cómo podría llegar a esa función para comenzar a debuggear el código?
+
+	- ✅ Tendríamos que comenzar con el evento de click en ese botón.
+
+5. Si yo NO tengo la sección de Animación en mi DevTools, ¿Cómo puedo visualizarla?
+
+	- ✅ En la parte de menú de tu devtools, tengo que ir a más herramientas “More Tools”, y ahí buscar por Animaciones.
+
+6. ¿Si en mi proyecto estoy utilizando un preprocesador de css como “Stylus”, y utilizo DevTools como IDE, puedo seguir trabajando desde ahí con Stylus?
+
+
+a
+Claro, DevTools, te dejará trabajar con todos los preprocesadores de CSS.
+
+
+b quizá
+No, solo puedes utilizar CSS Vanilla.
+
+
+✅ mal
+No, de momento Chrome DevTools, solo entiende Sass.
+
+7. ¿Qué es el JS Path que obtenemos de cada elemento de HTML?
+
+	- ✅ Es la selección que hacemos a un nodo o elemento del DOM específico con JS
+
+8. ¿Dónde puedo ver si mis elementos de HTML tienen algún estado de CSS?
+
+
+a quizá
+No se puede, porque tienen primero que activar el estado.
+
+
+b
+Eso es algo que solo se puede ver en Firefox.
+
+
+✅ mal
+Desde la sección de estilos, en el icono de :hov
+
+
+d
+Seleccionando ese elemento y viendo sus estilos.
+
+9. ¿Para qué utilizamos “Network” en DevTools?
+
+	- ✅ Esto nos sirve para poder ver ¿qué archivos y assets se están descargando, el estatus, el peso y tiempo de descarga de los mismos?
+
+10. ¿Cómo podría cargar mi proyecto desde local, para comenzar a guardar los cambios desde DevTools?
+
+	- ✅ Directamente desde la sección de sources seleccionamos “Filesystem” y “agregar un folder a mi espacio de trabajo”
+
+11. ¿Cuál es la sección en la que puedo tener visibilidad del todo el código que no estoy utilizando en un proyecto?
+
+	- ✅ Desde la sección de “Coverage” yo puedo tener visibilidad del código que está en mi proyecto, pero no es necesario porque no lo utilizo.
+
+12. ¿De qué forma puedo buscar palabras específicas en mi documento html, desde el inspector de elementos?
+
+	- ✅ Presionando “comand/ctrl + F” desde la casilla de Elements
+
+13. ¿Para qué puedo utilizar el `$0` en la consola de DevTools?
+
+	- ✅ Me sirve para ver cual es el elemento de HTML que estoy seleccionando.
+
+14. ¿Cuál es la forma más rápida de generar sombras a mis elementos de html?
+
+	- ✅ Desde la sección de estilos, al momento de estar modificando los estilos de algún elemento, tendremos un icono de 3 puntos que hace referencia a un menú, ahí encontraremos la opción para poder agregar sombras a elementos y texto.
+
+15. ¿Cuáles son las estrategias que existen para poder trabajar proyectos responsive?
+
+	- ✅ Por viewport de dispositivo, o por diseño.
+
+</details>
 
 👈👀
 👇
 📌
+✅
