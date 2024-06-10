@@ -363,11 +363,178 @@ Al recargar la página veremos que ese archivo no se cargó.
 
 ## 18. ¿Cuando utilizar la sección de Performance?
 
-Empezamos a grabar.
+Para iniciar las pruebas podemos seguir los siguientes pasos:
+
+- CPU: 4x slowdown
+
+![](https://i.postimg.cc/8c7cZ8F5/18-performance-cpu-4x.png)
+
+- Click the record button (Ctrl + E): 3 sec **Stop**
+
+![](https://i.postimg.cc/XJ0t29py/18-performance-record.png)
+
+En la parte inferior vemos un resumen del diagnóstico (summary): Si ves una línea roja, índica problemas.
+
+![](https://i.postimg.cc/JzMqdKq8/18-performance-summary.png)
+
+Además de Summary también existen:
+
+- Bottom-UP
+- Call Tree
+- Event Log
+
+Para ver más a detalle podemos ver en la siguiente sección: **Frames** y **Main** (con la rueda del mouse puedes ampliar)
+
+![](https://i.postimg.cc/MpTrZqcH/18-performance-details.png)
+
+Si le doy clic a algo que me interese de **Main**  puedo revisar en la parte inferior **Summary** para ver los detalles de la selección hecha.
+
+![](https://i.postimg.cc/ZnjtgHQM/18-performance-main-details.png)
+
+📌 _Idle_ es el tiempo muerto, donde ya la página terminó de realizar todos los pasos anteriores. Una página bien optimizada tendrá un _Idle_ mucho más grande en relación con los otros parámetros en la pestaña de _Summary_. Puede ser hasta más de un 95% mayor que el resto de los parámetros.
+
+Además, si seleccionamos algún archivo con un pin en rojo 🔻en **Summary** veremos el archivo que nos está dando problemas: Ejemplo `app.js 71`.
+
+![](https://i.postimg.cc/9XwLnJ6R/18-performance-main-file.png)
+
+Si le damos clic al archivo nos mostrará todo el código, incluido el tiempo en que tarde en ejecutarse cada línea.
+
+![](https://i.postimg.cc/kX3P1VpC/18-performance-debugging.png)
+
+Las líneas más amarillas son las que se tardan más en ejecutarse.
+
+**Recuerden:** Es una buena práctica generar 60 fps (frame por segundo)
 
 [Janky Animation](https://googlechrome.github.io/devtools-samples/jank/)
 
-📌
+### Reto: Comentario de un estudiante
+
+**Conclusión sobre el reto** Bueno, según lo que he podido investigar (corregidme si estoy equivocado) es que el problema está en la forma en que obtiene una nueva posición para el elemento.
+
+**_Algoritmo no optimizado_**
+
+```js
+var pos = m.classList.contains('down') ? m.offsetTop + distance : m.offsetTop - distance;
+```
+
+Aquí podemos observar que obtiene la posición del elemento con respecto al contenedor más cercano en posición relativa (en este caso body) y esto lo hace para cada iteración y cada elemento teniendo que cada vez volver a consultar esa posición para generar una nueva.
+
+**_Algoritmo optimizado_**
+
+```js
+var pos = parseInt(m.style.top.slice(0, m.style.top.indexOf('px'))); m.classList.contains('down') ? pos += distance : pos -= distance;
+```
+
+Aquí para obtener la posición lee el estilo top anterior del elemento y a partir de ese genera una nueva posición.
+
+La diferencia es que el primer algoritmo (offsetTop) consume mucho más recursos ya que debe consultar del DOM en cada iteración (es una nueva operación para cada elemento y cada iteración), mientras que con el segundo algoritmo (style.top) solamente consulta la posición anterior del estilo almacenado (no debe hacer una nueva operación).
+
+### Reto: Otro comentario
+
+Creo que lo solucione, en la línea 65 (Dado que la línea que marca el Performance es la 95 que llama a la función **app.update** en la línea 62)
+
+Hay un condicional que dice: `if (!app.optimize)` y en la línea 32: `optimize = false;` al borrar el negar `(!)` se optimiza.
+
+---
+
+Hola @JuanGalvis, como tú dices, si le quitas la negación a la condición se optimiza porque por defecto esta expresión `app.optimize` tiene como valor `false`. Este valor se cambia cada vez que haces clic en el botón “_Optimize_” al igual que su texto, pasando de “_Optimize_” a “_Un-Optimize_”.
+
+![](https://i.postimg.cc/MK6075mj/18-reto-img1.jpg)
+
+Entonces al cambiar la condición, por defecto estás entrando en el código de la condición que está optimizado.
+
+![](https://i.postimg.cc/Hx0558J2/18-reto-img2.png)
+
+Y esto te llevaría a un error visual en cuanto al texto del botón porque si tú cambias la condición y le das clic al botón aunque este diga “_Optimize_” no optimizaría el código, sino todo lo contrario.
+
+👀 Observando un poco más el código con las herramientas del navegador, creo que el error se encuentra en la línea 71.
+
+![](https://i.postimg.cc/qvt3w5hg/18-reto-img3.jpg)
+
+Se puede observar que debajo de la función `app.update` se están están ejecutando otras cosas. **Recalculate Style** y **Layout** ambas con un triángulo rojo indicando que podemos estar haciendo algo mal en el código. Le hago clic a “_Recalculate Style_” y aparece:
+
+- Un warning ⚠️ que dice: _Forced reflow is a likely performance bottleneck_
+- _Recalculation forced_ – `app.js:71`
+- _First invalidated_ – `app.js:70`
+
+Pero, ¿qué es **Recalculate Style** y **Layout**? 🤔
+
+Para mostrar un _frame_ en la pantalla el navegador sigue una serie de pasos:
+
+![](https://i.postimg.cc/L4Ngppjn/18-reto-img4.jpg)
+
+- **Recalculate Style**: El paso de combinar el DOM y el CSSOM obteniendo así el _Render Tree_.
+- **Layout** (o también llamado _++Reflow++_): El paso que hace el navegador para averiguar el tamaño y las posiciones de los elementos en la página.
+
+A veces se puede forzar al navegador a realizar el _layout_ de manera anticipada con JavaScript. A esto se le denomina _**Forced synchronous layout**_. Y eso es lo que le está pasando a este código.
+
+En la línea 70:
+
+```js
+m.style.top = pos + 'px';
+```
+
+En JavaScript se está cambiando el estilo de la imagen, en este caso la posición top.
+
+En la línea 71:
+
+```js
+if (m.offsetTop === 0) {
+```
+
+Con `m.offsetTop` se está pidiendo conocer el valor de esa propiedad del elemento para poder hacer la comparación.
+
+Si en la línea anterior (70) no se hace el cambio de estilo no habría problema porque se leería el valor del frame anterior pero al cambiar el estilo, el cambio hace que el navegador invalide ❌ todo lo que tenía registrado y deba actualizar ✅ los estilos (_Recalculate style_) y por lo tanto, ejecutar el _layout_ para poder devolver el _offsetTop_ correcto.
+
+En otras palabras, esto lo hace porque al cambiar el estilo de la imagen y luego preguntar cual es la posición de la imagen el navegador no sabe si la posición ha cambiado y decide volver a ejecutar el paso de _layout_ para poder obtener su posición.
+
+Y como está en un ciclo 🔄, estás operaciones se están continuamente repitiendo. De ahí el warning: “_Forced reflow is a likely performance bottleneck_”.
+
+Para evitar esto se recomienda:
+
+- 1️⃣ Primero ++leer++ los estilos (ejemplo de leer: element.width)
+- 2️⃣ Y luego ++escribirlos++ (ejemplo de escribir: element.width = '100px')
+
+En la solución del código optimizado lo que hacen es añadir a la variable `pos` la posición de la imagen y es esta variable la que utilizan en la condición. Lo que consiguen con esto es:
+
+- Que el navegador no tenga que estar averiguando en varias líneas del código que posición tiene la imagen.
+- Que no se fuerce el _Layout_ ya que en la línea anterior a la condición se sigue cambiando el estilo de la imagen.
+
+Y si haces trabajar menos al navegador, el rendimiento de la página mejorará 💪.
+
+En el enlace que puso el profesor también se menciona que el código se podría optimizar aún más si se utilizaran propiedades (_transform_ y _opacity_) que sólo afecten al último paso (_Composite_).
+
+En general, con lo que me quedo es que las propiedades que cambiamos o leemos en JavaScript y dónde lo hacemos afectan al rendimiento 😅.
+
+Enlaces recomendados:
+
+- [El que puso el profesor](https://developers.google.com/web/tools/chrome-devtools/evaluate-performance)
+- [Y este que habla en profundidad sobre el layout](https://developers.google.com/web/fundamentals/performance/rendering/avoid-large-complex-layouts-and-layout-thrashing)
+
+## 19. Auditoría en mobile: Lighthouse
+
+En esta sección elegimos **Mobile**
+
+![](https://i.postimg.cc/9f5v1zXS/19-lighthouse.png)
+
+![](https://i.postimg.cc/N0sZZST7/19-analyze.png)
+
+![](https://i.postimg.cc/1XwW8rw3/19-result.png)
+
+Puedes darle clic a los resultados para ver que podemos mejorar.
+
+- [Preogressive Web App](https://developers.google.com/codelabs/pwa-training/pwa03--going-offline?hl=es#0)
+- [Accessibility](https://web.dev/articles/accessibility)
+
+## 20. Auditoría en desktop: Lighthouse
+
+En el icono de refrescar página, lo mantenemos seleccionado y elegimos **Vaciar caché y volver a cargar de manera forzada**.
+
+Ahora en los **Lighthouse** elegimos **Desktop**
+
+## 21. 
+
+📌 18.reto-img1
 
 ## Funcionalidades útiles de Chrome devtools no cubiertas en el curso
 
