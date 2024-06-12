@@ -31,8 +31,7 @@
               }
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -99,7 +98,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "DW/2-intermedio/014.api-rest-js/2.api-rest-js-ejemplos/api-rest-ejemplos.md",
+                "file": "DW/2-intermedio/014.api-rest-js/3.api-rest-js-performance/3.api-rest-js-performance.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -116,7 +115,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "DW/2-intermedio/014.api-rest-js/2.api-rest-js-ejemplos/api-rest-ejemplos.md",
+                "file": "DW/2-intermedio/014.api-rest-js/3.api-rest-js-performance/3.api-rest-js-performance.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -139,7 +138,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "DW/2-intermedio/014.api-rest-js/2.api-rest-js-ejemplos/api-rest-ejemplos.md"
+                "file": "DW/2-intermedio/014.api-rest-js/3.api-rest-js-performance/3.api-rest-js-performance.md"
               }
             }
           }
@@ -161,8 +160,11 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "9e449cb1e87a9221",
+  "active": "432ad2205dfcfd59",
   "lastOpenFiles": [
+    "DW/2-intermedio/014.api-rest-js/3.api-rest-js-performance/imgs/4.spinner-skeleton-loader.jpg",
+    "DW/2-intermedio/014.api-rest-js/3.api-rest-js-performance/imgs/4.spinner-skeleton-loader.jpg.crdownload",
+    "DW/2-intermedio/014.api-rest-js/3.api-rest-js-performance/imgs",
     "DW/2-intermedio/014.api-rest-js/3.api-rest-js-performance/3.api-rest-js-performance.md",
     "DW/2-intermedio/025.debugging-devtools/debugging-devtools.md",
     "DW/2-intermedio/025.debugging-devtools/img/test-2.png",
@@ -185,9 +187,7 @@
     "DW/2-intermedio/025.debugging-devtools/img/8.coverage.jpg.crdownload",
     "DW/2-intermedio/025.debugging-devtools/img/5.material-design2.png.crdownload",
     "DW/2-intermedio/025.debugging-devtools/img/5.material-design1.png.crdownload",
-    "DW/2-intermedio/025.debugging-devtools/img",
     "DW/3-avanzado/1.react.js/devTalles/react-hooks-mern.md",
-    "DW/2-intermedio/025.debugging-devtools",
     "DW/2-intermedio/026.manipulacion-dom/manipulacion-dom.md",
     "DW/2-intermedio/017.tipos-funciones-avanzadas/ts-tipos-funciones.md",
     "DW/3-avanzado/2.vue.js/vue.js-intro/vue.js-intro.md",
