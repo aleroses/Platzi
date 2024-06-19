@@ -734,17 +734,7 @@ Algo así:
 
 6. ¿Si en mi proyecto estoy utilizando un preprocesador de css como “Stylus”, y utilizo DevTools como IDE, puedo seguir trabajando desde ahí con Stylus?
 
-
-a
-Claro, DevTools, te dejará trabajar con todos los preprocesadores de CSS.
-
-
-b quizá
-No, solo puedes utilizar CSS Vanilla.
-
-
-✅ mal
-No, de momento Chrome DevTools, solo entiende Sass.
+	- ✅ Claro, DevTools, te dejará trabajar con todos los preprocesadores de CSS.
 
 7. ¿Qué es el JS Path que obtenemos de cada elemento de HTML?
 
@@ -752,21 +742,10 @@ No, de momento Chrome DevTools, solo entiende Sass.
 
 8. ¿Dónde puedo ver si mis elementos de HTML tienen algún estado de CSS?
 
-
-a quizá
-No se puede, porque tienen primero que activar el estado.
-
-
-b
-Eso es algo que solo se puede ver en Firefox.
-
-
-✅ mal
-Desde la sección de estilos, en el icono de :hov
-
-
-d
-Seleccionando ese elemento y viendo sus estilos.
+	- ✅ mal No se puede, porque tienen primero que activar el estado.
+	-  Eso es algo que solo se puede ver en Firefox.
+	- ✅ mal Desde la sección de estilos, en el icono de :hov
+	- Seleccionando ese elemento y viendo sus estilos.
 
 9. ¿Para qué utilizamos “Network” en DevTools?
 
