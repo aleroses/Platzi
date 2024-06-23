@@ -448,7 +448,9 @@ console.log(myFunction()) // ReferenceError: pi is not defined
 
 ## **7.** ¿Qué es un Closure?
 
-Un **closure** es la combinación entre una función y el ámbito léxico en el que esta fue declarada. Con esto, la función recuerda el ámbito con el cual se creó. Puedes entender los closures como: función interna + scope. Mira estos pasos:
+Un **closure** es la combinación entre una función y el ámbito léxico en el que esta fue declarada. Con esto, la función recuerda el ámbito con el cual se creó. Puedes entender los closures como: función interna + scope. 
+
+Mira estos pasos:
 
 1. Genera una función que retorna una **función interna**.
 2. Esta **función interna** tiene un **scope**, el cual puede ser accedido únicamente por esta función, es decir, las variables, funciones, etc. definidas en el **scope** solo pueden ser accedidas por la **función interna**.
@@ -457,6 +459,39 @@ Un **closure** es la combinación entre una función y el ámbito léxico en e
 Veamos la siguiente imagen para entenderlo mejor. En la imagen FUNCTION es la función interna de la cual hablamos.
 
 ![Closure](https://i.postimg.cc/zXvcf36h/7-closure.png)
+
+Mismo ejemplo pero sin tanto ruido visual:
+
+```js
+const moneyBox = () => {
+  let saveCoins = 0;
+
+  const countCoins = (coins) => {
+    saveCoins += coins;
+    console.log(`MoneyBox: ${saveCoins}`);
+  };
+
+  return countCoins; 👈👀
+};
+
+let myMoneyBox = moneyBox();
+// myMoneyBox(x) is countCoins(x)
+myMoneyBox(4); //4
+myMoneyBox(6); //10
+myMoneyBox(10); //20
+```
+
+- Cuando llamas a `moneyBox()`, esta función retorna `countCoins`.
+- La variable `myMoneyBox` ahora contiene la referencia a la función `countCoins`.
+- Aquí es donde ocurre la clausura: `countCoins` mantiene una referencia al ámbito en el que fue creada, es decir, al ámbito de `moneyBox`, incluyendo la variable `saveCoins`.
+- Cada vez que llamas a `myMoneyBox(coins)`, en realidad estás llamando a la función `countCoins` con el argumento `coins`.
+- Debido a la clausura, `countCoins` puede acceder y modificar la variable `saveCoins` definida en `moneyBox`, incluso después de que `moneyBox` haya terminado de ejecutarse.
+
+Resumen de Clausuras
+
+Una clausura se crea cuando una función (en este caso `countCoins`) se define dentro de otra función (`moneyBox`) y la función interna (`countCoins`) captura y mantiene una referencia a las variables del ámbito de la función externa (`saveCoins`). Esto permite que la función interna acceda a esas variables incluso después de que la función externa haya completado su ejecución.
+
+Por lo tanto, aunque `moneyBox` no tiene parámetros, la función interna `countCoins` tiene uno (`coins`). Al retornar `countCoins` desde `moneyBox`, y al asignar esa función a `myMoneyBox`, puedes pasar argumentos a `myMoneyBox` como si fuera una función normal, porque en realidad es la función `countCoins` con acceso al contexto en el que fue creada.
 
 ### Ámbito léxico
 

@@ -14,6 +14,18 @@
               "type": "markdown",
               "state": {
                 "file": "DW/2-intermedio/014.api-rest-js/3.api-rest-js-performance/3.api-rest-js-performance.md",
+                "mode": "source",
+                "source": true
+              }
+            }
+          },
+          {
+            "id": "6fefb9eaf8e3e10a",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "DW/2-intermedio/006.closures_scope-en-js/closures_scope-en-js.md",
                 "mode": "preview",
                 "source": true
               }
@@ -31,7 +43,8 @@
               }
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -98,7 +111,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "DW/2-intermedio/014.api-rest-js/3.api-rest-js-performance/3.api-rest-js-performance.md",
+                "file": "DW/2-intermedio/006.closures_scope-en-js/closures_scope-en-js.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -115,7 +128,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "DW/2-intermedio/014.api-rest-js/3.api-rest-js-performance/3.api-rest-js-performance.md",
+                "file": "DW/2-intermedio/006.closures_scope-en-js/closures_scope-en-js.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -138,7 +151,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "DW/2-intermedio/014.api-rest-js/3.api-rest-js-performance/3.api-rest-js-performance.md"
+                "file": "DW/2-intermedio/006.closures_scope-en-js/closures_scope-en-js.md"
               }
             }
           }
@@ -160,10 +173,11 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "432ad2205dfcfd59",
+  "active": "6fefb9eaf8e3e10a",
   "lastOpenFiles": [
-    "DW/2-intermedio/026.manipulacion-dom/manipulacion-dom.md",
     "DW/2-intermedio/014.api-rest-js/3.api-rest-js-performance/3.api-rest-js-performance.md",
+    "DW/2-intermedio/006.closures_scope-en-js/closures_scope-en-js.md",
+    "DW/2-intermedio/026.manipulacion-dom/manipulacion-dom.md",
     "DW/2-intermedio/014.api-rest-js/3.api-rest-js-performance/imgs/11.scroll.png",
     "DW/3-avanzado/1.react.js/devTalles/react-hooks-mern.md",
     "DW/2-intermedio/025.debugging-devtools/debugging-devtools.md",
@@ -183,7 +197,6 @@
     "DW/2-intermedio/025.debugging-devtools/img/18.reto-img3.png",
     "DW/2-intermedio/025.debugging-devtools/img/18.reto-img3.png.crdownload",
     "DW/2-intermedio/025.debugging-devtools/img/18.reto-img1.png.crdownload",
-    "DW/2-intermedio/006.closures_scope-en-js/closures_scope-en-js.md",
     "DW/2-intermedio/003-ECMAScript/ECMAScript-historia-y-versiones-de-javascript.md",
     "DW/2-intermedio/025.debugging-devtools/img/devtools-capture-screenshot.gif.crdownload",
     "DW/2-intermedio/025.debugging-devtools/img/8.coverage.jpg.crdownload",
