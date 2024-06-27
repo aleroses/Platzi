@@ -43,8 +43,7 @@
               }
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -111,7 +110,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "DW/2-intermedio/006.closures_scope-en-js/closures_scope-en-js.md",
+                "file": "DW/2-intermedio/014.api-rest-js/3.api-rest-js-performance/3.api-rest-js-performance.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -128,7 +127,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "DW/2-intermedio/006.closures_scope-en-js/closures_scope-en-js.md",
+                "file": "DW/2-intermedio/014.api-rest-js/3.api-rest-js-performance/3.api-rest-js-performance.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -151,7 +150,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "DW/2-intermedio/006.closures_scope-en-js/closures_scope-en-js.md"
+                "file": "DW/2-intermedio/014.api-rest-js/3.api-rest-js-performance/3.api-rest-js-performance.md"
               }
             }
           }
@@ -173,10 +172,10 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "6fefb9eaf8e3e10a",
+  "active": "432ad2205dfcfd59",
   "lastOpenFiles": [
-    "DW/2-intermedio/014.api-rest-js/3.api-rest-js-performance/3.api-rest-js-performance.md",
     "DW/2-intermedio/006.closures_scope-en-js/closures_scope-en-js.md",
+    "DW/2-intermedio/014.api-rest-js/3.api-rest-js-performance/3.api-rest-js-performance.md",
     "DW/2-intermedio/026.manipulacion-dom/manipulacion-dom.md",
     "DW/2-intermedio/014.api-rest-js/3.api-rest-js-performance/imgs/11.scroll.png",
     "DW/3-avanzado/1.react.js/devTalles/react-hooks-mern.md",
