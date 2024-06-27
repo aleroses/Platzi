@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "e5350b6bd3d3d6dd",
+        "id": "0f74b2be6f855a1f",
         "type": "tabs",
         "children": [
           {
-            "id": "432ad2205dfcfd59",
+            "id": "321633687365cfc2",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -20,24 +20,12 @@
             }
           },
           {
-            "id": "6fefb9eaf8e3e10a",
+            "id": "0873a08ce9572b58",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "DW/2-intermedio/006.closures_scope-en-js/closures_scope-en-js.md",
-                "mode": "preview",
-                "source": true
-              }
-            }
-          },
-          {
-            "id": "b2b16126cb6b517e",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "DW/2-intermedio/026.manipulacion-dom/manipulacion-dom.md",
+                "file": "DW/2-intermedio/012.asincronismo-js/get-post-put-delete.md",
                 "mode": "preview",
                 "source": true
               }
@@ -72,7 +60,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "localStorage",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -172,10 +160,14 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "432ad2205dfcfd59",
+  "active": "321633687365cfc2",
   "lastOpenFiles": [
-    "DW/2-intermedio/006.closures_scope-en-js/closures_scope-en-js.md",
+    "DW/2-intermedio/012.asincronismo-js/get-post-put-delete.md",
     "DW/2-intermedio/014.api-rest-js/3.api-rest-js-performance/3.api-rest-js-performance.md",
+    "DW/2-intermedio/012.asincronismo-js/fetch_async-await_try-catch+archivo-json.md",
+    "DW/2-intermedio/012.asincronismo-js/asincronismo-con-js.md",
+    "DW/3-avanzado/1.react.js/Platzi/reactjs.md",
+    "DW/2-intermedio/006.closures_scope-en-js/closures_scope-en-js.md",
     "DW/2-intermedio/026.manipulacion-dom/manipulacion-dom.md",
     "DW/2-intermedio/014.api-rest-js/3.api-rest-js-performance/imgs/11.scroll.png",
     "DW/3-avanzado/1.react.js/devTalles/react-hooks-mern.md",
@@ -211,13 +203,10 @@
     "DW/1-basico/023.tailwind-2-y-3-basico/tailwind-basico.md",
     "DW/1-basico/012-css-grid-layout/grid-layout.md",
     "DW/1-basico/008-disenio-developers/disenio-developers.md",
-    "DW/2-intermedio/012.asincronismo-js/asincronismo-con-js.md",
     "DW/1-basico/003-prework/entorno-windows/remove-linux-dualboot.md",
     "DW/1-basico/003-prework/entorno-windows/vsc/setting.md",
     "DW/1-basico/006-html-css/1-html/1.html-css.md",
     "DW/1-basico/011-maquetacion-en-css/maquetacion-grid.md",
-    "DW/1-basico/010-css-grid-basico/css-grid-basico.md",
-    "DW/1-basico/007-frontend-developer-practico/frontend-developer.md",
-    "DW/2-intermedio/016.fundamentos-typescript/resources/code/ts-project/node_modules/typescript/SECURITY.md"
+    "DW/1-basico/010-css-grid-basico/css-grid-basico.md"
   ]
 }
