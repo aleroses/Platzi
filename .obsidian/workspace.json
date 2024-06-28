@@ -13,20 +13,8 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "DW/2-intermedio/014.api-rest-js/3.api-rest-js-performance/3.api-rest-js-performance.md",
+                "file": "DW/2-intermedio/023.SPA-js-vanilla/spa-js-vanilla.md",
                 "mode": "source",
-                "source": true
-              }
-            }
-          },
-          {
-            "id": "d97410c32e347199",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "DW/2-intermedio/014.api-rest-js/2.api-rest-js-ejemplos/api-rest-ejemplos.md",
-                "mode": "preview",
                 "source": true
               }
             }
@@ -98,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "DW/2-intermedio/014.api-rest-js/3.api-rest-js-performance/3.api-rest-js-performance.md",
+                "file": "DW/2-intermedio/023.SPA-js-vanilla/spa-js-vanilla.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -115,7 +103,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "DW/2-intermedio/014.api-rest-js/3.api-rest-js-performance/3.api-rest-js-performance.md",
+                "file": "DW/2-intermedio/023.SPA-js-vanilla/spa-js-vanilla.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -138,7 +126,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "DW/2-intermedio/014.api-rest-js/3.api-rest-js-performance/3.api-rest-js-performance.md"
+                "file": "DW/2-intermedio/023.SPA-js-vanilla/spa-js-vanilla.md"
               }
             }
           }
@@ -162,8 +150,10 @@
   },
   "active": "321633687365cfc2",
   "lastOpenFiles": [
-    "DW/2-intermedio/014.api-rest-js/2.api-rest-js-ejemplos/api-rest-ejemplos.md",
     "DW/2-intermedio/014.api-rest-js/3.api-rest-js-performance/3.api-rest-js-performance.md",
+    "DW/2-intermedio/023.SPA-js-vanilla/spa-js-vanilla.md",
+    "DW/2-intermedio/023.SPA-js-vanilla",
+    "DW/2-intermedio/014.api-rest-js/2.api-rest-js-ejemplos/api-rest-ejemplos.md",
     "DW/2-intermedio/vim/configs~HEAD",
     "DW/2-intermedio/012.asincronismo-js/get-post-put-delete.md",
     "DW/2-intermedio/014.api-rest-js/3.api-rest-js-performance/imgs/18.language-2.png",
@@ -192,7 +182,6 @@
     "DW/2-intermedio/003-ECMAScript/ECMAScript-historia-y-versiones-de-javascript.md",
     "DW/2-intermedio/025.debugging-devtools/img/devtools-capture-screenshot.gif.crdownload",
     "DW/2-intermedio/025.debugging-devtools/img/8.coverage.jpg.crdownload",
-    "DW/2-intermedio/025.debugging-devtools/img/5.material-design2.png.crdownload",
     "DW/2-intermedio/017.tipos-funciones-avanzadas/ts-tipos-funciones.md",
     "DW/3-avanzado/2.vue.js/vue.js-intro/vue.js-intro.md",
     "DW/1-basico/015-figma/figma.md",
