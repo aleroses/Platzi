@@ -496,10 +496,10 @@ const Home = async () => {
             <h2>${character.name}</h2>
             </a>
           </article>
-    </div>
-        `;
+          `;
         })
         .join("")}   
+    </div>
   `;
 
   return view;
@@ -525,7 +525,7 @@ const Character = async () => {
   console.log(character);
 
   const view = `
-    <div class="Character-inner">
+    <div class="Characters-inner">
       <article class="Characters-card">
         <img src="${character.image}" alt="${character.name}" />
         <h2>${character.name}</h2>
@@ -547,14 +547,180 @@ const Character = async () => {
 export { Character };
 ```
 
-## 13. 
+## 13. Configurar CSS para administrar elementos visuales
 
+Vite no necesita ser configurado para añadir estilos.
 
-`src/main.js`
+`src/styles/styles.css`
 
-```js
-console.log("Testing");
+```css
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400&display=swap');
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+  color: #3c484e;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.Header-main {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.Header a {
+  text-decoration: none;
+  color: #15302C;
+}
+
+.Main {
+  padding: 10px;
+  grid-template-columns: minmax(auto, 976px);
+  display: grid;
+  justify-content: center;
+}
+
+.Characters {
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 1.5rem;
+  grid-row-gap: 1.5em;
+  display: grid;
+}
+
+.Characters-inner {
+  grid-template-columns: 1fr 2fr;
+  grid-gap: 1.5rem;
+  grid-row-gap: 1.5em;
+  display: grid;
+}
+
+.Characters-card {
+  text-decoration: none;
+  box-shadow: 8px 14px 38px rgba(39,44,49,.06), 1px 3px 8px rgba(39,44,49,.03);
+  border-radius: 5px;
+  margin: 0 0 20px 0;
+  display: block;
+  animation-duration: 2s;
+  animation-name: fade;
+}
+
+.Characters-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 5px 5px 0 0;
+}
+
+.Characters-card h2 {
+  font-size: 18px;
+  font-weight: 400;
+  text-align: center;
+}
+
+.Characters-card h3 {
+  font-size: 18px;
+  font-weight: 400;
+  text-align: left;
+  margin: 20px;
+}
+
+.Characters-item {
+  text-decoration: none;
+  box-shadow: 8px 14px 38px rgba(39,44,49,.06), 1px 3px 8px rgba(39,44,49,.03);
+  border-radius: 5px;
+  margin: 0 0 20px 0;
+  display: block;
+  animation-duration: 2s;
+  animation-name: fade;
+}
+
+.Characters-item img {
+  width: 100%;
+  height: auto;
+  border-radius: 5px 5px 0 0;
+}
+
+.Characters-item h2 {
+  font-size: 18px;
+  font-weight: 300;
+  padding: 5px 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.Characters-item a {
+  text-decoration: none;
+  color: #026C86;
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.Main-loading {
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #3498db;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
 ```
+
+`src/index.html`
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link 
+      rel="icon"
+      type="image/svg+xml"
+      href="./utils/javascript.svg"
+    />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <link 👈👀👇
+      type="text/css"
+      rel="stylesheet"
+      href="./styles/styles.css"
+    />
+    <title>Scientist</title>
+  </head>
+  <body>
+    <main class="Main">
+      <header class="Header" id="header"></header>
+      <section id="content">
+        <div class="loading"></div>
+      </section>
+    </main>
+
+    <script type="module" src="./main.js"></script>
+  </body>
+</html>
+```
+
+[Styles](https://gist.github.com/gndx/cf251e88979581d6228028710bbff87c)
+
+## 14. Github Pages
+
+Travis???
+
+Crea un repo en GitHub.
 
 `src/main.js`
 
