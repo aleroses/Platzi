@@ -18,6 +18,18 @@
                 "source": true
               }
             }
+          },
+          {
+            "id": "a561e684a67f26fc",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "DW/2-intermedio/025.debugging-devtools/debugging-devtools.md",
+                "mode": "source",
+                "source": true
+              }
+            }
           }
         ]
       }
@@ -150,8 +162,10 @@
   },
   "active": "321633687365cfc2",
   "lastOpenFiles": [
-    "DW/2-intermedio/014.api-rest-js/3.api-rest-js-performance/3.api-rest-js-performance.md",
+    "DW/2-intermedio/025.debugging-devtools/debugging-devtools.md",
+    "DW/1-basico/005-git-github/gh-pages.md",
     "DW/2-intermedio/023.SPA-js-vanilla/spa-js-vanilla.md",
+    "DW/2-intermedio/014.api-rest-js/3.api-rest-js-performance/3.api-rest-js-performance.md",
     "DW/2-intermedio/023.SPA-js-vanilla",
     "DW/2-intermedio/014.api-rest-js/2.api-rest-js-ejemplos/api-rest-ejemplos.md",
     "DW/2-intermedio/vim/configs~HEAD",
@@ -165,7 +179,6 @@
     "DW/2-intermedio/026.manipulacion-dom/manipulacion-dom.md",
     "DW/2-intermedio/014.api-rest-js/3.api-rest-js-performance/imgs/11.scroll.png",
     "DW/3-avanzado/1.react.js/devTalles/react-hooks-mern.md",
-    "DW/2-intermedio/025.debugging-devtools/debugging-devtools.md",
     "DW/2-intermedio/014.api-rest-js/3.api-rest-js-performance/imgs/5.animation.png",
     "DW/2-intermedio/014.api-rest-js/3.api-rest-js-performance/imgs/4.spinner-skeleton-loader.jpg",
     "DW/2-intermedio/014.api-rest-js/3.api-rest-js-performance/imgs/4.spinner-skeleton-loader.jpg.crdownload",
@@ -194,7 +207,6 @@
     "DW/1-basico/008-disenio-developers/disenio-developers.md",
     "DW/1-basico/003-prework/entorno-windows/remove-linux-dualboot.md",
     "DW/1-basico/003-prework/entorno-windows/vsc/setting.md",
-    "DW/1-basico/006-html-css/1-html/1.html-css.md",
-    "DW/1-basico/011-maquetacion-en-css/maquetacion-grid.md"
+    "DW/1-basico/006-html-css/1-html/1.html-css.md"
   ]
 }

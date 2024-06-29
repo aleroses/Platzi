@@ -282,4 +282,6 @@ Frameworks para sitios estáticos:
 - Gatsby: React 
 - HUGO
 
-[🔥 GitHub Pages | Sitios Estáticos Gratis con gh-pages (y Nodejs)](https://www.youtube.com/watch?v=G2FoSpsq3Rw&t=683s)
+---
+- 🔥 [Apuntes Desplegar con Vite y Yarn](https://github.com/aleroses/Platzi/blob/master/DW/2-intermedio/023.SPA-js-vanilla/spa-js-vanilla.md#14-github-pages)
+- [🔥 GitHub Pages | Sitios Estáticos Gratis con gh-pages (y Nodejs)](https://www.youtube.com/watch?v=G2FoSpsq3Rw&t=683s)

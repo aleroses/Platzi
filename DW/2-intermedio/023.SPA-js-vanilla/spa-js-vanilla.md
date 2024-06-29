@@ -121,6 +121,44 @@ Ahora solo corregimos la ruta del logo dentro del archivo `main.js`, ten en cuen
 
 Me parece que al estar usando Vite no debemos hacer mayor configuración, es así de simple y rápido…
 
+Esta es la estructura final del proyecto:
+
+```bash
+.
+├── dist
+│   ├── assets
+│   │   ├── index-C9Xx0i1S.css
+│   │   ├── index-Kw-yby9F.js
+│   │   └── javascript-rUa6gnWw.svg
+│   └── index.html
+├── LICENSE
+├── node_modules
+├── package.json
+├── public
+│   └── vite.svg
+├── README.md
+├── src
+│   ├── index.html
+│   ├── main.js
+│   ├── pages
+│   │   ├── Character.js
+│   │   ├── Error404.js
+│   │   └── Home.js
+│   ├── routes
+│   │   └── index.js
+│   ├── styles
+│   │   └── styles.css
+│   ├── templates
+│   │   └── Header.js
+│   └── utils
+│       ├── getData.js
+│       ├── getHash.js
+│       ├── javascript.svg
+│       └── resolveRoutes.js
+├── vite.config.js
+└── yarn.lock
+```
+
 ## 5. Crear el Home
 
 Si revisas el archivo `package.json` ya lo tenemos todo preparado para usar.
@@ -788,13 +826,24 @@ yarn build
 yarn deploy
 ```
 
-[Gh-pages apuntes](https://github.com/aleroses/Platzi/blob/master/DW/1-basico/005-git-github/gh-pages.md)
+- [gh-pages apuntes](https://github.com/aleroses/Platzi/blob/master/DW/1-basico/005-git-github/gh-pages.md)
+- [Repo en GitHub](https://github.com/alevroses/spa-rick-morty)
+- [Despliegue](https://alevroses.github.io/spa-rick-morty/)
+- [Apuntes del curso](https://github.com/aleroses/Platzi/blob/master/DW/2-intermedio/023.SPA-js-vanilla/spa-js-vanilla.md)
 
-https://github.com/alevroses/spa-rick-morty
-https://alevroses.github.io/spa-rick-morty/
+## 15. Crear el script para enviar a producción
 
+Ya lo hicimos en el punto 14 :3
 
+## 16. Repaso, recomendaciones y tips para seguir aprendiendo
 
+## 🔥 Examen
+
+<details>
+  <summary>Haz clic para ver los resultados 👀👇</summary>
+  <br/>
+
+</details>
 
 👈👀
 👈👀👇
@@ -808,9 +857,3 @@ https://alevroses.github.io/spa-rick-morty/
 console.log("Testing");
 ```
 
-
-Estos apuntes ****salvan**** el curso (Vite)
-
-[https://github.com/aleroses/Platzi/blob/master/DW/2-intermedio/023.SPA-js-vanilla/spa-js-vanilla.md](https://github.com/aleroses/Platzi/blob/master/DW/2-intermedio/023.SPA-js-vanilla/spa-js-vanilla.md)
-
-Para este curso usaré ****Vite**** y no __Webpack__, dejo los pasos a seguir para que tengan éxito.
