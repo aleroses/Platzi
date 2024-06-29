@@ -459,7 +459,7 @@ window.addEventListener("hashchange", router);
 `src/utils/getData.js`
 
 ```js
-const API = "https://rickandmortyapi.com/api/character";
+const API = "https://rickandmortyapi.com/api/character/";
 
 const getData = async (id) => {
   const apiUrl = id ? `${API}${id}` : API;
@@ -513,13 +513,42 @@ export { Home };
 
 ## 12. Conectar la función con la descripción de personajes
 
-
-
-`src/main.js`
+`src/pages/Character.js`
 
 ```js
-console.log("Testing");
+import { getHash } from "../utils/getHash";
+import { getData } from "../utils/getData";
+
+const Character = async () => {
+  const id = getHash();
+  const character = await getData(id);
+  console.log(character);
+
+  const view = `
+    <div class="Character-inner">
+      <article class="Characters-card">
+        <img src="${character.image}" alt="${character.name}" />
+        <h2>${character.name}</h2>
+      </article>
+      <article class="Character-card">
+        <h3>Episodes: <span>${character.episode.length}</span></h3>
+        <h3>Status: <span>${character.status}</span></h3>
+        <h3>Species: <span>${character.species}</span></h3>
+        <h3>Gender: <span>${character.gender}</span></h3>
+        <h3>Origin: <span>${character.origin.name}</span></h3>
+        <h3>Last Location: ${character.location.name}</h3>
+      </article>
+    </div>  
+  `;
+
+  return view;
+};
+
+export { Character };
 ```
+
+## 13. 
+
 
 `src/main.js`
 
@@ -556,4 +585,8 @@ console.log("Testing");
 ```
 
 
-Estos apuntes salvan el curso (Vite) 
+Estos apuntes ****salvan**** el curso (Vite)
+
+[https://github.com/aleroses/Platzi/blob/master/DW/2-intermedio/023.SPA-js-vanilla/spa-js-vanilla.md](https://github.com/aleroses/Platzi/blob/master/DW/2-intermedio/023.SPA-js-vanilla/spa-js-vanilla.md)
+
+Para este curso usaré ****Vite**** y no __Webpack__, dejo los pasos a seguir para que tengan éxito.
