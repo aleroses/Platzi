@@ -720,20 +720,78 @@ body {
 
 Travis???
 
-Crea un repo en GitHub.
+Crea un repositorio en GitHub, después enlázalo con tu repositorio local.
 
-`src/main.js`
+```bash
+git remote add origin url-repo
+git remote -v
 
-```js
-console.log("Testing");
+# En caso de haber creado un README u otro archivo remoto
+git pull origin master --allow-unrelated-histories --no-rebase
+git push origin master
+
+# Instalar gh-pages
+yarn add gh-pages --dev
+# También
+yarn add gh-pages
 ```
 
-`src/main.js`
+Una vez instalado `gh-pages` debes añadir lo siguiente al archivo `package.json`
 
-```js
-console.log("Testing");
+```json
+{
+  "name": "spa-rick-morty",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "deploy": "gh-pages -d dist" 👈👀
+  },
+  "devDependencies": {
+    "vite": "^5.3.1"
+  },
+  "dependencies": { 👈👀
+    "gh-pages": "^6.1.1"
+  }
+}
 ```
 
+También añade el **nombre del repositorio remoto** al archivo `vite.config.js`
+
+```js
+// vite.config.js
+export default {
+  root: "src",
+  server: {
+    open: true,
+  },
+  build: {
+    outDir: "../dist",
+  },
+  base: "/spa-rick-morty/", 👈👀
+};
+```
+
+Asegúrate de actualizar tu repositorio remoto:
+
+```bash
+git push origin master
+```
+
+Ahora puedes ejecutar 
+
+```bash
+yarn build
+yarn deploy
+```
+
+[Gh-pages apuntes](https://github.com/aleroses/Platzi/blob/master/DW/1-basico/005-git-github/gh-pages.md)
+
+https://github.com/alevroses/spa-rick-morty
+https://alevroses.github.io/spa-rick-morty/
 
 
 
