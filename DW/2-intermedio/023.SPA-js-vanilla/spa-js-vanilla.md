@@ -277,7 +277,7 @@ const Character = () => {
 
 export { Character };
 
-// Abajo a en javascript, luego buscar html
+// Abajo en javascript, luego buscar html
 ```
 
 Estructura:
@@ -310,7 +310,208 @@ Estructura:
 └── yarn.lock
 ```
 
+## 7. Crear página de error 404
 
+`src/pages/Error404.js`
+
+```js
+const Error404 = () => {
+  const view = `
+    <div class="Error404">
+      <h2>Error 404</h2>
+    </div>
+  `;
+
+  return view;
+};
+
+export { Error404 };
+```
+
+📌 Algo que nos puede servir para escribir HTML dentro de un archivo JS, es irnos a la barra inferior de **VSC** y seleccionar JavaScript, esto hará aparecer un input de búsqueda, ingresa HTML y listo. Ahora el archivo reconoce HTML.
+
+Recuerda el siguiente comando para visualizar en el navegador lo que estamos trabajando, en este caso debe mostrar un `console.log`
+
+```bash
+# En caso de no haberlo ejecutado antes
+yarn dev
+```
+
+## 8. Crear rutas del sitio
+
+`src/routes/index.js`
+
+```js
+import { Header } from "../templates/Header";
+import { Home } from "../pages/Home";
+import { Character } from "../pages/Character";
+import { Error404 } from "../pages/Error404";
+
+const routes = {
+  "/": Home,
+  "/:id": Character,
+  "/contact": "Contact",
+};
+
+const router = async () => {
+  const header = null || document.getElementById("header");
+  const content =
+    null || document.getElementById("content");
+
+  header.innerHTML = await Header();
+};
+
+export { routes, router };
+```
+
+`src/main.js`
+
+```js
+import { router } from "./routes";
+
+window.addEventListener("load", router);
+```
+
+## 9. Conectar las rutas con los templates
+
+`src/utils/getHash.js`
+
+```js
+const getHash = () => {
+  return ( //slide???
+    location.hash
+      .slice(1)
+      .toLocaleLowerCase()
+      .split("/")[1] || "/"
+  );
+
+  // ["", "1", ""]
+};
+
+export { getHash };
+```
+
+`src/utils/resolveRoutes.js`
+
+```js
+const resolveRoutes = (route) => {
+  if (route.length <= 3) {
+    let validRoute = route === "/" ? route : "/:id";
+
+    return validRoute;
+  }
+
+  // /about
+  return `/${route}`;
+};
+
+export { resolveRoutes };
+```
+
+## 10. Implementar y probar las conexiones
+
+
+`src/routes/index.js`
+
+```js
+import { Header } from "../templates/Header";
+import { Home } from "../pages/Home";
+import { Character } from "../pages/Character";
+import { Error404 } from "../pages/Error404";
+import { getHash } from "../utils/getHash";
+import { resolveRoutes } from "../utils/resolveRoutes";
+
+const routes = {
+  "/": Home,
+  "/:id": Character,
+  "/contact": "Contact",
+};
+
+const router = async () => {
+  const header = null || document.getElementById("header");
+  const content =
+    null || document.getElementById("content");
+
+  header.innerHTML = await Header();
+
+  let hash = getHash();
+  let route = await resolveRoutes(hash);
+
+  // routes."/"
+  let render = routes[route] ? routes[route] : Error404;
+  content.innerHTML = await render();
+};
+
+export { routes, router };
+```
+
+`src/main.js`
+
+```js
+import { router } from "./routes";
+
+window.addEventListener("load", router);
+window.addEventListener("hashchange", router);
+```
+
+## 11. Obtener personajes con la función de llamado a la API
+
+`src/utils/getData.js`
+
+```js
+const API = "https://rickandmortyapi.com/api/character";
+
+const getData = async (id) => {
+  const apiUrl = id ? `${API}${id}` : API;
+  
+  try {
+    const response = await fetch(apiUrl);
+    const data = await response.json();
+
+    return data;
+  } catch (error) {
+    console.log("Fetch Error", error);
+  }
+};
+
+export { getData };
+```
+
+`src/pages/Home.js`
+
+```js
+import { getData } from "../utils/getData";
+
+const Home = async () => {
+  const characters = await getData();
+
+  const view = `
+    <div class="Characters">
+      ${characters.results
+        .map((character) => {
+          return `
+          <article class="Character-item">
+            <a href="#/${character.id}/">
+            <img src="${character.image}" alt="${character.name}" />
+            <h2>${character.name}</h2>
+            </a>
+          </article>
+    </div>
+        `;
+        })
+        .join("")}   
+  `;
+
+  return view;
+};
+
+export { Home };
+```
+
+- [Rick and Morty: Documentación](https://rickandmortyapi.com/documentation)
+- [Rick and Morty: Documentación](https://rickandmortyapi.com/documentation/#character)
+
+## 12. Conectar la función con la descripción de personajes
 
 
 
@@ -332,9 +533,27 @@ console.log("Testing");
 console.log("Testing");
 ```
 
-[Rick and Morty: Documentación](https://rickandmortyapi.com/documentation)
+`src/main.js`
+
+```js
+console.log("Testing");
+```
+
+
+
 
 
 👈👀
 👈👀👇
 👈👀👌
+
+📌
+
+`src/main.js`
+
+```js
+console.log("Testing");
+```
+
+
+Estos apuntes salvan el curso (Vite) 
