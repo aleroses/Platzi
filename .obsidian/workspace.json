@@ -14,24 +14,25 @@
               "type": "markdown",
               "state": {
                 "file": "DW/2-intermedio/023.SPA-js-vanilla/spa-js-vanilla.md",
-                "mode": "source",
+                "mode": "preview",
                 "source": true
               }
             }
           },
           {
-            "id": "a561e684a67f26fc",
+            "id": "2dff94b7c63bbc66",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "DW/2-intermedio/025.debugging-devtools/debugging-devtools.md",
+                "file": "DW/2-intermedio/014.api-rest-js/3.api-rest-js-performance/3.api-rest-js-performance.md",
                 "mode": "source",
                 "source": true
               }
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -98,7 +99,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "DW/2-intermedio/023.SPA-js-vanilla/spa-js-vanilla.md",
+                "file": "DW/2-intermedio/014.api-rest-js/3.api-rest-js-performance/3.api-rest-js-performance.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -115,7 +116,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "DW/2-intermedio/023.SPA-js-vanilla/spa-js-vanilla.md",
+                "file": "DW/2-intermedio/014.api-rest-js/3.api-rest-js-performance/3.api-rest-js-performance.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -138,7 +139,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "DW/2-intermedio/023.SPA-js-vanilla/spa-js-vanilla.md"
+                "file": "DW/2-intermedio/014.api-rest-js/3.api-rest-js-performance/3.api-rest-js-performance.md"
               }
             }
           }
@@ -160,11 +161,11 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "321633687365cfc2",
+  "active": "2dff94b7c63bbc66",
   "lastOpenFiles": [
+    "DW/2-intermedio/023.SPA-js-vanilla/spa-js-vanilla.md",
     "DW/2-intermedio/025.debugging-devtools/debugging-devtools.md",
     "DW/1-basico/005-git-github/gh-pages.md",
-    "DW/2-intermedio/023.SPA-js-vanilla/spa-js-vanilla.md",
     "DW/2-intermedio/014.api-rest-js/3.api-rest-js-performance/3.api-rest-js-performance.md",
     "DW/2-intermedio/023.SPA-js-vanilla",
     "DW/2-intermedio/014.api-rest-js/2.api-rest-js-ejemplos/api-rest-ejemplos.md",
