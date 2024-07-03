@@ -4,17 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "0f74b2be6f855a1f",
+        "id": "f8403b3a897fc24c",
         "type": "tabs",
         "children": [
           {
-            "id": "321633687365cfc2",
+            "id": "5df7b4c1242a4344",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "DW/2-intermedio/023.SPA-js-vanilla/spa-js-vanilla.md",
-                "mode": "preview",
+                "file": "DW/2-intermedio/019.empaquetadores/2.vite.md",
+                "mode": "source",
                 "source": true
               }
             }
@@ -69,7 +69,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 265.5,
+    "width": 386.5,
     "collapsed": true
   },
   "right": {
@@ -86,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "DW/2-intermedio/023.SPA-js-vanilla/spa-js-vanilla.md",
+                "file": "DW/2-intermedio/019.empaquetadores/2.vite.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +103,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "DW/2-intermedio/023.SPA-js-vanilla/spa-js-vanilla.md",
+                "file": "DW/2-intermedio/019.empaquetadores/2.vite.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -126,7 +126,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "DW/2-intermedio/023.SPA-js-vanilla/spa-js-vanilla.md"
+                "file": "DW/2-intermedio/019.empaquetadores/2.vite.md"
               }
             }
           }
@@ -148,10 +148,13 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "321633687365cfc2",
+  "active": "5df7b4c1242a4344",
   "lastOpenFiles": [
-    "DW/2-intermedio/014.api-rest-js/3.api-rest-js-performance/3.api-rest-js-performance.md",
+    "DW/2-intermedio/019.empaquetadores/resources/img/2.buldle.png",
+    "DW/2-intermedio/019.empaquetadores/1.intro-empaquetadores -web.md",
+    "DW/2-intermedio/019.empaquetadores/2.vite.md",
     "DW/2-intermedio/023.SPA-js-vanilla/spa-js-vanilla.md",
+    "DW/2-intermedio/014.api-rest-js/3.api-rest-js-performance/3.api-rest-js-performance.md",
     "DW/2-intermedio/025.debugging-devtools/debugging-devtools.md",
     "DW/1-basico/005-git-github/gh-pages.md",
     "DW/2-intermedio/023.SPA-js-vanilla",
@@ -188,13 +191,10 @@
     "DW/1-basico/015-figma/figma.md",
     "DW/2-intermedio/vim/Personal-configuration/vimrc.md",
     "DW/2-intermedio/vim/Personal-configuration/vimrc-plug.md",
-    "DW/2-intermedio/019.empaquetadores/intro-empaquetadores -web.md",
     "others/anki/add-ons.md",
     "DW/1-basico/023.tailwind-2-y-3-basico/tailwind-basico.md",
     "DW/1-basico/012-css-grid-layout/grid-layout.md",
     "DW/1-basico/008-disenio-developers/disenio-developers.md",
-    "DW/1-basico/003-prework/entorno-windows/remove-linux-dualboot.md",
-    "DW/1-basico/003-prework/entorno-windows/vsc/setting.md",
-    "DW/1-basico/006-html-css/1-html/1.html-css.md"
+    "DW/1-basico/003-prework/entorno-windows/remove-linux-dualboot.md"
   ]
 }
