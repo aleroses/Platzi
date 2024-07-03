@@ -843,17 +843,71 @@ Ya lo hicimos en el punto 14 :3
   <summary>Haz clic para ver los resultados 👀👇</summary>
   <br/>
 
+1. ¿Cuál es el comando que nos permite ejecutar nuestro entorno de desarrollo local?
+
+	- ✅ npm run start
+
+2. toLowerCase es un método en JavaScript que permite convertir un string a mayúsculas
+
+	- ✅ Falso
+
+3. ¿Qué es Travis-CI?
+
+	- ✅ Es un servicio de integración continua que se utiliza para construir y probar proyectos de software alojados en GitHub
+
+4. ¿Cuál es el comando que utilizamos para iniciar nuestro proyecto en git?
+
+	- ✅ git init
+
+5. ¿Cuál de las siguientes es la etiqueta correcta para manejar el viewport?
+
+	- ✅ `<meta name="viewport" content="width=device-width, initial-scale=1.0">`
+
+6. ¿En qué versión de ECMAScript se implementó async/await?
+
+	- ✅ ECMAScript 8
+
+7. Nos permite definir una función asíncrona:
+
+	- ✅ async
+
+8. ¿Cuál es la propuesta correcta para acceder a un elemento del DOM?
+
+	- ✅ `const header = null || document.getElementById('header');`
+
+9. ¿Para qué utilizamos babel?
+
+	- ✅ Para hacer nuestro código más compatible con todas las versiones de navegadores
+
+10. HTTP 404 no encontrado es un código de estado HTTP
+
+	- ✅ Verdadero
+
+11. ¿webpack-dev-server nos permite crear un entorno de desarrollo local?
+
+	- ✅ Verdadero
+
+12. html-webpack-plugin nos permite trabajar con los archivos HTML dentro de Webpack
+
+	- ✅ Verdadero
+
+13. ¿Cuál es la principal funcionalidad de Webpack?
+
+	- ✅ Transforma nuestro desarrollo de una aplicación web para producción
+
+14. ¿En qué versión de ECMAScript se implementaron los templates strings?
+
+	- ✅ ECMAScript 6
+
+15. ¿Cómo aseguramos el manejo adecuado de los errores asíncronos?
+
+	- ✅ `try { ...código } catch (error) { ...código }`
+
 </details>
 
 👈👀
 👈👀👇
 👈👀👌
-
+✅
 📌
-
-`src/main.js`
-
-```js
-console.log("Testing");
-```
 
