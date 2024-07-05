@@ -4,28 +4,16 @@
     "type": "split",
     "children": [
       {
-        "id": "f8403b3a897fc24c",
+        "id": "963b1073dc6ba011",
         "type": "tabs",
         "children": [
           {
-            "id": "5df7b4c1242a4344",
+            "id": "6819f32f8663c96e",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
                 "file": "DW/2-intermedio/019.empaquetadores/2.vite.md",
-                "mode": "source",
-                "source": true
-              }
-            }
-          },
-          {
-            "id": "8bdec5985ced063c",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "DW/2-intermedio/023.SPA-js-vanilla/spa-js-vanilla.md",
                 "mode": "source",
                 "source": true
               }
@@ -160,13 +148,13 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "5df7b4c1242a4344",
+  "active": "6819f32f8663c96e",
   "lastOpenFiles": [
     "DW/2-intermedio/023.SPA-js-vanilla/spa-js-vanilla.md",
+    "DW/2-intermedio/019.empaquetadores/1.intro-empaquetadores-web.md",
     "DW/2-intermedio/019.empaquetadores/2.vite.md",
     "DW/2-intermedio/019.empaquetadores/resources/img/5.cache.png",
     "DW/2-intermedio/019.empaquetadores/resources/img/2.buldle.png",
-    "DW/2-intermedio/019.empaquetadores/1.intro-empaquetadores -web.md",
     "DW/2-intermedio/014.api-rest-js/3.api-rest-js-performance/3.api-rest-js-performance.md",
     "DW/2-intermedio/025.debugging-devtools/debugging-devtools.md",
     "DW/1-basico/005-git-github/gh-pages.md",
