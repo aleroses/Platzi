@@ -53,7 +53,7 @@ Las SPA han ganado mucha popularidad debido a su capacidad de ofrecer una experi
 
 ## 3. Configurar el entorno de trabajo
 
-Webpack es obsoleto por lo que usaré **Vite** deséame suerte…
+Webpack es obsoleto por lo que usaré **Vite**, deséame suerte…
 
 ```bash
 yarn create vite
@@ -100,7 +100,9 @@ Dentro de nuestro proyecto debemos crear la siguiente estructura:
 └── yarn.lock
 ```
 
-En primera instancia, al ejecutar el comando `yarn dev` veremos un mensaje como este: `This localhost page can’t be found` para corregirlo dentro del archivo `vite.config.js` añadimos la siguiente configuración:
+En primera instancia, al ejecutar el comando `yarn dev` veremos un mensaje como este: `This localhost page can’t be found` para corregirlo crea el archivo `vite.config.js` y añade la siguiente configuración:
+
+`vite.config.js`
 
 ```js
 // vite.config.js

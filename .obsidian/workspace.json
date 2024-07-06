@@ -18,8 +18,21 @@
                 "source": true
               }
             }
+          },
+          {
+            "id": "9de6a74797141f2e",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "DW/2-intermedio/023.SPA-js-vanilla/spa-js-vanilla.md",
+                "mode": "preview",
+                "source": true
+              }
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -86,7 +99,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "DW/2-intermedio/019.empaquetadores/2.vite.md",
+                "file": "DW/2-intermedio/023.SPA-js-vanilla/spa-js-vanilla.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +116,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "DW/2-intermedio/019.empaquetadores/2.vite.md",
+                "file": "DW/2-intermedio/023.SPA-js-vanilla/spa-js-vanilla.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -126,7 +139,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "DW/2-intermedio/019.empaquetadores/2.vite.md"
+                "file": "DW/2-intermedio/023.SPA-js-vanilla/spa-js-vanilla.md"
               }
             }
           }
@@ -148,11 +161,11 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "6819f32f8663c96e",
+  "active": "9de6a74797141f2e",
   "lastOpenFiles": [
+    "DW/2-intermedio/019.empaquetadores/2.vite.md",
     "DW/2-intermedio/023.SPA-js-vanilla/spa-js-vanilla.md",
     "DW/2-intermedio/019.empaquetadores/1.intro-empaquetadores-web.md",
-    "DW/2-intermedio/019.empaquetadores/2.vite.md",
     "DW/2-intermedio/019.empaquetadores/resources/img/5.cache.png",
     "DW/2-intermedio/019.empaquetadores/resources/img/2.buldle.png",
     "DW/2-intermedio/014.api-rest-js/3.api-rest-js-performance/3.api-rest-js-performance.md",
