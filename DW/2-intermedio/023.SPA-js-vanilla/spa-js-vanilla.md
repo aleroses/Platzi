@@ -84,18 +84,26 @@ Dentro de nuestro proyecto debemos crear la siguiente estructura:
 .
 ├── node_modules
 ├── package.json
-├── public
-│   └── vite.svg
 ├── src 👈👀👇
-│   ├── counter.js
+│   ├── assets
+│   │   └── images
+│   │       └── icon-rick.svg
 │   ├── index.html
-│   ├── javascript.svg
 │   ├── main.js
 │   ├── pages
+│   │   ├── Character.js
+│   │   ├── Error404.js
+│   │   └── Home.js
 │   ├── routes
-│   ├── style.css
+│   │   └── index.js
 │   ├── styles
+│   │   └── style.css
+│   ├── templates
+│   │   └── Header.js
 │   └── utils
+│       ├── getData.js
+│       ├── getHash.js
+│       └── resolveRoutes.js
 ├── vite.config.js 🔥
 └── yarn.lock
 ```
@@ -117,7 +125,7 @@ export default {
 };
 ```
 
-Ahora solo corregimos la ruta del logo dentro del archivo `main.js`, ten en cuenta que esta pantalla es un ejemplo y pronto eliminaremos los archivos generados automáticamente desde el inicio.
+Ahora solo corregimos la ruta del `icon` dentro del archivo `index.html`.
 
 ## 4. Preparar Webpack (Vite)
 
@@ -127,7 +135,7 @@ Esta es la estructura final del proyecto:
 
 ```bash
 .
-├── dist
+├── dist 👈👀👇
 │   ├── assets
 │   │   ├── index-C9Xx0i1S.css
 │   │   ├── index-Kw-yby9F.js
@@ -136,8 +144,6 @@ Esta es la estructura final del proyecto:
 ├── LICENSE
 ├── node_modules
 ├── package.json
-├── public
-│   └── vite.svg
 ├── README.md
 ├── src
 │   ├── index.html
@@ -167,7 +173,7 @@ Si revisas el archivo `package.json` ya lo tenemos todo preparado para usar.
 
 **Vite** crea un archivo `main.js` que es con el que trabajaré en lugar de `index.js`, esto solo porque me gusta más el nombre.
 
-Borramos los archivos innecesarios y añadimos lo siguiente:
+Habiendo borrado los archivos innecesarios añadimos lo siguiente:
 
 `src/index.html`
 
@@ -179,12 +185,13 @@ Borramos los archivos innecesarios y añadimos lo siguiente:
     <link
       rel="icon"
       type="image/svg+xml"
-      href="./utils/javascript.svg"
+      href="./assets/images/icon-rick.svg"
     />
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1.0"
     />
+    <link rel="stylesheet" href="./styles/style.css" />
     <title>Scientist</title>
   </head>
   <body>
@@ -195,7 +202,7 @@ Borramos los archivos innecesarios y añadimos lo siguiente:
       </section>
     </main>
 
-    <script type="module" src="./main.js"></script>
+    <script type="module" src="/main.js"></script>
   </body>
 </html>
 ```
@@ -252,8 +259,6 @@ Todo esto nos deja la siguiente estructura:
 │   └── index.html
 ├── node_modules
 ├── package.json
-├── public
-│   └── vite.svg
 ├── src
 │   ├── index.html
 │   ├── main.js
@@ -435,6 +440,7 @@ export { getHash };
 
 ```js
 const resolveRoutes = (route) => {
+  // There is a total of 826 (3) characters
   if (route.length <= 3) {
     let validRoute = route === "/" ? route : "/:id";
 
@@ -447,6 +453,8 @@ const resolveRoutes = (route) => {
 
 export { resolveRoutes };
 ```
+
+[Character](https://rickandmortyapi.com/documentation/#character)
 
 ## 10. Implementar y probar las conexiones
 
