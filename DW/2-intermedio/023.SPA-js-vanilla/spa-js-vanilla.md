@@ -404,7 +404,8 @@ const getHash = () => {
       .split("/")[1] || "/"
   );
 
-  // ["", "1", ""]
+  // Fefore: #/1/
+  // Split: ["", "1", ""]
 };
 
 export { getHash };
