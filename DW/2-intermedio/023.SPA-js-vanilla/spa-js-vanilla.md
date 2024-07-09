@@ -277,6 +277,86 @@ Todo esto nos deja la siguiente estructura:
 
 📌 Recuerda que la carpeta `dist` se puede eliminar cuantas veces quieras, si la quieres volver a crear solo ejecutas el comando `yarn build` y listo.
 
+### Navegación usando `href="#/1/"`
+
+El símbolo `#` en un enlace `href` en HTML se utiliza como un ancla o marcador de fragmento. Esto sirve para varias funciones:
+
+1. **Enlace a un elemento específico en la misma página:** Si tienes un elemento en tu página con un atributo `id` específico, puedes enlazar directamente a ese elemento utilizando `#id_del_elemento`. Por ejemplo, si tienes una sección de tu página con `id="seccion1"`, puedes enlazar a ella con `<a href="#seccion1">Ir a Sección 1</a>`. Al hacer clic en el enlace, la página se desplazará hasta el elemento con ese `id`.
+
+2. **Indicar una posición específica dentro de la misma página:** Similar al punto anterior, puedes crear marcadores de posición en tu página que los usuarios puedan utilizar para navegar rápidamente a partes específicas de una página larga.
+
+3. **SPA (Single Page Application) Routing:** En aplicaciones de una sola página (SPA) que usan frameworks como React, Angular o Vue.js, el símbolo `#` a menudo se utiliza para manejar el **enrutamiento** de las vistas dentro de la aplicación sin recargar la página completa. Por ejemplo, `#/home` podría ser una ruta en una aplicación Angular que renderiza la vista de inicio.
+
+#### Ejemplos
+
+1. **Enlace a un elemento específico en la misma página:**
+
+    ```html
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>Ejemplo de ancla</title>
+    </head>
+    <body>
+        <h2 id="seccion1">Sección 1</h2>
+        <p>Este es el contenido de la sección 1.</p>
+
+        <h2 id="seccion2">Sección 2</h2>
+        <p>Este es el contenido de la sección 2.</p>
+
+        <a href="#seccion1">Ir a Sección 1</a>
+        <a href="#seccion2">Ir a Sección 2</a>
+    </body>
+    </html>
+    ```
+
+2. **SPA Routing:**
+
+    ```html
+	<!DOCTYPE html>
+	<html>
+	  <head>
+	    <title>SPA Routing</title>
+	  </head>
+	  <body>
+	    <div id="app"></div>
+	
+	    <script>
+	      // Ejemplo muy simple de enrutamiento con hash
+	      window.addEventListener("hashchange", () => {
+	        const hash = window.location.hash;
+	
+	        if (hash === "#/home") {
+	          document.getElementById("app").innerHTML =
+	            "<h1>Página de Inicio</h1>";
+	        } else if (hash === "#/about") {
+	          document.getElementById("app").innerHTML =
+	            "<h1>Acerca de</h1>";
+	        } else {
+	          document.getElementById("app").innerHTML =
+	            "<h1>Bienvenido</h1>";
+	        }
+	      });
+	
+	      // Inicializar el contenido
+	      window.dispatchEvent(new Event("hashchange"));
+	    </script>
+	  </body>
+	</html>
+    ```
+
+#### ¿Funciona sin el `#`?
+
+Depende del contexto:
+
+- Si estás enlazando a un elemento específico en la misma página, eliminar el `#` hará que el enlace no funcione correctamente.
+- En el contexto de una SPA, eliminar el `#` en las rutas puede requerir una configuración adicional del servidor para manejar el enrutamiento sin fragmentos de hash.
+
+El símbolo `#` tiene un propósito específico y su eliminación puede cambiar el comportamiento de los enlaces en tu página o aplicación.
+
+- [Documentación](https://developer.mozilla.org/es/docs/Web/HTML/Element/a#href)
+- [Ejemplo Carrusel](https://www.youtube.com/watch?v=cKux39Y0fxw)
+
 ## 6. Crear template de personajes
 
 `src/templates/Header.js`
@@ -796,6 +876,24 @@ export default {
   },
   base: "/spa-rick-morty/", 👈👀
 };
+```
+
+Esta es otra forma:
+
+```js
+import { defineConfig } from "vite";
+
+// vite.config.js
+export default defineConfig({
+  root: "src",
+  server: {
+    open: true,
+  },
+  build: {
+    outDir: "../dist",
+  },
+  base: "/spa-rick-morty/",
+});
 ```
 
 Asegúrate de actualizar tu repositorio remoto:
