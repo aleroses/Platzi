@@ -146,6 +146,9 @@ Esta es la estructura final del proyecto:
 ├── package.json
 ├── README.md
 ├── src
+│   ├── assets
+│   │   └── images
+│   │       └── icon-rick.svg
 │   ├── index.html
 │   ├── main.js
 │   ├── pages
@@ -161,7 +164,6 @@ Esta es la estructura final del proyecto:
 │   └── utils
 │       ├── getData.js
 │       ├── getHash.js
-│       ├── javascript.svg
 │       └── resolveRoutes.js
 ├── vite.config.js
 └── yarn.lock
@@ -273,6 +275,8 @@ Todo esto nos deja la siguiente estructura:
 └── yarn.lock
 ```
 
+📌 Recuerda que la carpeta `dist` se puede eliminar cuantas veces quieras, si la quieres volver a crear solo ejecutas el comando `yarn build` y listo.
+
 ## 6. Crear template de personajes
 
 `src/templates/Header.js`
@@ -323,36 +327,6 @@ const Character = () => {
 export { Character };
 
 // Abajo en javascript, luego buscar html
-```
-
-Estructura:
-
-```bash
-.
-├── dist
-│   ├── assets
-│   │   ├── index-Bb-5MHEG.js
-│   │   └── javascript-rUa6gnWw.svg
-│   └── index.html
-├── node_modules
-├── package.json
-├── public
-│   └── vite.svg
-├── src
-│   ├── index.html
-│   ├── main.js
-│   ├── pages
-│   │   ├── Character.js 👈👀
-│   │   └── Home.js
-│   ├── routes
-│   ├── styles
-│   │   └── style.css
-│   ├── templates
-│   │   └── Header.js 👈👀
-│   └── utils
-│       └── javascript.svg
-├── vite.config.js
-└── yarn.lock
 ```
 
 ## 7. Crear página de error 404
@@ -736,7 +710,7 @@ body {
     <link 
       rel="icon"
       type="image/svg+xml"
-      href="./utils/javascript.svg"
+      href="./assets/images/icon-rick.svg"
     />
     <meta
       name="viewport"
