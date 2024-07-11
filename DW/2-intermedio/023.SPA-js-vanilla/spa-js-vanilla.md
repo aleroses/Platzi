@@ -489,7 +489,8 @@ const getHash = () => {
       .split("/")[1] || "/"
   );
 
-  // Fefore: #/1/
+  // First: #/1/
+  // Slice: /1/
   // Split: ["", "1", ""]
 };
 
