@@ -78,7 +78,12 @@ Done. Now run:
   yarn dev
 ```
 
-Dentro de nuestro proyecto debemos crear la siguiente estructura:
+Dentro de nuestro proyecto debemos crear la estructura mostrada abajo. Para ayudarte a crear las carpetas lo puedes hacer usando la Terminal:
+
+```bash
+# parent directories -p
+mkdir -p src/assets src/pages src/routes src/styles src/templates src/utils
+```
 
 ```bash
 .
