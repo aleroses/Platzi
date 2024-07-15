@@ -4,35 +4,22 @@
     "type": "split",
     "children": [
       {
-        "id": "963b1073dc6ba011",
+        "id": "178da7d488161368",
         "type": "tabs",
         "children": [
           {
-            "id": "6819f32f8663c96e",
+            "id": "20dbf9e1fd9dcb8f",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "DW/2-intermedio/019.empaquetadores/2.vite.md",
-                "mode": "source",
-                "source": true
-              }
-            }
-          },
-          {
-            "id": "9de6a74797141f2e",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "DW/2-intermedio/023.SPA-js-vanilla/spa-js-vanilla.md",
+                "file": "DW/2-intermedio/027.optimización-web/web-optimization.md",
                 "mode": "preview",
                 "source": true
               }
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -99,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "DW/2-intermedio/023.SPA-js-vanilla/spa-js-vanilla.md",
+                "file": "DW/2-intermedio/027.optimización-web/web-optimization.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -116,7 +103,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "DW/2-intermedio/023.SPA-js-vanilla/spa-js-vanilla.md",
+                "file": "DW/2-intermedio/027.optimización-web/web-optimization.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -139,7 +126,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "DW/2-intermedio/023.SPA-js-vanilla/spa-js-vanilla.md"
+                "file": "DW/2-intermedio/027.optimización-web/web-optimization.md"
               }
             }
           }
@@ -161,8 +148,27 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "9de6a74797141f2e",
+  "active": "20dbf9e1fd9dcb8f",
   "lastOpenFiles": [
+    "DW/2-intermedio/027.optimización-web/resources/img/8.script-async.png",
+    "DW/2-intermedio/027.optimización-web/resources/img/8.script-defer.png",
+    "DW/2-intermedio/027.optimización-web/resources/img/8.script-defer.png.crdownload",
+    "DW/2-intermedio/027.optimización-web/resources/img/8.script.png",
+    "DW/2-intermedio/027.optimización-web/resources/img/8.script.png.crdownload",
+    "others/anki/add-ons.md",
+    "DW/2-intermedio/027.optimización-web/web-optimization.md",
+    "DW/2-intermedio/027.optimización-web/resources/img/7.summary.png",
+    "DW/2-intermedio/027.optimización-web/resources/img/7.summary.png.crdownload",
+    "DW/2-intermedio/027.optimización-web/resources/img/7.layout-paint.png",
+    "DW/2-intermedio/027.optimización-web/resources/img/7.layout-paint.png.crdownload",
+    "DW/2-intermedio/027.optimización-web/resources/img/7.render-tree.png",
+    "DW/2-intermedio/027.optimización-web/resources/img/7.render-tree.png.crdownload",
+    "DW/2-intermedio/027.optimización-web/resources/img/7.dom+cssom.png",
+    "DW/2-intermedio/027.optimización-web/resources/img/6.dom+cssom.png",
+    "DW/2-intermedio/027.optimización-web/resources/img/6.dom+cssom.png.crdownload",
+    "DW/2-intermedio/027.optimización-web/resources/img",
+    "DW/2-intermedio/027.optimización-web/resources",
+    "DW/2-intermedio/027.optimización-web",
     "DW/2-intermedio/019.empaquetadores/2.vite.md",
     "DW/2-intermedio/023.SPA-js-vanilla/spa-js-vanilla.md",
     "DW/2-intermedio/019.empaquetadores/1.intro-empaquetadores-web.md",
@@ -173,40 +179,22 @@
     "DW/1-basico/005-git-github/gh-pages.md",
     "DW/2-intermedio/023.SPA-js-vanilla",
     "DW/2-intermedio/014.api-rest-js/2.api-rest-js-ejemplos/api-rest-ejemplos.md",
-    "DW/2-intermedio/vim/configs~HEAD",
     "DW/2-intermedio/012.asincronismo-js/get-post-put-delete.md",
     "DW/2-intermedio/014.api-rest-js/3.api-rest-js-performance/imgs/18.language-2.png",
-    "DW/2-intermedio/014.api-rest-js/3.api-rest-js-performance/imgs/18.language.png",
     "DW/2-intermedio/012.asincronismo-js/fetch_async-await_try-catch+archivo-json.md",
     "DW/2-intermedio/012.asincronismo-js/asincronismo-con-js.md",
     "DW/3-avanzado/1.react.js/Platzi/reactjs.md",
     "DW/2-intermedio/006.closures_scope-en-js/closures_scope-en-js.md",
     "DW/2-intermedio/026.manipulacion-dom/manipulacion-dom.md",
-    "DW/2-intermedio/014.api-rest-js/3.api-rest-js-performance/imgs/11.scroll.png",
     "DW/3-avanzado/1.react.js/devTalles/react-hooks-mern.md",
-    "DW/2-intermedio/014.api-rest-js/3.api-rest-js-performance/imgs/5.animation.png",
-    "DW/2-intermedio/014.api-rest-js/3.api-rest-js-performance/imgs/4.spinner-skeleton-loader.jpg",
-    "DW/2-intermedio/014.api-rest-js/3.api-rest-js-performance/imgs/4.spinner-skeleton-loader.jpg.crdownload",
-    "DW/2-intermedio/014.api-rest-js/3.api-rest-js-performance/imgs",
-    "DW/2-intermedio/025.debugging-devtools/img/test-2.png",
-    "DW/2-intermedio/025.debugging-devtools/img/test.png",
-    "DW/2-intermedio/014.api-rest-js/3.api-rest-js-performance",
-    "DW/2-intermedio/025.debugging-devtools/img/19.result.png",
-    "DW/2-intermedio/025.debugging-devtools/img/18.reto-img4.png.crdownload",
-    "DW/2-intermedio/025.debugging-devtools/img/18.reto-img3.png.crdownload",
-    "DW/2-intermedio/025.debugging-devtools/img/18.reto-img1.png.crdownload",
     "DW/2-intermedio/003-ECMAScript/ECMAScript-historia-y-versiones-de-javascript.md",
-    "DW/2-intermedio/025.debugging-devtools/img/devtools-capture-screenshot.gif.crdownload",
-    "DW/2-intermedio/025.debugging-devtools/img/8.coverage.jpg.crdownload",
     "DW/2-intermedio/017.tipos-funciones-avanzadas/ts-tipos-funciones.md",
     "DW/3-avanzado/2.vue.js/vue.js-intro/vue.js-intro.md",
     "DW/1-basico/015-figma/figma.md",
     "DW/2-intermedio/vim/Personal-configuration/vimrc.md",
     "DW/2-intermedio/vim/Personal-configuration/vimrc-plug.md",
-    "others/anki/add-ons.md",
     "DW/1-basico/023.tailwind-2-y-3-basico/tailwind-basico.md",
     "DW/1-basico/012-css-grid-layout/grid-layout.md",
-    "DW/1-basico/008-disenio-developers/disenio-developers.md",
-    "DW/1-basico/003-prework/entorno-windows/remove-linux-dualboot.md"
+    "DW/1-basico/008-disenio-developers/disenio-developers.md"
   ]
 }
