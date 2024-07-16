@@ -275,4 +275,116 @@ gantt
     HTML parsing           :active, a1, 4, 6
 ```
 
+### En nuestro proyecto
+
+- `Lighthouse/Analyze-page-load`
+- Performance
+
+Por defecto es bloqueante.
+
+```html
+<!-- Scripts -->
+<script async src="https://unpkg.com/unfetch/polyfill"></script>
+<script async src="dist/bundle.js"></script>
+```
+
+Agregamos `async` por lo que al evaluar con `lighthouse` debería mejorar el rendimiento.
+
+## 9. Priorización de recursos
+
+No todos los recursos tienen la misma prioridad, por ejemplo, en el CSS pasa que metemos todos los estilos para todos los casos que se pueden llegar a dar como:
+
+- Estilos dark mode
+- Estilos de desktop
+- Estilos de tablet
+- Estilos de mobile
+
+Ahora pensemos en el caso de alguien que navega en el móvil, ¿él deberá descargar todos estos estilos, así no le sea de interés o relevantes?
+
+Con la priorización de recursos en CSS podemos ayudarle a navegador a darles "pistas" para decirle cuál tiene mayor prioridad.
+
+```html
+<!-- Especificamos el atributo media -->
+<link
+  rel="stylesheet"
+  href="./desktop.css"
+  media="screen and (min-width: 600px)"
+/>
+```
+
+Esta técnica es simple, pero eficiente, nos ayuda bastante a decirle al navegador que puede ser importante que cargue y que no.
+
+Debemos considerar que cada vez que hagamos esto se hace un nuevo `request o solicitud` al servidor.
+
+**RESUMEN:** Podemos decirle al navegador que recursos tengan una prioridad mayor con el atributo media en los elementos link, pero se debe tener cuidado porque cada archivo nuevo será una nueva petición HTTP.
+
+### En el proyecto
+
+`Network/CSS`
+
+![](https://i.postimg.cc/7ZrLcWGV/9-network.png)
+
+El código que se utilizó para el dark mode es:
+
+```html
+<link
+  media="(prefers-color-scheme: dark)"
+  rel="stylesheet"
+  href="./css/dark.css"
+/>
+```
+
+`media="(prefers-color-scheme: dark)"`: Esta parte especifica que la hoja de estilos enlazada (`dark.css`) se aplicará solo cuando el usuario prefiera un esquema de color oscuro en su sistema operativo o navegador.
+
+
+### Nota
+
+Se debe tener un balance entre lo que necesita la app y como podemos ayudar al navegador.
+
+Todas las herramientas que serán vistas dentro de todo el curso serán de doble filo, como podemos ayudar al navegador también podemos hacer que su trabajo sea más duro.
+
+## 10. Preloading y prefetching de recursos
+
+Podemos decirle al navegador cuáles son los recursos y dominios a los que se debe conectar o descargar de forma anticipada.
+
+Existen 3 estrategias para poderlo hacerlo:
+
+- Preload: Recurso que se descarga junto al HTML.
+- Prefetch: Recurso que en el futuro se podrá usar. Puede activarse al hacer `hover` en un enlace.
+- Preconnect (dominios): Conexión anticipada a recursos de servidores remotos.
+
+```html
+<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
+<link rel="dns-prefetch" href="https://fonts.gstatic.com/" />
+```
+
+Podemos especificar con el atributo `rel` las estrategias para realizar este proceso.
+
+**RESUMEN:** Si le decimos al navegador de forma anticipada que recursos necesita o a que dominios se puede conectar de una forma anticipada podemos mejorar el rendimiento de nuestros sitios.
+
+Ver `Network/filter/kitsu o font`
+
+## 11. Fases Paint y Layout del Critical Render Path
+
+El `paint` es la operación más costosa que puede hacer un navegador.
+
+Estas etapas son inevitables al momento de cargar CSS y JS, así que debemos tener cuidado al momento de ejecución de ambos.
+
+> Cualquier cambio en una propiedad que no sea `opacity` o `transform` genera un Paint.
+
+Toda la etapa de renderización se puede ver bloqueada y afectada por lo que pase en el paint, esto se puede controlar teniendo cuidado con nuestras animaciones.
+
+Si tenemos cuidado con las animaciones y las reglas del CSS en los elementos de la página, podemos ayudar a que el navegador reduzca la Complejidad y cantidad de procesos que debe hacer para volver a pintar los elementos.
+
+Facebook está consciente acerca de esto al punto que para su `navbar` usan un `css sprites` antes que una sombra.
+
+Esta es una técnica en la que se usa una imagen pequeña y que se multiplica varias veces.
+
+Decidieron usar esta técnica debido a que el CSS causaba muchos problemas al momento de hacer scroll.
+
+**RESUMEN:** Debemos tener bastante cuidado con el paint debido a que es un proceso bastante pesado y puede afectar a la experiencia de nuestros usuarios para ello podemos usar técnicas como lo hizo Facebook.
+
+[CSS Sprites: Tutorial](https://www.youtube.com/watch?v=WQCa3l9j4jk&t=1s)
+
+## 12. Detectando Paints costosos y optimizando animaciones
 

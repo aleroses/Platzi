@@ -14,7 +14,7 @@
               "type": "markdown",
               "state": {
                 "file": "DW/2-intermedio/027.optimización-web/web-optimization.md",
-                "mode": "preview",
+                "mode": "source",
                 "source": true
               }
             }
@@ -150,6 +150,8 @@
   },
   "active": "20dbf9e1fd9dcb8f",
   "lastOpenFiles": [
+    "DW/2-intermedio/027.optimización-web/resources/img/9.network.png",
+    "DW/2-intermedio/027.optimización-web/resources/img/9.network.png.crdownload",
     "DW/2-intermedio/027.optimización-web/resources/img/8.script-async.png",
     "DW/2-intermedio/027.optimización-web/resources/img/8.script-defer.png",
     "DW/2-intermedio/027.optimización-web/resources/img/8.script-defer.png.crdownload",
@@ -177,10 +179,8 @@
     "DW/2-intermedio/014.api-rest-js/3.api-rest-js-performance/3.api-rest-js-performance.md",
     "DW/2-intermedio/025.debugging-devtools/debugging-devtools.md",
     "DW/1-basico/005-git-github/gh-pages.md",
-    "DW/2-intermedio/023.SPA-js-vanilla",
     "DW/2-intermedio/014.api-rest-js/2.api-rest-js-ejemplos/api-rest-ejemplos.md",
     "DW/2-intermedio/012.asincronismo-js/get-post-put-delete.md",
-    "DW/2-intermedio/014.api-rest-js/3.api-rest-js-performance/imgs/18.language-2.png",
     "DW/2-intermedio/012.asincronismo-js/fetch_async-await_try-catch+archivo-json.md",
     "DW/2-intermedio/012.asincronismo-js/asincronismo-con-js.md",
     "DW/3-avanzado/1.react.js/Platzi/reactjs.md",
