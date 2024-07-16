@@ -38,7 +38,7 @@ RESUMEN: Mientras más rápido sea un sitio web, se tendrá mayores beneficios p
 
 ## 4. Aprendiendo a medir
 
-> lo que no mide, no se mejora
+> Lo que no se mide, no se mejora
 
 - Rail Model:
     - Centrado en el usuario
@@ -185,7 +185,7 @@ Se compone de 5 etapas.
 ```html
 <body>
   <h2>Hallo</h2>
-  <p>Hallo</p>
+  <p>Platzi</p>
 </body>
 ```
 
@@ -237,7 +237,7 @@ p {
 
 **Tanto JavaScript como CSS son recursos bloqueantes**. 
 
-Esto quiere decir que cada vez que el navegador encuentra estos archivos, debe parar e interpretarlos mientras sigue haciendo parsing del HTML. 
+Esto quiere decir que cada vez que el navegador encuentra estos archivos, debe parar e interpretarlos mientras sigue haciendo parsing (análisis sintáctico) del HTML.
 
 ### **Script por defecto** 
 
@@ -256,4 +256,23 @@ Descarga el script JS pero no lo ejecuta hasta que se finaliza el parsing del HT
 Descarga el script JS durante el parsing y una vez se termine de descargar lo ejecuta inmediatamente, bloqueando solo una "pequeña" parte del parsing.
 
 ![async.png](https://i.postimg.cc/qRmYpvgw/8-script-async.png)
+
+Usando `mermaid` se ve así:
+
+```mermaid
+---
+displayMode: compact
+---
+gantt
+    title script async
+    dateFormat  X
+    axisFormat  %s s
+	tickInterval 1week
+    HTML parsing           :active, a1, 0, 2
+    HTML parsing paused    :crit, after a2, 2, 4
+    Script download        :a3, 1, 2
+    Script execution       :a4, 2, 4
+    HTML parsing           :active, a1, 4, 6
+```
+
 
