@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "DW/2-intermedio/027.optimización-web/web-optimization.md",
+                "file": "DW/1-basico/006-html-css/1-html/5.bem.md",
                 "mode": "source",
                 "source": true
               }
@@ -86,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "DW/2-intermedio/027.optimización-web/web-optimization.md",
+                "file": "DW/1-basico/006-html-css/1-html/5.bem.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +103,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "DW/2-intermedio/027.optimización-web/web-optimization.md",
+                "file": "DW/1-basico/006-html-css/1-html/5.bem.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -126,7 +126,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "DW/2-intermedio/027.optimización-web/web-optimization.md"
+                "file": "DW/1-basico/006-html-css/1-html/5.bem.md"
               }
             }
           }
@@ -150,6 +150,7 @@
   },
   "active": "20dbf9e1fd9dcb8f",
   "lastOpenFiles": [
+    "DW/2-intermedio/027.optimización-web/web-optimization.md",
     "DW/2-intermedio/027.optimización-web/resources/img/9.network.png",
     "DW/2-intermedio/027.optimización-web/resources/img/9.network.png.crdownload",
     "DW/2-intermedio/027.optimización-web/resources/img/8.script-async.png",
@@ -158,7 +159,6 @@
     "DW/2-intermedio/027.optimización-web/resources/img/8.script.png",
     "DW/2-intermedio/027.optimización-web/resources/img/8.script.png.crdownload",
     "others/anki/add-ons.md",
-    "DW/2-intermedio/027.optimización-web/web-optimization.md",
     "DW/2-intermedio/027.optimización-web/resources/img/7.summary.png",
     "DW/2-intermedio/027.optimización-web/resources/img/7.summary.png.crdownload",
     "DW/2-intermedio/027.optimización-web/resources/img/7.layout-paint.png",
@@ -175,7 +175,6 @@
     "DW/2-intermedio/023.SPA-js-vanilla/spa-js-vanilla.md",
     "DW/2-intermedio/019.empaquetadores/1.intro-empaquetadores-web.md",
     "DW/2-intermedio/019.empaquetadores/resources/img/5.cache.png",
-    "DW/2-intermedio/019.empaquetadores/resources/img/2.buldle.png",
     "DW/2-intermedio/014.api-rest-js/3.api-rest-js-performance/3.api-rest-js-performance.md",
     "DW/2-intermedio/025.debugging-devtools/debugging-devtools.md",
     "DW/1-basico/005-git-github/gh-pages.md",

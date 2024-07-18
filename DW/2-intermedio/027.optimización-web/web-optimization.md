@@ -388,3 +388,169 @@ Decidieron usar esta técnica debido a que el CSS causaba muchos problemas al mo
 
 ## 12. Detectando Paints costosos y optimizando animaciones
 
+```bash
+git tag
+git checkout -b 1-optimization-css 1-css
+npm install
+npm start
+```
+En caso de errores ver la clase 6 [[web-optimization#6. Nuestro proyecto]]
+
+En los **Devtools** entramos a:
+
+`Performance/Click the record button/Cursor sobre imagen`
+
+Para el proyecto se *cambiará* lo siguiente:
+ 
+- ❌`box-shadow` por ✅`opacity`
+- ❌`margin-left` por ✅`transform: translateX()`
+
+Ya que estos no hacen **paint**.
+
+```css
+.carousel-item:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 1);
+  opacity: 0.4;
+  transition: 450ms opacity;
+}
+
+.carousel-item:hover:before {
+  opacity: 1;
+}
+
+.carousel-item:hover + .carousel-item {
+  transform: translateX(100px);
+}
+
+.carousel-item {
+  will-change: transform;
+  border-radius: 20px;
+  position: relative;
+  display: inline-block;
+  width: 200px;
+  height: 250px;
+  margin-right: 10px;
+  font-size: 20px;
+  cursor: pointer;
+  transition: 450ms all;
+  transform-origin: center left;
+}
+```
+
+Este tipo de optimizaciones no es algo que se haga al inicio, sino, al momento de detectar el problema, procedemos con la optimización del lugar visto.
+
+En lo general se trata de CSS y animaciones. Esto es bastante notable de percibir, puesto que nuestro sitio web va lento o las animaciones no van fluidas.
+
+Podemos medir los paints costosos con las **dev tools** en la sección en **performance**.
+
+> Debemos tener siempre en mente que todas las propiedades que cambiarán serán costosas a excepción de `opacity` y `transform`.
+
+📌 Podemos preparar al navegador de futuros cambios con la propiedad `will-change` en CSS.
+
+**RESUMEN:** Podemos detectar paints costosos con las dev tools integradas de Chrome. También podemos reducirlas usando el concepto de Cualquier cambio en una propiedad que no sea `opacity` o `transform` genera un Paint y también usando la propiedad `will-change` de CSS.
+
+### `will-change` en CSS
+
+La propiedad `will-change` en CSS se utiliza para advertir al navegador sobre cambios futuros en una propiedad específica de un elemento. Esto permite al navegador realizar optimizaciones de rendimiento con anticipación, mejorando la experiencia del usuario en animaciones y transiciones. 
+
+#### ¿Qué hace `will-change`?
+
+Cuando un navegador sabe de antemano que ciertos elementos cambiarán, puede prepararse mejor, lo que puede significar, por ejemplo, mover esos elementos a una **capa separada** para mejorar el rendimiento. `will-change` permite indicar al navegador qué propiedades van a cambiar, como `transform`, `opacity`, `left`, `top`, etc.
+
+#### Sintaxis
+
+```css
+element {
+  will-change: property;
+}
+```
+
+Aquí, `property` es la propiedad CSS que cambiará en el futuro. Puedes especificar más de una propiedad separándolas con comas.
+
+Ejemplo:
+
+```css
+.my-element {
+  will-change: transform, opacity;
+}
+```
+
+#### Cuándo usar `will-change`
+
+Es útil en situaciones donde:
+
+- Sabes que un elemento se va a animar o cambiar de forma intensiva.
+- Quieres mejorar el rendimiento de una animación o transición específica.
+- Necesitas optimizar la renderización de elementos dinámicos.
+
+#### Ejemplo práctico
+
+Sin `will-change`:
+
+```css
+.my-element {
+  transform: translateX(0);
+  transition: transform 0.3s;
+}
+
+.my-element:hover {
+  transform: translateX(100px);
+}
+```
+
+Con `will-change`:
+
+```css
+.my-element {
+  will-change: transform;
+  transform: translateX(0);
+  transition: transform 0.3s;
+}
+
+.my-element:hover {
+  transform: translateX(100px);
+}
+```
+
+En este ejemplo, al agregar `will-change: transform;`, le dices al navegador que optimice el rendimiento para la propiedad `transform` antes de que ocurra la transición.
+
+#### Precauciones
+
+- **Uso excesivo**: No utilices `will-change` en demasiados elementos o propiedades, ya que puede aumentar la memoria y el uso de recursos del navegador.
+- **Revisión y pruebas**: Siempre revisa y prueba tu sitio para asegurarte de que `will-change` realmente mejora el rendimiento en lugar de degradarlo.
+
+### Recursos
+
+- [opacity](https://developer.mozilla.org/es/docs/Web/CSS/opacity)
+- [transform](https://developer.mozilla.org/es/docs/Web/CSS/transform)
+- [will-change](https://developer.mozilla.org/en-US/docs/Web/CSS/will-change)
+
+## 13. Bloqueos y complejidad en selectores
+
+BEM es una forma de escribir clases en CSS. Viene de Bloque Elemento y Modificador.
+
+[[5.bem]]
+
+- Si no le damos la debida atención al CSS se puede volver complejo a lo largo del tiempo
+    - Complejo de mantenimiento en equipo
+    - Complejidad para el navegador
+- Entre más pequeño sea nuestro CSS, mejor
+- Entre menos complejos sean los selectores que usemos, el navegador tendrá que hacer un menor esfuerzo
+- Anidar selectores genera más trabajo al navegador `.menu > div > img`
+- Podemos ayudar al navegador usando BEM
+    - Nos dará mayor contexto de que bloques estamos editando
+    - No daremos selectores complejos por lo cual facilitaremos el trabajo del navegador
+- Nuestro código debería tener como máximo 1 solo selector, 1 sola clase y tratar de evitar los id's
+
+---
+
+- Si deseamos priorizar un recurso en el critical render path lo que deberíamos hacer es ponerlo en una etiqueta img
+
+**RESUMEN:** El CSS puede bloquear recursos importantes como una imagen de un logo. Tambien debemos estar conscientes de no dar selectores complejos para hacer que el navegador haga un menor esfuerzo
