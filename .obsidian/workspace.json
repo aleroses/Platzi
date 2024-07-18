@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "DW/2-intermedio/027.optimización-web/web-optimization.md",
+                "file": "DW/2-intermedio/027.optimizacion-web/web-optimization.md",
                 "mode": "source",
                 "source": true
               }
@@ -69,8 +69,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 386.5,
-    "collapsed": true
+    "width": 386.5
   },
   "right": {
     "id": "9d672530b5364132",
@@ -86,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "DW/2-intermedio/027.optimización-web/web-optimization.md",
+                "file": "DW/2-intermedio/027.optimizacion-web/web-optimization.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "DW/2-intermedio/027.optimización-web/web-optimization.md",
+                "file": "DW/2-intermedio/027.optimizacion-web/web-optimization.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -126,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "DW/2-intermedio/027.optimización-web/web-optimization.md"
+                "file": "DW/2-intermedio/027.optimizacion-web/web-optimization.md"
               }
             }
           }
@@ -148,30 +147,30 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "20dbf9e1fd9dcb8f",
+  "active": "c088c299f43625c6",
   "lastOpenFiles": [
     "DW/1-basico/006-html-css/1-html/5.bem.md",
-    "DW/2-intermedio/027.optimización-web/web-optimization.md",
-    "DW/2-intermedio/027.optimización-web/resources/img/9.network.png",
+    "DW/2-intermedio/027.optimizacion-web/web-optimization.md",
+    "DW/2-intermedio/027.optimizacion-web/resources/img/9.network.png",
     "DW/2-intermedio/027.optimización-web/resources/img/9.network.png.crdownload",
-    "DW/2-intermedio/027.optimización-web/resources/img/8.script-async.png",
-    "DW/2-intermedio/027.optimización-web/resources/img/8.script-defer.png",
+    "DW/2-intermedio/027.optimizacion-web/resources/img/8.script-async.png",
+    "DW/2-intermedio/027.optimizacion-web/resources/img/8.script-defer.png",
     "DW/2-intermedio/027.optimización-web/resources/img/8.script-defer.png.crdownload",
-    "DW/2-intermedio/027.optimización-web/resources/img/8.script.png",
+    "DW/2-intermedio/027.optimizacion-web/resources/img/8.script.png",
     "DW/2-intermedio/027.optimización-web/resources/img/8.script.png.crdownload",
     "others/anki/add-ons.md",
-    "DW/2-intermedio/027.optimización-web/resources/img/7.summary.png",
+    "DW/2-intermedio/027.optimizacion-web/resources/img/7.summary.png",
     "DW/2-intermedio/027.optimización-web/resources/img/7.summary.png.crdownload",
-    "DW/2-intermedio/027.optimización-web/resources/img/7.layout-paint.png",
+    "DW/2-intermedio/027.optimizacion-web/resources/img/7.layout-paint.png",
     "DW/2-intermedio/027.optimización-web/resources/img/7.layout-paint.png.crdownload",
-    "DW/2-intermedio/027.optimización-web/resources/img/7.render-tree.png",
+    "DW/2-intermedio/027.optimizacion-web/resources/img/7.render-tree.png",
     "DW/2-intermedio/027.optimización-web/resources/img/7.render-tree.png.crdownload",
-    "DW/2-intermedio/027.optimización-web/resources/img/7.dom+cssom.png",
+    "DW/2-intermedio/027.optimizacion-web/resources/img/7.dom+cssom.png",
     "DW/2-intermedio/027.optimización-web/resources/img/6.dom+cssom.png",
     "DW/2-intermedio/027.optimización-web/resources/img/6.dom+cssom.png.crdownload",
-    "DW/2-intermedio/027.optimización-web/resources/img",
-    "DW/2-intermedio/027.optimización-web/resources",
-    "DW/2-intermedio/027.optimización-web",
+    "DW/2-intermedio/027.optimizacion-web/resources/img",
+    "DW/2-intermedio/027.optimizacion-web/resources",
+    "DW/2-intermedio/027.optimizacion-web",
     "DW/2-intermedio/019.empaquetadores/2.vite.md",
     "DW/2-intermedio/023.SPA-js-vanilla/spa-js-vanilla.md",
     "DW/2-intermedio/019.empaquetadores/1.intro-empaquetadores-web.md",
