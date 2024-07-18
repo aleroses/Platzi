@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "DW/1-basico/006-html-css/1-html/5.bem.md",
+                "file": "DW/2-intermedio/027.optimización-web/web-optimization.md",
                 "mode": "source",
                 "source": true
               }
@@ -86,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "DW/1-basico/006-html-css/1-html/5.bem.md",
+                "file": "DW/2-intermedio/027.optimización-web/web-optimization.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +103,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "DW/1-basico/006-html-css/1-html/5.bem.md",
+                "file": "DW/2-intermedio/027.optimización-web/web-optimization.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -126,7 +126,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "DW/1-basico/006-html-css/1-html/5.bem.md"
+                "file": "DW/2-intermedio/027.optimización-web/web-optimization.md"
               }
             }
           }
@@ -150,6 +150,7 @@
   },
   "active": "20dbf9e1fd9dcb8f",
   "lastOpenFiles": [
+    "DW/1-basico/006-html-css/1-html/5.bem.md",
     "DW/2-intermedio/027.optimización-web/web-optimization.md",
     "DW/2-intermedio/027.optimización-web/resources/img/9.network.png",
     "DW/2-intermedio/027.optimización-web/resources/img/9.network.png.crdownload",

@@ -536,21 +536,223 @@ En este ejemplo, al agregar `will-change: transform;`, le dices al navegador que
 
 BEM es una forma de escribir clases en CSS. Viene de Bloque Elemento y Modificador.
 
-[[5.bem]]
+- En Obsidian [[5.bem]]
+- En GitHub [BEM](https://github.com/aleroses/Platzi/blob/master/DW/1-basico/006-html-css/1-html/5.bem.md)
 
-- Si no le damos la debida atención al CSS se puede volver complejo a lo largo del tiempo
-    - Complejo de mantenimiento en equipo
-    - Complejidad para el navegador
-- Entre más pequeño sea nuestro CSS, mejor
-- Entre menos complejos sean los selectores que usemos, el navegador tendrá que hacer un menor esfuerzo
-- Anidar selectores genera más trabajo al navegador `.menu > div > img`
-- Podemos ayudar al navegador usando BEM
-    - Nos dará mayor contexto de que bloques estamos editando
-    - No daremos selectores complejos por lo cual facilitaremos el trabajo del navegador
-- Nuestro código debería tener como máximo 1 solo selector, 1 sola clase y tratar de evitar los id's
+Si no le damos la debida atención al CSS se puede volver complejo a lo largo del tiempo:
 
----
+- Complejo de mantenimiento en equipo.
+- Complejidad para el navegador.
 
-- Si deseamos priorizar un recurso en el critical render path lo que deberíamos hacer es ponerlo en una etiqueta img
+Entre más pequeño sea nuestro CSS, entre menos complejos sean los selectores que usemos, el navegador tendrá que hacer un menor esfuerzo.
 
-**RESUMEN:** El CSS puede bloquear recursos importantes como una imagen de un logo. Tambien debemos estar conscientes de no dar selectores complejos para hacer que el navegador haga un menor esfuerzo
+Anidar selectores genera más trabajo al navegador `.menu > div > img`.
+
+Podemos ayudar al navegador usando BEM:
+- Nos dará mayor contexto de que bloques estamos editando
+- No daremos selectores complejos por lo cual facilitaremos el trabajo del navegador
+
+Nuestro código debería tener como máximo 1 solo selector, 1 sola clase y tratar de evitar los `id's`.
+
+### Dato
+
+Si deseamos priorizar un recurso en el critical render path lo que deberíamos hacer es ponerlo en una etiqueta `img` y darle los estilos indispensables dentro de esa misma etiqueta.
+
+```html
+<img
+  width="200px"
+  height="61px"
+  src="./assets/logo-platzi-video.png"
+  alt="Logo PlatziVideo"
+/>
+```
+
+**RESUMEN:** El CSS puede bloquear recursos importantes como una imagen de un logo. También debemos estar conscientes de no dar selectores complejos para hacer que el navegador haga un menor esfuerzo.
+
+[Extrae Critical Path CSS con Puppeteer](https://www.youtube.com/watch?v=GIYp3qG1520)
+
+## 14. WebFonts y su impacto en rendimiento
+
+Los webs fonts son bastante dañinos para el performance, al punto de que el máximo deberían ser 2, lo recomendable es 1, pero si el rendimiento es crítico entonces no deberías traer web fonts
+
+### Formas de cargar fuentes
+
+En general hay tres formas de cargar fuentes y cada una causa un problema
+
+#### 1. Como estilo
+
+- Utilizando la etiqueta `<link>` común (i.e.: Google Fonts).
+- El análisis (parsing) del HTML no continúa hasta que se descargue la fuente.
+- **Problema:** Es **bloqueante**, es decir, detiene el parsing del HTML hasta que la fuente se haya descargado por completo.
+
+#### 2. De forma alterna
+
+- Se utiliza una fuente por defecto mientras carga la web font.
+- **Problema:** Se produce el Flash of Unstyled Text (FOUT), un parpadeo perceptible para los usuarios debido al cambio de fuente una vez que la web font se descarga.
+
+#### 3. Luego del HTML parsing
+
+- No se muestra texto hasta que se descargue la fuente.
+- **Problema:** Se produce el Flash of Invisible Text (FOIT), donde el texto permanece invisible hasta que la fuente esté completamente cargada, lo cual puede resultar en una experiencia de usuario poco amigable.
+
+### Usando Web Fonts correctamente
+
+```bash
+git add . && git commit -am "update css"
+git checkout -b 2-optimization-webfonts 2-webfonts
+npm install
+npm start
+```
+
+Si tienes errores en la consola revisa la clase 6 [[web-optimization#6. Nuestro proyecto]] aquí está la solución.
+
+Revisamos las `DevTools`:
+
+`Network/Font`
+
+**Google Fonts** en las últimas versiones nos permite tener una fuente por defecto hasta que se cargue la que deseemos poniendo en el link `&display=swap`
+
+```html
+<link
+  href="https://fonts.googleapis.com/css?family=Muli&display=swap"
+  rel="stylesheet"
+/>
+```
+
+También podemos hacerlo con una librería open source llamada [web font loader](https://github.com/typekit/webfontloader)
+
+Esta librería nos brinda eventos de los estados de nuestras fuentes a través de clases.
+
+Ver [Get started](https://github.com/typekit/webfontloader?tab=readme-ov-file#get-started) y copiar el `script`.
+
+Como todos los `scripts` lo colocamos hasta abajo de la etiqueta `body` en el `html`:
+
+```html
+<body>
+  <!-- Final -->
+  <script>
+    WebFont.load({
+      google: {
+        // Cambiar fuentes
+        families: ['Muli'],
+      },
+    })
+  </script>
+</body>
+```
+
+No olvides borrar el link con la fuente cargada desde el `head`
+
+Ver los [Eventos](https://github.com/typekit/webfontloader?tab=readme-ov-file#events) que se pueden usar en esta librería.
+
+```css
+html {
+  font-family: Helvetica, Arial, sans-serif;
+}
+
+html.wf-active {
+  font-family: 'Muli';
+}
+
+body {
+  margin: 0;
+  /* font-family: 'Muli', sans-serif; */
+  background: #21c08b;
+  background-image: linear-gradient(#21c08b, #8f57fd);
+}
+```
+
+Borramos las fuentes del `body` en el `CSS` donde se hayan usado.
+
+**RESUMEN:** Las webs fonts son recursos pesados y tienen bastante costo a nivel de performance, debemos tener un límite de dos fuentes y debemos tomar en cuenta todas las estrategias que tenemos para cargarlas.
+
+- [Developing a Robust Font Loading Strategy for CSS-Tricks-zachleat.com](https://www.zachleat.com/web/css-tricks-web-fonts/)
+- [typekit/webfontloader](https://github.com/typekit/webfontloader)
+
+## 15. Imágenes, formato y compresión
+
+- Las imágenes son la forma más fácil y segura de reducir el tamaño de una página web.
+- Se recomienda que las imágenes pesen 70 KB, pero en móviles el tamaño ha crecido en promedio hasta 900 KB y en escritorio hasta 1 MB.
+- Reducir el peso de las imágenes es crucial para la optimización del rendimiento de la web.
+
+### Herramientas para reducir el peso de imágenes
+
+- **TinyPNG**:
+  - API para la compresión de imágenes.
+- **Cloudinary**:
+  - Servicio para el manejo y optimización de imágenes.
+- **Netlify**:
+  - Plataforma que facilita la implementación y manejo de sitios web con optimización de imágenes.
+- **Dev Flow**:
+  - **Webpack**: Herramienta para empaquetar módulos JavaScript y otros activos.
+  - **Grunt**: Task runner para la automatización de tareas.
+  - **Gulp**: Herramienta de streaming para la automatización de tareas.
+  - **post-commit**: Hook de Git para ejecutar scripts después de cada commit.
+  - **Photopea**: Editor de fotos en línea.
+
+### Formatos de compresión más populares
+
+- **GIF**:
+  - Formato liviano con 256 colores, sin degradados.
+  - Perfecto para imágenes con pocos colores, colores planos y sin transparencia.
+  
+- **PNG-8**:
+  - Ofrece las ventajas del GIF más transparencias.
+  - Ideal para íconos y algunos logotipos.
+  
+- **PNG (24)**:
+  - Similar al PNG-8 pero con colores ilimitados.
+  - Adecuado para imágenes con degradados o muchos colores con transparencia.
+  
+- **JPG o JPEG**:
+  - Ideal para fotografías.
+  - Soporta millones de colores y degradados, sin transparencia.
+  - Tiene dos modos de progresión de carga: progresivo y no progresivo.
+  - Siempre es recomendable usar JPG progresivo para mejorar la experiencia de carga.
+
+### Ideas/conceptos claves
+
+- **GIF**: El único formato que permite animar imágenes.
+- **PNG-8**: Utiliza color de 8 bits. Al igual que el formato GIF, comprime eficazmente áreas de color uniforme manteniendo detalles nítidos, como líneas, logotipos o texto.
+- **JPG**: Formato de compresión de imágenes en color y escala de grises con alta calidad.
+
+### Identificando oportunidades en el proyecto
+
+```bash
+git add . && git commit -am "update web-fonts"
+git checkout -b 3-optimization-imgs 3-imagenes
+npm install
+npm start
+```
+
+Corregir el error de la consola: [[web-optimization#6. Nuestro proyecto]]
+
+Ahora:
+
+1. Reducir el tamaño de las imágenes
+	- photopea.com
+	- Arrastra la imagen 
+	- Image/image size (with: 400 + enter)
+	- File/Export as/PNG/save
+2. Reducir el peso
+	- tinypng.com
+	- Arrastra la imagen
+	- Descargar img
+
+También podemos analizar las imágenes que nos trae una API, de estas no tenemos mucho control, solo podremos hacer lo que la API nos permita.
+
+`Network/XHR/Filter kitsu`
+
+Seleccionamos el la columna **Name** `anime?page[limint]` revisamos el **Header** y nos copiamos el `Request URL:`
+
+```bash
+https://kitsu.io/api/edge/anime?page[limit]=7&sort=-average_rating
+```
+
+Descarga la extensión **JSON viewer** esto formatea el contenido sin necesidad de copiarlo en VSC.
+
+## 16. Imágenes y compresión
+
+La API algunas veces nos proporciona diferentes tamaños de imágenes, en este caso la API que se está usando nos permite cambiar entre tiny, small, medium, large y original.
+
+Buscamos el archivo `CarouselItem.js` index.js
