@@ -69,7 +69,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 386.5
+    "width": 386.5,
+    "collapsed": true
   },
   "right": {
     "id": "9d672530b5364132",
@@ -147,7 +148,7 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "c088c299f43625c6",
+  "active": "20dbf9e1fd9dcb8f",
   "lastOpenFiles": [
     "DW/1-basico/006-html-css/1-html/5.bem.md",
     "DW/2-intermedio/027.optimizacion-web/web-optimization.md",

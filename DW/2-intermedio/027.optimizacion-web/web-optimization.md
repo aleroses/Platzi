@@ -749,10 +749,372 @@ Seleccionamos el la columna **Name** `anime?page[limint]` revisamos el **Header*
 https://kitsu.io/api/edge/anime?page[limit]=7&sort=-average_rating
 ```
 
-Descarga la extensión **JSON viewer** esto formatea el contenido sin necesidad de copiarlo en VSC.
+Descarga la extensión para Chrome **JSON viewer** esto formatea el contenido sin necesidad de copiarlo en VSC.
 
 ## 16. Imágenes y compresión
 
 La API algunas veces nos proporciona diferentes tamaños de imágenes, en este caso la API que se está usando nos permite cambiar entre tiny, small, medium, large y original.
 
-Buscamos el archivo `CarouselItem.js` index.js
+Buscamos el archivo ` index.js`
+
+```js
+const Carousel = ({ itemsList = [] }) =>
+  h(
+    'section.carousel',
+    h(
+      'div.carousel__container',
+      itemsList.map(
+        ({
+          attributes: { titles, posterImage, slug, youtubeVideoId, startDate },
+        }) =>
+          CarouselItem({
+            imageUrl: posterImage.medium,
+            title: titles.en,
+            subtitle: titles.ja_jp,
+            slug,
+            youtubeVideoId,
+            startDate,
+          })
+      )
+    )
+  )
+```
+
+## 17. ¿WebFont, Imagen o SVG?
+
+Una **imagen** es una matriz dividida en cuadrados cada uno, es la representación de un pixel.
+
+**SVG** o vectores son elementos generados matemáticamente por el navegador.
+
+**Above the fold** primeros 500 a 600 píxeles de la pantalla, es la parte más importante porque es lo primero que ven los usuarios.
+
+### Imagen vs Vectores
+
+- Si aplicamos zoom a cada uno
+    - Imagen ⇒ Se verán los píxeles
+    - Vector ⇒ Mantendrá la calidad
+
+### Web Fonts
+
+**Ventajas**
+
+- Son prácticos
+- Fáciles de usar y distribuir
+
+**Desventajas**
+
+- Un recurso más
+- HTTP Request
+- Bloqueantes
+- No son accesibles
+
+### SVG
+
+**Ventajas**
+
+- Livianos
+- Inline en el HTML
+- Accesibilidad
+- Animaciones
+- Data URI
+
+**Desventajas**
+
+- Se quita facilidad
+- Requiere un diseñador
+- Incrementa el largo del HTML ⇒ Puede ser incómodo para el equipo de trabajo, pero para el navegador no.
+
+**¿Cuándo usarlos?**
+
+- Logos (especialmente "**Above the fold**")
+- Ilustraciones
+- Ilustraciones animadas
+- En general: gráficos de los que puedas mantener un fácil control
+
+**RESUMEN:** Tenemos dos opciones las webfonts que son bastantes fáciles y practicas al momento de usarlas, pero implican un recurso más que pedir mediante HTTP, volviéndolo bloqueante a nivel de performance, una alternativa es un SVG que nos da una mejor accesibilidad, pero la desventaja es que puede llegar a ser extenso en HTML, solo afectando un poco a la experiencia de desarrollo
+
+### En el proyecto
+
+Tenemos un icono `user-icon.png` que es una imagen, por lo que debemos cambiarlo a un svg.
+
+En los estilos solo cambiamos `.header__menu--profile > img` por `.header__menu--profile > svg`.
+
+## 18. Técnicas avanzadas con Lazy Loading
+
+Existen **lazy loading** de carga y de progresión.
+
+- **Medium** aplica una técnica de lazy loading en las imágenes
+    - Al principio nos aparecerá una imagen borrosa y pixelada hasta que la tengamos lista y sea visible en pantalla.
+    - Irá progresivamente mejorando la imagen.
+- El **lazy loading** de carga, trata de cargar las imágenes cuando la imagen sea de carga
+    - Esto es conveniente para ahorrar recursos a los usuarios
+
+### Formas de hacer lazy loading de carga
+
+#### De forma nativa
+
+El navegador se encargará de hacerlo de forma automática
+
+```html
+<img src="..." loading="lazy" alt="..." />
+```
+
+**Ventajas**
+
+- Nativo
+- Facil
+- Conveniente
+- Video, iframes
+
+#### Intersection Observer
+
+**Intersection observer** es una API del navegador la cual ve cuáles son los elementos visibles del documento y según a esa información genera eventos.
+
+**Ventajas**
+
+- Técnicamente más correcto (luego de nativo)
+- Relativamente fácil
+
+**Desventajas**
+
+- No soportado por internet explorer
+- Versión 2 en proceso
+
+#### Scroll Listener
+
+**ventajas**
+
+- Soportado en todos los navegadores
+
+**Desventajas**
+
+- Scroll listener
+- Muchos cálculos por evento
+
+**RESUMEN:** Para poder cargar las imágenes dinámicamente tenemos diferentes alternativas, en cada una debemos considerar el soporte que tiene con los navegadores y como lo implementaremos en el proyecto
+
+### Recursos
+
+- [eloquent-joliot-wcc52](https://codesandbox.io/s/eloquent-joliot-wcc52)
+- [ApoorvSaxena/lozad.js](https://github.com/ApoorvSaxena/lozad.js)
+- [Can I use... Support tables for HTML5, CSS3, etc](https://caniuse.com/?search=intersection)
+
+### En el proyecto
+
+Ver el archivo `CarouselItem.js` 
+
+```js
+const CarouselItem = ({
+  imageUrl,
+  title,
+  subtitle,
+  slug,
+  youtubeVideoId,
+  startDate,
+}) =>
+  h(
+    'div.carousel-item',
+    h('img.carousel-item__img', { src: imageUrl, alt: '', loading: 'lazy' }),
+    h(
+      'div.carousel-item__details',
+      Controls({ slug, youtubeVideoId }),
+      h('p.carousel-item__details--title', title),
+      h('p.carousel-item__details--subtitle', subtitle),
+      h(
+        'p.carousel-item__details--date',
+        `Released: ${relativeDate(startDate)}`
+      )
+    )
+  )
+```
+
+### 19. Técnicas avanzadas con Responsive Loading
+
+Una imagen de 300 KB se cargará de manera diferente para un usuario con un dispositivo de gama alta y red 5G en comparación con uno que tenga un dispositivo de gama baja y red 2G.
+
+Entonces, ¿cómo podemos garantizar que todos nuestros usuarios obtengan la mejor imagen, sin importar su conexión y dispositivo?
+
+Aquí es donde entra en juego el responsive loading. Esta técnica nos permite adaptar la carga de imágenes según el tamaño del dispositivo y la calidad de la conexión. Herramientas y servicios como Cloudinary o librerías como Gatsby facilitan la implementación de esta característica.
+
+**RESUMEN:** Podemos mejorar la experiencia del usuario con las imágenes al proporcionar soporte para diferentes tamaños de dispositivo y ajustar la resolución y el tamaño de las imágenes en función de estos criterios.
+
+### Recursos
+
+- [HTML: Lenguaje de etiquetas de hipertexto | MDN](https://developer.mozilla.org/es/docs/Web/HTML/Elemento/picture)
+- [Gatsby.js](https://www.gatsbyjs.com/showcase/)
+
+## 20. JavaScript y aplicaciones modernas y Utilizando un servidor de producción
+
+La Web moderna se basa en JavaScript, y a menudo, al instalar muchas dependencias, sin darnos cuenta, creamos una mala experiencia para los usuarios.
+
+En 2018, se estimó que el tamaño medio de los sitios web era alrededor de 350 kB, un tamaño moderadamente aceptable. Sin embargo, el tiempo de espera para que una aplicación sea interactiva puede superar los 15 segundos.
+
+> Si el JavaScript del lado del cliente no mejora la experiencia de usuario, pregúntate si realmente es necesario.
+
+En modo desarrollo, Webpack no realiza ninguna optimización de código. Para mejorar el rendimiento, debemos:
+
+1. Compilar Webpack en modo producción.
+2. Utilizar un servidor listo para producción.
+
+Al utilizar la opción `-p` en Webpack, se realizan dos acciones:
+
+- Se establece `NODE_ENV=production` para Node.
+- Se pasa el parámetro `mode=production` a Webpack.
+
+**RESUMEN:** Es crucial utilizar el modo producción para evaluar y mejorar el rendimiento de nuestro JavaScript.
+
+### En el proyecto
+
+```bash
+git tag
+git add . && git commit -am "update"
+git checkout -b 4-optimization-js 4-javascript
+npm install
+npm start
+npm run build
+```
+
+Para los errores ver la clase 6 [[web-optimization#6. Nuestro proyecto]]
+
+📌 Webpack es muy antiguo así que no haré esos pasos.
+
+#### Recursos
+
+[The cost of JavaScript in 2019](https://v8.dev/blog/cost-of-javascript-2019)
+
+## 21. Analizando el bundle de la aplicación
+
+Webpack tienen herramientas y plugins que nos ayudan a analizar el bundle del JS
+
+Podemos usar webpack bundler analyzer para analizar y tener una medida exacta de que está pasando dentro del bundler a través de una gráfica.
+
+**RESUMEN:** Podemos verificar el tamaño de nuestras dependencias y nuestro código a través de herramientas de análisis de tamaño.
+
+### Recursos
+
+[webpack-contrib/webpack-bundle-analyzer](https://github.com/webpack-contrib/webpack-bundle-analyzer)
+
+## 22. Reduciendo el tamaño del bundle
+
+Podemos utilizar soluciones en línea para analizar qué puede estar contribuyendo al tamaño de nuestra aplicación. Una de estas herramientas es **Bundle Phobia**.
+
+Existen librerías que son "tree-shakable", lo que significa que permiten al empaquetador incluir solo el código que realmente se utiliza. 
+
+Bundle Phobia puede ayudarnos a encontrar paquetes más pequeños para optimizar el tamaño del bundle de nuestra aplicación.
+
+**RESUMEN:** Para reducir el tamaño de nuestro bundle, es fundamental considerar las dependencias que utilizamos. Podemos optimizar el tamaño usando funciones específicas en librerías "tree-shakable" o buscando alternativas más ligeras.
+
+### Recursos
+
+- [BundlePhobia](https://bundlephobia.com/)
+- [Date-fns](https://date-fns.org/)
+- [Momentjs](https://momentjs.com/)
+
+## 23. Code Splitting
+
+El code splitting por páginas es una técnica que permite dividir el bundle de la aplicación en partes más pequeñas y específicas, enviando solo el código necesario para la página que el usuario está cargando. De esta manera, solo se envía una fracción del bundle, reduciendo la carga inicial.
+
+Aunque esta técnica ayuda a reducir el tamaño del bundle, eventualmente alcanzaremos un punto en el que no se puede reducir más. En tales casos, se deben considerar otras estrategias. El code splitting es una de ellas; en lugar de tener un bundle gigante, se divide en diferentes partes, facilitando su envío al navegador y reduciendo su peso.
+
+Frameworks como Angular, Next.js y Gatsby implementan el code splitting **basado en páginas**, generando bundles específicos para cada página de la aplicación.
+
+Otra técnica útil es dividir el código de las librerías (vendors) del bundle principal. Esta estrategia es beneficiosa porque los navegadores almacenan en caché estos archivos, que no se actualizan con frecuencia. Como resultado, se reduce la cantidad de solicitudes (requests) realizadas, ya que las librerías permanecen en caché.
+
+**RESUMEN:** El code splitting es una técnica valiosa para dividir el código de la aplicación en partes más manejables. Su implementación puede variar, pero siempre contribuye a una carga más eficiente y una mejor experiencia de usuario.
+
+## 24. Lazy Module Loading
+
+Lazy Module Loading, o carga perezosa de módulos, es una técnica de optimización en desarrollo web, particularmente útil en aplicaciones JavaScript. Esta técnica retrasa la carga de módulos o partes del código hasta que sean realmente necesarios. A continuación, se explican sus conceptos clave y cómo se utiliza:
+
+### Conceptos Clave
+
+1. **Carga Inicial Minimizada**: En lugar de cargar todos los módulos y dependencias al inicio, solo se cargan aquellos que son imprescindibles para arrancar la aplicación. Esto reduce el tiempo de carga inicial.
+
+2. **Carga Bajo Demanda**: Módulos adicionales se cargan cuando son necesarios, como al navegar a una nueva página o al interactuar con una funcionalidad específica.
+
+3. **Optimización de Rendimiento**: Reduce el tiempo de carga y el uso de memoria, mejorando la experiencia del usuario, especialmente en aplicaciones grandes.
+
+### Ejemplo de Lazy Loading en JavaScript
+
+En JavaScript moderno, se puede utilizar la función dinámica `import()` para realizar la carga perezosa de módulos. Aquí tienes un ejemplo básico:
+
+```javascript
+// main.js
+
+// Función que se ejecuta bajo demanda
+function loadComponent() {
+  import('./myComponent.js')
+    .then((module) => {
+      const myComponent = module.default;
+      // Usar el componente cargado
+      myComponent();
+    })
+    .catch((error) => {
+      console.error('Error al cargar el módulo:', error);
+    });
+}
+
+// Llamar a la función cuando sea necesario
+document.getElementById('loadButton').addEventListener('click', loadComponent);
+```
+
+### Aplicación en Frameworks y Librerías
+
+Muchos frameworks y librerías de desarrollo web tienen soporte para lazy loading. Aquí algunos ejemplos:
+
+1. **React**: Utiliza `React.lazy()` y `Suspense` para cargar componentes de forma perezosa.
+    ```javascript
+    import React, { Suspense } from 'react';
+
+    const LazyComponent = React.lazy(() => import('./LazyComponent'));
+
+    function App() {
+      return (
+        <div>
+          <Suspense fallback={<div>Loading...</div>}>
+            <LazyComponent />
+          </Suspense>
+        </div>
+      );
+    }
+    export default App;
+    ```
+
+2. **Vue.js**: Usa `defineAsyncComponent` para componentes cargados de forma perezosa.
+    ```javascript
+    import { defineAsyncComponent } from 'vue';
+
+    const LazyComponent = defineAsyncComponent(() => import('./LazyComponent.vue'));
+
+    export default {
+      components: {
+        LazyComponent,
+      },
+    };
+    ```
+
+3. **Angular**: Utiliza rutas de carga perezosa en su sistema de enrutamiento.
+    ```typescript
+    const routes: Routes = [
+      {
+        path: 'lazy',
+        loadChildren: () => import('./lazy/lazy.module').then(m => m.LazyModule)
+      }
+    ];
+    ```
+
+### Beneficios
+
+- **Mejora del Rendimiento**: La carga inicial es más rápida y la experiencia del usuario es más fluida.
+- **Optimización del Uso de Recursos**: Solo se cargan los recursos necesarios en el momento preciso.
+- **Escalabilidad**: Facilita el manejo de aplicaciones grandes dividiendo el código en módulos más pequeños y manejables.
+
+### Consideraciones
+
+- **Manejo de Errores**: Es importante manejar errores al cargar módulos, ya que pueden fallar.
+- **SEO y Accesibilidad**: Asegúrate de que la carga perezosa no afecte negativamente el SEO o la accesibilidad.
+- **Evaluación de Carga**: No todos los módulos deberían cargarse de manera perezosa; evalúa cuáles son los más adecuados.
+
+Lazy Module Loading es una técnica poderosa para optimizar aplicaciones web, especialmente en aquellas con grandes cantidades de código y funcionalidades complejas. Implementarla correctamente puede mejorar significativamente la velocidad y eficiencia de tu aplicación.
+
+## 25. 
