@@ -1117,4 +1117,4 @@ Muchos frameworks y librerías de desarrollo web tienen soporte para lazy loadin
 
 Lazy Module Loading es una técnica poderosa para optimizar aplicaciones web, especialmente en aquellas con grandes cantidades de código y funcionalidades complejas. Implementarla correctamente puede mejorar significativamente la velocidad y eficiencia de tu aplicación.
 
-## 25. 
+## 25. xd
