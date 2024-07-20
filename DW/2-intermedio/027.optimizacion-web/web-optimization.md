@@ -1058,6 +1058,27 @@ function loadComponent() {
 document.getElementById('loadButton').addEventListener('click', loadComponent);
 ```
 
+Con `asyn` y `await`:
+
+```js
+// main.js
+
+// Función que se ejecuta bajo demanda
+async function loadComponent() {
+  try {
+    const module = await import('./myComponent.js')
+    const myComponent = module.default
+    // Usar el componente cargado
+    myComponent()
+  } catch (error) {
+    console.error('Error al cargar el módulo:', error)
+  }
+}
+
+// Llamar a la función cuando sea necesario
+document.getElementById('loadButton').addEventListener('click', loadComponent)
+```
+
 ### Aplicación en Frameworks y Librerías
 
 Muchos frameworks y librerías de desarrollo web tienen soporte para lazy loading. Aquí algunos ejemplos:
@@ -1117,4 +1138,72 @@ Muchos frameworks y librerías de desarrollo web tienen soporte para lazy loadin
 
 Lazy Module Loading es una técnica poderosa para optimizar aplicaciones web, especialmente en aquellas con grandes cantidades de código y funcionalidades complejas. Implementarla correctamente puede mejorar significativamente la velocidad y eficiencia de tu aplicación.
 
-## 25. xd
+## 25. Llevando los listeners a otro nivel
+
+## 26. Instalando Modal video
+
+## 27. Lazy loading del modal
+
+## 28. Moviendo la carga de rendering hacia el servidor: Server Side Rendering
+
+**Client-Side Rendering (CSR) y Server-Side Rendering (SSR)** son dos enfoques diferentes para renderizar páginas web.
+
+### Client-Side Rendering (CSR)
+
+En CSR, la mayor parte de la lógica de renderización de la página ocurre en el navegador del usuario:
+
+1. **Carga inicial**: El servidor envía un HTML básico junto con los archivos de JavaScript y CSS necesarios.
+2. **Renderización en el cliente**: El navegador descarga estos archivos y ejecuta el JavaScript para construir la interfaz de usuario (UI).
+3. **Interacciones**: Las interacciones del usuario (como hacer clic en botones) son manejadas por JavaScript en el cliente, que actualiza la UI sin necesidad de recargar la página completa.
+
+**Ventajas**:
+- Mejor experiencia de usuario (UX) debido a menos recargas de página.
+- Aplicaciones más dinámicas y rápidas después de la carga inicial.
+
+**Desventajas**:
+- Mayor tiempo de carga inicial.
+- Puede ser menos amigable para motores de búsqueda (SEO).
+
+### Server-Side Rendering (SSR)
+
+En SSR, la página completa se renderiza en el servidor antes de enviarse al cliente:
+
+1. **Petición inicial**: El navegador del usuario envía una solicitud al servidor.
+2. **Renderización en el servidor**: El servidor procesa la solicitud, genera el HTML completo y lo envía de vuelta al navegador.
+3. **Interacciones**: Cada interacción que requiere actualización de datos generalmente implica una nueva solicitud al servidor para obtener una página actualizada.
+
+**Ventajas**:
+- Mejor para SEO porque el contenido completo está disponible en la carga inicial.
+- Menor tiempo de carga inicial porque el HTML está pre-renderizado.
+
+**Desventajas**:
+- Mayor carga en el servidor.
+- Menos dinámico y puede requerir recargas completas de la página para actualizar el contenido.
+
+### Gráfica Comparativa
+
+![](https://i.postimg.cc/D03YvzFc/28-csr-ssr.jpg)
+
+## 29. Aplicando SSR
+
+```bash
+git tag
+git checkout -b 5-optimization-ssr 5-with-ssr
+git log
+
+# Retroceder
+git reset 65a40f5814b088c95 --hard
+npm i
+npm run build
+npm run start
+
+# Ir al ultimo commit del historial
+git reset 5-with-ssr --hard
+npm i
+npm run build
+npm run start
+```
+[Goodbye Clean code](https://overreacted.io/goodbye-clean-code/)
+
+## 30. Pre-renderizando el contenido: Static Generation
+
