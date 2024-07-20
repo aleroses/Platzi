@@ -1249,6 +1249,62 @@ SSG es una técnica poderosa para crear sitios web rápidos, seguros y escalable
 
 ## 31. Cómo funciona el Caché de recursos y CDN
 
+Vamos a desglosar los conceptos de caché y Content Delivery Network (CDN) en el contexto del desarrollo web.
+
+### Caché
+
+La caché es una tecnología utilizada para almacenar datos temporalmente con el fin de acelerar el acceso futuro a esos datos. Existen diferentes niveles de caché en un sistema informático, cada uno optimizando el rendimiento de diferentes maneras. 
+
+#### Tipos de Caché
+
+1. **Caché del Navegador**: El navegador web almacena copias locales de recursos como imágenes, archivos CSS y JavaScript para reducir el tiempo de carga en visitas subsecuentes a la misma página web.
+   
+2. **Caché del Servidor**: Los servidores web pueden almacenar respuestas a solicitudes frecuentes, de modo que no necesiten regenerar el contenido para cada solicitud.
+
+3. **Caché de Base de Datos**: Los resultados de consultas de base de datos pueden almacenarse en caché para evitar consultas repetitivas a la base de datos.
+
+4. **Caché de Aplicación**: Las aplicaciones pueden almacenar datos calculados o recibidos para reutilizarlos sin tener que recalcular o volver a solicitarlos.
+
+#### Ventajas del Caché
+
+- **Rendimiento**: Reduce el tiempo de respuesta al evitar operaciones costosas como consultas a la base de datos o generación dinámica de contenido.
+- **Reducción de la Carga del Servidor**: Almacenar datos en caché reduce la necesidad de procesar las mismas solicitudes repetidamente.
+- **Menor Uso de Ancho de Banda**: Al servir contenido almacenado localmente, se reduce el tráfico de datos entre el servidor y el cliente.
+
+#### Ejemplo Simple de Caché del Navegador
+
+Cuando visitas un sitio web, tu navegador almacena recursos estáticos como imágenes y hojas de estilo en caché. En visitas posteriores, tu navegador puede cargar estos recursos desde la caché local en lugar de solicitarlos nuevamente al servidor, acelerando así el tiempo de carga de la página.
+
+### Content Delivery Network (CDN)
+
+Una Content Delivery Network (CDN) es una red de servidores distribuidos geográficamente que trabajan juntos para entregar contenido de Internet de manera rápida y eficiente. 
+
+#### Cómo Funciona una CDN
+
+1. **Distribución Geográfica**: Los servidores de una CDN están ubicados en múltiples ubicaciones alrededor del mundo (llamadas puntos de presencia o PoPs).
+   
+2. **Copia del Contenido**: Una copia del contenido del sitio web se almacena en todos los servidores de la CDN. Esto incluye archivos estáticos como imágenes, videos, CSS y JavaScript.
+
+3. **Redirección de Solicitudes**: Cuando un usuario solicita contenido, la CDN redirige la solicitud al servidor más cercano a su ubicación geográfica. Esto reduce la latencia y mejora el tiempo de carga.
+
+#### Ventajas de una CDN
+
+- **Rendimiento Mejorado**: Al servir contenido desde el servidor más cercano al usuario, se reduce el tiempo de carga.
+- **Escalabilidad**: Las CDNs pueden manejar grandes volúmenes de tráfico distribuyendo la carga entre múltiples servidores.
+- **Disponibilidad y Redundancia**: Si un servidor de la CDN falla, otro servidor puede asumir su lugar, mejorando la disponibilidad del contenido.
+- **Seguridad**: Las CDNs pueden proporcionar protección contra ataques DDoS al dispersar el tráfico malicioso entre múltiples servidores.
+
+#### Ejemplo de Uso de una CDN
+
+Imagina que tienes un sitio web que sirve contenido estático como imágenes y videos. Sin una CDN, todos los usuarios del mundo tendrían que acceder a estos recursos desde tu servidor principal, que puede estar ubicado en un solo lugar. Con una CDN, esos recursos se copian a servidores en diferentes partes del mundo. Cuando un usuario en Asia solicita una imagen, la CDN le servirá esa imagen desde un servidor cercano en lugar de hacer que el usuario espere la respuesta de un servidor que podría estar en América del Norte.
+
+#### Resumen
+
+- **Caché**: Almacena datos temporalmente para acelerar el acceso futuro y reducir la carga en sistemas y redes.
+- **CDN**: Una red de servidores distribuidos que mejora el rendimiento y la disponibilidad al servir contenido desde ubicaciones geográficamente cercanas a los usuarios.
+
+Ambas tecnologías son fundamentales para optimizar la velocidad, la eficiencia y la seguridad de los sitios web y aplicaciones modernas.
+
 Ver en Obidian
 
 - [[3.api-rest-js-performance#2. Caché vs. memoria]]
@@ -1260,3 +1316,118 @@ Ver en GitHub
 - [Caché vs. memoria](https://github.com/aleroses/Platzi/blob/master/DW/2-intermedio/014.api-rest-js/3.api-rest-js-performance/3.api-rest-js-performance.md#2-cach%C3%A9-vs-memoria)
 - [Local Storage vs. API real](https://github.com/aleroses/Platzi/blob/master/DW/2-intermedio/014.api-rest-js/3.api-rest-js-performance/3.api-rest-js-performance.md#14-local-storage-vs-api-real)
 - [Guardando películas en Local Storage](https://github.com/aleroses/Platzi/blob/master/DW/2-intermedio/014.api-rest-js/3.api-rest-js-performance/3.api-rest-js-performance.md#16-guardando-pel%C3%ADculas-en-local-storage)
+
+## 32. Deploy en Netlify y automatización de contenido en GitHub Actions
+
+Ver en Obsidian
+
+[[react-hooks-mern#🟣 Desplegar en Netlify]]
+[[gh-pages]]
+
+Ver en GitHub
+
+- [Desplegar en Netlify](https://github.com/aleroses/Platzi/blob/master/DW/3-avanzado/1.react.js/devTalles/react-hooks-mern.md#-desplegar-en-netlify)
+- [gh-pages](https://github.com/aleroses/Platzi/blob/master/DW/1-basico/005-git-github/gh-pages.md)
+
+## 33. Aplicando Github Actions
+
+- [Actions](https://github.com/features/actions)
+- [Crontab](https://crontab.guru/)
+
+## 34. Interceptando los requests del navegador con Service Workers
+
+Los **Service Workers** son scripts que el navegador ejecuta en segundo plano, separados de la página web. Su principal función es interceptar y controlar las solicitudes de red, permitiendo la creación de aplicaciones web con características avanzadas como el almacenamiento en caché de recursos y la funcionalidad sin conexión.
+
+### Características de los Service Workers
+
+1. **Intercepción de Solicitudes**: Los Service Workers pueden interceptar y modificar las solicitudes de red realizadas por la aplicación web.
+2. **Almacenamiento en Caché**: Permiten almacenar en caché recursos estáticos y dinámicos, mejorando el rendimiento y permitiendo el acceso sin conexión.
+3. **Sincronización en Segundo Plano**: Pueden ejecutar tareas en segundo plano, como sincronizar datos con el servidor.
+4. **Notificaciones Push**: Permiten el envío de notificaciones push a los usuarios incluso cuando la aplicación web no está activa.
+
+### Implementación de Service Workers
+
+Para implementar un Service Worker, sigue estos pasos básicos:
+
+#### Paso 1: Registrar el Service Worker
+
+Primero, necesitas registrar el Service Worker en tu aplicación web. Esto se hace generalmente en el archivo principal de JavaScript de tu aplicación, por ejemplo, `index.js`.
+
+```javascript
+// index.js
+
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/service-worker.js')
+      .then((registration) => {
+        console.log('Service Worker registrado con éxito:', registration);
+      }).catch((error) => {
+        console.log('Error al registrar el Service Worker:', error);
+      });
+  });
+}
+```
+
+#### Paso 2: Crear el Archivo del Service Worker
+
+Crea un archivo llamado `service-worker.js` en la raíz de tu proyecto. Este archivo contendrá el código del Service Worker.
+
+```javascript
+// service-worker.js
+
+// Instalación del Service Worker
+self.addEventListener('install', (event) => {
+  event.waitUntil(
+    caches.open('mi-cache').then((cache) => {
+      return cache.addAll([
+        '/',
+        '/index.html',
+        '/styles.css',
+        '/script.js',
+        '/image.png'
+      ]);
+    })
+  );
+});
+
+// Activación del Service Worker
+self.addEventListener('activate', (event) => {
+  console.log('Service Worker activado');
+});
+
+// Intercepción de Solicitudes
+self.addEventListener('fetch', (event) => {
+  event.respondWith(
+    caches.match(event.request).then((response) => {
+      return response || fetch(event.request);
+    })
+  );
+});
+```
+
+#### Paso 3: Desplegar y Probar
+
+1. **Servir tu aplicación**: Asegúrate de que tu aplicación esté siendo servida a través de HTTPS, ya que los Service Workers solo funcionan en contextos seguros (HTTPS o `localhost`).
+
+2. **Probar la Aplicación**: Abre tu aplicación en un navegador compatible (como Chrome o Firefox) y verifica en las herramientas de desarrollo (DevTools) que el Service Worker esté registrado correctamente.
+
+#### Explicación del Código
+
+- **Instalación**: Durante la fase de instalación (`install`), el Service Worker abre un caché y almacena recursos especificados en él.
+- **Activación**: En la fase de activación (`activate`), el Service Worker se prepara para tomar el control de las páginas bajo su ámbito.
+- **Intercepción de Solicitudes**: Con el evento `fetch`, el Service Worker intercepta las solicitudes de red. Primero busca el recurso en la caché y, si no lo encuentra, realiza una solicitud de red normal.
+
+### Beneficios de los Service Workers
+
+- **Mejora del Rendimiento**: Almacenar recursos en caché reduce la necesidad de realizar solicitudes de red, mejorando los tiempos de carga.
+- **Funcionalidad Sin Conexión**: Permiten que las aplicaciones web funcionen sin conexión al proporcionar acceso a recursos almacenados en caché.
+- **Notificaciones y Sincronización**: Facilitan el envío de notificaciones push y la ejecución de tareas de sincronización en segundo plano, mejorando la experiencia del usuario.
+
+### Conclusión
+
+Los Service Workers son una poderosa herramienta para mejorar el rendimiento y la funcionalidad de las aplicaciones web. Implementarlos implica registrar el Service Worker, definir su comportamiento (como la gestión de la caché y la intercepción de solicitudes), y probar que funcionan correctamente en un entorno seguro. Con estas capacidades, puedes crear aplicaciones web más rápidas, confiables y capaces de funcionar sin conexión.
+
+[Service Worker](https://www.youtube.com/watch?v=aUtWHiV3RJg&list=PLCKuOXG0bPi15ADMKVEYvMmBP7rFpW7Yq&index=3)
+
+## 35. Performance budget y auditorias automatizadas
+
