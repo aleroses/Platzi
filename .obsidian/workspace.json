@@ -14,7 +14,19 @@
               "type": "markdown",
               "state": {
                 "file": "DW/2-intermedio/027.optimizacion-web/web-optimization.md",
-                "mode": "source",
+                "mode": "preview",
+                "source": true
+              }
+            }
+          },
+          {
+            "id": "ac9866f66daeae5a",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "DW/2-intermedio/014.api-rest-js/3.api-rest-js-performance/3.api-rest-js-performance.md",
+                "mode": "preview",
                 "source": true
               }
             }
@@ -69,7 +81,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 386.5,
+    "width": 240.5,
     "collapsed": true
   },
   "right": {
@@ -150,10 +162,11 @@
   },
   "active": "20dbf9e1fd9dcb8f",
   "lastOpenFiles": [
+    "DW/2-intermedio/014.api-rest-js/3.api-rest-js-performance/3.api-rest-js-performance.md",
+    "DW/2-intermedio/027.optimizacion-web/web-optimization.md",
     "DW/2-intermedio/027.optimizacion-web/resources/img/28.csr-ssr.jpg",
     "DW/2-intermedio/027.optimizacion-web/resources/img/28.csr-ssr.jpg.crdownload",
     "DW/1-basico/006-html-css/1-html/5.bem.md",
-    "DW/2-intermedio/027.optimizacion-web/web-optimization.md",
     "DW/2-intermedio/027.optimizacion-web/resources/img/9.network.png",
     "DW/2-intermedio/027.optimización-web/resources/img/9.network.png.crdownload",
     "DW/2-intermedio/027.optimizacion-web/resources/img/8.script-async.png",
@@ -176,8 +189,6 @@
     "DW/2-intermedio/019.empaquetadores/2.vite.md",
     "DW/2-intermedio/023.SPA-js-vanilla/spa-js-vanilla.md",
     "DW/2-intermedio/019.empaquetadores/1.intro-empaquetadores-web.md",
-    "DW/2-intermedio/019.empaquetadores/resources/img/5.cache.png",
-    "DW/2-intermedio/014.api-rest-js/3.api-rest-js-performance/3.api-rest-js-performance.md",
     "DW/2-intermedio/025.debugging-devtools/debugging-devtools.md",
     "DW/1-basico/005-git-github/gh-pages.md",
     "DW/2-intermedio/014.api-rest-js/2.api-rest-js-ejemplos/api-rest-ejemplos.md",

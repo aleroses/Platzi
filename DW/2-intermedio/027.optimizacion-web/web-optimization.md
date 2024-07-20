@@ -1207,3 +1207,56 @@ npm run start
 
 ## 30. Pre-renderizando el contenido: Static Generation
 
+Static Site Generation (SSG) es una técnica utilizada en el desarrollo web para crear páginas web estáticas de manera eficiente. A diferencia de los enfoques tradicionales donde las páginas se generan dinámicamente en el servidor cada vez que se solicita, SSG pre-genera las páginas web durante el proceso de construcción y las sirve como archivos HTML estáticos. Esto tiene varias ventajas:
+
+1. **Rendimiento Mejorado**: Como las páginas son archivos HTML estáticos, se pueden servir rápidamente desde un servidor o una red de distribución de contenido (CDN), reduciendo los tiempos de carga.
+
+2. **Seguridad**: Las páginas estáticas son menos susceptibles a ataques como inyecciones SQL o cross-site scripting (XSS) porque no hay una capa de servidor que procese solicitudes dinámicas.
+
+3. **Escalabilidad**: Es fácil escalar un sitio estático porque solo implica servir archivos estáticos desde un servidor o CDN.
+
+4. **Menor Carga del Servidor**: Al no necesitar generar páginas dinámicamente, la carga en el servidor se reduce significativamente.
+
+### ¿Cómo Funciona SSG?
+
+El proceso de generación de un sitio estático generalmente sigue estos pasos:
+
+1. **Compilación**: Se ejecuta un proceso de construcción que toma los archivos de origen, como plantillas y contenido (a menudo en formatos como Markdown), y los transforma en archivos HTML estáticos.
+2. **Publicación**: Los archivos HTML generados se suben a un servidor web o CDN.
+3. **Entrega**: Cuando un usuario solicita una página, el servidor o la CDN entrega el archivo HTML pre-generado.
+
+### Herramientas Comunes para SSG
+
+Existen varias herramientas populares para Static Site Generation, entre ellas:
+
+- **Jekyll**: Usado a menudo con GitHub Pages.
+- **Next.js**: Framework de React que soporta tanto SSG como Server-Side Rendering (SSR).
+- **Gatsby**: Basado en React, enfocado en la generación de sitios estáticos con optimización de rendimiento.
+- **Hugo**: Conocido por su velocidad en la generación de sitios.
+
+### Ejemplo de Flujo de Trabajo con SSG
+
+1. **Desarrollo**: Un desarrollador escribe contenido en archivos Markdown y crea plantillas HTML o componentes en un framework como React.
+2. **Construcción**: Se ejecuta un comando (por ejemplo, `gatsby build` o `next build`) que compila los archivos de origen en una versión estática del sitio.
+3. **Despliegue**: Los archivos HTML, CSS y JavaScript resultantes se suben a un servidor o CDN.
+4. **Visita del Usuario**: Cuando un usuario visita el sitio, recibe directamente los archivos HTML estáticos, lo que resulta en una carga rápida de la página.
+
+SSG es una técnica poderosa para crear sitios web rápidos, seguros y escalables, especialmente para contenido que no cambia con frecuencia.
+
+- [SSG y SSR en JAMStack](https://matiashernandez.dev/blog/post/jamstack-que-es-ssg-y-ssr)
+- [Jamstack](https://jamstack.org/)
+- [JamStack generator](https://jamstack.org/generators/)
+
+## 31. Cómo funciona el Caché de recursos y CDN
+
+Ver en Obidian
+
+- [[3.api-rest-js-performance#2. Caché vs. memoria]]
+- [[3.api-rest-js-performance#14. Local Storage vs. API real]]
+- [[3.api-rest-js-performance#16. Guardando películas en Local Storage]]
+
+Ver en GitHub
+
+- [Caché vs. memoria](https://github.com/aleroses/Platzi/blob/master/DW/2-intermedio/014.api-rest-js/3.api-rest-js-performance/3.api-rest-js-performance.md#2-cach%C3%A9-vs-memoria)
+- [Local Storage vs. API real](https://github.com/aleroses/Platzi/blob/master/DW/2-intermedio/014.api-rest-js/3.api-rest-js-performance/3.api-rest-js-performance.md#14-local-storage-vs-api-real)
+- [Guardando películas en Local Storage](https://github.com/aleroses/Platzi/blob/master/DW/2-intermedio/014.api-rest-js/3.api-rest-js-performance/3.api-rest-js-performance.md#16-guardando-pel%C3%ADculas-en-local-storage)
