@@ -1431,3 +1431,206 @@ Los Service Workers son una poderosa herramienta para mejorar el rendimiento y l
 
 ## 35. Performance budget y auditorias automatizadas
 
+### Performance Budget
+
+Un performance budget (presupuesto de rendimiento) es un conjunto de límites establecidos para varios aspectos del rendimiento de un sitio web. Estos límites son objetivos que los desarrolladores y diseñadores intentan no superar para garantizar que el sitio web sea rápido y eficiente. Aquí hay algunos elementos comunes que pueden incluirse en un performance budget:
+
+1. **Tamaño de la página**: Limitar el tamaño total de la página (HTML, CSS, JavaScript, imágenes, etc.) para garantizar tiempos de carga rápidos.
+2. **Número de solicitudes**: Establecer un límite en la cantidad de solicitudes HTTP que una página puede hacer para minimizar el tiempo de carga.
+3. **Tiempo de carga**: Fijar un objetivo para el tiempo que tarda una página en cargarse completamente.
+4. **Tiempo de interacción**: Limitar el tiempo que tarda la página en ser interactiva para el usuario.
+5. **Core Web Vitals**: Establecer objetivos para métricas como LCP (Largest Contentful Paint), FID (First Input Delay) y CLS (Cumulative Layout Shift).
+
+### Auditorías Automatizadas
+
+Las auditorías automatizadas son herramientas y procesos que evalúan el rendimiento y la calidad de un sitio web sin intervención manual. Estas auditorías pueden identificar problemas y sugerir mejoras en varias áreas, como el rendimiento, la accesibilidad, las mejores prácticas y la optimización de SEO. Aquí hay algunas herramientas populares para realizar auditorías automatizadas:
+
+1. **Lighthouse**: Una herramienta de Google que se puede ejecutar en Chrome DevTools, como una extensión del navegador o desde la línea de comandos. Proporciona informes detallados sobre el rendimiento, accesibilidad, SEO y más.
+2. **PageSpeed Insights**: Otra herramienta de Google que analiza el contenido de una página web y proporciona sugerencias para hacerla más rápida.
+3. **WebPageTest**: Permite probar el rendimiento de una página web desde múltiples ubicaciones y navegadores, ofreciendo un análisis detallado del rendimiento.
+4. **GTmetrix**: Ofrece información sobre el rendimiento del sitio web, proporcionando métricas detalladas y recomendaciones.
+5. **Sitespeed.io**: Una herramienta de código abierto que permite realizar auditorías y pruebas de rendimiento en sitios web.
+
+Estas herramientas generan informes que pueden ayudar a los desarrolladores a identificar y solucionar problemas que afectan el rendimiento del sitio. Además, se pueden integrar en procesos de integración continua (CI) para garantizar que las nuevas versiones del sitio cumplan con los presupuestos de rendimiento establecidos.
+
+## 36. Automatizando una auditoría con Lighthouse CI
+
+## 37. Medidas reales y monitoreo constante
+
+**RUM** viene de Real User Metric
+
+**medidas de laboratorio** Son aquellas las cuales tenemos pleno control de lo que está sucediendo y el proyecto este o en local o en el servidor propio
+
+- Nuestras medidas actuales son llamadas **medidas de laboratorio**
+- Esto no representa la realidad para nuestros usuarios
+- Por ello debemos tomar medidas reales de nuestro sitio
+
+### Métricas reales
+
+1. Medidas en el sitio de producción
+2. Monitoreo constante e histórico
+3. Cumplir las métricas para los usuarios del percentil 75
+
+**RESUMEN:** Deberíamos medir nuestro sitio en producción debido a que las métricas vistas son de laboratorio
+
+## 38. Conclusiones
+
+## Examen 📌
+<details>
+	<summary>Haz clic para ver los resultados 👀</summary>
+	<br/>
+
+1. ¿Qué nos brinda utilizar los atributos async y defer en los elementos script?
+
+	- ✅ Le indican al navegador que puede descargar el script en paralelo al HTML Parsing.
+
+2. ¿Cuál es el formato web adecuado para una fotografía?
+
+	- ✅ JPG
+
+3. Selecciona el enunciado FALSO referente a Server Side Rendering (SSR):
+
+	- ✅ Todos los negocios y productos deben utilizar SSR.
+
+4. Los elementos bloqueantes en el Critical Rendering Path (CRP) son de cuidado porque:
+
+	- ✅ Ocupan al navegador en procesos que tal vez no sean necesarios del todo para cargar la página.
+
+5. Cuando se trata de realizar Lazy Loading de imágenes, una de estas tecnologías NO es una opción:
+
+	- ✅ DNS Connect
+
+6. Las medidas tomadas en Lighthouse se consideran de laboratorio porque:
+
+	- ✅ No representa usuarios ni dispositivos reales.
+
+7. Lo más importante antes de realizar cualquier optimización es:
+
+	- ✅ Medir el estado actual de lo que se optimizará.
+
+8. Una forma de cambiar los prioridad con que se descarga un recurso en CSS es:
+
+	- ✅ Utilizar el atributo media para especificar una query al navegador con la que hará match.
+
+9. Utilizar técnicas de Scroll Listeners puede no es muy conveniente por:
+
+	- ✅ Puede volverse un cálculo costoso para el navegador.
+
+10. La medida que nos ayuda a detectar el tiempo que se tarda en responder a las acciones de los usuarios es:
+
+	- ✅ First Input Delay (FID).
+
+11. El modelo RAIL es:
+
+	- ✅ Un modelo para ayudarnos a pensar sobre rendimiento desde la perspectiva del usuario.
+
+12. ¿Cuál es el formato web adecuado para una imagen que utiliza colores básicos, sin degradados y necesita transparencia?
+
+	- ✅ GIF o PNG-8
+
+13. Uno de los siguientes usos NO es apropiado para un Service Worker:
+
+	- ✅ Modificar el proceso del CSSOM.
+
+14. Las métricas que el modelo RAIL nos da están basadas en:
+
+	- ✅ La experiencia de usuario.
+
+15. Cargar módulos de JavaScript de forma 'perezosa' (Lazy Module Loading), es recomendado, cuando se puede, porque:
+
+	- ✅ Aliviana el peso del bundle principal para excluir modulos que no son necesarios en la renderización principal.
+
+16. Selecciona la afirmación correcta sobre Web Fonts:
+
+	- ✅ Entre menos Web Fonts se carguen, mejor.
+
+17. Una de las fases más costosa de un navegador es:
+
+	- CSSOM y DOM
+	- Paint
+	- ✅  mal Layout
+	- Pre conectar DNS
+
+18. La medida que nos ayuda a detectar si los elementos fueron estables y no tuvieron cambios drásticos en su tamaño durante la carga es:
+
+	- ✅ Cumulative Layout Shift (CLS).
+
+19. Sobre las aplicaciones que se renderizan en el cliente (Client Side Rendering), como la mayoría de SPAs (Single Page Applications), podemos afirmar que:
+
+	- ✅ Es un enfoque que puede ser útil para algunos casos, pero para otros no. Depende de nosotros tomar la mejor decisión.
+
+20. La importancia del Critical Render Path radica en:
+
+	- ✅ Entender sus etapas para tomar mejores decisiones y alivianar el trabajo del navegador.
+
+21. El Document Object Model (DOM) es:
+
+	- ✅ Una estructura de datos tipo árbol que representa el HTML de un sitio.
+
+22. Generar archivos planos de HTML, CSS y JavaScript en tiempo de compilación (build time), se conoce como:
+
+	- ✅ Static Site Generation (SSG)
+
+23. Uno de los siguientes servicios genera medidas de laboratorio y no reales:
+
+	- ✅ Lighthouse
+
+24. ¿Por qué se optimiza un sitio web?
+
+	- Para brindar mejores experiencias a los usuarios.
+	- Para generar mayor conversión.
+	- ✅ Todas las opciones.
+	- Para generar más ganancias al negocio.
+
+25. Cuando analizamos el resultado de un bundle, o empaquetador, de una aplicación JavaScript, el objetivo es:
+
+	- ✅ Entender qué librerías utilizamos y qué tamaño están ocupando para tomar mejores decisiones.
+
+26. La técnica que consiste en cargar el tamaño y resolución de imagen según el dispositivo y las condiciones de red del usuario, se conoce como:
+
+	- ✅ Responsive Loading
+
+27. Selecciona el argumento correcto sobre selectores de CSS y especificidad:
+
+	- ✅ Entre más complejo el selector más trabajo para el navegador.
+
+28. Un Content Delivery Network (CDN) es:
+
+	- ✅ Una red de servidores ubicados estratégicamente alrededor del mundo para disminuir la latencia de conexión desde otros lugares.
+
+29. La medida que nos ayuda a detectar el tiempo que se tarda en pintar el mayor elemento visible en la pantalla es:
+
+	- ✅ Large Contentful Paint (LCP).
+
+30. Son elementos bloqueantes en el Critical Rendering Path (CRP):
+
+	- ✅ CSS y JavaScript
+
+31. Dependencias en JavaScript y la librería "moment"; selecciona la afirmación correcta:
+
+	- ✅ Es una gran librería pero podríamos no necesitar todo lo que nos ofrece.
+
+32. La métrica más importante para un sitio web es:
+
+	- ✅ Todas pueden serlo y depende del negocio y su target de usuarios.
+
+33. El Critical CSS es una técnica que:
+
+	- ✅ Permite extraer el CSS necesario para renderizar la sección más visible de una ventana (Above the Fold).
+
+34. Generalmente, el formato web más adecuado para íconos es:
+
+	- ✅ SVG o WebFont
+
+35. El proceso de convertir código a píxeles en pantalla se conoce como:
+
+	- Large Contentful Paint (LCP).
+	- Landing Content Power (LCP).
+	- ✅ mal Layout y Paint.
+	- Critical Rendering Path (CRP).
+
+</details>
+
+✅ 
+🔥
+📌
