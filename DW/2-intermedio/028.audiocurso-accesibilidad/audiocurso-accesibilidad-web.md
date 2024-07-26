@@ -65,6 +65,125 @@ Los atributos **“aria”** _(**ARIA**=Accessible Rich Internet Applications)
 
 NOTA: hay que evitar usar excesivamente atributos “aria” a las etiquetas innecesariamente.
 
+## 7. Pruebas manuales
+
+- [Screen Reader Keyboard](https://dequeuniversity.com/screenreaders/)
+- [Web Accessibility](https://www.udacity.com/course/web-accessibility--ud891)
+
+## 8. Pruebas automáticas
+
+- [Accessibility Insights for web](https://chromewebstore.google.com/detail/accessibility-insights-fo/pbjjkligggfmakdaogkfomddhfmpjeni?hl=en)
+- [eslint-plugin-jsx-a11y](https://www.npmjs.com/package/eslint-plugin-jsx-a11y)
+- [axe Accessibility Linter](https://marketplace.visualstudio.com/items?itemName=deque-systems.vscode-axe-linter)
+- [Web accessibility](https://wave.webaim.org/)
+- [Axe](https://www.deque.com/axe/)
+- [Lighthouse](https://github.com/GoogleChrome/lighthouse)
+
+## 9. IBM: sistemas de diseño con accesibilidad
+
+- [Carbon](https://carbondesignsystem.com/)
+- [Carbon Design System](https://carbondesignsystem.com/guidelines/accessibility/overview/)
+
+## 10. Auditorias de accesibilidad
+
+## 11. Trabajo en equipo: educando sobre accesibilidad
+
+## 12. ¿Cómo seguir aprendiendo accesibilidad?
+
 ## Otros apuntes
 
 [Notas](https://docs.google.com/document/d/1KeMnNaJnbblMd1F3X6BM9Cq7iz1U9MaG24Nib_BdBaU/edit#heading=h.af2fcrphgifu)
+
+## Examen 📌
+<details>
+	<summary>Haz clic para ver los resultados 👀</summary>
+	<br/>
+
+1. ¿Al sitio web de qué famosa cantante se le hizo un juicio por falta de accesibilidad?
+
+	- ✅ Beyoncé
+
+2. ¿Cuál es el mejor texto alternativo de un logo que se usa como enlace para volver a la página de inicio?
+
+	- 
+
+a ✅ mal
+El nombre de la empresa.
+
+b quizá 
+Ir la inicio.
+
+c
+Logo.
+
+3. ¿Qué podemos hacer si el estilo del foco predeterminado de los navegadores no le gusta a mi cliente?
+
+	- ✅ Modificar el estilo de foco con CSS.
+
+4. Debes asegurarte de tener la mayor cantidad de código cubierto por unit tests o pruebas unitarias. ¿Cuál estrategia seguirías?
+
+	- ✅ Usar jest y definir un coverage alto.
+
+5. ¿Es indispensable conseguir una calificación de 100/100 al usar Lighthouse o web.dev?
+
+	- ✅ Falso
+
+6. ¿Cómo logramos priorizar eficazmente los issues de accesibilidad que debemos tener en cuenta?
+
+	- ✅ Dependiendo de su nivel de impacto y la cantidad de esfuerzo que requieran.
+
+7. ¿El atributo aria-label sobrescribe la información original del elemento?
+
+	- ✅  Verdadero
+
+8. ¿La semántica surgió con la llegada de HTML5?
+
+	- ✅ Falso
+
+9. ¿Qué herramienta debemos utilizar para verificar que el orden de navegación sea el correcto?
+
+	- ✅ Navegación por teclado.
+
+10. ¿Cuándo debemos encarar la accesibilidad?
+
+	- ✅ Durante todas las etapas del proyecto.
+
+11. Eres la encargada o encargado del "Diario Diabólico". ¿Cómo podrías haber evitado romper la navegación para los usuarios de lectores de pantalla?
+
+	- ✅ Probando mi código con un lector de pantalla antes de enviar cambios a producción.
+
+12. Según la Organización Mundial de la Salud, ¿qué porcentaje de personas en el mundo sufren de algún tipo de discapacidad?
+
+
+a ✅ mal
+20%
+
+b quizá
+15%
+
+c
+8%
+
+d
+12%
+
+13. ¿Qué debemos buscar para saber si el contraste de dos colores es aceptable?
+
+	- ✅ La diferencia en la luminosidad de cada color.
+
+14. ¿Qué técnicas usarías para que más personas en tu empresa puedan ayudar a arreglar problemas de accesibilidad?
+
+	- Hablar de accesibilidad en reuniones de planning, para incorporarlo a nuestro workflow diario.
+	- ✅ Todas las respuestas son correctas.
+	- Ayudar a brindar talleres de capacitación en mi empresa.
+	- Pair programming.
+
+15. ¿Podemos usar nuestro design system como un paquete de NPM común y corriente?
+
+	- ✅ Verdadero
+
+</details>
+
+✅ 
+🔥
+📌

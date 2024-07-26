@@ -18,6 +18,18 @@
                 "source": true
               }
             }
+          },
+          {
+            "id": "b58e2883e9a1545a",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "DW/2-intermedio/027.optimizacion-web/web-optimization.md",
+                "mode": "source",
+                "source": true
+              }
+            }
           }
         ]
       }
@@ -150,10 +162,10 @@
   },
   "active": "b850d075e379f8c6",
   "lastOpenFiles": [
+    "DW/2-intermedio/027.optimizacion-web/web-optimization.md",
     "DW/2-intermedio/028.audiocurso-accesibilidad/audiocurso-accesibilidad-web.md",
     "DW/2-intermedio/028.audiocurso-accesibilidad",
     "DW/2-intermedio/014.api-rest-js/3.api-rest-js-performance/3.api-rest-js-performance.md",
-    "DW/2-intermedio/027.optimizacion-web/web-optimization.md",
     "DW/2-intermedio/027.optimizacion-web/resources/img/28.csr-ssr.jpg",
     "DW/2-intermedio/027.optimizacion-web/resources/img/28.csr-ssr.jpg.crdownload",
     "DW/1-basico/006-html-css/1-html/5.bem.md",
