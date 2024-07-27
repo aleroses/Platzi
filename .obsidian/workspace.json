@@ -31,8 +31,7 @@
               }
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -99,7 +98,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "DW/2-intermedio/028.accesibilidad/0.audiocurso-accesibilidad-web.md",
+                "file": "DW/2-intermedio/028.accesibilidad/1.accesibilidad-web.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -116,7 +115,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "DW/2-intermedio/028.accesibilidad/0.audiocurso-accesibilidad-web.md",
+                "file": "DW/2-intermedio/028.accesibilidad/1.accesibilidad-web.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -139,7 +138,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "DW/2-intermedio/028.accesibilidad/0.audiocurso-accesibilidad-web.md"
+                "file": "DW/2-intermedio/028.accesibilidad/1.accesibilidad-web.md"
               }
             }
           }
@@ -161,12 +160,14 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "7be716abd0f837d8",
+  "active": "b850d075e379f8c6",
   "lastOpenFiles": [
+    "DW/2-intermedio/028.accesibilidad/sources/22.color-aaa.png",
+    "DW/2-intermedio/028.accesibilidad/sources/21.color-aaa.png",
+    "DW/2-intermedio/028.accesibilidad/0.audiocurso-accesibilidad-web.md",
     "DW/2-intermedio/028.accesibilidad/1.accesibilidad-web.md",
     "DW/2-intermedio/028.accesibilidad/sources/11.accessibility-tree.png",
     "DW/2-intermedio/028.accesibilidad/sources",
-    "DW/2-intermedio/028.accesibilidad/0.audiocurso-accesibilidad-web.md",
     "DW/2-intermedio/027.optimizacion-web/web-optimization.md",
     "DW/2-intermedio/028.accesibilidad",
     "DW/2-intermedio/014.api-rest-js/3.api-rest-js-performance/3.api-rest-js-performance.md",
@@ -187,7 +188,6 @@
     "DW/2-intermedio/027.optimización-web/resources/img/7.layout-paint.png.crdownload",
     "DW/2-intermedio/027.optimizacion-web/resources/img/7.render-tree.png",
     "DW/2-intermedio/027.optimización-web/resources/img/7.render-tree.png.crdownload",
-    "DW/2-intermedio/027.optimizacion-web/resources/img/7.dom+cssom.png",
     "DW/2-intermedio/027.optimización-web/resources/img/6.dom+cssom.png.crdownload",
     "DW/2-intermedio/019.empaquetadores/2.vite.md",
     "DW/2-intermedio/023.SPA-js-vanilla/spa-js-vanilla.md",
