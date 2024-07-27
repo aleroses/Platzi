@@ -13,19 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "DW/2-intermedio/028.audiocurso-accesibilidad/audiocurso-accesibilidad-web.md",
-                "mode": "source",
-                "source": true
-              }
-            }
-          },
-          {
-            "id": "b58e2883e9a1545a",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "DW/2-intermedio/027.optimizacion-web/web-optimization.md",
+                "file": "DW/2-intermedio/028.accesibilidad/1.accesibilidad-web.md",
                 "mode": "source",
                 "source": true
               }
@@ -98,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "DW/2-intermedio/028.audiocurso-accesibilidad/audiocurso-accesibilidad-web.md",
+                "file": "DW/2-intermedio/028.accesibilidad/1.accesibilidad-web.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -115,7 +103,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "DW/2-intermedio/028.audiocurso-accesibilidad/audiocurso-accesibilidad-web.md",
+                "file": "DW/2-intermedio/028.accesibilidad/1.accesibilidad-web.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -138,7 +126,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "DW/2-intermedio/028.audiocurso-accesibilidad/audiocurso-accesibilidad-web.md"
+                "file": "DW/2-intermedio/028.accesibilidad/1.accesibilidad-web.md"
               }
             }
           }
@@ -162,9 +150,10 @@
   },
   "active": "b850d075e379f8c6",
   "lastOpenFiles": [
+    "DW/2-intermedio/028.accesibilidad/0.audiocurso-accesibilidad-web.md",
+    "DW/2-intermedio/028.accesibilidad/1.accesibilidad-web.md",
     "DW/2-intermedio/027.optimizacion-web/web-optimization.md",
-    "DW/2-intermedio/028.audiocurso-accesibilidad/audiocurso-accesibilidad-web.md",
-    "DW/2-intermedio/028.audiocurso-accesibilidad",
+    "DW/2-intermedio/028.accesibilidad",
     "DW/2-intermedio/014.api-rest-js/3.api-rest-js-performance/3.api-rest-js-performance.md",
     "DW/2-intermedio/027.optimizacion-web/resources/img/28.csr-ssr.jpg",
     "DW/2-intermedio/027.optimizacion-web/resources/img/28.csr-ssr.jpg.crdownload",
@@ -206,7 +195,6 @@
     "DW/1-basico/015-figma/figma.md",
     "DW/2-intermedio/vim/Personal-configuration/vimrc.md",
     "DW/2-intermedio/vim/Personal-configuration/vimrc-plug.md",
-    "DW/1-basico/023.tailwind-2-y-3-basico/tailwind-basico.md",
-    "DW/1-basico/012-css-grid-layout/grid-layout.md"
+    "DW/1-basico/023.tailwind-2-y-3-basico/tailwind-basico.md"
   ]
 }
