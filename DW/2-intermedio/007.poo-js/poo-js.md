@@ -781,6 +781,8 @@ En este ejemplo, `createUser` y `processUser` utilizan el patrón RORO para reci
 
 Además, usamos `= {}` para proporcionar un valor predeterminado a los parámetros desestructurados. Esto garantiza que si no se proporciona ningún argumento al llamar a la función, no se producirá un error.
 
+[Elegant patterns in modern JavaScript: RORO](https://www.freecodecamp.org/news/elegant-patterns-in-modern-javascript-roro-be01e7669cbd/)
+
 #### Asignación por desestructuración
 
 La asignación por desestructuración, también conocida como "destructuring assignment" en inglés, es una característica de JavaScript que permite extraer valores de arrays o propiedades de objetos y asignarlos a variables individuales de una manera más concisa.
