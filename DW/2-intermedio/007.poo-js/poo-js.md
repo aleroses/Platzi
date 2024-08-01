@@ -16,7 +16,7 @@ JavaScript tiene características que lo hacen parecer roto, pero tienen un moti
     3.  Podemos crear objetos a través de funciones
         1.  Podemos utilizar o no la palabra `new`
 -   Al utilizar la palabra `new` ya no estaríamos creando objetos literales sino instancias de prototipos
--   Para crear prototipos podemos implementar tanto la sintaxis de prototipos como la sintaxis de clases
+-   Para crear prototipos podemos implementar tanto la sintaxis de prototipos como la sintaxis de clases.
 
 Normalmente, los lenguajes de programación son orientados a objetos y basados en clases. JS es orientado a objetos y basado en prototipos. 
 
@@ -528,7 +528,7 @@ function Dog(name, breed, color){
 };
 ```
 
-Cuando creamos la `Dog`función constructora, no fue el único objeto que creamos. ¡Automáticamente, también creamos otro objeto, llamado _prototipo_ ! De forma predeterminada, este objeto contiene una propiedad _constructora_`Dog` , que en este caso es simplemente una referencia a la función constructora original.
+Cuando creamos la `Dog`función constructora, no fue el único objeto que creamos. ¡Automáticamente, también creamos otro objeto, llamado _prototipo_! De forma predeterminada, este objeto contiene una propiedad _constructora_`Dog`, que en este caso es simplemente una referencia a la función constructora original.
 
 ![](https://i.postimg.cc/B6Mz6NS6/05-1-herencia.gif)
 
@@ -727,43 +727,59 @@ Usando { } el orden de los argumentos ingresados no importa, incluso pueden esta
 
 #### Patrón RORO
 
-El patrón RORO (Resource Ownership and Initialization) es una técnica utilizada en JavaScript para gestionar la propiedad y la inicialización de recursos, como conexiones de bases de datos, archivos o cualquier otro recurso que requiera una inicialización o liberación adecuada.
+El patrón RORO (Receive an Object, Return an Object) es un patrón de diseño en programación orientada a objetos que enfatiza el uso de objetos para pasar y devolver múltiples parámetros de funciones o métodos. Este enfoque puede hacer que el código sea más legible y flexible, especialmente cuando hay muchos parámetros o cuando algunos de ellos son opcionales.
 
-El patrón RORO se basa en el principio de que quien inicializa un recurso es responsable de liberarlo cuando ya no se necesite. Esto ayuda a evitar fugas de memoria y otros problemas relacionados con la gestión de recursos.
+Aquí te explico cómo funciona el patrón RORO con ejemplos en JavaScript:
 
-A continuación, te mostraré un ejemplo sencillo de cómo se utiliza el patrón RORO en JavaScript:
+##### Ventajas del Patrón RORO
+
+1. **Claridad:** Es más claro y fácil de entender qué valores se están pasando a la función y qué se espera de vuelta.
+2. **Flexibilidad:** Es fácil agregar o quitar parámetros sin afectar la firma de la función.
+3. **Parámetros Opcionales:** Es más sencillo manejar parámetros opcionales ya que no necesitas preocuparte por el orden de los argumentos.
+4. **Desestructuración:** Permite la desestructuración, lo que hace que el código sea más limpio y legible.
+
+##### Ejemplo
+
+Supongamos que tenemos una función para crear un usuario y otra para procesar sus datos.
 
 ```javascript
-function Resource() {
-  // Inicialización del recurso
-  console.log("Recurso inicializado");
-
-  // Método para liberar el recurso
-  this.release = function() {
-    console.log("Recurso liberado");
+// Crear un usuario: desestructuración {}
+function createUser({ name, age, email, address } = {}) {
+  return {
+    name: name || "Unknown",
+    age: age || 0,
+    email: email || "No Email",
+    address: address || "No Address",
   };
 }
 
-function doSomethingWithResource() {
-  // Crear una instancia del recurso
-  var resource = new Resource();
+// Procesar los datos del usuario
+function processUser({ name, age, email, address } = {}) {
+  const processedName = name.toUpperCase();
+  const isAdult = age >= 18;
+  const maskedEmail = email.replace(
+    /(.{2})(.*)(@.*)/,
+    "$1***$3"
+  );
 
-  // Realizar operaciones con el recurso
-  console.log("Haciendo algo con el recurso...");
-
-  // Liberar el recurso cuando ya no se necesite
-  resource.release();
+  return { processedName, isAdult, maskedEmail, address };
 }
 
-// Ejemplo de uso
-doSomethingWithResource();
+const user = createUser({
+  name: "John",
+  age: 30,
+  email: "john@example.com",
+  address: "123 Main St",
+});
+console.log(user);
+
+const processedUser = processUser(user);
+console.log(processedUser);
 ```
 
-En el ejemplo anterior, la función `Resource` se encarga de inicializar el recurso y proporciona un método `release` para liberarlo. La función `doSomethingWithResource` crea una instancia del recurso, realiza alguna operación y luego lo libera llamando al método `release` del recurso.
+En este ejemplo, `createUser` y `processUser` utilizan el patrón RORO para recibir y devolver objetos, lo que hace que el código sea más fácil de mantener y expandir.
 
-Al seguir el patrón RORO, garantizas que el recurso se inicializa correctamente y se libera adecuadamente cuando ya no se necesita, evitando posibles problemas de gestión de recursos.
-
-Es importante tener en cuenta que el patrón RORO es solo una convención y no una característica incorporada en JavaScript. Depende de los desarrolladores seguir esta convención para gestionar adecuadamente los recursos en sus aplicaciones.
+Además, usamos `= {}` para proporcionar un valor predeterminado a los parámetros desestructurados. Esto garantiza que si no se proporciona ningún argumento al llamar a la función, no se producirá un error.
 
 #### Asignación por desestructuración
 

@@ -4,29 +4,29 @@
     "type": "split",
     "children": [
       {
-        "id": "d35ede46eba0d1c9",
+        "id": "23b1badb390883f7",
         "type": "tabs",
         "children": [
           {
-            "id": "b850d075e379f8c6",
+            "id": "887926a296ad4aa9",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "DW/2-intermedio/028.accesibilidad/1.accesibilidad-web.md",
+                "file": "DW/2-intermedio/007.poo-js/poo-js.md",
                 "mode": "source",
                 "source": true
               }
             }
           },
           {
-            "id": "7be716abd0f837d8",
+            "id": "e8522601adc7c5e8",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "DW/2-intermedio/028.accesibilidad/0.audiocurso-accesibilidad-web.md",
-                "mode": "source",
+                "file": "DW/2-intermedio/023.SPA-js-vanilla/spa-js-vanilla.md",
+                "mode": "preview",
                 "source": true
               }
             }
@@ -98,7 +98,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "DW/2-intermedio/028.accesibilidad/1.accesibilidad-web.md",
+                "file": "DW/2-intermedio/007.poo-js/poo-js.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -115,7 +115,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "DW/2-intermedio/028.accesibilidad/1.accesibilidad-web.md",
+                "file": "DW/2-intermedio/007.poo-js/poo-js.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -138,7 +138,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "DW/2-intermedio/028.accesibilidad/1.accesibilidad-web.md"
+                "file": "DW/2-intermedio/007.poo-js/poo-js.md"
               }
             }
           }
@@ -160,8 +160,10 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "b850d075e379f8c6",
+  "active": "887926a296ad4aa9",
   "lastOpenFiles": [
+    "DW/2-intermedio/023.SPA-js-vanilla/spa-js-vanilla.md",
+    "DW/2-intermedio/007.poo-js/poo-js.md",
     "DW/2-intermedio/028.accesibilidad/0.audiocurso-accesibilidad-web.md",
     "DW/2-intermedio/028.accesibilidad/1.accesibilidad-web.md",
     "DW/2-intermedio/028.accesibilidad/sources/23.icons.webp",
@@ -189,7 +191,6 @@
     "DW/2-intermedio/027.optimización-web/resources/img/7.layout-paint.png.crdownload",
     "DW/2-intermedio/027.optimización-web/resources/img/7.render-tree.png.crdownload",
     "DW/2-intermedio/019.empaquetadores/2.vite.md",
-    "DW/2-intermedio/023.SPA-js-vanilla/spa-js-vanilla.md",
     "DW/2-intermedio/019.empaquetadores/1.intro-empaquetadores-web.md",
     "DW/2-intermedio/025.debugging-devtools/debugging-devtools.md",
     "DW/1-basico/005-git-github/gh-pages.md",
