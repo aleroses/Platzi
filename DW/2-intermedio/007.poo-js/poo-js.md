@@ -1032,14 +1032,24 @@ La solución debería tener un input y output como los siguientes:
 Input
 
 ```js
-  const data = {
-    nombre: "Los Jacks",
-    generos: ["rock", "pop", "post-punk"],
-    integrantes: [],
-  }
-  const banda = new Banda(data)
-  banda.agregarIntegrante(new Integrante({ nombre: "Erik", instrumento: "Guitarra" }))
-  banda.agregarIntegrante(new Integrante({ nombre: "Paul", instrumento: "Bateria" }))
+const data = {
+  nombre: "Los Jacks",
+  generos: ["rock", "pop", "post-punk"],
+  integrantes: [],
+};
+
+const banda = new Banda(data);
+
+banda.agregarIntegrante(
+  new Integrante({
+    nombre: "Erik",
+    instrumento: "Guitarra",
+  })
+);
+
+banda.agregarIntegrante(
+  new Integrante({ nombre: "Paul", instrumento: "Bateria" })
+);
 ```
 
 Output
