@@ -1163,7 +1163,7 @@ band_one.new_member(new Members({name: 'Iva', instrument: 'drums'}));
 band_one.new_member(new Members({name: 'Ully', instrument: 'drums'})); 
 ```
 
-### Solución 02
+### Solución 03
 
 ```js
 class Band {
@@ -1176,7 +1176,6 @@ class Band {
   addMember({ name, instrument } = {}) {
     // No debe dejar agregar más de un baterista
 
-    console.log("View:::::::::::::::::::::::::: ");
     // Convertir el nombre del instrumento a minúsculas para la comparación
     let instruLowercase = instrument.toLowerCase();
 
@@ -1191,7 +1190,6 @@ class Band {
     }
 
     // Agregar el miembro a la banda
-
     this.members = [
       ...this.members,
       { name, instrument: instruLowercase },
