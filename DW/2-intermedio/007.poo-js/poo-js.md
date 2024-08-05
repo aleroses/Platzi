@@ -1163,6 +1163,76 @@ band_one.new_member(new Members({name: 'Iva', instrument: 'drums'}));
 band_one.new_member(new Members({name: 'Ully', instrument: 'drums'})); 
 ```
 
+### Solución 02
+
+```js
+class Band {
+  constructor({ name, genres = [] } = {}) {
+    this.name = name;
+    this.genres = genres;
+    this.members = [];
+  }
+
+  addMember({ name, instrument } = {}) {
+    // No debe dejar agregar más de un baterista
+
+    console.log("View:::::::::::::::::::::::::: ");
+    // Convertir el nombre del instrumento a minúsculas para la comparación
+    let instruLowercase = instrument.toLowerCase();
+
+    let drumsFound = this.members.some((member) => {
+      return member.instrument === "battery";
+    });
+
+    // Verificar si ya existe un baterista en la banda
+    if (instruLowercase === "battery" && drumsFound) {
+      console.log("A drummer already exists");
+      return;
+    }
+
+    // Agregar el miembro a la banda
+
+    this.members = [
+      ...this.members,
+      { name, instrument: instruLowercase },
+    ];
+  }
+}
+
+class Members {
+  constructor({ name, instrument } = {}) {
+    this.name = name;
+    this.instrument = instrument;
+  }
+}
+
+const bandOne = new Band({
+  name: "The hooks",
+  genres: ["Rock"],
+});
+
+const memberOne = new Members({
+  name: "Ale Roses",
+  instrument: "Guitar",
+});
+
+const memberTwo = new Members({
+  name: "Diana",
+  instrument: "Battery",
+});
+
+const memberThree = new Members({
+  name: "Daniel",
+  instrument: "Battery",
+});
+
+bandOne.addMember(memberOne);
+bandOne.addMember(memberTwo);
+bandOne.addMember(memberThree);
+
+export { bandOne, memberOne };
+```
+
 #### Método Every()
 
 El método `every()` en JavaScript se utiliza en arrays para comprobar si todos los elementos del array cumplen con una condición específica. La sintaxis del método `every()` es la siguiente:
