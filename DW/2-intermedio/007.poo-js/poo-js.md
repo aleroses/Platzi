@@ -1064,7 +1064,7 @@ Output
   ]}
 ```
 
-### Solución 01: Hecho para Platzi 
+#### Solución 01: Hecho para Platzi 
 
 ```js
 class Banda {
@@ -1110,7 +1110,7 @@ export {
 }
 ```
 
-### Solución 02 
+#### Solución 02 
 
 ```js
 class Band{
@@ -1163,7 +1163,7 @@ band_one.new_member(new Members({name: 'Iva', instrument: 'drums'}));
 band_one.new_member(new Members({name: 'Ully', instrument: 'drums'})); 
 ```
 
-### Solución 03
+#### Solución 03
 
 ```js
 class Band {
@@ -1277,6 +1277,62 @@ const todosMayoresDeEdad = personas.every(function(persona) {
 console.log(todosMayoresDeEdad); // true
 ```
 
+#### Método some()
+
+El método `some()` en JavaScript se utiliza para comprobar si al menos un elemento en un array cumple con una condición específica. Este método toma una función de prueba como argumento y devuelve `true` si la función de prueba devuelve `true` para al menos un elemento del array; de lo contrario, devuelve `false`.
+
+##### Sintaxis
+```javascript
+array.some(callback(element[, index[, array]])[, thisArg])
+```
+
+- **callback**: Función que se ejecuta en cada elemento del array, con los siguientes argumentos:
+  - **element**: El elemento actual que está siendo procesado en el array.
+  - **index** (opcional): El índice del elemento actual que está siendo procesado en el array.
+  - **array** (opcional): El array sobre el que se llamó el método `some`.
+
+- **thisArg** (opcional): Valor que se usa como `this` al ejecutar el callback.
+
+##### Ejemplo
+
+Supongamos que tenemos un array de números y queremos verificar si hay algún número mayor que 10.
+
+```javascript
+const numbers = [1, 3, 5, 7, 9, 11];
+
+const hasNumberGreaterThanTen = numbers.some(number => number > 10);
+
+console.log(hasNumberGreaterThanTen); // true
+```
+
+En este ejemplo, `some()` pasa por cada número en el array y aplica la función `number => number > 10`. Encuentra que 11 es mayor que 10, por lo tanto, devuelve `true`.
+
+##### Ejemplo con objetos
+
+Podemos usar `some()` con arrays de objetos también. Supongamos que tenemos una lista de usuarios y queremos verificar si hay algún usuario que tenga más de 18 años.
+
+```javascript
+const users = [
+  { name: 'Alice', age: 16 },
+  { name: 'Bob', age: 20 },
+  { name: 'Charlie', age: 15 }
+];
+
+const hasAdult = users.some(user => user.age > 18);
+
+console.log(hasAdult); // true
+```
+
+En este caso, `some()` pasa por cada objeto en el array y aplica la función `user => user.age > 18`. Encuentra que Bob tiene 20 años, lo cual es mayor que 18, y por lo tanto, devuelve `true`.
+
+##### Consideraciones
+
+- `some()` no modifica el array original.
+- `some()` ejecuta la función de prueba para los elementos del array hasta que encuentre uno que devuelva `true`. Si lo encuentra, deja de ejecutar la función y devuelve `true`.
+- Si el array está vacío, `some()` devuelve `false`.
+
+El método `some()` es útil cuando necesitas comprobar si algún elemento en el array cumple con un criterio específico sin tener que recorrer todo el array innecesariamente.
+
 ## Pilares de la POO: abstracción y polimorfismo
 
 ### **9.** Qué es abstracción 
@@ -1299,7 +1355,7 @@ La ventaja principal de la abstracción en JS POO es que permite escribir códig
 // Prototipo para Schools
 // 1. Crear una clase para escuelas (Learnin_path()) 
 // 2. Crear una instancia para cada escuela (escuela_dw) Pupil
-// 3. Revisar que no se repitan coursos dentro de las escuelas
+// 3. Revisar que no se repitan courses dentro de las escuelas
 
 class Classes{
     constructor({topic}){
@@ -1567,6 +1623,16 @@ Cuando hablamos de **encapsulamiento **hablamos de:
 
 
 ### **12.** Getters y setters en JavaScript
+
+En la programación orientada a objetos (POO) en JavaScript, los `getters` y `setters` son métodos que permiten acceder y modificar las propiedades de un objeto de manera controlada. Proporcionan una manera de encapsular el acceso a las propiedades, lo que puede ser útil para realizar validaciones, calcular valores sobre la marcha o mantener la consistencia interna del objeto.
+
+#### Getters
+
+Un `getter` es un método que **obtiene el valor de una propiedad.** Se define usando la palabra clave `get`.
+
+#### Setters
+
+Un setter es un método que **establece el valor de una propiedad**. Se define usando la palabra clave `set`.
 
 ```js
 class Course{
