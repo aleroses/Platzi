@@ -1748,9 +1748,10 @@ console.log(persona.edad); // 25
 En cuanto a si se recomienda más usar `#` o `_` para definir propiedades privadas en JavaScript, es importante tener en cuenta que `#` es una nueva característica introducida en la versión ES2020 de JavaScript, que todavía no es compatible con todos los navegadores y entornos de ejecución. Por lo tanto, en la práctica, es posible que sea necesario seguir utilizando `_` para definir propiedades privadas en JavaScript. Sin embargo, `#` se considera la forma recomendada de definir propiedades privadas en JavaScript, ya que es más explícito y menos propenso a conflictos de nombres con otras propiedades y métodos.
 
 #### ES2020 `#` 
+
 En ES2020 se introdujo la sintaxis campos privados en las clases. Se hace uso de un numeral como prefijo del nombre de la variable.  
    
-¿Cuál sería la ventaja de usar esto? Que no existe la posibilidad de que alguien modifique la variable privada desde la instancia a menos de que use el setter que le dimos.  
+¿Cuál sería la ventaja de usar esto? Que no existe la posibilidad de que alguien modifique la variable privada desde la instancia a menos de que use el setter que le dimos.
    
 Con el ejemplo en esta clase, quedaría así:
 
@@ -1766,11 +1767,11 @@ class Course{
     this.classes = classes;
   }
 
-  getname() {
-    returnthis.#name;
+  get name() {
+    return this.#name;
   }
 
-  setname(nuevoNombrecito) {
+  set name(nuevoNombrecito) {
     if (nuevoNombrecito === 'Bad Coding Course') {
       console.error('Hey! Te wa madrear...');
     } else {
@@ -1779,6 +1780,99 @@ class Course{
   }
 }
 ```
+
+Podemos usar la notación de campos privados con el prefijo `#` para definir propiedades privadas dentro de una clase. Esto garantiza que estas propiedades no puedan ser accedidas directamente desde fuera de la clase. Usar `#` junto con getters y setters es una práctica común para encapsular datos y proporcionar acceso controlado a estas propiedades privadas.
+
+##### Ejemplo usando `#` para propiedades privadas con getters y setters
+
+```js
+class Person {
+  #name;
+  #age;
+
+  constructor(name, age) {
+    this.#name = name;
+    this.#age = age;
+  }
+
+  // Getter para la propiedad 'name'
+  get name() {
+    return this.#name;
+  }
+
+  // Setter para la propiedad 'name'
+  set name(newName) {
+    this.#name = newName;
+  }
+
+  // Getter para la propiedad 'age'
+  get age() {
+    return this.#age;
+  }
+
+  // Setter para la propiedad 'age'
+  set age(newAge) {
+    if (newAge > 0) {
+      this.#age = newAge;
+    } else {
+      console.log('Age must be a positive number');
+    }
+  }
+}
+
+const person = new Person('Alice', 30);
+console.log(person.name); // Alice
+person.name = 'Bob';
+console.log(person.name); // Bob
+
+console.log(person.age);  // 30
+person.age = 25;
+console.log(person.age);  // 25
+
+person.age = -5; // Age must be a positive number
+console.log(person.age);  // 25 (no cambia porque la validación falló)
+```
+
+##### Ventajas de usar `#` para propiedades privadas
+
+1. **Encapsulación Fuerte**: Las propiedades privadas con `#` no pueden ser accedidas ni modificadas directamente fuera de la clase, lo que proporciona una encapsulación más fuerte que las convenciones basadas en guiones bajos (`_`).
+    
+2. **Consistencia**: Los datos privados garantizan que la lógica interna de la clase no se vea afectada por accesos o modificaciones directas desde el exterior, manteniendo la consistencia del objeto.
+    
+3. **Autodocumentación**: Usar `#` hace explícito que estas propiedades son privadas y no deben ser accedidas directamente, mejorando la legibilidad del código.
+    
+
+##### Comparación entre propiedades privadas con `#` y convenciones de guiones bajos (`_`)
+
+- **Propiedades con guiones bajos (`_`)**: Son una convención que sugiere que estas propiedades no deben ser accedidas directamente desde fuera de la clase, pero técnicamente aún pueden ser accedidas y modificadas.
+    
+- **Propiedades privadas con `#`**: Son verdaderamente privadas y no pueden ser accedidas ni modificadas desde fuera de la clase. Intentar hacerlo resultará en un error.
+    
+
+##### Ejemplo de intento de acceso a una propiedad privada con `#`
+
+```js
+class Person {
+  #name;
+
+  constructor(name) {
+    this.#name = name;
+  }
+
+  get name() {
+    return this.#name;
+  }
+}
+
+const person = new Person('Alice');
+console.log(person.name); // Alice
+
+console.log(person.#name); // SyntaxError: Private field '#name' must be declared in an enclosing class
+```
+
+Este ejemplo muestra que intentar acceder a `#name` directamente fuera de la clase resulta en un error de sintaxis, asegurando así que la propiedad se mantenga privada.
+
+Usar `#` para definir propiedades privadas en conjunto con getters y setters es una forma efectiva y segura de encapsular datos en JavaScript y proporcionar acceso controlado a estos datos.
 
 ### **13.** Módulos de ECMAScript 6
 
