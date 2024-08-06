@@ -1755,7 +1755,7 @@ En ES2020 se introdujo la sintaxis campos privados en las clases. Se hace uso de
 Con el ejemplo en esta clase, quedaría así:
 
 ```javascript
-classCourse{
+class Course{
   #name;
 
   constructor({
