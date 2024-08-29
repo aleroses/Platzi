@@ -248,8 +248,8 @@ Cuando el componente es movido a un nuevo DOM, básicamente cuando es pintado de
 ### Gráfico del Ciclo de Vida
 
 ```mermaid
-graph TD
-  A[Constructor]
+flowchart TD
+  A[constructor]
   B[connectedCallback]
   C[attributeChangedCallback]
   D[disconnectedCallback]
@@ -262,17 +262,4 @@ graph TD
   E
 ```
 
-Este gráfico ilustra cómo se inicia el ciclo de vida con el `constructor`, seguido por la posible conexión al DOM (`connectedCallback`), la respuesta a cambios en atributos (`attributeChangedCallback`), la desconexión del DOM (`disconnectedCallback`), y finalmente el manejo de adopciones a nuevos documentos (`adoptedCallback`).
-
-- **constructor:** 
-- **connectedCallback:** 
-- **attributeChangedCallback:** 
-- **disconnectedCallback:** 
-
-. Más información sobre este lifecycle aquí (en español): . [Usando callbacks de ciclo de vida](https://developer.mozilla.org/es/docs/Web/Web_Components/Using_custom_elements#usando_callbacks_de_ciclo_de_vida) .
-
-![lifecyclewc.png](https://static.platzi.com/media/user_upload/lifecyclewc-9b0b10bc-7515-4708-9f85-2ad28ff3d71a.jpg)
-
-80
-
-Responder
+Más información sobre este lifecycle aquí (en español): . [Usando callbacks de ciclo de vida](https://developer.mozilla.org/es/docs/Web/Web_Components/Using_custom_elements#usando_callbacks_de_ciclo_de_vida) .
