@@ -155,4 +155,124 @@ En este ejemplo, el componente `video-control` encapsula un video y un botón de
 4. Interoperabilidad: Los frameworks y librerías no están hechos para coexistir entre ellos. Los Web Components sí.
 5. Consistencia: Gracias a la naturaleza reutilizable e interoperable de los Web Components ya no tendrás que crear los mismos componentes en diferentes frameworks o librerías.
 
-## 6. 
+## 6. Ciclo de vida de un componente
+
+El ciclo de vida de un Web Component en JavaScript incluye varias etapas clave, que permiten a los desarrolladores controlar lo que sucede en diferentes momentos de la existencia de un componente. Aquí te explico cada una de estas etapas:
+
+### 1. **Constructor**
+
+El constructor es la primera etapa en el ciclo de vida de un Web Component. Se llama cuando se crea una instancia del componente, ya sea de forma manual a través de JavaScript o cuando el navegador encuentra el elemento en el DOM por primera vez.
+
+- **Función principal:** Inicializar el componente, configurar su Shadow DOM (si es necesario) y establecer propiedades y estados iniciales.
+- **Ejemplo:**
+  ```javascript
+  class MyComponent extends HTMLElement {
+    constructor() {
+      super();
+      this.attachShadow({ mode: 'open' });
+      this.shadowRoot.innerHTML = `<p>Hello, World!</p>`;
+    }
+  }
+  ```
+
+Directamente desde el JavaScript Engine, el constructor nos servirá para definir y cargar todas las variables en memoria que necesitemos, **es mala práctica pintar el componente aquí**.
+
+### 2. **connectedCallback**
+
+El `connectedCallback` se ejecuta cuando el componente se adjunta al DOM del documento. Esto puede ocurrir cuando el componente se inserta por primera vez en la página o cuando se mueve de un lugar a otro dentro del DOM.
+
+- **Función principal:** Ejecutar código que dependa de que el componente esté en el DOM, como iniciar eventos, actualizar la interfaz de usuario, o hacer solicitudes de red.
+- **Ejemplo:**
+  ```javascript
+  class MyComponent extends HTMLElement {
+    connectedCallback() {
+      console.log('Component added to the DOM');
+    }
+  }
+  ```
+
+Cuando el componente ya está pintado dentro del DOM y podemos hacer uso de él.
+
+### 3. **attributeChangedCallback**
+
+Este método se llama cada vez que uno de los atributos observados del componente cambia. Para usarlo, debes especificar qué atributos quieres observar definiendo un getter estático llamado `observedAttributes`.
+
+- **Función principal:** Responder a los cambios en los atributos del componente, permitiendo que el componente actualice su estado o su interfaz en función de estos cambios.
+- **Ejemplo:**
+  ```javascript
+  class MyComponent extends HTMLElement {
+    static get observedAttributes() {
+      return ['data-value'];
+    }
+
+    attributeChangedCallback(name, oldValue, newValue) {
+      console.log(`Attribute ${name} changed from ${oldValue} to ${newValue}`);
+    }
+  }
+  ```
+
+Cuando un atributo de nuestro componente cambia.
+
+### 4. **disconnectedCallback**
+
+El `disconnectedCallback` se ejecuta cuando el componente se elimina del DOM. Esto puede ser útil para limpiar recursos o detener tareas que no son necesarias cuando el componente ya no está en la página.
+
+- **Función principal:** Limpiar recursos, detener timers, o desconectar listeners de eventos que se configuraron cuando el componente estaba en el DOM.
+- **Ejemplo:**
+  ```javascript
+  class MyComponent extends HTMLElement {
+    disconnectedCallback() {
+      console.log('Component removed from the DOM');
+    }
+  }
+  ```
+
+Cuando el componente se "destruye" o se quita del DOM.
+
+### 5. **adoptedCallback**
+
+El `adoptedCallback` se ejecuta cuando un componente es movido a un nuevo documento, como cuando se utiliza en un documento diferente al original (por ejemplo, si se mueve entre iframes).
+
+- **Función principal:** Adaptar el componente a su nuevo contexto, si es necesario.
+- **Ejemplo:**
+  ```javascript
+  class MyComponent extends HTMLElement {
+    adoptedCallback() {
+      console.log('Component moved to a new document');
+    }
+  }
+  ```
+
+Cuando el componente es movido a un nuevo DOM, básicamente cuando es pintado desde un iframe por ejemplo (esto ya no se suele hacer).
+
+### Gráfico del Ciclo de Vida
+
+```mermaid
+graph TD
+  A[Constructor]
+  B[connectedCallback]
+  C[attributeChangedCallback]
+  D[disconnectedCallback]
+  E[adoptedCallback]
+
+  A --> B
+  B --> C
+  C --> D
+  B --> D
+  E
+```
+
+Este gráfico ilustra cómo se inicia el ciclo de vida con el `constructor`, seguido por la posible conexión al DOM (`connectedCallback`), la respuesta a cambios en atributos (`attributeChangedCallback`), la desconexión del DOM (`disconnectedCallback`), y finalmente el manejo de adopciones a nuevos documentos (`adoptedCallback`).
+
+- **constructor:** 
+- **connectedCallback:** 
+- **attributeChangedCallback:** 
+- **disconnectedCallback:** 
+
+. Más información sobre este lifecycle aquí (en español): . [Usando callbacks de ciclo de vida](https://developer.mozilla.org/es/docs/Web/Web_Components/Using_custom_elements#usando_callbacks_de_ciclo_de_vida) .
+
+![lifecyclewc.png](https://static.platzi.com/media/user_upload/lifecyclewc-9b0b10bc-7515-4708-9f85-2ad28ff3d71a.jpg)
+
+80
+
+Responder
