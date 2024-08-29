@@ -262,4 +262,67 @@ flowchart TD
   E
 ```
 
-Más información sobre este lifecycle aquí (en español): . [Usando callbacks de ciclo de vida](https://developer.mozilla.org/es/docs/Web/Web_Components/Using_custom_elements#usando_callbacks_de_ciclo_de_vida) .
+Más información sobre este lifecycle aquí (en español):
+[Usando callbacks de ciclo de vida](https://developer.mozilla.org/es/docs/Web/Web_Components/Using_custom_elements#usando_callbacks_de_ciclo_de_vida) .
+
+## 7. Custom Elements
+
+```js
+class MyElement extends HTMLElement {
+  constructor() {
+    super();
+
+    this.p = document.createElement("p");
+  }
+
+  connectedCallback() {
+    this.p.textContent = "Hi world";
+    this.appendChild(this.p);
+  }
+}
+
+customElements.define("my-element", MyElement);
+```
+
+Otra forma:
+
+```js
+const template = document.createElement("div");
+template.innerHTML = `
+  <style>
+  .text {
+    color: red;
+  }
+
+  p {
+    color: blue;
+  }
+  </style>
+  <p class="text">Hi world</p>
+  <p>Hi world......</p>
+`;
+
+class MyElement extends HTMLElement {
+  constructor() {
+    super();
+
+    this.p = document.createElement("p");
+  }
+
+  connectedCallback() {
+    this.p.textContent = "Hi world";
+    this.appendChild(this.p);
+    this.append(template);
+  }
+}
+
+customElements.define("my-element", MyElement);
+```
+
+
+```js
+```
+
+
+```js
+```

@@ -150,6 +150,10 @@
   },
   "active": "8bb922931e89d8e8",
   "lastOpenFiles": [
+    "DW/2-intermedio/029.web-components/code/custom-elements/my-element.js",
+    "DW/2-intermedio/029.web-components/code/custom-elements/index.html",
+    "DW/2-intermedio/029.web-components/code/custom-elements",
+    "DW/2-intermedio/029.web-components/code",
     "DW/2-intermedio/029.web-components/web-components.md",
     "DW/2-intermedio/029.web-components",
     "DW/2-intermedio/007.poo-js/poo-js.md",
@@ -175,10 +179,7 @@
     "DW/2-intermedio/027.optimización-web/resources/img/9.network.png.crdownload",
     "DW/2-intermedio/027.optimizacion-web/resources/img/8.script-async.png",
     "DW/2-intermedio/027.optimización-web/resources/img/8.script-defer.png.crdownload",
-    "DW/2-intermedio/027.optimización-web/resources/img/8.script.png.crdownload",
     "others/anki/add-ons.md",
-    "DW/2-intermedio/027.optimización-web/resources/img/7.summary.png.crdownload",
-    "DW/2-intermedio/027.optimización-web/resources/img/7.layout-paint.png.crdownload",
     "DW/2-intermedio/019.empaquetadores/2.vite.md",
     "DW/2-intermedio/019.empaquetadores/1.intro-empaquetadores-web.md",
     "DW/2-intermedio/025.debugging-devtools/debugging-devtools.md",
@@ -194,7 +195,6 @@
     "DW/2-intermedio/003-ECMAScript/ECMAScript-historia-y-versiones-de-javascript.md",
     "DW/2-intermedio/017.tipos-funciones-avanzadas/ts-tipos-funciones.md",
     "DW/3-avanzado/2.vue.js/vue.js-intro/vue.js-intro.md",
-    "DW/1-basico/015-figma/figma.md",
-    "DW/2-intermedio/vim/Personal-configuration/vimrc.md"
+    "DW/1-basico/015-figma/figma.md"
   ]
 }
