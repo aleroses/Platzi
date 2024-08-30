@@ -309,21 +309,68 @@ En este punto ya generamos nuestra etiqueta, y podemos usarla en el HTML:
 
 Ahora vamos a empezar a definir los comportamientos de nuestro componente:
 
-`class MyElement extends HTMLElement {   constructor ( ) {     super();     // Creamos una etiqueta p     this.p = document.createElement('p');   }   // Creamos el método de conenxión   connectedCallback() {     // Introducimos texto a nuestra etiqueta     this.p.textContent = 'Hola mundo';     // Agregamos esta etiqueta como hijo de <my-element>     this.appendChild(this.p)   } } customElements.define('my-element', MyElement);`
+```js
+class MyElement extends HTMLElement {
+  constructor() {
+    super();
+    // Creamos una etiqueta p
+    this.p = document.createElement("p");
+  }
+  // Creamos el método de conenxión
+  connectedCallback() {
+    // Introducimos texto a nuestra etiqueta
+    this.p.textContent = "Hola mundo";
+    // Agregamos esta etiqueta como hijo de <my-element>
+    this.appendChild(this.p);
+  }
+}
 
-Si vemos nuestro archivo en el navegador podremos ver ya nuestro “Hola mundo”.
+customElements.define("my-element", MyElement);
+```
+
+Si vemos nuestro archivo en el navegador podremos ver nuestro “Hola mundo”.
 
 ### Complejidad de componente
 
 Podemos añadir muchas más cosas a nuestro componente, tales como estilos y demás, veamos un ejemplo.
 
-``// Creamos un div const template = document.createElement('div'); /* Dentro de este div podemos escribir estilos y demás cosas, recordemos qu estos estilos no harán colición con otros estilos debido a que los estilos que escribamos aquí solo aplican a nuestro  componente y NO a otros elementos externos a este */ template.innerHTML = `   <style>   p {    color: #9C27B0  }   .text {    font-size: 1rem;    color: #212121;  }   </style>   <p>Hola mundo 2</p>   <p class="text">Texto de ejemplo</p> ` class MyElement extends HTMLElement {   constructor ( ) {     super();     this.p = document.createElement('p');   }   connectedCallback() {     this.p.textContent = 'Hola mundo';     this.appendChild(this.p);     // Añadimos nuestro template a nuestro componente como hijo     this.appendChild(template)   } } customElements.define('my-element', MyElement);``
+```js
+// Creamos un div
+const template = document.createElement("div");
+/* Dentro de este div podemos escribir estilos y demás cosas, recordemos que estos estilos no harán colición con otros estilos debido a que los estilos que escribamos aquí solo aplican a nuestro  componente y NO a otros elementos externos a este */
+template.innerHTML = `
+  <style>
+    p {
+      color: #9C27B0
+    }
+    .text {
+      font-size: 1rem;
+      color: #212121;
+    }   
+  </style>   
+  <p>Hola mundo 2</p>   
+  <p class="text">Texto de ejemplo</p> 
+`;
 
-Y si todo esta correcto ,veremos nuestro componente en el navegador con todo lo que definimos:
+class MyElement extends HTMLElement {
+  constructor() {
+    super();
+    this.p = document.createElement("p");
+  }
+  connectedCallback() {
+    this.p.textContent = "Hola mundo";
+    this.appendChild(this.p);
+    // Añadimos nuestro template a nuestro componente como hijo
+    this.appendChild(template);
+  }
+}
 
-2
+customElements.define("my-element", MyElement);
+```
 
-Responder
+Y si todo está correcto, veremos nuestro componente en el navegador con todo lo que definimos:
+
+### Código de la clase
 
 ```js
 class MyElement extends HTMLElement {
@@ -564,7 +611,75 @@ class MyElement extends HTMLElement {
 customElements.define("my-element", MyElement);
 ```
 
-## 
+## 9. Shadow DOM
+
+El Shadow DOM nos permite resolver problemas relacionados con la sobrescritura de estilos CSS debido a la especificidad. Al usar el Shadow DOM, creamos un encapsulamiento, un DOM independiente dentro de nuestro DOM global.
+
+Esto significa que cualquier cosa que exista dentro del Shadow DOM no afectará ni será afectada por los elementos y estilos del DOM global. En otras palabras, el Shadow DOM actúa como una burbuja aislada, protegiendo los estilos y elementos internos de interferencias externas y viceversa.
+
+### Código de la clase
+
+```js
+class MyElement extends HTMLElement {
+  constructor() {
+    super();
+    this.attachShadow({ mode: "open" }); 👈👀
+  }
+
+  getTemplate() {
+    const template = document.createElement("template");
+    template.innerHTML = `
+      <section>
+        <h2>Hi world!!!</h2>
+        <div>
+          <p>I'm new text in JS...</p>
+        </div>
+      </section>
+      ${this.getStyles()}
+    `;
+
+    return template;
+  }
+
+  getStyles() {
+    return `
+      <style>
+        h2 {
+          color:red; 
+        }
+      </style>
+    
+    `;
+  }
+
+  render() { 👀👇
+    this.shadowRoot.appendChild(
+      this.getTemplate().content.cloneNode(true)
+    );
+  }
+
+  connectedCallback() {
+    this.render();
+  }
+}
+
+customElements.define("my-element", MyElement);
+
+// Para poder renderizar nuestros templates tenemos que cambiar el contexto 
+// Del dom global cambiamos a shadow dom que es otro contexto diferente
+```
+
+Es importante activar el shadow dom para poderlo visualmente en nuestro inspector de elementos .
+
+Settings: Preferences / Elements / Show user agent shadow DOM.
+
+![](https://i.postimg.cc/vBrcLx04/9-show-user-agent-shadow-dom.png)
+
+
+
+### Código de la clase
+
+
 ```js
 ```
 

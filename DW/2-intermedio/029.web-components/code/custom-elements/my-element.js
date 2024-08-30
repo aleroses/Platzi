@@ -16,13 +16,13 @@ customElements.define("my-element", MyElement); */
 const template = document.createElement("div");
 template.innerHTML = `
   <style>
-  .text {
-    color: red;
-  }
+    .text {
+      color: red;
+    }
 
-  p {
-    color: blue;
-  }
+    p {
+      color: blue;
+    }
   </style>
   <p class="text">Hi world</p>
   <p>Hi world......</p>
