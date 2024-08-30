@@ -319,6 +319,117 @@ class MyElement extends HTMLElement {
 customElements.define("my-element", MyElement);
 ```
 
+Ahora en nuestro HTML:
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>Custom Elements</title>
+  </head>
+  <body>
+    <my-element></my-element>
+    <script type="module" src="./my-element.js"></script>
+  </body>
+</html>
+```
+
+## 8. Template
+
+Esto tiene problemas con el CSS, entra en conflictos con otros elementos HTML.
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>Custom Elements</title>
+  </head>
+  <body>
+    <template>
+      <h2>Testing...</h2>
+      <div>
+        <p>I'm a text...</p>
+      </div>
+    </template>
+
+    <my-element></my-element>
+
+    <script type="module" src="./my-element.js"></script>
+  </body>
+</html>
+```
+
+```js
+class MyElement extends HTMLElement {
+  constructor() {
+    super();
+  }
+
+  getTemplate() {
+    const template = document.createElement("template");
+    template.innerHTML = `
+      <section>
+        <h2>Hi world!!!</h2>
+        <div>
+          <p>I'm new text in JS...</p>
+        </div>
+      </section>
+      ${this.getStyles()}
+    `;
+
+    return template;
+  }
+
+  getStyles() {
+    return `
+      <style>
+        h2 {
+          color:red; 
+        }
+      </style>
+    
+    `;
+  }
+
+  render() {
+    this.appendChild(
+      this.getTemplate().content.cloneNode(true)
+      // true es para que clone todos los elementos anidados
+    );
+  }
+
+  connectedCallback() {
+    this.render();
+  }
+}
+
+customElements.define("my-element", MyElement);
+```
+
+## 
+```js
+```
+
+
+```js
+```
+
+```js
+```
+
+
+```js
+```
 
 ```js
 ```
