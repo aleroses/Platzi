@@ -267,6 +267,64 @@ Más información sobre este lifecycle aquí (en español):
 
 ## 7. Custom Elements
 
+Vamos a crear nuestro primer Web Component.
+
+### Creando el componente
+
+En Visual Studio Code creamos un archivo HTML y JS:
+
+Después de crear nuestra estructura básica de HTML vamos a nuestro archivo de JavaScript y creamos una clase que será nuestro componente:
+
+```js
+class MyElement extends HTMLElement {
+  constructor() {
+    // Heredamos las propiedades de HTML element con "super()"
+    super();
+  }
+}
+
+customElements.define("my-element", MyElement);
+```
+
+Para crear un componente primero debemos crear una clase que extienda a lago llamado el `HTMLElement`, el cual nos va a permitir definir nuestro componente web.
+
+Para convertir nuestro componente en una etiqueta HTML debemos usar el método estático de `customElements` llamado `define( )`, el cual recibe dos parámetros, el primero el nombre de como se llamará la etiqueta de nuestro componente, y el segundo la clase que utilizaremos para definir los comportamientos de nuestro componente.
+
+En este punto ya generamos nuestra etiqueta, y podemos usarla en el HTML:
+
+```html
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    ...
+  </head>
+  <body>
+    <my-element></my-element> 👈👀
+    <script src="./my-element.js" type="module"></script>
+  </body>
+</html>
+```
+
+### Lógica de nuestro componente
+
+Ahora vamos a empezar a definir los comportamientos de nuestro componente:
+
+`class MyElement extends HTMLElement {   constructor ( ) {     super();     // Creamos una etiqueta p     this.p = document.createElement('p');   }   // Creamos el método de conenxión   connectedCallback() {     // Introducimos texto a nuestra etiqueta     this.p.textContent = 'Hola mundo';     // Agregamos esta etiqueta como hijo de <my-element>     this.appendChild(this.p)   } } customElements.define('my-element', MyElement);`
+
+Si vemos nuestro archivo en el navegador podremos ver ya nuestro “Hola mundo”.
+
+### Complejidad de componente
+
+Podemos añadir muchas más cosas a nuestro componente, tales como estilos y demás, veamos un ejemplo.
+
+``// Creamos un div const template = document.createElement('div'); /* Dentro de este div podemos escribir estilos y demás cosas, recordemos qu estos estilos no harán colición con otros estilos debido a que los estilos que escribamos aquí solo aplican a nuestro  componente y NO a otros elementos externos a este */ template.innerHTML = `   <style>   p {    color: #9C27B0  }   .text {    font-size: 1rem;    color: #212121;  }   </style>   <p>Hola mundo 2</p>   <p class="text">Texto de ejemplo</p> ` class MyElement extends HTMLElement {   constructor ( ) {     super();     this.p = document.createElement('p');   }   connectedCallback() {     this.p.textContent = 'Hola mundo';     this.appendChild(this.p);     // Añadimos nuestro template a nuestro componente como hijo     this.appendChild(template)   } } customElements.define('my-element', MyElement);``
+
+Y si todo esta correcto ,veremos nuestro componente en el navegador con todo lo que definimos:
+
+2
+
+Responder
+
 ```js
 class MyElement extends HTMLElement {
   constructor() {
@@ -341,7 +399,97 @@ Ahora en nuestro HTML:
 
 ## 8. Template
 
-Esto tiene problemas con el CSS, entra en conflictos con otros elementos HTML.
+**Básicamente la API Template nos permite conectar un web component de forma más profesional y organizada**. También nos ayuda a clonar los elementos fácilmente _(Ya que como lo hicimos en la clase anterior el elemento no se clonaba, sino que se pasaba de etiqueta en etiqueta hasta la última en ser renderizada)_
+
+**La etiqueta `<template>`**
+
+Es una etiqueta que nos sirve como contenedor de código. Todo lo que escribamos adentro de esta etiqueta **no se va a renderizar**, sino que hay que activarlo mediante JavaScript. 
+
+En el siguiente [enlace](https://www.w3schools.com/tags/tag_template.asp) vas a ver cómo se activa desde JS.
+
+**Escribir y activar el código dentro de la clase**
+
+De esta forma estamos armando toda la estructura HTML dentro de JavaScript, pero insertándola en la clase y fraccionando el HTML y CSS para más placer.
+
+En este caso, creamos la clase, con su extensión y constructor, luego creamos un método que contendrá la estructura HTML `getTemplate`. Adentro insertamos la variable **template** que contiene la estructura.
+
+```js
+getTemplate() {
+  const template = document.createElement("template");
+  template.innerHTML = `
+    <section>
+      <h2>Hi world!!!</h2>
+      <div>
+        <p>I'm new text in JS...</p>
+      </div>
+    </section>
+  `;
+
+  return template;
+}
+```
+
+En otro método `getStyles` todo lo que hacemos es retornar un literal string que contiene el código CSS (si queremos podemos contenerla en una variable, eso es a comodidad del programador)
+
+```js
+getStyles() {
+  return `
+    <style>
+      h2 {
+        color:red; 
+      }
+    </style>
+  
+  `;
+}
+```
+
+Y luego al final del código de `getTemplate` la llamamos de esta forma:
+
+```js
+getTemplate() {
+  const template = document.createElement("template");
+  template.innerHTML = `
+    <section>
+      <h2>Hi world!!!</h2>
+      <div>
+        <p>I'm new text in JS...</p>
+      </div>
+    </section>
+    ${this.getStyles()} 👈👀
+  `;
+
+  return template;
+}
+```
+
+**Clonar Elementos**
+
+Para clonar el código debemos indicar mediante el método `cloneNode` que se puede clonar. Para eso invocamos el contenido de `getTemplate`, y lo anidamos a la clase (que luego al ser invocada en el HTML se convierte en la etiqueta misma)
+
+```js
+render() {
+  this.appendChild(
+    this.getTemplate().content.cloneNode(true)
+  );
+}
+```
+
+**Y FINALMENTE**
+
+Invocamos el `render`.
+
+```js
+connectedCallback() {
+  this.render();
+}
+```
+
+**Consideraciones sobre CSS**
+
+Aunque el uso de `<template>` facilita la organización del contenido, el CSS dentro de la plantilla puede entrar en conflicto con otros estilos en la página. Para evitar esto, asegúrate de usar estilos encapsulados y específicos para tu componente, o considera el uso del Shadow DOM para mayor aislamiento de estilos.
+
+### Código de la clase
 
 ```html
 <!DOCTYPE html>
@@ -437,3 +585,7 @@ customElements.define("my-element", MyElement);
 
 ```js
 ```
+
+👈👀
+
+---

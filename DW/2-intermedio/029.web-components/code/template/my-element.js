@@ -38,6 +38,8 @@ class MyElement extends HTMLElement {
   connectedCallback() {
     this.render();
   }
+
+
 }
 
 customElements.define("my-element", MyElement);
