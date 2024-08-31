@@ -960,6 +960,131 @@ En las `DevTools` se ve así:
 
 ## 13. attributeChangedCallback
 
+El método `attributeChangedCallback` es una función que pertenece a la API de Custom Elements en JavaScript. Este método se ejecuta automáticamente cada vez que se cambia el valor de uno de los atributos observados de un Custom Element.
+
+### ¿Cómo Funciona?
+
+1. **Definir los Atributos Observados**:
+   - Primero, necesitas definir qué atributos quieres observar. Esto se hace mediante el método estático `observedAttributes`.
+
+2. **Implementar `attributeChangedCallback`**:
+   - Implementas el método `attributeChangedCallback` en tu clase de Custom Element para manejar los cambios en los atributos observados.
+
+### Ejemplo Completo
+
+Vamos a desglosar un ejemplo para entender cómo funciona:
+
+```javascript
+class MyElement extends HTMLElement {
+  constructor() {
+    super();
+    const template = document.getElementById('my-template').content;
+    const shadowRoot = this.attachShadow({ mode: 'open' });
+    shadowRoot.appendChild(template.cloneNode(true));
+  }
+
+  static get observedAttributes() {
+    return ['header-text', 'main-text', 'footer-text'];
+  }
+
+  attributeChangedCallback(name, oldValue, newValue) {
+    switch (name) {
+      case 'header-text':
+        this.shadowRoot.getElementById('header').textContent = newValue;
+        break;
+      case 'main-text':
+        this.shadowRoot.getElementById('main').textContent = newValue;
+        break;
+      case 'footer-text':
+        this.shadowRoot.getElementById('footer').textContent = newValue;
+        break;
+    }
+  }
+
+  connectedCallback() {
+    this.updateContent();
+  }
+
+  updateContent() {
+    this.shadowRoot.getElementById('header').textContent = this.getAttribute('header-text');
+    this.shadowRoot.getElementById('main').textContent = this.getAttribute('main-text');
+    this.shadowRoot.getElementById('footer').textContent = this.getAttribute('footer-text');
+  }
+}
+
+customElements.define('my-element', MyElement);
+```
+
+### Explicación Paso a Paso
+
+1. **Constructor**:
+   - El constructor inicializa el componente, creando y adjuntando un Shadow DOM.
+
+   ```javascript
+   constructor() {
+     super();
+     const template = document.getElementById('my-template').content;
+     const shadowRoot = this.attachShadow({ mode: 'open' });
+     shadowRoot.appendChild(template.cloneNode(true));
+   }
+   ```
+
+2. **Atributos Observados**:
+   - El método estático `observedAttributes` devuelve una matriz de nombres de atributos que el componente debe observar. Cuando uno de estos atributos cambia, se llama a `attributeChangedCallback`.
+
+   ```javascript
+   static get observedAttributes() {
+     return ['header-text', 'main-text', 'footer-text'];
+   }
+   ```
+
+3. **`attributeChangedCallback`**:
+   - Este método se llama automáticamente cuando uno de los atributos observados cambia. Recibe tres argumentos:
+     - `name`: El nombre del atributo que cambió.
+     - `oldValue`: El valor antiguo del atributo.
+     - `newValue`: El nuevo valor del atributo.
+
+   - En el método, se usa un `switch` para manejar cambios en diferentes atributos y actualizar el contenido del Shadow DOM en consecuencia.
+
+   ```javascript
+   attributeChangedCallback(name, oldValue, newValue) {
+     switch (name) {
+       case 'header-text':
+         this.shadowRoot.getElementById('header').textContent = newValue;
+         break;
+       case 'main-text':
+         this.shadowRoot.getElementById('main').textContent = newValue;
+         break;
+       case 'footer-text':
+         this.shadowRoot.getElementById('footer').textContent = newValue;
+         break;
+     }
+   }
+   ```
+
+4. **`connectedCallback` y `updateContent`**:
+   - `connectedCallback` se llama cuando el elemento es añadido al DOM. Aquí, se llama a `updateContent` para inicializar el contenido basado en los valores actuales de los atributos.
+
+   ```javascript
+   connectedCallback() {
+     this.updateContent();
+   }
+
+   updateContent() {
+     this.shadowRoot.getElementById('header').textContent = this.getAttribute('header-text');
+     this.shadowRoot.getElementById('main').textContent = this.getAttribute('main-text');
+     this.shadowRoot.getElementById('footer').textContent = this.getAttribute('footer-text');
+   }
+   ```
+
+### Beneficios
+
+- **Reactividad**: `attributeChangedCallback` permite que tu componente reaccione automáticamente a los cambios en sus atributos.
+- **Encapsulación**: Mantiene el comportamiento y el estado del componente encapsulados dentro de él, facilitando la gestión y la reutilización.
+- **Flexibilidad**: Puedes definir cualquier número de atributos observados y manejar sus cambios de manera personalizada.
+
+Esta funcionalidad es crucial para crear componentes web dinámicos y reactivos que puedan ser configurados mediante atributos HTML.
+
 ```html
 ```
 
