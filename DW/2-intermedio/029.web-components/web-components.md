@@ -739,23 +739,252 @@ class MyElement extends HTMLElement {
 customElements.define("my-element", MyElement);
 ```
 
-## 11. 
+## 11. Multi Content Slot
+
+### Cómo funciona
+
+1. **Definición de Slots**:
+    
+    - Dentro del Shadow DOM, se definen `slots` usando la etiqueta `<slot>`. Puedes darles un nombre para diferenciarlos.
+
+```html
+<template id="my-template">
+  <div>
+    <header><slot name="header"></slot></header>
+    <main><slot></slot></main>
+    <footer><slot name="footer"></slot></footer>
+  </div>
+</template>
+```
+
+2. **Uso de Slots**:
+
+	- En el Light DOM, el contenido puede ser asignado a estos `slots` usando el atributo `slot`.
+
+```html
+<my-element>
+  <div slot="header">Header Content</div>
+  <p>Main Content</p>
+  <div slot="footer">Footer Content</div>
+</my-element>
+```
+### Ejemplo Completo
+
+```html
+<template id="my-template">
+  <div>
+    <header><slot name="header"></slot></header>
+    <main><slot></slot></main>
+    <footer><slot name="footer"></slot></footer>
+  </div>
+</template>
+
+<script>
+  class MyElement extends HTMLElement {
+    constructor() {
+      super();
+      const template = document.getElementById('my-template').content;
+      const shadowRoot = this.attachShadow({ mode: 'open' });
+      shadowRoot.appendChild(template.cloneNode(true));
+    }
+  }
+  
+  customElements.define('my-element', MyElement);
+</script>
+
+<my-element>
+  <div slot="header">Header Content</div>
+  <p>Main Content</p>
+  <div slot="footer">Footer Content</div>
+</my-element>
+```
+
+### Código de la clase
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    ...
+  </head>
+  <body>
+    <my-element>
+      <span slot="title">I'm a title</span>
+      <span slot="text">Testing...</span>
+    </my-element>
+
+    <script type="module" src="./my-element.js"></script>
+  </body>
+</html>
+```
+
+```js
+class MyElement extends HTMLElement {
+  constructor() {
+    super();
+    this.attachShadow({ mode: "open" });
+  }
+
+  getTemplate() {
+    const template = document.createElement("template");
+    template.innerHTML = `
+      <section>
+        <h2> 
+          <slot name="title"></slot> 
+        </h2>
+        <div>
+          <p> 
+            <slot name="text"></slot> 
+          </p>
+        </div>
+      </section>
+      ${this.getStyles()}
+    `;
+
+    return template;
+  }
+
+  getStyles() {
+    return `
+      <style>
+        h2 {
+          color:red; 
+        }
+      </style>
+    
+    `;
+  }
+
+  render() {
+    this.shadowRoot.appendChild(
+      this.getTemplate().content.cloneNode(true)
+    );
+  }
+
+  connectedCallback() {
+    this.render();
+  }
+}
+
+customElements.define("my-element", MyElement);
+```
+
+En las `DevTools` se ve así:
+
+![](https://i.postimg.cc/vTNKXh8h/11-tree.png)
+
+## 12. Atributos
+
+Puedes lograr una funcionalidad similar a la del `Content Slot` utilizando atributos personalizados en tus elementos HTML. A través de JavaScript, puedes acceder a estos atributos y manipular el DOM en consecuencia. Esto permite crear componentes más dinámicos y configurables.
+
+### Código de la clase
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>Custom Elements</title>
+  </head>
+  <body>
+    <my-element 👈👀👇
+      title="I'm a title"
+      paragraph="Paragraph..."
+      img="https://i.postimg.cc/k4MtR4Zh/bitcoin-png.png"
+    ></my-element>
+
+    <script type="module" src="./my-element.js"></script>
+  </body>
+</html>
+```
+
+```js
+class MyElement extends HTMLElement {
+  constructor() {
+    super();
+    this.attachShadow({ mode: "open" });
+
+    this.title = this.getAttribute("title"); 👈👀👇
+    this.paragraph = this.getAttribute("paragraph");
+    this.img = this.getAttribute("img");
+  }
+
+  getTemplate() {
+    const template = document.createElement("template");
+    template.innerHTML = `
+      <section> 👈👀👇
+        <h2>${this.title}</h2>
+        <div> 👈👀👇
+          <p>${this.paragraph}</p>
+          <img src=${this.img} alt="">
+        </div>
+      </section>
+      ${this.getStyles()}
+    `;
+
+    return template;
+  }
+
+  getStyles() {
+    return `
+      <style>
+        h2 {
+          color:red; 
+        }
+      </style>
+    
+    `;
+  }
+
+  render() {
+    this.shadowRoot.appendChild(
+      this.getTemplate().content.cloneNode(true)
+    );
+  }
+
+  connectedCallback() {
+    this.render();
+  }
+}
+
+customElements.define("my-element", MyElement);
+```
+
+En las `DevTools` se ve así:
+
+![](https://i.postimg.cc/D00v8xYP/12-tree.png)
+
+## 13. attributeChangedCallback
+
+```html
+```
 
 ```js
 ```
 
-
-```js
+```html
 ```
 
 ```js
 ```
 
+```html
+```
 
 ```js
 ```
 
+```html
+```
+
+```js
+```
 👈👀
 👀👇
+👈👀👇
 
 ---
