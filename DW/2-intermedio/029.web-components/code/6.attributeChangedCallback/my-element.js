@@ -4,8 +4,10 @@ class MyElement extends HTMLElement {
     this.attachShadow({ mode: "open" });
   }
 
+  // Define los atributos observados por el componente
   static get observedAttributes() {
     return ["title", "paragraph", "img"];
+    // Si hay otro atributo que no esté en esta lista, no es del componente
   }
 
   // Esto genera un loop infinito
@@ -23,13 +25,17 @@ class MyElement extends HTMLElement {
   //   }
   // }
 
-  // Esto corrige el error anterior
+  // Esto corrige el error anterior: Maneja los cambios en los atributos observados de manera dinámica
   attributeChangedCallback(attr, oldVal, newVal) {
+    //Esta funcion recibe tres parametro
+    // 1. valor actual
+    // 2. valor viejo
+    // 3. nuevo valor
     if (oldVal !== newVal) {
       this[attr] = newVal;
     }
 
-    // Y si quieren modificar algo de ese valor pueden seguir usandolo en el if asi
+    // Y si quieren modificar algo de ese valor pueden seguir usandolo en el if así
     if (attr === "title" && oldVal !== newVal) {
       this.title = newVal;
     }
