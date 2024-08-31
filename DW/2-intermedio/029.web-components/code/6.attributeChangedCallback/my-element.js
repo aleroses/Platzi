@@ -8,23 +8,30 @@ class MyElement extends HTMLElement {
     return ["title", "paragraph", "img"];
   }
 
-  /* attributeChangedCallback(attr, oldVal, newVal) {
-    if (attr === "title") {
-      this.title = newVal;
-    }
+  // Esto genera un loop infinito
+  // attributeChangedCallback(attr, oldVal, newVal) {
+  //   if (attr === "title") {
+  //     this.title = newVal;
+  //   }
 
-    if (attr === "paragraph") {
-      this.paragraph = newVal;
-    }
+  //   if (attr === "paragraph") {
+  //     this.paragraph = newVal;
+  //   }
 
-    if (attr === "img") {
-      this.img = newVal;
-    }
-  } */
+  //   if (attr === "img") {
+  //     this.img = newVal;
+  //   }
+  // }
 
+  // Esto corrige el error anterior
   attributeChangedCallback(attr, oldVal, newVal) {
     if (oldVal !== newVal) {
       this[attr] = newVal;
+    }
+
+    // Y si quieren modificar algo de ese valor pueden seguir usandolo en el if asi
+    if (attr === "title" && oldVal !== newVal) {
+      this.title = newVal;
     }
   }
 
