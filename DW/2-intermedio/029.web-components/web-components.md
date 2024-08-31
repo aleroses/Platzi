@@ -675,17 +675,71 @@ Settings: Preferences / Elements / Show user agent shadow DOM.
 
 ![](https://i.postimg.cc/vBrcLx04/9-show-user-agent-shadow-dom.png)
 
+## 10. Content Slot
 
+El `Content Slot` es una característica del Shadow DOM en Web Components que permite distribuir contenido en diferentes partes del Shadow DOM de un componente. Los `slots` actúan como marcadores de posición dentro del Shadow DOM, donde se puede insertar contenido desde el Light DOM (el contenido definido fuera del Shadow DOM en la página principal).
 
 ### Código de la clase
 
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    ...
+  </head>
+  <body> 👀👇
+    <my-element>Testing</my-element>
 
-```js
+    <script type="module" src="./my-element.js"></script>
+  </body>
+</html>
 ```
 
-
 ```js
+class MyElement extends HTMLElement {
+  constructor() {
+    super();
+    this.attachShadow({ mode: "open" });
+  }
+
+  getTemplate() {
+    const template = document.createElement("template");
+    template.innerHTML = `
+      <section> 👀👇
+        <h2> <slot></slot> </h2>
+      </section>
+      ${this.getStyles()}
+    `;
+
+    return template;
+  }
+
+  getStyles() {
+    return `
+      <style>
+        h2 {
+          color:red; 
+        }
+      </style>
+    
+    `;
+  }
+
+  render() {
+    this.shadowRoot.appendChild(
+      this.getTemplate().content.cloneNode(true)
+    );
+  }
+
+  connectedCallback() {
+    this.render();
+  }
+}
+
+customElements.define("my-element", MyElement);
 ```
+
+## 11. 
 
 ```js
 ```
@@ -702,5 +756,6 @@ Settings: Preferences / Elements / Show user agent shadow DOM.
 ```
 
 👈👀
+👀👇
 
 ---
