@@ -1190,20 +1190,91 @@ class MyElement extends HTMLElement {
 customElements.define("my-element", MyElement);
 ```
 
-## 14. 
+## 14. disconnectedCallback
 
+`disconnectedCallback` es uno de los métodos del ciclo de vida de un Custom Element en la API de Web Components. Este método se llama automáticamente cuando una instancia de un Custom Element es removida del DOM. Es útil para realizar tareas de limpieza, como eliminar listeners de eventos o liberar recursos que ya no se necesitan.
+
+### Ejemplo Básico
+
+```javascript
+class MyElement extends HTMLElement {
+  constructor() {
+    super();
+    this.attachShadow({ mode: "open" });
+  }
+
+  connectedCallback() {
+    console.log("Element added to the page.");
+    // Añadir listeners de eventos o iniciar tareas aquí
+  }
+
+  disconnectedCallback() {
+    console.log("Element removed from the page.");
+    // Limpiar listeners de eventos o liberar recursos aquí
+  }
+}
+
+customElements.define('my-element', MyElement);
+```
+
+### Uso Común
+
+- **Eliminar Event Listeners**:
+  - Si agregaste listeners de eventos en `connectedCallback`, los puedes eliminar en `disconnectedCallback` para evitar fugas de memoria.
+  
+- **Detener Tareas**:
+  - Detén cualquier tarea en curso, como intervalos, animaciones o solicitudes de red.
+
+### Beneficios
+
+- **Gestión de Recursos**:
+  - Asegura que los recursos se gestionen adecuadamente y se liberen cuando el elemento ya no está en uso.
+
+- **Prevención de Fugas de Memoria**:
+  - Al eliminar listeners de eventos y liberar otros recursos, previenes fugas de memoria en tu aplicación.
+
+### En Resumen
+
+`disconnectedCallback` es esencial para limpiar y liberar recursos cuando un Custom Element es removido del DOM, ayudando a mantener una aplicación eficiente y libre de fugas de memoria.
+
+### Código de la clase
 
 ```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    ...
+  </head>
+  <body>
+    <my-custom-element></my-custom-element>
+    <script type="module" src="./my-element.js"></script>
+  </body>
+</html>
 ```
 
 ```js
+class MyCustomElement extends HTMLElement {
+  constructor() {
+    super();
+
+    console.log("Hi...");
+  }
+
+  connectedCallback() {
+    console.log("Connected");
+  }
+
+  disconnectedCallback() {
+    console.log("Bye...");
+  }
+}
+
+customElements.define("my-custom-element", MyCustomElement);
+
+document.querySelector("my-custom-element").remove();
 ```
 
-```html
-```
-
-```js
-```
+## 15. :host
 
 ```html
 ```

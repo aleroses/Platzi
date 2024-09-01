@@ -14,7 +14,7 @@
               "type": "markdown",
               "state": {
                 "file": "DW/2-intermedio/029.web-components/web-components.md",
-                "mode": "preview",
+                "mode": "source",
                 "source": true
               }
             }
@@ -150,18 +150,18 @@
   },
   "active": "8bb922931e89d8e8",
   "lastOpenFiles": [
+    "DW/2-intermedio/029.web-components/code/7.disconnectedCallback/my-element.js",
+    "DW/2-intermedio/029.web-components/code/7.disconnectedCallback/index.html",
+    "DW/2-intermedio/029.web-components/code/7.disconnectedCallback",
+    "DW/2-intermedio/029.web-components/code/6.attributeChangedCallback copy/my-element.js",
+    "DW/2-intermedio/029.web-components/code/6.attributeChangedCallback copy/index.html",
+    "DW/2-intermedio/029.web-components/code/6.attributeChangedCallback copy",
     "DW/2-intermedio/029.web-components/code/6.attributeChangedCallback/my-element.js",
     "DW/2-intermedio/029.web-components/code/6.attributeChangedCallback/index.html",
     "DW/2-intermedio/029.web-components/code/6.attributeChangedCallback",
     "DW/2-intermedio/029.web-components/code/6.attributeChanged/my-element.js",
     "DW/2-intermedio/029.web-components/code/6.attributeChanged/index.html",
-    "DW/2-intermedio/029.web-components/code/6.attributeChanged",
-    "DW/2-intermedio/029.web-components/code/5.attributes copy/my-element.js",
-    "DW/2-intermedio/029.web-components/code/5.attributes copy/index.html",
-    "DW/2-intermedio/029.web-components/code/5.attributes copy",
     "DW/2-intermedio/029.web-components/imgs/12.tree.png",
-    "DW/2-intermedio/029.web-components/code/5.attributes/my-element.js",
-    "DW/2-intermedio/029.web-components/code/5.attributes/index.html",
     "DW/2-intermedio/029.web-components/imgs/11-tree.png",
     "DW/2-intermedio/029.web-components/imgs/9-show-user-agent-shadow-dom.png",
     "DW/2-intermedio/029.web-components/imgs/show-user-agent-shadow-dom.png",
