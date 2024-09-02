@@ -1278,6 +1278,8 @@ document.querySelector("my-custom-element").remove();
 
 `:host` es un pseudo-clase en CSS que se utiliza dentro del Shadow DOM para seleccionar y aplicar estilos al elemento anfitrión (el Custom Element en sí). Esto es útil porque permite aplicar estilos al componente desde dentro de su propio Shadow DOM, manteniendo el encapsulamiento de estilos y evitando conflictos con otros estilos globales.
 
+Estos estilos pueden incluir tanto estilos visuales como estilos por defecto de las etiquetas, tales como `display`, `padding` y `margin`.
+
 ### Ejemplo Básico
 
 Supongamos que tienes un Custom Element llamado `<my-element>`, y deseas aplicar estilos específicos a este elemento desde dentro de su Shadow DOM. Aquí es donde `:host` entra en juego.
@@ -1375,9 +1377,74 @@ customElements.define('my-element', MyElement);
 
 En este ejemplo, `:host(:hover)` aplica estilos cuando el elemento anfitrión es hover, y `:host(.active)` aplica estilos cuando el elemento anfitrión tiene la clase `active`.
 
-### En Resumen
+### Características de `:host`
 
-`:host` es una pseudo-clase poderosa en CSS para aplicar estilos al Custom Element desde dentro de su propio Shadow DOM. Facilita el encapsulamiento de estilos, evitando conflictos con otros estilos en el documento y manteniendo el componente modular y reutilizable.
+1. **Aplicación de Estilos**:
+   - `:host` se usa para definir los estilos del componente web, encapsulando y evitando conflictos con los estilos globales del documento.
+
+   ```css
+   :host {
+     /* Estilos para el componente */
+   }
+   ```
+
+2. **Definición en `getStyles`**:
+   - Generalmente, estos estilos se escriben dentro del método `getStyles()` del componente.
+
+   ```javascript
+   getStyles() {
+     return `
+       <style>
+         :host {
+           display: block;
+           padding: 10px;
+           margin: 5px;
+           background-color: lightgrey;
+         }
+       </style>
+     `;
+   }
+   ```
+
+3. **Estilos Basados en Clases**:
+   - Puedes aplicar estilos específicos a instancias del componente que tengan una clase particular.
+
+   ```css
+   :host(.blue) {
+     /* Estilos para el componente con la clase "blue" */
+     background-color: blue;
+   }
+   ```
+
+4. **Estilos Basados en Atributos**:
+   - También es posible aplicar estilos a instancias del componente basados en atributos específicos.
+
+   ```css
+   :host([yellow]) {
+     /* Estilos para el componente con el atributo "yellow" */
+     background-color: yellow;
+   }
+   ```
+
+5. **Estilos Basados en el Contexto**:
+   - La pseudoclase `:host-context` se puede utilizar para aplicar estilos a un componente cuando está dentro de un contenedor con una clase o un tipo específico.
+
+   ```css
+   :host-context(article.card) {
+     /* Estilos para el componente dentro de un <article> con la clase "card" */
+     border: 2px solid grey;
+   }
+   ```
+
+6. **Estilos para Elementos Internos**:
+   - Puedes combinar `:host` con selectores para aplicar estilos a elementos internos del componente.
+
+   ```css
+   :host([yellow]) h1 {
+     /* Estilos para <h1> dentro del componente con el atributo "yellow" */
+     color: yellow;
+   }
+   ```
 
 ### Código de la clase
 
