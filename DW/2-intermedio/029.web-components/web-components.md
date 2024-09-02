@@ -2030,7 +2030,9 @@ class MyElement extends HTMLElement {
 customElements.define("my-element", MyElement);
 ```
 
-## 18.
+## 18. Presentación del proyecto
+
+![](https://i.postimg.cc/MG8wswrT/18-project.gif)
 
 ```html
 ```
