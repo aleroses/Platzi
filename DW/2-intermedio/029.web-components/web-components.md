@@ -1555,15 +1555,219 @@ class MyElement extends HTMLElement {
 customElements.define("my-element", MyElement);
 ```
 
-## 16. 
+## 16. ::slotted
+
+`::slotted` es un pseudo-elemento en CSS utilizado dentro del Shadow DOM para aplicar estilos a los elementos que se han proyectado en un `<slot>`. Esto permite que los estilos se apliquen a los elementos hijos que se han insertado desde el Light DOM (el DOM global) en los slots del Shadow DOM.
+
+### Concepto Básico
+
+Cuando utilizamos slots en un Web Component, los elementos que se proyectan en estos slots provienen del Light DOM. El pseudo-elemento `::slotted` nos permite seleccionar y aplicar estilos a estos elementos proyectados.
+
+### Ejemplo Básico
+
+1. **Definir el Web Component**:
+   Creamos un Web Component con un slot.
+
+```javascript
+class MyElement extends HTMLElement {
+  constructor() {
+    super();
+    this.attachShadow({ mode: 'open' });
+    this.shadowRoot.innerHTML = `
+      <style>
+        ::slotted(p) {
+          color: blue;
+          font-size: 20px;
+        }
+      </style>
+      <div>
+        <slot></slot>
+      </div>
+    `;
+  }
+}
+
+customElements.define('my-element', MyElement);
+```
+
+2. **Uso en HTML**:
+   Utilizamos el Web Component y proyectamos contenido en el slot.
 
 ```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Slotted Example</title>
+</head>
+<body>
+  <my-element>
+    <p>This paragraph will be styled blue and larger.</p>
+    <span>This span will not be styled by ::slotted.</span>
+  </my-element>
+</body>
+</html>
+```
+
+### Explicación
+
+- **`<slot>` Element**:
+  En el componente, definimos un slot donde los elementos del Light DOM serán proyectados.
+
+  ```html
+  <div>
+    <slot></slot>
+  </div>
+  ```
+
+- **`::slotted` Pseudo-elemento**:
+  En el bloque de estilos dentro del Shadow DOM, utilizamos `::slotted` para aplicar estilos específicos a los elementos que se proyecten en el slot.
+
+  ```css
+  ::slotted(p) {
+    color: blue;
+    font-size: 20px;
+  }
+  ```
+
+  En este ejemplo, todos los elementos `<p>` que se proyecten en el slot del componente recibirán los estilos especificados (color azul y tamaño de fuente de 20px).
+
+### Ventajas
+
+- **Encapsulamiento**:
+  - Permite mantener los estilos del Shadow DOM encapsulados mientras se aplican estilos específicos a los elementos proyectados desde el Light DOM.
+
+- **Flexibilidad**:
+  - Permite aplicar estilos a elementos específicos proyectados en el slot sin afectar otros elementos del Light DOM.
+
+### Limitaciones
+
+- **Especificidad**:
+  - Solo puede seleccionar y aplicar estilos a los elementos que se proyectan directamente en el slot. No puede seleccionar elementos anidados dentro de los proyectados.
+
+### Ejemplo Completo
+
+```javascript
+class MyElement extends HTMLElement {
+  constructor() {
+    super();
+    this.attachShadow({ mode: 'open' });
+    this.shadowRoot.innerHTML = `
+      <style>
+        ::slotted(p) {
+          color: blue;
+          font-size: 20px;
+        }
+      </style>
+      <div>
+        <slot></slot>
+      </div>
+    `;
+  }
+}
+
+customElements.define('my-element', MyElement);
+```
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Slotted Example</title>
+</head>
+<body>
+  <my-element>
+    <p>This paragraph will be styled blue and larger.</p>
+    <span>This span will not be styled by ::slotted.</span>
+  </my-element>
+</body>
+</html>
+```
+
+### Código de la clase
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>Custom Elements</title>
+  </head>
+  <body>
+    <my-element>
+      <span slot="title">Hi span one</span>
+      <span class="text" slot="paragraph">Span paragraph</span>
+    </my-element>
+
+    <script type="module" src="./my-element.js"></script>
+  </body>
+</html>
 ```
 
 ```js
+class MyElement extends HTMLElement {
+  constructor() {
+    super();
+
+    this.attachShadow({ mode: "open" });
+  }
+
+  getTemplate() {
+    const template = document.createElement("template");
+    template.innerHTML = `
+      <section>
+        <h1>
+          <slot name="title"></slot>
+        </h1>
+        <p>
+          <slot name="paragraph"></slot>
+        </p>
+        <slot></slot>
+      </section>
+
+      ${this.getStyles()}
+    `;
+
+    return template;
+  }
+
+  getStyles() {
+    return `
+      <style>/* * */
+        ::slotted(span) {
+          font-size: 30px;
+          color: red;
+        }
+
+        ::slotted(.text) {
+          color: blue;
+        }
+      </style>
+    `;
+  }
+
+  render() {
+    this.shadowRoot.appendChild(
+      this.getTemplate().content.cloneNode(true)
+    );
+  }
+
+  connectedCallback() {
+    this.render();
+  }
+}
+
+customElements.define("my-element", MyElement);
 ```
 
-##
+## 17. 
 
 ```html
 ```
