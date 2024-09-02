@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>Custom Elements</title>
+
+    <style>
+      my-element {
+        --primary-color: blue;
+        --heading-primary: 40px;
+      }
+
+      .second {
+        --primary-color: red;
+      }
+
+      .third {
+        --secondary-color: lime;
+      }
+    </style>
+  </head>
+  <body>
+    <my-element>
+      <span slot="title">Hi span one</span>
+      <span slot="paragraph">Span paragraph</span>
+    </my-element>
+    <my-element class="second">
+      <span slot="title">Hi span two</span>
+      <span slot="paragraph">Span paragraph</span>
+    </my-element>
+    <my-element class="third">
+      <span slot="title">Hi span three</span>
+      <span slot="paragraph">Span paragraph</span>
+    </my-element>
+
+    <script type="module" src="./my-element.js"></script>
+  </body>
+</html>

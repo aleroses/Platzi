@@ -1767,15 +1767,270 @@ class MyElement extends HTMLElement {
 customElements.define("my-element", MyElement);
 ```
 
-## 17. 
+## 17. CSS custom properties
+
+### CSS Custom Properties en Web Components
+
+Las CSS custom properties, también conocidas como variables CSS, permiten definir valores reutilizables que pueden ser utilizados en diferentes partes de tu CSS. En el contexto de Web Components, estas propiedades son especialmente útiles para permitir la personalización de componentes desde fuera del Shadow DOM, manteniendo al mismo tiempo el encapsulamiento de estilos.
+
+### Ejemplo Básico
+
+1. **Definir CSS Custom Properties**:
+   Definimos una variable CSS en el elemento host del Web Component.
+
+```javascript
+class MyElement extends HTMLElement {
+  constructor() {
+    super();
+    this.attachShadow({ mode: 'open' });
+    this.shadowRoot.innerHTML = `
+      <style>
+        :host {
+          --primary-color: blue;
+        }
+        div {
+          color: var(--primary-color);
+        }
+      </style>
+      <div>
+        Hello, styled by a custom property!
+      </div>
+    `;
+  }
+}
+
+customElements.define('my-element', MyElement);
+```
+
+2. **Uso en HTML**:
+   Utilizamos el Web Component y podemos sobrescribir la variable CSS desde el Light DOM.
 
 ```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Custom Properties Example</title>
+</head>
+<body>
+  <my-element></my-element>
+  <my-element style="--primary-color: red;"></my-element>
+</body>
+</html>
+```
+
+### Explicación
+
+- **Definición en el Host**:
+  - Dentro del Shadow DOM, definimos una variable CSS `--primary-color` en el elemento host (`:host`).
+
+  ```css
+  :host {
+    --primary-color: blue;
+  }
+  ```
+
+- **Uso de la Variable CSS**:
+  - Utilizamos la variable CSS `var(--primary-color)` para aplicar el color al texto dentro del componente.
+
+  ```css
+  div {
+    color: var(--primary-color);
+  }
+  ```
+
+- **Sobrescritura desde el Light DOM**:
+  - En el documento HTML, podemos sobrescribir la variable CSS aplicando un estilo en línea al componente.
+
+  ```html
+  <my-element style="--primary-color: red;"></my-element>
+  ```
+
+### Comparación entre `:host` y `:root`
+
+- **`:host`**:
+  - Se utiliza dentro del Shadow DOM para seleccionar el elemento anfitrión del componente y definir variables CSS que se aplicarán dentro del Shadow DOM.
+  - Permite la personalización y el encapsulamiento de estilos dentro del componente.
+
+  ```css
+  :host {
+    --primary-color: blue;
+  }
+  ```
+
+- **`:root`**:
+  - Se utiliza en el Light DOM para seleccionar el elemento raíz del documento (generalmente `<html>`) y definir variables CSS globales.
+  - Las variables definidas en `:root` están disponibles en todo el documento y pueden ser utilizadas por cualquier componente o elemento.
+
+  ```css
+  :root {
+    --global-color: green;
+  }
+  ```
+
+### Ejemplo con `:root` y `:host`
+
+```css
+/* Definición global en :root */
+:root {
+  --global-color: green;
+}
+
+class MyElement extends HTMLElement {
+  constructor() {
+    super();
+    this.attachShadow({ mode: 'open' });
+    this.shadowRoot.innerHTML = `
+      <style>
+        :host {
+          --primary-color: blue; /* Variable específica del componente */
+        }
+        div {
+          color: var(--primary-color, var(--global-color));
+        }
+      </style>
+      <div>
+        Hello, styled by a custom property!
+      </div>
+    `;
+  }
+}
+
+customElements.define('my-element', MyElement);
+```
+
+En este ejemplo, `var(--primary-color, var(--global-color))` utiliza `--primary-color` si está definido, y si no, utiliza `--global-color`.
+
+### Resumen
+
+- **`:host`** se utiliza para definir y aplicar variables CSS específicas a un Web Component, permitiendo el encapsulamiento y la personalización.
+- **`:root`** se utiliza para definir variables CSS globales disponibles en todo el documento.
+- Las variables definidas en `:host` pueden ser sobrescritas desde el Light DOM, mientras que las variables en `:root` afectan a todos los componentes y elementos del documento.
+
+### Código de la clase
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>Custom Elements</title>
+
+    <style>
+      my-element {
+        --primary-color: blue;
+        --heading-primary: 40px;
+      }
+
+      .second {
+        --primary-color: red;
+      }
+
+      .third {
+        --secondary-color: lime;
+      }
+    </style>
+  </head>
+  <body>
+    <my-element>
+      <span slot="title">Hi span one</span>
+      <span slot="paragraph">Span paragraph</span>
+    </my-element>
+    <my-element class="second">
+      <span slot="title">Hi span two</span>
+      <span slot="paragraph">Span paragraph</span>
+    </my-element>
+    <my-element class="third">
+      <span slot="title">Hi span three</span>
+      <span slot="paragraph">Span paragraph</span>
+    </my-element>
+
+    <script type="module" src="./my-element.js"></script>
+  </body>
+</html>
 ```
 
 ```js
+class MyElement extends HTMLElement {
+  constructor() {
+    super();
+
+    this.attachShadow({ mode: "open" });
+  }
+
+  getTemplate() {
+    const template = document.createElement("template");
+    template.innerHTML = `
+      <section>
+        <h1>
+          <slot name="title"></slot>
+        </h1>
+        <div>
+          <p>
+            <slot name="paragraph"></slot>
+          </p>
+        </div>
+        <slot></slot>
+      </section>
+
+      ${this.getStyles()}
+    `;
+
+    return template;
+  }
+
+  getStyles() {
+    return `
+      <style>
+        :host {
+          --primary-color: aqua;
+          --secondary-color: salmon;
+          --heading-primary: 30px;
+          --heading-secondary: 25px;
+          display: inline-block;
+          width: 100%;
+          min-width: 300px;
+          max-width: 450px;
+        }
+
+        section {
+          background: var(--primary-color);
+        }
+
+        section div {
+          background: var(--secondary-color);
+        }
+        h1 {
+          font-size: var(--heading-primary);
+        }
+
+        p {
+          font-size: var(--heading-secondary);
+        }
+      </style>
+    `;
+  }
+
+  render() {
+    this.shadowRoot.appendChild(
+      this.getTemplate().content.cloneNode(true)
+    );
+  }
+
+  connectedCallback() {
+    this.render();
+  }
+}
+
+customElements.define("my-element", MyElement);
 ```
 
-##
+## 18.
 
 ```html
 ```
