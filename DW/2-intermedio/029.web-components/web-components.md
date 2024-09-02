@@ -1276,11 +1276,242 @@ document.querySelector("my-custom-element").remove();
 
 ## 15. :host
 
+`:host` es un pseudo-clase en CSS que se utiliza dentro del Shadow DOM para seleccionar y aplicar estilos al elemento anfitrión (el Custom Element en sí). Esto es útil porque permite aplicar estilos al componente desde dentro de su propio Shadow DOM, manteniendo el encapsulamiento de estilos y evitando conflictos con otros estilos globales.
+
+### Ejemplo Básico
+
+Supongamos que tienes un Custom Element llamado `<my-element>`, y deseas aplicar estilos específicos a este elemento desde dentro de su Shadow DOM. Aquí es donde `:host` entra en juego.
+
+### Implementación
+
+1. **Definir el Custom Element**:
+   Primero, definimos nuestro Custom Element y su Shadow DOM.
+
+```javascript
+class MyElement extends HTMLElement {
+  constructor() {
+    super();
+    this.attachShadow({ mode: 'open' });
+    this.shadowRoot.innerHTML = `
+      <style>
+        :host {
+          display: block;
+          border: 2px solid blue;
+          padding: 10px;
+          background-color: lightgrey;
+        }
+      </style>
+      <div>
+        <p>Content inside the shadow DOM.</p>
+      </div>
+    `;
+  }
+}
+
+customElements.define('my-element', MyElement);
+```
+
+2. **Uso en HTML**:
+   Luego, usas el Custom Element en tu documento HTML.
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Custom Element Example</title>
+</head>
+<body>
+  <my-element></my-element>
+</body>
+</html>
+```
+
+### Explicación
+
+- **`:host` Pseudo-clase**:
+  En el bloque de estilos dentro del Shadow DOM, `:host` se utiliza para seleccionar el elemento anfitrión (`<my-element>` en este caso) y aplicarle estilos.
+
+  ```css
+  :host {
+    display: block;
+    border: 2px solid blue;
+    padding: 10px;
+    background-color: lightgrey;
+  }
+  ```
+
+  Esto significa que los estilos definidos dentro del bloque `:host` se aplicarán directamente al Custom Element (`<my-element>`) en el DOM principal.
+
+### Ventajas
+
+- **Encapsulamiento**:
+  - Los estilos definidos con `:host` se aplican solo al elemento anfitrión del Shadow DOM, manteniendo el encapsulamiento y evitando conflictos con otros estilos globales.
+
+- **Flexibilidad**:
+  - Puedes definir estilos específicos para diferentes estados del elemento anfitrión utilizando variantes como `:host(:hover)` o `:host(.active)`.
+
+### Ejemplo con Variantes
+
+```css
+<style>
+  :host {
+    display: block;
+    border: 2px solid blue;
+    padding: 10px;
+    background-color: lightgrey;
+  }
+
+  :host(:hover) {
+    border-color: green;
+  }
+
+  :host(.active) {
+    background-color: yellow;
+  }
+</style>
+```
+
+En este ejemplo, `:host(:hover)` aplica estilos cuando el elemento anfitrión es hover, y `:host(.active)` aplica estilos cuando el elemento anfitrión tiene la clase `active`.
+
+### En Resumen
+
+`:host` es una pseudo-clase poderosa en CSS para aplicar estilos al Custom Element desde dentro de su propio Shadow DOM. Facilita el encapsulamiento de estilos, evitando conflictos con otros estilos en el documento y manteniendo el componente modular y reutilizable.
+
+### Código de la clase
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    ...
+  </head>
+  <body>
+    <my-element>
+      <span slot="title">Hi span one</span>
+      <span slot="paragraph">Span paragraph</span>
+    </my-element>
+    <my-element class="blue">
+      <span slot="title">Hi span two</span>
+      <span slot="paragraph">Span paragraph</span>
+    </my-element>
+    <my-element attr>
+      <span slot="title">Hi span three</span>
+      <span slot="paragraph">Span paragraph</span>
+    </my-element>
+
+    <article class="card">
+      <my-element attr>
+        <span slot="title">Hi span three</span>
+        <span slot="paragraph">Span paragraph</span>
+      </my-element>
+    </article>
+    <script type="module" src="./my-element.js"></script>
+  </body>
+</html>
+```
+
+```js
+class MyElement extends HTMLElement {
+  constructor() {
+    super();
+
+    this.attachShadow({ mode: "open" });
+  }
+
+  getTemplate() {
+    const template = document.createElement("template");
+    template.innerHTML = `
+      <section>
+        <h1>
+          <slot name="title"></slot>
+        </h1>
+        <p>
+          <slot name="paragraph"></slot>
+        </p>
+        <slot></slot>
+      </section>
+
+      ${this.getStyles()}
+    `;
+
+    return template;
+  }
+
+  getStyles() {
+    return `
+      <style>
+        :host {
+          display: inline-block;
+          width: 100%;
+          min-width: 300px;
+          max-width: 450px;
+          font-size: 20px;
+          background: grey;
+        }
+
+        :host(.blue) {
+          background: blue;
+        }
+
+        :host([attr]) {
+          background: yellow;
+        }
+
+        :host([attr]) h1, :host([attr]) p {
+          color: aqua; 
+        }
+        /* :host([attr]) p {
+          color: aqua;  
+        } */
+
+        :host-context(article.card){
+          display: block;
+          max-width: 100%;
+        }
+      </style>
+    `;
+  }
+
+  render() {
+    this.shadowRoot.appendChild(
+      this.getTemplate().content.cloneNode(true)
+    );
+  }
+
+  connectedCallback() {
+    this.render();
+  }
+}
+
+customElements.define("my-element", MyElement);
+```
+
+## 16. 
+
 ```html
 ```
 
 ```js
 ```
+
+##
+
+```html
+```
+
+```js
+```
+
+##
+
+```html
+```
+
+```js
+```
+
 👈👀
 👀👇
 👈👀👇

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>Custom Elements</title>
+  </head>
+  <body>
+    <my-element>
+      <span slot="title">Hi span one</span>
+      <span slot="paragraph">Span paragraph</span>
+    </my-element>
+    <my-element class="blue">
+      <span slot="title">Hi span two</span>
+      <span slot="paragraph">Span paragraph</span>
+    </my-element>
+    <my-element attr>
+      <span slot="title">Hi span three</span>
+      <span slot="paragraph">Span paragraph</span>
+    </my-element>
+
+    <article class="card">
+      <my-element attr>
+        <span slot="title">Hi span three</span>
+        <span slot="paragraph">Span paragraph</span>
+      </my-element>
+    </article>
+    <script type="module" src="./my-element.js"></script>
+  </body>
+</html>
