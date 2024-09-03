@@ -2485,6 +2485,7 @@ Creamos una carpeta `third-party-components` y añadimos lo siguiente:
 18. ¿En dónde damos de alta los Custom Properties de nuestro componente?
 
 	- 📌 En el `:host()` de nuestro componente.
+
 </details>
 
 
