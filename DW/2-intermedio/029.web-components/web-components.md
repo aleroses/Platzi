@@ -2036,7 +2036,24 @@ customElements.define("my-element", MyElement);
 
 [Repo](https://github.com/degranda/curso-web-components/tree/main/Proyecto)
 
-## 19. 
+## 19. Estructura base de nuestro componente
+
+Creamos una carpeta `Project` con lo siguiente:
+
+```bash
+.
+├── app.js
+├── components
+│   └── Product-card.js
+├── imgs
+│   └── nike-blue.png
+├── index.html
+└── styles.css
+
+2 directories, 5 files
+```
+
+### Código de la clase
 
 ```html
 ```
