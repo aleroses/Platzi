@@ -2055,12 +2055,102 @@ Creamos una carpeta `Project` con lo siguiente:
 
 ### Código de la clase
 
+`index.html`
+
 ```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    ...
+  </head>
+  <body>
+    <product-card></product-card>
+    <script type="module" src="./app.js"></script>
+  </body>
+</html>
 ```
 
+`Product-card.js`
+
+```js
+class ProductCard extends HTMLElement {
+  constructor() {
+    super();
+    this.attachShadow({ mode: "open" });
+  }
+
+  getTemplate() {
+    const template = document.createElement("template");
+    template.innerHTML = `
+      <main>
+        <section><img src="" alt=""></section>
+        <section>
+          <div>
+            <h2>Hi title</h2>
+            <p></p>
+            <h3></h3>
+            <button></button>
+          </div>
+        </section>
+        <section></section>
+      </main>
+    `;
+
+    return template;
+  }
+
+  render() {
+    this.shadowRoot.appendChild(
+      this.getTemplate().content.cloneNode(true)
+    );
+  }
+
+  connectedCallback() {
+    this.render();
+  }
+}
+
+customElements.define("product-card", ProductCard);
+```
+
+`app.js`
+
+```js
+import "./components/Product-card";
+```
+
+## 20. 
+
+``
 ```js
 ```
 
+`index.html`
+
+```html
+```
+
+``
+```js
+```
+
+`index.html`
+
+```html
+```
+
+``
+```js
+```
+
+`index.html`
+
+```html
+```
+
+``
+```js
+```
 👈👀
 👀👇
 👈👀👇
