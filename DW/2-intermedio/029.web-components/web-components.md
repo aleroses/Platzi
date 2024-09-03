@@ -2404,22 +2404,281 @@ Creamos una carpeta `third-party-components` y añadimos lo siguiente:
 </html>
 ```
 
-## 22. 
+## 22. Conclusiones
+
+[JavaScript SEO](https://developers.google.com/search/docs/crawling-indexing/javascript/javascript-seo-basics?hl=es)
+
+## Examen📌
+
+<details>
+	<summary>Haz clic para ver los resultados 👀</summary>
+	<br/>
+
+1. ¿Cuáles son los principales beneficios de utilizar Web Components?
+
+Elige la respuesta correcta
 
 
+a
+Virtual DOM. Arquitectura en componentes. DRY. Fácil de modificar.
 
-``
-```js
-```
 
-`index.html`
+b 📌
+Reutilización. Legibilidad. Mantenibilidad. Interoperabilidad. Consistencia.
 
-```html
-```
 
-``
-```js
-```
+c
+Componentes. Estilos únicos. Mantenibilidad, DRY.
+
+2. ¿En qué ciclo de vida creamos el Shadow DOM?
+
+Elige la respuesta correcta
+
+
+a
+connectedCallback()
+
+b
+super()
+
+c 📌
+constructor()
+
+3. ¿Cuáles son las Web APIs que forman los Web Components?
+Elige la respuesta correcta
+
+
+a
+Custom Elements, Template, Virtual DOM, ES6 Modules.
+
+
+b
+Custom Properties, Template, Shadow DOM, ES6 Modules.
+
+
+c 📌
+Custom Elements, Template, Shadow DOM, ES6 Modules.
+
+
+4. ¿Cómo definimos un Custom Element para poder utilizarlo como etiqueta de HTML?
+Elige la respuesta correcta
+
+
+a
+extends HTMLElement
+
+b 📌
+customElement.define()
+
+c
+Con los ES6 Modules
+
+5. ¿Cuál es el pseudo elemento que utilizamos para dar estilos a elementos que se han colocado en slots dentro de nuestro template?
+Elige la respuesta correcta
+
+
+a 📌
+::slotted
+
+b
+:slot
+
+c
+:host
+
+6. Cuando vemos esto en nuestro componente, ¿Qué estilos esperamos ver aplicados?
+
+- :host([yellow])
+
+Elige la respuesta correcta
+
+
+a
+Estilos en una instancia de nuestro componente con la clase yellow.
+
+b
+Estilos en una instancia de nuestro componente con el id yellow.
+
+c 📌
+Estilos en una instancia de nuestro componente con el atributo yellow.
+
+7. ¿Cómo puedo crear un elemento dentro de mi componente?
+
+Elige la respuesta correcta
+
+
+a 📌
+document.createElement(‘elElemento’);
+
+b
+document.Element(‘elElemento’);
+
+c
+document.create(‘elElemento’);
+
+8. ¿Cómo puedo crear texto en un elemento dentro de mi componente?
+Elige la respuesta correcta
+
+
+a
+elElemento.text = "Hola mundo";
+
+b
+el.Elemento.createTextNode("Hola mundo");
+
+c 📌
+elElemento.textContent = "Hola mundo!!";
+
+9. ¿Para qué utilizamos la pseudo clase :host?
+Elige la respuesta correcta
+
+
+a 📌
+Para poder agregarle estilos al componente mismo.
+
+
+b
+Para agregar estilos a un elemento en específico.
+
+
+c
+Para poder guardar variables del componente.
+
+10. ¿Cuáles son los dos parámetros que acepta el define de Custom Elements?
+
+Elige la respuesta correcta
+
+
+a 📌
+El nombre de nuestro elemento (etiqueta) y la clase de la que viene.
+
+b
+La clase de la que viene y la extensión de nuestro template.
+
+
+c
+El nombre de clase sin espacios y la misma clase de nuestro componente.
+
+11. ¿Podemos utilizar la etiqueta de Template en nuestro HTML como cualquier otra etiqueta?
+
+Elige la respuesta correcta
+
+
+a
+Sí
+
+b 📌
+No
+
+c
+Template no es una etiqueta
+
+12. ¿Qué ciclo de vida utilizamos para guardar en memoria nuestro componente, como las variables que usaremos?
+
+Elige la respuesta correcta
+
+
+a
+connectedCallback()
+
+b 📌
+constructor()
+
+c
+super()
+
+
+13. ¿Qué ciclo de vida utilizamos cuando el componente ya es un nodo del DOM?
+
+Elige la respuesta correcta
+
+
+a 📌
+connectedCallback()
+
+b
+super()
+
+c
+constructor()
+
+14. ¿Cuál es la forma de poder modificar los estilos desde afuera de un componente?
+
+Elige la respuesta correcta
+
+
+a 📌
+Utilizando custom properties de CSS.
+
+b
+No puedes modificar los estilos por fuera del componente.
+
+c
+Utilizando styled components.
+
+
+15. ¿Cómo puedo obtener el valor de un atributo que se coloque en mi componente?
+
+Elige la respuesta correcta
+
+
+a 📌
+this.getAttribute("atributo");
+
+b
+document.querySelector('elemento').getAttribute(''atributo")
+
+c
+document.querySelector('elemento').attribute
+
+
+16. ¿Cómo puedo seleccionar un elemento dentro de mi componente que tiene Shadow DOM?
+
+Elige la respuesta correcta
+
+
+a 📌
+shadowRoot.querySelector
+
+b
+document.getElementById
+
+c
+document.querySelector
+
+
+17. Cuando vemos esto en nuestro componente, ¿Qué estilos esperamos ver aplicados?
+- :host-context(article.card)
+
+Elige la respuesta correcta
+
+
+a 📌
+Esperamos ver aplicados los estilos en una instancia de nuestro componente que está dentro de un elemento article con la clase card.
+
+b
+Estilos en una instancia de nuestro componente con el atributo card.
+
+c
+Estilos en una instancia de nuestro componente llamado article con la clase card.
+
+18. ¿En dónde damos de alta los Custom Properties de nuestro componente?
+
+Elige la respuesta correcta
+
+
+a
+En el elemento principal de nuestro componente.
+
+b
+En el :root de nuestro proyecto.
+
+c 📌
+En el :host() de nuestro componente.
+
+</details>
+
+
 👈👀
 👀👇
 👈👀👇
