@@ -2381,12 +2381,32 @@ body {
 } */
 ```
 
-## 21.
+## 21. Utilizando componentes de terceros
+
+Vistamos [webcomponents.org](https://www.webcomponents.org/), para el ejemplo buscamos `vanilla javascript` y elegimos `jelly-switch`.
+
+Esto lo encuentras directamente [aquí](https://www.webcomponents.org/element/jelly-switch).
+
+Creamos una carpeta `third-party-components` y añadimos lo siguiente:
 
 `index.html`
 
 ```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    ...
+  </head>
+  <body>
+    <jelly-switch id="js1"></jelly-switch>
+    <script src="https://unpkg.com/jelly-switch@0.2.3/lib/index.min.js"></script>
+  </body>
+</html>
 ```
+
+## 22. 
+
+
 
 ``
 ```js
