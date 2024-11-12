@@ -436,7 +436,7 @@ console.log(human);
 console.log({ person, human });
 ```
 
-**Recursividad** par hacer una copia profunda:
+**Recursividad** para hacer una copia profunda:
 
 ```js
 const person = {
