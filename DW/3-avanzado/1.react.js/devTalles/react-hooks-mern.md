@@ -432,6 +432,7 @@ const person = {
 const human = { ...person };
 
 console.log(person);
+console.table(person);
 console.log(human);
 console.log({ person, human });
 ```
