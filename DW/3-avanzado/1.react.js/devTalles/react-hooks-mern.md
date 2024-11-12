@@ -282,6 +282,7 @@ Entramos a la carpeta para empezar a trabajar, en este caso con Create React App
 ```bash
 .
 ├── 01-intro-react
+│ └── index.html
 ├── 02-intro-js 👈👀
 └── 03-counter-app
 ```
