@@ -4,19 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "b1a3da76a3e8a961",
+        "id": "71add104bbddbb2f",
         "type": "tabs",
         "children": [
           {
-            "id": "8bb922931e89d8e8",
+            "id": "d1de7d2082f4b64d",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "DW/2-intermedio/029.web-components/web-components.md",
-                "mode": "preview",
+                "file": "DW/3-avanzado/1.react.js/devTalles/react-hooks-mern.md",
+                "mode": "source",
                 "source": true
-              }
+              },
+              "icon": "lucide-file",
+              "title": "react-hooks-mern"
             }
           }
         ]
@@ -39,7 +41,9 @@
               "type": "file-explorer",
               "state": {
                 "sortOrder": "alphabetical"
-              }
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
             }
           },
           {
@@ -54,7 +58,9 @@
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical"
-              }
+              },
+              "icon": "lucide-search",
+              "title": "Search"
             }
           },
           {
@@ -62,7 +68,9 @@
             "type": "leaf",
             "state": {
               "type": "bookmarks",
-              "state": {}
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
             }
           }
         ]
@@ -86,7 +94,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "DW/2-intermedio/029.web-components/web-components.md",
+                "file": "DW/3-avanzado/1.react.js/devTalles/react-hooks-mern.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -94,7 +102,9 @@
                 "searchQuery": "",
                 "backlinkCollapsed": false,
                 "unlinkedCollapsed": true
-              }
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for react-hooks-mern"
             }
           },
           {
@@ -103,10 +113,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "DW/2-intermedio/029.web-components/web-components.md",
+                "file": "DW/3-avanzado/1.react.js/devTalles/react-hooks-mern.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
-              }
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from react-hooks-mern"
             }
           },
           {
@@ -117,7 +129,9 @@
               "state": {
                 "sortOrder": "frequency",
                 "useHierarchy": true
-              }
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
             }
           },
           {
@@ -126,8 +140,10 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "DW/2-intermedio/029.web-components/web-components.md"
-              }
+                "file": "DW/3-avanzado/1.react.js/devTalles/react-hooks-mern.md"
+              },
+              "icon": "lucide-list",
+              "title": "Outline of react-hooks-mern"
             }
           }
         ],
@@ -148,8 +164,12 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "8bb922931e89d8e8",
+  "active": "d1de7d2082f4b64d",
   "lastOpenFiles": [
+    "DW/3-avanzado/3.next/Nextjs-Tailwind.md",
+    "nextjs.org.md",
+    "DW/3-avanzado/3.next",
+    "DW/2-intermedio/029.web-components/web-components.md",
     "DW/2-intermedio/029.web-components/code/12.third-party-components/index.html",
     "DW/2-intermedio/029.web-components/code/12.third-party-components",
     "DW/2-intermedio/029.web-components/code/third-party-components",
@@ -160,15 +180,12 @@
     "DW/2-intermedio/029.web-components/code/project/components/Product-card.js",
     "DW/2-intermedio/029.web-components/code/project/components",
     "DW/2-intermedio/029.web-components/code/project/app.js",
-    "DW/2-intermedio/029.web-components/code/project/index.html",
-    "DW/2-intermedio/029.web-components/code/project",
     "DW/2-intermedio/029.web-components/imgs/18.project.png",
     "DW/2-intermedio/029.web-components/imgs/18.project.gif",
     "DW/2-intermedio/029.web-components/imgs/12.tree.png",
     "DW/2-intermedio/029.web-components/imgs/11-tree.png",
     "DW/2-intermedio/029.web-components/imgs/9-show-user-agent-shadow-dom.png",
     "DW/2-intermedio/029.web-components/imgs/show-user-agent-shadow-dom.png",
-    "DW/2-intermedio/029.web-components/web-components.md",
     "DW/2-intermedio/007.poo-js/poo-js.md",
     "DW/2-intermedio/023.SPA-js-vanilla/spa-js-vanilla.md",
     "DW/2-intermedio/028.accesibilidad/0.audiocurso-accesibilidad-web.md",
@@ -194,7 +211,6 @@
     "DW/3-avanzado/1.react.js/devTalles/react-hooks-mern.md",
     "DW/2-intermedio/003-ECMAScript/ECMAScript-historia-y-versiones-de-javascript.md",
     "DW/2-intermedio/017.tipos-funciones-avanzadas/ts-tipos-funciones.md",
-    "DW/3-avanzado/2.vue.js/vue.js-intro/vue.js-intro.md",
-    "DW/1-basico/015-figma/figma.md"
+    "DW/3-avanzado/2.vue.js/vue.js-intro/vue.js-intro.md"
   ]
 }

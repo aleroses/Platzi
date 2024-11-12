@@ -103,6 +103,8 @@ Ahora en el fichero **settings.json** añade la siguiente propiedad al objeto 
 
 * [Iconos](https://marketplace.visualstudio.com/items?itemName=PKief.material-icon-theme)
 
+Mi tema: [Material Theme -- Free](https://marketplace.visualstudio.com/items?itemName=Equinusocio.vsc-material-theme)
+
 #### Instalaciones recomendadas sobre React
 
 * [ES7 React/Redux](https://marketplace.visualstudio.com/items?itemName=dsznajder.es7-react-js-snippets)
@@ -180,6 +182,7 @@ Creamos una carpeta para empezar a trabajar:
 ```bash
 .
 ├── 01-intro-react 👈👀
+│   └── index.html
 ├── 02-intro-js
 └── 03-counter-app
 ```
