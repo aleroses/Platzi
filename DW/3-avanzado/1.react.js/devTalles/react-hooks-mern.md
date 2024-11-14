@@ -698,6 +698,12 @@ export { heroes };
 ```js
 export default heroes;
 
+// Al exportar de las siguientes maneras:
+export const owner = ["DC", "Marvel"];
+// O, la "importación" se hace usando {}
+export { owner };
+
+// ----------------------------------------
 // En lo personal no me gusta esta forma
 import heroes, { owner } from "../data/heroes.js";
 
