@@ -696,6 +696,8 @@ export { heroes };
 ### 🟣 Múltiples exportaciones y exportaciones por defecto
 
 ```js
+export default heroes;
+
 // En lo personal no me gusta esta forma
 import heroes, { owner } from "../data/heroes.js";
 
