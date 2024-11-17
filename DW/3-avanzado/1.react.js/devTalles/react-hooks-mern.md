@@ -817,6 +817,15 @@ const getImage = () => {
 getImage().then(console.log);
 ```
 
+Otra forma: 
+
+```js
+const getImage = async () => {
+  return "https://asdffsafs.com";
+};
+getImage().then(console.log);
+```
+
 Otra forma:
 
 ```js
