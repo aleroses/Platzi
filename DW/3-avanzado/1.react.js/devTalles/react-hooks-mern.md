@@ -1062,7 +1062,7 @@ const App = () => {
 export { App };
 ```
 
-📌 Nota: Si haces una exportación por defecto en el lugar de la importación puedes darle el nombre que quieras.
+📌 Nota: Si haces una exportación por `defaul`, en el lugar de la **importación** puedes darle el **nombre que quieras**.
 
 ```js
 export defaul App;
