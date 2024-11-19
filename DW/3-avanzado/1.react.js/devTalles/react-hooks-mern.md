@@ -1062,6 +1062,14 @@ const App = () => {
 export { App };
 ```
 
+📌 Nota: Si haces una exportación por defecto en el lugar de la importación puedes darle el nombre que quieras.
+
+```js
+export defaul App;
+
+import TestApp👈 from "./App";
+```
+
 ### 🟣 Tarea - Crear un nuevo componente
 
 `src > main.jsx`
