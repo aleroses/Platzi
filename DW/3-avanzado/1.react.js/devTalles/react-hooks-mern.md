@@ -1250,6 +1250,9 @@ En Vite no viene instalado por defecto:
 
 ```bash
 yarn add prop-types 
+
+# Para NPM
+npm install prop-types
 ```
 
 `src > FirstTest.jsx`
