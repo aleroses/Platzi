@@ -1335,6 +1335,8 @@ FirstTest.defaultProps = {
 export { FirstTest };
 ```
 
+📌 Nota: El soporte para `defaultProps` será removido y se deberán usar los parámetros predeterminados de JavaScript. Ahora lo aconsejable es colocar el valor por defecto al **desestructurar** directamente las **props** del componente.
+
 ### 🟣 Tarea - Componente CounterApp
 
 `src > main.jsx`
