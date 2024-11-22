@@ -1545,6 +1545,8 @@ Para las pruebas usaremos varios ejercicios que vimos en la parte de la introduc
 
 Estos archivos los pegamos dentro del `src` del proyecto `03-counter-app`, pero también pueden crear un proyecto totalmente nuevo.
 
+[Download Bases](https://import.cdn.thinkific.com/643563/courses/1901683/basepruebas-220616-140151.zip)
+
 ### 🟣 Mi primera prueba y configuraciones iniciales
 
 Para las pruebas usaremos **Jest** y **React Testing Library**, pero primero debemos configurarlo, ya que en Vite no vienen configurados por defecto.
