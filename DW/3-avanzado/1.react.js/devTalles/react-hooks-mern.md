@@ -1710,6 +1710,25 @@ function getGreeting(name) {
 export { getGreeting };
 ```
 
+Creamos una carpeta para las pruebas:
+
+```bash
+├── tests 
+│   └── bases 👈👀
+│   │   ├── 01-const-let.js
+│   │   ├── 02-backticks.js
+│   │   ├── 03-obj-literal.js
+│   │   ├── 04-array.js
+│   │   ├── 05-functions.js
+│   │   ├── 06-desest-obj.js
+│   │   ├── 07-desest-arr.js
+│   │   ├── 08-imp-exp.mjs
+│   │   ├── 09-promises.js
+│   │   ├── 10-fetch.js
+│   │   ├── 11-async-await.js
+│   │   └── 12-conditional-ternary.js
+```
+
 `test > base-pruebas > 02-template-string.test.js`
 
 ```jsx
