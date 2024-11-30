@@ -2071,6 +2071,8 @@ describe("Test on 11-async-await", () => {
 
 ### 🟣 Evaluar el Catch en el async-await
 
+En nuestro ejemplo, estamos esperando que la respuesta sea una `url` que es un `string`. Para evaluar el `catch` solo podemos añadir el mensaje esperado dentro de nuestras pruebas.
+
 `src > bases > 11-async-await.js`
 
 ```jsx
@@ -2079,6 +2081,17 @@ describe("Test on 11-async-await", () => {
 `src > bases > 11-async-await.test.js`
 
 ```jsx
+import { getImagen } from "../../src/basic-tests/11-async-await";
+
+describe("Test on 11-async-await", () => {
+  test("getImagen should return an url", async () => {
+    const url = await getImagen();
+    // console.log(url);
+
+    expect(typeof url).toBe("string");
+    expect(url).toBe("Image not found"); 👈👀
+  });
+});
 ```
 
 ### 🟣 Pruebas sobre componentes de React
