@@ -1937,6 +1937,8 @@ Creamos una carpeta data y añadimos el archivo `heroes.js`.
 
 ### 🟣 Pruebas con tareas asíncronas
 
+Por defecto Jest trabaja con pruebas síncronas o sea ejecuta el código en secuencia y cuando encuentra una promesa este la ejecuta, pero luego sigue ejecutando el código siguiente y al llegar al final recién arroja el error.
+
 `src > bases > 09-promises.js`
 
 ```jsx
@@ -2017,6 +2019,8 @@ module.exports = {
   setupFiles: ["./jest.setup.js"],
 };
 ```
+
+📌 Para esta configuración podemos ir a [Jestjs.io](https://jestjs.io/blog/2020/05/05/jest-26) y buscar `jest.config`.
 
 `jest.setup.js`
 
