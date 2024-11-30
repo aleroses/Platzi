@@ -2025,6 +2025,7 @@ module.exports = {
 `jest.setup.js`
 
 ```js
+## En caso de usar node en version menor a la 18
 import "whatwg-fetch";
 ```
 
