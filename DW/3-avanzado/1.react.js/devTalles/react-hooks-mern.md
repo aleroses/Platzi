@@ -2096,11 +2096,16 @@ describe("Test on 11-async-await", () => {
 
 ### 🟣 Pruebas sobre componentes de React
 
-Usaremos **Testing Library / React Testing Library** para hacer pruebas con componentes propios de React.
+Usaremos **Testing Library / React Testing Library** para hacer pruebas sobre componentes propios de React, ya que es muy bueno para manejar el DOM virtual.
+
+**Testing Library** está más enfocado en lo que sucede en la pantalla después de hacer alguna interacción, en cambio, **Jest** está más enfocado u orientada a hacer las **aserciones** de funciones que se necesitan evaluar.
+
+📌 **Aserción:** Acción y efecto de afirmar o dar por cierto algo.
 
 ```bash
 yarn add --dev @testing-library/react
 yarn add --dev @testing-library/react
+yarn add --dev @testing-library/react @testing-library/dom
 ```
 
 Para el siguiente ejemplo usaremos el componente `FirstApp.jsx`.
