@@ -2103,9 +2103,14 @@ Usaremos **Testing Library / React Testing Library** para hacer pruebas sobre co
 📌 **Aserción:** Acción y efecto de afirmar o dar por cierto algo.
 
 ```bash
-yarn add --dev @testing-library/react
-yarn add --dev @testing-library/react
+## Comando actual para React TL + DOM TL
 yarn add --dev @testing-library/react @testing-library/dom
+
+## También se encontra por separado
+yarn add --dev @testing-library/dom
+
+## Este comando es antiguo
+yarn add --dev @testing-library/react
 ```
 
 Para el siguiente ejemplo usaremos el componente `FirstApp.jsx`.
