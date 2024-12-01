@@ -2098,7 +2098,7 @@ describe("Test on 11-async-await", () => {
 
 Usaremos **Testing Library / React Testing Library** para hacer pruebas sobre componentes propios de React, ya que es muy bueno para manejar el DOM virtual.
 
-**Testing Library** está más enfocado en lo que sucede en la pantalla después de hacer alguna interacción, en cambio, **Jest** está más enfocado u orientada a hacer las **aserciones** de funciones que se necesitan evaluar.
+**Testing Library** está más enfocado en lo que sucede en la pantalla después de hacer alguna interacción, en cambio, **Jest** está más enfocado u orientado a hacer las **aserciones** de funciones que se necesitan evaluar.
 
 📌 **Aserción:** Acción y efecto de afirmar o dar por cierto algo.
 
