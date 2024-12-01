@@ -2137,10 +2137,14 @@ ReactDOM.createRoot(document.getElementById("root")).render(
 
 ### 🟣 Pruebas en FirstApp - Componentes de React
 
+Para continuar con las pruebas debemos instalar lo siguiente, **cerrar todo y volver a iniciar los Test.**
+
 ```bash
 yarn add -D jest-environment-jsdom
 yarn add -D @babel/preset-react
 ```
+
+📌 Al hacer las instalaciones aparece un **Warning** relacionado con los `defaultProps` usados en clases anteriores. Lo que hice fue comentar esa parte del código y listo.
 
 `jest.config.cjs`
 
@@ -2160,6 +2164,22 @@ module.exports = {
     ["@babel/preset-react", { runtime: "automatic" }],
   ],
 };
+```
+
+`src > main.jsx`
+
+```jsx
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { FirstTest } from "./FirstTest";  👈👀
+
+import "./styles.css";
+
+ReactDOM.createRoot(document.getElementById("root")).render(
+  <React.StrictMode>
+    <FirstTest title="Ale Roses" subtitle={246} />  👈👀
+  </React.StrictMode>
+);
 ```
 
 `src > FirstTest.jsx`
@@ -2182,7 +2202,8 @@ const FirstTest = ({
   );
 };
 
-FirstTest.propTypes = {
+// Comment on this part, it is obsolete.
+FirstTest.propTypes = {  👈👀
   title: PropTypes.string.isRequired,
   subTitle: PropTypes.string,
 };
@@ -2203,11 +2224,11 @@ export { FirstTest };
 import { render } from "@testing-library/react";
 import { FirstTest } from "../src/FirstTest.jsx";
 
-describe("Testing FirstTest", () => {
-  test("Should match the snapshot", () => {
+describe("FirstApp tests", () => {
+  test("It should match the snapshot", () => {
     // snapshot: instantánea captura
 
-    render(<FirstTest title={"Hi i'm Ale Roses"} />);
+    render(<FirstTest title="Ale Roses" subtitle={246} />);
   });
 });
 ```
