@@ -2246,6 +2246,10 @@ FirstTest.propTypes = {
 export { FirstTest };
 ```
 
+[DOM Manipulation JEST](https://jestjs.io/docs/next/tutorial-jquery)
+
+[Babel Preset React](https://babeljs.io/docs/babel-preset-react)
+
 ### 🟣 Probar FirstApp
 
 Al usar `toMatchSnapshot` se crea una carpeta llamada `__snapshots__` con las instantáneas o capturas del componente asociado.
