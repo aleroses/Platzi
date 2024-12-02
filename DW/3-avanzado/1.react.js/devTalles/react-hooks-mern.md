@@ -2442,6 +2442,8 @@ test('string contains the substring', () => {
 
 ### 🟣 getByTestId y otras props
 
+Si están en desarrollo se recomienda no hacer pruebas de `snapshot`.
+
 `src > FirstTest.jsx`
 
 ```jsx
@@ -2454,7 +2456,7 @@ const FirstTest = ({
 }) => {
   return (
     <>
-      <h1 data-testid="test-title">{title}</h1>
+      <h1 🔥data-testid="test-title" 👈👀 >{title}</h1>
       <p>{subTitle}</p>
       <p>{subTitle}</p>
       <p>{name}</p>
@@ -2476,11 +2478,11 @@ export { FirstTest };
 import { render } from "@testing-library/react";
 import { FirstTest } from "../src/FirstTest.jsx";
 
-describe("Testing FirstTest", () => {
-  test("Should show the title in a h1", () => {
+describe("FirstTest tests", () => {
+  test("It should display the title in an h1.", () => {
     const message = "Hi i'm Ale Roses";
 
-    const { container, getByText, getByTestId } = render(
+    const { container, getByText, getByTestId 👈👀 } = render(
       <FirstTest title={message} />
     );
 
