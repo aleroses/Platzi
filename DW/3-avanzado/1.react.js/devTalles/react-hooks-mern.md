@@ -2440,8 +2440,6 @@ test('string contains the substring', () => {
 - **`toBe()`**: Verifica que el valor es exactamente igual al esperado.
 - **`toContain()`**: Verifica que una matriz o cadena contiene un elemento específico.
 
-¿Hay algo más específico que te gustaría saber sobre estas funciones o necesitas algún ejemplo adicional?
-
 ### 🟣 getByTestId y otras props
 
 `src > FirstTest.jsx`
