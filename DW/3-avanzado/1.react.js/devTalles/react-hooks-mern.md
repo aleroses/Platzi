@@ -2271,13 +2271,13 @@ export { FirstTest };
 
 [Babel Preset React](https://babeljs.io/docs/babel-preset-react)
 
-### 🟣 Probar FirstApp
+### 🟣 Probar FirstApp: `toMatchSnapshot`
 
 Al usar `toMatchSnapshot` se crea una carpeta llamada `__snapshots__` con las instantáneas o capturas del componente asociado.
 
 Esto permite verificar que el código está tal cual como lo creamos y que no se eliminaron líneas. Si eliminas algunas, verás que esto se refleja en la consola.
 
-En caso el cambio hecho en el código sea intensional, puedes presionar `u` en la consola para actualizar los cambios en el `__snapshots__`.
+En caso el cambio hecho en el código sea intencional, puedes presionar `u` en la consola para actualizar los cambios en el `__snapshots__`.
 
 `test > FirstTest.test.jsx`
 
