@@ -2320,8 +2320,8 @@ La estructura es la siguiente:
 import { render } from "@testing-library/react";
 import { FirstTest } from "../src/FirstTest.jsx";
 
-describe("Testing FirstTest", () => {
-  test("Should match the snapshot", () => {
+describe("FirstApp tests", () => {
+  test("It should match the snapshot", () => {
     // snapshot: instantánea, captura
 
     const message = "Hi i'm Ale Roses";
@@ -2329,10 +2329,10 @@ describe("Testing FirstTest", () => {
       <FirstTest title={message} />
     );
 
-    expect(container).toMatchSnapshot();
+    expect(container).toMatchSnapshot(); 👈👀
   });
 
-  test("Should show the title in a h1", () => {
+  test("It should display the title in an h1.", () => {
     const message = "Hi i'm Ale Roses";
     const { container, getByText } = render(
       <FirstTest title={message} />
@@ -2349,6 +2349,98 @@ describe("Testing FirstTest", () => {
   });
 });
 ```
+
+### Recuento de lo visto
+
+Veamos cómo funcionan `container` y `getByText` con `@testing-library/react`, así como los métodos de aserción `toBeTruthy()`, `toBe()` y `toContain()` de Jest.
+
+#### @testing-library/react: `render`, `container` y `getByText`
+
+##### `render`
+La función `render` de `@testing-library/react` se utiliza para renderizar componentes React en el DOM para que puedan ser probados. Al usar `render`, obtienes un conjunto de utilidades para interactuar con el componente renderizado.
+
+##### `container`
+El objeto `container` es una propiedad devuelta por `render`. Representa el contenedor del DOM donde el componente fue renderizado. Puedes usarlo para acceder directamente al árbol del DOM y realizar manipulaciones o inspecciones.
+
+##### `getByText`
+`getByText` es una función proporcionada por `@testing-library/react` que permite seleccionar elementos en el DOM en función de su contenido de texto. Es útil para verificar que el contenido renderizado coincide con lo esperado.
+
+#### Ejemplo de uso
+
+```jsx
+import React from 'react';
+import { render } from '@testing-library/react';
+import '@testing-library/jest-dom/extend-expect'; // Para tener los matchers extendidos como toBeInTheDocument
+import MyComponent from './MyComponent';
+
+test('renders learn react link', () => {
+  const { container, getByText } = render(<MyComponent />);
+  
+  // Usando container
+  const element = container.querySelector('.some-class');
+  expect(element).not.toBe(null);
+
+  // Usando getByText
+  const linkElement = getByText(/learn react/i);
+  expect(linkElement).toBeInTheDocument();
+});
+```
+
+En este ejemplo, `render` se usa para renderizar `MyComponent`. Luego, se utilizan `container` y `getByText` para seleccionar elementos en el DOM y hacer aserciones sobre ellos.
+
+#### Métodos de aserción: `toBeTruthy()`, `toBe()` y `toContain()`
+
+##### `toBeTruthy()`
+`toBeTruthy()` verifica que el valor que se está probando es "verdadero" en el contexto booleano. Es decir, cualquier valor que no sea `null`, `undefined`, `false`, `0`, `NaN`, o una cadena vacía se considera "truthy".
+
+```jsx
+test('value is truthy', () => {
+  const value = 'hello';
+  expect(value).toBeTruthy(); // Pasa porque 'hello' es truthy
+});
+```
+
+##### `toBe()`
+`toBe()` verifica que el valor que se está probando es exactamente igual (usando `Object.is`) al valor esperado. Es útil para comparar valores primitivos y objetos inmutables.
+
+```jsx
+test('value is exactly equal to 4', () => {
+  const value = 4;
+  expect(value).toBe(4); // Pasa porque 4 es igual a 4
+});
+```
+
+##### `toContain()`
+`toContain()` verifica que una matriz o cadena contiene un elemento específico.
+
+Para matrices:
+
+```jsx
+test('array contains the value', () => {
+  const array = [1, 2, 3];
+  expect(array).toContain(2); // Pasa porque 2 está en la matriz
+});
+```
+
+Para cadenas:
+
+```jsx
+test('string contains the substring', () => {
+  const string = 'hello world';
+  expect(string).toContain('world'); // Pasa porque 'world' está en la cadena
+});
+```
+
+#### Entonces…
+
+- **`render`**: Renderiza un componente React y devuelve utilidades para interactuar con él.
+- **`container`**: Es el contenedor del DOM donde el componente fue renderizado.
+- **`getByText`**: Selecciona elementos del DOM en función de su contenido de texto.
+- **`toBeTruthy()`**: Verifica que el valor es "verdadero" en contexto booleano.
+- **`toBe()`**: Verifica que el valor es exactamente igual al esperado.
+- **`toContain()`**: Verifica que una matriz o cadena contiene un elemento específico.
+
+¿Hay algo más específico que te gustaría saber sobre estas funciones o necesitas algún ejemplo adicional?
 
 ### 🟣 getByTestId y otras props
 
