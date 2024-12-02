@@ -2457,8 +2457,8 @@ const FirstTest = ({
   return (
     <>
       <h1 🔥data-testid="test-title" 👈👀 >{title}</h1>
-      <p>{subTitle}</p>
-      <p>{subTitle}</p>
+      <p>{subTitle}</p> 👈👀
+      <p>{subTitle}</p> 👈👀
       <p>{name}</p>
     </>
   );
@@ -2488,6 +2488,7 @@ describe("FirstTest tests", () => {
 
     expect(getByText(message)).toBeTruthy();
 
+    // toBeTruthy: Verifica que exista
     expect(getByTestId("test-title")).toBeTruthy();
     expect(getByTestId("test-title").innerHTML).toBe(
       message
@@ -2502,11 +2503,13 @@ describe("FirstTest tests", () => {
     const message = "Hi i'm Ale Roses";
     const subTitle = "I'm a subtitle";
 
-    const { getByText, getAllByText } = render(
+    const { getByText, getAllByText 👈👀 } = render(
       <FirstTest title={message} subTitle={subTitle} />
     );
 
     // expect(getByText(subTitle)).toBeTruthy();
+
+    // En caso de haber mas de un elemento a evaluar usar getAllByText() que devuelve un array
     expect(getAllByText(subTitle)).toBeTruthy();
     expect(getAllByText(subTitle).length).toBe(2);
   });
