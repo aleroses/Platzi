@@ -2295,7 +2295,7 @@ La estructura es la siguiente:
 │   ├── CounterApp.jsx
 │   ├── data
 │   │   └── heroes.js
-│   ├── FirstApp.jsx
+│   ├── FirstApp.jsx 🔥
 │   ├── main.jsx
 │   └── styles.css
 ├── tests
