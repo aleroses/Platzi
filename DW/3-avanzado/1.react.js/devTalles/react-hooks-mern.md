@@ -2279,6 +2279,41 @@ Esto permite verificar que el código está tal cual como lo creamos y que no se
 
 En caso el cambio hecho en el código sea intencional, puedes presionar `u` en la consola para actualizar los cambios en el `__snapshots__`.
 
+La estructura es la siguiente:
+
+```bash
+├── src
+│   ├── App.jsx
+│   ├── basic-tests
+│   │   ├── 02-template-string.js
+│   │   ├── 05-funciones.js
+│   │   ├── 06-deses-obj.js
+│   │   ├── 07-deses-arr.js
+│   │   ├── 08-imp-exp.js
+│   │   ├── 09-promesas.js
+│   │   └── 11-async-await.js
+│   ├── CounterApp.jsx
+│   ├── data
+│   │   └── heroes.js
+│   ├── FirstApp.jsx
+│   ├── main.jsx
+│   └── styles.css
+├── tests
+│   ├── basic-tests
+│   │   ├── 02-template-string.test.js
+│   │   ├── 05-functions.test.js
+│   │   ├── 07-deses-arr.test.js
+│   │   ├── 08-imp-exp.test.js
+│   │   ├── 09-promises.test.js
+│   │   └── 11-async-await.test.js
+│   ├── demo.test.js
+│   ├── FirstApp.test.jsx 🔥
+│   └── __snapshots__ 👈👀👇
+│       └── FirstApp.test.jsx.snap 🔥
+├── vite.config.js
+└── yarn.lock
+```
+
 `test > FirstTest.test.jsx`
 
 ```jsx
