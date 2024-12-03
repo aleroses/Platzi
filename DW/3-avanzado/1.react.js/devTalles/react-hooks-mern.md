@@ -2636,6 +2636,7 @@ Si estás utilizando React en tu proyecto, los archivos que contienen JSX necesi
 En tu archivo de configuración de Babel (por ejemplo, `babel.config.cjs`), agrega el preset:
     
 ```javascript
+// Esto es un ejemplo, mas abajo encontraras la configuración que se usó en el curso
 module.exports = {
   presets: [
     "@babel/preset-env", // Para convertir ES6+ a código compatible con navegadores antiguos
@@ -2777,7 +2778,145 @@ export { FirstTest };
 
 ### 🟣 Probar FirstApp: `toMatchSnapshot`
 
-Al usar `toMatchSnapshot` se crea una carpeta llamada `__snapshots__` con las instantáneas o capturas del componente asociado.
+Veamos cómo funcionan `render`, `container` y `getByText` con `@testing-library/react`, así como los métodos de aserción `toBeTruthy()`, `toBe()` y `toContain()` de Jest.
+
+#### @testing-library/react
+
+##### `render`
+La función `render` de `@testing-library/react` se utiliza para renderizar componentes React en el DOM para que puedan ser probados. Al usar `render`, obtienes un conjunto de utilidades para interactuar con el componente renderizado.
+
+##### `container`
+El objeto `container` es una propiedad devuelta por `render`. Representa el contenedor del DOM donde el componente fue renderizado. Puedes usarlo para acceder directamente al árbol del DOM y realizar manipulaciones o inspecciones.
+
+##### `getByText`
+`getByText` es una función proporcionada por `@testing-library/react` que permite seleccionar elementos en el DOM en función de su contenido de texto. Es útil para verificar que el contenido renderizado coincide con lo esperado.
+
+##### Ejemplo de uso
+
+```jsx
+import React from 'react';
+import { render } from '@testing-library/react';
+import '@testing-library/jest-dom/extend-expect'; // Para tener los matchers extendidos como toBeInTheDocument
+import MyComponent from './MyComponent';
+
+test('renders learn react link', () => {
+  const { container, getByText } = render(<MyComponent />);
+  
+  // Usando container
+  const element = container.querySelector('.some-class');
+  expect(element).not.toBe(null);
+
+  // Usando getByText
+  const linkElement = getByText(/learn react/i);
+  expect(linkElement).toBeInTheDocument();
+});
+```
+
+En este ejemplo, `render` se usa para renderizar `MyComponent`. Luego, se utilizan `container` y `getByText` para seleccionar elementos en el DOM y hacer aserciones sobre ellos.
+
+#### Métodos de aserción
+
+##### `toBeTruthy()`
+`toBeTruthy()` verifica que el valor que se está probando es "verdadero" en el contexto booleano. Es decir, cualquier valor que no sea `null`, `undefined`, `false`, `0`, `NaN`, o una cadena vacía se considera "truthy".
+
+```jsx
+test('value is truthy', () => {
+  const value = 'hello';
+  expect(value).toBeTruthy(); // Pasa porque 'hello' es truthy
+});
+```
+
+##### `toBe()`
+`toBe()` verifica que el valor que se está probando es exactamente igual (usando `Object.is`) al valor esperado. Es útil para comparar valores primitivos y objetos inmutables.
+
+```jsx
+test('value is exactly equal to 4', () => {
+  const value = 4;
+  expect(value).toBe(4); // Pasa porque 4 es igual a 4
+});
+```
+
+##### `toContain()`
+`toContain()` verifica que una matriz o cadena contiene un elemento específico.
+
+Para matrices:
+
+```jsx
+test('array contains the value', () => {
+  const array = [1, 2, 3];
+  expect(array).toContain(2); // Pasa porque 2 está en la matriz
+});
+```
+
+Para cadenas:
+
+```jsx
+test('string contains the substring', () => {
+  const string = 'hello world';
+  expect(string).toContain('world'); // Pasa porque 'world' está en la cadena
+});
+```
+
+#### Entonces…
+
+- **`render`**: Renderiza un componente React y devuelve utilidades para interactuar con él.
+- **`container`**: Es el contenedor del DOM donde el componente fue renderizado.
+- **`getByText`**: Selecciona elementos del DOM en función de su contenido de texto.
+- **`toBeTruthy()`**: Verifica que el valor es "verdadero" en contexto booleano.
+- **`toBe()`**: Verifica que el valor es exactamente igual al esperado.
+- **`toContain()`**: Verifica que una matriz o cadena contiene un elemento específico.
+
+#### `toMatchSnapshot()`
+
+`toMatchSnapshot()` es una función de Jest que se utiliza para realizar pruebas de instantáneas (snapshots). Las pruebas de instantáneas son una forma de guardar el estado de una salida específica (por ejemplo, el resultado renderizado de un componente React) en un archivo de instantánea y luego compararlo con futuras ejecuciones de pruebas para detectar cambios inesperados.
+
+1. **Captura Inicial**: La primera vez que ejecutas una prueba con `toMatchSnapshot()`, Jest guarda la salida de la prueba en un archivo de instantánea. Este archivo se guarda en una carpeta `__snapshots__` dentro de tu estructura de pruebas.
+    
+2. **Comparación**: En ejecuciones posteriores de la prueba, Jest compara la salida actual con la instantánea guardada. Si hay diferencias, la prueba falla, indicando que algo ha cambiado.
+    
+3. **Actualización**: Si el cambio en la salida es intencional (por ejemplo, después de actualizar un componente), puedes actualizar la instantánea para reflejar el nuevo estado esperado.
+    
+
+##### Ejemplo de uso
+
+Supongamos que tienes un componente React que deseas probar.
+
+```jsx
+import React from 'react';
+import renderer from 'react-test-renderer';
+import MyComponent from './MyComponent';
+
+test('MyComponent matches snapshot', () => {
+  const tree = renderer.create(<MyComponent />).toJSON();
+  expect(tree).toMatchSnapshot();
+});
+```
+
+En este ejemplo:
+
+1. **Renderizado**: El componente `MyComponent` se renderiza utilizando `react-test-renderer`.
+2. **Conversión a JSON**: La salida renderizada se convierte a una estructura de datos JSON.
+3. **Verificación de la instantánea**: `expect(tree).toMatchSnapshot()` compara la estructura renderizada con la instantánea guardada.
+
+##### Ventajas de las pruebas de instantáneas
+
+- **Detección de cambios no intencionados**: Las pruebas de instantáneas son útiles para detectar cambios accidentales en la salida de tus componentes. Si un cambio en el código provoca una diferencia en la salida, la prueba fallará.
+    
+- **Documentación visual**: Las instantáneas actúan como una forma de documentación visual, mostrando cómo se espera que luzca la salida en un momento dado.
+    
+- **Fácil de actualizar**: Si haces cambios intencionales en tu componente y la instantánea necesita ser actualizada, puedes actualizar fácilmente las instantáneas usando el comando de Jest `--updateSnapshot` o `-u`.
+
+##### Cómo actualizar instantáneas
+
+Si has cambiado intencionalmente la salida de un componente y necesitas actualizar la instantánea, puedes ejecutar:
+
+```bash
+jest --updateSnapshot
+```
+
+Esto actualizará las instantáneas para que reflejen el nuevo estado esperado.
+
+📌 Al usar `toMatchSnapshot` se crea una carpeta llamada `__snapshots__` con las instantáneas o capturas del componente asociado.
 
 Esto permite verificar que el código está tal cual como lo creamos y que no se eliminaron líneas. Si eliminas algunas, verás que esto se refleja en la consola.
 
@@ -2853,96 +2992,6 @@ describe("FirstApp tests", () => {
   });
 });
 ```
-
-### Recuento de lo visto
-
-Veamos cómo funcionan `container` y `getByText` con `@testing-library/react`, así como los métodos de aserción `toBeTruthy()`, `toBe()` y `toContain()` de Jest.
-
-#### @testing-library/react: `render`, `container` y `getByText`
-
-##### `render`
-La función `render` de `@testing-library/react` se utiliza para renderizar componentes React en el DOM para que puedan ser probados. Al usar `render`, obtienes un conjunto de utilidades para interactuar con el componente renderizado.
-
-##### `container`
-El objeto `container` es una propiedad devuelta por `render`. Representa el contenedor del DOM donde el componente fue renderizado. Puedes usarlo para acceder directamente al árbol del DOM y realizar manipulaciones o inspecciones.
-
-##### `getByText`
-`getByText` es una función proporcionada por `@testing-library/react` que permite seleccionar elementos en el DOM en función de su contenido de texto. Es útil para verificar que el contenido renderizado coincide con lo esperado.
-
-#### Ejemplo de uso
-
-```jsx
-import React from 'react';
-import { render } from '@testing-library/react';
-import '@testing-library/jest-dom/extend-expect'; // Para tener los matchers extendidos como toBeInTheDocument
-import MyComponent from './MyComponent';
-
-test('renders learn react link', () => {
-  const { container, getByText } = render(<MyComponent />);
-  
-  // Usando container
-  const element = container.querySelector('.some-class');
-  expect(element).not.toBe(null);
-
-  // Usando getByText
-  const linkElement = getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
-});
-```
-
-En este ejemplo, `render` se usa para renderizar `MyComponent`. Luego, se utilizan `container` y `getByText` para seleccionar elementos en el DOM y hacer aserciones sobre ellos.
-
-#### Métodos de aserción: `toBeTruthy()`, `toBe()` y `toContain()`
-
-##### `toBeTruthy()`
-`toBeTruthy()` verifica que el valor que se está probando es "verdadero" en el contexto booleano. Es decir, cualquier valor que no sea `null`, `undefined`, `false`, `0`, `NaN`, o una cadena vacía se considera "truthy".
-
-```jsx
-test('value is truthy', () => {
-  const value = 'hello';
-  expect(value).toBeTruthy(); // Pasa porque 'hello' es truthy
-});
-```
-
-##### `toBe()`
-`toBe()` verifica que el valor que se está probando es exactamente igual (usando `Object.is`) al valor esperado. Es útil para comparar valores primitivos y objetos inmutables.
-
-```jsx
-test('value is exactly equal to 4', () => {
-  const value = 4;
-  expect(value).toBe(4); // Pasa porque 4 es igual a 4
-});
-```
-
-##### `toContain()`
-`toContain()` verifica que una matriz o cadena contiene un elemento específico.
-
-Para matrices:
-
-```jsx
-test('array contains the value', () => {
-  const array = [1, 2, 3];
-  expect(array).toContain(2); // Pasa porque 2 está en la matriz
-});
-```
-
-Para cadenas:
-
-```jsx
-test('string contains the substring', () => {
-  const string = 'hello world';
-  expect(string).toContain('world'); // Pasa porque 'world' está en la cadena
-});
-```
-
-#### Entonces…
-
-- **`render`**: Renderiza un componente React y devuelve utilidades para interactuar con él.
-- **`container`**: Es el contenedor del DOM donde el componente fue renderizado.
-- **`getByText`**: Selecciona elementos del DOM en función de su contenido de texto.
-- **`toBeTruthy()`**: Verifica que el valor es "verdadero" en contexto booleano.
-- **`toBe()`**: Verifica que el valor es exactamente igual al esperado.
-- **`toContain()`**: Verifica que una matriz o cadena contiene un elemento específico.
 
 ### 🟣 getByTestId y otras props
 
