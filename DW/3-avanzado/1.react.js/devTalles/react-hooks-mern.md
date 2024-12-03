@@ -2518,6 +2518,10 @@ describe("FirstTest tests", () => {
 
 ### 🟣 Screen - Testing Library
 
+La función `screen` es una parte esencial de `@testing-library/react` y facilita la selección de elementos del DOM cuando se realizan pruebas. Veamos cómo funciona y cómo se utiliza en los tests.
+
+`screen` es una utilidad global que permite acceder a los métodos de consulta de manera más sencilla y sin necesidad de desestructurar la respuesta de la función `render`.
+
 `test > FirstTest2.test.jsx`
 
 ```jsx
