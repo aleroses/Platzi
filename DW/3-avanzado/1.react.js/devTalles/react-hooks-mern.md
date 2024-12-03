@@ -2060,10 +2060,118 @@ describe("Test on 07-desest-arr", () => {
     expect(typeof letters).toBe("string");
     expect(typeof numbers).toBe("number");
 
-    expect(letters).toEqual(expect.any(String));
+    expect(letters).toEqual(expect.any(String)); 👈👀
   });
 });
 ```
+
+**`expect.any(String)`**: Verifica que el valor es cualquier cadena de texto.
+
+---
+📌 La línea `expect(letters).toEqual(expect.any(String));` no está anidando los `expect`. En lugar de eso, se está utilizando el matcher `expect.any` como un argumento para `toEqual`.
+
+Vamos a desglosarlo y luego hablaré sobre el matcher `any`.
+
+- **`expect(letters)`**: Esto crea una expectativa sobre la variable `letters`.
+- **`.toEqual(...)`**: Este matcher verifica que el valor de `letters` sea igual al valor esperado que se pasa como argumento.
+- **`expect.any(String)`**: Este matcher especial se utiliza para verificar que el valor sea de cualquier tipo de `String`.
+
+El matcher `expect.any` se pasa como argumento a `toEqual`, lo que significa que Jest verificará que `letters` sea cualquier cadena de texto, no una cadena específica. No hay anidamiento de `expect` aquí; simplemente se está usando `expect.any` dentro de `toEqual`.
+
+#### ¿Qué es `expect.any`?
+
+`expect.any(constructor)` es un matcher en Jest que se utiliza para verificar que un valor es de un tipo específico, sin preocuparse por el valor exacto. El `constructor` puede ser cualquier función constructora como `String`, `Number`, `Object`, `Array`, etc.
+
+#### Uso de `expect.any`
+
+La sintaxis básica de `expect.any` es:
+
+```jsx
+expect.any(constructor)
+```
+
+Donde `constructor` es una función constructora para el tipo de valor que estás verificando.
+
+#### Ejemplos de uso
+
+##### Verificar que el valor es una cadena
+
+```jsx
+test('value is a string', () => {
+  const value = 'Hello, world!';
+  expect(value).toEqual(expect.any(String));
+});
+```
+
+##### Verificar que el valor es un número
+
+```jsx
+test('value is a number', () => {
+  const value = 123;
+  expect(value).toEqual(expect.any(Number));
+});
+```
+
+##### Verificar que el valor es un objeto
+
+```jsx
+test('value is an object', () => {
+  const value = { key: 'value' };
+  expect(value).toEqual(expect.any(Object));
+});
+```
+
+##### Verificar que el valor es un array
+
+```jsx
+test('value is an array', () => {
+  const value = [1, 2, 3];
+  expect(value).toEqual(expect.any(Array));
+});
+```
+
+### Uso combinado con otros matchers
+
+`expect.any` puede ser utilizado con otros matchers para crear expectativas más flexibles. Aquí hay algunos ejemplos:
+
+##### Verificar propiedades de un objeto
+
+```jsx
+test('object has properties with specific types', () => {
+  const user = {
+    name: 'John Doe',
+    age: 30,
+  };
+
+  expect(user).toEqual({
+    name: expect.any(String),
+    age: expect.any(Number),
+  });
+});
+```
+
+##### Verificar elementos de un array
+
+```jsx
+test('array contains elements of specific types', () => {
+  const items = ['apple', 'banana', 'cherry'];
+
+  expect(items).toEqual([
+    expect.any(String),
+    expect.any(String),
+    expect.any(String),
+  ]);
+});
+```
+
+### Resumen
+
+- **No se anidan los `expect` en `expect(letters).toEqual(expect.any(String))`**: Simplemente se usa `expect.any` como un argumento para `toEqual`.
+- **`expect.any(constructor)`**: Matcher de Jest que verifica que el valor es de un tipo específico (definido por el constructor) sin preocuparse por el valor exacto.
+- **Uso**: Verificar tipos de valores primitivos, objetos, arrays, etc., proporcionando flexibilidad en las pruebas.
+
+`expect.any` es muy útil para verificar tipos y estructuras de datos de manera flexible y clara, lo que hace que tus pruebas sean más robustas y fáciles de mantener. ¿Hay algo más específico sobre Jest o alguna otra funcionalidad que te gustaría explorar?
+---
 
 ### 🟣 Pruebas en `08-imp-exp.js - Arreglos`
 
