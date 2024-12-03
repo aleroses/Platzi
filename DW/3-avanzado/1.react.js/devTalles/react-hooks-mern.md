@@ -2560,6 +2560,7 @@ test("renders learn react link", () => {
 - **`screen.getByLabelText(label)`**: Busca un elemento asociado a una etiqueta específica.
 - **`screen.getByPlaceholderText(placeholder)`**: Busca un elemento por su texto de marcador de posición.
 - **`screen.getByAltText(alt)`**: Busca un elemento por su texto alternativo.
+- **`screen.debug()`**: Imprime el contenido del DOM en el momento en que se llama. Esto es útil para entender mejor la estructura del componente que estás probando.
 
 #### Ejemplo avanzado
 
@@ -2620,12 +2621,15 @@ describe("FirstApp tests", () => {
   });
 
   test("It should display the message 'Hi, i'm Ale Roses'", () => {
+    // Imprime el estado inicial del DOM
     // screen.debug()
     render(<FirstTest title={message} />);
 
     // Que no exista: not
     // expect(screen.getByText(title)).not.toBeTruthy();
     expect(screen.getByText(message)).toBeTruthy();
+    // Imprime el estado del DOM después de la acción
+    // screen.debug();
   });
 
   test("It should display the title in an h1", () => {
