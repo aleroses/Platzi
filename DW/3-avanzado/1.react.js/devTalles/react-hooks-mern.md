@@ -1618,7 +1618,7 @@ test('button click updates text', () => {
 });
 ```
 
-#### Configuración
+#### Configurar Jest
 
 Para empezar a usar Jest primero debemos configurarlo, ya que en Vite no vienen configurados por defecto.
 
@@ -1628,7 +1628,7 @@ Esta configuración solo se hace una vez en cada proyecto.
 yarn add --dev jest
 ```
 
-Añadimos un script dentro del archivo `package.json`.
+Añadimos el script de ejecución dentro del archivo `package.json`.
 
 ```json
 "scripts": {
