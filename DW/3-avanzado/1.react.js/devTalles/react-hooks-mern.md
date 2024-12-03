@@ -2744,7 +2744,142 @@ describe("CounterApp Testing", () => {
 
 Para utilizar `fireEvent`, seleccionas un elemento del DOM usando `screen` o cualquier método de consulta proporcionado por `@testing-library/react`, y luego disparas un evento sobre ese elemento.
 
-Veamos como se usa en nuestro proyecto:
+---
+#### Ejemplo básico
+
+Supongamos que tienes un botón que, al ser clicado, cambia el estado de un mensaje:
+
+```jsx
+import React, { useState } from 'react';
+
+function ToggleButton() {
+  const [visible, setVisible] = useState(false);
+
+  return (
+    <div>
+      <button onClick={() => setVisible(!visible)}>Toggle</button>
+      {visible && <p>The message is now visible</p>}
+    </div>
+  );
+}
+
+export default ToggleButton;
+```
+
+Puedes escribir una prueba para este componente utilizando `fireEvent` de la siguiente manera:
+
+```jsx
+import { render, screen, fireEvent } from '@testing-library/react';
+import ToggleButton from './ToggleButton';
+
+test('toggles message visibility on button click', () => {
+  render(<ToggleButton />);
+  
+  const button = screen.getByRole('button', { name: /toggle/i });
+  fireEvent.click(button);
+  
+  expect(screen.getByText(/the message is now visible/i)).toBeInTheDocument();
+  
+  fireEvent.click(button);
+  
+  expect(screen.queryByText(/the message is now visible/i)).not.toBeInTheDocument();
+});
+```
+
+#### Tipos de eventos comunes
+
+##### `fireEvent.click(element)`
+
+Simula un clic en el elemento especificado.
+
+```jsx
+fireEvent.click(button);
+```
+
+##### `fireEvent.change(element, { target: { value: 'new value' } })`
+
+Simula un cambio de valor en un elemento de entrada.
+
+```jsx
+const input = screen.getByLabelText(/username/i);
+fireEvent.change(input, { target: { value: 'new username' } });
+expect(input.value).toBe('new username');
+```
+
+##### `fireEvent.submit(form)`
+
+Simula el envío de un formulario.
+
+```jsx
+const form = screen.getByRole('form');
+fireEvent.submit(form);
+```
+
+#### Otros eventos disponibles
+
+- `fireEvent.focus(element)`
+- `fireEvent.blur(element)`
+- `fireEvent.mouseOver(element)`
+- `fireEvent.keyDown(element, { key: 'Enter', code: 'Enter' })`
+
+#### Ejemplo avanzado con varios eventos
+
+Supongamos que tienes un formulario con un campo de texto y un botón de envío. Quieres probar que al escribir en el campo y hacer clic en el botón, se muestra un mensaje de éxito:
+
+```jsx
+import React, { useState } from 'react';
+
+function Form() {
+  const [value, setValue] = useState('');
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    setSubmitted(true);
+  };
+
+  return (
+    <div>
+      <form onSubmit={handleSubmit}>
+        <label htmlFor="input">Enter text:</label>
+        <input
+          id="input"
+          type="text"
+          value={value}
+          onChange={(e) => setValue(e.target.value)}
+        />
+        <button type="submit">Submit</button>
+      </form>
+      {submitted && <p>Form submitted successfully</p>}
+    </div>
+  );
+}
+
+export default Form;
+```
+
+La prueba para este formulario podría verse así:
+
+```jsx
+import { render, screen, fireEvent } from '@testing-library/react';
+import Form from './Form';
+
+test('submits form and shows success message', () => {
+  render(<Form />);
+  
+  const input = screen.getByLabelText(/enter text/i);
+  const button = screen.getByRole('button', { name: /submit/i });
+  
+  fireEvent.change(input, { target: { value: 'Hello World' } });
+  expect(input.value).toBe('Hello World');
+  
+  fireEvent.click(button);
+  
+  expect(screen.getByText(/form submitted successfully/i)).toBeInTheDocument();
+});
+```
+
+Ahora veamos como se usa en nuestro proyecto:
 
 `tests > CounterApp.test.jsx`
 
