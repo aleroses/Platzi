@@ -2713,17 +2713,17 @@ export { CounterApp };
 import { render, screen } from "@testing-library/react";
 import { CounterApp } from "../src/CounterApp";
 
-describe("Test in the CounterApp", () => {
+describe("CounterApp Testing", () => {
   const value = 0;
 
-  test("Should match the snapshott", () => {
+  test("It should match the snapshot", () => {
     const { container } = render(
       <CounterApp value={value} />
     );
     expect(CounterApp).toMatchSnapshot();
   });
 
-  test("should show the inicial value of 0", () => {
+  test("It should display an initial value of 0", () => {
     render(<CounterApp value={value} />);
 
     expect(screen.getByText(value)).toBeTruthy();
