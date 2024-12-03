@@ -2597,7 +2597,58 @@ yarn add -D jest-environment-jsdom
 yarn add -D @babel/preset-react
 ```
 
+---
+1. **`yarn add -D jest-environment-jsdom`**
+
+Este comando instala el paquete `jest-environment-jsdom` como una dependencia de desarrollo (`-D` o `--dev`). Veamos qué hace:
+
+- **`jest-environment-jsdom`**: Este paquete proporciona un entorno de ejecución simulado para pruebas en Jest basado en **jsdom**. **jsdom** es una implementación de un navegador web en JavaScript, lo que permite simular el DOM (Document Object Model) de un navegador en un entorno de Node.js.
+    
+    Jest, por defecto, usa **jsdom** para simular el entorno de un navegador cuando ejecutas pruebas que interactúan con el DOM. Instalar `jest-environment-jsdom` garantiza que Jest pueda ejecutar pruebas de forma adecuada en un entorno simulado, incluso si no es la configuración predeterminada.
+    
+
+Si tu proyecto usa **Jest** para pruebas y necesitas un entorno de navegador (como si estuvieras probando componentes React o manipulando el DOM), **jsdom** es útil porque simula el DOM de un navegador, permitiendo hacer pruebas de manera eficiente sin tener un navegador real.
+    
+Esto es especialmente útil cuando trabajas con bibliotecas o aplicaciones que interactúan con el DOM, como React.
+    
+
+#### Ejemplo de uso:
+
+```javascript
+// En tu archivo de configuración de Jest (por ejemplo, jest.config.js)
+module.exports = {
+  testEnvironment: 'jsdom',
+};
+```
+
+De forma predeterminada, Jest ya usa jsdom, pero si lo necesitas explícitamente o tienes una configuración personalizada, este paquete asegura que Jest se ejecute con el entorno adecuado.
+
+2. **`yarn add -D @babel/preset-react`**
+
+Este comando instala el paquete **`@babel/preset-react`** como dependencia de desarrollo. Vamos a explicarlo:
+
+- **`@babel/preset-react`**: Este es un preset de Babel que permite que Babel transpile (o convierta) el código JSX y características específicas de React a código JavaScript que los navegadores puedan entender. JSX es una sintaxis que permite escribir código que se parece a HTML dentro de JavaScript, pero los navegadores no lo entienden directamente. Por eso, Babel necesita transpilar ese código para que sea compatible con los navegadores.
+
+¿Por qué es necesario?
+
+Si estás utilizando React en tu proyecto, los archivos que contienen JSX necesitan ser transformados en JavaScript puro que los navegadores puedan ejecutar. Este preset de Babel se asegura de que tu código JSX se transforme correctamente durante el proceso de compilación.
+
+En tu archivo de configuración de Babel (por ejemplo, `babel.config.cjs`), agrega el preset:
+    
+```javascript
+module.exports = {
+  presets: [
+    "@babel/preset-env", // Para convertir ES6+ a código compatible con navegadores antiguos
+    "@babel/preset-react", // Para convertir JSX y características de React
+  ],
+};
+```
+
+Esto configurará Babel para que pueda entender y convertir JSX a código JavaScript estándar que los navegadores puedan ejecutar.
+
 📌 Al hacer las instalaciones aparece un **Warning** relacionado con los `defaultProps` usados en clases anteriores. Lo que hice fue comentar esa parte del código y listo.
+
+En nuestro proyecto...
 
 `jest.config.cjs`
 
