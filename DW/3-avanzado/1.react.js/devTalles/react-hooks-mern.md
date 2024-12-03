@@ -1863,11 +1863,13 @@ Para ver más detalles al respecto pueden ir a [https://nodejs.org/docs/latest/
 
 ### 🟣 Pruebas en el archivo `02-template-string.js`
 
-Configuración de Babel:
+Configuración de Babel: Esto instala las dependencias necesarias para integrar Babel con Jest y permitir que Jest transforme el código ES6+ durante las pruebas.
 
 ```bash
 yarn add --dev babel-jest @babel/core @babel/preset-env
 ```
+
+Al usar Babel con Jest, puedes escribir tu código de pruebas utilizando las últimas características de JavaScript, y Babel se encargará de transformar ese código a una versión que Jest pueda ejecutar. Esto es especialmente útil si estás utilizando sintaxis moderna de JavaScript que no es compatible de manera nativa con la versión de Node.js que estás usando para ejecutar tus pruebas.
 
 Creamos el archivo `babel.config.cjs`
 
@@ -1878,6 +1880,12 @@ module.exports = {
   ],
 };
 ```
+
+- **`module.exports`**: Esto exporta la configuración para que Babel pueda usarla.
+    
+- **`presets`**: Los presets son conjuntos de plugins de Babel que permiten transformar el código JavaScript de manera específica.
+    
+- **`["@babel/preset-env", { targets: { node: "current" } }]`**: Aquí se está utilizando el preset `@babel/preset-env` con una configuración específica. El objeto `{ targets: { node: "current" } }` le dice a Babel que transforme el código para que sea compatible con la versión actual de Node.js que se está utilizando para ejecutar las pruebas.
 
 [Using Babel](https://jestjs.io/docs/getting-started#using-babel)
 
