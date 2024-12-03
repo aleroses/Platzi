@@ -1522,9 +1522,9 @@ Integración: Enfocadas en cómo reaccionan varias piezas en conjunto.
 5. Principalmente unitarias
 
 Pasos para enfocarnos en que todo trabaje bien entre sí (AAA):
-1. Arrange (Arreglar)
-2. Act (Actuar)
-3. Assert (Afirmar)
+1. Arrange (Arreglar): Inicialización
+2. Act (Actuar): Estimulo
+3. Assert (Afirmar): Observar el comportamiento
 
 Arrange: Preparamos el estado inicial.
 - Inicializamos variables
