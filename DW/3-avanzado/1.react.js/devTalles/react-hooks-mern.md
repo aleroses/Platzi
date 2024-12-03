@@ -2995,7 +2995,97 @@ describe("FirstApp tests", () => {
 
 ### 🟣 getByTestId y otras props
 
-Si están en desarrollo se recomienda no hacer pruebas de `snapshot`.
+#### `data-testid`
+
+`data-testid` es un atributo HTML que se utiliza para identificar elementos del DOM en las pruebas. Es una convención comúnmente utilizada para marcar elementos de manera que sean fáciles de seleccionar durante las pruebas sin afectar el comportamiento o el estilo del componente.
+
+Supongamos que tienes un componente React:
+
+```jsx
+const MyComponent = () => (
+  <div>
+    <button data-testid="submit-button">Submit</button>
+  </div>
+);
+
+export default MyComponent;
+```
+
+En este ejemplo, el botón tiene un atributo `data-testid` con el valor `"submit-button"`, lo que lo hace fácilmente seleccionable en las pruebas.
+
+#### `getByTestId`
+
+`getByTestId` es una función proporcionada por Testing Library que permite seleccionar un elemento del DOM utilizando su atributo `data-testid`. Es útil cuando quieres seleccionar un elemento específico que has marcado con `data-testid`.
+
+```javascript
+import { render, screen } from '@testing-library/react';
+import MyComponent from './MyComponent';
+
+test('renders submit button', () => {
+  render(<MyComponent />);
+  const button = screen.getByTestId('submit-button');
+  expect(button).toBeInTheDocument();
+});
+```
+
+En este ejemplo, `screen.getByTestId('submit-button')` selecciona el botón que hemos marcado con `data-testid="submit-button"` y luego verificamos que el botón está presente en el documento con `expect(button).toBeInTheDocument()`.
+
+#### `getByText` y `getAllByText`
+
+- **`getByText`**: Selecciona el primer elemento que contiene el texto especificado.
+- **`getAllByText`**: Selecciona todos los elementos que contienen el texto especificado y devuelve un array de nodos.
+
+Estas funciones son útiles para seleccionar elementos basados en el texto visible en la pantalla, lo cual es una forma natural de interactuar con los elementos del DOM durante las pruebas.
+
+##### Ejemplo de uso de `getByText`
+
+```javascript
+import { render, screen } from '@testing-library/react';
+import MyComponent from './MyComponent';
+
+test('renders submit button', () => {
+  render(<MyComponent />);
+  const button = screen.getByText('Submit');
+  expect(button).toBeInTheDocument();
+});
+```
+
+En este ejemplo, `screen.getByText('Submit')` selecciona el botón que contiene el texto "Submit".
+
+##### Ejemplo de uso de `getAllByText`
+
+Supongamos que tienes varios elementos con el mismo texto:
+
+```jsx
+const MyComponent = () => (
+  <div>
+    <p>Item 1</p>
+    <p>Item 1</p>
+    <p>Item 2</p>
+  </div>
+);
+
+export default MyComponent;
+```
+
+En este caso, puedes seleccionar todos los elementos con el texto "Item 1":
+
+```javascript
+import { render, screen } from '@testing-library/react';
+import MyComponent from './MyComponent';
+
+test('renders multiple items with the same text', () => {
+  render(<MyComponent />);
+  const items = screen.getAllByText('Item 1');
+  expect(items.length).toBe(2);
+});
+```
+
+En este ejemplo, `screen.getAllByText('Item 1')` selecciona todos los elementos `<p>` que contienen el texto "Item 1" y luego verificamos que hay dos elementos con ese texto.
+
+En nuestro proyecto...
+
+📌 Si están en desarrollo se recomienda no hacer pruebas de `snapshot`.
 
 `src > FirstTest.jsx`
 
@@ -3070,7 +3160,7 @@ describe("FirstTest tests", () => {
 ```
 
 ### 🟣 Screen - Testing Library
-
+👈👀📌
 La función `screen` es una parte esencial de `@testing-library/react` y facilita la selección de elementos del DOM cuando se realizan pruebas. Veamos cómo funciona y cómo se utiliza en los tests.
 
 `screen` es una utilidad global que permite acceder a los métodos de consulta de manera más sencilla y sin necesidad de desestructurar la respuesta de la función `render`.
