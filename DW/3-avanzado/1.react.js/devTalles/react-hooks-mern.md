@@ -1549,7 +1549,78 @@ Estos archivos los pegamos dentro del `src` del proyecto `03-counter-app`, pero 
 
 ### 🟣 Mi primera prueba y configuraciones iniciales
 
-Para las pruebas usaremos **Jest** y **React Testing Library**, pero primero debemos configurarlo, ya que en Vite no vienen configurados por defecto.
+Para las pruebas usaremos **Jest** y **React Testing Library**, dos herramientas muy populares en el ecosistema de pruebas de JavaScript y React.
+
+---
+#### Jest
+
+##### ¿Qué es Jest?
+
+Jest es un framework de pruebas de JavaScript desarrollado por Facebook. Está diseñado para trabajar con proyectos que utilizan React, aunque también se puede usar para probar aplicaciones JavaScript en general.
+
+##### Características principales de Jest:
+
+- **Configuración mínima**: Jest requiere poca configuración para comenzar a usarlo, lo que facilita su adopción.
+- **Velocidad**: Jest ejecuta las pruebas en paralelo para maximizar la velocidad de ejecución.
+- **Mocks y Espías**: Proporciona herramientas integradas para crear mocks y espías de funciones.
+- **Snapshots**: Permite crear instantáneas del estado de la interfaz en un momento específico para comparar en pruebas futuras.
+- **Cobertura de código**: Genera informes de cobertura de código detallados.
+- **Watch Mode**: Reejecuta pruebas automáticamente cuando los archivos relacionados cambian.
+
+##### Ejemplo básico de Jest:
+
+```jsx
+import sum from './sum';
+
+test('adds 1 + 2 to equal 3', () => {
+  expect(sum(1, 2)).toBe(3);
+});
+```
+
+#### Testing Library
+
+##### ¿Qué es Testing Library?
+
+Testing Library es un conjunto de utilidades para probar componentes de UI de manera accesible y amigable para el usuario. `@testing-library/react` es su implementación específica para React.
+
+##### Filosofía de Testing Library:
+
+- **Centrado en el usuario**: Testing Library fomenta las pruebas que se asemejan a cómo los usuarios interactúan con tu aplicación.
+- **Accesibilidad**: Promueve prácticas que mejoran la accesibilidad, como seleccionar elementos por roles, etiquetas y texto visible.
+- **Simplicidad**: Proporciona una API simple y ligera que facilita escribir y mantener pruebas.
+
+##### Características principales de Testing Library:
+
+- **Selección de elementos**: Métodos como `getByText`, `getByRole`, `getByLabelText` para seleccionar elementos de manera accesible.
+- **Pruebas asincrónicas**: Utilidades como `waitFor` y `findBy` para manejar componentes que actualizan su estado de manera asincrónica.
+- **Utilidades de eventos**: `fireEvent` para simular eventos del navegador.
+
+##### Ejemplo básico de Testing Library con Jest:
+
+```jsx
+import React from 'react';
+import { render, screen, fireEvent } from '@testing-library/react';
+import '@testing-library/jest-dom/extend-expect';
+import MyComponent from './MyComponent';
+
+test('renders learn react link', () => {
+  render(<MyComponent />);
+  const linkElement = screen.getByText(/learn react/i);
+  expect(linkElement).toBeInTheDocument();
+});
+
+test('button click updates text', () => {
+  render(<MyComponent />);
+  const button = screen.getByRole('button', { name: /click me/i });
+  fireEvent.click(button);
+  const updatedText = screen.getByText(/you clicked the button/i);
+  expect(updatedText).toBeInTheDocument();
+});
+```
+
+#### Configuración
+
+Para empezar a usar Jest primero debemos configurarlo, ya que en Vite no vienen configurados por defecto.
 
 Esta configuración solo se hace una vez en cada proyecto. 
 
