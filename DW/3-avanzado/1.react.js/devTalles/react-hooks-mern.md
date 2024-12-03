@@ -2561,6 +2561,13 @@ test("renders learn react link", () => {
 - **`screen.getByPlaceholderText(placeholder)`**: Busca un elemento por su texto de marcador de posición.
 - **`screen.getByAltText(alt)`**: Busca un elemento por su texto alternativo.
 
+### Ejemplo avanzado
+
+Supongamos que tienes un componente de formulario y quieres probar varios aspectos del mismo.
+
+
+
+
 `test > FirstTest2.test.jsx`
 
 ```jsx
