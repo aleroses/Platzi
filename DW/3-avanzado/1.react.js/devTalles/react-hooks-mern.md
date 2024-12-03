@@ -2161,6 +2161,138 @@ test('array contains elements of specific types', () => {
 
 ### 🟣 Pruebas en `08-imp-exp.js - Arreglos`
 
+`toBeFalsy()` es un matcher en Jest que se utiliza para verificar que un valor sea "falsy" en JavaScript. En JavaScript, los valores "falsy" son aquellos que se consideran falsos cuando se evalúan en un contexto booleano. Estos valores son:
+
+- `false`
+- `0`
+- `""` (cadena vacía)
+- `null`
+- `undefined`
+- `NaN`
+
+Cualquier valor que no esté en esta lista es considerado "truthy" (es decir, se considera verdadero en un contexto booleano).
+
+```javascript
+expect(valor).toBeFalsy();
+```
+
+Esto verifica que el `valor` proporcionado sea uno de los valores "falsy" mencionados anteriormente.
+
+#### Ejemplo con `false`
+
+```javascript
+test('false is falsy', () => {
+  const value = false;
+  expect(value).toBeFalsy();
+});
+```
+
+#### Ejemplo con `0`
+
+```javascript
+test('0 is falsy', () => {
+  const value = 0;
+  expect(value).toBeFalsy();
+});
+```
+
+#### Ejemplo con una cadena vacía
+
+```javascript
+test('empty string is falsy', () => {
+  const value = '';
+  expect(value).toBeFalsy();
+});
+```
+
+#### Ejemplo con `null`
+
+```javascript
+test('null is falsy', () => {
+  const value = null;
+  expect(value).toBeFalsy();
+});
+```
+
+#### Ejemplo con `undefined`
+
+```javascript
+test('undefined is falsy', () => {
+  const value = undefined;
+  expect(value).toBeFalsy();
+});
+```
+
+#### Ejemplo con `NaN`
+
+```javascript
+test('NaN is falsy', () => {
+  const value = NaN;
+  expect(value).toBeFalsy();
+});
+```
+
+#### Comparación con `toBeTruthy()`
+
+- **`toBeFalsy()`**: Verifica que el valor sea "falsy" (uno de los valores mencionados arriba).
+- **`toBeTruthy()`**: Verifica que el valor sea "truthy" (cualquier valor que no sea falsy, como objetos, arrays, números distintos de 0, cadenas no vacías, etc.).
+
+Ejemplo con `toBeTruthy()`:
+
+```javascript
+test('truthy value', () => {
+  const value = 'hello';
+  expect(value).toBeTruthy(); // Pasa porque 'hello' es un valor truthy
+});
+```
+
+### Resumen
+
+- **`toBeFalsy()`**: Matcher de Jest que verifica que el valor sea falsy (uno de los valores: `false`, `0`, `""`, `null`, `undefined`, `NaN`).
+- **Uso**: Ideal para verificar que un valor es considerado "falsy" en JavaScript sin preocuparse por su tipo exacto.
+- **Contraparte**: `toBeTruthy()` verifica que un valor sea truthy (es decir, no sea falsy).
+
+### Ejemplo completo
+
+```javascript
+describe('Falsy values tests', () => {
+  test('false is falsy', () => {
+    const value = false;
+    expect(value).toBeFalsy();
+  });
+
+  test('0 is falsy', () => {
+    const value = 0;
+    expect(value).toBeFalsy();
+  });
+
+  test('empty string is falsy', () => {
+    const value = '';
+    expect(value).toBeFalsy();
+  });
+
+  test('null is falsy', () => {
+    const value = null;
+    expect(value).toBeFalsy();
+  });
+
+  test('undefined is falsy', () => {
+    const value = undefined;
+    expect(value).toBeFalsy();
+  });
+
+  test('NaN is falsy', () => {
+    const value = NaN;
+    expect(value).toBeFalsy();
+  });
+});
+```
+
+En este conjunto de pruebas, `toBeFalsy()` se usa para verificar que diferentes valores sean falsy.
+
+¿Te gustaría saber más sobre otros matchers o alguna funcionalidad adicional de Jest?
+---
+
 `src > bases > 08-imp-exp.js`
 
 ```jsx
