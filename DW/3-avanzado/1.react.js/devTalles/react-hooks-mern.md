@@ -1493,9 +1493,9 @@ Aquí tienes algunos ejemplos de pruebas de ruta crítica para diferentes tipos 
 
 - Introducción a las pruebas
 - AAA
-	- Arrange - Arreglar
-    - Act - Actuar
-    - Assert - Afirmar
+	- Arrange: Arreglar
+    - Act: Actuar
+    - Assert: Afirmar
 - Primeras pruebas
 - Jest
 - Expect
