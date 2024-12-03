@@ -2448,11 +2448,19 @@ describe("Test on 09-promises", () => {
 
 ### 🟣 Pruebas con async-await
 
+#### `whatwg-fetch`
+
+`whatwg-fetch` es un paquete (polyfill) que implementa el estándar **Fetch API** en navegadores que no tienen soporte nativo para ello. La API `fetch` proporciona una forma más moderna y poderosa de realizar solicitudes de red, reemplazando a `XMLHttpRequest`.
+
+Si tu proyecto necesita trabajar en navegadores antiguos que no soportan `fetch` (por ejemplo, Internet Explorer), entonces usar un polyfill como `whatwg-fetch` asegura que tu código funcione de manera consistente.
+
 Instalamos:
 
 ```bash
 yarn add -D whatwg-fetch
 ```
+
+📌 **`-D`**: Es un atajo de `--dev`, que indica que la dependencia que estás agregando es para el entorno de desarrollo. Las dependencias de desarrollo son aquellas que solo se utilizan durante el proceso de desarrollo y no son necesarias en el entorno de producción. Se agregan al archivo `devDependencies` en el `package.json`.
 
 Creamos el archivo `jest.config.cjs` y el archivo `jest.setup.js` todo en la raíz del proyecto.
 
