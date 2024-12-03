@@ -1797,7 +1797,6 @@ expect(1 + 2).toBe(3);
     const shoppingList = ['milk', 'bread', 'eggs'];
     expect(shoppingList).toContain('milk');
     ```
-    
 
 ### Ejemplo completo utilizando `describe`, `test` y `expect`
 
@@ -1825,17 +1824,7 @@ describe('Array operations', () => {
 });
 ```
 
-### Resumen
-
-- **`describe`**: Agrupa pruebas relacionadas bajo un mismo bloque para mejor organización.
-- **`test`**: Define un caso de prueba individual, también se puede usar `it` como alias.
-- **`expect`**: Hace afirmaciones sobre el valor pasado, proporcionando varios métodos (matchers) para comprobar condiciones.
-
-Estas funciones son esenciales para estructurar y escribir pruebas en Jest, permitiéndote comprobar que tu código funciona según lo esperado. ¿Hay algo más específico sobre Jest que te gustaría explorar?
-
-En nuestro proyecto...
-
-Añadir ayudas o intelligent a Visual Studio Code.
+En nuestro proyecto, añadimos ayudas o intelligent a Visual Studio Code.
 
 ```bash
 yarn add -D @types/jest
