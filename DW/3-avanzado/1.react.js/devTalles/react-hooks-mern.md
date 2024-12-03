@@ -2742,7 +2742,9 @@ describe("CounterApp Testing", () => {
 
 `fireEvent` se usa para disparar eventos del DOM, como clics, cambios de entrada, envíos de formularios, entre otros. Simula la interacción del usuario con el componente, permitiéndote probar cómo responde tu aplicación a estas interacciones.
 
-Ahora en nuestro proyecto:
+Para utilizar `fireEvent`, seleccionas un elemento del DOM usando `screen` o cualquier método de consulta proporcionado por `@testing-library/react`, y luego disparas un evento sobre ese elemento.
+
+Veamos como se usa en nuestro proyecto:
 
 `tests > CounterApp.test.jsx`
 
@@ -2775,7 +2777,7 @@ describe("Test in the CounterApp", () => {
 
   test("Should increase with the +1 button", () => {
     render(<CounterApp value={value} />);
-    fireEvent.click(screen.getByText("+1"));
+    fireEvent.click(screen.getByText("+1")); 👈👀
 
     expect(screen.getByText("1")).toBeTruthy();
   });
