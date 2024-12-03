@@ -2740,11 +2740,15 @@ describe("CounterApp Testing", () => {
 
 ### 🟣 Simular eventos - Click
 
+`fireEvent` se usa para disparar eventos del DOM, como clics, cambios de entrada, envíos de formularios, entre otros. Simula la interacción del usuario con el componente, permitiéndote probar cómo responde tu aplicación a estas interacciones.
+
+Ahora en nuestro proyecto:
+
 `tests > CounterApp.test.jsx`
 
 ```jsx
 import {
-  fireEvent,
+  fireEvent, 👈👀
   render,
   screen,
 } from "@testing-library/react";
