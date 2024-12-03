@@ -2605,11 +2605,11 @@ Ahora en nuestro proyecto.
 import { render, screen } from "@testing-library/react";
 import { FirstTest } from "../src/FirstTest.jsx";
 
-describe("Testing FirstTest", () => {
+describe("FirstApp tests", () => {
   const message = "Hi i'm Ale Roses";
   const subTitle = "I'm a subtitle";
 
-  test("Should match the snapshot", () => {
+  test("It should match the snapshot", () => {
     // snapshot: instantánea, captura
 
     const { container } = render(
@@ -2619,26 +2619,28 @@ describe("Testing FirstTest", () => {
     expect(container).toMatchSnapshot();
   });
 
-  test("Should show the message 'Hi, i'm Ale Roses'", () => {
+  test("It should display the message 'Hi, i'm Ale Roses'", () => {
     // screen.debug()
     render(<FirstTest title={message} />);
 
+    // Que no exista: not
     // expect(screen.getByText(title)).not.toBeTruthy();
     expect(screen.getByText(message)).toBeTruthy();
   });
 
-  test("should show the title in an h1", () => {
+  test("It should display the title in an h1", () => {
     render(<FirstTest title={message} />);
     expect(
       screen.getByRole("heading", { level: 1 }).innerHTML
     ).toContain(message);
   });
 
-  test("should show the subtitle send by props", () => {
+  test("It should display the subtitle sent by a prop", () => {
     render(
       <FirstTest title={message} subTitle={subTitle} />
     );
 
+    // En caso de haber mas de un elemento a evaluar usar getAllByText() que devuelve un array
     expect(screen.getAllByText(subTitle).length).toBe(2);
   });
 });
