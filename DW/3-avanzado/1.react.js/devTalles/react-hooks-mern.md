@@ -1714,6 +1714,127 @@ Mi estructura quedó algo así (cree un proyecto desde cero):
 
 ### 🟣 Jest - Expect - toBe
 
+#### `describe`
+
+`describe` es una función en Jest que permite agrupar pruebas relacionadas bajo un mismo bloque. Esto facilita la organización y lectura de las pruebas, especialmente cuando tienes múltiples casos de prueba para una misma unidad funcional o componente.
+
+```jsx
+describe('Math functions', () => {
+  // Tests relacionados con funciones matemáticas irán aquí
+});
+```
+
+##### Ejemplo:
+
+```jsx
+describe('Math functions', () => {
+  test('adds 1 + 2 to equal 3', () => {
+    expect(1 + 2).toBe(3);
+  });
+
+  test('subtracts 2 - 1 to equal 1', () => {
+    expect(2 - 1).toBe(1);
+  });
+});
+```
+
+#### `test`
+
+`test` es una función en Jest que define un caso de prueba individual. También puedes usar `it` como un alias para `test`. Cada caso de prueba contiene una descripción y una función que ejecuta las expectativas para esa prueba.
+
+```jsx
+test('description of the test', () => {
+  // código de la prueba
+});
+```
+
+##### Ejemplo:
+
+```jsx
+test('adds 1 + 2 to equal 3', () => {
+  expect(1 + 2).toBe(3);
+});
+```
+
+#### `expect`
+
+`expect` es una función en Jest que se utiliza para hacer afirmaciones en tus pruebas. Recibe un valor y devuelve un conjunto de métodos (matchers) que permiten comprobar diferentes condiciones sobre ese valor.
+
+```jsx
+expect(value).matcherMethod();
+```
+
+##### Ejemplo:
+
+```jsx
+expect(1 + 2).toBe(3);
+```
+
+##### Matchers comunes de `expect`
+
+- **`.toBe(value)`**: Comprueba que el valor sea exactamente igual al valor esperado (usando `===`).
+    
+    ```jsx
+    expect(2 + 2).toBe(4);
+    ```
+    
+- **`.toEqual(value)`**: Comprueba que el valor sea igual al valor esperado, para objetos y arrays (usando comparación profunda).
+    
+    ```jsx
+    const obj = { a: 1 };
+    expect(obj).toEqual({ a: 1 });
+    ```
+    
+- **`.toBeTruthy()`**: Comprueba que el valor sea verdadero en un contexto booleano.
+    
+    ```jsx
+    expect(true).toBeTruthy();
+    ```
+    
+- **`.toContain(item)`**: Comprueba que un array o string contenga un elemento específico.
+    
+    ```jsx
+    const shoppingList = ['milk', 'bread', 'eggs'];
+    expect(shoppingList).toContain('milk');
+    ```
+    
+
+### Ejemplo completo utilizando `describe`, `test` y `expect`
+
+```jsx
+describe('Array operations', () => {
+  test('array contains milk', () => {
+    const shoppingList = ['milk', 'bread', 'eggs'];
+    expect(shoppingList).toContain('milk');
+  });
+
+  test('sum of numbers is correct', () => {
+    expect(1 + 2).toBe(3);
+  });
+
+  test('object assignment', () => {
+    const data = { one: 1 };
+    data['two'] = 2;
+    expect(data).toEqual({ one: 1, two: 2 });
+  });
+
+  test('null value is falsy', () => {
+    const n = null;
+    expect(n).toBeFalsy();
+  });
+});
+```
+
+### Resumen
+
+- **`describe`**: Agrupa pruebas relacionadas bajo un mismo bloque para mejor organización.
+- **`test`**: Define un caso de prueba individual, también se puede usar `it` como alias.
+- **`expect`**: Hace afirmaciones sobre el valor pasado, proporcionando varios métodos (matchers) para comprobar condiciones.
+
+Estas funciones son esenciales para estructurar y escribir pruebas en Jest, permitiéndote comprobar que tu código funciona según lo esperado. ¿Hay algo más específico sobre Jest que te gustaría explorar?
+
+En nuestro proyecto...
+
 Añadir ayudas o intelligent a Visual Studio Code.
 
 ```bash
