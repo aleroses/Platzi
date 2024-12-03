@@ -2522,6 +2522,39 @@ La función `screen` es una parte esencial de `@testing-library/react` y facilit
 
 `screen` es una utilidad global que permite acceder a los métodos de consulta de manera más sencilla y sin necesidad de desestructurar la respuesta de la función `render`.
 
+En lugar de desestructurar por ejemplo `getByText` desde el resultado de `render`, puedes usar `screen` directamente para acceder a este método.
+
+#### Sin `screen`:
+
+```jsx
+import { render } from "@testing-library/react";
+import MyComponent from "./MyComponent";
+
+test("renders learn react link", () => {
+  const { getByText } = render(<MyComponent />);
+  const linkElement = getByText(/learn react/i);
+  
+  expect(linkElement).toBeInTheDocument();
+});
+```
+
+#### Con `screen`:
+
+```jsx
+import { render, screen } from "@testing-library/react";
+import MyComponent from "./MyComponent";
+
+test("renders learn react link", () => {
+  render(<MyComponent />);
+  
+  const linkElement = screen.getByText(/learn react/i);
+  
+  expect(linkElement).toBeInTheDocument();
+});
+```
+
+### Métodos comunes de `screen`
+
 `test > FirstTest2.test.jsx`
 
 ```jsx
