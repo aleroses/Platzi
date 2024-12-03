@@ -2248,18 +2248,13 @@ test('truthy value', () => {
 });
 ```
 
----
 #### `toStrictEqual()`
 
 `toStrictEqual()` es un matcher en Jest que verifica que dos valores sean **profundamente iguales**, no solo en el contenido, sino también en su tipo y estructura exacta. A diferencia de `toEqual()`, que realiza una comparación profunda de los valores pero permite cierto tipo de flexibilidad (como permitir que dos objetos con el mismo contenido pero diferentes instancias sean considerados iguales), `toStrictEqual()` es más estricto en la comparación.
 
-#### ¿Qué verifica?
-
 - Compara los valores de manera profunda.
 - Verifica que las propiedades y los tipos de los objetos sean exactamente iguales.
 - Asegura que las propiedades del objeto sean del mismo tipo (por ejemplo, `undefined` no será igual a `null`).
-
-#### Ejemplo de uso
 
 ##### Comparación de objetos
 
@@ -2295,17 +2290,6 @@ test('toStrictEqual compares arrays', () => {
 
 - **`toEqual()`**: Realiza una comparación profunda, pero permite más flexibilidad en cuanto a la estructura interna de los objetos.
 - **`toStrictEqual()`**: Más estricto, asegura que la estructura interna, los tipos y las propiedades sean exactamente iguales.
-
-### Resumen
-
-- **`toStrictEqual()`**: Realiza una comparación profunda pero estricta, asegurando que los valores sean idénticos tanto en contenido como en tipo.
-- Es útil cuando necesitas garantizar que los objetos o arrays sean exactamente iguales, sin margen para diferencias sutiles como tipos de datos.
-
-Este matcher es útil cuando deseas que las pruebas sean más rigurosas y garantizar que no solo los valores sino también las estructuras y tipos coincidan exactamente.
-
-¿Te gustaría explorar más sobre Jest o alguna otra funcionalidad en particular?
-
----
 
 En nuestro proyecto...
 
@@ -2354,7 +2338,7 @@ describe("Test on 08-imp-exp", () => {
     expect(hero).toBeFalsy();
 
     // false is considered a false value
-    expect(false).toBeFalsy();
+    expect(false).toBeFalsy(); 👈👀
   });
 
   // Task
@@ -2380,7 +2364,7 @@ describe("Test on 08-imp-exp", () => {
     ];
 
     expect(newHeroes.length).toBe(3);
-    expect(newHeroes).toStrictEqual(dcHeroes);
+    expect(newHeroes).toStrictEqual(dcHeroes); 👈👀
 
     // Actual method
     expect(newHeroes).toEqual(
