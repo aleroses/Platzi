@@ -2546,14 +2546,20 @@ import MyComponent from "./MyComponent";
 
 test("renders learn react link", () => {
   render(<MyComponent />);
-  
   const linkElement = screen.getByText(/learn react/i);
-  
   expect(linkElement).toBeInTheDocument();
 });
 ```
 
 ### Métodos comunes de `screen`
+
+`screen` proporciona varios métodos de consulta que puedes usar para seleccionar elementos en el DOM renderizado. Algunos de los más comunes son:
+
+- **`screen.getByText(text)`**: Busca un elemento por su contenido de texto.
+- **`screen.getByRole(role)`**: Busca un elemento por su rol (como `button`, `heading`, etc.).
+- **`screen.getByLabelText(label)`**: Busca un elemento asociado a una etiqueta específica.
+- **`screen.getByPlaceholderText(placeholder)`**: Busca un elemento por su texto de marcador de posición.
+- **`screen.getByAltText(alt)`**: Busca un elemento por su texto alternativo.
 
 `test > FirstTest2.test.jsx`
 
