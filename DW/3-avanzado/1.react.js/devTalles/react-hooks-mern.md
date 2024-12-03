@@ -2161,6 +2161,8 @@ test('array contains elements of specific types', () => {
 
 ### 🟣 Pruebas en `08-imp-exp.js - Arreglos`
 
+#### `toStrictEqual()`
+
 `toBeFalsy()` es un matcher en Jest que se utiliza para verificar que un valor sea "falsy" en JavaScript. En JavaScript, los valores "falsy" son aquellos que se consideran falsos cuando se evalúan en un contexto booleano. Estos valores son:
 
 - `false`
@@ -2178,7 +2180,7 @@ expect(valor).toBeFalsy();
 
 Esto verifica que el `valor` proporcionado sea uno de los valores "falsy" mencionados anteriormente.
 
-#### Ejemplo con `false`
+##### Ejemplo con `false`
 
 ```javascript
 test('false is falsy', () => {
@@ -2187,7 +2189,7 @@ test('false is falsy', () => {
 });
 ```
 
-#### Ejemplo con `0`
+##### Ejemplo con `0`
 
 ```javascript
 test('0 is falsy', () => {
@@ -2196,7 +2198,7 @@ test('0 is falsy', () => {
 });
 ```
 
-#### Ejemplo con una cadena vacía
+##### Ejemplo con una cadena vacía
 
 ```javascript
 test('empty string is falsy', () => {
@@ -2205,7 +2207,7 @@ test('empty string is falsy', () => {
 });
 ```
 
-#### Ejemplo con `null`
+##### Ejemplo con `null`
 
 ```javascript
 test('null is falsy', () => {
@@ -2214,7 +2216,7 @@ test('null is falsy', () => {
 });
 ```
 
-#### Ejemplo con `undefined`
+##### Ejemplo con `undefined`
 
 ```javascript
 test('undefined is falsy', () => {
@@ -2223,7 +2225,7 @@ test('undefined is falsy', () => {
 });
 ```
 
-#### Ejemplo con `NaN`
+##### Ejemplo con `NaN`
 
 ```javascript
 test('NaN is falsy', () => {
@@ -2232,7 +2234,7 @@ test('NaN is falsy', () => {
 });
 ```
 
-#### Comparación con `toBeTruthy()`
+##### Comparación con `toBeTruthy()`
 
 - **`toBeFalsy()`**: Verifica que el valor sea "falsy" (uno de los valores mencionados arriba).
 - **`toBeTruthy()`**: Verifica que el valor sea "truthy" (cualquier valor que no sea falsy, como objetos, arrays, números distintos de 0, cadenas no vacías, etc.).
@@ -2246,52 +2248,66 @@ test('truthy value', () => {
 });
 ```
 
-### Resumen
+---
+#### `toStrictEqual()`
 
-- **`toBeFalsy()`**: Matcher de Jest que verifica que el valor sea falsy (uno de los valores: `false`, `0`, `""`, `null`, `undefined`, `NaN`).
-- **Uso**: Ideal para verificar que un valor es considerado "falsy" en JavaScript sin preocuparse por su tipo exacto.
-- **Contraparte**: `toBeTruthy()` verifica que un valor sea truthy (es decir, no sea falsy).
+`toStrictEqual()` es un matcher en Jest que verifica que dos valores sean **profundamente iguales**, no solo en el contenido, sino también en su tipo y estructura exacta. A diferencia de `toEqual()`, que realiza una comparación profunda de los valores pero permite cierto tipo de flexibilidad (como permitir que dos objetos con el mismo contenido pero diferentes instancias sean considerados iguales), `toStrictEqual()` es más estricto en la comparación.
 
-### Ejemplo completo
+#### ¿Qué verifica?
+
+- Compara los valores de manera profunda.
+- Verifica que las propiedades y los tipos de los objetos sean exactamente iguales.
+- Asegura que las propiedades del objeto sean del mismo tipo (por ejemplo, `undefined` no será igual a `null`).
+
+#### Ejemplo de uso
+
+##### Comparación de objetos
 
 ```javascript
-describe('Falsy values tests', () => {
-  test('false is falsy', () => {
-    const value = false;
-    expect(value).toBeFalsy();
-  });
-
-  test('0 is falsy', () => {
-    const value = 0;
-    expect(value).toBeFalsy();
-  });
-
-  test('empty string is falsy', () => {
-    const value = '';
-    expect(value).toBeFalsy();
-  });
-
-  test('null is falsy', () => {
-    const value = null;
-    expect(value).toBeFalsy();
-  });
-
-  test('undefined is falsy', () => {
-    const value = undefined;
-    expect(value).toBeFalsy();
-  });
-
-  test('NaN is falsy', () => {
-    const value = NaN;
-    expect(value).toBeFalsy();
-  });
+test('toStrictEqual compares objects', () => {
+  const obj1 = { name: 'John', age: 30 };
+  const obj2 = { name: 'John', age: 30 };
+  expect(obj1).toStrictEqual(obj2);  // Pasa, los objetos son idénticos en contenido y tipo
 });
 ```
 
-En este conjunto de pruebas, `toBeFalsy()` se usa para verificar que diferentes valores sean falsy.
+##### Diferencia en tipo
 
-¿Te gustaría saber más sobre otros matchers o alguna funcionalidad adicional de Jest?
+```javascript
+test('toStrictEqual checks type differences', () => {
+  const obj1 = { value: null };
+  const obj2 = { value: undefined };
+  expect(obj1).not.toStrictEqual(obj2);  // Falla, porque `null` no es igual a `undefined`
+});
+```
+
+##### Comparación de arrays
+
+```javascript
+test('toStrictEqual compares arrays', () => {
+  const arr1 = [1, 2, 3];
+  const arr2 = [1, 2, 3];
+  expect(arr1).toStrictEqual(arr2);  // Pasa, los arrays son iguales
+});
+```
+
+#### Comparación con `toEqual()`
+
+- **`toEqual()`**: Realiza una comparación profunda, pero permite más flexibilidad en cuanto a la estructura interna de los objetos.
+- **`toStrictEqual()`**: Más estricto, asegura que la estructura interna, los tipos y las propiedades sean exactamente iguales.
+
+### Resumen
+
+- **`toStrictEqual()`**: Realiza una comparación profunda pero estricta, asegurando que los valores sean idénticos tanto en contenido como en tipo.
+- Es útil cuando necesitas garantizar que los objetos o arrays sean exactamente iguales, sin margen para diferencias sutiles como tipos de datos.
+
+Este matcher es útil cuando deseas que las pruebas sean más rigurosas y garantizar que no solo los valores sino también las estructuras y tipos coincidan exactamente.
+
+¿Te gustaría explorar más sobre Jest o alguna otra funcionalidad en particular?
+
 ---
+
+En nuestro proyecto...
 
 `src > bases > 08-imp-exp.js`
 
