@@ -1952,7 +1952,37 @@ Watch Usage
 
 ### 🟣 toEqual
 
-`toEqual` Sirve para comparar objetos. También sirve el `toStrictEqual`.
+`toEqual` es un matcher en Jest que se utiliza para verificar que dos valores son equivalentes en contenido. A diferencia de `toBe`, que usa el operador de igualdad estricta (`===`) y verifica que los dos valores comparados son exactamente el mismo objeto o valor primitivo, `toEqual` realiza una comparación profunda. Esto significa que verifica que los valores dentro de **objetos** y **arrays** sean los mismos, no que los objetos o arrays sean exactamente el mismo objeto en memoria.
+
+También sirve el `toStrictEqual`.
+
+#### Comparación con `toBe`
+
+- **`toBe`**: Usa el operador `===` y verifica que los valores sean exactamente los mismos en términos de identidad.
+    
+    ```jsx
+    test('toBe with primitive values', () => {
+      expect(1 + 2).toBe(3);
+    });
+    
+    test('toBe with objects fails', () => {
+      const obj = { a: 1 };
+      expect(obj).toBe({ a: 1 }); // Falla porque no son el mismo objeto en memoria
+    });
+    ```
+    
+- **`toEqual`**: Realiza una comparación profunda para verificar la equivalencia de contenido.
+    
+    ```jsx
+    test('toEqual with objects', () => {
+      const obj = { a: 1 };
+      expect(obj).toEqual({ a: 1 }); // Pasa porque los contenidos son iguales
+    });
+    ```
+
+📌 `toEqual` es muy útil para verificar que estructuras complejas de datos, como objetos y arrays, tienen el mismo contenido, sin preocuparse por si son exactamente la misma referencia en memoria.
+
+Ahora veamos nuestro proyecto...
 
 `src > bases > 05-functions.js`
 
@@ -1987,7 +2017,7 @@ describe("Test on 05-functions", () => {
 
     const user = getUser();
 
-    expect(user).toEqual(testUser);
+    expect(user).toEqual(testUser); 👈👀
   });
 
   test("getActiveUser should return an object", () => {
@@ -1998,7 +2028,7 @@ describe("Test on 05-functions", () => {
     });
     const testUser = getActiveUser(data);
 
-    expect(activeUser(data)).toEqual(testUser);
+    expect(activeUser(data)).toEqual(testUser); 👈👀
   });
 });
 ```
