@@ -2565,8 +2565,39 @@ test("renders learn react link", () => {
 
 Supongamos que tienes un componente de formulario y quieres probar varios aspectos del mismo.
 
+```jsx
+import React from "react";
+import { render, screen } from "@testing-library/react";
+import "@testing-library/jest-dom/extend-expect"; // para los matchers extendidos
+import FormComponent from "./FormComponent";
 
+test("renders form elements correctly", () => {
+  render(<FormComponent />);
 
+  // Verifica que el título del formulario esté presente
+  const heading = screen.getByRole("heading", {
+    name: /form title/i,
+  });
+  expect(heading).toBeInTheDocument();
+
+  // Verifica que el input con el placeholder 'Username' esté presente
+  const usernameInput =
+    screen.getByPlaceholderText("Username");
+  expect(usernameInput).toBeInTheDocument();
+
+  // Verifica que el botón 'Submit' esté presente
+  const submitButton = screen.getByRole("button", {
+    name: /submit/i,
+  });
+  expect(submitButton).toBeInTheDocument();
+
+  // Verifica que el label del input 'Password' esté presente
+  const passwordLabel = screen.getByLabelText("Password");
+  expect(passwordLabel).toBeInTheDocument();
+});
+```
+
+Ahora en nuestro proyecto.
 
 `test > FirstTest2.test.jsx`
 
