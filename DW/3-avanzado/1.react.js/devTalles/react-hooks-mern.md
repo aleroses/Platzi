@@ -2551,7 +2551,7 @@ test("renders learn react link", () => {
 });
 ```
 
-### Métodos comunes de `screen`
+#### Métodos comunes de `screen`
 
 `screen` proporciona varios métodos de consulta que puedes usar para seleccionar elementos en el DOM renderizado. Algunos de los más comunes son:
 
@@ -2561,7 +2561,7 @@ test("renders learn react link", () => {
 - **`screen.getByPlaceholderText(placeholder)`**: Busca un elemento por su texto de marcador de posición.
 - **`screen.getByAltText(alt)`**: Busca un elemento por su texto alternativo.
 
-### Ejemplo avanzado
+#### Ejemplo avanzado
 
 Supongamos que tienes un componente de formulario y quieres probar varios aspectos del mismo.
 
