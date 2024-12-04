@@ -1551,7 +1551,6 @@ Estos archivos los pegamos dentro del `src` del proyecto `03-counter-app`, pero 
 
 Para las pruebas usaremos **Jest** y **React Testing Library**, dos herramientas muy populares en el ecosistema de pruebas de JavaScript y React.
 
----
 #### Jest
 
 ##### ¿Qué es Jest?
