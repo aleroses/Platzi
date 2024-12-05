@@ -2445,6 +2445,50 @@ describe("Test on 09-promises", () => {
 });
 ```
 
+---
+El uso de `done` en el contexto del ejemplo de prueba anterior se relaciona con la forma en que Jest maneja pruebas asíncronas. Vamos a desglosarlo en detalle.
+
+#### `done` en Pruebas Asíncronas
+
+La función de prueba visto en el ejemplo está probando un comportamiento asíncrono: una promesa que se resuelve o se rechaza. Cuando trabajas con código asíncrono en pruebas, Jest necesita saber cuándo la prueba ha terminado de ejecutarse. Por defecto, Jest no sabe cuándo debe considerar una prueba asíncrona como completada, por lo que proporciona el mecanismo `done` para manejar esto.
+
+#### Detalle del Uso de `done`
+
+1. **Declaración de la Prueba**: La función de prueba recibe `done` como un argumento. Esto indica a Jest que la prueba es asíncrona y que no debe finalizar la prueba hasta que se llame a `done`.
+    
+2. **Promesa Asíncrona**:
+    
+    - La función `getHeroByIdAsync(id)` devuelve una promesa.
+    - **Caso de Éxito (`then`)**:
+        - Si la promesa se resuelve, se llama al bloque `then` con el `hero` resultante.
+        - `expect(hero).toBeFalsy()` verifica que `hero` es falsy.
+        - Finalmente, `done()` se llama para indicar que la prueba ha terminado correctamente.
+    - **Caso de Error (`catch`)**:
+        - Si la promesa se rechaza, se llama al bloque `catch` con el `error` resultante.
+        - `expect(error).toBe(\`Id not found ${id}`)` verifica que el error es el esperado.
+        - Finalmente, `done()` se llama para indicar que la prueba ha terminado correctamente.
+3. **Importancia de `done`**:
+    
+    - **Sin `done`**: Jest no sabría cuándo la prueba ha terminado. Puede que Jest termine la prueba antes de que la promesa se resuelva o se rechace, lo que llevaría a falsos negativos o pruebas incompletas.
+    - **Con `done`**: Garantiza que Jest espera hasta que se llame a `done` antes de considerar la prueba como completada. Esto es crucial para asegurar que todas las verificaciones dentro de la promesa se ejecuten antes de finalizar la prueba.
+
+#### Alternativa con `async`/`await`
+
+En lugar de usar `done`, podrías escribir la prueba utilizando `async`/`await` para hacerla más limpia y evitar el manejo explícito de `done`. Aquí hay un ejemplo de cómo hacerlo:
+
+```javascript
+test("09-promises should return an error if Hero doesn't exist", async () => {
+  const id = 12;
+
+  try {
+    const hero = await getHeroByIdAsync(id);
+    expect(hero).toBeFalsy();
+  } catch (error) {
+    expect(error).toBe(`Id not found ${id}`);
+  }
+});
+```
+
 ### 🟣 Pruebas con async-await
 
 #### `whatwg-fetch`
