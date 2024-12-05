@@ -1797,7 +1797,7 @@ expect(1 + 2).toBe(3);
     expect(shoppingList).toContain('milk');
     ```
 
-### Ejemplo completo utilizando `describe`, `test` y `expect`
+#### Ejemplo completo utilizando `describe`, `test` y `expect`
 
 ```jsx
 describe('Array operations', () => {
