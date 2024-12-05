@@ -2640,7 +2640,6 @@ yarn add -D jest-environment-jsdom
 yarn add -D @babel/preset-react
 ```
 
----
 1. **`yarn add -D jest-environment-jsdom`**
 
 Este comando instala el paquete `jest-environment-jsdom` como una dependencia de desarrollo (`-D` o `--dev`). Veamos qué hace:
@@ -2653,7 +2652,6 @@ Este comando instala el paquete `jest-environment-jsdom` como una dependencia de
 Si tu proyecto usa **Jest** para pruebas y necesitas un entorno de navegador (como si estuvieras probando componentes React o manipulando el DOM), **jsdom** es útil porque simula el DOM de un navegador, permitiendo hacer pruebas de manera eficiente sin tener un navegador real.
     
 Esto es especialmente útil cuando trabajas con bibliotecas o aplicaciones que interactúan con el DOM, como React.
-    
 
 #### Ejemplo de uso:
 
