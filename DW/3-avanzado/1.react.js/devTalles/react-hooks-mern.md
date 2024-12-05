@@ -2916,7 +2916,6 @@ test('string contains the substring', () => {
 2. **Comparación**: En ejecuciones posteriores de la prueba, Jest compara la salida actual con la instantánea guardada. Si hay diferencias, la prueba falla, indicando que algo ha cambiado.
     
 3. **Actualización**: Si el cambio en la salida es intencional (por ejemplo, después de actualizar un componente), puedes actualizar la instantánea para reflejar el nuevo estado esperado.
-    
 
 ##### Ejemplo de uso
 
@@ -3201,7 +3200,7 @@ describe("FirstTest tests", () => {
 ```
 
 ### 🟣 Screen - Testing Library
-👈👀📌
+
 La función `screen` es una parte esencial de `@testing-library/react` y facilita la selección de elementos del DOM cuando se realizan pruebas. Veamos cómo funciona y cómo se utiliza en los tests.
 
 `screen` es una utilidad global que permite acceder a los métodos de consulta de manera más sencilla y sin necesidad de desestructurar la respuesta de la función `render`.
@@ -3428,7 +3427,6 @@ describe("CounterApp Testing", () => {
 
 Para utilizar `fireEvent`, seleccionas un elemento del DOM usando `screen` o cualquier método de consulta proporcionado por `@testing-library/react`, y luego disparas un evento sobre ese elemento.
 
----
 #### Ejemplo básico
 
 Supongamos que tienes un botón que, al ser clicado, cambia el estado de un mensaje:
@@ -3637,6 +3635,8 @@ Aquí les dejo el código fuente de la sección por si lo llegan a necesitar y c
 ## 6. GifExpertApp - Aplicación
 
 ### 🟣 Introducción a la sección
+
+👈👀📌
 
 ### 🟣 Temas puntuales de la sección
 
