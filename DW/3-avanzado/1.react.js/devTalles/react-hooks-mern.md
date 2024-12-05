@@ -2160,7 +2160,7 @@ test('array contains elements of specific types', () => {
 
 ### 🟣 Pruebas en `08-imp-exp.js - Arreglos`
 
-#### `toStrictEqual()`
+#### `toBeFalsy()`
 
 `toBeFalsy()` es un matcher en Jest que se utiliza para verificar que un valor sea "falsy" en JavaScript. En JavaScript, los valores "falsy" son aquellos que se consideran falsos cuando se evalúan en un contexto booleano. Estos valores son:
 
