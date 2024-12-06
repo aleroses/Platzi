@@ -3657,7 +3657,6 @@ Esta es una aplicación pequeña pero muy ilustrativa que explica cómo utilizar
 ### 🟣 Resultado al final de la sección
 
 ![Project 01](https://i.postimg.cc/zD2R0NnK/1-project.png)
-`src > main.jsx`
 
 ### 🟣 Inicio de proyecto - GifExpertApp
 
