@@ -3800,7 +3800,34 @@ Si te sientes completamente atascado, comienza por mantener todos los archivos e
 
 A medida que los proyectos crecen, frecuentemente utilizan una combinación de los dos enfoques anteriores en la práctica. Así que elegir el “correcto” al principio no es muy importante.
 
+#### 
+
+```
+```
+
+
+
+
+```
+.
+├── public
+├── src
+│   ├── App.css
+│   ├── App.js
+│   ├── App.test.js
+│   ├── index.css
+│   ├── index.js
+│   ├── logo.svg
+│   └── registerServiceWorker.js
+├── .gitignore
+├── package.json
+├── README.md
+└── yarn.lock
+```
+
+
 - [**Reactjs.org - Estructura de directorios**](https://es.reactjs.org/docs/faq-structure.html)
+- [Structuring projects and naming components in React](https://hackernoon.com/structuring-projects-and-naming-components-in-react-1261b6e18d76)
 - [**Estructura, nombres de folders y componentes en React - Hackernoon.com**](https://hackernoon.com/structuring-projects-and-naming-components-in-react-1261b6e18d76)
 - [**Estilos GifExpertApp**](https://gist.github.com/Klerith/e4fca6ac127ccb9abd1e8ad77fcd52f1)
 
