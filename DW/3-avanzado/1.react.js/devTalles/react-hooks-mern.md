@@ -3842,9 +3842,11 @@ src
 
 Para resolver esto, se recomienda no separar componentes por "presentational" vs "container" sino agruparlos por módulos o características dentro de la carpeta `components`.
 
+[Presentational and Container Components](https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0).
+
 ##### Separación y Agrupación del Código
 
-Dentro de `components`, se agrupan los archivos por módulo o característica. Por ejemplo, un módulo "User" tendría una estructura como:
+Dentro de `components`, se agrupan los archivos por módulo o característica. Por ejemplo, un módulo `User` tendría una estructura como:
 
 ```
 src
@@ -3854,7 +3856,19 @@ src
       └─ List.jsx
 ```
 
-Si un componente tiene múltiples archivos, se agrupan en una carpeta con el mismo nombre del componente. Los archivos de prueba se colocan junto al archivo que están probando y se nombran como `Form.spec.jsx`.
+Si un componente tiene múltiples archivos, se agrupan en una carpeta con el mismo nombre del componente. 
+
+```
+src
+└─ components
+   └─ User
+     ├─ Form
+     │  ├─ Form.jsx
+     │  └─ Form.css
+     └─ List.jsx
+```
+
+Los archivos de prueba se colocan junto al archivo que están probando y se nombran como `Form.spec.jsx`.
 
 ##### Componentes de UI
 
