@@ -3878,6 +3878,10 @@ Los componentes genéricos se colocan en una carpeta `UI` dentro de `components`
 
 Los nombres de los componentes deben ser claros y únicos en la aplicación. Se sigue un patrón de nomenclatura basado en la ruta relativa del componente. Por ejemplo, un componente en `components/User/List.jsx` se llamaría `UserList`.
 
+> El nombre de un componente es muy útil cuando necesitamos depurar usando herramientas como React Dev Tools, y cuando ocurren errores de ejecución en la aplicación. El error siempre viene con el nombre del componente donde ocurrió.
+
+Cuando el archivo está dentro de una carpeta con el mismo nombre, no necesitamos repetir el nombre. Dicho esto, components/User/Form/Form.jsx, se nombraría como UserForm y no como UserFormForm.
+
 ##### Pantallas
 
 Las pantallas son las vistas de la aplicación y se mantienen en una carpeta separada en la raíz de `src`, agrupadas según la definición de rutas. Por ejemplo:
