@@ -3786,7 +3786,7 @@ Otra forma popular de estructurar proyectos es agrupar archivos similares, por e
 │   └── ProfileHeader.css
 ```
 
-
+Algunas personas también prefieren ir más lejos y separar los componentes en diferentes carpetas dependiendo de su función en la aplicación. Por ejemplo, [Atomic Design](http://bradfrost.com/blog/post/atomic-web-design/) es una metodología de diseño basada en este principio. Recuerda que a menudo es más productivo tratar estas metodologías como ejemplos útiles en lugar de reglas estrictas a seguir.
 
 
 
