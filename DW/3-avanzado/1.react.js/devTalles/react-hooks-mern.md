@@ -3928,7 +3928,7 @@ Una misma pantalla puede ser utilizada para renderizar dos rutas diferentes, com
 
 Puede notar que todos los componentes contienen Screen como prefijo en su nombre. Cuando el componente se encuentra fuera de la carpeta components, debemos nombrarlo de acuerdo a su ruta relativa a la carpeta `src`. Un componente ubicado en `src/screens/User/List.jsx` debería llamarse `ScreensUserList`.
 
-Con el Root.jsx creado, nuestra estructura sería la siguiente:
+Con el `Root.jsx` creado, nuestra estructura sería la siguiente:
 
 ```
 src
