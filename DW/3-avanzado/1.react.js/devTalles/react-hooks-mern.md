@@ -3960,7 +3960,7 @@ src
     └── Root.jsx
 ```
 
-##### Resumen
+##### Conclusiones
 
 - Los componentes de presentación y contenedores se mantienen en `src/components`.
 - Los componentes se agrupan por módulo/característica.
@@ -3970,30 +3970,6 @@ src
 - Los componentes se nombran según su ruta relativa a `components` o `src`.
 
 Estas recomendaciones buscan mejorar la organización y estructura del proyecto en React, facilitando la búsqueda de archivos y evitando confusiones.
-
-```
-```
-
-
-
-
-```
-.
-├── public
-├── src
-│   ├── App.css
-│   ├── App.js
-│   ├── App.test.js
-│   ├── index.css
-│   ├── index.js
-│   ├── logo.svg
-│   └── registerServiceWorker.js
-├── .gitignore
-├── package.json
-├── README.md
-└── yarn.lock
-```
-
 
 - [**Reactjs.org - Estructura de directorios**](https://es.reactjs.org/docs/faq-structure.html)
 - [Structuring projects and naming components in React](https://hackernoon.com/structuring-projects-and-naming-components-in-react-1261b6e18d76)
