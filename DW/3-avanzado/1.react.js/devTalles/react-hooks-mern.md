@@ -3701,8 +3701,6 @@ También debemos tener ya creada una API KEY en [GiphY Devs](https://developers.
 
 📌 Al iniciar el proyecto, el archivo `main.jsx` ya no importa el `ReactDOM from "react-dom/client"`, directamente importa el `createRoot`
 
-👈👀📌
-
 ### 🟣 GifExpertApp - Component
 
 `src > main.jsx`
@@ -3712,7 +3710,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { GifExpertApp } from "./GifExpertApp";
 
-import "./styles.css";
+import "./styles.css"; 👈👀
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
@@ -3735,12 +3733,16 @@ export const GifExpertApp = () => {
 
 Los estilos puedes agregarlos según tu criterio o también puedes usar los que se usaron para crear esta aplicación. Solo asegúrate de crearlos dentro de la carpeta `src`.
 
+#### Estructura de Archivos
+
+
+
 - [**Reactjs.org - Estructura de directorios**](https://es.reactjs.org/docs/faq-structure.html)
 - [**Estructura, nombres de folders y componentes en React - Hackernoon.com**](https://hackernoon.com/structuring-projects-and-naming-components-in-react-1261b6e18d76)
 - [**Estilos GifExpertApp**](https://gist.github.com/Klerith/e4fca6ac127ccb9abd1e8ad77fcd52f1)
 
 ### 🟣 Creando una lista de categorías
-
+👈👀📌
 `src > GifExpertApp.jsx`
 
 ```jsx
