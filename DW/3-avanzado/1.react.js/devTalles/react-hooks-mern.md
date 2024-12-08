@@ -3800,7 +3800,7 @@ Si te sientes completamente atascado, comienza por mantener todos los archivos e
 
 A medida que los proyectos crecen, frecuentemente utilizan una combinación de los dos enfoques anteriores en la práctica. Así que elegir el “correcto” al principio no es muy importante.
 
-#### Estructurando proyectos y nombrando componentes en React
+#### 🔥 Estructurando proyectos y nombrando componentes en React
 
 React es una biblioteca que no impone reglas sobre cómo organizar y estructurar tus proyectos, lo que permite libertad para probar diferentes enfoques y adaptarlos según convenga. Sin embargo, esto puede causar confusión para desarrolladores que empiezan con React.
 
