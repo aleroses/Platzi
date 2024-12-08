@@ -3735,7 +3735,13 @@ Los estilos puedes agregarlos según tu criterio o también puedes usar los que 
 
 #### Estructura de Archivos
 
+##### Agrupación por funcionalidades o rutas
 
+Una forma común de estructurar proyectos es ubicar CSS, JS y tests juntos dentro de carpetas agrupadas por funcionalidad o ruta.
+
+```bash
+
+```
 
 - [**Reactjs.org - Estructura de directorios**](https://es.reactjs.org/docs/faq-structure.html)
 - [**Estructura, nombres de folders y componentes en React - Hackernoon.com**](https://hackernoon.com/structuring-projects-and-naming-components-in-react-1261b6e18d76)
