@@ -3740,8 +3740,30 @@ Los estilos puedes agregarlos según tu criterio o también puedes usar los que 
 Una forma común de estructurar proyectos es ubicar CSS, JS y tests juntos dentro de carpetas agrupadas por funcionalidad o ruta.
 
 ```bash
-
+.
+├── common
+│   ├── Avatar.js
+│   ├── Avatar.css
+│   ├── APIUtils.js
+│   └── APIUtils.test.js
+├── feed
+│   ├── index.js
+│   ├── Feed.js
+│   ├── Feed.css
+│   ├── FeedStory.js
+│   ├── FeedStory.test.js
+│   └── FeedAPI.js
+└── profile
+    ├── index.js
+    ├── Profile.js
+    ├── ProfileHeader.js
+    ├── ProfileHeader.css
+    └── ProfileAPI.js
 ```
+
+La definición de una “funcionalidad” no es universal, y depende de ti elegir la granularidad. Si no puedes pensar en una lista de carpetas de nivel superior, puede preguntarle a los usuarios de tu producto cuáles son las partes principales y usar su modelo mental como estructura.
+
+
 
 - [**Reactjs.org - Estructura de directorios**](https://es.reactjs.org/docs/faq-structure.html)
 - [**Estructura, nombres de folders y componentes en React - Hackernoon.com**](https://hackernoon.com/structuring-projects-and-naming-components-in-react-1261b6e18d76)
