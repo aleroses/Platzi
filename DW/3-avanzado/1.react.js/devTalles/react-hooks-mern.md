@@ -3895,7 +3895,53 @@ src
         └── List.jsx
 ```
 
-El archivo `Root.jsx` en `screens` define todas las rutas de la aplicación.
+El archivo `Root.jsx` en `screens` define todas las rutas de la aplicación y se ve algo así:
+
+```jsx
+import React, { Component } from "react";
+import { Router } from "react-router";
+import { Redirect, Route, Switch } from "react-router-dom";
+import ScreensUserForm from "./User/Form";
+import ScreensUserList from "./User/List";
+
+const ScreensRoot = () => (
+  <Router>
+    <Switch>
+      <Route
+        path="/user/list"
+        component={ScreensUserList}
+      />
+      <Route
+        path="/user/create"
+        component={ScreensUserForm}
+      />
+    </Switch>
+  </Router>
+);
+
+export default ScreensRoot;
+```
+
+Observa que ponemos todas las pantallas dentro de una carpeta con el mismo nombre de la ruta, usuario/ -> Usuario/. Intenta mantener una carpeta para cada ruta padre, y agrupa las sub-rutas en ella. En este caso, creamos la carpeta Usuario y guardamos en ella las pantallas Lista y Pantalla Formulario. Este patrón te ayudará a encontrar fácilmente qué pantalla está renderizando cada ruta, simplemente echando un vistazo a la url.
+
+Una misma pantalla puede ser utilizada para renderizar dos rutas diferentes, como hicimos anteriormente con las rutas para crear y editar un usuario.
+
+Puede notar que todos los componentes contienen Screen como prefijo en su nombre. Cuando el componente se encuentra fuera de la carpeta components, debemos nombrarlo de acuerdo a su ruta relativa a la carpeta src. Un componente ubicado en src/screens/User/List.jsx debería llamarse ScreensUserList.
+
+Con el Root.jsx creado, nuestra estructura sería la siguiente:
+
+```
+src
+├── components
+└── screens
+    ├── User
+    │   ├── Form.jsx
+    │   └── List.jsx
+    └── Root.jsx 
+```
+
+No olvides importar Root.jsx dentro de index.js para que sea el componente raíz de la aplicación.
+
 
 ##### Resumen
 
