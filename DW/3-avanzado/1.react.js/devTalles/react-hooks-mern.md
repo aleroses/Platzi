@@ -3808,9 +3808,32 @@ React es una biblioteca que no impone reglas sobre cómo organizar y estructurar
 
 Cuando se utiliza `create-react-app`, se genera una estructura básica con archivos y carpetas en la raíz como `.gitignore`, `package.json`, `README.md`, y `yarn.lock`. También se crean las carpetas `public` y `src`, donde `src` contiene el código fuente.
 
+```bash
+.
+├── public
+├── src
+│   ├── App.css
+│   ├── App.js
+│   ├── App.test.js
+│   ├── index.css
+│   ├── index.js
+│   ├── logo.svg
+│   └── registerServiceWorker.js
+├── .gitignore
+├── package.json
+├── README.md
+└── yarn.lock
+```
+
 ##### Contenedores y Componentes
 
-A menudo se separan los componentes en "containers" y "components" dentro de `src`, pero este enfoque tiene problemas:
+A menudo se separan los componentes en `containers` y `components` dentro de `src`, pero este enfoque tiene problemas:
+
+```
+src
+├─ components  
+└─ containers
+```
 
 - Reglas subjetivas: No siempre está claro qué es un "Container" y qué es un "Presentational Component".
 - No considera el dinamismo: Los componentes pueden cambiar de tipo a lo largo del proyecto, causando movimientos constantes entre carpetas.
