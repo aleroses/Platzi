@@ -3800,7 +3800,72 @@ Si te sientes completamente atascado, comienza por mantener todos los archivos e
 
 A medida que los proyectos crecen, frecuentemente utilizan una combinación de los dos enfoques anteriores en la práctica. Así que elegir el “correcto” al principio no es muy importante.
 
-#### 
+#### Estructurando proyectos y nombrando componentes en React
+
+React es una biblioteca que no impone reglas sobre cómo organizar y estructurar tus proyectos, lo que permite libertad para probar diferentes enfoques y adaptarlos según convenga. Sin embargo, esto puede causar confusión para desarrolladores que empiezan con React.
+
+##### Estructura de Carpetas
+
+Cuando se utiliza `create-react-app`, se genera una estructura básica con archivos y carpetas en la raíz como `.gitignore`, `package.json`, `README.md`, y `yarn.lock`. También se crean las carpetas `public` y `src`, donde `src` contiene el código fuente.
+
+##### Contenedores y Componentes
+
+A menudo se separan los componentes en "containers" y "components" dentro de `src`, pero este enfoque tiene problemas:
+
+- Reglas subjetivas: No siempre está claro qué es un "Container" y qué es un "Presentational Component".
+- No considera el dinamismo: Los componentes pueden cambiar de tipo a lo largo del proyecto, causando movimientos constantes entre carpetas.
+- Duplicidad de nombres: Puede haber componentes con el mismo nombre en diferentes carpetas.
+- Pérdida de productividad: Navegación constante entre carpetas distantes.
+
+Para resolver esto, se recomienda no separar componentes por "presentational" vs "container" sino agruparlos por módulos o características dentro de la carpeta `components`.
+
+##### Separación y Agrupación del Código
+
+Dentro de `components`, se agrupan los archivos por módulo o característica. Por ejemplo, un módulo "User" tendría una estructura como:
+
+```
+src
+└─ components
+   └─ User
+      ├─ Form.jsx
+      └─ List.jsx
+```
+
+Si un componente tiene múltiples archivos, se agrupan en una carpeta con el mismo nombre del componente. Los archivos de prueba se colocan junto al archivo que están probando y se nombran como `Form.spec.jsx`.
+
+##### Componentes de UI
+
+Los componentes genéricos se colocan en una carpeta `UI` dentro de `components`. Estos son componentes reutilizables sin lógica de negocio específica, como botones, inputs, etc.
+
+##### Nombrando Componentes
+
+Los nombres de los componentes deben ser claros y únicos en la aplicación. Se sigue un patrón de nomenclatura basado en la ruta relativa del componente. Por ejemplo, un componente en `components/User/List.jsx` se llamaría `UserList`.
+
+##### Pantallas
+
+Las pantallas son las vistas de la aplicación y se mantienen en una carpeta separada en la raíz de `src`, agrupadas según la definición de rutas. Por ejemplo:
+
+```
+src
+├── components
+└── screens
+    └── User
+        ├── Form.jsx
+        └── List.jsx
+```
+
+El archivo `Root.jsx` en `screens` define todas las rutas de la aplicación.
+
+##### Resumen
+
+- Los componentes de presentación y contenedores se mantienen en `src/components`.
+- Los componentes se agrupan por módulo/característica.
+- Los componentes genéricos se colocan en `src/components/UI`.
+- Las pantallas se mantienen simples, con mínima estructura y código.
+- Las pantallas se agrupan según la definición de rutas.
+- Los componentes se nombran según su ruta relativa a `components` o `src`.
+
+Estas recomendaciones buscan mejorar la organización y estructura del proyecto en React, facilitando la búsqueda de archivos y evitando confusiones.
 
 ```
 ```
