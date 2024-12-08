@@ -3636,8 +3636,6 @@ Aquí les dejo el código fuente de la sección por si lo llegan a necesitar y c
 
 ### 🟣 Introducción a la sección
 
-👈👀📌
-
 ### 🟣 Temas puntuales de la sección
 
 **¿Qué veremos en esta sección?**
@@ -3700,6 +3698,10 @@ En esta clase dejamos la siguiente estructura:
 ```
 
 También debemos tener ya creada una API KEY en [GiphY Devs](https://developers.giphy.com/)
+
+📌 Al iniciar el proyecto, el archivo `main.jsx` ya no importa el `ReactDOM from "react-dom/client"`, directamente importa el `createRoot`
+
+👈👀📌
 
 ### 🟣 GifExpertApp - Component
 
