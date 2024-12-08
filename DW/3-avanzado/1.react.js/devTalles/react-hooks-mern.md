@@ -3667,8 +3667,11 @@ yarn create vite
 	JavaScript
 cd 04-gif-expert-app
 
-# Instalar Módulos de Node: yarn
-yarn install 
+# Instalar Módulos de Node:
+yarn install
+# También puedes usar:
+yarn
+
 code-insiders .
 
 # Corremos la app
