@@ -3940,7 +3940,7 @@ src
     └── Root.jsx 
 ```
 
-No olvides importar Root.jsx dentro de index.js para que sea el componente raíz de la aplicación.
+No olvides importar `Root.jsx` dentro de `index.js` para que sea el componente raíz de la aplicación.
 
 Finalmente, nuestra aplicación se estructuraría así:
 
