@@ -3763,6 +3763,33 @@ Una forma común de estructurar proyectos es ubicar CSS, JS y tests juntos dentr
 
 La definición de una “funcionalidad” no es universal, y depende de ti elegir la granularidad. Si no puedes pensar en una lista de carpetas de nivel superior, puede preguntarle a los usuarios de tu producto cuáles son las partes principales y usar su modelo mental como estructura.
 
+##### Agrupando por tipo de archivo
+
+Otra forma popular de estructurar proyectos es agrupar archivos similares, por ejemplo:
+
+```bash
+.
+├── api
+│   ├── APIUtils.js
+│   ├── APIUtils.test.js
+│   ├── ProfileAPI.js
+│   └── UserAPI.js
+├── components
+│   ├── Avatar.js
+│   ├── Avatar.css
+│   ├── Feed.js
+│   ├── Feed.css
+│   ├── FeedStory.js
+│   ├── FeedStory.test.js
+│   ├── Profile.js
+│   ├── ProfileHeader.js
+│   └── ProfileHeader.css
+```
+
+
+
+
+
 
 
 - [**Reactjs.org - Estructura de directorios**](https://es.reactjs.org/docs/faq-structure.html)
