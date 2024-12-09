@@ -4155,7 +4155,7 @@ const AddCategory = ({ setCategories }) => {
 
 export { AddCategory };
 ```
-👈👀📌
+
 ### 🟣 Emitir un evento al padre
 
 `src > GifExpertApp.jsx`
@@ -4230,7 +4230,7 @@ const AddCategory = ({ onNewCategory }) => { 👈👀
 
 export { AddCategory };
 ```
-
+👈👀📌
 ### 🟣 Validar que sean únicos los nombres
 
 `src > GifExpertApp.jsx`
