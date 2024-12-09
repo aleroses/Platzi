@@ -3977,7 +3977,7 @@ Estas recomendaciones buscan mejorar la organización y estructura del proyecto 
 - [**Estilos GifExpertApp**](https://gist.github.com/Klerith/e4fca6ac127ccb9abd1e8ad77fcd52f1)
 
 ### 🟣 Creando una lista de categorías
-👈👀📌
+
 `src > GifExpertApp.jsx`
 
 ```jsx
@@ -4072,6 +4072,10 @@ const AddCategory = () => {
 
 export { AddCategory };
 ```
+📌 Tip de VSC: Al escribir `useState` e importarlo me subraya las partes qeu necesito editar para escribir el nombre deseado. Aquí escribo el nombre y presiono tabulador para que ponga en mayuscula la parte del setI...
+
+
+👈👀📌
 
 ### 🟣 Comunicación entre componentes
 
