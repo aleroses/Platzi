@@ -4040,6 +4040,8 @@ export const GifExpertApp = () => {
 
 ### 🟣 Componente AddCategory
 
+Para esta clase usaremos el `event onChange`. Este `event` se puede desestructurar como `{target}` para obtener `target.value` de manera más corta.
+
 `src > AddCategory.jsx`
 
 ```jsx
