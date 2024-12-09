@@ -4082,9 +4082,6 @@ export { AddCategory };
 const [newName|👈👀, setnewName|👈👀] = useState(second)
 ```
 
-
-👈👀📌
-
 ### 🟣 Comunicación entre componentes
 
 `src > GifExpertApp.jsx`
@@ -4158,7 +4155,7 @@ const AddCategory = ({ setCategories }) => {
 
 export { AddCategory };
 ```
-
+👈👀📌
 ### 🟣 Emitir un evento al padre
 
 `src > GifExpertApp.jsx`
