@@ -4072,7 +4072,8 @@ const AddCategory = () => {
 
 export { AddCategory };
 ```
-📌 Tip de VSC: Al escribir `useState` e importarlo me subraya las partes qeu necesito editar para escribir el nombre deseado. Aquí escribo el nombre y presiono tabulador para que ponga en mayuscula la parte del setI...
+
+📌 Tip de **VSC**: Al escribir `useState` e importarlo me subraya las partes que necesito editar para escribir el nombre deseado. Aquí escribo el nombre y presiono tabulador para que ponga en mayuscula la parte del setI...
 
 
 👈👀📌
