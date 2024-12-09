@@ -4003,6 +4003,8 @@ export const GifExpertApp = () => {
 };
 ```
 
+Puedo tener todos los `useState` que necesite.
+
 ### 🟣 Agregar una nueva categoría
 
 `src > GifExpertApp.jsx`
