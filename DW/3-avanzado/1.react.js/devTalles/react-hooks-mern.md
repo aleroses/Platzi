@@ -4075,6 +4075,11 @@ export { AddCategory };
 
 📌 Tip de **VSC**: Al escribir `useState` e importarlo, me subraya las partes que necesito editar para escribir el nombre deseado. Aquí escribo el nombre y presiono tabulador para que ponga en mayúscula la parte del `setI...👈👀`
 
+```bash
+// Si presiono tabulador 👇 new se vuelve New...
+const [newName|👈👀, setnewName|👈👀] = useState(second)
+```
+
 
 👈👀📌
 
