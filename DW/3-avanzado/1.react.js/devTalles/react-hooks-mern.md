@@ -4050,7 +4050,7 @@ import { useState } from "react";
 const AddCategory = () => {
   const [inputValue, setInputValue] = useState("One Punch");
 
-  const onInputChange = (event) => {
+  const onInputChange = (event 👈👀) => {
     setInputValue(event.target.value);
   };
 
