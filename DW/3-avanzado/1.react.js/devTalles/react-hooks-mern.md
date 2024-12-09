@@ -4055,7 +4055,7 @@ const AddCategory = () => {
   };
 
   const onSubmit = (event) => {
-    event.preventDefault();
+    event.preventDefault(); 👈👀
 
     console.log(inputValue);
   };
