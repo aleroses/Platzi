@@ -4230,7 +4230,7 @@ const AddCategory = ({ onNewCategory }) => { 👈👀
 
 export { AddCategory };
 ```
-👈👀📌
+
 ### 🟣 Validar que sean únicos los nombres
 
 `src > GifExpertApp.jsx`
@@ -4268,7 +4268,7 @@ const GifExpertApp = () => {
 
 export { GifExpertApp };
 ```
-
+👈👀📌
 ### 🟣 GifGrid - Nuevo componente
 
 `src > GifExpertApp.jsx`
