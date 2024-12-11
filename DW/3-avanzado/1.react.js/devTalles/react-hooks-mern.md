@@ -4096,10 +4096,10 @@ export const GifExpertApp = () => {
     "Dragon Ball",
   ]);
 
-  const onAddCategory = () => {
-    // setCategories((item) => [...item, "New Item!!!"]);
-    setCategories([...categories, "New Item!!!"]);
-  };
+  // const onAddCategory = () => {
+  //   // setCategories((item) => [...item, "New Item!!!"]);
+  //   setCategories([...categories, "New Item!!!"]);
+  // };
 
   return (
     <>
