@@ -4231,7 +4231,7 @@ const AddCategory = ({ onNewCategory }) => { 👈👀
 export { AddCategory };
 ```
 
-### 🟣 Validar que sean únicos los nombres
+### 🟣 Validar que los nombres sean únicos
 
 `src > GifExpertApp.jsx`
 
