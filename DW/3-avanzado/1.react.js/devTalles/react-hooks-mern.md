@@ -4660,6 +4660,8 @@ El rest operator se usa para agrupar el resto de los elementos en un array o un 
 
 En resumen, el operador `...` en JavaScript se conoce como spread operator cuando expande elementos, y rest operator cuando agrupa el resto de los elementos.
 
+Ahora en nuestro proyecto:
+
 `src > components > GifGrid.jsx`
 
 ```jsx
