@@ -4384,6 +4384,8 @@ export { GifGrid };
 snap install postman
 ```
 
+Si estás en Linux y Postman no corre adecuadamente, puedes usar la versión de Postman en la web. 
+
 `src > components > GifGrid.jsx`
 
 ```jsx
