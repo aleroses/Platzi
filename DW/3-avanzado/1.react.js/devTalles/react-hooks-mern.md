@@ -4592,6 +4592,8 @@ export { GifGrid };
 
 ### 🟣 className - Clases de css
 
+Ya conocemos la forma tradicional de pasar `props`, pero en esta clase veremos como pasar `props` usando la propiedad de propagación o Spread Operator `...imgs`
+
 `src > components > GifGrid.jsx`
 
 ```jsx
