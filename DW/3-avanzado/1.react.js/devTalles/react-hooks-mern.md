@@ -4714,7 +4714,6 @@ export { GifItem };
 
 Envía `{ ...img }` y recibe `{ title, url, id }`
 
-👈👀📌
 ### 🟣 Custom Hook - useFetchGifs
 
 `src > components > GifGrid.jsx`
