@@ -4712,7 +4712,7 @@ const GifItem = ({ title, url, id 👈👀 }) => {
 export { GifItem };
 ```
 
-Envia {...img} y recive {}
+Envía `{ ...img }` y recibe `{ title, url, id }`
 
 👈👀📌
 ### 🟣 Custom Hook - useFetchGifs
