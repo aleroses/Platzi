@@ -4535,7 +4535,7 @@ const getGifs = async (category) => {
 
 export { getGifs };
 ```
-👈👀📌
+
 #### http-server
 
 http-server es un software que permite crear un servidor web básico para servir archivos estáticos a través del protocolo HTTP. Es una herramienta de línea de comandos que facilita la creación rápida de un servidor web local para el desarrollo y la visualización de sitios web estáticos.
@@ -4550,7 +4550,7 @@ http-server -o
 ```
 
 [http-server](https://www.npmjs.com/package/http-server)
-
+👈👀📌
 ### 🟣 Mostrar los títulos de las imágenes
 
 `src > components > GifGrid.jsx`
