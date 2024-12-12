@@ -4464,7 +4464,6 @@ export { GifGrid };
 ```
 
 [Hook useEffect()](https://github.com/aleroses/Platzi/blob/master/DW/3-avanzado/1.react.js/Platzi/reactjs.md#18-qu%C3%A9-son-los-efectos-en-react-useeffect)
-👈👀📌
 
 ### 🟣 Demostración de producción rápido
 
@@ -4536,7 +4535,7 @@ const getGifs = async (category) => {
 
 export { getGifs };
 ```
-
+👈👀📌
 #### http-server
 
 http-server es un software que permite crear un servidor web básico para servir archivos estáticos a través del protocolo HTTP. Es una herramienta de línea de comandos que facilita la creación rápida de un servidor web local para el desarrollo y la visualización de sitios web estáticos.
