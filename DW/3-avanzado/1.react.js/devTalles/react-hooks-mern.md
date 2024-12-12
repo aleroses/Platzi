@@ -4233,6 +4233,57 @@ export { AddCategory };
 
 ### 🟣 Validar que los nombres sean únicos
 
+¿Por qué es mala idea usar el `index` que brinda `map` para darle una `key` a una lista que se está renderizando?
+
+En React, cuando se renderiza una lista de elementos, es importante asignar una clave única a cada elemento mediante la prop `key`. Esto ayuda a React a mantener el estado de la lista y a optimizar las actualizaciones.
+
+Sin embargo, usar el índice proporcionado por el método `map` como clave no es recomendable por varias razones:
+
+#### 1. Problemas con la reordenación
+
+Cuando se reordena la lista, los índices cambian. Si se utiliza el índice como clave, React tendrá que volver a renderizar toda la lista, lo que puede provocar un rendimiento deficiente.
+
+#### 2. Problemas con la eliminación de elementos
+
+Si se elimina un elemento de la lista, los índices de los elementos restantes cambian. Al utilizar el índice como clave, React puede perder el estado de los elementos restantes.
+
+#### 3. Problemas con la adición de elementos
+
+Si se agrega un nuevo elemento a la lista, el índice de los elementos existentes cambia. Al utilizar el índice como clave, React puede volver a renderizar los elementos existentes.
+
+#### Solución
+
+En lugar de utilizar el índice proporcionado por `map`, es recomendable utilizar una clave única y estable para cada elemento. Algunas opciones son:
+
+- Un ID único generado en el servidor o en el cliente.
+    
+
+- Un campo único en el objeto de datos, como un nombre o una descripción.
+    
+
+- Una combinación de campos que garantice la unicidad.
+    
+
+Por ejemplo:
+
+```jsx
+const lista = [
+  { id: 1, nombre: 'Elemento 1' },
+  { id: 2, nombre: 'Elemento 2' },
+  { id: 3, nombre: 'Elemento 3' },
+];
+
+return (
+  <ul>
+    {lista.map((elemento) => (
+      <li key={elemento.id}>{elemento.nombre}</li>
+    ))}
+  </ul>
+);
+```
+
+En este ejemplo, se utiliza el campo `id` como clave única para cada elemento de la lista. Esto garantiza que cada elemento tenga una clave estable y única, lo que ayuda a React a mantener el estado de la lista y a optimizar las actualizaciones.
+
 `src > GifExpertApp.jsx`
 
 ```jsx
