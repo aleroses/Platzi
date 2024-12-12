@@ -4317,6 +4317,8 @@ const GifExpertApp = () => {
 export { GifExpertApp };
 ```
 
+Revisamos si en nuestra lista existe el nuevo elemento enviado
+
 ### 🟣 GifGrid - Nuevo componente
 
 `src > GifExpertApp.jsx`
