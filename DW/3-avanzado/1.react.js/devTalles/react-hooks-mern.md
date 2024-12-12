@@ -4256,8 +4256,6 @@ Si se agrega un nuevo elemento a la lista, el índice de los elementos existente
 En lugar de utilizar el índice proporcionado por `map`, es recomendable utilizar una clave única y estable para cada elemento. Algunas opciones son:
 
 - Un ID único generado en el servidor o en el cliente.
-    
-
 - Un campo único en el objeto de datos, como un nombre o una descripción.
     
 
