@@ -4258,7 +4258,6 @@ En lugar de utilizar el índice proporcionado por `map`, es recomendable utiliza
 - Un ID único generado en el servidor o en el cliente.
 - Un campo único en el objeto de datos, como un nombre o una descripción.
     
-
 - Una combinación de campos que garantice la unicidad.
     
 
