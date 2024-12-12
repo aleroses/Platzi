@@ -4279,7 +4279,7 @@ return (
 
 En este ejemplo, se utiliza el campo `id` como clave única para cada elemento de la lista. Esto garantiza que cada elemento tenga una clave estable y única, lo que ayuda a React a mantener el estado de la lista y a optimizar las actualizaciones.
 
-Pero por el momento para nuestro proyecto usaremos otro método:
+Por el momento para nuestro proyecto usaremos el `index`, pero validaremos si existe el nuevo dato en nuestra lista existente:
 
 `src > GifExpertApp.jsx`
 
