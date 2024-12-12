@@ -4447,7 +4447,7 @@ const GifGrid = ({ category }) => {
   useEffect(() => { 👈👀
   // Lógica para cargar los datos desde una API
     getGifs(category);
-  }, []);
+  }, []); // [counter] si cambia dispara nuevamente la func.
 
   return (
     <>
