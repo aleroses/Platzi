@@ -4700,7 +4700,7 @@ export { GifGrid };
 `src > components > GifItem.jsx`
 
 ```jsx
-const GifItem = ({ title, url, id }) => {
+const GifItem = ({ title, url, id 👈👀 }) => {
   return (
     <div className="card">
       <img src={url} alt={title} />
@@ -4711,6 +4711,9 @@ const GifItem = ({ title, url, id }) => {
 
 export { GifItem };
 ```
+
+Envia {...img} y recive {}
+
 👈👀📌
 ### 🟣 Custom Hook - useFetchGifs
 
