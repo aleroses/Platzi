@@ -4376,7 +4376,7 @@ const GifGrid = ({ category }) => {
 
 export { GifGrid };
 ```
-👈👀📌
+
 ### 🟣 Fetch API - Obtener las imágenes deseadas
 
 ```bash
@@ -4428,7 +4428,7 @@ export { getGifs };
 - [**Giphy Developers - Search Endpoint**](https://developers.giphy.com/branch/master/docs/api/endpoint/#search)
 - [Intalar Postman](https://learning.postman.com/docs/getting-started/installation/installation-and-updates/)
 - [Postman en la web](https://web.postman.co/home)
-
+👈👀📌
 ### 🟣 useEffect
 
 `src > components > GifGrid.jsx`
