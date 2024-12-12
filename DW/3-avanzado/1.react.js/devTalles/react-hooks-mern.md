@@ -4321,6 +4321,8 @@ Revisamos si en nuestra lista existe el nuevo elemento enviado usando `.include(
 
 ### 🟣 GifGrid - Nuevo componente
 
+Recuerda que siempre se asigna la `key` al objeto padre.
+
 `src > GifExpertApp.jsx`
 
 ```jsx
