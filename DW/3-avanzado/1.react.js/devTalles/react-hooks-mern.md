@@ -4384,9 +4384,9 @@ export { GifGrid };
 snap install postman
 ```
 
-Si estás en Linux y Postman no corre adecuadamente, puedes usar la versión de [Postman en la web](https://web.postman.co/home). Te creas una cuenta y entras en `My Workspace` le das al icono `+` y listo, añades la URL con la que vas a trabajar.
+Si estás en Linux y Postman no corre adecuadamente, puedes usar la versión de [Postman en la web](https://web.postman.co/home). Te creas una cuenta y entras en `My Workspace`, estando en `Collections` le das al icono `+` y listo, añades la URL con la que vas a trabajar.
 
-
+![Postman web](https://i.postimg.cc/3xv7MNn2/6-postman-web.png)
 
 `src > components > GifGrid.jsx`
 
