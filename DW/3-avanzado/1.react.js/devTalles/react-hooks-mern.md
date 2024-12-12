@@ -4550,7 +4550,7 @@ http-server -o
 ```
 
 [http-server](https://www.npmjs.com/package/http-server)
-👈👀📌
+
 ### 🟣 Mostrar los títulos de las imágenes
 
 `src > components > GifGrid.jsx`
@@ -4589,7 +4589,7 @@ const GifGrid = ({ category }) => {
 
 export { GifGrid };
 ```
-
+👈👀📌
 ### 🟣 className - Clases de css
 
 `src > components > GifGrid.jsx`
