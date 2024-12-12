@@ -4432,7 +4432,7 @@ export { getGifs };
 - [**Giphy Developers - Search Endpoint**](https://developers.giphy.com/branch/master/docs/api/endpoint/#search)
 - [Intalar Postman](https://learning.postman.com/docs/getting-started/installation/installation-and-updates/)
 - [Postman en la web](https://web.postman.co/home)
-👈👀📌
+
 ### 🟣 useEffect
 
 `src > components > GifGrid.jsx`
@@ -4464,7 +4464,7 @@ export { GifGrid };
 ```
 
 [Hook useEffect()](https://github.com/aleroses/Platzi/blob/master/DW/3-avanzado/1.react.js/Platzi/reactjs.md#18-qu%C3%A9-son-los-efectos-en-react-useeffect)
-
+👈👀📌
 ### 🟣 Demostración de producción rápido
 
 ```bash
