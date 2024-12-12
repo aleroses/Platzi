@@ -4465,6 +4465,7 @@ export { GifGrid };
 
 [Hook useEffect()](https://github.com/aleroses/Platzi/blob/master/DW/3-avanzado/1.react.js/Platzi/reactjs.md#18-qu%C3%A9-son-los-efectos-en-react-useeffect)
 👈👀📌
+
 ### 🟣 Demostración de producción rápido
 
 ```bash
