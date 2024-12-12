@@ -4317,7 +4317,7 @@ const GifExpertApp = () => {
 export { GifExpertApp };
 ```
 
-Revisamos si en nuestra lista existe el nuevo elemento enviado
+Revisamos si en nuestra lista existe el nuevo elemento enviado usando `.include()`, de existir detenemos su anexión con `return`.
 
 ### 🟣 GifGrid - Nuevo componente
 
