@@ -4770,7 +4770,8 @@ const useFetchGifs = (category) => {
 export { useFetchGifs };
 ```
 
-[Apuntes Custom Hooks](https://github.com/aleroses/Platzi/blob/master/DW/3-avanzado/1.react.js/Platzi/reactjs.md#14-custom-hooks)
+- [Apuntes Custom Hooks](https://github.com/aleroses/Platzi/blob/master/DW/3-avanzado/1.react.js/Platzi/reactjs.md#14-custom-hooks)
+- [[reactjs#14. Custom Hooks]]
 👈👀📌
 ### 🟣 Mostrar mensaje de carga
 
