@@ -4268,7 +4268,7 @@ const GifExpertApp = () => {
 
 export { GifExpertApp };
 ```
-👈👀📌
+
 ### 🟣 GifGrid - Nuevo componente
 
 `src > GifExpertApp.jsx`
@@ -4324,7 +4324,7 @@ const GifGrid = ({ category }) => {
 
 export { GifGrid };
 ```
-
+👈👀📌
 ### 🟣 Fetch API - Obtener las imágenes deseadas
 
 ```bash
