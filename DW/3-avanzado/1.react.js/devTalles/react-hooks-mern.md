@@ -4579,7 +4579,7 @@ const GifGrid = ({ category }) => {
     <>
       <h3>{category}</h3>
       <ol>
-        {images.map(({ id, title 👈👀}) => (
+        {images.map(({ id, title, url 👈👀}) => (
           <li key={id}>{title}</li>
         ))}
       </ol>
