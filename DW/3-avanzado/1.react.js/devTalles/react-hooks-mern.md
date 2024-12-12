@@ -4589,7 +4589,7 @@ const GifGrid = ({ category }) => {
 
 export { GifGrid };
 ```
-👈👀📌
+
 ### 🟣 className - Clases de css
 
 `src > components > GifGrid.jsx`
@@ -4641,7 +4641,7 @@ const GifItem = ({ title, url, id }) => {
 
 export { GifItem };
 ```
-
+👈👀📌
 ### 🟣 Custom Hook - useFetchGifs
 
 `src > components > GifGrid.jsx`
