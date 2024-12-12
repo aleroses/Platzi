@@ -4630,7 +4630,7 @@ El spread operator se usa para expandir elementos de un iterable (como un array 
 
 El rest operator se usa para agrupar el resto de los elementos en un array o un objeto. Se utiliza principalmente en la desestructuración.
 
-#### Ejemplos:
+##### Ejemplos:
 
 1. **En Arrays:**
     
@@ -4657,7 +4657,6 @@ El rest operator se usa para agrupar el resto de los elementos en un array o un 
     }
     console.log(sum(1, 2, 3, 4)); // Output: 10
     ```
-    
 
 En resumen, el operador `...` en JavaScript se conoce como spread operator cuando expande elementos, y rest operator cuando agrupa el resto de los elementos.
 
