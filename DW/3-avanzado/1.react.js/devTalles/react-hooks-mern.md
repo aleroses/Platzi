@@ -4804,7 +4804,7 @@ const GifGrid = ({ category }) => {
 
 export { GifGrid };
 ```
-👈👀📌
+
 ### 🟣 Archivos de barril
 
 En el contexto de JavaScript y React, los "Archivos de barril" (también conocidos como "Archivos de índice" o "Archivos de barril de exportación") son archivos utilizados para exportar múltiples módulos desde una carpeta o directorio en un solo punto de acceso. En lugar de tener que importar cada módulo individualmente desde su ubicación específica, puedes importarlos todos a través del archivo de barril.
@@ -4900,7 +4900,7 @@ La estructura del proyecto queda así:
 ├── vite.config.js
 └── yarn.lock
 ```
-
+👈👀📌
 ### 🟣 Código fuente de la sección
 
 Aquí les dejo el código fuente de la sección, tal cual lo dejé en el último video para que puedan compararlo contra el suyo si fuera necesario.
