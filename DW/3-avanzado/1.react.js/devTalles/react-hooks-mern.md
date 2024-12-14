@@ -4889,8 +4889,8 @@ La estructura del proyecto queda así:
 │   │   ├── AddCategory.jsx
 │   │   ├── GifGrid.jsx
 │   │   ├── GifItem.jsx
-│   │   └── index.js
-│   ├── GifExpertApp.jsx
+│   │   └── index.js 👈👀
+│   ├── GifExpertApp.jsx 👈👀
 │   ├── helpers
 │   │   └── getGifs.js
 │   ├── hooks
@@ -4900,6 +4900,8 @@ La estructura del proyecto queda así:
 ├── vite.config.js
 └── yarn.lock
 ```
+
+[Limas de barril y por qué deberías DEJAR de usarlas ahora](https://dev.to/tassiofront/barrel-files-and-why-you-should-stop-using-them-now-bc4)
 👈👀📌
 ### 🟣 Código fuente de la sección
 
