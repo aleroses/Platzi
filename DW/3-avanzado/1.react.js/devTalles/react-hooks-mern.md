@@ -4932,9 +4932,16 @@ Aunque es una sección pequeña, les puede servir para desplegar infinidad de pr
 `src > components > GifGrid.jsx`
 
 ```bash
+# Instalar dependencias: package.json
 yarn
+
+# Ejecutar el proyecto
 yarn dev
+
+# Abrir el proyecto en VSC
 code-insiders .
+
+# Crear carpeta dist
 yarn build
 ```
 
