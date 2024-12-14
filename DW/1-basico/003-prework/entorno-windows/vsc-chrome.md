@@ -74,7 +74,8 @@ Para revisar
 - CSS Grid Overlay
 - Documentos de Google sin conexión
 - GoFullPage - Full Page Screen Capture
-- Pesticide for Chrome (without hover bar)
+- [CSS Debugger](https://chromewebstore.google.com/detail/css-debugger/bjpidjfkmlbmlfeogdpemieacmdicdno)
+- [Pesticide for Chrome](https://chromewebstore.google.com/detail/pesticide-for-chrome-mv3/jeebpgmphhagpecfiophljpkhncoajcg?hl=es-419)
 - Menú de aplicaciones de Drive (de Google)
 - Jump Cutter
 - Responsive Viewer
