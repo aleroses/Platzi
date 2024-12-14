@@ -4945,7 +4945,7 @@ code-insiders .
 yarn build
 ```
 
-https://app.netlify.com/teams/alevroses/overview
+[Crear cuenta en Netlify](https://app.netlify.com/teams/alevroses/overview)
 
 Una vez dentro de Netlify nos vamos a **Sites** donde aparece un mensaje dentro de un recuadro igual al siguiente:
 
@@ -4963,6 +4963,16 @@ Si el nombre del proyecto no te gusta puedes cambiarlo yendo a **Site Configurat
 De `luxury-buttercream-ed1988` a `search-tests`.
 
 [Web desplegada](https://search-tests-two.netlify.app/)
+
+#### Actualizar proyecto
+
+Para volver a desplegar nos vamos a la página principal y buscamos `Sites`, damos clic a nuestro proyecto y luego en `Deploys`, tendremos que ver algo así:
+
+> Need to update your site?
+> Drag and drop your site output folder here.
+> Or, browse to upload.
+
+Arrastras nuevamente la carpeta `dist` y listo.
 
 ### 🟣 Preparación del proyecto - GitHub Pages
 
