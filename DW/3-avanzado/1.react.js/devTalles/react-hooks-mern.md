@@ -4907,9 +4907,8 @@ La estructura del proyecto queda así:
 
 Aquí les dejo el código fuente de la sección, tal cual lo dejé en el último video para que puedan compararlo contra el suyo si fuera necesario.
 
-[**Github - Fin Seccion 6**](https://github.com/Klerith/react-vite-gif-expert/tree/fin-seccion-6) 
+[**GitHub - Fin Sección 6**](https://github.com/Klerith/react-vite-gif-expert/tree/fin-seccion-6) 
 
-👈👀📌
 ## 7. Generando el build de producción y despliegues
 
 ### 🟣 Introducción a la sección
@@ -4955,7 +4954,7 @@ Arrastra la carpeta **dist** dentro de ese recuadro y espera a que termine de ca
 Si el nombre del proyecto no te gusta puedes cambiarlo yendo a **Site Configuration** y busca **Change site name**.
 
 De `luxury-buttercream-ed1988` a `search-tests`.
-
+👈👀📌
 ### 🟣 Preparación del proyecto - Github Pages
 
 Asegúrate de tener un `.gitignore` con todos los archivos y carpetas a ignorar en el repositorio de GitHub.
