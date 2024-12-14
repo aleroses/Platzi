@@ -4964,8 +4964,7 @@ De `luxury-buttercream-ed1988` a `search-tests`.
 
 [Web desplegada](https://search-tests-two.netlify.app/)
 
-👈👀📌
-### 🟣 Preparación del proyecto - Github Pages
+### 🟣 Preparación del proyecto - GitHub Pages
 
 Asegúrate de tener un `.gitignore` con todos los archivos y carpetas a ignorar en el repositorio de GitHub.
 
@@ -4985,6 +4984,7 @@ git checkout -- .
 
 [Apuntes GitHub Pages](https://github.com/aleroses/Platzi/blob/master/DW/1-basico/005-git-github/gh-pages.md)
 
+👈👀📌
 ### 🟣 Subir a GitHub
 
 Crea un repositorio en GitHub y enlazalo con tu repositorio local.
