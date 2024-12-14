@@ -4772,6 +4772,8 @@ export { useFetchGifs };
 
 - [Apuntes Custom Hooks](https://github.com/aleroses/Platzi/blob/master/DW/3-avanzado/1.react.js/Platzi/reactjs.md#14-custom-hooks)
 - [[reactjs#14. Custom Hooks]]
+- [Pesticide for Chrome](https://chromewebstore.google.com/detail/pesticide-for-chrome-mv3/jeebpgmphhagpecfiophljpkhncoajcg?hl=es-419)
+
 👈👀📌
 ### 🟣 Mostrar mensaje de carga
 
