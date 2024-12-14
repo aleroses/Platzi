@@ -81,6 +81,3 @@ Para revisar
 - Responsive Viewer
 - Skip silence
 - WhatFont
-
-
-
