@@ -4960,7 +4960,7 @@ Arrastra la carpeta **dist** dentro de ese recuadro y espera a que termine de ca
 
 Si el nombre del proyecto no te gusta puedes cambiarlo yendo a **Site Configuration** y busca **Change site name**.
 
-De `luxury-buttercream-ed1988` a `search-tests`.
+De `luxury-buttercream-ed1988` lo cambié a `search-tests`.
 
 [Web desplegada](https://search-tests-two.netlify.app/)
 
