@@ -4775,8 +4775,6 @@ export { useFetchGifs };
 - [Pesticide for Chrome](https://chromewebstore.google.com/detail/pesticide-for-chrome-mv3/jeebpgmphhagpecfiophljpkhncoajcg?hl=es-419)
 - [CSS Debugger](https://chromewebstore.google.com/detail/css-debugger/bjpidjfkmlbmlfeogdpemieacmdicdno)
 
-
-👈👀📌
 ### 🟣 Mostrar mensaje de carga
 
 `src > components > GifGrid.jsx`
@@ -4806,7 +4804,7 @@ const GifGrid = ({ category }) => {
 
 export { GifGrid };
 ```
-
+👈👀📌
 ### 🟣 Archivos de barril
 
 En el contexto de JavaScript y React, los "Archivos de barril" (también conocidos como "Archivos de índice" o "Archivos de barril de exportación") son archivos utilizados para exportar múltiples módulos desde una carpeta o directorio en un solo punto de acceso. En lugar de tener que importar cada módulo individualmente desde su ubicación específica, puedes importarlos todos a través del archivo de barril.
