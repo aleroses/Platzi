@@ -4966,7 +4966,7 @@ De `luxury-buttercream-ed1988` lo cambié a `search-tests`.
 
 #### Actualizar proyecto
 
-Para volver a desplegar nos vamos a la página principal y buscamos `Sites`, damos clic a nuestro proyecto y luego en `Deploys`, tendremos que ver algo así:
+Para volver a desplegar o actualizar nuestro proyecto nos vamos a la página principal y buscamos `Sites`, damos clic a nuestro proyecto y luego en `Deploys`, tendremos que ver algo así:
 
 > Need to update your site?
 > Drag and drop your site output folder here.
