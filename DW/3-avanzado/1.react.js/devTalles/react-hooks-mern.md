@@ -4902,14 +4902,14 @@ La estructura del proyecto queda así:
 ```
 
 [Limas de barril y por qué deberías DEJAR de usarlas ahora](https://dev.to/tassiofront/barrel-files-and-why-you-should-stop-using-them-now-bc4)
-👈👀📌
+
 ### 🟣 Código fuente de la sección
 
 Aquí les dejo el código fuente de la sección, tal cual lo dejé en el último video para que puedan compararlo contra el suyo si fuera necesario.
 
 [**Github - Fin Seccion 6**](https://github.com/Klerith/react-vite-gif-expert/tree/fin-seccion-6) 
 
-
+👈👀📌
 ## 7. Generando el build de producción y despliegues
 
 ### 🟣 Introducción a la sección
