@@ -5002,7 +5002,7 @@ Actualmente he visto que siempre pide una `key` cuando es la primera vez que usa
 Dejo los apuntes donde se toca ese tema:
 
 [⚠☢ Posible error ☣](https://github.com/aleroses/Platzi/blob/master/DW/1-basico/005-git-github/git-github.md#-posible-error-)
-👈👀📌
+
 ### 🟣 Desplegando aplicación en Github Pages
 
 Puedes renombrar `dist` por `docs`.
@@ -5032,7 +5032,7 @@ En caso de persistir el error también modifica el link en la raíz principal en
 El link del **favicon** no hace falta cambiarlo.
 
 Ahora envía los cambios a GitHub, espera y listo.
-
+👈👀📌
 ## 8. Testing - Probando la aplicación de GifExpert
 
 ### 🟣 Introducción a la sección
