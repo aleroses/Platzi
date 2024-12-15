@@ -4990,11 +4990,9 @@ En caso de borrar archivos importantes del proyecto puedes reconstruirlos con:
 git checkout -- .
 ```
 
-[[gh-pages]] 👈👀
+- [[gh-pages]] 👈👀
+- [Apuntes GitHub Pages](https://github.com/aleroses/Platzi/blob/master/DW/1-basico/005-git-github/gh-pages.md)
 
-[Apuntes GitHub Pages](https://github.com/aleroses/Platzi/blob/master/DW/1-basico/005-git-github/gh-pages.md)
-
-👈👀📌
 ### 🟣 Subir a GitHub
 
 Crea un repositorio en GitHub y enlazalo con tu repositorio local.
@@ -5004,7 +5002,7 @@ Actualmente he visto que siempre pide una `key` cuando es la primera vez que usa
 Dejo los apuntes donde se toca ese tema:
 
 [⚠☢ Posible error ☣](https://github.com/aleroses/Platzi/blob/master/DW/1-basico/005-git-github/git-github.md#-posible-error-)
-
+👈👀📌
 ### 🟣 Desplegando aplicación en Github Pages
 
 Puedes renombrar `dist` por `docs`.
