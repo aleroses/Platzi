@@ -5032,6 +5032,8 @@ En caso de persistir el error también modifica el link en la raíz principal en
 El link del **favicon** no hace falta cambiarlo.
 
 Ahora envía los cambios a GitHub, espera y listo.
+
+[Vite React App Deploy on GitHub](https://www.youtube.com/watch?v=XhoWXhyuW_I)
 👈👀📌
 ## 8. Testing - Probando la aplicación de GifExpert
 
