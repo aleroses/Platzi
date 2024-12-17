@@ -5142,6 +5142,16 @@ test("Esta prueba no debe de fallar", () => {
 
 Trazar la ruta critica:
 
+En Vite los `PropTypes` no vienen instalados por defecto:
+
+```bash
+yarn add prop-types 
+
+# Para NPM
+npm install prop-types
+```
+
+
 `src > components > GifGrid.jsx`
 
 ```jsx
