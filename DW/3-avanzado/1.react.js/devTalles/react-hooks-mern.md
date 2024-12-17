@@ -5053,7 +5053,7 @@ Ahora envía los cambios a GitHub, espera y listo.
 - Evaluar si existen elementos en el componente
 
 En esta sección seguiremos expandiendo todo lo que habíamos visto anteriormente en otras secciones de pruebas, pero ahora veremos más a detalle los temas y adicionalmente introduciremos nuevos conceptos y nuevos tipos de pruebas.
-👈👀📌
+
 ### 🟣 
 `src > components > GifGrid.jsx`
 
@@ -5064,6 +5064,7 @@ En esta sección seguiremos expandiendo todo lo que habíamos visto anteriorment
 👈👀
 
 👈👀👇
+👈👀📌
 
 ### 🟣 
 `src > components > GifGrid.jsx`
