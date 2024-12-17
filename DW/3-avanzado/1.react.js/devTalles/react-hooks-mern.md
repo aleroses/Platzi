@@ -5124,7 +5124,17 @@ module.exports = {
 import 'whatwg-fetch'; // <-- yarn add whatwg-fetch
 ```
 
+Ahora podemos hacer una demostración de como funcionan los test.
 
+`tests > demo.test.js`
+
+```js
+test("Esta prueba no debe de fallar", () => {
+  if (0 === 1) {
+    throw new Error("No puede dividir entre cero");
+  }
+});
+```
 
 
 `src > components > GifGrid.jsx`
