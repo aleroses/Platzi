@@ -5086,7 +5086,6 @@ Puedes ejecutar el comando de arriba o instalar todo por separado e ir viendo qu
 - Implementa navegador web en JavaScript, lo que permite simular el DOM.
 	- `yarn add -D jest-environment-jsdom`
 
-
 2. Opcional: Si usamos Fetch API en el proyecto:
 ```bash
 yarn add --dev whatwg-fetch
