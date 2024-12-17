@@ -5090,7 +5090,7 @@ module.exports = {
 
 5. Opcional, pero eventualmente necesario, crear Jest config y setup:
 
-__jest.config.js__
+`jest.config.js`
 ```
 module.exports = {
     testEnvironment: 'jest-environment-jsdom',
