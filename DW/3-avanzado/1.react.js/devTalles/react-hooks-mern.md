@@ -5136,6 +5136,9 @@ test("Esta prueba no debe de fallar", () => {
 });
 ```
 
+[vite-testing-config](https://gist.github.com/Klerith/ca7e57fae3c9ab92ad08baadc6c26177)
+
+### 🟣 
 
 `src > components > GifGrid.jsx`
 
@@ -5147,17 +5150,6 @@ test("Esta prueba no debe de fallar", () => {
 
 👈👀👇
 👈👀📌
-
-### 🟣 
-`src > components > GifGrid.jsx`
-
-```jsx
-
-```
-
-👈👀
-
-👈👀👇
 
 ### 🟣 
 `src > components > GifGrid.jsx`
