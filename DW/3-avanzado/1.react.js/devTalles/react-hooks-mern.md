@@ -2627,9 +2627,8 @@ ReactDOM.createRoot(document.getElementById("root")).render(
 );
 ```
 
-[React Testing Library](https://testing-library.com/docs/react-testing-library/intro)
-
-[Testing React Apps: DOM Testing](https://jestjs.io/docs/tutorial-react#dom-testing)
+- [React Testing Library](https://testing-library.com/docs/react-testing-library/intro)
+- [Testing React Apps: DOM Testing](https://jestjs.io/docs/tutorial-react#dom-testing)
 
 ### 🟣 Pruebas en FirstApp - Componentes de React
 
