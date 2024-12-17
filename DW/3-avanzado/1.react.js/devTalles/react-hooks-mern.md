@@ -5061,9 +5061,19 @@ Instalación y configuración de Jest + React Testing Library
 1. Instalaciones:
 ```bash
 # Explicación de cada comando en la parte de abajo.
-yarn add --dev jest babel-jest @babel/preset-env @babel/preset-react 
-yarn add --dev @testing-library/react @types/jest jest-environment-jsdom
+yarn add --dev 
+  jest 
+  babel-jest 
+  @babel/preset-env 
+  @babel/preset-react 
+
+yarn add --dev 
+  @testing-library/react 
+  @types/jest 
+  jest-environment-jsdom
 ```
+
+Puedes ejecutar el comando de arriba o instalar todo por separado e ir viendo que cosas estás instalando, ver lista inferior.
 
 - Instalar Jest: `yarn add --dev jest`
 - Integrar Babel con Jest:
