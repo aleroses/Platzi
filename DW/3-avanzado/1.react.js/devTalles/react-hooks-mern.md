@@ -5091,7 +5091,7 @@ module.exports = {
 5. Opcional, pero eventualmente necesario, crear Jest config y setup:
 
 `jest.config.js`
-```
+```jsx
 module.exports = {
     testEnvironment: 'jest-environment-jsdom',
     setupFiles: ['./jest.setup.js']
@@ -5099,7 +5099,7 @@ module.exports = {
 ```
 
 `jest.setup.js`
-```
+```js
 // En caso de necesitar la implementación del FetchAPI
 import 'whatwg-fetch'; // <-- yarn add whatwg-fetch
 ```
