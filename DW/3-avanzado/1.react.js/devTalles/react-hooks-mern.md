@@ -5138,7 +5138,9 @@ test("Esta prueba no debe de fallar", () => {
 
 [vite-testing-config](https://gist.github.com/Klerith/ca7e57fae3c9ab92ad08baadc6c26177)
 
-### 🟣 
+### 🟣 Implementando PropTypes
+
+Trazar la ruta critica:
 
 `src > components > GifGrid.jsx`
 
