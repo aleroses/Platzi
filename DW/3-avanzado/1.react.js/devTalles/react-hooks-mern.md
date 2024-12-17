@@ -5067,19 +5067,19 @@ yarn add --dev @testing-library/react @types/jest jest-environment-jsdom
 ```
 
 2. Opcional: Si usamos Fetch API en el proyecto:
-```
+```bash
 yarn add --dev whatwg-fetch
 ```
 
 3. Actualizar los scripts del `package.json`
-```
+```js
 "scripts: {
   ...
   "test": "jest --watchAll"
 ```
 
 4. Crear la configuración de babel `babel.config.js`
-```
+```js
 module.exports = {
     presets: [
         [ '@babel/preset-env', { targets: { esmodules: true } } ],
