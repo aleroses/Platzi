@@ -5060,6 +5060,7 @@ Instalación y configuración de Jest + React Testing Library
 
 1. Instalaciones:
 ```bash
+# Explicación de cada comando en la parte de abajo.
 yarn add --dev jest babel-jest @babel/preset-env @babel/preset-react 
 yarn add --dev @testing-library/react @types/jest jest-environment-jsdom
 ```
