@@ -5054,7 +5054,59 @@ Ahora envía los cambios a GitHub, espera y listo.
 
 En esta sección seguiremos expandiendo todo lo que habíamos visto anteriormente en otras secciones de pruebas, pero ahora veremos más a detalle los temas y adicionalmente introduciremos nuevos conceptos y nuevos tipos de pruebas.
 
-### 🟣 
+### 🟣 Configurar el ambiente de pruebas
+
+Instalación y configuración de Jest + React Testing Library
+
+#### En proyectos de React + Vite
+
+1. Instalaciones:
+```bash
+yarn add --dev jest babel-jest @babel/preset-env @babel/preset-react 
+yarn add --dev @testing-library/react @types/jest jest-environment-jsdom
+```
+
+2. Opcional: Si usamos Fetch API en el proyecto:
+```
+yarn add --dev whatwg-fetch
+```
+
+3. Actualizar los scripts del `package.json`
+```
+"scripts: {
+  ...
+  "test": "jest --watchAll"
+```
+
+4. Crear la configuración de babel __babel.config.js__
+```
+module.exports = {
+    presets: [
+        [ '@babel/preset-env', { targets: { esmodules: true } } ],
+        [ '@babel/preset-react', { runtime: 'automatic' } ],
+    ],
+};
+```
+
+5. Opcional, pero eventualmente necesario, crear Jest config y setup:
+
+__jest.config.js__
+```
+module.exports = {
+    testEnvironment: 'jest-environment-jsdom',
+    setupFiles: ['./jest.setup.js']
+}
+```
+
+__jest.setup.js__
+```
+// En caso de necesitar la implementación del FetchAPI
+import 'whatwg-fetch'; // <-- yarn add whatwg-fetch
+```
+
+
+
+
 `src > components > GifGrid.jsx`
 
 ```jsx
