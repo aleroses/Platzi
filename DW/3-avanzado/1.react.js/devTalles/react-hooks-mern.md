@@ -5067,7 +5067,14 @@ yarn add --dev @testing-library/react @types/jest jest-environment-jsdom
 - Instalar Jest: `yarn add --dev jest`
 - Integrar Babel con Jest:
 	- `yarn add --dev babel-jest @babel/core @babel/preset-env`
-	- `yarn add -D @babel/preset-react`
+	- `yarn add -D @babel/preset-react` transpilar.
+- Instalar React Testing Library: Actual 👈👀👇
+	- `yarn add --dev @testing-library/react @testing-library/dom`
+- Añadir ayudas o intelligent a Visual Studio Code:
+	- `yarn add -D @types/jest`
+- Implementa navegador web en JavaScript, lo que permite simular el DOM.
+	- `yarn add -D jest-environment-jsdom`
+
 
 2. Opcional: Si usamos Fetch API en el proyecto:
 ```bash
