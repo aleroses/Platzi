@@ -5078,7 +5078,7 @@ yarn add --dev whatwg-fetch
   "test": "jest --watchAll"
 ```
 
-4. Crear la configuración de babel __babel.config.js__
+4. Crear la configuración de babel `babel.config.js`
 ```
 module.exports = {
     presets: [
