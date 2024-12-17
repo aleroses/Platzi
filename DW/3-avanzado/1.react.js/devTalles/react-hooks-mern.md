@@ -2812,9 +2812,8 @@ FirstTest.propTypes = {
 export { FirstTest };
 ```
 
-[DOM Manipulation JEST](https://jestjs.io/docs/next/tutorial-jquery)
-
-[Babel Preset React](https://babeljs.io/docs/babel-preset-react)
+- [DOM Manipulation JEST](https://jestjs.io/docs/next/tutorial-jquery)
+- [Babel Preset React](https://babeljs.io/docs/babel-preset-react)
 
 ### 🟣 Probar FirstApp: `toMatchSnapshot`
 
