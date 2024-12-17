@@ -5064,8 +5064,10 @@ yarn add --dev jest babel-jest @babel/preset-env @babel/preset-react
 yarn add --dev @testing-library/react @types/jest jest-environment-jsdom
 ```
 
-- `yarn add --dev jest`: Instale Jest utilizando su gestor de paquetes favorito.
-- 
+- Instalar Jest: `yarn add --dev jest`
+- Integrar Babel con Jest:
+	- `yarn add --dev babel-jest @babel/core @babel/preset-env`
+	- `yarn add -D @babel/preset-react`
 
 2. Opcional: Si usamos Fetch API en el proyecto:
 ```bash
