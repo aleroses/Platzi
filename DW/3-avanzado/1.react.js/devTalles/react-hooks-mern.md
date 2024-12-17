@@ -5098,24 +5098,24 @@ yarn add --dev whatwg-fetch
   "test": "jest --watchAll"
 ```
 
-4. Crear la configuración de babel `babel.config.js`
+4. Crear la configuración de babel `babel.config.cjs`
 ```js
 module.exports = {
-    presets: [
-        [ '@babel/preset-env', { targets: { esmodules: true } } ],
-        [ '@babel/preset-react', { runtime: 'automatic' } ],
-    ],
+  presets: [
+    ["@babel/preset-env", { targets: { esmodules: true } }],
+    ["@babel/preset-react", { runtime: "automatic" }],
+  ],
 };
 ```
 
 5. Opcional, pero eventualmente necesario, crear Jest config y setup:
 
-`jest.config.js`
+`jest.config.cjs`
 ```jsx
 module.exports = {
-    testEnvironment: 'jest-environment-jsdom',
-    setupFiles: ['./jest.setup.js']
-}
+  testEnvironment: "jest-environment-jsdom",
+  setupFiles: ["./jest.setup.js"],
+};
 ```
 
 `jest.setup.js`
