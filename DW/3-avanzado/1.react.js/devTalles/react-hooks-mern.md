@@ -5194,33 +5194,21 @@ describe("GifItm test", () => {
 });
 ```
 
+### 🟣 Resolución de la tarea
+
+Lo mismo que el punto anterior.
+
+### 🟣 
+`src > components > GifGrid.jsx`
+
+```jsx
+
+```
+
 👈👀
 
 👈👀👇
 👈👀📌
-
-### 🟣 
-`src > components > GifGrid.jsx`
-
-```jsx
-
-```
-
-👈👀
-
-👈👀👇
-
-### 🟣 
-`src > components > GifGrid.jsx`
-
-```jsx
-
-```
-
-👈👀
-
-👈👀👇
-
 
 ### 🟣 
 `src > components > GifGrid.jsx`
