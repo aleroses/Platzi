@@ -5200,10 +5200,42 @@ Lo mismo que el punto anterior.
 
 ### 🟣 Pruebas del componente - GifGridItem
 
-`src > components > GifGrid.jsx`
+`test > components > GifItem.test.jsx`
 
 ```jsx
+import { render, screen } from "@testing-library/react";
+import { GifItem } from "../../src/components/GifItem";
 
+describe("GifItm test", () => {
+  const data = {
+    title: "Testing",
+    url: "https://red.png/",
+    id: "2",
+  };
+
+  test("Should match the snapshot", () => {
+    const { container } = render(
+      <GifItem title={data.title} url={data.url} />
+    );
+    expect(container).toMatchSnapshot();
+  });
+
+  test("should display the image with the url", () => {
+    render(<GifItem title={data.title} url={data.url} />);
+
+    // screen.debug();
+    // console.log(screen.getByRole("img").src);
+
+    // Una forma
+    expect(screen.getByRole("img").src).toBe(data.url);
+    expect(screen.getByRole("img").alt).toBe(data.title);
+
+    // Otra forma
+    const { src, alt } = screen.getByRole("img");
+    expect(src).toBe(data.url);
+    expect(alt).toBe(data.title);
+  });
+});
 ```
 
 👈👀
