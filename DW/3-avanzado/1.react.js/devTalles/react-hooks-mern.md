@@ -5198,7 +5198,8 @@ describe("GifItm test", () => {
 
 Lo mismo que el punto anterior.
 
-### 🟣 
+### 🟣 Pruebas del componente - GifGridItem
+
 `src > components > GifGrid.jsx`
 
 ```jsx
