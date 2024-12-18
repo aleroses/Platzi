@@ -5155,7 +5155,43 @@ npm install prop-types
 `src > components > GifGrid.jsx`
 
 ```jsx
+import PropTypes from "prop-types";
 
+export const GifItem = ({ title, url, id }) => {
+  return (
+    <div className="card">
+      <h3>{title}</h3>
+      <img src={url} alt={title} />
+    </div>
+  );
+};
+
+GifItem.propTypes = { 👈👀
+  title: PropTypes.string.isRequired,
+  url: PropTypes.string.isRequired,
+};
+```
+
+`test > components > GifItem.test.jsx`
+
+```jsx
+import { render } from "@testing-library/react";
+import { GifItem } from "../../src/components/GifItem";
+
+describe("GifItm test", () => {
+  const data = {
+    title: "Testing",
+    url: "https://redflag",
+    id: "2",
+  };
+
+  test("Should match the snapshot", () => {
+    const { container } = render(
+      <GifItem title={data.title} url={data.url} />
+    );
+    expect(container).toMatchSnapshot();
+  });
+});
 ```
 
 👈👀
