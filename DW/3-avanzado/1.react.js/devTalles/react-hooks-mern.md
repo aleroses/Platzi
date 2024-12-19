@@ -5324,7 +5324,7 @@ describe("AddCategories testing", () => {
 
     // console.log(input);
 
-    fireEvent.input(input, {
+    fireEvent.input(input, { 👈👀👇
       target: { value: "Gogueta" },
     });
 
