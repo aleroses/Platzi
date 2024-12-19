@@ -5320,7 +5320,7 @@ describe("AddCategories testing", () => {
   test("should change the value of the text box", () => {
     render(<AddCategories onValueUpdate={() => {}} />);
 
-    const input = screen.getByRole("textbox");
+    const input👈👀 = screen.getByRole("textbox");
 
     // console.log(input);
 
