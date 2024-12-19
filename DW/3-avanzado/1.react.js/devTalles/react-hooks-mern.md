@@ -5226,11 +5226,11 @@ describe("GifItm test", () => {
     // screen.debug();
     // console.log(screen.getByRole("img").src);
 
-    // Una forma
+    // One way
     expect(screen.getByRole("img").src).toBe(data.url);
     expect(screen.getByRole("img").alt).toBe(data.title);
 
-    // Otra forma
+    // Another way
     const { src, alt } = screen.getByRole("img");
     expect(src).toBe(data.url);
     expect(alt).toBe(data.title);
