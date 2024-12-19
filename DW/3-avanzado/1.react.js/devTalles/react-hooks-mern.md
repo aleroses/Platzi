@@ -5234,6 +5234,12 @@ describe("GifItm test", () => {
     const { src, alt } = screen.getByRole("img");
     expect(src).toBe(data.url);
     expect(alt).toBe(data.title);
+    // screen.debug();
+  });
+
+  test("should display the title in the component", () => {
+    render(<GifItem title={data.title} url={data.url} />);
+    expect(screen.getByText(data.title)).toBeTruthy();
   });
 });
 ```
