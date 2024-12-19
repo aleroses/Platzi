@@ -5337,8 +5337,9 @@ describe("AddCategories testing", () => {
 });
 ```
 
-### 🟣 
-`src > components > GifGrid.jsx`
+### 🟣 Simular un submit del formulario
+
+`test > components > AddCategories.test.jsx`
 
 ```jsx
 
