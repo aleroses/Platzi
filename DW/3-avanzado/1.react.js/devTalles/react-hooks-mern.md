@@ -5470,7 +5470,7 @@ describe("AddCategories testing", () => {
       targer: { value: inputValue },
     });
 
-    // Triggering the submit
+    // Triggering the submit: aria-label="form"
     fireEvent.submit(form);👈👀
 
     // screen.debug();
