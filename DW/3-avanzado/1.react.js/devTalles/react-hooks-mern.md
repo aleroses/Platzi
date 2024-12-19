@@ -5430,7 +5430,54 @@ AddCategories.propTypes = {
 `test > components > AddCategories.test.jsx`
 
 ```jsx
+import {
+  fireEvent,
+  render,
+  screen,
+} from "@testing-library/react";
+import { AddCategories } from "../../src/components/AddCategories";
 
+describe("AddCategories testing", () => {
+  test("should change the value of the text box", () => {
+    render(<AddCategories onValueUpdate={() => {}} />);
+
+    const input = screen.getByRole("textbox");
+
+    // console.log(input);
+
+    // screen.debug();
+
+    fireEvent.input(input, {
+      target: { value: "Gogueta" },
+    });
+
+    expect(input.value).toBe("Gogueta");
+
+    // screen.debug();
+  });
+
+  test("should call onValueUpdate if the input has a value", () => {
+    const inputValue = "Gogueta";
+
+    // TODO: ???
+
+    render(<AddCategories onValueUpdate={() => {}} />);
+
+    const input = screen.getByRole("textbox");
+    const form = screen.getByRole("form");
+
+    fireEvent.input(input, {
+      targer: { value: inputValue },
+    });
+
+    // Triggering the submit
+    fireEvent.submit(form);
+
+    // screen.debug();
+
+    expect(input.value).toBe("");
+  });
+});
 ```
 
 👈👀
