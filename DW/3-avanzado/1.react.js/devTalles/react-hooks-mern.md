@@ -5341,8 +5341,6 @@ describe("AddCategories testing", () => {
 
 En React (o en JSX en general), el atributo `aria-label` es utilizado para mejorar la accesibilidad de los elementos en una aplicación web. El propósito de `aria-label` es proporcionar una etiqueta de texto que describe el elemento para los lectores de pantalla y otras tecnologías de asistencia. Esto es particularmente útil para elementos que no tienen un texto visible o cuyo propósito no es obvio para los usuarios con discapacidades visuales.
 
-### Ejemplo de Uso
-
 Considera el siguiente botón que contiene un ícono, pero no tiene texto visible:
 
 ```jsx
@@ -5352,22 +5350,6 @@ Considera el siguiente botón que contiene un ícono, pero no tiene texto visibl
 ```
 
 Para los usuarios que dependen de los lectores de pantalla, este botón podría ser confuso porque el ícono por sí solo no proporciona suficiente contexto. Al agregar un `aria-label`, podemos describir la función del botón:
-
-```jsx
-<button aria-label="Play">
-  <i className="fas fa-play"></i>
-</button>
-```
-
-En este caso, el lector de pantalla leerá "Play" cuando enfoque este botón, proporcionando una mejor experiencia de usuario para aquellos con discapacidades visuales.
-
-### ¿Cuándo Usar `aria-label`?
-
-1. **Elementos con Íconos o Imágenes:** Si el elemento contiene solo un ícono o una imagen sin texto visible.
-2. **Elementos Interactivos sin Texto:** Para elementos interactivos (como botones, enlaces, etc.) que no tienen texto visible pero necesitan ser descriptivos.
-3. **Mejorar la Descripción:** Si el texto visible no describe adecuadamente el propósito del elemento.
-
-### Ejemplo Completo en un Componente React
 
 ```jsx
 import React from 'react';
@@ -5383,13 +5365,67 @@ const PlayButton = () => {
 export default PlayButton;
 ```
 
-### Consideraciones
+En este caso, el lector de pantalla leerá "Play" cuando enfoque este botón, proporcionando una mejor experiencia de usuario para aquellos con discapacidades visuales.
+
+#### ¿Cuándo Usar `aria-label`?
+
+1. **Elementos con Íconos o Imágenes:** Si el elemento contiene solo un ícono o una imagen sin texto visible.
+2. **Elementos Interactivos sin Texto:** Para elementos interactivos (como botones, enlaces, etc.) que no tienen texto visible pero necesitan ser descriptivos.
+3. **Mejorar la Descripción:** Si el texto visible no describe adecuadamente el propósito del elemento.
+
+#### Consideraciones
 
 - **Consistencia:** Asegúrate de que las descripciones sean consistentes y claras en toda la aplicación.
 - **Brevedad:** Mantén las etiquetas breves pero descriptivas.
 - **No Redundancia:** No uses `aria-label` si ya hay un texto visible que describe adecuadamente el elemento.
 
 Al usar `aria-label` adecuadamente, puedes asegurarte de que tu aplicación sea más accesible y usable para todos los usuarios.
+
+En nuestro proyecto:
+
+`src > components > AddCategories.jsx`
+
+```jsx
+import PropTypes from "prop-types";
+import { useState } from "react";
+
+export const AddCategories = ({ onValueUpdate }) => {
+  const [inputValue, setInputValue] = useState("");
+
+  const handleInput = (event) => {
+    const newValue = event.target.value;
+
+    setInputValue(newValue);
+  };
+
+  const handleSubmit = (event) => {
+    console.log("Hi world from the hanleSubmit"); 👈👀
+
+    event.preventDefault();
+
+    if (inputValue.trim().length <= 1) return;
+
+    onValueUpdate(inputValue.trim());
+
+    setInputValue("");
+  };
+
+  return (
+    <form aria-label="form"👈👀 onSubmit={handleSubmit}>
+      <input
+        type="text"
+        placeholder="Search something"
+        value={inputValue}
+        onChange={handleInput}
+      />
+    </form>
+  );
+};
+
+AddCategories.propTypes = {
+  onValueUpdate: PropTypes.func.isRequired,
+};
+```
 
 `test > components > AddCategories.test.jsx`
 
