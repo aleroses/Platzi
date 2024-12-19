@@ -5304,11 +5304,35 @@ describe("getGif testing", () => {
 });
 ```
 
-### 🟣 
-`src > components > GifGrid.jsx`
+### 🟣 Pruebas del componente - AddCategory
+
+`test > components > AddCategories.test.jsx`
 
 ```jsx
+import {
+  fireEvent,
+  render,
+  screen,
+} from "@testing-library/react";
+import { AddCategories } from "../../src/components/AddCategories";
 
+describe("AddCategories testing", () => {
+  test("should change the value of the text box", () => {
+    render(<AddCategories onValueUpdate={() => {}} />);
+
+    const input = screen.getByRole("textbox");
+
+    // console.log(input);
+
+    fireEvent.input(input, {
+      target: { value: "Gogueta" },
+    });
+
+    expect(input.value).toBe("Gogueta");
+
+    // screen.debug();
+  });
+});
 ```
 
 👈👀
