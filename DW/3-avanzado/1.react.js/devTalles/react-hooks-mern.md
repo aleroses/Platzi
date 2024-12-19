@@ -5482,13 +5482,115 @@ describe("AddCategories testing", () => {
 
 [Attributes aria-label](https://developer.mozilla.org/es/docs/Web/Accessibility/ARIA/Attributes/aria-label)
 
-👈👀
+### 🟣 Jest Functions
 
-👈👀👇
-👈👀📌
+En Jest, un "mock" es una técnica utilizada para reemplazar partes de tu código o dependencias durante las pruebas con objetos simulados que imitan el comportamiento de los objetos reales. Esto es útil para aislar el código que estás probando y eliminar dependencias externas que podrían afectar los resultados de las pruebas.
 
+#### Tipos de Mocks en Jest
 
-### 🟣 
+1. **Mock Functions (Funciones Mock):** Estas son funciones que te permiten espiar las llamadas a la función, sus argumentos, y controlar su comportamiento. Son útiles para probar la lógica que depende de las funciones que pasan como argumentos.
+    
+    ```javascript
+    const myMock = jest.fn();
+    
+    // Llamar a la función mock
+    myMock('arg1', 'arg2');
+    
+    // Verificar que la función fue llamada
+    expect(myMock).toHaveBeenCalled();
+    expect(myMock).toHaveBeenCalledWith('arg1', 'arg2');
+    ```
+    
+2. **Manual Mocks:** Puedes crear manualmente archivos mock para módulos específicos en tu proyecto. Estos archivos suelen colocarse en un directorio llamado `__mocks__`.
+    
+    Estructura de directorios:
+    
+    ```
+    /my-module.js
+    /__mocks__/my-module.js
+    ```
+    
+    ```javascript
+    // __mocks__/my-module.js
+    module.exports = {
+      myFunction: jest.fn().mockReturnValue('mocked value'),
+    };
+    ```
+    
+3. **Auto Mocks:** Jest puede generar mocks automáticamente para módulos completos usando la función `jest.mock`.
+    
+    ```javascript
+    jest.mock('./my-module');
+    
+    const myModule = require('./my-module');
+    
+    // La función dentro del módulo está ahora mockeada
+    myModule.myFunction.mockReturnValue('mocked value');
+    ```
+    
+4. **Mocking Timers:** Jest también puede mockear funciones de temporizadores, como `setTimeout`, `setInterval`, y `Date`.
+    
+    ```javascript
+    jest.useFakeTimers();
+    
+    setTimeout(() => {
+      console.log('Hello');
+    }, 1000);
+    
+    jest.runAllTimers();
+    
+    // El mensaje 'Hello' se registra inmediatamente
+    ```
+    
+
+#### ¿Por qué usar Mocks?
+
+- **Aislar el Código:** Permite probar una unidad de código sin depender de otros módulos o servicios externos.
+- **Simular Comportamientos:** Puedes simular comportamientos de funciones y módulos que son difíciles de reproducir en un entorno de prueba (como respuestas de API).
+- **Mejorar la Velocidad de las Pruebas:** Eliminar dependencias externas puede hacer que las pruebas sean más rápidas y menos propensas a fallar debido a problemas externos.
+
+#### Ejemplo Completo
+
+Supongamos que tienes una función que depende de una API externa:
+
+```javascript
+// api.js
+export const fetchData = () => {
+  return fetch('https://api.example.com/data')
+    .then(response => response.json());
+};
+
+// user.js
+import { fetchData } from './api';
+
+export const getUserData = () => {
+  return fetchData().then(data => data.user);
+};
+```
+
+Puedes mockear la función `fetchData` en tu prueba para controlar su comportamiento:
+
+```javascript
+// __tests__/user.test.js
+import { getUserData } from '../user';
+import { fetchData } from '../api';
+
+jest.mock('../api');
+
+test('getUserData returns user data', async () => {
+  fetchData.mockResolvedValue({ user: 'John Doe' });
+
+  const user = await getUserData();
+
+  expect(user).toBe('John Doe');
+  expect(fetchData).toHaveBeenCalled();
+});
+```
+
+En este ejemplo, `fetchData` está mockeado para devolver un valor específico, permitiendo que la prueba de `getUserData` sea predecible y controlada.
+
+Los mocks son una herramienta poderosa en Jest que te permiten crear pruebas más robustas y confiables al simular el comportamiento de las dependencias de tu código.
+
 `src > components > GifGrid.jsx`
 
 ```jsx
@@ -5498,6 +5600,7 @@ describe("AddCategories testing", () => {
 👈👀
 
 👈👀👇
+👈👀📌
 
 ### 🟣 
 `src > components > GifGrid.jsx`
