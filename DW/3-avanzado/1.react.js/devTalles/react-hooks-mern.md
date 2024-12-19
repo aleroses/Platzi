@@ -5266,14 +5266,7 @@ describe("getGif testing", () => {
     });
   });
 });
-
 ```
-
-
-👈👀
-
-👈👀👇
-👈👀📌
 
 ### 🟣 
 `src > components > GifGrid.jsx`
@@ -5285,6 +5278,7 @@ describe("getGif testing", () => {
 👈👀
 
 👈👀👇
+👈👀📌
 
 ### 🟣 
 `src > components > GifGrid.jsx`
