@@ -5464,9 +5464,9 @@ describe("AddCategories testing", () => {
     render(<AddCategories onValueUpdate={() => {}} />);
 
     const input = screen.getByRole("textbox");
-    const form = screen.getByRole("form");
+    const form = screen.getByRole("form");👈👀
 
-    fireEvent.input(input, {
+    fireEvent.input(input, {👈👀👇
       targer: { value: inputValue },
     });
 
