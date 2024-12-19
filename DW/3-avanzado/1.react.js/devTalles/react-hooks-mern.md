@@ -5337,11 +5337,6 @@ describe("AddCategories testing", () => {
 });
 ```
 
-👈👀
-
-👈👀👇
-👈👀📌
-
 ### 🟣 
 `src > components > GifGrid.jsx`
 
@@ -5352,6 +5347,7 @@ describe("AddCategories testing", () => {
 👈👀
 
 👈👀👇
+👈👀📌
 
 
 ### 🟣 
