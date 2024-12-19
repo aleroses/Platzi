@@ -5471,7 +5471,7 @@ describe("AddCategories testing", () => {
     });
 
     // Triggering the submit
-    fireEvent.submit(form);
+    fireEvent.submit(form);👈👀
 
     // screen.debug();
 
