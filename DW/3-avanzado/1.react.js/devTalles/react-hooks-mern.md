@@ -5324,15 +5324,18 @@ describe("AddCategories testing", () => {
 
     // console.log(input);
 
-    fireEvent.input(input, { 👈👀👇
+    // screen.debug();
+
+    fireEvent.input(input, {👈👀👇
       target: { value: "Gogueta" },
     });
 
     expect(input.value).toBe("Gogueta");
 
-    // screen.debug();
+    screen.debug();
   });
 });
+
 ```
 
 👈👀
