@@ -5244,21 +5244,36 @@ describe("GifItm test", () => {
 });
 ```
 
+### 🟣 Pruebas en el helper getGifs
+
+`test > helpers > getGif.test.js`
+
+```jsx
+import { getGif } from "../../src/helpers/getGif";
+
+describe("getGif testing", () => {
+  test("should display an gifs array", async () => {
+    // It worked without passing the “flag” parameter.
+    const gifs = await getGif("flag");
+
+    // console.log(gifs);
+
+    expect(gifs.length).toBeGreaterThan(0);
+    expect(gifs[0]).toEqual({
+      id: expect.any(String),
+      title: expect.any(String),
+      url: expect.any(String),
+    });
+  });
+});
+
+```
+
+
 👈👀
 
 👈👀👇
 👈👀📌
-
-### 🟣 
-`src > components > GifGrid.jsx`
-
-```jsx
-
-```
-
-👈👀
-
-👈👀👇
 
 ### 🟣 
 `src > components > GifGrid.jsx`
