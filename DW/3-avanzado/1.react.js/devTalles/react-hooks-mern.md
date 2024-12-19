@@ -5246,6 +5246,42 @@ describe("GifItm test", () => {
 
 ### 🟣 Pruebas en el helper getGifs
 
+#### toBeGreaterThan()
+
+`toBeGreaterThan()` es un matcher que se utiliza para verificar que un valor numérico es mayor que otro. Jest proporciona una serie de matchers para realizar diferentes tipos de aserciones (assertions) en tus pruebas, y `toBeGreaterThan()` es uno de ellos.
+
+Aquí tienes un ejemplo sencillo de cómo usar `toBeGreaterThan()` en una prueba con Jest:
+
+```javascript
+test('el valor es mayor que 10', () => {
+  const valor = 15;
+  expect(valor).toBeGreaterThan(10);
+});
+```
+
+En este ejemplo, la prueba verificará que la variable `valor` (que es 15) es mayor que 10. Si `valor` fuera menor o igual a 10, la prueba fallaría.
+
+##### Uso en el contexto de React Testing Library
+
+Supongamos que tienes un componente de React que muestra el número de elementos en una lista y quieres asegurarte de que siempre hay más de 5 elementos:
+
+```javascript
+import React from 'react';
+import { render, screen } from '@testing-library/react';
+import '@testing-library/jest-dom/extend-expect';
+import MiComponente from './MiComponente';
+
+test('la lista tiene más de 5 elementos', () => {
+  render(<MiComponente />);
+  const elementos = screen.getAllByRole('listitem');
+  expect(elementos.length).toBeGreaterThan(5);
+});
+```
+
+En este ejemplo, `screen.getAllByRole('listitem')` obtiene todos los elementos de la lista del componente `MiComponente`, y `expect(elementos.length).toBeGreaterThan(5)` verifica que la cantidad de elementos en la lista es mayor que 5.
+
+Ahora en nuestro proyecto:
+
 `test > helpers > getGif.test.js`
 
 ```jsx
