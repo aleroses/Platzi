@@ -5742,23 +5742,61 @@ describe("GifGrid testing", () => {
 });
 ```
 
-### 🟣 
-`src > components > GifGrid.jsx`
+### 🟣 Hacer un mock completo de un Custom Hook
+
+Simular que el `useFetchGifs` va a regresar el valor que quiera:
+
+`test > components > GifGrid.test.jsx`
 
 ```jsx
+import { render, screen } from "@testing-library/react";
+import { GifGrid } from "../../src/components/GifGrid";
+import { useFetchGifs } from "../../src/hooks/useFetchGifs";
 
+jest.mock("../../src/hooks/useFetchGifs");
+
+describe("GifGrid testing", () => {
+  const category = "One Punch";
+
+  test("should show the initial load", () => {
+    useFetchGifs.mockReturnValue({
+      images: [],
+      isLoading: true,
+    });
+
+    render(<GifGrid data={category} />);
+
+    // screen.debug();
+    expect(screen.getByText("Loading..."));
+    expect(screen.getByText(category));
+  });
+
+  test("should display items when loading images from useFetchGif", () => {
+    const gifs = [
+      {
+        id: "ABC",
+        title: "Gogeta",
+        url: "https://localhost/gogeta.jpg/",
+      },
+      {
+        id: "123",
+        title: "Vegetto",
+        url: "https://localhost/gogeta.jpg/",
+      },
+    ];
+
+    useFetchGifs.mockReturnValue({
+      images: gifs,
+      isLoading: true,
+    });
+
+    render(<GifGrid data={category} />);
+
+    // screen.debug();
+    expect(screen.getAllByRole("img").length).toBe(2);
+  });
+});
 ```
-
-`src > components > GifGrid.jsx`
-
-```jsx
-
-```
-
-👈👀
-
-👈👀👇
-👈👀📌
 
 ### 🟣 
 `src > components > GifGrid.jsx`
