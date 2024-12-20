@@ -5711,22 +5711,36 @@ describe("AddCategories testing", () => {
 
 ### 🟣 Pruebas del componente GifGrid - Mock customHook
 
-`src > components > GifGrid.jsx`
+Recuerda que los `PropTypes` quedaron obsoletos en **abril de 2017 (v15.5.0)**.
+
+En React 19, se eliminaron las `propType` comprobaciones del paquete React y su uso se ignorará de forma silenciosa. Si estás usando `propTypes`, se recomienda migrar a TypeScript u otra solución de verificación de tipos.
+
+También estamos eliminando `defaultProps` los componentes de función que reemplazan los parámetros predeterminados de ES6.
+
+[Documentación](https://es.react.dev/blog/2024/04/25/react-19-upgrade-guide#removed-proptypes-and-defaultprops)
+
+`test > components > GifGrid.test.jsx`
 
 ```jsx
+import { render, screen } from "@testing-library/react";
+import { GifGrid } from "../../src/components/GifGrid";
 
+describe("GifGrid testing", () => {
+  const category = "One Punch";
+
+  test("should show the initial load", () => {
+    render(<GifGrid data={category} />);
+
+    // screen.debug();
+    expect(screen.getByText("Loading..."));
+    expect(screen.getByText(category));
+  });
+
+  test("should display items when loading images from useFetchGif", () => {
+    //second;
+  });
+});
 ```
-
-`src > components > GifGrid.jsx`
-
-```jsx
-
-```
-
-👈👀
-
-👈👀👇
-👈👀📌
 
 ### 🟣 
 `src > components > GifGrid.jsx`
