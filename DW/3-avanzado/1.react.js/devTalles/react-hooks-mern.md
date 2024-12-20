@@ -5591,6 +5591,54 @@ En este ejemplo, `fetchData` está mockeado para devolver un valor específico, 
 
 Los mocks son una herramienta poderosa en Jest que te permiten crear pruebas más robustas y confiables al simular el comportamiento de las dependencias de tu código.
 
+Ahora en nuestro proyecto:
+
+`src > components > AddCategories.jsx`
+
+```jsx
+import PropTypes from "prop-types";
+import { useState } from "react";
+
+export const AddCategories = ({ onValueUpdate }) => {
+  const [inputValue, setInputValue] = useState("");
+
+  const handleInput = (event) => {
+    const newValue = event.target.value;
+
+    setInputValue(newValue);
+  };
+
+  const handleSubmit = (event) => {
+    // console.log("Hi world from the hanleSubmit");
+
+    event.preventDefault();
+
+    if (inputValue.trim().length <= 1) return;
+
+    // Calling two or more times
+    onValueUpdate(inputValue.trim());
+
+    setInputValue("");
+  };
+
+  return (
+    <form aria-label="form" onSubmit={handleSubmit}>
+      <input
+        type="text"
+        placeholder="Search something"
+        value={inputValue}
+        onChange={handleInput}
+      />
+    </form>
+  );
+};
+
+AddCategories.propTypes = {
+  onValueUpdate: PropTypes.func.isRequired,
+};
+```
+
+
 `src > components > GifGrid.jsx`
 
 ```jsx
