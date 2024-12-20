@@ -58,4 +58,6 @@ Para culminar:
 sudo update-grub
 ```
 
+Ahora reinicia la PC.
+
 [Instalar tema en GRUB (fácil)](https://www.youtube.com/watch?v=U0qpwOLzLYs)
