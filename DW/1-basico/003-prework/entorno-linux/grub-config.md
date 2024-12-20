@@ -5,22 +5,31 @@ Buscar un GRUB theme, este es el que elegí [CyberRe](https://www.gnome-look.org
 Entra en la parte que dice `file` y luego:
 
 - Descarga
-- Descompre
+- Descomprime
 - Revisa el archivo `theme.txt`
 
-Buscar:
-- /boot/grub
+En tu PC busca la ruta:
 
-Mover del lugar de descarga a la carpeta grub
+```bash
+# Ruta
+/boot/grub
+# Mueve la carpeta descargada a la carpeta grub
 mv /home/ghost/Download/name-theme .
 
-Copiar la ruta actual
+# Copia la ruta actual
 pwd
+# En esta ruta debe estar el archivo theme.txt
 /boot/grub/name-theme
 /boot/grub/CyberRe 1.0.0/CyberRe
 
 ahora:
 sudo vim /etc/default/grub
+```
+
+
+
+
+
 
 Escribimos:
 GRUB_THEME=/boot/grub/themes/name-theme/theme.txt
