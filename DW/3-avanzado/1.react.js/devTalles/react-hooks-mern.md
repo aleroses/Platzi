@@ -5709,7 +5709,8 @@ describe("AddCategories testing", () => {
 });
 ```
 
-### 🟣 
+### 🟣 Pruebas del componente GifGrid - Mock customHook
+
 `src > components > GifGrid.jsx`
 
 ```jsx
