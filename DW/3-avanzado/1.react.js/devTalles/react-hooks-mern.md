@@ -5142,7 +5142,7 @@ test("Esta prueba no debe de fallar", () => {
 
 Trazar la ruta critica:
 
-En Vite los `PropTypes` no vienen instalados por defecto:
+En Vite los `PropTypes` no vienen instalados por defecto y para React 19 esto quedó obsoleto:
 
 ```bash
 yarn add prop-types 
@@ -5150,7 +5150,6 @@ yarn add prop-types
 # Para NPM
 npm install prop-types
 ```
-
 
 `src > components > GifGrid.jsx`
 
