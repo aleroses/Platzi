@@ -5293,11 +5293,24 @@ describe("getGif testing", () => {
 
     // console.log(gifs);
 
+    // Array.isArray(gifs) returns true
+    expect(Array.isArray(gifs)).toBeTruthy();
     expect(gifs.length).toBeGreaterThan(0);
+
+    // Check an object
     expect(gifs[0]).toEqual({
       id: expect.any(String),
       title: expect.any(String),
       url: expect.any(String),
+    });
+
+    // Check all objects
+    gifs.forEach((obj) => {
+      expect(obj).toEqual({
+        id: expect.any(String),
+        title: expect.any(String),
+        url: expect.any(String),
+      });
     });
   });
 });
