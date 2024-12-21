@@ -5844,9 +5844,11 @@ describe("Testing useFetchGifs", () => {
 });
 ```
 
-### 🟣 
+### 🟣 Pruebas de tarea
 
-`src > components > GifGrid.jsx`
+Hacer algunas pruebas sobre `GifExpertApp.jsx`
+
+`src > components > GifExpertApp.test.jsx`
 
 ```jsx
 
