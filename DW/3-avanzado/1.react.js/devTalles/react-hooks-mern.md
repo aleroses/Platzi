@@ -5493,6 +5493,8 @@ describe("AddCategories testing", () => {
 });
 ```
 
+En esta prueba primero renderizamos el componente, simulamos un `input` y luego un `submit`, con esto se espera que el `value` quede vacío. Para que el `submit(form)` funcione primero debes añadir un `arial-label` en la etiqueta JSX `form` del componente.
+
 [Attributes aria-label](https://developer.mozilla.org/es/docs/Web/Accessibility/ARIA/Attributes/aria-label)
 
 ### 🟣 Jest Functions
