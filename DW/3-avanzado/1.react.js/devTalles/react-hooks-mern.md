@@ -5177,7 +5177,7 @@ GifItem.propTypes = { 👈👀
 import { render } from "@testing-library/react";
 import { GifItem } from "../../src/components/GifItem";
 
-describe("GifItm test", () => {
+describe("GifItem test", () => {
   const data = {
     title: "Testing",
     url: "https://redflag",
