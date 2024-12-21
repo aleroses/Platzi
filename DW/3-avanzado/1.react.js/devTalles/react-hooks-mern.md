@@ -5328,7 +5328,7 @@ import {
 } from "@testing-library/react";
 import { AddCategories } from "../../src/components/AddCategories";
 
-describe("AddCategories testing", () => {
+describe("Testing in AddCategories", () => {
   test("should change the value of the text box", () => {
     render(<AddCategories onValueUpdate={() => {}} />);
 
@@ -5423,6 +5423,7 @@ export const AddCategories = ({ onValueUpdate }) => {
   };
 
   return (
+    // Does not work with id or className
     <form aria-label="form"👈👀 onSubmit={handleSubmit}>
       <input
         type="text"
