@@ -5907,6 +5907,63 @@ describe("GifGrid testing", () => {
 
 ### 🟣 Pruebas sobre customHooks
 
+#### `renderHook`
+
+- **Definición**: Es una función proporcionada por `@testing-library/react-hooks` para probar hooks de React de manera aislada.
+- **Uso**: Permite renderizar un hook y obtener su estado actual para realizar aserciones sobre su comportamiento.
+- **Ejemplo**:
+    
+    ```javascript
+    import { renderHook } from '@testing-library/react-hooks';
+    import useCustomHook from './useCustomHook';
+    
+    const { result } = renderHook(() => useCustomHook());
+    ```
+    
+
+#### `result.current`
+
+- **Definición**: Es una propiedad del objeto retornado por `renderHook` que contiene el valor actual retornado por el hook.
+- **Uso**: Se usa para acceder al estado y funciones del hook en el momento actual.
+- **Ejemplo**:
+    
+    ```javascript
+    const { result } = renderHook(() => useCustomHook());
+    expect(result.current.someValue).toBe(expectedValue);
+    ```
+    
+
+#### `waitFor`
+
+- **Definición**: Es una función de `@testing-library/react` que espera hasta que una condición especificada sea verdadera.
+- **Uso**: Se usa para manejar operaciones asíncronas y asegurar que el código bajo prueba ha alcanzado el estado deseado antes de realizar aserciones.
+- **Ejemplo**:
+    
+    ```javascript
+    import { renderHook, act } from '@testing-library/react-hooks';
+    import { waitFor } from '@testing-library/react';
+    import useAsyncHook from './useAsyncHook';
+    
+    const { result } = renderHook(() => useAsyncHook());
+    
+    act(() => {
+      result.current.someAsyncFunction();
+    });
+    
+    await waitFor(() => {
+      expect(result.current.someValue).toBe(expectedValue);
+    });
+    ```
+    
+
+#### Resumen
+
+- **`renderHook`**: Renderiza un hook para pruebas.
+- **`result.current`**: Accede al valor actual del hook.
+- **`waitFor`**: Espera hasta que una condición se cumpla en pruebas asíncronas.
+
+En nuestro proyecto:
+
 `test > components > useFetchGifs.test.jsx`
 
 ```jsx
