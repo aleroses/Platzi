@@ -5759,6 +5759,100 @@ describe("GifGrid testing", () => {
 
 ### 🟣 Hacer un mock completo de un Custom Hook
 
+#### ¿Qué es una función simulada?
+
+Una función simulada (mock function) en Jest es una función que reemplaza una implementación original o real con implementaciones controladas que retornan valores predecibles. Esto es útil para aislar la lógica de la unidad de código que estás probando. Facilitando la creación de pruebas consistentes y repetibles.
+
+#### `.mockReturnValue()`
+
+El método `.mockReturnValue(value)` de Jest se usa para especificar el valor que una función simulada debe retornar cada vez que es llamada. Esto significa que, independientemente de los argumentos con los que se llame a la función simulada, siempre retornará el valor que se ha especificado con `.mockReturnValue(value)`.
+
+#### Ejemplo de uso
+
+Vamos a ver un ejemplo paso a paso de cómo usar `.mockReturnValue()` en una prueba con Jest y Testing Library.
+
+### Paso 1: Crear una función y un componente
+
+Supongamos que tenemos una función `getData` que queremos simular en nuestras pruebas, y un componente `DataComponent` que usa esta función.
+
+```javascript
+// getData.js
+export const getData = () => {
+  return [
+    { id: 1, name: 'Item 1' },
+    { id: 2, name: 'Item 2' },
+  ];
+};
+
+// DataComponent.jsx
+import React, { useEffect, useState } from 'react';
+import { getData } from './getData';
+
+const DataComponent = () => {
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const result = await getData();
+      setData(result);
+    };
+    fetchData();
+  }, []);
+
+  return (
+    <ul>
+      {data.map((item) => (
+        <li key={item.id}>{item.name}</li>
+      ))}
+    </ul>
+  );
+};
+
+export default DataComponent;
+```
+
+### Paso 2: Crear la prueba usando `.mockReturnValue()`
+
+Ahora, vamos a escribir una prueba para `DataComponent` usando Jest y Testing Library, y simularemos la función `getData` usando `.mockReturnValue()`.
+
+```javascript
+// DataComponent.test.jsx
+import React from 'react';
+import { render, screen } from '@testing-library/react';
+import DataComponent from './DataComponent';
+import { getData } from './getData';
+
+jest.mock('./getData'); // Simula el módulo getData
+
+test('should render a list of items', async () => {
+  // Usar .mockReturnValue() para especificar el valor de retorno de la función simulada
+  const mockData = [
+    { id: 1, name: 'Mock Item 1' },
+    { id: 2, name: 'Mock Item 2' },
+  ];
+  getData.mockReturnValue(mockData);
+
+  render(<DataComponent />);
+
+  // Verificar que los elementos simulados están en el documento
+  expect(await screen.findByText('Mock Item 1')).toBeInTheDocument();
+  expect(await screen.findByText('Mock Item 2')).toBeInTheDocument();
+});
+```
+
+### Explicación del Ejemplo
+
+1. **Simulación del Módulo**: Usamos `jest.mock('./getData')` para simular el módulo `getData`. Esto reemplaza la implementación real de `getData` con una simulada.
+2. **Configuración del Valor de Retorno**: Usamos `getData.mockReturnValue(mockData)` para especificar que cada vez que `getData` sea llamada en el contexto de esta prueba, retornará `mockData`.
+3. **Renderizar el Componente**: Renderizamos el componente `DataComponent` usando Testing Library.
+4. **Verificación de la Salida**: Usamos `screen.findByText` para verificar que los elementos del array `mockData` están presentes en el documento. `findByText` es una función asíncrona que espera a que el elemento aparezca en el DOM.
+
+Al usar `.mockReturnValue()`, podemos controlar exactamente lo que retorna `getData` durante la prueba, permitiéndonos verificar que `DataComponent` maneja correctamente estos datos simulados sin depender de la implementación real de `getData`.
+
+Este enfoque es útil para aislar la lógica del componente y asegurarse de que se comporta correctamente dadas ciertas condiciones controladas.
+
+Ahora en nuestro proyecto:
+
 Simular que el `useFetchGifs` va a regresar el valor que quiera:
 
 `test > components > GifGrid.test.jsx`
