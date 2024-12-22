@@ -5771,7 +5771,7 @@ El método `.mockReturnValue(value)` de Jest se usa para especificar el valor qu
 
 Vamos a ver un ejemplo paso a paso de cómo usar `.mockReturnValue()` en una prueba con Jest y Testing Library.
 
-### Paso 1: Crear una función y un componente
+##### Paso 1: Crear una función y un componente
 
 Supongamos que tenemos una función `getData` que queremos simular en nuestras pruebas, y un componente `DataComponent` que usa esta función.
 
@@ -5811,7 +5811,7 @@ const DataComponent = () => {
 export default DataComponent;
 ```
 
-### Paso 2: Crear la prueba usando `.mockReturnValue()`
+##### Paso 2: Crear la prueba usando `.mockReturnValue()`
 
 Ahora, vamos a escribir una prueba para `DataComponent` usando Jest y Testing Library, y simularemos la función `getData` usando `.mockReturnValue()`.
 
