@@ -5811,7 +5811,7 @@ const DataComponent = () => {
 export default DataComponent;
 ```
 
-##### Paso 2: Crear la prueba usando `.mockReturnValue()`
+##### Paso 2: Crear la prueba
 
 Ahora, vamos a escribir una prueba para `DataComponent` usando Jest y Testing Library, y simularemos la función `getData` usando `.mockReturnValue()`.
 
