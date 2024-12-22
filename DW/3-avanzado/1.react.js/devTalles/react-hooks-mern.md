@@ -5840,7 +5840,7 @@ test('should render a list of items', async () => {
 });
 ```
 
-### Explicación del Ejemplo
+##### Explicación del Ejemplo
 
 1. **Simulación del Módulo**: Usamos `jest.mock('./getData')` para simular el módulo `getData`. Esto reemplaza la implementación real de `getData` con una simulada.
 2. **Configuración del Valor de Retorno**: Usamos `getData.mockReturnValue(mockData)` para especificar que cada vez que `getData` sea llamada en el contexto de esta prueba, retornará `mockData`.
@@ -5848,8 +5848,6 @@ test('should render a list of items', async () => {
 4. **Verificación de la Salida**: Usamos `screen.findByText` para verificar que los elementos del array `mockData` están presentes en el documento. `findByText` es una función asíncrona que espera a que el elemento aparezca en el DOM.
 
 Al usar `.mockReturnValue()`, podemos controlar exactamente lo que retorna `getData` durante la prueba, permitiéndonos verificar que `DataComponent` maneja correctamente estos datos simulados sin depender de la implementación real de `getData`.
-
-Este enfoque es útil para aislar la lógica del componente y asegurarse de que se comporta correctamente dadas ciertas condiciones controladas.
 
 Ahora en nuestro proyecto:
 
