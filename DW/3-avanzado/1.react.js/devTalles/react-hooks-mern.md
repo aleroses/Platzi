@@ -5954,7 +5954,6 @@ describe("GifGrid testing", () => {
       expect(result.current.someValue).toBe(expectedValue);
     });
     ```
-    
 
 #### Resumen
 
