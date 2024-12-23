@@ -6147,20 +6147,104 @@ La estructura de archivos con los pasos anteriores cambia un poco, así que en l
 ❯ yarn
 ```
 
-Borrar todo menos el `main`.
+Borramos todo menos el `main`, dejamos la siguiente estructura:
 
-[Getbootstrap](https://getbootstrap.com/)
-
-`src > components > GifGrid.jsx`
-
-```jsx
-
+```bash
+.
+├── eslint.config.js
+├── index.html
+├── node_modules
+├── package.json
+├── README.md
+├── src
+│   ├── HooksApp.jsx
+│   ├── index.css
+│   └── main.jsx
+├── vite.config.js
+└── yarn.lock
 ```
 
+
+
+
+`src > HooksApp.jsx`
+
+```jsx
+export const HooksApp = () => {
+  return <h1>HooksApp</h1>;
+};
+```
+
+`src > index.css`
+
+```css
+body {
+  padding: 20px;
+}
+
+button {
+  margin-right: 10px;
+}
+```
+
+`src > main.jsx`
+
+```jsx
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+
+import "./index.css";
+import { HooksApp } from "./HooksApp";
+
+createRoot(document.getElementById("root")).render(
+  <StrictMode>{<HooksApp />}</StrictMode>
+);
+```
+
+`src > HooksApp.jsx`
+
+```jsx
+export const HooksApp = () => {
+  return <h1>HooksApp</h1>;
+};
+```
+
+`src > index.html`
+
+```jsx
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <!-- CSS 👈👀👇 -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <title>HookApp</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
+```
+
+[CSS Getbootstrap](https://getbootstrap.com/)
+
+
+
+
 `src > components > GifGrid.jsx`
 
 ```jsx
-
 ```
 
 👈👀
