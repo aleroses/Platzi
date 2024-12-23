@@ -6133,6 +6133,20 @@ Adicionalmente estaremos dejando las bases para lo que será una sección de pru
 ❯ code-insiders .
 ```
 
+La estructura de archivos con los pasos anteriores cambia un poco, así que en lugar de elegir `React Router v7 ↗` como variante, elegiré `JavaScript + SWC` y veré si las configuraciones son similares o iguales a como se ha venido trabajando el curso. 
+
+```bash
+? Select a variant: › - Use arrow-keys. Return to submit.
+    TypeScript
+    TypeScript + SWC
+    JavaScript
+❯   JavaScript + SWC
+    React Router v7 ↗
+
+❯ cd 05-hook-app
+❯ yarn
+```
+
 Borrar todo menos el `main`.
 
 [Getbootstrap](https://getbootstrap.com/)
