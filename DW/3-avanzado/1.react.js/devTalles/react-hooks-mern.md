@@ -6125,7 +6125,7 @@ Adicionalmente estaremos dejando las bases para lo que será una sección de pru
     git   Initialize a new git repository? (recommended)
          ○ Yes  ● No 
     deps   Install dependencies with yarn? (recommended)
-         ● Yes  ○ No 
+         ● Yes  ○ No 🔥🤔
     done   That's it!
 
 ❯ cd 05-hook-app
@@ -6153,3 +6153,4 @@ Borrar todo menos el `main`.
 ❯
 👈👀👇
 👈👀📌
+🔥
