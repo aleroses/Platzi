@@ -6164,8 +6164,19 @@ Borramos todo menos el `main`, dejamos la siguiente estructura:
 └── yarn.lock
 ```
 
+`src > main.jsx`
 
+```jsx
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
 
+import "./index.css";
+import { HooksApp } from "./HooksApp";
+
+createRoot(document.getElementById("root")).render(
+  <StrictMode>{<HooksApp />}</StrictMode>
+);
+```
 
 `src > HooksApp.jsx`
 
@@ -6185,20 +6196,6 @@ body {
 button {
   margin-right: 10px;
 }
-```
-
-`src > main.jsx`
-
-```jsx
-import { StrictMode } from "react";
-import { createRoot } from "react-dom/client";
-
-import "./index.css";
-import { HooksApp } from "./HooksApp";
-
-createRoot(document.getElementById("root")).render(
-  <StrictMode>{<HooksApp />}</StrictMode>
-);
 ```
 
 `src > HooksApp.jsx`
@@ -6239,7 +6236,247 @@ export const HooksApp = () => {
 
 [CSS Getbootstrap](https://getbootstrap.com/)
 
+### 9.4 useState
 
+
+
+
+`src > components > GifGrid.jsx`
+
+```jsx
+```
+
+👈👀
+❯
+👈👀👇
+👈👀📌
+🔥
+
+### 9.4 
+
+
+`src > components > GifGrid.jsx`
+
+```jsx
+```
+
+👈👀
+❯
+👈👀👇
+👈👀📌
+🔥
+
+### 9.4 
+
+
+`src > components > GifGrid.jsx`
+
+```jsx
+```
+
+👈👀
+❯
+👈👀👇
+👈👀📌
+🔥
+
+### 9.4 
+
+
+`src > components > GifGrid.jsx`
+
+```jsx
+```
+
+👈👀
+❯
+👈👀👇
+👈👀📌
+🔥
+
+### 9.4 
+
+
+`src > components > GifGrid.jsx`
+
+```jsx
+```
+
+👈👀
+❯
+👈👀👇
+👈👀📌
+🔥
+
+### 9.4 
+
+
+`src > components > GifGrid.jsx`
+
+```jsx
+```
+
+👈👀
+❯
+👈👀👇
+👈👀📌
+🔥
+
+### 9.4 
+
+
+`src > components > GifGrid.jsx`
+
+```jsx
+```
+
+👈👀
+❯
+👈👀👇
+👈👀📌
+🔥
+
+### 9.4 
+
+
+`src > components > GifGrid.jsx`
+
+```jsx
+```
+
+👈👀
+❯
+👈👀👇
+👈👀📌
+🔥
+
+### 9.4 
+
+
+`src > components > GifGrid.jsx`
+
+```jsx
+```
+
+👈👀
+❯
+👈👀👇
+👈👀📌
+🔥
+
+### 9.4 
+
+
+`src > components > GifGrid.jsx`
+
+```jsx
+```
+
+👈👀
+❯
+👈👀👇
+👈👀📌
+🔥
+
+### 9.4 
+
+
+`src > components > GifGrid.jsx`
+
+```jsx
+```
+
+👈👀
+❯
+👈👀👇
+👈👀📌
+🔥
+
+### 9.4 
+
+
+`src > components > GifGrid.jsx`
+
+```jsx
+```
+
+👈👀
+❯
+👈👀👇
+👈👀📌
+🔥
+
+### 9.4 
+
+
+`src > components > GifGrid.jsx`
+
+```jsx
+```
+
+👈👀
+❯
+👈👀👇
+👈👀📌
+🔥
+
+### 9.4 
+
+
+`src > components > GifGrid.jsx`
+
+```jsx
+```
+
+👈👀
+❯
+👈👀👇
+👈👀📌
+🔥
+
+### 9.4 
+
+
+`src > components > GifGrid.jsx`
+
+```jsx
+```
+
+👈👀
+❯
+👈👀👇
+👈👀📌
+🔥
+
+### 9.4 
+
+
+`src > components > GifGrid.jsx`
+
+```jsx
+```
+
+👈👀
+❯
+👈👀👇
+👈👀📌
+🔥
+
+### 9.4 
+
+
+`src > components > GifGrid.jsx`
+
+```jsx
+```
+
+👈👀
+❯
+👈👀👇
+👈👀📌
+🔥
+
+### 9.4 
 
 
 `src > components > GifGrid.jsx`
