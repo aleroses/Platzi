@@ -6117,6 +6117,26 @@ Adicionalmente estaremos dejando las bases para lo que será una sección de pru
 
 ### 9.3 Inicio de proyecto - HooksApp
 
+```bash
+❯ yarn create vite
+  ✔ Project name: … 05-hook-app
+  ✔ Select a framework: › React 👈👀👇
+  ✔ Select a variant: › React Router v7 ↗
+    git   Initialize a new git repository? (recommended)
+         ○ Yes  ● No 
+    deps   Install dependencies with yarn? (recommended)
+         ● Yes  ○ No 
+    done   That's it!
+
+❯ cd 05-hook-app
+❯ yarn 👈👀 Parece que ya no es necesario
+❯ code-insiders .
+```
+
+Borrar todo menos el `main`.
+
+[Getbootstrap](https://getbootstrap.com/)
+
 `src > components > GifGrid.jsx`
 
 ```jsx
@@ -6130,6 +6150,6 @@ Adicionalmente estaremos dejando las bases para lo que será una sección de pru
 ```
 
 👈👀
-
+❯
 👈👀👇
 👈👀📌
