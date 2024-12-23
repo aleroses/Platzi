@@ -6014,19 +6014,75 @@ Hacer algunas pruebas sobre `GifExpertApp.jsx`
 `src > components > GifExpertApp.test.jsx`
 
 ```jsx
+import {
+  fireEvent,
+  render,
+  renderHook,
+  screen,
+} from "@testing-library/react";
+import { GifExpertApp } from "../src/GifExpertApp";
+import { AddCategories } from "../src/components";
+import { useState } from "react";
 
+// jest.mock("../src/GifExpertApp");
+
+describe("GifExpertApp testing", () => {
+  test("Should display a title", () => {
+    render(<GifExpertApp />);
+
+    // screen.debug();
+
+    const heading = screen.getByRole("heading", {
+      level: 1,
+    });
+    const form = screen.getByRole("form");
+
+    // console.log(heading.innerHTML);
+
+    expect(heading.innerHTML).toBe("GifExpertApp");
+    expect(form).toContain();
+
+    // screen.debug();
+  });
+
+  test("Should add a new category", () => {
+    render(<GifExpertApp />);
+
+    const input = screen.getByRole("textbox");
+    const form = screen.getByRole("form");
+
+    fireEvent.input(input, { target: { value: "gogeta" } });
+
+    fireEvent.submit(form);
+
+    const value = screen.getByText("gogeta");
+
+    // screen.debug()
+    expect(value).toBeTruthy();
+  });
+
+  test("Should not add a new category if it already exists", () => {
+    const testValue = "Gogeta";
+
+    render(<GifExpertApp />);
+
+    const input = screen.getByRole("textbox");
+    const form = screen.getByRole("form");
+
+    fireEvent.input(input, {
+      target: { value: testValue },
+    });
+    fireEvent.submit(form);
+
+    fireEvent.input(input, {
+      target: { value: testValue },
+    });
+    fireEvent.submit(form);
+
+    expect(screen.getAllByText("Gogeta").length).toBe(1);
+  });
+});
 ```
-
-`src > components > GifGrid.jsx`
-
-```jsx
-
-```
-
-👈👀
-
-👈👀👇
-👈👀📌
 
 ### 🟣 
 
