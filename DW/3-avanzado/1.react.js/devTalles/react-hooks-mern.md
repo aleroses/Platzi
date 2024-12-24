@@ -6370,6 +6370,61 @@ obj.toString();
 // '[object Object]'
 ```
 
+`src > 01-useState > CounterCustomHook.jsx`
+
+```jsx
+import { useCounter } from "../hooks/useCounter";
+
+export const CounterCustomHook = () => {
+  const { counter, increase, decrease, reset } =
+    useCounter();
+
+  return (
+    <>
+      <h1>Counter with Hook: {counter}</h1>
+      <hr />
+
+      {/* We use () => {} not to pass the "event" to it */}
+      <button onClick={() => increase(5)}>+1</button>
+      <button onClick={reset}>Reset</button>
+      <button onClick={() => decrease(5)}>-1</button>
+    </>
+  );
+};
+```
+
+`src > hooks > useCounter.js`
+
+```js
+import { useState } from "react";
+
+export const useCounter = (initialValue = 10) => {
+  const [counter, setCounter] = useState(initialValue);
+
+  const increase = (value = 1) => {
+    // Para usar value con el dato que necesitamos debemos llamar a esta funcion usando () => {} el () tiene que ir vacio.
+    // To use value with the data we need we must call this function using () => {} the () must be empty.
+    setCounter((v) => v + value);
+  };
+
+  const decrease = (value = 1) => {
+    if (counter === 0) return;
+
+    setCounter((v) => v - value);
+  };
+
+  const reset = () => {
+    setCounter(10);
+  };
+  return {
+    counter,
+    increase,
+    decrease,
+    reset,
+  };
+};
+```
+
 `src > components > GifGrid.jsx`
 
 ```jsx
