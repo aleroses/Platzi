@@ -6307,9 +6307,6 @@ export const CounterApp = ({ data }) => {
 
 ### 9.5 useCounter - CustomHook
 
-
-
-
 `src > main.jsx`
 
 ```jsx
