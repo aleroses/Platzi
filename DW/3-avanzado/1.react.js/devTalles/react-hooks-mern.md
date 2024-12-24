@@ -6305,10 +6305,34 @@ export const CounterApp = ({ data }) => {
 };
 ```
 
-### 9.5 Exponer métodos del Hook
+### 9.5 useCounter - CustomHook
 
 
-`src > components > GifGrid.jsx`
+
+
+`src > main.jsx`
+
+```jsx
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+
+import { HooksApp } from "./HooksApp";
+
+import "./index.css";
+
+createRoot(document.getElementById("root")).render(
+  <StrictMode>
+    <CounterCustomHook />
+  </StrictMode>
+);
+```
+
+`src > 01-useState > CounterApp.jsx`
+
+```jsx
+```
+
+`src > 01-useState > CounterApp.jsx`
 
 ```jsx
 ```
