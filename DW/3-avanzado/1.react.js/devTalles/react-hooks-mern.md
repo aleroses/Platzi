@@ -6238,7 +6238,10 @@ export const HooksApp = () => {
 
 ### 9.4 useState
 
+`src > 01-useState > CounterApp.jsx`
 
+```jsx
+```
 
 
 `src > components > GifGrid.jsx`
