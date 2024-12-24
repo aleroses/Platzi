@@ -6305,13 +6305,7 @@ export const CounterApp = ({ data }) => {
 };
 ```
 
-👈👀
-❯
-👈👀👇
-👈👀📌
-🔥
-
-### 9.4 
+### 9.5 Exponer métodos del Hook
 
 
 `src > components > GifGrid.jsx`
