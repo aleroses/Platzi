@@ -6402,8 +6402,7 @@ export const useCounter = (initialValue = 10) => {
   const [counter, setCounter] = useState(initialValue);
 
   const increase = (value = 1) => {
-    // Para usar value con el dato que necesitamos debemos llamar a esta funcion usando () => {} el () tiene que ir vacio.
-    // To use value with the data we need we must call this function using () => {} the () must be empty.
+    // To use value with the data we need we must call this function using () => {}. The () must be empty.
     setCounter((v) => v + value);
   };
 
