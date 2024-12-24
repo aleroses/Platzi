@@ -6427,6 +6427,22 @@ export const useCounter = (initialValue = 10) => {
 
 ### 9.7 useEffect - SimpleForm
 
+`src > main.jsx`
+
+```jsx
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+
+import { SimpleForm } from "./02-useEffect/SimpleForm";
+import "./index.css";
+
+createRoot(document.getElementById("root")).render(
+  <StrictMode>
+    <SimpleForm />
+  </StrictMode>
+);
+```
+
 `src > 02-useEffect > SimpleForm.jsx`
 
 ```jsx
@@ -6479,10 +6495,6 @@ export const SimpleForm = () => {
 ```
 
 
-`src > components > GifGrid.jsx`
-
-```jsx
-```
 
 👈👀
 ❯
