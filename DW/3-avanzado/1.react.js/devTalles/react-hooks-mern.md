@@ -6313,7 +6313,7 @@ export const CounterApp = ({ data }) => {
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 
-import { HooksApp } from "./HooksApp";
+import { CounterCustomHook } from "./01-useState/CounterCustomHook";
 
 import "./index.css";
 
@@ -6359,13 +6359,7 @@ export const CounterCustomHook = () => {
 };
 ```
 
-👈👀
-❯
-👈👀👇
-👈👀📌
-🔥
-
-### 9.4 
+### 9.6
 
 
 `src > components > GifGrid.jsx`
@@ -6379,7 +6373,7 @@ export const CounterCustomHook = () => {
 👈👀📌
 🔥
 
-### 9.4 
+### 9.7 
 
 
 `src > components > GifGrid.jsx`
@@ -6393,7 +6387,7 @@ export const CounterCustomHook = () => {
 👈👀📌
 🔥
 
-### 9.4 
+### 9.8 
 
 
 `src > components > GifGrid.jsx`
