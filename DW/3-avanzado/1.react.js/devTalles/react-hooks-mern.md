@@ -6341,10 +6341,10 @@ export const useCounter = (initialValue = 10) => {
 `src > 01-useState > CounterCustomHook.jsx`
 
 ```jsx
-import { useContext } from "react";
+import { useCounter } from "../hooks/useCounter";
 
 export const CounterCustomHook = () => {
-  const { counter } = useContext();
+  const { counter } = useCounter();
 
   return (
     <>
