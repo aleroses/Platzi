@@ -6341,9 +6341,25 @@ export const useCounter = (initialValue = 10) => {
 };
 ```
 
-`src > 01-useState > CounterApp.jsx`
+`src > 01-useState > CounterCustomHook.jsx`
 
 ```jsx
+import { useContext } from "react";
+
+export const CounterCustomHook = () => {
+  const { counter } = useContext();
+
+  return (
+    <>
+      <h1>Counter with Hook: {counter}</h1>
+      <hr />
+
+      <button>+1</button>
+      <button>Reset</button>
+      <button>-1</button>
+    </>
+  );
+};
 ```
 
 👈👀
