@@ -6424,17 +6424,6 @@ export const useCounter = (initialValue = 10) => {
 };
 ```
 
-`src > components > GifGrid.jsx`
-
-```jsx
-```
-
-👈👀
-❯
-👈👀👇
-👈👀📌
-🔥
-
 ### 9.7 
 
 
