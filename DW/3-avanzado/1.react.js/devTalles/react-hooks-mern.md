@@ -6360,10 +6360,11 @@ export const CounterCustomHook = () => {
 ```
 
 ### 9.6 Exponer métodos del Hook
+
 Dato importante sobre objetos:
 
 ```js
-// Representación de un objeto en string
+// Representation of an object in string
 const obj = {};
 // undefined
 obj.toString();
@@ -6424,7 +6425,58 @@ export const useCounter = (initialValue = 10) => {
 };
 ```
 
-### 9.7 
+### 9.7 useEffect - SimpleForm
+
+`src > 02-useEffect > SimpleForm.jsx`
+
+```jsx
+import { useEffect, useState } from "react";
+
+export const SimpleForm = () => {
+  const [formState, setFormState] = useState({
+    username: "Ghost",
+    email: "ghost@gmail.com",
+  });
+
+  const { username, email } = formState;
+
+  const handleInputChange = ({ target }) => {
+    const { value, name } = target;
+    console.log(value, name);
+
+    setFormState({
+      ...formState,
+      [name]: value,
+    });
+  };
+
+  useEffect(() => {
+    console.log("useEffect called");
+  });
+
+  return (
+    <>
+      <h1>SimpleForm</h1>
+      <hr />
+      <input
+        type="text"
+        placeholder="Search something"
+        value={username}
+        name="username"
+        onChange={handleInputChange}
+      />
+
+      <input
+        type="email"
+        placeholder="test@gmail.com"
+        value={email}
+        name="email"
+        onChange={handleInputChange}
+      />
+    </>
+  );
+};
+```
 
 
 `src > components > GifGrid.jsx`
@@ -6452,7 +6504,7 @@ export const useCounter = (initialValue = 10) => {
 👈👀📌
 🔥
 
-### 9.4 
+### 9.9
 
 
 `src > components > GifGrid.jsx`
@@ -6466,7 +6518,7 @@ export const useCounter = (initialValue = 10) => {
 👈👀📌
 🔥
 
-### 9.4 
+### 9.10
 
 
 `src > components > GifGrid.jsx`
