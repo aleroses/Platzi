@@ -6244,10 +6244,10 @@ export const HooksApp = () => {
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 
+import { HooksApp } from "./HooksApp";
 import { CounterApp } from "./01-useState/CounterApp";
 
 import "./index.css";
-import { HooksApp } from "./HooksApp";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
@@ -6285,7 +6285,7 @@ export const CounterApp = ({ data }) => {
 
     // When destructuring, new values (value0: 0,) are added to the object, but existing values that are being updated (value1: ...) are replaced...
     console.log({
-      ...counter, 👀👇 // updated value
+      ...counter, 👀👇 // Updated value
       value1: counter.value1 + 1, 
       value0: 0, 👈👀 // New value
     });
