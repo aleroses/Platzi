@@ -6359,8 +6359,16 @@ export const CounterCustomHook = () => {
 };
 ```
 
-### 9.6
+### 9.6 Exponer métodos del Hook
+Dato importante sobre objetos:
 
+```js
+// Representación de un objeto en string
+const obj = {};
+// undefined
+obj.toString();
+// '[object Object]'
+```
 
 `src > components > GifGrid.jsx`
 
