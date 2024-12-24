@@ -6238,15 +6238,71 @@ export const HooksApp = () => {
 
 ### 9.4 useState
 
+`src > main.jsx`
+
+```jsx
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+
+import { CounterApp } from "./01-useState/CounterApp";
+
+import "./index.css";
+import { HooksApp } from "./HooksApp";
+
+createRoot(document.getElementById("root")).render(
+  <StrictMode>
+    <HooksApp />
+    <CounterApp
+      data={{
+        value1: 10,
+        value2: 20,
+        value3: 30,
+      }}
+    />
+  </StrictMode>
+);
+```
+
 `src > 01-useState > CounterApp.jsx`
 
 ```jsx
-```
+import React from "react";
+import { useState } from "react";
 
+export const CounterApp = ({ data }) => {
+  const [counter, setCounter] = useState(data);
+  const { value1, value2, value3 } = counter;
 
-`src > components > GifGrid.jsx`
+  const handleValue1 = () => {
+    // Remember that "n" is the complete object
+    setCounter((n) => {
+      return {
+        ...n,
+        // To update a value it must go at the end.
+        value1: n.value1 + 1,
+      };
+    });
 
-```jsx
+    // When destructuring, new values (value0: 0,) are added to the object, but existing values that are being updated (value1: ...) are replaced...
+    console.log({
+      ...counter, 👀👇 // updated value
+      value1: counter.value1 + 1, 
+      value0: 0, 👈👀 // New value
+    });
+  };
+
+  return (
+    <>
+      <h1>CounterApp: {value1}</h1>
+      <h1>CounterApp: {value2}</h1>
+      <h1>CounterApp: {value3}</h1>
+
+      <hr />
+
+      <button onClick={handleValue1}>+1</button>
+    </>
+  );
+};
 ```
 
 👈👀
