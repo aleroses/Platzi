@@ -6327,9 +6327,18 @@ createRoot(document.getElementById("root")).render(
 );
 ```
 
-`src > 01-useState > CounterApp.jsx`
+`src > hooks > useCounter.js`
 
 ```jsx
+import { useState } from "react";
+
+export const useCounter = (initialValue = 10) => {
+  const [counter, setCounter] = useState(initialValue);
+
+  return {
+    counter,
+  };
+};
 ```
 
 `src > 01-useState > CounterApp.jsx`
