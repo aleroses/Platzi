@@ -6894,13 +6894,13 @@ const onMouseMove = ({ x, y }) => {
 };
 ```
 
-Esto es correcto y asegura que las coordenadas se actualicen adecuadamente.
+Asegura que las coordenadas se actualicen adecuadamente.
 
-### 4. Renderizado y Optimización
+#### 4. Renderizado y Optimización
 
-Cada vez que el estado `coords` se actualiza, el componente `Message` se volverá a renderizar. Esto es deseable en este caso ya que se desea mostrar las coordenadas actualizadas en tiempo real. Sin embargo, es importante ser consciente de que actualizaciones frecuentes del estado pueden afectar el rendimiento en componentes más complejos.
+Cada vez que el estado `coords` se actualiza, el componente `Message` se volverá a renderizar. Esto es deseable en este caso, ya que se desea mostrar las coordenadas actualizadas en tiempo real. Sin embargo, es importante ser consciente de que actualizaciones frecuentes del estado pueden afectar el rendimiento en componentes más complejos.
 
-### 5. Uso del Estado
+#### 5. Uso del Estado
 
 En tu componente, `coords` se utiliza para almacenar y mostrar las coordenadas del ratón en tiempo real:
 
@@ -6913,9 +6913,9 @@ return (
 );
 ```
 
-Esto está correctamente implementado y permite ver las coordenadas del ratón en el renderizado del componente.
+Permite ver las coordenadas del ratón en el renderizado del componente.
 
-### 6. Manejo de Posibles Errores
+#### 6. Manejo de Posibles Errores
 
 Considera manejar posibles errores o situaciones inesperadas, como la ausencia de `x` e `y` en el evento del ratón. Aunque es raro, puede ser útil tener una verificación adicional:
 
@@ -6928,53 +6928,7 @@ const onMouseMove = (event) => {
 };
 ```
 
-### Código Completo con Comentarios
-
-Aquí tienes el código completo con algunos comentarios adicionales para resaltar las precauciones mencionadas:
-
-```jsx
-import { useEffect, useState } from "react";
-
-export const Message = () => {
-  const [coords, setCoords] = useState({ x: 0, y: 0 });
-
-  useEffect(() => {
-    const onMouseMove = ({ x, y }) => {
-      // Verificar que x e y son números antes de actualizar el estado
-      if (typeof x === 'number' && typeof y === 'number') {
-        setCoords({ x, y });
-      }
-    };
-
-    // Registrar el evento de movimiento del ratón
-    window.addEventListener("mousemove", onMouseMove);
-    // console.log("Message Mounted");
-
-    // Limpiar el evento al desmontar el componente
-    return () => {
-      window.removeEventListener("mousemove", onMouseMove);
-      // console.log("Message Unmounted");
-    };
-  }, []); // Solo ejecutar una vez al montar y desmontar
-
-  return (
-    <>
-      <h3>The user already exists</h3>
-      {JSON.stringify(coords)} {/* Mostrar las coordenadas del ratón */}
-    </>
-  );
-};
-```
-
-### Resumen
-
-- Limpieza adecuada del efecto para evitar fugas de memoria.
-- Verificación de dependencias para asegurar que el efecto se ejecute solo cuando sea necesario.
-- Manejo correcto del evento y actualización del estado.
-- Consideración del rendimiento debido a actualizaciones frecuentes del estado.
-- Verificación adicional para asegurar la robustez del código.
-
-Con estas precauciones, tu uso de `useEffect` será más robusto y eficiente.
+Ahora en nuestro código:
 
 `src > 02-useEffect > Message.jsx`
 
