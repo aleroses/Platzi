@@ -6508,7 +6508,7 @@ Usar claves únicas (por ejemplo, valores de UUID o identificadores).
 
 #### Relación con otras funcionalidades
 
-Symbol como clave: Puedes usar un Symbol como clave dinámica con esta sintaxis.
+- **Symbol como clave**: Puedes usar un `Symbol` como clave dinámica con esta sintaxis.
 
 ```js
 const uniqueKey = Symbol("claveUnica");
