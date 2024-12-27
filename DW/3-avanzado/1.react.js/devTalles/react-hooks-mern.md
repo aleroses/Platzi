@@ -6668,6 +6668,108 @@ export const SimpleForm = () => {
 
 ### 9.9 useEffect unmount - Cleanup
 
+En React, el hook `useEffect` permite realizar efectos secundarios en componentes funcionales. Estos efectos secundarios pueden incluir la manipulación del DOM, la realización de peticiones HTTP, la configuración de suscripciones, entre otras acciones. Entender cómo montar y desmontar un `useEffect` es crucial para gestionar estos efectos secundarios de manera eficiente.
+
+#### Montaje de `useEffect`
+
+El `useEffect` se ejecuta después de que el componente se monta y después de cada actualización. La estructura básica de `useEffect` es la siguiente:
+
+```jsx
+import React, { useEffect } from 'react';
+
+const MiComponente = () => {
+  useEffect(() => {
+    // Código que se ejecuta al montar el componente
+
+    return () => {
+      // Código que se ejecuta al desmontar el componente (opcional)
+    };
+  }, []); // La lista de dependencias vacía asegura que esto solo se ejecute al montar y desmontar
+}
+```
+
+- **Montaje**: La función que se pasa a `useEffect` se ejecuta después de que el componente se monta. Esto es útil para inicializar datos, configurar suscripciones, iniciar temporizadores, etc.
+
+#### Desmontaje de `useEffect`
+
+Para limpiar efectos secundarios y evitar posibles fugas de memoria, `useEffect` puede devolver una función de limpieza. Esta función se ejecutará cuando el componente se desmonte o cuando cambien las dependencias del efecto (si las hay).
+
+```jsx
+import React, { useEffect } from 'react';
+
+const MiComponente = () => {
+  useEffect(() => {
+    // Código que se ejecuta al montar el componente
+    console.log('Componente montado');
+
+    return () => {
+      // Código que se ejecuta al desmontar el componente
+      console.log('Componente desmontado');
+    };
+  }, []); // La lista de dependencias vacía asegura que esto solo se ejecute al montar y desmontar
+}
+```
+
+En este ejemplo, la función de limpieza dentro del `return` se ejecuta cuando el componente se desmonta.
+
+#### Dependencias en `useEffect`
+
+Puedes especificar dependencias para el `useEffect` en el segundo argumento, que es un array. El efecto se volverá a ejecutar solo cuando alguna de estas dependencias cambie.
+
+```jsx
+import React, { useEffect, useState } from 'react';
+
+const MiComponente = () => {
+  const [contador, setContador] = useState(0);
+
+  useEffect(() => {
+    console.log('El contador ha cambiado:', contador);
+
+    return () => {
+      console.log('Limpiando efecto del contador:', contador);
+    };
+  }, [contador]); // El efecto se ejecutará cuando 'contador' cambie
+}
+```
+
+#### Ejemplo Completo
+
+```jsx
+import React, { useEffect, useState } from 'react';
+
+const Temporizador = () => {
+  const [segundos, setSegundos] = useState(0);
+
+  useEffect(() => {
+    const intervalo = setInterval(() => {
+      setSegundos(prevSegundos => prevSegundos + 1);
+    }, 1000);
+
+    return () => {
+      clearInterval(intervalo);
+    };
+  }, []);
+
+  return (
+    <div>
+      Segundos: {segundos}
+    </div>
+  );
+}
+
+export default Temporizador;
+```
+
+En este ejemplo:
+
+1. El `useEffect` configura un intervalo que incrementa el estado `segundos` cada segundo.
+2. La función de limpieza devuelve `clearInterval` para detener el intervalo cuando el componente se desmonte.
+
+Este patrón asegura que los efectos secundarios se gestionen correctamente, evitando problemas como fugas de memoria.
+
+Espero que esto te ayude a entender cómo montar y desmontar un `useEffect` en React. Si tienes alguna pregunta adicional o necesitas más detalles, no dudes en preguntar.
+
+Ahora en nuestro proyecto:
 
 `src > components > GifGrid.jsx`
 
