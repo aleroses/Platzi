@@ -6427,9 +6427,7 @@ export const useCounter = (initialValue = 10) => {
 
 ### 9.7 useEffect - SimpleForm
 
-En JavaScript, la sintaxis [name]: value es una forma de asignar propiedades dinámicas a un objeto. Este enfoque te permite usar una expresión, como una variable, para definir el nombre de una propiedad en lugar de escribir un nombre de propiedad literal.
-
-¿Qué significa y cómo funciona?
+En JavaScript, la sintaxis `[name]: value` es una forma de asignar propiedades dinámicas a un objeto. Este enfoque te permite usar una expresión, como una variable, para definir el nombre de una propiedad en lugar de escribir un nombre de propiedad literal.
 
 1. Clave dinámica en un objeto:
 
@@ -6441,7 +6439,7 @@ const obj = {
 };
 ```
 
-Pero con la sintaxis de corchetes [name], puedes usar el valor de una expresión o variable como nombre de propiedad:
+Pero con la sintaxis de corchetes `[name]`, puedes usar el valor de una expresión o variable como nombre de propiedad:
 
 ```js
 const dynamicKey = "claveDinamica";
@@ -6449,9 +6447,9 @@ const obj = {
   [dynamicKey]: "valor dinámico"
 };
 
-console.log(obj); // { claveDinamica: 'valor dinámico' }
+console.log(obj); 
+// { claveDinamica: 'valor dinámico' }
 ```
-
 
 2. Cómo se usa:
 
@@ -6483,7 +6481,7 @@ console.log(obj); // { usuario_ID: 1234 }
 
 Renombrar propiedades de manera dinámica: Por ejemplo, al trabajar con datos donde los nombres de las claves cambian:
 
-```
+```js
 const data = { oldKey: "valor" };
 const newKey = "newKey";
 const transformed = {
