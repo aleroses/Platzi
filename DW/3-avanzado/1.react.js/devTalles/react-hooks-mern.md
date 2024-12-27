@@ -6427,6 +6427,119 @@ export const useCounter = (initialValue = 10) => {
 
 ### 9.7 useEffect - SimpleForm
 
+En JavaScript, la sintaxis [name]: value es una forma de asignar propiedades dinámicas a un objeto. Este enfoque te permite usar una expresión, como una variable, para definir el nombre de una propiedad en lugar de escribir un nombre de propiedad literal.
+
+¿Qué significa y cómo funciona?
+
+1. Clave dinámica en un objeto:
+
+En los objetos de JavaScript, normalmente asignamos propiedades con un nombre fijo:
+
+```js
+const obj = {
+  fixedName: "valor fijo"
+};
+```
+
+Pero con la sintaxis de corchetes [name], puedes usar el valor de una expresión o variable como nombre de propiedad:
+
+```js
+const dynamicKey = "claveDinamica";
+const obj = {
+  [dynamicKey]: "valor dinámico"
+};
+
+console.log(obj); // { claveDinamica: 'valor dinámico' }
+```
+
+
+2. Cómo se usa:
+
+Con variables: Puedes asignar propiedades cuyo nombre provenga de una variable.
+
+```js
+const key1 = "nombre";
+const key2 = "edad";
+const persona = {
+  [key1]: "Juan",
+  [key2]: 25
+};
+
+console.log(persona); // { nombre: 'Juan', edad: 25 }
+```
+
+En funciones o cálculos: Incluso puedes calcular dinámicamente el nombre de la propiedad.
+
+```js
+const prefix = "usuario";
+const obj = {
+  [${prefix}_ID]: 1234
+};
+
+console.log(obj); // { usuario_ID: 1234 }
+```
+
+3. Casos de uso comunes:
+
+Renombrar propiedades de manera dinámica: Por ejemplo, al trabajar con datos donde los nombres de las claves cambian:
+
+```
+const data = { oldKey: "valor" };
+const newKey = "newKey";
+const transformed = {
+  [newKey]: data.oldKey
+};
+
+console.log(transformed); // { newKey: 'valor' }
+```
+
+Crear propiedades basadas en iteraciones:
+
+```js
+const keys = ["clave1", "clave2", "clave3"];
+const obj = {};
+keys.forEach((key, index) => {
+  obj[propiedad_${index}] = key;
+});
+
+console.log(obj);
+// { propiedad_0: 'clave1', propiedad_1: 'clave2', propiedad_2: 'clave3' }
+```
+
+Usar claves únicas (por ejemplo, valores de UUID o identificadores).
+
+
+Relación con otras funcionalidades
+
+Symbol como clave: Puedes usar un Symbol como clave dinámica con esta sintaxis.
+
+```js
+const uniqueKey = Symbol("claveUnica");
+const obj = {
+  [uniqueKey]: "valor único"
+};
+
+console.log(obj); // { [Symbol(claveUnica)]: 'valor único' }
+```
+
+Métodos en clases: En una clase, también puedes definir métodos dinámicos.
+
+```js
+class MyClass {
+  [methodName]() {
+    console.log("Método dinámico");
+  }
+}
+
+const obj = new MyClass();
+const methodName = "miMetodo";
+obj[methodName](); // Método dinámico
+```
+
+Esta flexibilidad hace que los objetos en JavaScript sean muy versátiles y útiles en casos donde los nombres de propiedades no son conocidos de antemano o dependen de cálculos o entradas del usuario.
+
+
+
 `src > main.jsx`
 
 ```jsx
