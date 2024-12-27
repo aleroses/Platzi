@@ -6864,7 +6864,9 @@ Si estás usando el `<StrictMode>`, notarás que el componente se monta y desmon
 
 [StrictMode](https://react.dev/reference/react/StrictMode)
 
-### 9.10
+### 9.10 useEffect - Precauciones
+
+
 
 
 `src > components > GifGrid.jsx`
