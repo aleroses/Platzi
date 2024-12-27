@@ -6870,9 +6870,9 @@ En el ejemplo que veremos, el `useEffect` se utiliza para registrar un evento de
 
 A continuación, se mencionan algunas precauciones importantes que debes tener en cuenta:
 
-### 1. Limpieza del Efecto
+#### 1. Limpieza del Efecto
 
-Es crucial que el `useEffect` limpie el evento registrado cuando el componente se desmonte para evitar fugas de memoria. En tu código, esto ya está correctamente implementado:
+Es crucial que el `useEffect` limpie el evento registrado cuando el componente se desmonte para evitar fugas de memoria.
 
 ```jsx
 return () => {
