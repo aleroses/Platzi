@@ -6860,6 +6860,8 @@ export const Message = () => {
 };
 ```
 
+Si estás usando el `<StrictMode>`, notarás que el componente se monta y desmonta de primeras, es su comportamiento normal. Luego cuando ingresas el username que coindice se monta y cuando no coincide se desmonta.
+
 👈👀
 ❯
 👈👀👇
