@@ -6771,7 +6771,7 @@ Espero que esto te ayude a entender cómo montar y desmontar un `useEffect` en R
 
 Ahora en nuestro proyecto:
 
-`src > 02 > SimpleForm.jsx`
+`src > 02-useEffect > SimpleForm.jsx`
 
 ```jsx
 import { useEffect, useState } from "react";
@@ -6838,7 +6838,7 @@ export const SimpleForm = () => {
 };
 ```
 
-`src > 02 > Message.jsx`
+`src > 02-useEffect > Message.jsx`
 
 ```jsx
 import { useEffect } from "react";
@@ -6866,12 +6866,36 @@ Si estás usando el `<StrictMode>`, notarás que el componente se monta y desmon
 
 ### 9.10 useEffect - Precauciones
 
-
-
-
-`src > components > GifGrid.jsx`
+`src > 02-useEffect > Message.jsx`
 
 ```jsx
+import { useEffect, useState } from "react";
+
+export const Message = () => {
+  const [coords, setCoords] = useState({ x: 0, y: 0 });
+
+  useEffect(() => {
+    const onMouseMove = ({ x, y } 👈👀/*event*/) => {
+      // const coords = { x, y };
+      setCoords({ x, y });
+    };
+
+    window.addEventListener("mousemove", onMouseMove);
+    // console.log("Message Mounted");
+
+    return () => { 👈👀👇
+      window.removeEventListener("mousemove", onMouseMove);
+      // console.log("Message Unmounted");
+    };
+  }, []);
+
+  return (
+    <>
+      <h3>The user already exists</h3>
+      {JSON.stringify(coords)} 👈👀
+    </>
+  );
+};
 ```
 
 👈👀
