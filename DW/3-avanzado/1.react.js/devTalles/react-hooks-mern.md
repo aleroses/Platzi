@@ -6666,13 +6666,7 @@ export const SimpleForm = () => {
 };
 ```
 
-👈👀
-❯
-👈👀👇
-👈👀📌
-🔥
-
-### 9.9
+### 9.9 useEffect unmount - Cleanup
 
 
 `src > components > GifGrid.jsx`
