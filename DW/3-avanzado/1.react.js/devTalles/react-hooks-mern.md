@@ -6771,9 +6771,93 @@ Espero que esto te ayude a entender cómo montar y desmontar un `useEffect` en R
 
 Ahora en nuestro proyecto:
 
-`src > components > GifGrid.jsx`
+`src > 02 > SimpleForm.jsx`
 
 ```jsx
+import { useEffect, useState } from "react";
+import { Message } from "./Message";
+
+export const SimpleForm = () => {
+  const [formState, setFormState] = useState({
+    username: "Ghost",
+    email: "ghost@gmail.com",
+  });
+
+  const { username, email } = formState;
+
+  const handleInputChange = ({ target }) => {
+    const { value, name } = target;
+    // console.log(value, name);
+
+    setFormState({
+      ...formState,
+      [name]: value,
+    });
+  };
+
+  useEffect(() => {
+    // console.log("useEffect called");
+    // The [] is called only once
+  }, []);
+
+  useEffect(() => {
+    // console.log("formState called");
+    // Runs every time the formState changes
+  }, [formState]);
+
+  useEffect(() => {
+    // console.log("email modified");
+  }, [email]);
+
+  return (
+    <>
+      <h1>SimpleForm</h1>
+      <hr />
+      <input
+        type="text"
+        placeholder="Search something"
+        value={username}
+        name="username"
+        onChange={handleInputChange}
+      />
+
+      <input
+        type="email"
+        placeholder="test@gmail.com"
+        value={email}
+        name="email"
+        onChange={handleInputChange}
+      />
+
+      {/* When it matches, the
+      component is mounted, but when it no longer it
+      disappears (disassembles) */}
+      {username === "Ghost" && <Message /> 👈👀}
+    </>
+  );
+};
+```
+
+`src > 02 > Message.jsx`
+
+```jsx
+import { useEffect } from "react";
+
+export const Message = () => {
+  useEffect(() => {
+    console.log("Message Mounted");
+
+    return () => {
+      console.log("Message Unmounted");
+    };
+  }, []);
+
+  return (
+    <>
+      <h3>The user already exists</h3>
+    </>
+  );
+};
 ```
 
 👈👀
