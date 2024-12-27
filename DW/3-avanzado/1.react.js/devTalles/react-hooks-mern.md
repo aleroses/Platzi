@@ -6880,11 +6880,11 @@ return () => {
 };
 ```
 
-### 2. Dependencias del `useEffect`
+#### 2. Dependencias del `useEffect`
 
-En este caso, el array de dependencias es vacío (`[]`), lo que significa que el efecto solo se ejecutará una vez cuando el componente se monte y la limpieza se ejecutará cuando el componente se desmonte. Esto es apropiado para este escenario ya que no necesitas volver a ejecutar el efecto en respuesta a cambios de estado o props.
+En este caso, el array de dependencias es vacío (`[]`), lo que significa que el efecto solo se ejecutará una vez cuando el componente se monte y la limpieza se ejecutará cuando el componente se desmonte. Esto es apropiado para este escenario, ya que no necesitas volver a ejecutar el efecto en respuesta a cambios de estado o props.
 
-### 3. Funcionamiento Correcto del Manejador de Eventos
+#### 3. Funcionamiento Correcto del Manejador de Eventos
 
 Asegúrate de que el manejador de eventos `onMouseMove` esté correctamente definido y funcione como se espera. En tu código, se está utilizando la desestructuración de objetos para obtener las coordenadas `x` y `y` del evento del ratón:
 
