@@ -6606,10 +6606,64 @@ export const SimpleForm = () => {
 
 ### 9.8 Dependencias del useEffect
 
-
-`src > components > GifGrid.jsx`
+`src > 02-useEffect > SimpleForm.jsx`
 
 ```jsx
+import { useEffect, useState } from "react";
+
+export const SimpleForm = () => {
+  const [formState, setFormState] = useState({
+    username: "Ghost",
+    email: "ghost@gmail.com",
+  });
+
+  const { username, email } = formState;
+
+  const handleInputChange = ({ target }) => {
+    const { value, name } = target;
+
+    setFormState({
+      ...formState,
+      [name]: value,
+    });
+  };
+
+  useEffect(() => {
+    console.log("useEffect called");
+    // The [] is called only once
+  }, []); 👈👀
+
+  useEffect(() => {
+    console.log("formState called");
+    // Runs every time the formState changes
+  }, [formState]); 👈👀
+
+  useEffect(() => {
+    console.log("email modified");
+  }, [email]); 👈👀
+
+  return (
+    <>
+      <h1>SimpleForm</h1>
+      <hr />
+      <input
+        type="text"
+        placeholder="Search something"
+        value={username}
+        name="username"
+        onChange={handleInputChange}
+      />
+
+      <input
+        type="email"
+        placeholder="test@gmail.com"
+        value={email}
+        name="email"
+        onChange={handleInputChange}
+      />
+    </>
+  );
+};
 ```
 
 👈👀
