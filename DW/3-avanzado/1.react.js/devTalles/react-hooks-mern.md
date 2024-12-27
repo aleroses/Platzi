@@ -6886,7 +6886,7 @@ En este caso, el array de dependencias es vacío (`[]`), lo que significa que el
 
 #### 3. Funcionamiento Correcto del Manejador de Eventos
 
-Asegúrate de que el manejador de eventos `onMouseMove` esté correctamente definido y funcione como se espera. En tu código, se está utilizando la desestructuración de objetos para obtener las coordenadas `x` y `y` del evento del ratón:
+Asegúrate de que el manejador de eventos `onMouseMove` esté correctamente definido y funcione como se espera. En este ejemplo de código, se está utilizando la desestructuración de objetos para obtener las coordenadas `x` y `y` del evento del ratón:
 
 ```jsx
 const onMouseMove = ({ x, y }) => {
