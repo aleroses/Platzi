@@ -6866,6 +6866,116 @@ Si estás usando el `<StrictMode>`, notarás que el componente se monta y desmon
 
 ### 9.10 useEffect - Precauciones
 
+En el ejemplo que veremos, el `useEffect` se utiliza para registrar un evento de movimiento del ratón (`mousemove`) y actualizar las coordenadas (`coords`) en el estado del componente. 
+
+A continuación, se mencionan algunas precauciones importantes que debes tener en cuenta:
+
+### 1. Limpieza del Efecto
+
+Es crucial que el `useEffect` limpie el evento registrado cuando el componente se desmonte para evitar fugas de memoria. En tu código, esto ya está correctamente implementado:
+
+```jsx
+return () => {
+  window.removeEventListener("mousemove", onMouseMove);
+};
+```
+
+### 2. Dependencias del `useEffect`
+
+En este caso, el array de dependencias es vacío (`[]`), lo que significa que el efecto solo se ejecutará una vez cuando el componente se monte y la limpieza se ejecutará cuando el componente se desmonte. Esto es apropiado para este escenario ya que no necesitas volver a ejecutar el efecto en respuesta a cambios de estado o props.
+
+### 3. Funcionamiento Correcto del Manejador de Eventos
+
+Asegúrate de que el manejador de eventos `onMouseMove` esté correctamente definido y funcione como se espera. En tu código, se está utilizando la desestructuración de objetos para obtener las coordenadas `x` y `y` del evento del ratón:
+
+```jsx
+const onMouseMove = ({ x, y }) => {
+  setCoords({ x, y });
+};
+```
+
+Esto es correcto y asegura que las coordenadas se actualicen adecuadamente.
+
+### 4. Renderizado y Optimización
+
+Cada vez que el estado `coords` se actualiza, el componente `Message` se volverá a renderizar. Esto es deseable en este caso ya que se desea mostrar las coordenadas actualizadas en tiempo real. Sin embargo, es importante ser consciente de que actualizaciones frecuentes del estado pueden afectar el rendimiento en componentes más complejos.
+
+### 5. Uso del Estado
+
+En tu componente, `coords` se utiliza para almacenar y mostrar las coordenadas del ratón en tiempo real:
+
+```jsx
+return (
+  <>
+    <h3>The user already exists</h3>
+    {JSON.stringify(coords)}
+  </>
+);
+```
+
+Esto está correctamente implementado y permite ver las coordenadas del ratón en el renderizado del componente.
+
+### 6. Manejo de Posibles Errores
+
+Considera manejar posibles errores o situaciones inesperadas, como la ausencia de `x` e `y` en el evento del ratón. Aunque es raro, puede ser útil tener una verificación adicional:
+
+```jsx
+const onMouseMove = (event) => {
+  const { x, y } = event;
+  if (typeof x === 'number' && typeof y === 'number') {
+    setCoords({ x, y });
+  }
+};
+```
+
+### Código Completo con Comentarios
+
+Aquí tienes el código completo con algunos comentarios adicionales para resaltar las precauciones mencionadas:
+
+```jsx
+import { useEffect, useState } from "react";
+
+export const Message = () => {
+  const [coords, setCoords] = useState({ x: 0, y: 0 });
+
+  useEffect(() => {
+    const onMouseMove = ({ x, y }) => {
+      // Verificar que x e y son números antes de actualizar el estado
+      if (typeof x === 'number' && typeof y === 'number') {
+        setCoords({ x, y });
+      }
+    };
+
+    // Registrar el evento de movimiento del ratón
+    window.addEventListener("mousemove", onMouseMove);
+    // console.log("Message Mounted");
+
+    // Limpiar el evento al desmontar el componente
+    return () => {
+      window.removeEventListener("mousemove", onMouseMove);
+      // console.log("Message Unmounted");
+    };
+  }, []); // Solo ejecutar una vez al montar y desmontar
+
+  return (
+    <>
+      <h3>The user already exists</h3>
+      {JSON.stringify(coords)} {/* Mostrar las coordenadas del ratón */}
+    </>
+  );
+};
+```
+
+### Resumen
+
+- Limpieza adecuada del efecto para evitar fugas de memoria.
+- Verificación de dependencias para asegurar que el efecto se ejecute solo cuando sea necesario.
+- Manejo correcto del evento y actualización del estado.
+- Consideración del rendimiento debido a actualizaciones frecuentes del estado.
+- Verificación adicional para asegurar la robustez del código.
+
+Con estas precauciones, tu uso de `useEffect` será más robusto y eficiente.
+
 `src > 02-useEffect > Message.jsx`
 
 ```jsx
