@@ -6497,7 +6497,7 @@ Crear propiedades basadas en iteraciones:
 const keys = ["clave1", "clave2", "clave3"];
 const obj = {};
 keys.forEach((key, index) => {
-  obj[propiedad_${index}] = key;
+  obj[`propiedad_${index}`] = key;
 });
 
 console.log(obj);
