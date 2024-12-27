@@ -6508,7 +6508,7 @@ Usar claves únicas (por ejemplo, valores de UUID o identificadores).
 
 #### Relación con otras funcionalidades
 
-- **Symbol como clave**: Puedes usar un `Symbol` como clave dinámica con esta sintaxis.
+- **Symbol como clave:** Puedes usar un `Symbol` como clave dinámica con esta sintaxis.
 
 ```js
 const uniqueKey = Symbol("claveUnica");
@@ -6519,7 +6519,7 @@ const obj = {
 console.log(obj); // { [Symbol(claveUnica)]: 'valor único' }
 ```
 
-Métodos en clases: En una clase, también puedes definir métodos dinámicos.
+- **Métodos en clases:** En una clase, también puedes definir métodos dinámicos.
 
 ```js
 class MyClass {
@@ -6535,7 +6535,7 @@ obj[methodName](); // Método dinámico
 
 Esta flexibilidad hace que los objetos en JavaScript sean muy versátiles y útiles en casos donde los nombres de propiedades no son conocidos de antemano o dependen de cálculos o entradas del usuario.
 
-
+Ahora en nuestro proyecto:
 
 `src > main.jsx`
 
