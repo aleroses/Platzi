@@ -6604,7 +6604,7 @@ export const SimpleForm = () => {
 };
 ```
 
-### 9.8 
+### 9.8 Dependencias del useEffect
 
 
 `src > components > GifGrid.jsx`
