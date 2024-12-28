@@ -6962,13 +6962,7 @@ export const Message = () => {
 };
 ```
 
-👈👀
-❯
-👈👀👇
-👈👀📌
-🔥
-
-### 9.4 
+### 9.11 Formulario con custom Hook
 
 
 `src > components > GifGrid.jsx`
