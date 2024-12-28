@@ -7035,7 +7035,6 @@ export const useForm = (initialForm = {}) => {
 
 ### 9.12 Tarea - Implementar funcionalidad de Reset
 
-
 `src > 02-useEffect > FormCustomHook.jsx`
 
 ```jsx
@@ -7095,8 +7094,6 @@ import { useState } from "react";
 export const useForm = (initialForm = {}) => {
   const [formState, setFormState] = useState(initialForm);
 
-  // const { value, name, password } = formState;
-
   const handleInputChange = ({ target }) => {
     const { value, name } = target;
 
@@ -7118,12 +7115,6 @@ export const useForm = (initialForm = {}) => {
   };
 };
 ```
-
-👈👀
-❯
-👈👀👇
-👈👀📌
-🔥
 
 ### 9.13 
 
