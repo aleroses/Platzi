@@ -6964,89 +6964,76 @@ export const Message = () => {
 
 ### 9.11 Formulario con custom Hook
 
-
-`src > components > GifGrid.jsx`
-
-```jsx
-```
-
-👈👀
-❯
-👈👀👇
-👈👀📌
-🔥
-
-### 9.4 
-
-
-`src > components > GifGrid.jsx`
+`src > 02-useEffect > FormCustomHook.jsx`
 
 ```jsx
+import { useForm } from "../hooks/useForm";
+
+export const FormCustomHook = () => {
+  const { username, email, password, handleInputChange } =
+    useForm({
+      username: "",
+      email: "",
+      password: "",
+    });
+
+  return (
+    <>
+      <h1>Form with Custom Hooks</h1>
+      <hr />
+      <input
+        type="text"
+        placeholder="Search something"
+        value={username}
+        name="username"
+        onChange={handleInputChange}
+      />
+      <input
+        type="email"
+        placeholder="test@gmail.com"
+        value={email}
+        name="email"
+        onChange={handleInputChange}
+      />
+
+      <input
+        type="password"
+        placeholder="Password"
+        value={password}
+        name="password"
+        onChange={handleInputChange}
+      />
+    </>
+  );
+};
 ```
 
-👈👀
-❯
-👈👀👇
-👈👀📌
-🔥
-
-### 9.4 
-
-
-`src > components > GifGrid.jsx`
+`src > hooks > useForm.jsx`
 
 ```jsx
+import { useState } from "react";
+
+export const useForm = (initialForm = {}) => {
+  const [formState, setFormState] = useState(initialForm);
+
+  const handleInputChange = ({ target }) => {
+    const { value, name } = target;
+
+    setFormState({
+      ...formState,
+      [name]: value,
+    });
+  };
+
+  return {
+    ...formState,
+    formState,
+    handleInputChange,
+  };
+};
 ```
 
-👈👀
-❯
-👈👀👇
-👈👀📌
-🔥
-
-### 9.4 
-
-
-`src > components > GifGrid.jsx`
-
-```jsx
-```
-
-👈👀
-❯
-👈👀👇
-👈👀📌
-🔥
-
-### 9.4 
-
-
-`src > components > GifGrid.jsx`
-
-```jsx
-```
-
-👈👀
-❯
-👈👀👇
-👈👀📌
-🔥
-
-### 9.4 
-
-
-`src > components > GifGrid.jsx`
-
-```jsx
-```
-
-👈👀
-❯
-👈👀👇
-👈👀📌
-🔥
-
-### 9.4 
+### 9.12 
 
 
 `src > components > GifGrid.jsx`
@@ -7060,7 +7047,7 @@ export const Message = () => {
 👈👀📌
 🔥
 
-### 9.4 
+### 9.13 
 
 
 `src > components > GifGrid.jsx`
@@ -7074,7 +7061,7 @@ export const Message = () => {
 👈👀📌
 🔥
 
-### 9.4 
+### 9.14 
 
 
 `src > components > GifGrid.jsx`
@@ -7088,7 +7075,7 @@ export const Message = () => {
 👈👀📌
 🔥
 
-### 9.4 
+### 9.15 
 
 
 `src > components > GifGrid.jsx`
@@ -7102,7 +7089,77 @@ export const Message = () => {
 👈👀📌
 🔥
 
-### 9.4 
+### 9.16 
+
+
+`src > components > GifGrid.jsx`
+
+```jsx
+```
+
+👈👀
+❯
+👈👀👇
+👈👀📌
+🔥
+
+### 9.17 
+
+
+`src > components > GifGrid.jsx`
+
+```jsx
+```
+
+👈👀
+❯
+👈👀👇
+👈👀📌
+🔥
+
+### 9.18 
+
+
+`src > components > GifGrid.jsx`
+
+```jsx
+```
+
+👈👀
+❯
+👈👀👇
+👈👀📌
+🔥
+
+### 9.19 
+
+
+`src > components > GifGrid.jsx`
+
+```jsx
+```
+
+👈👀
+❯
+👈👀👇
+👈👀📌
+🔥
+
+### 9.20 
+
+
+`src > components > GifGrid.jsx`
+
+```jsx
+```
+
+👈👀
+❯
+👈👀👇
+👈👀📌
+🔥
+
+### 9.21 
 
 
 `src > components > GifGrid.jsx`
