@@ -7033,12 +7033,90 @@ export const useForm = (initialForm = {}) => {
 };
 ```
 
-### 9.12 
+### 9.12 Tarea - Implementar funcionalidad de Reset
 
 
-`src > components > GifGrid.jsx`
+`src > 02-useEffect > FormCustomHook.jsx`
 
 ```jsx
+import { useForm } from "../hooks/useForm";
+
+export const FormCustomHook = () => {
+  const {
+    username,
+    email,
+    password,
+    handleInputChange,
+    handleResetForm,
+  } = useForm({
+    username: "",
+    email: "",
+    password: "",
+  });
+
+  return (
+    <>
+      <h1>Form with Custom Hooks</h1>
+      <hr />
+      <input
+        type="text"
+        placeholder="Search something"
+        value={username}
+        name="username"
+        onChange={handleInputChange}
+      />
+      <input
+        type="email"
+        placeholder="test@gmail.com"
+        value={email}
+        name="email"
+        onChange={handleInputChange}
+      />
+
+      <input
+        type="password"
+        placeholder="Password"
+        value={password}
+        name="password"
+        onChange={handleInputChange}
+      />
+
+      <button onClick={handleResetForm}👈👀>Delete</button>
+    </>
+  );
+};
+```
+
+`src > hooks > useForm.jsx`
+
+```jsx
+import { useState } from "react";
+
+export const useForm = (initialForm = {}) => {
+  const [formState, setFormState] = useState(initialForm);
+
+  // const { value, name, password } = formState;
+
+  const handleInputChange = ({ target }) => {
+    const { value, name } = target;
+
+    setFormState({
+      ...formState,
+      [name]: value,
+    });
+  };
+
+  const handleResetForm = () => {
+    setFormState(initialForm); 👈👀
+  };
+
+  return {
+    ...formState,
+    formState,
+    handleInputChange,
+    handleResetForm, 👈👀
+  };
+};
 ```
 
 👈👀
