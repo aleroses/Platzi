@@ -7168,6 +7168,13 @@ export const useFetch = () => {
 };
 ```
 
+Archivo Barril:
+`src/hooks/index.js`
+
+```js
+export * from "./useFetch";
+```
+
 👈👀
 ❯
 👈👀👇
