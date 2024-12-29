@@ -7175,11 +7175,7 @@ Archivo Barril:
 export * from "./useFetch";
 ```
 
-👈👀
-❯
-👈👀👇
-👈👀📌
-🔥
+[Poke API](https://pokeapi.co/)
 
 ### 9.14 
 
