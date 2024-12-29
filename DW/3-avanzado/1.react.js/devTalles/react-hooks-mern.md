@@ -7153,7 +7153,7 @@ export const useFetch = () => {
 
   const getFetch = async () => {
     const response = await fetch(
-      "https://pokeapi.co/api/v2/pokemon/1"
+      "https://pokeapi.co/api/v2/pokemon/1" 👈👀
     );
     const data = await response.json();
 
