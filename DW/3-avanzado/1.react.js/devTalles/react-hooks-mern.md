@@ -7177,12 +7177,105 @@ export * from "./useFetch";
 
 [Poke API](https://pokeapi.co/)
 
-### 9.14 
+### 9.14 Parametrizar y consumir nuestro custom Hook
 
-
-`src > components > GifGrid.jsx`
+`src > 03-examples > MultipleCustomHook.jsx`
 
 ```jsx
+import React from "react";
+import { useFetch } from "../hooks";
+
+export const MultipleCustomHook = () => {
+  const { data, hasError, isLoading } = useFetch(
+    "https://pokeapi.co/api/v2/pokemon/1"
+  );
+
+  return (
+    <>
+      <h1>Pokemon information</h1>
+      <hr />
+
+      {isLoading && <p>Loading...</p>}
+
+      {/* <pre>{JSON.stringify(data, null, 2)}</pre> */}
+
+      {/* If we have data "?"" shows the name */}
+      <h2>{data?.name}</h2> 👈👀
+    </>
+  );
+};
+```
+
+`src > hooks > useFetch.js`
+
+```js
+import { useEffect, useState } from "react";
+
+export const useFetch = (url) => {
+  const [state, setState] = useState({
+    data: null,
+    isLoading: true,
+    hasError: false,
+    error: null,
+  });
+
+  useEffect(() => {
+    getFetch();
+  }, [url]);
+
+  const setLoadingState = () => {
+    setState({ 👈👀👇
+      data: null,
+      isLoading: true,
+      hasError: false,
+      error: null,
+    });
+  };
+
+  const getFetch = async () => {
+    // Every time you change the url the state must be without data
+    setLoadingState();
+
+    const response = await fetch(url);
+    // Sleep
+    await new Promise((resolve) =>
+      setTimeout(resolve, 1500)
+    );
+
+    if (!response.ok) {
+      setState({
+        data: null,
+        isLoading: false,
+        hasError: true,
+        error: {
+          code: response.status,
+          message: response.statusText,
+        },
+      });
+
+      return;
+    }
+
+    const data = await response.json();
+
+    setState({
+      data: data,
+      isLoading: false,
+      hasError: false,
+      hasError: false,
+      error: null,
+    });
+
+    // Cache management
+
+  };
+
+  return {
+    data: state.data,
+    isLoading: state.isLoading,
+    hasError: state.hasError,
+  };
+};
 ```
 
 👈👀
