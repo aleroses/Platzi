@@ -7359,7 +7359,6 @@ export const PokemonCard = ({ id, name, sprites = [] }) => {
 };
 ```
 
-
 ### 9.16 
 
 
