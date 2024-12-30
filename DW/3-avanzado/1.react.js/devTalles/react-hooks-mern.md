@@ -7278,19 +7278,87 @@ export const useFetch = (url) => {
 };
 ```
 
-### 9.15 
+### 9.15 useFetch + useCounter
 
-
-`src > components > GifGrid.jsx`
+`src > 03-examples > MultipleCustomHook.jsx`
 
 ```jsx
+import React from "react";
+import { useFetch } from "../hooks";
+import { useCounter } from "../hooks/useCounter";
+import { LoadingMessage } from "./LoadingMessage";
+import { PokemonCard } from "./PokemonCard";
+
+export const MultipleCustomHook = () => {
+  const { counter, increase, decrease, reset } =
+    useCounter(1);
+  const { data, hasError, isLoading } = useFetch(
+    `https://pokeapi.co/api/v2/pokemon/${counter}`
+  );
+
+  return (
+    <>
+      <h1>Pokemon information</h1>
+      <hr />
+
+      {isLoading ? (
+        <LoadingMessage />
+      ) : (
+        <PokemonCard
+          id={data.id}
+          name={data.name}
+          sprites={[data.sprites]}
+        />
+      )}
+
+      <button
+        onClick={() => (counter > 1 ? decrease() : null)}
+      >
+        Previous
+      </button>
+      <button onClick={() => increase()}>Next</button>
+    </>
+  );
+};
 ```
 
-👈👀
-❯
-👈👀👇
-👈👀📌
-🔥
+`src > 03-examples > LoadingMessage.jsx`
+
+```jsx
+export const LoadingMessage = () => {
+  return (
+    <section>
+      <h1>Loading component...</h1>
+    </section>
+  );
+};
+```
+
+`src > 03-examples > PokemonCard.jsx`
+
+```jsx
+export const PokemonCard = ({ id, name, sprites = [] }) => {
+  return (
+    <section>
+      <h2>
+        #{id} - {name}
+      </h2>
+
+      {sprites.map((img) => {
+        return (
+          <div key={id}>
+            <img src={img.front_shiny} alt={name} />
+            <img src={img.front_default} alt={name} />
+            <img src={img.back_shiny} alt={name} />
+            <img src={img.back_default} alt={name} />
+          </div>
+        );
+      })}
+    </section>
+  );
+};
+```
+
 
 ### 9.16 
 
