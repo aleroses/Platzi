@@ -7361,11 +7361,22 @@ export const PokemonCard = ({ id, name, sprites = [] }) => {
 
 ### 9.16 
 
-
-`src > components > GifGrid.jsx`
+`src > 03-examples > PokemonCard.jsx`
 
 ```jsx
 ```
+
+`src > 03-examples > PokemonCard.jsx`
+
+```jsx
+```
+
+`src > 03-examples > PokemonCard.jsx`
+
+```jsx
+```
+
+
 
 👈👀
 ❯
