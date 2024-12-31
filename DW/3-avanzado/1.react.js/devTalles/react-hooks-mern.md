@@ -7702,6 +7702,8 @@ Ahora en nuestro proyecto:
 ```jsx
 ```
 
+[useLayoutEffect](https://react.dev/reference/react/useLayoutEffect)
+
 👈👀
 ❯
 👈👀👇
