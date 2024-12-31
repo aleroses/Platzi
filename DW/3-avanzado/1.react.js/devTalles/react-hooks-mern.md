@@ -7549,21 +7549,9 @@ console.log(localCache)
 // {One: 1, Two: 2}
 ```
 
-`src > 03-examples > PokemonCard.jsx`
-
-```jsx
-```
-
 - [Tanstack](https://tanstack.com/query/latest)
 - [Curso gratuito: React Query](https://fernando-herrera.com/course/react-query/)
 
-👈👀
-❯
-👈👀👇
-👈👀📌
-🔥
-🚫
-🔘
 ### 9.17 
 
 
@@ -7577,6 +7565,8 @@ console.log(localCache)
 👈👀👇
 👈👀📌
 🔥
+🚫
+🔘
 
 ### 9.18 
 
@@ -7591,6 +7581,8 @@ console.log(localCache)
 👈👀👇
 👈👀📌
 🔥
+🚫
+🔘
 
 ### 9.19 
 
@@ -7605,6 +7597,8 @@ console.log(localCache)
 👈👀👇
 👈👀📌
 🔥
+🚫
+🔘
 
 ### 9.20 
 
@@ -7619,6 +7613,8 @@ console.log(localCache)
 👈👀👇
 👈👀📌
 🔥
+🚫
+🔘
 
 ### 9.21 
 
@@ -7633,3 +7629,5 @@ console.log(localCache)
 👈👀👇
 👈👀📌
 🔥
+🚫
+🔘
