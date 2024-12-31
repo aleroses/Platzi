@@ -7363,7 +7363,7 @@ export const PokemonCard = ({ id, name, sprites = [] }) => {
 
 `localStorage` es una característica de JavaScript que permite almacenar datos de forma persistente en el navegador del usuario. Los datos almacenados en `localStorage` no tienen fecha de caducidad y permanecen disponibles incluso después de cerrar el navegador. Aquí te explico cómo usarlo con ejemplos breves:
 
-### Guardar Datos
+#### Guardar Datos
 
 Para guardar datos en `localStorage`, usas el método `setItem`:
 
@@ -7377,7 +7377,7 @@ localStorage.setItem('clave', 'valor');
 localStorage.setItem('nombre', 'Henry');
 ```
 
-### Obtener Datos
+#### Obtener Datos
 
 Para obtener datos de `localStorage`, usas el método `getItem`:
 
@@ -7392,7 +7392,7 @@ var nombre = localStorage.getItem('nombre'); // 'Henry'
 console.log(nombre);
 ```
 
-### Eliminar Datos
+#### Eliminar Datos
 
 Para eliminar un ítem específico de `localStorage`, usas el método `removeItem`:
 
@@ -7406,7 +7406,7 @@ localStorage.removeItem('clave');
 localStorage.removeItem('nombre');
 ```
 
-### Limpiar Todo
+#### Limpiar Todo
 
 Para limpiar todos los datos almacenados en `localStorage`, usas el método `clear`:
 
@@ -7420,7 +7420,7 @@ localStorage.clear();
 localStorage.clear();
 ```
 
-### Almacenar y Recuperar Objetos
+#### Almacenar y Recuperar Objetos
 
 `localStorage` solo almacena cadenas de texto. Para almacenar objetos, debes convertirlos a JSON con `JSON.stringify` y luego convertirlos de nuevo con `JSON.parse` al recuperarlos.
 
@@ -7440,6 +7440,8 @@ console.log(usuario.edad);  // 30
 ```
 
 Estos son los conceptos básicos para usar `localStorage` en JavaScript.
+
+Ahora en nuestro proyecto:
 
 `src > 03-examples > PokemonCard.jsx`
 
