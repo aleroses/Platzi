@@ -7443,7 +7443,7 @@ Estos son los conceptos básicos para usar `localStorage` en JavaScript.
 
 Ahora en nuestro proyecto:
 
-En el navegador nos dirigimos a los `DevTools` y entramos en `Network` y nos fijamos que en Filter no haya nada, limpiamos dando clic en el icono 🚫, ahora presionamos el icono 🔘 de la izquierda y por ultimo seleccionamos `All`. Ahoya puedes dar clic en `Next` para visualizar el nuevo pokemon.
+En el navegador nos dirigimos a los `DevTools` y entramos en `Network` y nos fijamos que en `Filter` no haya nada, limpiamos dando clic en el icono 🚫, ahora presionamos el icono 🔘 de la izquierda y por último seleccionamos `All`. Ahora puedes dar clic en `Next` para visualizar el nuevo pokemon.
 
 `src > 03-examples > PokemonCard.jsx`
 
