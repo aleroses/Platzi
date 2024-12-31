@@ -7450,7 +7450,7 @@ Ahora en nuestro proyecto:
 ```js
 import { useEffect, useState } from "react";
 
-const localCache = {};
+const localCache = {}; 👈👀
 
 export const useFetch = (url) => {
   const [state, setState] = useState({
@@ -7532,9 +7532,21 @@ export const useFetch = (url) => {
 };
 ```
 
-`src > 03-examples > PokemonCard.jsx`
+ En este ejemplo básicamente la variable `localCache` es un objeto que se utiliza para almacenar los datos de las respuestas de las solicitudes.
+ 
+ Cuando se hace una solicitud a una URL, primero se verifica si los datos de esa URL ya están en el `localCache` y si están, se utilizan esos datos y no se hace la solicitud `fetch`, si no están, entonces simplemente se hace la solicitud, se guardan los datos en `localCache` y luego se utilizan.
 
-```jsx
+📌 Cuando usas corchetes con un objeto, lo que está entre corchetes es la llave del objeto.
+
+```js
+const localCache = {};
+// undefined
+
+localCache["One"] = 1
+localCache["Two"] = 2
+
+console.log(localCache)
+// {One: 1, Two: 2}
 ```
 
 `src > 03-examples > PokemonCard.jsx`
