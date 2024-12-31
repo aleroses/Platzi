@@ -7935,6 +7935,8 @@ const ComponenteValor = memo(
 
 En resumen, `memo` es una herramienta poderosa para optimizar la renderización de componentes funcionales en React, especialmente en casos donde las props no cambian frecuentemente y la renderización es costosa.
 
+En nuestro proyecto:
+
 `src > main.jsx`
 
 ```jsx
