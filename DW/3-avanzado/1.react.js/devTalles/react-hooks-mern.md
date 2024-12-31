@@ -7562,6 +7562,7 @@ console.log(localCache)
 ```jsx
 ```
 
+- [useRef](https://react.dev/reference/react/useRef)
 - [Apuntes useRef](https://github.com/aleroses/Platzi/blob/master/DW/3-avanzado/1.react.js/YouTube/react-js-desde-cero.md#24-useref)
 - [[react-js-desde-cero#**24.** useRef()]]
 
