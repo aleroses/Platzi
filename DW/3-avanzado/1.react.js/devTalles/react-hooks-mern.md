@@ -7445,9 +7445,91 @@ Ahora en nuestro proyecto:
 
 📌 En el navegador nos dirigimos a los `DevTools` y entramos en `Network` y nos fijamos que en `Filter` no haya nada, limpiamos dando clic en el icono 🚫, ahora presionamos el icono 🔘 de la izquierda y por último seleccionamos `All`. Ahora puedes dar clic en `Next` para visualizar el nuevo Pokémon.
 
-`src > 03-examples > PokemonCard.jsx`
+`src > hooks > useFetch.js`
 
-```jsx
+```js
+import { useEffect, useState } from "react";
+
+const localCache = {};
+
+export const useFetch = (url) => {
+  const [state, setState] = useState({
+    data: null,
+    isLoading: true,
+    hasError: false,
+    error: null,
+  });
+
+  useEffect(() => {
+    getFetch();
+  }, [url]);
+
+  const setLoadingState = () => {
+    setState({
+      data: null,
+      isLoading: true,
+      hasError: false,
+      error: null,
+    });
+  };
+
+  const getFetch = async () => {
+    if (localCache[url]) { 👈👀
+      console.log("Using cache");
+
+      setState({
+        data: localCache[url],
+        isLoading: false,
+        hasError: false,
+        error: null,
+      });
+
+      return;
+    }
+
+    // Every time you change the url the state must be without data
+    setLoadingState();
+
+    const response = await fetch(url);
+    // Sleep
+    await new Promise((resolve) =>
+      setTimeout(resolve, 1500)
+    );
+
+    if (!response.ok) {
+      setState({
+        data: null,
+        isLoading: false,
+        hasError: true,
+        error: {
+          code: response.status,
+          message: response.statusText,
+        },
+      });
+
+      return;
+    }
+
+    const data = await response.json();
+
+    setState({
+      data: data,
+      isLoading: false,
+      hasError: false,
+      hasError: false,
+      error: null,
+    });
+
+    // Cache management 👈👀
+    localCache[url] = data;
+  };
+
+  return {
+    data: state.data,
+    isLoading: state.isLoading,
+    hasError: state.hasError,
+  };
+};
 ```
 
 `src > 03-examples > PokemonCard.jsx`
