@@ -7554,6 +7554,22 @@ console.log(localCache)
 
 ### 9.17 useRef - Primer uso
 
+`src > main`
+
+```jsx
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+
+import "./index.css";
+import { FocusScreen } from "./04-useRef/FocusScreen";
+
+createRoot(document.getElementById("root")).render(
+  <StrictMode>
+    <FocusScreen />
+  </StrictMode>
+);
+```
+
 `src > 04-useRef > FocusScreen.jsx`
 
 ```jsx
@@ -7587,15 +7603,7 @@ export const FocusScreen = () => {
 - [Apuntes useRef](https://github.com/aleroses/Platzi/blob/master/DW/3-avanzado/1.react.js/YouTube/react-js-desde-cero.md#24-useref)
 - [[react-js-desde-cero#**24.** useRef()]]
 
-👈👀
-❯
-👈👀👇
-👈👀📌
-🔥
-🚫
-🔘
-
-### 9.18 
+### 9.18 useLayoutEffect
 
 
 `src > components > GifGrid.jsx`
