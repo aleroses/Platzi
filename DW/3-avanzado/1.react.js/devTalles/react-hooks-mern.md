@@ -7443,7 +7443,7 @@ Estos son los conceptos básicos para usar `localStorage` en JavaScript.
 
 Ahora en nuestro proyecto:
 
-En el navegador nos dirigimos a los `DevTools` y entramos en `Network` y nos fijamos que en Filter no haya nada
+En el navegador nos dirigimos a los `DevTools` y entramos en `Network` y nos fijamos que en Filter no haya nada, limpiamos dando clic en el icono 🚫
 
 `src > 03-examples > PokemonCard.jsx`
 
@@ -7468,7 +7468,7 @@ En el navegador nos dirigimos a los `DevTools` y entramos en `Network` y nos fij
 👈👀👇
 👈👀📌
 🔥
-
+🚫
 ### 9.17 
 
 
