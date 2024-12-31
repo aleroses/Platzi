@@ -7374,7 +7374,7 @@ localStorage.setItem('clave', 'valor');
 **Ejemplo:**
 
 ```javascript
-localStorage.setItem('nombre', 'Henry');
+localStorage.setItem('name', 'ghost');
 ```
 
 #### Obtener Datos
@@ -7388,8 +7388,8 @@ var valor = localStorage.getItem('clave');
 **Ejemplo:**
 
 ```javascript
-var nombre = localStorage.getItem('nombre'); // 'Henry'
-console.log(nombre);
+var nombre = localStorage.getItem('name'); // 'ghost'
+console.log(name);
 ```
 
 #### Eliminar Datos
@@ -7403,7 +7403,7 @@ localStorage.removeItem('clave');
 **Ejemplo:**
 
 ```javascript
-localStorage.removeItem('nombre');
+localStorage.removeItem('name');
 ```
 
 #### Limpiar Todo
@@ -7427,7 +7427,7 @@ localStorage.clear();
 **Guardar un objeto:**
 
 ```javascript
-var usuario = { nombre: 'Henry', edad: 30 };
+var usuario = { nombre: 'Ale', edad: 20 };
 localStorage.setItem('usuario', JSON.stringify(usuario));
 ```
 
@@ -7435,8 +7435,8 @@ localStorage.setItem('usuario', JSON.stringify(usuario));
 
 ```javascript
 var usuario = JSON.parse(localStorage.getItem('usuario'));
-console.log(usuario.nombre); // 'Henry'
-console.log(usuario.edad);  // 30
+console.log(usuario.nombre); // 'Ale'
+console.log(usuario.edad);  // 20
 ```
 
 Estos son los conceptos básicos para usar `localStorage` en JavaScript.
