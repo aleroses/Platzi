@@ -7692,14 +7692,104 @@ El método `getBoundingClientRect` es una herramienta poderosa para trabajar con
 
 Ahora en nuestro proyecto:
 
-`src > components > GifGrid.jsx`
+`src > main.jsx`
 
 ```jsx
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+
+import "./index.css";
+import { Layout } from "./05-useLayoutEffect/Layout";
+
+createRoot(document.getElementById("root")).render(
+  <StrictMode>
+    <Layout />
+  </StrictMode>
+);
 ```
 
-`src > components > GifGrid.jsx`
+`src > 05-useLayoutEffect > Layout.jsx`
 
 ```jsx
+import React from "react";
+import { useFetch } from "../hooks";
+import { useCounter } from "../hooks/useCounter";
+import { PokemonCard } from "../03-examples/PokemonCard";
+import { LoadingMessage } from "../03-examples/LoadingMessage";
+
+export const Layout = () => {
+  const { counter, increase, decrease, reset } =
+    useCounter(1);
+  const { data, hasError, isLoading } = useFetch(
+    `https://pokeapi.co/api/v2/pokemon/${counter}`
+  );
+
+  return (
+    <>
+      <h1>Pokemon information</h1>
+      <hr />
+
+      {isLoading ? (
+        <LoadingMessage />
+      ) : (
+        <PokemonCard
+          id={data.id}
+          name={data.name}
+          sprites={[data.sprites]}
+        />
+      )}
+
+      <button
+        onClick={() => (counter > 1 ? decrease() : null)}
+      >
+        Previous
+      </button>
+      <button onClick={() => increase()}>Next</button>
+    </>
+  );
+};
+```
+
+`src > 03-examples > PokemonCard.jsx`
+
+```jsx
+import { useLayoutEffect, useRef, useState } from "react";
+
+export const PokemonCard = ({ id, name, sprites = [] }) => {
+  const h2Ref = useRef();
+  const [boxSize, setBoxSize] = useState({
+    width: 0,
+    height: 0,
+  });
+
+  useLayoutEffect(() => {
+    const { height, width } =
+      h2Ref.current.getBoundingClientRect();
+
+    setBoxSize({ height, width });
+  }, [name]);
+
+  return (
+    <section>
+      <h2 ref={h2Ref}>
+        #{id} - {name}
+      </h2>
+
+      {sprites.map((img) => {
+        return (
+          <div key={id}>
+            <img src={img.front_shiny} alt={name} />
+            <img src={img.front_default} alt={name} />
+            <img src={img.back_shiny} alt={name} />
+            <img src={img.back_default} alt={name} />
+          </div>
+        );
+      })}
+
+      <pre>{JSON.stringify(boxSize)}</pre>
+    </section>
+  );
+};
 ```
 
 [useLayoutEffect](https://react.dev/reference/react/useLayoutEffect)
