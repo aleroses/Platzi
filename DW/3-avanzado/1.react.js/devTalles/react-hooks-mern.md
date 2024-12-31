@@ -7616,7 +7616,7 @@ useLayoutEffect(() => {
 }, [dependencias]);
 ```
 
-### Parámetros
+#### Parámetros
 
 - **`efecto`:** Una función que contiene el código del efecto a ejecutar. Esta función puede opcionalmente devolver una función de limpieza que se ejecutará cuando el componente se desmonte o antes de ejecutar el efecto siguiente vez que las dependencias cambien.
 - **`dependencias`:** Una lista de dependencias que, cuando cambian, hacen que el efecto se vuelva a ejecutar. Si se omite, el efecto se ejecutará en cada renderizado.
