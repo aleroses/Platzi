@@ -7997,21 +7997,62 @@ export const Memorize = () => {
 
 ### 9.20 useMemo
 
-`src > components > GifGrid.jsx`
+`src > main.jsx`
 
 ```jsx
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+
+import "./index.css";
+import { MemorizeHook } from "./06-memos/MemorizeHook";
+
+createRoot(document.getElementById("root")).render(
+  <StrictMode>
+    <MemorizeHook />
+  </StrictMode>
+);
 ```
 
-`src > components > GifGrid.jsx`
+`src > 06-memos > MemorizeHook.jsx`
 
 ```jsx
+import { useMemo, useState } from "react";
+import { useCounter } from "../hooks/useCounter";
+
+const heavyStuff = (iterationNumber = 100) => {
+  for (let i = 0; i < iterationNumber; i++) {
+    console.log(`Ahí vamos...`);
+  }
+
+  return `${iterationNumber} iteraciones realizadas!!`;
+};
+
+export const MemorizeHook = () => {
+  const { counter, increase } = useCounter(0);
+  const [show, setShow] = useState(true);
+
+  const memorizedValue = useMemo(
+    () => heavyStuff(counter),
+    [counter]
+  );
+
+  return (
+    <div>
+      <h1>
+        Counter: <small>{counter}</small>
+      </h1>
+      <hr />
+      <h4>{memorizedValue}</h4>
+
+      <button onClick={() => increase()}>+1</button>
+
+      <button onClick={() => setShow(!show)}>
+        Show/Hide {JSON.stringify(show)}
+      </button>
+    </div>
+  );
+};
 ```
-
-`src > components > GifGrid.jsx`
-
-```jsx
-```
-
 
 - [useMemo](https://github.com/aleroses/Platzi/blob/master/DW/3-avanzado/1.react.js/YouTube/react-js-desde-cero.md#25-usememo)
 - [[react-js-desde-cero#**25.** useMemo()]]
