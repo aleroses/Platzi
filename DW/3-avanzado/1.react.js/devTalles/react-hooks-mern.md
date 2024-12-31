@@ -7607,10 +7607,6 @@ export const FocusScreen = () => {
 
 `useLayoutEffect` es un hook en React que se utiliza para ejecutar efectos de manera sincrónica después de que todas las mutaciones del DOM hayan sido realizadas, pero antes de que el navegador haya tenido la oportunidad de pintar (renderizar) la pantalla. Esto lo hace útil para realizar tareas que necesiten medir el DOM y aplicar cambios antes de que el navegador lo pinte, asegurando que los cambios sean visibles en el mismo ciclo de renderizado.
 
-## Uso de `useLayoutEffect`
-
-### Sintaxis
-
 ```javascript
 useLayoutEffect(() => {
   // Código del efecto
