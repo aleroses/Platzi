@@ -7653,19 +7653,20 @@ function ComponenteEjemplo() {
 export default ComponenteEjemplo;
 ```
 
-### Cuándo Usar `useLayoutEffect`
+#### Cuándo Usar `useLayoutEffect`
 
 - **Medición del DOM:** Cuando necesitas medir el DOM después de que React haya realizado todas las actualizaciones, pero antes de que el navegador pinte la pantalla.
 - **Sincronización del DOM:** Cuando necesitas sincronizar el DOM con algunos cálculos o ajustes que deben ser visibles inmediatamente después del renderizado.
 - **Efectos que bloquean el pintado:** Ten en cuenta que `useLayoutEffect` puede bloquear el pintado del navegador, lo que puede causar problemas de rendimiento si se usa en exceso.
 
-### Diferencia con `useEffect`
+#### Diferencia con `useEffect`
 
 La principal diferencia entre `useLayoutEffect` y `useEffect` es el momento en que se ejecutan. `useEffect` se ejecuta después de que el navegador haya pintado la pantalla, mientras que `useLayoutEffect` se ejecuta antes de que el navegador pinte la pantalla. Por lo tanto, `useLayoutEffect` es útil para realizar tareas que necesitan ocurrir antes del pintado del navegador.
 
 En resumen, `useLayoutEffect` se debe usar para efectos que afectan el diseño del DOM y necesitan ser aplicados antes de que el navegador lo pinte, mientras que `useEffect` es adecuado para la mayoría de los efectos secundarios que no requieren esta sincronización precisa.
 
 #### `getBoundingClientRect`
+
 `getBoundingClientRect` es un método que se utiliza en JavaScript y React para obtener el tamaño y la posición de un elemento en la página web. Este método devuelve un objeto `DOMRect` que proporciona información sobre las dimensiones del elemento y su posición relativa al viewport (la parte visible de la página web en el navegador).
 
 ##### Uso en JavaScript
