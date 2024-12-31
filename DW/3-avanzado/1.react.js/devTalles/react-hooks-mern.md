@@ -7995,24 +7995,26 @@ export const Memorize = () => {
 };
 ```
 
-- [useMemo](https://github.com/aleroses/Platzi/blob/master/DW/3-avanzado/1.react.js/YouTube/react-js-desde-cero.md#25-usememo)
-- [[react-js-desde-cero#**25.** useMemo()]]
-
-👈👀
-❯
-👈👀👇
-👈👀📌
-🔥
-🚫
-🔘
-
-### 9.20 
-
+### 9.20 useMemo
 
 `src > components > GifGrid.jsx`
 
 ```jsx
 ```
+
+`src > components > GifGrid.jsx`
+
+```jsx
+```
+
+`src > components > GifGrid.jsx`
+
+```jsx
+```
+
+
+- [useMemo](https://github.com/aleroses/Platzi/blob/master/DW/3-avanzado/1.react.js/YouTube/react-js-desde-cero.md#25-usememo)
+- [[react-js-desde-cero#**25.** useMemo()]]
 
 👈👀
 ❯
