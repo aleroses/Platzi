@@ -7359,7 +7359,87 @@ export const PokemonCard = ({ id, name, sprites = [] }) => {
 };
 ```
 
-### 9.16 
+### 9.16 Incorporar caché
+
+`localStorage` es una característica de JavaScript que permite almacenar datos de forma persistente en el navegador del usuario. Los datos almacenados en `localStorage` no tienen fecha de caducidad y permanecen disponibles incluso después de cerrar el navegador. Aquí te explico cómo usarlo con ejemplos breves:
+
+### Guardar Datos
+
+Para guardar datos en `localStorage`, usas el método `setItem`:
+
+```javascript
+localStorage.setItem('clave', 'valor');
+```
+
+**Ejemplo:**
+
+```javascript
+localStorage.setItem('nombre', 'Henry');
+```
+
+### Obtener Datos
+
+Para obtener datos de `localStorage`, usas el método `getItem`:
+
+```javascript
+var valor = localStorage.getItem('clave');
+```
+
+**Ejemplo:**
+
+```javascript
+var nombre = localStorage.getItem('nombre'); // 'Henry'
+console.log(nombre);
+```
+
+### Eliminar Datos
+
+Para eliminar un ítem específico de `localStorage`, usas el método `removeItem`:
+
+```javascript
+localStorage.removeItem('clave');
+```
+
+**Ejemplo:**
+
+```javascript
+localStorage.removeItem('nombre');
+```
+
+### Limpiar Todo
+
+Para limpiar todos los datos almacenados en `localStorage`, usas el método `clear`:
+
+```javascript
+localStorage.clear();
+```
+
+**Ejemplo:**
+
+```javascript
+localStorage.clear();
+```
+
+### Almacenar y Recuperar Objetos
+
+`localStorage` solo almacena cadenas de texto. Para almacenar objetos, debes convertirlos a JSON con `JSON.stringify` y luego convertirlos de nuevo con `JSON.parse` al recuperarlos.
+
+**Guardar un objeto:**
+
+```javascript
+var usuario = { nombre: 'Henry', edad: 30 };
+localStorage.setItem('usuario', JSON.stringify(usuario));
+```
+
+**Obtener un objeto:**
+
+```javascript
+var usuario = JSON.parse(localStorage.getItem('usuario'));
+console.log(usuario.nombre); // 'Henry'
+console.log(usuario.edad);  // 30
+```
+
+Estos son los conceptos básicos para usar `localStorage` en JavaScript.
 
 `src > 03-examples > PokemonCard.jsx`
 
