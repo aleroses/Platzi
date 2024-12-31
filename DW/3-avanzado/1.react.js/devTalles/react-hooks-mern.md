@@ -7554,12 +7554,33 @@ console.log(localCache)
 
 ### 9.17 useRef - Primer uso
 
-
-
-
-`src > components > GifGrid.jsx`
+`src > 04-useRef > FocusScreen.jsx`
 
 ```jsx
+import { useRef } from "react";
+
+export const FocusScreen = () => {
+  const focusRef = useRef(); 👈👀
+
+  const handleFocus = () => {
+    // document.querySelector("input").focus();
+    focusRef.current.select(); 👈👀
+  };
+
+  return (
+    <>
+      <h1>FocusScreen</h1>
+      <hr />
+      <input
+        ref={focusRef} 👈👀
+        type="text"
+        placeholder="Enter your name"
+      />
+
+      <button onClick={handleFocus}👈👀>Set focus</button>
+    </>
+  );
+};
 ```
 
 - [useRef](https://react.dev/reference/react/useRef)
