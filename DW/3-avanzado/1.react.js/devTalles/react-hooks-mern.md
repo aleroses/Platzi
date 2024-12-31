@@ -8057,6 +8057,17 @@ export const MemorizeHook = () => {
 - [useMemo](https://github.com/aleroses/Platzi/blob/master/DW/3-avanzado/1.react.js/YouTube/react-js-desde-cero.md#25-usememo)
 - [[react-js-desde-cero#**25.** useMemo()]]
 
+### 9.21 useCallback
+
+
+
+`src > components > GifGrid.jsx`
+
+```jsx
+```
+
+[Apuntes: useCallback](https://github.com/aleroses/Platzi/blob/master/DW/3-avanzado/1.react.js/YouTube/react-js-desde-cero.md#26-usecallback)
+
 👈👀
 ❯
 👈👀👇
@@ -8065,7 +8076,39 @@ export const MemorizeHook = () => {
 🚫
 🔘
 
-### 9.21 
+### 9.22 useCallback
+
+
+`src > components > GifGrid.jsx`
+
+```jsx
+```
+
+👈👀
+❯
+👈👀👇
+👈👀📌
+🔥
+🚫
+🔘
+
+### 9.23 useCallback
+
+
+`src > components > GifGrid.jsx`
+
+```jsx
+```
+
+👈👀
+❯
+👈👀👇
+👈👀📌
+🔥
+🚫
+🔘
+
+### 9.24 useCallback
 
 
 `src > components > GifGrid.jsx`
