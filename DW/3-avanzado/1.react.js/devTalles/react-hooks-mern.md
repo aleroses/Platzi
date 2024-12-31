@@ -7860,8 +7860,6 @@ export const PokemonCard = ({ id, name, sprites = [] }) => {
 
 `memo` es una función en React que se utiliza para optimizar el rendimiento de los componentes funcionales. Esta función memoriza el resultado de la renderización de un componente y lo vuelve a usar en las renderizaciones subsiguientes, siempre y cuando las props del componente no hayan cambiado. Esto evita renderizaciones innecesarias y puede mejorar el rendimiento de la aplicación.
 
-#### Sintaxis
-
 ```javascript
 import React, { memo } from 'react';
 
@@ -7871,12 +7869,12 @@ const MiComponente = memo((props) => {
 });
 ```
 
-### Parámetros
+#### Parámetros
 
 - **`Componente`:** El componente funcional que deseas memorizar.
 - **`areEqual` (opcional):** Una función de comparación personalizada que se usa para verificar si las props han cambiado. Si no se proporciona, `memo` usará una comparación superficial (shallow comparison).
 
-### Ejemplo Práctico
+#### Ejemplo Práctico
 
 Supongamos que tenemos un componente que muestra un valor y queremos evitar que se vuelva a renderizar a menos que cambie el valor de la prop `valor`.
 
@@ -7907,7 +7905,7 @@ export default App;
 
 En este ejemplo, `ComponenteValor` se renderiza solo cuando cambia la prop `valor`. Cuando el botón "Incrementar Otro Valor" se hace clic, `ComponenteValor` no se vuelve a renderizar, lo que mejora el rendimiento de la aplicación.
 
-### Uso de `memo` con Función de Comparación Personalizada
+#### Uso de `memo` con Función de Comparación Personalizada
 
 A veces, las props pueden ser objetos o arrays, y una comparación superficial podría no ser suficiente. En esos casos, puedes proporcionar una función de comparación personalizada.
 
@@ -7924,13 +7922,13 @@ const ComponenteValor = memo(
 );
 ```
 
-### Cuándo Usar `memo`
+#### Cuándo Usar `memo`
 
 - **Componentes Puros:** `memo` es útil para componentes que son puros, es decir, su renderización depende exclusivamente de sus props.
 - **Renderización Costosa:** Si tienes un componente que realiza cálculos intensivos o tiene un proceso de renderización costoso, `memo` puede ayudar a reducir el número de renderizaciones.
 - **Evitación de Renderización Innecesaria:** En general, si notas que un componente se está renderizando más veces de las necesarias, `memo` puede ser una solución.
 
-### Limitaciones de `memo`
+#### Limitaciones de `memo`
 
 - **Comparación Superficial:** La comparación por defecto de `memo` es superficial, lo que significa que solo compara los valores primitivos de las props. Si las props son objetos complejos, puede que necesites una comparación más profunda.
 - **Overhead Adicional:** En algunos casos, el overhead de la comparación de props puede ser mayor que el costo de volver a renderizar el componente. Es importante medir el rendimiento y asegurarse de que `memo` realmente mejora la eficiencia.
