@@ -7552,13 +7552,18 @@ console.log(localCache)
 - [Tanstack](https://tanstack.com/query/latest)
 - [Curso gratuito: React Query](https://fernando-herrera.com/course/react-query/)
 
-### 9.17 
+### 9.17 useRef - Primer uso
+
+
 
 
 `src > components > GifGrid.jsx`
 
 ```jsx
 ```
+
+- [Apuntes useRef](https://github.com/aleroses/Platzi/blob/master/DW/3-avanzado/1.react.js/YouTube/react-js-desde-cero.md#24-useref)
+- [[react-js-desde-cero#**24.** useRef()]]
 
 👈👀
 ❯
