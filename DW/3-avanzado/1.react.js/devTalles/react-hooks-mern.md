@@ -7794,14 +7794,6 @@ export const PokemonCard = ({ id, name, sprites = [] }) => {
 
 [useLayoutEffect](https://react.dev/reference/react/useLayoutEffect)
 
-👈👀
-❯
-👈👀👇
-👈👀📌
-🔥
-🚫
-🔘
-
 ### 9.19 
 
 `src > components > GifGrid.jsx`
