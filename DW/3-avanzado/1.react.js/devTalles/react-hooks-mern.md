@@ -7605,9 +7605,74 @@ export const FocusScreen = () => {
 
 ### 9.18 useLayoutEffect
 
+`useLayoutEffect` es un hook en React que se utiliza para ejecutar efectos de manera sincrónica después de que todas las mutaciones del DOM hayan sido realizadas, pero antes de que el navegador haya tenido la oportunidad de pintar (renderizar) la pantalla. Esto lo hace útil para realizar tareas que necesiten medir el DOM y aplicar cambios antes de que el navegador lo pinte, asegurando que los cambios sean visibles en el mismo ciclo de renderizado.
+
+## Uso de `useLayoutEffect`
+
+### Sintaxis
+
+```javascript
+useLayoutEffect(() => {
+  // Código del efecto
+  return () => {
+    // Código de limpieza (opcional)
+  };
+}, [dependencias]);
+```
+
+### Parámetros
+
+- **`efecto`:** Una función que contiene el código del efecto a ejecutar. Esta función puede opcionalmente devolver una función de limpieza que se ejecutará cuando el componente se desmonte o antes de ejecutar el efecto siguiente vez que las dependencias cambien.
+- **`dependencias`:** Una lista de dependencias que, cuando cambian, hacen que el efecto se vuelva a ejecutar. Si se omite, el efecto se ejecutará en cada renderizado.
+
+### Ejemplo Práctico
+
+Supongamos que tenemos un componente que necesita calcular el tamaño de un elemento del DOM después de que se haya renderizado y ajustar su tamaño en consecuencia.
+
+```javascript
+import React, { useLayoutEffect, useRef, useState } from 'react';
+
+function ComponenteEjemplo() {
+  const ref = useRef(null);
+  const [ancho, setAncho] = useState(0);
+
+  useLayoutEffect(() => {
+    // Medir el ancho del elemento
+    const elemento = ref.current;
+    if (elemento) {
+      setAncho(elemento.offsetWidth);
+    }
+  }, []); // Solo se ejecuta una vez, después del primer renderizado
+
+  return (
+    <div>
+      <div ref={ref} style={{ width: '50%' }}>
+        Este es el elemento a medir
+      </div>
+      <p>El ancho del elemento es: {ancho}px</p>
+    </div>
+  );
+}
+
+export default ComponenteEjemplo;
+```
+
+### Cuándo Usar `useLayoutEffect`
+
+- **Medición del DOM:** Cuando necesitas medir el DOM después de que React haya realizado todas las actualizaciones, pero antes de que el navegador pinte la pantalla.
+- **Sincronización del DOM:** Cuando necesitas sincronizar el DOM con algunos cálculos o ajustes que deben ser visibles inmediatamente después del renderizado.
+- **Efectos que bloquean el pintado:** Ten en cuenta que `useLayoutEffect` puede bloquear el pintado del navegador, lo que puede causar problemas de rendimiento si se usa en exceso.
+
+### Diferencia con `useEffect`
+
+La principal diferencia entre `useLayoutEffect` y `useEffect` es el momento en que se ejecutan. `useEffect` se ejecuta después de que el navegador haya pintado la pantalla, mientras que `useLayoutEffect` se ejecuta antes de que el navegador pinte la pantalla. Por lo tanto, `useLayoutEffect` es útil para realizar tareas que necesitan ocurrir antes del pintado del navegador.
+
+En resumen, `useLayoutEffect` se debe usar para efectos que afectan el diseño del DOM y necesitan ser aplicados antes de que el navegador lo pinte, mientras que `useEffect` es adecuado para la mayoría de los efectos secundarios que no requieren esta sincronización precisa.
+
+#### `getBoundingClientRect`
 `getBoundingClientRect` es un método que se utiliza en JavaScript y React para obtener el tamaño y la posición de un elemento en la página web. Este método devuelve un objeto `DOMRect` que proporciona información sobre las dimensiones del elemento y su posición relativa al viewport (la parte visible de la página web en el navegador).
 
-#### Uso en JavaScript
+##### Uso en JavaScript
 
 En JavaScript, puedes usar `getBoundingClientRect` directamente en un elemento del DOM. Aquí hay un ejemplo:
 
@@ -7627,7 +7692,7 @@ El objeto `rect` tiene las siguientes propiedades:
 - `width` y `height`: El ancho y la altura del elemento.
 - `top`, `right`, `bottom` y `left`: Las posiciones del borde del elemento en relación con el viewport.
 
-#### Uso en React
+##### Uso en React
 
 En React, necesitas primero obtener una referencia al elemento del DOM usando el hook `useRef` o la API de referencias de React. Aquí hay un ejemplo usando un componente funcional con hooks:
 
@@ -7658,7 +7723,7 @@ En este ejemplo:
 2. Se asigna la referencia al elemento `div` con la propiedad `ref`.
 3. En el hook `useEffect`, que se ejecuta después de que el componente se ha montado, se llama a `getBoundingClientRect` en el elemento referenciado y se registra el resultado en la consola.
 
-#### Ejemplo Práctico
+##### Ejemplo Práctico
 
 Supongamos que deseas mover un elemento a una posición específica en la página basada en su posición actual. Puedes hacerlo utilizando `getBoundingClientRect`:
 
@@ -7686,7 +7751,7 @@ export default MoverElemento;
 
 En este ejemplo, el elemento se mueve 50 píxeles hacia abajo desde su posición actual utilizando las coordenadas obtenidas con `getBoundingClientRect`.
 
-#### Conclusión
+##### Conclusión
 
 El método `getBoundingClientRect` es una herramienta poderosa para trabajar con la posición y el tamaño de los elementos del DOM, tanto en JavaScript como en React. Permite obtener información precisa sobre la ubicación de un elemento en la página, lo cual es esencial para muchas tareas, como la creación de interfaces de usuario dinámicas y responsivas.
 
