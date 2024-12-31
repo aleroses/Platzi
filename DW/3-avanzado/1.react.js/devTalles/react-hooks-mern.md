@@ -7458,7 +7458,8 @@ Ahora en nuestro proyecto:
 ```jsx
 ```
 
-
+- [Tanstack](https://tanstack.com/query/latest)
+- [Curso gratuito: React Query](https://fernando-herrera.com/course/react-query/)
 
 👈👀
 ❯
