@@ -8167,21 +8167,15 @@ export const CallbackHook = () => {
 };
 ```
 
-👈👀
-❯
-👈👀👇
-👈👀📌
-🔥
-🚫
-🔘
-
-### 9.23 
+### 9.23 Tarea Memorize
 
 
 `src > components > GifGrid.jsx`
 
 ```jsx
 ```
+
+[Download task](https://import.cdn.thinkific.com/643563/courses/1901683/07tareamemo-220620-120357.zip)
 
 👈👀
 ❯
