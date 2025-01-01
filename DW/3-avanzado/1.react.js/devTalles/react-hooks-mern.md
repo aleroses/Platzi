@@ -8239,16 +8239,25 @@ export const Padre = () => {
 
 [Download task](https://import.cdn.thinkific.com/643563/courses/1901683/07tareamemo-220620-120357.zip)
 
-👈👀
-❯
-👈👀👇
-👈👀📌
-🔥
-🚫
-🔘
+### 9.24 Código fuente de la sección
 
-### 9.24 
+Aquí les dejo el código fuente de la sección, lo pueden descargar del material adjunto o bien ir al repositorio de GitHub para tenerlo a la mano o clonarlo si lo quieren tener en su cuenta de GitHub
 
+[**Fin sección 9 - Hooks en detalle**](https://github.com/Klerith/react-hooks/tree/fin-seccion-9)
+
+[Fin sección 9 - Nuevo useFetch](https://github.com/Klerith/react-hooks/tree/fin-seccion-9.2)  
+
+**Nota:**
+
+Espero que esta sección les gustara, especialmente para entrar en calor de todo lo que podemos hacer con los Hooks de React, tanto los creados por ellos como los personalizados que podemos hacer nosotros, aún faltan más Hooks que ver...
+
+Si el curso les está gustando, por favor, no se olviden de calificar el curso y ponerme 5 estrellas! eso me ayudaría mucho, nuevamente gracias por todo su apoyo que me permite seguir creando cursos como estos.
+
+**atte:**
+
+**Fernando Herrera**
+
+## 10. 
 
 `src > components > GifGrid.jsx`
 
