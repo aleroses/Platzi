@@ -8121,6 +8121,18 @@ export const CallbackHook = () => {
 
 [Apuntes: useCallback](https://github.com/aleroses/Platzi/blob/master/DW/3-avanzado/1.react.js/YouTube/react-js-desde-cero.md#26-usecallback)
 
+### 9.22 useCallback con argumentos
+
+`src > 06-memos > ShowIncrement.jsx`
+
+```jsx
+```
+
+`src > 06-memos > CallbackHook.jsx`
+
+```jsx
+```
+
 👈👀
 ❯
 👈👀👇
@@ -8129,7 +8141,7 @@ export const CallbackHook = () => {
 🚫
 🔘
 
-### 9.22 useCallback
+### 9.23 
 
 
 `src > components > GifGrid.jsx`
@@ -8145,23 +8157,7 @@ export const CallbackHook = () => {
 🚫
 🔘
 
-### 9.23 useCallback
-
-
-`src > components > GifGrid.jsx`
-
-```jsx
-```
-
-👈👀
-❯
-👈👀👇
-👈👀📌
-🔥
-🚫
-🔘
-
-### 9.24 useCallback
+### 9.24 
 
 
 `src > components > GifGrid.jsx`
