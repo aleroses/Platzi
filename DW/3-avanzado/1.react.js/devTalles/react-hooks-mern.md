@@ -8185,9 +8185,23 @@ createRoot(document.getElementById("root")).render(
 );
 ```
 
-`src > components > GifGrid.jsx`
+`src > 07-tarea-memo > Hijo.jsx`
 
 ```jsx
+import React, { memo } from "react";
+
+export const Hijo = memo(({ numero, incrementar }) => {
+  console.log("Me volví a generar :(");
+
+  return (
+    <button
+      className="btn btn-primary mr-3"
+      onClick={() => incrementar(numero)}
+    >
+      {numero}
+    </button>
+  );
+});
 ```
 
 `src > components > GifGrid.jsx`
