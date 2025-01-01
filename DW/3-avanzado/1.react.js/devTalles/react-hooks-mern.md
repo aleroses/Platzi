@@ -8126,11 +8126,45 @@ export const CallbackHook = () => {
 `src > 06-memos > ShowIncrement.jsx`
 
 ```jsx
+import { memo } from "react";
+
+export const ShowIncrement = memo(({ increase }) => {
+  console.log("I generated myself again.");
+
+  return (
+    <button
+      onClick={() => {
+        increase(5); 👈👀
+      }}
+    >
+      Increase
+    </button>
+  );
+});
 ```
 
 `src > 06-memos > CallbackHook.jsx`
 
 ```jsx
+import { useCallback, useState } from "react";
+import { ShowIncrement } from "./ShowIncrement";
+
+export const CallbackHook = () => {
+  const [counter, setCounter] = useState(10);
+
+  const handleIncrease = useCallback((value👈👀) => {
+    setCounter((c) => c + value);👈👀
+  }, []);
+
+  return (
+    <>
+      <h1>useCallback Hook: {counter}</h1>
+      <hr />
+
+      <ShowIncrement increase={handleIncrease} />
+    </>
+  );
+};
 ```
 
 👈👀
