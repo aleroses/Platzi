@@ -8059,11 +8059,64 @@ export const MemorizeHook = () => {
 
 ### 9.21 useCallback
 
-
-
-`src > components > GifGrid.jsx`
+`src > main.jsx`
 
 ```jsx
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+
+import "./index.css";
+import { CallbackHook } from "./06-memos/CallbackHook";
+
+createRoot(document.getElementById("root")).render(
+  <StrictMode>
+    <CallbackHook />
+  </StrictMode>
+);
+```
+
+`src > 06-memos > ShowIncrement.jsx`
+
+```jsx
+import { memo } from "react";
+
+export const ShowIncrement = memo(({ increase }) => {
+  console.log("I generated myself again.");
+
+  return (
+    <button
+      onClick={() => {
+        increase();
+      }}
+    >
+      Increase
+    </button>
+  );
+});
+```
+
+`src > 06-memos > CallbackHook.jsx`
+
+```jsx
+import { useCallback, useState } from "react";
+import { ShowIncrement } from "./ShowIncrement";
+
+export const CallbackHook = () => {
+  const [counter, setCounter] = useState(10);
+
+  const handleIncrease = useCallback(() => {
+    setCounter((c) => c + 1);
+  }, []);
+
+  return (
+    <>
+      <h1>useCallback Hook: {counter}</h1>
+      <hr />
+
+      <ShowIncrement increase={handleIncrease} />
+    </>
+  );
+};
 ```
 
 [Apuntes: useCallback](https://github.com/aleroses/Platzi/blob/master/DW/3-avanzado/1.react.js/YouTube/react-js-desde-cero.md#26-usecallback)
