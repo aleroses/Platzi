@@ -8169,6 +8169,26 @@ export const CallbackHook = () => {
 
 ### 9.23 Tarea Memorize
 
+`src > main.jsx`
+
+```jsx
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+
+import "./index.css";
+import { Padre } from "./07-tarea-memo/Padre";
+
+createRoot(document.getElementById("root")).render(
+  <StrictMode>
+    <Padre />
+  </StrictMode>
+);
+```
+
+`src > components > GifGrid.jsx`
+
+```jsx
+```
 
 `src > components > GifGrid.jsx`
 
