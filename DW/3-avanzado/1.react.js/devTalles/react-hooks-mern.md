@@ -8251,13 +8251,109 @@ Aquí les dejo el código fuente de la sección, lo pueden descargar del materia
 
 Espero que esta sección les gustara, especialmente para entrar en calor de todo lo que podemos hacer con los Hooks de React, tanto los creados por ellos como los personalizados que podemos hacer nosotros, aún faltan más Hooks que ver...
 
-Si el curso les está gustando, por favor, no se olviden de calificar el curso y ponerme 5 estrellas! eso me ayudaría mucho, nuevamente gracias por todo su apoyo que me permite seguir creando cursos como estos.
+Si el curso les está gustando, por favor, ¡no se olviden de calificar el curso y ponerme 5 estrellas! Eso me ayudaría mucho, nuevamente gracias por todo su apoyo que me permite seguir creando cursos como estos.
 
 **atte:**
 
 **Fernando Herrera**
 
-## 10. 
+## 10. Profundizando Hooks - useReducer
+
+### 1. Introducción a la sección
+
+
+### 2. Temas puntuales de la sección
+
+**¿Qué veremos en esta sección?**
+
+- useReducer
+- Reducers
+- Teoría de un reducer
+- Aplicación de TODOs
+- CRUD local
+
+Esta es una sección dedicada a comprender el concepto de un Reducer, el cual es sumamente importante para poder entrar a Redux o bien usar el contextAPI fácilmente.
+
+### 3. Introducción al concepto de un reducer
+
+`src > components > GifGrid.jsx`
+
+```jsx
+```
+
+👈👀
+❯
+👈👀👇
+👈👀📌
+🔥
+🚫
+🔘
+
+### 4.
+
+`src > components > GifGrid.jsx`
+
+```jsx
+```
+
+👈👀
+❯
+👈👀👇
+👈👀📌
+🔥
+🚫
+🔘
+
+### 5. 
+
+`src > components > GifGrid.jsx`
+
+```jsx
+```
+
+👈👀
+❯
+👈👀👇
+👈👀📌
+🔥
+🚫
+🔘
+
+### 6. 
+
+`src > components > GifGrid.jsx`
+
+```jsx
+```
+
+👈👀
+❯
+👈👀👇
+👈👀📌
+🔥
+🚫
+🔘
+
+### 7. 
+
+`src > components > GifGrid.jsx`
+
+```jsx
+```
+
+👈👀
+❯
+👈👀👇
+👈👀📌
+🔥
+🚫
+🔘
+
+### 8.
+
+### 9. 
+
+### 10.
 
 `src > components > GifGrid.jsx`
 
