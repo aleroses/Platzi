@@ -8329,8 +8329,6 @@ export default Counter;
 
 Aquí, `useReducer` inicializa el estado con `initialState` y retorna el estado actual y la función `dispatch`. La función `dispatch` se usa para enviar acciones al `reducer`, que actualiza el estado en consecuencia.
 
-En resumen, un `reducer` en React es una función que actualiza el estado de manera predecible en respuesta a acciones, proporcionando una forma estructurada y mantenible de manejar el estado complejo en aplicaciones React.
-
 En resumen:
 
 1. Es una función común y corriente.
@@ -8344,22 +8342,6 @@ En resumen:
 4. Usualmente, solo recibe dos argumentos.
 	1. El valor inicial (initialState).
 	2. La acción a ejecutar.
-
-
-
-
-
-```jsx
-const todoReducer = () => {
-
-};
-```
-
-```jsx
-const initialTodos = {
-
-};
-```
 
 - [Apuntes: useReducer()](https://github.com/aleroses/Platzi/blob/master/DW/3-avanzado/1.react.js/YouTube/react-js-desde-cero.md#28-usereducer)
 - [[react-js-desde-cero#**28.** useReducer()]]
