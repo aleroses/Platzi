@@ -8276,6 +8276,15 @@ Esta es una sección dedicada a comprender el concepto de un Reducer, el cual es
 
 ### 3. Introducción al concepto de un reducer
 
+1. Es una función común y corriente.
+2. Debe ser una función pura.
+3. Debe de retornar un nuevo estado.
+4. Usualmente, solo recibe dos argumentos.
+	1. El valor inicial (initialState).
+	2. La acción a ejecutar.
+
+
+
 `src > components > GifGrid.jsx`
 
 ```jsx
