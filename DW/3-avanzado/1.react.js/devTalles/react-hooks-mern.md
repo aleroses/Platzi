@@ -8348,20 +8348,17 @@ En resumen:
 
 ### 4. Continuación del Proyecto - HookApp
 
-
-
-`src > components > GifGrid.jsx`
+`src > main.jsx`
 
 ```jsx
+import "./08-useReducer/intro-reducer";
 ```
 
-👈👀
-❯
-👈👀👇
-👈👀📌
-🔥
-🚫
-🔘
+`src > 08-useReducer > intro-reducer.js`
+
+```js
+console.log("Hi world");
+```
 
 ### 5. 
 
