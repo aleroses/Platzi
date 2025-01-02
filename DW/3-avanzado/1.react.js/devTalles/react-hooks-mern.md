@@ -8403,16 +8403,7 @@ console.log({ state: todos });
 //   todo: "Collecting the power stone",
 //   done: false,
 // });
-
 ```
-
-👈👀
-❯
-👈👀👇
-👈👀📌
-🔥
-🚫
-🔘
 
 ### 6. 
 
