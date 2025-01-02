@@ -8346,7 +8346,9 @@ En resumen:
 - [Apuntes: useReducer()](https://github.com/aleroses/Platzi/blob/master/DW/3-avanzado/1.react.js/YouTube/react-js-desde-cero.md#28-usereducer)
 - [[react-js-desde-cero#**28.** useReducer()]]
 
-### 4.
+### 4. Continuación del Proyecto - HookApp
+
+
 
 `src > components > GifGrid.jsx`
 
