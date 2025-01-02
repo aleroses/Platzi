@@ -8276,8 +8276,70 @@ Esta es una sección dedicada a comprender el concepto de un Reducer, el cual es
 
 ### 3. Introducción al concepto de un reducer
 
+En React, un `reducer` es una función que determina cómo cambiará el estado de una aplicación en respuesta a una acción. Los `reducers` son una parte central del patrón de arquitectura Redux, pero también pueden ser utilizados con el hook `useReducer` que React proporciona para manejar el estado local del componente de una manera similar.
+
+Un `reducer` es una función pura que toma dos argumentos:
+
+1. **El estado actual** (o el estado anterior).
+2. **Una acción**: un objeto que describe lo que sucedió y que típicamente tiene una propiedad `type` y, a veces, una `payload` que contiene los datos adicionales necesarios para realizar la actualización del estado.
+
+La función `reducer` devuelve el nuevo estado basado en la acción que recibió.
+
+Aquí hay un ejemplo básico de un `reducer` en React:
+
+```javascript
+const initialState = { count: 0 };
+
+function reducer(state, action) {
+  switch (action.type) {
+    case 'increment':
+      return { count: state.count + 1 };
+    case 'decrement':
+      return { count: state.count - 1 };
+    case 'reset':
+      return { count: 0 };
+    default:
+      throw new Error('Acción no soportada');
+  }
+}
+```
+
+En este ejemplo, el `reducer` maneja tres tipos de acciones: `increment`, `decrement` y `reset`, que respectivamente incrementan, decrementan y resetean el contador.
+
+Para usar este `reducer` en un componente con el hook `useReducer`, harías algo como esto:
+
+```javascript
+import React, { useReducer } from 'react';
+
+function Counter() {
+  const [state, dispatch] = useReducer(reducer, initialState);
+
+  return (
+    <div>
+      <p>Count: {state.count}</p>
+      <button onClick={() => dispatch({ type: 'increment' })}>Increment</button>
+      <button onClick={() => dispatch({ type: 'decrement' })}>Decrement</button>
+      <button onClick={() => dispatch({ type: 'reset' })}>Reset</button>
+    </div>
+  );
+}
+
+export default Counter;
+```
+
+Aquí, `useReducer` inicializa el estado con `initialState` y retorna el estado actual y la función `dispatch`. La función `dispatch` se usa para enviar acciones al `reducer`, que actualiza el estado en consecuencia.
+
+En resumen, un `reducer` en React es una función que actualiza el estado de manera predecible en respuesta a acciones, proporcionando una forma estructurada y mantenible de manejar el estado complejo en aplicaciones React.
+
+En resumen:
+
 1. Es una función común y corriente.
 2. Debe ser una función pura.
+	1. No debe tener efectos secundarios.
+	2. No debe realizar tareas asíncronas.
+	3. Debe retornar siempre un nuevo estado
+	4. No debe llamar al `localStorage` o `sessionStorage`.
+	5. No debe requerir más que una acción que puede tener un argumento.
 3. Debe de retornar un nuevo estado.
 4. Usualmente, solo recibe dos argumentos.
 	1. El valor inicial (initialState).
@@ -8285,10 +8347,22 @@ Esta es una sección dedicada a comprender el concepto de un Reducer, el cual es
 
 
 
-`src > components > GifGrid.jsx`
+
 
 ```jsx
+const todoReducer = () => {
+
+};
 ```
+
+```jsx
+const initialTodos = {
+
+};
+```
+
+- [Apuntes: useReducer()](https://github.com/aleroses/Platzi/blob/master/DW/3-avanzado/1.react.js/YouTube/react-js-desde-cero.md#28-usereducer)
+- [[react-js-desde-cero#**28.** useReducer()]]
 
 👈👀
 ❯
