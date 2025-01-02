@@ -8405,12 +8405,14 @@ console.log({ state: todos });
 // });
 ```
 
-### 6. 
+### 6. useReducer - Todo List
 
 `src > components > GifGrid.jsx`
 
 ```jsx
 ```
+
+[useReducer](https://es.react.dev/reference/react/useReducer)
 
 👈👀
 ❯
