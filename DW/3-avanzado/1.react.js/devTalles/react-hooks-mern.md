@@ -8360,11 +8360,50 @@ import "./08-useReducer/intro-reducer";
 console.log("Hi world");
 ```
 
-### 5. 
+### 5. Idea general de un reducer - Vía código
 
-`src > components > GifGrid.jsx`
+`src > 08-useReducer > intro-reducer.js`
 
-```jsx
+```js
+const initialState = [
+  {
+    id: 1,
+    todo: "Collecting the Soul Stone",
+    done: false,
+  },
+];
+
+const todoReducer = (state = initialState, action = {}) => {
+  if (action.type === "[TODO] add todo") {
+    return [...state, action.payload];
+  }
+  return state;
+};
+
+let todos = todoReducer();
+
+const newTodo = {
+  id: 2,
+  todo: "Collecting the power stone",
+  done: false,
+};
+
+const addTodoAction = {
+  type: "[TODO] add todo",
+  payload: newTodo,
+};
+
+todos = todoReducer(todos, addTodoAction);
+
+console.log({ state: todos });
+
+// Modifying in this way is bad practice
+// todos.push({
+//   id: 2,
+//   todo: "Collecting the power stone",
+//   done: false,
+// });
+
 ```
 
 👈👀
