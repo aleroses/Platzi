@@ -8544,6 +8544,35 @@ export const TodoApp = () => {
 };
 ```
 
+
+
+### 8.
+
+`src > components > GifGrid.jsx`
+
+```jsx
+```
+
+`src > components > GifGrid.jsx`
+
+```jsx
+```
+
+`src > components > GifGrid.jsx`
+
+```jsx
+```
+
+`src > components > GifGrid.jsx`
+
+```jsx
+```
+
+`src > components > GifGrid.jsx`
+
+```jsx
+```
+
 👈👀
 ❯
 👈👀👇
@@ -8551,9 +8580,6 @@ export const TodoApp = () => {
 🔥
 🚫
 🔘
-
-### 8.
-
 ### 9. 
 
 ### 10.
