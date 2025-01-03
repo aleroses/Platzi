@@ -8407,9 +8407,77 @@ console.log({ state: todos });
 
 ### 6. useReducer - Todo List
 
-`src > components > GifGrid.jsx`
+`src > main.jsx`
 
 ```jsx
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+
+import "./index.css";
+
+import { TodoApp } from "./08-useReducer/TodoApp";
+
+createRoot(document.getElementById("root")).render(
+  <StrictMode>
+    <TodoApp />
+  </StrictMode>
+);
+```
+
+`src > 08-useReducer > todoReducer.js`
+
+```jsx
+export const todoReducer = (initialState = [], action) => {
+  switch (action.type) {
+   🔥 case "ABC": 👈👀👇
+      throw new Error(
+        "Action.type = ABC isn't implemented"
+      );
+
+    default:
+      return initialState;
+  }
+};
+```
+
+`src > 08-useReducer > TodoApp.jsx`
+
+```jsx
+import { useReducer } from "react";
+import { todoReducer } from "./todoReducer";
+
+const initialState = [
+  {
+    id: new Date().getTime(),
+    description: "Collecting the Soul Stone",
+    done: false,
+  },
+  {
+    id: new Date().getTime() * 3,
+    description: "Collecting the Soul Stone",
+    done: false,
+  },
+];
+
+export const TodoApp = () => {
+  const [todos, dispatch] = useReducer(
+    todoReducer, // List of "cases" to choose
+    initialState // New incoming data
+  );
+
+  return (
+    <>
+      <h1>TodoApp</h1>
+      <hr />
+      <ul>
+        <li>Item 1</li>
+        <li>Item 2</li>
+        <li>Item 3</li>
+      </ul>
+    </>
+  );
+};
+
 ```
 
 [useReducer](https://es.react.dev/reference/react/useReducer)
