@@ -8477,24 +8477,71 @@ export const TodoApp = () => {
     </>
   );
 };
-
 ```
 
 [useReducer](https://es.react.dev/reference/react/useReducer)
 
-👈👀
-❯
-👈👀👇
-👈👀📌
-🔥
-🚫
-🔘
+### 7. Creando el cascarón de la lista de TODOs
 
-### 7. 
-
-`src > components > GifGrid.jsx`
+`src > 08-useReducer > TodoApp.jsx`
 
 ```jsx
+import { useReducer } from "react";
+import { todoReducer } from "./todoReducer";
+
+const initialState = [
+  {
+    id: new Date().getTime(),
+    description: "Collecting the Soul Stone",
+    done: false,
+  },
+  {
+    id: new Date().getTime() * 3,
+    description: "Collecting the Soul Stone",
+    done: false,
+  },
+];
+
+export const TodoApp = () => {
+  const [todos, dispatch] = useReducer(
+    todoReducer, // List of "cases" to choose
+    initialState // New incoming data
+  );
+
+  return (
+    <>
+      <h1>
+        TodoApp: 10, <small>Pending: 2</small>
+      </h1>
+      <hr />
+
+      <div>
+        <div>
+          <ul>
+            {todos.map((todo) => (
+              <li key={todo.id}>
+                <span>Item 1</span>
+                <button>Delete</button>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div>
+          <h4>Add TODO</h4>
+          <hr />
+          <form action="">
+            <input
+              type="text"
+              placeholder="what is to be done?"
+            />
+            <button type="submit">Add</button>
+          </form>
+        </div>
+      </div>
+    </>
+  );
+};
 ```
 
 👈👀
