@@ -8544,9 +8544,7 @@ export const TodoApp = () => {
 };
 ```
 
-
-
-### 8.
+### 8. Tarea: Crear componentes y emitir eventos
 
 `src > components > GifGrid.jsx`
 
