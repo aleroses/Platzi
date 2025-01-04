@@ -8685,7 +8685,7 @@ export const TodoAdd = ({ updateTodos }) => {
 };
 ```
 
-Para esta clase se usó el `useForm()` de clases anteriores. Tener en cuenta que el `formState` se está enviando desestructurado, por eso podemos usar `description`
+Para esta clase se usó el `useForm()` de clases anteriores. Tener en cuenta que el `formState` se está enviando desestructurado, por eso podemos usar `description` directamente.
 
 `src > components > GifGrid.jsx`
 
