@@ -8546,6 +8546,7 @@ export const TodoApp = () => {
 
 ### 8. Tarea: Crear componentes y emitir eventos
 
+### 9. Resolución de la tarea - TodoApp
 `src > 08-useReducer > TodoApp.jsx`
 
 ```jsx
