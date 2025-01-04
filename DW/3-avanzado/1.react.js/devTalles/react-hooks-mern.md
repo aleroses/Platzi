@@ -8546,25 +8546,146 @@ export const TodoApp = () => {
 
 ### 8. Tarea: Crear componentes y emitir eventos
 
-`src > components > GifGrid.jsx`
+`src > 08-useReducer > TodoApp.jsx`
 
 ```jsx
+import { useReducer } from "react";
+import { todoReducer } from "./todoReducer";
+import { TodoList } from "./TodoList";
+import { TodoAdd } from "./TodoAdd";
+
+const initialState = [
+  {
+    id: new Date().getTime(),
+    description: "Collecting the Soul Stone",
+    done: false,
+  },
+  {
+    id: new Date().getTime() * 3,
+    description: "Collecting the Soul Stone",
+    done: false,
+  },
+];
+
+export const TodoApp = () => {
+  const [todos, dispatch] = useReducer(
+    todoReducer, // List of "cases" to choose
+    initialState // New incoming data
+  );
+
+  const handleNewTodo = (todo) => {
+    const newList = { ...todos, todo };
+
+    return newList;
+  };
+
+  return (
+    <>
+      <h1>
+        TodoApp: 10, <small>Pending: 2</small>
+      </h1>
+      <hr />
+
+      <div>
+        <div>
+          <TodoList todos={todos} />
+        </div>
+
+        <div>
+          <h4>Add TODO</h4>
+          <hr />
+          <TodoAdd updateTodos={handleNewTodo} />
+        </div>
+      </div>
+    </>
+  );
+};
 ```
 
-`src > components > GifGrid.jsx`
+`src > 08-useReducer > TodoList.jsx`
 
 ```jsx
+import React from "react";
+import { TodoItem } from "./TodoItem";
+
+export const TodoList = ({ todos }) => {
+  return (
+    <ul>
+      {todos.map((todo) => (
+        <TodoItem
+          key={todo.id}
+          id={todo.id}
+          task={todo.description}
+        />
+      ))}
+    </ul>
+  );
+};
 ```
 
-`src > components > GifGrid.jsx`
+`src > 08-useReducer > TodoItem.jsx`
 
 ```jsx
+export const TodoItem = ({
+  id = "01",
+  task = "Task 01",
+}) => {
+  return (
+    <>
+      <li>
+        <span>{task}</span>
+        <br />
+        <button>Delete</button>
+      </li>
+    </>
+  );
+};
 ```
 
-`src > components > GifGrid.jsx`
+`src > 08-useReducer > TodoAdd.jsx`
 
 ```jsx
+import { useState } from "react";
+import { useForm } from "../hooks/useForm";
+
+export const TodoAdd = ({ updateTodos }) => {
+  const {
+    description, // formState Unstructured
+    formState,
+    handleInputChange,
+    handleResetForm,
+  } = useForm({
+    id: new Date().getTime() * 3,
+    description: "",
+    done: false,
+  });
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    if (description.length <= 1) return;
+
+    updateTodos(formState);
+
+    handleResetForm();
+  };
+
+  return (
+    <form action="" onSubmit={handleSubmit}>
+      <input
+        type="text"
+        placeholder="Enter a task"
+        name="description" // [name] of useForm
+        value={description}
+        onChange={handleInputChange}
+      />
+      <button type="submit">Add</button>
+    </form>
+  );
+};
 ```
+
+Para esta clase se usó el `useForm()` de clases anteriores. Tener en cuenta que el `formState` se está enviando desestructurado, por eso podemos usar `description`
 
 `src > components > GifGrid.jsx`
 
