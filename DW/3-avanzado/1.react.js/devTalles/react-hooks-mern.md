@@ -8688,6 +8688,82 @@ export const TodoAdd = ({ updateTodos }) => {
 
 Para esta clase se usó el `useForm()` de clases anteriores. Tener en cuenta que el `formState` se está enviando desestructurado, por eso podemos usar `description` directamente.
 
+### 10. Agregar un nuevo TODO
+
+`src > 08-useReducer > todoReducer.js`
+
+```jsx
+export const todoReducer = (initialState = [], action) => {
+  switch (action.type) { 👈👀👇
+    case "[TODO] Add Todo":
+      return [...initialState, action.payload];
+
+    default:
+      return initialState;
+  }
+};
+```
+
+`src > 08-useReducer > TodoApp.jsx`
+
+```jsx
+import { useReducer } from "react";
+import { todoReducer } from "./todoReducer";
+import { TodoList } from "./TodoList";
+import { TodoAdd } from "./TodoAdd";
+
+const initialState = [
+  {
+    id: new Date().getTime(),
+    description: "Collecting the Soul Stone",
+    done: false,
+  },
+  {
+    id: new Date().getTime() * 3,
+    description: "Collecting the Soul Stone",
+    done: false,
+  },
+];
+
+export const TodoApp = () => {
+  const [todos, dispatch] = useReducer(
+    todoReducer, // List of "cases" to choose
+    initialState // New incoming data
+  );
+
+  const handleNewTodo = (todo) => {
+    const action = { 👈👀👇
+      type: "[TODO] Add Todo",
+      payload: todo,
+    };
+
+    dispatch(action); 👈👀
+  };
+
+  return (
+    <>
+      <h1>
+        TodoApp: 10, <small>Pending: 2</small>
+      </h1>
+      <hr />
+
+      <div>
+        <div>
+          <TodoList todos={todos} />
+        </div>
+
+        <div>
+          <h4>Add TODO</h4>
+          <hr />
+          <TodoAdd updateTodos={handleNewTodo} />
+        </div>
+      </div>
+    </>
+  );
+};
+```
+
+
 `src > components > GifGrid.jsx`
 
 ```jsx
@@ -8700,9 +8776,356 @@ Para esta clase se usó el `useForm()` de clases anteriores. Tener en cuenta que
 🔥
 🚫
 🔘
-### 9. 
 
-### 10.
+```bash
+npm install react@latest react-dom@latest
+# o
+yarn add react@latest react-dom@latest
+```
+
+### 11. 
+
+`src > components > GifGrid.jsx`
+
+```jsx
+```
+
+
+`src > components > GifGrid.jsx`
+
+```jsx
+```
+
+
+`src > components > GifGrid.jsx`
+
+```jsx
+```
+
+👈👀
+❯
+👈👀👇
+👈👀📌
+🔥
+🚫
+🔘
+
+```bash
+npm install react@latest react-dom@latest
+# o
+yarn add react@latest react-dom@latest
+```
+
+### 12. 
+
+`src > components > GifGrid.jsx`
+
+```jsx
+```
+
+
+`src > components > GifGrid.jsx`
+
+```jsx
+```
+
+
+`src > components > GifGrid.jsx`
+
+```jsx
+```
+
+👈👀
+❯
+👈👀👇
+👈👀📌
+🔥
+🚫
+🔘
+
+```bash
+npm install react@latest react-dom@latest
+# o
+yarn add react@latest react-dom@latest
+```
+
+### 13. 
+
+`src > components > GifGrid.jsx`
+
+```jsx
+```
+
+
+`src > components > GifGrid.jsx`
+
+```jsx
+```
+
+
+`src > components > GifGrid.jsx`
+
+```jsx
+```
+
+👈👀
+❯
+👈👀👇
+👈👀📌
+🔥
+🚫
+🔘
+
+```bash
+npm install react@latest react-dom@latest
+# o
+yarn add react@latest react-dom@latest
+```
+
+### 14. 
+
+`src > components > GifGrid.jsx`
+
+```jsx
+```
+
+
+`src > components > GifGrid.jsx`
+
+```jsx
+```
+
+
+`src > components > GifGrid.jsx`
+
+```jsx
+```
+
+👈👀
+❯
+👈👀👇
+👈👀📌
+🔥
+🚫
+🔘
+
+```bash
+npm install react@latest react-dom@latest
+# o
+yarn add react@latest react-dom@latest
+```
+
+### 15. 
+
+`src > components > GifGrid.jsx`
+
+```jsx
+```
+
+
+`src > components > GifGrid.jsx`
+
+```jsx
+```
+
+
+`src > components > GifGrid.jsx`
+
+```jsx
+```
+
+👈👀
+❯
+👈👀👇
+👈👀📌
+🔥
+🚫
+🔘
+
+```bash
+npm install react@latest react-dom@latest
+# o
+yarn add react@latest react-dom@latest
+```
+
+### 16. 
+
+`src > components > GifGrid.jsx`
+
+```jsx
+```
+
+
+`src > components > GifGrid.jsx`
+
+```jsx
+```
+
+
+`src > components > GifGrid.jsx`
+
+```jsx
+```
+
+👈👀
+❯
+👈👀👇
+👈👀📌
+🔥
+🚫
+🔘
+
+```bash
+npm install react@latest react-dom@latest
+# o
+yarn add react@latest react-dom@latest
+```
+
+### 17. 
+
+`src > components > GifGrid.jsx`
+
+```jsx
+```
+
+
+`src > components > GifGrid.jsx`
+
+```jsx
+```
+
+
+`src > components > GifGrid.jsx`
+
+```jsx
+```
+
+👈👀
+❯
+👈👀👇
+👈👀📌
+🔥
+🚫
+🔘
+
+```bash
+npm install react@latest react-dom@latest
+# o
+yarn add react@latest react-dom@latest
+```
+
+### 18. 
+
+`src > components > GifGrid.jsx`
+
+```jsx
+```
+
+
+`src > components > GifGrid.jsx`
+
+```jsx
+```
+
+
+`src > components > GifGrid.jsx`
+
+```jsx
+```
+
+👈👀
+❯
+👈👀👇
+👈👀📌
+🔥
+🚫
+🔘
+
+```bash
+npm install react@latest react-dom@latest
+# o
+yarn add react@latest react-dom@latest
+```
+
+### 19. 
+
+`src > components > GifGrid.jsx`
+
+```jsx
+```
+
+
+`src > components > GifGrid.jsx`
+
+```jsx
+```
+
+
+`src > components > GifGrid.jsx`
+
+```jsx
+```
+
+👈👀
+❯
+👈👀👇
+👈👀📌
+🔥
+🚫
+🔘
+
+```bash
+npm install react@latest react-dom@latest
+# o
+yarn add react@latest react-dom@latest
+```
+
+### 11. 
+
+`src > components > GifGrid.jsx`
+
+```jsx
+```
+
+
+`src > components > GifGrid.jsx`
+
+```jsx
+```
+
+
+`src > components > GifGrid.jsx`
+
+```jsx
+```
+
+👈👀
+❯
+👈👀👇
+👈👀📌
+🔥
+🚫
+🔘
+
+```bash
+npm install react@latest react-dom@latest
+# o
+yarn add react@latest react-dom@latest
+```
+
+### 11. 
+
+`src > components > GifGrid.jsx`
+
+```jsx
+```
+
+
+`src > components > GifGrid.jsx`
+
+```jsx
+```
+
 
 `src > components > GifGrid.jsx`
 
