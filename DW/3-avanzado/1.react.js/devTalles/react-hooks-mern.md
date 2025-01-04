@@ -8763,26 +8763,6 @@ export const TodoApp = () => {
 };
 ```
 
-
-`src > components > GifGrid.jsx`
-
-```jsx
-```
-
-👈👀
-❯
-👈👀👇
-👈👀📌
-🔥
-🚫
-🔘
-
-```bash
-npm install react@latest react-dom@latest
-# o
-yarn add react@latest react-dom@latest
-```
-
 ### 11. 
 
 `src > components > GifGrid.jsx`
