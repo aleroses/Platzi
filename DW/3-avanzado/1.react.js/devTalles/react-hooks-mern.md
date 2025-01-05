@@ -8957,7 +8957,8 @@ export const TodoApp = () => {
 };
 ```
 
-[[react-hooks-mern#9.16 Incorporar caché]]
+- [[react-hooks-mern#9.16 Incorporar caché]]
+- [# Uso del local storage en JavaScript](https://www.youtube.com/watch?v=hb8O0qRqiSk)
 
 ### 12. 
 
