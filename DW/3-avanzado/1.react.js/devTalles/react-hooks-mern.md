@@ -9096,21 +9096,8 @@ export const TodoItem = ({
   );
 };
 ```
-☝️👆
-👈👀
-❯
-👈👀👇
-👈👀☝️
-👈👀📌
-🔥
-🚫
-🔘
 
-```bash
-npm install react@latest react-dom@latest
-# o
-yarn add react@latest react-dom@latest
-```
+Pasamos la función `handleDeleteTodo(id)` desde el padre hasta el último hijo del hijo, esto para llegar hasta donde está el `button` y poder hacer `onClick` pasando la función con su `id`.
 
 ### 13. 
 
@@ -9131,9 +9118,11 @@ yarn add react@latest react-dom@latest
 ```jsx
 ```
 
+☝️👆
 👈👀
 ❯
 👈👀👇
+👈👀☝️
 👈👀📌
 🔥
 🚫
@@ -9164,9 +9153,11 @@ yarn add react@latest react-dom@latest
 ```jsx
 ```
 
+☝️👆
 👈👀
 ❯
 👈👀👇
+👈👀☝️
 👈👀📌
 🔥
 🚫
@@ -9362,9 +9353,11 @@ yarn add react@latest react-dom@latest
 ```jsx
 ```
 
+☝️👆
 👈👀
 ❯
 👈👀👇
+👈👀☝️
 👈👀📌
 🔥
 🚫
@@ -9395,9 +9388,11 @@ yarn add react@latest react-dom@latest
 ```jsx
 ```
 
+☝️👆
 👈👀
 ❯
 👈👀👇
+👈👀☝️
 👈👀📌
 🔥
 🚫
