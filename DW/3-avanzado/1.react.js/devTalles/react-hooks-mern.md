@@ -8921,7 +8921,7 @@ export const TodoApp = () => {
   );
 
   useEffect(() => {
-    // Solo strings
+    // Only strings 👈👀👇
     localStorage.setItem("todos", JSON.stringify(todos));
   }, [todos]); // Se ejecuta solo cuando todos cambia
 
