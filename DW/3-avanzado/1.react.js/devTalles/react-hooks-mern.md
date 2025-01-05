@@ -9099,23 +9099,178 @@ export const TodoItem = ({
 
 Pasamos la función `handleDeleteTodo(id)` desde el padre hasta el último hijo del hijo, esto para llegar hasta donde está el `button` y poder hacer `onClick` pasando la función con su `id`.
 
-### 13. 
+### 13. Toggle Todo - Marcar como completado o pendiente un TODO
 
-`src > components > GifGrid.jsx`
+`src > 08-useReducer > todoReducer.js`
 
 ```jsx
+export const todoReducer = (initialState = [], action) => {
+  switch (action.type) {
+    case "[TODO] Add Todo":
+      return [...initialState, action.payload];
+
+    case "[TODO] Remove Todo":
+      return initialState.filter(
+        (todo) => todo.id !== action.payload
+      );
+
+    case "[TODO] Toggle Todo": 👈👀👇
+      return initialState.map((todo) => {
+        if (todo.id === action.payload) {
+          return {
+            ...todo,
+            done: !todo.done,
+          };
+        }
+
+        // .map creates a new array with the modifications of each element that passed through it.
+        return todo; // [{}, {}, {}]
+      });
+
+    default:
+      return initialState;
+  }
+};
 ```
 
-
-`src > components > GifGrid.jsx`
+`src > 08-useReducer > TodoApp.jsx`
 
 ```jsx
+import { useEffect, useReducer } from "react";
+import { todoReducer } from "./todoReducer";
+import { TodoList } from "./TodoList";
+import { TodoAdd } from "./TodoAdd";
+
+const initialState = [
+  // {
+  //   id: new Date().getTime(),
+  //   description: "Collecting the Soul Stone",
+  //   done: false,
+  // },
+];
+
+const init = () => {
+  return JSON.parse(localStorage.getItem("todos") || []);
+};
+
+export const TodoApp = () => {
+  const [todos, dispatch] = useReducer(
+    todoReducer, // List of "cases" to choose
+    initialState, // New incoming data
+    init
+  );
+
+  useEffect(() => {
+    localStorage.setItem("todos", JSON.stringify(todos));
+  }, [todos]);
+
+  const handleNewTodo = (todo) => {
+    const action = {
+      type: "[TODO] Add Todo",
+      payload: todo,
+    };
+
+    dispatch(action);
+  };
+
+  const handleDeleteTodo = (id) => {
+    dispatch({
+      type: "[TODO] Remove Todo",
+      payload: id,
+    });
+  };
+
+  const handleToggleTodo = (id) => {
+    dispatch({ 👈👀👇
+      type: "[TODO] Toggle Todo",
+      payload: id,
+    });
+  };
+
+  return (
+    <>
+      <h1>
+        TodoApp: 10, <small>Pending: 2</small>
+      </h1>
+      <hr />
+
+      <div>
+        <div>
+          <TodoList
+            todos={todos}
+            onDeleteTodo={handleDeleteTodo}
+            onToggleTodo={handleToggleTodo}👈👀
+          />
+        </div>
+
+        <div>
+          <h4>Add TODO</h4>
+          <hr />
+          <TodoAdd updateTodos={handleNewTodo} />
+        </div>
+      </div>
+    </>
+  );
+};
 ```
 
-
-`src > components > GifGrid.jsx`
+`src > 08-useReducer > TodoList.jsx`
 
 ```jsx
+import React from "react";
+import { TodoItem } from "./TodoItem";
+
+export const TodoList = ({
+  todos = [],
+  onDeleteTodo,
+  onToggleTodo, 👈👀
+}) => {
+  return (
+    <ul>
+      {todos.map((todo) => (
+        <TodoItem
+          key={todo.id}
+          id={todo.id}
+          task={todo.description}
+          done={todo.done}
+          onDeleteTodo={onDeleteTodo}
+          onToggleTodo={onToggleTodo} 👈👀
+        />
+      ))}
+    </ul>
+  );
+};
+```
+
+`src > 08-useReducer > TodoItem.jsx`
+
+```jsx
+export const TodoItem = ({
+  id = "01",
+  task = "Task 01",
+  done,
+  onDeleteTodo,
+  onToggleTodo,
+}) => {
+  return (
+    <>
+      <li>
+        <span
+          className={`${👈👀👇
+            done ? "text-decoration-line-through" : ""
+          }`}
+          onClick={() => onToggleTodo(id)}👈👀
+        >
+          {task}
+        </span>
+        <br />
+        <button onClick={() => onDeleteTodo(id)}>
+          Delete
+        </button>
+      </li>
+    </>
+  );
+};
 ```
 
 ☝️👆
