@@ -9277,6 +9277,129 @@ export const TodoItem = ({
 
 ### 14. Tarea - useTodo
 
+`src > 08-useReducer > TodoApp.jsx`
+
+```jsx
+import { useEffect, useReducer } from "react";
+import { todoReducer } from "./todoReducer";
+import { TodoList } from "./TodoList";
+import { TodoAdd } from "./TodoAdd";
+import { useTodo } from "../hooks/useTodo";
+
+export const TodoApp = () => {
+  const {
+    todos,
+    todosCount,
+    pendingTodos,
+    handleNewTodo,
+    handleDeleteTodo,
+    handleToggleTodo,
+  } = useTodo();
+
+  console.log(todosCount, pendingTodos);
+
+  return (
+    <>
+      <h1>
+        TodoApp: {todosCount},
+        <small>Pending: {pendingTodos}</small>
+      </h1>
+      <hr />
+
+      <div>
+        <div>
+          <TodoList
+            todos={todos}
+            onDeleteTodo={handleDeleteTodo}
+            onToggleTodo={handleToggleTodo}
+          />
+        </div>
+
+        <div>
+          <h4>Add TODO</h4>
+          <hr />
+          <TodoAdd updateTodos={handleNewTodo} />
+        </div>
+      </div>
+    </>
+  );
+};
+```
+
+`src > hooks > useTodo.js`
+
+```jsx
+import { useEffect, useReducer } from "react";
+import { todoReducer } from "../08-useReducer/todoReducer";
+
+const initialState = [];
+const init = () => {
+  // const obj = localStorage.getItem("todos");
+
+  return JSON.parse(localStorage.getItem("todos") || []);
+};
+
+export const useTodo = () => {
+  const [todos, dispatch] = useReducer(
+    todoReducer,
+    initialState,
+    init
+  );
+
+  useEffect(() => {
+    localStorage.setItem("todos", JSON.stringify(todos));
+  }, [todos]);
+
+  const todosCount = todos.length;
+
+  const pendingTodos = todos.filter((item) => {
+    // !item.done
+    return item.done === false;
+  }).length;
+
+  // console.log(todosCount, pendingTodos);
+
+  const handleNewTodo = (todo) => {
+    const action = {
+      type: "[TODO] Add Todo",
+      payload: todo,
+    };
+
+    dispatch(action);
+  };
+
+  const handleDeleteTodo = (id) => {
+    const action = {
+      type: "[TODO] Remove Todo",
+      payload: id,
+    };
+
+    dispatch(action);
+  };
+
+  const handleToggleTodo = (id) => {
+    const action = {
+      type: "[TODO] Toggle Todo",
+      payload: id,
+    };
+
+    dispatch(action);
+  };
+
+  return {
+    todos,
+    todosCount,
+    pendingTodos,
+    handleNewTodo,
+    handleDeleteTodo,
+    handleToggleTodo,
+  };
+};
+```
+
+### 15. Resolución de la tarea - useTodos
+
+### 16. 
 `src > components > GifGrid.jsx`
 
 ```jsx
@@ -9310,39 +9433,6 @@ npm install react@latest react-dom@latest
 yarn add react@latest react-dom@latest
 ```
 
-### 15. 
-
-`src > components > GifGrid.jsx`
-
-```jsx
-```
-
-
-`src > components > GifGrid.jsx`
-
-```jsx
-```
-
-
-`src > components > GifGrid.jsx`
-
-```jsx
-```
-
-👈👀
-❯
-👈👀👇
-👈👀📌
-🔥
-🚫
-🔘
-
-```bash
-npm install react@latest react-dom@latest
-# o
-yarn add react@latest react-dom@latest
-```
-
 ### 16. 
 
 `src > components > GifGrid.jsx`
@@ -9362,9 +9452,11 @@ yarn add react@latest react-dom@latest
 ```jsx
 ```
 
+☝️👆
 👈👀
 ❯
 👈👀👇
+👈👀☝️
 👈👀📌
 🔥
 🚫
@@ -9395,9 +9487,11 @@ yarn add react@latest react-dom@latest
 ```jsx
 ```
 
+☝️👆
 👈👀
 ❯
 👈👀👇
+👈👀☝️
 👈👀📌
 🔥
 🚫
@@ -9428,9 +9522,11 @@ yarn add react@latest react-dom@latest
 ```jsx
 ```
 
+☝️👆
 👈👀
 ❯
 👈👀👇
+👈👀☝️
 👈👀📌
 🔥
 🚫
@@ -9461,9 +9557,11 @@ yarn add react@latest react-dom@latest
 ```jsx
 ```
 
+☝️👆
 👈👀
 ❯
 👈👀👇
+👈👀☝️
 👈👀📌
 🔥
 🚫
