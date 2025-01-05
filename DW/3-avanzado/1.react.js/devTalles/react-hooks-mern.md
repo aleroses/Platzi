@@ -8960,28 +8960,147 @@ export const TodoApp = () => {
 - [[react-hooks-mern#9.16 Incorporar caché]]
 - [# Uso del local storage en JavaScript](https://www.youtube.com/watch?v=hb8O0qRqiSk)
 
-### 12. 
+### 12. Borrar un TODO
 
-`src > components > GifGrid.jsx`
+`src > 08-useReducer > todoReducer.js`
 
-```jsx
+```js
+export const todoReducer = (initialState = [], action) => {
+  switch (action.type) {
+    case "[TODO] Add Todo":
+      return [...initialState, action.payload];
+
+    case "[TODO] Remove Todo": 👈👀👇
+      return initialState.filter(
+        (todo) => todo.id !== action.payload
+      );
+    default:
+      return initialState;
+  }
+};
 ```
 
-
-`src > components > GifGrid.jsx`
-
-```jsx
-```
-
-
-`src > components > GifGrid.jsx`
+`src > 08-useReducer > TodoApp.jsx`
 
 ```jsx
+import { useEffect, useReducer } from "react";
+import { todoReducer } from "./todoReducer";
+import { TodoList } from "./TodoList";
+import { TodoAdd } from "./TodoAdd";
+
+const initialState = [
+  // {
+  //   id: new Date().getTime(),
+  //   description: "Collecting the Soul Stone",
+  //   done: false,
+  // },
+];
+
+const init = () => {
+  return JSON.parse(localStorage.getItem("todos") || []);
+};
+
+export const TodoApp = () => {
+  const [todos, dispatch] = useReducer(
+    todoReducer, // List of "cases" to choose
+    initialState, // New incoming data
+    init
+  );
+
+  useEffect(() => {
+    localStorage.setItem("todos", JSON.stringify(todos));
+  }, [todos]);
+
+  const handleNewTodo = (todo) => {
+    const action = {
+      type: "[TODO] Add Todo",
+      payload: todo,
+    };
+
+    dispatch(action);
+  };
+
+  const handleDeleteTodo = (id) => {
+    dispatch({ 👈👀👇
+      type: "[TODO] Remove Todo",
+      payload: id,
+    });
+  };
+
+  return (
+    <>
+      <h1>
+        TodoApp: 10, <small>Pending: 2</small>
+      </h1>
+      <hr />
+
+      <div>
+        <div>
+          <TodoList
+            todos={todos}
+            onDeleteTodo={handleDeleteTodo} 👈👀
+          />
+        </div>
+
+        <div>
+          <h4>Add TODO</h4>
+          <hr />
+          <TodoAdd updateTodos={handleNewTodo} />
+        </div>
+      </div>
+    </>
+  );
+};
 ```
 
+`src > 08-useReducer > TodoList.jsx`
+
+```jsx
+import React from "react";
+import { TodoItem } from "./TodoItem";
+
+export const TodoList = ({ todos = [], onDeleteTodo👈👀 }) => {
+  return (
+    <ul>
+      {todos.map((todo) => (
+        <TodoItem
+          key={todo.id}
+          id={todo.id}
+          task={todo.description}
+          onDeleteTodo={onDeleteTodo} 👈👀
+        />
+      ))}
+    </ul>
+  );
+};
+```
+
+`src > 08-useReducer > TodoItem.jsx`
+
+```jsx
+export const TodoItem = ({
+  id = "01",
+  task = "Task 01",
+  onDeleteTodo, 👈👀
+}) => {
+  return (
+    <>
+      <li>
+        <span>{task}</span>
+        <br />
+        <button onClick={() => onDeleteTodo(id)}>
+          Delete 👈👀👆
+        </button>
+      </li>
+    </>
+  );
+};
+```
+☝️👆
 👈👀
 ❯
 👈👀👇
+👈👀☝️
 👈👀📌
 🔥
 🚫
