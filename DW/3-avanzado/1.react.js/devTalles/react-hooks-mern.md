@@ -8877,17 +8877,19 @@ function Counter() {
 2. La función `init` transforma ese valor inicial a un objeto `{ count: 0 }`.
 3. Esto es útil si necesitas una transformación previa o cálculo antes de usar el estado.
 
----
-
-### ✅ Ventajas de usar `init`:
+#### ✅ Ventajas de usar `init`:
 
 - **Optimización de rendimiento**: Evita cálculos innecesarios en cada render.
 - **Estado complejo**: Facilita inicializar estructuras de datos más elaboradas.
 - **Flexibilidad**: Puedes calcular el estado inicial desde una fuente externa (como `localStorage`).
 
-¿Deseas algún otro ejemplo o una situación más avanzada?
+#### DevTools
 
-application / localstorage / http...
+Para visualizar los datos almacenados en el `localStorage` nos vamos a los DevTools y buscamos:
+
+`application / localstorage / http...`
+
+
 key value
 
 
