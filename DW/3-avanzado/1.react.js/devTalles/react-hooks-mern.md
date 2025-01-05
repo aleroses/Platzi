@@ -9432,17 +9432,15 @@ En React, el **Context** es una herramienta que permite compartir datos globales
 - **Configuraciones de idioma**
 - **Datos compartidos (carrito de compras, estado global)**
 
-### ¿Para qué sirve?
-
 El Context sirve para evitar lo que se llama _prop drilling_, que ocurre cuando pasas datos de un componente padre a uno muy profundo a través de múltiples niveles intermedios.
 
-### ¿Cómo se usa?
+#### ¿Cómo se usa?
 
 1. **Crear el Contexto:** Se crea un contexto usando `React.createContext`.
 2. **Proveer el Contexto:** Un componente `Provider` envuelve a los componentes que necesitan acceder al contexto.
 3. **Consumir el Contexto:** Los componentes acceden al contexto usando `useContext`.
 
-### Ejemplo básico:
+#### Ejemplo básico:
 
 ```jsx
 import React, { createContext, useContext, useState } from 'react';
