@@ -9275,23 +9275,7 @@ export const TodoItem = ({
 
 [Doc .map](https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Array/map)
 
-☝️👆
-👈👀
-❯
-👈👀👇
-👈👀☝️
-👈👀📌
-🔥
-🚫
-🔘
-
-```bash
-npm install react@latest react-dom@latest
-# o
-yarn add react@latest react-dom@latest
-```
-
-### 14. 
+### 14. Tarea - useTodo
 
 `src > components > GifGrid.jsx`
 
