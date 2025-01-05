@@ -9435,6 +9435,7 @@ Aquí les dejo el código fuente de la sección tal cual lo dejé al final de la
 🔥
 🚫
 🔘
+🟣
 
 ```bash
 npm install react@latest react-dom@latest
