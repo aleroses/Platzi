@@ -8923,7 +8923,7 @@ export const TodoApp = () => {
   useEffect(() => {
     // Only strings 👈👀👇
     localStorage.setItem("todos", JSON.stringify(todos));
-  }, [todos]); // Se ejecuta solo cuando todos cambia
+  }, [todos]); // Runs only when “todos” changes
 
   const handleNewTodo = (todo) => {
     const action = {
