@@ -8763,7 +8763,134 @@ export const TodoApp = () => {
 };
 ```
 
-### 11. 
+### 11. Guardar y Leer TODOs en LocalStorage
+
+En React, el hook `useReducer` acepta un tercer parámetro opcional llamado `init`. Este es útil para inicializar el estado de manera más compleja o diferida.
+
+#### Sintaxis de `useReducer`:
+
+```jsx
+const [state, dispatch] = useReducer(reducer, initialState, init);
+```
+
+#### ¿Cómo funciona cada parámetro?
+
+1. **`reducer`**: Una función pura que toma el estado actual y una acción, y devuelve un nuevo estado.
+2. **`initialState`**: Valor inicial del estado.
+3. **`init`** (opcional): Una función de inicialización que transforma el `initialState` antes de usarlo.
+
+El `init` se utiliza cuando necesitas inicializar el estado de forma más compleja o cuando `initialState` es solo un valor básico que necesita ser transformado o calculado. Esto es útil en casos como:
+
+- Cargar un estado inicial desde `localStorage`.
+- Realizar cálculos previos antes de establecer el estado.
+- Prevenir la creación de objetos complejos innecesarios en cada render.
+
+#### Ejemplo sin `init`:
+
+```jsx
+const initialState = { count: 0 };
+
+function reducer(state, action) {
+  switch (action.type) {
+    case "increment":
+      return { count: state.count + 1 };
+    case "decrement":
+      return { count: state.count - 1 };
+    default:
+      return state;
+  }
+}
+
+function Counter() {
+  const [state, dispatch] = useReducer(
+    reducer,
+    initialState
+  );
+
+  return (
+    <div>
+      <p>Count: {state.count}</p>
+      <button
+        onClick={() => dispatch({ type: "increment" })}
+      >
+        +
+      </button>
+      <button
+        onClick={() => dispatch({ type: "decrement" })}
+      >
+        -
+      </button>
+    </div>
+  );
+}
+```
+
+#### Ejemplo con `init`:
+
+```jsx
+const initialState = 0;
+
+function reducer(state, action) {
+  switch (action.type) {
+    case "increment":
+      return state + 1;
+    case "decrement":
+      return state - 1;
+    default:
+      return state;
+  }
+}
+
+// Función de inicialización
+function init(initialValue) {
+  return { count: initialValue };
+}
+
+function Counter() {
+  const [state, dispatch] = useReducer(
+    reducer,
+    initialState,
+    init
+  );
+
+  return (
+    <div>
+      <p>Count: {state.count}</p>
+      <button
+        onClick={() => dispatch({ type: "increment" })}
+      >
+        +
+      </button>
+      <button
+        onClick={() => dispatch({ type: "decrement" })}
+      >
+        -
+      </button>
+    </div>
+  );
+}
+```
+
+¿Qué hace `init` aquí?
+
+1. **`initialState`** es `0`.
+2. La función `init` transforma ese valor inicial a un objeto `{ count: 0 }`.
+3. Esto es útil si necesitas una transformación previa o cálculo antes de usar el estado.
+
+---
+
+### ✅ Ventajas de usar `init`:
+
+- **Optimización de rendimiento**: Evita cálculos innecesarios en cada render.
+- **Estado complejo**: Facilita inicializar estructuras de datos más elaboradas.
+- **Flexibilidad**: Puedes calcular el estado inicial desde una fuente externa (como `localStorage`).
+
+¿Deseas algún otro ejemplo o una situación más avanzada?
+
+application / localstorage / http...
+key value
+
+
 
 `src > components > GifGrid.jsx`
 
@@ -8781,6 +8908,8 @@ export const TodoApp = () => {
 
 ```jsx
 ```
+
+[[react-hooks-mern#9.16 Incorporar caché]]
 
 👈👀
 ❯
