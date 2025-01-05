@@ -8887,10 +8887,11 @@ function Counter() {
 
 Para visualizar los datos almacenados en el `localStorage` nos vamos a los DevTools y buscamos:
 
-`application / localstorage / http...`
+`application / Local Storage / http...`
+
+Aparecerá una tabla `Key | Value` ahora seleccionamos `todos` y veremos los datos en la parte inferior.
 
 
-key value
 
 
 
