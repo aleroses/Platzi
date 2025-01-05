@@ -9399,41 +9399,15 @@ export const useTodo = () => {
 
 ### 15. Resolución de la tarea - useTodos
 
-### 16. 
-`src > components > GifGrid.jsx`
+### 16. Código fuente de la sección
 
-```jsx
-```
+Aquí les dejo el código fuente de la sección tal cual lo dejé al final de la última clase, espero que estemos aprendiendo mucho y sobre todo que cada vez comprendamos cómo funcionan los Hooks.
 
+[**GitHub - Fin sección 10**](https://github.com/Klerith/react-hooks/tree/fin-seccion-10)
 
-`src > components > GifGrid.jsx`
+##  11. Profundizando Hooks - useContext
 
-```jsx
-```
-
-
-`src > components > GifGrid.jsx`
-
-```jsx
-```
-
-☝️👆
-👈👀
-❯
-👈👀👇
-👈👀☝️
-👈👀📌
-🔥
-🚫
-🔘
-
-```bash
-npm install react@latest react-dom@latest
-# o
-yarn add react@latest react-dom@latest
-```
-
-### 16. 
+## 01. Introducción a la sección
 
 `src > components > GifGrid.jsx`
 
@@ -9468,7 +9442,7 @@ npm install react@latest react-dom@latest
 yarn add react@latest react-dom@latest
 ```
 
-### 17. 
+### 02. 
 
 `src > components > GifGrid.jsx`
 
