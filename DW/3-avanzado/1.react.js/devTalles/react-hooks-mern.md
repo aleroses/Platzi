@@ -8891,13 +8891,70 @@ Para visualizar los datos almacenados en el `localStorage` nos vamos a los DevTo
 
 Aparecerá una tabla `Key | Value` ahora seleccionamos `todos` y veremos los datos en la parte inferior.
 
+Ahora en nuestro proyecto:
 
-
-
-
-`src > components > GifGrid.jsx`
+`src > 08-useReducer > TodoApp.jsx`
 
 ```jsx
+import { useEffect, useReducer } from "react";
+import { todoReducer } from "./todoReducer";
+import { TodoList } from "./TodoList";
+import { TodoAdd } from "./TodoAdd";
+
+const initialState = [
+  // {
+  //   id: new Date().getTime(),
+  //   description: "Collecting the Soul Stone",
+  //   done: false,
+  // },
+];
+
+const init = () => { 👈👀👇
+  return JSON.parse(localStorage.getItem("todos") || []);
+};
+
+export const TodoApp = () => {
+  const [todos, dispatch] = useReducer(
+    todoReducer, // List of "cases" to choose
+    initialState, // New incoming data
+    init
+  );
+
+  useEffect(() => {
+    // Solo strings
+    localStorage.setItem("todos", JSON.stringify(todos));
+  }, [todos]); // Se ejecuta solo cuando todos cambia
+
+  const handleNewTodo = (todo) => {
+    const action = {
+      type: "[TODO] Add Todo",
+      payload: todo,
+    };
+
+    dispatch(action);
+  };
+
+  return (
+    <>
+      <h1>
+        TodoApp: 10, <small>Pending: 2</small>
+      </h1>
+      <hr />
+
+      <div>
+        <div>
+          <TodoList todos={todos} />
+        </div>
+
+        <div>
+          <h4>Add TODO</h4>
+          <hr />
+          <TodoAdd updateTodos={handleNewTodo} />
+        </div>
+      </div>
+    </>
+  );
+};
 ```
 
 
