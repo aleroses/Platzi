@@ -9409,6 +9409,22 @@ Aquí les dejo el código fuente de la sección tal cual lo dejé al final de la
 
 ## 01. Introducción a la sección
 
+### 02. Temas puntuales de la sección
+
+**¿Qué veremos en esta sección?**
+
+- Context
+- Provider
+- useContext
+- React Router
+- Links y NavLinks
+- CreateContext
+- SPA ( Single Page Application )
+
+El objetivo de la sección es principalmente aprender sobre el Context, el Router es un valor agregado que explotaremos mucho más en próximas secciones, pero al usar un Router, podemos explicar claramente el problema y necesidad del context.
+
+### 03. Introducción al Context 
+
 `src > components > GifGrid.jsx`
 
 ```jsx
@@ -9443,7 +9459,7 @@ npm install react@latest react-dom@latest
 yarn add react@latest react-dom@latest
 ```
 
-### 02. 
+
 
 `src > components > GifGrid.jsx`
 
@@ -9471,6 +9487,7 @@ yarn add react@latest react-dom@latest
 🔥
 🚫
 🔘
+🟣
 
 ```bash
 npm install react@latest react-dom@latest
@@ -9478,7 +9495,7 @@ npm install react@latest react-dom@latest
 yarn add react@latest react-dom@latest
 ```
 
-### 18. 
+
 
 `src > components > GifGrid.jsx`
 
@@ -9506,6 +9523,7 @@ yarn add react@latest react-dom@latest
 🔥
 🚫
 🔘
+🟣
 
 ```bash
 npm install react@latest react-dom@latest
