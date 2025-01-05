@@ -9425,6 +9425,79 @@ El objetivo de la sección es principalmente aprender sobre el Context, el Route
 
 ### 03. Introducción al Context 
 
+En React, el **Context** es una herramienta que permite compartir datos globales entre componentes sin necesidad de pasar props manualmente en cada nivel del árbol de componentes. Es especialmente útil para temas como:
+
+- **Temas (dark mode, light mode)**
+- **Autenticación de usuarios**
+- **Configuraciones de idioma**
+- **Datos compartidos (carrito de compras, estado global)**
+
+### ¿Para qué sirve?
+
+El Context sirve para evitar lo que se llama _prop drilling_, que ocurre cuando pasas datos de un componente padre a uno muy profundo a través de múltiples niveles intermedios.
+
+### ¿Cómo se usa?
+
+1. **Crear el Contexto:** Se crea un contexto usando `React.createContext`.
+2. **Proveer el Contexto:** Un componente `Provider` envuelve a los componentes que necesitan acceder al contexto.
+3. **Consumir el Contexto:** Los componentes acceden al contexto usando `useContext`.
+
+### Ejemplo básico:
+
+```jsx
+import React, { createContext, useContext, useState } from 'react';
+
+// 1. Crear el contexto
+const UserContext = createContext();
+
+// 2. Proveedor del contexto
+const UserProvider = ({ children }) => {
+  const [user, setUser] = useState('Henry');
+  return (
+    <UserContext.Provider value={{ user, setUser }}>
+      {children}
+    </UserContext.Provider>
+  );
+};
+
+// 3. Consumir el contexto en un componente hijo
+const UserProfile = () => {
+  const { user } = useContext(UserContext);
+  return <p>Usuario: {user}</p>;
+};
+
+// 4. Usar el proveedor en la aplicación
+const App = () => {
+  return (
+    <UserProvider>
+      <UserProfile />
+    </UserProvider>
+  );
+};
+
+export default App;
+```
+
+---
+
+### Diagrama en Mermaid
+
+```mermaid
+graph TD
+    A[App Component] --> B[UserProvider]
+    B --> C[UserProfile]
+    C --> D{useContext(UserContext)}
+    D --> E[Acceso al valor del contexto]
+```
+
+En este diagrama:
+
+- **App Component** usa el `UserProvider` para envolver los componentes.
+- **UserProfile** accede al contexto usando `useContext`.
+- El flujo de datos va desde el `UserProvider` hacia `UserProfile`.
+
+¿Deseas ampliar con un ejemplo más complejo o algo específico?
+
 `src > components > GifGrid.jsx`
 
 ```jsx
