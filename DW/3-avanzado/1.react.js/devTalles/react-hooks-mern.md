@@ -8957,33 +8957,7 @@ export const TodoApp = () => {
 };
 ```
 
-
-`src > components > GifGrid.jsx`
-
-```jsx
-```
-
-
-`src > components > GifGrid.jsx`
-
-```jsx
-```
-
 [[react-hooks-mern#9.16 Incorporar caché]]
-
-👈👀
-❯
-👈👀👇
-👈👀📌
-🔥
-🚫
-🔘
-
-```bash
-npm install react@latest react-dom@latest
-# o
-yarn add react@latest react-dom@latest
-```
 
 ### 12. 
 
