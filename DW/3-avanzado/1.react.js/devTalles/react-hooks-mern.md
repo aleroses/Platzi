@@ -9405,7 +9405,7 @@ Aquí les dejo el código fuente de la sección tal cual lo dejé al final de la
 
 [**GitHub - Fin sección 10**](https://github.com/Klerith/react-hooks/tree/fin-seccion-10)
 
-##  11. Profundizando Hooks - useContext
+## 🟣 11. Profundizando Hooks - useContext
 
 ## 01. Introducción a la sección
 
