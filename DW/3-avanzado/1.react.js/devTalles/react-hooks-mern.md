@@ -9747,11 +9747,13 @@ import { NavLink } from 'react-router-dom';
 
 No perdamos el foco:
 
-Al copiar html de bootstrap se pierde el proposito de la clase, que es aprender el uso y funcionamiento del NavLink. Al tener que quitar cosas que no son necesarias la clase se alarga innecesariamente viendo algo que no es de React ni de React Router.
+Además, quiero decir que al copiar html pre construido de Bootstrap se pierde el propósito de la clase, que es aprender el uso y funcionamiento del NavLink. Al tener que quitar cosas que no son necesarias, la clase se alarga innecesariamente viendo algo que no es de React ni de React Router, todo para que al final se termine eliminando la mayoría de código pegado.
 
-- No quiero que se vea lindo, quiero aprender react.
-- No quiero ver bootstrap
-- No se aprecia que cosa es de boostrap que cosa es de React o que es de React Router
+En resumen:
+
+- No quiero que se vea lindo, quiero aprender React.
+- No quiero ver Bootstrap, no es necesario.
+- No se aprecia que cosa es de Bootstrap qué cosa es de React o que es de React Router.
 
 Espero no se note la frustración 😅
 
