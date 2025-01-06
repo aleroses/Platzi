@@ -9516,25 +9516,69 @@ graph TD
 
 ### 4. Preparación de nuestra aplicación con rutas
 
-
-
-
 ```bash
+# Instalar React Router
 yarn add react-router-dom
 yarn add react-router-dom@7.1.1
-
 ```
 
-
-`src > components > GifGrid.jsx`
+`src > main.jsx`
 
 ```jsx
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+// I will see which of the two imports works 👈👀👇
+// import { BrowserRouter } from "react-router";
+import { BrowserRouter } from "react-router-dom";
+
+import "./index.css";
+
+import { MainApp } from "./09-useContext/MainApp";
+
+createRoot(document.getElementById("root")).render(
+  <BrowserRouter>
+    <StrictMode>
+      <MainApp />
+    </StrictMode>
+  </BrowserRouter>
+);
 ```
 
-
-`src > components > GifGrid.jsx`
+`src > 09-useContext > MainApp.jsx`
 
 ```jsx
+export const MainApp = () => {
+  return (
+    <>
+      <h1>MainApp</h1>
+      <hr />
+    </>
+  );
+};
+```
+
+`src > 09-useContext > AboutPage.jsx`
+
+```jsx
+export const AboutPage = () => {
+  return <div>AboutPage</div>;
+};
+```
+
+`src > 09-useContext > HomePage.jsx`
+
+```jsx
+export const HomePage = () => {
+  return <div>HomePage</div>;
+};
+```
+
+`src > 09-useContext > Loginpage.jsx`
+
+```jsx
+export const LoginPage = () => {
+  return <div>LoginPage</div>;
+};
 ```
 
 - [React Router v7](https://reactrouter.com/)
