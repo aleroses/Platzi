@@ -9647,21 +9647,32 @@ La diferencia principal entre la etiqueta `<a>` en HTML y el componente `<Link>`
 
 📌 Para estilizar `Link` se sigue usando `a` en el CSS.
 
-`src > components > GifGrid.jsx`
+`src > 09-useContext > MainApp.jsx`
 
 ```jsx
 ```
 
 
-`src > components > GifGrid.jsx`
+`src > 09-useContext > Navbar.jsx`
 
 ```jsx
 ```
 
 
-`src > components > GifGrid.jsx`
+`src > index.css`
 
-```jsx
+```css
+body {
+  padding: 20px;
+}
+
+button {
+  margin-right: 10px;
+}
+
+a {
+  margin-right: 5px;
+}
 ```
 
 ☝️👆
