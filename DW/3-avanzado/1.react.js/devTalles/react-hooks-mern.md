@@ -9732,7 +9732,7 @@ import { NavLink } from 'react-router-dom';
 - **`activeClassName`**: Asigna una clase CSS cuando el enlace está activo (cuando la ruta coincide).
 - **`isActive` (opcional)**: Permite personalizar cómo se determina si el enlace está activo, como usar un método para compararlo con la URL actual.
 
-### Estilo:
+#### Estilo:
 
 ```css
 .active-link {
