@@ -9528,8 +9528,8 @@ yarn add react-router-dom@7.1.1
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 // I will see which of the two imports works 👈👀👇
-// import { BrowserRouter } from "react-router";
-import { BrowserRouter } from "react-router-dom";
+// import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter } from "react-router";
 
 import "./index.css";
 
