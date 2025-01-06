@@ -9645,6 +9645,8 @@ La diferencia principal entre la etiqueta `<a>` en HTML y el componente `<Link>`
 
 `<a>` recarga la página, mientras que `<Link>` evita la recarga y permite la navegación de página en página dentro de una aplicación React.
 
+📌 Para estilizar `Link` se sigue usando `a` en el CSS.
+
 `src > components > GifGrid.jsx`
 
 ```jsx
