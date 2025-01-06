@@ -9716,6 +9716,45 @@ a {
 
 ### 07. NavLink
 
+**`NavLink`** es un componente de **React Router** que se utiliza para crear enlaces de navegación con estilo activado cuando la ruta correspondiente está activa. A diferencia de `<Link>`, `NavLink` agrega una clase CSS especial cuando la ruta está activa, lo que permite resaltar el enlace.
+
+```jsx
+import { NavLink } from 'react-router-dom';
+
+<NavLink to="/home" activeClassName="active-link">
+  Home
+</NavLink>
+```
+
+#### Explicación:
+
+- **`to`**: Define la ruta a la que el enlace llevará.
+- **`activeClassName`**: Asigna una clase CSS cuando el enlace está activo (cuando la ruta coincide).
+- **`isActive` (opcional)**: Permite personalizar cómo se determina si el enlace está activo, como usar un método para compararlo con la URL actual.
+
+### Estilo:
+
+```css
+.active-link {
+  color: red;
+  font-weight: bold;
+}
+```
+
+**En resumen:** `NavLink` es útil para agregar estilos activos a los enlaces en tu aplicación React, destacando el enlace cuando la ruta está activa.
+
+
+
+No perdamos el foco:
+
+Al copiar html de bootstrap se pierde el proposito de la clase, que es aprender el uso y funcionamiento del NavLink. Al tener que quitar cosas que no son necesarias la clase se alarga innecesariamente viendo algo que no es de React ni de React Router.
+
+- No quiero que se vea lindo, quiero aprender react.
+- No quiero ver bootstrap
+- No se aprecia que cosa es de boostrap que cosa es de React o que es de React Router
+
+Espero no se note la frustración 😅
+
 `src > components > GifGrid.jsx`
 
 ```jsx
