@@ -9541,7 +9541,7 @@ createRoot(document.getElementById("root")).render(
       <MainApp />
     </BrowserRouter>
   </StrictMode>
-	);
+);
 ```
 
 `src > 09-useContext > MainApp.jsx`
@@ -9595,98 +9595,40 @@ export const LoginPage = () => {
 - [Instalación v7.1.1](https://classic.yarnpkg.com/en/package/react-router-dom)
 - [Uso](https://reactrouter.com/start/library/installation)
 
-### 5. 
-☝️👆
-👈👀
-❯
-👈👀👇
-👈👀☝️
-👈👀📌
-🔥
-🚫
-🔘
-🟣
+### 5. Configurar Router en React
 
-
-```bash
-npm install react@latest react-dom@latest
-# o
-yarn add react@latest react-dom@latest
-```
-
-
-
-`src > components > GifGrid.jsx`
+`src > 09-useContext > MainApp.jsx`
 
 ```jsx
+import { Navigate, Route, Routes } from "react-router";
+import { HomePage } from "./HomePage";
+import { AboutPage } from "./AboutPage";
+import { LoginPage } from "./LoginPage";
+
+export const MainApp = () => {
+  return (
+    <>
+      <h1>MainApp</h1>
+      <hr />
+
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="login" element={<LoginPage />} />
+        <Route path="about" element={<AboutPage />} />
+        {/* <Route path="/*" element={<LoginPage />} /> */}
+        <Route
+          path="/*"
+          element={<Navigate to={<HomePage />} />}
+        />
+      </Routes>
+    </>
+  );
+};
 ```
 
+[React Router: routing](https://reactrouter.com/start/library/routing)
 
-`src > components > GifGrid.jsx`
-
-```jsx
-```
-
-
-`src > components > GifGrid.jsx`
-
-```jsx
-```
-
-☝️👆
-👈👀
-❯
-👈👀👇
-👈👀☝️
-👈👀📌
-🔥
-🚫
-🔘
-🟣
-
-```bash
-npm install react@latest react-dom@latest
-# o
-yarn add react@latest react-dom@latest
-```
-
-
-
-`src > components > GifGrid.jsx`
-
-```jsx
-```
-
-
-`src > components > GifGrid.jsx`
-
-```jsx
-```
-
-
-`src > components > GifGrid.jsx`
-
-```jsx
-```
-
-☝️👆
-👈👀
-❯
-👈👀👇
-👈👀☝️
-👈👀📌
-🔥
-🚫
-🔘
-🟣
-
-```bash
-npm install react@latest react-dom@latest
-# o
-yarn add react@latest react-dom@latest
-```
-
-### 19. 
+### 06. 
 
 `src > components > GifGrid.jsx`
 
