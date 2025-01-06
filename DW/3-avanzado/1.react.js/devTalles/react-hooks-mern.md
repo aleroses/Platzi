@@ -9834,6 +9834,25 @@ a {
 }
 ```
 
+### 08. 
+
+`src > components > GifGrid.jsx`
+
+```jsx
+```
+
+
+`src > components > GifGrid.jsx`
+
+```jsx
+```
+
+
+`src > components > GifGrid.jsx`
+
+```jsx
+```
+
 ☝️👆
 👈👀
 ❯
@@ -9850,7 +9869,77 @@ npm install react@latest react-dom@latest
 yarn add react@latest react-dom@latest
 ```
 
-### 11. 
+### 09. 
+
+`src > components > GifGrid.jsx`
+
+```jsx
+```
+
+
+`src > components > GifGrid.jsx`
+
+```jsx
+```
+
+
+`src > components > GifGrid.jsx`
+
+```jsx
+```
+
+☝️👆
+👈👀
+❯
+👈👀👇
+👈👀☝️
+👈👀📌
+🔥
+🚫
+🔘
+
+```bash
+npm install react@latest react-dom@latest
+# o
+yarn add react@latest react-dom@latest
+```
+
+### 10. 
+
+`src > components > GifGrid.jsx`
+
+```jsx
+```
+
+
+`src > components > GifGrid.jsx`
+
+```jsx
+```
+
+
+`src > components > GifGrid.jsx`
+
+```jsx
+```
+
+☝️👆
+👈👀
+❯
+👈👀👇
+👈👀☝️
+👈👀📌
+🔥
+🚫
+🔘
+
+```bash
+npm install react@latest react-dom@latest
+# o
+yarn add react@latest react-dom@latest
+```
+
+### 01. 
 
 `src > components > GifGrid.jsx`
 
