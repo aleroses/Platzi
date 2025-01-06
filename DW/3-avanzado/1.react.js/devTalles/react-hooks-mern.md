@@ -9798,15 +9798,7 @@ export const Navbar = () => {
   );
 };
 
-
-{
-  /* <>
-  <Link to="/">Home</Link>
-  <Link to="/about">About</Link>
-  <Link to="/login">Login</Link>
-</> */
-}
-
+// Antes también...
 {
   /* 
 <NavLink
@@ -9814,53 +9806,32 @@ export const Navbar = () => {
     `nav-link ${isActive ? "active" : ""}`
   }
   to="/"
-/>; 
+>
+  Home
+</NavLink> 
 */
 }
-
-// const var = "xd"
-
-/*  <nav>
-      <div>
-        <Link to="/">useContext</Link>
-        <div>
-          <ul>
-            <NavLink
-              className={({ isActive }) =>
-                `nav-link ${isActive ? "active" : ""}`
-              }
-              to="/"
-            >
-              Home
-            </NavLink>
-
-            <NavLink
-              className={({ isActive }) =>
-                `nav-link ${isActive ? "active" : ""}`
-              }
-              to="about"
-            >
-              About
-            </NavLink>
-
-            <NavLink
-              className={({ isActive }) =>
-                `nav-link ${isActive ? "active" : ""}`
-              }
-              to="login"
-            >
-              Login
-            </NavLink>
-          </ul>
-        </div>
-      </div>
-    </nav> */
 ```
 
+`src > index.css`
 
-`src > components > GifGrid.jsx`
+```css
+body {
+  padding: 20px;
+}
 
-```jsx
+button {
+  margin-right: 10px;
+}
+
+a {
+  margin-right: 5px;
+}
+
+.active {
+  color: palevioletred;
+  font-weight: bold;
+}
 ```
 
 ☝️👆
