@@ -9450,7 +9450,7 @@ const UserContext = createContext();
 
 // 2. Proveedor del contexto
 const UserProvider = ({ children }) => {
-  const [user, setUser] = useState('Henry');
+  const [user, setUser] = useState('Ghost');
   return (
     <UserContext.Provider value={{ user, setUser }}>
       {children}
@@ -9476,25 +9476,10 @@ const App = () => {
 export default App;
 ```
 
----
+![contex](https://i.postimg.cc/RhcGrh69/11-context.png)
 
-### Diagrama en Mermaid
+### 4. 
 
-```mermaid
-graph TD
-    A[App Component] --> B[UserProvider]
-    B --> C[UserProfile]
-    C --> D{useContext(UserContext)}
-    D --> E[Acceso al valor del contexto]
-```
-
-En este diagrama:
-
-- **App Component** usa el `UserProvider` para envolver los componentes.
-- **UserProfile** accede al contexto usando `useContext`.
-- El flujo de datos va desde el `UserProvider` hacia `UserProfile`.
-
-¿Deseas ampliar con un ejemplo más complejo o algo específico?
 
 `src > components > GifGrid.jsx`
 
