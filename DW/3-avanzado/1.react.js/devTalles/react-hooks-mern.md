@@ -9628,7 +9628,22 @@ export const MainApp = () => {
 
 [React Router: routing](https://reactrouter.com/start/library/routing)
 
-### 06. 
+### 06. Link
+
+La diferencia principal entre la etiqueta `<a>` en HTML y el componente `<Link>` de React Router es su comportamiento en el contexto de las aplicaciones de una sola página (SPA):
+
+1. **`<a>` en HTML:**
+    
+    - Navega a una nueva página completa y recarga la página en el navegador.
+    - Utiliza el atributo `href` para especificar la URL.
+2. **`<Link>` en React Router:**
+    
+    - Navega dentro de la misma aplicación SPA sin recargar la página.
+    - Utiliza el atributo `to` para especificar la ruta dentro de la aplicación, manteniendo la experiencia de navegación fluida.
+
+**En resumen:**
+
+`<a>` recarga la página, mientras que `<Link>` evita la recarga y permite la navegación de página en página dentro de una aplicación React.
 
 `src > components > GifGrid.jsx`
 
