@@ -9743,29 +9743,118 @@ import { NavLink } from 'react-router-dom';
 
 **En resumen:** `NavLink` es útil para agregar estilos activos a los enlaces en tu aplicación React, destacando el enlace cuando la ruta está activa.
 
+En nuestro proyecto:
 
-
-No perdamos el foco:
-
-Además, quiero decir que al copiar html pre construido de Bootstrap se pierde el propósito de la clase, que es aprender el uso y funcionamiento del NavLink. Al tener que quitar cosas que no son necesarias, la clase se alarga innecesariamente viendo algo que no es de React ni de React Router, todo para que al final se termine eliminando la mayoría de código pegado.
-
-En resumen:
-
-- No quiero que se vea lindo, quiero aprender React.
-- No quiero ver Bootstrap, no es necesario.
-- No se aprecia que cosa es de Bootstrap qué cosa es de React o que es de React Router.
-
-Espero no se note la frustración 😅
-
-`src > components > GifGrid.jsx`
+`src > 09-useContext > mainApp.jsx`
 
 ```jsx
+import { Navigate, Route, Routes } from "react-router";
+import { HomePage } from "./HomePage";
+import { AboutPage } from "./AboutPage";
+import { LoginPage } from "./LoginPage";
+import { Navbar } from "./Navbar";
+
+export const MainApp = () => {
+  return (
+    <>
+      <Navbar />
+      <hr />
+
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="login" element={<LoginPage />} />
+        <Route path="about" element={<AboutPage />} />
+        <Route
+          path="/*"
+          element={<Navigate to={<HomePage />} />}
+        />
+      </Routes>
+    </>
+  );
+};
 ```
 
-
-`src > components > GifGrid.jsx`
+`src > 09-useContext > Navbar.jsx`
 
 ```jsx
+import { Link, NavLink } from "react-router-dom";
+
+export const Navbar = () => {
+  return (
+    <nav>
+      <div>
+        <Link to="/">useContext</Link>
+        <div>
+          <ul>
+            <NavLink to="/">Home</NavLink>
+
+            <NavLink to="about">About</NavLink>
+
+            <NavLink to="login">Login</NavLink>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  );
+};
+
+
+{
+  /* <>
+  <Link to="/">Home</Link>
+  <Link to="/about">About</Link>
+  <Link to="/login">Login</Link>
+</> */
+}
+
+{
+  /* 
+<NavLink
+  className={({ isActive }) =>
+    `nav-link ${isActive ? "active" : ""}`
+  }
+  to="/"
+/>; 
+*/
+}
+
+// const var = "xd"
+
+/*  <nav>
+      <div>
+        <Link to="/">useContext</Link>
+        <div>
+          <ul>
+            <NavLink
+              className={({ isActive }) =>
+                `nav-link ${isActive ? "active" : ""}`
+              }
+              to="/"
+            >
+              Home
+            </NavLink>
+
+            <NavLink
+              className={({ isActive }) =>
+                `nav-link ${isActive ? "active" : ""}`
+              }
+              to="about"
+            >
+              About
+            </NavLink>
+
+            <NavLink
+              className={({ isActive }) =>
+                `nav-link ${isActive ? "active" : ""}`
+              }
+              to="login"
+            >
+              Login
+            </NavLink>
+          </ul>
+        </div>
+      </div>
+    </nav> */
 ```
 
 
