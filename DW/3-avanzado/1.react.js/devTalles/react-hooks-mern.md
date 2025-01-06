@@ -9478,6 +9478,42 @@ export default App;
 
 ![contex](https://i.postimg.cc/RhcGrh69/11-context.png)
 
+#### Diagrama **sin Context** (prop drilling)
+
+```mermaid
+graph TD
+    A[Root Component] --> B[Component 1]
+    B --> C[Component 2]
+    C --> D[Component 3]
+    D --> E[Component 4 initiating change]
+    E --> F[Component 5]
+    F --> G[Component 6]
+```
+
+- Los datos fluyen de un componente a otro, pasando `props` manualmente.
+- El componente `E` inicia el cambio, pero las props deben propagarse a través de varios niveles.
+
+#### Diagrama **con Context**
+
+```mermaid
+graph TD
+    A[Root Component] --> B[Component 1]
+    A --> C[Component 2]
+    A --> D[Component 3]
+    A --> E[Component 4 initiating change]
+    A --> F[Component 5]
+    A --> G[Component 6]
+    S[(State Context)] --> B
+    S --> C
+    S --> D
+    S --> E
+    S --> F
+    S --> G
+```
+
+- El **State Context** proporciona los datos directamente a todos los componentes, eliminando la necesidad de prop drilling.
+- El componente `E` inicia el cambio, pero todos los componentes tienen acceso al estado global.
+
 ### 4. 
 
 
