@@ -9536,12 +9536,12 @@ import "./index.css";
 import { MainApp } from "./09-useContext/MainApp";
 
 createRoot(document.getElementById("root")).render(
-  <BrowserRouter>
-    <StrictMode>
+  <StrictMode>
+    <BrowserRouter>
       <MainApp />
-    </StrictMode>
-  </BrowserRouter>
-);
+    </BrowserRouter>
+  </StrictMode>
+	);
 ```
 
 `src > 09-useContext > MainApp.jsx`
@@ -9581,10 +9581,21 @@ export const LoginPage = () => {
 };
 ```
 
+📌 `Higher-Order Component (HOC):` Componente de orden superior que recibe otros componentes dentro del él. Permite que los hijos tengan acceso a la info que provee el padre,
+
+```js
+<div>
+  <h1></h1>
+  <hr />
+</div>
+```
+
 - [React Router v7](https://reactrouter.com/)
 - [React Router v5](https://v5.reactrouter.com/)
 - [Instalación v7.1.1](https://classic.yarnpkg.com/en/package/react-router-dom)
 - [Uso](https://reactrouter.com/start/library/installation)
+
+### 5. 
 ☝️👆
 👈👀
 ❯
@@ -9595,6 +9606,7 @@ export const LoginPage = () => {
 🚫
 🔘
 🟣
+
 
 ```bash
 npm install react@latest react-dom@latest
