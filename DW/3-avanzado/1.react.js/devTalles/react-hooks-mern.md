@@ -9714,7 +9714,7 @@ a {
 }
 ```
 
-### 07. 
+### 07. NavLink
 
 `src > components > GifGrid.jsx`
 
