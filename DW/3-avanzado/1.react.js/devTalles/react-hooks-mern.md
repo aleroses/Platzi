@@ -9514,12 +9514,15 @@ graph TD
 - El **State Context** proporciona los datos directamente a todos los componentes, eliminando la necesidad de prop drilling.
 - El componente `E` inicia el cambio, pero todos los componentes tienen acceso al estado global.
 
-### 4. 
+### 4. Preparación de nuestra aplicación con rutas
 
 
-`src > components > GifGrid.jsx`
 
-```jsx
+
+```bash
+yarn add react-router-dom
+yarn add react-router-dom@7.1.1
+
 ```
 
 
@@ -9534,6 +9537,10 @@ graph TD
 ```jsx
 ```
 
+- [React Router v7](https://reactrouter.com/)
+- [React Router v5](https://v5.reactrouter.com/)
+- [Instalación v7.1.1](https://classic.yarnpkg.com/en/package/react-router-dom)
+- [Uso](https://reactrouter.com/start/library/installation)
 ☝️👆
 👈👀
 ❯
