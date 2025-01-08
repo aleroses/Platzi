@@ -9940,6 +9940,14 @@ export const MainApp = () => {
 };
 ```
 
+`src > 09-useContext > context > UserContext.jsx`
+
+```jsx
+import { createContext } from "react";
+
+export const UserContext = createContext();
+```
+
 `src > 09-useContext > context > UserProvider.jsx`
 
 ```jsx
@@ -9958,14 +9966,6 @@ export const UserProvider = ({ children }) => {
     </UserContext.Provider>
   );
 };
-```
-
-`src > 09-useContext > context > UserContext.jsx`
-
-```jsx
-import { createContext } from "react";
-
-export const UserContext = createContext();
 ```
 
 ![userProvider](https://i.postimg.cc/MTrCdY83/11-user-Provider.png)
