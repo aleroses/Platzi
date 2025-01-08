@@ -9834,6 +9834,8 @@ a {
 }
 ```
 
+[NavLink](https://api.reactrouter.com/v7/functions/react_router.NavLink)
+
 ### 08. CreateContext y ContextProvider
 
 `src > components > GifGrid.jsx`
