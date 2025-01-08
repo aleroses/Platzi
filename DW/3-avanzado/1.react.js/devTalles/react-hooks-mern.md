@@ -10038,21 +10038,82 @@ export default UserProfile;
 
 Ahora en nuestro proyecto:
 
-`src > components > GifGrid.jsx`
+`src > 09-useContext > context > UserProvider.jsx`
 
 ```jsx
+import { useState } from "react";
+import { UserContext } from "./UserContext";
+
+// const user = {
+//   id: 123,
+//   name: "Ale Roses",
+//   email: "ghost",
+// };
+
+export const UserProvider = ({ children }) => {
+  const [user, setUser] = useState();
+
+  return (
+    // <UserContext.Provider value={{ hi: "World", user }}>
+    <UserContext.Provider value={{ user, setUser }}>
+      {children}
+    </UserContext.Provider>
+  );
+};
 ```
 
-
-`src > components > GifGrid.jsx`
+`src > 09-useContext > HomePage.jsx`
 
 ```jsx
+import { useContext } from "react";
+import { UserContext } from "./context/UserContext";
+
+export const HomePage = () => {
+  const { user } = useContext(UserContext);
+  return (
+    <>
+      <h1>
+        HomePage <small>{user?.name}</small>
+      </h1>
+      <hr />
+
+      <pre>{JSON.stringify(user, null, 3)}</pre>
+    </>
+  );
+};
 ```
 
-
-`src > components > GifGrid.jsx`
+`src > 09-useContext > LoginPage.jsx`
 
 ```jsx
+import { useContext } from "react";
+import { UserContext } from "./context/UserContext";
+
+export const LoginPage = () => {
+  // Matches the closest context
+  const { user, setUser } = useContext(UserContext);
+
+  return (
+    <>
+      <h1>LoginPage</h1>
+      <hr />
+
+      <pre>{JSON.stringify(user, null, 3)}</pre>
+
+      <button
+        onClick={() =>
+          setUser({
+            id: 123,
+            name: "Ghost",
+            email: "ghost@gmail.com",
+          })
+        }
+      >
+        Set User
+      </button>
+    </>
+  );
+};
 ```
 
 ☝️👆
