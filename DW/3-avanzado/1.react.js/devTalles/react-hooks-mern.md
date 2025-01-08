@@ -10028,15 +10028,15 @@ export default UserProfile;
 2. **`UserContext.Provider`** proporciona un valor (`user`) a los componentes hijos.
 3. **`useContext(UserContext)`** permite acceder al valor del contexto sin necesidad de pasar props manualmente.
 
----
-
-## ✅ Ventajas:
+#### Ventajas:
 
 - Evita el **prop drilling**.
 - Código más limpio y fácil de mantener.
 - Ideal para **temas, autenticación y datos globales**.
 
 **En resumen:** `useContext` simplifica el acceso a datos globales en React, haciendo que tu código sea más limpio y mantenible. 🚀
+
+Ahora en nuestro proyecto:
 
 `src > components > GifGrid.jsx`
 
