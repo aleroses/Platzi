@@ -9407,7 +9407,7 @@ Aquí les dejo el código fuente de la sección tal cual lo dejé al final de la
 
 ## 🟣 11. Profundizando Hooks - useContext
 
-## 01. Introducción a la sección
+### 01. Introducción a la sección
 
 ### 02. Temas puntuales de la sección
 
@@ -9970,7 +9970,7 @@ export const UserProvider = ({ children }) => {
 
 ![userProvider](https://i.postimg.cc/MTrCdY83/11-user-Provider.png)
 
-### 09. 
+### 09. useContext
 
 `src > components > GifGrid.jsx`
 
