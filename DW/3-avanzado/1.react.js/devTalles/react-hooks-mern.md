@@ -10022,9 +10022,7 @@ const UserProfile = () => {
 export default UserProfile;
 ```
 
----
-
-## 🎯 Explicación:
+🎯 Explicación:
 
 1. **`createContext`** crea un contexto.
 2. **`UserContext.Provider`** proporciona un valor (`user`) a los componentes hijos.
