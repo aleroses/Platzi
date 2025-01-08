@@ -9834,7 +9834,7 @@ a {
 }
 ```
 
-### 08. 
+### 08. CreateContext y ContextProvider
 
 `src > components > GifGrid.jsx`
 
