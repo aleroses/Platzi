@@ -10116,25 +10116,13 @@ export const LoginPage = () => {
 };
 ```
 
-☝️👆
-👈👀
-❯
-👈👀👇
-👈👀☝️
-👈👀📌
-🔥
-🚫
-🔘
+### 10. Código fuente de la sección
 
-```bash
-npm install react@latest react-dom@latest
-# o
-yarn add react@latest react-dom@latest
-```
+Aquí les dejo el código fuente de la sección por si lo llegan a necesitar.
 
-### 10. 
+[**Github- Fin sección 11**](https://github.com/Klerith/react-hooks/tree/fin-seccion-11)
 
-`src > components > GifGrid.jsx`
+## 🟣 12. 
 
 ```jsx
 ```
@@ -10195,6 +10183,12 @@ yarn add react@latest react-dom@latest
 🔥
 🚫
 🔘
+
+```bash
+npm install react@latest react-dom@latest
+# o
+yarn add react@latest react-dom@latest
+```
 
 ```bash
 npm install react@latest react-dom@latest
