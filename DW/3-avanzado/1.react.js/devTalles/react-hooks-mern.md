@@ -9838,6 +9838,78 @@ a {
 
 ### 08. CreateContext y ContextProvider
 
+En **React**, `createContext` y `Context.Provider` se utilizan juntos para crear y gestionar un **Contexto** que permite compartir datos globales entre componentes sin necesidad de prop drilling (pasar props manualmente a través de múltiples niveles).
+
+#### 🎯 `createContext`
+
+- **`createContext`** crea un objeto de contexto que puede ser utilizado para almacenar y compartir datos.
+- Devuelve un objeto con dos propiedades principales:
+    - `Context.Provider`: Proporciona los datos.
+    - `Context.Consumer`: Consume los datos (aunque se suele usar `useContext` en su lugar).
+
+```jsx
+import React, { createContext } from 'react';
+
+// Crear el contexto
+export const UserContext = createContext(null);
+```
+
+#### 🎯 `Context.Provider`
+
+- **`Context.Provider`** se utiliza para envolver los componentes y proporcionarles un valor que estará disponible para todos los descendientes.
+- Se coloca en un componente de nivel superior.
+
+```jsx
+import React from 'react';
+import { UserContext } from './UserContext';
+
+const App = () => {
+  const user = { name: "Henry", role: "Admin" };
+
+  return (
+    <UserContext.Provider value={user}>
+      <UserProfile />
+    </UserContext.Provider>
+  );
+};
+
+const UserProfile = () => {
+  return (
+    <UserContext.Consumer>
+      {(user) => <h1>Usuario: {user.name}</h1>}
+    </UserContext.Consumer>
+  );
+};
+
+export default App;
+```
+
+#### Mejor práctica con `useContext`
+
+En lugar de usar `.Consumer`, es más común usar el **hook `useContext`**:
+
+```jsx
+import React, { useContext } from 'react';
+import { UserContext } from './UserContext';
+
+const UserProfile = () => {
+  const user = useContext(UserContext);
+  return <h1>Usuario: {user.name}</h1>;
+};
+
+export default UserProfile;
+```
+
+Resumen:
+
+- **`createContext`**: Crea un contexto para compartir datos.
+- **`Context.Provider`**: Proporciona los datos a los componentes hijos.
+- **`useContext`** (recomendado): Extrae datos de un contexto de forma sencilla.
+
+✅ Ideal para **temas, usuarios, autenticación o configuración global**.
+
+Ahora en nuestro proyecto:
+
 `src > components > GifGrid.jsx`
 
 ```jsx
