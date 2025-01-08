@@ -9972,6 +9972,76 @@ export const UserProvider = ({ children }) => {
 
 ### 09. useContext
 
+**`useContext`** es un **hook** de React que permite acceder a valores de un **Contexto** de manera sencilla, evitando la necesidad de usar `Context.Consumer`. Se utiliza principalmente para compartir datos globales entre componentes sin necesidad de **prop drilling** (pasar props manualmente a través de múltiples niveles).
+
+- Es un **hook** integrado en React.
+- Permite acceder al valor de un **Contexto** directamente desde cualquier componente hijo.
+- Solo funciona con **React Functional Components**.
+
+#### ¿Cómo se usa?
+
+1. **Crear el Contexto:**
+
+```jsx
+import React, { createContext } from 'react';
+
+// Crear el contexto
+export const UserContext = createContext(null);
+```
+
+2. **Proveer el Contexto con `Context.Provider`:**
+
+```jsx
+import React from 'react';
+import { UserContext } from './UserContext';
+
+const App = () => {
+  const user = { name: "Henry", role: "Admin" };
+
+  return (
+    <UserContext.Provider value={user}>
+      <UserProfile />
+    </UserContext.Provider>
+  );
+};
+
+export default App;
+```
+
+---
+
+### 3. **Consumir el Contexto con `useContext`:**
+
+```jsx
+import React, { useContext } from 'react';
+import { UserContext } from './UserContext';
+
+const UserProfile = () => {
+  const user = useContext(UserContext);
+  return <h1>Bienvenido, {user.name} - Rol: {user.role}</h1>;
+};
+
+export default UserProfile;
+```
+
+---
+
+## 🎯 Explicación:
+
+1. **`createContext`** crea un contexto.
+2. **`UserContext.Provider`** proporciona un valor (`user`) a los componentes hijos.
+3. **`useContext(UserContext)`** permite acceder al valor del contexto sin necesidad de pasar props manualmente.
+
+---
+
+## ✅ Ventajas:
+
+- Evita el **prop drilling**.
+- Código más limpio y fácil de mantener.
+- Ideal para **temas, autenticación y datos globales**.
+
+**En resumen:** `useContext` simplifica el acceso a datos globales en React, haciendo que tu código sea más limpio y mantenible. 🚀
+
 `src > components > GifGrid.jsx`
 
 ```jsx
