@@ -9970,22 +9970,6 @@ export const UserProvider = ({ children }) => {
 
 ![userProvider](https://i.postimg.cc/MTrCdY83/11-user-Provider.png)
 
-☝️👆
-👈👀
-❯
-👈👀👇
-👈👀☝️
-👈👀📌
-🔥
-🚫
-🔘
-
-```bash
-npm install react@latest react-dom@latest
-# o
-yarn add react@latest react-dom@latest
-```
-
 ### 09. 
 
 `src > components > GifGrid.jsx`
