@@ -10008,9 +10008,7 @@ const App = () => {
 export default App;
 ```
 
----
-
-### 3. **Consumir el Contexto con `useContext`:**
+3. **Consumir el Contexto con `useContext`:**
 
 ```jsx
 import React, { useContext } from 'react';
