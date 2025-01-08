@@ -9910,21 +9910,62 @@ Resumen:
 
 Ahora en nuestro proyecto:
 
-`src > components > GifGrid.jsx`
+`src > 09-useContext > MainApp.jsx`
 
 ```jsx
+import { Navigate, Route, Routes } from "react-router";
+import { HomePage } from "./HomePage";
+import { AboutPage } from "./AboutPage";
+import { LoginPage } from "./LoginPage";
+import { Navbar } from "./Navbar";
+import { UserProvider } from "./context/UserProvider";
+
+export const MainApp = () => {
+  return (
+    <UserProvider>
+      <Navbar />
+      <hr />
+
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="login" element={<LoginPage />} />
+        <Route path="about" element={<AboutPage />} />
+        <Route
+          path="/*"
+          element={<Navigate to={<HomePage />} />}
+        />
+      </Routes>
+    </UserProvider>
+  );
+};
 ```
 
-
-`src > components > GifGrid.jsx`
+`src > 09-useContext > context > UserProvider.jsx`
 
 ```jsx
+import { UserContext } from "./UserContext";
+
+const user = {
+  id: 123,
+  name: "Ale Roses",
+  email: "ghost",
+};
+
+export const UserProvider = ({ children }) => {
+  return (
+    <UserContext.Provider value={{ hi: "World" }}>
+      {children}
+    </UserContext.Provider>
+  );
+};
 ```
 
-
-`src > components > GifGrid.jsx`
+`src > 09-useContext > context > UserContext.jsx`
 
 ```jsx
+import { createContext } from "react";
+
+export const UserContext = createContext();
 ```
 
 ![userProvider](https://i.postimg.cc/MTrCdY83/11-user-Provider.png)
