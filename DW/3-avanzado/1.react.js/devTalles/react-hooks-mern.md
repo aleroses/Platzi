@@ -9864,7 +9864,7 @@ import React from 'react';
 import { UserContext } from './UserContext';
 
 const App = () => {
-  const user = { name: "Henry", role: "Admin" };
+  const user = { name: "Ghost", role: "Admin" };
 
   return (
     <UserContext.Provider value={user}>
@@ -9996,7 +9996,7 @@ import React from 'react';
 import { UserContext } from './UserContext';
 
 const App = () => {
-  const user = { name: "Henry", role: "Admin" };
+  const user = { name: "Ghost", role: "Admin" };
 
   return (
     <UserContext.Provider value={user}>
