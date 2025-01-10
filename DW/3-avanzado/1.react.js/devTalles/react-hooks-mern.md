@@ -10118,7 +10118,7 @@ export const LoginPage = () => {
 
 ### 10. Código fuente de la sección
 
-Último ejemplo:
+Vista general:
 
 ![useContext](https://i.postimg.cc/ZKVgnvhV/11-create-Context.png)
 
