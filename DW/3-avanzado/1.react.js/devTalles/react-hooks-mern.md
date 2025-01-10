@@ -10118,6 +10118,10 @@ export const LoginPage = () => {
 
 ### 10. Código fuente de la sección
 
+Último ejemplo:
+
+![useContext](https://i.postimg.cc/ZKVgnvhV/11-create-Context.png)
+
 Aquí les dejo el código fuente de la sección por si lo llegan a necesitar.
 
 [**Github- Fin sección 11**](https://github.com/Klerith/react-hooks/tree/fin-seccion-11)

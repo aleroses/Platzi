@@ -14,7 +14,7 @@
               "type": "markdown",
               "state": {
                 "file": "DW/3-avanzado/1.react.js/devTalles/react-hooks-mern.md",
-                "mode": "source",
+                "mode": "preview",
                 "source": true
               },
               "icon": "lucide-file",
@@ -166,6 +166,7 @@
   },
   "active": "23b24c2e56fa0ebf",
   "lastOpenFiles": [
+    "DW/3-avanzado/1.react.js/devTalles/img/11-createContext.png",
     "DW/3-avanzado/1.react.js/devTalles/img/11-userProvider.png",
     "DW/3-avanzado/1.react.js/devTalles/img/11-context.png",
     "DW/1-basico/003-prework/entorno-windows/vsc-chrome.md",
@@ -192,7 +193,6 @@
     "DW/2-intermedio/029.web-components/imgs/18.project.png",
     "DW/2-intermedio/029.web-components/imgs/18.project.gif",
     "DW/2-intermedio/029.web-components/imgs/12.tree.png",
-    "DW/2-intermedio/029.web-components/imgs/11-tree.png",
     "DW/2-intermedio/007.poo-js/poo-js.md",
     "DW/2-intermedio/023.SPA-js-vanilla/spa-js-vanilla.md",
     "DW/2-intermedio/028.accesibilidad/0.audiocurso-accesibilidad-web.md",
