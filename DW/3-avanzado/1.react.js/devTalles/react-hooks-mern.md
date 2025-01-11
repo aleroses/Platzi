@@ -10183,7 +10183,6 @@ describe("Tests in the useCounter", () => {
     expect(counter).toBe(100);
   });
 });
-
 ```
 
 
