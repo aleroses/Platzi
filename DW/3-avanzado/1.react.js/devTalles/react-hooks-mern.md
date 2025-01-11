@@ -10145,6 +10145,9 @@ Hay varios extras, como la prueba de un Reducer, que realmente no es nada compli
 - [[react-hooks-mern#8. Testing - Probando la aplicación de GifExpert#🟣 Configurar el ambiente de pruebas]]
 - [Configurar el ambiente de pruebas](https://github.com/aleroses/Platzi/blob/master/DW/3-avanzado/1.react.js/devTalles/react-hooks-mern.md#-configurar-el-ambiente-de-pruebas)
 
+### 4. Pruebas sobre useCounter - CustomHook
+
+
 ```jsx
 ```
 
