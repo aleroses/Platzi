@@ -10255,7 +10255,7 @@ describe("Tests in the useCounter", () => {
 
   test("should increase the counter", () => {
     const { result } = renderHook(() => useCounter());
-    const { counter, increase } = result.current;
+    const { increase } = result.current;
 
     act(() => {
       increase();
@@ -10267,7 +10267,7 @@ describe("Tests in the useCounter", () => {
 
   test("should decrease the counter", () => {
     const { result } = renderHook(() => useCounter());
-    const { counter, decrease } = result.current;
+    const { decrease } = result.current;
 
     act(() => {
       decrease();
@@ -10279,7 +10279,7 @@ describe("Tests in the useCounter", () => {
 
   test("should reset the counter", () => {
     const { result } = renderHook(() => useCounter());
-    const { counter, reset } = result.current;
+    const { reset } = result.current;
 
     act(() => {
       reset();
@@ -10290,7 +10290,7 @@ describe("Tests in the useCounter", () => {
 });
 ```
 
-
+### 6. Pruebas sobre useForm - CustomHook
 
 ☝️👆
 👈👀
@@ -10308,7 +10308,7 @@ npm install react@latest react-dom@latest
 yarn add react@latest react-dom@latest
 ```
 
-### 01. 
+
 
 `src > components > GifGrid.jsx`
 
