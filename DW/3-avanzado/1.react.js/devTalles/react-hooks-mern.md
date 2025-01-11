@@ -10126,7 +10126,23 @@ Aquí les dejo el código fuente de la sección por si lo llegan a necesitar.
 
 [**Github- Fin sección 11**](https://github.com/Klerith/react-hooks/tree/fin-seccion-11)
 
-## 🟣 12. 
+## 🟣 12. Pruebas unitarias y de integración - Hooks
+
+### 1. Introducción a la sección
+
+### 2. Temas puntuales de la sección
+
+**¿Qué veremos en esta sección?**
+
+- Pruebas sobre Hooks y CustomHooks
+
+Ese es el tema principal, demostrar cómo podemos evaluar cada unos de los hooks aplicados anteriormente con sus casos reales de uso.
+
+Hay varios extras, como la prueba de un Reducer, que realmente no es nada complicado, también quiero aclarar qué nos toca evaluar a nosotros y qué no es responsabilidad nuestra.
+
+### 3. Inicio de proyecto - Pruebas sobre Hooks
+
+
 
 ```jsx
 ```
