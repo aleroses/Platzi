@@ -10363,10 +10363,29 @@ describe("Tests in the useForm", () => {
 
 ### 12.7 Pruebas con múltiples hooks simultáneos
 
-`test/hooks/useForm.test.js`
+`test/hooks/03-examples/MultipleCustomHook.test.jsx`
 
 ```jsx
+import { render, screen } from "@testing-library/react";
+import { MultipleCustomHook } from "../../src/03-examples/MultipleCustomHook";
 
+describe("Tests in the MultipleCustomHook", () => {
+  test("should display the default component", () => {
+    render(<MultipleCustomHook />);
+
+    // screen.debug();
+    expect(screen.getByText("Loading component..."));
+    expect(screen.getByText("Pokemon information"));
+
+    // Si usas cualquier nombre en name: puedes ver los nombres que realmente fueron usados, luego podras colocar un nombre real
+    const nextButton = screen.getByRole("button", {
+      name: "Next",
+    });
+
+    console.log(nextButton.disabled);
+    expect(nextButton.disabled).toBeFalsy();
+  });
+});
 ```
 
 `test/hooks/useForm.test.js`
