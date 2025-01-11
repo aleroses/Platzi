@@ -10363,6 +10363,30 @@ describe("Tests in the useForm", () => {
 
 ### 12.7 Pruebas con múltiples hooks simultáneos
 
+`test/hooks/useForm.test.js`
+
+```jsx
+
+```
+
+`test/hooks/useForm.test.js`
+
+```jsx
+
+```
+
+`test/hooks/useForm.test.js`
+
+```jsx
+
+```
+
+`test/hooks/useForm.test.js`
+
+```jsx
+
+```
+
 ☝️👆
 👈👀
 ❯
@@ -10381,21 +10405,28 @@ yarn add react@latest react-dom@latest
 
 
 
-`src > components > GifGrid.jsx`
+`test/hooks/useForm.test.js`
 
 ```jsx
+
 ```
 
-
-`src > components > GifGrid.jsx`
+`test/hooks/useForm.test.js`
 
 ```jsx
+
 ```
 
-
-`src > components > GifGrid.jsx`
+`test/hooks/useForm.test.js`
 
 ```jsx
+
+```
+
+`test/hooks/useForm.test.js`
+
+```jsx
+
 ```
 
 ☝️👆
