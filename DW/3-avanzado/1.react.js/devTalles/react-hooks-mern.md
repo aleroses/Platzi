@@ -10187,15 +10187,107 @@ describe("Tests in the useCounter", () => {
 
 ### 5. Ejecutar funciones del customHook dentro de las pruebas
 
-`test/hooks/useCounter.test.js`
+`src/hooks/useCounter.js`
 
-```jsx
+```js
+import { useState } from "react";
+
+export const useCounter = (initialValue = 10) => {
+  const [counter, setCounter] = useState(initialValue);
+
+  const increase = (value = 1) => {
+    setCounter((v) => v + value);
+  };
+
+  const decrease = (value = 1) => {
+    if (counter === 0) return;
+
+    setCounter((v) => v - value);
+  };
+
+  const reset = () => {
+    setCounter(10);
+  };
+  return {
+    counter,
+    increase,
+    decrease,
+    reset,
+  };
+};
+
+// Representación de un objeto en string
+const obj = {};
+// undefined
+obj.toString();
+// '[object Object]'
 ```
 
-
 `test/hooks/useCounter.test.js`
 
 ```jsx
+import { renderHook } from "@testing-library/react";
+import { useCounter } from "../../src/hooks/useCounter";
+import { act } from "react";
+
+describe("Tests in the useCounter", () => {
+  const value = 100;
+
+  test("should return default values", () => {
+    const { result } = renderHook(() => useCounter());
+    const { counter, decrease, increase, reset } =
+      result.current;
+
+    expect(counter).toBe(10);
+    expect(decrease).toEqual(expect.any(Function));
+    expect(increase).toEqual(expect.any(Function));
+    expect(reset).toEqual(expect.any(Function));
+  });
+
+  test("should generate the counter with the value of 100", () => {
+    const { result } = renderHook(() => useCounter(value));
+
+    // console.log(result);
+    const { counter } = result.current;
+
+    expect(counter).toBe(100);
+  });
+
+  test("should increase the counter", () => {
+    const { result } = renderHook(() => useCounter());
+    const { counter, increase } = result.current;
+
+    act(() => {
+      increase();
+      increase(2);
+    });
+
+    expect(result.current.counter).toBe(13);
+  });
+
+  test("should decrease the counter", () => {
+    const { result } = renderHook(() => useCounter());
+    const { counter, decrease } = result.current;
+
+    act(() => {
+      decrease();
+      decrease(2);
+    });
+
+    expect(result.current.counter).toBe(7);
+  });
+
+  test("should reset the counter", () => {
+    const { result } = renderHook(() => useCounter());
+    const { counter, reset } = result.current;
+
+    act(() => {
+      reset();
+    });
+
+    expect(result.current.counter).toBe(10);
+  });
+});
 ```
 
 
