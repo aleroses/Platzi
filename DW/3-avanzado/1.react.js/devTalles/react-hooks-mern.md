@@ -10128,9 +10128,9 @@ Aquí les dejo el código fuente de la sección por si lo llegan a necesitar.
 
 ## 🟣 12. Pruebas unitarias y de integración - Hooks
 
-### 1. Introducción a la sección
+### 12.1 Introducción a la sección
 
-### 2. Temas puntuales de la sección
+### 12.2 Temas puntuales de la sección
 
 **¿Qué veremos en esta sección?**
 
@@ -10361,7 +10361,7 @@ describe("Tests in the useForm", () => {
 });
 ```
 
-### 7. 
+### 7. Pruebas con múltiples hooks simultáneos
 
 ☝️👆
 👈👀
