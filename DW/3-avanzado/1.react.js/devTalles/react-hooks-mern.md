@@ -10379,7 +10379,7 @@ describe("Tests in the MultipleCustomHook", () => {
 
     // Si usas cualquier nombre en name: puedes ver los nombres que realmente fueron usados, luego podras colocar un nombre real
     const nextButton = screen.getByRole("button", {
-      name: "Next",
+      name: "Next", 👈👀
     });
 
     console.log(nextButton.disabled);
