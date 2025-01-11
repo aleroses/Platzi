@@ -10157,6 +10157,33 @@ yarn test
 `test/hooks/useCounter.test.js`
 
 ```jsx
+import { renderHook } from "@testing-library/react";
+import { useCounter } from "../../src/hooks/useCounter";
+
+describe("Tests in the useCounter", () => {
+  const value = 100;
+
+  test("should return default values", () => {
+    const { result } = renderHook(() => useCounter());
+    const { counter, decrease, increase, reset } =
+      result.current;
+
+    expect(counter).toBe(10);
+    expect(decrease).toEqual(expect.any(Function));
+    expect(increase).toEqual(expect.any(Function));
+    expect(reset).toEqual(expect.any(Function));
+  });
+
+  test("should generate the counter with the value of 100", () => {
+    const { result } = renderHook(() => useCounter(value));
+
+    // console.log(result);
+    const { counter } = result.current;
+
+    expect(counter).toBe(100);
+  });
+});
+
 ```
 
 
