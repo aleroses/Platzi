@@ -10361,7 +10361,7 @@ describe("Tests in the useForm", () => {
 });
 ```
 
-### 7. Pruebas con múltiples hooks simultáneos
+### 12.7 Pruebas con múltiples hooks simultáneos
 
 ☝️👆
 👈👀
