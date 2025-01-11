@@ -10147,7 +10147,14 @@ Hay varios extras, como la prueba de un Reducer, que realmente no es nada compli
 
 ### 4. Pruebas sobre useCounter - CustomHook
 
-componentes
+Pruebas en componentes:
+
+```bash
+yarn test
+# p: useCounter.js
+```
+
+`test/hooks/useCounter.test.js`
 
 ```jsx
 ```
@@ -10163,6 +10170,8 @@ componentes
 
 ```jsx
 ```
+
+### 5. Ejecutar funciones del customHook dentro de las pruebas
 
 ☝️👆
 👈👀
