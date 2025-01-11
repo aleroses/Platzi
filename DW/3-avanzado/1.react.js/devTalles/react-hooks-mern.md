@@ -10185,19 +10185,20 @@ describe("Tests in the useCounter", () => {
 });
 ```
 
-
-`src > components > GifGrid.jsx`
-
-```jsx
-```
-
-
-`src > components > GifGrid.jsx`
-
-```jsx
-```
-
 ### 5. Ejecutar funciones del customHook dentro de las pruebas
+
+`test/hooks/useCounter.test.js`
+
+```jsx
+```
+
+
+`test/hooks/useCounter.test.js`
+
+```jsx
+```
+
+
 
 ☝️👆
 👈👀
