@@ -10388,7 +10388,7 @@ describe("Tests in the MultipleCustomHook", () => {
 });
 ```
 
-### 12.8
+### 12.8 Evaluar respuesta del useFetch
 
 `test/hooks/useForm.test.js`
 
