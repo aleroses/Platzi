@@ -10147,6 +10147,7 @@ Hay varios extras, como la prueba de un Reducer, que realmente no es nada compli
 
 ### 4. Pruebas sobre useCounter - CustomHook
 
+componentes
 
 ```jsx
 ```
