@@ -10292,6 +10292,77 @@ describe("Tests in the useCounter", () => {
 
 ### 6. Pruebas sobre useForm - CustomHook
 
+`test/hooks/useForm.test.js`
+
+```jsx
+import { renderHook } from "@testing-library/react";
+import { useForm } from "../../src/hooks/useForm";
+import { act } from "react";
+
+describe("Tests in the useForm", () => {
+  const initialForm = {
+    name: "Ghost",
+    email: "ghost@mail.com",
+  };
+
+  test("should return the default values", () => {
+    const { result } = renderHook(() =>
+      useForm(initialForm)
+    );
+
+    expect(result.current).toEqual({
+      name: "Ghost",
+      email: "ghost@mail.com",
+      formState: initialForm,
+      handleInputChange: expect.any(Function),
+      handleResetForm: expect.any(Function),
+    });
+  });
+
+  test("should change the form name", () => {
+    const newValue = "Phantom";
+    const { result } = renderHook(() =>
+      useForm(initialForm)
+    );
+
+    const { name, handleInputChange } = result.current;
+
+    act(() => {
+      handleInputChange({
+        target: { name: "name", value: newValue },
+      });
+    });
+
+    expect(result.current.name).toBe(newValue);
+    expect(result.current.formState.name).toBe(newValue);
+  });
+
+  test("It should reset the form.", () => {
+    const newValue = "Phantom";
+    const { result } = renderHook(() =>
+      useForm(initialForm)
+    );
+
+    const { handleInputChange, handleResetForm } =
+      result.current;
+
+    act(() => {
+      handleInputChange({
+        target: { name: "name", value: newValue },
+      });
+      handleResetForm();
+    });
+
+    expect(result.current.name).toBe(initialForm.name);
+    expect(result.current.formState.name).toBe(
+      initialForm.name
+    );
+  });
+});
+```
+
+### 7. 
+
 ☝️👆
 👈👀
 ❯
