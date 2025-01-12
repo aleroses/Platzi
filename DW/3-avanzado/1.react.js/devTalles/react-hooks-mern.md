@@ -10435,7 +10435,6 @@ describe("Tests in the MultipleCustomHook", () => {
     increase: mockIncrease,
   });
 
-  // Asegurarnos de que sean reseteadas a su estado original
   // Make sure that they are reset to their original state
   beforeEach(() => {
     jest.clearAllMocks();
