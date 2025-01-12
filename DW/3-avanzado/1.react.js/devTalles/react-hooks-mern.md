@@ -10390,10 +10390,146 @@ describe("Tests in the MultipleCustomHook", () => {
 
 ### 12.8 Evaluar respuesta del useFetch
 
-`test/hooks/useForm.test.js`
+`src/main.jsx`
 
 ```jsx
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+import { BrowserRouter } from "react-router";
 
+import "./index.css";
+
+import { MultipleCustomHook } from "./03-examples/MultipleCustomHook";
+
+createRoot(document.getElementById("root")).render(
+  <StrictMode>
+    <BrowserRouter>
+      <MultipleCustomHook />
+    </BrowserRouter>
+  </StrictMode>
+);
+```
+
+`test/hooks/03-examples/MultipleCustomHook.test.jsx`
+
+```jsx
+import {
+  fireEvent,
+  render,
+  screen,
+} from "@testing-library/react";
+import { MultipleCustomHook } from "../../src/03-examples/MultipleCustomHook";
+import { useFetch } from "../../src/hooks";
+import { useCounter } from "../../src/hooks/useCounter";
+
+// Apuntar directamente al archivo origen
+// Point directly to the source file
+jest.mock("../../src/hooks/useFetch");
+jest.mock("../../src/hooks/useCounter");
+
+describe("Tests in the MultipleCustomHook", () => {
+  const mockIncrease = jest.fn();
+
+  // Todas las pruebas van a tener esta info
+  // All tests will have this info
+  useCounter.mockReturnValue({
+    counter: 1,
+    increase: mockIncrease,
+  });
+
+  // Asegurarnos de que sean reseteadas a su estado original
+  // Make sure that they are reset to their original state
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
+  test("should display the default component", () => {
+    useFetch.mockReturnValue({
+      data: null,
+      isLoading: true,
+      hasError: null,
+    });
+
+    render(<MultipleCustomHook />);
+
+    // screen.debug();
+    expect(screen.getByText("Loading component..."));
+    expect(screen.getByText("Pokemon information"));
+
+    const nextButton = screen.getByRole("button", {
+      name: "Next",
+    });
+
+    // console.log(nextButton.disabled);
+    expect(nextButton.disabled).toBeFalsy();
+  });
+
+  test("should display a pokemon", () => {
+    useFetch.mockReturnValue({
+      data: {
+        id: 1,
+        name: "bulbasaur",
+        sprites: {
+          img: {
+            front_shiny: "https://shiny/1.png",
+            front_default: "https://shiny/1.png",
+            back_shiny: "https://shiny/1.png",
+            back_default: "https://shiny/1.png",
+          },
+        },
+      },
+
+      isLoading: false,
+      hasError: null,
+      error: null,
+    });
+
+    render(<MultipleCustomHook />);
+    // screen.debug();
+
+    expect(
+      screen.getByText("Pokemon information")
+    ).toBeTruthy();
+
+    const nextButton = screen.getByRole("button", {
+      name: "Next",
+    });
+
+    expect(nextButton.disabled).toBeFalsy();
+  });
+
+  test("should call the increase function", () => {
+    useFetch.mockReturnValue({
+      data: {
+        id: 1,
+        name: "bulbasaur",
+        sprites: {
+          img: {
+            front_shiny: "https://shiny/1.png",
+            front_default: "https://shiny/1.png",
+            back_shiny: "https://shiny/1.png",
+            back_default: "https://shiny/1.png",
+          },
+        },
+      },
+
+      isLoading: false,
+      hasError: null,
+      error: null,
+    });
+
+    render(<MultipleCustomHook />);
+    // screen.debug();
+
+    const nextButton = screen.getByRole("button", {
+      name: "Next",
+    });
+    fireEvent.click(nextButton);
+
+    // screen.debug();
+    expect(mockIncrease).toHaveBeenCalled();
+  });
+});
 ```
 
 `test/hooks/useForm.test.js`
