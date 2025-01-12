@@ -10662,6 +10662,14 @@ describe("Testing in todoReducer", () => {
 });
 ```
 
+### 12.11 Pruebas en el componente TodoItem
+
+`test/hooks/useForm.test.js`
+
+```jsx
+
+```
+
 ☝️👆
 👈👀
 ❯
