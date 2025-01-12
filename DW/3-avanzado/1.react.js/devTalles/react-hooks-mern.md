@@ -10422,7 +10422,6 @@ import { MultipleCustomHook } from "../../src/03-examples/MultipleCustomHook";
 import { useFetch } from "../../src/hooks";
 import { useCounter } from "../../src/hooks/useCounter";
 
-// Apuntar directamente al archivo origen
 // Point directly to the source file
 jest.mock("../../src/hooks/useFetch");
 jest.mock("../../src/hooks/useCounter");
@@ -10430,7 +10429,6 @@ jest.mock("../../src/hooks/useCounter");
 describe("Tests in the MultipleCustomHook", () => {
   const mockIncrease = jest.fn();
 
-  // Todas las pruebas van a tener esta info
   // All tests will have this info
   useCounter.mockReturnValue({
     counter: 1,
