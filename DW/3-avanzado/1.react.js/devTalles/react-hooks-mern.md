@@ -10529,13 +10529,73 @@ describe("Tests in the MultipleCustomHook", () => {
 });
 ```
 
-### 12.9 
+### 12.9 Pruebas sobre el Reducer
 
-`test/hooks/useForm.test.js`
+`test/08-useReducer/todoReducer.test.js`
 
 ```jsx
+import { todoReducer } from "../../src/08-useReducer/todoReducer";
 
+describe("Testing in todoReducer", () => {
+  const initialState = [
+    {
+      id: 1,
+      description: "Demo todo",
+      done: false,
+    },
+  ];
+
+  test("should return the initial state", () => {
+    const newState = todoReducer(initialState, {});
+
+    expect(newState).toBe(initialState);
+  });
+
+  test("should add a TODO", () => {
+    const action = {
+      type: "[TODO] Add Todo",
+      payload: {
+        id: 2,
+        description: "New Todo #2",
+        done: false,
+      },
+    };
+
+    const newState = todoReducer(initialState, action);
+    // console.log(newState);
+
+    expect(newState.length).toBe(2);
+    expect(newState).toContain(action.payload);
+  });
+
+  test("should delete a TODO", () => {
+    const action = {
+      type: "[TODO] Remove Todo",
+      payload: 1,
+    };
+
+    const newState = todoReducer(initialState, action);
+
+    // console.log(newState);
+    expect(newState.length).toBe(0);
+  });
+
+  test("should do the TODO Toggle", () => {
+    const action = {
+      type: "[TODO] Toggle Todo",
+      payload: 1,
+    };
+
+    const newState = todoReducer(initialState, action);
+
+    // console.log(newState[0].done);
+
+    expect(newState[0].done).toBeTruthy();
+  });
+});
 ```
+
+### 12.10 Resolución de la tarea
 
 `test/hooks/useForm.test.js`
 
