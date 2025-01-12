@@ -10664,11 +10664,38 @@ describe("Testing in todoReducer", () => {
 
 ### 12.11 Pruebas en el componente TodoItem
 
-`test/hooks/useForm.test.js`
+`src/08-useReducer/TodoItem.jsx`
 
-```jsx
-
+```js
+export const TodoItem = ({
+  id = "01",
+  task = "Task 01",
+  done,
+  onDeleteTodo,
+  onToggleTodo,
+}) => {
+  return (
+    <>
+      <li className="test">
+        <span
+          className={`${
+            done ? "text-decoration-line-through" : ""
+          }`}
+          onClick={() => onToggleTodo(id)}
+          aria-label="spantodo" 👈👀
+        >
+          {task}
+        </span>
+        <br />
+        <button onClick={() => onDeleteTodo(id)}>
+          Delete
+        </button>
+      </li>
+    </>
+  );
+};
 ```
+
 `test/hooks/useForm.test.js`
 
 ```jsx
