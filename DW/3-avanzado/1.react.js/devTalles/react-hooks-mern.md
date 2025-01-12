@@ -10696,10 +10696,43 @@ export const TodoItem = ({
 };
 ```
 
-`test/hooks/useForm.test.js`
+`test/08-useReducer/TodoItem.test.jsx`
 
 ```jsx
+import { render, screen } from "@testing-library/react";
+import { TodoItem } from "../../src/08-useReducer/TodoItem";
 
+describe("Testing in TodoItem", () => {
+  const todo = {
+    id: 1,
+    description: "Soul Stone",
+    done: false,
+  };
+
+  const onDeleteTodoMock = jest.fn();
+  const onToggleTodoMock = jest.fn();
+
+  beforeEach(() => jest.clearAllMocks);
+
+  test("must show the TODO pending completion", () => {
+    render(
+      <TodoItem
+        todo={todo}
+        onToggleTodo={onToggleTodoMock}
+        onDeleteTodo={onDeleteTodoMock}
+      />
+    );
+
+    const liElement = screen.getByRole("listitem");
+    const spanElement = screen.getByLabelText("spantodo");
+
+    // screen.debug();
+
+    expect(liElement.className).toBe("test");
+    expect(spanElement.className).toBe("");
+    expect(spanElement.className).toContain("");
+  });
+});
 ```
 
 
