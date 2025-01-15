@@ -10737,12 +10737,107 @@ describe("Testing in TodoItem", () => {
 
 ### 12.12 Pruebas en los eventos del TodoItem
 
-
-`test/hooks/useForm.test.js`
+`test/08-useReducer/TodoItem.test.jsx`
 
 ```jsx
+import {
+  fireEvent,
+  render,
+  screen,
+} from "@testing-library/react";
+import { TodoItem } from "../../src/08-useReducer/TodoItem";
 
+describe("Testing in TodoItem", () => {
+  const todo = {
+    id: "01",
+    description: "Soul Stone",
+    done: false,
+  };
+
+  const onDeleteTodoMock = jest.fn();
+  const onToggleTodoMock = jest.fn();
+
+  beforeEach(() => jest.clearAllMocks);
+
+  test("must show the TODO pending completion", () => {
+    render(
+      <TodoItem
+        todo={todo}
+        onToggleTodo={onToggleTodoMock}
+        onDeleteTodo={onDeleteTodoMock}
+      />
+    );
+
+    const liElement = screen.getByRole("listitem");
+    const spanElement = screen.getByLabelText("spantodo");
+
+    // screen.debug();
+
+    expect(liElement.className).toBe("test");
+    expect(spanElement.className).toBe("");
+    expect(spanElement.className).toContain("");
+  });
+
+  test("should display the completed TODO", () => {
+    todo.done = true;
+
+    render(
+      <TodoItem
+        todo={todo}
+        onToggleTodo={onToggleTodoMock}
+        onDeleteTodo={onDeleteTodoMock}
+      />
+    );
+
+    const spanElement = screen.getByLabelText("spantodo");
+
+    // console.log({ spanElement });
+    // console.log(todo.done);
+
+    // Did not work
+    // expect(spanElement.className).toContain(
+    //   "text-decoration-line-through"
+    // );
+  });
+
+  test("span should call the ToggleAll when clicked.", () => {
+    render(
+      <TodoItem
+        todo={todo}
+        onToggleTodo={onToggleTodoMock}
+        onDeleteTodo={onDeleteTodoMock}
+      />
+    );
+
+    const spanElement = screen.getByLabelText("spantodo");
+
+    fireEvent.click(spanElement);
+
+    expect(onToggleTodoMock).toHaveBeenCalled();
+    expect(onToggleTodoMock).toHaveBeenCalledWith(todo.id);
+  });
+
+  test("the button should call the deleteTodo", () => {
+    render(
+      <TodoItem
+        todo={todo}
+        onToggleTodo={onToggleTodoMock}
+        onDeleteTodo={onDeleteTodoMock}
+      />
+    );
+
+    const buttonElement = screen.getByText("Delete");
+    const deleteButton = screen.getByRole("button");
+
+    fireEvent.click(buttonElement);
+
+    expect(onDeleteTodoMock).toHaveBeenCalled();
+    expect(onDeleteTodoMock).toHaveBeenCalledWith(todo.id);
+  });
+});
 ```
+
+### 12.13
 
 `test/hooks/useForm.test.js`
 
