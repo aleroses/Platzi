@@ -10837,7 +10837,114 @@ describe("Testing in TodoItem", () => {
 });
 ```
 
-### 12.13
+### 12.13 Pruebas en el TodoApp
+
+`test/08-useReducer/TodoApp.test.jsx`
+
+```jsx
+import { render, screen } from "@testing-library/react";
+import { TodoApp } from "../../src/08-useReducer/TodoApp";
+import { useTodo } from "../../src/hooks/useTodo";
+
+jest.mock("../../src/hooks/useTodo");
+
+describe("Testing in TodoApp", () => {
+  useTodo.mockReturnValue({
+    todos: [
+      { id: 1, description: "Todo #test", done: false },
+      { id: 2, description: "Todo #react", done: false },
+    ],
+    todosCount: 2,
+    pendingTodos: 1,
+    handleNewTodo: jest.fn(),
+    handleDeleteTodo: jest.fn(),
+    handleToggleTodo: jest.fn(),
+  });
+
+  test("It should show the correct component", () => {
+    render(<TodoApp />);
+
+    // screen.debug();
+    expect(screen.getByText("Todo #test")).toBeTruthy();
+    expect(screen.getByText("Todo #react")).toBeTruthy();
+    expect(screen.getByRole("textbox")).toBeTruthy();
+
+    // console.log(screen.getByRole("textbox").className);
+  });
+});
+```
+
+### 12.14 Pruebas con useContext
+
+`src/09-useContext/HomePage.jsx`
+
+```jsx
+import { useContext } from "react";
+import { UserContext } from "./context/UserContext";
+
+export const HomePage = () => {
+  const { user } = useContext(UserContext);
+  return (
+    <>
+      <h1>
+        HomePage <small>{user?.name}</small>
+      </h1>
+      <hr />
+
+      <pre aria-label="pre">
+        {JSON.stringify(user, null, 3)}
+      </pre>
+    </>
+  );
+};
+```
+
+`src/hooks/09-useContext/HomePage.test.jsx`
+
+```jsx
+import { render, screen } from "@testing-library/react";
+import { HomePage } from "../../09-useContext/HomePage";
+import { UserContext } from "../../09-useContext/context/UserContext";
+
+describe("Testing in HomePage", () => {
+  const user = {
+    id: 1,
+    name: "Ghost",
+  };
+
+  test("should display the component without the user", () => {
+    render(
+      <UserContext.Provider value={{ user: null }}>
+        <HomePage />
+      </UserContext.Provider>
+    );
+
+    // area-label
+    const preTag = screen.getByLabelText("pre");
+
+    expect(preTag.innerHTML).toBe("null");
+
+    // screen.debug();
+  });
+
+  test("should display the component with the user", () => {
+    render(
+      <UserContext.Provider value={{ user }}>
+        <HomePage />
+      </UserContext.Provider>
+    );
+
+    const preTag = screen.getByLabelText("pre");
+
+    expect(preTag.innerHTML).toContain(user.name);
+    expect(preTag.innerHTML).toContain(user.id.toString());
+    expect(preTag.innerHTML).toContain(`${user.id}`);
+    // screen.debug();
+  });
+});
+```
+
+### 12.15 Pruebas de funciones del context
 
 `test/hooks/useForm.test.js`
 
@@ -10845,6 +10952,25 @@ describe("Testing in TodoItem", () => {
 
 ```
 
+`test/hooks/useForm.test.js`
+
+```jsx
+
+```
+
+### 12.16
+
+`test/hooks/useForm.test.js`
+
+```jsx
+
+```
+
+`test/hooks/useForm.test.js`
+
+```jsx
+
+```
 
 ☝️👆
 👈👀
