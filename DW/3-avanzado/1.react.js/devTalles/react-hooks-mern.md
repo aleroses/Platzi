@@ -11110,6 +11110,23 @@ No es una sección obligatoria, pero puede ayudarles a tener su código ordenado
 
 ### 13.3 Repositorio con customHooks
 
+Creamos una nueva carpeta para alojar los hooks con los que hemos venido trabajando:
+
+```bash
+.
+├── 01-intro-react
+├── 02-intro-js
+├── 03-counter-app-vite
+├── 04-gif-expert-app
+├── 05-hook-app
+└── 06-custom-hooks
+    ├── useCounter.js
+    ├── useFetch.js
+    ├── useForm.js
+    └── useTodo.js
+
+```
+
 ### 13.4
 
 ### 13.5
