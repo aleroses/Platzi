@@ -11042,11 +11042,45 @@ describe("Testing in LoginPage", () => {
 
 ### 12.16 Pruebas generales en nuestro AppRouter
 
-`test/hooks/useForm.test.js`
+`test/09-useContext/MainApp.test.jsx`
 
 ```jsx
+import { render, screen } from "@testing-library/react";
+import { MainApp } from "../../src/09-useContext/MainApp";
+import { MemoryRouter } from "react-router";
 
+describe("Testing in MainApp", () => {
+  test("should display the HomePage", () => {
+    render(
+      <MemoryRouter>
+        <MainApp />
+      </MemoryRouter>
+    );
+
+    expect(screen.getByText("Home")).toBeTruthy();
+    // screen.debug();
+  });
+
+  test("should display the HomePage", () => {
+    render(
+      <MemoryRouter initialEntries={["/login"]}>
+        <MainApp />
+      </MemoryRouter>
+    );
+
+    expect(screen.getByText("LoginPage")).toBeTruthy();
+    // screen.debug();
+  });
+});
 ```
+
+### 12. 17 Código fuente de la sección
+
+Aquí les dejo el código tal cual lo deje en la siguiente clase, espero les sirva y lo usen para comparar contra el suyo:
+
+[**GitHub: Fin sección 12**](https://github.com/Klerith/react-hooks/tree/fin-seccion-12)
+
+## 🟣 13. 
 
 `test/hooks/useForm.test.js`
 
