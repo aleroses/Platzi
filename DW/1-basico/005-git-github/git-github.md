@@ -718,21 +718,21 @@ hint: You have divergent branches and need to specify how to reconcile them.
 Puedes hacer cualquiera de las siguiente opciones:
 
 ```bash
-✅ Opción 1: Realizar un **merge** automático (lo más sencillo)
+# ✅ Opción 1: Realizar un **merge** automático (lo más sencillo)
 git pull origin master --allow-unrelated-histories --no-rebase
 
-✅ Opción 2: Hacer un **rebase** (reestructurar commits)
+# ✅ Opción 2: Hacer un **rebase** (reestructurar commits)
 git pull origin master --allow-unrelated-histories --rebase
 
-✅ Opción 3: Forzar un **merge** manual
+# ✅ Opción 3: Forzar un **merge** manual
 git fetch origin master
 git merge origin/master --allow-unrelated-histories
 
-✅ Configurar una opción por defecto (solo si es necesario siempre)
-Para hacer merge automáticamente en todos los repositorios:
+# ✅ Configurar una opción por defecto (solo si es necesario siempre)
+## Para hacer merge automáticamente en todos los repositorios:
 git config --global pull.rebase false
 
-Para rebase por defecto:
+## Para rebase por defecto:
 git config --global pull.rebase true
 
 ```
