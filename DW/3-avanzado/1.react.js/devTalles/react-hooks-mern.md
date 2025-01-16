@@ -11096,6 +11096,28 @@ Es siempre mejor alternativa usar el `screen.getByTestId()`.
 
 ## 🟣 13.  Bonus: Repositorio de Custom Hooks
 
+### 13.1 Introducción a la sección
+
+### 13.2 Temas puntuales de la sección
+
+**¿Qué veremos en esta sección?**
+
+- Subir código a nuestro repositorio
+- Tener un listado de customHooks y código que podemos reutilizar
+- Una idea para mantener tu repositorio ordenado con ejemplos
+
+No es una sección obligatoria, pero puede ayudarles a tener su código ordenado y fácil de utilizar en proyectos futuros.
+
+### 13.3 
+
+### 13.4
+
+### 13.5
+
+### 13.
+
+### 13.
+
 `test/hooks/useForm.test.js`
 
 ```jsx
