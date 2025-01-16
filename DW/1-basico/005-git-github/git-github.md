@@ -736,6 +736,13 @@ git config --global pull.rebase false
 git config --global pull.rebase true
 ```
 
+Ahora es posible que se abra vim o nano, para lo que debes buscar como cerrarlo:
+
+```bash
+# Nano
+Ctrl + X
+```
+
 **GitHub** :octocat:    
 Recargamos la web y podemos ver que todo se agregó   
 - Podemos editar y hacer commits en la rama master/main
