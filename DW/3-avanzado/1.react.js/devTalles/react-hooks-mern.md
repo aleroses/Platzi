@@ -10946,16 +10946,98 @@ describe("Testing in HomePage", () => {
 
 ### 12.15 Pruebas de funciones del context
 
-`test/hooks/useForm.test.js`
+`src/09-useContext/LoginPage.test.jsx`
 
 ```jsx
+import { useContext } from "react";
+import { UserContext } from "./context/UserContext";
 
+export const LoginPage = () => {
+  // Matches the closest context
+  const { user, setUser } = useContext(UserContext);
+
+  return (
+    <>
+      <h1>LoginPage</h1>
+      <hr />
+
+      <pre aria-label="pre">
+        {JSON.stringify(user, null, 3)}
+      </pre>
+
+      <button
+        aria-label="button"
+        onClick={() =>
+          setUser({
+            id: 123,
+            name: "Ghost",
+            email: "ghost@gmail.com",
+          })
+        }
+      >
+        Set User
+      </button>
+    </>
+  );
+};
 ```
 
-`test/hooks/useForm.test.js`
+`test/09-useContext/LoginPage.test.jsx`
 
 ```jsx
+import {
+  fireEvent,
+  render,
+  screen,
+} from "@testing-library/react";
+import { UserContext } from "../../src/09-useContext/context/UserContext";
+import { LoginPage } from "../../src/09-useContext/LoginPage";
 
+describe("Testing in LoginPage", () => {
+  const user = {
+    id: 1,
+    name: "Ghost",
+  };
+
+  test("must display the component without the user", () => {
+    render(
+      <UserContext.Provider value={{ user: null }}>
+        <LoginPage />
+      </UserContext.Provider>
+    );
+
+    // screen.debug();
+
+    const pre = screen.getByLabelText("pre");
+    expect(pre.innerHTML).toBe("null");
+  });
+
+  test("should call the setUser when the button is clicked", () => {
+    const setUserMock = jest.fn();
+
+    render(
+      <UserContext.Provider
+        value={{ user: null, setUser: setUserMock }}
+      >
+        <LoginPage />
+      </UserContext.Provider>
+    );
+
+    const pre = screen.getByLabelText("pre");
+    // const button = screen.getByLabelText("button");
+    const button = screen.getByRole("button");
+
+    fireEvent.click(button);
+    expect(setUserMock).toHaveBeenCalledWith({
+      id: 1,
+      email: "ghost@gmail.com",
+      id: 123,
+      name: "Ghost",
+    });
+
+    // screen.debug();
+  });
+});
 ```
 
 ### 12.16
