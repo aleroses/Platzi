@@ -709,6 +709,34 @@ Si queremos conectar el repositorio de GitHub con nuestro repositorio local, el 
 1. Por ultimo, hacer `git push` para enviar y guardar los cambios de nuestro repositorio local en GitHub:   
 	- `git push origin master`  
 
+En caso de tener el siguiente mensaje:
+
+```bash
+hint: You have divergent branches and need to specify how to reconcile them.
+```
+
+Puedes hacer cualquiera de las siguiente opciones:
+
+```bash
+✅ Opción 1: Realizar un **merge** automático (lo más sencillo)
+git pull origin master --allow-unrelated-histories --no-rebase
+
+✅ Opción 2: Hacer un **rebase** (reestructurar commits)
+git pull origin master --allow-unrelated-histories --rebase
+
+✅ Opción 3: Forzar un **merge** manual
+git fetch origin master
+git merge origin/master --allow-unrelated-histories
+
+✅ Configurar una opción por defecto (solo si es necesario siempre)
+Para hacer merge automáticamente en todos los repositorios:
+git config --global pull.rebase false
+
+Para rebase por defecto:
+git config --global pull.rebase true
+
+```
+
 **GitHub** :octocat:    
 Recargamos la web y podemos ver que todo se agregó   
 - Podemos editar y hacer commits en la rama master/main

@@ -11135,7 +11135,13 @@ Podemos usar el siguiente comando para hacer:
 
 Ahora crea un repositorio y sube la carpeta `06`.
 
+```bash
+git init
+```
+
 ### 13.4
+
+colocar vim en git por defecto
 
 ### 13.5
 
