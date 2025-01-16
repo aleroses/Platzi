@@ -35,8 +35,7 @@
               "title": "git-github"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -155,10 +154,10 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "DW/1-basico/005-git-github/git-github.md"
+                "file": "DW/3-avanzado/1.react.js/devTalles/react-hooks-mern.md"
               },
               "icon": "lucide-list",
-              "title": "Outline of git-github"
+              "title": "Outline of react-hooks-mern"
             }
           }
         ],
@@ -179,7 +178,7 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "514037684f377ec8",
+  "active": "23b24c2e56fa0ebf",
   "lastOpenFiles": [
     "DW/1-basico/005-git-github/git-github.md",
     "DW/3-avanzado/1.react.js/devTalles/react-hooks-mern.md",

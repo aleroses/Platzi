@@ -11133,11 +11133,9 @@ Podemos usar el siguiente comando para hacer:
 ❯ cp ../05-hook-app/src/hooks/*.js .
 ```
 
-Ahora crea un repositorio y sube la carpeta `06`.
+Ahora crea un repositorio y sube la carpeta `06` a GitHub.
 
-```bash
-git init
-```
+[[git-github#19. Uso de GitHub]]
 
 ### 13.4
 
