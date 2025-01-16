@@ -734,7 +734,6 @@ git config --global pull.rebase false
 
 ## Para rebase por defecto:
 git config --global pull.rebase true
-
 ```
 
 **GitHub** :octocat:    
