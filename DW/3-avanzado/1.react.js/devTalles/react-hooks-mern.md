@@ -11082,33 +11082,19 @@ Aquí les dejo el código tal cual lo deje en la siguiente clase, espero les sir
 
 #### screen.getByRole('span')
 
-Nota: En varios capítulos Fernando ha comentado que no sabe porqué no funciona la búsqueda por role para "span" y que piensa que debería funcionar, y le añade un aria-label al elemento span para buscarlo por ese texto.
+Nota: En varios capítulos Fernando ha comentado que no sabe por qué no funciona la búsqueda por `role` para `span` y que piensa que debería funcionar, y le añade un `aria-label` al elemento `span` para buscarlo por ese texto.
 
-  
+El elemento `<span>` no tiene significado semántico y por eso no tiene ningún role, al igual que un `<div>` o un `<p>`. Son únicamente contenedores de texto.
 
-El elemento <span> no tiene significado semántico y por eso no tiene ningún role, al igual que un <div> o un <p>. Son únicamente contenedores de texto.
+Al no tener significado semántico, tampoco tiene sentido ponerles un atributo `aria-label`.
 
-  
+Para el resto de elementos que sí tienen un role, como puede ser un enlace o un botón, tampoco se debería usar el `aria-label` para buscar por ese texto en un test, porque estaríamos introduciendo  errores de accesibilidad.
 
-Al no tener significado semántico, tampoco tiene sentido ponerles un atributo aria-label.
+Si modificamos el `aria-label` de un elemento podemos romper la experiencia de un usuario que use un lector de pantalla, o que un asistente de voz no encuentre ese elemento.
 
-  
+Es siempre mejor alternativa usar el `screen.getByTestId()`.
 
-Para el resto de elementos que sí tienen un role, como puede ser un enlace o un botón, tampoco se debería usar el aria-label para buscar por ese texto en un test, porque estaríamos introduciendo  errores de accesibilidad.
-
-  
-
-Si modificamos el aria-label de un elemento podemos romper la experiencia de un usuario que use un lector de pantalla, o que un asistente de voz no encuentre ese elemento.
-
-  
-
-Es siempre mejor alternativa usar el screen.getByTestId().
-
-  
-
-**Fernando**, **!Enhorabuena por tu curso!** es lo mejor que he visto en Español.
-
-## 🟣 13. 
+## 🟣 13.  Bonus: Repositorio de Custom Hooks
 
 `test/hooks/useForm.test.js`
 
