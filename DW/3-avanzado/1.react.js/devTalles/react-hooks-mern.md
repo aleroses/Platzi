@@ -11124,6 +11124,14 @@ Creamos una nueva carpeta para alojar los hooks con los que hemos venido trabaja
     ├── useFetch.js
     ├── useForm.js
     └── useTodo.js
+```
+
+Podemos usar el siguiente comando para hacer:
+
+```bash
+/FH/06-custom-hooks
+~/Desktop/FH/06-custom-hooks
+❯ cp ../05-hook-app/src/hooks/*.js .
 
 ```
 
