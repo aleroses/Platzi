@@ -11137,7 +11137,7 @@ Ahora crea un repositorio y sube la carpeta `06` a GitHub.
 
 [[git-github#19. Uso de GitHub]]
 
-### 13.4
+### 13.4 Mejorando la estructura y ayuda de los Hooks
 
 colocar vim en git por defecto
 
