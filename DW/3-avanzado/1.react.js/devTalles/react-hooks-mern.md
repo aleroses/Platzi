@@ -11139,6 +11139,14 @@ Ahora crea un repositorio y sube la carpeta `06` a GitHub.
 
 ### 13.4 Mejorando la estructura y ayuda de los Hooks
 
+```bash
+mkdir useCounter useFetch useForm useTodos
+
+~/Desktop/FH/06-custom-hooks master
+❯ mv ../05-hook-app/src/08-useReducer/todoReducer.js .
+
+```
+
 colocar vim en git por defecto
 
 ### 13.5
