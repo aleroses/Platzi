@@ -11156,17 +11156,90 @@ Aquí les dejo el repositorio del proyecto por si acaso lo llegan a necesitar.
 
 colocar vim en git por defecto
 
-### 13.5
+## 14. HeroesApp - Single Page Application (SPA)
 
-### 13.
+### 14.1 Introducción a la sección
 
-### 13.
+### 14.2 Temas puntuales de la sección
+
+**¿Qué veremos en esta sección?**
+
+- SPA ( Single Page Application ) a profundidad
+- Diferentes temas en la misma aplicación aplicados a diferentes rutas
+- Multiples Routers
+- Push y Replace en el History
+- Leer argumentos por URL
+- QueryParams
+- Aplicar filtros utilizando QueryStrings
+
+En esta sección aún no haremos protección de rutas, pero dejaremos el estilo de esos componentes listos para la siguiente sección.
+
+Aquí quiero enfocarme en la funcionalidad de la aplicación suponiendo que estamos autenticados.
+
+### 14.3 Demostración del objetivo al final de la sección
+
+### 14.4
 
 `test/hooks/useForm.test.js`
 
 ```jsx
 
 ```
+
+☝️👆
+👈👀
+❯
+👈👀👇
+👈👀☝️
+👈👀📌
+🔥
+🚫
+🔘
+
+### 14.5
+
+`test/hooks/useForm.test.js`
+
+```jsx
+
+```
+
+`test/hooks/useForm.test.js`
+
+```jsx
+
+```
+
+`test/hooks/useForm.test.js`
+
+```jsx
+
+```
+
+### 14.6
+
+`test/hooks/useForm.test.js`
+
+```jsx
+
+```
+`test/hooks/useForm.test.js`
+
+```jsx
+
+```
+
+### 14.7
+
+### 14.8
+
+### 14.9
+
+### 14.10
+
+### 14.11
+
+### 14.12
 
 ☝️👆
 👈👀

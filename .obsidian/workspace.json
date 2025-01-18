@@ -35,8 +35,7 @@
               "title": "git-github"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -179,10 +178,10 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "514037684f377ec8",
+  "active": "23b24c2e56fa0ebf",
   "lastOpenFiles": [
-    "DW/3-avanzado/1.react.js/devTalles/react-hooks-mern.md",
     "DW/1-basico/005-git-github/git-github.md",
+    "DW/3-avanzado/1.react.js/devTalles/react-hooks-mern.md",
     "DW/3-avanzado/1.react.js/devTalles/img/11-createContext.png",
     "DW/3-avanzado/1.react.js/devTalles/img/11-userProvider.png",
     "DW/3-avanzado/1.react.js/devTalles/img/11-context.png",
