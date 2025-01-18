@@ -11295,38 +11295,15 @@ export const HeroesApp = () => {
 - [Boostrap](https://getbootstrap.com/)
 - [Download Heroes](https://import.cdn.thinkific.com/643563/courses/1901683/heroes-220621-112204.zip)
 
-### 14.5
+### 14.5 Nota de Actualización - React Router Docs
 
-`src/hooks/useForm.jsx`
+Antes de iniciar con el siguiente video, la documentación que se presenta en _React router docs_ ha sido actualizada(6.X.X) y ya no se ofrece el mismo quick start.
 
-```jsx
+Para efectos del curso, te recomendamos seguir con la configuración que se presenta en el video de la siguiente lección.
 
-```
+[React Router 7.1.2](https://reactrouter.com/home)
 
-`src/hooks/useForm.jsx`
-
-```jsx
-
-```
-
-`src/hooks/useForm.jsx`
-
-```jsx
-
-```
-
-
-👆
-👈👀
-❯
-👈👀👇
-👈👀☝️
-👈👀📌
-🔥
-🚫
-🔘
-
-### 14.6
+### 14.6 
 
 `src/hooks/useForm.jsx`
 
@@ -11369,6 +11346,17 @@ export const HeroesApp = () => {
 ```jsx
 
 ```
+
+
+👆
+👈👀
+❯
+👈👀👇
+👈👀☝️
+👈👀📌
+🔥
+🚫
+🔘
 
 
 ### 14.8
