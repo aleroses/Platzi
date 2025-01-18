@@ -11178,15 +11178,42 @@ Aquí quiero enfocarme en la funcionalidad de la aplicación suponiendo que esta
 
 ### 14.3 Demostración del objetivo al final de la sección
 
-### 14.4
+### 14.4 Inicio de proyecto - HeroesApp
 
-`test/hooks/useForm.test.js`
+```bash
+yarn create vite 07-heroes-spa
+# React
+# JavaScript + SWC
+
+cd 07-heroes-spa
+yarn
+code-insiders .
+yarn dev
+```
+
+
+`src//.test.js`
 
 ```jsx
 
 ```
 
-☝️👆
+`src//.test.js`
+
+```jsx
+
+```
+
+`src//.test.js`
+
+```jsx
+
+```
+
+[Boostrap](https://getbootstrap.com/)
+
+
+👆
 👈👀
 ❯
 👈👀👇
