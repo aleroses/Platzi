@@ -11313,21 +11313,123 @@ yarn add react-router-dom
 yarn add react-router-dom@7.1.2
 ```
 
-`src/hooks/useForm.jsx`
+`src/main.jsx`
 
 ```jsx
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+import { BrowserRouter } from "react-router";
 
+import { HeroesApp } from "./HeroesApp";
+import "./styles.css";
+
+createRoot(document.getElementById("root")).render(
+  <StrictMode>
+    <BrowserRouter>
+      <HeroesApp />
+    </BrowserRouter>
+  </StrictMode>
+);
 ```
 
-`src/hooks/useForm.jsx`
+`src/HeroesApp.jsx`
 
 ```jsx
+import { AppRouter } from "./router/AppRouter";
 
+export const HeroesApp = () => {
+  return (
+    <>
+      <AppRouter />
+    </>
+  );
+};
+```
+
+`src/router/AppRouter.jsx`
+
+```jsx
+import { Navigate, Route, Routes } from "react-router";
+import { MarvelPage } from "../heroes/pages/MarvelPage";
+import { DCPage } from "../heroes/pages/DCPage";
+import { LoginPage } from "../auth/pages/LoginPage";
+
+export const AppRouter = () => {
+  return (
+    <>
+      <Routes>
+        <Route path="marvel" element={<MarvelPage />} />
+        <Route path="dc" element={<DCPage />} />
+        <Route path="login" element={<LoginPage />} />
+        <Route
+          path="/"
+          element={<Navigate to="marvel" />}
+        />
+      </Routes>
+    </>
+  );
+};
+```
+
+`src/heroes/pages/MarvelPage.jsx`
+
+```jsx
+export const MarvelPage = () => {
+  return (
+    <>
+      <h1>MarvelPage</h1>
+    </>
+  );
+};
+```
+
+`src/heroes/pages/DCPage.jsx`
+
+```jsx
+export const DCPage = () => {
+  return (
+    <>
+      <h1>DCPage</h1>
+    </>
+  );
+};
+```
+
+`src/auth/pages/LoginPage.jsx`
+
+```jsx
+export const LoginPage = () => {
+  return (
+    <>
+      <h1>LoginPage</h1>
+    </>
+  );
+};
 ```
 
 - [[react-hooks-mern#🟣 11. Profundizando Hooks - useContext#4. Preparación de nuestra aplicación con rutas]]
 - [React - Migrar React Router V5 a V6](https://www.youtube.com/watch?v=FR7x0tqwafc)
 - [React Router Instalation](https://reactrouter.com/start/library/installation)
+
+### 14.7 
+
+`src/auth/pages/LoginPage.jsx`
+
+```jsx
+
+```
+
+`src/auth/pages/LoginPage.jsx`
+
+```jsx
+
+```
+
+`src/auth/pages/LoginPage.jsx`
+
+```jsx
+
+```
 
 ☝️👆
 👈👀
@@ -11338,27 +11440,6 @@ yarn add react-router-dom@7.1.2
 🔥
 🚫
 🔘
-
-### 14.7
-
-`src/hooks/useForm.jsx`
-
-```jsx
-
-```
-
-`src/hooks/useForm.jsx`
-
-```jsx
-
-```
-
-`src/hooks/useForm.jsx`
-
-```jsx
-
-```
-
 
 👆
 👈👀
