@@ -11189,8 +11189,39 @@ cd 07-heroes-spa
 yarn
 code-insiders .
 yarn dev
+
+# Abrir explorador
+nemo .
+# añadimos las imagenes
 ```
 
+Arrancamos con la siguiente estructura:
+
+```bash
+.
+├── eslint.config.js
+├── index.html
+├── node_modules
+├── package.json
+├── README.md
+├── src
+│   ├── assets
+│   │   └── heroes # img
+│   ├── auth
+│   │   ├── components
+│   │   ├── hooks
+│   │   └── pages
+│   ├── heroes
+│   │   ├── components
+│   │   ├── helpers
+│   │   ├── hooks
+│   │   └── pages
+│   ├── HeroesApp.jsx
+│   ├── main.jsx
+│   └── styles.css
+├── vite.config.js
+└── yarn.lock
+```
 
 `src//.test.js`
 
@@ -11210,7 +11241,8 @@ yarn dev
 
 ```
 
-[Boostrap](https://getbootstrap.com/)
+- [Boostrap](https://getbootstrap.com/)
+- [Download Heroes](https://import.cdn.thinkific.com/643563/courses/1901683/heroes-220621-112204.zip)
 
 
 👆
