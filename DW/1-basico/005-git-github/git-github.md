@@ -759,6 +759,19 @@ $ git remote rename origin destination
 
 🚀 [Mira tus estadísticas](https://www.githubwrapped.io/)
 
+### Extra: Configurar Vim como editor por defecto
+
+```bash
+# 1. Usar el comando global de configuración de Git
+git config --global core.editor "vim"
+
+# 2. Confirmar el cambio en el archivo de configuración
+cat ~/.gitconfig
+
+# 3. (Opcional) Cambiar el editor para una sesión específica
+GIT_EDITOR=vim git commit
+```
+
 🎲
 
 ## 20. Cómo funcionan las llaves públicas y privadas
