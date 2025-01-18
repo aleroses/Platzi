@@ -11303,7 +11303,9 @@ Para efectos del curso, te recomendamos seguir con la configuración que se pres
 
 [React Router 7.1.2](https://reactrouter.com/home)
 
-### 14.6 
+### 14.6 Creando un primer Router
+
+
 
 `src/hooks/useForm.jsx`
 
