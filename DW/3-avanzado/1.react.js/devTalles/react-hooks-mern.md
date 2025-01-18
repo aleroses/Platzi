@@ -11142,8 +11142,8 @@ Ahora crea un repositorio y sube la carpeta `06` a GitHub.
 ```bash
 mkdir useCounter useFetch useForm useTodos
 
-~/Desktop/FH/06-custom-hooks master
-❯ mv ../05-hook-app/src/08-useReducer/todoReducer.js .
+~/FH/06-custom-hooks/useTodos
+❯ cp ../05-hook-app/src/08-useReducer/todoReducer.js .
 
 ```
 
