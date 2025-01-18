@@ -11205,8 +11205,11 @@ Arrancamos con la siguiente estructura:
 ├── package.json
 ├── README.md
 ├── src
-│   ├── assets
+│   ├── assets 👈👀👇
 │   │   └── heroes # img
+│   │       ├── *.jpg
+│   │       ├── *.jpg
+│   │       └── *.jpg
 │   ├── auth
 │   │   ├── components
 │   │   ├── hooks
