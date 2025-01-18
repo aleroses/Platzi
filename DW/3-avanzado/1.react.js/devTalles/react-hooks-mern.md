@@ -11305,12 +11305,12 @@ Para efectos del curso, te recomendamos seguir con la configuración que se pres
 
 ### 14.6 Creando un primer Router
 
+Instalar React Router Dom
 
-
-`src/hooks/useForm.jsx`
-
-```jsx
-
+```bash
+# Instalar React Router
+yarn add react-router-dom
+yarn add react-router-dom@7.1.2
 ```
 
 `src/hooks/useForm.jsx`
@@ -11318,6 +11318,16 @@ Para efectos del curso, te recomendamos seguir con la configuración que se pres
 ```jsx
 
 ```
+
+`src/hooks/useForm.jsx`
+
+```jsx
+
+```
+
+- [[react-hooks-mern#🟣 11. Profundizando Hooks - useContext#4. Preparación de nuestra aplicación con rutas]]
+- [React - Migrar React Router V5 a V6](https://www.youtube.com/watch?v=FR7x0tqwafc)
+- [React Router Instalation](https://reactrouter.com/start/library/installation)
 
 ☝️👆
 👈👀
