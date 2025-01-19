@@ -11574,7 +11574,6 @@ a:hover {
 }
 ```
 
-
 [Klerith/Navbar.js](https://gist.github.com/Klerith/566b484ac6fe46c8fa949e61df671a18)
 
 ☝️👆
