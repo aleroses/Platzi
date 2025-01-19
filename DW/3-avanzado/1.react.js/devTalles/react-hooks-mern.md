@@ -11552,9 +11552,29 @@ export * from "./pages";
 
 
 
-`src/.js`
+`src/styles.css
 
-```js
+```css
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a {
+  color: azure;
+}
+
+.active {
+  color: palevioletred;
+  font-weight: bold;
+}
+
+a:hover {
+  color: palevioletred;
+  font-weight: bold;
+}
+
 ```
 
 
