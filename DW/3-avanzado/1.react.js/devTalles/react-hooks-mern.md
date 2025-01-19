@@ -11411,12 +11411,51 @@ export const LoginPage = () => {
 - [React - Migrar React Router V5 a V6](https://www.youtube.com/watch?v=FR7x0tqwafc)
 - [React Router Instalation](https://reactrouter.com/start/library/installation)
 
-### 14.7 
+### 14.7 Colocar clase de la ruta activa
 
-`src/auth/pages/LoginPage.jsx`
+Actualmente tenemos la siguiente estructura:
 
-```jsx
-
+```bash
+.
+├── eslint.config.js
+├── index.html
+├── node_modules
+├── package.json
+├── README.md
+├── src
+│   ├── assets
+│   │   └── heroes
+│   │       ├── *.jpg
+│   │       └── *.jpg
+│   ├── auth
+│   │   ├── components
+│   │   ├── hooks
+│   │   ├── index.js
+│   │   └── pages
+│   │       ├── index.js
+│   │       └── LoginPage.jsx
+│   ├── heroes
+│   │   ├── components
+│   │   ├── helpers
+│   │   ├── hooks
+│   │   ├── index.js
+│   │   └── pages
+│   │       ├── DCPage.jsx
+│   │       ├── index.js
+│   │       └── MarvelPage.jsx
+│   ├── HeroesApp.jsx
+│   ├── main.jsx
+│   ├── router
+│   │   └── AppRouter.jsx
+│   ├── styles.css
+│   └── ui
+│       ├── components
+│       │   ├── index.js
+│       │   └── Navbar.jsx
+│       ├── hooks
+│       └── index.js
+├── vite.config.js
+└── yarn.lock
 ```
 
 `src/auth/pages/LoginPage.jsx`
@@ -11430,6 +11469,14 @@ export const LoginPage = () => {
 ```jsx
 
 ```
+
+`src/auth/pages/LoginPage.jsx`
+
+```jsx
+
+```
+
+[Klerith/Navbar.js](https://gist.github.com/Klerith/566b484ac6fe46c8fa949e61df671a18)
 
 ☝️👆
 👈👀
