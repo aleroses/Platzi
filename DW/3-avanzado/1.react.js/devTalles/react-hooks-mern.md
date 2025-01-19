@@ -11458,6 +11458,8 @@ Actualmente tenemos la siguiente estructura:
 └── yarn.lock
 ```
 
+Creamos varios archivos `index.js` para hacer exportaciones desde el archivo barril, tener en cuenta que este método no es recomendable cuando el proyecto se hace mas grande.
+
 `src/auth/pages/LoginPage.jsx`
 
 ```jsx
