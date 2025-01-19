@@ -11578,6 +11578,50 @@ a:hover {
 
 ### 14.8 Creando un segundo Router
 
+Estructura:
+
+```bash
+├── src
+│   ├── assets
+│   │   └── heroes
+│   │       ├── *.jpg
+│   │       └── *.jpg
+│   ├── auth
+│   │   ├── components
+│   │   ├── hooks
+│   │   ├── index.js
+│   │   └── pages
+│   │       ├── index.js
+│   │       └── LoginPage.jsx
+│   ├── heroes
+│   │   ├── components
+│   │   ├── helpers
+│   │   ├── hooks
+│   │   ├── index.js
+│   │   ├── pages
+│   │   │   ├── DCPage.jsx
+│   │   │   ├── HeroPage.jsx
+│   │   │   ├── index.js
+│   │   │   ├── MarvelPage.jsx
+│   │   │   └── SearchPage.jsx
+│   │   └── routes
+│   │       └── HeroesRoutes.jsx
+│   ├── HeroesApp.jsx
+│   ├── main.jsx
+│   ├── router
+│   │   └── AppRouter.jsx
+│   ├── styles.css
+│   └── ui
+│       ├── components
+│       │   ├── index.js
+│       │   └── Navbar.jsx
+│       ├── hooks
+│       └── index.js
+├── vite.config.js
+└── yarn.lock
+```
+
+
 `src/heroes/routes/HeroesRoutes.jsx`
 
 ```jsx
