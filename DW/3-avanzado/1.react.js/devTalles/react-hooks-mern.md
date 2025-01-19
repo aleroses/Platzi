@@ -11576,26 +11576,133 @@ a:hover {
 
 [Klerith/Navbar.js](https://gist.github.com/Klerith/566b484ac6fe46c8fa949e61df671a18)
 
-### 14.8
+### 14.8 Creando un segundo Router
 
-`src/hooks/useForm.jsx`
-
-```jsx
-
-```
-
-`src/hooks/useForm.jsx`
+`src/heroes/routes/HeroesRoutes.jsx`
 
 ```jsx
+import { Navigate, Routes, Route } from "react-router";
+import { Navbar } from "../../ui";
+import {
+  DCPage,
+  HeroPage,
+  MarvelPage,
+  SearchPage,
+} from "../pages";
 
+export const HeroesRoutes = () => {
+  return (
+    <>
+      <Navbar />
+
+      <div>
+        <Routes>
+          <Route path="marvel" element={<MarvelPage />} />
+          <Route path="dc" element={<DCPage />} />
+
+          {/* New Routes */}
+          <Route path="search" element={<SearchPage />} />
+          <Route path="hero" element={<HeroPage />} />
+
+          <Route
+            path="/"
+            element={<Navigate to="marvel" />}
+          />
+        </Routes>
+      </div>
+    </>
+  );
+};
 ```
 
-`src/hooks/useForm.jsx`
+`src/ui/components/Navbar.jsx`
 
 ```jsx
+import { Link, NavLink } from "react-router";
 
+export const Navbar = () => {
+  return (
+    <nav className="p-3">
+      <Link to="/">Asociaciones</Link>
+
+      <div>
+        <NavLink to="/marvel">Marvel</NavLink>
+        <NavLink to="/dc">DC</NavLink>
+        <NavLink to="/search">Search</NavLink>
+      </div>
+
+      <div>
+        <ul>
+          <span>Ghost/Logout</span>
+          <button>Logout</button>
+        </ul>
+      </div>
+    </nav>
+  );
+};
 ```
-`src/hooks/useForm.jsx`
+
+`src/heroes/pages/SearchPage.jsx`
+
+```jsx
+export const SearchPage = () => {
+  return (
+    <>
+      <h3>SearchPage</h3>
+    </>
+  );
+};
+```
+
+`src/heroes/pages/HeroPage.jsx`
+
+```jsx
+export const HeroPage = () => {
+  return (
+    <>
+      <h3>Hero</h3>
+    </>
+  );
+};
+```
+
+`src/heroes/pages/index.js`
+
+```js
+export * from "./DCPage";
+export * from "./MarvelPage";
+export * from "./SearchPage";
+export * from "./HeroPage";
+```
+
+`src/heroes/index.js`
+
+```js
+export * from "./pages";
+export * from "./routes/HeroesRoutes";
+```
+
+`src/router/AppRouter.jsx`
+
+```jsx
+import { Route, Routes } from "react-router";
+
+import { LoginPage } from "../auth";
+import { HeroesRoutes } from "../heroes";
+
+export const AppRouter = () => {
+  return (
+    <>
+      <Routes>
+        <Route path="login" element={<LoginPage />} />
+        <Route path="/*" element={<HeroesRoutes />} />
+      </Routes>
+    </>
+  );
+};
+```
+
+`src/.jsx`
 
 ```jsx
 
