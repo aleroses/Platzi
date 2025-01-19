@@ -11789,6 +11789,8 @@ function MyComponent() {
 
 Es ideal para manejar redirecciones después de eventos como formularios o acciones específicas del usuario.
 
+Ahora en nuestro proyecto:
+
 `src/ui/components/Navbar.jsx`
 
 ```jsx
