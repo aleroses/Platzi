@@ -12160,14 +12160,35 @@ export const MarvelPage = () => {
 };
 ```
 
+[HeroesList - Data](https://gist.github.com/Klerith/934da045caae0fec3a1067d013926c46)
+
+### 14.11
+
+
 `src/.jsx`
 
 ```jsx
 ```
 
-[HeroesList - Data](https://gist.github.com/Klerith/934da045caae0fec3a1067d013926c46)
+`src/.jsx`
 
-### 14.11
+```jsx
+```
+
+`src/.jsx`
+
+```jsx
+```
+
+`src/.jsx`
+
+```jsx
+```
+
+`src/.jsx`
+
+```jsx
+```
 
 ### 14.11
 
