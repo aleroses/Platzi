@@ -12091,14 +12091,48 @@ export const getHeroesByPublisher = (publisher) => {
 };
 ```
 
-`src/ui/components/Navbar.jsx`
+`src/heroes/helpers/index.js`
+
+```js
+export * from "./getHeroesByPublisher";
+```
+
+`src/heroes/components/HeroList.jsx`
+
+```jsx
+import React from "react";
+import { getHeroesByPublisher } from "../helpers";
+
+export const HeroList = ({ publisher }) => {
+  const heroes = getHeroesByPublisher(publisher);
+
+  return (
+    <ul>
+      {heroes.map((hero) => {
+        return <li key={hero.id}>{hero.superhero}</li>;
+      })}
+    </ul>
+  );
+};
+```
+
+`src/heroes/components/index.js`
+
+```js
+export * from "./HeroList";
+```
+
+`src/.jsx`
 
 ```jsx
 ```
 
+`src/.jsx`
 
+```jsx
+```
 
-`src/ui/components/Navbar.jsx`
+`src/.jsx`
 
 ```jsx
 ```
