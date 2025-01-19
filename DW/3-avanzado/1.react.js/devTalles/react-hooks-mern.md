@@ -11748,6 +11748,48 @@ export const AppRouter = () => {
 
 ### 14.9 Navigate push / replace - useNavigate
 
+`useNavigate` es un **custom hook** de React Router que permite programáticamente redirigir al usuario a una ruta específica. Es útil para cambiar de página sin usar enlaces `<Link>` o `<Navigate>`.
+
+Uso básico:
+
+```jsx
+import { useNavigate } from 'react-router-dom';
+
+function MyComponent() {
+  const navigate = useNavigate();
+
+  const handleNavigation = () => {
+    navigate('/destination'); // Redirige a "/destination"
+  };
+
+  return <button onClick={handleNavigation}>Go to Destination</button>;
+}
+```
+
+#### Características:
+
+1. **Navegación hacia adelante o atrás**:
+    
+    ```javascript
+    navigate(-1); // Ir hacia atrás
+    navigate(1);  // Ir hacia adelante
+    ```
+    
+2. **Reemplazar el historial**:
+    
+    ```javascript
+    navigate('/path', { replace: true }); // No guarda en el historial
+    ```
+    
+3. **Pasar estado**:
+    
+    ```javascript
+    navigate('/path', { state: { key: 'value' } });
+    ```
+    
+
+Es ideal para manejar redirecciones después de eventos como formularios o acciones específicas del usuario.
+
 `src/ui/components/Navbar.jsx`
 
 ```jsx
