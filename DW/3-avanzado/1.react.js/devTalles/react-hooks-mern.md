@@ -11746,10 +11746,66 @@ export const AppRouter = () => {
 };
 ```
 
-`src/.jsx`
+### 14.9 Navigate push / replace - useNavigate
+
+`src/ui/components/Navbar.jsx`
 
 ```jsx
+import { Link, NavLink, useNavigate } from "react-router";
 
+export const Navbar = () => {
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    navigate("/login", {
+      replace: true,
+    });
+  };
+
+  return (
+    <nav className="p-3">
+      <Link to="/">Asociaciones</Link>
+
+      <div>
+        <NavLink to="/marvel">Marvel</NavLink>
+        <NavLink to="/dc">DC</NavLink>
+        <NavLink to="/search">Search</NavLink>
+      </div>
+
+      <div>
+        <ul>
+          <span>Ghost/Logout</span>
+          <button onClick={handleLogout}>Logout</button>
+        </ul>
+      </div>
+    </nav>
+  );
+};
+```
+
+`src/auth/pages/LoginPage.jsx`
+
+```jsx
+import { useNavigate } from "react-router-dom";
+
+export const LoginPage = () => {
+  const navigate = useNavigate();
+
+  const handleLogin = () => {
+    navigate("/", {
+      replace: true,
+    });
+  };
+
+  return (
+    <div className="container mt-5">
+      <h1>Login</h1>
+      <hr />
+
+      <button onClick={handleLogin}>Login</button>
+    </div>
+  );
+};
 ```
 
 ☝️👆
