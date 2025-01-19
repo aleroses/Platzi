@@ -11525,31 +11525,37 @@ export * from "./Navbar";
 export * from "./components";
 ```
 
-`src/.js`
+`src/heroes/pages/index.js`
 
 ```js
+export * from "./DCPage";
+export * from "./MarvelPage";
+```
 
+`src/heroes/index.js`
+
+```js
+export * from "./pages";
+```
+
+`src/auth/pages/index.js`
+
+```js
+export * from "./LoginPage";
+```
+
+`src/auth/index.js`
+
+```js
+export * from "./pages";
 ```
 
 
-`src/.js`
-
-```js
-
-
-
 
 `src/.js`
 
 ```js
-
-
-
-
-`src/.js`
-
-```js
-
+```
 
 
 [Klerith/Navbar.js](https://gist.github.com/Klerith/566b484ac6fe46c8fa949e61df671a18)
