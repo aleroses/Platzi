@@ -12122,14 +12122,42 @@ export const HeroList = ({ publisher }) => {
 export * from "./HeroList";
 ```
 
-`src/.jsx`
+`src/heroes/pages/DCPage.jsx`
 
 ```jsx
+import { HeroList } from "../components";
+
+export const DCPage = () => {
+  const publisher = "DC Comics";
+
+  return (
+    <>
+      <h1>{publisher}</h1>
+      <hr />
+
+      <HeroList publisher={publisher} />
+    </>
+  );
+};
 ```
 
-`src/.jsx`
+`src/heroes/pages/MarvelPage.jsx`
 
 ```jsx
+import { HeroList } from "../components";
+
+export const MarvelPage = () => {
+  const publisher = "Marvel Comics";
+
+  return (
+    <>
+      <h1>{publisher}</h1>
+      <hr />
+
+      <HeroList publisher={publisher} />
+    </>
+  );
+};
 ```
 
 `src/.jsx`
