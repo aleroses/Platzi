@@ -11786,7 +11786,6 @@ function MyComponent() {
     ```javascript
     navigate('/path', { state: { key: 'value' } });
     ```
-    
 
 Es ideal para manejar redirecciones después de eventos como formularios o acciones específicas del usuario.
 
