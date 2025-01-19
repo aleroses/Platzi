@@ -11851,7 +11851,10 @@ export const LoginPage = () => {
 };
 ```
 
-### 14.10
+### 14.10 Lista de Heroes
+
+
+
 
 `src/ui/components/Navbar.jsx`
 
@@ -11872,6 +11875,8 @@ export const LoginPage = () => {
 
 ```jsx
 ```
+
+[HeroesList - Data](https://gist.github.com/Klerith/934da045caae0fec3a1067d013926c46)
 
 ### 14.11
 
