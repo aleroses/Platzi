@@ -11460,23 +11460,97 @@ Actualmente tenemos la siguiente estructura:
 
 Creamos varios archivos `index.js` para hacer exportaciones de barril, tener en cuenta que este método no es recomendable cuando el proyecto se hace mas grande.
 
-`src/auth/pages/LoginPage.jsx`
+`src/ui/components/Navbar.jsx`
 
 ```jsx
+import { Link, NavLink } from "react-router";
+
+export const Navbar = () => {
+  return (
+    <nav className="p-3">
+      <Link to="/">Asociaciones</Link>
+
+      <div>
+        <NavLink to="marvel">Marvel</NavLink>
+        <NavLink to="dc">DC</NavLink>
+      </div>
+
+      <div>
+        <ul>
+          <span>Ghost/Logout</span>
+          <button>Logout</button>
+        </ul>
+      </div>
+    </nav>
+  );
+};
+```
+
+`src/router/AppRouter.jsx`
+
+```jsx
+import { Navigate, Route, Routes } from "react-router";
+import { MarvelPage } from "../heroes/pages/MarvelPage";
+import { DCPage } from "../heroes/pages/DCPage";
+import { LoginPage } from "../auth/pages/LoginPage";
+import { Navbar } from "../ui";
+
+export const AppRouter = () => {
+  return (
+    <>
+      <Navbar />
+      <Routes>
+        <Route path="marvel" element={<MarvelPage />} />
+        <Route path="dc" element={<DCPage />} />
+        <Route path="login" element={<LoginPage />} />
+        <Route
+          path="/"
+          element={<Navigate to="marvel" />}
+        />
+      </Routes>
+    </>
+  );
+};
+```
+
+`src/ui/components/index.js`
+
+```js
+export * from "./Navbar";
+```
+
+`src/ui/index.js`
+
+```js
+export * from "./components";
+```
+
+`src/.js`
+
+```js
 
 ```
 
-`src/auth/pages/LoginPage.jsx`
 
-```jsx
+`src/.js`
 
-```
+```js
 
-`src/auth/pages/LoginPage.jsx`
 
-```jsx
 
-```
+
+`src/.js`
+
+```js
+
+
+
+
+`src/.js`
+
+```js
+
+
 
 [Klerith/Navbar.js](https://gist.github.com/Klerith/566b484ac6fe46c8fa949e61df671a18)
 
