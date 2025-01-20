@@ -12354,7 +12354,81 @@ Es útil para obtener información dinámica de la URL, como identificadores o n
 
 En nuestro proyecto:
 
-`src/heroes/components/HeroCard.jsx`
+Estructura:
+
+```bash
+├── src
+│   ├── auth
+│   │   ├── components
+│   │   ├── hooks
+│   │   ├── index.js
+│   │   └── pages
+│   │       ├── index.js
+│   │       └── LoginPage.jsx
+│   ├── heroes
+│   │   ├── components
+│   │   │   ├── HeroCard.jsx
+│   │   │   ├── HeroList.jsx
+│   │   │   └── index.js
+│   │   ├── data
+│   │   │   └── heroes.js
+│   │   ├── helpers
+│   │   │   ├── getHeroById.js
+│   │   │   ├── getHeroesByPublisher.js
+│   │   │   └── index.js
+│   │   ├── hooks
+│   │   ├── index.js
+│   │   ├── pages
+│   │   │   ├── DCPage.jsx
+│   │   │   ├── HeroPage.jsx
+│   │   │   ├── index.js
+│   │   │   ├── MarvelPage.jsx
+│   │   │   └── SearchPage.jsx
+│   │   └── routes
+│   │       └── HeroesRoutes.jsx
+│   ├── HeroesApp.jsx
+│   ├── main.jsx
+│   ├── router
+│   │   └── AppRouter.jsx
+│   ├── styles.css
+│   └── ui
+│       ├── components
+│       │   ├── index.js
+│       │   └── Navbar.jsx
+│       ├── hooks
+│       └── index.js
+├── vite.config.js
+└── yarn.lock
+```
+
+`src/heroes/pages/HeroPage.jsx`
+
+```jsx
+import { Navigate, useParams } from "react-router";
+import { getHeroById } from "../helpers";
+
+export const HeroPage = () => {
+  const { id } = useParams();
+  const hero = getHeroById(id);
+
+  console.log(hero);
+
+  if (!hero) {
+    return <Navigate to="/marvel" />;
+  }
+
+  return (
+    <>
+      <h1>{hero.superhero}</h1>
+    </>
+  );
+};
+```
+
+`src/.jsx`
+
+```jsx
+```
 
 ```jsx
 ```
