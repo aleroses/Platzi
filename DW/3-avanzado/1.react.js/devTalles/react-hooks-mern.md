@@ -12483,7 +12483,9 @@ export const HeroesRoutes = () => {
 };
 ```
 
-### 14.14 
+### 14.14 Estilo del componente HeroScreen
+
+
 
 `src/.jsx`
 
