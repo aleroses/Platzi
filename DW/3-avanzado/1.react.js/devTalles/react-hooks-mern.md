@@ -12297,7 +12297,62 @@ export const HeroCard = ({
 };
 ```
 
-### 14.13
+### 14.13 Leer argumentos por URL
+
+`useParams` es un **hook** de React Router que se utiliza para acceder a los parámetros de la URL dinámica en una aplicación React.
+
+Uso básico:
+
+Cuando defines rutas con parámetros en React Router, como `/:id`, puedes usar `useParams` para acceder al valor de esos parámetros.
+
+```jsx
+import { useParams } from 'react-router-dom';
+
+function ProductDetail() {
+  const { id } = useParams(); // Extrae el parámetro "id" de la URL
+
+  return <h1>Detalles del producto con ID: {id}</h1>;
+}
+```
+
+#### Ejemplo de configuración de rutas:
+
+```jsx
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import ProductDetail from './ProductDetail';
+
+function App() {
+  return (
+    <Router>
+      <Routes>
+        <Route path="/product/:id" element={<ProductDetail />} />
+      </Routes>
+    </Router>
+  );
+}
+```
+
+#### Características:
+
+1. **Devuelve un objeto**:
+    
+    - Cada parámetro de la URL es una clave en el objeto devuelto por `useParams`.
+    - Ejemplo: Para la URL `/product/123`, `useParams()` devuelve `{ id: "123" }`.
+2. **Siempre devuelve strings**:
+    
+    - Los valores siempre se manejan como cadenas, incluso si parecen números.
+3. **Uso con múltiples parámetros**:
+    
+    ```jsx
+    const { category, id } = useParams();
+    // Para una ruta como /category/electronics/product/123
+    // useParams() devolverá: { category: "electronics", id: "123" }
+    ```
+    
+
+Es útil para obtener información dinámica de la URL, como identificadores o nombres, en aplicaciones basadas en rutas.
+
+En nuestro proyecto:
 
 `src/heroes/components/HeroCard.jsx`
 
