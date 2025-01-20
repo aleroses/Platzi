@@ -12425,12 +12425,62 @@ export const HeroPage = () => {
 };
 ```
 
-`src/.jsx`
+`src/heroes/helpers/getHeroById.js`
 
 ```jsx
+import { heroes } from "../data/heroes";
+
+export const getHeroById = (id) => {
+  return heroes.find((hero) => hero.id === id);
+
+  // Undefined
+};
 ```
 
+`src/heroes/helpers/index.js`
+
+```js
+export * from "./getHeroById";
+export * from "./getHeroesByPublisher";
+```
+
+`src/heroes/routes/HeroesRoutes.jsx`
+
 ```jsx
+import { Navigate, Routes, Route } from "react-router";
+import { Navbar } from "../../ui";
+import {
+  DCPage,
+  HeroPage,
+  MarvelPage,
+  SearchPage,
+} from "../pages";
+
+export const HeroesRoutes = () => {
+  return (
+    <>
+      <Navbar />
+
+      <div className="container">
+        <Routes>
+          <Route path="marvel" element={<MarvelPage />} />
+          <Route path="dc" element={<DCPage />} />
+
+          {/* New Routes */}
+          <Route path="search" element={<SearchPage />} />
+
+          {/* :id es solo un nombre */}
+          <Route path="hero/:id" element={<HeroPage />} />
+
+          <Route
+            path="/"
+            element={<Navigate to="marvel" />}
+          />
+        </Routes>
+      </div>
+    </>
+  );
+};
 ```
 
 `src/.jsx`
