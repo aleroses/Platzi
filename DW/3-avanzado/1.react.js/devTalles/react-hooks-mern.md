@@ -12232,17 +12232,82 @@ export const HeroCard = ({
 
 ### 14.12 Tarjeta del Héroe - parte 2
 
-`src/.jsx`
+`src/heroes/components/HeroCard.jsx`
 
 ```jsx
-```
+import { Link } from "react-router-dom";
 
-`src/.jsx`
+const CharactersByHero = ({ alter_ego, characters }) => {
+  // if (alter_ego === characters) return <></>;
+  // return <p>{characters}</p>;
 
-```jsx
+  return alter_ego === characters ? (
+    <></>
+  ) : (
+    <p>{characters}</p>
+  );
+};
+
+export const HeroCard = ({
+  id,
+  superhero,
+  publisher,
+  alter_ego,
+  first_appearance,
+  characters,
+}) => {
+  const heroImageUrl = `./assets/heroes/${id}.jpg`;
+  // const charactersByHero = <p>{characters}</p>;
+
+  return (
+    <div className="col">
+      <div className="card">
+        <div className="row no-gutters">
+          <div className="col-4">
+            <img
+              className="card-img"
+              src={heroImageUrl}
+              alt={superhero}
+            />
+          </div>
+
+          <div className="col-8">
+            <div className="card-body">
+              <h5>{superhero}</h5>
+              <p className="card-text">{alter_ego}</p>
+
+              {/* {alter_ego !== characters && charactersByHero} */}
+
+              <CharactersByHero
+                characters={characters}
+                alter_ego={alter_ego}
+              />
+
+              <p>
+                <small>{first_appearance}</small>
+              </p>
+
+              <Link to={`/hero${id}`}>More...</Link>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
 ```
 
 ### 14.13
+
+`src/heroes/components/HeroCard.jsx`
+
+```jsx
+```
+
+`src/.jsx`
+
+```jsx
+```
 
 ### 14.14
 
