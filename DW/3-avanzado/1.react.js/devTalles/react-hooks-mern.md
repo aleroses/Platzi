@@ -12162,8 +12162,75 @@ export const MarvelPage = () => {
 
 [HeroesList - Data](https://gist.github.com/Klerith/934da045caae0fec3a1067d013926c46)
 
-### 14.11
+### 14.11 Tarjetas con la información del Héroe
 
+`src/heroes/components/HeroList.jsx`
+
+```jsx
+import { HeroCard } from "./HeroCard";
+import { getHeroesByPublisher } from "../helpers";
+
+export const HeroList = ({ publisher }) => {
+  const heroes = getHeroesByPublisher(publisher);
+
+  return (
+    <div className="row rows-cols-1 row-cols-md-3 g-3">
+      {heroes.map((hero) => {
+        return <HeroCard key={hero.id} {...hero} />;
+      })}
+    </div>
+  );
+};
+```
+
+`src/heroes/components/index.js`
+
+```js
+export * from "./HeroCard";
+export * from "./HeroList";
+```
+
+`src/heroes/components/HeroCard.jsx`
+
+```jsx
+export const HeroCard = ({
+  id,
+  superhero,
+  publisher,
+  alter_ego,
+  first_appearance,
+  characters,
+}) => {
+  const heroImageUrl = `./assets/heroes/${id}.jpg`;
+
+  return (
+    <div className="col">
+      <div className="card">
+        <div className="row no-gutters">
+          <div className="col-4">
+            <img
+              className="card-img"
+              src={heroImageUrl}
+              alt={superhero}
+            />
+          </div>
+
+          <div className="col-8">
+            <div className="card-body">
+              <h5>{superhero}</h5>
+              <p className="card-text">{alter_ego}</p>
+
+              <p>{characters}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+```
+
+### 14.12 Tarjeta del Héroe - parte 2
 
 `src/.jsx`
 
@@ -12174,25 +12241,106 @@ export const MarvelPage = () => {
 
 ```jsx
 ```
-
-`src/.jsx`
-
-```jsx
-```
-
-`src/.jsx`
-
-```jsx
-```
-
-`src/.jsx`
-
-```jsx
-```
-
-### 14.11
 
 ### 14.13
+
+### 14.14
+
+`src/.jsx`
+
+```jsx
+```
+
+`src/.jsx`
+
+```jsx
+```
+
+### 14.15
+
+`src/.jsx`
+
+```jsx
+```
+
+`src/.jsx`
+
+```jsx
+```
+
+### 14.16
+
+`src/.jsx`
+
+```jsx
+```
+
+`src/.jsx`
+
+```jsx
+```
+
+### 14.17
+
+`src/.jsx`
+
+```jsx
+```
+
+`src/.jsx`
+
+```jsx
+```
+
+### 14.18
+
+`src/.jsx`
+
+```jsx
+```
+
+`src/.jsx`
+
+```jsx
+```
+
+
+### 14.19
+
+`src/.jsx`
+
+```jsx
+```
+
+`src/.jsx`
+
+```jsx
+```
+
+### 14.20
+
+`src/.jsx`
+
+```jsx
+```
+
+`src/.jsx`
+
+```jsx
+```
+
+### 14.21
+
+`src/.jsx`
+
+```jsx
+```
+
+`src/.jsx`
+
+```jsx
+```
+
 
 ☝️👆
 👈👀
