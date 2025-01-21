@@ -12491,8 +12491,51 @@ Dentro del proyecto se usa el archivo `HeroPage.jsx` justo en la ruta `07-heroes
 
 Mi duda es, ¿por qué al colocar dentro de un elemento `img` la ruta `src={`/assets/heroes/${hero.id}.jpg`}` funciona? ¿No se supone que tengo que navegar hasta esa ruta? Algo así como lo siguiente  `../../../assets/heroes`...
 
+##### ¿Por qué funciona `/assets/heroes/...`?
 
+La razón por la cual la ruta `src={`/assets/heroes/${hero.id}.jpg`}` funciona en tu archivo `HeroPage.jsx` se debe a cómo los bundlers modernos como Vite manejan las rutas de los recursos y cómo está configurado tu proyecto.
 
+En tu proyecto, no tienes una carpeta `public`, pero cuando usas una ruta que comienza con `/assets/...`, Vite trata esa ruta como relativa a la raíz del proyecto durante el tiempo de desarrollo y como una ruta pública después del build.
+
+1. **Vite trata `/assets/...` como una ruta pública:**
+    
+    - Cuando defines recursos estáticos (como imágenes) dentro de una carpeta como `assets` en la raíz del proyecto, Vite los expone automáticamente como recursos accesibles mediante rutas absolutas a partir de `/assets/...`.
+    - Esto significa que, aunque técnicamente el archivo `HeroPage.jsx` está en una ubicación anidada, puedes usar rutas absolutas (`/assets/...`) sin necesidad de navegar usando `../../../`.
+2. **Comportamiento en desarrollo y producción:**
+    
+    - Durante el desarrollo, Vite sirve los archivos directamente desde el sistema de archivos, haciendo que la ruta `/assets/...` sea válida.
+    - En producción, Vite empaqueta los recursos estáticos, optimiza las rutas, y se asegura de que `/assets/...` apunte a los archivos correctos en el build.
+3. **Diferencia entre rutas absolutas y relativas:**
+    
+    - Si usaras una ruta relativa como `../../../assets/heroes/${hero.id}.jpg`, funcionaría también, pero está vinculada a la estructura actual de carpetas, lo que puede volverse complicado si cambias la ubicación del archivo `HeroPage.jsx`.
+    - La ruta absoluta `/assets/...` es más robusta porque no depende de la ubicación del archivo que la referencia.
+
+Ejemplo en contexto:
+
+Supongamos que tienes la siguiente estructura de archivos y el ID del héroe es `superman`:
+
+- Archivo de imagen: `07-heroes-spa/assets/heroes/superman.jpg`
+- Archivo `HeroPage.jsx`: `07-heroes-spa/src/heroes/pages/HeroPage.jsx`
+
+Si usas:
+
+```jsx
+<img src={`/assets/heroes/${hero.id}.jpg`} alt={hero.name} />
+```
+
+Esta ruta es procesada automáticamente por Vite para que apunte al archivo correcto, sin importar la ubicación del archivo `HeroPage.jsx`.
+
+Nota adicional:
+
+Si decides mover la carpeta `assets` dentro de `src`, necesitarías ajustar las rutas ya que Vite no manejaría automáticamente los recursos como públicos. En ese caso, tendrías que importar explícitamente las imágenes o usar rutas relativas. Por ejemplo:
+
+```jsx
+import supermanImage from '../../assets/heroes/superman.jpg';
+
+<img src={supermanImage} alt="Superman" />
+```
+
+Esto es útil cuando prefieres importar directamente los archivos en lugar de usar rutas públicas. Sin embargo, con tu configuración actual, `/assets/...` es más práctico y directo.
 
 
 
