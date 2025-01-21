@@ -12597,11 +12597,66 @@ export const HeroPage = () => {
 };
 ```
 
-### 14.15
+### 14.15 Nota: useMemo
 
-`src/.jsx`
+`src/heroes/pages/HeroPage.jsx`
 
 ```jsx
+import { useMemo } from "react";
+import {
+  Navigate,
+  useNavigate,
+  useParams,
+} from "react-router";
+import { getHeroById } from "../helpers";
+
+export const HeroPage = () => {
+  const { id } = useParams();
+  const navigate = useNavigate();
+
+  // Cuando el id cambie se volvera a ejecutar
+  const hero = useMemo(() => getHeroById(id), [id]);
+
+  const handleNavigateBack = () => {
+    navigate(-1);
+  };
+
+  if (!hero) {
+    return <Navigate to="/marvel" />;
+  }
+
+  return (
+    <div>
+      <div className="col-4">
+        <img
+          src={`/assets/heroes/${hero.id}.jpg`}
+          alt={hero.superhero}
+          className="img-thumbnail"
+        />
+      </div>
+
+      <div className="col-8">
+        <h3>{hero.superhero}</h3>
+        <ul>
+          <li>
+            <b>Alter ego:</b> {hero.alter_ego}
+          </li>
+          <li>
+            <b>Publisher:</b> {hero.publisher}
+          </li>
+          <li>
+            <b>First appearance:</b> {hero.first_appearance}
+          </li>
+        </ul>
+
+        <h5>Characters</h5>
+        <p>{hero.characters}</p>
+
+        <button onClick={handleNavigateBack}>Return</button>
+      </div>
+    </div>
+  );
+};
 ```
 
 `src/.jsx`
