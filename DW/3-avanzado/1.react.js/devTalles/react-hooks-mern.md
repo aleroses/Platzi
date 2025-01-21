@@ -12537,22 +12537,64 @@ import supermanImage from '../../assets/heroes/superman.jpg';
 
 Esto es útil cuando prefieres importar directamente los archivos en lugar de usar rutas públicas. Sin embargo, con tu configuración actual, `/assets/...` es más práctico y directo.
 
+En nuestro proyecto:
 
-
-`src/.jsx`
-
-```jsx
-```
-
-`src/.jsx`
+`src/heroes/pages/HeroPage.jsx`
 
 ```jsx
-```
+import {
+  Navigate,
+  useNavigate,
+  useParams,
+} from "react-router";
+import { getHeroById } from "../helpers";
 
+export const HeroPage = () => {
+  const { id } = useParams();
+  const navigate = useNavigate();
+  const hero = getHeroById(id);
 
-`src/.jsx`
+  // console.log(hero);
+  const handleNavigateBack = () => {
+    navigate(-1);
+  };
 
-```jsx
+  if (!hero) {
+    return <Navigate to="/marvel" />;
+  }
+
+  return (
+    <div>
+      <div className="col-4">
+        <img
+          src={`/assets/heroes/${hero.id}.jpg`}
+          alt={hero.superhero}
+          className="img-thumbnail"
+        />
+      </div>
+
+      <div className="col-8">
+        <h3>{hero.superhero}</h3>
+        <ul>
+          <li>
+            <b>Alter ego:</b> {hero.alter_ego}
+          </li>
+          <li>
+            <b>Publisher:</b> {hero.publisher}
+          </li>
+          <li>
+            <b>First appearance:</b> {hero.first_appearance}
+          </li>
+        </ul>
+
+        <h5>Characters</h5>
+        <p>{hero.characters}</p>
+
+        <button onClick={handleNavigateBack}>Return</button>
+      </div>
+    </div>
+  );
+};
 ```
 
 ### 14.15
@@ -12561,6 +12603,17 @@ Esto es útil cuando prefieres importar directamente los archivos en lugar de us
 
 ```jsx
 ```
+
+`src/.jsx`
+
+```jsx
+```
+
+`src/.jsx`
+
+```jsx
+```
+
 
 `src/.jsx`
 
