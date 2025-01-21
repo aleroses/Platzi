@@ -12757,24 +12757,83 @@ Añadimos el CDN en el `index`.
 
 [Animate CSS](https://animate.style/)
 
-### 14.17
+### 14.17 Diseño de la pantalla de búsqueda
 
-`src/.jsx`
-
-```jsx
-```
-
-`src/.jsx`
+`src/ui/components/Navbar.jsx`
 
 ```jsx
+import { Link, NavLink, useNavigate } from "react-router";
+
+export const Navbar = () => {
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    navigate("/login", {
+      replace: true,
+    });
+  };
+
+  return (
+    <nav className="p-3">
+      <Link to="/">Asociaciones</Link>
+
+      <div>
+        <NavLink to="/marvel">Marvel</NavLink>
+        <NavLink to="/dc">DC</NavLink>
+        <NavLink to="/search">Search</NavLink>
+      </div>
+
+      <div>
+        <ul>
+          <span>Ghost/Logout</span>
+          <button onClick={handleLogout}>Logout</button>
+        </ul>
+      </div>
+    </nav>
+  );
+};
 ```
 
-
-`src/.jsx`
+`src/heroes/pages/SearchPage.jsx`
 
 ```jsx
-```
+import { HeroCard } from "../components/HeroCard";
 
+export const SearchPage = () => {
+  return (
+    <>
+      <h1>Search</h1>
+      <hr />
+
+      <div>
+        <h4>Searching</h4>
+        <hr />
+        <form action="">
+          <input
+            type="text"
+            placeholder="Search a hero"
+            name="searchText"
+            autoComplete="off"
+          />
+          <button>Search</button>
+        </form>
+      </div>
+
+      <div>
+        <h4>Results</h4>
+        <hr />
+
+        <div>Search a Hero</div>
+        <div>
+          There's no results <b>QUERY</b>
+        </div>
+
+        {/* <HeroCard/> */}
+      </div>
+    </>
+  );
+};
+```
 
 ### 14.18
 
@@ -12782,6 +12841,12 @@ Añadimos el CDN en el `index`.
 
 ```jsx
 ```
+
+`src/.jsx`
+
+```jsx
+```
+
 
 `src/.jsx`
 
