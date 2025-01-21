@@ -12682,7 +12682,7 @@ export const HeroList = ({ publisher }) => {
 };
 ```
 
-### 14.16
+### 14.16 Animaciones en nuestro componente
 
 `src/.jsx`
 
