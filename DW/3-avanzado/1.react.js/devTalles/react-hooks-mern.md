@@ -12659,20 +12659,27 @@ export const HeroPage = () => {
 };
 ```
 
-`src/.jsx`
+`src/heroes/components/HeroList.jsx`
 
 ```jsx
-```
+import { useMemo } from "react";
+import { HeroCard } from "./HeroCard";
+import { getHeroesByPublisher } from "../helpers";
 
-`src/.jsx`
+export const HeroList = ({ publisher }) => {
+  const heroes = useMemo(
+    () => getHeroesByPublisher(publisher),
+    [publisher]
+  );
 
-```jsx
-```
-
-
-`src/.jsx`
-
-```jsx
+  return (
+    <div className="row rows-cols-1 row-cols-md-3 g-3">
+      {heroes.map((hero) => {
+        return <HeroCard key={hero.id} {...hero} />;
+      })}
+    </div>
+  );
+};
 ```
 
 ### 14.16
@@ -12681,6 +12688,17 @@ export const HeroPage = () => {
 
 ```jsx
 ```
+
+`src/.jsx`
+
+```jsx
+```
+
+`src/.jsx`
+
+```jsx
+```
+
 
 `src/.jsx`
 
