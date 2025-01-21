@@ -12485,6 +12485,15 @@ export const HeroesRoutes = () => {
 
 ### 14.14 Estilo del componente HeroScreen
 
+#### Dudas sobre rutas
+
+Dentro del proyecto se usa el archivo `HeroPage.jsx` justo en la ruta `07-heroes-spa/src/heroes/pages`. En dicho archivo se usan imágenes que están en la ruta `07-heroes-spa/assets/heroes`.
+
+Mi duda es, ¿por qué al colocar dentro de un elemento `img` la ruta `src={`/assets/heroes/${hero.id}.jpg`}` funciona? ¿No se supone que tengo que navegar hasta esa ruta? Algo así como lo siguiente  `../../../assets/heroes`...
+
+
+
+
 
 
 `src/.jsx`
