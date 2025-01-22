@@ -12835,8 +12835,8 @@ export const SearchPage = () => {
 };
 ```
 
-### 14.18
-
+### 14.18 SearchComponent
+query strings
 `src/.jsx`
 
 ```jsx
@@ -12852,6 +12852,10 @@ export const SearchPage = () => {
 
 ```jsx
 ```
+
+- [Repo: Custom Hook - useForm](https://github.com/Klerith/custom-hooks/blob/main/useForm/useForm.js)
+- [Mi repo: useForm](https://github.com/aleroses/custom-hooks/blob/master/useForm/useForm.js)
+- [Paquete: Query-string](https://classic.yarnpkg.com/en/package/query-string)
 
 
 ### 14.19
