@@ -12912,6 +12912,8 @@ Ahora en nuestro proyecto usaremos el paquete `query-string`
 yarn add query-string
 ```
 
+Copiamos el `Custom Hook: useForm.jsx` que creamos y subimos a GitHub con anterioridad.
+
 `src/.jsx`
 
 ```jsx
