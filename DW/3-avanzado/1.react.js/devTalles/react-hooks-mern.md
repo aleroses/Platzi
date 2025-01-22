@@ -12930,6 +12930,7 @@ yarn add query-string
 - [Repo: Custom Hook - useForm](https://github.com/Klerith/custom-hooks/blob/main/useForm/useForm.js)
 - [Mi repo: useForm](https://github.com/aleroses/custom-hooks/blob/master/useForm/useForm.js)
 - [Paquete: Query-string](https://classic.yarnpkg.com/en/package/query-string)
+- [Doc query-string](https://github.com/sindresorhus/query-string)
 
 
 ### 14.19
