@@ -13221,7 +13221,13 @@ Si quieren leer más sobre los assets y cómo manejarlos en Vite: [https://vite
 
 [Super Hero Api](https://www.superheroapi.com/)
 
-### 14.22 
+### 14.22 Código fuente de la sección
+
+Aquí les dejo el código fuente tal cual lo dejé al final de la clase anterior, por si lo necesitan comparar contra el mío.
+
+[**Github - Fin sección 14**](https://github.com/Klerith/react-heroes/tree/fin-seccion-14)
+
+## 🟣 15. 
 
 
 `src/.jsx`
@@ -13249,6 +13255,7 @@ Si quieren leer más sobre los assets y cómo manejarlos en Vite: [https://vite
 🔥
 🚫
 🔘
+🟣
 
 ```bash
 npm install react@latest react-dom@latest
