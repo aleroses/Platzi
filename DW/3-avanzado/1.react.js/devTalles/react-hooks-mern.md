@@ -12850,7 +12850,8 @@ https://example.com?page=1&sort=asc
 Puedes usar la interfaz `URLSearchParams` para trabajar con ellos:
 
 ```javascript
-const url = new URL(window.location.href); // Obtiene la URL actual
+// Obtiene la URL actual
+const url = new URL(window.location.href);
 const params = new URLSearchParams(url.search);
 
 // Obtener un parámetro
