@@ -12836,7 +12836,81 @@ export const SearchPage = () => {
 ```
 
 ### 14.18 SearchComponent
-query strings
+
+Los **query parameters** en JavaScript (y React) son valores adicionales que se envían en una URL tras el signo de interrogación (`?`) como pares clave-valor. Por ejemplo, en la URL:
+
+```
+https://example.com?page=1&sort=asc
+```
+
+`page` y `sort` son query parameters.
+
+#### Manejo en JavaScript puro
+
+Puedes usar la interfaz `URLSearchParams` para trabajar con ellos:
+
+```javascript
+const url = new URL(window.location.href); // Obtiene la URL actual
+const params = new URLSearchParams(url.search);
+
+// Obtener un parámetro
+const page = params.get('page'); // "1"
+
+// Agregar o actualizar un parámetro
+params.set('filter', 'active');
+
+// Eliminar un parámetro
+params.delete('sort');
+
+// Convertir a string para actualizar la URL
+console.log(params.toString()); // "page=1&filter=active"
+```
+
+### Manejo en React
+
+En React, los query parameters se manejan comúnmente con herramientas como `react-router-dom`.
+
+1. **Acceder a los query parameters**: Utilizando `useSearchParams` (React Router v6+):
+
+```javascript
+import { useSearchParams } from 'react-router-dom';
+
+function MyComponent() {
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  // Leer parámetros
+  const page = searchParams.get('page'); // "1"
+
+  // Actualizar parámetros
+  const updateParams = () => {
+    setSearchParams({ page: '2', sort: 'desc' });
+  };
+
+  return (
+    <div>
+      <p>Page: {page}</p>
+      <button onClick={updateParams}>Actualizar</button>
+    </div>
+  );
+}
+```
+
+2. **Sincronización con la URL**: Cambiar los parámetros actualiza la URL automáticamente, y puedes usar rutas dinámicas para mantenerlas organizadas.
+
+### Buenas prácticas
+
+- **Validación de valores**: Siempre verifica los valores antes de usarlos.
+- **Evitar sobrecargar la URL**: Usa los query parameters solo para datos que necesiten ser persistidos en la URL.
+- **Codificación**: Usa `encodeURIComponent` para codificar valores especiales.
+- **Estado vs Query Parameters**: Usa query parameters solo para datos relacionados con la navegación, no para manejar todo el estado de la aplicación.
+
+¿Te gustaría un ejemplo práctico más elaborado?
+
+```bash
+# Install query-strings
+yarn add query-string
+```
+
 `src/.jsx`
 
 ```jsx

@@ -87,8 +87,7 @@
               "title": "Bookmarks"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -181,8 +180,23 @@
   },
   "active": "23b24c2e56fa0ebf",
   "lastOpenFiles": [
-    "DW/1-basico/005-git-github/git-github.md",
+    "nextjs.org.md",
     "DW/3-avanzado/1.react.js/devTalles/react-hooks-mern.md",
+    "package.json",
+    "yarn.lock",
+    "node_modules/split-on-first/readme.md",
+    "node_modules/split-on-first/package.json",
+    "node_modules/split-on-first/license",
+    "node_modules/split-on-first/index.js",
+    "node_modules/split-on-first/index.d.ts",
+    "node_modules/query-string/readme.md",
+    "node_modules/query-string/package.json",
+    "node_modules/query-string/license",
+    "node_modules/query-string/index.js",
+    "node_modules/query-string/index.d.ts",
+    "node_modules/filter-obj/readme.md",
+    "node_modules/decode-uri-component/readme.md",
+    "DW/1-basico/005-git-github/git-github.md",
     "DW/3-avanzado/1.react.js/devTalles/img/11-createContext.png",
     "DW/3-avanzado/1.react.js/devTalles/img/11-userProvider.png",
     "DW/3-avanzado/1.react.js/devTalles/img/11-context.png",
@@ -193,19 +207,8 @@
     "DW/3-avanzado/1.react.js/devTalles/img/6-naming-components.jpeg",
     "DW/3-avanzado/1.react.js/devTalles/img/naming-components.jpeg",
     "DW/3-avanzado/3.next/Nextjs-Tailwind.md",
-    "nextjs.org.md",
-    "DW/3-avanzado/3.next",
     "DW/2-intermedio/029.web-components/web-components.md",
-    "DW/2-intermedio/029.web-components/code/12.third-party-components/index.html",
-    "DW/2-intermedio/029.web-components/code/12.third-party-components",
-    "DW/2-intermedio/029.web-components/code/third-party-components",
-    "DW/2-intermedio/029.web-components/code/project/third-party-components",
     "DW/2-intermedio/029.web-components/code/project/imgs/nike-blue.png",
-    "DW/2-intermedio/029.web-components/code/project/styles.css",
-    "DW/2-intermedio/029.web-components/code/project/imgs",
-    "DW/2-intermedio/029.web-components/code/project/components/Product-card.js",
-    "DW/2-intermedio/029.web-components/code/project/components",
-    "DW/2-intermedio/029.web-components/code/project/app.js",
     "DW/2-intermedio/029.web-components/imgs/18.project.png",
     "DW/2-intermedio/029.web-components/imgs/18.project.gif",
     "DW/2-intermedio/007.poo-js/poo-js.md",
@@ -221,11 +224,6 @@
     "DW/2-intermedio/025.debugging-devtools/debugging-devtools.md",
     "DW/1-basico/005-git-github/gh-pages.md",
     "DW/2-intermedio/014.api-rest-js/2.api-rest-js-ejemplos/api-rest-ejemplos.md",
-    "DW/2-intermedio/012.asincronismo-js/get-post-put-delete.md",
-    "DW/2-intermedio/012.asincronismo-js/fetch_async-await_try-catch+archivo-json.md",
-    "DW/2-intermedio/012.asincronismo-js/asincronismo-con-js.md",
-    "DW/3-avanzado/1.react.js/Platzi/reactjs.md",
-    "DW/2-intermedio/006.closures_scope-en-js/closures_scope-en-js.md",
-    "DW/2-intermedio/026.manipulacion-dom/manipulacion-dom.md"
+    "DW/2-intermedio/012.asincronismo-js/get-post-put-delete.md"
   ]
 }
