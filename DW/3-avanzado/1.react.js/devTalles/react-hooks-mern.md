@@ -12905,7 +12905,7 @@ function MyComponent() {
 - **Codificación**: Usa `encodeURIComponent` para codificar valores especiales.
 - **Estado vs Query Parameters**: Usa query parameters solo para datos relacionados con la navegación, no para manejar todo el estado de la aplicación.
 
-¿Te gustaría un ejemplo práctico más elaborado?
+Ahora en nuestro proyecto usaremos el paquete `query-string`
 
 ```bash
 # Install query-strings
