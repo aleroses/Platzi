@@ -13114,17 +13114,99 @@ export const SearchPage = () => {
 
 ### 14.20 Mostrar mensajes condicionales
 
-`src/.jsx`
+`src/heroes/pages/SearchPage.jsx`
 
 ```jsx
-```
+import { useLocation, useNavigate } from "react-router";
+import queryString from "query-string";
 
-`src/.jsx`
+import { useForm } from "../hooks/useForm";
+import { HeroCard } from "../components";
+import { getHeroByName } from "../helpers";
 
-```jsx
+export const SearchPage = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const { q } = queryString.parse(location.search);
+  const heroes = getHeroByName(q);
+
+  const showSearch = q.length === 0;
+  const showError = q.length > 0 && heroes.length === 0;
+
+  const { searchText, handleInputChange } = useForm({
+    searchText: q, // ""
+  });
+
+  console.log(q);
+
+  const handleSearchSubmit = (event) => {
+    event.preventDefault();
+
+    // if (searchText.trim().length <= 1) return;
+
+    navigate(`?q=${searchText}`);
+  };
+
+  return (
+    <>
+      <h1>Search</h1>
+      <hr />
+
+      <div>
+        <h4>Searching</h4>
+        <hr />
+        <form action="" onSubmit={handleSearchSubmit}>
+          <input
+            type="text"
+            autoComplete="off"
+            placeholder="Search a hero"
+            name="searchText"
+            value={searchText}
+            onChange={handleInputChange}
+          />
+          <button>Search</button>
+        </form>
+      </div>
+
+      <div>
+        <h4>Results</h4>
+        <hr />
+
+        {/* First method */}
+        {/* {q === "" ? (
+          <div>Search a Hero</div>
+        ) : (
+          heroes.length === 0 && (
+            <div>
+              There's no results <b>{q}</b>
+            </div>
+          )
+        )} */}
+
+        {/* Second method */}
+        <div style={{ display: showSearch ? "" : "none" }}>
+          Search a Hero
+        </div>
+        <div style={{ display: showError ? "" : "none" }}>
+          There's no results <b>{q}</b>
+        </div>
+
+        {heroes.map((hero) => (
+          <HeroCard key={hero.id} {...hero} />
+        ))}
+      </div>
+    </>
+  );
+};
 ```
 
 ### 14.21
+
+`src/.jsx`
+
+```jsx
+```
 
 `src/.jsx`
 
