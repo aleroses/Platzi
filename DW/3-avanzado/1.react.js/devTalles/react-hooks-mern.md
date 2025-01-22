@@ -13213,7 +13213,7 @@ La solución sería crear una carpeta llamada **public** en la raíz del proye
 
 De esta forma ya añadimos la carpeta heroes al build de producción.
 
-Para acceder a "public" tenemos que usar la ruta raíz /, por lo que ahora modificaremos la URL de heroImageUrl en el archivo HeroCard.jsx quedando: ``const heroImageUrl = `/heroes/${ id }.jpg`;``.
+Para acceder a "public" tenemos que usar la ruta raíz /, por lo que ahora modificaremos la URL de heroImageUrl en el archivo HeroCard.jsx quedando: `const heroImageUrl = `/heroes/${ id }.jpg`;`.
 
 De esta forma ya se copian automáticamente las imágenes, y funciona nuestra app tanto en desarrollo como producción.
 
