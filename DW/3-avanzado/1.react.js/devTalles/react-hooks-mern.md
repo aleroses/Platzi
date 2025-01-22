@@ -12780,7 +12780,7 @@ export const Navbar = () => {
       <div>
         <NavLink to="/marvel">Marvel</NavLink>
         <NavLink to="/dc">DC</NavLink>
-        <NavLink to="/search">Search</NavLink>
+        <NavLink to="/search">Search</NavLink> 👈👀
       </div>
 
       <div>
