@@ -12914,20 +12914,100 @@ yarn add query-string
 
 Copiamos el `Custom Hook: useForm.jsx` que creamos y subimos a GitHub con anterioridad.
 
-`src/.jsx`
+`src/heroes/hooks/useForm.jsx`
 
 ```jsx
+import { useState } from "react";
+
+export const useForm = (initialForm = {}) => {
+  const [formState, setFormState] = useState(initialForm);
+
+  const handleInputChange = ({ target }) => {
+    const { value, name } = target;
+
+    setFormState({
+      ...formState,
+      [name]: value,
+    });
+  };
+
+  const handleResetForm = () => {
+    setFormState(initialForm);
+  };
+
+  return {
+    ...formState,
+    formState,
+    handleInputChange,
+    handleResetForm,
+  };
+};
 ```
 
-`src/.jsx`
+`src/heroes/pages/SearchPage.jsx`
 
 ```jsx
-```
+import { useLocation, useNavigate } from "react-router";
+import queryString from "query-string";
 
+import { useForm } from "../hooks/useForm";
+import { HeroCard } from "../components";
 
-`src/.jsx`
+export const SearchPage = () => {
+  const { searchText, handleInputChange } = useForm({
+    searchText: "",
+  });
 
-```jsx
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const { q } = queryString.parse(location.search);
+
+  console.log(q);
+
+  const handleSearchSubmit = (event) => {
+    event.preventDefault();
+
+    if (searchText.trim().length <= 1) return;
+
+    navigate(`?q=${searchText}`);
+  };
+
+  return (
+    <>
+      <h1>Search</h1>
+      <hr />
+
+      <div>
+        <h4>Searching</h4>
+        <hr />
+        <form action="" onSubmit={handleSearchSubmit}>
+          <input
+            type="text"
+            autoComplete="off"
+            placeholder="Search a hero"
+            name="searchText"
+            value={searchText}
+            onChange={handleInputChange}
+          />
+          <button>Search</button>
+        </form>
+      </div>
+
+      <div>
+        <h4>Results</h4>
+        <hr />
+
+        <div>Search a Hero</div>
+        <div>
+          There's no results <b>{q}</b>
+        </div>
+
+        {/* <HeroCard/> */}
+      </div>
+    </>
+  );
+};
 ```
 
 - [Repo: Custom Hook - useForm](https://github.com/Klerith/custom-hooks/blob/main/useForm/useForm.js)
@@ -12942,6 +13022,12 @@ Copiamos el `Custom Hook: useForm.jsx` que creamos y subimos a GitHub con anteri
 
 ```jsx
 ```
+
+`src/.jsx`
+
+```jsx
+```
+
 
 `src/.jsx`
 
