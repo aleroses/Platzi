@@ -12898,7 +12898,7 @@ function MyComponent() {
 
 2. **Sincronización con la URL**: Cambiar los parámetros actualiza la URL automáticamente, y puedes usar rutas dinámicas para mantenerlas organizadas.
 
-### Buenas prácticas
+#### Buenas prácticas
 
 - **Validación de valores**: Siempre verifica los valores antes de usarlos.
 - **Evitar sobrecargar la URL**: Usa los query parameters solo para datos que necesiten ser persistidos en la URL.
