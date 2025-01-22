@@ -13015,26 +13015,104 @@ export const SearchPage = () => {
 - [Paquete: Query-string](https://classic.yarnpkg.com/en/package/query-string)
 - [Doc query-string](https://github.com/sindresorhus/query-string)
 
+### 14.19 Mostrar listado de héroes
 
-### 14.19
+`src/heroes/helpers/getHeroByName.js`
 
-`src/.jsx`
+```js
+import { heroes } from "../data/heroes";
 
-```jsx
+export const getHeroByName = (name = "") => {
+  name = name.toLocaleLowerCase().trim();
+
+  if (name.length === 0) return [];
+
+  return heroes.filter((hero) =>
+    hero.superhero.toLocaleLowerCase().includes(name)
+  );
+};
 ```
 
-`src/.jsx`
+`src/heroes/helpers/index.js`
 
-```jsx
+```js
+export * from "./getHeroById";
+export * from "./getHeroByName";
+export * from "./getHeroesByPublisher";
 ```
 
-
-`src/.jsx`
+`src/heroes/pages/SearchPage.jsx`
 
 ```jsx
+import { useLocation, useNavigate } from "react-router";
+import queryString from "query-string";
+
+import { useForm } from "../hooks/useForm";
+import { HeroCard } from "../components";
+import { getHeroByName } from "../helpers";
+
+export const SearchPage = () => {
+  const { searchText, handleInputChange } = useForm({
+    searchText: "", // q
+  });
+
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const { q } = queryString.parse(location.search);
+
+  const heroes = getHeroByName(q);
+
+  console.log(q);
+
+  const handleSearchSubmit = (event) => {
+    event.preventDefault();
+
+    if (searchText.trim().length <= 1) return;
+
+    navigate(`?q=${searchText}`);
+  };
+
+  return (
+    <>
+      <h1>Search</h1>
+      <hr />
+
+      <div>
+        <h4>Searching</h4>
+        <hr />
+        <form action="" onSubmit={handleSearchSubmit}>
+          <input
+            type="text"
+            autoComplete="off"
+            placeholder="Search a hero"
+            name="searchText"
+            value={searchText}
+            onChange={handleInputChange}
+          />
+          <button>Search</button>
+        </form>
+      </div>
+
+      <div>
+        <h4>Results</h4>
+        <hr />
+
+        <div>Search a Hero</div>
+        <div>
+          There's no results <b>{q}</b>
+        </div>
+
+        {heroes.map((hero) => (
+          <HeroCard key={hero.id} {...hero} />
+        ))}
+      </div>
+    </>
+  );
+};
 ```
 
-### 14.20
+### 14.20 Mostrar mensajes condicionales
 
 `src/.jsx`
 
