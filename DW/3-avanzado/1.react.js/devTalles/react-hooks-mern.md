@@ -1,22 +1,22 @@
 # React (Hooks y MERN)
 
-## 1. Introducción
+## 🟣 1. Introducción
 
-### 🟣 Introducción al curso
+### 1. 1 Introducción al curso
 
 Se recomienda hacer las tareas de cada sección.
 
-### 🟣 ¿Cómo funcionará el curso?
+### 1.2 ¿Cómo funcionará el curso?
 
 Trata de ver el curso en secuencia.
 
-### 🟣 ¿Cómo hacer preguntas?
+### 1.3 ¿Cómo hacer preguntas?
 
 Revisa la sección de **Discusión** y crea un **Post**.
 
 > Trata de agregar toda la información de una sola vez y de ser necesario deja tu código en un repositorio alojado en GitHub para que pueda ser revisado por los instructores y así puedan darte mucho mejor soporte.
 
-### 🟣 Instalaciones necesarias y recomendadas
+### 1.4 Instalaciones necesarias y recomendadas
 
 #### Instalaciones Necesarias
 
@@ -115,17 +115,17 @@ Mi tema: [Material Theme -- Free](https://marketplace.visualstudio.com/items?ite
 
 [Instalaciones recomendadas](https://gist.github.com/Klerith/4a4abfd88a88b2d1f16efd95fea41362)
 
-### 🟣 ¡Únete a Nuestra Comunidad de DevTalles en Discord!
+### 1.5 ¡Únete a Nuestra Comunidad de DevTalles en Discord!
 
 **¿Cómo unirse?**
 
 - Haz clic en el siguiente enlace de invitación: [Comunidad DevTalles](https://discord.gg/pBjEVYTC7t)
 
-## 2. Introducción a React y conceptos generales
+## 🟣 2. Introducción a React y conceptos generales
 
-### 🟣 Introducción a la sección
+### 2.1 Introducción a la sección
 
-### 🟣 Temas puntuales de la sección
+### 2.2 Temas puntuales de la sección
 
 **¿Qué aprenderemos en esta sección?**
 
@@ -136,7 +136,7 @@ Mi tema: [Material Theme -- Free](https://marketplace.visualstudio.com/items?ite
 
 Daremos nuestros primeros pasos y una pequeña aplicación que nos ayudará a perderle el miedo a React rápidamente
 
-### 🟣 ¿Qué es React?
+### 2.3 ¿Qué es React?
 
 - Librería: Para aplicaciones sencillas, intermedias y robustas.
 - Declarativa: Es fácil de seguir patrones de diseño y crear UI interactivas.
@@ -175,7 +175,7 @@ El código JSX se podría crear de la siguiente manera:
 const tag = document.createElement('h1', null, `Hola, soy ${nombre}`)
 ```
 
-### 🟣 Primeros pasos en React
+### 2.4 Primeros pasos en React
 
 Creamos una carpeta para empezar a trabajar:
 
@@ -236,7 +236,7 @@ Ahora puedes abrir los dev tools con `Ctrl + Shift + i`
 
 [**React-index.html - Demo**](https://gist.github.com/Klerith/b0111f52ba16451d095f38d4c995605b)
 
-### 🟣 Introducción a Babel
+### 2.5 Introducción a Babel
 
 #### Babel
 
@@ -252,13 +252,13 @@ Esto se conoce como desarrollo en tiempo real o HMR (Hot Module Replacement). Au
 
 [**Babeljs.io - Sitio oficial**](https://babeljs.io/)
 
-## 3. Introducción a JavaScript moderno
+## 🟣 3. Introducción a JavaScript moderno
 
-### 🟣 Introducción a la sección
+### 3.1 Introducción a la sección
 
 Sigan los videos al pie de la letra...
 
-### 🟣 Temas puntuales de la sección
+### 3.2 Temas puntuales de la sección
 
 **¿Qué aprenderemos en esta sección?**
 
@@ -275,7 +275,7 @@ Sigan los videos al pie de la letra...
 
 Mi objetivo aquí es que tengamos las bases que nos ayuden a que podamos diferenciar fácilmente qué es propio de React y qué es propio de JavaScript. Estos conceptos y ejercicios nos ayudarán a suavizar la curva de aprendizaje de React.
 
-### 🟣 Inicio de proyecto - Bases de JavaScript
+### 3.3 Inicio de proyecto - Bases de JavaScript
 
 Entramos a la carpeta para empezar a trabajar, en este caso con Create React App (CRA):
 
@@ -332,7 +332,7 @@ Para el ejemplo borramos todo el contenido de la carpeta `src` y dentro creamos 
 
 [**create-react-app - Official Website**](https://create-react-app.dev/)
 
-### 🟣 Variables y constantes
+### 3.4 Variables y constantes
 
 ```js
 // Variables y Constantes
@@ -391,7 +391,7 @@ Al final de esta sección tendremos dentro de la carpeta `bases` todos nuestros 
 
 Para más detalles sobre variables ver los [Apuntes js-básico](https://github.com/aleroses/Platzi/blob/master/DW/2-intermedio/001-js-basico/js-basico.md#4-variables-en-javascript)
 
-### 🟣 Template String
+### 3.5 Template String
 
 ```js
 const name = "Ale";
@@ -414,7 +414,7 @@ Recomiendo usar la extensión **JavaScript Auto Backticks** que nos permite aña
 
 Si escribimos `"${}"` automáticamente los genera `${name}`
 
-### 🟣 Objetos literales
+### 3.6 Objetos literales
 
 ```js
 const person = {
@@ -491,7 +491,7 @@ deepCopy(person);
 
 Si quieres probar el código sin salir de VSC puedes usar la extensión **Code Runner**.
 
-### 🟣 Arreglos
+### 3.7 Arreglos
 
 ```js
 // Arreglos en JS
@@ -511,7 +511,7 @@ console.log(newArray, newArray2, newArray3);
 
 [**Mozilla MDN: Array.map()**](https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Array/map)
 
-### 🟣 Funciones
+### 3.8 Funciones
 
 ```js
 // Functions en Js
@@ -549,7 +549,7 @@ const activeUser = getActiveUser("Ale");
 console.log(activeUser);
 ```
 
-### 🟣 Desestructuración de Objetos
+### 3.9 Desestructuración de Objetos
 
 ```js
 // Desestructuración
@@ -598,7 +598,7 @@ console.log(name, anios, lat, lng);
 
 [**Mozilla MDN: Asignación Desestructurante**](https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment)
 
-### 🟣 Desestructuración de Arreglos
+### 3.10 Desestructuración de Arreglos
 
 ```js
 const characters = ["Goku", "Vegeta", "Trunks"];
@@ -637,7 +637,7 @@ Para seleccionar todas las coincidencias de una palabra, solo debes posar el cur
 
 Otra opción sería presionar `F2` y darle el nuevo nombre a la variable o fracción de código que se desea modificar.
 
-### 🟣 Import, export y funciones comunes de arreglos
+### 3.11 Import, export y funciones comunes de arreglos
 
 ```js
 import { heroes } from "../data/heroes.js";
@@ -693,7 +693,7 @@ export { heroes };
 
 [**Mozilla Mdn: Find**](https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Array/find)|
 
-### 🟣 Múltiples exportaciones y exportaciones por defecto
+### 3.12 Múltiples exportaciones y exportaciones por defecto
 
 ```js
 export default heroes;
@@ -716,7 +716,7 @@ import { heroes, owner } from "../data/heroes.js";
 
 En el primer ejemplo, `heroes` es una exportación por defecto y la `owner` no.
 
-### 🟣 Promesas
+### 3.13 Promesas
 
 ```js
 import { getHeroById } from "./08-imp-exp.mjs";
@@ -759,7 +759,7 @@ getHeroByIdAsync(14).then(console.log).catch(console.warn);
 
 [**Mozilla MDN: Promesas**](https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Promise)
 
-### 🟣 Fetch API
+### 3.14 Fetch API
 
 Crea una cuenta en Giphy API y crea un `api key` con los siguientes pasos:
 
@@ -801,7 +801,7 @@ getGiphy
 
 [**Mozilla MDN: Fetch**](https://developer.mozilla.org/es/docs/Web/API/Fetch_API)
 
-### 🟣 Async - Await
+### 3.15 Async - Await
 
 Primera forma:
 
@@ -852,7 +852,7 @@ const getImage = async () => {
 getImage();
 ```
 
-### 🟣 Operador condicional ternario
+### 3.16 Operador condicional ternario
 
 ```js
 const active = true;
@@ -862,7 +862,7 @@ let message = !active && "Active";
 console.log(message);
 ```
 
-### 🟣 Nota sobre JavaScript
+### 3.17 Nota sobre JavaScript
 
 #### **Terminamos la sección de reforzamiento de JavaScript**
 
@@ -880,11 +880,11 @@ Recursos de la lección:
 
 [**Repositorio de GitHub del proyecto**](https://github.com/Klerith/react-intro-javascript)
 
-## 4. Primeros pasos en React
+## 🟣 4. Primeros pasos en React
 
-### 🟣 Introducción a la sección
+### 4.1 Introducción a la sección
 
-### 🟣 Temas puntuales de la sección
+### 4.2 Temas puntuales de la sección
 
 **¿Qué veremos en esta sección?**
 
@@ -900,7 +900,7 @@ Recursos de la lección:
 
 Es una sección importante, especialmente para todos los que están empezando de cero en React, ya que dará las bases de cómo segmentar la lógica de nuestra aplicación en pequeñas piezas más fáciles de mantener.
 
-### 🟣 ¿Qué son los componentes?
+### 4.3 ¿Qué son los componentes?
 
 Pequeña pieza de código encapsulada reutilizable que puede tener estado o no.
 
@@ -916,7 +916,7 @@ TwitterApp > Router > Screen/Página > Menú > MenuItem
 
 El estado es como se encuentra la información del componente en un punto determinado del tiempo.
 
-### 🟣 Primera aplicación de React
+### 4.4 Primera aplicación de React
 
 ```bash
 yarn create vite
@@ -978,7 +978,7 @@ Si quieres ver como se hace con CRA puedes revisar la sección 3.
 
 [**Vite documentation**](https://vitejs.dev/)|
 
-### 🟣 Estructura de directorios - CRA
+### 4.5 Estructura de directorios - CRA
 
 En los proyectos creados con **NPM** se puede observar que tenemos el archivo `package-lock.json` que nos dice como fueron construidas las dependencias de los módulos de Node.
 
@@ -988,7 +988,7 @@ En los proyectos creados con **NPM** se puede observar que tenemos el archivo `p
 
 **[React-Scripts](https://create-react-app.dev/docs/available-scripts/)**
 
-### 🟣 Estructura de directorios - Vite
+### 4.6 Estructura de directorios - Vite
 
 Ver estructura en [[react-hooks-mern#4. Primeros pasos en React#🟣 Primera aplicación de React]]
 
@@ -998,7 +998,7 @@ En caso desees cambiar debes borrar el archivo `package-lock.json` o `yarn.lock`
 
 El archivo `vite.config.js` sirve para hacer configuraciones propias de vite.
 
-### 🟣 Hola Mundo en React
+### 4.7 Hola Mundo en React
 
 Abrimos el proyecto `03-counter-app-vite`.
 
@@ -1031,7 +1031,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
 </body>
 ```
 
-### 🟣 Nuestro primer Componente
+### 4.8 Nuestro primer Componente
 
 Creamos el archivo `App.jsx` dentro del `src`.
 
@@ -1070,7 +1070,7 @@ export defaul App;
 import TestApp👈 from "./App";
 ```
 
-### 🟣 Tarea - Crear un nuevo componente
+### 4.9 Tarea - Crear un nuevo componente
 
 `src > main.jsx`
 
@@ -1102,7 +1102,7 @@ const FirstTest = () => {
 export { FirstTest };
 ```
 
-### 🟣 Retornar elementos en el Componente - Fragment
+### 4.10 Retornar elementos en el Componente - Fragment
 
 `src > FirstTest.jsx`
 
@@ -1119,7 +1119,7 @@ const FirstTest = () => {
 export { FirstTest };
 ```
 
-### 🟣 Impresión de variables en el HTML
+### 4.11 Impresión de variables en el HTML
 
 `src > FirstTest.jsx`
 
@@ -1150,7 +1150,7 @@ const FirstTest = () => {
 export { FirstTest };
 ```
 
-### 🟣 Colocar estilos de CSS
+### 4.12 Colocar estilos de CSS
 
 Dentro del `src` creamos un archivo `styles.css` donde podremos agregar los estilos que necesitemos.
 
@@ -1197,7 +1197,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
 );
 ```
 
-### 🟣 Comunicación entre componentes - Props
+### 4.13 Comunicación entre componentes - Props
 
 `src > FirstTest.jsx`
 
@@ -1244,7 +1244,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
 
 ![React dev tools](https://i.postimg.cc/9FhNVk3M/react-dev-tools.png)
 
-### 🟣 PropTypes
+### 4.14  PropTypes
 
 En Vite no viene instalado por defecto:
 
@@ -1301,7 +1301,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
 );
 ```
 
-### 🟣 DefaultProps
+### 4.15 DefaultProps
 
 `src > FirstTest.jsx`
 
@@ -1337,7 +1337,7 @@ export { FirstTest };
 
 📌 Nota: El soporte para `defaultProps` será removido y se deberán usar los parámetros predeterminados de JavaScript. Ahora lo aconsejable es colocar el valor por defecto al **desestructurar** directamente las **props** del componente.
 
-### 🟣 Tarea - Componente CounterApp
+### 4.16 Tarea - Componente CounterApp
 
 1. Crear un nuevo componente dentro de la carpeta SRC llamado
     `CounterApp`
@@ -1399,7 +1399,7 @@ export { CounterApp };
 
 [**Tarea - Referencia**](https://gist.github.com/Klerith/e1a731cc595c00a9794a709062eae757)
 
-### 🟣 Evento click (Eventos en general) + useState - Hook
+### 4.17 Evento click (Eventos en general) + useState - Hook
 
 `src > CounterApp.jsx`
 
@@ -1456,11 +1456,11 @@ Esta funcionalidad está disponible en Obsidian:
 
 [**Ejemplo - Tarea de desestructuración de arreglos**](https://github.com/Klerith/react-intro-javascript/blob/master/src/bases/07-deses-arr.js)
 
-### 🟣 Código fuente de la sección
+### 4.18 Código fuente de la sección
 
 [**Github - fin-seccion-4**](https://github.com/Klerith/react-vite-counter-app/tree/fin-seccion-4)
 
-## 5. Pruebas unitarias y de integración - Probando las secciones anteriores
+## 🟣 5. Pruebas unitarias y de integración - Probando las secciones anteriores
 
 ### 🟣 Introducción a la sección
 
