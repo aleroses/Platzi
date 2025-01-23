@@ -13244,32 +13244,170 @@ Aquí les dejo el código fuente tal cual lo dejé al final de la clase anterior
 
 Esta es una sección pequeña pero importante para trabajar las bases de la autenticación y protección de nuestra aplicación.
 
-### 15.3
+### 15.3 Demostración del objetivo al final de la sección
 
-`src/.jsx`
+### 15.4 Continuación de proyecto - Protección de Rutas
 
-```jsx
+En todo momento toda la aplicación debe saber si el usuario está autenticado o no. Para hacer esto usaremos `context`.
+
+La estructura actual es esta:
+
+```bash
+.
+├── assets
+├── eslint.config.js
+├── index.html
+├── node_modules
+├── package.json
+├── README.md
+├── src
+│   ├── auth 🔥
+│   │   ├── components
+│   │   ├── context 👈👀
+│   │   ├── hooks
+│   │   ├── index.js
+│   │   ├── pages
+│   │   │   ├── index.js
+│   │   │   └── LoginPage.jsx
+│   │   └── types 👈👀
+│   ├── heroes
+│   │   ├── components
+│   │   │   ├── HeroCard.jsx
+│   │   │   ├── HeroList.jsx
+│   │   │   └── index.js
+│   │   ├── data
+│   │   │   └── heroes.js
+│   │   ├── helpers
+│   │   │   ├── getHeroById.js
+│   │   │   ├── getHeroByName.js
+│   │   │   ├── getHeroesByPublisher.js
+│   │   │   └── index.js
+│   │   ├── hooks
+│   │   │   └── useForm.jsx
+│   │   ├── index.js
+│   │   ├── pages
+│   │   │   ├── DCPage.jsx
+│   │   │   ├── HeroPage.jsx
+│   │   │   ├── index.js
+│   │   │   ├── MarvelPage.jsx
+│   │   │   └── SearchPage.jsx
+│   │   └── routes
+│   │       └── HeroesRoutes.jsx
+│   ├── HeroesApp.jsx
+│   ├── hook
+│   ├── main.jsx
+│   ├── router
+│   │   └── AppRouter.jsx
+│   ├── styles.css
+│   └── ui
+│       ├── components
+│       │   ├── index.js
+│       │   └── Navbar.jsx
+│       ├── hooks
+│       └── index.js
+├── vite.config.js
+└── yarn.lock
 ```
 
-`src/.jsx`
+### 15.5 Context y Reducer de mi aplicación
 
-```jsx
+`src/auth/types/types.js`
+
+```js
+export const types = {
+  login: "[Auth] Login",
+  logout: "[Auth] Logout",
+};
 ```
 
-
-`src/.jsx`
+`src/auth/context/AuthContext.jsx`
 
 ```jsx
+import { createContext } from "react";
+
+export const AuthContext = createContext();
 ```
 
-`src/.jsx`
+`src/auth/context/AuthProvider.jsx`
 
 ```jsx
+import React, { useReducer } from "react";
+import { authReducer } from "./authReducer";
+
+const initialState = {
+  logged: false,
+};
+
+export const AuthProvider = ({ children }) => {
+  const [authState, dispatch] = useReducer(
+    authReducer,
+    initialState
+  );
+
+  return (
+    <AuthContext.Provider value={{}}>
+      {children}
+    </AuthContext.Provider>
+  );
+};
 ```
 
-`src/.jsx`
+`src/auth/context/index.js`
+
+```js
+export * from "./AuthContext";
+export * from "./AuthProvider";
+export * from "./authReducer";
+```
+
+`src/auth/index.js`
+
+```js
+export * from "./pages";
+export * from "./context";
+```
+
+`src/HeroesApp.jsx`
 
 ```jsx
+import { AuthProvider } from "./auth";
+import { AppRouter } from "./router/AppRouter";
+
+export const HeroesApp = () => {
+  return (
+    <AuthProvider>
+      <AppRouter />
+    </AuthProvider>
+  );
+};
+```
+
+`src/auth/context/authReducer.js`
+
+```js
+import { types } from "../types/types";
+
+// const initialState = {
+//   logged: false,
+// };
+
+export const authReducer = (state = {}, action) => {
+  switch (action.type) {
+    case types.login:
+      return {
+        ...state,
+        logged: true,
+        name: action.payload,
+      };
+    case types.logout:
+      return {
+        logged: false,
+      };
+
+    default:
+      return state;
+  }
+};
 ```
 
 ☝️👆
@@ -13284,29 +13422,7 @@ Esta es una sección pequeña pero importante para trabajar las bases de la aute
 🟣
 
 
-### 15.4
 
-`src/.jsx`
-
-```jsx
-```
-
-`src/.jsx`
-
-```jsx
-```
-
-### 15.5
-
-`src/.jsx`
-
-```jsx
-```
-
-`src/.jsx`
-
-```jsx
-```
 
 ### 15.6
 `src/.jsx`
