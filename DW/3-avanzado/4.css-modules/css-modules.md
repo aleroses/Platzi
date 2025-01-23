@@ -1,3 +1,7 @@
+# CSS Modules
+
+Los **CSS Modules** en React son una forma de escribir estilos que están **aislados por defecto** para evitar conflictos entre clases de diferentes componentes.
+
 Empezamos creando nuestro proyecto en React.
 
 ```bash
@@ -87,6 +91,8 @@ export default App;
 El contenido de app en consola se ve así:
 
 ![](https://i.postimg.cc/W3pb9Kjy/names.png)
+
+[LA MEJOR FORMA DE USAR CSS EN REACT | CSS MODULES](https://www.youtube.com/watch?v=3QTL4lTpPEY)
 
 
 
