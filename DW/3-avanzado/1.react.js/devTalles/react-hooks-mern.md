@@ -13573,16 +13573,110 @@ console.log(!!null);    // false
 
 En nuestro proyecto:
 
-`src/.jsx`
+`src/auth/context/AuthProvider.jsx`
+
+```jsx
+import React, { useReducer } from "react";
+import { authReducer } from "./authReducer";
+
+import { types } from "../types/types";
+import { AuthContext } from "./AuthContext";
+
+// const initialState = {
+//   logged: false,
+// };
+
+const init = () => {
+  const user = JSON.parse(localStorage.getItem("user"));
+
+  return {
+    logged: !!user,
+    user: user,
+  };
+};
+
+export const AuthProvider = ({ children }) => {
+  const [authState, dispatch] = useReducer(
+    authReducer,
+    {},
+    init
+  );
+
+  const login = (name = "") => {
+    const user = {
+      id: "ABC",
+      name,
+    };
+
+    const action = {
+      type: types.login,
+      payload: user,
+    };
+
+    localStorage.setItem("user", JSON.stringify(user));
+
+    dispatch(action);
+  };
+
+  return (
+    <AuthContext.Provider
+      value={{ ...authState, login: login }}
+    >
+      {children}
+    </AuthContext.Provider>
+  );
+};
+```
+
+`src/auth/context/authReducer.js`
+
+```js
+import { types } from "../types/types";
+
+// const initialState = {
+//   logged: false,
+// };
+
+export const authReducer = (state = {}, action) => {
+  switch (action.type) {
+    case types.login:
+      return {
+        ...state,
+        logged: true,
+        user: action.payload,
+      };
+    case types.logout:
+      return {
+        logged: false,
+      };
+
+    default:
+      return state;
+  }
+};
+```
+
+### 15.8 Logout del usuario
+
+`src/`
 
 ```jsx
 ```
 
-`src/.jsx`
+`src/`
 
 ```jsx
 ```
 
+`src/`
+
+```jsx
+```
+
+`src/`
+
+```jsx
+```
 
 ☝️👆
 👈👀
@@ -13595,6 +13689,82 @@ En nuestro proyecto:
 🔘
 🟣
 
+### 15.9
+
+`src/`
+
+```jsx
+```
+
+`src/`
+
+```jsx
+```
+
+`src/`
+
+```jsx
+```
+
+`src/`
+
+```jsx
+```
+
+### 15.10
+
+`src/`
+
+```jsx
+```
+
+`src/`
+
+```jsx
+```
+
+`src/`
+
+```jsx
+```
+
+`src/`
+
+```jsx
+```
+
+### 15.11
+
+`src/`
+
+```jsx
+```
+
+`src/`
+
+```jsx
+```
+
+`src/`
+
+```jsx
+```
+
+`src/`
+
+```jsx
+```
+
+### 15.12
+
+
+
+## 16
+
+### 16.1
+
+### 
+
 ```bash
 npm install react@latest react-dom@latest
 # o
@@ -13603,28 +13773,24 @@ yarn add react@latest react-dom@latest
 
 
 
-`test/hooks/useForm.test.js`
+`src/`
 
 ```jsx
-
 ```
 
-`test/hooks/useForm.test.js`
+`src/`
 
 ```jsx
-
 ```
 
-`test/hooks/useForm.test.js`
+`src/`
 
 ```jsx
-
 ```
 
-`test/hooks/useForm.test.js`
+`src/`
 
 ```jsx
-
 ```
 
 ☝️👆
