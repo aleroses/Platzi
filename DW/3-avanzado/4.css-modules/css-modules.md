@@ -2,13 +2,20 @@
 
 Los **CSS Modules** en React son una forma de escribir estilos que están **aislados por defecto** para evitar conflictos entre clases de diferentes componentes.
 
-Empezamos creando nuestro proyecto en React.
+## Características clave:
+
+1. **Aislamiento**: Los nombres de las clases se convierten en identificadores únicos mediante hashing, lo que evita que estilos se sobrescriban.
+2. **Facilidad de uso**: Permiten usar clases como propiedades de un objeto.
+
+## Cómo usarlos:
+
+1. Empezamos creando nuestro proyecto en React.
 
 ```bash
 npm create vite
 ```
 
-Creamos archivos CSS con la siguiente extensión:
+2. Creamos un archivo CSS con la extensión `.module.css`:
 
 ```bash
 App.module.css
@@ -28,14 +35,14 @@ App.module.css
 }
 ```
 
-Para empezar a usar estos estilos debemos importar el archivo:
+3. Importamos el archivo CSS en nuestro componente:
 
 ```jsx
 // Le das el nombre que quieras "app"
 import app from "./App.module.css";
 ```
 
-Ahora usémoslo:
+4. Usamos las clases como propiedades del objeto `app`:
 
 ```jsx
 import { useState } from "react";
