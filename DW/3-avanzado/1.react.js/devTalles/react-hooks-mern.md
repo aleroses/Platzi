@@ -13227,13 +13227,99 @@ Aquí les dejo el código fuente tal cual lo dejé al final de la clase anterior
 
 [**Github - Fin sección 14**](https://github.com/Klerith/react-heroes/tree/fin-seccion-14)
 
-## 🟣 15. 
+## 🟣 15. Protección de rutas
+
+### 15.1 Introducción a la sección
+
+### 15.2 Temas puntuales de la sección
+
+**¿Qué veremos en esta sección?**
+
+- Rutas públicas
+- Rutas privadas
+- Login y logout - Sin backend aún
+- Recordar cuál fue la última ruta visitada para mejorar la experiencia de usuario.
+- Context
+- Reducer
+
+Esta es una sección pequeña pero importante para trabajar las bases de la autenticación y protección de nuestra aplicación.
+
+### 15.3
+
+`src/.jsx`
+
+```jsx
+```
+
+`src/.jsx`
+
+```jsx
+```
 
 
 `src/.jsx`
 
 ```jsx
 ```
+
+`src/.jsx`
+
+```jsx
+```
+
+`src/.jsx`
+
+```jsx
+```
+
+☝️👆
+👈👀
+❯
+👈👀👇
+👈👀☝️
+👈👀📌
+🔥
+🚫
+🔘
+🟣
+
+
+### 15.4
+
+`src/.jsx`
+
+```jsx
+```
+
+`src/.jsx`
+
+```jsx
+```
+
+### 15.5
+
+`src/.jsx`
+
+```jsx
+```
+
+`src/.jsx`
+
+```jsx
+```
+
+### 15.6
+`src/.jsx`
+
+```jsx
+```
+
+`src/.jsx`
+
+```jsx
+```
+
+### 15.7
 
 `src/.jsx`
 

@@ -13,15 +13,30 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "DW/1-basico/005-git-github/gh-pages.md",
+                "file": "DW/1-basico/006-html-css/1-html/1.html-css.md",
                 "mode": "preview",
                 "source": true
               },
               "icon": "lucide-file",
-              "title": "gh-pages"
+              "title": "1.html-css"
+            }
+          },
+          {
+            "id": "ecd8f2368c03aa73",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "DW/3-avanzado/1.react.js/devTalles/react-hooks-mern.md",
+                "mode": "source",
+                "source": true
+              },
+              "icon": "lucide-file",
+              "title": "react-hooks-mern"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -52,7 +67,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "react",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -164,8 +179,10 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "9eb6bb4128eaba9f",
+  "active": "ecd8f2368c03aa73",
   "lastOpenFiles": [
+    "DW/1-basico/006-html-css/1-html/1.html-css.md",
+    "DW/1-basico/005-git-github/gh-pages.md",
     "DW/3-avanzado/4.css-modules/css-modules.md",
     "DW/3-avanzado/4.css-modules/imgs/names.png",
     "DW/3-avanzado/4.css-modules/imgs",
@@ -209,7 +226,6 @@
     "DW/2-intermedio/019.empaquetadores/2.vite.md",
     "DW/2-intermedio/019.empaquetadores/1.intro-empaquetadores-web.md",
     "DW/2-intermedio/025.debugging-devtools/debugging-devtools.md",
-    "DW/1-basico/005-git-github/gh-pages.md",
     "DW/2-intermedio/014.api-rest-js/2.api-rest-js-ejemplos/api-rest-ejemplos.md"
   ]
 }
