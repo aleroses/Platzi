@@ -13131,11 +13131,11 @@ export const SearchPage = () => {
   const { q } = queryString.parse(location.search);
   const heroes = getHeroByName(q);
 
-  const showSearch = q.length === 0;
-  const showError = q.length > 0 && heroes.length === 0;
+  const showSearch = q?.length === 0;
+  const showError = q?.length > 0 && heroes?.length === 0;
 
   const { searchText, handleInputChange } = useForm({
-    searchText: q, // ""
+    searchText: q || "", // ""
   });
 
   console.log(q);
@@ -13163,7 +13163,7 @@ export const SearchPage = () => {
             placeholder="Search a hero"
             name="searchText"
             value={searchText}
-            onChange={handleInputChange}
+            onChange={(e) => handleInputChange(e)}
           />
           <button>Search</button>
         </form>
@@ -13410,6 +13410,18 @@ export const authReducer = (state = {}, action) => {
 };
 ```
 
+### 15.6 Login de un usuario
+
+`src/.jsx`
+
+```jsx
+```
+
+`src/.jsx`
+
+```jsx
+```
+
 ☝️👆
 👈👀
 ❯
@@ -13422,18 +13434,6 @@ export const authReducer = (state = {}, action) => {
 🟣
 
 
-
-
-### 15.6
-`src/.jsx`
-
-```jsx
-```
-
-`src/.jsx`
-
-```jsx
-```
 
 ### 15.7
 
