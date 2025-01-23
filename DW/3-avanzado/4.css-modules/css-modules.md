@@ -1,17 +1,30 @@
-Creamos archivos `App.module.css` e importamos de la siguiente manera:
+Empezamos creando nuestro proyecto en React.
+
+```bash
+npm create vite
+```
+
+Creamos archivos CSS con la siguiente extensión:
+
+```bash
+App.module.css
+```
+
+Su contenido es el de toda la vida…
 
 ```css
-.count {
+.title {
   font-weight: 900;
   text-decoration: underline;
-  color: darkslateblue;
-  background-color: darkslategray;
+  color: cornflowerblue;
 }
 
 .increase {
   color: aqua;
 }
 ```
+
+Para empezar a usar estos estilos se debe importar de la siguiente manera:
 
 ```jsx
 import styles from "./App.module.css"
@@ -73,7 +86,9 @@ function App() {
 export default App;
 ```
 
-En caso de crear clases compuestas usar la notación `camelCase`.
+🔥 En caso de crear clases compuestas usar la notación `camelCase`.
+
+
 
 👈👀👇
 🔥
