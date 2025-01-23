@@ -31,7 +31,7 @@ Para empezar a usar estos estilos debemos importar el archivo:
 import app from "./App.module.css";
 ```
 
-Ahora para poder usarlo debemos importar de la siguiente manera:
+Ahora usémoslo:
 
 ```jsx
 import { useState } from "react";
