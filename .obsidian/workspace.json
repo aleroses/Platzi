@@ -14,7 +14,7 @@
               "type": "markdown",
               "state": {
                 "file": "DW/3-avanzado/4.css-modules/css-modules.md",
-                "mode": "source",
+                "mode": "preview",
                 "source": true
               },
               "icon": "lucide-file",
@@ -166,6 +166,8 @@
   },
   "active": "9eb6bb4128eaba9f",
   "lastOpenFiles": [
+    "DW/3-avanzado/4.css-modules/imgs/names.png",
+    "DW/3-avanzado/4.css-modules/imgs",
     "DW/3-avanzado/1.react.js/devTalles/react-hooks-mern.md",
     "DW/3-avanzado/4.css-modules/css-modules.md",
     "DW/3-avanzado/4.css-modules",
@@ -180,7 +182,6 @@
     "node_modules/query-string/readme.md",
     "node_modules/query-string/package.json",
     "node_modules/query-string/license",
-    "node_modules/query-string/index.js",
     "node_modules/filter-obj/readme.md",
     "node_modules/decode-uri-component/readme.md",
     "DW/1-basico/005-git-github/git-github.md",
@@ -210,7 +211,6 @@
     "DW/2-intermedio/019.empaquetadores/1.intro-empaquetadores-web.md",
     "DW/2-intermedio/025.debugging-devtools/debugging-devtools.md",
     "DW/1-basico/005-git-github/gh-pages.md",
-    "DW/2-intermedio/014.api-rest-js/2.api-rest-js-ejemplos/api-rest-ejemplos.md",
-    "DW/2-intermedio/012.asincronismo-js/get-post-put-delete.md"
+    "DW/2-intermedio/014.api-rest-js/2.api-rest-js-ejemplos/api-rest-ejemplos.md"
   ]
 }

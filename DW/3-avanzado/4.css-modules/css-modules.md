@@ -38,8 +38,6 @@ import { useState } from "react";
 import app from "./App.module.css"; 👈👀
 
 function App() {
-  console.log(app);
-
   const [count, setCount] = useState(0);
 
   return (
@@ -65,9 +63,8 @@ import { useState } from "react";
 import app from "./App.module.css";
 
 function App() {
-  console.log(app);
-
   const [count, setCount] = useState(0);
+  console.log(app);
 
   return (
     <>
@@ -86,6 +83,11 @@ export default App;
 ```
 
 🔥 En caso de crear clases compuestas usar la notación `camelCase`.
+
+El contenido de app en consola se ve así:
+
+![](https://i.postimg.cc/W3pb9Kjy/names.png)
+
 
 
 
