@@ -322,6 +322,16 @@ npm run deploy
 
 Esto publicará tu proyecto en GitHub Pages (en la rama `gh-pages`).
 
+### 6. Activa GitHub Pages en tu repositorio
+
+1. Ve a tu repositorio en GitHub.
+2. Ve a **Settings > Pages**.
+3. En la sección "Build and Deployment", selecciona:
+    - **Source:** Branch: `gh-pages`.
+    - Haz clic en **Save**.
+
+GitHub generará una URL como `https://aleroses.github.io/portfolio/`.
+
 ---
 ## Plantillas de GitHub Pages para blogs
 
