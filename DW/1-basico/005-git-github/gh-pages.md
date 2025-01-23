@@ -241,9 +241,26 @@ npm create vite
 Empezamos con la siguiente estructura:
 
 ```bash
-
+.
+├── eslint.config.js
+├── index.html
+├── LICENSE
+├── node_modules
+├── package.json
+├── package-lock.json
+├── public
+├── README.md
+├── src
+│   ├── App.jsx
+│   ├── App.module.css
+│   ├── components
+│   │   └── Statistics.jsx
+│   ├── index.css
+│   └── main.jsx
+└── vite.config.js
 ```
 
+En este proyecto desplegaremos usando la carpeta `dist` que se creará más adelante.
 
 ### 1. Configura el `vite.config.js`
 
@@ -305,7 +322,7 @@ npm run deploy
 
 Esto publicará tu proyecto en GitHub Pages (en la rama `gh-pages`).
 
-
+---
 
 
 En esta estructura vemos que tenemos los archivos a desplegar en la carpeta `public`, también pueden estar en una carpeta llamada `dist`.
