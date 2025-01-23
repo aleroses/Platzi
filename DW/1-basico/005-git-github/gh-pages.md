@@ -323,51 +323,7 @@ npm run deploy
 Esto publicará tu proyecto en GitHub Pages (en la rama `gh-pages`).
 
 ---
-
-
-En esta estructura vemos que tenemos los archivos a desplegar en la carpeta `public`, también pueden estar en una carpeta llamada `dist`.
-
-```bash
-╰─ tree -L 3
-.
-├── README.md
-├── package.json
-├── public✨👈👀
-│   ├── css
-│   │   ├── main.css👈👀      
-│   │   └── main.css.map  
-│   ├── img
-│   │   ├── background.jpg
-│   │   ├── recipe.jpg    
-│   │   └── saucer.png    
-│   ├── index.html👈👀        
-│   └── main.js
-└── src
-    └── main.scss
-```
-
-En caso necesites desplegar un proyecto con una estructura similar a la mostrada solo debes hacer referencia a la carpeta donde están los archivos que contienen tu proyecto, ya sea usando directamente el comando ✨`npx gh-pages -d public` o el comando personalizado en el archivo `package.json` que en este caso es `npm run deploy` para lo cual debes modificar la ruta en este archivo y en lugar de **punto** colocar la carpeta `public`. 
-
-```json
-{
-  "name": "delete",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "deploy": "gh-pages -d public" ✨👈👀
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "gh-pages": "^5.0.0"
-  }
-}
-```
-
-## 9. Plantillas de GitHub Pages para blogs
+## Plantillas de GitHub Pages para blogs
 
 Frameworks para sitios estáticos:  
 - Jekyll 
