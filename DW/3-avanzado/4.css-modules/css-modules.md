@@ -10,7 +10,7 @@ Creamos archivos CSS con la siguiente extensión:
 App.module.css
 ```
 
-Su contenido es el de toda la vida…
+📌 Las clases `.title` e `.increase` posteriormente se llamaran como si fueran un objeto.
 
 ```css
 .title {
@@ -24,13 +24,12 @@ Su contenido es el de toda la vida…
 }
 ```
 
-Para empezar a usar estos estilos se debe importar de la siguiente manera:
+Para empezar a usar estos estilos debemos importar el archivo:
 
 ```jsx
-import styles from "./App.module.css"
+// Le das el nombre que quieras "app"
+import app from "./App.module.css";
 ```
-
-📌 Creamos las clases `.count` y `.increase` que posteriormente se llamaran como si fueran un objeto.
 
 Ahora para poder usarlo debemos importar de la siguiente manera:
 
