@@ -13412,6 +13412,52 @@ export const authReducer = (state = {}, action) => {
 
 ### 15.6 Login de un usuario
 
+`src/auth/context/AuthProvider.jsx`
+
+```jsx
+import React, { useReducer } from "react";
+import { authReducer } from "./authReducer";
+
+import { types } from "../types/types";
+import { AuthContext } from "./AuthContext";
+
+const initialState = {
+  logged: false,
+};
+
+export const AuthProvider = ({ children }) => {
+  const [authState, dispatch] = useReducer(
+    authReducer,
+    initialState
+  );
+
+  const login = (name = "") => {
+    const action = {
+      type: types.login,
+      payload: {
+        id: "ABC",
+        name: name,
+      },
+    };
+
+    dispatch(action);
+  };
+
+  return (
+    <AuthContext.Provider
+      value={{ ...authState, login: login }}
+    >
+      {children}
+    </AuthContext.Provider>
+  );
+};
+```
+
+`src/.jsx`
+
+```jsx
+```
+
 `src/.jsx`
 
 ```jsx
