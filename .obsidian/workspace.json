@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "DW/3-avanzado/4.css-modules/css-modules.md",
-                "mode": "preview",
+                "file": "DW/1-basico/005-git-github/gh-pages.md",
+                "mode": "source",
                 "source": true
               },
               "icon": "lucide-file",
-              "title": "css-modules"
+              "title": "gh-pages"
             }
           }
         ]
@@ -166,10 +166,10 @@
   },
   "active": "9eb6bb4128eaba9f",
   "lastOpenFiles": [
+    "DW/3-avanzado/4.css-modules/css-modules.md",
     "DW/3-avanzado/4.css-modules/imgs/names.png",
     "DW/3-avanzado/4.css-modules/imgs",
     "DW/3-avanzado/1.react.js/devTalles/react-hooks-mern.md",
-    "DW/3-avanzado/4.css-modules/css-modules.md",
     "DW/3-avanzado/4.css-modules",
     "nextjs.org.md",
     "package.json",
@@ -198,7 +198,6 @@
     "DW/2-intermedio/029.web-components/web-components.md",
     "DW/2-intermedio/029.web-components/code/project/imgs/nike-blue.png",
     "DW/2-intermedio/029.web-components/imgs/18.project.png",
-    "DW/2-intermedio/029.web-components/imgs/18.project.gif",
     "DW/2-intermedio/007.poo-js/poo-js.md",
     "DW/2-intermedio/023.SPA-js-vanilla/spa-js-vanilla.md",
     "DW/2-intermedio/028.accesibilidad/0.audiocurso-accesibilidad-web.md",

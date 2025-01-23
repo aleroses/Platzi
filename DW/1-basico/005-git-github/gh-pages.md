@@ -4,7 +4,7 @@ GitHub Pages es un servicio de alojamiento de sitios web estáticos que se ejecu
 
 Además, GitHub Pages es gratuito y fácil de configurar. Los usuarios pueden crear un sitio web público de forma gratuita sin necesidad de configurar un servidor web y sin tener que preocuparse por el mantenimiento de la infraestructura de alojamiento.
 
-## 1. Proyecto básico  
+## Proyecto básico  
 
 Primeros haremos un ejemplo con un proyecto muy sencillo, según esta estructura de archivos y carpetas:  
 
@@ -20,7 +20,7 @@ Primeros haremos un ejemplo con un proyecto muy sencillo, según esta estructura
 
 Después de ejecutar los comandos de los puntos siguientes deberías tener los archivos y carpetas descritos líneas arriba, por ahora solo crea un `index.html`. 
 
-## 2. Verificar la versión de Node
+### 1. Verificar la versión de Node
 
 Debes tener [Nodejs](https://nodejs.org/es) instalado, para verificar la versión de Node presiona `Ctrl + ñ` lo que abrirá la consola de Visual Studio Code, luego corre el siguiente comando: 
 
@@ -54,8 +54,7 @@ npm init -y
 
 Este es un resumen de algunos datos de nuestro proyecto como nombre, versión, etc. 
 
-
-## 3. Modulo gh-pages de NPM
+### 2. Modulo gh-pages de NPM
 
 ```bash
 // Instalación: 
@@ -89,9 +88,9 @@ Si revisamos nuestro archivo `package.json` veremos la versión de `gh-pages` in
 }
 ```
 
-### Vulnerabilidades 
+### 3. Vulnerabilidades 
 
-En caso la terminal te muestre algo así...
+En caso la terminal te muestre algo así…
 
 ```bash
 up to date, audited 43 packages in 695ms
@@ -120,7 +119,7 @@ Debemos ejecutar los comandos que nos muestra en el mensaje:
 
 - [NPM gh-pages](https://www.npmjs.com/package/gh-pages)
 
-## 4. Uso de Git 
+### 4. Uso de Git 
 
 Inicializamos un repositorio de Git en nuestro proyecto. 
 
