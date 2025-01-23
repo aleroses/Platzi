@@ -238,9 +238,16 @@ Esto sirve si creamos proyectos de la siguiente manera o similares:
 npm create vite
 ```
 
+Empezamos con la siguiente estructura:
+
+```bash
+
+```
+
+
 ### 1. Configura el `vite.config.js`
 
-Asegúrate de configurar el atributo `base` en tu archivo `vite.config.js` para que apunte al nombre del repositorio en GitHub. Por ejemplo, si tu repositorio se llama `mi-proyecto`:
+Asegúrate de configurar el atributo `base` en tu archivo `vite.config.js` para que apunte al nombre del repositorio en GitHub. Por ejemplo, si tu repositorio se llama `mi-proyecto` o en este caso `portfolio`:
 
 ```js
 import { defineConfig } from "vite";
@@ -252,6 +259,53 @@ export default defineConfig({
   base: "/portfolio/", 👈👀
 });
 ```
+
+### 2. Instala el paquete `gh-pages`
+
+Este paquete te permitirá desplegar fácilmente en GitHub Pages.
+
+```bash
+npm install gh-pages --save-dev
+```
+
+### 3. Configura los scripts en `package.json`
+
+Edita tu `package.json` para agregar un `script` de despliegue. Asegúrate de que quede algo así:
+
+```json
+"scripts": {
+  "dev": "vite",
+  "build": "vite build",
+  "preview": "vite preview", 👀👇
+  "deploy": "npm run build && gh-pages -d dist" ✨
+}
+```
+
+- El script `build` generará la carpeta `dist` con los archivos listos para producción.
+- El script `deploy` usará `gh-pages` para publicar el contenido de `dist` en GitHub Pages.
+
+### 4. Asegúrate de que tu repositorio esté configurado correctamente
+
+Inicializa el repositorio si aún no lo has hecho:
+
+```bash
+git init
+git remote add origin https://github.com/tu-usuario/mi-proyecto.git
+git add .
+git commit -m "Primer commit"
+git branch -M main
+git push -u origin main
+```
+
+### 5. Ejecuta el script de despliegue
+
+```bash
+npm run deploy
+```
+
+Esto publicará tu proyecto en GitHub Pages (en la rama `gh-pages`).
+
+
 
 
 En esta estructura vemos que tenemos los archivos a desplegar en la carpeta `public`, también pueden estar en una carpeta llamada `dist`.
@@ -304,5 +358,6 @@ Frameworks para sitios estáticos:
 - HUGO
 
 ---
+- [Package gh-pages](https://www.npmjs.com/package/gh-pages)
 - 🔥 [Apuntes Desplegar con Vite y Yarn](https://github.com/aleroses/Platzi/blob/master/DW/2-intermedio/023.SPA-js-vanilla/spa-js-vanilla.md#14-github-pages)
 - [🔥 GitHub Pages | Sitios Estáticos Gratis con gh-pages (y Nodejs)](https://www.youtube.com/watch?v=G2FoSpsq3Rw&t=683s)
