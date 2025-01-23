@@ -13453,19 +13453,100 @@ export const AuthProvider = ({ children }) => {
 };
 ```
 
-`src/.jsx`
+`src/auth/pages/LoginPage.jsx`
 
 ```jsx
+import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../context/AuthContext";
+
+export const LoginPage = () => {
+  const { login } = useContext(AuthContext);
+  const navigate = useNavigate();
+
+  const handleLogin = () => {
+    login("Ghost Devil");
+
+    navigate("/", {
+      replace: true,
+    });
+  };
+
+  return (
+    <div className="container mt-5">
+      <h1>Login</h1>
+      <hr />
+
+      <button onClick={handleLogin}>Login</button>
+    </div>
+  );
+};
 ```
 
-`src/.jsx`
+`src/ui/components/Navbar.jsx`
 
 ```jsx
+import { useContext } from "react";
+import { Link, NavLink, useNavigate } from "react-router";
+import { AuthContext } from "../../auth/context/AuthContext";
+
+export const Navbar = () => {
+  const { user } = useContext(AuthContext);
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    navigate("/login", {
+      replace: true,
+    });
+  };
+
+  return (
+    <nav className="p-3">
+      <Link to="/">Asociaciones</Link>
+
+      <div>
+        <NavLink to="/marvel">Marvel</NavLink>
+        <NavLink to="/dc">DC</NavLink>
+        <NavLink to="/search">Search</NavLink>
+      </div>
+
+      <div>
+        <ul>
+          <span>{user?.name}</span>
+          <button onClick={handleLogout}>Logout</button>
+        </ul>
+      </div>
+    </nav>
+  );
+};
 ```
 
-`src/.jsx`
+`src/auth/context/authReducer.js`
 
-```jsx
+```js
+import { types } from "../types/types";
+
+// const initialState = {
+//   logged: false,
+// };
+
+export const authReducer = (state = {}, action) => {
+  switch (action.type) {
+    case types.login:
+      return {
+        ...state,
+        logged: true,
+        user: action.payload,
+      };
+    case types.logout:
+      return {
+        logged: false,
+      };
+
+    default:
+      return state;
+  }
+};
 ```
 
 ☝️👆
