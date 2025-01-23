@@ -230,9 +230,31 @@ Nuevamente guardamos cambios en git, enviamos cambios a GitHub y publicamos en G
 
 📌 Nota: El despliegue en GitHub Pages **tarda un poco**, así que ten paciencia al momento de ver los cambios en el navegador. 
 
-## 8. Proyectos que usan Frameworks 
+## Proyectos que usan Frameworks 
 
-En esta estructura vemos que tenemos los archivos a desplegar en la carpeta `public`.
+Esto sirve si creamos proyectos de la siguiente manera o similares:
+
+```bash
+npm create vite
+```
+
+### 1. Configura el `vite.config.js`
+
+Asegúrate de configurar el atributo `base` en tu archivo `vite.config.js` para que apunte al nombre del repositorio en GitHub. Por ejemplo, si tu repositorio se llama `mi-proyecto`:
+
+```js
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react-swc";
+
+// https://vite.dev/config/
+export default defineConfig({
+  plugins: [react()],
+  base: "/portfolio/", 👈👀
+});
+```
+
+
+En esta estructura vemos que tenemos los archivos a desplegar en la carpeta `public`, también pueden estar en una carpeta llamada `dist`.
 
 ```bash
 ╰─ tree -L 3
