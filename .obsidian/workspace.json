@@ -4,35 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "f0ab1e0bc1546c9e",
+        "id": "81f69867e19abce9",
         "type": "tabs",
         "children": [
           {
-            "id": "23b24c2e56fa0ebf",
+            "id": "9eb6bb4128eaba9f",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "DW/3-avanzado/1.react.js/devTalles/react-hooks-mern.md",
+                "file": "DW/3-avanzado/4.css-modules/css-modules.md",
                 "mode": "source",
                 "source": true
               },
               "icon": "lucide-file",
-              "title": "react-hooks-mern"
-            }
-          },
-          {
-            "id": "514037684f377ec8",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "DW/1-basico/005-git-github/git-github.md",
-                "mode": "source",
-                "source": true
-              },
-              "icon": "lucide-file",
-              "title": "git-github"
+              "title": "css-modules"
             }
           }
         ]
@@ -178,10 +164,12 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "23b24c2e56fa0ebf",
+  "active": "9eb6bb4128eaba9f",
   "lastOpenFiles": [
-    "nextjs.org.md",
     "DW/3-avanzado/1.react.js/devTalles/react-hooks-mern.md",
+    "DW/3-avanzado/4.css-modules/css-modules.md",
+    "DW/3-avanzado/4.css-modules",
+    "nextjs.org.md",
     "package.json",
     "yarn.lock",
     "node_modules/split-on-first/readme.md",
@@ -193,7 +181,6 @@
     "node_modules/query-string/package.json",
     "node_modules/query-string/license",
     "node_modules/query-string/index.js",
-    "node_modules/query-string/index.d.ts",
     "node_modules/filter-obj/readme.md",
     "node_modules/decode-uri-component/readme.md",
     "DW/1-basico/005-git-github/git-github.md",
