@@ -13549,19 +13549,6 @@ export const authReducer = (state = {}, action) => {
 };
 ```
 
-☝️👆
-👈👀
-❯
-👈👀👇
-👈👀☝️
-👈👀📌
-🔥
-🚫
-🔘
-🟣
-
-
-
 ### 15.7
 
 `src/.jsx`
