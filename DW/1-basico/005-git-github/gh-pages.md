@@ -136,7 +136,7 @@ Inicializamos un repositorio de Git en nuestro proyecto.
 
 - [Pagina oficial de GitHub Pages](https://pages.github.com/)
 
-## 5. GitHub 
+### 5. GitHub 
 
 Creamos un nuevo repositorio, solo revisa el nombre de la rama con que se está creando, estos pueden ser `main` o `master` y debe coincidir con el nombre de la rama creada localmente, debemos tenerlo en cuenta para no tener conflictos mas adelante. 
 
@@ -149,7 +149,7 @@ Copiamos el enlace HTTPS o SSH y enlazamos el repositorio remoto con el local:
 - git push -u origin master
 ```
 
-## 6. Ejecutar modulo gh-pages
+### 6. Ejecutar modulo gh-pages
 
 Publicamos en GitHub Pages todo lo que está al inicio o en la raíz del proyecto:  
 
@@ -166,7 +166,7 @@ Para ver el enlace de nuestro proyecto desplegado nos vamos a `settings/Pages`.
 
 ![](https://i.postimg.cc/9QYNHb0t/gh-pages.png)
 
-## 7. Actualizando web
+### 7. Actualizando nuestro proyecto
 
 Posteriormente necesitaremos hacer cambios a nuestro proyecto, en este caso se ve así: 
 
