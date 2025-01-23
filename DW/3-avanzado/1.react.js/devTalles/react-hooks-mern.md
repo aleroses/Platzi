@@ -13549,7 +13549,29 @@ export const authReducer = (state = {}, action) => {
 };
 ```
 
-### 15.7
+### 15.7 Mantener el usuario activo
+
+La doble negación (`!!`) en JavaScript es un truco para convertir cualquier valor en su equivalente **booleano**.
+
+¿Cómo funciona?
+
+1. La primera negación (`!`) convierte el valor a un booleano y lo invierte.
+2. La segunda negación (`!`) invierte el resultado nuevamente, devolviendo el valor booleano original.
+
+Ejemplo:
+
+```javascript
+console.log(!!"texto"); // true (porque "texto" es un valor truthy)
+console.log(!!0);       // false (porque 0 es un valor falsy)
+console.log(!!null);    // false
+```
+
+#### ¿Cuándo se usa?
+
+- Para verificar si un valor es **truthy** o **falsy** en lugar de evaluarlo directamente.
+- Simplifica expresiones booleanas en código.
+
+En nuestro proyecto:
 
 `src/.jsx`
 
