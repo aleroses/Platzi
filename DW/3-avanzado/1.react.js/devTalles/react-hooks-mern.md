@@ -13768,14 +13768,14 @@ export const Navbar = () => {
 
 ### 15.9 Rutas privadas
 
-`src/router/PrivateRouter.jsx`
+`src/router/PrivateRoute.jsx`
 
 ```jsx
 import { useContext } from "react";
 import { AuthContext } from "../auth/context/AuthContext";
 import { Navigate } from "react-router-dom";
 
-export const PrivateRouter = ({ children }) => {
+export const PrivateRoute = ({ children }) => {
   const { logged } = useContext(AuthContext);
 
   return logged ? children : <Navigate to="/login" />;
@@ -13789,7 +13789,7 @@ import { Route, Routes } from "react-router";
 
 import { LoginPage } from "../auth";
 import { HeroesRoutes } from "../heroes";
-import { PrivateRouter } from "./PrivateRouter";
+import { PrivateRoute } from "./PrivateRoute";
 
 export const AppRouter = () => {
   return (
@@ -13799,9 +13799,9 @@ export const AppRouter = () => {
         <Route
           path="/*"
           element={
-            <PrivateRouter>
+            <PrivateRoute>
               <HeroesRoutes />
-            </PrivateRouter>
+            </PrivateRoute>
           }
         />
 
@@ -13812,11 +13812,61 @@ export const AppRouter = () => {
 };
 ```
 
-### 15.10 
+### 15.10 Rutas públicas
 
-`src/`
+`src/router/PuclicRoute.jsx`
 
 ```jsx
+import { useContext } from "react";
+import { AuthContext } from "../auth/context/AuthContext";
+import { Navigate } from "react-router-dom";
+
+export const PublicRoute = ({ children }) => {
+  const { logged } = useContext(AuthContext);
+
+  return !logged ? children : <Navigate to="/marvel" />;
+};
+```
+
+`src/router/AppRouter.jsx`
+
+```jsx
+import { Route, Routes } from "react-router";
+
+import { LoginPage } from "../auth";
+import { HeroesRoutes } from "../heroes";
+import { PrivateRoute } from "./PrivateRoute";
+import { PublicRoute } from "./PublicRoute";
+
+export const AppRouter = () => {
+  return (
+    <>
+      <Routes>
+        <Route
+          path="login/*"
+          element={
+            <PublicRoute>
+              <Routes>
+                <Route path="/*" element={<LoginPage />} />
+              </Routes>
+            </PublicRoute>
+          }
+        />
+        <Route
+          path="/*"
+          element={
+            <PrivateRoute>
+              <HeroesRoutes />
+            </PrivateRoute>
+          }
+        />
+
+        {/* <Route path="login" element={<LoginPage />} /> */}
+        {/* <Route path="/*" element={<HeroesRoutes />} /> */}
+      </Routes>
+    </>
+  );
+};
 ```
 
 `src/`
@@ -13829,10 +13879,7 @@ export const AppRouter = () => {
 ```jsx
 ```
 
-`src/`
-
-```jsx
-```
+[Nested Routes and Outlets](https://reactrouter.com/tutorials/address-book#nested-routes-and-outlets)
 
 ☝️👆
 👈👀
