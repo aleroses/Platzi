@@ -13658,6 +13658,162 @@ export const authReducer = (state = {}, action) => {
 
 ### 15.8 Logout del usuario
 
+`src/auth/context/AuthProvider.jsx`
+
+```jsx
+import React, { useReducer } from "react";
+import { authReducer } from "./authReducer";
+
+import { types } from "../types/types";
+import { AuthContext } from "./AuthContext";
+
+// const initialState = {
+//   logged: false,
+// };
+
+const init = () => {
+  const user = JSON.parse(localStorage.getItem("user"));
+
+  return {
+    logged: !!user,
+    user: user,
+  };
+};
+
+export const AuthProvider = ({ children }) => {
+  const [authState, dispatch] = useReducer(
+    authReducer,
+    {},
+    init
+  );
+
+  const login = (name = "") => {
+    const user = {
+      id: "ABC",
+      name,
+    };
+
+    const action = {
+      type: types.login,
+      payload: user,
+    };
+
+    localStorage.setItem("user", JSON.stringify(user));
+
+    dispatch(action);
+  };
+
+  const logout = () => {
+    localStorage.removeItem("user");
+
+    const action = { type: types.logout };
+
+    dispatch(action);
+  };
+
+  return (
+    <AuthContext.Provider
+      value={{
+        ...authState,
+        // Methods
+        login: login,
+        logout: logout,
+      }}
+    >
+      {children}
+    </AuthContext.Provider>
+  );
+};
+```
+
+`src/ui/components/Navbar.jsx`
+
+```jsx
+import { useContext } from "react";
+import { Link, NavLink, useNavigate } from "react-router";
+import { AuthContext } from "../../auth/context/AuthContext";
+
+export const Navbar = () => {
+  const { user, logout } = useContext(AuthContext);
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    logout();
+
+    navigate("/login", {
+      replace: true,
+    });
+  };
+
+  return (
+    <nav className="p-3">
+      <Link to="/">Asociaciones</Link>
+
+      <div>
+        <NavLink to="/marvel">Marvel</NavLink>
+        <NavLink to="/dc">DC</NavLink>
+        <NavLink to="/search">Search</NavLink>
+      </div>
+
+      <div>
+        <ul>
+          <span>{user?.name}</span>
+          <button onClick={handleLogout}>Logout</button>
+        </ul>
+      </div>
+    </nav>
+  );
+};
+```
+
+### 15.9 Rutas privadas
+
+`src/router/PrivateRouter.jsx`
+
+```jsx
+import { useContext } from "react";
+import { AuthContext } from "../auth/context/AuthContext";
+import { Navigate } from "react-router-dom";
+
+export const PrivateRouter = ({ children }) => {
+  const { logged } = useContext(AuthContext);
+
+  return logged ? children : <Navigate to="/login" />;
+};
+```
+
+`src/router/AppRouter.jsx`
+
+```jsx
+import { Route, Routes } from "react-router";
+
+import { LoginPage } from "../auth";
+import { HeroesRoutes } from "../heroes";
+import { PrivateRouter } from "./PrivateRouter";
+
+export const AppRouter = () => {
+  return (
+    <>
+      <Routes>
+        <Route path="login" element={<LoginPage />} />
+        <Route
+          path="/*"
+          element={
+            <PrivateRouter>
+              <HeroesRoutes />
+            </PrivateRouter>
+          }
+        />
+
+        {/* <Route path="/*" element={<HeroesRoutes />} /> */}
+      </Routes>
+    </>
+  );
+};
+```
+
+### 15.10 
+
 `src/`
 
 ```jsx
@@ -13688,50 +13844,6 @@ export const authReducer = (state = {}, action) => {
 🚫
 🔘
 🟣
-
-### 15.9
-
-`src/`
-
-```jsx
-```
-
-`src/`
-
-```jsx
-```
-
-`src/`
-
-```jsx
-```
-
-`src/`
-
-```jsx
-```
-
-### 15.10
-
-`src/`
-
-```jsx
-```
-
-`src/`
-
-```jsx
-```
-
-`src/`
-
-```jsx
-```
-
-`src/`
-
-```jsx
-```
 
 ### 15.11
 
