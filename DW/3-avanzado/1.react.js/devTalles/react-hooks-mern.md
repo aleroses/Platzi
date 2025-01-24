@@ -13869,28 +13869,8 @@ export const AppRouter = () => {
 };
 ```
 
-`src/`
-
-```jsx
-```
-
-`src/`
-
-```jsx
-```
-
-[Nested Routes and Outlets](https://reactrouter.com/tutorials/address-book#nested-routes-and-outlets)
-
-☝️👆
-👈👀
-❯
-👈👀👇
-👈👀☝️
-👈👀📌
-🔥
-🚫
-🔘
-🟣
+- [Nested Routes and Outlets](https://reactrouter.com/tutorials/address-book#nested-routes-and-outlets)
+- [Outlet](https://api.reactrouter.com/v7/functions/react_router.Outlet.html)
 
 ### 15.11
 
@@ -13913,6 +13893,27 @@ export const AppRouter = () => {
 
 ```jsx
 ```
+
+`src/`
+
+```jsx
+```
+
+`src/`
+
+```jsx
+```
+
+☝️👆
+👈👀
+❯
+👈👀👇
+👈👀☝️
+👈👀📌
+🔥
+🚫
+🔘
+🟣
 
 ### 15.12
 
