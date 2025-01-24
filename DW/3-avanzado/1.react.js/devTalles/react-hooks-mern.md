@@ -13872,22 +13872,115 @@ export const AppRouter = () => {
 - [Nested Routes and Outlets](https://reactrouter.com/tutorials/address-book#nested-routes-and-outlets)
 - [Outlet](https://api.reactrouter.com/v7/functions/react_router.Outlet.html)
 
-### 15.11
+### 15.11 Recordar la última página visitada
 
-`src/`
+Esta parte no me funcionó :v
 
-```jsx
-```
-
-`src/`
+`src/router/PrivateRoute.jsx`
 
 ```jsx
+import { useContext } from "react";
+import { Navigate, useLocation } from "react-router";
+
+import { AuthContext } from "../auth/";
+
+export const PrivateRoute = ({ children }) => {
+  const { logged } = useContext(AuthContext);
+  const { pathname, search } = useLocation();
+
+  console.log(pathname, search);
+
+  const lastPath = pathname + search;
+  localStorage.setItem("lastPath", lastPath);
+
+  console.log("re-render-");
+
+  return logged ? children : <Navigate to="/login" />;
+};
 ```
 
-`src/`
+`src/auth/pages/LoginPage.jsx`
 
 ```jsx
+import { useContext } from "react";
+import { useNavigate } from "react-router";
+import { AuthContext } from "../context/AuthContext";
+
+export const LoginPage = () => {
+  const { login } = useContext(AuthContext);
+  const navigate = useNavigate();
+
+  const handleLogin = () => {
+    const lastPath =
+      localStorage.getItem("lastPath") || "/";
+
+    login("Ghost");
+
+    navigate(lastPath, {
+      replace: true,
+    });
+  };
+
+  return (
+    <div className="container mt-5">
+      <h1>Login</h1>
+      <hr />
+
+      <button onClick={handleLogin}>Login</button>
+    </div>
+  );
+};
 ```
+
+`src/ui/components/Navbar.jsx`
+
+```jsx
+import { useContext } from "react";
+import { Link, NavLink, useNavigate } from "react-router";
+import { AuthContext } from "../../auth/context/AuthContext";
+
+export const Navbar = () => {
+  const { user, logout } = useContext(AuthContext);
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    logout();
+
+    navigate("/login", {
+      replace: true,
+    });
+  };
+
+  return (
+    <nav className="p-3">
+      <Link to="/">Asociaciones</Link>
+
+      <div>
+        <NavLink to="/marvel">Marvel</NavLink>
+        <NavLink to="/dc">DC</NavLink>
+        <NavLink to="/search">Search</NavLink>
+      </div>
+
+      <div>
+        <ul>
+          <span>{user?.name}</span>
+          <button onClick={handleLogout}>Logout</button>
+        </ul>
+      </div>
+    </nav>
+  );
+};
+```
+
+### 15.12
+
+
+
+## 16
+
+### 16.1
+
+### 
 
 `src/`
 
@@ -13914,16 +14007,6 @@ export const AppRouter = () => {
 🚫
 🔘
 🟣
-
-### 15.12
-
-
-
-## 16
-
-### 16.1
-
-### 
 
 ```bash
 npm install react@latest react-dom@latest
