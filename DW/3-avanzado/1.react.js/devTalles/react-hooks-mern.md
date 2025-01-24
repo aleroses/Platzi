@@ -13972,11 +13972,13 @@ export const Navbar = () => {
 };
 ```
 
-### 15.12
+### 15.12 Código fuente de la sección
 
+Aquí tienen mi código fuente por si lo necesitan comparar contra el suyo:
 
+[**GitHub - Fin sección 15**](https://github.com/Klerith/react-heroes/tree/fin-seccion-15)
 
-## 16
+## 🟣 16
 
 ### 16.1
 
