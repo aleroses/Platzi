@@ -9581,7 +9581,7 @@ export const LoginPage = () => {
 };
 ```
 
-📌 `Higher-Order Component (HOC):` Componente de orden superior que recibe otros componentes dentro del él. Permite que los hijos tengan acceso a la info que provee el padre,
+📌 `Higher-Order Component (HOC):` Componente de orden superior que recibe otros componentes dentro del él. Permite que los hijos tengan acceso a la info que provee el padre.
 
 ```js
 <div>
