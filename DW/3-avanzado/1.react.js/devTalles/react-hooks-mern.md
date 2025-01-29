@@ -1462,7 +1462,7 @@ Esta funcionalidad está disponible en Obsidian:
 
 ## 🟣 5. Pruebas unitarias y de integración - Probando las secciones anteriores
 
-### 🟣 Introducción a la sección
+### 5.1 Introducción a la sección
 
 Probar la ruta crítica:
 
@@ -1487,7 +1487,7 @@ Aquí tienes algunos ejemplos de pruebas de ruta crítica para diferentes tipos 
    - Verificar la correcta selección de asientos y opciones de personalización durante el proceso de reserva.
    - Comprobar el flujo de pago, asegurándose de que la transacción se realice correctamente.
 
-### 🟣 Temas puntuales de la sección
+### 5.2 Temas puntuales de la sección
 
 **¿Qué veremos en esta sección?**
 
@@ -1507,7 +1507,7 @@ Aquí tienes algunos ejemplos de pruebas de ruta crítica para diferentes tipos 
 
 Esta sección de pruebas es sumamente importante porque nos dará la base de las pruebas que estaremos haciendo durante el curso, las pruebas irán creciendo en complejidad, por lo que les recomiendo que nos aseguremos de comprender bien todos estos conceptos para que nos sea más fácil las siguientes secciones de pruebas.
 
-### 🟣 Introducción a las pruebas unitarias y de integración
+### 5.3 Introducción a las pruebas unitarias y de integración
 
 Unitarias: Enfocadas en pequeñas funcionalidades.
 
@@ -1539,7 +1539,7 @@ Assert: Observar el comportamiento resultante.
 - Son los resultados esperados.
 - Ej: Que algo cambie, algo incremente o bien que nada suceda.
 
-### 🟣 Inicio de la sección - Pruebas sobre lo aprendido anteriormente
+### 5.4 Inicio de la sección - Pruebas sobre lo aprendido anteriormente
 
 Para las pruebas usaremos varios ejercicios que vimos en la parte de la introducción a JavaScript. Puedes copiar y pegar la carpeta `bases` del proyecto `02-intro-js` o descargar la carpeta comprimida desde la parte inferior del video. 
 
@@ -1547,7 +1547,7 @@ Estos archivos los pegamos dentro del `src` del proyecto `03-counter-app`, pero 
 
 [Download Bases](https://import.cdn.thinkific.com/643563/courses/1901683/basepruebas-220616-140151.zip)
 
-### 🟣 Mi primera prueba y configuraciones iniciales
+### 5.5 Mi primera prueba y configuraciones iniciales
 
 Para las pruebas usaremos **Jest** y **React Testing Library**, dos herramientas muy populares en el ecosistema de pruebas de JavaScript y React.
 
@@ -1711,7 +1711,7 @@ Mi estructura quedó algo así (cree un proyecto desde cero):
 
 [Jestjs getting-started](https://jestjs.io/docs/getting-started)
 
-### 🟣 Jest - Expect - toBe
+### 5.6 Jest - Expect - toBe
 
 #### `describe`
 
@@ -1848,7 +1848,7 @@ describe("Tests on the <DemoComponent/>", () => {
 
 [Jest Expect](https://jestjs.io/docs/expect#reference)
 
-### 🟣 Nota de Actualización - Extensión de archivos
+### 5.7 Nota de Actualización - Extensión de archivos
 
 En la siguiente clase se hace la configuración para las pruebas de nuestros distintos archivos, en caso de ver el error:
 
@@ -1860,7 +1860,7 @@ Cambiar extensión de los archivos `jest.config.js` y `babel.config.js` a `.cjs`
   
 Para ver más detalles al respecto pueden ir a [https://nodejs.org/docs/latest/api/modules.html#enabling](https://nodejs.org/docs/latest/api/modules.html#enabling "https://nodejs.org/docs/latest/api/modules.html#enabling").
 
-### 🟣 Pruebas en el archivo `02-template-string.js`
+### 5.8 Pruebas en el archivo `02-template-string.js`
 
 Configuración de Babel: Esto instala las dependencias necesarias para integrar Babel con Jest y permitir que Jest transforme el código ES6+ durante las pruebas.
 
@@ -1949,7 +1949,7 @@ Watch Usage
  › Press Enter to trigger a test run.
 ```
 
-### 🟣 toEqual
+### 5.9 toEqual
 
 `toEqual` es un matcher en Jest que se utiliza para verificar que dos valores son equivalentes en contenido. A diferencia de `toBe`, que usa el operador de igualdad estricta (`===`) y verifica que los dos valores comparados son exactamente el mismo objeto o valor primitivo, `toEqual` realiza una comparación profunda. Esto significa que verifica que los valores dentro de **objetos** y **arrays** sean los mismos, no que los objetos o arrays sean exactamente el mismo objeto en memoria.
 
@@ -2032,7 +2032,7 @@ describe("Test on 05-functions", () => {
 });
 ```
 
-### 🟣 Pruebas en el archivo `07-deses-arr.js`
+### 5.10 Pruebas en el archivo `07-deses-arr.js`
 
 `src > bases > 07-desest-arr.js`
 
@@ -2158,7 +2158,7 @@ test('array contains elements of specific types', () => {
 });
 ```
 
-### 🟣 Pruebas en `08-imp-exp.js - Arreglos`
+### 5.11 Pruebas en `08-imp-exp.js - Arreglos`
 
 #### `toBeFalsy()`
 
@@ -2379,7 +2379,7 @@ Creamos una carpeta data y añadimos el archivo `heroes.js`.
 
 [**heroes.js - Gist**](https://gist.github.com/Klerith/4aeb99d31aedbc29ff4d54bbb77d2d7f)
 
-### 🟣 Pruebas con tareas asíncronas
+### 5.12 Pruebas con tareas asíncronas
 
 Por defecto Jest trabaja con pruebas síncronas o sea ejecuta el código en secuencia y cuando encuentra una promesa este la ejecuta, pero luego sigue ejecutando el código siguiente y al llegar al final recién arroja el error.
 
@@ -2489,7 +2489,7 @@ test("09-promises should return an error if Hero doesn't exist", async () => {
 });
 ```
 
-### 🟣 Pruebas con async-await
+### 5.13 Pruebas con async-await
 
 #### `whatwg-fetch`
 
@@ -2565,7 +2565,7 @@ describe("Test on 11-async-await", () => {
 });
 ```
 
-### 🟣 Evaluar el Catch en el async-await
+### 5.14 Evaluar el Catch en el async-await
 
 En nuestro ejemplo, estamos esperando que la respuesta sea una `url` que es un `string`. Para evaluar el `catch` solo podemos añadir el mensaje esperado dentro de nuestras pruebas.
 
@@ -2590,7 +2590,7 @@ describe("Test on 11-async-await", () => {
 });
 ```
 
-### 🟣 Pruebas sobre componentes de React
+### 5.15 Pruebas sobre componentes de React
 
 Usaremos **Testing Library / React Testing Library** para hacer pruebas sobre componentes propios de React, ya que es muy bueno para manejar el DOM virtual.
 
@@ -2630,7 +2630,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
 - [React Testing Library](https://testing-library.com/docs/react-testing-library/intro)
 - [Testing React Apps: DOM Testing](https://jestjs.io/docs/tutorial-react#dom-testing)
 
-### 🟣 Pruebas en FirstApp - Componentes de React
+### 5.16 Pruebas en FirstApp - Componentes de React
 
 Para continuar con las pruebas debemos instalar lo siguiente, **cerrar todo y volver a iniciar los Test.**
 
@@ -2815,7 +2815,7 @@ export { FirstTest };
 - [DOM Manipulation JEST](https://jestjs.io/docs/next/tutorial-jquery)
 - [Babel Preset React](https://babeljs.io/docs/babel-preset-react)
 
-### 🟣 Probar FirstApp: `toMatchSnapshot`
+### 5.17 Probar FirstApp: `toMatchSnapshot`
 
 Veamos cómo funcionan `render`, `container` y `getByText` con `@testing-library/react`, así como los métodos de aserción `toBeTruthy()`, `toBe()` y `toContain()` de Jest.
 
@@ -3031,7 +3031,7 @@ describe("FirstApp tests", () => {
 });
 ```
 
-### 🟣 getByTestId y otras props
+### 5.18 getByTestId y otras props
 
 #### `data-testid`
 
@@ -3197,7 +3197,7 @@ describe("FirstTest tests", () => {
 });
 ```
 
-### 🟣 Screen - Testing Library
+### 5.19 Screen - Testing Library
 
 La función `screen` es una parte esencial de `@testing-library/react` y facilita la selección de elementos del DOM cuando se realizan pruebas. Veamos cómo funciona y cómo se utiliza en los tests.
 
@@ -3331,7 +3331,7 @@ describe("FirstApp tests", () => {
 });
 ```
 
-### 🟣 Pruebas básicas del CounterApp
+### 5.20 Pruebas básicas del CounterApp
 
 `src > main.jsx`
 
@@ -3419,7 +3419,7 @@ describe("CounterApp Testing", () => {
 });
 ```
 
-### 🟣 Simular eventos - Click
+### 5.21 Simular eventos - Click
 
 `fireEvent` se usa para disparar eventos del DOM, como clics, cambios de entrada, envíos de formularios, entre otros. Simula la interacción del usuario con el componente, permitiéndote probar cómo responde tu aplicación a estas interacciones.
 
@@ -3623,7 +3623,7 @@ describe("Test in the CounterApp", () => {
 });
 ```
 
-### 🟣 Código fuente de la sección
+### 5.22 Código fuente de la sección
 
 Aquí les dejo el código fuente de la sección por si lo llegan a necesitar y comparar contra el suyo:
 
