@@ -3630,11 +3630,11 @@ Aquí les dejo el código fuente de la sección por si lo llegan a necesitar y c
 - [**Github - Fin sección 5**](https://github.com/Klerith/react-vite-counter-app/tree/fin-seccion-5)
 - [Apuntes](https://github.com/aleroses/Platzi/blob/master/DW/3-avanzado/1.react.js/devTalles/react-hooks-mern.md)
 
-## 6. GifExpertApp - Aplicación
+## 🟣 6. GifExpertApp - Aplicación
 
-### 🟣 Introducción a la sección
+### 6.1 Introducción a la sección
 
-### 🟣 Temas puntuales de la sección
+### 6.2 Temas puntuales de la sección
 
 **¿Qué veremos en esta sección?**
 
@@ -3650,11 +3650,11 @@ Aquí les dejo el código fuente de la sección por si lo llegan a necesitar y c
 
 Esta es una aplicación pequeña pero muy ilustrativa que explica cómo utilizar React + customHooks para poder resolver necesidades en específico que podremos re-utilizar después.
 
-### 🟣 Resultado al final de la sección
+### 6.3 Resultado al final de la sección
 
 ![Project 01](https://i.postimg.cc/zD2R0NnK/1-project.png)
 
-### 🟣 Inicio de proyecto - GifExpertApp
+### 6.4 Inicio de proyecto - GifExpertApp
 
 ```bash
 yarn create vite
@@ -3699,7 +3699,7 @@ También debemos tener ya creada una API KEY en [GiphY Devs](https://developers.
 
 📌 Al iniciar el proyecto, el archivo `main.jsx` ya no importa el `ReactDOM from "react-dom/client"`, directamente importa el `createRoot`
 
-### 🟣 GifExpertApp - Component
+### 6.5 GifExpertApp - Component
 
 `src > main.jsx`
 
@@ -3974,7 +3974,7 @@ Estas recomendaciones buscan mejorar la organización y estructura del proyecto 
 - [**Estructura, nombres de folders y componentes en React - Hackernoon.com**](https://hackernoon.com/structuring-projects-and-naming-components-in-react-1261b6e18d76)
 - [**Estilos GifExpertApp**](https://gist.github.com/Klerith/e4fca6ac127ccb9abd1e8ad77fcd52f1)
 
-### 🟣 Creando una lista de categorías
+### 6.6 Creando una lista de categorías
 
 `src > GifExpertApp.jsx`
 
@@ -4003,7 +4003,7 @@ export const GifExpertApp = () => {
 
 Puedo tener todos los `useState` que necesite.
 
-### 🟣 Agregar una nueva categoría
+### 6.7 Agregar una nueva categoría
 
 `src > GifExpertApp.jsx`
 
@@ -4036,7 +4036,7 @@ export const GifExpertApp = () => {
 };
 ```
 
-### 🟣 Componente AddCategory
+### 6.8 Componente AddCategory
 
 Para esta clase usaremos el `event onChange`. Este `event` se puede desestructurar como `{target}` para obtener `target.value` de manera más corta.
 
@@ -4080,7 +4080,7 @@ export { AddCategory };
 const [newName|👈👀, setnewName|👈👀] = useState(second)
 ```
 
-### 🟣 Comunicación entre componentes
+### 6.9 Comunicación entre componentes
 
 `src > GifExpertApp.jsx`
 
@@ -4154,7 +4154,7 @@ const AddCategory = ({ setCategories }) => {
 export { AddCategory };
 ```
 
-### 🟣 Emitir un evento al padre
+### 6.10 Emitir un evento al padre
 
 `src > GifExpertApp.jsx`
 
@@ -4229,7 +4229,7 @@ const AddCategory = ({ onNewCategory }) => { 👈👀
 export { AddCategory };
 ```
 
-### 🟣 Validar que los nombres sean únicos
+### 6.11 Validar que los nombres sean únicos
 
 ¿Por qué es mala idea usar el `index` que brinda `map` para darle una `key` a una lista que se está renderizando?
 
@@ -4317,7 +4317,7 @@ export { GifExpertApp };
 
 Revisamos si en nuestra lista existe el nuevo elemento enviado usando `.include()`, de existir detenemos su anexión con `return`.
 
-### 🟣 GifGrid - Nuevo componente
+### 6.12 GifGrid - Nuevo componente
 
 Recuerda que siempre se asigna la `key` al objeto padre.
 
@@ -4375,7 +4375,7 @@ const GifGrid = ({ category }) => {
 export { GifGrid };
 ```
 
-### 🟣 Fetch API - Obtener las imágenes deseadas
+### 6.13 Fetch API - Obtener las imágenes deseadas
 
 ```bash
 # Instalar en Linux
@@ -4431,7 +4431,7 @@ export { getGifs };
 - [Intalar Postman](https://learning.postman.com/docs/getting-started/installation/installation-and-updates/)
 - [Postman en la web](https://web.postman.co/home)
 
-### 🟣 useEffect
+### 6.14 useEffect
 
 `src > components > GifGrid.jsx`
 
@@ -4463,7 +4463,7 @@ export { GifGrid };
 
 [Hook useEffect()](https://github.com/aleroses/Platzi/blob/master/DW/3-avanzado/1.react.js/Platzi/reactjs.md#18-qu%C3%A9-son-los-efectos-en-react-useeffect)
 
-### 🟣 Demostración de producción rápido
+### 6.15 Demostración de producción rápido
 
 ```bash
 yarn build
@@ -4549,7 +4549,7 @@ http-server -o
 
 [http-server](https://www.npmjs.com/package/http-server)
 
-### 🟣 Mostrar los títulos de las imágenes
+### 6.16 Mostrar los títulos de las imágenes
 
 `src > components > GifGrid.jsx`
 
@@ -4588,7 +4588,7 @@ const GifGrid = ({ category }) => {
 export { GifGrid };
 ```
 
-### 🟣 className - Clases de css
+### 6.17 className - Clases de css
 
 Ya conocemos la forma tradicional de pasar `props`, pero en esta clase veremos como pasar `props` usando el Operador de Propagación o Spread Operator `...imgs`
 
@@ -4712,7 +4712,7 @@ export { GifItem };
 
 Envía `{ ...img }` y recibe `{ title, url, id }`
 
-### 🟣 Custom Hook - useFetchGifs
+### 6.18 Custom Hook - useFetchGifs
 
 `src > components > GifGrid.jsx`
 
@@ -4773,7 +4773,7 @@ export { useFetchGifs };
 - [Pesticide for Chrome](https://chromewebstore.google.com/detail/pesticide-for-chrome-mv3/jeebpgmphhagpecfiophljpkhncoajcg?hl=es-419)
 - [CSS Debugger](https://chromewebstore.google.com/detail/css-debugger/bjpidjfkmlbmlfeogdpemieacmdicdno)
 
-### 🟣 Mostrar mensaje de carga
+### 6.19 Mostrar mensaje de carga
 
 `src > components > GifGrid.jsx`
 
@@ -4803,7 +4803,7 @@ const GifGrid = ({ category }) => {
 export { GifGrid };
 ```
 
-### 🟣 Archivos de barril
+### 6.20 Archivos de barril
 
 En el contexto de JavaScript y React, los "Archivos de barril" (también conocidos como "Archivos de índice" o "Archivos de barril de exportación") son archivos utilizados para exportar múltiples módulos desde una carpeta o directorio en un solo punto de acceso. En lugar de tener que importar cada módulo individualmente desde su ubicación específica, puedes importarlos todos a través del archivo de barril.
 
@@ -4901,7 +4901,7 @@ La estructura del proyecto queda así:
 
 [Limas de barril y por qué deberías DEJAR de usarlas ahora](https://dev.to/tassiofront/barrel-files-and-why-you-should-stop-using-them-now-bc4)
 
-### 🟣 Código fuente de la sección
+### 6.21 Código fuente de la sección
 
 Aquí les dejo el código fuente de la sección, tal cual lo dejé en el último video para que puedan compararlo contra el suyo si fuera necesario.
 
