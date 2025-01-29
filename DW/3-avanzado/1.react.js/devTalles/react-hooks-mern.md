@@ -4907,13 +4907,13 @@ Aquí les dejo el código fuente de la sección, tal cual lo dejé en el último
 
 [**GitHub - Fin Sección 6**](https://github.com/Klerith/react-vite-gif-expert/tree/fin-seccion-6) 
 
-## 7. Generando el build de producción y despliegues
+## 🟣 7. Generando el build de producción y despliegues
 
-### 🟣 Introducción a la sección
+### 7.1 Introducción a la sección
 
 El despliegue se hará en GitHub.
 
-### 🟣 Temas puntuales de la sección
+### 7.2 Temas puntuales de la sección
 
 **¿Qué veremos en esta sección?**
 
@@ -4925,7 +4925,7 @@ El despliegue se hará en GitHub.
 
 Aunque es una sección pequeña, les puede servir para desplegar infinidad de proyectos de React de forma gratuita, sin contar que tendrán respaldos de sus proyectos por si llegan a perder su trabajo que tenían localmente en su computadora.
 
-### 🟣 Desplegar en Netlify
+### 7.3 Desplegar en Netlify
 
 `src > components > GifGrid.jsx`
 
@@ -4972,7 +4972,7 @@ Para volver a desplegar o actualizar nuestro proyecto nos vamos a la página pri
 
 Arrastras nuevamente la carpeta `dist` y listo.
 
-### 🟣 Preparación del proyecto - GitHub Pages
+### 7.4 Preparación del proyecto - GitHub Pages
 
 Asegúrate de tener un `.gitignore` con todos los archivos y carpetas a ignorar en el repositorio de GitHub.
 
@@ -4991,7 +4991,7 @@ git checkout -- .
 - [[gh-pages]] 👈👀
 - [Apuntes GitHub Pages](https://github.com/aleroses/Platzi/blob/master/DW/1-basico/005-git-github/gh-pages.md)
 
-### 🟣 Subir a GitHub
+### 7.5 Subir a GitHub
 
 Crea un repositorio en GitHub y enlazalo con tu repositorio local.
 
@@ -5001,7 +5001,7 @@ Dejo los apuntes donde se toca ese tema:
 
 [⚠☢ Posible error ☣](https://github.com/aleroses/Platzi/blob/master/DW/1-basico/005-git-github/git-github.md#-posible-error-)
 
-### 🟣 Desplegando aplicación en Github Pages
+### 7.6 Desplegando aplicación en Github Pages
 
 Puedes renombrar `dist` por `docs`.
 
@@ -5017,7 +5017,7 @@ Personalmente el método que uso para subir y desplegar mis pequeños proyectos 
 
 [Apuntes GitHub Pages](https://github.com/aleroses/Platzi/blob/master/DW/1-basico/005-git-github/gh-pages.md)
 
-### 🟣 Actualizar GitHub pages
+### 7.7 Actualizar GitHub pages
 
 En caso de un error como el mostrado en clase debes ir a `docs/index.html` y dejar los links de la siguiente manera:
 
@@ -5033,11 +5033,11 @@ Ahora envía los cambios a GitHub, espera y listo.
 
 [Vite React App Deploy on GitHub](https://www.youtube.com/watch?v=XhoWXhyuW_I)
 
-## 8. Testing - Probando la aplicación de GifExpert
+## 🟣 8. Testing - Probando la aplicación de GifExpert
 
-### 🟣 Introducción a la sección
+### 8.1 Introducción a la sección
 
-### 🟣 Temas puntuales de la sección
+### 8.2 Temas puntuales de la sección
 
 **¿Qué veremos en esta sección?**
 
@@ -5052,7 +5052,7 @@ Ahora envía los cambios a GitHub, espera y listo.
 
 En esta sección seguiremos expandiendo todo lo que habíamos visto anteriormente en otras secciones de pruebas, pero ahora veremos más a detalle los temas y adicionalmente introduciremos nuevos conceptos y nuevos tipos de pruebas.
 
-### 🟣 Configurar el ambiente de pruebas
+### 8.3 Configurar el ambiente de pruebas
 
 Instalación y configuración de Jest + React Testing Library
 
@@ -5138,7 +5138,7 @@ test("Esta prueba no debe de fallar", () => {
 
 [vite-testing-config](https://gist.github.com/Klerith/ca7e57fae3c9ab92ad08baadc6c26177)
 
-### 🟣 Implementando PropTypes
+### 8.4 Implementando PropTypes
 
 Trazar la ruta critica:
 
@@ -5193,11 +5193,11 @@ describe("GifItem test", () => {
 });
 ```
 
-### 🟣 Resolución de la tarea
+### 8.5 Resolución de la tarea
 
 Lo mismo que el punto anterior.
 
-### 🟣 Pruebas del componente - GifGridItem
+### 8.6 Pruebas del componente - GifGridItem
 
 `test > components > GifItem.test.jsx`
 
@@ -5243,7 +5243,7 @@ describe("GifItm test", () => {
 });
 ```
 
-### 🟣 Pruebas en el helper getGifs
+### 8.7 Pruebas en el helper getGifs
 
 #### toBeGreaterThan()
 
@@ -5316,7 +5316,7 @@ describe("getGif testing", () => {
 });
 ```
 
-### 🟣 Pruebas del componente - AddCategory
+### 8.8 Pruebas del componente - AddCategory
 
 `test > components > AddCategories.test.jsx`
 
@@ -5349,7 +5349,7 @@ describe("Testing in AddCategories", () => {
 });
 ```
 
-### 🟣 Simular un submit del formulario
+### 8.9 Simular un submit del formulario
 
 En React (o en JSX en general), el atributo `aria-label` es utilizado para mejorar la accesibilidad de los elementos en una aplicación web. El propósito de `aria-label` es proporcionar una etiqueta de texto que describe el elemento para los lectores de pantalla y otras tecnologías de asistencia. Esto es particularmente útil para elementos que no tienen un texto visible o cuyo propósito no es obvio para los usuarios con discapacidades visuales.
 
@@ -5497,7 +5497,7 @@ En esta prueba primero renderizamos el componente, simulamos un `input` y luego 
 
 [Attributes aria-label](https://developer.mozilla.org/es/docs/Web/Accessibility/ARIA/Attributes/aria-label)
 
-### 🟣 Jest Functions
+### 8.10 Jest Functions
 
 En Jest, un "mock" es una técnica utilizada para reemplazar partes de tu código o dependencias durante las pruebas con objetos simulados que imitan el comportamiento de los objetos reales. Esto es útil para aislar el código que estás probando y eliminar dependencias externas que podrían afectar los resultados de las pruebas.
 
@@ -5724,7 +5724,7 @@ describe("AddCategories testing", () => {
 });
 ```
 
-### 🟣 Pruebas del componente GifGrid - Mock customHook
+### 8.11 Pruebas del componente GifGrid - Mock customHook
 
 Recuerda que los `PropTypes` quedaron obsoletos en **abril de 2017 (v15.5.0)**.
 
@@ -5757,7 +5757,7 @@ describe("GifGrid testing", () => {
 });
 ```
 
-### 🟣 Hacer un mock completo de un Custom Hook
+### 8.12 Hacer un mock completo de un Custom Hook
 
 #### ¿Qué es una función simulada?
 
@@ -5905,7 +5905,7 @@ describe("GifGrid testing", () => {
 });
 ```
 
-### 🟣 Pruebas sobre customHooks
+### 8.13 Pruebas sobre customHooks
 
 #### `renderHook`
 
@@ -6007,7 +6007,7 @@ describe("Testing useFetchGifs", () => {
 });
 ```
 
-### 🟣 Pruebas de tarea
+### 8.14 Pruebas de tarea
 
 Hacer algunas pruebas sobre `GifExpertApp.jsx`
 
@@ -6084,14 +6084,14 @@ describe("GifExpertApp testing", () => {
 });
 ```
 
-### 🟣 Código fuente de la sección
+### 8.15 Código fuente de la sección
 
 Aquí les dejo el código fuente de la secció por si la llegan a necesitar o comparar contra la mía
 
 [**Github - Fin sección 8**](https://github.com/Klerith/react-gif-expert/tree/fin-seccion-8)
 
 
-## 9. Profundizando Hooks - Generales
+## 🟣 9. Profundizando Hooks - Generales
 
 ### 9.1 Introducción a la sección
 
