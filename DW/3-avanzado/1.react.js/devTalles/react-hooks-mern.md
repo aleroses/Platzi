@@ -8257,7 +8257,7 @@ Si el curso les está gustando, por favor, ¡no se olviden de calificar el curso
 
 **Fernando Herrera**
 
-## 10. Profundizando Hooks - useReducer
+## 🟣 10. Profundizando Hooks - useReducer
 
 ### 1. Introducción a la sección
 
