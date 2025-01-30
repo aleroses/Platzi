@@ -11363,7 +11363,7 @@ export const AppRouter = () => {
         <Route path="login" element={<LoginPage />} />
         <Route
           path="/"
-          element={<Navigate to="marvel" />}
+          element={<Navigate to="/marvel" />}
         />
       </Routes>
     </>
