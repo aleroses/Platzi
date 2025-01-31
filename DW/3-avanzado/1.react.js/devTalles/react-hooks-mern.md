@@ -11156,7 +11156,7 @@ Aquí les dejo el repositorio del proyecto por si acaso lo llegan a necesitar.
 
 colocar vim en git por defecto
 
-## 14. HeroesApp - Single Page Application (SPA)
+## 🟣 14. HeroesApp - Single Page Application (SPA)
 
 ### 14.1 Introducción a la sección
 
