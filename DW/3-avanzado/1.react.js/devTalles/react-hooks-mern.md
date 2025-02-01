@@ -12433,7 +12433,7 @@ import { heroes } from "../data/heroes";
 export const getHeroById = (id) => {
   return heroes.find((hero) => hero.id === id);
 
-  // Undefined
+  // Undefined.hero
 };
 ```
 
@@ -12482,6 +12482,8 @@ export const HeroesRoutes = () => {
   );
 };
 ```
+
+Nota: React Components/Route.Provider/value/matches/{params}
 
 [Route-params](https://reactrouter.com/start/library/url-values#route-params)
 

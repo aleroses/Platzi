@@ -140,7 +140,10 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "DW/3-avanzado/1.react.js/devTalles/react-hooks-mern.md"
+                "file": "DW/3-avanzado/1.react.js/devTalles/react-hooks-mern.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
               },
               "icon": "lucide-list",
               "title": "Outline of react-hooks-mern"
