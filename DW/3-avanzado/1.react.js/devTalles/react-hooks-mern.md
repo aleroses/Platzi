@@ -12483,6 +12483,8 @@ export const HeroesRoutes = () => {
 };
 ```
 
+[Route-params](https://reactrouter.com/start/library/url-values#route-params)
+
 ### 14.14 Estilo del componente HeroScreen
 
 #### Dudas sobre rutas
