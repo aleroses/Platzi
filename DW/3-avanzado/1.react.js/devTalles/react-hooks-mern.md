@@ -13014,6 +13014,10 @@ export const SearchPage = () => {
 };
 ```
 
+Una alternativa al paquete que instalamos es directamente usar `useSearchParams()` de [React Router](https://reactrouter.com/start/library/url-values#url-search-params).
+
+
+
 - [Repo: Custom Hook - useForm](https://github.com/Klerith/custom-hooks/blob/main/useForm/useForm.js)
 - [Mi repo: useForm](https://github.com/aleroses/custom-hooks/blob/master/useForm/useForm.js)
 - [Paquete: Query-string](https://classic.yarnpkg.com/en/package/query-string)
