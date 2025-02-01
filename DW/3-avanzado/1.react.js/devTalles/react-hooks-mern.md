@@ -12965,7 +12965,7 @@ export const SearchPage = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const { q } = queryString.parse(location.search);
+  const { q = "" } = queryString.parse(location.search);
 
   console.log(q);
 
