@@ -34,9 +34,23 @@
               "icon": "lucide-file",
               "title": "vsc-chrome"
             }
+          },
+          {
+            "id": "f5a60a322eb3548f",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "DW/1-basico/003-prework/entorno-windows/vsc/setting.md",
+                "mode": "preview",
+                "source": true
+              },
+              "icon": "lucide-file",
+              "title": "setting"
+            }
           }
         ],
-        "currentTab": 1
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -156,13 +170,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "DW/1-basico/003-prework/entorno-windows/vsc-chrome.md",
+                "file": "DW/1-basico/003-prework/entorno-windows/vsc/setting.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of vsc-chrome"
+              "title": "Outline of setting"
             }
           }
         ],
@@ -183,8 +197,9 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "c6ae778f04df3b73",
+  "active": "f5a60a322eb3548f",
   "lastOpenFiles": [
+    "DW/1-basico/003-prework/entorno-windows/vsc-chrome.md",
     "DW/3-avanzado/1.react.js/devTalles/react-hooks-mern.md",
     "DW/1-basico/006-html-css/1-html/1.html-css.md",
     "DW/1-basico/005-git-github/gh-pages.md",
@@ -209,7 +224,6 @@
     "DW/3-avanzado/1.react.js/devTalles/img/11-createContext.png",
     "DW/3-avanzado/1.react.js/devTalles/img/11-userProvider.png",
     "DW/3-avanzado/1.react.js/devTalles/img/11-context.png",
-    "DW/1-basico/003-prework/entorno-windows/vsc-chrome.md",
     "DW/1-basico/003-prework/entorno-linux/grub-config.md",
     "DW/3-avanzado/1.react.js/devTalles/img/6-postman-web.png",
     "DW/3-avanzado/1.react.js/devTalles/img/screencapture-web-postman-co-workspace-My-Workspace-8937cc18-9d43-4a60-8591-492add66379f-request-create-2024-12-12-12_01_59.png",

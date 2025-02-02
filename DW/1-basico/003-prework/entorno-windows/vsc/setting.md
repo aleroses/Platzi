@@ -95,6 +95,10 @@ También:
 }
 ```
 
+En caso de necesitar los números ocasionalmente, puedes instalar la extensión [Line Numbers Toggle](https://marketplace.visualstudio.com/items?itemName=yay.lntoggle)
+
+Usando `Ctrl + Shift + L` podrás cambiar entre `off / on` fácilmente.
+
 ## Ocultar Documentación Emergente MDN
 
 ```json
