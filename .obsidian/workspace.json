@@ -14,43 +14,14 @@
               "type": "markdown",
               "state": {
                 "file": "DW/3-avanzado/1.react.js/devTalles/react-hooks-mern.md",
-                "mode": "preview",
+                "mode": "source",
                 "source": true
               },
               "icon": "lucide-file",
               "title": "react-hooks-mern"
             }
-          },
-          {
-            "id": "c6ae778f04df3b73",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "DW/1-basico/003-prework/entorno-windows/vsc-chrome.md",
-                "mode": "source",
-                "source": true
-              },
-              "icon": "lucide-file",
-              "title": "vsc-chrome"
-            }
-          },
-          {
-            "id": "f5a60a322eb3548f",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "DW/1-basico/003-prework/entorno-windows/vsc/setting.md",
-                "mode": "preview",
-                "source": true
-              },
-              "icon": "lucide-file",
-              "title": "setting"
-            }
           }
-        ],
-        "currentTab": 2
+        ]
       }
     ],
     "direction": "vertical"
@@ -170,13 +141,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "DW/1-basico/003-prework/entorno-windows/vsc/setting.md",
+                "file": "DW/3-avanzado/1.react.js/devTalles/react-hooks-mern.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of setting"
+              "title": "Outline of react-hooks-mern"
             }
           }
         ],
@@ -197,9 +168,10 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "f5a60a322eb3548f",
+  "active": "ecd8f2368c03aa73",
   "lastOpenFiles": [
     "DW/1-basico/003-prework/entorno-windows/vsc-chrome.md",
+    "DW/1-basico/003-prework/entorno-windows/vsc/setting.md",
     "DW/3-avanzado/1.react.js/devTalles/react-hooks-mern.md",
     "DW/1-basico/006-html-css/1-html/1.html-css.md",
     "DW/1-basico/005-git-github/gh-pages.md",
@@ -243,7 +215,6 @@
     "others/anki/add-ons.md",
     "DW/2-intermedio/019.empaquetadores/2.vite.md",
     "DW/2-intermedio/019.empaquetadores/1.intro-empaquetadores-web.md",
-    "DW/2-intermedio/025.debugging-devtools/debugging-devtools.md",
-    "DW/2-intermedio/014.api-rest-js/2.api-rest-js-ejemplos/api-rest-ejemplos.md"
+    "DW/2-intermedio/025.debugging-devtools/debugging-devtools.md"
   ]
 }

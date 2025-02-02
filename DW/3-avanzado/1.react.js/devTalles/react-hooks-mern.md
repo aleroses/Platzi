@@ -2,7 +2,7 @@
 
 ## 🟣 1. Introducción
 
-### 1. 1 Introducción al curso
+### 1.1 Introducción al curso
 
 Se recomienda hacer las tareas de cada sección.
 
