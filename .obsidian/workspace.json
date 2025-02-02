@@ -14,7 +14,7 @@
               "type": "markdown",
               "state": {
                 "file": "DW/3-avanzado/1.react.js/devTalles/react-hooks-mern.md",
-                "mode": "source",
+                "mode": "preview",
                 "source": true
               },
               "icon": "lucide-file",
@@ -170,6 +170,8 @@
   },
   "active": "ecd8f2368c03aa73",
   "lastOpenFiles": [
+    "DW/3-avanzado/1.react.js/devTalles/img/14.create-context.png",
+    "DW/3-avanzado/1.react.js/devTalles/img/react-context (1).png",
     "DW/1-basico/003-prework/entorno-windows/vsc-chrome.md",
     "DW/1-basico/003-prework/entorno-windows/vsc/setting.md",
     "DW/3-avanzado/1.react.js/devTalles/react-hooks-mern.md",
@@ -204,7 +206,6 @@
     "DW/3-avanzado/3.next/Nextjs-Tailwind.md",
     "DW/2-intermedio/029.web-components/web-components.md",
     "DW/2-intermedio/029.web-components/code/project/imgs/nike-blue.png",
-    "DW/2-intermedio/029.web-components/imgs/18.project.png",
     "DW/2-intermedio/007.poo-js/poo-js.md",
     "DW/2-intermedio/023.SPA-js-vanilla/spa-js-vanilla.md",
     "DW/2-intermedio/028.accesibilidad/0.audiocurso-accesibilidad-web.md",
@@ -214,7 +215,6 @@
     "DW/1-basico/006-html-css/1-html/5.bem.md",
     "others/anki/add-ons.md",
     "DW/2-intermedio/019.empaquetadores/2.vite.md",
-    "DW/2-intermedio/019.empaquetadores/1.intro-empaquetadores-web.md",
-    "DW/2-intermedio/025.debugging-devtools/debugging-devtools.md"
+    "DW/2-intermedio/019.empaquetadores/1.intro-empaquetadores-web.md"
   ]
 }

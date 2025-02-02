@@ -9476,6 +9476,8 @@ const App = () => {
 export default App;
 ```
 
+![example](https://i.postimg.cc/4dF7wqyM/14-create-context.png)
+
 ![contex](https://i.postimg.cc/RhcGrh69/11-context.png)
 
 #### Diagrama **sin Context** (prop drilling)
