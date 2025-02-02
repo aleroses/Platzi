@@ -20,8 +20,23 @@
               "icon": "lucide-file",
               "title": "react-hooks-mern"
             }
+          },
+          {
+            "id": "c6ae778f04df3b73",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "DW/1-basico/003-prework/entorno-windows/vsc-chrome.md",
+                "mode": "source",
+                "source": true
+              },
+              "icon": "lucide-file",
+              "title": "vsc-chrome"
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -40,7 +55,8 @@
             "state": {
               "type": "file-explorer",
               "state": {
-                "sortOrder": "alphabetical"
+                "sortOrder": "alphabetical",
+                "autoReveal": false
               },
               "icon": "lucide-folder-closed",
               "title": "Files"
@@ -140,13 +156,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "DW/3-avanzado/1.react.js/devTalles/react-hooks-mern.md",
+                "file": "DW/1-basico/003-prework/entorno-windows/vsc-chrome.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of react-hooks-mern"
+              "title": "Outline of vsc-chrome"
             }
           }
         ],
@@ -167,14 +183,14 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "ecd8f2368c03aa73",
+  "active": "c6ae778f04df3b73",
   "lastOpenFiles": [
+    "DW/3-avanzado/1.react.js/devTalles/react-hooks-mern.md",
     "DW/1-basico/006-html-css/1-html/1.html-css.md",
     "DW/1-basico/005-git-github/gh-pages.md",
     "DW/3-avanzado/4.css-modules/css-modules.md",
     "DW/3-avanzado/4.css-modules/imgs/names.png",
     "DW/3-avanzado/4.css-modules/imgs",
-    "DW/3-avanzado/1.react.js/devTalles/react-hooks-mern.md",
     "DW/3-avanzado/4.css-modules",
     "nextjs.org.md",
     "package.json",

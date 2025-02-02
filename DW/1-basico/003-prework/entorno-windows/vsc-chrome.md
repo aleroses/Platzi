@@ -33,6 +33,7 @@
 - [The Powerful Bootstrap](https://marketplace.visualstudio.com/items?itemName=Crozzo.the-powerful-bootstrap)
 - [Bootstrap 4, Font awesome 4, Font Awesome 5 Free & P](https://marketplace.visualstudio.com/items?itemName=thekalinga.bootstrap4-vscode)
 - Bracket Pair Colorizer: configurar settings 
+- [Line Numbers Toggle](https://marketplace.visualstudio.com/items?itemName=yay.lntoggle)
 
 Mas extensiones:  
 -   code runner ✨
