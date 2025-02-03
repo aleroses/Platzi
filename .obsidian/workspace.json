@@ -14,7 +14,7 @@
               "type": "markdown",
               "state": {
                 "file": "DW/3-avanzado/1.react.js/devTalles/react-hooks-mern.md",
-                "mode": "preview",
+                "mode": "source",
                 "source": true
               },
               "icon": "lucide-file",
@@ -155,7 +155,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -169,6 +170,7 @@
   },
   "active": "ecd8f2368c03aa73",
   "lastOpenFiles": [
+    "DW/3-avanzado/1.react.js/devTalles/img/15-useReducer.png",
     "DW/3-avanzado/1.react.js/devTalles/img/14.create-context.png",
     "DW/3-avanzado/1.react.js/devTalles/img/react-context (1).png",
     "DW/1-basico/003-prework/entorno-windows/vsc-chrome.md",
@@ -204,7 +206,6 @@
     "DW/3-avanzado/1.react.js/devTalles/img/naming-components.jpeg",
     "DW/3-avanzado/3.next/Nextjs-Tailwind.md",
     "DW/2-intermedio/029.web-components/web-components.md",
-    "DW/2-intermedio/029.web-components/code/project/imgs/nike-blue.png",
     "DW/2-intermedio/007.poo-js/poo-js.md",
     "DW/2-intermedio/023.SPA-js-vanilla/spa-js-vanilla.md",
     "DW/2-intermedio/028.accesibilidad/0.audiocurso-accesibilidad-web.md",

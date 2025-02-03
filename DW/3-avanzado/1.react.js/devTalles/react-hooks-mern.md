@@ -13321,6 +13321,10 @@ La estructura actual es esta:
 
 ### 15.5 Context y Reducer de mi aplicación
 
+Antes un ejemplo de Context y Reducer:
+
+![Context + Reducer](https://i.postimg.cc/vH8rhB9K/15-use-Reducer.png)
+
 `src/auth/types/types.js`
 
 ```js
