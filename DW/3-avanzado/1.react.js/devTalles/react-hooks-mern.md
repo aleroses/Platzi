@@ -8259,10 +8259,10 @@ Si el curso les está gustando, por favor, ¡no se olviden de calificar el curso
 
 ## 🟣 10. Profundizando Hooks - useReducer
 
-### 1. Introducción a la sección
+### 10.1 Introducción a la sección
 
 
-### 2. Temas puntuales de la sección
+### 10.2 Temas puntuales de la sección
 
 **¿Qué veremos en esta sección?**
 
@@ -8274,7 +8274,7 @@ Si el curso les está gustando, por favor, ¡no se olviden de calificar el curso
 
 Esta es una sección dedicada a comprender el concepto de un Reducer, el cual es sumamente importante para poder entrar a Redux o bien usar el contextAPI fácilmente.
 
-### 3. Introducción al concepto de un reducer
+### 10.3 Introducción al concepto de un reducer
 
 En React, un `reducer` es una función que determina cómo cambiará el estado de una aplicación en respuesta a una acción. Los `reducers` son una parte central del patrón de arquitectura Redux, pero también pueden ser utilizados con el hook `useReducer` que React proporciona para manejar el estado local del componente de una manera similar.
 
@@ -8346,7 +8346,7 @@ En resumen:
 - [Apuntes: useReducer()](https://github.com/aleroses/Platzi/blob/master/DW/3-avanzado/1.react.js/YouTube/react-js-desde-cero.md#28-usereducer)
 - [[react-js-desde-cero#**28.** useReducer()]]
 
-### 4. Continuación del Proyecto - HookApp
+### 10.4 Continuación del Proyecto - HookApp
 
 `src > main.jsx`
 
@@ -8360,7 +8360,7 @@ import "./08-useReducer/intro-reducer";
 console.log("Hi world");
 ```
 
-### 5. Idea general de un reducer - Vía código
+### 10.5 Idea general de un reducer - Vía código
 
 `src > 08-useReducer > intro-reducer.js`
 
@@ -8405,7 +8405,7 @@ console.log({ state: todos });
 // });
 ```
 
-### 6. useReducer - Todo List
+### 10.6 useReducer - Todo List
 
 `src > main.jsx`
 
@@ -8481,7 +8481,7 @@ export const TodoApp = () => {
 
 [useReducer](https://es.react.dev/reference/react/useReducer)
 
-### 7. Creando el cascarón de la lista de TODOs
+### 10.7 Creando el cascarón de la lista de TODOs
 
 `src > 08-useReducer > TodoApp.jsx`
 
@@ -8544,9 +8544,9 @@ export const TodoApp = () => {
 };
 ```
 
-### 8. Tarea: Crear componentes y emitir eventos
+### 10.8 Tarea: Crear componentes y emitir eventos
 
-### 9. Resolución de la tarea - TodoApp
+### 10.9 Resolución de la tarea - TodoApp
 `src > 08-useReducer > TodoApp.jsx`
 
 ```jsx
@@ -8688,7 +8688,7 @@ export const TodoAdd = ({ updateTodos }) => {
 
 Para esta clase se usó el `useForm()` de clases anteriores. Tener en cuenta que el `formState` se está enviando desestructurado, por eso podemos usar `description` directamente.
 
-### 10. Agregar un nuevo TODO
+### 10.10 Agregar un nuevo TODO
 
 `src > 08-useReducer > todoReducer.js`
 
@@ -8763,7 +8763,7 @@ export const TodoApp = () => {
 };
 ```
 
-### 11. Guardar y Leer TODOs en LocalStorage
+### 10.11 Guardar y Leer TODOs en LocalStorage
 
 En React, el hook `useReducer` acepta un tercer parámetro opcional llamado `init`. Este es útil para inicializar el estado de manera más compleja o diferida.
 
@@ -8960,7 +8960,7 @@ export const TodoApp = () => {
 - [[react-hooks-mern#9.16 Incorporar caché]]
 - [# Uso del local storage en JavaScript](https://www.youtube.com/watch?v=hb8O0qRqiSk)
 
-### 12. Borrar un TODO
+### 10.12 Borrar un TODO
 
 `src > 08-useReducer > todoReducer.js`
 
@@ -9099,7 +9099,7 @@ export const TodoItem = ({
 
 Pasamos la función `handleDeleteTodo(id)` desde el padre hasta el último hijo del hijo, esto para llegar hasta donde está el `button` y poder hacer `onClick` pasando la función con su `id`.
 
-### 13. Toggle Todo - Marcar como completado o pendiente un TODO
+### 10.13 Toggle Todo - Marcar como completado o pendiente un TODO
 
 `src > 08-useReducer > todoReducer.js`
 
@@ -9275,7 +9275,7 @@ export const TodoItem = ({
 
 [Doc .map](https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Array/map)
 
-### 14. Tarea - useTodo
+### 10.14 Tarea - useTodo
 
 `src > 08-useReducer > TodoApp.jsx`
 
@@ -9397,9 +9397,9 @@ export const useTodo = () => {
 };
 ```
 
-### 15. Resolución de la tarea - useTodos
+### 10.15 Resolución de la tarea - useTodos
 
-### 16. Código fuente de la sección
+### 10.16 Código fuente de la sección
 
 Aquí les dejo el código fuente de la sección tal cual lo dejé al final de la última clase, espero que estemos aprendiendo mucho y sobre todo que cada vez comprendamos cómo funcionan los Hooks.
 
@@ -9407,9 +9407,9 @@ Aquí les dejo el código fuente de la sección tal cual lo dejé al final de la
 
 ## 🟣 11. Profundizando Hooks - useContext
 
-### 01. Introducción a la sección
+### 11.1 Introducción a la sección
 
-### 02. Temas puntuales de la sección
+### 11.2 Temas puntuales de la sección
 
 **¿Qué veremos en esta sección?**
 
@@ -9423,7 +9423,7 @@ Aquí les dejo el código fuente de la sección tal cual lo dejé al final de la
 
 El objetivo de la sección es principalmente aprender sobre el Context, el Router es un valor agregado que explotaremos mucho más en próximas secciones, pero al usar un Router, podemos explicar claramente el problema y necesidad del context.
 
-### 03. Introducción al Context 
+### 11.3 Introducción al Context 
 
 En React, el **Context** es una herramienta que permite compartir datos globales entre componentes sin necesidad de pasar props manualmente en cada nivel del árbol de componentes. Es especialmente útil para temas como:
 
@@ -9516,7 +9516,7 @@ graph TD
 - El **State Context** proporciona los datos directamente a todos los componentes, eliminando la necesidad de prop drilling.
 - El componente `E` inicia el cambio, pero todos los componentes tienen acceso al estado global.
 
-### 4. Preparación de nuestra aplicación con rutas
+### 11.4 Preparación de nuestra aplicación con rutas
 
 ```bash
 # Instalar React Router
@@ -9597,7 +9597,7 @@ export const LoginPage = () => {
 - [Instalación v7.1.1](https://classic.yarnpkg.com/en/package/react-router-dom)
 - [Uso](https://reactrouter.com/start/library/installation)
 
-### 5. Configurar Router en React
+### 11.5 Configurar Router en React
 
 `src > 09-useContext > MainApp.jsx`
 
@@ -9630,7 +9630,7 @@ export const MainApp = () => {
 
 [React Router: routing](https://reactrouter.com/start/library/routing)
 
-### 06. Link
+### 11.6 Link
 
 La diferencia principal entre la etiqueta `<a>` en HTML y el componente `<Link>` de React Router es su comportamiento en el contexto de las aplicaciones de una sola página (SPA):
 
@@ -9716,7 +9716,7 @@ a {
 }
 ```
 
-### 07. NavLink
+### 11.7 NavLink
 
 **`NavLink`** es un componente de **React Router** que se utiliza para crear enlaces de navegación con estilo activado cuando la ruta correspondiente está activa. A diferencia de `<Link>`, `NavLink` agrega una clase CSS especial cuando la ruta está activa, lo que permite resaltar el enlace.
 
@@ -9838,7 +9838,7 @@ a {
 
 [NavLink](https://api.reactrouter.com/v7/functions/react_router.NavLink)
 
-### 08. CreateContext y ContextProvider
+### 11.8 CreateContext y ContextProvider
 
 En **React**, `createContext` y `Context.Provider` se utilizan juntos para crear y gestionar un **Contexto** que permite compartir datos globales entre componentes sin necesidad de prop drilling (pasar props manualmente a través de múltiples niveles).
 
@@ -9972,7 +9972,7 @@ export const UserProvider = ({ children }) => {
 
 ![userProvider](https://i.postimg.cc/MTrCdY83/11-user-Provider.png)
 
-### 09. useContext
+### 11.9 useContext
 
 **`useContext`** es un **hook** de React que permite acceder a valores de un **Contexto** de manera sencilla, evitando la necesidad de usar `Context.Consumer`. Se utiliza principalmente para compartir datos globales entre componentes sin necesidad de **prop drilling** (pasar props manualmente a través de múltiples niveles).
 
@@ -10118,7 +10118,7 @@ export const LoginPage = () => {
 };
 ```
 
-### 10. Código fuente de la sección
+### 11.10 Código fuente de la sección
 
 Vista general:
 
