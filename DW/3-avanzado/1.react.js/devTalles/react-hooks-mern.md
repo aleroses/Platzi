@@ -13782,6 +13782,30 @@ export const Navbar = () => {
 
 ### 15.9 Rutas privadas
 
+Anteriormente, habíamos trabajado las rutas de la siguiente manera:
+
+`src/router/AppRouter.jsx`
+
+```jsx
+import { Route, Routes } from "react-router";
+
+import { LoginPage } from "../auth";
+import { HeroesRoutes } from "../heroes";
+
+export const AppRouter = () => {
+  return (
+    <>
+      <Routes> 👈👀👇
+        <Route path="login" element={<LoginPage />} />
+        <Route path="/*" element={<HeroesRoutes />} />
+      </Routes>
+    </>
+  );
+};
+```
+
+Pero ahora para trabajar con rutas privadas, lo haremos de la siguiente manera:
+
 `src/router/PrivateRoute.jsx`
 
 ```jsx
