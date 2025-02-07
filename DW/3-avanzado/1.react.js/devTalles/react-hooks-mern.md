@@ -14036,12 +14036,17 @@ Recuerden que el objetivo de las pruebas, es ir probando cosas nuevas cada vez y
 
 ### 16.3 Inicio de la sección - Pruebas en HeroApp
 
+Configuramos el ambiente de pruebas:
+
+- [8.3 Configurar el ambiente de pruebas](https://github.com/aleroses/Platzi/blob/master/DW/3-avanzado/1.react.js/devTalles/react-hooks-mern.md#83-configurar-el-ambiente-de-pruebas)
+- [[react-hooks-mern#🟣 8. Testing - Probando la aplicación de GifExpert#8.3 Configurar el ambiente de pruebas]]
+
+### 16.4
+
 `src/`
 
 ```jsx
 ```
-
-### 16.4
 
 `src/`
 
