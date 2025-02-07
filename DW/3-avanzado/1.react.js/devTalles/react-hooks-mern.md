@@ -14034,7 +14034,7 @@ Aquí tienen mi código fuente por si lo necesitan comparar contra el suyo:
 
 Recuerden que el objetivo de las pruebas, es ir probando cosas nuevas cada vez y tener un repertorio completo de diferentes casos.
 
-### 16.3
+### 16.3 Inicio de la sección - Pruebas en HeroApp
 
 `src/`
 
