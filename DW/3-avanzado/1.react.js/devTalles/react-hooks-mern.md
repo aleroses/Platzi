@@ -14016,16 +14016,262 @@ Aquí tienen mi código fuente por si lo necesitan comparar contra el suyo:
 
 [**GitHub - Fin sección 15**](https://github.com/Klerith/react-heroes/tree/fin-seccion-15)
 
-## 🟣 16
+## 🟣 16. Pruebas de nuestra aplicación de Heroe
 
-### 16.1
+### 16.1 Introducción a la sección
 
-### 
+### 16.2 Temas puntuales de la sección
+
+**¿Qué veremos en esta sección?**
+
+- Nuevos tipos de pruebas
+- Pruebas en rutas privadas y públicas
+- MemoryRouter
+- Pruebas en nuestro DashboardRouter
+- Pruebas en el AppRouter
+- Simular URLs y segmentos
+- Simular queryParams y queryStrings
+
+Recuerden que el objetivo de las pruebas, es ir probando cosas nuevas cada vez y tener un repertorio completo de diferentes casos.
+
+### 16.3
 
 `src/`
 
 ```jsx
 ```
+
+### 16.4
+
+`src/`
+
+```jsx
+```
+
+`src/`
+
+```jsx
+```
+
+### 16.5
+
+`src/`
+
+```jsx
+```
+
+`src/`
+
+```jsx
+```
+
+### 16.6
+
+`src/`
+
+```jsx
+```
+
+`src/`
+
+```jsx
+```
+
+### 16.7
+
+`src/`
+
+```jsx
+```
+
+`src/`
+
+```jsx
+```
+
+### 16.8
+
+`src/`
+
+```jsx
+```
+
+`src/`
+
+```jsx
+```
+
+### 16.9
+
+`src/`
+
+```jsx
+```
+
+`src/`
+
+```jsx
+```
+
+### 16.10
+
+`src/`
+
+```jsx
+```
+
+`src/`
+
+```jsx
+```
+
+### 16.11
+
+`src/`
+
+```jsx
+```
+
+`src/`
+
+```jsx
+```
+
+### 16.12
+
+`src/`
+
+```jsx
+```
+
+`src/`
+
+```jsx
+```
+
+### 16.13
+
+`src/`
+
+```jsx
+```
+
+`src/`
+
+```jsx
+```
+
+### 16.14
+
+`src/`
+
+```jsx
+```
+
+`src/`
+
+```jsx
+```
+
+### 16.15
+
+`src/`
+
+```jsx
+```
+
+`src/`
+
+```jsx
+```
+
+### 16.16
+
+`src/`
+
+```jsx
+```
+
+`src/`
+
+```jsx
+```
+
+### 16.
+
+`src/`
+
+```jsx
+```
+
+`src/`
+
+```jsx
+```
+
+### 16.
+
+`src/`
+
+```jsx
+```
+
+`src/`
+
+```jsx
+```
+
+### 16.
+
+`src/`
+
+```jsx
+```
+
+`src/`
+
+```jsx
+```
+
+### 16.
+
+`src/`
+
+```jsx
+```
+
+`src/`
+
+```jsx
+```
+
+
+### 16.
+
+`src/`
+
+```jsx
+```
+
+`src/`
+
+```jsx
+```
+
+### 16.
+
+`src/`
+
+```jsx
+```
+
+`src/`
+
+```jsx
+```
+
+
+### 16.
 
 `src/`
 
