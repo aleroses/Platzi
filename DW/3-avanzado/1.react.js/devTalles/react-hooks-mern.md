@@ -1460,7 +1460,7 @@ Esta funcionalidad está disponible en Obsidian:
 
 [**Github - fin-seccion-4**](https://github.com/Klerith/react-vite-counter-app/tree/fin-seccion-4)
 
-## 🟣 5. Pruebas unitarias y de integración - Probando las secciones anteriores
+## 🟡 5. Pruebas unitarias y de integración - Probando las secciones anteriores
 
 ### 5.1 Introducción a la sección
 
@@ -5033,7 +5033,7 @@ Ahora envía los cambios a GitHub, espera y listo.
 
 [Vite React App Deploy on GitHub](https://www.youtube.com/watch?v=XhoWXhyuW_I)
 
-## 🟣 8. Testing - Probando la aplicación de GifExpert
+## 🟡 8. Testing - Probando la aplicación de GifExpert
 
 ### 8.1 Introducción a la sección
 
@@ -10128,7 +10128,7 @@ Aquí les dejo el código fuente de la sección por si lo llegan a necesitar.
 
 [**Github- Fin sección 11**](https://github.com/Klerith/react-hooks/tree/fin-seccion-11)
 
-## 🟣 12. Pruebas unitarias y de integración - Hooks
+## 🟡 12. Pruebas unitarias y de integración - Hooks
 
 ### 12.1 Introducción a la sección
 
@@ -14016,7 +14016,7 @@ Aquí tienen mi código fuente por si lo necesitan comparar contra el suyo:
 
 [**GitHub - Fin sección 15**](https://github.com/Klerith/react-heroes/tree/fin-seccion-15)
 
-## 🟣 16. Pruebas de nuestra aplicación de Heroe
+## 🟡 16. Pruebas de nuestra aplicación de Heroe
 
 ### 16.1 Introducción a la sección
 
