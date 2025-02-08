@@ -14130,31 +14130,54 @@ describe("Testing in authReducer", () => {
 });
 ```
 
-### 16.5
+### 16.5 Pruebas sobre los Types
 
-`src/`
+Objeto a probar:
 
-```jsx
+`src/auth/types/types.js`
+
+```js
+export const types = {
+  login: "[Auth] Login",
+  logout: "[Auth] Logout",
+};
 ```
 
-`src/`
+Pruebas:
 
-```jsx
-```
+`test/auth/types/types.js`
 
-`src/`
+```js
+import { types } from "../../../src/auth/types/types";
 
-```jsx
+describe("Testing in types.js", () => {
+  test("should return these types:", () => {
+    // console.log(types);
+
+    expect(types).toEqual({
+      login: "[Auth] Login",
+      logout: "[Auth] Logout",
+    });
+  });
+});
 ```
 
 ### 16.6
 
+
+Función a probar:
+
+`src/auth/types/types.js`
+
 `src/`
 
 ```jsx
 ```
 
-`src/`
+Pruebas:
+
+`test/auth/types/types.js`
+
 
 ```jsx
 ```
