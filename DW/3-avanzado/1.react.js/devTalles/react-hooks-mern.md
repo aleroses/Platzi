@@ -14162,24 +14162,70 @@ describe("Testing in types.js", () => {
 });
 ```
 
-### 16.6
+### 16.6 Pruebas en el PublicRoute
 
+Router a probar:
 
-Función a probar:
-
-`src/auth/types/types.js`
-
-`src/`
+`src/router/PublicRoute.jsx`
 
 ```jsx
+import { useContext } from "react";
+import { AuthContext } from "../auth/context/AuthContext";
+import { Navigate } from "react-router-dom";
+
+export const PublicRoute = ({ children }) => {
+  const { logged } = useContext(AuthContext);
+
+  return !logged ? children : <Navigate to="/marvel" />;
+};
 ```
 
 Pruebas:
 
-`test/auth/types/types.js`
-
+`test/router/PublicRoute.test.jsx`
 
 ```jsx
+import { render, screen } from "@testing-library/react";
+import { AuthContext } from "../../src/auth/context/AuthContext";
+import { PublicRoute } from "../../src/router/PublicRoute";
+
+describe("Testing in PublicRoute", () => {
+  test("should be shown to children if it is not authenticated.", () => {
+    const contextValue = {
+      logged: false,
+    };
+
+    render(
+      <AuthContext.Provider value={contextValue}>
+        <PublicRoute>
+          <h1>Public Route</h1>
+        </PublicRoute>
+      </AuthContext.Provider>
+    );
+
+    expect(screen.getByText("Public Route")).toBeTruthy();
+
+    // screen.debug();
+  });
+
+  test("Must navigate if you are authenticated", () => {
+    // second;
+  });
+});
+```
+
+#### ReferenceError: `TextEncoder` is not defined
+
+Para solucionar el error del título se debe añadir lo siguiente al archivo `jest.setup.js`:
+
+```js
+// En caso de necesitar la implementación del FetchAPI
+import "whatwg-fetch"; // <-- yarn add whatwg-fetch
+
+// Solución TextEncoder is not defined 👈👀👇
+import { TextDecoder, TextEncoder } from "util";
+global.TextEncoder = TextEncoder;
+global.TextDecoder = TextDecoder;
 ```
 
 ### 16.7
@@ -14193,6 +14239,18 @@ Pruebas:
 
 ```jsx
 ```
+
+☝️👆
+👈👀
+❯
+👈👀👇
+👈👀☝️
+👈👀📌
+🔥
+🚫
+🔘
+🟣
+🟡
 
 ### 16.8
 
@@ -14398,6 +14456,7 @@ Pruebas:
 🚫
 🔘
 🟣
+🟡
 
 ```bash
 npm install react@latest react-dom@latest
@@ -14436,6 +14495,8 @@ yarn add react@latest react-dom@latest
 🔥
 🚫
 🔘
+
+🟡
 
 ```bash
 npm install react@latest react-dom@latest
