@@ -14043,22 +14043,99 @@ Configuramos el ambiente de pruebas:
 
 ### 16.4 Pruebas en el authReducer
 
-`src/`
+Función a probar:
 
-```jsx
+`src/auth/context/authReducer.js`
+
+```js
+import { types } from "../types/types";
+
+// const initialState = {
+//   logged: false,
+// };
+
+export const authReducer = (state = {}, action) => {
+  switch (action.type) {
+    case types.login:
+      return {
+        ...state,
+        logged: true,
+        user: action.payload,
+      };
+    case types.logout:
+      return {
+        logged: false,
+      };
+
+    default:
+      return state;
+  }
+};
 ```
 
-`src/`
+Pruebas:
 
-```jsx
-```
+`test/auth/context/authReducer.test.js`
 
-`src/`
+```js
+import { authReducer } from "../../../src/auth/context/authReducer";
+import { types } from "../../../src/auth/types/types";
 
-```jsx
+describe("Testing in authReducer", () => {
+  test("should return the defaul state", () => {
+    const state = authReducer(
+      {
+        logged: false,
+      },
+      {}
+    );
+
+    expect(state).toEqual({ logged: false });
+  });
+
+  test("should call the authenticate login and set the user", () => {
+    const action = {
+      type: types.login,
+      payload: {
+        name: "Ale",
+        id: "123",
+      },
+    };
+
+    const state = authReducer({ logged: false }, action);
+
+    expect(state).toEqual({
+      logged: true,
+      user: action.payload,
+    });
+  });
+
+  test("should delete the user name (logout) and logged in falsely", () => {
+    const action = {
+      type: types.logout,
+    };
+
+    const state = authReducer(
+      {
+        logged: true,
+        user: action.payload,
+      },
+      action
+    );
+
+    expect(state).toEqual({
+      logged: false,
+    });
+  });
+});
 ```
 
 ### 16.5
+
+`src/`
+
+```jsx
+```
 
 `src/`
 
