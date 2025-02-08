@@ -14041,7 +14041,7 @@ Configuramos el ambiente de pruebas:
 - [8.3 Configurar el ambiente de pruebas](https://github.com/aleroses/Platzi/blob/master/DW/3-avanzado/1.react.js/devTalles/react-hooks-mern.md#83-configurar-el-ambiente-de-pruebas)
 - [[react-hooks-mern#🟣 8. Testing - Probando la aplicación de GifExpert#8.3 Configurar el ambiente de pruebas]]
 
-### 16.4
+### 16.4 Pruebas en el authReducer
 
 `src/`
 
