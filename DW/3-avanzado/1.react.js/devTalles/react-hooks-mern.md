@@ -14297,7 +14297,74 @@ describe("Testing in PublicRoute", () => {
 });
 ```
 
-### 16.8
+### 16.8 Pruebas en el PrivateRoute
+
+`src/router/PrivateRoute.jsx`
+
+```jsx
+import { useContext } from "react";
+import { Navigate, useLocation } from "react-router";
+
+import { AuthContext } from "../auth/";
+
+export const PrivateRoute = ({ children }) => {
+  const { logged } = useContext(AuthContext);
+  const { pathname, search } = useLocation();
+
+  // console.log(pathname, search);
+
+  const lastPath = pathname + search;
+  localStorage.setItem("lastPath", lastPath);
+
+  // console.log("re-render-");
+
+  return logged ? children : <Navigate to="/login" />;
+};
+```
+
+`test/router/PrivateRoute.test.jsx`
+
+```jsx
+import { screen } from "@testing-library/dom";
+import { AuthContext } from "../../src/auth/context/AuthContext";
+import { PrivateRoute } from "../../src/router/PrivateRoute";
+import { render } from "@testing-library/react";
+import { MemoryRouter } from "react-router-dom";
+
+describe("Testing in PrivateRoute", () => {
+  test("should be shown to children if it is authenticated.", () => {
+    Storage.prototype.setItem = jest.fn();
+
+    const contextValue = {
+      logged: true,
+      user: {
+        id: "abc",
+        name: "Ale Ghost",
+      },
+    };
+
+    render(
+      <AuthContext.Provider value={contextValue}>
+        <MemoryRouter initialEntries={["/search?q=batman"]}>
+          <PrivateRoute>
+            <h1>Private Route</h1>
+          </PrivateRoute>
+        </MemoryRouter>
+      </AuthContext.Provider>
+    );
+
+    expect(screen.getByText("Private Route")).toBeTruthy();
+    expect(localStorage.setItem).toHaveBeenCalledWith(
+      "lastPath",
+      "/search?q=batman"
+    );
+
+    // screen.debug();
+  });
+});
+```
+
+### 16.9
 
 `src/`
 
@@ -14308,6 +14375,7 @@ describe("Testing in PublicRoute", () => {
 
 ```jsx
 ```
+
 
 `src/`
 
@@ -14325,18 +14393,6 @@ describe("Testing in PublicRoute", () => {
 🔘
 🟣
 🟡
-
-### 16.9
-
-`src/`
-
-```jsx
-```
-
-`src/`
-
-```jsx
-```
 
 ### 16.10
 
