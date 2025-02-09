@@ -14228,7 +14228,81 @@ global.TextEncoder = TextEncoder;
 global.TextDecoder = TextDecoder;
 ```
 
-### 16.7
+### 16.7 Pruebas en el PublicRoute - Parte 2
+
+`test/router/PublicRoute.test.jsx`
+
+```jsx
+import { render, screen } from "@testing-library/react";
+import { AuthContext } from "../../src/auth/context/AuthContext";
+import { PublicRoute } from "../../src/router/PublicRoute";
+import {
+  MemoryRouter,
+  Route,
+  Routes,
+} from "react-router-dom";
+
+describe("Testing in PublicRoute", () => {
+  test("should be shown to children if it is not authenticated.", () => {
+    const contextValue = {
+      logged: false,
+    };
+
+    render(
+      <AuthContext.Provider value={contextValue}>
+        <PublicRoute>
+          <h1>Public Route</h1>
+        </PublicRoute>
+      </AuthContext.Provider>
+    );
+
+    expect(screen.getByText("Public Route")).toBeTruthy();
+
+    // screen.debug();
+  });
+
+  test("Must navigate if you are authenticated", () => {
+    const contextValue = {
+      logged: true,
+      user: {
+        name: "Strider",
+        id: "ABC123",
+      },
+    };
+
+    render(
+      <AuthContext.Provider value={contextValue}>
+        <MemoryRouter initialEntries={["/login"]}>
+          <Routes>
+            <Route
+              path="login"
+              element={
+                <PublicRoute>
+                  <h1>Public Route</h1>
+                </PublicRoute>
+              }
+            />
+            <Route
+              path="marvel"
+              element={<h1>Página marvel</h1>}
+            />
+          </Routes>
+        </MemoryRouter>
+      </AuthContext.Provider>
+    );
+
+    expect(screen.getByText("Página marvel")).toBeTruthy();
+    // screen.debug();
+  });
+});
+```
+
+### 16.8
+
+`src/`
+
+```jsx
+```
 
 `src/`
 
@@ -14251,18 +14325,6 @@ global.TextDecoder = TextDecoder;
 🔘
 🟣
 🟡
-
-### 16.8
-
-`src/`
-
-```jsx
-```
-
-`src/`
-
-```jsx
-```
 
 ### 16.9
 
