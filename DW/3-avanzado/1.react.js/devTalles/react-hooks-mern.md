@@ -14299,6 +14299,8 @@ describe("Testing in PublicRoute", () => {
 
 ### 16.8 Pruebas en el PrivateRoute
 
+Código a probar:
+
 `src/router/PrivateRoute.jsx`
 
 ```jsx
@@ -14321,6 +14323,8 @@ export const PrivateRoute = ({ children }) => {
   return logged ? children : <Navigate to="/login" />;
 };
 ```
+
+Prueba:
 
 `test/router/PrivateRoute.test.jsx`
 
