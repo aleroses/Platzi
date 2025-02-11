@@ -14368,22 +14368,131 @@ describe("Testing in PrivateRoute", () => {
 });
 ```
 
-### 16.9
+### 16.9 Pruebas en el AppRouter
 
-`src/`
+Código a probar:
+
+`src/router/AppRouter.jsx`
 
 ```jsx
+import { Route, Routes } from "react-router";
+
+import { LoginPage } from "../auth";
+import { HeroesRoutes } from "../heroes";
+import { PrivateRoute } from "./PrivateRoute";
+import { PublicRoute } from "./PublicRoute";
+
+export const AppRouter = () => {
+  return (
+    <>
+      <Routes>
+        <Route
+          path="login/*"
+          element={
+            <PublicRoute>
+              <Routes>
+                <Route path="/*" element={<LoginPage />} />
+              </Routes>
+            </PublicRoute>
+          }
+        />
+        <Route
+          path="/*"
+          element={
+            <PrivateRoute>
+              <HeroesRoutes />
+            </PrivateRoute>
+          }
+        />
+      </Routes>
+    </>
+  );
+};
 ```
 
-`src/`
+Prueba:
+
+`test/router/AppRouter.jsx`
 
 ```jsx
+import { render, screen } from "@testing-library/react";
+import { AuthContext } from "../../src/auth";
+import { MemoryRouter } from "react-router-dom";
+import { AppRouter } from "../../src/router/AppRouter";
+
+describe("Testing in AppRouter", () => {
+  test("should display login if not authenticated", () => {
+    const contextValue = {
+      logged: false,
+    };
+
+    render(
+      <MemoryRouter initialEntries={["/marvel"]}>
+        <AuthContext.Provider value={contextValue}>
+          <AppRouter />
+        </AuthContext.Provider>
+      </MemoryRouter>
+    );
+
+    // screen.debug();
+    expect(screen.getAllByText("Login").length).toBe(2);
+  });
+
+  test("should display the marvel component if authenticated", () => {
+    const contextValue = {
+      logged: true,
+      user: {
+        id: "ABC",
+        name: "Ale Ghost",
+      },
+    };
+
+    render(
+      <MemoryRouter initialEntries={["/login"]}>
+        <AuthContext.Provider value={contextValue}>
+          <AppRouter />
+        </AuthContext.Provider>
+      </MemoryRouter>
+    );
+
+    // screen.debug();
+    expect(
+      screen.getAllByText("Marvel").length
+    ).toBeGreaterThanOrEqual(1);
+  });
+});
 ```
 
+### ☣️ Errores...
 
-`src/`
+Para estas pruebas tuve errores relacionados con `import queryString from "query-string";` en `SearchPage.jsx` y luego con `import { useNavigate } from "react-router";` en `LoginPage.jsx`. 
+
+Se solucionan con:
+
+`07-heroes-spa/jest.config.cjs`
 
 ```jsx
+module.exports = {
+  testEnvironment: "jest-environment-jsdom",
+  setupFiles: ["./jest.setup.js"],
+  transformIgnorePatterns: [ 👈👀👇
+    "node_modules/(?!(query-string|decode-uri-component|split-on-first|filter-obj)/)",
+  ],
+};
+```
+
+Igualmente revisa esto:
+
+`07-heroes-spa/jest.setup.js`
+
+```js
+// En caso de necesitar la implementación del FetchAPI
+import "whatwg-fetch"; // <-- yarn add whatwg-fetch
+
+// Solución TextEncoder is not defined 👈👀👇
+import { TextDecoder, TextEncoder } from "util";
+global.TextEncoder = TextEncoder;
+global.TextDecoder = TextDecoder;
 ```
 
 ☝️👆
