@@ -14495,28 +14495,64 @@ global.TextEncoder = TextEncoder;
 global.TextDecoder = TextDecoder;
 ```
 
-☝️👆
-👈👀
-❯
-👈👀👇
-👈👀☝️
-👈👀📌
-🔥
-🚫
-🔘
-🟣
-🟡
+### 16.10 Pruebas en el NavBar
 
-### 16.10
+Componente a probar:
 
-`src/`
+`src/ui/components/Navbar.jsx`
 
 ```jsx
+import { useContext } from "react";
+import { Link, NavLink, useNavigate } from "react-router";
+import { AuthContext } from "../../auth/context/AuthContext";
+
+export const Navbar = () => {
+  const { user, logout } = useContext(AuthContext);
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    logout();
+
+    navigate("/login", {
+      replace: true,
+    });
+  };
+
+  return (
+    <nav className="p-3">
+      <Link to="/">Asociaciones</Link>
+
+      <div>
+        <NavLink to="/marvel">Marvel</NavLink>
+        <NavLink to="/dc">DC</NavLink>
+        <NavLink to="/search">Search</NavLink>
+      </div>
+
+      <div>
+        <ul>
+          <span>{user?.name}</span>
+          <button onClick={handleLogout}>Logout</button>
+        </ul>
+      </div>
+    </nav>
+  );
+};
 ```
 
-`src/`
+Pruebas a realizar:
+
+`test/ui/components/Navbar.test.jsx`
 
 ```jsx
+describe("testing in Navbar", () => {
+  test("should display the user name", () => {
+    // second;
+  });
+
+  test("should call the output and navigate when the buttom is clicked.", () => {
+    // second;
+  });
+});
 ```
 
 ### 16.11
@@ -14530,6 +14566,18 @@ global.TextDecoder = TextDecoder;
 
 ```jsx
 ```
+
+☝️👆
+👈👀
+❯
+👈👀👇
+👈👀☝️
+👈👀📌
+🔥
+🚫
+🔘
+🟣
+🟡
 
 ### 16.12
 
