@@ -14739,28 +14739,136 @@ describe("Testing SearchPage", () => {
 });
 ```
 
-### 16.13
+### 16.13 Pruebas con los queryParameters
 
-`src/`
+Código a probar:
 
-```jsx
-```
-
-`src/`
+`src/heroes/pages/SearchPage.jsx`
 
 ```jsx
+import { useLocation, useNavigate } from "react-router";
+import queryString from "query-string";
+
+import { useForm } from "../hooks/useForm";
+import { HeroCard } from "../components";
+import { getHeroByName } from "../helpers";
+
+export const SearchPage = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const { q } = queryString.parse(location?.search);
+  // console.log(q, location.search);
+
+  const heroes = getHeroByName(q);
+
+  const showSearch = q?.length === 0;
+  const showError = q?.length > 0 && heroes?.length === 0;
+
+  const { searchText, handleInputChange } = useForm({
+    searchText: q || "", // ""
+  });
+
+  // console.log(q);
+
+  const handleSearchSubmit = (event) => {
+    event.preventDefault();
+
+    // if (searchText.trim().length <= 1) return;
+
+    navigate(`?q=${searchText}`);
+  };
+
+  return (
+    <>
+      <h1>Search</h1>
+      <hr />
+
+      <div>
+        <h4>Searching</h4>
+        <hr />
+        <form action="" onSubmit={handleSearchSubmit}>
+          <input
+            type="text"
+            autoComplete="off"
+            placeholder="Search a hero"
+            name="searchText"
+            value={searchText}
+            onChange={(e) => handleInputChange(e)}
+          />
+          <button>Search</button>
+        </form>
+      </div>
+
+      <div>
+        <h4>Results</h4>
+        <hr />
+
+        {/* Second method */}
+        <div style={{ display: showSearch ? "" : "none" }}>
+          Search a Hero
+        </div>
+        <div 👈👀👇
+          aria-label="alert-danger"
+          style={{ display: showError ? "" : "none" }}
+        >
+          There's no results <b>{q}</b>
+        </div>
+
+        {heroes.map((hero) => (
+          <HeroCard key={hero.id} {...hero} />
+        ))}
+      </div>
+    </>
+  );
+};
 ```
-☝️👆
-👈👀
-❯
-👈👀👇
-👈👀☝️
-👈👀📌
-🔥
-🚫
-🔘
-🟣
-🟡
+
+Segunda prueba:
+
+`test/heroes/pages/SearchPage.jsx`
+
+```jsx
+import { render, screen } from "@testing-library/react";
+import { SearchPage } from "../../../src/heroes/pages/SearchPage";
+import { MemoryRouter } from "react-router-dom";
+
+describe("Testing SearchPage", () => {
+  test("should display correctly with the default values", () => {
+    const { container } = render(
+      <MemoryRouter>
+        <SearchPage></SearchPage>
+      </MemoryRouter>
+    );
+
+    // screen.debug()
+    expect(container).toMatchSnapshot();
+  });
+
+  test("should display a Batman and the input with the value of the queryString", () => {
+    render(
+      <MemoryRouter initialEntries={["/search?q=batman"]}>
+        <SearchPage />
+      </MemoryRouter>
+    );
+
+    const input = screen.getByRole("textbox");
+    expect(input.value).toBe("batman");
+    // screen.debug();
+
+    const img = screen.getByRole("img");
+    expect(img.src).toContain(
+      "/assets/heroes/dc-batman.jpg"
+    );
+
+    // u update
+    const alert = screen.getByLabelText("alert-danger");
+    // console.log(alert.style);
+
+    expect(alert.style.display).toBe("none");
+  });
+});
+```
 
 ### 16.14
 
@@ -14773,6 +14881,18 @@ describe("Testing SearchPage", () => {
 
 ```jsx
 ```
+
+☝️👆
+👈👀
+❯
+👈👀👇
+👈👀☝️
+👈👀📌
+🔥
+🚫
+🔘
+🟣
+🟡
 
 ### 16.15
 
