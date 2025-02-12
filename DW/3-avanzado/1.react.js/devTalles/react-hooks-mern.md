@@ -14555,7 +14555,75 @@ describe("testing in Navbar", () => {
 });
 ```
 
-### 16.11
+### 16.11 Solución de la tarea
+
+Pruebas a realizar:
+
+`test/ui/components/Navbar.test.jsx`
+
+```jsx
+import {
+  fireEvent,
+  render,
+  screen,
+} from "@testing-library/react";
+import { AuthContext } from "../../../src/auth/context/AuthContext";
+import { Navbar } from "../../../src/ui/components/Navbar";
+import { MemoryRouter } from "react-router";
+
+const mockedUseNavigate = jest.fn();
+
+jest.mock("react-router", () => ({
+  ...jest.requireActual("react-router"),
+  useNavigate: () => mockedUseNavigate,
+}));
+
+describe("testing in Navbar", () => {
+  const contextValue = {
+    logged: true,
+    user: {
+      name: "Ale Ghost",
+    },
+    logout: jest.fn(),
+  };
+
+  beforeEach(() => jest.clearAllMocks());
+
+  test("should display the user name", () => {
+    render(
+      <AuthContext.Provider value={contextValue}>
+        <MemoryRouter>
+          <Navbar />
+        </MemoryRouter>
+      </AuthContext.Provider>
+    );
+
+    // screen.debug()
+    expect(screen.getByText("Ale Ghost")).toBeTruthy();
+  });
+
+  test("should call the output and navigate when the buttom is clicked.", () => {
+    render(
+      <AuthContext.Provider value={contextValue}>
+        <MemoryRouter>
+          <Navbar />
+        </MemoryRouter>
+      </AuthContext.Provider>
+    );
+
+    const logoutBtn = screen.getByRole("button");
+    fireEvent.click(logoutBtn);
+
+    expect(contextValue.logout).toHaveBeenCalled();
+    expect(mockedUseNavigate).toHaveBeenCalledWith(
+      "/login",
+      { replace: true }
+    );
+  });
+});
+```
+
+### 16.12
 
 `src/`
 
@@ -14578,18 +14646,6 @@ describe("testing in Navbar", () => {
 🔘
 🟣
 🟡
-
-### 16.12
-
-`src/`
-
-```jsx
-```
-
-`src/`
-
-```jsx
-```
 
 ### 16.13
 
