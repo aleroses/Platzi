@@ -15067,7 +15067,31 @@ Aquí les dejo mi código fuente para que lo puedan evaluar contra el suyo. O bi
 
 ---
 
-## 🟣 17. 
+## 🟣 17. JournalApp - MaterialUI - Estructura y Diseño
+
+### 17.1 Introducción a la sección
+
+### 17.2 Temas puntuales de la sección
+
+¿Qué veremos en esta sección?
+
+- Material UI
+- Diferentes componentes de material
+- Uso de funciones propias de MaterialUI
+- Configuración de temas personalizados
+
+### 17.3
+
+`src/`
+
+```jsx
+```
+
+`src/`
+
+```jsx
+```
+
 `src/`
 
 ```jsx
@@ -15090,7 +15114,7 @@ Aquí les dejo mi código fuente para que lo puedan evaluar contra el suyo. O bi
 🟣
 🟡
 
-### 16.16
+### 17.4
 
 `src/`
 
@@ -15102,7 +15126,7 @@ Aquí les dejo mi código fuente para que lo puedan evaluar contra el suyo. O bi
 ```jsx
 ```
 
-### 16.
+### 17.5
 
 `src/`
 
@@ -15114,7 +15138,7 @@ Aquí les dejo mi código fuente para que lo puedan evaluar contra el suyo. O bi
 ```jsx
 ```
 
-### 16.
+### 17.6
 
 `src/`
 
@@ -15126,19 +15150,7 @@ Aquí les dejo mi código fuente para que lo puedan evaluar contra el suyo. O bi
 ```jsx
 ```
 
-### 16.
-
-`src/`
-
-```jsx
-```
-
-`src/`
-
-```jsx
-```
-
-### 16.
+### 17.7
 
 `src/`
 
@@ -15151,7 +15163,7 @@ Aquí les dejo mi código fuente para que lo puedan evaluar contra el suyo. O bi
 ```
 
 
-### 16.
+### 17.8
 
 `src/`
 
@@ -15163,7 +15175,7 @@ Aquí les dejo mi código fuente para que lo puedan evaluar contra el suyo. O bi
 ```jsx
 ```
 
-### 16.
+### 17.9
 
 `src/`
 
@@ -15176,7 +15188,7 @@ Aquí les dejo mi código fuente para que lo puedan evaluar contra el suyo. O bi
 ```
 
 
-### 16.
+### 17.10
 
 `src/`
 
@@ -15187,6 +15199,9 @@ Aquí les dejo mi código fuente para que lo puedan evaluar contra el suyo. O bi
 
 ```jsx
 ```
+
+
+### 17.11
 
 ☝️👆
 👈👀
@@ -15199,6 +15214,131 @@ Aquí les dejo mi código fuente para que lo puedan evaluar contra el suyo. O bi
 🔘
 🟣
 🟡
+
+
+### 17.12
+
+`src/`
+
+```jsx
+```
+
+`src/`
+
+```jsx
+```
+
+
+### 17.13
+
+
+### 17.14
+
+`src/`
+
+```jsx
+```
+
+`src/`
+
+```jsx
+```
+
+### 17.15
+
+`src/`
+
+```jsx
+```
+
+`src/`
+
+```jsx
+```
+
+### 17.16
+
+`src/`
+
+```jsx
+```
+
+`src/`
+
+```jsx
+```
+
+### 17.17
+
+`src/`
+
+```jsx
+```
+
+`src/`
+
+```jsx
+```
+
+### 17.18
+
+`src/`
+
+```jsx
+```
+
+`src/`
+
+```jsx
+```
+
+### 17.19
+
+`src/`
+
+```jsx
+```
+
+`src/`
+
+```jsx
+```
+
+### 17.20
+
+`src/`
+
+```jsx
+```
+
+`src/`
+
+```jsx
+```
+
+### 17.21
+
+`src/`
+
+```jsx
+```
+
+`src/`
+
+```jsx
+```
+
+### 17.22
+
+`src/`
+
+```jsx
+```
+
+`src/`
+
+```jsx
+```
 
 ```bash
 npm install react@latest react-dom@latest
