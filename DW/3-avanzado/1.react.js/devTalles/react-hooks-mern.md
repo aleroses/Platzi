@@ -15057,8 +15057,17 @@ describe("Testing SearchPage", () => {
 });
 ```
 
-### 16.15
+### 16.15 Resumen de las pruebas realizadas
 
+### 16.16 Código fuente de la sección
+
+Aquí les dejo mi código fuente para que lo puedan evaluar contra el suyo. O bien tenerlo como parte de su repertorio de pruebas y aplicaciones hechas en React
+
+[**GitHub - Fin sección 16**](https://github.com/Klerith/react-heroes/tree/fin-seccion-16)
+
+---
+
+## 🟣 17. 
 `src/`
 
 ```jsx
