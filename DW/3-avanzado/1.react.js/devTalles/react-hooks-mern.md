@@ -15080,12 +15080,68 @@ Aquí les dejo mi código fuente para que lo puedan evaluar contra el suyo. O bi
 - Uso de funciones propias de MaterialUI
 - Configuración de temas personalizados
 
-### 17.3
+### 17.3 Demostración del objetivo final de la sección
 
-`src/`
+### 17.4 Inicio de proyecto - JournalApp
+
+```bash
+yarn create vite
+# 08-journal-app
+cd 08-journal-app
+yarn
+```
+
+Dejamos la siguiente estructura:
+
+```bash
+.
+├── eslint.config.js
+├── index.html
+├── node_modules
+├── package.json
+├── public
+├── README.md
+├── src
+│   ├── auth
+│   ├── journal
+│   ├── JournalApp.jsx
+│   ├── main.jsx
+│   ├── router
+│   ├── styles.css
+│   └── theme
+├── vite.config.js
+└── yarn.lock
+```
+
+`src/main.jsx`
 
 ```jsx
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+import { JournalApp } from "./JournalApp";
+
+import "./styles.css";
+
+createRoot(document.getElementById("root")).render(
+  <StrictMode>
+    <JournalApp />
+  </StrictMode>
+);
 ```
+
+`src/JournalApp.jsx`
+
+```jsx
+export const JournalApp = () => {
+  return (
+    <>
+      <h1>Hi world</h1>
+    </>
+  );
+};
+```
+
+### 17.5
 
 `src/`
 
@@ -15113,30 +15169,6 @@ Aquí les dejo mi código fuente para que lo puedan evaluar contra el suyo. O bi
 🔘
 🟣
 🟡
-
-### 17.4
-
-`src/`
-
-```jsx
-```
-
-`src/`
-
-```jsx
-```
-
-### 17.5
-
-`src/`
-
-```jsx
-```
-
-`src/`
-
-```jsx
-```
 
 ### 17.6
 
