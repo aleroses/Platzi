@@ -15141,12 +15141,177 @@ export const JournalApp = () => {
 };
 ```
 
-### 17.5
+### 17.5 Configuración de Rutas principales y secundarias
 
-`src/`
+Instalamos React router.
+
+```bash
+# Instalar React Router
+yarn add react-router-dom 👈👀
+yarn add react-router-dom@7.1.1
+```
+
+Estructura:
+
+```bash
+├── eslint.config.js
+├── index.html
+├── node_modules
+├── package.json
+├── public
+├── README.md
+├── src
+│   ├── auth
+│   │   ├── layout
+│   │   ├── pages
+│   │   │   ├── LoginPage.jsx
+│   │   │   └── RegisterPage.jsx
+│   │   └── routes
+│   │       └── AuthRoutes.jsx
+│   ├── journal
+│   │   ├── pages
+│   │   │   └── JournalPage.jsx
+│   │   └── routes
+│   │       └── JournalRoutes.jsx
+│   ├── JournalApp.jsx
+│   ├── main.jsx
+│   ├── router
+│   │   └── AppRouter.jsx
+│   ├── styles.css
+│   └── theme
+├── vite.config.js
+└── yarn.lock
+```
+
+`src/main.jsx`
 
 ```jsx
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+import { BrowserRouter } from "react-router-dom";
+
+import { JournalApp } from "./JournalApp";
+
+import "./styles.css";
+
+createRoot(document.getElementById("root")).render(
+  <StrictMode>
+    <BrowserRouter>
+      <JournalApp />
+    </BrowserRouter>
+  </StrictMode>
+);
 ```
+
+`src/JournalApp.jsx`
+
+```jsx
+import { AppRouter } from "./router/AppRouter";
+
+export const JournalApp = () => {
+  return (
+    <>
+      <AppRouter />
+    </>
+  );
+};
+```
+
+`src/router/AppRouter.jsx`
+
+```jsx
+import { Route, Routes } from "react-router";
+
+import { AuthRoutes } from "../auth/routes/AuthRoutes";
+import { JournalRoutes } from "../journal/routes/JournalRoutes";
+
+export const AppRouter = () => {
+  return (
+    <Routes>
+      {/* Login and Registration */}
+      <Route path="/auth/*" element={<AuthRoutes />} />
+
+      {/* JournalApp */}
+      <Route path="/*" element={<JournalRoutes />} />
+    </Routes>
+  );
+};
+```
+
+`src/auth/pages/LoginPage.jsx`
+
+```jsx
+export const LoginPage = () => {
+  return <div>LoginPage</div>;
+};
+```
+
+`src/auth/pages/RegisterPage.jsx`
+
+```jsx
+export const RegisterPage = () => {
+  return <div>RegisterPage</div>;
+};
+```
+
+`src/auth/routes/AuthRoutes.jsx`
+
+```jsx
+import { Navigate, Route, Routes } from "react-router";
+import { LoginPage } from "../pages/LoginPage";
+import { RegisterPage } from "../pages/RegisterPage";
+
+export const AuthRoutes = () => {
+  return (
+    <Routes>
+      <Route path="login" element={<LoginPage />} />
+      <Route path="register" element={<RegisterPage />} />
+
+      <Route
+        path="/*"
+        element={<Navigate to="/auth/login" />}
+      />
+    </Routes>
+  );
+};
+```
+
+`src/journal/pages/JournalPage.jsx`
+
+```jsx
+export const JournalPage = () => {
+  return <div>JournalPage</div>;
+};
+```
+
+`src/journal/routes/JournalRoutes.jsx`
+
+```jsx
+import { Navigate, Route, Routes } from "react-router-dom";
+import { JournalPage } from "../pages/JournalPage";
+
+export const JournalRoutes = () => {
+  return (
+    <Routes>
+      <Route path="/" element={<JournalPage />} />
+      <Route path="/*" element={<Navigate to="/" />} />
+    </Routes>
+  );
+};
+```
+
+Puedes hacer búsquedas como las siguientes:
+
+```
+http://localhost:5173/auth/register
+
+/auth/register
+/auth/login
+```
+
+[[react-hooks-mern#11.4 Preparación de nuestra aplicación con rutas]]
+
+### 17.6
 
 `src/`
 
@@ -15169,18 +15334,6 @@ export const JournalApp = () => {
 🔘
 🟣
 🟡
-
-### 17.6
-
-`src/`
-
-```jsx
-```
-
-`src/`
-
-```jsx
-```
 
 ### 17.7
 
