@@ -15311,7 +15311,27 @@ http://localhost:5173/auth/register
 
 [[react-hooks-mern#11.4 Preparación de nuestra aplicación con rutas]]
 
-### 17.6
+### 17.6 Nota importante
+
+**Importante:**
+
+En la próxima clase instalaremos los iconos de material, pero al hacerlo, esto incrementa el bundle size y el tiempo de transpilación, tengan presente esto porque hemos recibido bastantes preguntas relacionadas con el tema.
+  
+Más información y posibles acciones aquí:
+
+[**mui.com - minimizing-bundle-size**](https://mui.com/material-ui/guides/minimizing-bundle-size/#development-environment\).)
+
+### 17.7
+
+`src/`
+
+```jsx
+```
+
+`src/`
+
+```jsx
+```
 
 `src/`
 
@@ -15334,18 +15354,6 @@ http://localhost:5173/auth/register
 🔘
 🟣
 🟡
-
-### 17.7
-
-`src/`
-
-```jsx
-```
-
-`src/`
-
-```jsx
-```
 
 
 ### 17.8
