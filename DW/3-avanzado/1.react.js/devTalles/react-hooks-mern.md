@@ -15321,7 +15321,150 @@ Más información y posibles acciones aquí:
 
 [**mui.com - minimizing-bundle-size**](https://mui.com/material-ui/guides/minimizing-bundle-size/#development-environment\).)
 
-### 17.7
+### 17.7 Instalación de Material UI
+
+Recuerda que este paquete depende de `react` y `react-dom`, por lo que deben estar instalados si o si para usarlo.
+
+```bash
+yarn add @mui/material @emotion/react @emotion/styled
+```
+
+#### Roboto font: Google Web Fonts
+
+Pegar esto en el `index.html`:
+
+```html
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  rel="stylesheet"
+  href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap"
+/>
+
+<title>Journal App</title>
+```
+
+#### Icons
+
+```bash
+yarn add @mui/icons-material
+```
+
+- [Instalación Material UI](https://mui.com/material-ui/getting-started/installation/)
+- [Uso Material UI](https://mui.com/material-ui/getting-started/usage/)
+- [Example Projects](https://mui.com/material-ui/getting-started/example-projects/)
+- [GitHub Material UI vite](https://github.com/mui/material-ui/tree/v6.x/examples/material-ui-vite)
+- [Stackblitz](https://stackblitz.com/github/mui/material-ui/tree/v6.x/examples/material-ui-vite?file=README.md)
+
+### 17.8 Configuración de MUI con Vite
+
+Estructura actual:
+
+```bash
+.
+├── eslint.config.js
+├── index.html
+├── node_modules
+├── package.json
+├── public
+├── README.md
+├── src
+│   ├── auth
+│   │   ├── layout
+│   │   ├── pages
+│   │   │   ├── LoginPage.jsx
+│   │   │   └── RegisterPage.jsx
+│   │   └── routes
+│   │       └── AuthRoutes.jsx
+│   ├── journal
+│   │   ├── pages
+│   │   │   └── JournalPage.jsx
+│   │   └── routes
+│   │       └── JournalRoutes.jsx
+│   ├── JournalApp.jsx
+│   ├── main.jsx
+│   ├── router
+│   │   └── AppRouter.jsx
+│   ├── styles.css
+│   └── theme 👈👀👇
+│       ├── AppTheme.jsx
+│       └── theme.js
+├── vite.config.js
+└── yarn.lock
+```
+
+`src/theme/AppTheme.jsx`
+
+```jsx
+import { ThemeProvider } from "@emotion/react";
+import { CssBaseline } from "@mui/material";
+import { theme } from "./theme";
+
+export const AppTheme = ({ children }) => {
+  return (
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      {children}
+    </ThemeProvider>
+  );
+};
+```
+
+`src/theme/theme.js`
+
+```js
+import { createTheme } from "@mui/material/styles";
+import { red } from "@mui/material/colors";
+
+export const theme = createTheme({
+  palette: {
+    primary: {
+      main: "#262254",
+    },
+    secondary: {
+      main: "#543884",
+    },
+    error: {
+      main: red.A400,
+    },
+  },
+});
+```
+
+`src/JournalApp.jsx`
+
+```jsx
+import { AppRouter } from "./router/AppRouter";
+import { AppTheme } from "./theme/AppTheme";
+
+export const JournalApp = () => {
+  return (
+    <AppTheme>
+      <AppRouter />
+    </AppTheme>
+  );
+};
+```
+
+`src/journal/pages/JournalPage.jsx`
+
+```jsx
+import { Typography } from "@mui/material";
+import { MailOutline } from "@mui/icons-material";
+
+export const JournalPage = () => {
+  return (
+    <>
+      <Typography variant="h1" /* component={"h1"} */>
+        JournalPage
+        <MailOutline />
+      </Typography>
+    </>
+  );
+};
+```
+
+### 17.9
 
 `src/`
 
@@ -15354,31 +15497,6 @@ Más información y posibles acciones aquí:
 🔘
 🟣
 🟡
-
-
-### 17.8
-
-`src/`
-
-```jsx
-```
-
-`src/`
-
-```jsx
-```
-
-### 17.9
-
-`src/`
-
-```jsx
-```
-
-`src/`
-
-```jsx
-```
 
 
 ### 17.10
