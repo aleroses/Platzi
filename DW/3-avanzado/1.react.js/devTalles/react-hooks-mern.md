@@ -15464,40 +15464,99 @@ export const JournalPage = () => {
 };
 ```
 
-### 17.9
+### 17.9 LoginPage - Diseño sin Layout
 
-`src/`
+Entramos a la siguiente ruta para ver los cambios:
 
-```jsx
-```
+`http://localhost:5173/auth/login`
 
-`src/`
-
-```jsx
-```
-
-`src/`
+`src/auth/pages/LoginPage.jsx`
 
 ```jsx
+import {
+  Grid2,
+  TextField,
+  Typography,
+} from "@mui/material";
+
+export const LoginPage = () => {
+  return (
+    <Grid2
+      container
+      spacing={0}
+      direction={"column"}
+      alignItems={"center"}
+      justifyContent={"center"}
+      sx={{
+        minHeight: "100vh",
+        backgroundColor: "primary.main",
+        padding: 4,
+      }}
+    >
+      <Grid2
+        /* item */
+        className="box-shadow"
+        xs={3}
+        sx={{
+          backgroundColor: "white",
+          padding: 3,
+          borderRadius: 2,
+        }}
+      >
+        <Typography variant="h5" sx={{ mb: 1 }}>
+          Login
+        </Typography>
+        <form action="">
+          <Grid2 container>
+            <Grid2
+              /* item */
+              xs={12}
+              sx={{
+                mt: 2,
+                maxWidth: "100%",
+              }}
+            >
+              <TextField
+                label="Email"
+                type="email"
+                placeholder="testing@google.com"
+                fullWidth
+                sx={{
+                  maxWidth: "100%",
+                }}
+              />
+            </Grid2>
+            <Grid2
+              /* item */
+              xs={12}
+              sx={{
+                mt: 2,
+              }}
+            >
+              <TextField
+                label="Password"
+                type="password"
+                placeholder="Password"
+                fullWidth
+              />
+            </Grid2>
+          </Grid2>
+        </form>
+      </Grid2>
+    </Grid2>
+  );
+};
 ```
 
-`src/`
+`src/styles.css`
 
 ```jsx
+.box-shadow {
+  box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.2);
+}
 ```
 
-☝️👆
-👈👀
-❯
-👈👀👇
-👈👀☝️
-👈👀📌
-🔥
-🚫
-🔘
-🟣
-🟡
-
+[Grid2 MUI](https://mui.com/material-ui/react-grid2/)
 
 ### 17.10
 
@@ -15511,6 +15570,16 @@ export const JournalPage = () => {
 ```jsx
 ```
 
+
+`src/`
+
+```jsx
+```
+
+`src/`
+
+```jsx
+```
 
 ### 17.11
 
