@@ -1,5 +1,7 @@
 # Material UI
 
+## 01. Instalación y configuraciones previas
+
 Crear proyecto en React:
 
 ```bash
@@ -97,7 +99,7 @@ Atajos `snippets`:
 - nfn
 - anfn
 
-## Extra
+### Extra
 
 Si usas `rafc` para crear un componente y te aparece el  `import React from 'react';` en la parte superior, puedes quitarlo de la siguiente manera:
 
@@ -107,6 +109,41 @@ Si usas `rafc` para crear un componente y te aparece el  `import React from 
 	- React Snippets > Settings: Import React On Top
 	- [ ] Controls if snippets should add ...
 - Cierra todo para tomar la nueva configuración y listo.
+
+## 02. Container y the "sx" prop (CSS fácil y rápido en tus componentes)
+
+`src/App.jsx`
+
+```jsx
+import { Button, Container } from "@mui/material";
+
+export const App = () => {
+  return (
+    <Container
+      maxWidth="xs"
+      sx={{
+        border: 5,
+        borderStyle: "dotted",
+        boxShadow: "0 2px 18px rgb(156, 48, 102)",
+        // boxShadow: 14,
+        p: 4,
+        pb: 14,
+      }}
+    >
+      <Button variant="contained">xd</Button>
+    </Container>
+  );
+};
+
+/* 
+nfn
+anfn
+*/
+```
+
+- [Container](https://mui.com/material-ui/react-container/)
+- [Customization](https://mui.com/material-ui/customization/how-to-customize/)
+
 
 `src/main.jsx`
 
