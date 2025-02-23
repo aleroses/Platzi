@@ -201,14 +201,31 @@ anfn
 
 - [Typography](https://mui.com/material-ui/react-typography/)
 
-
+## 04. Box component
 
 `src/App.jsx`
 
 ```jsx
+import { Box, Container } from "@mui/material";
+
+export const App = () => {
+  return (
+    <Container component="section" maxWidth="xl">
+      <h1>Title JSX</h1>
+      <Box component="article" sx={{ border: 2 }}>
+        Box MUI
+      </Box>
+    </Container>
+  );
+};
+
+/* 
+nfn
+anfn
+*/
 ```
 
-
+[Box](https://mui.com/material-ui/react-box/)
 
 
 paste html as jsx
