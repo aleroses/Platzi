@@ -110,6 +110,9 @@ Si usas `rafc` para crear un componente y te aparece el  `import React from 
 	- [ ] Controls if snippets should add ...
 - Cierra todo para tomar la nueva configuración y listo.
 
+[Comentario DevTalles](
+https://cursos.devtalles.com/courses/take/react-cero-experto/lessons/36057270-nuestro-primer-componente/discussions/11618674)
+
 ## 02. Container y the "sx" prop (CSS fácil y rápido en tus componentes)
 
 `src/App.jsx`
@@ -144,24 +147,69 @@ anfn
 - [Container](https://mui.com/material-ui/react-container/)
 - [Customization](https://mui.com/material-ui/customization/how-to-customize/)
 
+### 03. Typography
 
-`src/main.jsx`
-
-```jsx
-```
-
-`src/main.jsx`
+`src/App.jsx`
 
 ```jsx
-```
+import {
+  Button,
+  Container,
+  Typography,
+} from "@mui/material";
 
-anfn
+export const App = () => {
+  return (
+    <Container
+      maxWidth="xs"
+      sx={{
+        border: 5,
+        borderStyle: "dotted",
+        boxShadow: "0 2px 18px rgb(156, 48, 102)",
+        // boxShadow: 14,
+        p: 4,
+        pb: 14,
+      }}
+    >
+      {/* The default is a "p" */}
+      <Typography variant="h1" color="initial">
+        Title MUI H1
+      </Typography>
+      <Typography
+        variant="h2"
+        /* The actual tag is an h4 */
+        component="h4"
+        color="initial"
+        textAlign="center"
+        /* 15x8 = 120px */
+        mt={15}
+      >
+        Title MUI H2/H4
+      </Typography>
+      <h1>Title JSX</h1>
+      
+      <Button variant="contained">xd</Button>
+    </Container>
+  );
+};
 
+/* 
 nfn
+anfn
+*/
+```
 
-settings/ es react / React Snippets Settings import React on Top
+- [Typography](https://mui.com/material-ui/react-typography/)
 
-https://cursos.devtalles.com/courses/take/react-cero-experto/lessons/36057270-nuestro-primer-componente/discussions/11618674
+
+
+`src/App.jsx`
+
+```jsx
+```
+
+
+
 
 paste html as jsx
 
