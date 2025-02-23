@@ -299,6 +299,61 @@ anfn
 
 ## 06. Botones e Iconos
 
+`src/App.jsx`
+
+```jsx
+import {
+  Container,
+  Typography,
+  Button,
+} from "@mui/material";
+import AcUnitIcon from "@mui/icons-material/AcUnit";
+
+export const App = () => {
+  return (
+    <Container component="section" maxWidth="xl">
+      <h1>Title JSX</h1>
+      <Typography variant="h1" color="primary">
+        Title H1 MUI
+      </Typography>
+      <Button variant="contained" color="error">
+        Button MUI
+      </Button>
+      <Button variant="outlined" startIcon={<AcUnitIcon />}>
+        Button MUI
+      </Button>
+      <Button
+        variant="contained"
+        color="success"
+        endIcon={<AcUnitIcon />}
+      >
+        Button MUI
+      </Button>
+    </Container>
+  );
+};
+
+/* 
+nfn
+anfn
+*/
+```
+
+- [Button](https://mui.com/material-ui/react-button/)
+- [Icons](https://mui.com/material-ui/icons/)
+- [Material Icons](https://mui.com/material-ui/material-icons/)
+
+## 
+
+
+
+
+`src/App.jsx`
+
+```jsx
+```
+
+
 paste html as jsx
 
 linked editing
