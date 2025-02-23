@@ -15669,7 +15669,7 @@ export const LoginPage = () => {
 };
 ```
 
-### 17.11
+### 17.11 AuthLayout
 
 `src/`
 
