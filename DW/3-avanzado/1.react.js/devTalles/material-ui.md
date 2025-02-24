@@ -1,5 +1,7 @@
 # Material UI
 
+[Course](https://www.youtube.com/watch?v=Un0qRgXNS9E&list=PLPl81lqbj-4J2xx_YAb97dpCG1rxl2wv-)
+
 ## 01. Instalación y configuraciones previas
 
 Crear proyecto en React:
@@ -343,20 +345,79 @@ anfn
 - [Icons](https://mui.com/material-ui/icons/)
 - [Material Icons](https://mui.com/material-ui/material-icons/)
 
-## 
+## Extensiones y Trucos de VSCode para React y Tailwind CSS
 
+### Extensiones 
+- Version lens
+- Paste html as jsx
 
+### Trucos VSC
 
+Copiar objeto en TS: 
+- `Ctrl + Shift + P` : JSON to TS: Convert from clipboard
+
+Terminal Width total
+- Settings: Workbench > Layout Control: Enabled
+- Clic Icon: Panel alignment: Justify
+
+Cambiar etiqueta inicio y final
+- Settings: Linked editing [✅]
+
+Settings: Prettier: Single Attribute Per Line
+
+## 07. Introducción a GRID (responsive layout)
+
+Material UI ofrece un sistema de cuadrícula (Grid) que facilita la creación de diseños responsivos en tus aplicaciones React. Este sistema se basa en una cuadrícula de 12 columnas y utiliza propiedades como `xs`, `sm`, `md`, `lg` y `xl` para definir cómo se distribuyen los elementos en diferentes tamaños de pantalla.
+
+### Grid2 en Material UI
+
+`Grid2` es la versión actualizada del componente de cuadrícula en Material UI. Se implementa utilizando CSS Flexbox, lo que proporciona una gran flexibilidad en la disposición de los elementos. Para crear una cuadrícula, se utiliza el componente `Grid2` con la propiedad `container`.
+
+### Breakpoints: xs, sm, md, lg y xl
+
+Los breakpoints (`xs`, `sm`, `md`, `lg`, `xl`) son puntos de interrupción que determinan cómo se comporta el diseño en diferentes anchos de pantalla. Cada uno corresponde a un rango de anchura específico:
+
+- `xs` (extra pequeño): 0px o más
+- `sm` (pequeño): 600px o más
+- `md` (mediano): 900px o más
+- `lg` (grande): 1200px o más
+- `xl` (extra grande): 1536px o más
+
+Puedes asignar valores numéricos a estos breakpoints para indicar cuántas de las 12 columnas disponibles debe ocupar un componente en cada tamaño de pantalla. Por ejemplo, `xs={12}` significa que el componente ocupará las 12 columnas (100% del ancho) en pantallas extra pequeñas, mientras que `md={6}` indica que ocupará 6 columnas (50% del ancho) en pantallas medianas.
+
+**Ejemplo de uso**
 
 `src/App.jsx`
 
 ```jsx
+import { Grid2, Typography } from "@mui/material";
+
+export const App = () => {
+  return (
+    <Grid2 container spacing={2} textAlign="center">
+      <Grid2 size={{ xs: 6, md: 8 }}>
+        <Typography component="span">size=8</Typography>
+      </Grid2>
+      <Grid2 size={{ xs: 6, md: 4 }}>
+        <Typography component="span">size=4</Typography>
+      </Grid2>
+      <Grid2 size={{ xs: 6, md: 4 }}>
+        <Typography component="span">size=4</Typography>
+      </Grid2>
+      <Grid2 size={{ xs: 6, md: 8 }}>
+        <Typography component="span">size=8</Typography>
+      </Grid2>
+    </Grid2>
+  );
+};
+
+/* 
+nfn
+anfn
+*/
 ```
 
-
-paste html as jsx
-
-linked editing
+[Grid2](https://mui.com/material-ui/react-grid2/)
 
 ```bash
 ```
