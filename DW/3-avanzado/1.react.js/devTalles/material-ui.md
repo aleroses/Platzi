@@ -419,9 +419,217 @@ anfn
 
 [Grid2](https://mui.com/material-ui/react-grid2/)
 
-```bash
+## 08. Práctica con styled (@emotion/styled), Box y Flexbox
+
+`src/App.jsx`
+
+```jsx
+import { Container } from "@mui/material";
+import { Product } from "./components/Product";
+
+export const App = () => {
+  return (
+    <Container>
+      <Product />
+    </Container>
+  );
+};
+
+/* 
+nfn
+anfn
+*/
 ```
 
+`src/components/Product.jsx`
+
+```jsx
+import {
+  Box,
+  Button,
+  Paper,
+  styled,
+  Typography,
+} from "@mui/material";
+
+export const Product = () => {
+  const Img = styled("img")({
+    width: 200,
+    height: "100%",
+    objectFit: "cover",
+    objectPosition: "center",
+  });
+
+  return (
+    <Paper
+      sx={{
+        display: "flex",
+        alignItems: "center",
+        gap: 2,
+        overflow: "hidden",
+        mt: 5,
+      }}
+    >
+      <Img
+        src="https://www.transparencia.unam.mx/lib/fullpage/examples/imgs/bg2.jpg"
+        alt="trans"
+      />
+      <Box sx={{ flexGrow: 1, display: "grid", gap: 2 }}>
+        <Typography variant="h4" color="initial">
+          Product Name
+        </Typography>
+        <Typography variant="body1" color="initial">
+          Product Description
+        </Typography>
+        <Button variant="contained">Add Card</Button>
+      </Box>
+      <Box component="p" sx={{ mr: 2 }}>
+        $19.99
+      </Box>
+    </Paper>
+  );
+};
+```
+
+Ejemplo de práctica:
+
+`src/App.jsx`
+
+```jsx
+import { Grid2 } from "@mui/material";
+import { Product } from "./components/Product";
+
+export const App = () => {
+  return (
+    <Grid2
+      container
+      component="section"
+      spacing={2}
+      sx={{
+        justifyContent: "center",
+        p: 0.5,
+        // gap: 1,
+      }}
+    >
+      <Product />
+      <Product />
+      <Product />
+      <Product />
+    </Grid2>
+  );
+};
+
+/* 
+nfn
+anfn
+*/
+```
+
+`src/App.jsx`
+
+```jsx
+import {
+  Box,
+  Button,
+  Paper,
+  styled,
+  Typography,
+} from "@mui/material";
+
+export const Product = () => {
+  const Img = styled("img")({
+    width: "50%",
+    maxWidth: 420,
+    height: "100%",
+    objectFit: "cover",
+    objectPosition: "center",
+  });
+
+  return (
+    <Paper
+      component="article"
+      size={{ xs: 12, sm: 6, md: 3 }}
+      sx={{
+        display: "flex",
+        alignItems: "center",
+        bgcolor: "primary.main",
+        gap: 2,
+        p: 0.5,
+      }}
+    >
+      <Img
+        src="https://www.transparencia.unam.mx/lib/fullpage/examples/imgs/bg2.jpg"
+        alt="docs"
+      />
+      <Box sx={{ flexGrow: 1, display: "grid", gap: 1 }}>
+        <Typography variant="h6" color="initial">
+          Product Name
+        </Typography>
+        <Typography variant="body2" color="initial">
+          Product Description
+        </Typography>
+        <Button
+          variant="contained"
+          sx={{ bgcolor: "secondary.main" }}
+        >
+          Add Card
+        </Button>
+      </Box>
+      <Box component="p" sx={{ mr: 2 }}>
+        $19.99
+      </Box>
+    </Paper>
+  );
+};
+```
+
+[Paper](https://mui.com/material-ui/react-paper/)
+
+## 09. 
+
+`src/App.jsx`
+
+```jsx
+```
+
+
+`src/App.jsx`
+
+```jsx
+```
+
+
+`src/App.jsx`
+
+```jsx
+```
+`src/App.jsx`
+
+```jsx
+```
+
+`src/App.jsx`
+
+```jsx
+````src/App.jsx`
+
+```jsx
+```
+
+`src/App.jsx`
+
+```jsx
+```
+
+`src/App.jsx`
+
+```jsx
+```
+
+`src/App.jsx`
+
+```jsx
+```
 ⚙️
 👈👀
 👈👀👇
