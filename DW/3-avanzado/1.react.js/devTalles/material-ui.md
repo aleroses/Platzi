@@ -421,6 +421,13 @@ anfn
 
 ## 08. Práctica con styled (@emotion/styled), Box y Flexbox
 
+**Paper** en Material UI es un componente que proporciona una superficie elevada con efecto de sombra, simulando el aspecto del papel físico. Su propósito principal es mejorar la jerarquía visual y la organización de la interfaz, ayudando a diferenciar secciones de contenido mediante elevación y bordes redondeados.
+
+- Aplica una sombra (usando `elevation`) para dar efecto de profundidad.
+- Tiene bordes redondeados por defecto.
+- Sirve como base para tarjetas, modales y otros contenedores visuales.
+- Se puede personalizar con `variant` (`elevation`, `outlined`), `square`, y `component` para definir su comportamiento.
+
 `src/App.jsx`
 
 ```jsx
@@ -585,18 +592,110 @@ export const Product = () => {
 
 [Paper](https://mui.com/material-ui/react-paper/)
 
-## 09. 
+## 09. Card component
+
+El componente **Card** de Material UI es un contenedor flexible que se usa para presentar información agrupada de manera visualmente atractiva. Se basa en **Paper**, por lo que también tiene elevación y bordes redondeados. Su propósito es estructurar contenido como imágenes, textos y acciones de manera organizada.
+
+**Subcomponentes de Card**
+
+1. **`CardHeader`** → Encabezado con título, subtítulo y un avatar o icono opcional.
+2. **`CardMedia`** → Muestra imágenes o videos en la tarjeta.
+3. **`CardContent`** → Contiene el texto o elementos principales dentro de la tarjeta.
+4. **`CardActions`** → Sección para botones y acciones (como "Me gusta", compartir, etc.).
+5. **`CardActionArea`** → Convierte toda la tarjeta en un área clickeable.
+
+Su objetivo es mejorar la presentación de contenido en interfaces modernas, agrupando información relevante con una estructura visual clara y estandarizada. Es ideal para mostrar perfiles, productos, publicaciones y más.
+
+```
+- Card
+- CardActionArea
+	- CardMedia
+	- CardContent
+- CardActions
+	- Button
+```
 
 `src/App.jsx`
 
 ```jsx
+import { Grid2 } from "@mui/material";
+import { BlueCard } from "./components/BlueCard";
+
+export const App = () => {
+  return (
+    <Grid2 component="section" sx={{ m: 5 }}>
+      <BlueCard />
+    </Grid2>
+  );
+};
+
+/* 
+nfn
+anfn
+*/
 ```
 
-
-`src/App.jsx`
+`src/components/BlueCard.jsx`
 
 ```jsx
+import {
+  Card,
+  CardContent,
+  CardMedia,
+  Typography,
+  Button,
+  CardActionArea,
+  CardActions,
+} from "@mui/material";
+
+export const BlueCard = () => {
+  return (
+    <Card
+      sx={{
+        maxWidth: 500,
+        transition: "0.2s",
+        "&:hover": {
+          transform: "scale(1.05)",
+        },
+        bgcolor: "primary.main",
+      }}
+    >
+      <CardActionArea>
+        <CardMedia
+          component="img"
+          image="https://lh4.googleusercontent.com/proxy/MBRijYwc-zZG_FNJPsqlbLfqE8W9wa373AI1-kfGLB1BFPPKh_GeX370IG6-8lewaoGm_gDXK7z8_f1mZdm2okb0xuoUq_z4_7HhauxbH4RHKPSXXiF4MQ"
+          height="200"
+          alt="iguana"
+        />
+        <CardContent>
+          <Typography variant="h5" color="initial">
+            Card Title
+          </Typography>
+          <Typography component="p" variant="body2">
+            Lorem ipsum dolor sit amet consectetur,
+            adipisicing elit. Nisi, tenetur! Minus eveniet,
+            animi unde saepe iste magni pariatur rerum
+            veniam similique modi in asperiores, dolore non
+            magnam dignissimos. Explicabo, vero?
+          </Typography>
+        </CardContent>
+      </CardActionArea>
+      <CardActions sx={{ pl: 2 }}>
+        <Button
+          variant="contained"
+          sx={{ bgcolor: "secondary.main" }}
+        >
+          Add
+        </Button>
+        <Button color="error">Remove</Button>
+      </CardActions>
+    </Card>
+  );
+};
 ```
+
+[Card](https://mui.com/material-ui/react-card/)
+
 
 
 `src/App.jsx`
