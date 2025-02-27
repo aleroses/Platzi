@@ -713,14 +713,6 @@ Subcomponentes de List
 7. **List Divider**: un separador entre elementos de la lista.
 8. **List Subheader**: una etiqueta para una lista anidada.
 
-### App Bar
-
-La App bar muestra información y acciones relacionadas con la pantalla actual.
-
-La App bar superior proporciona contenido y acciones vinculadas a la pantalla actual. Se utiliza para la identidad de la marca, títulos de pantalla, navegación y acciones.
-
-Puede transformarse en una barra de acciones contextual o usarse como una barra de navegación.
-
 `src/navbar/NavListDrawer.jsx`
 
 ```jsx
@@ -812,7 +804,6 @@ anfn
 ```
 
 - [List](https://mui.com/material-ui/react-list/)
-- [App bar](https://mui.com/material-ui/react-app-bar/)
 
 ## 11. Navbar responsive (Parte #02) Drawer component
 
@@ -865,6 +856,242 @@ export const Navbar = () => {
 
 [Drawer](https://mui.com/material-ui/react-drawer/)
 
+## 12. Navbar responsive (Parte #03) AppBar component
+
+### App Bar
+
+La App bar muestra información y acciones relacionadas con la pantalla actual.
+
+La App bar superior proporciona contenido y acciones vinculadas a la pantalla actual. Se utiliza para la identidad de la marca, títulos de pantalla, navegación y acciones.
+
+Puede transformarse en una barra de acciones contextual o usarse como una barra de navegación.
+
+### flexGrow
+
+En Material UI, `flexGrow` es una propiedad del sistema de estilos basada en **Flexbox**. Controla cómo un elemento dentro de un contenedor flexible (con `display: flex`) crece para ocupar el espacio disponible.
+
+Básicamente:
+
+- **Si `flexGrow` es 0** (por defecto), el elemento no crecerá más allá de su tamaño inicial.
+- **Si `flexGrow` es mayor a 0**, el elemento crecerá proporcionalmente al espacio disponible dentro del contenedor flexible.
+
+Ejemplo 1: Distribución Equitativa
+
+Si todos los elementos dentro de un `Box` tienen `flexGrow: 1`, ocuparán el mismo espacio disponible.
+
+```jsx
+import Box from '@mui/material/Box';
+
+export default function FlexGrowExample() {
+  return (
+    <Box display="flex" sx={{ height: 100, bgcolor: 'lightgray' }}>
+      <Box sx={{ flexGrow: 1, bgcolor: 'red' }}>Item 1</Box>
+      <Box sx={{ flexGrow: 1, bgcolor: 'blue' }}>Item 2</Box>
+      <Box sx={{ flexGrow: 1, bgcolor: 'green' }}>Item 3</Box>
+    </Box>
+  );
+}
+```
+
+🡆 **Resultado**: Cada `Box` tendrá el mismo ancho dentro del contenedor.
+
+Ejemplo 2: Distribución Desigual
+
+Si un elemento tiene un `flexGrow` mayor, ocupará más espacio en proporción.
+
+```jsx
+import Box from '@mui/material/Box';
+
+export default function FlexGrowExample() {
+  return (
+    <Box display="flex" sx={{ height: 100, bgcolor: 'lightgray' }}>
+      <Box sx={{ flexGrow: 1, bgcolor: 'red' }}>Item 1</Box>
+      <Box sx={{ flexGrow: 2, bgcolor: 'blue' }}>Item 2</Box>
+      <Box sx={{ flexGrow: 1, bgcolor: 'green' }}>Item 3</Box>
+    </Box>
+  );
+}
+```
+
+🡆 **Resultado**:
+
+- `Item 1` e `Item 3` ocuparán el mismo espacio.
+- `Item 2` será el doble de ancho que los otros elementos.
+
+Ejemplo 3: Un solo elemento que crece
+
+Si solo un elemento tiene `flexGrow: 1`, absorberá todo el espacio disponible.
+
+```jsx
+import Box from '@mui/material/Box';
+
+export default function FlexGrowExample() {
+  return (
+    <Box display="flex" sx={{ height: 100, bgcolor: 'lightgray' }}>
+      <Box sx={{ bgcolor: 'red' }}>Item 1</Box>
+      <Box sx={{ flexGrow: 1, bgcolor: 'blue' }}>Item 2</Box>
+      <Box sx={{ bgcolor: 'green' }}>Item 3</Box>
+    </Box>
+  );
+}
+```
+
+🡆 **Resultado**: `Item 2` ocupará todo el espacio disponible, mientras que `Item 1` y `Item 3` mantendrán su tamaño natural.
+
+#### **Resumen**
+
+- `flexGrow` determina cuánto crece un elemento dentro de un contenedor `flex`.
+- **Valores iguales** → Distribución equitativa.
+- **Valores diferentes** → Crecimiento proporcional.
+- **Si un solo elemento tiene `flexGrow: 1`**, ocupará todo el espacio restante.
+
+Este comportamiento es muy útil en **layouts responsivos**, por ejemplo, cuando quieres que un elemento ocupe todo el espacio restante mientras otros mantienen su tamaño. 🚀
+
+`src/navbar/Navbar.jsx`
+
+```jsx
+import {
+  Button,
+  Drawer,
+  AppBar,
+  Toolbar,
+  Typography,
+  IconButton,
+  Box,
+} from "@mui/material";
+import { NavListDrawer } from "./NavListDrawer";
+import { useState } from "react";
+
+import MenuIcon from "@mui/icons-material/Menu";
+import InboxIcon from "@mui/icons-material/Inbox";
+import DraftsIcon from "@mui/icons-material/Drafts";
+
+const navLinks = [
+  {
+    title: "Home",
+    path: "#",
+    icon: <InboxIcon />,
+  },
+  {
+    title: "Login",
+    path: "#login",
+    icon: <DraftsIcon />,
+  },
+  {
+    title: "Register",
+    path: "#register",
+    icon: <DraftsIcon />,
+  },
+];
+
+export const Navbar = () => {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <>
+      <AppBar position="static">
+        <Toolbar>
+          <IconButton
+            color="inherit"
+            size="large"
+            aria-label=""
+            onClick={() => setOpen(true)}
+            sx={{ display: { xs: "flex", sm: "none" } }}
+          >
+            <MenuIcon />
+          </IconButton>
+          <Typography variant="h6" sx={{ flexGrow: 1 }}>
+            News
+          </Typography>
+          <Box
+            sx={{ display: { xs: "none", sm: "block" } }}
+          >
+            {navLinks.map((item) => (
+              <Button
+                key={item.title}
+                component="a"
+                href={item.path}
+                color="inherit"
+              >
+                {item.title}
+              </Button>
+            ))}
+          </Box>
+        </Toolbar>
+      </AppBar>
+
+      <Drawer
+        open={open}
+        anchor="left"
+        onClose={() => setOpen(false)}
+        sx={{ display: { xs: "flex", sm: "none" } }}
+      >
+        <NavListDrawer navLinks={navLinks} />
+      </Drawer>
+    </>
+  );
+};
+```
+
+`src/navbar/NavListDrawer.jsx`
+
+```jsx
+import {
+  Box,
+  List,
+  ListItem,
+  ListItemButton,
+  ListItemIcon,
+  ListItemText,
+} from "@mui/material";
+
+export const NavListDrawer = ({ navLinks }) => {
+  return (
+    <Box sx={{ width: 250 }}>
+      <nav>
+        <List>
+          {navLinks.map((item) => (
+            <ListItem key={item.title} disablePadding>
+              <ListItemButton
+                component="a"
+                href={item.title}
+              >
+                <ListItemIcon>{item.icon}</ListItemIcon>
+                <ListItemText>{item.title}</ListItemText>
+              </ListItemButton>
+            </ListItem>
+          ))}
+        </List>
+      </nav>
+    </Box>
+  );
+};
+```
+
+- [App bar](https://mui.com/material-ui/react-app-bar/)
+
+
+
+
+`src/App.jsx`
+
+```jsx
+```
+
+`src/navbar/Navbar.jsx`
+
+```jsx
+```
+
+`src/navbar/NavListDrawer.jsx`
+
+```jsx
+```
+
+`src/App.jsx`
+
+```jsx
+```
 
 
 `src/App.jsx`
@@ -881,6 +1108,41 @@ export const Navbar = () => {
 
 ```jsx
 ```
+
+
+
+`src/App.jsx`
+
+```jsx
+```
+
+`src/App.jsx`
+
+```jsx
+```
+
+`src/App.jsx`
+
+```jsx
+```
+
+
+
+`src/App.jsx`
+
+```jsx
+```
+
+`src/App.jsx`
+
+```jsx
+```
+
+`src/App.jsx`
+
+```jsx
+```
+
 ⚙️
 👈👀
 👈👀👇
