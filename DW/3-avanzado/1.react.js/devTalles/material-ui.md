@@ -816,17 +816,56 @@ anfn
 
 ## 11. Navbar responsive (Parte #02) Drawer component
 
+### Drawer
 
+El componente **Drawer** de Material UI, también conocido como "navigation drawer" o "sidebar", proporciona un acceso ergonómico a diferentes secciones o funcionalidades de una aplicación, como cambiar de cuenta. Puede estar siempre visible en pantalla o ser controlado mediante un ícono de menú de navegación.
 
-`src/App.jsx`
+Variantes del Drawer
+
+1. **Temporary drawer**: Se muestra sobre el contenido principal y puede ser abierto o cerrado por el usuario. Es ideal para vistas móviles o cuando se desea mantener el enfoque en el contenido principal.
+2. **Permanent drawer**: Siempre visible en la interfaz, generalmente anclado al lado izquierdo o derecho de la pantalla. Se utiliza en diseños de escritorio donde el espacio lo permite, proporcionando acceso constante a las opciones de navegación.
+3. **Drawer Deslizable**: Similar al temporal, pero permite abrirse mediante gestos de deslizamiento, ofreciendo una experiencia más intuitiva en dispositivos táctiles.
+
+Propiedades Importantes
+
+- **`anchor`**: Determina desde qué lado de la pantalla aparece el Drawer. Los valores posibles son `left` (por defecto), `right`, `top` y `bottom`.
+- **`open`**: Controla si el Drawer está visible (`true`) u oculto (`false`).
+- **`onClose`**: Función que se ejecuta cuando el Drawer debe cerrarse, por ejemplo, al hacer clic fuera de él o al presionar la tecla Esc.
+
+`src/navbar/Navbar.jsx`
 
 ```jsx
+import { Button, Drawer } from "@mui/material";
+import { NavListDrawer } from "./NavListDrawer";
+import { useState } from "react";
+
+export const Navbar = () => {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <>
+      <Button
+        variant="container"
+        onClick={() => setOpen(true)}
+        sx={{ bgcolor: "primary.main" }}
+      >
+        Open Drawer
+      </Button>
+      <Drawer
+        open={open}
+        anchor="left"
+        onClose={() => setOpen(false)}
+      >
+        <NavListDrawer />
+      </Drawer>
+    </>
+  );
+};
 ```
 
-src/App.jsx`
+[Drawer](https://mui.com/material-ui/react-drawer/)
 
-```jsx
-```
+
 
 `src/App.jsx`
 
