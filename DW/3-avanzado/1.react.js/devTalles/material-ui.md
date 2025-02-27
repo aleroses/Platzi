@@ -1069,6 +1069,7 @@ export const NavListDrawer = ({ navLinks }) => {
 ```
 
 - [App bar](https://mui.com/material-ui/react-app-bar/)
+- [CSS flex-grow](https://developer.mozilla.org/es/docs/Web/CSS/flex-grow)
 
 
 
