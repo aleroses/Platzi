@@ -149,7 +149,7 @@ anfn
 - [Container](https://mui.com/material-ui/react-container/)
 - [Customization](https://mui.com/material-ui/customization/how-to-customize/)
 
-### 03. Typography
+## 03. Typography
 
 `src/App.jsx`
 
@@ -1071,7 +1071,7 @@ export const NavListDrawer = ({ navLinks }) => {
 - [App bar](https://mui.com/material-ui/react-app-bar/)
 - [CSS flex-grow](https://developer.mozilla.org/es/docs/Web/CSS/flex-grow)
 
-
+## AppBar + React Router v.6 en Material UI (Navbar responsive)
 
 
 `src/App.jsx`
