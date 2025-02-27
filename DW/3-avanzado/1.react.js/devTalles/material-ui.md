@@ -696,21 +696,134 @@ export const BlueCard = () => {
 
 [Card](https://mui.com/material-ui/react-card/)
 
+## 10. Navbar responsive (Parte #01) List component
+
+### Lists en Material UI
+
+El componente **List** se usa para mostrar elementos organizados en una lista, permitiendo estructurar información de forma clara y accesible. Es altamente personalizable y admite interactividad.
+
+Subcomponentes de List
+
+1. **List**: un contenedor para elementos de lista. Se renderiza como un `<ul>` por defecto.
+2. **List Item**: un elemento común de la lista. Se renderiza como un `<li>` por defecto.
+3. **List Item Button**: un elemento de acción para usar dentro de un elemento de lista.
+4. **List Item Icon**: un ícono para usar dentro de un elemento de lista.
+5. **List Item Avatar**: un avatar para usar dentro de un elemento de lista.
+6. **List Item Text**: un contenedor dentro de un elemento de lista, utilizado para mostrar contenido de texto.
+7. **List Divider**: un separador entre elementos de la lista.
+8. **List Subheader**: una etiqueta para una lista anidada.
+
+### App Bar
+
+La App bar muestra información y acciones relacionadas con la pantalla actual.
+
+La App bar superior proporciona contenido y acciones vinculadas a la pantalla actual. Se utiliza para la identidad de la marca, títulos de pantalla, navegación y acciones.
+
+Puede transformarse en una barra de acciones contextual o usarse como una barra de navegación.
+
+`src/navbar/NavListDrawer.jsx`
+
+```jsx
+import {
+  Box,
+  List,
+  ListItem,
+  ListItemButton,
+  ListItemIcon,
+  ListItemText,
+} from "@mui/material";
+
+import Divider from "@mui/material/Divider";
+import InboxIcon from "@mui/icons-material/Inbox";
+import DraftsIcon from "@mui/icons-material/Drafts";
+
+export const NavListDrawer = () => {
+  return (
+    <Box sx={{ width: 250, bgcolor: "darkturquoise" }}>
+      <nav>
+        <List>
+          <ListItem>
+            <ListItemIcon>
+              <InboxIcon />
+            </ListItemIcon>
+            <ListItemText primary="Inbox"></ListItemText>
+          </ListItem>
+
+          <ListItem>
+            <ListItemIcon>
+              <DraftsIcon />
+            </ListItemIcon>
+            <ListItemText primary="Drafts"></ListItemText>
+          </ListItem>
+        </List>
+      </nav>
+      <Divider />
+      <nav>
+        <List>
+          <ListItem disablePadding>
+            <ListItemButton component="a" href="#trash">
+              <ListItemText>Trash</ListItemText>
+            </ListItemButton>
+          </ListItem>
+          <ListItem disablePadding>
+            <ListItemButton component="a" href="#spam">
+              <ListItemText>Spam</ListItemText>
+            </ListItemButton>
+          </ListItem>
+        </List>
+      </nav>
+    </Box>
+  );
+};
+```
+
+`src/navbar/Navbar.jsx`
+
+```jsx
+import { NavListDrawer } from "./NavListDrawer";
+
+export const Navbar = () => {
+  return (
+    <>
+      <NavListDrawer></NavListDrawer>
+    </>
+  );
+};
+```
+
+`src/App.jsx`
+
+```jsx
+import { Grid2 } from "@mui/material";
+import { Navbar } from "./navbar/Navbar";
+
+export const App = () => {
+  return (
+    <Grid2 component="section" sx={{ m: 5 }}>
+      <Navbar />
+    </Grid2>
+  );
+};
+
+/* 
+nfn
+anfn
+*/
+```
+
+- [List](https://mui.com/material-ui/react-list/)
+- [App bar](https://mui.com/material-ui/react-app-bar/)
+
+## 11. Navbar responsive (Parte #02) Drawer component
+
 
 
 `src/App.jsx`
 
 ```jsx
 ```
-`src/App.jsx`
 
-```jsx
-```
-
-`src/App.jsx`
-
-```jsx
-````src/App.jsx`
+src/App.jsx`
 
 ```jsx
 ```
