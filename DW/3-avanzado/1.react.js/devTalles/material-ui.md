@@ -1054,7 +1054,7 @@ export const NavListDrawer = ({ navLinks }) => {
             <ListItem key={item.title} disablePadding>
               <ListItemButton
                 component="a"
-                href={item.title}
+                href={item.path}
               >
                 <ListItemIcon>{item.icon}</ListItemIcon>
                 <ListItemText>{item.title}</ListItemText>
