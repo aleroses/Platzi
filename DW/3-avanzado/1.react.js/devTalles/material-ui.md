@@ -1073,20 +1073,289 @@ export const NavListDrawer = ({ navLinks }) => {
 
 ## AppBar + React Router v.6 en Material UI (Navbar responsive)
 
+Instalamos React Router:
+
+```bash
+npm i react-router
+```
+
+Estructura actual:
+
+```bash
+.
+├── eslint.config.js
+├── index.html
+├── node_modules
+├── package.json
+├── package-lock.json
+├── public
+├── README.md
+├── src
+│   ├── App.jsx
+│   ├── assets
+│   ├── components
+│   │   ├── BlueCard.jsx
+│   │   └── Product.jsx
+│   ├── index.css
+│   ├── main.jsx
+│   ├── navbar
+│   │   ├── Navbar.jsx
+│   │   └── NavListDrawer.jsx
+│   └── pages 👈👀👇
+│       ├── Home.jsx
+│       ├── Login.jsx
+│       └── Register.jsx
+└── vite.config.js
+```
+
+`src/main.jsx`
+
+```jsx
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+import { BrowserRouter } from "react-router";
+
+import { ThemeProvider } from "@mui/material/styles";
+import { createTheme, CssBaseline } from "@mui/material";
+
+import "@fontsource/roboto/300.css";
+import "@fontsource/roboto/400.css";
+import "@fontsource/roboto/500.css";
+import "@fontsource/roboto/700.css";
+
+import "./index.css";
+import { App } from "./App.jsx";
+
+const theme = createTheme({
+  palette: {
+    mode: "light",
+    primary: {
+      main: "#3f51b5",
+    },
+    secondary: {
+      main: "#f50057",
+    },
+  },
+});
+
+createRoot(document.getElementById("root")).render(
+  <StrictMode>
+    <ThemeProvider theme={theme}>
+      <BrowserRouter> 👈👀
+        <CssBaseline />
+        <App />
+      </BrowserRouter>
+    </ThemeProvider>
+  </StrictMode>
+);
+```
 
 `src/App.jsx`
 
 ```jsx
+import { Route, Routes } from "react-router";
+import { Container, Grid2 } from "@mui/material";
+
+import { Navbar } from "./navbar/Navbar";
+import { Home } from "./pages/Home";
+import { Login } from "./pages/Login";
+import { Register } from "./pages/Register";
+
+import {
+  Inbox as InboxIcon,
+  Drafts as DraftsIcon,
+} from "@mui/icons-material";
+
+const navArrayLinks = [
+  {
+    title: "Home",
+    path: "/",
+    icon: <InboxIcon />,
+  },
+  {
+    title: "Login",
+    path: "/login",
+    icon: <DraftsIcon />,
+  },
+  {
+    title: "Register",
+    path: "/register",
+    icon: <DraftsIcon />,
+  },
+];
+
+export const App = () => {
+  return (
+    <>
+      <Grid2 component="section" sx={{ m: 2 }}>
+        <Navbar navArrayLinks={navArrayLinks} />
+        <Container sx={{ mt: 5 }}>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/login" element={<Login />} />
+            <Route
+              path="/register"
+              element={<Register />}
+            />
+          </Routes>
+        </Container>
+      </Grid2>
+    </>
+  );
+};
+
+/* 
+nfn
+anfn
+*/
 ```
 
 `src/navbar/Navbar.jsx`
 
 ```jsx
+import { useState } from "react";
+import { NavLink } from "react-router";
+import {
+  Button,
+  Drawer,
+  AppBar,
+  Toolbar,
+  Typography,
+  IconButton,
+  Box,
+} from "@mui/material";
+import { Menu as MenuIcon } from "@mui/icons-material";
+
+import { NavListDrawer } from "./NavListDrawer";
+
+export const Navbar = ({ navArrayLinks }) => {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <>
+      <AppBar position="static">
+        <Toolbar>
+          <IconButton
+            color="inherit"
+            size="large"
+            onClick={() => setOpen(true)}
+            sx={{ display: { xs: "flex", sm: "none" } }}
+          >
+            <MenuIcon />
+          </IconButton>
+          <Typography variant="h6" sx={{ flexGrow: 1 }}>
+            News
+          </Typography>
+          <Box
+            sx={{ display: { xs: "none", sm: "block" } }}
+          >
+            {navArrayLinks.map((item) => (
+              <Button
+                key={item.title}
+                component={NavLink}
+                to={item.path}
+                color="inherit"
+              >
+                {item.title}
+              </Button>
+            ))}
+          </Box>
+        </Toolbar>
+      </AppBar>
+
+      <Drawer
+        open={open}
+        anchor="left"
+        onClose={() => setOpen(false)}
+        sx={{ display: { xs: "flex", sm: "none" } }}
+      >
+        <NavListDrawer
+          navArrayLinks={navArrayLinks}
+          NavLink={NavLink}
+          setOpen={setOpen}
+        />
+      </Drawer>
+    </>
+  );
+};
 ```
 
 `src/navbar/NavListDrawer.jsx`
 
 ```jsx
+import {
+  Box,
+  List,
+  ListItem,
+  ListItemButton,
+  ListItemIcon,
+  ListItemText,
+} from "@mui/material";
+
+export const NavListDrawer = ({
+  navArrayLinks,
+  NavLink, 
+  setOpen, 👈👀
+}) => {
+  return (
+    <Box sx={{ width: 250 }}>
+      <nav>
+        <List>
+          {navArrayLinks.map((item) => (
+            <ListItem key={item.title} disablePadding>
+              <ListItemButton 👀👇
+                component={NavLink}
+                to={item.path} 👈👀👇
+                onClick={() => setOpen(false)}
+              >
+                <ListItemIcon>{item.icon}</ListItemIcon>
+                <ListItemText>{item.title}</ListItemText>
+              </ListItemButton>
+            </ListItem>
+          ))}
+        </List>
+      </nav>
+    </Box>
+  );
+};
+```
+
+`src/pages/Home.jsx`
+
+```jsx
+export const Home = () => {
+  return <h1>Home</h1>;
+};
+```
+
+`src/pages/Login.jsx`
+
+```jsx
+export const Login = () => {
+  return <h1>Login</h1>;
+};
+```
+
+`src/pages/Register.jsx`
+
+```jsx
+export const Register = () => {
+  return <h1>Register</h1>;
+};
+```
+
+[React Router](https://reactrouter.com/home)
+
+
+
+
+
+
+
+
+`src/App.jsx`
+
+```jsx
 ```
 
 `src/App.jsx`
@@ -1095,15 +1364,6 @@ export const NavListDrawer = ({ navLinks }) => {
 ```
 
 
-`src/App.jsx`
-
-```jsx
-```
-
-`src/App.jsx`
-
-```jsx
-```
 
 `src/App.jsx`
 
