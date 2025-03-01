@@ -1071,7 +1071,7 @@ export const NavListDrawer = ({ navLinks }) => {
 - [App bar](https://mui.com/material-ui/react-app-bar/)
 - [CSS flex-grow](https://developer.mozilla.org/es/docs/Web/CSS/flex-grow)
 
-## AppBar + React Router v.6 en Material UI (Navbar responsive)
+## AppBar + React Router v.7.2 en Material UI (Navbar responsive)
 
 Instalamos React Router:
 
