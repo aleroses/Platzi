@@ -1815,22 +1815,144 @@ export const Register = () => {
 - [Github Notistack](https://github.com/iamhosseindhv/notistack)
 - [Notistack doc](https://notistack.com/)
 
+## 15. Text Field y Validación de Formulario
+
+`src/pages/Register.jsx`
+
+```jsx
+import { Box, Button, TextField } from "@mui/material";
+import { useState } from "react";
+
+export const Register = () => {
+  const [email, setEmail] = useState("");
+  const [error, setError] = useState({
+    error: false,
+    message: "",
+  });
+
+  const validateEmail = (email) => {
+    const regex =
+      /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
+
+    return regex.test(email); // true or false
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    if (!validateEmail(email)) {
+      return setError({
+        error: true,
+        message: "Incorrect Email",
+      });
+    }
+
+    setError({
+      error: false,
+      // message: "Correct Email",
+    });
+  };
+
+  return (
+    <>
+      <h1>Register</h1>
+      <Box component="form" onSubmit={handleSubmit}>
+        <TextField
+          id="email"
+          label="Email"
+          type="email"
+          variant="outlined"
+          fullWidth
+          required
+          helperText={error.message}
+          error={error.error}
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+        <Button
+          type="submit"
+          variant="outlined"
+          sx={{ mt: 2 }}
+        >
+          Register me
+        </Button>
+      </Box>
+    </>
+  );
+};
+```
+
+La expresión regular vista, se usa para validar direcciones de correo electrónico. Vamos a desglosarla parte por parte:
+
+```js
+const regex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
+```
+
+### **Explicación de la expresión regular**:
+
+- **`^`** → Indica el inicio de la cadena.
+- **`[A-Z0-9._%+-]+`** →
+    - `[A-Z0-9._%+-]` → Permite letras mayúsculas (`A-Z`), números (`0-9`), y algunos caracteres especiales (`._%+-`).
+    - `+` → Indica que debe haber al menos un carácter de este conjunto (pero pueden ser más).
+- **`@`** → Obliga a que haya un símbolo `@` en la dirección.
+- **`[A-Z0-9.-]+`** →
+    - `[A-Z0-9.-]` → Permite letras (`A-Z`), números (`0-9`), puntos (`.`) y guiones (`-`).
+    - `+` → Requiere al menos un carácter de este conjunto.
+- **`\.`** → Obliga a que haya un punto (`.`) después del dominio.
+- **`[A-Z]{2,}`** →
+    - `[A-Z]` → Requiere letras (`A-Z`).
+    - `{2,}` → Debe haber al menos dos letras (para dominios como `.com`, `.net`, `.org`, etc.).
+- **`$`** → Indica el final de la cadena.
+- **`i`** → Hace que la expresión sea **insensible a mayúsculas y minúsculas**, por lo que también acepta letras en minúsculas (`a-z`).
+
+#### **Ejemplo de entradas válidas**:
+
+✔ `example@email.com`  
+✔ `USER123@DOMAIN.ORG`  
+✔ `test.email+alex@google.co`
+
+#### **Ejemplo de entradas inválidas**:
+
+✖ `example@.com` (No hay dominio antes del punto)  
+✖ `@example.com` (No hay nombre antes del `@`)  
+✖ `user@example` (No hay una extensión de dominio como `.com`)
+
+#### **Uso en código**:
+
+```js
+const regex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
+
+const email1 = "user@example.com";
+const email2 = "invalid-email@com";
+
+console.log(regex.test(email1)); // true
+console.log(regex.test(email2)); // false
+```
+
+#### **Consideraciones**:
+
+- Esta regex no cubre todos los casos posibles de direcciones de correo electrónico válidas según la especificación de **RFC 5322**.
+- Algunos dominios modernos pueden tener más caracteres especiales o extensiones de más de 2 o 3 letras.
+- Para validaciones más precisas, se recomienda usar bibliotecas especializadas como `validator.js`.
+
+[Text field](https://mui.com/material-ui/react-text-field/)
+
+
+
+
 `src/App.jsx`
 
 ```jsx
 ```
 
-`src/App.jsx`
-
-```jsx
-```
-
 
 
 `src/App.jsx`
 
 ```jsx
 ```
+
+
 
 `src/App.jsx`
 
