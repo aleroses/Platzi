@@ -1169,17 +1169,17 @@ import {
 const navArrayLinks = [
   {
     title: "Home",
-    path: "/",
+    path: "/", 👈👀
     icon: <InboxIcon />,
   },
   {
     title: "Login",
-    path: "/login",
+    path: "/login", 👈👀
     icon: <DraftsIcon />,
   },
   {
     title: "Register",
-    path: "/register",
+    path: "/register", 👈👀
     icon: <DraftsIcon />,
   },
 ];
@@ -1271,7 +1271,7 @@ export const Navbar = ({ navArrayLinks }) => {
       >
         <NavListDrawer
           navArrayLinks={navArrayLinks}
-          NavLink={NavLink}
+          NavLink={NavLink} 👈👀👇
           setOpen={setOpen}
         />
       </Drawer>
