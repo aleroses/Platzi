@@ -1463,33 +1463,357 @@ En este ejemplo, al hacer clic en el botón "Mostrar Snackbar", se despliega un 
 - **Un solo Snackbar a la vez:** Solo debe mostrarse un Snackbar en pantalla en un momento dado para evitar saturar al usuario con múltiples mensajes.
 - **No intrusivo:** Los Snackbars están diseñados para no interrumpir la experiencia del usuario y desaparecen automáticamente después de un período determinado.
 
-`src/App.jsx`
+### Notistack
+
+Notistack es una biblioteca de notificaciones para React que simplifica la implementación de snackbars (mensajes breves que aparecen en la parte inferior de la pantalla) en tus aplicaciones web.
+
+**Características principales de Notistack:**
+
+- **Gestión de múltiples notificaciones:** Permite mostrar varias notificaciones simultáneamente, apilándolas de manera ordenada.
+- **Personalización:** Ofrece opciones para personalizar la apariencia y el comportamiento de las notificaciones, incluyendo variantes como éxito, error, advertencia e información.
+- **Compatibilidad con transiciones:** Facilita la implementación de animaciones de entrada y salida para las notificaciones, utilizando componentes de transición.
+
+**Implementación básica de Notistack con animaciones:**
+
+1. **Instalación de Notistack:**
+    
+    ```bash
+    npm install notistack
+    ```
+    
+2. **Configuración del `SnackbarProvider`:**
+    
+    Envuelve tu aplicación con el componente `SnackbarProvider` para habilitar el uso de notificaciones en toda la aplicación:
+    
+    ```jsx
+    import React from 'react';
+    import ReactDOM from 'react-dom';
+    import { SnackbarProvider } from 'notistack';
+    import App from './App';
+    
+    ReactDOM.render(
+      <SnackbarProvider maxSnack={3}>
+        <App />
+      </SnackbarProvider>,
+      document.getElementById('root')
+    );
+    ```
+    
+    En este ejemplo, `maxSnack={3}` indica que se pueden mostrar hasta tres notificaciones simultáneamente.
+    
+3. **Uso del hook `useSnackbar` para mostrar notificaciones:**
+    
+    Dentro de tus componentes, utiliza el hook `useSnackbar` para acceder a la función `enqueueSnackbar`, que permite mostrar notificaciones:
+    
+    ```jsx
+    import React from 'react';
+    import { useSnackbar } from 'notistack';
+    import Button from '@mui/material/Button';
+    
+    function MyComponent() {
+      const { enqueueSnackbar } = useSnackbar();
+    
+      const handleClick = () => {
+        enqueueSnackbar('Notificación de éxito!', { variant: 'success' });
+      };
+    
+      return (
+        <Button onClick={handleClick}>
+          Mostrar notificación
+        </Button>
+      );
+    }
+    
+    export default MyComponent;
+    ```
+    
+
+**Implementación de animaciones en Notistack:**
+
+Notistack permite personalizar las animaciones de las notificaciones mediante la propiedad `TransitionComponent`. Puedes utilizar componentes de transición proporcionados por bibliotecas como Material-UI o crear tus propias animaciones.
+
+Por ejemplo, para aplicar una animación de crecimiento (`Grow`) a las notificaciones:
 
 ```jsx
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { SnackbarProvider } from 'notistack';
+import Grow from '@mui/material/Grow';
+import App from './App';
+
+ReactDOM.render(
+  <SnackbarProvider TransitionComponent={Grow}>
+    <App />
+  </SnackbarProvider>,
+  document.getElementById('root')
+);
+```
+
+En este ejemplo, todas las notificaciones utilizarán la animación de crecimiento al aparecer y desaparecer.
+
+**Consideraciones adicionales:**
+
+- **Gestión de transiciones personalizadas:** Si utilizas contenido personalizado en las notificaciones mediante la propiedad `content`, es importante asegurarse de que las transiciones se apliquen correctamente. Algunos desarrolladores han reportado comportamientos inesperados al combinar `TransitionComponent` con contenido personalizado. Se recomienda revisar la documentación y las discusiones en la comunidad para soluciones específicas.
+    
+- **Control de la posición y duración:** Notistack permite configurar la posición (`anchorOrigin`) y la duración (`autoHideDuration`) de las notificaciones para adaptarse a las necesidades de tu aplicación.
+    
+
+Para obtener más información y ejemplos detallados, puedes consultar la [documentación oficial de Notistack](https://notistack.com/).
+
+Además, puedes ver este video que muestra cómo implementar un Snackbar simple con Notistack en React:
+
+[https://www.youtube.com/watch?v=DQ1pX-t-kbg](🚀 Simple Snackbar With Notistack In React JS)
+
+`src/main.jsx`
+
+```jsx
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+import { BrowserRouter } from "react-router";
+
+import { ThemeProvider } from "@mui/material/styles";
+import { createTheme, CssBaseline } from "@mui/material";
+
+import { SnackbarProvider } from "notistack";
+
+import "@fontsource/roboto/300.css";
+import "@fontsource/roboto/400.css";
+import "@fontsource/roboto/500.css";
+import "@fontsource/roboto/700.css";
+
+import "./index.css";
+import { App } from "./App.jsx";
+
+const theme = createTheme({
+  palette: {
+    mode: "light",
+    primary: {
+      main: "#3f51b5",
+    },
+    secondary: {
+      main: "#f50057",
+    },
+  },
+});
+
+createRoot(document.getElementById("root")).render(
+  <StrictMode>
+    <ThemeProvider theme={theme}>
+      <BrowserRouter>
+        <SnackbarProvider
+          maxSnack={3}
+          autoHideDuration={3000}
+        >
+          <CssBaseline />
+          <App />
+        </SnackbarProvider>
+      </BrowserRouter>
+    </ThemeProvider>
+  </StrictMode>
+);
 ```
 
 `src/App.jsx`
 
 ```jsx
+import { Route, Routes } from "react-router";
+import { Container, Grid2 } from "@mui/material";
+
+import { Navbar } from "./navbar/Navbar";
+import { Home } from "./pages/Home";
+import { Login } from "./pages/Login";
+import { Register } from "./pages/Register";
+
+import {
+  Inbox as InboxIcon,
+  Drafts as DraftsIcon,
+} from "@mui/icons-material";
+
+const navArrayLinks = [
+  {
+    title: "Home",
+    path: "/",
+    icon: <InboxIcon />,
+  },
+  {
+    title: "Login",
+    path: "/login",
+    icon: <DraftsIcon />,
+  },
+  {
+    title: "Register",
+    path: "/register",
+    icon: <DraftsIcon />,
+  },
+];
+
+export const App = () => {
+  return (
+    <>
+      <Grid2 component="section" sx={{ m: 2 }}>
+        <Navbar navArrayLinks={navArrayLinks} />
+        <Container sx={{ mt: 5 }}>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/login" element={<Login />} />
+            <Route
+              path="/register"
+              element={<Register />}
+            />
+          </Routes>
+        </Container>
+      </Grid2>
+    </>
+  );
+};
+
+/* 
+nfn
+anfn
+*/
 ```
 
-
-
-`src/App.jsx`
+`src/pages/Home.jsx`
 
 ```jsx
+import {
+  Alert,
+  AlertTitle,
+  Button,
+  Collapse,
+  Stack,
+} from "@mui/material";
+import { Check as CheckIcon } from "@mui/icons-material";
+import { useState } from "react";
+
+export const Home = () => {
+  const [open, setOpen] = useState(true);
+
+  return (
+    <Stack
+      sx={{ display: "grid", gap: "1rem", width: "100%" }}
+      spacing={2}
+    >
+      <Alert
+        variant="filled"
+        severity="success"
+        icon={<CheckIcon fontSize="inherit" />}
+      >
+        <AlertTitle>Success</AlertTitle>
+        This is a success Alert.
+      </Alert>
+      <Alert
+        variant="outlined"
+        severity="info"
+        icon={false}
+      >
+        This is an info Alert.
+      </Alert>
+      <Alert
+        color="warning"
+        severity="warning"
+        action={
+          <Button color="inherit" size="small">
+            UNDO
+          </Button>
+        }
+      >
+        This is a warning Alert.
+      </Alert>
+
+      <Collapse in={open}>
+        <Alert
+          severity="error"
+          onClose={() => setOpen(false)}
+        >
+          This is an error Alert.
+        </Alert>
+      </Collapse>
+    </Stack>
+  );
+};
 ```
 
-
-
-`src/App.jsx`
+`src/pages/Login.jsx`
 
 ```jsx
+import {
+  Alert,
+  AlertTitle,
+  Box,
+  Button,
+  Snackbar,
+} from "@mui/material";
+import { useState } from "react";
+
+export const Login = () => {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <>
+      <h1>Login</h1>
+
+      <Box sx={{ display: "grid", gap: "1rem" }}>
+        <Alert>
+          <AlertTitle>Error</AlertTitle>
+          This is an error alert
+        </Alert>
+
+        <Button
+          variant="contained"
+          onClick={() => setOpen(true)}
+        >
+          Open
+        </Button>
+
+        <Snackbar
+          open={open}
+          autoHideDuration={1000}
+          onClose={() => setOpen(false)}
+        >
+          <Alert>
+            <AlertTitle>Error</AlertTitle>
+            This is a customized alert
+          </Alert>
+        </Snackbar>
+      </Box>
+    </>
+  );
+};
+```
+
+`src/pages/Register.jsx`
+
+```jsx
+import { Button } from "@mui/material";
+import { useSnackbar } from "notistack";
+
+export const Register = () => {
+  const { enqueueSnackbar } = useSnackbar();
+
+  const handleClick = () => {
+    enqueueSnackbar("This is not easy", {
+      variant: "success",
+    });
+  };
+
+  return (
+    <>
+      <h1>Register</h1>
+      <Button variant="contained" onClick={handleClick}>
+        Open
+      </Button>
+    </>
+  );
+};
 ```
 
 - [Alert](https://mui.com/material-ui/react-alert/)
 - [Stack](https://mui.com/material-ui/react-stack/)
 - [Snackbar](https://mui.com/material-ui/react-snackbar/)
+- [Notistack](https://mui.com/material-ui/react-snackbar/#notistack)
+- [Github Notistack](https://github.com/iamhosseindhv/notistack)
+- [Notistack doc](https://notistack.com/)
 
 `src/App.jsx`
 
