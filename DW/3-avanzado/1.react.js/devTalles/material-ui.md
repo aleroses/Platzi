@@ -1346,12 +1346,122 @@ export const Register = () => {
 
 [React Router](https://reactrouter.com/home)
 
+## Crear alertas personalizadas con MUI (Alert, Snackbars y Notistack)
 
+### Stack
 
+El componente **Stack** es un contenedor que organiza sus elementos hijos en una dirección vertical u horizontal, con opciones para espaciar y dividir entre cada elemento. Es ideal para diseños unidimensionales, mientras que el componente Grid se prefiere cuando se necesita una disposición tanto vertical como horizontal.
 
+**Uso básico:**
 
+```jsx
+import Stack from '@mui/material/Stack';
 
+function BasicStack() {
+  return (
+    <Stack spacing={2}>
+      <div>Elemento 1</div>
+      <div>Elemento 2</div>
+      <div>Elemento 3</div>
+    </Stack>
+  );
+}
+```
 
+En este ejemplo, los elementos se disponen verticalmente con un espacio de 2 unidades entre ellos.
+
+**Propiedades destacadas:**
+
+- **direction:** Define la dirección del Stack, pudiendo ser "row" (horizontal) o "column" (vertical).
+- **spacing:** Establece el espacio entre los elementos hijos.
+- **divider:** Permite insertar un divisor entre los elementos para una separación visual clara.
+
+### Alert
+
+El componente **Alert** proporciona mensajes breves y potencialmente sensibles al tiempo de manera discreta. Se utiliza para informar a los usuarios sobre procesos que una aplicación ha realizado o realizará, apareciendo temporalmente en la interfaz sin interrumpir la experiencia del usuario.
+
+**Uso básico:**
+
+```jsx
+import Alert from '@mui/material/Alert';
+
+function BasicAlert() {
+  return (
+    <Alert severity="success">
+      Esta es una alerta de éxito.
+    </Alert>
+  );
+}
+```
+
+Este ejemplo muestra una alerta con un mensaje de éxito.
+
+**Propiedades destacadas:**
+
+- **severity:** Indica la importancia o tipo de la alerta, como "error", "warning", "info" o "success".
+- **variant:** Define el estilo de la alerta, pudiendo ser "filled", "outlined" o "standard".
+- **icon:** Permite personalizar el ícono que aparece junto al mensaje de la alerta.
+
+**Consideraciones importantes:**
+
+Las alertas deben proporcionar información clara y concisa sin interrumpir la experiencia del usuario. No deben confundirse con los diálogos de alerta, que están diseñados para interrumpir al usuario y requerir una respuesta. Para este comportamiento, se recomienda utilizar el componente Dialog de Material UI.
+
+### Snackbar
+
+El componente **Snackbar** en Material UI proporciona mensajes breves y temporales que informan a los usuarios sobre procesos que una aplicación ha realizado o realizará. Aparecen temporalmente, hacia la parte inferior de la pantalla, sin interrumpir la experiencia del usuario y sin requerir interacción para desaparecer.
+
+**Características principales:**
+
+- **Posición:** La posición del Snackbar en la pantalla se controla mediante la propiedad `anchorOrigin`, que permite especificar la alineación vertical y horizontal.
+- **Duración:** La propiedad `autoHideDuration` define el tiempo en milisegundos que el Snackbar permanece visible antes de desaparecer automáticamente.
+- **Acciones:** Es posible incluir acciones en el Snackbar, como botones, utilizando la propiedad `action`.
+
+**Ejemplo básico de uso:**
+
+```jsx
+import React, { useState } from 'react';
+import Button from '@mui/material/Button';
+import Snackbar from '@mui/material/Snackbar';
+
+function SimpleSnackbar() {
+  const [open, setOpen] = useState(false);
+
+  const handleClick = () => {
+    setOpen(true);
+  };
+
+  const handleClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+    setOpen(false);
+  };
+
+  return (
+    <div>
+      <Button onClick={handleClick}>Mostrar Snackbar</Button>
+      <Snackbar
+        open={open}
+        autoHideDuration={6000}
+        onClose={handleClose}
+        message="Acción realizada"
+        action={
+          <Button color="secondary" size="small" onClick={handleClose}>
+            DESHACER
+          </Button>
+        }
+      />
+    </div>
+  );
+}
+```
+
+En este ejemplo, al hacer clic en el botón "Mostrar Snackbar", se despliega un Snackbar con el mensaje "Acción realizada" y una opción para "DESHACER" la acción.
+
+**Consideraciones adicionales:**
+
+- **Un solo Snackbar a la vez:** Solo debe mostrarse un Snackbar en pantalla en un momento dado para evitar saturar al usuario con múltiples mensajes.
+- **No intrusivo:** Los Snackbars están diseñados para no interrumpir la experiencia del usuario y desaparecen automáticamente después de un período determinado.
 
 `src/App.jsx`
 
@@ -1376,6 +1486,10 @@ export const Register = () => {
 
 ```jsx
 ```
+
+- [Alert](https://mui.com/material-ui/react-alert/)
+- [Stack](https://mui.com/material-ui/react-stack/)
+- [Snackbar](https://mui.com/material-ui/react-snackbar/)
 
 `src/App.jsx`
 
