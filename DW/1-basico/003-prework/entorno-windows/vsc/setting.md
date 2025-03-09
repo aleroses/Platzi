@@ -117,7 +117,7 @@ Tambien puedes buscar `pop-up` dentro de la configuración y desactivar la casil
 
 ```json
 {
-  "workbench.activityBar.visible": false, //👈👀
+  "workbench.activityBar.location": "hidden", //👈👀
 }
 ```
 
