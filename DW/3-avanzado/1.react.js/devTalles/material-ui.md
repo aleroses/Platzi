@@ -1937,20 +1937,206 @@ console.log(regex.test(email2)); // false
 
 [Text field](https://mui.com/material-ui/react-text-field/)
 
+## Aplicación Meteorológica 🌩
 
+Regístrate en Weather API para obtener una API_KEY. Luego entra en API Explorer y coloca la api que obtuviste:
 
+http://api.weatherapi.com/v1/current.json?key=2785a349cc4446a7b1300231250903&q=London&aqi=no
+
+Estructura:
+
+```bash
+.
+├── eslint.config.js
+├── index.html
+├── node_modules
+├── package.json
+├── package-lock.json
+├── public
+├── README.md
+├── .env.local
+├── src
+│   ├── App.jsx
+│   ├── assets
+│   ├── index.css
+│   └── main.jsx
+└── vite.config.js
+```
 
 `src/App.jsx`
 
 ```jsx
+import { useState } from "react";
+
+import {
+  Container,
+  Typography,
+  TextField,
+  Box,
+} from "@mui/material";
+import { LoadingButton } from "@mui/lab";
+
+const API_WEATHER = `http://api.weatherapi.com/v1/current.json?key=${
+  import.meta.env.VITE_API_KEY
+}&q=`;
+/* const API_WEATHER = `http://api.weatherapi.com/v1/current.json?key=${
+  import.meta.env.VITE_API_KEY
+}&q=${city}&aqi=no`; */
+
+// console.log(import.meta.env.VITE_API_KEY);
+
+export const App = () => {
+  const [city, setCity] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState({
+    error: false,
+    message: "",
+  });
+  const [weather, setWeather] = useState({
+    city: "",
+    country: "",
+    temp: "",
+    condition: "",
+    icon: "",
+    conditionText: "",
+  });
+
+  const onSubmit = async (e) => {
+    e.preventDefault();
+
+    setLoading(true);
+    setError({
+      error: false,
+      message: error.message,
+    });
+
+    try {
+      if (!city.trim())
+        throw { message: "The city field is mandatory." };
+
+      const response = await fetch(`${API_WEATHER}${city}`);
+
+      const data = await response.json();
+
+      if (data.error) throw { message: data.error.message };
+
+      setWeather({
+        city: data.location.name,
+        country: data.location.country,
+        temp: data.current.temp_c,
+        condition: data.current.condition.code,
+        icon: data.current.condition.icon,
+        conditionText: data.current.condition.text,
+      });
+    } catch (error) {
+      setError({
+        error: true,
+        message: error.message,
+      });
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const onChange = (e) => {
+    const value = e.target.value;
+
+    setCity(value);
+  };
+
+  return (
+    <Container maxWidth="xs" sx={{ mt: 2 }}>
+      <Typography
+        variant="h3"
+        component="h1"
+        align="center"
+        gutterBottom
+      >
+        Weather App
+      </Typography>
+      <Box
+        component="form"
+        autoComplete="off"
+        onSubmit={onSubmit}
+        sx={{ display: "grid", gap: 2 }}
+      >
+        <TextField
+          id="city"
+          label="City"
+          variant="outlined"
+          size="small"
+          required
+          fullWidth
+          value={city}
+          onChange={onChange}
+          error={error.error}
+          helperText={error.message}
+        />
+
+        <LoadingButton
+          type="submit"
+          variant="contained"
+          loading={loading}
+          loadingIndicator="Loading"
+        >
+          Search
+        </LoadingButton>
+      </Box>
+
+      {weather.city && (
+        <Box
+          sx={{
+            mt: 2,
+            display: "grid",
+            gap: 2,
+            textAlign: "center",
+          }}
+        >
+          <Typography variant="h4" component="h2">
+            {weather.city}, {weather.country}
+          </Typography>
+          <Box
+            component="img"
+            alt={weather.conditionText}
+            src={weather.icon}
+            sx={{ margin: "0 auto" }}
+          />
+          <Typography variant="h5" component="h3">
+            {weather.temp} °C
+          </Typography>
+          <Typography variant="h6" component="h4">
+            {weather.conditionText}
+          </Typography>
+        </Box>
+      )}
+
+      <Typography
+        textAlign="center"
+        sx={{ mt: 2, fontSize: "10px" }}
+      >
+        Powered by:{" "}
+        <a
+          href="https://www.weatherapi.com/"
+          title="Weather API"
+        >
+          WeatherAPI.com
+        </a>
+      </Typography>
+    </Container>
+  );
+};
+
+// http://api.weatherapi.com/v1/current.json?key=2785a349cc4446a7b1300231250903&q=London&aqi=no
 ```
 
-
-
-`src/App.jsx`
+`.env.local`
 
 ```jsx
+VITE_API_KEY="2785a349cc4446a7b1300231250903"
 ```
+
+- [Examples](https://mui.com/material-ui/getting-started/example-projects/)
+- [Weather API](https://www.weatherapi.com/)
 
 
 
