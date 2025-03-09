@@ -1939,9 +1939,47 @@ console.log(regex.test(email2)); // false
 
 ## Aplicación Meteorológica 🌩
 
+Crear proyecto de React:
+
+```bash
+npm create vite@latest
+cd mui-weather
+npm i
+```
+
+Instalación de Material UI + Roboto + Icons: 
+
+```bash
+npm install @mui/material @emotion/react @emotion/styled
+npm install @fontsource/roboto
+npm install @mui/icons-material
+```
+
+Añadir en el `main.jsx`
+
+```jsx
+import '@fontsource/roboto/300.css';
+import '@fontsource/roboto/400.css';
+import '@fontsource/roboto/500.css';
+import '@fontsource/roboto/700.css';
+```
+
+Labs Components
+
+```bash
+npm install @mui/lab @mui/material
+
+# NPM displays this command
+npm install @mui/lab
+```
+
 Regístrate en Weather API para obtener una API_KEY. Luego entra en API Explorer y coloca la api que obtuviste:
 
+Podemos obtener una query como esta:
+
+```jsx
 http://api.weatherapi.com/v1/current.json?key=2785a349cc4446a7b1300231250903&q=London&aqi=no
+```
 
 Estructura:
 
@@ -1954,13 +1992,40 @@ Estructura:
 ├── package-lock.json
 ├── public
 ├── README.md
-├── .env.local
+├── .env.local 👈👀
 ├── src
 │   ├── App.jsx
 │   ├── assets
 │   ├── index.css
 │   └── main.jsx
 └── vite.config.js
+```
+
+`src/main.jsx`
+
+```jsx
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+
+import { ThemeProvider } from "@mui/material/styles";
+
+import { App } from "./App.jsx";
+import "./index.css";
+import CssBaseline from "@mui/material/CssBaseline";
+
+import "@fontsource/roboto/300.css";
+import "@fontsource/roboto/400.css";
+import "@fontsource/roboto/500.css";
+import "@fontsource/roboto/700.css";
+
+createRoot(document.getElementById("root")).render(
+  <StrictMode>
+    <ThemeProvider theme={{}}>
+      <CssBaseline />
+      <App />
+    </ThemeProvider>
+  </StrictMode>
+);
 ```
 
 `src/App.jsx`
@@ -1979,9 +2044,6 @@ import { LoadingButton } from "@mui/lab";
 const API_WEATHER = `http://api.weatherapi.com/v1/current.json?key=${
   import.meta.env.VITE_API_KEY
 }&q=`;
-/* const API_WEATHER = `http://api.weatherapi.com/v1/current.json?key=${
-  import.meta.env.VITE_API_KEY
-}&q=${city}&aqi=no`; */
 
 // console.log(import.meta.env.VITE_API_KEY);
 
@@ -2133,6 +2195,58 @@ export const App = () => {
 
 ```jsx
 VITE_API_KEY="2785a349cc4446a7b1300231250903"
+```
+
+Data de la API
+
+```json
+{
+  "location": {
+    "name": "London",
+    "region": "City of London, Greater London",
+    "country": "United Kingdom",
+    "lat": 51.5171,
+    "lon": -0.1062,
+    "tz_id": "Europe/London",
+    "localtime_epoch": 1741550179,
+    "localtime": "2025-03-09 19:56"
+  },
+  "current": {
+    "last_updated_epoch": 1741549500,
+    "last_updated": "2025-03-09 19:45",
+    "temp_c": 13.3,
+    "temp_f": 55.9,
+    "is_day": 0,
+    "condition": {
+      "text": "Clear",
+      "icon": "//cdn.weatherapi.com/weather/64x64/night/113.png",
+      "code": 1000
+    },
+    "wind_mph": 4.3,
+    "wind_kph": 6.8,
+    "wind_degree": 87,
+    "wind_dir": "E",
+    "pressure_mb": 1002,
+    "pressure_in": 29.59,
+    "precip_mm": 0,
+    "precip_in": 0,
+    "humidity": 54,
+    "cloud": 0,
+    "feelslike_c": 13.1,
+    "feelslike_f": 55.6,
+    "windchill_c": 11.6,
+    "windchill_f": 52.9,
+    "heatindex_c": 12,
+    "heatindex_f": 53.7,
+    "dewpoint_c": 6,
+    "dewpoint_f": 42.7,
+    "vis_km": 10,
+    "vis_miles": 6,
+    "uv": 0,
+    "gust_mph": 7.5,
+    "gust_kph": 12
+  }
+}
 ```
 
 - [Examples](https://mui.com/material-ui/getting-started/example-projects/)
