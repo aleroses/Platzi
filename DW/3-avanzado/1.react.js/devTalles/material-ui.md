@@ -2249,12 +2249,251 @@ Data de la API
 }
 ```
 
+📌 Nota: en lugar de usar `LoadingButton` ahora solo usando `Button` tienes las mismas características.
+
+### Modularizar el código
+
+Estructura:
+
+```bash
+├── eslint.config.js
+├── index.html
+├── node_modules
+├── package.json
+├── package-lock.json
+├── public
+├── README.md
+├── .env.local 👈👀
+├── src
+│   ├── api
+│   │   └── fetchWeather.js
+│   ├── App.jsx
+│   ├── assets
+│   ├── components
+│   │   ├── ErrorMessage.jsx
+│   │   ├── WeatherDisplay.jsx
+│   │   └── WeatherForm.jsx
+│   ├── index.css
+│   └── main.jsx
+└── vite.config.js
+```
+
+`src/main.jsx`
+
+```jsx
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+
+import { ThemeProvider } from "@mui/material/styles";
+
+import { App } from "./App.jsx";
+import "./index.css";
+import CssBaseline from "@mui/material/CssBaseline";
+
+import "@fontsource/roboto/300.css";
+import "@fontsource/roboto/400.css";
+import "@fontsource/roboto/500.css";
+import "@fontsource/roboto/700.css";
+
+createRoot(document.getElementById("root")).render(
+  <StrictMode>
+    <ThemeProvider theme={{}}>
+      <CssBaseline />
+      <App />
+    </ThemeProvider>
+  </StrictMode>
+);
+```
+
+`src/App.jsx`
+
+```jsx
+import { useState, useCallback } from "react";
+import { Container, Typography } from "@mui/material";
+import { fetchWeather } from "./api/fetchWeather";
+import { WeatherForm } from "./components/WeatherForm";
+import { WeatherDisplay } from "./components/WeatherDisplay";
+import { ErrorMessage } from "./components/ErrorMessage";
+
+export const App = () => {
+  const [weather, setWeather] = useState(null);
+  const [error, setError] = useState("");
+
+  const handleSearch = useCallback(async (city) => {
+    try {
+      setError("");
+      const weatherData = await fetchWeather(city);
+      setWeather(weatherData);
+    } catch (err) {
+      setError(err.message);
+    }
+  }, []);
+
+  return (
+    <Container maxWidth="xs" sx={{ mt: 2 }}>
+      <Typography variant="h3" align="center" gutterBottom>
+        Weather App
+      </Typography>
+
+      <WeatherForm onSearch={handleSearch} />
+      <ErrorMessage message={error} />
+      <WeatherDisplay weather={weather} />
+
+      <Typography textAlign="center" sx={{ mt: 2, fontSize: "10px" }}>
+        Powered by:{" "}
+        <a href="https://www.weatherapi.com/" title="Weather API">
+          WeatherAPI.com
+        </a>
+      </Typography>
+    </Container>
+  );
+};
+```
+
+`src/api/fetchWeather.js`
+
+```js
+const API_WEATHER = `http://api.weatherapi.com/v1/current.json?key=${
+  import.meta.env.VITE_API_KEY
+}&q=`;
+
+export const fetchWeather = async (cityName) => {
+  if (!cityName.trim()) throw new Error("The city field is mandatory.");
+
+  const response = await fetch(`${API_WEATHER}${cityName}`);
+  const data = await response.json();
+
+  if (data.error) throw new Error(data.error.message);
+
+  return {
+    city: data.location.name,
+    country: data.location.country,
+    temp: data.current.temp_c,
+    icon: data.current.condition.icon,
+    conditionText: data.current.condition.text,
+  };
+};
+```
+
+`src/components/WeatherForm.jsx`
+
+```jsx
+import { TextField, Box } from "@mui/material";
+import { Button } from "@mui/material";
+import { useState, useCallback } from "react";
+
+export const WeatherForm = ({ onSearch }) => {
+  const [city, setCity] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+
+  const handleSubmit = useCallback(
+    async (e) => {
+      e.preventDefault();
+      setLoading(true);
+      setError("");
+
+      try {
+        await onSearch(city);
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    },
+    [city, onSearch]
+  );
+
+  return (
+    <Box
+      component="form"
+      autoComplete="off"
+      onSubmit={handleSubmit}
+      sx={{ display: "grid", gap: 2 }}
+    >
+      <TextField
+        id="city"
+        label="City"
+        variant="outlined"
+        size="small"
+        required
+        fullWidth
+        value={city}
+        onChange={(e) => setCity(e.target.value)}
+        error={!!error}
+        helperText={error}
+      />
+      <Button
+        type="submit"
+        variant="contained"
+        loading={loading}
+        loadingIndicator="Loading"
+      >
+        Search
+      </Button>
+    </Box>
+  );
+};
+```
+
+`src/components/WeatherDisplay.jsx`
+
+```jsx
+import { Typography, Box } from "@mui/material";
+
+export const WeatherDisplay = ({ weather }) => {
+  if (!weather) return null;
+
+  return (
+    <Box sx={{ mt: 2, display: "grid", gap: 2, textAlign: "center" }}>
+      <Typography variant="h4">
+        {weather.city}, {weather.country}
+      </Typography>
+      <Box
+        component="img"
+        alt={weather.conditionText}
+        src={weather.icon}
+        sx={{ margin: "0 auto" }}
+      />
+      <Typography variant="h5">{weather.temp} °C</Typography>
+      <Typography variant="h6">{weather.conditionText}</Typography>
+    </Box>
+  );
+};
+```
+
+`src/components/ErrorMessage.jsx`
+
+```jsx
+import { Typography } from "@mui/material";
+
+export const ErrorMessage = ({ message }) => {
+  if (!message) return null;
+
+  return (
+    <Typography color="error" sx={{ textAlign: "center", mt: 2 }}>
+      {message}
+    </Typography>
+  );
+};
+```
+
 - [Examples](https://mui.com/material-ui/getting-started/example-projects/)
 - [Weather API](https://www.weatherapi.com/)
 
 
 
 `src/App.jsx`
+
+```jsx
+```
+
+`src/App.jsx`
+
+```jsx
+```
+
+`src/components/App.jsx`
 
 ```jsx
 ```
