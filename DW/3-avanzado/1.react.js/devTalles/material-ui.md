@@ -2321,8 +2321,8 @@ export const App = () => {
 
   const handleSearch = useCallback(async (city) => {
     try {
-      setError("");
       const weatherData = await fetchWeather(city);
+      setError("");
       setWeather(weatherData);
     } catch (err) {
       setError(err.message);
@@ -2336,8 +2336,10 @@ export const App = () => {
       </Typography>
 
       <WeatherForm onSearch={handleSearch} />
-      <ErrorMessage message={error} />
-      <WeatherDisplay weather={weather} />
+      {error 
+        ? <ErrorMessage message={error} />
+        : <WeatherDisplay weather={weather} />
+      }
 
       <Typography textAlign="center" sx={{ mt: 2, fontSize: "10px" }}>
         Powered by:{" "}
@@ -2350,36 +2352,10 @@ export const App = () => {
 };
 ```
 
-`src/api/fetchWeather.js`
-
-```js
-const API_WEATHER = `http://api.weatherapi.com/v1/current.json?key=${
-  import.meta.env.VITE_API_KEY
-}&q=`;
-
-export const fetchWeather = async (cityName) => {
-  if (!cityName.trim()) throw new Error("The city field is mandatory.");
-
-  const response = await fetch(`${API_WEATHER}${cityName}`);
-  const data = await response.json();
-
-  if (data.error) throw new Error(data.error.message);
-
-  return {
-    city: data.location.name,
-    country: data.location.country,
-    temp: data.current.temp_c,
-    icon: data.current.condition.icon,
-    conditionText: data.current.condition.text,
-  };
-};
-```
-
 `src/components/WeatherForm.jsx`
 
 ```jsx
-import { TextField, Box } from "@mui/material";
-import { Button } from "@mui/material";
+import { Button, TextField, Box } from "@mui/material";
 import { useState, useCallback } from "react";
 
 export const WeatherForm = ({ onSearch }) => {
@@ -2433,6 +2409,32 @@ export const WeatherForm = ({ onSearch }) => {
       </Button>
     </Box>
   );
+};
+```
+
+`src/api/fetchWeather.js`
+
+```js
+const API_WEATHER = `http://api.weatherapi.com/v1/current.json?key=${
+  import.meta.env.VITE_API_KEY
+}&q=`;
+
+export const fetchWeather = async (cityName) => {
+  // If empty spaces are sent "  ", we remove them, leaving "" which is false. To pass the if we must use ! to make it true.
+  if (!cityName.trim()) throw new Error("The city field is mandatory.");
+
+  const response = await fetch(`${API_WEATHER}${cityName}`);
+  const data = await response.json();
+
+  if (data.error) throw new Error(data.error.message);
+
+  return {
+    city: data.location.name,
+    country: data.location.country,
+    temp: data.current.temp_c,
+    icon: data.current.condition.icon,
+    conditionText: data.current.condition.text,
+  };
 };
 ```
 
