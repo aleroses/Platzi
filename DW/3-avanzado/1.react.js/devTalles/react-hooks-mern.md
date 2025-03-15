@@ -15887,9 +15887,82 @@ export const LoginPage = () => {
 
 ### 17.12 RegisterPage - Diseño
 
-`src/`
+`src/auth/pages/RegisterPage.jsx`
 
 ```jsx
+import {
+  Button,
+  Grid2,
+  TextField,
+  Link,
+  Typography,
+} from "@mui/material";
+import { AuthLayout } from "../layout/AuthLayout";
+import { Link as RouterLink } from "react-router";
+
+export const RegisterPage = () => {
+  return (
+    <AuthLayout title="Register">
+      <Grid2 container component="form" spacing={2}>
+        <Grid2 size={{ xs: 12, md: 6 }}>
+          <TextField
+            id="fullname"
+            label="Full name"
+            type="text"
+            placeholder="Your full name"
+            size="small"
+            fullWidth
+          />
+        </Grid2>
+        <Grid2 size={{ xs: 12, md: 6 }}>
+          <TextField
+            id="email"
+            label="Email"
+            type="email"
+            placeholder="email@google.com"
+            size="small"
+            fullWidth
+          />
+        </Grid2>
+        <Grid2 size={{ xs: 12, md: 6 }}>
+          <TextField
+            id="password"
+            label="Password"
+            type="password"
+            placeholder="password"
+            size="small"
+            fullWidth
+          />
+        </Grid2>
+      </Grid2>
+
+      {/* New */}
+      <Grid2 container spacing={2} sx={{ mt: 2 }}>
+        <Grid2 size={{ xs: 12 }}>
+          <Button variant="contained" fullWidth>
+            Create account
+          </Button>
+        </Grid2>
+      </Grid2>
+      <Grid2
+        container
+        justifyContent="end"
+        sx={{ mt: 2 }}
+      >
+        <Typography sx={{ mr: 1 }}>
+          Already have an account?
+        </Typography>
+        <Link
+          component={RouterLink}
+          color="inherit"
+          to="/auth/login"
+        >
+          Login
+        </Link>
+      </Grid2>
+    </AuthLayout>
+  );
+};
 ```
 
 ☝️👆
