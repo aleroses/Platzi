@@ -15657,108 +15657,106 @@ export const LoginPage = () => {
 `src/auth/pages/LoginPage.jsx`
 
 ```jsx
+import {
+  Box,
+  Typography,
+  TextField,
+  Grid2,
+  Button,
+  Link,
+} from "@mui/material";
 import { Link as RouterLink } from "react-router";
 import { Google } from "@mui/icons-material";
-import {
-  Button,
-  Grid2,
-  Link,
-  TextField,
-  Typography,
-} from "@mui/material";
 
 export const LoginPage = () => {
   return (
-    <Grid2
-      container
-      spacing={0}
-      direction={"column"}
-      alignItems={"center"}
-      justifyContent={"center"}
+    <Box
+      component="main"
       sx={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
         minHeight: "100vh",
-        backgroundColor: "primary.main",
-        padding: 4,
+        bgcolor: "primary.main",
+        // padding: 4,
       }}
     >
-      <Grid2
-        /* item="true" */
-        className="box-shadow"
-        xs={3}
+      <Box
+        component="section"
         sx={{
-          backgroundColor: "white",
-          padding: 3,
+          width: {
+            xs: "80%",
+            sm: "60%",
+            md: "40%",
+            lg: "30%",
+          },
+          bgcolor: "white",
+          padding: { xs: 2, sm: 3, md: 4 },
           borderRadius: 2,
         }}
       >
-        <Typography variant="h5" sx={{ mb: 1 }}>
+        <Typography
+          variant="h5"
+          sx={{ mb: 2, textAlign: "center" }}
+        >
           Login
         </Typography>
-        <form action="">
-          <Grid2 container>
-            <Grid2
-              /* item */
-              xs={12}
-              sx={{
-                mt: 2,
-                maxWidth: "100%",
-              }}
-            >
-              <TextField
-                label="Email"
-                type="email"
-                placeholder="testing@google.com"
-                fullWidth
-                sx={{
-                  maxWidth: "100%",
-                }}
-              />
-            </Grid2>
-            <Grid2
-              /* item */
-              xs={12}
-              sx={{
-                mt: 2,
-              }}
-            >
-              <TextField
-                label="Password"
-                type="password"
-                placeholder="Password"
-                fullWidth
-              />
-            </Grid2>
-            <Grid2
-              container
-              spacing={2}
-              sx={{ mb: 2, mt: 1 }}
-            >
-              <Grid2 item xs={12}>
-                <Button variant="contained fullWidth">
-                  <Google />
-                  <Typography sx={{ ml: 1 }}>
-                    Google
-                  </Typography>
-                </Button>
-              </Grid2>
-            </Grid2>
-            <Grid2
-              container
-              direction={"row"}
-              justifyContent={"end"}
-            >
-              <Link
-                component={RouterLink}
-                color="inherit"
-                to="/auth/register"
-              >
-                Create an account
-              </Link>
-            </Grid2>
+        <Grid2 container component="form" spacing={2}>
+          <Grid2 size={{ xs: 12, md: 6 }}>
+            <TextField
+              id="email"
+              label="Email"
+              type="email"
+              placeholder="email@google.com"
+              size="small"
+              fullWidth
+            />
           </Grid2>
-        </form>
-      </Grid2>
-    </Grid2>
+          <Grid2 size={{ xs: 12, md: 6 }}>
+            <TextField
+              id="password"
+              label="Password"
+              type="password"
+              placeholder="password"
+              size="small"
+              fullWidth
+            />
+          </Grid2>
+        </Grid2>
+
+        {/* New */}
+        <Grid2 container spacing={2} sx={{ mt: 2 }}>
+          <Grid2 size={{ xs: 12, md: 6 }}>
+            <Button variant="contained" fullWidth>
+              Login
+            </Button>
+          </Grid2>
+          <Grid2 size={{ xs: 12, md: 6 }}>
+            <Button
+              variant="contained"
+              fullWidth
+              startIcon={<Google />}
+            >
+              Google
+            </Button>
+          </Grid2>
+        </Grid2>
+        <Grid2
+          container
+          // direction="row"
+          justifyContent="end"
+          sx={{ mt: 2 }}
+        >
+          <Link
+            component={RouterLink}
+            color="inherit"
+            to="/auth/register"
+          >
+            Create an account.
+          </Link>
+        </Grid2>
+      </Box>
+    </Box>
   );
 };
 ```
