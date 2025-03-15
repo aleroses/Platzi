@@ -15495,90 +15495,159 @@ Entramos a la siguiente ruta para ver los cambios:
 
 `http://localhost:5173/auth/login`
 
-`src/auth/pages/LoginPage.jsx`
-
-```jsx
-import {
-  Grid2,
-  TextField,
-  Typography,
-} from "@mui/material";
-
-export const LoginPage = () => {
-  return (
-    <Grid2
-      container
-      spacing={0}
-      direction={"column"}
-      alignItems={"center"}
-      justifyContent={"center"}
-      sx={{
-        minHeight: "100vh",
-        backgroundColor: "primary.main",
-        padding: 4,
-      }}
-    >
-      <Grid2
-        /* item */
-        className="box-shadow"
-        xs={3}
-        sx={{
-          backgroundColor: "white",
-          padding: 3,
-          borderRadius: 2,
-        }}
-      >
-        <Typography variant="h5" sx={{ mb: 1 }}>
-          Login
-        </Typography>
-        <form action="">
-          <Grid2 container>
-            <Grid2
-              /* item */
-              xs={12}
-              sx={{
-                mt: 2,
-                maxWidth: "100%",
-              }}
-            >
-              <TextField
-                label="Email"
-                type="email"
-                placeholder="testing@google.com"
-                fullWidth
-                sx={{
-                  maxWidth: "100%",
-                }}
-              />
-            </Grid2>
-            <Grid2
-              /* item */
-              xs={12}
-              sx={{
-                mt: 2,
-              }}
-            >
-              <TextField
-                label="Password"
-                type="password"
-                placeholder="Password"
-                fullWidth
-              />
-            </Grid2>
-          </Grid2>
-        </form>
-      </Grid2>
-    </Grid2>
-  );
-};
-```
-
 `src/styles.css`
 
 ```jsx
 .box-shadow {
   box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.2);
 }
+```
+
+`src/auth/pages/LoginPage.jsx`
+
+```jsx
+import {
+  Box,
+  Typography,
+  TextField,
+} from "@mui/material";
+
+export const LoginPage = () => {
+  return (
+    <Box
+      component="main"
+      sx={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        minHeight: "100vh",
+        bgcolor: "primary.main",
+        // padding: 4,
+      }}
+    >
+      <Box
+        component="section"
+        className="box-shadow"
+        sx={{
+          width: {
+            xs: "70%",
+            sm: "60%",
+            md: "40%",
+            lg: "30%",
+          }, // Ancho responsivo
+          bgcolor: "white",
+          padding: { xs: 2, sm: 3, md: 4 }, // Padding responsivo
+          borderRadius: 2,
+        }}
+      >
+        <Typography
+          variant="h5"
+          sx={{ mb: 2, textAlign: "center" }}
+        >
+          Login
+        </Typography>
+        <Box
+          component="form"
+          sx={{
+            display: "flex",
+            flexDirection: { xs: "column", md: "row" }, // Column en móvil, fila en grande
+            gap: 2, // Espaciado entre los campos
+          }}
+        >
+          <TextField
+            id="email"
+            label="Email"
+            type="email"
+            placeholder="email@google.com"
+            size="small"
+            // fullWidth
+            // sx={{ flex: 1 }} // Que ambos ocupen el mismo espacio en filas grandes
+          />
+          <TextField
+            id="password"
+            label="Password"
+            type="password"
+            placeholder="password"
+            size="small"
+            // fullWidth
+            // sx={{ flex: 1 }} // Igual ancho que el otro
+          />
+        </Box>
+      </Box>
+    </Box>
+  );
+};
+```
+
+Otra forma, usando `Grid2`
+
+```jsx
+import {
+  Box,
+  Typography,
+  TextField,
+  Grid2,
+} from "@mui/material";
+
+export const LoginPage = () => {
+  return (
+    <Box
+      component="main"
+      sx={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        minHeight: "100vh",
+        bgcolor: "primary.main",
+        // padding: 4,
+      }}
+    >
+      <Box
+        component="section"
+        sx={{
+          width: {
+            xs: "80%",
+            sm: "60%",
+            md: "40%",
+            lg: "30%",
+          },
+          bgcolor: "white",
+          padding: { xs: 2, sm: 3, md: 4 },
+          borderRadius: 2,
+        }}
+      >
+        <Typography
+          variant="h5"
+          sx={{ mb: 2, textAlign: "center" }}
+        >
+          Login
+        </Typography>
+        <Grid2 container component="form" spacing={2}>
+          <Grid2 size={{ xs: 12, md: 6 }}>
+            <TextField
+              id="email"
+              label="Email"
+              type="email"
+              placeholder="email@google.com"
+              size="small"
+              fullWidth
+            />
+          </Grid2>
+          <Grid2 size={{ xs: 12, md: 6 }}>
+            <TextField
+              id="password"
+              label="Password"
+              type="password"
+              placeholder="password"
+              size="small"
+              fullWidth
+            />
+          </Grid2>
+        </Grid2>
+      </Box>
+    </Box>
+  );
+};
 ```
 
 [Grid2 MUI](https://mui.com/material-ui/react-grid2/)
