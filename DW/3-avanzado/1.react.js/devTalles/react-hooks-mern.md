@@ -15965,6 +15965,98 @@ export const RegisterPage = () => {
 };
 ```
 
+### 17.13 JournalLayout y JournalPage
+
+Estructura actual:
+
+```bash
+.
+├── eslint.config.js
+├── index.html
+├── node_modules
+├── package.json
+├── public
+├── README.md
+├── src
+│   ├── App.jsx
+│   ├── auth
+│   │   ├── layout
+│   │   │   └── AuthLayout.jsx
+│   │   ├── pages
+│   │   │   ├── LoginPage.jsx
+│   │   │   └── RegisterPage.jsx
+│   │   └── routes
+│   │       └── AuthRoutes.jsx
+│   ├── journal
+│   │   ├── layout
+│   │   │   └── JournalLayout.jsx
+│   │   ├── pages
+│   │   │   └── JournalPage.jsx
+│   │   └── routes
+│   │       └── JournalRoutes.jsx
+│   ├── main.jsx
+│   ├── router
+│   │   └── AppRouter.jsx
+│   ├── styles.css
+│   └── theme
+│       ├── purpleTheme.js
+│       └── Theme.jsx
+├── vite.config.js
+└── yarn.lock
+```
+
+`src/journal/pages/JournalPage.jsx`
+
+```jsx
+import { Typography } from "@mui/material";
+import { JournalLayout } from "../layout/JournalLayout";
+
+export const JournalPage = () => {
+  return (
+    <JournalLayout>
+      <Typography>
+        Lorem ipsum dolor, sit amet consectetur
+        adipisicing elit. Labore ipsa saepe id similique?
+        Illo reiciendis sunt a esse repellat. Accusantium
+        quasi, consequatur cumque natus mollitia maiores
+        voluptatum provident nobis fugiat.
+      </Typography>
+
+      {/* Nothing Selected */}
+    </JournalLayout>
+  );
+};
+```
+
+`src/journal/layout/JournalLayout.jsx`
+
+```jsx
+import { Box } from "@mui/material";
+
+const drawerWidth = 240;
+
+export const JournalLayout = ({ children }) => {
+  return (
+    <Box sx={{ display: "flex" }}>
+      {/* Navbar drawerWidth */}
+
+      {/* Sidebar drawerWidth */}
+
+      <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
+        {/* Toolbar */}
+
+        {children}
+      </Box>
+    </Box>
+  );
+};
+```
+
+
+
+
+
+
 ☝️👆
 👈👀
 ❯
