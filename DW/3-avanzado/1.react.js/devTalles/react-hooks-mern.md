@@ -16052,8 +16052,133 @@ export const JournalLayout = ({ children }) => {
 };
 ```
 
+### 17.14 NavBar
 
+Estructura actual:
 
+```bash
+.
+├── eslint.config.js
+├── index.html
+├── node_modules
+├── package.json
+├── public
+├── README.md
+├── src
+│   ├── App.jsx
+│   ├── auth
+│   │   ├── layout
+│   │   │   └── AuthLayout.jsx
+│   │   ├── pages
+│   │   │   ├── LoginPage.jsx
+│   │   │   └── RegisterPage.jsx
+│   │   └── routes
+│   │       └── AuthRoutes.jsx
+│   ├── journal
+│   │   ├── components
+│   │   │   └── NavBar.jsx
+│   │   ├── layout
+│   │   │   └── JournalLayout.jsx
+│   │   ├── pages
+│   │   │   └── JournalPage.jsx
+│   │   └── routes
+│   │       └── JournalRoutes.jsx
+│   ├── main.jsx
+│   ├── router
+│   │   └── AppRouter.jsx
+│   ├── styles.css
+│   └── theme
+│       ├── purpleTheme.js
+│       └── Theme.jsx
+├── vite.config.js
+└── yarn.lock
+```
+
+`src/journal/components/NavBar.jsx`
+
+```jsx
+import {
+  LogoutOutlined,
+  MenuOutlined,
+} from "@mui/icons-material";
+import {
+  AppBar,
+  Toolbar,
+  IconButton,
+  Grid2,
+  Typography,
+} from "@mui/material";
+
+export const NavBar = ({ drawerWidth = 240 }) => {
+  return (
+    <AppBar
+      position="fixed"
+      sx={{
+        width: { sm: `calc(100% - ${drawerWidth}px)` },
+        ml: { sm: `${drawerWidth}px` },
+      }}
+    >
+      <Toolbar>
+        <IconButton
+          aria-label=""
+          /* onClick={} */ color="inherit"
+          edge="start"
+          sx={{ mr: 2, display: { sm: "none" } }}
+        >
+          <MenuOutlined />
+        </IconButton>
+
+        <Grid2
+          container
+          direction="row"
+          justifyContent="space-between"
+          alignItems="center"
+        >
+          <Typography
+            variant="h6"
+            noWrap
+            component="span"
+          >
+            JournalApp
+          </Typography>
+          <IconButton
+            aria-label=""
+            /* onClick={} */ color="error"
+          >
+            <LogoutOutlined />
+          </IconButton>
+        </Grid2>
+      </Toolbar>
+    </AppBar>
+  );
+};
+```
+
+`src/journal/layout/JournalLayout.jsx`
+
+```jsx
+import { Box } from "@mui/material";
+import { NavBar } from "../components/NavBar";
+
+const drawerWidth = 240;
+
+export const JournalLayout = ({ children }) => {
+  return (
+    <Box sx={{ display: "flex" }}>
+      {/* Navbar drawerWidth */}
+      <NavBar drawerWidth={drawerWidth} />
+
+      {/* Sidebar drawerWidth */}
+
+      <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
+        {/* Toolbar */}
+
+        {children}
+      </Box>
+    </Box>
+  );
+};
+```
 
 
 
@@ -16072,43 +16197,10 @@ export const JournalLayout = ({ children }) => {
 
 
 
-`src/`
 
-```jsx
-```
-
-`src/`
-
-```jsx
-```
-
-
-### 17.13
-
-
-### 17.14
-
-`src/`
-
-```jsx
-```
-
-`src/`
-
-```jsx
-```
 
 ### 17.15
 
-`src/`
-
-```jsx
-```
-
-`src/`
-
-```jsx
-```
 
 ### 17.16
 
@@ -16159,6 +16251,30 @@ export const JournalLayout = ({ children }) => {
 ```
 
 ### 17.20
+
+`src/`
+
+```jsx
+```
+
+`src/`
+
+```jsx
+```
+
+### 17.21
+
+`src/`
+
+```jsx
+```
+
+`src/`
+
+```jsx
+```
+
+### 17.22
 
 `src/`
 
