@@ -28,15 +28,14 @@
               "type": "markdown",
               "state": {
                 "file": "DW/3-avanzado/1.react.js/devTalles/react-hooks-mern.md",
-                "mode": "source",
+                "mode": "preview",
                 "source": true
               },
               "icon": "lucide-file",
               "title": "react-hooks-mern"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -156,13 +155,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "DW/3-avanzado/1.react.js/devTalles/react-hooks-mern.md",
+                "file": "DW/3-avanzado/1.react.js/devTalles/material-ui.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of react-hooks-mern"
+              "title": "Outline of material-ui"
             }
           }
         ],
@@ -183,10 +182,10 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "23391ff2c9091288",
+  "active": "ecd8f2368c03aa73",
   "lastOpenFiles": [
-    "DW/3-avanzado/1.react.js/devTalles/material-ui.md",
     "DW/3-avanzado/1.react.js/devTalles/react-hooks-mern.md",
+    "DW/3-avanzado/1.react.js/devTalles/material-ui.md",
     "DW/1-basico/003-prework/entorno-windows/vsc/setting.md",
     "settings.md",
     "DW/1-basico/003-prework/entorno-windows/vsc-chrome.md",
