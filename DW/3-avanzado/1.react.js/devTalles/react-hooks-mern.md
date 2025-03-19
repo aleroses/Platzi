@@ -16786,7 +16786,234 @@ Aquí les dejo el código fuente de la sección por si lo llegan a necesitar:
 
 Es una sección sumamente pequeña, pero quiero darles una explicación teórica sobre Redux antes de entrar en él, pero la ventaja es que para estas alturas, ya deberíamos de saber sobre el Reducer, el cual es el corazón del Redux, por consecuencia aprender Redux en este instante debería ser más fácil!
 
-### 18.3
+### 18.3 Explicación visual del patrón Redux
+
+Redux es una biblioteca de JavaScript utilizada para gestionar el estado de las aplicaciones, especialmente en entornos como React. Su principal característica es imponer un flujo de datos unidireccional, lo que facilita la predictibilidad y el mantenimiento del estado de la aplicación.
+
+#### ¿Qué es Redux?
+
+Redux centraliza el estado de la aplicación en un único **store** (almacén). Este almacén contiene el estado global de la aplicación y es inmutable; cualquier modificación se realiza mediante **acciones** que describen qué ha ocurrido y **reducers** que especifican cómo el estado debe cambiar en respuesta a esas acciones.
+
+##### ¿Cómo funciona Redux?
+
+Redux sigue un patrón de arquitectura basado en tres principios:
+
+1. **Single Source of Truth**: Todo el estado de la aplicación se almacena en un único objeto llamado **store**.
+    
+2. **El estado es de solo lectura**: La única forma de modificar el estado es emitiendo una **acción**.
+    
+3. **Los cambios se realizan con funciones puras**: Para especificar cómo cambia el estado, se usan **reducers**, que son funciones puras que toman el estado anterior y una acción, y devuelven un nuevo estado.
+
+El flujo de datos en Redux sigue estos pasos:
+
+1. **Dispatch de una acción**: Una acción, que es un objeto JavaScript con una propiedad `type`, es enviada utilizando `store.dispatch(action)`.
+    
+2. **Ejecución del reducer**: Redux pasa el estado actual y la acción al reducer, una función pura que determina cómo actualizar el estado.
+    
+3. **Actualización del estado**: El reducer devuelve un nuevo estado, que reemplaza al anterior en el store.
+    
+4. **Notificación a los suscriptores**: Redux notifica a todas las funciones suscritas sobre el cambio de estado, permitiendo que la interfaz de usuario se actualice en consecuencia.
+
+##### Componentes clave de Redux
+
+1. **Store**: Es el objeto que contiene el estado global de la aplicación.
+    
+2. **Actions**: Son objetos que describen qué sucedió. Tienen un tipo (`type`) y pueden llevar datos adicionales (payload).
+    
+3. **Reducers**: Son funciones puras que toman el estado actual y una acción, y devuelven un nuevo estado.
+    
+4. **Dispatch**: Es una función del store que se usa para enviar acciones y actualizar el estado.
+
+#### ¿Qué es un reducer?
+
+Un **reducer** es una función pura que toma el estado anterior y una acción como argumentos, y devuelve un nuevo estado. No debe modificar el estado actual, realizar operaciones con efectos secundarios ni depender de variables externas. Su responsabilidad es especificar cómo cambia el estado en respuesta a una acción.
+
+Ejemplo de un reducer para gestionar una lista de tareas:
+
+```javascript
+function todos(state = [], action) {
+  switch (action.type) {
+    case 'ADD_TODO':
+      return [...state, { text: action.text, completed: false }];
+    case 'TOGGLE_TODO':
+      return state.map((todo, index) =>
+        index === action.index ? { ...todo, completed: !todo.completed } : todo
+      );
+    default:
+      return state;
+  }
+}
+```
+
+#### Uso de Redux en operaciones síncronas
+
+En operaciones síncronas, las acciones se envían directamente y los reducers procesan estas acciones de manera inmediata para actualizar el estado.
+
+Ejemplo de una acción síncrona:
+
+```javascript
+const addTodo = (text) => ({
+  type: 'ADD_TODO',
+  text,
+});
+```
+
+Al despachar `addTodo`, el reducer correspondiente actualizará el estado de forma inmediata.
+
+#### Uso de Redux en operaciones asíncronas
+
+Redux, por defecto, maneja flujos de datos síncronos. Para gestionar operaciones asíncronas, como llamadas a APIs, se utilizan **middlewares** que extienden la funcionalidad de Redux. Uno de los middlewares más comunes es **redux-thunk**, que permite que las acciones sean funciones en lugar de objetos, facilitando la ejecución de operaciones asíncronas.
+
+Para utilizar `redux-thunk`, primero se instala y se aplica al store:
+
+```javascript
+import { createStore, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
+import rootReducer from './reducers';
+
+const store = createStore(rootReducer, applyMiddleware(thunk));
+```
+
+Ejemplo de una acción asíncrona utilizando `redux-thunk`:
+
+```javascript
+const fetchPosts = () => {
+  return (dispatch) => {
+    dispatch({ type: 'FETCH_POSTS_REQUEST' });
+    fetch('https://api.example.com/posts')
+      .then((response) => response.json())
+      .then((data) => dispatch({ type: 'FETCH_POSTS_SUCCESS', payload: data }))
+      .catch((error) => dispatch({ type: 'FETCH_POSTS_FAILURE', error }));
+  };
+};
+```
+
+En este ejemplo, `fetchPosts` es una función que retorna otra función. Esta función interna realiza una llamada fetch y, según el resultado, despacha acciones que informan al reducer sobre el estado de la operación asíncrona.
+
+Este enfoque permite que Redux maneje tanto flujos de datos síncronos como asíncronos de manera eficiente, manteniendo un estado predecible y coherente en la aplicación.
+
+#### Diagrama Completo de Redux
+
+```mermaid
+graph TD
+  A[Componente] -->|Dispatch| B[Acción]
+  B --> C[Reducer]
+  C --> D[Store]
+  D -->|Selector| A
+```
+
+---
+
+```mermaid
+graph TD
+  subgraph React
+    A[Componente] -->|useDispatch| B{Acción}
+    B -->|Síncrona| C[Acción Síncrona]
+    B -->|Asíncrona| D[Acción Asíncrona]
+    C --> E[Reducer]
+    D -->|Thunk| F[Llamada API]
+    F -->|Éxito| G[Acción de Éxito]
+    F -->|Fallo| H[Acción de Fallo]
+    G --> E
+    H --> E
+    E --> I[Store]
+    I -->|useSelector| A
+  end
+
+  subgraph Redux
+    E -->|Actualiza Estado| I
+    I -->|Notifica Cambios| A
+  end
+
+  subgraph API Externa
+    F -->|GET/POST| J[API Externa]
+    J -->|Respuesta| F
+  end
+
+  style A fill:#f9f,stroke:#333,stroke-width:2px
+  style B fill:#bbf,stroke:#333,stroke-width:2px
+  style C fill:#f96,stroke:#333,stroke-width:2px
+  style D fill:#f96,stroke:#333,stroke-width:2px
+  style E fill:#6f9,stroke:#333,stroke-width:2px
+  style F fill:#69f,stroke:#333,stroke-width:2px
+  style G fill:#6f9,stroke:#333,stroke-width:2px
+  style H fill:#f66,stroke:#333,stroke-width:2px
+  style I fill:#9cf,stroke:#333,stroke-width:2px
+  style J fill:#ccc,stroke:#333,stroke-width:2px
+```
+
+##### Explicación del Diagrama
+
+1. **Componente (React)**:
+   - El componente de React inicia el flujo al despachar una acción (`useDispatch`).
+   - Puede despachar acciones **síncronas** (como incrementar un contador) o **asíncronas** (como una llamada a una API).
+
+2. **Acción Síncrona**:
+   - Una acción síncrona es un objeto simple que describe un cambio (por ejemplo, `{ type: 'INCREMENT' }`).
+   - Esta acción es enviada directamente al **reducer**.
+
+3. **Acción Asíncrona**:
+   - Una acción asíncrona (manejada por Thunk o Redux Toolkit) realiza una operación asíncrona, como una llamada a una API.
+   - Dependiendo del resultado de la API, se despacha una **acción de éxito** o una **acción de fallo**.
+
+4. **Reducer**:
+   - El reducer recibe la acción y el estado actual, y devuelve un nuevo estado.
+   - Es una función pura que no tiene efectos secundarios.
+
+5. **Store**:
+   - El store contiene el estado global de la aplicación.
+   - Cuando el reducer actualiza el estado, el store notifica a los componentes suscritos (`useSelector`).
+
+6. **API Externa**:
+   - Las acciones asíncronas interactúan con APIs externas para obtener o enviar datos.
+   - La respuesta de la API determina si la acción fue exitosa o fallida.
+
+7. **Notificación de Cambios**:
+   - Cuando el estado en el store cambia, los componentes de React que usan `useSelector` se actualizan automáticamente.
+
+---
+
+```mermaid
+graph TD;
+    %% Sección de inicio
+    A[Usuario interactúa con la UI] -->|Ejecuta función en React| B[Dispatch de una acción]
+
+    %% Manejo de acciones síncronas
+    B -->|Acción síncrona| C{¿Es asíncrona?}
+    C -- No --> D[Reducer procesa la acción]
+    D --> E[Genera un nuevo estado]
+    E --> F[Store actualiza el estado global]
+    F --> G[Componentes suscritos detectan cambios]
+    G --> H[La UI se renderiza nuevamente]
+
+    %% Manejo de acciones asíncronas con Redux-Thunk
+    C -- Sí --> I[Llamada a una API u operación asíncrona]
+    I --> J{¿Éxito o error?}
+    J -- Éxito --> K[Dispatch de acción de éxito]
+    J -- Error --> L[Dispatch de acción de error]
+
+    K --> D
+    L --> D
+
+    %% Middleware en acción
+    subgraph Middleware_Thunk
+        B -->|Intercepta la acción| M[Verifica si la acción es una función]
+        M -- Sí --> I
+        M -- No --> D
+    end
+
+    %% Relación entre el store y los componentes de React
+    subgraph Store_Global
+        F --> O[Componentes obtienen el estado actualizado con useSelector]
+        O --> G
+    end
+
+    %% Componentes despachando acciones
+    subgraph Componentes_React
+        P[useDispatch ejecuta acción] --> B
+        G --> Q[UI actualizada]
+    end
+```
 
 ### 18.4
 
