@@ -16107,49 +16107,62 @@ import {
   IconButton,
   Grid2,
   Typography,
+  Drawer,
 } from "@mui/material";
+import { useState } from "react";
 
 export const NavBar = ({ drawerWidth = 240 }) => {
-  return (
-    <AppBar
-      position="fixed"
-      sx={{
-        width: { sm: `calc(100% - ${drawerWidth}px)` },
-        ml: { sm: `${drawerWidth}px` },
-      }}
-    >
-      <Toolbar>
-        <IconButton
-          aria-label=""
-          /* onClick={} */ color="inherit"
-          edge="start"
-          sx={{ mr: 2, display: { sm: "none" } }}
-        >
-          <MenuOutlined />
-        </IconButton>
+  const [open, setOpen] = useState(false);
 
-        <Grid2
-          container
-          direction="row"
-          justifyContent="space-between"
-          alignItems="center"
-        >
+  return (
+    <>
+      <AppBar
+        // position="static"
+        sx={{
+          width: { sm: `calc(100% - ${drawerWidth}px)` },
+          ml: { sm: `${drawerWidth}px` },
+        }}
+      >
+        <Toolbar>
+          <IconButton
+            aria-label=""
+            onClick={() => setOpen(true)}
+            color="inherit"
+            edge="start"
+            sx={{
+              display: { xs: "flex", sm: "none" },
+              mr: 2,
+            }}
+          >
+            <MenuOutlined />
+          </IconButton>
+
           <Typography
             variant="h6"
-            noWrap
+            // noWrap
             component="span"
+            sx={{ flexGrow: 1 }}
           >
             JournalApp
           </Typography>
-          <IconButton
-            aria-label=""
-            /* onClick={} */ color="error"
-          >
+
+          <IconButton aria-label="" color="error">
             <LogoutOutlined />
           </IconButton>
-        </Grid2>
-      </Toolbar>
-    </AppBar>
+        </Toolbar>
+      </AppBar>
+
+      <Drawer
+        anchor="left"
+        open={open}
+        onClose={() => setOpen(false)}
+        sx={{ display: { xs: "flex", sm: "none" } }}
+      >
+        <Typography variant="h6" color="initial">
+          Lolcat
+        </Typography>
+      </Drawer>
+    </>
   );
 };
 ```
