@@ -16393,7 +16393,103 @@ export const JournalLayout = ({ children }) => {
 };
 ```
 
-### 17.16
+### 17.16 NothingSelectedView - No hay nada seleccionado
+
+Estructura actual:
+
+```bash
+.
+├── eslint.config.js
+├── index.html
+├── node_modules
+├── package.json
+├── public
+├── README.md
+├── src
+│   ├── App.jsx
+│   ├── auth
+│   │   ├── layout
+│   │   │   └── AuthLayout.jsx
+│   │   ├── pages
+│   │   │   ├── LoginPage.jsx
+│   │   │   └── RegisterPage.jsx
+│   │   └── routes
+│   │       └── AuthRoutes.jsx
+│   ├── journal
+│   │   ├── components
+│   │   │   ├── NavBar.jsx
+│   │   │   └── SideBar.jsx
+│   │   ├── layout
+│   │   │   └── JournalLayout.jsx
+│   │   ├── pages
+│   │   │   └── JournalPage.jsx
+│   │   ├── routes
+│   │   │   └── JournalRoutes.jsx
+│   │   └── views
+│   │       └── NothingSelectedView.jsx
+│   ├── main.jsx
+│   ├── router
+│   │   └── AppRouter.jsx
+│   ├── styles.css
+│   └── theme
+│       ├── purpleTheme.js
+│       └── Theme.jsx
+├── vite.config.js
+└── yarn.lock
+```
+
+`src/journal/views/NothingSelectedView.jsx`
+
+```jsx
+import { StarOutline } from "@mui/icons-material";
+import { Box, Grid2, Typography } from "@mui/material";
+
+export const NothingSelectedView = () => {
+  return (
+    <Box
+      component="main"
+      sx={{
+        minHeight: "calc(100vh - 110px)",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "center",
+        bgcolor: "primary.main",
+        borderRadius: 5,
+      }}
+    >
+      <Grid2>
+        <StarOutline
+          sx={{ fontSize: 100, color: "white" }}
+        />
+      </Grid2>
+      <Grid2>
+        <Typography variant="h5" color="white">
+          Select or create a note.
+        </Typography>
+      </Grid2>
+    </Box>
+  );
+};
+```
+
+`src/journal/pages/JournalPage.jsx`
+
+```jsx
+import { JournalLayout } from "../layout/JournalLayout";
+import { NothingSelectedView } from "../views/NothingSelectedView";
+
+export const JournalPage = () => {
+  return (
+    <JournalLayout>
+      {/* Nothing Selected */}
+      <NothingSelectedView />
+    </JournalLayout>
+  );
+};
+```
+
+### 17.17
 
 `src/`
 
@@ -16422,20 +16518,6 @@ export const JournalLayout = ({ children }) => {
 🟣
 🟡
 
-
-
-
-### 17.17
-
-`src/`
-
-```jsx
-```
-
-`src/`
-
-```jsx
-```
 
 ### 17.18
 
