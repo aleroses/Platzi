@@ -17155,22 +17155,90 @@ export default App;
 - [Redux Toolkit](https://redux-toolkit.js.org/)
 - [¿Qué es Redux?](https://www.youtube.com/watch?v=j-jzI3wkkVk)
 
-### 18.6
+### 18.6 ConfigureStore y Slices
 
-`src/`
+Estructura:
 
-```jsx
+```bash
+.
+├── eslint.config.js
+├── index.html
+├── node_modules
+├── package.json
+├── public
+├── README.md
+├── src
+│   ├── App.css
+│   ├── App.jsx
+│   ├── assets
+│   │   └── react.svg
+│   ├── index.css
+│   ├── main.jsx
+│   └── store
+│       ├── slices
+│       │   ├── counter
+│       │   │   └── counterSlice.js
+│       │   ├── pokemon
+│       │   └── todos
+│       └── store.js
+├── vite.config.js
+└── yarn.lock
 ```
 
-`src/`
+`src/store/store.js`
 
-```jsx
+```js
+import { configureStore } from "@reduxjs/toolkit";
+import { counterSlice } from "./slices/counter/counterSlice";
+
+export const store = configureStore({
+  reducer: {
+    counter: counterSlice.reducer,
+  },
+});
 ```
 
+`src/store/slices/counter/counterSlice.js`
 
-`src/`
+```js
+import { createSlice } from "@reduxjs/toolkit";
+
+const initialState = {
+  value: 10,
+};
+
+export const counterSlice = createSlice({
+  name: "counter",
+  initialState,
+  reducers: {
+    increment: (state) => {
+      state.counter += 1;
+    },
+  },
+});
+
+export const { increment } = counterSlice.actions;
+```
+
+`src/main.jsx`
 
 ```jsx
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+
+import { store } from "./store/store";
+import { Provider } from "react-redux";
+
+import "./index.css";
+import App from "./App.jsx";
+
+createRoot(document.getElementById("root")).render(
+  <StrictMode>
+    <Provider store={store}>
+      <App />
+    </Provider>
+  </StrictMode>
+);
 ```
 
 
