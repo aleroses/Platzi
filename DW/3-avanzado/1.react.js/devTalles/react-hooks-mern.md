@@ -17015,7 +17015,72 @@ graph TD;
     end
 ```
 
-### 18.4
+### 18.4 Redux, React Redux y RTK Query
+
+**React Redux** y **Redux Toolkit** siguen siendo herramientas fundamentales en el ecosistema de Redux, pero cada una tiene un propósito y enfoque diferente.
+
+#### React Redux
+
+React Redux es la librería oficial que permite integrar Redux con React. Su función principal es conectar el store de Redux con los componentes de React, facilitando el acceso al estado global y la despacho de acciones.
+
+Características principales:
+
+1. **Provider**:
+   - Provee el store de Redux a toda la aplicación mediante el componente `<Provider>`.
+
+2. **Hooks**:
+   - `useSelector`: Permite a los componentes acceder al estado global almacenado en el store.
+   - `useDispatch`: Permite a los componentes despachar acciones para actualizar el estado.
+
+3. **Conectores**:
+   - Aunque los hooks son la forma recomendada, React Redux también soporta el uso de `connect` (una API más antigua) para conectar componentes de clase con el store.
+
+4. **Rendimiento optimizado**:
+   - React Redux optimiza el rendimiento al evitar renders innecesarios en los componentes cuando el estado cambia.
+
+Uso típico:
+
+React Redux se usa cuando ya tienes un store de Redux configurado y necesitas conectar tus componentes de React a ese store. Es la capa de integración entre React y Redux.
+
+---
+
+#### Redux Toolkit (RTK)
+
+Redux Toolkit (RTK) es la librería oficial recomendada por el equipo de Redux para simplificar la configuración y el uso de Redux. Proporciona herramientas y abstracciones que reducen la cantidad de código repetitivo y mejoran la legibilidad.
+
+Características principales:
+
+1. **configureStore**:
+   - Simplifica la creación del store de Redux, incluyendo la configuración automática de middlewares como Redux Thunk y Redux DevTools.
+
+2. **createSlice**:
+   - Permite definir reducers y acciones en un solo lugar, reduciendo la necesidad de escribir código repetitivo.
+   - Genera automáticamente action creators y action types.
+
+3. **createAsyncThunk**:
+   - Facilita el manejo de operaciones asíncronas (como llamadas a APIs) sin necesidad de escribir lógica compleja.
+
+4. **createEntityAdapter**:
+   - Proporciona una forma eficiente de manejar colecciones de datos normalizadas en el store.
+
+5. **Integración con React Redux**:
+   - Redux Toolkit está diseñado para funcionar perfectamente con React Redux, por lo que puedes usar ambas librerías juntas.
+
+Uso típico:
+
+Redux Toolkit se usa para simplificar la configuración y el mantenimiento de un store de Redux. Es especialmente útil en aplicaciones grandes donde la cantidad de código y la complejidad pueden crecer rápidamente.
+
+#### Diferencias clave entre React Redux y Redux Toolkit
+
+| Característica                | React Redux                         | Redux Toolkit (RTK)                 |
+|-------------------------------|--------------------------------------|--------------------------------------|
+| **Propósito**                 | Integrar Redux con React             | Simplificar la configuración de Redux|
+| **Creación del store**        | No proporciona herramientas para crear el store | Proporciona `configureStore` para crear el store fácilmente |
+| **Definición de reducers**    | Requiere definir reducers y acciones manualmente | Usa `createSlice` para definir reducers y acciones de forma simplificada |
+| **Manejo de operaciones asíncronas** | Requiere middleware adicional (como Redux Thunk) | Incluye `createAsyncThunk` para manejar operaciones asíncronas |
+| **Código repetitivo**         | Genera más código repetitivo         | Reduce significativamente el código repetitivo |
+| **Integración**               | Necesita Redux Toolkit o configuración manual para simplificar Redux | Diseñado para funcionar con React Redux |
+| **Rendimiento**               | Optimizado para evitar renders innecesarios | Depende de React Redux para la optimización de renders |
 
 
 `src/`
