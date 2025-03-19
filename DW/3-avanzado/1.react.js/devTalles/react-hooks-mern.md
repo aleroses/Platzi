@@ -16759,6 +16759,94 @@ export const JournalPage = () => {
 };
 ```
 
+### 17.20 Código fuente de la sección
+
+Aquí les dejo el código fuente de la sección por si lo llegan a necesitar:
+
+[GitHub - Fin sección 17](https://github.com/Klerith/react-journal-material/tree/fin-seccion-17)
+
+## 🟣 18. Redux - ¿Qué es y conceptos? + React Redux
+
+### 18.1 Introducción a la sección
+
+### 18.2 Temas puntuales de la sección
+
+**¿Qué veremos en esta sección?**
+
+- Redux
+- Store
+- Middlewares
+- Dispatch
+- Actions
+- State
+- Acciones asíncronas
+- RTK Query
+- Redux Toolkit
+- Slices
+
+Es una sección sumamente pequeña, pero quiero darles una explicación teórica sobre Redux antes de entrar en él, pero la ventaja es que para estas alturas, ya deberíamos de saber sobre el Reducer, el cual es el corazón del Redux, por consecuencia aprender Redux en este instante debería ser más fácil!
+
+### 18.3
+
+### 18.4
+
+
+`src/`
+
+```jsx
+```
+
+`src/`
+
+```jsx
+```
+
+☝️👆
+👈👀
+❯
+👈👀👇
+👈👀☝️
+👈👀📌
+🔥
+🚫
+🔘
+🟣
+🟡
+
+
+### 18.5
+
+### 18.6
+
+### 18.7
+
+### 18.8
+
+### 18.9
+
+### 18.10
+
+
+### 18.11
+
+### 18.12
+
+### 18.13
+
+### 18.14
+
+### 18.15
+
+### 18.16
+
+### 18.17
+
+### 18.18
+
+### 18.19
+
+
+
 `src/`
 
 ```jsx
