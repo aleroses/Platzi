@@ -17082,6 +17082,80 @@ Redux Toolkit se usa para simplificar la configuración y el mantenimiento de un
 | **Integración**               | Necesita Redux Toolkit o configuración manual para simplificar Redux | Diseñado para funcionar con React Redux |
 | **Rendimiento**               | Optimizado para evitar renders innecesarios | Depende de React Redux para la optimización de renders |
 
+### 18.5 Inicio de proyecto - Redux-Tool
+
+Creamos el proyecto:
+
+```bash
+yarn create vite
+# 09-toolkit-redux
+# React
+# JavaScript + SWC
+
+cd 09-toolkit-redux
+yarn
+```
+
+Instalamos Redux:
+
+```bash
+# Un solo comando
+yarn add @reduxjs/toolkit react-redux
+
+# Por separado
+yarn add @reduxjs/toolkit
+yarn add react-redux
+```
+
+`src/App.jsx`
+
+```jsx
+import { useState } from "react";
+import reactLogo from "./assets/react.svg";
+import viteLogo from "/vite.svg";
+import "./App.css";
+
+function App() {
+  const [count, setCount] = useState(0);
+
+  return (
+    <>
+      <div>
+        <a href="https://vite.dev" target="_blank">
+          <img
+            src={viteLogo}
+            className="logo"
+            alt="Vite logo"
+          />
+        </a>
+        <a href="https://react.dev" target="_blank">
+          <img
+            src={reactLogo}
+            className="logo react"
+            alt="React logo"
+          />
+        </a>
+      </div>
+      <h1>Vite + React</h1>
+      <div className="card">
+        <button
+          onClick={() => setCount((count) => count + 1)}
+        >
+          count is {count}
+        </button>
+      </div>
+    </>
+  );
+}
+
+export default App;
+```
+
+- [Redux DevTools](https://chromewebstore.google.com/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd?hl=en)
+- [Redux Toolkit](https://redux-toolkit.js.org/)
+- [¿Qué es Redux?](https://www.youtube.com/watch?v=j-jzI3wkkVk)
+
+### 18.6
 
 `src/`
 
@@ -17092,6 +17166,16 @@ Redux Toolkit se usa para simplificar la configuración y el mantenimiento de un
 
 ```jsx
 ```
+
+
+`src/`
+
+```jsx
+```
+
+
+
+
 
 ☝️👆
 👈👀
@@ -17106,9 +17190,9 @@ Redux Toolkit se usa para simplificar la configuración y el mantenimiento de un
 🟡
 
 
-### 18.5
 
-### 18.6
+
+
 
 ### 18.7
 
