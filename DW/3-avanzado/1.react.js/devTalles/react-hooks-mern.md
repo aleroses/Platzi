@@ -17204,7 +17204,7 @@ export const store = configureStore({
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  value: 10,
+  counter: 10,
 };
 
 export const counterSlice = createSlice({
@@ -17217,7 +17217,7 @@ export const counterSlice = createSlice({
   },
 });
 
-export const { increment } = counterSlice.actions;
+export const { increment } = counterSlice.actions; 👈👀
 ```
 
 `src/main.jsx`
@@ -17241,8 +17241,59 @@ createRoot(document.getElementById("root")).render(
 );
 ```
 
+### 18.7 Usar valores del store y despachar acciones
 
+`src/App.jsx`
 
+```jsx
+import { useDispatch, useSelector } from "react-redux";
+
+import reactLogo from "./assets/react.svg";
+import viteLogo from "/vite.svg";
+import "./App.css";
+import { increment } from "./store/slices/counter/counterSlice";
+
+function App() {
+  const { counter } = useSelector(
+    (state) => state.counter
+  );
+  const dispatch = useDispatch();
+
+  return (
+    <>
+      <div>
+        <a href="https://vite.dev" target="_blank">
+          <img
+            src={viteLogo}
+            className="logo"
+            alt="Vite logo"
+          />
+        </a>
+        <a href="https://react.dev" target="_blank">
+          <img
+            src={reactLogo}
+            className="logo react"
+            alt="React logo"
+          />
+        </a>
+      </div>
+      <h1>Vite + React</h1>
+      <div className="card">
+        <button onClick={() => dispatch(increment())}>
+          count is {counter}
+        </button>
+      </div>
+    </>
+  );
+}
+
+export default App;
+```
+
+`src/`
+
+```jsx
+```
 
 
 ☝️👆
@@ -17262,7 +17313,7 @@ createRoot(document.getElementById("root")).render(
 
 
 
-### 18.7
+
 
 ### 18.8
 
