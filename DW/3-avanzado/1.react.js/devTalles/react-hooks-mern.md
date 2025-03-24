@@ -17294,6 +17294,33 @@ export default App;
 
 ![](https://i.postimg.cc/y8LQBBb9/18-7-redux.png)
 
+Estructura:
+
+```bash
+.
+├── eslint.config.js
+├── index.html
+├── node_modules
+├── package.json
+├── public
+├── README.md
+├── src
+│   ├── App.jsx
+│   ├── assets
+│   │   └── react.svg
+│   ├── main.jsx
+│   └── store
+│       ├── slices
+│       │   ├── counter
+│       │   │   ├── Counter.jsx
+│       │   │   └── counterSlice.js
+│       │   ├── pokemon
+│       │   └── todos
+│       └── store.js
+├── vite.config.js
+└── yarn.lock
+```
+
 1. Explicación de `createSlice` y las Exportaciones
 
 Archivo: `counterSlice.js`
