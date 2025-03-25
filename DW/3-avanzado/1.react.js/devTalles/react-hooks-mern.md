@@ -17472,17 +17472,123 @@ export default App;
 - **Componente**: El componente `Counter.jsx` usa `useSelector` para acceder al estado y `useDispatch` para enviar acciones.
 - **UI**: Cuando el usuario interactúa con los botones, se despachan acciones que actualizan el estado en el store, y la UI se actualiza automáticamente.
 
+### 18.8 Tarea - decrement e incrementBy
 
+`src/main.jsx`
 
+```jsx
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
 
+import { store } from "./store/store";
+import { Provider } from "react-redux";
 
-### 18.8
+import "./index.css";
+import App from "./App.jsx";
 
-`src/`
+createRoot(document.getElementById("root")).render(
+  <StrictMode>
+    <Provider store={store}>
+      <App />
+    </Provider>
+  </StrictMode>
+);
+```
+
+`src/App.jsx`
+
+```jsx
+import { useDispatch, useSelector } from "react-redux";
+import {
+  increment,
+  incrementBy,
+  decrement,
+} from "./store/slices/counter/counterSlice";
+import "./App.css";
+
+function App() {
+  const { counter } = useSelector(
+    (state) => state.counter
+  );
+  const dispatch = useDispatch();
+
+  return (
+    <>
+      <h1>Count is {counter}</h1>
+      <div className="card">
+        <button onClick={() => dispatch(increment())}>
+          Increment
+        </button>
+        <button onClick={() => dispatch(incrementBy(5))}>
+          IncrementByTwo
+        </button>
+        <button onClick={() => dispatch(decrement())}>
+          Decrement
+        </button>
+      </div>
+    </>
+  );
+}
+
+export default App;
+```
+
+`src/store/slices/counter/counterSlice.js`
+
+```js
+import { createSlice } from "@reduxjs/toolkit";
+
+const initialState = {
+  counter: 0,
+};
+
+export const counterSlice = createSlice({
+  name: "counter",
+  initialState,
+  reducers: {
+    increment: (state) => {
+      state.counter += 1;
+    },
+    incrementBy: (state, action) => {
+      state.counter += action.payload;
+      console.log(action);
+    },
+    decrement: (state) => {
+      state.counter -= 1;
+    },
+  },
+});
+
+export const { increment, incrementBy, decrement } =
+  counterSlice.actions;
+
+// export default counterSlice.reducer;
+```
+
+`src/store/store.js`
+
+```js
+import { configureStore } from "@reduxjs/toolkit";
+import { counterSlice } from "./slices/counter/counterSlice";
+
+export const store = configureStore({
+  reducer: {
+    counter: counterSlice.reducer,
+  },
+});
+```
+
+### 18.9
+
+`src/main.jsx`
 
 ```jsx
 ```
 
+`src/main.jsx`
+
+```jsx
+```
 
 ☝️👆
 👈👀
@@ -17505,7 +17611,7 @@ export default App;
 
 
 
-### 18.9
+
 
 ### 18.10
 
