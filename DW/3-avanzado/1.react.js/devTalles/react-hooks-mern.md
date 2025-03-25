@@ -17306,8 +17306,6 @@ Estructura:
 ├── README.md
 ├── src
 │   ├── App.jsx
-│   ├── assets
-│   │   └── react.svg
 │   ├── main.jsx
 │   └── store
 │       ├── slices
@@ -17334,7 +17332,7 @@ const initialState = {
 
 export const counterSlice = createSlice({
   name: "counter",
-  initialState,
+  initialState, // 👈👀
   reducers: {
     increment: (state) => { state.value += 1; },
     decrement: (state) => { state.value -= 1; },
@@ -17344,6 +17342,7 @@ export const counterSlice = createSlice({
 
 export const { increment, decrement, reset } = counterSlice.actions;
 
+// Beware of this export
 export default counterSlice.reducer;
 ```
 
@@ -17368,11 +17367,13 @@ Cuando llamas a `createSlice`, Redux Toolkit genera automáticamente **action cr
 
 - **`counterSlice.reducer`**: Es la función que Redux usa para actualizar el estado cuando se despacha una acción.
 
+![](https://i.postimg.cc/BnkkPm67/18-8-create-slice.png)
+
 2. Configuración del Store
 
 Archivo: `store.js`
 
-```javascript
+```js
 import { configureStore } from "@reduxjs/toolkit";
 import counterSlice from "./slices/counter/counterSlice";
 
@@ -17391,9 +17392,9 @@ export const store = configureStore({
 
 3. Conexión con React
 
-Archivo: `index.js`
+Archivo: `main.jsx`
 
-```javascript
+```jsx
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { store } from "./store/store";
@@ -17417,9 +17418,9 @@ createRoot(document.getElementById("root")).render(
 
 4. Componente del Contador
 
-Archivo: `Counter.js`
+Archivo: `Counter.jsx`
 
-```javascript
+```jsx
 import { useDispatch, useSelector } from "react-redux";
 import { decrement, increment, reset } from "./counterSlice";
 
@@ -17440,17 +17441,17 @@ export const Counter = () => {
 
 ¿Qué hacen `useSelector` y `useDispatch`?
 
-- **`useSelector`**: Es un hook de React Redux que te permite acceder al estado global. En este caso, `state.counter.value` obtiene el valor del contador.
+- **`useSelector`**: Es un hook de React Redux que te permite acceder al **estado** global. En este caso, `state.counter.value` obtiene el valor del contador.
 - **`useDispatch`**: Es un hook que te permite despachar acciones para actualizar el estado. Aquí, se usa para despachar `increment`, `decrement` y `reset`.
 
 5. Componente Principal
 
-Archivo: `App.js`
+Archivo: `App.jsx`
 
-```javascript
+```jsx
 import { Counter } from "./store/slices/counter/counter";
 
-function App() {
+const App = () => {
   return (
     <div>
       <h1>Counter App</h1>
@@ -17462,15 +17463,13 @@ function App() {
 export default App;
 ```
 
-¿Qué hace `App`?
-
 `App` es el componente principal de la aplicación. Renderiza el componente `Counter`.
 
 6. Flujo Completo**
 
 - **Store**: El store de Redux se configura en `store.js` y se provee a la aplicación mediante `Provider`.
 - **Slice**: El slice `counterSlice.js` define la lógica del contador, incluyendo los reducers y las acciones.
-- **Componente**: El componente `Counter.js` usa `useSelector` para acceder al estado y `useDispatch` para enviar acciones.
+- **Componente**: El componente `Counter.jsx` usa `useSelector` para acceder al estado y `useDispatch` para enviar acciones.
 - **UI**: Cuando el usuario interactúa con los botones, se despachan acciones que actualizan el estado en el store, y la UI se actualiza automáticamente.
 
 
