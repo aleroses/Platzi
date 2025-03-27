@@ -17618,7 +17618,7 @@ En Visual Studio Code presiona:
       "import { createSlice } from '@reduxjs/toolkit';",
       "",
       "export const ${1:template}Slice = createSlice({",
-      "  name: 'name',",
+      "  name: '${1:template}',",
       "  initialState: {",
       "    counter: 10,",
       "  },",
@@ -17643,15 +17643,129 @@ Ahora al escribir `redux-slice` te genere la estructura.
 - `Ctrl + Shift + P`
 - Indent using spaces
 
-### 18.10
+### 18.10 pokemonSlice
 
+Estructura:
 
+```bash
+.
+├── eslint.config.js
+├── index.html
+├── node_modules
+├── package.json
+├── public
+├── README.md
+├── src
+│   ├── App.css
+│   ├── App.jsx
+│   ├── index.css
+│   ├── main.jsx
+│   ├── PokeApp.jsx
+│   └── store
+│       ├── slices
+│       │   ├── counter
+│       │   │   └── counterSlice.js
+│       │   ├── pokemon
+│       │   │   └── pokeSlice.js
+│       │   └── todos
+│       └── store.js
+├── vite.config.js
+└── yarn.lock
+```
+
+`src/main.jsx`
+
+```jsx
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+
+import { store } from "./store/store";
+import { Provider } from "react-redux";
+
+import "./index.css";
+import { PokeApp } from "./PokeApp.jsx";
+
+createRoot(document.getElementById("root")).render(
+  <StrictMode>
+    <Provider store={store}>
+      <PokeApp />
+    </Provider>
+  </StrictMode>
+);
+```
+
+`src/PokeApp.jsx`
+
+```jsx
+export const PokeApp = () => {
+  return (
+    <>
+      <h1>PokeApp</h1>
+      <hr />
+      <ul>
+        <li>Hi</li>
+        <li>Hi</li>
+        <li>Hi</li>
+      </ul>
+    </>
+  );
+};
+```
+
+`src/store/slices/pokemon/pokeSlice.js`
+
+```js
+import { createSlice } from "@reduxjs/toolkit";
+
+const initialState = {
+  page: 0,
+  pokemons: [],
+  isLoading: false,
+};
+
+export const pokeSlice = createSlice({
+  name: "poke",
+  initialState,
+  reducers: {
+    startLoadingPokemons: (state) => {
+      state.isLoading = true;
+    },
+    setPokemons: (state, action) => {
+      console.log(action);
+    },
+  },
+});
+
+export const { startLoadingPokemons, setPokemons } =
+  pokeSlice.actions;
+```
+
+`src/store/store.js`
+
+```js
+import { configureStore } from "@reduxjs/toolkit";
+import { counterSlice } from "./slices/counter/counterSlice";
+import { pokeSlice } from "./slices/pokemon/pokeSlice";
+
+export const store = configureStore({
+  reducer: {
+    counter: counterSlice.reducer,
+    poke: pokeSlice.reducer,
+  },
+});
+```
+
+[Poke Api](https://pokeapi.co/)
+
+### 18.11
 
 
 `src/main.jsx`
 
 ```jsx
 ```
+
+
 
 ☝️👆
 👈👀
@@ -17665,13 +17779,6 @@ Ahora al escribir `redux-slice` te genere la estructura.
 🟣
 🟡
 
-
-
-
-
-
-
-### 18.11
 
 ### 18.12
 
