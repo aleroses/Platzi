@@ -17932,6 +17932,39 @@ export const PokeApp = () => {
 
 ### 18.12 Axios
 
+Estructura:
+
+```bash
+.
+├── eslint.config.js
+├── index.html
+├── node_modules
+├── package.json
+├── public
+├── README.md
+├── src
+│   ├── api
+│   │   └── pokeApi.js
+│   ├── App.css
+│   ├── App.jsx
+│   ├── assets
+│   │   └── react.svg
+│   ├── index.css
+│   ├── main.jsx
+│   ├── PokeApp.jsx
+│   └── store
+│       ├── slices
+│       │   ├── counter
+│       │   │   └── counterSlice.js
+│       │   ├── pokemon
+│       │   │   ├── pokeSlice.js
+│       │   │   └── thunks.js
+│       │   └── todos
+│       └── store.js
+├── vite.config.js
+└── yarn.lock
+```
+
 ```bash
 yarn add axios
 ```
