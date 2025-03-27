@@ -17757,13 +17757,180 @@ export const store = configureStore({
 
 [Poke Api](https://pokeapi.co/)
 
-### 18.11
+### 18.11 Thunks en React Redux
 
+Los thunks son un patrón fundamental en Redux para manejar lógica asincrónica y efectos secundarios.
 
-`src/main.jsx`
+Un **thunk** es una función que envuelve una expresión para retrasar su evaluación. En Redux, es una función que retrasa la ejecución de una acción o permite ejecutar lógica asincrónica antes de despachar una acción.
+
+Sirven para:
+
+1. **Manejar operaciones asincrónicas** (llamadas API, timeouts, etc.)
+2. **Despachar múltiples acciones** en secuencia
+3. **Acceder al estado actual** antes de despachar
+4. **Encapsular lógica compleja** que no cabe en una acción simple
+
+#### Cómo usar thunks con Redux Toolkit
+
+1. Configuración inicial
+
+Primero, necesitas configurar el middleware en tu store:
+
+```javascript
+import { configureStore } from '@reduxjs/toolkit'
+import thunkMiddleware from 'redux-thunk'
+
+const store = configureStore({
+  reducer: rootReducer,
+  middleware: [thunkMiddleware]
+})
+```
+
+2. Crear un thunk
+
+Un thunk es una función que recibe `dispatch` y `getState` como parámetros:
+
+```javascript
+const fetchUserData = (userId) => {
+  return async (dispatch, getState) => {
+    dispatch(userDataLoading()) // Acción sincrónica para indicar carga
+    
+    try {
+      const response = await fetch(`/api/users/${userId}`)
+      const data = await response.json()
+      dispatch(userDataSuccess(data)) // Acción con los datos obtenidos
+    } catch (error) {
+      dispatch(userDataFailure(error)) // Acción si hay error
+    }
+  }
+}
+```
+
+3. Despachar el thunk
+
+Desde tus componentes React, lo despachas como cualquier otra acción:
+
+```javascript
+import { useDispatch } from 'react-redux'
+
+function UserProfile({ userId }) {
+  const dispatch = useDispatch()
+  
+  useEffect(() => {
+    dispatch(fetchUserData(userId))
+  }, [dispatch, userId])
+  
+  // Renderizar el componente...
+}
+```
+
+#### Ejemplo completo
+
+```javascript
+// actions.js
+import { createAsyncThunk } from '@reduxjs/toolkit'
+
+export const fetchUser = createAsyncThunk(
+  'users/fetchUser',
+  async (userId, thunkAPI) => {
+    try {
+      const response = await fetch(`/api/users/${userId}`)
+      return await response.json()
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message)
+    }
+  }
+)
+
+// reducer.js
+import { createSlice } from '@reduxjs/toolkit'
+
+const usersSlice = createSlice({
+  name: 'users',
+  initialState: { data: null, loading: false, error: null },
+  reducers: {},
+  extraReducers: (builder) => {
+    builder
+      .addCase(fetchUser.pending, (state) => {
+        state.loading = true
+      })
+      .addCase(fetchUser.fulfilled, (state, action) => {
+        state.loading = false
+        state.data = action.payload
+      })
+      .addCase(fetchUser.rejected, (state, action) => {
+        state.loading = false
+        state.error = action.payload
+      })
+  }
+})
+
+export default usersSlice.reducer
+```
+
+#### Ventajas de usar thunks
+
+- **Separación de preocupaciones**: La lógica asincrónica no está en los componentes
+- **Reutilización**: Puedes despachar el mismo thunk desde diferentes lugares
+- **Testabilidad**: Más fácil de testear que la lógica en componentes
+- **Flexibilidad**: Puedes acceder al estado actual con `getState()`
+
+Los thunks son especialmente útiles cuando necesitas:
+- Hacer llamadas a APIs
+- Despachar acciones en secuencia
+- Tomar decisiones basadas en el estado actual
+
+Redux Toolkit simplifica el uso de thunks con `createAsyncThunk`, que maneja automáticamente los estados de pending/fulfilled/rejected.
+
+`src/store/slices/pokemon/thunks.js`
+
+```js
+import {
+  setPokemons,
+  startLoadingPokemons,
+} from "./pokeSlice";
+
+export const getPokemons = (page = 0) => {
+  return async (dispatch, getState) => {
+    dispatch(startLoadingPokemons());
+
+    // TODO: realizar petición
+    // dispatch(setPokemons())
+  };
+};
+
+// https://pokeapi.co/api/v2/pokemon/limit=10&offset=0
+```
+
+`src/PokeApp.jsx`
 
 ```jsx
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { getPokemons } from "./store/slices/pokemon/thunks";
+
+export const PokeApp = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getPokemons());
+  }, []);
+
+  return (
+    <>
+      <h1>PokeApp</h1>
+      <hr />
+      <ul>
+        <li>Hi</li>
+        <li>Hi</li>
+        <li>Hi</li>
+      </ul>
+    </>
+  );
+};
 ```
+
+### 18.12 
 
 
 
@@ -17779,8 +17946,6 @@ export const store = configureStore({
 🟣
 🟡
 
-
-### 18.12
 
 ### 18.13
 
