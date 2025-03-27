@@ -17578,12 +17578,75 @@ export const store = configureStore({
 });
 ```
 
-### 18.9
+### 18.9 Snippet y Gists de Slice
 
-`src/main.jsx`
+En esta clase se crea un Snippets para crear rápidamente la estructura de un `Slice` de Redux, pero si no quieres usar un Snippet personalizado, una extensión previamente instalada ya lo hace por ti:
 
-```jsx
+- [ES7+ React/Redux/React-Native snippets](https://marketplace.visualstudio.com/items?itemName=dsznajder.es7-react-js-snippets)
+- [Atajos para usar los Snippets](https://github.com/r5n-labs/vscode-react-javascript-snippets/blob/HEAD/docs/Snippets.md)
+
+#### Crea tu snippet personalizado
+
+En Visual Studio Code presiona:
+- `Ctrl + Shift + P`
+- Escribe:
+	- Configure User Snippets
+	- Configure Snippets 👈👀 Nuevo
+	- JavaScript
+
+`~/.config/Code - Insiders/User/snippets/javascript.json`
+
+```json
+{
+  // Place your snippets for javascript here. Each snippet is defined under a snippet name and has a prefix, body and 
+  // description. The prefix is what is used to trigger the snippet and the body will be expanded and inserted. Possible variables are:
+  // $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. Placeholders with the 
+  // same ids are connected.
+  // Example:
+  // "Print to console": {
+  // 	"prefix": "log",
+  // 	"body": [
+  // 		"console.log('$1');",
+  // 		"$2"
+  // 	],
+  // 	"description": "Log output to console"
+  // }
+
+  "Create a Redux slice": {
+    "prefix": "redux-slice",
+    "body": [
+      "import { createSlice } from '@reduxjs/toolkit';",
+      "",
+      "export const ${1:template}Slice = createSlice({",
+      "  name: 'name',",
+      "  initialState: {",
+      "    counter: 10,",
+      "  },",
+      "  reducers: {",
+      "    increment: (state /* action */) => {",
+      "      state.counter += 1;",
+      "    },",
+      "  },",
+      "});",
+      "",
+      "export const { increment } = ${1:template}Slice.actions;",
+    ],
+    "description": "Create a Redux slice"
+  }
+}
 ```
+
+Ahora al escribir `redux-slice` te genere la estructura.
+
+📌 Recuerda usar espacios en lugar de tabulaciones, cámbialo rápidamente con:
+
+- `Ctrl + Shift + P`
+- Indent using spaces
+
+### 18.10
+
+
+
 
 `src/main.jsx`
 
@@ -17606,14 +17669,6 @@ export const store = configureStore({
 
 
 
-
-
-
-
-
-
-
-### 18.10
 
 
 ### 18.11
