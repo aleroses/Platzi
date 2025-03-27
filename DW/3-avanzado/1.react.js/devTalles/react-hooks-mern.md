@@ -17930,8 +17930,95 @@ export const PokeApp = () => {
 };
 ```
 
-### 18.12 
+### 18.12 Axios
 
+```bash
+yarn add axios
+```
+
+`src/store/slices/pokemon/pokeSlice.js`
+
+```js
+import { createSlice } from "@reduxjs/toolkit";
+
+const initialState = {
+  page: 0,
+  pokemons: [],
+  isLoading: false,
+};
+
+export const pokeSlice = createSlice({
+  name: "poke",
+  initialState,
+  reducers: {
+    startLoadingPokemons: (state) => {
+      state.isLoading = true;
+    },
+    setPokemons: (state, action) => {
+      state.isLoading = false;
+      state.page = action.payload.page;
+      state.pokemons = action.payload.pokemons;
+    },
+  },
+});
+
+export const { startLoadingPokemons, setPokemons } =
+  pokeSlice.actions;
+```
+
+`src/store/slices/pokemon/thunks.js`
+
+```js
+import { pokeApi } from "../../../api/pokeApi";
+import {
+  setPokemons,
+  startLoadingPokemons,
+} from "./pokeSlice";
+
+export const getPokemons = (page = 0) => {
+  return async (dispatch, getState) => {
+    dispatch(startLoadingPokemons());
+
+    // TODO: realizar petición
+    // const response = await fetch(
+    //   `https://pokeapi.co/api/v2/pokemon?limit=10&offset=${
+    //     page * 10
+    //   }`
+    // );
+    // const data = await response.json();
+
+    const { data } = await pokeApi.get(
+      `/pokemon?limit=10&offset=${page * 10}`
+    );
+
+    dispatch(
+      setPokemons({
+        pokemons: data.results,
+        page: page + 1,
+      })
+    );
+  };
+};
+
+// https://pokeapi.co/api/v2/pokemon/limit=10&offset=0
+```
+
+`src/api/pokeApi.js`
+
+```js
+import axios from "axios";
+
+export const pokeApi = axios.create({
+  baseURL: "https://pokeapi.co/api/v2"
+})
+```
+
+### 18.13
+
+`src/`
+
+```jsx
+```
 
 
 ☝️👆
@@ -17946,8 +18033,6 @@ export const PokeApp = () => {
 🟣
 🟡
 
-
-### 18.13
 
 ### 18.14
 
