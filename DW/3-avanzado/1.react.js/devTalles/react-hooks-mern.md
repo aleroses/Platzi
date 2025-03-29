@@ -18090,18 +18090,109 @@ export const PokeApp = () => {
 };
 ```
 
-### 18.14
+### 18.14 RTK Query
 
-`src/`
+Estructura:
 
-```jsx
+```bash
+.
+├── eslint.config.js
+├── index.html
+├── node_modules
+├── package.json
+├── public
+├── README.md
+├── src
+│   ├── api
+│   │   └── pokeApi.js
+│   ├── App.css
+│   ├── App.jsx
+│   ├── assets
+│   │   └── react.svg
+│   ├── index.css
+│   ├── main.jsx
+│   ├── PokeApp.jsx
+│   ├── store
+│   │   ├── apis
+│   │   │   └── todosApi.js
+│   │   ├── slices
+│   │   │   ├── counter
+│   │   │   │   └── counterSlice.js
+│   │   │   ├── pokemon
+│   │   │   │   ├── pokeSlice.js
+│   │   │   │   └── thunks.js
+│   │   │   └── todos
+│   │   └── store.js
+│   └── TodoApp.jsx
+├── vite.config.js
+└── yarn.lock
 ```
 
-`src/`
+`src/main.jsx`
 
 ```jsx
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+
+import { store } from "./store/store";
+import { Provider } from "react-redux";
+
+import "./index.css";
+import { TodoApp } from "./TodoApp.jsx";
+
+createRoot(document.getElementById("root")).render(
+  <StrictMode>
+    <Provider store={store}>
+      <TodoApp />
+    </Provider>
+  </StrictMode>
+);
 ```
 
+`src/TodoApp.jsx`
+
+```jsx
+export const TodoApp = () => {
+  return (
+    <>
+      <h1>Todos - RTK Query</h1>
+      <hr />
+      <h4>isLoading</h4>
+
+      <pre>...</pre>
+
+      <button>Next Todo</button>
+    </>
+  );
+};
+```
+
+`src/store/apis/todosApi.js`
+
+```js
+import {
+  createApi,
+  fetchBaseQuery,
+} from "@reduxjs/toolkit/query";
+
+export const todosApi = createApi({
+  reducerPath: "todos",
+  baseQuery: fetchBaseQuery({
+    baseUrl: "https://jsonplaceholder.typicode.com",
+  }),
+  endpoints: (builder) => ({
+    getTodos: builder.query({
+      query: () => "/todos",
+    }),
+  }),
+});
+
+export const { useGetTodosQuery } = todosApi;
+```
+
+[RTK Query](https://redux-toolkit.js.org/rtk-query/overview)
+
+### 18.15
 
 ☝️👆
 👈👀
@@ -18118,7 +18209,7 @@ export const PokeApp = () => {
 
 
 
-### 18.15
+
 
 ### 18.16
 
