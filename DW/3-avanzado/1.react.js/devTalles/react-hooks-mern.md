@@ -18046,7 +18046,56 @@ export const pokeApi = axios.create({
 })
 ```
 
-### 18.13
+### 18.13 Mostrar los pokemons paginadamente
+
+`src/PokeApp.jsx`
+
+```jsx
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getPokemons } from "./store/slices/pokemon/thunks";
+
+export const PokeApp = () => {
+  const dispatch = useDispatch();
+  const {
+    isLoading,
+    pokemons = [],
+    page,
+  } = useSelector((state) => state.poke);
+
+  useEffect(() => {
+    dispatch(getPokemons());
+  }, []);
+
+  return (
+    <>
+      <h1>PokeApp</h1>
+      <hr />
+      <span>Loading: {isLoading ? "True" : "False"}</span>
+
+      <ul>
+        {pokemons.map(({ name }) => (
+          <li key={name}>{name}</li>
+        ))}
+      </ul>
+
+      <button
+        disabled={isLoading}
+        onClick={() => dispatch(getPokemons(page))}
+      >
+        Next
+      </button>
+    </>
+  );
+};
+```
+
+### 18.14
+
+`src/`
+
+```jsx
+```
 
 `src/`
 
@@ -18067,7 +18116,7 @@ export const pokeApi = axios.create({
 🟡
 
 
-### 18.14
+
 
 ### 18.15
 
