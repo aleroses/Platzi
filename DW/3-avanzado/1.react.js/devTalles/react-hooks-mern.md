@@ -18192,7 +18192,7 @@ export const { useGetTodosQuery } = todosApi;
 
 [RTK Query](https://redux-toolkit.js.org/rtk-query/overview)
 
-### 18.15
+### 18.15 
 
 ☝️👆
 👈👀
