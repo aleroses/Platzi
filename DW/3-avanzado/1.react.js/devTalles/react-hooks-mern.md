@@ -18173,7 +18173,7 @@ export const TodoApp = () => {
 import {
   createApi,
   fetchBaseQuery,
-} from "@reduxjs/toolkit/query";
+} from "@reduxjs/toolkit/query/react";
 
 export const todosApi = createApi({
   reducerPath: "todos",
@@ -18190,9 +18190,22 @@ export const todosApi = createApi({
 export const { useGetTodosQuery } = todosApi;
 ```
 
-[RTK Query](https://redux-toolkit.js.org/rtk-query/overview)
+- [RTK Query](https://redux-toolkit.js.org/rtk-query/overview)
+- [Json Placeholder](https://jsonplaceholder.typicode.com/)
+- [Create an api slice](https://redux-toolkit.js.org/rtk-query/overview#create-an-api-slice)
 
-### 18.15 
+### 18.15 Consumir el API mediante el custom hook
+
+
+`src/`
+
+```jsx
+```
+
+`src/`
+
+```jsx
+```
 
 ☝️👆
 👈👀
