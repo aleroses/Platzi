@@ -18250,17 +18250,66 @@ export const store = configureStore({
 });
 ```
 
-### 18.16
+### 18.16 Obtener un Todo por ID
 
-
-`src/`
+`src/TodoApp.jsx`
 
 ```jsx
+import { useState } from "react";
+import { useGetTodoQuery } from "./store/apis/todosApi";
+
+export const TodoApp = () => {
+  const [todoId, setTodoId] = useState(1);
+  const { data: todo } = useGetTodoQuery(todoId);
+
+  const nextTodo = () => {
+    setTodoId(todoId + 1);
+  };
+  const prevTodo = () => {
+    if (todoId === 1) return;
+
+    setTodoId(todoId - 1);
+  };
+
+  return (
+    <>
+      <h1>Todos - RTK Query</h1>
+      <hr />
+
+      <pre>{JSON.stringify(todo)}</pre>
+
+      <button onClick={prevTodo}>Previous Todo</button>
+      <button onClick={nextTodo}>Next Todo</button>
+    </>
+  );
+};
 ```
 
-`src/`
+`src/store/apis/todosApi.js`
 
-```jsx
+```js
+import {
+  createApi,
+  fetchBaseQuery,
+} from "@reduxjs/toolkit/query/react";
+
+export const todosApi = createApi({
+  reducerPath: "todos",
+  baseQuery: fetchBaseQuery({
+    baseUrl: "https://jsonplaceholder.typicode.com",
+  }),
+  endpoints: (builder) => ({
+    getTodos: builder.query({
+      query: () => "/todos",
+    }),
+    getTodo: builder.query({
+      query: (todoId) => `/todos/${todoId}`,
+    }),
+  }),
+});
+
+export const { useGetTodosQuery, useGetTodoQuery } =
+  todosApi;
 ```
 
 ### 18.17
