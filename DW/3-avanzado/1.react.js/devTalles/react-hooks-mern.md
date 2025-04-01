@@ -18196,6 +18196,54 @@ export const { useGetTodosQuery } = todosApi;
 
 ### 18.15 Consumir el API mediante el custom hook
 
+#### Propiedad Computada en JavaScript
+
+Una **propiedad computada** (o "computed property" en inglés) es una característica de JavaScript que te permite definir propiedades de un objeto usando una expresión como nombre de la propiedad, en lugar de un identificador fijo.
+
+En tu código:
+
+```javascript
+{
+  [todosApi.reducerPath]: todosApi.reducer
+}
+```
+
+La parte `[todosApi.reducerPath]` es una propiedad computada. Lo que hace es:
+
+1. Evalúa la expresión dentro de los corchetes `[]`
+2. Usa el resultado de esa expresión como el nombre de la propiedad
+
+¿Cómo funciona?
+
+Supongamos que `todosApi.reducerPath` tiene el valor `'api'`. Entonces el objeto resultante sería:
+
+```javascript
+{
+  api: todosApi.reducer
+}
+```
+
+¿Por qué se usa en Redux Toolkit?
+
+En este caso específico de Redux Toolkit:
+- `todosApi` es probablemente un API slice creado con RTK Query
+- `reducerPath` es una propiedad que contiene el string bajo el cual el reducer debe ser montado en el store
+- Usando una propiedad computada, puedes hacer que el nombre del reducer sea dinámico y configurable
+
+Otro ejemplo sencillo
+
+```javascript
+const propName = 'color';
+const obj = {
+  [propName]: 'blue',  // propiedad computada
+  size: 'large'       // propiedad normal
+};
+
+console.log(obj); // { color: 'blue', size: 'large' }
+```
+
+Las propiedades computadas son muy útiles cuando necesitas que el nombre de una propiedad sea dinámico o calculado en tiempo de ejecución.
+
 `src/TodoApp.jsx`
 
 ```jsx
