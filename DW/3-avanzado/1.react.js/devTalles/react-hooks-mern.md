@@ -18196,6 +18196,62 @@ export const { useGetTodosQuery } = todosApi;
 
 ### 18.15 Consumir el API mediante el custom hook
 
+`src/TodoApp.jsx`
+
+```jsx
+import { useGetTodosQuery } from "./store/apis/todosApi";
+
+export const TodoApp = () => {
+  const { data: todos = [], isLoading } =
+    useGetTodosQuery();
+
+  return (
+    <>
+      <h1>Todos - RTK Query</h1>
+      <hr />
+      <h4>isLoading: {isLoading ? "True" : "False"}</h4>
+
+      <pre>...</pre>
+
+      <ul>
+        {todos.map((todo) => (
+          <li key={todo.id}>
+            <strong>
+              {todo.completed ? "DONE" : "Pending"}
+            </strong>
+            {todo.title}
+          </li>
+        ))}
+      </ul>
+
+      <button>Next Todo</button>
+    </>
+  );
+};
+```
+
+`src/store/store.js`
+
+```js
+import { configureStore } from "@reduxjs/toolkit";
+import { counterSlice } from "./slices/counter/counterSlice";
+import { pokeSlice } from "./slices/pokemon/pokeSlice";
+import { todosApi } from "./apis/todosApi";
+
+export const store = configureStore({
+  reducer: {
+    counter: counterSlice.reducer,
+    poke: pokeSlice.reducer,
+
+    [todosApi.reducerPath]: todosApi.reducer,
+  },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware().concat(todosApi.middleware),
+});
+```
+
+### 18.16
+
 
 `src/`
 
@@ -18206,6 +18262,13 @@ export const { useGetTodosQuery } = todosApi;
 
 ```jsx
 ```
+
+### 18.17
+
+### 18.18
+
+### 18.19
+
 
 ☝️👆
 👈👀
@@ -18219,18 +18282,6 @@ export const { useGetTodosQuery } = todosApi;
 🟣
 🟡
 
-
-
-
-
-
-### 18.16
-
-### 18.17
-
-### 18.18
-
-### 18.19
 
 
 
