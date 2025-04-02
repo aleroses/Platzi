@@ -22,13 +22,13 @@
             }
           },
           {
-            "id": "23391ff2c9091288",
+            "id": "607228baa4f9a4b3",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
                 "file": "DW/3-avanzado/1.react.js/devTalles/react-hooks-mern.md",
-                "mode": "source",
+                "mode": "preview",
                 "source": true
               },
               "icon": "lucide-file",
@@ -183,13 +183,13 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "23391ff2c9091288",
+  "active": "607228baa4f9a4b3",
   "lastOpenFiles": [
+    "DW/3-avanzado/1.react.js/devTalles/material-ui.md",
+    "DW/3-avanzado/1.react.js/devTalles/react-hooks-mern.md",
     "DW/3-avanzado/1.react.js/devTalles/img/18.8-create-slice.png",
     "DW/3-avanzado/1.react.js/devTalles/img/18.8.png",
     "DW/3-avanzado/1.react.js/devTalles/img/18.7.redux.png",
-    "DW/3-avanzado/1.react.js/devTalles/material-ui.md",
-    "DW/3-avanzado/1.react.js/devTalles/react-hooks-mern.md",
     "DW/1-basico/003-prework/entorno-windows/vsc/setting.md",
     "settings.md",
     "DW/1-basico/003-prework/entorno-windows/vsc-chrome.md",
@@ -220,7 +220,6 @@
     "DW/3-avanzado/1.react.js/devTalles/img/11-userProvider.png",
     "DW/3-avanzado/1.react.js/devTalles/img/11-context.png",
     "DW/1-basico/003-prework/entorno-linux/grub-config.md",
-    "DW/3-avanzado/1.react.js/devTalles/img/6-postman-web.png",
     "DW/3-avanzado/3.next/Nextjs-Tailwind.md",
     "DW/2-intermedio/029.web-components/web-components.md",
     "DW/2-intermedio/007.poo-js/poo-js.md",

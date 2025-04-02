@@ -17165,14 +17165,9 @@ Estructura:
 ├── index.html
 ├── node_modules
 ├── package.json
-├── public
 ├── README.md
 ├── src
-│   ├── App.css
 │   ├── App.jsx
-│   ├── assets
-│   │   └── react.svg
-│   ├── index.css
 │   ├── main.jsx
 │   └── store
 │       ├── slices
@@ -17226,10 +17221,9 @@ export const { increment } = counterSlice.actions; 👈👀
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 
-import { store } from "./store/store";
 import { Provider } from "react-redux";
+import { store } from "./store/store";
 
-import "./index.css";
 import App from "./App.jsx";
 
 createRoot(document.getElementById("root")).render(
@@ -17248,9 +17242,6 @@ createRoot(document.getElementById("root")).render(
 ```jsx
 import { useDispatch, useSelector } from "react-redux";
 
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
-import "./App.css";
 import { increment } from "./store/slices/counter/counterSlice";
 
 function App() {
@@ -17261,22 +17252,6 @@ function App() {
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img
-            src={viteLogo}
-            className="logo"
-            alt="Vite logo"
-          />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img
-            src={reactLogo}
-            className="logo react"
-            alt="React logo"
-          />
-        </a>
-      </div>
       <h1>Vite + React</h1>
       <div className="card">
         <button onClick={() => dispatch(increment())}>
@@ -17302,7 +17277,6 @@ Estructura:
 ├── index.html
 ├── node_modules
 ├── package.json
-├── public
 ├── README.md
 ├── src
 │   ├── App.jsx
@@ -17397,8 +17371,10 @@ Archivo: `main.jsx`
 ```jsx
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import { store } from "./store/store";
+
 import { Provider } from "react-redux";
+import { store } from "./store/store";
+
 import App from "./App.jsx";
 
 createRoot(document.getElementById("root")).render(
@@ -17480,10 +17456,9 @@ export default App;
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 
-import { store } from "./store/store";
 import { Provider } from "react-redux";
+import { store } from "./store/store";
 
-import "./index.css";
 import App from "./App.jsx";
 
 createRoot(document.getElementById("root")).render(
@@ -17504,7 +17479,6 @@ import {
   incrementBy,
   decrement,
 } from "./store/slices/counter/counterSlice";
-import "./App.css";
 
 function App() {
   const { counter } = useSelector(
@@ -18366,7 +18340,7 @@ Aquí les dejo el código fuente de la sección por si lo llegan a necesitar par
 
 [**Fin sección 18 - Introducción a Redux**](https://github.com/Klerith/redux-toolkit-rtk-demo)
 
-### 18.18
+## 19. 
 
 ### 18.19
 
