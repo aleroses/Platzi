@@ -18360,7 +18360,11 @@ export const { useGetTodosQuery, useGetTodoQuery } =
   todosApi;
 ```
 
-### 18.17
+### 18.17 Código fuente de la sección
+
+Aquí les dejo el código fuente de la sección por si lo llegan a necesitar para compararlo contra el mío
+
+[**Fin sección 18 - Introducción a Redux**](https://github.com/Klerith/redux-toolkit-rtk-demo)
 
 ### 18.18
 
