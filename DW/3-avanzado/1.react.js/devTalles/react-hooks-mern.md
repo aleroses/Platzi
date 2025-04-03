@@ -18344,6 +18344,10 @@ export const store = configureStore({
 });
 ```
 
+Vista general:
+
+![](https://i.postimg.cc/4yBBrvx8/18-15-RTK-Query-data.png)
+
 ### 18.16 Obtener un Todo por ID
 
 `src/TodoApp.jsx`
@@ -18405,6 +18409,10 @@ export const todosApi = createApi({
 export const { useGetTodosQuery, useGetTodoQuery } =
   todosApi;
 ```
+
+Vista general:
+
+![](https://i.postimg.cc/RVs8WmLW/18-14-RTK-Query.png)
 
 ### 18.17 Código fuente de la sección
 
