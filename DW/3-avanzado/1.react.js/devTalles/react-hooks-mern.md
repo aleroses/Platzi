@@ -17627,14 +17627,11 @@ Estructura:
 ├── index.html
 ├── node_modules
 ├── package.json
-├── public
 ├── README.md
 ├── src
-│   ├── App.css
 │   ├── App.jsx
-│   ├── index.css
 │   ├── main.jsx
-│   ├── PokeApp.jsx
+│   ├── PokeApp.jsx 👈👀
 │   └── store
 │       ├── slices
 │       │   ├── counter
@@ -17656,7 +17653,6 @@ import { createRoot } from "react-dom/client";
 import { store } from "./store/store";
 import { Provider } from "react-redux";
 
-import "./index.css";
 import { PokeApp } from "./PokeApp.jsx";
 
 createRoot(document.getElementById("root")).render(
@@ -17856,6 +17852,32 @@ Los thunks son especialmente útiles cuando necesitas:
 
 Redux Toolkit simplifica el uso de thunks con `createAsyncThunk`, que maneja automáticamente los estados de pending/fulfilled/rejected.
 
+Estructura:
+
+```bash
+.
+├── eslint.config.js
+├── index.html
+├── node_modules
+├── package.json
+├── README.md
+├── src
+│   ├── App.jsx
+│   ├── main.jsx
+│   ├── PokeApp.jsx
+│   └── store
+│       ├── slices
+│       │   ├── counter
+│       │   │   └── counterSlice.js
+│       │   ├── pokemon
+│       │   │   ├── pokeSlice.js
+│       │   │   └── thunks.js 👈👀
+│       │   └── todos
+│       └── store.js
+├── vite.config.js
+└── yarn.lock
+```
+
 `src/store/slices/pokemon/thunks.js`
 
 ```js
@@ -17914,16 +17936,11 @@ Estructura:
 ├── index.html
 ├── node_modules
 ├── package.json
-├── public
 ├── README.md
 ├── src
-│   ├── api
+│   ├── api 👀👇
 │   │   └── pokeApi.js
-│   ├── App.css
 │   ├── App.jsx
-│   ├── assets
-│   │   └── react.svg
-│   ├── index.css
 │   ├── main.jsx
 │   ├── PokeApp.jsx
 │   └── store
