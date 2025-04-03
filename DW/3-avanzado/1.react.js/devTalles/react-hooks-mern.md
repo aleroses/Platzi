@@ -18218,7 +18218,7 @@ export const TodoApp = () => {
 ```js
 import {
   createApi,
-  fetchBaseQuery,
+  fetchBaseQuery,              👀👇
 } from "@reduxjs/toolkit/query/react";
 
 export const todosApi = createApi({
