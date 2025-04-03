@@ -18227,13 +18227,13 @@ export const todosApi = createApi({
     baseUrl: "https://jsonplaceholder.typicode.com",
   }),
   endpoints: (builder) => ({
-    getTodos: builder.query({
+   🔥getTodos: builder.query({
       query: () => "/todos",
     }),
   }),
 });
 
-export const { useGetTodosQuery } = todosApi;
+export const { 🔥useGetTodosQuery } = todosApi;
 ```
 
 - [RTK Query](https://redux-toolkit.js.org/rtk-query/overview)
