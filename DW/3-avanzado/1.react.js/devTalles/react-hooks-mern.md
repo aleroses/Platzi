@@ -18091,16 +18091,11 @@ Estructura:
 ├── index.html
 ├── node_modules
 ├── package.json
-├── public
 ├── README.md
 ├── src
 │   ├── api
 │   │   └── pokeApi.js
-│   ├── App.css
 │   ├── App.jsx
-│   ├── assets
-│   │   └── react.svg
-│   ├── index.css
 │   ├── main.jsx
 │   ├── PokeApp.jsx
 │   ├── store
