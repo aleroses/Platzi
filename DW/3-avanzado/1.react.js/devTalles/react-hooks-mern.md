@@ -18081,6 +18081,8 @@ export const PokeApp = () => {
 };
 ```
 
+![Redux async](https://i.postimg.cc/SK9D8x5x/18-13-redux-async.png)
+
 ### 18.14 RTK Query
 
 Estructura:
