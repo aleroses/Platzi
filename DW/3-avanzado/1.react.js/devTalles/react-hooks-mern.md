@@ -18087,6 +18087,63 @@ Vista general:
 
 ### 18.14 RTK Query
 
+RTK Query es una capa de abstracción sobre **Redux** que automatiza:  
+- **Solicitudes API** (GET, POST, PUT, DELETE).  
+- **Caching inteligente** (evita peticiones redundantes).  
+- **Actualización de datos en tiempo real** (revalidación, pooling, optimistic updates).  
+- **Gestión de estados de carga y error**.  
+
+No requiere escribir manualmente acciones, reductores o selectores de Redux, lo que reduce significativamente el código boilerplate.  
+
+#### **Novedades y Actualizaciones en 2025**
+
+1. **Mejor Soporte para GraphQL**:  
+   - Aunque RTK Query se enfoca principalmente en REST, en 2025 sigue siendo compatible con GraphQL mediante integraciones como `graphql-request` o Apollo Client, aunque no es su enfoque principal.  
+
+2. **Integración con React Server Components (RSC)**:  
+   - Con la adopción masiva de **React Server Components** en Next.js y otros frameworks, RTK Query ha mejorado su compatibilidad para manejar fetching de datos tanto en el cliente como en el servidor.  
+
+3. **Optimizaciones de Rendimiento**:  
+   - Se han introducido mejoras en el **cache tagging** y **garbage collection automático** para evitar problemas de memoria en aplicaciones grandes.  
+
+4. **Soporte para Streaming SSR**:  
+   - Ahora funciona mejor con renderizado streaming (Suspense) en frameworks como Next.js.  
+
+5. **Alternativas y Competencia**:  
+   - Aunque sigue siendo muy usado, herramientas como **TanStack Query (React Query)** y **SWR** mantienen su popularidad, especialmente en proyectos que no usan Redux.  
+
+#### **¿Cuándo Usar RTK Query?**
+
+✅ **Ideal si:**
+
+- Ya usas Redux en tu proyecto.  
+- Necesitas un manejo de caché eficiente.  
+- Quieres menos código repetitivo en llamadas API.  
+
+❌ **Alternativas si:**
+
+- No usas Redux (considera TanStack Query o SWR).  
+- Trabajas principalmente con GraphQL (Apollo Client es mejor opción).  
+
+#### **Ejemplo Básico**
+
+```tsx
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+
+const api = createApi({
+  reducerPath: 'pokemonApi',
+  baseQuery: fetchBaseQuery({ baseUrl: 'https://pokeapi.co/api/v2/' }),
+  endpoints: (builder) => ({
+    getPokemon: builder.query({
+      query: (name) => `pokemon/${name}`,
+    }),
+  }),
+});
+
+// Uso en un componente React con hooks generados automáticamente
+const { data, isLoading, error } = useGetPokemonQuery('pikachu');
+```
+
 Estructura:
 
 ```bash
@@ -18127,7 +18184,6 @@ import { createRoot } from "react-dom/client";
 import { store } from "./store/store";
 import { Provider } from "react-redux";
 
-import "./index.css";
 import { TodoApp } from "./TodoApp.jsx";
 
 createRoot(document.getElementById("root")).render(
