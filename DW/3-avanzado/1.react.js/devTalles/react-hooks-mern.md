@@ -18420,10 +18420,55 @@ Aquí les dejo el código fuente de la sección por si lo llegan a necesitar par
 
 [**Fin sección 18 - Introducción a Redux**](https://github.com/Klerith/redux-toolkit-rtk-demo)
 
-## 19. 
+## 19. Introducción a Redux y autenticación en Firebase
 
-### 18.19
+### 19.1 Introducción a la sección
 
+### 19.2 Temas puntuales de la sección
+
+**¿Qué veremos en esta sección?**
+
+- Redux aplicado en nuestro proyecto
+- Firebase
+- FireStore
+- Redux Devtools
+- Thunk
+- Formularios
+- Google SingIn
+- Acciones Asíncronas
+- Mantener el estado de la autenticación
+
+En esta sección configuraremos Redux en nuestro proyecto por primera vez, aplicado al inicio en la parte de la autenticación y mantener el estado de la misma a lo largo de toda la aplicación.
+
+### 19.3
+
+### 19.4
+
+### 19.5
+
+### 19.6
+
+
+### 19.7
+
+
+### 19.8
+
+### 19.9
+
+### 19.10
+
+### 19.11
+
+### 19.12
+
+### 19.13
+
+### 19.14
+
+### 19.15
+
+### 19.16
 
 ☝️👆
 👈👀
@@ -18462,7 +18507,7 @@ Aquí les dejo el código fuente de la sección por si lo llegan a necesitar par
 🟣
 🟡
 
-### 17.20
+### 1
 
 `src/`
 
@@ -18474,7 +18519,7 @@ Aquí les dejo el código fuente de la sección por si lo llegan a necesitar par
 ```jsx
 ```
 
-### 17.21
+### 1
 
 `src/`
 
@@ -18486,7 +18531,7 @@ Aquí les dejo el código fuente de la sección por si lo llegan a necesitar par
 ```jsx
 ```
 
-### 17.22
+### 1
 
 `src/`
 
@@ -18498,7 +18543,7 @@ Aquí les dejo el código fuente de la sección por si lo llegan a necesitar par
 ```jsx
 ```
 
-### 17.21
+### 1
 
 `src/`
 
@@ -18510,7 +18555,7 @@ Aquí les dejo el código fuente de la sección por si lo llegan a necesitar par
 ```jsx
 ```
 
-### 17.22
+### 1
 
 `src/`
 
