@@ -18440,9 +18440,20 @@ Aquí les dejo el código fuente de la sección por si lo llegan a necesitar par
 
 En esta sección configuraremos Redux en nuestro proyecto por primera vez, aplicado al inicio en la parte de la autenticación y mantener el estado de la misma a lo largo de toda la aplicación.
 
-### 19.3
+### 19.3 Demostración del objetivo final de la sección
 
-### 19.4
+### 19.4 Configurando Redux en nuestra aplicación
+
+Instalamos Redux:
+
+```bash
+# Un solo comando
+yarn add @reduxjs/toolkit react-redux
+
+# Por separado
+yarn add @reduxjs/toolkit
+yarn add react-redux
+```
 
 ### 19.5
 
