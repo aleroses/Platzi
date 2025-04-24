@@ -18633,8 +18633,211 @@ export const store = configureStore({
 });
 ```
 
-### 19.6
+### 19.6 Manejo del formulario de login
 
+`src/store/auth/authSlice.js`
+
+```js
+import { createSlice } from "@reduxjs/toolkit";
+
+const initialState = {
+  status: "not-authenticated",
+  uid: null,
+  email: null,
+  displayName: null,
+  photoURL: null,
+  errorMessage: null,
+};
+
+export const authSlice = createSlice({
+  name: "auth",
+  initialState,
+  reducers: {
+    login: (state, action) => {},
+    logout: (state, payload) => {},
+    checkingCredentials: (state) => {
+      state.status = "checking";
+    },
+  },
+});
+
+export const { login, logout, checkingCredentials } =
+  authSlice.actions;
+// export default authSlice.reducer;
+```
+
+`src/auth/thunks.js`
+
+```js
+import { checkingCredentials } from "../store/auth/authSlice";
+
+export const checkingAuthentication = (
+  email,
+  password
+) => {
+  return async (dispatch) => {
+    dispatch(checkingCredentials());
+  };
+};
+
+export const startGoogleSignIn = () => {
+  return async (dispatch) => {
+    dispatch(checkingCredentials());
+  };
+};
+```
+
+`src/hooks/useForm.js`
+
+```js
+import { useState } from "react";
+
+export const useForm = (initialForm = {}) => {
+  const [formState, setFormState] = useState(initialForm);
+
+  // const { value, name, password } = formState;
+
+  const handleInputChange = ({ target }) => {
+    const { value, name } = target;
+
+    setFormState({
+      ...formState,
+      [name]: value,
+    });
+  };
+
+  const handleResetForm = () => {
+    setFormState(initialForm);
+  };
+
+  return {
+    ...formState,
+    formState,
+    handleInputChange,
+    handleResetForm,
+  };
+};
+```
+
+`src/auth/pages/LoginPage.jsx`
+
+```jsx
+import { useDispatch } from "react-redux";
+import { Link as RouterLink } from "react-router";
+import {
+  TextField,
+  Grid2,
+  Button,
+  Link,
+  Box,
+} from "@mui/material";
+import { Google } from "@mui/icons-material";
+import { AuthLayout } from "../layout/AuthLayout";
+import { useForm } from "../../hooks/useForm";
+import {
+  checkingAuthentication,
+  startGoogleSignIn,
+} from "../thunks";
+
+export const LoginPage = () => {
+  const dispatch = useDispatch();
+
+  const { email, password, handleInputChange } = useForm({
+    email: "aleghost@google.com",
+    password: "12345",
+  });
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    console.log({ email, password });
+    dispatch(checkingAuthentication());
+  };
+
+  const handleGoogleSignIn = () => {
+    console.log("handleGoogleSignIn");
+
+    dispatch(startGoogleSignIn());
+  };
+
+  return (
+    <AuthLayout title="Login">
+      <form action="" onSubmit={handleSubmit}>
+        <Grid2
+          container
+          // component="form"
+          spacing={2}
+        >
+          <Grid2 size={{ xs: 12, md: 6 }}>
+            <TextField
+              id="email"
+              label="Email"
+              type="email"
+              placeholder="email@google.com"
+              size="small"
+              fullWidth
+              name="email"
+              value={email}
+              onChange={handleInputChange}
+            />
+          </Grid2>
+          <Grid2 size={{ xs: 12, md: 6 }}>
+            <TextField
+              id="password"
+              label="Password"
+              type="password"
+              placeholder="password"
+              size="small"
+              fullWidth
+              name="password"
+              value={password}
+              onChange={handleInputChange}
+            />
+          </Grid2>
+        </Grid2>
+        {/* New */}
+        <Box>
+          <Grid2 container spacing={2} sx={{ mt: 2 }}>
+            <Grid2 size={{ xs: 12, md: 6 }}>
+              <Button
+                type="submit"
+                variant="contained"
+                fullWidth
+              >
+                Login
+              </Button>
+            </Grid2>
+            <Grid2 size={{ xs: 12, md: 6 }}>
+              <Button
+                variant="contained"
+                fullWidth
+                startIcon={<Google />}
+                onClick={handleGoogleSignIn}
+              >
+                Google
+              </Button>
+            </Grid2>
+          </Grid2>
+          <Grid2
+            container
+            // direction="row"
+            justifyContent="end"
+            sx={{ mt: 2 }}
+          >
+            <Link
+              component={RouterLink}
+              color="inherit"
+              to="/auth/register"
+            >
+              Create an account.
+            </Link>
+          </Grid2>
+        </Box>
+      </form>
+    </AuthLayout>
+  );
+};
+```
 
 ### 19.7
 
