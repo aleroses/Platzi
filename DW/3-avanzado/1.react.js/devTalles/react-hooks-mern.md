@@ -18839,8 +18839,42 @@ export const LoginPage = () => {
 };
 ```
 
-### 19.7
+[Custom Hook: useForm](https://github.com/aleroses/custom-hooks/blob/master/useForm/useForm.js)
 
+### 19.7 Configuración inicial de Firebase
+
+Firebase, es una plataforma integral de desarrollo de aplicaciones móviles y web creada por Google. Ofrece una amplia gama de servicios que permiten a los desarrolladores construir, desplegar y escalar aplicaciones de manera eficiente, sin necesidad de gestionar infraestructuras complejas.
+
+#### Características principales de Firebase
+
+- **Bases de datos en tiempo real y escalables**: Incluye Firebase Realtime Database y Cloud Firestore, que permiten almacenar y sincronizar datos en tiempo real entre los clientes y la nube, facilitando experiencias colaborativas y reactivas. ([Firebase Realtime Database - Google](https://firebase.google.com/docs/database?hl=es-419&utm_source=chatgpt.com))
+    
+- **Data Connect**: Una solución backend como servicio basada en Cloud SQL Postgres, que permite definir modelos de datos mediante esquemas GraphQL. Proporciona endpoints seguros y SDKs tipados automáticamente, simplificando el desarrollo de aplicaciones complejas. ([What's new in Firebase at Cloud Next 2025](https://firebase.blog/posts/2025/04/cloud-next-announcements/?utm_source=chatgpt.com))
+    
+- **Firebase Studio**: Lanzado en 2025, es un entorno de desarrollo basado en la web que integra la infraestructura de Firebase con modelos de inteligencia artificial de Gemini. Permite a los usuarios diseñar, construir, probar y lanzar aplicaciones directamente desde el navegador, incluso sin conocimientos técnicos. ([Así funciona Firebase Studio, la plataforma de Google que crea ...](https://es.gizmodo.com/asi-funciona-firebase-studio-la-plataforma-de-google-que-crea-apps-con-solo-describirlas-2000159854?utm_source=chatgpt.com))
+    
+- **Servicios adicionales**: Firebase también ofrece autenticación de usuarios, funciones en la nube (Cloud Functions), mensajería push (Cloud Messaging), análisis de uso (Analytics), pruebas A/B (Remote Config) y monitoreo de rendimiento, entre otros. ([¿Qué es Firebase y Para qué Sirve? Conviértete en un Experto](https://imaginaformacion.com/tutoriales/que-es-firebase?utm_source=chatgpt.com))
+
+
+
+- Crear un nuevo proyecto
+- Nombre: journalApp
+- Quitar Gemini y Google Analitics
+- Continuar
+- Icono `</>` web
+- journalApp
+- Registrar App
+
+- instalar Firebase
+
+```bash
+npm install firebase
+yarn add firebase
+```
+
+- copiar la configuración
+
+[Firebase: Go to console](https://firebase.google.com/)
 
 ### 19.8
 
