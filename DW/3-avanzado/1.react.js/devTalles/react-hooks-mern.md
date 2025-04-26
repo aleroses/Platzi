@@ -18959,7 +18959,25 @@ export const FirebaseDB = getFirestore(FirebaseApp);
 - [Firebase: Go to console](https://firebase.google.com/)
 - [Firebase: Docs](https://firebase.google.com/docs/web/modular-upgrade)
 
-### 19.8
+### 19.8 Google SignIn - Firebase
+
+- Autentication
+- Comenzar
+- Proveedor: Correo / Contraseña
+- Habilitar: Correo electrónico / Contraseña
+- Guardar
+
+- Agregar proveedor nuevo
+- Google
+- Habilitar Google y añadir correo de referencia
+- Guardar
+
+En la documentación puedes buscar Google signin
+- Authenticate Using Google with JavaScript | Firebase Authentication
+
+
+- [Firebase Docs](https://firebase.google.com/docs)
+- [Authenticate Using Google with JavaScript](https://firebase.google.com/docs/auth/web/google-signin)
 
 ### 19.9
 
