@@ -18972,9 +18972,85 @@ export const FirebaseDB = getFirestore(FirebaseApp);
 - Habilitar Google y añadir correo de referencia
 - Guardar
 
-En la documentación puedes buscar Google signin
+En la documentación puedes buscar **Google signin**
 - Authenticate Using Google with JavaScript | Firebase Authentication
 
+`src/firebase/providers.js`
+
+```js
+import {
+  GoogleAuthProvider,
+  signInWithPopup,
+} from "firebase/auth";
+import { FirebaseAuth } from "./config";
+
+const googleProvider = new GoogleAuthProvider();
+
+export const singInWithGoogle = async () => {
+  try {
+    const result = await signInWithPopup(
+      FirebaseAuth,
+      googleProvider
+    );
+    // const credential = GoogleAuthProvider.credentialFromResult(result);
+
+    const { displayName, email, photoURL, uid } =
+      result.user;
+    // console.log(user);
+
+    // console.log({ credential });
+
+    return {
+      ok: true,
+      // User info
+      displayName,
+      email,
+      photoURL,
+      uid,
+    };
+  } catch (error) {
+    // Handle Errors here.
+    const errorCode = error.code;
+    const errorMessage = error.message;
+
+    // console.log(e);
+    return {
+      ok: false,
+      errorMessage,
+    };
+  }
+};
+```
+
+`src/auth/thunks.js`
+
+```js
+import { singInWithGoogle } from "../firebase/providers";
+import { checkingCredentials } from "../store/auth/authSlice";
+
+export const checkingAuthentication = (
+  email,
+  password
+) => {
+  return async (dispatch) => {
+    dispatch(checkingCredentials());
+  };
+};
+
+export const startGoogleSignIn = () => {
+  return async (dispatch) => {
+    dispatch(checkingCredentials());
+
+    const result = await singInWithGoogle();
+
+    console.log({ result });
+  };
+};
+```
+
+Actualmente, aparecen una serie de errores. En este caso no les daré solución, ya que leí un comentario que dice que a pesar de estos errores todo sigue funcionando con normalidad.  
+  
+![](https://files.cdn.thinkific.com/file_uploads/643563/images/31b/1f0/78a/1745677882761.png)
 
 - [Firebase Docs](https://firebase.google.com/docs)
 - [Authenticate Using Google with JavaScript](https://firebase.google.com/docs/auth/web/google-signin)
