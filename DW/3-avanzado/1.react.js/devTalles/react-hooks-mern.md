@@ -19332,8 +19332,127 @@ export const LoginPage = () => {
 
 Revisa en Authentication debe aparecer el email usado en las pruebas.
 
+### 19.10 Formulario de registro de usuarios
 
-### 19.10
+`src/auth/pages/RegisterPage.jsx`
+
+```jsx
+import {
+  Button,
+  Grid2,
+  TextField,
+  Link,
+  Typography,
+} from "@mui/material";
+import { AuthLayout } from "../layout/AuthLayout";
+import { Link as RouterLink } from "react-router";
+import { useForm } from "../../hooks/useForm";
+
+const formData = {
+  email: "aleghost@google.com",
+  password: "123456",
+  displayName: "Ale Ghost",
+};
+
+export const RegisterPage = () => {
+  const {
+    displayName,
+    email,
+    password,
+    handleInputChange,
+    formState,
+  } = useForm(formData);
+
+  const onSubmit = (event) => {
+    event.preventDefault();
+    console.log(formState);
+  };
+
+  return (
+    <AuthLayout title="Register">
+      <form action="" onSubmit={onSubmit}>
+        <Grid2
+          container
+          // component="form"
+          spacing={2}
+        >
+          <Grid2 size={{ xs: 12, md: 6 }}>
+            <TextField
+              id="fullname"
+              label="Full name"
+              type="text"
+              placeholder="Your full name"
+              size="small"
+              fullWidth
+              name="displayName"
+              value={displayName}
+              onChange={handleInputChange}
+            />
+          </Grid2>
+          <Grid2 size={{ xs: 12, md: 6 }}>
+            <TextField
+              id="email"
+              label="Email"
+              type="email"
+              placeholder="email@google.com"
+              size="small"
+              fullWidth
+              name="email"
+              value={email}
+              onChange={handleInputChange}
+            />
+          </Grid2>
+          <Grid2 size={{ xs: 12, md: 6 }}>
+            <TextField
+              id="password"
+              label="Password"
+              type="password"
+              placeholder="password"
+              size="small"
+              fullWidth
+              name="password"
+              value={password}
+              onChange={handleInputChange}
+            />
+          </Grid2>
+        </Grid2>
+
+        {/* New */}
+        <Grid2 container spacing={2} sx={{ mt: 2 }}>
+          <Grid2 size={{ xs: 12 }}>
+            <Button
+              type="submit"
+              variant="contained"
+              fullWidth
+            >
+              Create account
+            </Button>
+          </Grid2>
+        </Grid2>
+        <Grid2
+          container
+          justifyContent="end"
+          sx={{ mt: 2 }}
+        >
+          <Typography sx={{ mr: 1 }}>
+            Already have an account?
+          </Typography>
+          <Link
+            component={RouterLink}
+            color="inherit"
+            to="/auth/login"
+          >
+            Login
+          </Link>
+        </Grid2>
+      </form>
+    </AuthLayout>
+  );
+};
+```
+
+- [React Hook Form](https://www.react-hook-form.com/)
+- [Formik](https://formik.org/)
 
 ### 19.11
 
