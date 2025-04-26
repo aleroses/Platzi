@@ -18975,6 +18975,61 @@ export const FirebaseDB = getFirestore(FirebaseApp);
 En la documentación puedes buscar **Google signin**
 - Authenticate Using Google with JavaScript | Firebase Authentication
 
+Estructura:
+
+```bash
+.
+├── eslint.config.js
+├── index.html
+├── node_modules
+├── package.json
+├── public
+├── README.md
+├── src
+│   ├── App.jsx
+│   ├── auth
+│   │   ├── layout
+│   │   │   └── AuthLayout.jsx
+│   │   ├── pages
+│   │   │   ├── LoginPage.jsx
+│   │   │   └── RegisterPage.jsx
+│   │   ├── routes
+│   │   │   └── AuthRoutes.jsx
+│   │   └── thunks.js
+│   ├── firebase
+│   │   ├── config.js
+│   │   └── providers.js
+│   ├── hooks
+│   │   └── useForm.js
+│   ├── journal
+│   │   ├── components
+│   │   │   ├── ImageGallery.jsx
+│   │   │   ├── NavBar.jsx
+│   │   │   └── SideBar.jsx
+│   │   ├── layout
+│   │   │   └── JournalLayout.jsx
+│   │   ├── pages
+│   │   │   └── JournalPage.jsx
+│   │   ├── routes
+│   │   │   └── JournalRoutes.jsx
+│   │   └── views
+│   │       ├── NoteView.jsx
+│   │       └── NothingSelectedView.jsx
+│   ├── main.jsx
+│   ├── router
+│   │   └── AppRouter.jsx
+│   ├── store
+│   │   ├── auth
+│   │   │   └── authSlice.js
+│   │   └── store.js
+│   ├── styles.css
+│   └── theme
+│       ├── purpleTheme.js
+│       └── Theme.jsx
+├── vite.config.js
+└── yarn.lock
+```
+
 `src/firebase/providers.js`
 
 ```js
@@ -19055,7 +19110,228 @@ Actualmente, aparecen una serie de errores. En este caso no les daré solución,
 - [Firebase Docs](https://firebase.google.com/docs)
 - [Authenticate Using Google with JavaScript](https://firebase.google.com/docs/auth/web/google-signin)
 
-### 19.9
+### 19.9 Disparar acción de autenticación
+
+`src/auth/thunks.js`
+
+```js
+import { singInWithGoogle } from "../firebase/providers";
+import {
+  checkingCredentials,
+  login,
+  logout,
+} from "../store/auth/authSlice";
+
+export const checkingAuthentication = (
+  email,
+  password
+) => {
+  return async (dispatch) => {
+    dispatch(checkingCredentials());
+  };
+};
+
+export const startGoogleSignIn = () => {
+  return async (dispatch) => {
+    dispatch(checkingCredentials());
+
+    const result = await singInWithGoogle();
+
+    // console.log({ result });
+
+    if (!result.ok)
+      return dispatch(logout(result.errorMessage));
+
+    dispatch(login(result));
+  };
+};
+```
+
+`src/store/auth/authSlice.js`
+
+```js
+import { createSlice } from "@reduxjs/toolkit";
+
+const initialState = {
+  status: "not-authenticated",
+  uid: null,
+  email: null,
+  displayName: null,
+  photoURL: null,
+  errorMessage: null,
+};
+
+export const authSlice = createSlice({
+  name: "auth",
+  initialState,
+  reducers: {
+    login: (state, { payload }) => {
+      state.status = "authenticated";
+      state.uid = payload.uid;
+      state.email = payload.email;
+      state.displayName = payload.displayName;
+      state.photoURL = payload.photoURL;
+      state.errorMessage = null;
+    },
+    logout: (state, { payload }) => {
+      state.status = "not-authenticated";
+      state.uid = null;
+      state.email = null;
+      state.displayName = null;
+      state.photoURL = null;
+      state.errorMessage = payload.errorMessage;
+    },
+    checkingCredentials: (state) => {
+      state.status = "checking";
+    },
+  },
+});
+
+export const { login, logout, checkingCredentials } =
+  authSlice.actions;
+// export default authSlice.reducer;
+```
+
+`src/auth/pages/LoginPage.jsx`
+
+```jsx
+import { useMemo } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Link as RouterLink } from "react-router";
+import {
+  TextField,
+  Grid2,
+  Button,
+  Link,
+  Box,
+} from "@mui/material";
+import { Google } from "@mui/icons-material";
+import { AuthLayout } from "../layout/AuthLayout";
+import { useForm } from "../../hooks/useForm";
+import {
+  checkingAuthentication,
+  startGoogleSignIn,
+} from "../thunks";
+
+export const LoginPage = () => {
+  const { status } = useSelector((state) => state.auth);
+
+  const dispatch = useDispatch();
+
+  const { email, password, handleInputChange } = useForm({
+    email: "aleghost@google.com",
+    password: "12345",
+  });
+
+  const isAuthenticating = useMemo(
+    () => status === "checking",
+    [status]
+  );
+
+  // const { status } = useSelector((state) => state.auth);
+
+  // console.log(email, password);
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    console.log({ email, password });
+    dispatch(checkingAuthentication());
+  };
+
+  const handleGoogleSignIn = () => {
+    console.log("handleGoogleSignIn");
+
+    dispatch(startGoogleSignIn());
+  };
+
+  // useEffect(() => {
+  //   dispatch(checkingAuthentication());
+  // }, []);
+
+  return (
+    <AuthLayout title="Login">
+      <form action="" onSubmit={handleSubmit}>
+        <Grid2
+          container
+          // component="form"
+          spacing={2}
+        >
+          <Grid2 size={{ xs: 12, md: 6 }}>
+            <TextField
+              id="email"
+              label="Email"
+              type="email"
+              placeholder="email@google.com"
+              size="small"
+              fullWidth
+              name="email"
+              value={email}
+              onChange={handleInputChange}
+            />
+          </Grid2>
+          <Grid2 size={{ xs: 12, md: 6 }}>
+            <TextField
+              id="password"
+              label="Password"
+              type="password"
+              placeholder="password"
+              size="small"
+              fullWidth
+              name="password"
+              value={password}
+              onChange={handleInputChange}
+            />
+          </Grid2>
+        </Grid2>
+        {/* New */}
+        <Box>
+          <Grid2 container spacing={2} sx={{ mt: 2 }}>
+            <Grid2 size={{ xs: 12, md: 6 }}>
+              <Button
+                disabled={isAuthenticating}
+                type="submit"
+                variant="contained"
+                fullWidth
+              >
+                Login
+              </Button>
+            </Grid2>
+            <Grid2 size={{ xs: 12, md: 6 }}>
+              <Button
+                disabled={isAuthenticating}
+                variant="contained"
+                fullWidth
+                startIcon={<Google />}
+                onClick={handleGoogleSignIn}
+              >
+                Google
+              </Button>
+            </Grid2>
+          </Grid2>
+          <Grid2
+            container
+            // direction="row"
+            justifyContent="end"
+            sx={{ mt: 2 }}
+          >
+            <Link
+              component={RouterLink}
+              color="inherit"
+              to="/auth/register"
+            >
+              Create an account.
+            </Link>
+          </Grid2>
+        </Box>
+      </form>
+    </AuthLayout>
+  );
+};
+```
+
+Revisa en Authentication debe aparecer el email usado en las pruebas.
+
 
 ### 19.10
 
