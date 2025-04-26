@@ -18847,7 +18847,7 @@ Firebase, es una plataforma integral de desarrollo de aplicaciones móviles y we
 
 #### Características principales de Firebase
 
-- **Bases de datos en tiempo real y escalables**: Incluye Firebase Realtime Database y Cloud Firestore, que permiten almacenar y sincronizar datos en tiempo real entre los clientes y la nube, facilitando experiencias colaborativas y reactivas. ([Firebase Realtime Database - Google](https://firebase.google.com/docs/database?hl=es-419&utm_source=chatgpt.com))
+- **Bases de datos en tiempo real y escalables**: Incluye Firebase Realtime Database (no relacional) y Cloud Firestore, que permiten almacenar y sincronizar datos en tiempo real entre los clientes y la nube, facilitando experiencias colaborativas y reactivas. ([Firebase Realtime Database - Google](https://firebase.google.com/docs/database?hl=es-419&utm_source=chatgpt.com))
     
 - **Data Connect**: Una solución backend como servicio basada en Cloud SQL Postgres, que permite definir modelos de datos mediante esquemas GraphQL. Proporciona endpoints seguros y SDKs tipados automáticamente, simplificando el desarrollo de aplicaciones complejas. ([What's new in Firebase at Cloud Next 2025](https://firebase.blog/posts/2025/04/cloud-next-announcements/?utm_source=chatgpt.com))
     
@@ -18855,16 +18855,17 @@ Firebase, es una plataforma integral de desarrollo de aplicaciones móviles y we
     
 - **Servicios adicionales**: Firebase también ofrece autenticación de usuarios, funciones en la nube (Cloud Functions), mensajería push (Cloud Messaging), análisis de uso (Analytics), pruebas A/B (Remote Config) y monitoreo de rendimiento, entre otros. ([¿Qué es Firebase y Para qué Sirve? Conviértete en un Experto](https://imaginaformacion.com/tutoriales/que-es-firebase?utm_source=chatgpt.com))
 
+#### Crear proyecto en Firebase
 
-
+- Go to Console
 - Crear un nuevo proyecto
 - Nombre: journalApp
-- Quitar Gemini y Google Analitics
 - Continuar
+- Quitar Gemini y Google Analytics
+- Crear proyecto
 - Icono `</>` web
 - journalApp
 - Registrar App
-
 - instalar Firebase
 
 ```bash
@@ -18874,7 +18875,89 @@ yarn add firebase
 
 - copiar la configuración
 
-[Firebase: Go to console](https://firebase.google.com/)
+Estructura:
+
+```bash
+.
+├── eslint.config.js
+├── index.html
+├── node_modules
+├── package.json
+├── public
+├── README.md
+├── src
+│   ├── App.jsx
+│   ├── auth
+│   │   ├── layout
+│   │   │   └── AuthLayout.jsx
+│   │   ├── pages
+│   │   │   ├── LoginPage.jsx
+│   │   │   └── RegisterPage.jsx
+│   │   ├── routes
+│   │   │   └── AuthRoutes.jsx
+│   │   └── thunks.js
+│   ├── firebase 👈👀
+│   │   └── config.js
+│   ├── hooks
+│   │   └── useForm.js
+│   ├── journal
+│   │   ├── components
+│   │   │   ├── ImageGallery.jsx
+│   │   │   ├── NavBar.jsx
+│   │   │   └── SideBar.jsx
+│   │   ├── layout
+│   │   │   └── JournalLayout.jsx
+│   │   ├── pages
+│   │   │   └── JournalPage.jsx
+│   │   ├── routes
+│   │   │   └── JournalRoutes.jsx
+│   │   └── views
+│   │       ├── NoteView.jsx
+│   │       └── NothingSelectedView.jsx
+│   ├── main.jsx
+│   ├── router
+│   │   └── AppRouter.jsx
+│   ├── store
+│   │   ├── auth
+│   │   │   └── authSlice.js
+│   │   └── store.js
+│   ├── styles.css
+│   └── theme
+│       ├── purpleTheme.js
+│       └── Theme.jsx
+├── vite.config.js
+└── yarn.lock
+```
+
+`src/firebase/config.js`
+
+```js
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+import { getAuth } from "firebase/auth";
+import { getFirestore } from "firebase/firestore/lite";
+
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+const firebaseConfig = {
+  apiKey: "AIzaSyClS8Dtp-O686mpBJW6-4EwgwASeKqFLMw",
+  authDomain: "journalapp-72f2d.firebaseapp.com",
+  projectId: "journalapp-72f2d",
+  storageBucket: "journalapp-72f2d.firebasestorage.app",
+  messagingSenderId: "339972861287",
+  appId: "1:339972861287:web:4ac56da1de5f56a6bc53c2",
+};
+
+// Initialize Firebase
+export const FirebaseApp = initializeApp(firebaseConfig);
+export const FirebaseAuth = getAuth(FirebaseApp);
+export const FirebaseDB = getFirestore(FirebaseApp);
+```
+
+- [Firebase: Go to console](https://firebase.google.com/)
+- [Firebase: Docs](https://firebase.google.com/docs/web/modular-upgrade)
 
 ### 19.8
 
