@@ -18666,7 +18666,7 @@ export const { login, logout, checkingCredentials } =
 // export default authSlice.reducer;
 ```
 
-`src/auth/thunks.js`
+`src/store/auth/thunks.js`
 
 ```js
 import { checkingCredentials } from "../store/auth/authSlice";
@@ -18737,7 +18737,7 @@ import { useForm } from "../../hooks/useForm";
 import {
   checkingAuthentication,
   startGoogleSignIn,
-} from "../thunks";
+} from "../../store/auth/thunks";
 
 export const LoginPage = () => {
   const dispatch = useDispatch();
@@ -19077,7 +19077,7 @@ export const singInWithGoogle = async () => {
 };
 ```
 
-`src/auth/thunks.js`
+`src/store/auth/thunks.js`
 
 ```js
 import { singInWithGoogle } from "../firebase/providers";
@@ -19112,7 +19112,7 @@ Actualmente, aparecen una serie de errores. En este caso no les daré solución,
 
 ### 19.9 Disparar acción de autenticación
 
-`src/auth/thunks.js`
+`src/store/auth/thunks.js`
 
 ```js
 import { singInWithGoogle } from "../firebase/providers";
@@ -19211,7 +19211,7 @@ import { useForm } from "../../hooks/useForm";
 import {
   checkingAuthentication,
   startGoogleSignIn,
-} from "../thunks";
+} from "../../store/auth/thunks";
 
 export const LoginPage = () => {
   const { status } = useSelector((state) => state.auth);
@@ -20146,7 +20146,7 @@ export const registerUserWithEmailPassword = async ({
 };
 ```
 
-`src/auth/thunks.js`
+`src/store/auth/thunks.js`
 
 ```js
 import {
@@ -20364,22 +20364,153 @@ export const RegisterPage = () => {
 
 [En Firebase: ver emails registrados](https://console.firebase.google.com/u/0/project/journalapp-72f2d/authentication/users)
 
-### 19.15
+### 19.15 Actualizar el displayName y autenticar el usuario
+
+`src/firebase/providers.js`
+
+```js
+import {
+  createUserWithEmailAndPassword,
+  GoogleAuthProvider,
+  signInWithPopup,
+  updateProfile,
+} from "firebase/auth";
+import { FirebaseAuth } from "./config";
+
+const googleProvider = new GoogleAuthProvider();
+
+export const singInWithGoogle = async () => {
+  try {
+    const result = await signInWithPopup(
+      FirebaseAuth,
+      googleProvider
+    );
+    // const credential = GoogleAuthProvider.credentialFromResult(result);
+
+    const { displayName, email, photoURL, uid } =
+      result.user;
+    // console.log(user);
+
+    // console.log({ credential });
+
+    return {
+      ok: true,
+      // User info
+      displayName,
+      email,
+      photoURL,
+      uid,
+    };
+  } catch (error) {
+    // Handle Errors here.
+    const errorCode = error.code;
+    const errorMessage = error.message;
+
+    // console.log(e);
+    return {
+      ok: false,
+      errorMessage,
+    };
+  }
+};
+
+export const registerUserWithEmailPassword = async ({
+  email,
+  password,
+  displayName,
+}) => {
+  try {
+    const resp = await createUserWithEmailAndPassword(
+      FirebaseAuth,
+      email,
+      password
+    );
+
+    const { uid, photoURL } = resp.user;
+
+    // TODO: update displayName in Firebase
+    await updateProfile(FirebaseAuth.currentUser, {
+      displayName,
+    });
+
+    return {
+      ok: true,
+      uid,
+      photoURL,
+      email,
+      displayName,
+    };
+  } catch (error) {
+    console.log(error);
+
+    return { ok: false, errorMessage: error.message };
+  }
+};
+```
+
+`src/store/auth/thunks.js`
+
+```js
+import {
+  singInWithGoogle,
+  registerUserWithEmailPassword,
+} from "../../firebase/providers";
+import {
+  checkingCredentials,
+  login,
+  logout,
+} from "./authSlice";
+
+export const checkingAuthentication = (
+  email,
+  password
+) => {
+  return async (dispatch) => {
+    dispatch(checkingCredentials());
+  };
+};
+
+export const startGoogleSignIn = () => {
+  return async (dispatch) => {
+    dispatch(checkingCredentials());
+
+    const result = await singInWithGoogle();
+
+    // console.log({ result });
+
+    if (!result.ok)
+      return dispatch(logout(result.errorMessage));
+
+    dispatch(login(result));
+  };
+};
+
+export const startCreatingUserWithEmailPassword = ({
+  email,
+  password,
+  displayName,
+}) => {
+  return async (dispatch) => {
+    dispatch(checkingCredentials());
+
+    const { ok, uid, photoURL, errorMessage } =
+      await registerUserWithEmailPassword({
+        email,
+        password,
+        displayName,
+      });
+
+    if (!ok) return dispatch(logout({ errorMessage }));
+
+    dispatch(
+      login({ uid, displayName, email, photoURL })
+    );
+  };
+};
+```
 
 ### 19.16
 
-☝️👆
-👈👀
-❯
-👈👀👇
-👈👀☝️
-👈👀📌
-🔥
-🚫
-🔘
-🟣
-🟡
-
 
 
 
@@ -20405,7 +20536,7 @@ export const RegisterPage = () => {
 🟣
 🟡
 
-### 1
+### 19.17
 
 `src/`
 
@@ -20417,7 +20548,7 @@ export const RegisterPage = () => {
 ```jsx
 ```
 
-### 1
+### 19.18
 
 `src/`
 
@@ -20429,7 +20560,7 @@ export const RegisterPage = () => {
 ```jsx
 ```
 
-### 1
+### 19.19
 
 `src/`
 
@@ -20441,7 +20572,7 @@ export const RegisterPage = () => {
 ```jsx
 ```
 
-### 1
+### 19.20
 
 `src/`
 
@@ -20453,7 +20584,7 @@ export const RegisterPage = () => {
 ```jsx
 ```
 
-### 1
+### 19.21
 
 `src/`
 
@@ -20471,7 +20602,15 @@ npm install react@latest react-dom@latest
 yarn add react@latest react-dom@latest
 ```
 
+### 19.22
 
+### 19.23
+
+### 19.24
+
+
+
+### 20
 
 `src/`
 
