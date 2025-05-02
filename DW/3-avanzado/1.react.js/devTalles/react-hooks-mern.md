@@ -20687,28 +20687,351 @@ export const RegisterPage = () => {
 };
 ```
 
-### 19.17
+### 19.17 Realizar el login de usuario con correo y contraseña
 
-`src/`
+La solución en la siguiente clase :/
+
+### 19.18 Resolución de la tarea - Login de usuario
+
+`src/auth/pages/LoginPage.jsx`
 
 ```jsx
+import { useMemo } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Link as RouterLink } from "react-router";
+import {
+  TextField,
+  Grid2,
+  Button,
+  Link,
+  Box,
+  Alert,
+} from "@mui/material";
+import { Google } from "@mui/icons-material";
+import { AuthLayout } from "../layout/AuthLayout";
+import { useForm } from "../../hooks/useForm";
+import {
+  startGoogleSignIn,
+  startLoginWithEmailPassword,
+} from "../../store/auth/thunks";
+
+export const LoginPage = () => {
+  const { status, errorMessage } = useSelector(
+    (state) => state.auth
+  );
+
+  const dispatch = useDispatch();
+
+  const { email, password, handleInputChange } = useForm({
+    email: "",
+    password: "",
+  });
+
+  const isAuthenticating = useMemo(
+    () => status === "checking",
+    [status]
+  );
+
+  // const { status } = useSelector((state) => state.auth);
+
+  // console.log(email, password);
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    // console.log({ email, password });
+    //! This isn't the action to be dispatched
+    // dispatch(checkingAuthentication());
+    dispatch(
+      startLoginWithEmailPassword({ email, password })
+    );
+  };
+
+  const handleGoogleSignIn = () => {
+    console.log("handleGoogleSignIn");
+
+    dispatch(startGoogleSignIn());
+  };
+
+  // useEffect(() => {
+  //   dispatch(checkingAuthentication());
+  // }, []);
+
+  return (
+    <AuthLayout title="Login">
+      <form action="" onSubmit={handleSubmit}>
+        <Grid2
+          container
+          // component="form"
+          spacing={2}
+        >
+          <Grid2 size={{ xs: 12, md: 6 }}>
+            <TextField
+              id="email"
+              label="Email"
+              type="email"
+              placeholder="email@google.com"
+              size="small"
+              fullWidth
+              name="email"
+              value={email}
+              onChange={handleInputChange}
+            />
+          </Grid2>
+          <Grid2 size={{ xs: 12, md: 6 }}>
+            <TextField
+              id="password"
+              label="Password"
+              type="password"
+              placeholder="password"
+              size="small"
+              fullWidth
+              name="password"
+              value={password}
+              onChange={handleInputChange}
+            />
+          </Grid2>
+        </Grid2>
+        {/* New */}
+        <Box>
+          <Grid2
+            size={{ xs: 12 }}
+            display={!!errorMessage ? "" : "none"}
+            sx={{
+              mt: 1,
+            }}
+          >
+            <Alert severity="error">{errorMessage}</Alert>
+          </Grid2>
+          <Grid2 container spacing={2} sx={{ mt: 2 }}>
+            <Grid2 size={{ xs: 12, md: 6 }}>
+              <Button
+                disabled={isAuthenticating}
+                type="submit"
+                variant="contained"
+                fullWidth
+              >
+                Login
+              </Button>
+            </Grid2>
+            <Grid2 size={{ xs: 12, md: 6 }}>
+              <Button
+                disabled={isAuthenticating}
+                variant="contained"
+                fullWidth
+                startIcon={<Google />}
+                onClick={handleGoogleSignIn}
+              >
+                Google
+              </Button>
+            </Grid2>
+          </Grid2>
+          <Grid2
+            container
+            // direction="row"
+            justifyContent="end"
+            sx={{ mt: 2 }}
+          >
+            <Link
+              component={RouterLink}
+              color="inherit"
+              to="/auth/register"
+            >
+              Create an account.
+            </Link>
+          </Grid2>
+        </Box>
+      </form>
+    </AuthLayout>
+  );
+};
 ```
 
-`src/`
+`src/store/auth/thunks.js`
 
-```jsx
+```js
+import {
+  singInWithGoogle,
+  registerUserWithEmailPassword,
+  loginWithEmailPassword,
+} from "../../firebase/providers";
+import {
+  checkingCredentials,
+  login,
+  logout,
+} from "./authSlice";
+
+export const checkingAuthentication = (
+  email,
+  password
+) => {
+  return async (dispatch) => {
+    dispatch(checkingCredentials());
+  };
+};
+
+export const startGoogleSignIn = () => {
+  return async (dispatch) => {
+    dispatch(checkingCredentials());
+
+    const result = await singInWithGoogle();
+
+    // console.log({ result });
+
+    if (!result.ok)
+      return dispatch(logout(result.errorMessage));
+
+    dispatch(login(result));
+  };
+};
+
+export const startCreatingUserWithEmailPassword = ({
+  email,
+  password,
+  displayName,
+}) => {
+  return async (dispatch) => {
+    dispatch(checkingCredentials());
+
+    const { ok, uid, photoURL, errorMessage } =
+      await registerUserWithEmailPassword({
+        email,
+        password,
+        displayName,
+      });
+
+    if (!ok) return dispatch(logout({ errorMessage }));
+
+    dispatch(
+      login({ uid, displayName, email, photoURL })
+    );
+  };
+};
+
+export const startLoginWithEmailPassword = ({
+  email,
+  password,
+}) => {
+  return async (dispatch) => {
+    dispatch(checkingCredentials());
+
+    const result = await loginWithEmailPassword({
+      email,
+      password,
+    });
+
+    if (!result.ok) return dispatch(logout(result));
+
+    dispatch(login(result));
+  };
+};
 ```
 
-### 19.18
+`src/firebase/providers.js`
 
-`src/`
+```js
+import {
+  createUserWithEmailAndPassword,
+  GoogleAuthProvider,
+  signInWithEmailAndPassword,
+  signInWithPopup,
+  updateProfile,
+} from "firebase/auth";
+import { FirebaseAuth } from "./config";
 
-```jsx
-```
+const googleProvider = new GoogleAuthProvider();
 
-`src/`
+export const singInWithGoogle = async () => {
+  try {
+    const result = await signInWithPopup(
+      FirebaseAuth,
+      googleProvider
+    );
+    // const credential = GoogleAuthProvider.credentialFromResult(result);
 
-```jsx
+    const { displayName, email, photoURL, uid } =
+      result.user;
+    // console.log(user);
+
+    // console.log({ credential });
+
+    return {
+      ok: true,
+      // User info
+      displayName,
+      email,
+      photoURL,
+      uid,
+    };
+  } catch (error) {
+    // Handle Errors here.
+    const errorCode = error.code;
+    const errorMessage = error.message;
+
+    // console.log(e);
+    return {
+      ok: false,
+      errorMessage,
+    };
+  }
+};
+
+export const registerUserWithEmailPassword = async ({
+  email,
+  password,
+  displayName,
+}) => {
+  try {
+    const resp = await createUserWithEmailAndPassword(
+      FirebaseAuth,
+      email,
+      password
+    );
+
+    const { uid, photoURL } = resp.user;
+
+    // TODO: update displayName in Firebase
+    await updateProfile(FirebaseAuth.currentUser, {
+      displayName,
+    });
+
+    return {
+      ok: true,
+      uid,
+      photoURL,
+      email,
+      displayName,
+    };
+  } catch (error) {
+    console.log(error);
+
+    return { ok: false, errorMessage: error.message };
+  }
+};
+
+export const loginWithEmailPassword = async ({
+  email,
+  password,
+}) => {
+  try {
+    const resp = await signInWithEmailAndPassword(
+      FirebaseAuth,
+      email,
+      password
+    );
+
+    const { uid, photoURL, displayName } = resp.user;
+
+    return {
+      ok: true,
+      uid,
+      photoURL,
+      displayName,
+    };
+  } catch (error) {
+    return { ok: false, errorMessage: error.message };
+  }
+};
 ```
 
 ### 19.19
