@@ -21034,19 +21034,182 @@ export const loginWithEmailPassword = async ({
 };
 ```
 
-### 19.19
+### 19.19 Checking Authentication
 
-`src/`
+Estructura:
 
-```jsx
+```bash
+.
+├── eslint.config.js
+├── index.html
+├── node_modules
+├── package.json
+├── public
+├── README.md
+├── src
+│   ├── App.jsx
+│   ├── auth
+│   │   ├── layout
+│   │   │   └── AuthLayout.jsx
+│   │   ├── pages
+│   │   │   ├── LoginPage.jsx
+│   │   │   └── RegisterPage.jsx
+│   │   └── routes
+│   │       └── AuthRoutes.jsx
+│   ├── firebase
+│   │   ├── config.js
+│   │   └── providers.js
+│   ├── hooks
+│   │   └── useForm.js
+│   ├── journal
+│   │   ├── components
+│   │   │   ├── ImageGallery.jsx
+│   │   │   ├── NavBar.jsx
+│   │   │   └── SideBar.jsx
+│   │   ├── layout
+│   │   │   └── JournalLayout.jsx
+│   │   ├── pages
+│   │   │   └── JournalPage.jsx
+│   │   ├── routes
+│   │   │   └── JournalRoutes.jsx
+│   │   └── views
+│   │       ├── NoteView.jsx
+│   │       └── NothingSelectedView.jsx
+│   ├── main.jsx
+│   ├── router
+│   │   └── AppRouter.jsx
+│   ├── store
+│   │   ├── auth
+│   │   │   ├── authSlice.js
+│   │   │   └── thunks.js
+│   │   └── store.js
+│   ├── styles.css
+│   ├── theme
+│   │   ├── purpleTheme.js
+│   │   └── Theme.jsx
+│   └── ui
+│       └── components
+│           └── CheckingAuth.jsx
+├── vite.config.js
+└── yarn.lock
 ```
 
-`src/`
+`src/ui/components/CheckingAuth.jsx`
 
 ```jsx
+import { Box, CircularProgress } from "@mui/material";
+
+export const CheckingAuth = () => {
+  return (
+    <Box
+      component="main"
+      sx={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        minHeight: "100vh",
+        bgcolor: "primary.main",
+        // padding: 4,
+      }}
+    >
+      <Box
+        component="section"
+        sx={{
+          width: {
+            xs: "80%",
+            sm: "60%",
+            md: "40%",
+            lg: "30%",
+          },
+          display: "flex",
+          justifyContent: "center",
+          // bgcolor: "white",
+          // padding: { xs: 2, sm: 3, md: 4 },
+          // borderRadius: 2,
+        }}
+      >
+        <CircularProgress color="warning" />
+      </Box>
+    </Box>
+  );
+};
 ```
 
-### 19.20
+`src/store/auth/authSlice.js`
+
+```js
+import { createSlice } from "@reduxjs/toolkit";
+
+const initialState = {
+  status: "checking",
+  uid: null,
+  email: null,
+  displayName: null,
+  photoURL: null,
+  errorMessage: null,
+};
+
+export const authSlice = createSlice({
+  name: "auth",
+  initialState,
+  reducers: {
+    login: (state, { payload }) => {
+      state.status = "authenticated";
+      state.uid = payload.uid;
+      state.email = payload.email;
+      state.displayName = payload.displayName;
+      state.photoURL = payload.photoURL;
+      state.errorMessage = null;
+    },
+    logout: (state, { payload }) => {
+      state.status = "not-authenticated";
+      state.uid = null;
+      state.email = null;
+      state.displayName = null;
+      state.photoURL = null;
+      state.errorMessage = payload.errorMessage;
+    },
+    checkingCredentials: (state) => {
+      state.status = "checking";
+    },
+  },
+});
+
+export const { login, logout, checkingCredentials } =
+  authSlice.actions;
+// export default authSlice.reducer;
+```
+
+`src/router/AppRouter.jsx`
+
+```jsx
+import { Route, Routes } from "react-router";
+import { AuthRoutes } from "../auth/routes/AuthRoutes";
+import { JournalRoutes } from "../journal/routes/JournalRoutes";
+import { useSelector } from "react-redux";
+import { CheckingAuth } from "../ui/components/CheckingAuth";
+
+export const AppRouter = () => {
+  const { status } = useSelector((state) => state.auth);
+  if (status === "checking") {
+    return <CheckingAuth />;
+  }
+
+  return (
+    <Routes>
+      {/* Login and Registration */}
+      <Route path="auth/*" element={<AuthRoutes />} />
+
+      {/* JournalApp */}
+      <Route path="/*" element={<JournalRoutes />} />
+    </Routes>
+  );
+};
+```
+
+[MUI Progress](https://mui.com/material-ui/react-progress/)
+
+### 19.20 
 
 `src/`
 
