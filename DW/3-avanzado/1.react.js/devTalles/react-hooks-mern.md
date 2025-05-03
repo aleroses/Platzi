@@ -22080,7 +22080,37 @@ export const NothingSelectedView = () => {
 
 [Animate Style](https://animate.style/)
 
-### 19.24
+### 19.24 Código fuente de la sección
+
+Aquí les dejo el código fuente de la sección por si les interesa revisarlo o utilizarlo como base.
+
+**IMPORTANTE:**
+
+Recuerden cambiar la configuración de firebase, porque yo lo borraré en cualquier momento
+
+[**GitHub - Fin sección 19**](https://github.com/Klerith/react-journal-material/tree/fin-seccion-19)
+
+## 20
+
+`src/`
+
+```jsx
+```
+
+`src/`
+
+```jsx
+```
+
+`src/`
+
+```jsx
+```
+
+`src/`
+
+```jsx
+```
 
 ☝️👆
 👈👀
@@ -22092,41 +22122,6 @@ export const NothingSelectedView = () => {
 🚫
 🔘
 🟣
-🟡
-
-
-### 20
-
-`src/`
-
-```jsx
-```
-
-`src/`
-
-```jsx
-```
-
-`src/`
-
-```jsx
-```
-
-`src/`
-
-```jsx
-```
-
-☝️👆
-👈👀
-❯
-👈👀👇
-👈👀☝️
-👈👀📌
-🔥
-🚫
-🔘
-
 🟡
 
 ```bash
