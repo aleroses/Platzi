@@ -21209,34 +21209,215 @@ export const AppRouter = () => {
 
 [MUI Progress](https://mui.com/material-ui/react-progress/)
 
-### 19.20 
+### 19.20 Mantener el estado de la autenticación al recargar
 
-`src/`
-
-```jsx
-```
-
-`src/`
+`src/router/AppRouter.jsx`
 
 ```jsx
+import { useDispatch, useSelector } from "react-redux";
+import { Navigate, Route, Routes } from "react-router";
+import { FirebaseAuth } from "../firebase/config";
+
+import { AuthRoutes } from "../auth/routes/AuthRoutes";
+import { JournalRoutes } from "../journal/routes/JournalRoutes";
+import { CheckingAuth } from "../ui/components/CheckingAuth";
+import { useEffect } from "react";
+import { onAuthStateChanged } from "firebase/auth";
+import { login, logout } from "../store/auth/authSlice";
+
+export const AppRouter = () => {
+  const { status } = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    onAuthStateChanged(FirebaseAuth, async (user) => {
+      // console.log(user);
+
+      if (!user) return dispatch(logout());
+
+      const { uid, email, displayName, photoURL } = user;
+
+      dispatch(
+        login({ uid, email, displayName, photoURL })
+      );
+    });
+  }, []);
+
+  if (status === "checking") {
+    return <CheckingAuth />;
+  }
+
+  return (
+    <Routes>
+      {status === "authenticated" ? (
+        <Route path="/*" element={<JournalRoutes />} />
+      ) : (
+        <Route path="auth/*" element={<AuthRoutes />} />
+      )}
+
+      <Route
+        path="/*"
+        element={<Navigate to="/auth/login" />}
+      />
+
+      {/* Login and Registration */}
+      {/* <Route path="auth/*" element={<AuthRoutes />} /> */}
+
+      {/* JournalApp */}
+      {/* <Route path="/*" element={<JournalRoutes />} /> */}
+    </Routes>
+  );
+};
 ```
 
-### 19.21
+### 19.21 Custom Hook para autenticación
 
-`src/`
-
-```jsx
-```
-
-`src/`
-
-```jsx
-```
+Estructura:
 
 ```bash
-npm install react@latest react-dom@latest
-# o
-yarn add react@latest react-dom@latest
+.
+├── eslint.config.js
+├── index.html
+├── node_modules
+├── package.json
+├── public
+├── README.md
+├── src
+│   ├── App.jsx
+│   ├── auth
+│   │   ├── layout
+│   │   │   └── AuthLayout.jsx
+│   │   ├── pages
+│   │   │   ├── LoginPage.jsx
+│   │   │   └── RegisterPage.jsx
+│   │   └── routes
+│   │       └── AuthRoutes.jsx
+│   ├── firebase
+│   │   ├── config.js
+│   │   └── providers.js
+│   ├── hooks
+│   │   ├── useCheckAuth.js
+│   │   └── useForm.js
+│   ├── journal
+│   │   ├── components
+│   │   │   ├── ImageGallery.jsx
+│   │   │   ├── NavBar.jsx
+│   │   │   └── SideBar.jsx
+│   │   ├── layout
+│   │   │   └── JournalLayout.jsx
+│   │   ├── pages
+│   │   │   └── JournalPage.jsx
+│   │   ├── routes
+│   │   │   └── JournalRoutes.jsx
+│   │   └── views
+│   │       ├── NoteView.jsx
+│   │       └── NothingSelectedView.jsx
+│   ├── main.jsx
+│   ├── router
+│   │   └── AppRouter.jsx
+│   ├── store
+│   │   ├── auth
+│   │   │   ├── authSlice.js
+│   │   │   └── thunks.js
+│   │   └── store.js
+│   ├── styles.css
+│   ├── theme
+│   │   ├── purpleTheme.js
+│   │   └── Theme.jsx
+│   └── ui
+│       └── components
+│           └── CheckingAuth.jsx
+├── vite.config.js
+└── yarn.lock
+```
+
+`src/router/AppRouter.jsx`
+
+```jsx
+import { Navigate, Route, Routes } from "react-router";
+
+import { AuthRoutes } from "../auth/routes/AuthRoutes";
+import { JournalRoutes } from "../journal/routes/JournalRoutes";
+import { CheckingAuth } from "../ui/components/CheckingAuth";
+import { useCheckAuth } from "../hooks/useCheckAuth";
+
+export const AppRouter = () => {
+  const status = useCheckAuth();
+
+  // const { status } = useSelector((state) => state.auth);
+  // const dispatch = useDispatch();
+
+  // useEffect(() => {
+  //   onAuthStateChanged(FirebaseAuth, async (user) => {
+  //     // console.log(user);
+
+  //     if (!user) return dispatch(logout());
+
+  //     const { uid, email, displayName, photoURL } = user;
+
+  //     dispatch(
+  //       login({ uid, email, displayName, photoURL })
+  //     );
+  //   });
+  // }, []);
+
+  if (status === "checking") {
+    return <CheckingAuth />;
+  }
+
+  return (
+    <Routes>
+      {status === "authenticated" ? (
+        <Route path="/*" element={<JournalRoutes />} />
+      ) : (
+        <Route path="auth/*" element={<AuthRoutes />} />
+      )}
+
+      <Route
+        path="/*"
+        element={<Navigate to="/auth/login" />}
+      />
+
+      {/* Login and Registration */}
+      {/* <Route path="auth/*" element={<AuthRoutes />} /> */}
+
+      {/* JournalApp */}
+      {/* <Route path="/*" element={<JournalRoutes />} /> */}
+    </Routes>
+  );
+};
+```
+
+`src/hooks/useCheckAuth.js`
+
+```js
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { onAuthStateChanged } from "firebase/auth";
+import { login, logout } from "../store/auth/authSlice";
+import { FirebaseAuth } from "../firebase/config";
+
+export const useCheckAuth = () => {
+  const { status } = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    onAuthStateChanged(FirebaseAuth, async (user) => {
+      // console.log(user);
+
+      if (!user) return dispatch(logout());
+
+      const { uid, email, displayName, photoURL } = user;
+
+      dispatch(
+        login({ uid, email, displayName, photoURL })
+      );
+    });
+  }, []);
+
+  return status;
+};
+
 ```
 
 ### 19.22
