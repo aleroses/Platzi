@@ -21820,25 +21820,265 @@ export const SideBar = ({ drawerWidth = 240 }) => {
 };
 ```
 
-### 19.23
+### 19.23 Animaciones para la aplicación
 
-`src/`
+`index.html`
 
-```jsx
+```html
+  <head>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+
+    <title>Journal App</title>
+  </head>
 ```
 
-
-`src/`
-
-```jsx
-```
-
-
-`src/`
+`src/journal/views/NoteView.jsx`
 
 ```jsx
+import { SaveOutlined } from "@mui/icons-material";
+import {
+  Button,
+  Grid2,
+  Typography,
+  TextField,
+} from "@mui/material";
+import { ImageGallery } from "../components/ImageGallery";
+
+export const NoteView = () => {
+  return (
+    <>
+      <Grid2
+        className="animate__animated animate__fadeIn animate__faster"
+        container
+        justifyContent="space-between"
+        alignItems="center"
+        sx={{ mb: 1 }}
+      >
+      </Grid2>
+    </>
+  );
+};
 ```
 
+`src/auth/pages/LoginPage.jsx`
+
+```jsx
+import { useMemo } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Link as RouterLink } from "react-router";
+import {
+  TextField,
+  Grid2,
+  Button,
+  Link,
+  Box,
+  Alert,
+} from "@mui/material";
+import { Google } from "@mui/icons-material";
+import { AuthLayout } from "../layout/AuthLayout";
+import { useForm } from "../../hooks/useForm";
+import {
+  startGoogleSignIn,
+  startLoginWithEmailPassword,
+} from "../../store/auth/thunks";
+
+export const LoginPage = () => {
+  const { status, errorMessage } = useSelector(
+    (state) => state.auth
+  );
+
+  const dispatch = useDispatch();
+
+  const { email, password, handleInputChange } = useForm({
+    email: "",
+    password: "",
+  });
+
+  const isAuthenticating = useMemo(
+    () => status === "checking",
+    [status]
+  );
+
+  // const { status } = useSelector((state) => state.auth);
+
+  // console.log(email, password);
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    // console.log({ email, password });
+    //! This isn't the action to be dispatched
+    // dispatch(checkingAuthentication());
+    dispatch(
+      startLoginWithEmailPassword({ email, password })
+    );
+  };
+
+  const handleGoogleSignIn = () => {
+    console.log("handleGoogleSignIn");
+
+    dispatch(startGoogleSignIn());
+  };
+
+  // useEffect(() => {
+  //   dispatch(checkingAuthentication());
+  // }, []);
+
+  return (
+    <AuthLayout title="Login">
+      <form
+        action=""
+        onSubmit={handleSubmit}
+        className="animate__animated animate__fadeIn animate__faster"
+      >
+      </form>
+    </AuthLayout>
+  );
+};
+```
+
+`src/auth/pages/RegisterPage.jsx`
+
+```jsx
+import { useMemo, useState } from "react";
+import {
+  Button,
+  Grid2,
+  TextField,
+  Link,
+  Typography,
+  Alert,
+} from "@mui/material";
+import { Link as RouterLink } from "react-router";
+import { AuthLayout } from "../layout/AuthLayout";
+import { useForm } from "../../hooks/useForm";
+import { useDispatch, useSelector } from "react-redux";
+import { startCreatingUserWithEmailPassword } from "../../store/auth/thunks.js";
+
+const formData = {
+  email: "aleghost@google.com",
+  password: "123456",
+  displayName: "Ale Ghost",
+};
+
+const formValidations = {
+  email: [
+    (value) => value.includes("@"),
+    "The mail must have an @",
+  ],
+  password: [
+    (value) => value.length >= 6,
+    "The password must be longer than 6 letters",
+  ],
+  displayName: [
+    (value) => value.length >= 1,
+    "The name is mandatory",
+  ],
+};
+
+export const RegisterPage = () => {
+  const dispatch = useDispatch();
+
+  const [formSubmitted, setFormSubmitted] =
+    useState(false);
+
+  const { status, errorMessage } = useSelector(
+    (state) => state.auth
+  );
+
+  const isCheckingAuthentication = useMemo(
+    () => status === "checking",
+    [status]
+  );
+
+  const {
+    formState,
+    displayName,
+    email,
+    password,
+    handleInputChange,
+    isFormValid,
+    displayNameValid,
+    emailValid,
+    passwordValid,
+  } = useForm(formData, formValidations);
+
+  const onSubmit = (event) => {
+    event.preventDefault();
+
+    setFormSubmitted(true);
+
+    if (!isFormValid) return;
+
+    dispatch(
+      startCreatingUserWithEmailPassword(formState)
+    );
+  };
+
+  return (
+    <AuthLayout title="Register">
+      {/* <h1>Form: {isFormValid ? "Valid" : "Incorrect"}</h1> */}
+      <form
+        action=""
+        onSubmit={onSubmit}
+        className="animate__animated animate__fadeIn animate__faster"
+      >
+      </form>
+    </AuthLayout>
+  );
+};
+```
+
+`src/journal/layout/JournalLayout.jsx`
+
+```jsx
+import { Box, Toolbar } from "@mui/material";
+import { NavBar } from "../components/NavBar";
+import { SideBar } from "../components/SideBar";
+
+const drawerWidth = 280;
+
+export const JournalLayout = ({ children }) => {
+  return (
+    <Box
+      sx={{ display: "flex" }}
+      className="animate__animated animate__fadeIn animate__faster"
+    >
+    </Box>
+  );
+};
+```
+
+`src/journal/views/NothingSelectedView.jsx`
+
+```jsx
+import { StarOutline } from "@mui/icons-material";
+import { Box, Grid2, Typography } from "@mui/material";
+
+export const NothingSelectedView = () => {
+  return (
+    <Box
+      className="animate__animated animate__fadeIn animate__faster"
+      component="main"
+      sx={{
+        minHeight: "calc(100vh - 110px)",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "center",
+        bgcolor: "primary.main",
+        borderRadius: 5,
+      }}
+    >
+    </Box>
+  );
+};
+```
+
+[Animate Style](https://animate.style/)
 
 ### 19.24
 
