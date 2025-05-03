@@ -21417,12 +21417,428 @@ export const useCheckAuth = () => {
 
   return status;
 };
-
 ```
 
-### 19.22
+### 19.22 Logout de Firebase
+
+`src/journal/components/NavBar.jsx`
+
+```jsx
+import {
+  LogoutOutlined,
+  MenuOutlined,
+} from "@mui/icons-material";
+import {
+  AppBar,
+  Toolbar,
+  IconButton,
+  Typography,
+} from "@mui/material";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { startLogout } from "../../store/auth/thunks";
+
+export const NavBar = ({ drawerWidth = 240 }) => {
+  const [open, setOpen] = useState(false);
+
+  const dispatch = useDispatch();
+
+  const onLogout = () => {
+    dispatch(startLogout());
+  };
+
+  return (
+    <>
+      <AppBar
+        // position="static"
+        sx={{
+          width: { sm: `calc(100% - ${drawerWidth}px)` },
+          ml: { sm: `${drawerWidth}px` },
+        }}
+      >
+        <Toolbar>
+          <IconButton
+            aria-label=""
+            onClick={() => setOpen(true)}
+            color="inherit"
+            edge="start"
+            sx={{
+              display: { xs: "flex", sm: "none" },
+              mr: 2,
+            }}
+          >
+            <MenuOutlined />
+          </IconButton>
+
+          <Typography
+            variant="h6"
+            // noWrap
+            component="span"
+            sx={{ flexGrow: 1 }}
+          >
+            JournalApp
+          </Typography>
+
+          <IconButton
+            aria-label=""
+            color="error"
+            onClick={onLogout}
+          >
+            <LogoutOutlined />
+          </IconButton>
+        </Toolbar>
+      </AppBar>
+    </>
+  );
+};
+```
+
+`src/store/auth/thunks.js`
+
+```js
+import {
+  singInWithGoogle,
+  registerUserWithEmailPassword,
+  loginWithEmailPassword,
+  logoutFirebase,
+} from "../../firebase/providers";
+import {
+  checkingCredentials,
+  login,
+  logout,
+} from "./authSlice";
+
+export const checkingAuthentication = (
+  email,
+  password
+) => {
+  return async (dispatch) => {
+    dispatch(checkingCredentials());
+  };
+};
+
+export const startGoogleSignIn = () => {
+  return async (dispatch) => {
+    dispatch(checkingCredentials());
+
+    const result = await singInWithGoogle();
+
+    // console.log({ result });
+
+    if (!result.ok)
+      return dispatch(logout(result.errorMessage));
+
+    dispatch(login(result));
+  };
+};
+
+export const startCreatingUserWithEmailPassword = ({
+  email,
+  password,
+  displayName,
+}) => {
+  return async (dispatch) => {
+    dispatch(checkingCredentials());
+
+    const { ok, uid, photoURL, errorMessage } =
+      await registerUserWithEmailPassword({
+        email,
+        password,
+        displayName,
+      });
+
+    if (!ok) return dispatch(logout({ errorMessage }));
+
+    dispatch(
+      login({ uid, displayName, email, photoURL })
+    );
+  };
+};
+
+export const startLoginWithEmailPassword = ({
+  email,
+  password,
+}) => {
+  return async (dispatch) => {
+    dispatch(checkingCredentials());
+
+    const result = await loginWithEmailPassword({
+      email,
+      password,
+    });
+
+    if (!result.ok) return dispatch(logout(result));
+
+    dispatch(login(result));
+  };
+};
+
+export const startLogout = () => {
+  return async (dispatch) => {
+    await logoutFirebase();
+
+    dispatch(logout());
+  };
+};
+```
+
+`src/store/auth/authSlice.js`
+
+```js
+import { createSlice } from "@reduxjs/toolkit";
+
+const initialState = {
+  status: "checking",
+  uid: null,
+  email: null,
+  displayName: null,
+  photoURL: null,
+  errorMessage: null,
+};
+
+export const authSlice = createSlice({
+  name: "auth",
+  initialState,
+  reducers: {
+    login: (state, { payload }) => {
+      state.status = "authenticated";
+      state.uid = payload.uid;
+      state.email = payload.email;
+      state.displayName = payload.displayName;
+      state.photoURL = payload.photoURL;
+      state.errorMessage = null;
+    },
+    logout: (state, { payload }) => {
+      state.status = "not-authenticated";
+      state.uid = null;
+      state.email = null;
+      state.displayName = null;
+      state.photoURL = null;
+      state.errorMessage = payload?.errorMessage;
+    },
+    checkingCredentials: (state) => {
+      state.status = "checking";
+    },
+  },
+});
+
+export const { login, logout, checkingCredentials } =
+  authSlice.actions;
+// export default authSlice.reducer;
+```
+
+`src/firebase/providers.js`
+
+```js
+import {
+  createUserWithEmailAndPassword,
+  GoogleAuthProvider,
+  signInWithEmailAndPassword,
+  signInWithPopup,
+  updateProfile,
+} from "firebase/auth";
+import { FirebaseAuth } from "./config";
+
+const googleProvider = new GoogleAuthProvider();
+
+export const singInWithGoogle = async () => {
+  try {
+    const result = await signInWithPopup(
+      FirebaseAuth,
+      googleProvider
+    );
+    // const credential = GoogleAuthProvider.credentialFromResult(result);
+
+    const { displayName, email, photoURL, uid } =
+      result.user;
+    // console.log(user);
+
+    // console.log({ credential });
+
+    return {
+      ok: true,
+      // User info
+      displayName,
+      email,
+      photoURL,
+      uid,
+    };
+  } catch (error) {
+    // Handle Errors here.
+    const errorCode = error.code;
+    const errorMessage = error.message;
+
+    // console.log(e);
+    return {
+      ok: false,
+      errorMessage,
+    };
+  }
+};
+
+export const registerUserWithEmailPassword = async ({
+  email,
+  password,
+  displayName,
+}) => {
+  try {
+    const resp = await createUserWithEmailAndPassword(
+      FirebaseAuth,
+      email,
+      password
+    );
+
+    const { uid, photoURL } = resp.user;
+
+    // TODO: update displayName in Firebase
+    await updateProfile(FirebaseAuth.currentUser, {
+      displayName,
+    });
+
+    return {
+      ok: true,
+      uid,
+      photoURL,
+      email,
+      displayName,
+    };
+  } catch (error) {
+    console.log(error);
+
+    return { ok: false, errorMessage: error.message };
+  }
+};
+
+export const loginWithEmailPassword = async ({
+  email,
+  password,
+}) => {
+  try {
+    const resp = await signInWithEmailAndPassword(
+      FirebaseAuth,
+      email,
+      password
+    );
+
+    const { uid, photoURL, displayName } = resp.user;
+
+    return {
+      ok: true,
+      uid,
+      photoURL,
+      displayName,
+    };
+  } catch (error) {
+    return { ok: false, errorMessage: error.message };
+  }
+};
+
+export const logoutFirebase = async () => {
+  return await FirebaseAuth.signOut();
+};
+```
+
+`src/journal/components/SideBar.jsx`
+
+```jsx
+import { TurnedInNot } from "@mui/icons-material";
+import {
+  Box,
+  Drawer,
+  Typography,
+  Toolbar,
+  Divider,
+  List,
+  ListItem,
+  ListItemIcon,
+  ListItemButton,
+  ListItemText,
+  Grid2,
+} from "@mui/material";
+import { useSelector } from "react-redux";
+
+export const SideBar = ({ drawerWidth = 240 }) => {
+  const { displayName } = useSelector(
+    (state) => state.auth
+  );
+
+  return (
+    // <Box
+    //   component="nav"
+    //   sx={{
+    //     width: { sm: drawerWidth },
+    //     flexShrink: { sm: 0 },
+    //   }}
+    // >
+    <Drawer
+      variant="permanent"
+      anchor="left"
+      open
+      sx={{
+        width: { sm: drawerWidth },
+        flexShrink: { sm: 0 },
+        display: { xs: "block" },
+        "& .MuiDrawer-paper": {
+          boxSizing: "border-box",
+          width: drawerWidth,
+        },
+      }}
+    >
+      <Toolbar>
+        <Typography variant="h6" noWrap component="div">
+          {displayName}
+        </Typography>
+      </Toolbar>
+      <Divider />
+
+      <Box component="nav">
+        <List>
+          {["January", "February", "March", "April"].map(
+            (text) => (
+              <ListItem key={text} disablePadding>
+                <ListItemButton component="a">
+                  <ListItemIcon>
+                    <TurnedInNot />
+                  </ListItemIcon>
+                  <Grid2 container>
+                    <ListItemText
+                      // primary={text}
+                      secondary={"Lorem ipsum......"}
+                    >
+                      {text}
+                    </ListItemText>
+                  </Grid2>
+                </ListItemButton>
+              </ListItem>
+            )
+          )}
+        </List>
+      </Box>
+    </Drawer>
+    //* </Box>
+  );
+};
+```
 
 ### 19.23
+
+`src/`
+
+```jsx
+```
+
+
+`src/`
+
+```jsx
+```
+
+
+`src/`
+
+```jsx
+```
+
 
 ### 19.24
 
