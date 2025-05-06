@@ -18420,7 +18420,7 @@ Aquí les dejo el código fuente de la sección por si lo llegan a necesitar par
 
 [**Fin sección 18 - Introducción a Redux**](https://github.com/Klerith/redux-toolkit-rtk-demo)
 
-## 19. Introducción a Redux y autenticación en Firebase
+## 🟣 19. Introducción a Redux y autenticación en Firebase
 
 ### 19.1 Introducción a la sección
 
@@ -22090,7 +22090,7 @@ Recuerden cambiar la configuración de firebase, porque yo lo borraré en cualqu
 
 [**GitHub - Fin sección 19**](https://github.com/Klerith/react-journal-material/tree/fin-seccion-19)
 
-## 20
+## 🟣 20
 
 `src/`
 
