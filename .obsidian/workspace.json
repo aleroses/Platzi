@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "DW/3-avanzado/1.react.js/devTalles/react-hooks-mern.md",
-                "mode": "preview",
+                "file": "DW/3-avanzado/contributions/contributions-to-open-source.md",
+                "mode": "source",
                 "source": true
               },
               "icon": "lucide-file",
-              "title": "react-hooks-mern"
+              "title": "contributions-to-open-source"
             }
           }
         ],
@@ -185,12 +185,14 @@
   },
   "active": "607228baa4f9a4b3",
   "lastOpenFiles": [
+    "DW/3-avanzado/1.react.js/devTalles/react-hooks-mern.md",
+    "DW/3-avanzado/contributions/contributions-to-open-source.md",
+    "DW/3-avanzado/contributions",
     "DW/3-avanzado/1.react.js/devTalles/img/18-15-RTK-Query-data.png",
     "DW/3-avanzado/1.react.js/devTalles/img/18-14-RTK-Query.png",
     "DW/3-avanzado/1.react.js/devTalles/img/18-13-redux-async.png",
     "DW/3-avanzado/1.react.js/devTalles/img/18-13-redux.png",
     "DW/3-avanzado/1.react.js/devTalles/material-ui.md",
-    "DW/3-avanzado/1.react.js/devTalles/react-hooks-mern.md",
     "DW/3-avanzado/1.react.js/devTalles/img/18.8-create-slice.png",
     "DW/3-avanzado/1.react.js/devTalles/img/18.8.png",
     "DW/3-avanzado/1.react.js/devTalles/img/18.7.redux.png",
@@ -203,7 +205,6 @@
     "DW/1-basico/006-html-css/1-html/1.html-css.md",
     "DW/1-basico/005-git-github/gh-pages.md",
     "DW/3-avanzado/4.css-modules/css-modules.md",
-    "DW/3-avanzado/4.css-modules/imgs/names.png",
     "DW/3-avanzado/4.css-modules/imgs",
     "DW/3-avanzado/4.css-modules",
     "nextjs.org.md",
@@ -216,7 +217,6 @@
     "node_modules/split-on-first/index.d.ts",
     "node_modules/query-string/readme.md",
     "node_modules/query-string/package.json",
-    "node_modules/query-string/license",
     "node_modules/filter-obj/readme.md",
     "node_modules/decode-uri-component/readme.md",
     "DW/1-basico/005-git-github/git-github.md",
