@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "DW/3-avanzado/contributions/contributions-to-open-source.md",
+                "file": "DW/1-basico/005-git-github/git-github.md",
                 "mode": "source",
                 "source": true
               },
               "icon": "lucide-file",
-              "title": "contributions-to-open-source"
+              "title": "git-github"
             }
           }
         ],
@@ -185,8 +185,8 @@
   },
   "active": "607228baa4f9a4b3",
   "lastOpenFiles": [
-    "DW/3-avanzado/1.react.js/devTalles/react-hooks-mern.md",
     "DW/3-avanzado/contributions/contributions-to-open-source.md",
+    "DW/3-avanzado/1.react.js/devTalles/react-hooks-mern.md",
     "DW/3-avanzado/contributions",
     "DW/3-avanzado/1.react.js/devTalles/img/18-15-RTK-Query-data.png",
     "DW/3-avanzado/1.react.js/devTalles/img/18-14-RTK-Query.png",

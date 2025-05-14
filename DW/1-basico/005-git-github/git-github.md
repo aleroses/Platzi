@@ -989,6 +989,16 @@ Mas o menos como muestra este video, con la única diferencia que marqué todas 
 
 Nuevamente hice `git push origin master`, se abrió la ventana para añadir las credenciales y esta vez elegí añadir **Token** y ahora todo se envió sin problema.
 
+En Linux te aparece para añadir tú **user name** o el nombre del final de la URL de tu perfil.
+
+```bash
+https://github.com/aleroses
+
+❯ git push origin aleroses-contributor 
+Username for 'https://github.com': aleroses 👈👀
+Password for 'https://aleroses@github.com': 👈👀 token🔥
+```
+
 🎲
 
 ## 23. Tags y versiones en Git y GitHub

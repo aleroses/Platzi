@@ -136,3 +136,48 @@ Proyecto destinado a favorecer la participación y la inclusión de nuevos desar
 
 
 
+publicar y comentar
+
+
+
+
+devLocos kevin
+
+voluntariado
+coding Academy
+
+España
+pawify
+
+ir al perfil, pagina
+ y buscar errores
+
+
+
+react card shopping
+
+extensión:
+wappalyzer
+
+versel 
+render
+digital
+
+
+
+
+Lunes...
+
+
+- tailwind components
+- semantic ui
+
+Acerca de: mostrar quien eres 3 o 4 parrafos que hago hobby
+
+
+Como buscar trabajo
+
+Recomendación LinkedIn
+
+
+Martes 9 pm
