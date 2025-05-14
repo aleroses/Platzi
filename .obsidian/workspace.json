@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "DW/1-basico/005-git-github/git-github.md",
+                "file": "DW/3-avanzado/contributions/contributions-to-open-source.md",
                 "mode": "source",
                 "source": true
               },
               "icon": "lucide-file",
-              "title": "git-github"
+              "title": "contributions-to-open-source"
             }
           }
         ],
@@ -185,6 +185,7 @@
   },
   "active": "607228baa4f9a4b3",
   "lastOpenFiles": [
+    "DW/1-basico/005-git-github/git-github.md",
     "DW/3-avanzado/contributions/contributions-to-open-source.md",
     "DW/3-avanzado/1.react.js/devTalles/react-hooks-mern.md",
     "DW/3-avanzado/contributions",
@@ -219,7 +220,6 @@
     "node_modules/query-string/package.json",
     "node_modules/filter-obj/readme.md",
     "node_modules/decode-uri-component/readme.md",
-    "DW/1-basico/005-git-github/git-github.md",
     "DW/1-basico/003-prework/entorno-linux/grub-config.md",
     "DW/3-avanzado/3.next/Nextjs-Tailwind.md",
     "DW/2-intermedio/029.web-components/web-components.md",

@@ -94,6 +94,9 @@ Otros sitios útiles:
     ```
     
 6. Ve a tu repositorio en GitHub y haz un **pull request** desde tu rama.
+	1. New pull request
+	2. `base repository: firstcontributions...`  `base: main` ⬅️ `head repository: aleroses/first-contributions`  `compare: aleroses-contributor`
+	3. Create pull request
     
 7. Espera a que lo acepten. ¡Felicitaciones, hiciste tu primera contribución!
     
