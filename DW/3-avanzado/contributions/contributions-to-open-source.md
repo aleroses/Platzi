@@ -57,6 +57,8 @@ Puedes contribuir también sin programar:
 Otros sitios útiles:
 
 - [https://firstcontributions.github.io/#project-list](https://firstcontributions.github.io/#project-list)
+- [https://firstcontributions.github.io/](https://firstcontributions.github.io/)
+- [https://github.com/roshanjossey/code-contributions](https://github.com/roshanjossey/code-contributions)
 - [https://github.com/fork-commit-merge/fork-commit-merge](https://github.com/fork-commit-merge/fork-commit-merge)
 - [https://up-for-grabs.net](https://up-for-grabs.net/)
 - [https://goodfirstissue.dev](https://goodfirstissue.dev/)
